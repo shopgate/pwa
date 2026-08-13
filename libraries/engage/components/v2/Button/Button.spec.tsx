@@ -140,6 +140,17 @@ describe('<Button />', () => {
 
       expect(screen.getByRole('button')).toBeDisabled();
     });
+
+    it('should mark a non-button element as disabled while loading', () => {
+      // `loading` is implemented as `disabled`, which has no effect off a native button - so it
+      // has to surface as `aria-disabled` instead.
+      render(<Button component="a" loading testId="Loading">Press</Button>);
+
+      const link = document.querySelector('[data-test-id="Loading"]') as HTMLElement;
+
+      expect(link).toHaveAttribute('aria-disabled', 'true');
+      expect(link).not.toHaveAttribute('disabled');
+    });
   });
 
   it('should pass the testId through to the button element', () => {

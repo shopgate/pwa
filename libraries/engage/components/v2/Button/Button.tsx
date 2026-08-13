@@ -3,13 +3,16 @@ import { makeStyles } from '@shopgate/engage/styles';
 import type { PaletteColorsWithMain } from '@shopgate/engage/styles';
 import CircularProgress from '../CircularProgress';
 import ButtonBase from '../ButtonBase';
-import type { ButtonBaseProps } from '../ButtonBase';
+import type { ButtonBaseOwnProps, ButtonBaseProps } from '../ButtonBase';
 
 /**
  * The Button component is a versatile UI element that can be used to trigger actions or navigate users.
  * It supports multiple variants, colors, and sizes, making it suitable for a wide range of use cases.
  */
-const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+function Button<C extends React.ElementType = 'button'>(
+  props: ButtonProps<C>,
+  ref: React.Ref<Element>
+) {
   const {
     variant = 'contained',
     color = 'inherit',
@@ -27,7 +30,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     classes: classesProp,
     children,
     ...other
-  } = props;
+  } = props as ButtonOwnProps & ButtonBaseOwnProps;
 
   const { classes, cx } = useStyles({
     color,
@@ -72,7 +75,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   return (
     <ButtonBase
-      ref={ref}
+      ref={ref as React.Ref<HTMLButtonElement>}
       className={cx(classes.root, {
         [classes.text]: variant === 'text',
         [classes.outlined]: variant === 'outlined',
@@ -98,7 +101,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       </span>
     </ButtonBase>
   );
-});
+}
 
 const useStyles = makeStyles<ButtonOwnProps>({
   name: 'Button',
@@ -178,7 +181,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
         '--variant-textBg': theme.alpha(cssColor, 0.1),
         '--variant-outlinedBg': theme.alpha(cssColor, 0.1),
         textDecoration: 'none',
-        '&:disabled': {
+        '&:disabled, &[aria-disabled="true"]': {
           backgroundColor: 'transparent',
         },
         // Reset on touch devices, it doesn't add specificity
@@ -213,7 +216,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
     text: {
       color: 'var(--variant-textColor)',
       background: 'var(--variant-textBg)',
-      '&:disabled': {
+      '&:disabled, &[aria-disabled="true"]': {
         color: 'var(--variant-textDisabledColor)',
       },
     },
@@ -221,7 +224,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
       color: 'var(--variant-outlinedColor)',
       borderColor: 'var(--variant-outlinedBorder)',
       background: 'var(--variant-outlinedBg)',
-      '&:disabled': {
+      '&:disabled, &[aria-disabled="true"]': {
         borderColor: 'var(--variant-outlinedDisabledBorder)',
         color: 'var(--variant-outlinedDisabledColor)',
       },
@@ -236,7 +239,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
           background: 'var(--variant-containedBg)',
         },
       },
-      '&:disabled': {
+      '&:disabled, &[aria-disabled="true"]': {
         color: 'var(--variant-containedDisabledColor)',
         backgroundColor: 'var(--variant-containedDisabledBg)',
       },
@@ -253,7 +256,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
       '&:active': {
         boxShadow: theme.shadows[6],
       },
-      '&:disabled': {
+      '&:disabled, &[aria-disabled="true"]': {
         boxShadow: theme.shadows[0],
       },
     },
@@ -362,7 +365,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
   };
 });
 
-export interface ButtonOwnProps {
+export interface ButtonOwnProps<C extends React.ElementType = 'button'> {
   /**
    * The variant to use.
    * @default 'contained'
@@ -423,8 +426,14 @@ export interface ButtonOwnProps {
   classes?: Partial<ReturnType<typeof useStyles>['classes']>;
 }
 
-export type ButtonProps = ButtonOwnProps & ButtonBaseProps;
+export type ButtonProps<C extends React.ElementType = 'button'> =
+  ButtonOwnProps<C> & ButtonBaseProps<C>;
 
-Button.displayName = 'Button';
+const ButtonWithRef = forwardRef(Button);
 
-export default Button;
+ButtonWithRef.displayName = 'Button';
+
+// `forwardRef` erases the generic, so the call signature is restored with a cast.
+export default ButtonWithRef as <C extends React.ElementType = 'button'>(
+  props: ButtonProps<C> & { ref?: React.ComponentPropsWithRef<C>['ref'] }
+) => React.ReactElement | null;

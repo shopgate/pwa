@@ -204,6 +204,13 @@ const Buttons = () => {
           <Button variant="text" color="inherit">Inherit</Button>
         </SectionRow>
       </SubSection>
+      <SubSection title="Element">
+        <SectionRow>
+          <Button component="a" color="primary">Renders an anchor</Button>
+          <Button href="/cart" color="primary">Links to the cart</Button>
+          <Button href="/cart" color="primary" disabled>Disabled link</Button>
+        </SectionRow>
+      </SubSection>
       <SubSection title="States and overrides">
         <SectionRow>
           <Button variant="contained" color="primary" disabled>Disabled</Button>

@@ -139,7 +139,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
         borderRightWidth: 1,
         borderRightStyle: 'solid',
         borderRightColor: theme.darken('var(--button-group-color)'),
-        '&:disabled': {
+        '&:disabled, &[aria-disabled="true"]': {
           borderRightColor: 'var(--disabledColor)',
         },
       },
@@ -149,7 +149,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
         borderBottomColor: theme.darken('var(--button-group-color)'),
-        '&:disabled': {
+        '&:disabled, &[aria-disabled="true"]': {
           borderBottomColor: 'var(--disabledColor)',
         },
       },
@@ -159,7 +159,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       '&:hover': {
         borderColor: 'var(--button-group-color)',
       },
-      '&:disabled': {
+      '&:disabled, &[aria-disabled="true"]': {
         borderColor: 'var(--disabledColor) !important',
       },
     },
@@ -187,7 +187,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
         borderRightWidth: 1,
         borderRightStyle: 'solid',
         borderRightColor: `${theme.lighten('var(--button-group-color)', 0.5)}`,
-        '&:disabled': {
+        '&:disabled, &[aria-disabled="true"]': {
           borderRightColor: 'var(--disabledColor)',
         },
       },
@@ -197,7 +197,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
         borderBottomColor: `${theme.lighten('var(--button-group-color)', 0.5)}`,
-        '&:disabled': {
+        '&:disabled, &[aria-disabled="true"]': {
           borderBottomColor: 'var(--disabledColor)',
         },
       },
