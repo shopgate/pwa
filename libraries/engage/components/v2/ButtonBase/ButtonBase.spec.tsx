@@ -1,5 +1,7 @@
-import React, { createRef } from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { createRef } from 'react';
+import {
+  render, screen, fireEvent, act,
+} from '@testing-library/react';
 // Loaded at runtime by utils/unit-tests/envSetup.js; imported here for the matcher types.
 import '@testing-library/jest-dom';
 import ButtonBase from './ButtonBase';
@@ -290,5 +292,64 @@ describe('<ButtonBase /> rendered as another element', () => {
       expect(handleClick).not.toHaveBeenCalled();
       expect(mockPush).not.toHaveBeenCalled();
     });
+  });
+});
+
+describe('<ButtonBase /> ripples', () => {
+  /**
+   * The ripple container is the button's last child; each active ripple is one node inside it.
+   * @param button The rendered button.
+   * @returns The number of active ripples.
+   */
+  const rippleCount = (button: HTMLElement) => button.lastElementChild?.childElementCount ?? 0;
+
+  it('should show a ripple on pointer down', () => {
+    render(<ButtonBase>Press</ButtonBase>);
+    const button = screen.getByRole('button');
+
+    fireEvent.pointerDown(button, { pointerId: 1 });
+
+    expect(rippleCount(button)).toBe(1);
+  });
+
+  it('should drop the ripple when the button disables itself mid press', () => {
+    // `pointer-events: none` on a disabled button makes the browser drop the pointer capture, so
+    // the pointer up never reaches it and nothing would otherwise end the ripple.
+    jest.useFakeTimers();
+    const { rerender } = render(<ButtonBase>Press</ButtonBase>);
+    const button = screen.getByRole('button');
+
+    fireEvent.pointerDown(button, { pointerId: 1 });
+    expect(rippleCount(button)).toBe(1);
+
+    rerender(<ButtonBase disabled>Press</ButtonBase>);
+    // The ripple fades out through a transition, so it survives until the exit finishes.
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(rippleCount(button)).toBe(0);
+    jest.useRealTimers();
+  });
+
+  it('should end the ripple when the pointer capture is lost', () => {
+    jest.useFakeTimers();
+    render(<ButtonBase>Press</ButtonBase>);
+    const button = screen.getByRole('button');
+
+    // Neither event carries an explicit pointerId: jsdom doesn't populate it on pointer capture
+    // events, so both resolve to the same undefined key.
+    fireEvent.pointerDown(button);
+    fireEvent.lostPointerCapture(button);
+    // First pass runs the minimum-visible delay, second the exit transition that it schedules.
+    act(() => {
+      jest.runAllTimers();
+    });
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(rippleCount(button)).toBe(0);
+    jest.useRealTimers();
   });
 });

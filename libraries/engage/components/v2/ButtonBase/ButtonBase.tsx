@@ -1,4 +1,4 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef, useEffect } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 // Imported from the defining modules instead of the `core` barrels on purpose: `core/hooks` imports
@@ -60,11 +60,22 @@ function ButtonBase<C extends React.ElementType = 'button'>(
   } = rest as ResolvedElementProps;
 
   const { classes, cx } = useStyles(undefined, { props: { classes: classesProp } });
-  const { ripples, start, end } = usePressRipple();
+  const {
+    ripples, start, end, clearAll,
+  } = usePressRipple();
   const reduceMotion = useReduceMotion();
   const { push, replace } = useNavigation();
 
   const disableRipple = disableRippleProp || reduceMotion;
+
+  // A button that disables itself on click gets `pointer-events: none`, which makes the browser
+  // drop the pointer capture. The pointer up then lands somewhere else and the ripple would never
+  // be told to finish, so it's cleared here instead.
+  useEffect(() => {
+    if (disabled) {
+      clearAll();
+    }
+  }, [disabled, clearAll]);
 
   /**
    * A real anchor is only safe on web builds. Inside the app webview `preventDefault()` sometimes
@@ -177,6 +188,17 @@ function ButtonBase<C extends React.ElementType = 'button'>(
     onPointerCancel?.(event);
   };
 
+  /**
+   * Fires whenever the capture taken on pointer down ends - including when the browser drops it
+   * because the element stopped being hit testable. Without this the ripple would stay behind.
+   * @param event The pointer event.
+   */
+  const handleLostPointerCapture = (event: React.PointerEvent<HTMLElement>) => {
+    if (!disableRipple) {
+      end(event.pointerId);
+    }
+  };
+
   const handlePointerLeave = (event: React.PointerEvent<HTMLElement>) => {
     if (!disableRipple && event.buttons === 1) {
       end(event.pointerId);
@@ -196,6 +218,7 @@ function ButtonBase<C extends React.ElementType = 'button'>(
       onPointerUp={handlePointerUp}
       onPointerCancel={handlePointerCancel}
       onPointerLeave={handlePointerLeave}
+      onLostPointerCapture={handleLostPointerCapture}
       {...(isButtonElement ? {
         disabled,
         // `type` is a content hint on an anchor, so it's only emitted for real buttons.

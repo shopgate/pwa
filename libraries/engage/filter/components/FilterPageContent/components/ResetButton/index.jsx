@@ -1,12 +1,14 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, Button, SurroundPortals } from '@shopgate/engage/components';
+import { I18n, SurroundPortals } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PORTAL_FILTER_RESET_BUTTON } from '@shopgate/engage/filter/constants';
 
 const useStyles = makeStyles()({
   buttonContainer: {
     marginTop: 4,
+    marginRight: 4,
     marginBottom: 40,
     textAlign: 'right',
   },
@@ -32,8 +34,8 @@ const FilterResetButton = ({ disabled, onClick }) => {
     >
       <div className={classes.buttonContainer}>
         <Button
-          flat
-          type="primary"
+          variant="text"
+          color="secondary"
           onClick={onClick}
           disabled={disabled}
           testId="clearAllButton"

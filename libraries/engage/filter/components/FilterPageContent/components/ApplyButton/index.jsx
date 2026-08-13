@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, Button, SurroundPortals } from '@shopgate/engage/components';
+import { I18n, SurroundPortals } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PORTAL_FILTER_APPLY_BUTTON } from '@shopgate/engage/filter/constants';
 import { withWidgetSettings } from '@shopgate/engage/core';
@@ -8,9 +9,13 @@ import { withWidgetSettings } from '@shopgate/engage/core';
 const useStyles = makeStyles()({
   wrapper: {
     display: 'flex',
+    // The app bar row stretches its items, so without this the button would grow to the full
+    // height of the bar and its hover and focus states would cover all of it.
+    alignItems: 'center',
+    marginRight: 4,
   },
   button: {
-    padding: '0 !important',
+    padding: 0,
   },
 });
 
@@ -37,9 +42,9 @@ const FilterApplyButton = ({ disabled, onClick, widgetSettings }) => {
     >
       <div className={classes.wrapper}>
         <Button
+          variant="text"
+          color="secondary"
           className={classes.button}
-          flat
-          type="primary"
           onClick={onClick}
           disabled={disabled}
           testId="applyFilterButton"
