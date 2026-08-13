@@ -257,10 +257,6 @@ const useStyles = makeStyles({
     '&::-moz-focus-inner': {
       borderStyle: 'none',
     },
-    '&:focus-visible': {
-      outline: '2px solid currentColor',
-      outlineOffset: 2,
-    },
     '&:disabled, &[aria-disabled="true"]': {
       pointerEvents: 'none',
       cursor: 'default',

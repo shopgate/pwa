@@ -25,7 +25,6 @@ const useStyles = makeStyles()(theme => ({
       background: pressedColor,
     },
     '&:focus-visible': {
-      outline: 'none',
       background: pressedColor,
     },
     '@media (hover: hover)': {

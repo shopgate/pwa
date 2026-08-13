@@ -37,7 +37,8 @@ const getRuleFor = (element: Element) => {
 const getButtonRule = () => getRuleFor(screen.getByRole('button'));
 
 /**
- * Reads the css rules that apply to the rendered button in a given state.
+ * Reads the css rules that apply to the rendered button in a given state. Matches anywhere in the
+ * rule text, so rules wrapped in a media query are found as well.
  * @param state The selector that follows the class name, e.g. `:hover`.
  * @returns The css text of the matching rules.
  */
@@ -49,7 +50,7 @@ const getButtonStateRule = (state: string) => {
       const { sheet } = styleElement as HTMLStyleElement;
       return sheet ? Array.from(sheet.cssRules).map(rule => rule.cssText) : [];
     })
-    .filter(text => text.startsWith(`.${className}${state}`))
+    .filter(text => text.includes(`.${className}${state}`))
     .join('\n');
 };
 
@@ -155,6 +156,15 @@ describe('<Button />', () => {
       render(<Button variant="link" size={size} dense>Press</Button>);
 
       expect(paddingOf(getButtonRule())).toBe('0');
+    });
+
+    it('should only underline on hover where a pointer exists', () => {
+      render(<Button variant="link">Press</Button>);
+
+      const rule = getButtonStateRule(':hover');
+
+      expect(rule).toContain('@media (hover: hover)');
+      expect(rule).toContain('text-decoration: underline;');
     });
 
     it('should use the disabled text color when disabled', () => {

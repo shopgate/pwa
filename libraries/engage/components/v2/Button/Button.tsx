@@ -236,6 +236,11 @@ const useStyles = makeStyles<ButtonOwnProps>({
       border: 0,
       textTransform: 'none',
       color: 'var(--variant-textColor)',
+      '@media (hover: hover)': {
+        '&:hover': {
+          textDecoration: 'underline',
+        },
+      },
       '&:disabled, &[aria-disabled="true"]': {
         color: 'var(--variant-textDisabledColor)',
       },
@@ -395,7 +400,8 @@ const useStyles = makeStyles<ButtonOwnProps>({
 
 export interface ButtonOwnProps {
   /**
-   * The variant to use. `link` renders a sentence case button without padding or a hover background.
+   * The variant to use. `link` renders a sentence case button without padding, underlined on hover
+   * where a pointer exists.
    * @default 'contained'
    */
   variant?: 'contained' | 'outlined' | 'text' | 'link';
