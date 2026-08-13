@@ -60,6 +60,8 @@ const useStyles = makeStyles()(theme => ({
   },
   button: {
     marginTop: 8,
+    // The original explicitly opted out of the uppercase button casing.
+    textTransform: 'none',
     marginRight: 16,
     [responsiveMediaQuery('<md', { webOnly: false })]: {
       width: '100%',

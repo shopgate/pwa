@@ -57,6 +57,8 @@ const useStyles = makeStyles()(() => ({
   },
   button: {
     marginTop: 8,
+    // The original explicitly opted out of the uppercase button casing.
+    textTransform: 'none',
   },
 }));
 
