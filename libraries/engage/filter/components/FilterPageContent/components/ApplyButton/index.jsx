@@ -9,9 +9,6 @@ import { withWidgetSettings } from '@shopgate/engage/core';
 const useStyles = makeStyles()({
   wrapper: {
     display: 'flex',
-    // The app bar row stretches its items, so without this the button would grow to the full
-    // height of the bar and its hover and focus states would cover all of it.
-    alignItems: 'center',
     marginRight: 4,
   },
   button: {

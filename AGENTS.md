@@ -29,6 +29,8 @@ consumed, not published from here.
 - **Languages:** JS/JSX (primary) and TypeScript (`typescript ^5.9.3`, 140+ `.ts/.tsx` files). New typed code should use TypeScript.
 - **UI:** React 17 (`^17.0.2`, automatic JSX runtime), Redux (`redux ^5`, `react-redux ^8`, redux-thunk, reselect), RxJS 5 (`~5.5.12`, legacy), Swiper 12, `@virtuous/conductor` routing.
 - **Styling (multiple coexist):** write new CSS with `makeStyles` / `useStyles` (`tss-react`). glamor is legacy — do not use it for new styling; prefer `makeStyles`/`useStyles` and migrate glamor away where you touch it.
+- **Human-readable CSS classes:** components also emit stable, unhashed classes alongside the generated
+  ones — see below. Do not remove or rename them.
 - **Monorepo:** Lerna 2.9.0 (`npmClient: yarn`, `--no-optional`), Yarn workspaces.
 - **Build:** Babel 7 (canonical config is `themes/theme-gmd/babel.config.js`; root `babel.config.js` just extends it), Webpack 5 via `@shopgate/webpack`. Actual dev/build entry is the external **`sgconnect`** (Shopgate Connect) CLI, not a direct webpack script.
 - **Test:** Jest 29 + jsdom, enzyme 3 (`enzyme-adapter-react-17`) and `@testing-library/react` 12 both present.
@@ -41,7 +43,7 @@ Requires the external `sgconnect` CLI (not installed by `yarn install`).
 - Install / setup: `yarn install`, then `yarn setup` (`sgconnect init && lerna bootstrap`). Full reset: `yarn resetup`.
 - Run locally: `yarn start` (`sgconnect frontend start`); `yarn start-cloud` (backend + frontend). Desktop web bridge: `WEB_BRIDGE=1 sgconnect frontend start -t theme-gmd`.
 - Test: **`yarn test:short` is the default** — use it for routine runs, and scope it to the paths you touched (`yarn test:short <path>`) rather than sweeping the repo. `yarn test` (`RUN_LONG=true jest`) is the full run, reserved for changes that touch `@shopgate/engage/*` exports (see Pitfalls); `yarn test:watch`; `yarn cover`.
-- Lint: `yarn lint` (eslint `.js/.jsx/.json`, ignores `extensions/`); `yarn lint:summary`. A Husky pre-commit hook runs `lint-staged`.
+- Lint: `yarn lint` (eslint `.js/.jsx/.ts/.tsx/.json`, ignores `extensions/`); `yarn lint:summary`. A Husky pre-commit hook runs `lint-staged`.
 - Theme git subtrees: `yarn add-remotes` / `yarn remove-remotes`.
 - Release / build: `yarn release` → `make release` (publishes npm + GitHub releases — **verify before use**; `make release-dry-run` to inspect output). `yarn clean` → `make clean`.
 
@@ -56,6 +58,36 @@ Requires the external `sgconnect` CLI (not installed by `yarn install`).
 - **`pipelines/` / `trustedPipelines/`** are backend pipeline JSON definitions, not JS.
 - **Naming conventions:** tests `*.spec.js(x)` colocated; `index.js` barrels; colocated `*.types.js`. Existing redux wiring lives in `connector.js` (not `connect.js`) — these are legacy; do not add new `connector.js` files (see Editing Guidelines).
 - **`.sgcloud/`** is local `sgconnect` dev state (gitignored, machine-specific).
+
+## Human-Readable CSS Classes
+
+Merchants restyle the app with injected CSS — a `theme.css` fetched from `appConfig.themeCssUrl`
+(`libraries/engage/styles/helpers/loadThemeCss.ts`), a legacy `customStyleUrl` file, and the admin live
+preview. `makeStyles` class names are hashed (`sg-1a2b3c`) and change every build, so components also
+emit **stable, unhashed classes** that merchant CSS can target. There are ~200 of them.
+
+- **Grammar:** `prefix__segment__segment`, `__` between every level, segments in `kebab-case` — e.g.
+  `engage__typography`, `theme__product-grid__item__item-details`. Prefixes track where the component
+  lives: `engage__`, `theme__`, `ui-shared__`, `common__`, `widget__`.
+- **Order matters:** generated class first, human-readable class next, caller `className` **last**, so a
+  consumer override still wins. See `libraries/engage/components/Typography/Typography.tsx`.
+- **Never rename or remove one.** They are a public API for merchant CSS; a rename silently breaks
+  styling that nobody in this repo can see. When a component is replaced, the successor should re-emit
+  the old class — `Card` emits `engage__card` + `ui-shared__card`, and `components/v2/Button` re-emits
+  `common__button` / `ui-shared__button` / `ui-shared__ripple-button`. Note these sit on `Button`, not
+  `ButtonBase` - a bare `ButtonBase` is a plain click target, not a styled button.
+- **New components: expose state and configuration as `data-*` attributes, not modifier classes.** e.g.
+  `data-variant`, `data-color`, `data-size` on `components/v2/Button`. An attribute qualifier
+  (`.engage__button[data-variant="contained"]`) outranks the generated class on specificity, and there
+  is no modifier naming grammar to get wrong — older code has four competing spellings for this.
+  The rule: expose every prop that changes appearance and has no DOM equivalent, named as the
+  kebab-case prop (`data-full-width`), booleans emitted only when true so selectors read
+  `[data-full-width]`.
+- **Don't duplicate what the DOM already exposes.** Disabled is addressable via `:disabled` and
+  `[aria-disabled="true"]`; a `data-disabled` would just be a third spelling.
+- **Cascade:** `<meta>` anchors in `utils/webpack/templates/default.ejs` fix the layer order as
+  emotion/tss → `theme.css` → admin preview. All three are equal specificity, so document order decides
+  and merchant CSS wins without `!important`.
 
 ## Internal Knowledge Base
 

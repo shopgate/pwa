@@ -165,3 +165,96 @@ describe('<Button />', () => {
     expect(screen.getByRole('button')).not.toHaveAttribute('classes');
   });
 });
+
+describe('<Button /> css hooks', () => {
+  it('should carry its own stable class instead of the base one', () => {
+    render(<Button>Press</Button>);
+
+    const button = screen.getByRole('button');
+
+    expect(button).toHaveClass('engage__button');
+    expect(button).not.toHaveClass('engage__button-base');
+  });
+
+  it('should keep emitting the classes the legacy styled buttons carried', () => {
+    render(<Button>Press</Button>);
+
+    const button = screen.getByRole('button');
+
+    expect(button).toHaveClass('common__button');
+    expect(button).toHaveClass('ui-shared__button');
+    expect(button).toHaveClass('ui-shared__ripple-button');
+  });
+
+  it('should drop the ripple class when the button does not ripple', () => {
+    render(<Button disableRipple>Press</Button>);
+
+    const button = screen.getByRole('button');
+
+    expect(button).not.toHaveClass('ui-shared__ripple-button');
+    expect(button).toHaveClass('ui-shared__button');
+  });
+
+  it('should not claim legacy classes that never belonged to the button element', () => {
+    render(<Button>Press</Button>);
+
+    const button = screen.getByRole('button');
+
+    // `ui-shared__action-button` sat on ActionButton's wrapper div and carried its layout gap.
+    expect(button).not.toHaveClass('ui-shared__action-button');
+    // `ui-shared__button-link` was overwritten by a prop spread and never reached the DOM.
+    expect(button).not.toHaveClass('ui-shared__button-link');
+  });
+
+  it('should place the consumer className after the stable ones', () => {
+    // `cx` merges every emotion class into one and appends it, so a plain class is never the last
+    // token. What matters is that the caller's class follows ours among the plain names.
+    render(<Button className="custom">Press</Button>);
+
+    const classList = screen.getByRole('button').className.trim().split(' ');
+
+    expect(classList.indexOf('custom')).toBeGreaterThan(classList.indexOf('engage__button'));
+  });
+
+  it('should expose its configuration as data attributes', () => {
+    render(<Button variant="outlined" color="cta" size="large">Press</Button>);
+
+    const button = screen.getByRole('button');
+
+    expect(button).toHaveAttribute('data-variant', 'outlined');
+    expect(button).toHaveAttribute('data-color', 'cta');
+    expect(button).toHaveAttribute('data-size', 'large');
+  });
+
+  it('should expose the boolean modifiers only when they are on', () => {
+    const { unmount } = render(<Button>Press</Button>);
+
+    expect(screen.getByRole('button')).not.toHaveAttribute('data-dense');
+    expect(screen.getByRole('button')).not.toHaveAttribute('data-full-width');
+    unmount();
+
+    render(<Button dense fullWidth enableElevation>Press</Button>);
+
+    const button = screen.getByRole('button');
+
+    expect(button).toHaveAttribute('data-dense', 'true');
+    expect(button).toHaveAttribute('data-full-width', 'true');
+    expect(button).toHaveAttribute('data-enable-elevation', 'true');
+  });
+
+  it('should expose the loading state, but leave disabled to :disabled and aria-disabled', () => {
+    render(<Button loading>Press</Button>);
+
+    const button = screen.getByRole('button');
+
+    expect(button).toHaveAttribute('data-loading', 'true');
+    expect(button).not.toHaveAttribute('data-disabled');
+    expect(button).toBeDisabled();
+  });
+
+  it('should omit data-loading when not loading', () => {
+    render(<Button>Press</Button>);
+
+    expect(screen.getByRole('button')).not.toHaveAttribute('data-loading');
+  });
+});

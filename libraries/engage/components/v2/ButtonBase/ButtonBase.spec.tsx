@@ -232,7 +232,10 @@ describe('<ButtonBase /> rendered as another element', () => {
       render(
         <ButtonBase
           href="https://example.com"
-          linkOptions={{ state: { from: 'cart' }, target: '_blank' }}
+          linkOptions={{
+            state: { from: 'cart' },
+            target: '_blank',
+          }}
           testId="Subject"
         >
           Offsite
@@ -243,7 +246,10 @@ describe('<ButtonBase /> rendered as another element', () => {
 
       expect(mockPush).toHaveBeenCalledWith({
         pathname: 'https://example.com',
-        state: { from: 'cart', target: '_blank' },
+        state: {
+          from: 'cart',
+          target: '_blank',
+        },
       });
     });
 
@@ -351,5 +357,40 @@ describe('<ButtonBase /> ripples', () => {
 
     expect(rippleCount(button)).toBe(0);
     jest.useRealTimers();
+  });
+});
+
+describe('<ButtonBase /> css hooks', () => {
+  it('should carry a stable class that merchant css can target', () => {
+    render(<ButtonBase>Press</ButtonBase>);
+
+    expect(screen.getByRole('button')).toHaveClass('engage__button-base');
+  });
+
+  it('should drop that class when a wrapper provides its own', () => {
+    render(<ButtonBase disableBaseClassName>Press</ButtonBase>);
+
+    expect(screen.getByRole('button')).not.toHaveClass('engage__button-base');
+  });
+
+  it('should not carry the legacy classes, which belong to the styled Button', () => {
+    // A bare ButtonBase is a plain click target - merchant css written for buttons shouldn't hit it.
+    render(<ButtonBase>Press</ButtonBase>);
+
+    const button = screen.getByRole('button');
+
+    expect(button).not.toHaveClass('common__button');
+    expect(button).not.toHaveClass('ui-shared__button');
+    expect(button).not.toHaveClass('ui-shared__ripple-button');
+  });
+
+  it('should place the consumer className after the stable ones', () => {
+    // `cx` merges every emotion class into one and appends it, so a plain class is never the last
+    // token. What matters is that the caller's class follows ours among the plain names.
+    render(<ButtonBase className="custom">Press</ButtonBase>);
+
+    const classList = screen.getByRole('button').className.trim().split(' ');
+
+    expect(classList.indexOf('custom')).toBeGreaterThan(classList.indexOf('engage__button-base'));
   });
 });

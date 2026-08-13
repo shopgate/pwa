@@ -43,7 +43,7 @@ const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>((prop
       className={cx(classes.root, {
         [classes.indeterminate]: variant === 'indeterminate',
         [classes.determinate]: variant === 'determinate',
-      }, className)}
+      }, 'engage__circular-progress', className)}
       style={{
         width: size,
         height: size,
@@ -52,6 +52,9 @@ const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>((prop
       }}
       ref={ref}
       role="progressbar"
+      data-variant={variant}
+      data-color={color}
+      data-disable-shrink={disableShrink || undefined}
       {...rootProps}
       {...other}
     >

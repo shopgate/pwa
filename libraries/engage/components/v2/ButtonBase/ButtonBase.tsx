@@ -41,6 +41,7 @@ function ButtonBase<C extends React.ElementType = 'button'>(
     linkOptions,
     disabled = false,
     disableRipple: disableRippleProp = false,
+    disableBaseClassName = false,
     className,
     classes: classesProp,
     testId,
@@ -211,7 +212,7 @@ function ButtonBase<C extends React.ElementType = 'button'>(
     <Component
       ref={ref}
       data-test-id={testId}
-      className={cx(classes.root, className)}
+      className={cx(classes.root, !disableBaseClassName && 'engage__button-base', className)}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
       onPointerDown={handlePointerDown}
@@ -317,6 +318,12 @@ export interface ButtonBaseOwnProps<C extends React.ElementType = 'button'> {
    * @default false
    */
   disableRipple?: boolean;
+  /**
+   * If true, the `engage__button-base` css hook is not rendered. Set by wrappers that provide a
+   * hook of their own, such as `Button`.
+   * @default false
+   */
+  disableBaseClassName?: boolean;
   /**
    * Custom class name for the button.
    */

@@ -1,5 +1,9 @@
 import { merge } from 'lodash';
-import { isDev, isIOSTheme } from '@shopgate/engage/core/helpers';
+// Imported from the defining modules rather than the `core/helpers` barrel: this module runs at
+// import time in every spec that touches the theme, and specs that replace that barrel with a
+// partial mock would leave these undefined.
+import { isDev } from '@shopgate/pwa-common/helpers/environment';
+import { isIOSTheme } from '@shopgate/engage/core/helpers/isIOSTheme';
 
 const caseAllCaps = {
   textTransform: 'uppercase',

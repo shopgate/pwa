@@ -45,7 +45,15 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
         [classes.vertical]: orientation === 'vertical',
         [classes.fullWidth]: fullWidth,
         [classes.enableElevation]: enableElevation && variant === 'contained',
-      }, className)}
+      }, 'engage__button-group', className)}
+      data-variant={variant}
+      data-color={color}
+      data-size={size}
+      data-orientation={orientation}
+      data-dense={dense || undefined}
+      data-full-width={fullWidth || undefined}
+      data-enable-elevation={enableElevation || undefined}
+      data-disabled={disabled || undefined}
       ref={ref}
       {...other}
     >

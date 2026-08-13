@@ -24,6 +24,7 @@ function Button<C extends React.ElementType = 'button'>(
     size = 'medium',
     dense = false,
     disabled = false,
+    disableRipple = false,
     fullWidth = false,
     enableElevation = false,
     className,
@@ -40,6 +41,13 @@ function Button<C extends React.ElementType = 'button'>(
     loading,
     fullWidth,
   }, { props: { classes: classesProp } });
+
+  const staticClassNames = [
+    'engage__button',
+    'common__button',
+    'ui-shared__button',
+    !disableRipple && 'ui-shared__ripple-button',
+  ].filter(Boolean).join(' ');
 
   const loadingIndicator = loadingIndicatorProp ?? (
     <CircularProgress color="inherit" size={16} />
@@ -88,7 +96,16 @@ function Button<C extends React.ElementType = 'button'>(
         [classes.disabled]: disabled || loading,
         [classes.fullWidth]: fullWidth,
         [classes.enableElevation]: enableElevation,
-      }, className)}
+      }, staticClassNames, className)}
+      disableRipple={disableRipple}
+      disableBaseClassName
+      data-variant={variant}
+      data-color={color}
+      data-size={size}
+      data-dense={dense || undefined}
+      data-full-width={fullWidth || undefined}
+      data-enable-elevation={enableElevation || undefined}
+      data-loading={loading || undefined}
       disabled={disabled || loading}
       {...other}
     >
@@ -365,7 +382,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
   };
 });
 
-export interface ButtonOwnProps<C extends React.ElementType = 'button'> {
+export interface ButtonOwnProps {
   /**
    * The variant to use.
    * @default 'contained'
@@ -427,7 +444,7 @@ export interface ButtonOwnProps<C extends React.ElementType = 'button'> {
 }
 
 export type ButtonProps<C extends React.ElementType = 'button'> =
-  ButtonOwnProps<C> & ButtonBaseProps<C>;
+  ButtonOwnProps & ButtonBaseProps<C>;
 
 const ButtonWithRef = forwardRef(Button);
 
