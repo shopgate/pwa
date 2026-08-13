@@ -22,6 +22,10 @@ const CLICK_DELAY = 300;
 
 /**
  * The action button component.
+ * @deprecated Use `Button` from `@shopgate/engage/components/v2` instead. It defaults to
+ * `variant="contained"`, so pass `variant="text"` to match this component's `flat` default. Map
+ * `type="secondary"` to `color="primary"`, and `type="primary"` or the default to
+ * `color="secondary"`.
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */

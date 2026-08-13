@@ -99,6 +99,10 @@ const useStyles = makeStyles()((theme, { type, flat, disabled }) => {
 
 /**
  * The basic button component.
+ * @deprecated Use `Button` from `@shopgate/engage/components/v2` instead. Map `flat` to
+ * `variant="text"` and omit it for `variant="contained"`. The colors are named differently:
+ * `type="secondary"` becomes `color="primary"`, while `type="primary"` and the default become
+ * `color="secondary"`. `type="plain"` is unstyled — use `ButtonBase` for it.
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */

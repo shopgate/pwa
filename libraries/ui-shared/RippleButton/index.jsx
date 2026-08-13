@@ -22,6 +22,10 @@ const useStyles = makeStyles()(theme => ({
 /**
  * The ripple button component is a special derivation of the basic button component
  * that adds a ripple effect when clicked.
+ * @deprecated Use `Button` from `@shopgate/engage/components/v2` instead — it ripples by default,
+ * so `rippleClassName` and `rippleSize` are gone and `disableRipple` turns the effect off. Map
+ * `flat` to `variant="text"`, `type="secondary"` to `color="primary"`, and `type="primary"` or the
+ * default to `color="secondary"`.
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */

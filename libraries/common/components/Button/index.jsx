@@ -55,4 +55,9 @@ Button.defaultProps = {
   testId: 'Button',
 };
 
+/**
+ * @deprecated Use `ButtonBase` from `@shopgate/engage/components/v2` instead — it renders the same
+ * unstyled click target, adds a ripple, and accepts `component` / `href` to change the element.
+ * For a styled button use `Button` from the same module.
+ */
 export default memo(Button);
