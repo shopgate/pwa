@@ -25,99 +25,159 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
           pathname={null}
         >
           <div
-            className="sg-99a97b-buttonLine"
+            className="sg-6ordsu-buttonLine"
           >
-            <button
-              className="sg-kcr9yu-cancelButton"
+            <Button
               data-test-id="reviewCancelButton"
               onClick={[Function]}
-              type="button"
+              variant="text"
             >
-              <Translate
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={{}}
-                role={null}
-                string="common.cancel"
-                transform={null}
-              >
-                <span
-                  className={null}
-                  role={null}
-                >
-                  common.cancel
-                </span>
-              </Translate>
-            </button>
-            <RippleButton
-              className=""
-              disabled={false}
-              flat={false}
-              onClick={null}
-              rippleClassName=""
-              rippleSize={null}
-              testId="sendReviewButton"
-              type="secondary"
-              wrapContent={true}
-            >
-              <Button
-                className=" ui-shared__ripple-button"
+              <ButtonBase
+                className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-mvb5hn-Button-root-Button-text"
+                data-color="inherit"
+                data-size="medium"
+                data-test-id="reviewCancelButton"
+                data-variant="text"
+                disableBaseClassName={true}
+                disableRipple={false}
                 disabled={false}
-                flat={false}
-                onClick={null}
-                testId="sendReviewButton"
-                type="secondary"
-                wrapContent={false}
+                onClick={[Function]}
               >
-                <Button
-                  className="ui-shared__button sg-se4spe-button ui-shared__ripple-button"
+                <button
+                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-aeoj4z-ButtonBase-root-Button-root-Button-text"
+                  data-color="inherit"
+                  data-size="medium"
+                  data-test-id="reviewCancelButton"
+                  data-variant="text"
                   disabled={false}
-                  onClick={null}
-                  testId="sendReviewButton"
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onLostPointerCapture={[Function]}
+                  onPointerCancel={[Function]}
+                  onPointerDown={[Function]}
+                  onPointerLeave={[Function]}
+                  onPointerUp={[Function]}
+                  type="button"
                 >
-                  <button
-                    className="common__button ui-shared__button ui-shared__ripple-button sg-edph4m-root-button"
-                    data-test-id="sendReviewButton"
-                    disabled={false}
-                    onClick={null}
+                  <span
+                    className="sg-85tluf-Button-label"
                   >
-                    <Ripple
-                      className="sg-fpa50s-contentWrapper"
-                      color="var(--sg-palette-common-black)"
-                      disabled={false}
-                      fill={true}
-                      onClick={[Function]}
-                      onComplete={[Function]}
-                      overflow={true}
-                      size={null}
+                    <span
+                      className="sg-18jpr3t-Button-loader"
+                      style={
+                        {
+                          "display": "contents",
+                        }
+                      }
+                    />
+                    <Translate
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
+                      string="common.cancel"
+                      transform={null}
                     >
-                      <div
-                        className="ui-shared__ripple sg-fpa50s-contentWrapper"
-                        data-test-id="Ripple"
-                        onClick={[Function]}
-                        style={null}
+                      <span
+                        className={null}
+                        role={null}
                       >
-                        <Translate
-                          acceptPlainTextWithPlaceholders={false}
-                          className={null}
-                          params={{}}
-                          role={null}
-                          string="common.submit"
-                          transform={null}
-                        >
-                          <span
-                            className={null}
-                            role={null}
-                          >
-                            common.submit
-                          </span>
-                        </Translate>
-                      </div>
-                    </Ripple>
-                  </button>
-                </Button>
-              </Button>
-            </RippleButton>
+                        common.cancel
+                      </span>
+                    </Translate>
+                  </span>
+                  <Ripple
+                    ripples={[]}
+                  >
+                    <span
+                      className="sg-sfhzfw-ButtonBaseRipple-container"
+                    >
+                      <TransitionGroup
+                        childFactory={[Function]}
+                        component={null}
+                        exit={true}
+                      />
+                    </span>
+                  </Ripple>
+                </button>
+              </ButtonBase>
+            </Button>
+            <Button
+              color="primary"
+              disabled={false}
+              testId="sendReviewButton"
+              type="submit"
+            >
+              <ButtonBase
+                className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-nciumr-Button-root-Button-contained"
+                data-color="primary"
+                data-size="medium"
+                data-variant="contained"
+                disableBaseClassName={true}
+                disableRipple={false}
+                disabled={false}
+                testId="sendReviewButton"
+                type="submit"
+              >
+                <button
+                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1ujah5y-ButtonBase-root-Button-root-Button-contained"
+                  data-color="primary"
+                  data-size="medium"
+                  data-test-id="sendReviewButton"
+                  data-variant="contained"
+                  disabled={false}
+                  onClick={[Function]}
+                  onKeyDown={[Function]}
+                  onLostPointerCapture={[Function]}
+                  onPointerCancel={[Function]}
+                  onPointerDown={[Function]}
+                  onPointerLeave={[Function]}
+                  onPointerUp={[Function]}
+                  type="submit"
+                >
+                  <span
+                    className="sg-85tluf-Button-label"
+                  >
+                    <span
+                      className="sg-18jpr3t-Button-loader"
+                      style={
+                        {
+                          "display": "contents",
+                        }
+                      }
+                    />
+                    <Translate
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
+                      string="common.submit"
+                      transform={null}
+                    >
+                      <span
+                        className={null}
+                        role={null}
+                      >
+                        common.submit
+                      </span>
+                    </Translate>
+                  </span>
+                  <Ripple
+                    ripples={[]}
+                  >
+                    <span
+                      className="sg-sfhzfw-ButtonBaseRipple-container"
+                    >
+                      <TransitionGroup
+                        childFactory={[Function]}
+                        component={null}
+                        exit={true}
+                      />
+                    </span>
+                  </Ripple>
+                </button>
+              </ButtonBase>
+            </Button>
           </div>
         </FormButtons>
       </Component>

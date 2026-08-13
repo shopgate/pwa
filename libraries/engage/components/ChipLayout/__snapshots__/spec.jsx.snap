@@ -106,76 +106,52 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
     <div
       className="sg-1l5tw3l-moreButtonWrapper"
     >
-      <RippleButton
+      <ButtonBase
         className="sg-vwngim-moreButton"
-        disabled={false}
-        fill={true}
-        flat={false}
         onClick={[Function]}
-        rippleClassName=""
-        rippleSize={null}
-        testId="Button"
-        type="plain"
-        wrapContent={true}
       >
-        <Button
-          className="sg-vwngim-moreButton ui-shared__ripple-button"
+        <button
+          className="engage__button-base sg-ivjyj2-ButtonBase-root-moreButton"
           disabled={false}
-          flat={false}
           onClick={[Function]}
-          testId="Button"
-          type="plain"
-          wrapContent={false}
+          onKeyDown={[Function]}
+          onLostPointerCapture={[Function]}
+          onPointerCancel={[Function]}
+          onPointerDown={[Function]}
+          onPointerLeave={[Function]}
+          onPointerUp={[Function]}
+          type="button"
         >
-          <Button
-            className="ui-shared__button ui-shared__ripple-button sg-gy5wk2-button-moreButton"
-            disabled={false}
-            onClick={[Function]}
-            testId="Button"
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string="more"
+            transform={null}
           >
-            <button
-              className="common__button ui-shared__button ui-shared__ripple-button sg-wpknjg-root-button-moreButton"
-              data-test-id="Button"
-              disabled={false}
-              onClick={[Function]}
+            <span
+              className={null}
+              role={null}
             >
-              <Ripple
-                className="sg-fpa50s-contentWrapper"
-                color="var(--sg-palette-common-black)"
-                disabled={false}
-                fill={true}
-                onClick={[Function]}
-                onComplete={[Function]}
-                overflow={true}
-                size={null}
-              >
-                <div
-                  className="ui-shared__ripple sg-fpa50s-contentWrapper"
-                  data-test-id="Ripple"
-                  onClick={[Function]}
-                  style={null}
-                >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
-                    className={null}
-                    params={{}}
-                    role={null}
-                    string="more"
-                    transform={null}
-                  >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      more
-                    </span>
-                  </Translate>
-                </div>
-              </Ripple>
-            </button>
-          </Button>
-        </Button>
-      </RippleButton>
+              more
+            </span>
+          </Translate>
+          <Ripple
+            ripples={[]}
+          >
+            <span
+              className="sg-sfhzfw-ButtonBaseRipple-container"
+            >
+              <TransitionGroup
+                childFactory={[Function]}
+                component={null}
+                exit={true}
+              />
+            </span>
+          </Ripple>
+        </button>
+      </ButtonBase>
     </div>
   </div>
 </ChipLayout>
@@ -375,76 +351,52 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
     <div
       className="sg-1l5tw3l-moreButtonWrapper"
     >
-      <RippleButton
+      <ButtonBase
         className="sg-vwngim-moreButton"
-        disabled={false}
-        fill={true}
-        flat={false}
         onClick={[Function]}
-        rippleClassName=""
-        rippleSize={null}
-        testId="Button"
-        type="plain"
-        wrapContent={true}
       >
-        <Button
-          className="sg-vwngim-moreButton ui-shared__ripple-button"
+        <button
+          className="engage__button-base sg-ivjyj2-ButtonBase-root-moreButton"
           disabled={false}
-          flat={false}
           onClick={[Function]}
-          testId="Button"
-          type="plain"
-          wrapContent={false}
+          onKeyDown={[Function]}
+          onLostPointerCapture={[Function]}
+          onPointerCancel={[Function]}
+          onPointerDown={[Function]}
+          onPointerLeave={[Function]}
+          onPointerUp={[Function]}
+          type="button"
         >
-          <Button
-            className="ui-shared__button ui-shared__ripple-button sg-gy5wk2-button-moreButton"
-            disabled={false}
-            onClick={[Function]}
-            testId="Button"
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string="more"
+            transform={null}
           >
-            <button
-              className="common__button ui-shared__button ui-shared__ripple-button sg-wpknjg-root-button-moreButton"
-              data-test-id="Button"
-              disabled={false}
-              onClick={[Function]}
+            <span
+              className={null}
+              role={null}
             >
-              <Ripple
-                className="sg-fpa50s-contentWrapper"
-                color="var(--sg-palette-common-black)"
-                disabled={false}
-                fill={true}
-                onClick={[Function]}
-                onComplete={[Function]}
-                overflow={true}
-                size={null}
-              >
-                <div
-                  className="ui-shared__ripple sg-fpa50s-contentWrapper"
-                  data-test-id="Ripple"
-                  onClick={[Function]}
-                  style={null}
-                >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
-                    className={null}
-                    params={{}}
-                    role={null}
-                    string="more"
-                    transform={null}
-                  >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      more
-                    </span>
-                  </Translate>
-                </div>
-              </Ripple>
-            </button>
-          </Button>
-        </Button>
-      </RippleButton>
+              more
+            </span>
+          </Translate>
+          <Ripple
+            ripples={[]}
+          >
+            <span
+              className="sg-sfhzfw-ButtonBaseRipple-container"
+            >
+              <TransitionGroup
+                childFactory={[Function]}
+                component={null}
+                exit={true}
+              />
+            </span>
+          </Ripple>
+        </button>
+      </ButtonBase>
     </div>
   </div>
 </ChipLayout>

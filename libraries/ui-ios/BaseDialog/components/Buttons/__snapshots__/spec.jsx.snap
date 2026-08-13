@@ -5,14 +5,13 @@ exports[`<Buttons /> should not render if no actions are passed 1`] = `null`;
 exports[`<Buttons /> should render buttons 1`] = `
 [
   <Button
-    className="sg-18im4vo-button"
+    className="sg-1fzf6uk-button"
+    color="secondary"
+    disableRipple={true}
     disabled={false}
-    flat={true}
     key="action0"
     onClick={[MockFunction]}
-    testId="Button"
-    type="primary"
-    wrapContent={true}
+    variant="text"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
@@ -24,14 +23,13 @@ exports[`<Buttons /> should render buttons 1`] = `
     />
   </Button>,
   <Button
-    className="sg-18im4vo-button"
+    className="sg-1fzf6uk-button"
+    color="secondary"
+    disableRipple={true}
     disabled={false}
-    flat={true}
     key="action1"
     onClick={[MockFunction]}
-    testId="Button"
-    type="primary"
-    wrapContent={true}
+    variant="text"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
@@ -43,14 +41,13 @@ exports[`<Buttons /> should render buttons 1`] = `
     />
   </Button>,
   <Button
-    className="sg-18im4vo-button"
+    className="sg-1fzf6uk-button"
+    color="secondary"
+    disableRipple={true}
     disabled={false}
-    flat={true}
     key="action2"
     onClick={[MockFunction]}
-    testId="Button"
-    type="primary"
-    wrapContent={true}
+    variant="text"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}

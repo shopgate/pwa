@@ -12,15 +12,14 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
   }
 >
   <div
-    className="sg-d9m8pl-wrapper"
+    className="sg-1w89lyz-wrapper"
   >
     <Button
-      className="sg-1obactg-button"
+      color="secondary"
       disabled={false}
-      flat={true}
       onClick={[MockFunction]}
       testId="applyFilterButton"
-      type="primary"
+      variant="link"
     >
       <Text
         string="filter.apply"
@@ -47,15 +46,14 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
   }
 >
   <div
-    className="sg-d9m8pl-wrapper"
+    className="sg-1w89lyz-wrapper"
   >
     <Button
-      className="sg-1obactg-button"
+      color="secondary"
       disabled={false}
-      flat={true}
       onClick={[Function]}
       testId="applyFilterButton"
-      type="primary"
+      variant="link"
     >
       <Text
         string="filter.apply"
@@ -82,15 +80,14 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
   }
 >
   <div
-    className="sg-d9m8pl-wrapper"
+    className="sg-1w89lyz-wrapper"
   >
     <Button
-      className="sg-1obactg-button"
+      color="secondary"
       disabled={true}
-      flat={true}
       onClick={[Function]}
       testId="applyFilterButton"
-      type="primary"
+      variant="link"
     >
       <Text
         string="filter.apply"

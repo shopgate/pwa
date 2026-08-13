@@ -13,7 +13,7 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
   wrapContent={true}
 >
   <Button
-    className=" ui-shared__ripple-button"
+    className="ui-shared__ripple-button"
     disabled={true}
     flat={false}
     onClick={null}
@@ -57,7 +57,7 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
   wrapContent={true}
 >
   <Button
-    className=" ui-shared__ripple-button"
+    className="ui-shared__ripple-button"
     disabled={false}
     flat={false}
     onClick={null}
@@ -115,7 +115,7 @@ exports[`<RippleButton /> should render as a regular ripple button effect if typ
   wrapContent={true}
 >
   <Button
-    className=" ui-shared__ripple-button"
+    className="ui-shared__ripple-button"
     disabled={false}
     flat={false}
     onClick={null}
@@ -173,7 +173,7 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
   wrapContent={true}
 >
   <Button
-    className=" ui-shared__ripple-button"
+    className="ui-shared__ripple-button"
     disabled={false}
     flat={false}
     onClick={null}
@@ -231,7 +231,7 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
   wrapContent={true}
 >
   <Button
-    className=" ui-shared__ripple-button"
+    className="ui-shared__ripple-button"
     disabled={false}
     flat={false}
     onClick={null}
