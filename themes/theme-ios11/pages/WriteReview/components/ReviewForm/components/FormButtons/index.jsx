@@ -20,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
     minWidth: 64,
     overflow: 'hidden',
     border: 0,
-    borderRadius: 5,
+    borderRadius: theme.shape.borderRadius,
     fontWeight: 600,
     fontSize: 17,
     padding: theme.spacing(0, 2, 0),
