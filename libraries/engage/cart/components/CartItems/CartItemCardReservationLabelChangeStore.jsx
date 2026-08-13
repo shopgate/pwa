@@ -6,7 +6,6 @@ import { useCartItem } from '../CartItem';
 
 const useStyles = makeStyles()(() => ({
   button: {
-    // Inline affordance in the reservation label: no padding of its own, and sentence case.
     padding: 0,
     textTransform: 'none',
   },

@@ -9,7 +9,6 @@ import WidgetHeadline from '../../components/WidgetHeadline';
 
 const useStyles = makeStyles()(theme => ({
   root: {
-    // Prevent that the load more button margin messes with the layout of the sibling widgets
     overflow: 'hidden',
   },
   loadMore: {

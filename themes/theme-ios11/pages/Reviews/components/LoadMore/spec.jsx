@@ -49,7 +49,6 @@ describe('LoadMore', () => {
       totalReviewCount={2}
     />);
     component.find('button').simulate('click');
-    // The legacy ActionButton deferred the click by 300ms; the v2 button fires straight away.
     expect(component.find('Button').exists()).toBe(true);
     expect(fetchReviewsMock).toHaveBeenCalled();
   });

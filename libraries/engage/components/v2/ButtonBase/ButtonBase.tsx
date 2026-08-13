@@ -12,9 +12,8 @@ import { usePressRipple } from './hooks';
 const supportedButtonTypes = ['button', 'submit', 'reset'] as const;
 
 /**
- * Props that are read off the resolved element rather than declared on `ButtonBaseOwnProps`. They
- * are typed loosely here because the element type is generic - consumers still get exact typing
- * through `React.ComponentPropsWithRef<C>`.
+ * Props read off the resolved element rather than declared on `ButtonBaseOwnProps`. Typed loosely
+ * because the element type is generic - `React.ComponentPropsWithRef<C>` keeps consumers exact.
  */
 interface ResolvedElementProps {
   type?: (typeof supportedButtonTypes)[number];
@@ -78,10 +77,8 @@ function ButtonBase<C extends React.ElementType = 'button'>(
     }
   }, [disabled, clearAll]);
 
-  /**
-   * A real anchor is only safe on web builds. Inside the app webview `preventDefault()` sometimes
-   * fails and the page navigates for real, so link buttons stay `<button>` there.
-   */
+  // A real anchor is only safe on web builds. Inside the app webview `preventDefault()` sometimes
+  // fails and the page navigates for real, so link buttons stay `<button>` there.
   const Component: React.ElementType = component || ((href && hasWebBridge()) ? 'a' : 'button');
   const isButtonElement = Component === 'button';
 
@@ -115,7 +112,6 @@ function ButtonBase<C extends React.ElementType = 'button'>(
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     if (disabled) {
-      // A native disabled button ignores this already, every other element needs the guard.
       event.preventDefault();
       return;
     }
@@ -222,10 +218,8 @@ function ButtonBase<C extends React.ElementType = 'button'>(
       onLostPointerCapture={handleLostPointerCapture}
       {...(isButtonElement ? {
         disabled,
-        // `type` is a content hint on an anchor, so it's only emitted for real buttons.
         type: supportedButtonTypes.includes(type) ? type : 'button',
       } : {
-        // `:disabled` and the native click suppression don't exist off a button.
         'aria-disabled': disabled || undefined,
         ...(href ? { href } : {}),
       })}

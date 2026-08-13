@@ -11,7 +11,6 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(4, 2, 2, 2),
   },
   button: {
-    // Inline back affordance: no button chrome and sentence case.
     padding: 0,
     textTransform: 'none',
   },

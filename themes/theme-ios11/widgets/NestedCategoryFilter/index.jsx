@@ -20,7 +20,6 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonContainer: {
     padding: theme.spacing(0, 1),
-    // The legacy ButtonLink brought this gap along in its own wrapper element.
     margin: theme.spacing(1, 0),
   },
 }));

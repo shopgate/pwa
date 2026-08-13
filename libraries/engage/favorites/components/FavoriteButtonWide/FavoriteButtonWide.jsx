@@ -35,7 +35,6 @@ const mapDispatchToProps = dispatch => ({
 const useStyles = makeStyles()(() => ({
   root: {
     margin: '0 0 16px 16px',
-    // The original explicitly opted out of the uppercase button casing.
     textTransform: 'none',
   },
 }));

@@ -374,7 +374,6 @@ describe('<ButtonBase /> css hooks', () => {
   });
 
   it('should not carry the legacy classes, which belong to the styled Button', () => {
-    // A bare ButtonBase is a plain click target - merchant css written for buttons shouldn't hit it.
     render(<ButtonBase>Press</ButtonBase>);
 
     const button = screen.getByRole('button');

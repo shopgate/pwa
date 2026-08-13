@@ -38,8 +38,6 @@ const CircularProgress = forwardRef<HTMLDivElement, CircularProgressProps>((prop
 
   return (
     <div
-      // `className` comes last so that a consumer class wins over the variant classes. `cx`
-      // re-serializes in argument order, so the last occurrence takes precedence.
       className={cx(classes.root, {
         [classes.indeterminate]: variant === 'indeterminate',
         [classes.determinate]: variant === 'determinate',

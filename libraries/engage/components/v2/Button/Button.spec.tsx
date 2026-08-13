@@ -95,7 +95,6 @@ describe('<Button />', () => {
       const contained = getRuleFor(document.querySelector('[data-test-id="contained"]') as Element);
       const outlined = getRuleFor(document.querySelector('[data-test-id="outlined"]') as Element);
 
-      // Both reserve a 1px border; outlined only recolors it, so neither renders larger.
       expect(contained).toContain('border: 1px solid transparent;');
       expect(outlined).toContain('border: 1px solid transparent;');
       expect(outlined).toContain('border-color: var(--variant-outlinedBorder);');
@@ -142,8 +141,6 @@ describe('<Button />', () => {
     });
 
     it('should mark a non-button element as disabled while loading', () => {
-      // `loading` is implemented as `disabled`, which has no effect off a native button - so it
-      // has to surface as `aria-disabled` instead.
       render(<Button component="a" loading testId="Loading">Press</Button>);
 
       const link = document.querySelector('[data-test-id="Loading"]') as HTMLElement;
@@ -200,9 +197,7 @@ describe('<Button /> css hooks', () => {
 
     const button = screen.getByRole('button');
 
-    // `ui-shared__action-button` sat on ActionButton's wrapper div and carried its layout gap.
     expect(button).not.toHaveClass('ui-shared__action-button');
-    // `ui-shared__button-link` was overwritten by a prop spread and never reached the DOM.
     expect(button).not.toHaveClass('ui-shared__button-link');
   });
 

@@ -10,28 +10,20 @@ const hoverColor = 'rgba(0,0,0,0.04)';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    // The dialog label colour is merchant configurable and overrides the button's own colour.
     '& > *': {
       color: 'var(--color-button-dialog-ios, #1a73e8)',
     },
     fontWeight: theme.typography.fontWeightRegular,
     minWidth: '50%',
     flexGrow: 1,
-    // Keeps the row at the height an iOS alert button had before: the shared button line height of
-    // 1.75 is far looser than these need, and 1px of the padding is now taken by the transparent
-    // border that every variant reserves.
     lineHeight: 1.2,
     paddingTop: 11,
     paddingBottom: 11,
     marginBottom: -1,
     marginRight: theme.spacing(-0.5),
-    // An iOS alert button flashes a neutral highlight while pressed rather than tinting with the
-    // brand colour, and only pointer devices get a hover state at all.
     '&:active': {
       background: pressedColor,
     },
-    // A focus ring is wrong for a dialog row, but keyboard users still need to see where they are,
-    // so the row highlights instead of drawing an outline around it.
     '&:focus-visible': {
       outline: 'none',
       background: pressedColor,

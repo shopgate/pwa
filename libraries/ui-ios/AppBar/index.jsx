@@ -20,8 +20,6 @@ const useStyles = makeStyles()(theme => ({
   },
   inner: {
     display: 'flex',
-    // Without this the row stretches its items to the full bar height, so anything with a
-    // background, hover or focus state paints over all 44px of it.
     alignItems: 'center',
     justifyContent: 'space-between',
     position: 'relative',

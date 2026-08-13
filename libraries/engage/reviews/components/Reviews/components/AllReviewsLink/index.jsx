@@ -14,7 +14,6 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'flex-end',
     textAlign: 'right',
     marginTop: theme.spacing(-1),
-    // The legacy ButtonLink added a gap of its own that these negative margins compensated for.
     marginBottom: theme.spacing(-1),
   },
 }));
