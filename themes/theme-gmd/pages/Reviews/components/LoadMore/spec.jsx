@@ -1,6 +1,5 @@
 import React from 'react';
 import { mount } from 'enzyme';
-import ActionButton from '@shopgate/pwa-ui-shared/ActionButton';
 import LoadMore from './index';
 
 jest.mock('./connector', () => Component => Component);
@@ -13,7 +12,7 @@ describe('LoadMore', () => {
       productId="foo"
       totalReviewCount={4}
     />);
-    expect(component.find('ActionButton').exists()).toBe(true);
+    expect(component.find('Button').exists()).toBe(true);
   });
   it('should render nothing when reviews number is same as total reviews count', () => {
     const component = mount(<LoadMore
@@ -22,7 +21,7 @@ describe('LoadMore', () => {
       productId="foo"
       totalReviewCount={2}
     />);
-    expect(component.find('ActionButton').exists()).toBe(false);
+    expect(component.find('Button').exists()).toBe(false);
   });
   it('should render nothing when reviews number is higher than total reviews count', () => {
     const component = mount(<LoadMore
@@ -31,7 +30,7 @@ describe('LoadMore', () => {
       productId="foo"
       totalReviewCount={2}
     />);
-    expect(component.find('ActionButton').exists()).toBe(false);
+    expect(component.find('Button').exists()).toBe(false);
   });
   it('should render nothing when productId is not passed', () => {
     const component = mount(<LoadMore
@@ -39,9 +38,9 @@ describe('LoadMore', () => {
       fetchReviews={() => {}}
       totalReviewCount={2}
     />);
-    expect(component.find('ActionButton').exists()).toBe(false);
+    expect(component.find('Button').exists()).toBe(false);
   });
-  it('should call fetchReviews on click', (done) => {
+  it('should call fetchReviews on click', () => {
     const fetchReviewsMock = jest.fn();
     const component = mount(<LoadMore
       currentReviewCount={1}
@@ -50,10 +49,8 @@ describe('LoadMore', () => {
       totalReviewCount={2}
     />);
     component.find('button').simulate('click');
-    expect(component.find('ActionButton').exists()).toBe(true);
-    setTimeout(() => {
-      expect(fetchReviewsMock).toHaveBeenCalled();
-      done();
-    }, ActionButton.clickDelay + 1);
+    // The legacy ActionButton deferred the click by 300ms; the v2 button fires straight away.
+    expect(component.find('Button').exists()).toBe(true);
+    expect(fetchReviewsMock).toHaveBeenCalled();
   });
 });

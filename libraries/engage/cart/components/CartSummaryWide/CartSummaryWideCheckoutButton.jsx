@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { SurroundPortals, I18n, Link } from '@shopgate/engage/components';
+import { SurroundPortals, I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { Button } from '@shopgate/engage/components/v2';
@@ -31,16 +31,15 @@ const CartSummaryWideCheckoutButton = ({ isOrderable }) => {
   return (
     <div className={classes.container}>
       <SurroundPortals portalName={CART_CHECKOUT_BUTTON} portalProps={{ isActive }}>
-        <Link href={CHECKOUT_PATH} disabled={!isActive}>
-          <Button
-            color="cta"
-            fullWidth
-            disabled={!isActive}
-            className={classes.button}
-          >
-            <I18n.Text string="cart.checkout" />
-          </Button>
-        </Link>
+        <Button
+          href={CHECKOUT_PATH}
+          color="cta"
+          fullWidth
+          disabled={!isActive}
+          className={classes.button}
+        >
+          <I18n.Text string="cart.checkout" />
+        </Button>
       </SurroundPortals>
     </div>
   );

@@ -7,7 +7,7 @@ import { RouteContext } from '@shopgate/pwa-common/context';
 import { I18n } from '@shopgate/engage/components';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import ButtonLink from '@shopgate/pwa-ui-shared/ButtonLink';
+import { Button } from '@shopgate/engage/components/v2';
 import Headline from 'Components/Headline';
 import { makeStyles } from '@shopgate/engage/styles';
 import CategoryPicker from './components/Picker';
@@ -20,9 +20,8 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonContainer: {
     padding: theme.spacing(0, 1),
-  },
-  button: {
-    width: '100%',
+    // The legacy ButtonLink brought this gap along in its own wrapper element.
+    margin: theme.spacing(1, 0),
   },
 }));
 
@@ -109,9 +108,9 @@ const NestedCategoryFilter = ({ id, settings, persistedState }) => {
         })}
       </div>
       <div className={classes.buttonContainer}>
-        <ButtonLink className={classes.button} href={`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`} disabled={!buttonCategoryId} flat={false}>
+        <Button color="primary" fullWidth href={`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`} disabled={!buttonCategoryId}>
           <I18n.Text string="common.show_products" />
-        </ButtonLink>
+        </Button>
       </div>
     </div>
   );

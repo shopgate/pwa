@@ -1,5 +1,5 @@
 import { merge } from 'lodash';
-import { isDev } from '@shopgate/engage/core/helpers';
+import { isDev, isIOSTheme } from '@shopgate/engage/core/helpers';
 
 const caseAllCaps = {
   textTransform: 'uppercase',
@@ -103,7 +103,7 @@ export default function createTypography(palette, typography) {
     subtitle2: buildVariant('fontWeightMedium', 14, 1.57),
     body1: buildVariant('fontWeightRegular', 16, 1.5),
     body2: buildVariant('fontWeightRegular', 14, 1.43),
-    button: buildVariant('fontWeightMedium', 14, 1.75, caseAllCaps),
+    button: buildVariant('fontWeightMedium', 14, 1.75, !isIOSTheme() ? caseAllCaps : undefined),
     caption: buildVariant('fontWeightRegular', 12, 1.66),
     overline: buildVariant('fontWeightRegular', 12, 2.66, caseAllCaps),
   };

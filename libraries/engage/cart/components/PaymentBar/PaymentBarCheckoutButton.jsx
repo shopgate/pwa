@@ -1,5 +1,5 @@
 import React, { useContext, useMemo } from 'react';
-import { I18n, Link, SurroundPortals } from '@shopgate/engage/components';
+import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { Button } from '@shopgate/engage/components/v2';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
@@ -18,11 +18,9 @@ const PaymentBarCheckoutButton = ({ isOrderable }) => {
 
   return (
     <SurroundPortals portalName={CART_CHECKOUT_BUTTON} portalProps={{ isActive }}>
-      <Link href={CHECKOUT_PATH} disabled={!isActive} tabIndex={0} role="button" aria-disabled={!isActive}>
-        <Button color="cta" fullWidth disabled={!isActive}>
-          <I18n.Text string="cart.checkout" />
-        </Button>
-      </Link>
+      <Button href={CHECKOUT_PATH} color="cta" fullWidth disabled={!isActive}>
+        <I18n.Text string="cart.checkout" />
+      </Button>
     </SurroundPortals>
   );
 };

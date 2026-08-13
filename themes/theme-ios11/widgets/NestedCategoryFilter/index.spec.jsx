@@ -79,7 +79,7 @@ const checkWrapper = (wrapper, expectedProps, buttonCategoryId = null) => {
     });
   });
 
-  const button = wrapper.find('Connect(ButtonLink)');
+  const button = wrapper.find('Button[href]');
   expect(button.prop('href')).toBe(`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`);
   expect(button.prop('disabled')).toBe(!buttonCategoryId);
   expect(button.text()).toBe('common.show_products');

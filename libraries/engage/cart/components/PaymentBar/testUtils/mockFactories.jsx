@@ -36,6 +36,7 @@ const createButtonMock = () => function Button(props) {
       className={props.className}
       disabled={props.disabled}
       data-color={props.color}
+      data-href={props.href}
     >
       {props.children}
     </button>
