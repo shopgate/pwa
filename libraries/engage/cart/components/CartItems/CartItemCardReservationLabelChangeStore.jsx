@@ -1,21 +1,12 @@
 import React, { useCallback } from 'react';
 import { I18n } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
-import { makeStyles } from '@shopgate/engage/styles';
 import { useCartItem } from '../CartItem';
-
-const useStyles = makeStyles()(() => ({
-  button: {
-    padding: 0,
-    textTransform: 'none',
-  },
-}));
 
 /**
  * @returns {JSX}
  */
 const CartItemCardReservationLabelChangeStore = () => {
-  const { classes } = useStyles();
   const { invokeFulfillmentAction, cartItem } = useCartItem();
 
   const handleChangeLocationClick = useCallback(() => {
@@ -30,10 +21,9 @@ const CartItemCardReservationLabelChangeStore = () => {
 
   return (
     <Button
-      variant="text"
+      variant="link"
       color="primary"
       onClick={handleChangeLocationClick}
-      className={classes.button}
     >
       <I18n.Text string="locations.change_location" />
     </Button>

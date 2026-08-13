@@ -26,7 +26,6 @@ const useStyles = makeStyles()(theme => ({
   },
   button: {
     marginLeft: 'auto',
-    // The bar label is intentionally sentence case, unlike the uppercase button default.
     textTransform: 'none',
   },
 }));

@@ -37,6 +37,23 @@ const getRuleFor = (element: Element) => {
 const getButtonRule = () => getRuleFor(screen.getByRole('button'));
 
 /**
+ * Reads the css rules that apply to the rendered button in a given state.
+ * @param state The selector that follows the class name, e.g. `:hover`.
+ * @returns The css text of the matching rules.
+ */
+const getButtonStateRule = (state: string) => {
+  const className = screen.getByRole('button').className.trim().split(' ').pop();
+
+  return Array.from(document.querySelectorAll('style'))
+    .flatMap((styleElement) => {
+      const { sheet } = styleElement as HTMLStyleElement;
+      return sheet ? Array.from(sheet.cssRules).map(rule => rule.cssText) : [];
+    })
+    .filter(text => text.startsWith(`.${className}${state}`))
+    .join('\n');
+};
+
+/**
  * Reads the shorthand `padding` declaration of a css rule, ignoring the longhands.
  * @param rule The css rule text.
  * @returns The padding value.
@@ -115,6 +132,41 @@ describe('<Button />', () => {
 
       render(<Button size={size} dense>Press</Button>);
       expect(paddingOf(getButtonRule())).toBe(reduced);
+    });
+  });
+
+  describe('link variant', () => {
+    it('should render without padding, border or uppercase', () => {
+      render(<Button variant="link" color="primary">Press</Button>);
+
+      const rule = getButtonRule();
+
+      expect(paddingOf(rule)).toBe('0');
+      expect(rule).toContain('border: 0;');
+      expect(rule).toContain('text-transform: none;');
+      expect(rule).toContain('color: var(--variant-textColor);');
+    });
+
+    it.each([
+      ['medium', undefined],
+      ['small', 'small'],
+      ['large', 'large'],
+    ] as const)('should keep the %s padding at zero when dense is set', (_name, size) => {
+      render(<Button variant="link" size={size} dense>Press</Button>);
+
+      expect(paddingOf(getButtonRule())).toBe('0');
+    });
+
+    it('should use the disabled text color when disabled', () => {
+      render(<Button variant="link" disabled>Press</Button>);
+
+      expect(getButtonStateRule(':disabled')).toContain('color: var(--variant-textDisabledColor);');
+    });
+
+    it('should expose the variant as a data attribute', () => {
+      render(<Button variant="link">Press</Button>);
+
+      expect(screen.getByRole('button')).toHaveAttribute('data-variant', 'link');
     });
   });
 

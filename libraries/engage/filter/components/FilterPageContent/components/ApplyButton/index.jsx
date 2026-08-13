@@ -9,10 +9,7 @@ import { withWidgetSettings } from '@shopgate/engage/core';
 const useStyles = makeStyles()({
   wrapper: {
     display: 'flex',
-    marginRight: 4,
-  },
-  button: {
-    padding: 0,
+    marginRight: 8,
   },
 });
 
@@ -39,7 +36,7 @@ const FilterApplyButton = ({ disabled, onClick, widgetSettings }) => {
     >
       <div className={classes.wrapper}>
         <Button
-          variant="text"
+          variant="link"
           color="secondary"
           className={classes.button}
           onClick={onClick}

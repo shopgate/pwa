@@ -10,10 +10,6 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     padding: theme.spacing(4, 2, 2, 2),
   },
-  button: {
-    padding: 0,
-    textTransform: 'none',
-  },
   buttonIcon: {
     display: 'inline-block',
     fontSize: theme.components.icon.medium,
@@ -42,9 +38,8 @@ const ResponsiveBackButton = ({ label, onClick }) => {
   return (
     <div className={classes.container}>
       <Button
-        variant="text"
+        variant="link"
         color="primary"
-        className={classes.button}
         onClick={handleClick}
       >
         <ArrowIcon className={classes.buttonIcon} />

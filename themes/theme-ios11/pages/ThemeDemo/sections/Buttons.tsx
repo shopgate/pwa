@@ -174,6 +174,18 @@ const Buttons = () => {
           >
             Text
           </Button>
+          <Button
+            variant="link"
+            color="primary"
+            enableElevation={enableElevation}
+            dense={dense}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
+            Link
+          </Button>
 
         </SectionRow>
         <SectionRow>
@@ -216,6 +228,7 @@ const Buttons = () => {
           <Button variant="contained" color="primary" disabled>Disabled</Button>
           <Button variant="outlined" color="primary" disabled>Disabled</Button>
           <Button variant="text" color="primary" disabled>Disabled</Button>
+          <Button variant="link" color="primary" disabled>Disabled</Button>
         </SectionRow>
         <SectionRow>
           {/* Proves that a consumer class wins over the variant styles. */}
@@ -340,6 +353,47 @@ const Buttons = () => {
           </Button>
           <Button
             variant="text"
+            size="large"
+            color="primary"
+            enableElevation={enableElevation}
+            dense={dense}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
+            Large
+          </Button>
+        </SectionRow>
+        <SectionRow>
+          <Button
+            variant="link"
+            size="small"
+            color="primary"
+            enableElevation={enableElevation}
+            dense={dense}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
+            Small
+          </Button>
+          <Button
+            variant="link"
+            size="medium"
+            color="primary"
+            enableElevation={enableElevation}
+            dense={dense}
+            startIcon={startIcon}
+            endIcon={endIcon}
+            loading={loading}
+            loadingPosition={loadingPosition}
+          >
+            Medium
+          </Button>
+          <Button
+            variant="link"
             size="large"
             color="primary"
             enableElevation={enableElevation}

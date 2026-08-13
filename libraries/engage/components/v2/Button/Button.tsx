@@ -93,6 +93,7 @@ function Button<C extends React.ElementType = 'button'>(
         [classes.dense]: dense && size === 'medium',
         [classes.denseSmall]: dense && size === 'small',
         [classes.denseLarge]: dense && size === 'large',
+        [classes.link]: variant === 'link',
         [classes.disabled]: disabled || loading,
         [classes.fullWidth]: fullWidth,
         [classes.enableElevation]: enableElevation,
@@ -228,6 +229,16 @@ const useStyles = makeStyles<ButtonOwnProps>({
     },
     denseLarge: {
       padding: '3px 10px',
+    },
+    link: {
+      padding: 0,
+      minWidth: 0,
+      border: 0,
+      textTransform: 'none',
+      color: 'var(--variant-textColor)',
+      '&:disabled, &[aria-disabled="true"]': {
+        color: 'var(--variant-textDisabledColor)',
+      },
     },
     disabled: {},
     text: {
@@ -384,10 +395,10 @@ const useStyles = makeStyles<ButtonOwnProps>({
 
 export interface ButtonOwnProps {
   /**
-   * The variant to use.
+   * The variant to use. `link` renders a sentence case button without padding or a hover background.
    * @default 'contained'
    */
-  variant?: 'contained' | 'outlined' | 'text';
+  variant?: 'contained' | 'outlined' | 'text' | 'link';
   /**
    * The color of the component.
    * @default 'inherit'

@@ -8,13 +8,11 @@ import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()(() => ({
   container: {
     display: 'flex',
     justifyContent: 'flex-end',
     textAlign: 'right',
-    marginTop: theme.spacing(-1),
-    marginBottom: theme.spacing(-1),
   },
 }));
 
