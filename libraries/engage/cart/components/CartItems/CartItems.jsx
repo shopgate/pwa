@@ -1,5 +1,5 @@
 import React from 'react';
-import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
+import { ResponsiveContainer, Card } from '@shopgate/engage/components';
 import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';
 import PropTypes from 'prop-types';
@@ -49,7 +49,7 @@ const CartItems = ({
   currencyOverride,
   isDirectShipOnly,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   if (!cartItems || cartItems.length === 0) {
     return null;
   }
@@ -65,7 +65,7 @@ const CartItems = ({
         />
       </ResponsiveContainer>
 
-      <CardList className={classes.items}>
+      <ul className={cx('ui-shared__card-list', classes.items)}>
         {!isOrderDetails ? (
           <ResponsiveContainer appAlways breakpoint="<=xs">
             <FulfillmentSlotSwitcher renderBar card editable={editable} />
@@ -77,7 +77,11 @@ const CartItems = ({
           </ResponsiveContainer>
         )}
         {cartItems.map(item => (
-          <CardList.Item className={classes.card} key={item.id}>
+          <Card
+            className={classes.card}
+            key={item.id}
+            component="li"
+          >
             <CartItemProvider
               cartItem={item}
               isEditable={editable}
@@ -102,9 +106,9 @@ const CartItems = ({
                 </CartItemCard>
               </ul>
             </CartItemProvider>
-          </CardList.Item>
+          </Card>
         ))}
-      </CardList>
+      </ul>
     </>
   );
 };

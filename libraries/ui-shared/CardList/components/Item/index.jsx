@@ -1,12 +1,11 @@
-import React, { Children } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import Card from '@shopgate/engage/components/Card';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()(theme => ({
-  root: {
+const useStyles = makeStyles()({
+  item: {
     display: 'block',
-    marginBottom: theme.spacing(0.5),
+    position: 'relative',
   },
   unselected: {
     zIndex: 1,
@@ -14,30 +13,27 @@ const useStyles = makeStyles()(theme => ({
   selected: {
     zIndex: 2,
   },
-}));
+});
 
 /**
- * The Card List Item component.
- * @param {Object} props The component props.
- * @return {JSX}
+ * The ListItem component.
+ * @returns {JSX}
  */
-const Item = ({
+const ListItem = ({
   children,
   className,
   isSelected,
   role,
 }) => {
   const { classes, cx } = useStyles();
-
-  if (!Children.count(children)) {
+  if (!React.Children.count(children)) {
     return null;
   }
 
   return (
-    <Card
-      component="li"
+    <li
       className={cx(
-        classes.root,
+        classes.item,
         className,
         'common__list__list-item',
         isSelected ? classes.selected : classes.unselected
@@ -46,22 +42,22 @@ const Item = ({
       role={role}
     >
       {children}
-    </Card>
+    </li>
   );
 };
 
-Item.propTypes = {
+ListItem.propTypes = {
   children: PropTypes.node,
   className: PropTypes.string,
   isSelected: PropTypes.bool,
   role: PropTypes.string,
 };
 
-Item.defaultProps = {
-  children: null,
+ListItem.defaultProps = {
   className: null,
+  children: null,
   isSelected: false,
   role: null,
 };
 
-export default Item;
+export default ListItem;

@@ -6,6 +6,7 @@ import ProductCard from '../ProductCard';
 import RelationsSheet from './RelationsSheet';
 import { useWidgetSettings, useCurrentProduct } from '../../../core';
 import connect from './RelationsSlider.connector';
+import { useSlidesPerView } from './hooks';
 import { WIDGET_ID } from './constants';
 
 const useStyles = makeStyles()(theme => ({
@@ -44,9 +45,9 @@ const RelationsSliderContent = memo(({ products: { products, productsCount }, ge
     titleRows,
     showMoreButton,
     type,
-    slidesPerView = 2.3,
   } = useWidgetSettings(WIDGET_ID);
   const { productId } = useCurrentProduct();
+  const slidesPerView = useSlidesPerView();
 
   useEffect(() => {
     getRelations();
@@ -68,7 +69,7 @@ const RelationsSliderContent = memo(({ products: { products, productsCount }, ge
       >
         {products.map(product => (
           <Swiper.Item key={product.id} className={classes.sliderItem}>
-            <Card className={classes.card} variant="plain">
+            <Card className={classes.card}>
               <ProductCard
                 product={product}
                 hidePrice={hidePrice}
