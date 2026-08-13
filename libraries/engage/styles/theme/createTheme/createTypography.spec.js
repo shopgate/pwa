@@ -32,7 +32,7 @@ describe('theme => createTypography', () => {
       expect(tokenOf('subtitle2')).toBe('fontWeightMedium');
       expect(tokenOf('body1')).toBe('fontWeightRegular');
       expect(tokenOf('body2')).toBe('fontWeightRegular');
-      expect(tokenOf('button')).toBe('fontWeightMedium');
+      expect(tokenOf('button')).toBe('fontWeightBold');
       expect(tokenOf('caption')).toBe('fontWeightRegular');
       expect(tokenOf('overline')).toBe('fontWeightRegular');
     });

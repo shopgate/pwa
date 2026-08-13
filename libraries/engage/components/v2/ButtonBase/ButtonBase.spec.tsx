@@ -318,6 +318,20 @@ describe('<ButtonBase /> ripples', () => {
     expect(rippleCount(button)).toBe(1);
   });
 
+  it('should center the ripple when the event carries no coordinates', () => {
+    render(<ButtonBase>Press</ButtonBase>);
+    const button = screen.getByRole('button');
+
+    fireEvent.pointerDown(button, { pointerId: 1 });
+
+    const ripple = button.lastElementChild?.firstElementChild as HTMLElement;
+
+    expect(ripple.style.width).not.toContain('NaN');
+    expect(ripple.style.height).not.toContain('NaN');
+    expect(ripple.style.top).not.toContain('NaN');
+    expect(ripple.style.left).not.toContain('NaN');
+  });
+
   it('should drop the ripple when the button disables itself mid press', () => {
     // `pointer-events: none` on a disabled button makes the browser drop the pointer capture, so
     // the pointer up never reaches it and nothing would otherwise end the ripple.

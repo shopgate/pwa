@@ -44,7 +44,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 onClick={[Function]}
               >
                 <button
-                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-aeoj4z-ButtonBase-root-Button-root-Button-text"
+                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-11zxx5b-ButtonBase-root-Button-root-Button-text"
                   data-color="inherit"
                   data-size="medium"
                   data-test-id="reviewCancelButton"
@@ -120,7 +120,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 type="submit"
               >
                 <button
-                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1ujah5y-ButtonBase-root-Button-root-Button-contained"
+                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-n2jzp1-ButtonBase-root-Button-root-Button-contained"
                   data-color="primary"
                   data-size="medium"
                   data-test-id="sendReviewButton"

@@ -35,8 +35,14 @@ export function usePressRipple() {
     const element = event.currentTarget;
     const rect = element.getBoundingClientRect();
 
-    const rippleX = Math.round(event.clientX - rect.left);
-    const rippleY = Math.round(event.clientY - rect.top);
+    const hasPointerPosition = Number.isFinite(event.clientX) && Number.isFinite(event.clientY);
+
+    const rippleX = hasPointerPosition
+      ? Math.round(event.clientX - rect.left)
+      : Math.round(element.clientWidth / 2);
+    const rippleY = hasPointerPosition
+      ? Math.round(event.clientY - rect.top)
+      : Math.round(element.clientHeight / 2);
 
     const sizeX = Math.max(element.clientWidth - rippleX, rippleX) * 2 + 2;
     const sizeY = Math.max(element.clientHeight - rippleY, rippleY) * 2 + 2;
