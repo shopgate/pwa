@@ -242,6 +242,9 @@ export const componentsSchema = {
   tiles: {
     vars: {
       backgroundColor: '',
+      borderWidth: '',
+      borderColor: '',
+      border: '',
       padding: '',
       textPadding: '',
       textPaddingTop: '',
@@ -378,6 +381,9 @@ export const componentsDefaults = {
   tiles: {
     vars: {
       backgroundColor: 'transparent',
+      borderWidth: 0,
+      borderColor: 'transparent',
+      border: 'var(--sg-components-tiles-borderWidth) solid var(--sg-components-tiles-borderColor)',
       padding: 0,
       textPadding: 8,
       textPaddingTop: 'max(var(--sg-components-tiles-textPadding), 16px)',

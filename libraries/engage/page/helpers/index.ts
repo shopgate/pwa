@@ -107,18 +107,21 @@ interface BorderRadiusParams {
 
 /**
  * Retrieves the border radius based on the widget config.
+ *
+ * `default` follows the app wide corner style, so it is returned as a reference to the theme's
+ * shape variable rather than a resolved length.
  * @param params The helper parameters.
  * @param params.borderRadius The border radius option.
  * @param params.borderRadiusCustom The custom border radius value.
- * @returns The resolved border radius.
+ * @returns The resolved border radius as a CSS length.
  */
 export const resolveBorderRadiusFromWidgetConfig = (
   { borderRadius, borderRadiusCustom }: BorderRadiusParams
-): number => {
-  if (borderRadius === 'none') return 0;
-  if (borderRadius === 'rounded') return 16;
-  if (borderRadius === 'custom' && typeof borderRadiusCustom === 'number') return borderRadiusCustom;
-  return 0;
+): string => {
+  if (borderRadius === 'none') return '0';
+  if (borderRadius === 'rounded') return '16px';
+  if (borderRadius === 'custom' && typeof borderRadiusCustom === 'number') return `${borderRadiusCustom}px`;
+  return 'var(--sg-shape-borderRadius)';
 };
 
 /**

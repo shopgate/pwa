@@ -19,6 +19,8 @@ const useStyles = makeStyles()((theme, { display }) => ({
     overflow: 'hidden',
     padding: theme.components.tiles.padding,
     background: theme.components.tiles.backgroundColor,
+    border: theme.components.tiles.border,
+    borderRadius: theme.shape.borderRadius,
   },
   image: {
     display: 'block',

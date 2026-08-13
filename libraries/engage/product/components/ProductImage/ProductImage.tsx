@@ -67,6 +67,10 @@ export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 
 }
 
 const useStyles = makeStyles()(theme => ({
+  root: {
+    borderRadius: theme.shape.borderRadius,
+    overflow: 'hidden',
+  },
   placeholderContent: {
     position: 'absolute',
     width: '100%',
@@ -167,7 +171,7 @@ const ProductImage = (props: ProductImageProps) => {
         ratio: resolved.ratio,
       } : undefined}
     >
-      <div className={cx(className, 'engage__product__product-image')}>
+      <div className={cx(classes.root, className, 'engage__product__product-image')}>
         <Image
           {...props}
           resolutions={resolved.resolutions}

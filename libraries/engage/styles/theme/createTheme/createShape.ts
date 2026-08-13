@@ -1,4 +1,7 @@
 export interface Shape {
+  /**
+   * The app wide corner style. Every rounded surface derives from it.
+   */
   borderRadius: number | string;
   /**
    * Corner radius of cards (product cards, content cards).
@@ -10,7 +13,7 @@ export type ShapeOptions = Partial<Shape>;
 
 const shape = {
   borderRadius: 4,
-  cardsBorderRadius: 10,
+  cardsBorderRadius: 'var(--sg-shape-borderRadius)',
 };
 
 /**
