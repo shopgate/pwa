@@ -86,8 +86,8 @@ emit **stable, unhashed classes** that merchant CSS can target. There are ~200 o
 - **Don't duplicate what the DOM already exposes.** Disabled is addressable via `:disabled` and
   `[aria-disabled="true"]`; a `data-disabled` would just be a third spelling.
 - **Cascade:** `<meta>` anchors in `utils/webpack/templates/default.ejs` fix the layer order as
-  emotion/tss → `theme.css` → admin preview. All three are equal specificity, so document order decides
-  and merchant CSS wins without `!important`.
+  emotion/tss → font CSS → `theme.css` → admin preview. All four are equal specificity, so document
+  order decides and merchant CSS wins without `!important`.
 
 ## Internal Knowledge Base
 
