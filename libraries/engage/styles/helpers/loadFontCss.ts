@@ -17,6 +17,20 @@ const getExistingTags = (): HTMLLinkElement[] =>
   Array.from(document.querySelectorAll<HTMLLinkElement>(`link.${LINK_TAG_CLASS}`));
 
 /**
+ * Inserts a tag after the passed sibling, or appends it when there is none.
+ * @param tag The tag to insert.
+ * @param sibling The node to insert after.
+ */
+const insertAfter = (tag: Element, sibling: Element | null) => {
+  if (!sibling) {
+    document.head.appendChild(tag);
+    return;
+  }
+
+  sibling.parentNode?.insertBefore(tag, sibling.nextSibling);
+};
+
+/**
  * Loads a single font css file and inserts its link after the passed sibling. The font css
  * insertion point sits between the emotion one and the theme css one, so these files override the
  * custom properties that theme initialization generates while the theme css file still overrides
@@ -78,23 +92,21 @@ const loadOne = (href: string, sibling: Element | null) => {
     }, REQUEST_TIMEOUT);
   });
 
-  if (sibling) {
-    sibling.parentNode?.insertBefore(linkTag, sibling.nextSibling);
-  } else {
-    document.head.appendChild(linkTag);
-  }
+  insertAfter(linkTag, sibling);
 
   return { linkTag, settled };
 };
 
 /**
  * Syncs the font css links in the document with the passed urls. Tags for urls that are no longer
- * configured are removed, urls that already have a tag keep it, and new ones are inserted after the
- * font css links that are already there - so the global file, passed first, stays above the per
- * variant ones.
+ * configured are removed, and the remaining ones end up in the dom in the order they were passed -
+ * so the global file, passed first, stays above the per variant ones however they were ordered
+ * before.
  *
  * Idempotent by design: the admin preview re-sends the app settings while a merchant edits them, so
- * this runs again on every settings update.
+ * this runs again on every settings update. A tag that is already in place is left untouched, and a
+ * tag for a url that is still configured is moved rather than recreated, which would re-request the
+ * file.
  *
  * A url is only ever loaded once. Configuring the same file globally and for a variant is normal,
  * and a second link tag for it would apply the same `@font-face` rules twice.
@@ -108,32 +120,38 @@ const loadOne = (href: string, sibling: Element | null) => {
 export const loadFontCss = async (urls: string[] = []): Promise<void> => {
   const wanted = Array.from(new Set(urls));
   const wantedUrls = new Set(wanted);
-  const loaded = new Set<string>();
+  const kept = new Map<string, HTMLLinkElement>();
 
   getExistingTags().forEach((tag) => {
     const url = tag.getAttribute(URL_ATTRIBUTE) || '';
 
-    if (wantedUrls.has(url) && !loaded.has(url)) {
-      loaded.add(url);
+    if (wantedUrls.has(url) && !kept.has(url)) {
+      kept.set(url, tag);
       return;
     }
 
     tag.remove();
   });
 
-  const remaining = getExistingTags();
+  let sibling: Element | null = document.querySelector(INSERTION_POINT_SELECTOR);
+  const pending: Array<Promise<void>> = [];
 
-  let sibling: Element | null = remaining.length
-    ? remaining[remaining.length - 1]
-    : document.querySelector(INSERTION_POINT_SELECTOR);
+  wanted.forEach((url) => {
+    const existing = kept.get(url);
 
-  const pending = wanted
-    .filter(url => !loaded.has(url))
-    .map((url) => {
-      const { linkTag, settled } = loadOne(url, sibling);
-      sibling = linkTag;
-      return settled;
-    });
+    if (existing) {
+      if (existing.previousElementSibling !== sibling) {
+        insertAfter(existing, sibling);
+      }
+
+      sibling = existing;
+      return;
+    }
+
+    const { linkTag, settled } = loadOne(url, sibling);
+    sibling = linkTag;
+    pending.push(settled);
+  });
 
   await Promise.all(pending);
 };

@@ -392,6 +392,56 @@ describe('<ButtonBase /> ripples', () => {
     jest.useRealTimers();
   });
 
+  it('should keep the second ripple of a rapid double press', () => {
+    // A mouse reuses one pointerId for every press, so the first press's delayed removal must not
+    // take the second press's ripple with it.
+    jest.useFakeTimers();
+    render(<ButtonBase>Press</ButtonBase>);
+    const button = screen.getByRole('button');
+
+    fireEvent.pointerDown(button, { pointerId: 1 });
+    fireEvent.pointerUp(button, { pointerId: 1 });
+    fireEvent.pointerDown(button, { pointerId: 1 });
+
+    act(() => {
+      jest.runAllTimers();
+    });
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(rippleCount(button)).toBe(1);
+    jest.useRealTimers();
+  });
+
+  it('should still end the second ripple of a rapid double press', () => {
+    // The first press must not consume the start time the second one recorded, or the second
+    // ripple would never be scheduled for removal and stay on screen.
+    jest.useFakeTimers();
+    render(<ButtonBase>Press</ButtonBase>);
+    const button = screen.getByRole('button');
+
+    fireEvent.pointerDown(button, { pointerId: 1 });
+    fireEvent.pointerUp(button, { pointerId: 1 });
+    fireEvent.pointerDown(button, { pointerId: 1 });
+
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    fireEvent.pointerUp(button, { pointerId: 1 });
+
+    act(() => {
+      jest.runAllTimers();
+    });
+    act(() => {
+      jest.runAllTimers();
+    });
+
+    expect(rippleCount(button)).toBe(0);
+    jest.useRealTimers();
+  });
+
   it('should end the ripple when the pointer capture is lost', () => {
     jest.useFakeTimers();
     render(<ButtonBase>Press</ButtonBase>);

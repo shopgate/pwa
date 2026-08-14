@@ -34,18 +34,22 @@ const FrontendSettingsPreviewBridge = () => {
   );
   const [applied, setApplied] = useState(hasInitialFrontendSettings);
   const announcedRef = useRef(false);
+  const fontCssSyncRef = useRef<Promise<void>>(Promise.resolve());
   const dispatch = useDispatch();
   const { setMode, modes } = useColorScheme();
   const fontCssUrls = useSelector(getTypographyFontCssUrls);
 
   const { sendToParent } = useIframeMessenger<FrontendSettingsPreviewBridgeMessage>((data) => {
     if (data.type === 'receiveFrontendSettings') {
-      setStyling(data.payload?.styling ?? null);
-      setApplied(true);
-
+      // Dispatched before the local state, because the font css urls are derived from it. A message
+      // listener runs outside React's batching, so setting `applied` first would announce the
+      // preview against the previous urls.
       if (data.payload?.appSettings) {
         dispatch(receiveAppSettings(data.payload.appSettings));
       }
+
+      setStyling(data.payload?.styling ?? null);
+      setApplied(true);
     }
 
     if (data.type === 'setColorScheme') {
@@ -70,7 +74,7 @@ const FrontendSettingsPreviewBridge = () => {
   // App start already loaded the configured files. This keeps them in sync while the merchant
   // edits, since loadFontCss adds, keeps and removes link tags to match the urls it is given.
   useEffect(() => {
-    loadFontCss(fontCssUrls);
+    fontCssSyncRef.current = loadFontCss(fontCssUrls);
   }, [fontCssUrls]);
 
   useEffect(() => {
@@ -82,16 +86,21 @@ const FrontendSettingsPreviewBridge = () => {
     getOrCreateStyleTag().textContent = serializeStyling(styling);
   }, [styling]);
 
-  // Declared after the styling effect so the style tag is written before the admin is told it can
-  // drop its overlay. Effects run in declaration order, and React defers them until after the
-  // browser painted, so this announces a rendered preview rather than an applied payload.
+  // Declared after the styling and font effects so both have run for the applied payload before the
+  // admin is told it can drop its overlay - effects run in declaration order, and React defers them
+  // until after the browser painted. The font sync is awaited on top: app start already waited for
+  // the configured files, but when it timed out the first payload can introduce one here, and
+  // announcing before it loaded would expose the fallback font repaint the overlay exists to hide.
   useEffect(() => {
     if (!applied || announcedRef.current) {
       return;
     }
 
     announcedRef.current = true;
-    sendToParent({ type: 'frontendSettingsPreviewApplied' });
+
+    fontCssSyncRef.current.then(() => {
+      sendToParent({ type: 'frontendSettingsPreviewApplied' });
+    });
   }, [applied, sendToParent]);
 
   useEffect(() => () => {

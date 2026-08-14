@@ -19,21 +19,26 @@ const caseButton = {
 const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 
 /**
- * Prefix of the custom properties that cssVarsParser derives from the `typography` keys. Matches
- * the `--sg-` default of `cssVarPrefix` (createTheme/index.ts) and is kept in sync manually, same
- * as the hardcoded names in styles/reset/root.js.
+ * Builds the prefix of the custom properties that cssVarsParser derives from the `typography` keys.
+ * Mirrors how the parser composes a name, so a theme configured with a different `cssVarPrefix`
+ * references the properties it actually emits.
+ * @param {string} cssVarPrefix The theme's css variable prefix.
+ * @returns {string} The prefix, e.g. `--sg-typography`.
  */
-const CSS_VAR_TYPOGRAPHY_PREFIX = '--sg-typography';
+const typographyVarPrefix = cssVarPrefix =>
+  `--${cssVarPrefix ? `${cssVarPrefix}-` : ''}typography`;
 
 /**
  * Creates the typography object for the theme.
  * @param {Object} palette The theme palette.
  * @param {Object|Function} typography The typography options or a function that returns them.
+ * @param {string} [cssVarPrefix] The theme's css variable prefix, matching the one cssVarsParser
+ * generates the properties with. Defaults to the `sg` default of createTheme.
  * @returns {Object} The typography object.
  * @see @link{https://material.io/design/typography/the-type-system.html}
  * @see @link{https://material.io/design/typography/understanding-typography.html}
  */
-export default function createTypography(palette, typography) {
+export default function createTypography(palette, typography, cssVarPrefix = 'sg') {
   const {
     fontFamily = defaultFontFamily,
     // The default font size of the Material Specification.
@@ -77,7 +82,7 @@ export default function createTypography(palette, typography) {
    * @returns {string} The css var reference.
    */
   const fontWeightVar = token =>
-    `var(${CSS_VAR_TYPOGRAPHY_PREFIX}-${token}, ${fontWeights[token]})`;
+    `var(${typographyVarPrefix(cssVarPrefix)}-${token}, ${fontWeights[token]})`;
 
   /**
    * Calculates a rem value for a passed pixel value.

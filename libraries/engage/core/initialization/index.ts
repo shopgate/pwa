@@ -118,6 +118,11 @@ export const initialize = async (
   // the later write.
   await awaitInitialFrontendSettings(store);
 
+  // That payload can replace the configured font files, which were loaded above from whatever the
+  // jsonp settings carried, so they are synced again before anything renders. Outside the preview
+  // the urls are unchanged, and loadFontCss leaves the existing tags alone and resolves at once.
+  await loadFontCss(getTypographyFontCssUrls(store.getState() as AppSettingsState));
+
   // Execute all registered handlers from the AppInitialization collection
   await appInitialization.initialize({
     dispatch: store.dispatch,

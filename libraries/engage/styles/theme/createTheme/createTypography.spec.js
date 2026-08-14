@@ -52,6 +52,18 @@ describe('theme => createTypography', () => {
       expect(typography.fontWeightMedium).toBe(600);
       expect(typography.h3.fontWeight).toBe('var(--sg-typography-fontWeightMedium, 600)');
     });
+
+    it('follows a custom css variable prefix, so the reference matches the generated property', () => {
+      const typography = createTypography({}, {}, 'brand');
+
+      expect(typography.body1.fontWeight).toBe('var(--brand-typography-fontWeightRegular, 400)');
+    });
+
+    it('composes the name like cssVarsParser does when the prefix is empty', () => {
+      const typography = createTypography({}, {}, '');
+
+      expect(typography.body1.fontWeight).toBe('var(--typography-fontWeightRegular, 400)');
+    });
   });
 
   describe('button casing', () => {

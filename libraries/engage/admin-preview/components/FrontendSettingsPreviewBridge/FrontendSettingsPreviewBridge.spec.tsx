@@ -107,6 +107,8 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
 describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    // Resolves like the real loadFontCss, which the bridge awaits before it announces the preview.
+    mockedLoadFontCss.mockResolvedValue(undefined);
     mockedFontCssUrls = [];
     (useColorScheme as jest.Mock).mockReturnValue({
       mode: 'light',
@@ -234,6 +236,11 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
       .filter(([data]) => data.type === 'frontendSettingsPreviewApplied')
       .length;
 
+    /**
+     * Flushes the microtask queue, so the announcement that waits for the font css sync can run.
+     */
+    const flushFontCssSync = () => act(() => Promise.resolve());
+
     it('should keep the styling that app start already applied', () => {
       setInitialFrontendSettings({ '.button': { backgroundColor: 'red' } });
 
@@ -243,15 +250,16 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
         .toBe('.button { background-color: red; }');
     });
 
-    it('should announce on mount when app start received the payload', () => {
+    it('should announce on mount when app start received the payload', async () => {
       setInitialFrontendSettings({ '.button': { backgroundColor: 'red' } });
 
       render(<FrontendSettingsPreviewBridge />);
+      await flushFontCssSync();
 
       expect(appliedCallCount()).toBe(1);
     });
 
-    it('should announce once the first payload arrived', () => {
+    it('should announce once the first payload arrived', async () => {
       render(<FrontendSettingsPreviewBridge />);
 
       expect(appliedCallCount()).toBe(0);
@@ -260,22 +268,24 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
         type: 'receiveFrontendSettings',
         payload: { styling: { '.button': { backgroundColor: 'red' } } },
       });
+      await flushFontCssSync();
 
       expect(appliedCallCount()).toBe(1);
     });
 
-    it('should announce for a payload that only carries app settings', () => {
+    it('should announce for a payload that only carries app settings', async () => {
       render(<FrontendSettingsPreviewBridge />);
 
       sendMessage({
         type: 'receiveFrontendSettings',
         payload: { appSettings },
       });
+      await flushFontCssSync();
 
       expect(appliedCallCount()).toBe(1);
     });
 
-    it('should announce only once, so live edits do not flicker the admin overlay', () => {
+    it('should announce only once, so live edits do not flicker the admin overlay', async () => {
       render(<FrontendSettingsPreviewBridge />);
 
       sendMessage({
@@ -286,17 +296,44 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
         type: 'receiveFrontendSettings',
         payload: { styling: { '.button': { backgroundColor: 'blue' } } },
       });
+      await flushFontCssSync();
 
       expect(appliedCallCount()).toBe(1);
     });
 
-    it('should not announce while no payload arrived', () => {
+    it('should not announce before the font css finished loading', async () => {
+      // App start times out without a payload, and the first message brings a font file. Announcing
+      // before it loaded would expose the fallback font repaint the admin overlay exists to hide.
+      let resolveFontCss!: () => void;
+      mockedLoadFontCss.mockReturnValueOnce(new Promise<void>((resolve) => {
+        resolveFontCss = resolve;
+      }));
+
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({
+        type: 'receiveFrontendSettings',
+        payload: { styling: { '.button': { backgroundColor: 'red' } } },
+      });
+      await flushFontCssSync();
+
+      expect(appliedCallCount()).toBe(0);
+
+      await act(async () => {
+        resolveFontCss();
+      });
+
+      expect(appliedCallCount()).toBe(1);
+    });
+
+    it('should not announce while no payload arrived', async () => {
       render(<FrontendSettingsPreviewBridge />);
 
       sendMessage({
         type: 'setColorScheme',
         payload: { colorScheme: 'dark' },
       });
+      await flushFontCssSync();
 
       expect(appliedCallCount()).toBe(0);
     });

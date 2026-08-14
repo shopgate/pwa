@@ -81,6 +81,49 @@ describe('styles/helpers/loadFontCss', () => {
     expect(links()[0]).toBe(existing);
   });
 
+  it('reorders kept tags when the url order changes', async () => {
+    const first = loadFontCss([A, B]);
+    settleAll();
+    await first;
+
+    const [tagA, tagB] = links();
+
+    await loadFontCss([B, A]);
+
+    expect(hrefs()).toEqual([B, A]);
+    // Moved rather than recreated - a new tag would request the file again.
+    expect(links()).toEqual([tagB, tagA]);
+  });
+
+  it('places a new url ahead of a kept one when it is passed first', async () => {
+    const first = loadFontCss([A]);
+    settleAll();
+    await first;
+
+    const [tagA] = links();
+
+    const second = loadFontCss([B, A]);
+    settleAll();
+    await second;
+
+    expect(hrefs()).toEqual([B, A]);
+    expect(links()[1]).toBe(tagA);
+  });
+
+  it('leaves the dom untouched when the order is unchanged', async () => {
+    const first = loadFontCss([A, B]);
+    settleAll();
+    await first;
+
+    const [tagA, tagB] = links();
+    const anchor = document.querySelector('meta[name="font-css-insertion-point"]');
+
+    await loadFontCss([A, B]);
+
+    expect(links()).toEqual([tagA, tagB]);
+    expect(anchor?.nextElementSibling).toBe(tagA);
+  });
+
   it('removes tags for urls that are no longer configured', async () => {
     const first = loadFontCss([A, B]);
     settleAll();
