@@ -55,6 +55,12 @@ const appSettings: AppSettingsPayload = {
 const mockedDispatch = jest.fn();
 const mockedSetMode = jest.fn();
 const mockedSendToParent = jest.fn();
+const mockedLoadFontCss = jest.fn();
+
+/**
+ * What the bridge's font css url selector resolves to. Set per test.
+ */
+let mockedFontCssUrls: string[] = [];
 
 /**
  * Holds the callback the bridge registered with useIframeMessenger, so tests can simulate an
@@ -74,6 +80,11 @@ const sendMessage = (data: FrontendSettingsPreviewBridgeMessage) => {
 
 jest.mock('react-redux', () => ({
   useDispatch: () => mockedDispatch,
+  useSelector: () => mockedFontCssUrls,
+}));
+
+jest.mock('@shopgate/engage/styles/helpers/loadFontCss', () => ({
+  loadFontCss: (...args: unknown[]) => mockedLoadFontCss(...args),
 }));
 
 jest.mock('@shopgate/engage/admin-preview/hooks', () => ({
@@ -92,12 +103,29 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
 describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockedFontCssUrls = [];
     (useColorScheme as jest.Mock).mockReturnValue({
       mode: 'light',
       setMode: mockedSetMode,
       modes: ['light', 'dark'],
     });
     document.getElementById(PREVIEW_STYLE_TAG_ID)?.remove();
+  });
+
+  describe('font css', () => {
+    it('should sync the configured font files', () => {
+      mockedFontCssUrls = ['https://cdn.example/h1.css'];
+
+      render(<FrontendSettingsPreviewBridge />);
+
+      expect(mockedLoadFontCss).toHaveBeenCalledWith(mockedFontCssUrls);
+    });
+
+    it('should sync an empty list, so cleared files are removed', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      expect(mockedLoadFontCss).toHaveBeenCalledWith([]);
+    });
   });
 
   describe('setColorScheme', () => {

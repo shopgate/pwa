@@ -13,7 +13,9 @@ import fetchClientInformation from '@shopgate/pwa-common/actions/client/fetchCli
 import { appConfig } from '@shopgate/engage';
 import { appInitialization, configuration } from '@shopgate/engage/core/collections';
 import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/constants';
-import { loadCustomStyles, loadThemeCss } from '@shopgate/engage/styles';
+import { loadCustomStyles, loadThemeCss, loadFontCss } from '@shopgate/engage/styles';
+import { getTypographyFontCssUrls } from '@shopgate/engage/settings/selectors/appSettings';
+import type { AppSettingsState } from '@shopgate/engage/settings/types/appSettings';
 import { fetchSettings } from './fetchSettings';
 
 declare global {
@@ -88,10 +90,20 @@ export const initialize = async (
   store.dispatch(appWillInit(`${window.location.pathname}${window.location.search}`));
 
   try {
-    // The order of the style loaders does not affect the cascade: loadThemeCss pins its link to
-    // the theme css insertion point in the html template, while loadCustomStyles appends its link
-    // to the end of the head.
-    const promises = [fetchSettings(store), loadCustomStyles(), loadThemeCss()];
+    // The order of the style loaders does not affect the cascade: loadThemeCss and loadFontCss pin
+    // their links to their insertion points in the html template, while loadCustomStyles appends
+    // its link to the end of the head.
+    //
+    // The font css urls come from the app settings, so that loader is chained onto fetchSettings
+    // rather than started alongside it. Chaining keeps the other two running in parallel with the
+    // settings request instead of serializing everything behind it.
+    const promises = [
+      fetchSettings(store).then(
+        () => loadFontCss(getTypographyFontCssUrls(store.getState() as AppSettingsState))
+      ),
+      loadCustomStyles(),
+      loadThemeCss(),
+    ];
     await Promise.all(promises);
   } catch (e) {
     // Nothing to see here.

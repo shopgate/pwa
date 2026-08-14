@@ -11,6 +11,7 @@ export { toggleBodyScroll } from './toggleBodyScroll';
 export { initCSSCustomProps, initCSSCustomPropsFallback } from './initCSSCustomProperties';
 export { loadCustomStyles } from './loadCustomStyles';
 export { loadThemeCss } from './loadThemeCss';
+export { loadFontCss } from './loadFontCss';
 export * from './color';
 
 export { responsiveMediaQuery } from '../../components/ResponsiveContainer/mediaQuery';

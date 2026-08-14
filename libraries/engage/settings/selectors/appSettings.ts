@@ -101,3 +101,22 @@ export const getCardShadowSize = createSelector(
   getCardSettings,
   cards => (cards.style === 'shadow' ? cards.shadow.size : 'none')
 );
+
+/**
+ * Selects the typography settings.
+ */
+export const getTypographySettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.typography
+);
+
+/**
+ * Selects the font stylesheets to load, global file first and without duplicates.
+ */
+export const getTypographyFontCssUrls = createSelector(
+  getTypographySettings,
+  typography => Array.from(new Set([
+    typography.fontCssUrl,
+    ...Object.values(typography.variants).map(variant => variant?.fontCssUrl),
+  ].filter((url): url is string => typeof url === 'string' && url.length > 0)))
+);

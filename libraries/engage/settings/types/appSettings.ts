@@ -1,8 +1,9 @@
-import type { ShadowSize } from '@shopgate/engage/styles/theme';
+import type { ShadowSize, TypographyVariant } from '@shopgate/engage/styles/theme';
 
 // Re-exported so consumers of these settings do not have to reach into the styles layer, which
-// owns the type because it owns the elevation scale the sizes map to.
-export type { ShadowSize };
+// owns the type because it owns the elevation scale the sizes map to. `TypographyVariant` is
+// reused for the same reason - the theme owns the variant list.
+export type { ShadowSize, TypographyVariant };
 
 /**
  * Recursively optional variant of `T`. The settings sources send only what a merchant configured,
@@ -234,6 +235,29 @@ export interface AppSettings {
    */
   images: ImageSettings;
   cards: CardSettings;
+  typography: TypographySettings;
+}
+
+/**
+ * A font stylesheet to load. The file carries the `@font-face` rules and points its target at the
+ * new family itself, e.g. `:root { --sg-typography-h1-fontFamily: 'Recoleta'; }`.
+ */
+export interface FontCssSettings {
+  /**
+   * Absolute url of the stylesheet.
+   */
+  fontCssUrl?: string;
+}
+
+/**
+ * Typography settings. The top level file applies to everything, a variant entry only to that
+ * variant. Variant files are loaded after the global one, so they win at equal specificity.
+ */
+export interface TypographySettings extends FontCssSettings {
+  /**
+   * Per variant font stylesheets, keyed by typography variant.
+   */
+  variants: Partial<Record<TypographyVariant, FontCssSettings>>;
 }
 
 /**

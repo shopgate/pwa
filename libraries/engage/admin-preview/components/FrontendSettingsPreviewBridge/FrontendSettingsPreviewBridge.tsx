@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useIframeMessenger } from '@shopgate/engage/admin-preview/hooks';
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/constants';
 import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
+import { getTypographyFontCssUrls } from '@shopgate/engage/settings/selectors/appSettings';
 import { logger } from '@shopgate/engage/core/helpers';
-// Imported via its module path, since the "styles" barrel pulls in the ThemeProvider which renders
-// this component, and would therefore create a circular import.
+// Imported via their module paths, since the "styles" barrel pulls in the ThemeProvider which
+// renders this component, and would therefore create a circular import.
 import useColorScheme from '@shopgate/engage/styles/theme/hooks/useColorScheme';
+import { loadFontCss } from '@shopgate/engage/styles/helpers/loadFontCss';
 import type {
   FrontendSettingsPreviewBridgeMessage,
   FrontendSettingsStyling,
@@ -26,6 +28,7 @@ const FrontendSettingsPreviewBridge = () => {
   const [styling, setStyling] = useState<FrontendSettingsStyling | null>(null);
   const dispatch = useDispatch();
   const { setMode, modes } = useColorScheme();
+  const fontCssUrls = useSelector(getTypographyFontCssUrls);
 
   const { sendToParent } = useIframeMessenger<FrontendSettingsPreviewBridgeMessage>((data) => {
     if (data.type === 'receiveFrontendSettings') {
@@ -54,6 +57,12 @@ const FrontendSettingsPreviewBridge = () => {
   useEffect(() => {
     sendToParent({ type: 'frontendSettingsPreviewReady' });
   }, [sendToParent]);
+
+  // App start already loaded the configured files. This keeps them in sync while the merchant
+  // edits, since loadFontCss adds, keeps and removes link tags to match the urls it is given.
+  useEffect(() => {
+    loadFontCss(fontCssUrls);
+  }, [fontCssUrls]);
 
   useEffect(() => {
     if (!styling) {
