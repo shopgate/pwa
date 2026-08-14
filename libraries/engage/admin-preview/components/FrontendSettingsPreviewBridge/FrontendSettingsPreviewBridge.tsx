@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIframeMessenger } from '@shopgate/engage/admin-preview/hooks';
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/constants';
@@ -9,6 +9,10 @@ import { logger } from '@shopgate/engage/core/helpers';
 // renders this component, and would therefore create a circular import.
 import useColorScheme from '@shopgate/engage/styles/theme/hooks/useColorScheme';
 import { loadFontCss } from '@shopgate/engage/styles/helpers/loadFontCss';
+import {
+  getInitialFrontendSettingsStyling,
+  hasInitialFrontendSettings,
+} from '../../initialization/_internal/initialFrontendSettings';
 import type {
   FrontendSettingsPreviewBridgeMessage,
   FrontendSettingsStyling,
@@ -25,7 +29,11 @@ import {
  * while in preview mode.
  */
 const FrontendSettingsPreviewBridge = () => {
-  const [styling, setStyling] = useState<FrontendSettingsStyling | null>(null);
+  const [styling, setStyling] = useState<FrontendSettingsStyling | null>(
+    getInitialFrontendSettingsStyling
+  );
+  const [applied, setApplied] = useState(hasInitialFrontendSettings);
+  const announcedRef = useRef(false);
   const dispatch = useDispatch();
   const { setMode, modes } = useColorScheme();
   const fontCssUrls = useSelector(getTypographyFontCssUrls);
@@ -33,6 +41,7 @@ const FrontendSettingsPreviewBridge = () => {
   const { sendToParent } = useIframeMessenger<FrontendSettingsPreviewBridgeMessage>((data) => {
     if (data.type === 'receiveFrontendSettings') {
       setStyling(data.payload?.styling ?? null);
+      setApplied(true);
 
       if (data.payload?.appSettings) {
         dispatch(receiveAppSettings(data.payload.appSettings));
@@ -72,6 +81,18 @@ const FrontendSettingsPreviewBridge = () => {
 
     getOrCreateStyleTag().textContent = serializeStyling(styling);
   }, [styling]);
+
+  // Declared after the styling effect so the style tag is written before the admin is told it can
+  // drop its overlay. Effects run in declaration order, and React defers them until after the
+  // browser painted, so this announces a rendered preview rather than an applied payload.
+  useEffect(() => {
+    if (!applied || announcedRef.current) {
+      return;
+    }
+
+    announcedRef.current = true;
+    sendToParent({ type: 'frontendSettingsPreviewApplied' });
+  }, [applied, sendToParent]);
 
   useEffect(() => () => {
     removeStyleTag();

@@ -16,6 +16,9 @@ import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/con
 import { loadCustomStyles, loadThemeCss, loadFontCss } from '@shopgate/engage/styles';
 import { getTypographyFontCssUrls } from '@shopgate/engage/settings/selectors/appSettings';
 import type { AppSettingsState } from '@shopgate/engage/settings/types/appSettings';
+// Imported via its module path rather than the admin-preview helpers barrel, which ThemeProvider
+// and loadThemeCss already import - this module reaches into the settings action creators.
+import { awaitInitialFrontendSettings } from '@shopgate/engage/admin-preview/initialization/awaitInitialFrontendSettings';
 import { fetchSettings } from './fetchSettings';
 
 declare global {
@@ -108,6 +111,12 @@ export const initialize = async (
   } catch (e) {
     // Nothing to see here.
   }
+
+  // Resolves at once outside the admin preview. Inside it, this holds app start until the admin
+  // sent its first settings payload, so the preview renders styled instead of painting the theme
+  // defaults first. Runs after fetchSettings, since the reducer merges and the preview has to be
+  // the later write.
+  await awaitInitialFrontendSettings(store);
 
   // Execute all registered handlers from the AppInitialization collection
   await appInitialization.initialize({

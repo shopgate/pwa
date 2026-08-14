@@ -3,6 +3,10 @@ import { logger } from '@shopgate/engage/core/helpers';
 import { RECEIVE_APP_SETTINGS } from '@shopgate/engage/settings/constants/appSettings';
 import useColorScheme from '@shopgate/engage/styles/theme/hooks/useColorScheme';
 import type { AppSettingsPayload } from '@shopgate/engage/settings/types/appSettings';
+import {
+  resetInitialFrontendSettings,
+  setInitialFrontendSettings,
+} from '../../initialization/_internal/initialFrontendSettings';
 import FrontendSettingsPreviewBridge from './FrontendSettingsPreviewBridge';
 import { PREVIEW_STYLE_TAG_ID } from './helpers';
 import type { FrontendSettingsPreviewBridgeMessage } from './types';
@@ -110,6 +114,7 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
       modes: ['light', 'dark'],
     });
     document.getElementById(PREVIEW_STYLE_TAG_ID)?.remove();
+    resetInitialFrontendSettings();
   });
 
   describe('font css', () => {
@@ -218,5 +223,82 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
     render(<FrontendSettingsPreviewBridge />);
 
     expect(mockedSendToParent).toHaveBeenCalledWith({ type: 'frontendSettingsPreviewReady' });
+  });
+
+  describe('frontendSettingsPreviewApplied', () => {
+    /**
+     * How often the bridge announced that the preview is applied.
+     * @returns The number of calls.
+     */
+    const appliedCallCount = () => mockedSendToParent.mock.calls
+      .filter(([data]) => data.type === 'frontendSettingsPreviewApplied')
+      .length;
+
+    it('should keep the styling that app start already applied', () => {
+      setInitialFrontendSettings({ '.button': { backgroundColor: 'red' } });
+
+      render(<FrontendSettingsPreviewBridge />);
+
+      expect(document.getElementById(PREVIEW_STYLE_TAG_ID)?.textContent)
+        .toBe('.button { background-color: red; }');
+    });
+
+    it('should announce on mount when app start received the payload', () => {
+      setInitialFrontendSettings({ '.button': { backgroundColor: 'red' } });
+
+      render(<FrontendSettingsPreviewBridge />);
+
+      expect(appliedCallCount()).toBe(1);
+    });
+
+    it('should announce once the first payload arrived', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      expect(appliedCallCount()).toBe(0);
+
+      sendMessage({
+        type: 'receiveFrontendSettings',
+        payload: { styling: { '.button': { backgroundColor: 'red' } } },
+      });
+
+      expect(appliedCallCount()).toBe(1);
+    });
+
+    it('should announce for a payload that only carries app settings', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({
+        type: 'receiveFrontendSettings',
+        payload: { appSettings },
+      });
+
+      expect(appliedCallCount()).toBe(1);
+    });
+
+    it('should announce only once, so live edits do not flicker the admin overlay', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({
+        type: 'receiveFrontendSettings',
+        payload: { styling: { '.button': { backgroundColor: 'red' } } },
+      });
+      sendMessage({
+        type: 'receiveFrontendSettings',
+        payload: { styling: { '.button': { backgroundColor: 'blue' } } },
+      });
+
+      expect(appliedCallCount()).toBe(1);
+    });
+
+    it('should not announce while no payload arrived', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({
+        type: 'setColorScheme',
+        payload: { colorScheme: 'dark' },
+      });
+
+      expect(appliedCallCount()).toBe(0);
+    });
   });
 });
