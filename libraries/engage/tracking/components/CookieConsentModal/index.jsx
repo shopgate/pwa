@@ -174,7 +174,7 @@ const CookieConsentModal = ({
             >
               <I18n.Text string={modalButtonAcceptAll || 'cookieConsentModal.buttonAcceptAll'} />
             </Button>
-            {!showRequiredCookiesButton ? (
+            {showRequiredCookiesButton ? (
               <Button
                 onClick={handleAcceptRequiredCookies}
                 className={cx(classes.button, 'cookie-consent-modal__button-accept-required')}

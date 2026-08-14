@@ -38,7 +38,6 @@ const FilterApplyButton = ({ disabled, onClick, widgetSettings }) => {
         <Button
           variant="link"
           color="secondary"
-          className={classes.button}
           onClick={onClick}
           disabled={disabled}
           testId="applyFilterButton"
