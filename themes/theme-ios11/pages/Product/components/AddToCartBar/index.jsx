@@ -34,13 +34,14 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(1),
   },
   base: {
-    height: barHeight,
+    display: 'grid',
+    minHeight: barHeight,
     position: 'relative',
   },
   statusBar: {
+    gridArea: '1 / 1',
     alignItems: 'center',
     display: 'flex',
-    height: '100%',
     maxWidth: '60%',
     padding: theme.spacing(0, 1),
   },

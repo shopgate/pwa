@@ -8,9 +8,8 @@ import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
+    gridArea: '1 / 1',
+    justifySelf: 'end',
     transition: theme.transitions.create(['width', 'background-color']),
     padding: theme.spacing(1, 1),
   },
