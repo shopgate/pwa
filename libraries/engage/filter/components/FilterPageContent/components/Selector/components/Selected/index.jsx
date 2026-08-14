@@ -1,19 +1,12 @@
-import React, { Fragment, memo, useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(() => ({
-  elipsed: {
-    maxWidth: '95%',
-    overflow: 'hidden',
-    textAlign: 'right',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
-  },
-  comma: {
-    ' + span': {
-      marginLeft: '0.65ch',
-    },
+  values: {
+    display: 'block',
+    textAlign: 'left',
+    overflowWrap: 'anywhere',
   },
 }));
 
@@ -37,19 +30,12 @@ const Selected = ({ selected, values }) => {
     }, []);
   }, [selected, values]);
 
-  if (!selected || selected.length === 0) {
+  if (items.length === 0) {
     return null;
   }
 
   return (
-    <>
-      {items.map((item, index) => (
-        <Fragment key={item}>
-          <span className={classes.elipsed}>{item}</span>
-          {(index < items.length - 1) ? <span className={classes.comma}>, </span> : ''}
-        </Fragment>
-      ))}
-    </>
+    <span className={classes.values}>{items.join(', ')}</span>
   );
 };
 

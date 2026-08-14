@@ -8,6 +8,8 @@ import { withWidgetSettings } from '@shopgate/engage/core';
 const useStyles = makeStyles()({
   wrapper: {
     display: 'flex',
+    alignItems: 'center',
+    height: 44,
   },
   button: {
     padding: '0 !important',
@@ -23,8 +25,6 @@ const useStyles = makeStyles()({
  */
 const FilterApplyButton = ({ disabled, onClick, widgetSettings }) => {
   const { classes } = useStyles();
-  const { buttonTextColor, buttonTextColorDisabled } = widgetSettings;
-  const buttonColor = !disabled ? buttonTextColor : buttonTextColorDisabled;
 
   return (
     <SurroundPortals
@@ -39,12 +39,12 @@ const FilterApplyButton = ({ disabled, onClick, widgetSettings }) => {
         <Button
           className={classes.button}
           flat
-          type="primary"
+          type="regular"
           onClick={onClick}
           disabled={disabled}
           testId="applyFilterButton"
         >
-          <I18n.Text string="filter.apply" style={{ color: buttonColor }} />
+          <I18n.Text string="common.apply" />
         </Button>
       </div>
     </SurroundPortals>

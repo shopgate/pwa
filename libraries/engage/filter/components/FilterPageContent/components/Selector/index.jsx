@@ -7,17 +7,16 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { FilterItem } from '@shopgate/engage/filter';
 import { PORTAL_FILTER_SELECTOR } from '@shopgate/engage/filter/constants';
-import ValueButton from './components/ValueButton';
+import ValueCheckbox from './components/ValueCheckbox';
 import Toggle from './components/Toggle';
 import Selected from './components/Selected';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   accordion: {
     overflow: 'hidden',
   },
   content: {
-    marginLeft: -8,
-    marginBottom: -8,
+    paddingBottom: theme.spacing(1),
   },
 }));
 
@@ -41,8 +40,7 @@ const Selector = ({
     setSelected(selectedFromProps || []);
   }, [selectedFromProps]);
 
-  const handleClick = useCallback((event) => {
-    const { value } = event.target;
+  const handleToggle = useCallback((value) => {
     setSelected((prev) => {
       let newSelected = [...prev, value];
 
@@ -58,10 +56,6 @@ const Selector = ({
       return newSelected;
     });
   }, [id, multi, onChange]);
-
-  const handlePortalChange = useCallback((updatedId) => {
-    handleClick({ target: { value: updatedId } });
-  }, [handleClick]);
 
   const renderLabel = useCallback(props => (
     <Toggle
@@ -82,7 +76,7 @@ const Selector = ({
           isMultiSelect: multi,
         },
         selectedValueIds: selected,
-        onChange: handlePortalChange,
+        onChange: handleToggle,
       }}
     >
       <FilterItem>
@@ -94,12 +88,12 @@ const Selector = ({
         >
           <div className={classes.content}>
             {values.map(value => (
-              <ValueButton
+              <ValueCheckbox
                 key={value.id}
                 id={value.id}
                 label={value.label}
                 isActive={(selected && selected.includes(value.id))}
-                onClick={handleClick}
+                onToggle={handleToggle}
               />
             ))}
           </div>

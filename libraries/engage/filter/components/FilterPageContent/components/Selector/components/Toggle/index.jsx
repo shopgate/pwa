@@ -1,36 +1,26 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   toggle: {
     display: 'flex',
-    flexFlow: 'row no-wrap',
-    alignContent: 'stretch',
-    alignItems: 'flex-start',
+    flexFlow: 'row nowrap',
+    alignItems: 'center',
+    flex: 1,
+    minWidth: 0,
   },
   label: {
-    whiteSpace: 'no-wrap',
+    ...theme.typography.body1,
     flexShrink: 0,
-    flexGrow: 1,
     textAlign: 'left',
     maxWidth: '50%',
-    minWidth: '35%',
     paddingRight: '16px',
   },
   selected: {
-    display: 'flex',
-    flexFlow: 'row wrap',
-    flexGrow: 1,
-    justifyContent: 'flex-end',
-    minWidth: '50%',
-    maxWidth: '65%',
-  },
-  closed: {
-    fontWeight: theme.typography.fontWeightRegular,
-  },
-  open: {
-    fontWeight: theme.typography.fontWeightBold,
+    ...theme.typography.body2,
+    flex: 1,
+    minWidth: 0,
   },
 }));
 
@@ -41,20 +31,13 @@ const useStyles = makeStyles()(theme => ({
  */
 const Toggle = ({
   label,
-  open,
   selected,
 }) => {
-  const { classes, cx } = useStyles();
-
-  const labelClassName = useMemo(() => cx({
-    [classes.label]: true,
-    [classes.open]: open,
-    [classes.closed]: !open,
-  }), [classes.closed, classes.label, classes.open, open, cx]);
+  const { classes } = useStyles();
 
   return (
     <div className={classes.toggle}>
-      <span className={labelClassName}>
+      <span className={classes.label}>
         {label}
       </span>
       {selected && (
@@ -66,12 +49,10 @@ const Toggle = ({
 
 Toggle.propTypes = {
   label: PropTypes.node.isRequired,
-  open: PropTypes.bool,
   selected: PropTypes.node,
 };
 
 Toggle.defaultProps = {
-  open: false,
   selected: null,
 };
 

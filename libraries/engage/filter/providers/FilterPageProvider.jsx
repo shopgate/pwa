@@ -6,12 +6,16 @@ import { connect } from 'react-redux';
 import debounce from 'lodash/debounce';
 import isEqual from 'lodash/isEqual';
 import { router } from '@shopgate/engage/core';
+import { useRoute } from '@shopgate/engage/core/hooks';
+import { parseObjectToQueryString } from '@shopgate/engage/core/helpers';
 import {
   getFiltersByHash,
 } from '@shopgate/engage/filter';
 // eslint-disable-next-line no-unused-vars, import/named
 import Context, { APIFilter, RouteFilters } from './FilterPageProvider.context';
 import { buildInitialFilters, buildUpdatedFilters } from '../helpers';
+
+const FILTER_PATH_SUFFIX = '/filter';
 
 /**
  * @param {Object} state The application state.
@@ -57,6 +61,7 @@ const FilterPageProvider = ({
   onApply,
   children,
 }) => {
+  const { pathname, query } = useRoute();
   const [currentFilters, setCurrentFilters] = useState(activeFiltersProp || {});
 
   /**
@@ -258,10 +263,21 @@ const FilterPageProvider = ({
   ), [filtersProp, initialFilters, removeChangedFilterInternal, updateChangedFilterInternal]);
 
   /**
-   * Applies the current filter selection to the parent route with a product list to be filtered
+   * Applies the current filter selection to the parent route with a product list to be filtered.
+   * When the filter page was entered directly, no parent route exists in the history stack. In
+   * that case the product list route is derived from the current pathname and replaces the
+   * filter page.
    */
   const applyFilters = useCallback(() => {
     const filters = buildUpdatedFilters(currentFilters, changedFilters);
+
+    if (!parentRouteId) {
+      router.replace({
+        pathname: `${pathname.slice(0, -FILTER_PATH_SUFFIX.length)}${parseObjectToQueryString(query)}`,
+        state: { filters },
+      });
+      return;
+    }
 
     router.update(
       parentRouteId,
@@ -269,7 +285,7 @@ const FilterPageProvider = ({
     );
 
     onApply(filters);
-  }, [changedFilters, currentFilters, onApply, parentRouteId]);
+  }, [changedFilters, currentFilters, onApply, parentRouteId, pathname, query]);
 
   const value = useMemo(() => ({
     resetPossible,
