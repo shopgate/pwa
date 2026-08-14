@@ -6,12 +6,12 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { PORTAL_FILTER_APPLY_BUTTON } from '@shopgate/engage/filter/constants';
 import { withWidgetSettings } from '@shopgate/engage/core';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'flex',
-    marginRight: 8,
+    marginRight: theme.spacing(2),
   },
-});
+}));
 
 /**
  * The filter apply button component.

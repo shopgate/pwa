@@ -24,7 +24,7 @@ function Button<C extends React.ElementType = 'button'>(
     size = 'medium',
     dense = false,
     disabled = false,
-    disableRipple = false,
+    disableRipple = variant === 'link',
     fullWidth = false,
     enableElevation = false,
     className,
@@ -236,10 +236,8 @@ const useStyles = makeStyles<ButtonOwnProps>({
       border: 0,
       textTransform: 'none',
       color: 'var(--variant-textColor)',
-      '@media (hover: hover)': {
-        '&:hover': {
-          textDecoration: 'underline',
-        },
+      '&:active': {
+        opacity: 0.5,
       },
       '&:disabled, &[aria-disabled="true"]': {
         color: 'var(--variant-textDisabledColor)',
@@ -400,11 +398,17 @@ const useStyles = makeStyles<ButtonOwnProps>({
 
 export interface ButtonOwnProps {
   /**
-   * The variant to use. `link` renders a sentence case button without padding, underlined on hover
-   * where a pointer exists.
+   * The variant to use. `link` renders a sentence case button without padding or decoration, and
+   * dims on press instead of showing a ripple.
    * @default 'contained'
    */
   variant?: 'contained' | 'outlined' | 'text' | 'link';
+  /**
+   * If true, the ripple effect is disabled. Defaults to true for `variant="link"`, which dims on
+   * press instead.
+   * @default false
+   */
+  disableRipple?: boolean;
   /**
    * The color of the component.
    * @default 'inherit'

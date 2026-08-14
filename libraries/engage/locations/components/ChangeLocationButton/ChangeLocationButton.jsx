@@ -32,7 +32,7 @@ export const ChangeLocationButtonUnwrapped = ({ onClick, disabled }) => {
       }}
     >
       <Button
-        variant="text"
+        variant="link"
         color="primary"
         size="small"
         dense

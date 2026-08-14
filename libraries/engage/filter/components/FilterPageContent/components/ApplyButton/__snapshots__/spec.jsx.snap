@@ -12,7 +12,7 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
   }
 >
   <div
-    className="sg-1w89lyz-wrapper"
+    className="sg-dpfgvb-wrapper"
   >
     <Button
       color="secondary"
@@ -46,7 +46,7 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
   }
 >
   <div
-    className="sg-1w89lyz-wrapper"
+    className="sg-dpfgvb-wrapper"
   >
     <Button
       color="secondary"
@@ -80,7 +80,7 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
   }
 >
   <div
-    className="sg-1w89lyz-wrapper"
+    className="sg-dpfgvb-wrapper"
   >
     <Button
       color="secondary"

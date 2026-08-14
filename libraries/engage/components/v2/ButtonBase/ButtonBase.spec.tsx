@@ -301,6 +301,46 @@ describe('<ButtonBase /> rendered as another element', () => {
   });
 });
 
+describe('<ButtonBase /> disabled cursor', () => {
+  /**
+   * Reads the css rules that apply to an element in a given state.
+   * @param element The rendered element.
+   * @param state The selector that follows the class name, e.g. `:disabled`.
+   * @returns The css text of the matching rules.
+   */
+  const stateRule = (element: Element, state: string) => {
+    const classNames = element.className.trim().split(' ');
+
+    return Array.from(document.querySelectorAll('style'))
+      .flatMap((styleElement) => {
+        const { sheet } = styleElement as HTMLStyleElement;
+        return sheet ? Array.from(sheet.cssRules).map(rule => rule.cssText) : [];
+      })
+      .filter(text => classNames.some(name => text.includes(`.${name}${state}`)))
+      .join('\n');
+  };
+
+  it('should show a not-allowed cursor on a disabled button', () => {
+    render(<ButtonBase disabled>Press</ButtonBase>);
+
+    expect(stateRule(screen.getByRole('button'), ':disabled')).toContain('cursor: not-allowed;');
+  });
+
+  it('should not suppress pointer events on a disabled button', () => {
+    render(<ButtonBase disabled>Press</ButtonBase>);
+
+    expect(stateRule(screen.getByRole('button'), ':disabled')).not.toContain('pointer-events');
+  });
+
+  it('should keep pointer events suppressed on a disabled non-button element', () => {
+    render(<ButtonBase component="div" disabled testId="Subject">Press</ButtonBase>);
+
+    const element = document.querySelector('[data-test-id="Subject"]') as HTMLElement;
+
+    expect(stateRule(element, '[aria-disabled="true"]')).toContain('pointer-events: none;');
+  });
+});
+
 describe('<ButtonBase /> ripples', () => {
   /**
    * The ripple container is the button's last child; each active ripple is one node inside it.
@@ -333,8 +373,8 @@ describe('<ButtonBase /> ripples', () => {
   });
 
   it('should drop the ripple when the button disables itself mid press', () => {
-    // `pointer-events: none` on a disabled button makes the browser drop the pointer capture, so
-    // the pointer up never reaches it and nothing would otherwise end the ripple.
+    // A disabled button stops being interactive, so the browser drops the pointer capture and the
+    // pointer up never reaches it — nothing else would end the ripple.
     jest.useFakeTimers();
     const { rerender } = render(<ButtonBase>Press</ButtonBase>);
     const button = screen.getByRole('button');

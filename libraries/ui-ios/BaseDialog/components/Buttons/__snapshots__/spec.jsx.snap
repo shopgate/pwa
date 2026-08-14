@@ -11,7 +11,7 @@ exports[`<Buttons /> should render buttons 1`] = `
     disabled={false}
     key="action0"
     onClick={[MockFunction]}
-    variant="text"
+    variant="link"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
@@ -29,7 +29,7 @@ exports[`<Buttons /> should render buttons 1`] = `
     disabled={false}
     key="action1"
     onClick={[MockFunction]}
-    variant="text"
+    variant="link"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
@@ -47,7 +47,7 @@ exports[`<Buttons /> should render buttons 1`] = `
     disabled={false}
     key="action2"
     onClick={[MockFunction]}
-    variant="text"
+    variant="link"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}

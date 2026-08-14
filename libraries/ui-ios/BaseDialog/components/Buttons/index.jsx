@@ -61,7 +61,7 @@ const Buttons = ({ actions }) => {
     <Button
       key={label}
       className={cx(classes.button, type === 'primary' && classes.buttonPrimary)}
-      variant="text"
+      variant="link"
       color="secondary"
       onClick={action}
       disabled={disabled}

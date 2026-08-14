@@ -5,14 +5,14 @@ import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PORTAL_FILTER_RESET_BUTTON } from '@shopgate/engage/filter/constants';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   buttonContainer: {
-    marginTop: 4,
-    marginRight: 4,
+    marginTop: theme.spacing(0.5),
+    marginRight: theme.spacing(2),
     marginBottom: 40,
     textAlign: 'right',
   },
-});
+}));
 
 /**
  * The filter reset button component.
@@ -34,7 +34,7 @@ const FilterResetButton = ({ disabled, onClick }) => {
     >
       <div className={classes.buttonContainer}>
         <Button
-          variant="text"
+          variant="link"
           color="secondary"
           onClick={onClick}
           disabled={disabled}

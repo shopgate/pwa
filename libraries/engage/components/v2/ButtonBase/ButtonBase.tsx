@@ -257,7 +257,10 @@ const useStyles = makeStyles({
     '&::-moz-focus-inner': {
       borderStyle: 'none',
     },
-    '&:disabled, &[aria-disabled="true"]': {
+    '&:disabled': {
+      cursor: 'not-allowed',
+    },
+    '&[aria-disabled="true"]': {
       pointerEvents: 'none',
       cursor: 'default',
     },

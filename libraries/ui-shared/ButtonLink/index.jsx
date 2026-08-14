@@ -51,8 +51,8 @@ class ButtonLink extends Component {
 }
 
 /**
- * @deprecated Use `Button` from `@shopgate/engage/components/v2` with `variant="link"` instead. It
- * takes the same `href` and routes through the app router itself.
+ * @deprecated Use `Button` from `@shopgate/engage/components/v2` with `variant="link"` and
+ * `color="primary"` instead. It takes the same `href` and routes through the app router itself.
  */
 export default connect(ButtonLink);
 

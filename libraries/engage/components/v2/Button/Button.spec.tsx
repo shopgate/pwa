@@ -158,13 +158,19 @@ describe('<Button />', () => {
       expect(paddingOf(getButtonRule())).toBe('0');
     });
 
-    it('should only underline on hover where a pointer exists', () => {
+    it('should dim on press instead of rendering a ripple', () => {
       render(<Button variant="link">Press</Button>);
 
-      const rule = getButtonStateRule(':hover');
+      const button = screen.getByRole('button');
 
-      expect(rule).toContain('@media (hover: hover)');
-      expect(rule).toContain('text-decoration: underline;');
+      expect(button).not.toHaveClass('ui-shared__ripple-button');
+      expect(getButtonStateRule(':active')).toContain('opacity: 0.5;');
+    });
+
+    it('should still ripple when the caller asks for it', () => {
+      render(<Button variant="link" disableRipple={false}>Press</Button>);
+
+      expect(screen.getByRole('button')).toHaveClass('ui-shared__ripple-button');
     });
 
     it('should use the disabled text color when disabled', () => {

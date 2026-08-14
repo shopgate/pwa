@@ -49,7 +49,7 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonContainer: {
     display: 'flex',
-    gap: '0 4px',
+    gap: '0 16px',
     flexWrap: 'wrap',
     justifyContent: 'flex-end',
   },
@@ -101,10 +101,9 @@ const StoresNearbyListItem = ({ location }) => {
             <div className={classes.makeMyStore}>
               {(!isComingSoon) && (
                 <Button
-                  variant="text"
+                  variant="link"
                   color="secondary"
                   size="small"
-                  dense
                   onClick={() => selectLocation(location, true)}
                   disabled={isPreferredLocation}
                 >
@@ -115,10 +114,9 @@ const StoresNearbyListItem = ({ location }) => {
               )}
               {isComingSoon && (
                 <Button
-                  variant="text"
+                  variant="link"
                   color="secondary"
                   size="small"
-                  dense
                   disabled
                 >
                   <Typography variant="body2" component="span" fontWeight="bold">
@@ -129,10 +127,9 @@ const StoresNearbyListItem = ({ location }) => {
             </div>
             <div className={classes.storeInfo}>
               <Button
-                variant="text"
+                variant="link"
                 color="secondary"
                 size="small"
-                dense
                 onClick={() => openStoreDetails(code)}
               >
                 <Typography variant="body2" component="span" fontWeight="bold">

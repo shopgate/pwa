@@ -11,14 +11,14 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
   }
 >
   <div
-    className="sg-gly5c9-buttonContainer"
+    className="sg-ugfdb1-buttonContainer"
   >
     <Button
       color="secondary"
       disabled={false}
       onClick={[MockFunction]}
       testId="clearAllButton"
-      variant="text"
+      variant="link"
     >
       <Text
         acceptPlainTextWithPlaceholders={false}
@@ -44,14 +44,14 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
   }
 >
   <div
-    className="sg-gly5c9-buttonContainer"
+    className="sg-ugfdb1-buttonContainer"
   >
     <Button
       color="secondary"
       disabled={false}
       onClick={[Function]}
       testId="clearAllButton"
-      variant="text"
+      variant="link"
     >
       <Text
         acceptPlainTextWithPlaceholders={false}
@@ -77,14 +77,14 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
   }
 >
   <div
-    className="sg-gly5c9-buttonContainer"
+    className="sg-ugfdb1-buttonContainer"
   >
     <Button
       color="secondary"
       disabled={true}
       onClick={[Function]}
       testId="clearAllButton"
-      variant="text"
+      variant="link"
     >
       <Text
         acceptPlainTextWithPlaceholders={false}
