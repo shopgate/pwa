@@ -80,9 +80,6 @@ const useStyles = makeStyles()((theme, {
         ...(buttonBgColor && { backgroundColor: `${buttonBgColor}` }),
       },
     },
-    buttonIncrement: {
-      paddingBottom: 2,
-    },
     buttonNoRadiusLeft: {
       borderTopLeftRadius: 0,
       borderBottomLeftRadius: 0,
@@ -284,7 +281,7 @@ const UnitQuantityPicker = ({
         <Button
           color="primary"
           disabled={!allowIncrement || disabled}
-          className={cx(classes.button, classes.buttonIncrement, classes.buttonNoRadiusLeft)}
+          className={cx(classes.button, classes.buttonNoRadiusLeft)}
           onClick={handleIncrement}
           aria-label={i18n.text('product.increase_quantity')}
         >
