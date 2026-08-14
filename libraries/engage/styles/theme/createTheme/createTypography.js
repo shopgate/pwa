@@ -1,9 +1,14 @@
 import { merge } from 'lodash';
-// Imported from the defining modules rather than the `core/helpers` barrel: this module runs at
-// import time in every spec that touches the theme, and specs that replace that barrel with a
-// partial mock would leave these undefined.
+// Imported from the defining modules rather than a barrel: this module runs at import time in
+// every spec that touches the theme, and specs that replace a barrel with a partial mock would
+// leave these undefined.
 import { isDev } from '@shopgate/pwa-common/helpers/environment';
-import { isIOSTheme } from '@shopgate/engage/core/helpers/isIOSTheme';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const {
+  fontWeight: buttonFontWeight = 600,
+  textTransform: buttonTextTransform,
+} = themeConfig?.variables?.buttonBase ?? {};
 
 const caseAllCaps = {
   textTransform: 'uppercase',
@@ -107,7 +112,12 @@ export default function createTypography(palette, typography) {
     subtitle2: buildVariant('fontWeightMedium', 14, 1.57),
     body1: buildVariant('fontWeightRegular', 16, 1.5),
     body2: buildVariant('fontWeightRegular', 14, 1.43),
-    button: buildVariant('fontWeightBold', 14, 1.75, !isIOSTheme() ? caseAllCaps : undefined),
+    button: buildVariant(
+      buttonFontWeight > fontWeightMedium ? 'fontWeightBold' : 'fontWeightMedium',
+      16,
+      1.75,
+      buttonTextTransform === 'uppercase' ? caseAllCaps : undefined
+    ),
     caption: buildVariant('fontWeightRegular', 12, 1.66),
     overline: buildVariant('fontWeightRegular', 12, 2.66, caseAllCaps),
   };
