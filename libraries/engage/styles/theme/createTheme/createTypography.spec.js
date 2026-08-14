@@ -54,6 +54,21 @@ describe('theme => createTypography', () => {
     });
   });
 
+  describe('button casing', () => {
+    it('always resolves to a concrete value so a custom property is generated for it', () => {
+      const typography = create();
+
+      expect(typography.button.textTransform).toMatch(/^(uppercase|none)$/);
+    });
+
+    it('leaves the other variants alone', () => {
+      const typography = create();
+
+      expect(typography.overline.textTransform).toBe('uppercase');
+      expect(typography.body1.textTransform).toBeUndefined();
+    });
+  });
+
   describe('overrides', () => {
     it('lets a per variant font weight win over the token reference', () => {
       const typography = create({ h1: { fontWeight: 800 } });

@@ -13,6 +13,9 @@ const {
 const caseAllCaps = {
   textTransform: 'uppercase',
 };
+const caseButton = {
+  textTransform: buttonTextTransform === 'uppercase' ? 'uppercase' : 'none',
+};
 const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 
 /**
@@ -116,7 +119,7 @@ export default function createTypography(palette, typography) {
       buttonFontWeight > fontWeightMedium ? 'fontWeightBold' : 'fontWeightMedium',
       16,
       1.75,
-      buttonTextTransform === 'uppercase' ? caseAllCaps : undefined
+      caseButton
     ),
     caption: buildVariant('fontWeightRegular', 12, 1.66),
     overline: buildVariant('fontWeightRegular', 12, 2.66, caseAllCaps),
