@@ -68,7 +68,7 @@ export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 
 
 const useStyles = makeStyles()(theme => ({
   rounded: {
-    borderRadius: theme.shape.borderRadius,
+    borderRadius: theme.components.productImage.borderRadius,
     overflow: 'hidden',
   },
   placeholderContent: {
