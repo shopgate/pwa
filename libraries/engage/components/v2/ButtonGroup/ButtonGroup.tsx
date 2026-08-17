@@ -103,7 +103,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       '--button-group-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
       '--disabledColor': theme.palette.action.disabled,
       display: 'inline-flex',
-      borderRadius: `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
+      borderRadius: theme.components.button.borderRadius,
     },
     disabled: {},
     enableElevation: {

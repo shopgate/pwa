@@ -22,13 +22,13 @@ exports[`<RippleButton /> should render as a disabled ripple button 1`] = `
     wrapContent={true}
   >
     <Button
-      className="ui-shared__button sg-18654w1-button ui-shared__ripple-button"
+      className="ui-shared__button sg-hau150-button ui-shared__ripple-button"
       disabled={true}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-mgtlas-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-1y2qbgj-root-button"
         data-test-id="Button"
         disabled={true}
         onClick={null}
@@ -66,13 +66,13 @@ exports[`<RippleButton /> should render as a primary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="ui-shared__button sg-exe6v7-button ui-shared__ripple-button"
+      className="ui-shared__button sg-11zobba-button ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-1eew0nb-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-5exnrz-root-button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
@@ -124,13 +124,13 @@ exports[`<RippleButton /> should render as a regular ripple button effect if typ
     wrapContent={false}
   >
     <Button
-      className="ui-shared__button sg-exe6v7-button ui-shared__ripple-button"
+      className="ui-shared__button sg-11zobba-button ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-1eew0nb-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-5exnrz-root-button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
@@ -182,13 +182,13 @@ exports[`<RippleButton /> should render as a regular ripple button if type is ex
     wrapContent={false}
   >
     <Button
-      className="ui-shared__button sg-1bz5s5t-button ui-shared__ripple-button"
+      className="ui-shared__button sg-vq0e5s-button ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-77pzus-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-aa4k0k-root-button"
         data-test-id="Button"
         disabled={false}
         onClick={null}
@@ -240,13 +240,13 @@ exports[`<RippleButton /> should render as a secondary ripple button 1`] = `
     wrapContent={false}
   >
     <Button
-      className="ui-shared__button sg-1p8mj3m-button ui-shared__ripple-button"
+      className="ui-shared__button sg-gsa8mt-button ui-shared__ripple-button"
       disabled={false}
       onClick={null}
       testId="Button"
     >
       <button
-        className="common__button ui-shared__button ui-shared__ripple-button sg-qxdlxm-root-button"
+        className="common__button ui-shared__button ui-shared__ripple-button sg-1u96fun-root-button"
         data-test-id="Button"
         disabled={false}
         onClick={null}

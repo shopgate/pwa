@@ -21,7 +21,7 @@ const useStyles = makeStyles()(theme => ({
     transform: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1) !important',
     outline: 0,
     boxShadow: 'none !important',
-    borderRadius: `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius}) !important`,
+    borderRadius: `${theme.components.button.borderRadius} !important`,
     width: 'auto !important',
     height: 'auto !important',
     zIndex: '0 !important',

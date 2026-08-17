@@ -30,7 +30,7 @@ const baseButton = (text, background, theme) => ({
     cursor: 'not-allowed',
   },
   ...themeConfig.variables.buttonBase,
-  borderRadius: `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
+  borderRadius: theme.components.button.borderRadius,
   ...theme.typography.button,
 });
 

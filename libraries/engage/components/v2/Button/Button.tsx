@@ -165,7 +165,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
       // turn these into `var(undefined, ...)`.
       '--button-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
       '--text-color': `var(${theme.vars.components.button.textColor}, ${contrastText})`,
-      '--border-radius': `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
+      '--border-radius': theme.components.button.borderRadius,
 
       '--font-size': theme.typography.button.fontSize,
 

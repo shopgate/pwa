@@ -33,7 +33,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
               variant="text"
             >
               <ButtonBase
-                className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-mvb5hn-Button-root-Button-text"
+                className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-12k5n5z-Button-root-Button-text"
                 data-color="inherit"
                 data-size="medium"
                 data-test-id="reviewCancelButton"
@@ -44,7 +44,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 onClick={[Function]}
               >
                 <button
-                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1w0jblk-ButtonBase-root-Button-root-Button-text"
+                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1xxwb7r-ButtonBase-root-Button-root-Button-text"
                   data-color="inherit"
                   data-size="medium"
                   data-test-id="reviewCancelButton"
@@ -109,7 +109,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
               type="submit"
             >
               <ButtonBase
-                className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-nciumr-Button-root-Button-contained"
+                className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-ji5mvz-Button-root-Button-contained"
                 data-color="primary"
                 data-size="medium"
                 data-variant="contained"
@@ -120,7 +120,7 @@ exports[`<FormButtons /> should render submit and cancel button 1`] = `
                 type="submit"
               >
                 <button
-                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-wy5x8u-ButtonBase-root-Button-root-Button-contained"
+                  className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-uc1gum-ButtonBase-root-Button-root-Button-contained"
                   data-color="primary"
                   data-size="medium"
                   data-test-id="sendReviewButton"
