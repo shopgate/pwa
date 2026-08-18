@@ -11,7 +11,7 @@ import Label from './components/Label';
 
 const useStyles = makeStyles()(theme => ({
   accordionContent: {
-    padding: theme.spacing(0, 2),
+    padding: theme.spacing(0, 2, 1),
   },
   rangeSliderContainer: {
     paddingTop: theme.spacing(2),
@@ -30,13 +30,15 @@ const useStyles = makeStyles()(theme => ({
     marginRight: theme.spacing(1),
   },
   rangeSliderHandleInner: {
-    background: theme.palette.common.white,
-    boxShadow: '0 0 8px rgba(0, 0, 0, .16)',
+    background: theme.palette.grey.light,
+    boxShadow: '0 0 8px rgba(0, 0, 0, .32)',
     borderRadius: '50%',
     width: theme.spacing(3),
     height: theme.spacing(3),
   },
-  rangeSliderHandleOuter: {},
+  rangeSliderHandleOuter: {
+    padding: theme.spacing(1),
+  },
 }));
 
 /**

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals, ResponsiveContainer } from '@shopgate/engage/components';
 import { useFilterPage } from '@shopgate/engage/filter/hooks';
+import { makeStyles } from '@shopgate/engage/styles';
 import {
   PORTAL_FILTER_PRICE_RANGE,
   PORTAL_FILTER_PAGE_CONTENT,
@@ -13,6 +14,16 @@ import Selector from './components/Selector';
 import ApplyButton from './components/ApplyButton';
 import ResetButton from './components/ResetButton';
 
+const useStyles = makeStyles()(theme => ({
+  content: {
+    [theme.breakpoints.up('md')]: {
+      width: '100%',
+      maxWidth: 640,
+      margin: '0 auto',
+    },
+  },
+}));
+
 /**
  * The FilterPageContent component renders all filters for the filter page.
  * @param {Object} props The component props.
@@ -20,6 +31,7 @@ import ResetButton from './components/ResetButton';
  * @returns {JSX.Element}
  */
 const FilterPageContent = ({ AppBarComponent }) => {
+  const { classes } = useStyles();
   const {
     apiFilters,
     resetPossible,
@@ -38,42 +50,44 @@ const FilterPageContent = ({ AppBarComponent }) => {
           right={<ApplyButton disabled={!hasChanged} onClick={applyFilters} />}
         />
       )}
-      {apiFilters.map((filter) => {
-        const portalProps = { filter };
-        const value = getSelectedFilterValues(filter.id);
+      <div className={classes.content}>
+        {apiFilters.map((filter) => {
+          const portalProps = { filter };
+          const value = getSelectedFilterValues(filter.id);
 
-        if (filter.type === FILTER_TYPE_RANGE) {
+          if (filter.type === FILTER_TYPE_RANGE) {
+            return (
+              <Fragment key={filter.id}>
+                <SurroundPortals portalName={PORTAL_FILTER_PRICE_RANGE} portalProps={portalProps}>
+                  <PriceSlider
+                    id={filter.id}
+                    key={filter.id}
+                    min={filter.minimum}
+                    max={filter.maximum}
+                    onChange={updateSelectedFilterValues}
+                    value={value}
+                  />
+                </SurroundPortals>
+              </Fragment>
+            );
+          }
+
           return (
-            <Fragment key={filter.id}>
-              <SurroundPortals portalName={PORTAL_FILTER_PRICE_RANGE} portalProps={portalProps}>
-                <PriceSlider
-                  id={filter.id}
-                  key={filter.id}
-                  min={filter.minimum}
-                  max={filter.maximum}
-                  onChange={updateSelectedFilterValues}
-                  value={value}
-                />
-              </SurroundPortals>
-            </Fragment>
+            <Selector
+              id={filter.id}
+              key={filter.id}
+              label={filter.label}
+              values={filter.values}
+              multi={filter.type === FILTER_TYPE_MULTISELECT}
+              onChange={updateSelectedFilterValues}
+              selected={value}
+            />
           );
-        }
-
-        return (
-          <Selector
-            id={filter.id}
-            key={filter.id}
-            label={filter.label}
-            values={filter.values}
-            multi={filter.type === FILTER_TYPE_MULTISELECT}
-            onChange={updateSelectedFilterValues}
-            selected={value}
-          />
-        );
-      })}
-      <ResponsiveContainer breakpoint="<sm" appAlways>
-        <ResetButton disabled={!resetPossible} onClick={resetAllFilters} />
-      </ResponsiveContainer>
+        })}
+        <ResponsiveContainer breakpoint="<sm" appAlways>
+          <ResetButton disabled={!resetPossible} onClick={resetAllFilters} />
+        </ResponsiveContainer>
+      </div>
     </SurroundPortals>
   );
 };
