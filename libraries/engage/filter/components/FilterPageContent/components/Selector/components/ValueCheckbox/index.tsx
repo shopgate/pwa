@@ -25,6 +25,9 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(0.75, 0),
+    '& .checkedIcon': {
+      color: theme.palette.secondary.main,
+    },
   },
   label: {
     paddingLeft: theme.spacing(1),

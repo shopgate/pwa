@@ -84,7 +84,7 @@ const PriceSlider = ({
 
   const priceMin = Math.floor(value[0] / 100);
   const priceMax = Math.ceil(value[1] / 100);
-  const priceLength = `${(max / 100).toString().length + 2}ch`;
+  const priceLength = (max / 100).toString().length;
 
   const renderLabel = useCallback(() => (
     <Label

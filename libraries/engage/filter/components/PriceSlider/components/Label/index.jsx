@@ -42,6 +42,13 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
+ * Builds the width a price field needs to fit the longer of its value and the highest price.
+ * @param {number} length Amount of characters the field has to fit.
+ * @returns {string}
+ */
+const fieldWidth = length => `${length + 2}ch`;
+
+/**
  * The filter price range slider label component.
  * @param {Object} props The component props.
 * @returns {JSX.Element}
@@ -117,7 +124,7 @@ function Label(props) {
             value={minValue}
             onChange={handleChangeMin}
             onClick={handleFieldClick}
-            style={{ width: priceLength }}
+            style={{ width: fieldWidth(Math.max(priceLength, String(minValue).length)) }}
             className={classes.editableField}
             aria-label={i18n.text('price.range_from')}
             aria-describedby="price-slider-currency-label"
@@ -133,7 +140,7 @@ function Label(props) {
             value={maxValue}
             onChange={handleChangeMax}
             onClick={handleFieldClick}
-            style={{ width: priceLength }}
+            style={{ width: fieldWidth(Math.max(priceLength, String(maxValue).length)) }}
             className={classes.editableField}
             aria-label={i18n.text('price.range_to')}
             aria-describedby="price-slider-currency-label"
@@ -146,7 +153,7 @@ function Label(props) {
 
 Label.propTypes = {
   onChange: PropTypes.func.isRequired,
-  priceLength: PropTypes.string.isRequired,
+  priceLength: PropTypes.number.isRequired,
   priceMax: PropTypes.number.isRequired,
   priceMin: PropTypes.number.isRequired,
 };

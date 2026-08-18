@@ -215,25 +215,17 @@ const FilterPageProvider = ({
       let stateValue = [...selectedValues];
 
       /**
-       * No initial values where set for this filter, and the update contains no values. So we
-       * can remove the filter from the changedFilters storage.
-       */
-      if (initialValues.length === 0 && selectedValues.length === 0) {
-        removeChangedFilterInternal(filterId);
-        return;
-      }
-
-      /**
        * When the filter update would recreate the state that the filter initially had, we
        * remove the filter from the changedFilters storage.
        *
        * That enables proper behavior for the "reset" and "update" button states.
        */
-      if (initialValues.length !== 0 && selectedValues.length !== 0) {
-        if (initialValues.every((initial, i) => initial === selectedValues[i])) {
-          removeChangedFilterInternal(filterId);
-          return;
-        }
+      const initialValueIds = initialValues.map(entry => entry.id || entry);
+
+      if (initialValueIds.length === selectedValues.length
+        && initialValueIds.every((initial, i) => initial === selectedValues[i])) {
+        removeChangedFilterInternal(filterId);
+        return;
       }
 
       if (Array.isArray(filter.values)) {

@@ -39,6 +39,7 @@ const FilterResetButton = ({ disabled, onClick }) => {
           onClick={onClick}
           disabled={disabled}
           testId="clearAllButton"
+          size="small"
         >
           <I18n.Text string="filter.reset" />
         </Button>
