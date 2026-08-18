@@ -5,22 +5,15 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()(theme => ({
   toggle: {
     display: 'flex',
-    flexFlow: 'row nowrap',
-    alignItems: 'center',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: theme.spacing(1),
     flex: 1,
     minWidth: 0,
   },
   label: {
     ...theme.typography.body1,
-    flexShrink: 0,
     textAlign: 'left',
-    maxWidth: '50%',
-    paddingRight: '16px',
-  },
-  selected: {
-    ...theme.typography.body2,
-    flex: 1,
-    minWidth: 0,
   },
 }));
 
@@ -40,9 +33,7 @@ const Toggle = ({
       <span className={classes.label}>
         {label}
       </span>
-      {selected && (
-        <span className={classes.selected}>{selected}</span>
-      )}
+      {selected}
     </div>
   );
 };

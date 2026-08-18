@@ -2,10 +2,17 @@ import React, { memo, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()(() => ({
-  values: {
-    display: 'block',
-    textAlign: 'left',
+const useStyles = makeStyles()(theme => ({
+  chips: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: theme.spacing(0.5),
+  },
+  chip: {
+    ...theme.typography.body2,
+    padding: theme.spacing(0.25, 1.25),
+    borderRadius: 16,
+    border: `1px solid ${theme.palette.secondary.main}`,
     overflowWrap: 'anywhere',
   },
 }));
@@ -22,12 +29,7 @@ const Selected = ({ selected, values }) => {
     if (!selected || selected.length === 0) {
       return [];
     }
-    return values.reduce((prevValues, value) => {
-      if (selected.includes(value.id)) {
-        prevValues.push(value.label);
-      }
-      return prevValues;
-    }, []);
+    return values.filter(value => selected.includes(value.id));
   }, [selected, values]);
 
   if (items.length === 0) {
@@ -35,7 +37,11 @@ const Selected = ({ selected, values }) => {
   }
 
   return (
-    <span className={classes.values}>{items.join(', ')}</span>
+    <div className={classes.chips}>
+      {items.map(({ id, label }) => (
+        <span key={id} className={classes.chip}>{label}</span>
+      ))}
+    </div>
   );
 };
 

@@ -20,6 +20,9 @@ const useStyles = makeStyles()((theme, { columns }) => ({
   accordion: {
     overflow: 'hidden',
   },
+  chevron: {
+    alignSelf: 'flex-start',
+  },
   content: {
     paddingBottom: theme.spacing(1),
     display: 'grid',
@@ -60,9 +63,16 @@ const Selector = ({
   }, [selectedFromProps]);
 
   useEffect(() => {
-    const items = Array.from(contentRef.current?.children ?? []);
+    const element = contentRef.current;
+    const items = Array.from(element?.children ?? []);
 
+    if (!items.length) {
+      return;
+    }
+
+    element.style.gridTemplateColumns = '1fr';
     setValueWidth(Math.max(0, ...items.map(item => item.getBoundingClientRect().width)));
+    element.style.gridTemplateColumns = '';
   }, [values]);
 
   const handleToggle = useCallback((value) => {
@@ -110,6 +120,7 @@ const Selector = ({
           testId={id}
           handleLabel={i18n.text('filter.filter_by', { label })}
           className={classes.accordion}
+          chevronClassName={classes.chevron}
         >
           <div className={classes.content} ref={contentRef}>
             {values.map(value => (
