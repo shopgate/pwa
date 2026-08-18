@@ -207,9 +207,6 @@ const useStyles = makeStyles<ButtonOwnProps>({
           backgroundColor: 'transparent',
         },
       },
-      ...(loading && loadingPosition === 'center' && {
-
-      }),
     },
     small: {
       '--font-size': `calc(${theme.typography.button.fontSize} * 0.875)`,
