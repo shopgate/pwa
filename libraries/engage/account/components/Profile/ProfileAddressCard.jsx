@@ -60,7 +60,7 @@ const useStyles = makeStyles()(theme => ({
     },
     '&&': {
       marginTop: 8,
-      borderRadius: 5,
+      borderRadius: theme.shape.borderRadius,
       fontSize: theme.typography.body2.fontSize,
       padding: 0,
       textTransform: 'none',

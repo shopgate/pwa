@@ -51,7 +51,7 @@ Requires the external `sgconnect` CLI (not installed by `yarn install`).
 - **Folder name ≠ package name** in `libraries/*`: e.g. `libraries/engage` → `@shopgate/engage`, `common` → `@shopgate/pwa-common`, `core` → `@shopgate/pwa-core`, `commerce` → `@shopgate/pwa-common-commerce`, `webcheckout` → `@shopgate/pwa-webcheckout-shopify`. The Makefile auto-prefixes `@shopgate/pwa-` except `eslint-config` and `tracking-core`.
 - **`libraries/engage`** is the umbrella library themes consume. It has **no `main`/`exports`** — imports like `@shopgate/engage/core` resolve to `libraries/engage/core/index.js` (directory-as-subpath, via workspace symlinks in `node_modules/@shopgate/`). API lives in per-domain `index.js` barrels (`cart/`, `product/`, `checkout/`, `styles/`, …).
 - **App entry point:** `themes/theme-ios11/index.jsx` — imports `initialize` from `@shopgate/engage/core`, builds the store from `pages/reducers` + `pages/subscribers`, renders `<Pages/>` into `#root`.
-- **Themes are git subtrees** (`theme-gmd`, `theme-ios11`, defined in `repos.json`); they may be absent in a fresh checkout.
+- **Themes are git subtrees** (`theme-gmd`, `theme-ios11`, defined in `repos.json`); they may be absent in a fresh checkout. `theme-gmd` is on its way out and must not be changed — see Editing Guidelines.
 - **`utils/*`** are tooling packages: `unit-tests` → `@shopgate/pwa-unit-test` (root `jest.config.js` extends it), `webpack`, `eslint-config`, `e2e`, `benchmark`.
 - **`pipelines/` / `trustedPipelines/`** are backend pipeline JSON definitions, not JS.
 - **Naming conventions:** tests `*.spec.js(x)` colocated; `index.js` barrels; colocated `*.types.js`. Existing redux wiring lives in `connector.js` (not `connect.js`) — these are legacy; do not add new `connector.js` files (see Editing Guidelines).
@@ -89,7 +89,8 @@ Do not copy Knowledge Base content into this file. Keep AGENTS.md focused on thi
 
 ## Editing Guidelines for AI Agents
 
-- Do not hand-edit generated/local files: `CHANGELOG.md`, `dist/`, `coverage/`, `.sgcloud/`, `node_modules/`, subtree'd `themes/*` (edit those in their own repos).
+- Do not hand-edit generated/local files: `CHANGELOG.md`, `dist/`, `coverage/`, `.sgcloud/`, `node_modules/`.
+- `themes/theme-ios11` may be edited here. **Do not change `themes/theme-gmd`** — it is being dropped, so its code is no longer maintained. A fix that would land in gmd either goes into `libraries/*` or is left undone; say so rather than editing it.
 - When adding a library/extension, keep `package.json` `workspaces` and `lerna.json` `packages` in sync, and respect the Makefile's `@shopgate/pwa-` prefixing rule.
 - New typed code should use TypeScript (`.ts/.tsx`).
 - Don't import `React` just for JSX — the Babel automatic JSX runtime (React 17) handles it.

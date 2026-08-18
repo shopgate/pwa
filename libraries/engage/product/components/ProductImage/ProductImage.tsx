@@ -67,6 +67,10 @@ export interface ProductImageProps extends Omit<ImageProps, 'backgroundColor' | 
 }
 
 const useStyles = makeStyles()(theme => ({
+  rounded: {
+    borderRadius: theme.components.productImage.borderRadius,
+    overflow: 'hidden',
+  },
   placeholderContent: {
     position: 'absolute',
     width: '100%',
@@ -145,6 +149,8 @@ const ProductImage = (props: ProductImageProps) => {
   const theme = useTheme();
   const showInnerShadow = useProductImageShadow();
 
+  const isRounded = (context || DEFAULT_PRODUCT_IMAGE_CONTEXT) === 'list';
+
   // Image decides when to show this.
   const placeholder = placeholderSrc ? (
     <ProductImagePlaceholder
@@ -167,14 +173,14 @@ const ProductImage = (props: ProductImageProps) => {
         ratio: resolved.ratio,
       } : undefined}
     >
-      <div className={cx(className, 'engage__product__product-image')}>
+      <div className={cx(isRounded && classes.rounded, className, 'engage__product__product-image')}>
         <Image
           {...props}
           resolutions={resolved.resolutions}
           ratio={resolved.ratio}
           placeholder={placeholder}
           className={showInnerShadow ? classes.innerShadow : ''}
-          backgroundColor={noBackground ? 'transparent' : theme.palette.background.surface}
+          backgroundColor={noBackground ? 'transparent' : theme.palette.common.white}
           aria-hidden={!alt}
         />
       </div>

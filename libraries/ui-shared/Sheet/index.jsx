@@ -104,6 +104,16 @@ const useStyles = makeStyles()(theme => ({
     ],
     overflowY: 'scroll',
     WebkitOverflowScrolling: 'touch',
+    '@media (hover: hover) and (pointer: fine)': {
+      '::-webkit-scrollbar': {
+        width: 6,
+        background: 'transparent',
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: theme.components.border.medium,
+        borderRadius: 4,
+      },
+    },
   },
   drawerAnimIn: {
     [responsiveMediaQuery('<=sm', { appAlways: true })]: {

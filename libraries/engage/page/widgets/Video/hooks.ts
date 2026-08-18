@@ -48,9 +48,9 @@ export interface UseVideoWidgetResult extends Pick<
   'url' | 'muted' | 'loop' | 'controls' | 'autoplay' | 'link'
 > {
   /**
-   * The resolved border radius value in pixels.
+   * The resolved border radius as a CSS length.
    */
-  borderRadius: number;
+  borderRadius: string;
 }
 
 /**

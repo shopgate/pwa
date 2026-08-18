@@ -62,7 +62,7 @@ const useStyles = makeStyles()(theme => ({
       marginTop: 8,
       marginRight: 16,
       backgroundColor: theme.palette.primary.main,
-      borderRadius: 5,
+      borderRadius: theme.shape.borderRadius,
       fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,

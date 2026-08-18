@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     color: theme.contrastColor(theme.components.ctaButton.background),
     fontSize: theme.typography.body1.fontSize,
     fontWeight: theme.typography.fontWeightBold,
-    borderRadius: 5,
+    borderRadius: theme.shape.borderRadius,
     width: '100%',
     outline: 0,
     transition: 'width 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',

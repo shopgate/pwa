@@ -63,7 +63,7 @@ const mapDispatchToProps = dispatch => ({
   fetchLocations: (productId, params) => dispatch(fetchProductLocations(productId, params)),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       margin: 8,
@@ -72,13 +72,13 @@ const useStyles = makeStyles()({
   addButton: {
     width: 'calc(100% - 32px)',
     margin: 16,
-    borderRadius: 5,
+    borderRadius: theme.shape.borderRadius,
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       width: 240,
       float: 'right',
     },
   },
-});
+}));
 
 /**
  * @param {Object} props Props

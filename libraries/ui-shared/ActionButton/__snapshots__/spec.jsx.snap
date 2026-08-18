@@ -27,7 +27,7 @@ exports[`<ActionButton /> Given the component was mounted to the DOM should matc
   class="ui-shared__action-button sg-berhvi-withGap"
 >
   <button
-    class="common__button ui-shared__button ui-shared__ripple-button sg-1hyscfq-root-button"
+    class="common__button ui-shared__button ui-shared__ripple-button sg-1disw1o-root-button"
     data-test-id="Button"
   >
     <div

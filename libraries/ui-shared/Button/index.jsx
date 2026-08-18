@@ -15,9 +15,10 @@ const buttonTypes = [
 /**
  * @param {string} text Text color.
  * @param {string|null} background Fill color.
+ * @param {Object} theme Theme with shape.
  * @returns {Object} JSS for root button.
  */
-const baseButton = (text, background) => ({
+const baseButton = (text, background, theme) => ({
   position: 'relative',
   display: 'inline-block',
   outline: 0,
@@ -29,6 +30,7 @@ const baseButton = (text, background) => ({
     cursor: 'not-allowed',
   },
   ...themeConfig.variables.buttonBase,
+  borderRadius: theme.shape.borderRadius,
 });
 
 /**
@@ -38,7 +40,7 @@ const baseButton = (text, background) => ({
  * @returns {Object} Object with `button` and `content` style maps.
  */
 const pairFromColors = (textColor, fillColor, theme) => ({
-  button: baseButton(textColor, fillColor),
+  button: baseButton(textColor, fillColor, theme),
   content: {
     padding: theme.spacing(0, 2, 0),
     color: textColor,

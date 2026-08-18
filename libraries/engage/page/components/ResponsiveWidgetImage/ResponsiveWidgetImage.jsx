@@ -13,7 +13,7 @@ import { parseImageUrl } from '../../helpers';
 /**
  * @typedef {Object} CustomResponsiveImageProps
  * @property {boolean} [enableParallax] Whether to enable the parallax effect.
- * @property {number} [borderRadius] The border radius to apply to the image.
+ * @property {number|string} [borderRadius] The border radius to apply to the image.
  * @property {Breakpoint} [breakpoint] The breakpoint from which on a higher resolution image should
  * be loaded.
  * @property {boolean} [isBanner] Whether the image is used as a banner (full width and height of
@@ -135,7 +135,7 @@ const ResponsiveWidgetImage = ({
         [classes.container]: !isBanner,
       })}
       style={{
-        borderRadius: `${borderRadius}px`,
+        borderRadius,
         ...(!isBanner && enableParallax ? { aspectRatio: containerRatio } : {}),
       }}
     >
@@ -163,7 +163,7 @@ const ResponsiveWidgetImage = ({
 
 ResponsiveWidgetImage.propTypes = {
   alt: PropTypes.string,
-  borderRadius: PropTypes.number,
+  borderRadius: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   breakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   className: PropTypes.string,
   enableParallax: PropTypes.bool,

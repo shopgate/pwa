@@ -225,6 +225,7 @@ export const componentsSchema = {
   },
   cards: {
     vars: {
+      borderRadius: '',
       backgroundColor: '',
       borderWidth: '',
       borderColor: '',
@@ -241,11 +242,20 @@ export const componentsSchema = {
   },
   tiles: {
     vars: {
+      borderRadius: '',
       backgroundColor: '',
+      borderWidth: '',
+      borderColor: '',
+      border: '',
       padding: '',
       textPadding: '',
       textPaddingTop: '',
       imagePadding: '',
+    },
+  },
+  productImage: {
+    vars: {
+      borderRadius: '',
     },
   },
 } as const;
@@ -361,6 +371,7 @@ export const componentsDefaults = {
   },
   cards: {
     vars: {
+      borderRadius: 'var(--sg-shape-borderRadius)',
       backgroundColor: t => t.palette.background.surface,
       borderWidth: 0,
       borderColor: 'transparent',
@@ -377,11 +388,20 @@ export const componentsDefaults = {
   },
   tiles: {
     vars: {
+      borderRadius: 'var(--sg-shape-borderRadius)',
       backgroundColor: 'transparent',
+      borderWidth: 0,
+      borderColor: 'transparent',
+      border: 'var(--sg-components-tiles-borderWidth) solid var(--sg-components-tiles-borderColor)',
       padding: 0,
       textPadding: 8,
       textPaddingTop: 'max(var(--sg-components-tiles-textPadding), 16px)',
       imagePadding: 0,
+    },
+  },
+  productImage: {
+    vars: {
+      borderRadius: 'var(--sg-shape-borderRadius)',
     },
   },
 } satisfies ComponentsDefaults;

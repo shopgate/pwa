@@ -38,7 +38,7 @@ const useStyles = makeStyles()(theme => ({
       margin: '0 0px 16px 16px',
       backgroundColor: theme.palette.background.surface,
       border: `1px solid ${theme.palette.primary.main}`,
-      borderRadius: 5,
+      borderRadius: theme.shape.borderRadius,
       fontSize: theme.typography.body2.fontSize,
       textTransform: 'none',
       padding: 0,

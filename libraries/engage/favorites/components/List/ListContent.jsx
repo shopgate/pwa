@@ -13,7 +13,7 @@ import {
 import { getUseGetFavoriteIdsPipeline } from '@shopgate/engage/favorites';
 import ListItemWrapper from './ListItemWrapper';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   divider: {
     height: 1,
     width: 'calc(100% + 32px)',
@@ -25,9 +25,9 @@ const useStyles = makeStyles()({
   loadMoreButton: {
     width: 'calc(100% - 32px)',
     margin: '16px 16px 0 16px',
-    borderRadius: 5,
+    borderRadius: theme.shape.borderRadius,
   },
-});
+}));
 
 /**
  * @param {Object} state State

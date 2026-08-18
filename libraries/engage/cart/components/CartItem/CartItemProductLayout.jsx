@@ -37,6 +37,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   },
   image: {
     background: theme.palette.background.emphasized,
+    borderRadius: theme.shape.borderRadius,
     marginBottom: theme.spacing(1.25),
     width: leftColumnWidth,
   },

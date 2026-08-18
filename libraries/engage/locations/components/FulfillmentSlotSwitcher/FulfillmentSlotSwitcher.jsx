@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
       borderBottom: 0,
     },
     ' > div': {
-      borderRadius: 5,
+      borderRadius: theme.shape.borderRadius,
       margin: -1,
       background: theme.palette.background.surface,
       border: `1px solid ${theme.components.border.light}`,
