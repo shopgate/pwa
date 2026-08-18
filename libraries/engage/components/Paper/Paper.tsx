@@ -17,8 +17,7 @@ export interface PaperOwnProps {
   /** Removes the rounded corners. @default false */
   square?: boolean;
   /**
-   * Corner radius. The theme carries a dedicated value per surface — `shape.cardsBorderRadius` for
-   * cards. Ignored when `square`.
+   * Corner radius per surface, e.g. `components.cards.borderRadius`. Ignored when `square`.
    * @default theme.shape.borderRadius
    */
   borderRadius?: number | string;

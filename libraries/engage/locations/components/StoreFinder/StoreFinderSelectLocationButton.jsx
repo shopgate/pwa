@@ -1,5 +1,5 @@
 import React, { useCallback, useContext, useMemo } from 'react';
-import { RippleButton } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import { StoreContext } from './Store.context';
 import { i18n } from '../../../core/helpers';
@@ -8,14 +8,6 @@ import { StoreFinderContext } from '../../locations.context';
 const useStyles = makeStyles()(theme => ({
   selectLocationButtonWrapper: {
     padding: theme.spacing(0, 2, 1, 2),
-  },
-  selectLocationButton: {
-    width: '100%',
-    fontSize: `${theme.typography.body2.fontSize} !important`,
-    ':not(:disabled)': {
-      background: `${theme.palette.primary.main} !important`,
-      color: `${theme.palette.primary.contrastText} !important`,
-    },
   },
 }));
 
@@ -40,9 +32,11 @@ export const StoreFinderSelectLocationButton = () => {
 
   return (
     <div className={classes.selectLocationButtonWrapper}>
-      <RippleButton
+      <Button
+        color="primary"
+        size="small"
+        fullWidth
         onClick={handleClick}
-        className={classes.selectLocationButton}
         disabled={(isLoading || store?.isComingSoon || isSelected)}
       >
         {i18n.text(
@@ -50,7 +44,7 @@ export const StoreFinderSelectLocationButton = () => {
             'location.comingSoon' :
             'locations.select_location'
         )}
-      </RippleButton>
+      </Button>
     </div>
   );
 };

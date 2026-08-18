@@ -1,13 +1,15 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, Button, SurroundPortals } from '@shopgate/engage/components';
+import { I18n, SurroundPortals } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
-import { FilterItem } from '@shopgate/engage/filter';
 import { PORTAL_FILTER_RESET_BUTTON } from '@shopgate/engage/filter/constants';
 
 const useStyles = makeStyles()(theme => ({
   buttonContainer: {
-    padding: theme.spacing(1, 0, 5),
+    marginTop: theme.spacing(0.5),
+    marginRight: theme.spacing(2),
+    marginBottom: 40,
     textAlign: 'right',
   },
 }));
@@ -30,19 +32,17 @@ const FilterResetButton = ({ disabled, onClick }) => {
         onClick,
       }}
     >
-      <FilterItem>
-        <div className={classes.buttonContainer}>
-          <Button
-            flat
-            type="regular"
-            onClick={onClick}
-            disabled={disabled}
-            testId="clearAllButton"
-          >
-            <I18n.Text string="filter.reset" />
-          </Button>
-        </div>
-      </FilterItem>
+      <div className={classes.buttonContainer}>
+        <Button
+          variant="link"
+          color="secondary"
+          onClick={onClick}
+          disabled={disabled}
+          testId="clearAllButton"
+        >
+          <I18n.Text string="filter.reset" />
+        </Button>
+      </div>
     </SurroundPortals>
   );
 };

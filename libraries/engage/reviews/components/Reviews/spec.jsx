@@ -28,7 +28,6 @@ jest.mock('@shopgate/engage/components', () => ({
     Text: () => <span>reviews.button_all</span>,
   },
 }));
-jest.mock('@shopgate/pwa-ui-shared/ButtonLink', () => 'a');
 
 // Mock the getter of the hasReviews key inside the app config, so that we can turn it off later
 jest.resetModules();
@@ -57,7 +56,7 @@ describe('<Reviews />', () => {
     expect(screen.getByTestId('reviews-header')).toBeTruthy();
     expect(screen.getByTestId('reviews-list')).toBeTruthy();
     expect(screen.getByTestId('reviews-info')).toBeTruthy();
-    expect(screen.queryByRole('link', { name: 'reviews.button_all' })).toBeNull();
+    expect(screen.queryByRole('button', { name: 'reviews.button_all' })).toBeNull();
   });
 
   it('should render reviews, header and all reviews link', () => {
@@ -65,7 +64,7 @@ describe('<Reviews />', () => {
 
     expect(screen.getByTestId('reviews-header')).toBeTruthy();
     expect(screen.getByTestId('reviews-list')).toBeTruthy();
-    expect(screen.getByRole('link', { name: 'reviews.button_all' })).toHaveAttribute('href', '/item/666f6f/reviews');
+    expect(screen.getByRole('button', { name: 'reviews.button_all' })).toBeTruthy();
   });
 
   it('should render reviews, header, but no all reviews link', () => {
@@ -73,7 +72,7 @@ describe('<Reviews />', () => {
 
     expect(screen.getByTestId('reviews-header')).toBeTruthy();
     expect(screen.getByTestId('reviews-list')).toBeTruthy();
-    expect(screen.queryByRole('link', { name: 'reviews.button_all' })).toBeNull();
+    expect(screen.queryByRole('button', { name: 'reviews.button_all' })).toBeNull();
   });
 
   it('should not render when feature flag is off', () => {
@@ -84,6 +83,6 @@ describe('<Reviews />', () => {
     expect(container.firstChild).toBeNull();
     expect(screen.queryByTestId('reviews-header')).toBeNull();
     expect(screen.queryByTestId('reviews-list')).toBeNull();
-    expect(screen.queryByRole('link', { name: 'reviews.button_all' })).toBeNull();
+    expect(screen.queryByRole('button', { name: 'reviews.button_all' })).toBeNull();
   });
 });

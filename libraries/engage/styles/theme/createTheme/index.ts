@@ -58,7 +58,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
         { palette: { mode: type } },
         defaultScheme,
         scheme
-      ));
+      ), cssVarPrefix);
       return acc;
     }, {} as ColorSchemeThemes);
 

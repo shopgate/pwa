@@ -230,89 +230,74 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="sg-nxzo2r-buttonContainer"
+        className="sg-47jbj8-buttonContainer"
       >
-        <Connect(ButtonLink)
-          className="sg-1fwzktp-button"
+        <Button
+          color="primary"
           disabled={true}
-          flat={false}
+          fullWidth={true}
           href="/category/6e756c6c"
         >
-          <ButtonLink
-            className="sg-1fwzktp-button"
+          <ButtonBase
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1g605d0-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+            data-color="primary"
+            data-full-width={true}
+            data-size="medium"
+            data-variant="contained"
+            disableBaseClassName={true}
+            disableRipple={false}
             disabled={true}
-            flat={false}
             href="/category/6e756c6c"
-            navigate={[Function]}
-            noGap={false}
           >
-            <ActionButton
-              className="sg-1fwzktp-button"
-              disableClickDelay={false}
+            <button
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-r3j5cu-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+              data-color="primary"
+              data-full-width={true}
+              data-size="medium"
+              data-variant="contained"
               disabled={true}
-              flat={false}
-              loading={false}
-              noGap={false}
               onClick={[Function]}
-              rippleClassName=""
-              rippleSize={null}
-              testId={null}
-              type="secondary"
-              wrapContent={true}
+              onKeyDown={[Function]}
+              onLostPointerCapture={[Function]}
+              onPointerCancel={[Function]}
+              onPointerDown={[Function]}
+              onPointerLeave={[Function]}
+              onPointerUp={[Function]}
+              type="button"
             >
-              <div
-                className="ui-shared__action-button sg-berhvi-withGap"
-                data-test-id={null}
+              <span
+                className="sg-85tluf-Button-label"
               >
-                <RippleButton
-                  className="sg-1fwzktp-button"
-                  disabled={true}
-                  flat={false}
-                  onClick={[Function]}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId="Button"
-                  type="secondary"
-                  wrapContent={true}
+                <span
+                  className="sg-18jpr3t-Button-loader"
+                  style={
+                    {
+                      "display": "contents",
+                    }
+                  }
+                />
+                <Text
+                  string="common.show_products"
                 >
-                  <Button
-                    className="sg-1fwzktp-button ui-shared__ripple-button"
-                    disabled={true}
-                    flat={false}
-                    onClick={[Function]}
-                    testId="Button"
-                    type="secondary"
-                    wrapContent={true}
-                  >
-                    <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-13yvck0-button-button"
-                      disabled={true}
-                      onClick={[Function]}
-                      testId="Button"
-                    >
-                      <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-17fplr3-root-button-button"
-                        data-test-id="Button"
-                        disabled={true}
-                        onClick={null}
-                      >
-                        <div
-                          className="sg-ig6wzi-content"
-                        >
-                          <Text
-                            string="common.show_products"
-                          >
-                            common.show_products
-                          </Text>
-                        </div>
-                      </button>
-                    </Button>
-                  </Button>
-                </RippleButton>
-              </div>
-            </ActionButton>
-          </ButtonLink>
-        </Connect(ButtonLink)>
+                  common.show_products
+                </Text>
+              </span>
+              <Ripple
+                ripples={[]}
+              >
+                <span
+                  className="sg-sfhzfw-ButtonBaseRipple-container"
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component={null}
+                    exit={true}
+                  />
+                </span>
+              </Ripple>
+            </button>
+          </ButtonBase>
+        </Button>
       </div>
     </div>
   </NestedCategoryFilter>
@@ -476,7 +461,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -707,7 +692,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -877,103 +862,74 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="sg-nxzo2r-buttonContainer"
+        className="sg-47jbj8-buttonContainer"
       >
-        <Connect(ButtonLink)
-          className="sg-1fwzktp-button"
+        <Button
+          color="primary"
           disabled={false}
-          flat={false}
+          fullWidth={true}
           href="/category/312d31"
         >
-          <ButtonLink
-            className="sg-1fwzktp-button"
+          <ButtonBase
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-52j5a3-Button-root-Button-contained-Button-fullWidth"
+            data-color="primary"
+            data-full-width={true}
+            data-size="medium"
+            data-variant="contained"
+            disableBaseClassName={true}
+            disableRipple={false}
             disabled={false}
-            flat={false}
             href="/category/312d31"
-            navigate={[Function]}
-            noGap={false}
           >
-            <ActionButton
-              className="sg-1fwzktp-button"
-              disableClickDelay={false}
+            <button
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-s2meix-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
+              data-color="primary"
+              data-full-width={true}
+              data-size="medium"
+              data-variant="contained"
               disabled={false}
-              flat={false}
-              loading={false}
-              noGap={false}
               onClick={[Function]}
-              rippleClassName=""
-              rippleSize={null}
-              testId={null}
-              type="secondary"
-              wrapContent={true}
+              onKeyDown={[Function]}
+              onLostPointerCapture={[Function]}
+              onPointerCancel={[Function]}
+              onPointerDown={[Function]}
+              onPointerLeave={[Function]}
+              onPointerUp={[Function]}
+              type="button"
             >
-              <div
-                className="ui-shared__action-button sg-berhvi-withGap"
-                data-test-id={null}
+              <span
+                className="sg-85tluf-Button-label"
               >
-                <RippleButton
-                  className="sg-1fwzktp-button"
-                  disabled={false}
-                  flat={false}
-                  onClick={[Function]}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId="Button"
-                  type="secondary"
-                  wrapContent={true}
+                <span
+                  className="sg-18jpr3t-Button-loader"
+                  style={
+                    {
+                      "display": "contents",
+                    }
+                  }
+                />
+                <Text
+                  string="common.show_products"
                 >
-                  <Button
-                    className="sg-1fwzktp-button ui-shared__ripple-button"
-                    disabled={false}
-                    flat={false}
-                    onClick={[Function]}
-                    testId="Button"
-                    type="secondary"
-                    wrapContent={false}
-                  >
-                    <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
-                      disabled={false}
-                      onClick={[Function]}
-                      testId="Button"
-                    >
-                      <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
-                        data-test-id="Button"
-                        disabled={false}
-                        onClick={[Function]}
-                      >
-                        <Ripple
-                          className="sg-fpa50s-contentWrapper"
-                          color="var(--sg-palette-common-black)"
-                          disabled={false}
-                          fill={true}
-                          onClick={[Function]}
-                          onComplete={[Function]}
-                          overflow={true}
-                          size={null}
-                        >
-                          <div
-                            className="ui-shared__ripple sg-fpa50s-contentWrapper"
-                            data-test-id="Ripple"
-                            onClick={[Function]}
-                            style={null}
-                          >
-                            <Text
-                              string="common.show_products"
-                            >
-                              common.show_products
-                            </Text>
-                          </div>
-                        </Ripple>
-                      </button>
-                    </Button>
-                  </Button>
-                </RippleButton>
-              </div>
-            </ActionButton>
-          </ButtonLink>
-        </Connect(ButtonLink)>
+                  common.show_products
+                </Text>
+              </span>
+              <Ripple
+                ripples={[]}
+              >
+                <span
+                  className="sg-sfhzfw-ButtonBaseRipple-container"
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component={null}
+                    exit={true}
+                  />
+                </span>
+              </Ripple>
+            </button>
+          </ButtonBase>
+        </Button>
       </div>
     </div>
   </NestedCategoryFilter>
@@ -1560,103 +1516,74 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="sg-nxzo2r-buttonContainer"
+        className="sg-47jbj8-buttonContainer"
       >
-        <Connect(ButtonLink)
-          className="sg-1fwzktp-button"
+        <Button
+          color="primary"
           disabled={false}
-          flat={false}
+          fullWidth={true}
           href="/category/312d322d31"
         >
-          <ButtonLink
-            className="sg-1fwzktp-button"
+          <ButtonBase
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-52j5a3-Button-root-Button-contained-Button-fullWidth"
+            data-color="primary"
+            data-full-width={true}
+            data-size="medium"
+            data-variant="contained"
+            disableBaseClassName={true}
+            disableRipple={false}
             disabled={false}
-            flat={false}
             href="/category/312d322d31"
-            navigate={[Function]}
-            noGap={false}
           >
-            <ActionButton
-              className="sg-1fwzktp-button"
-              disableClickDelay={false}
+            <button
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-s2meix-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
+              data-color="primary"
+              data-full-width={true}
+              data-size="medium"
+              data-variant="contained"
               disabled={false}
-              flat={false}
-              loading={false}
-              noGap={false}
               onClick={[Function]}
-              rippleClassName=""
-              rippleSize={null}
-              testId={null}
-              type="secondary"
-              wrapContent={true}
+              onKeyDown={[Function]}
+              onLostPointerCapture={[Function]}
+              onPointerCancel={[Function]}
+              onPointerDown={[Function]}
+              onPointerLeave={[Function]}
+              onPointerUp={[Function]}
+              type="button"
             >
-              <div
-                className="ui-shared__action-button sg-berhvi-withGap"
-                data-test-id={null}
+              <span
+                className="sg-85tluf-Button-label"
               >
-                <RippleButton
-                  className="sg-1fwzktp-button"
-                  disabled={false}
-                  flat={false}
-                  onClick={[Function]}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId="Button"
-                  type="secondary"
-                  wrapContent={true}
+                <span
+                  className="sg-18jpr3t-Button-loader"
+                  style={
+                    {
+                      "display": "contents",
+                    }
+                  }
+                />
+                <Text
+                  string="common.show_products"
                 >
-                  <Button
-                    className="sg-1fwzktp-button ui-shared__ripple-button"
-                    disabled={false}
-                    flat={false}
-                    onClick={[Function]}
-                    testId="Button"
-                    type="secondary"
-                    wrapContent={false}
-                  >
-                    <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
-                      disabled={false}
-                      onClick={[Function]}
-                      testId="Button"
-                    >
-                      <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
-                        data-test-id="Button"
-                        disabled={false}
-                        onClick={[Function]}
-                      >
-                        <Ripple
-                          className="sg-fpa50s-contentWrapper"
-                          color="var(--sg-palette-common-black)"
-                          disabled={false}
-                          fill={true}
-                          onClick={[Function]}
-                          onComplete={[Function]}
-                          overflow={true}
-                          size={null}
-                        >
-                          <div
-                            className="ui-shared__ripple sg-fpa50s-contentWrapper"
-                            data-test-id="Ripple"
-                            onClick={[Function]}
-                            style={null}
-                          >
-                            <Text
-                              string="common.show_products"
-                            >
-                              common.show_products
-                            </Text>
-                          </div>
-                        </Ripple>
-                      </button>
-                    </Button>
-                  </Button>
-                </RippleButton>
-              </div>
-            </ActionButton>
-          </ButtonLink>
-        </Connect(ButtonLink)>
+                  common.show_products
+                </Text>
+              </span>
+              <Ripple
+                ripples={[]}
+              >
+                <span
+                  className="sg-sfhzfw-ButtonBaseRipple-container"
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component={null}
+                    exit={true}
+                  />
+                </span>
+              </Ripple>
+            </button>
+          </ButtonBase>
+        </Button>
       </div>
     </div>
   </NestedCategoryFilter>
@@ -1838,7 +1765,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -2069,7 +1996,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -2415,89 +2342,74 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="sg-nxzo2r-buttonContainer"
+        className="sg-47jbj8-buttonContainer"
       >
-        <Connect(ButtonLink)
-          className="sg-1fwzktp-button"
+        <Button
+          color="primary"
           disabled={true}
-          flat={false}
+          fullWidth={true}
           href="/category/6e756c6c"
         >
-          <ButtonLink
-            className="sg-1fwzktp-button"
+          <ButtonBase
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1g605d0-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+            data-color="primary"
+            data-full-width={true}
+            data-size="medium"
+            data-variant="contained"
+            disableBaseClassName={true}
+            disableRipple={false}
             disabled={true}
-            flat={false}
             href="/category/6e756c6c"
-            navigate={[Function]}
-            noGap={false}
           >
-            <ActionButton
-              className="sg-1fwzktp-button"
-              disableClickDelay={false}
+            <button
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-r3j5cu-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+              data-color="primary"
+              data-full-width={true}
+              data-size="medium"
+              data-variant="contained"
               disabled={true}
-              flat={false}
-              loading={false}
-              noGap={false}
               onClick={[Function]}
-              rippleClassName=""
-              rippleSize={null}
-              testId={null}
-              type="secondary"
-              wrapContent={true}
+              onKeyDown={[Function]}
+              onLostPointerCapture={[Function]}
+              onPointerCancel={[Function]}
+              onPointerDown={[Function]}
+              onPointerLeave={[Function]}
+              onPointerUp={[Function]}
+              type="button"
             >
-              <div
-                className="ui-shared__action-button sg-berhvi-withGap"
-                data-test-id={null}
+              <span
+                className="sg-85tluf-Button-label"
               >
-                <RippleButton
-                  className="sg-1fwzktp-button"
-                  disabled={true}
-                  flat={false}
-                  onClick={[Function]}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId="Button"
-                  type="secondary"
-                  wrapContent={true}
+                <span
+                  className="sg-18jpr3t-Button-loader"
+                  style={
+                    {
+                      "display": "contents",
+                    }
+                  }
+                />
+                <Text
+                  string="common.show_products"
                 >
-                  <Button
-                    className="sg-1fwzktp-button ui-shared__ripple-button"
-                    disabled={true}
-                    flat={false}
-                    onClick={[Function]}
-                    testId="Button"
-                    type="secondary"
-                    wrapContent={true}
-                  >
-                    <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-13yvck0-button-button"
-                      disabled={true}
-                      onClick={[Function]}
-                      testId="Button"
-                    >
-                      <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-17fplr3-root-button-button"
-                        data-test-id="Button"
-                        disabled={true}
-                        onClick={null}
-                      >
-                        <div
-                          className="sg-ig6wzi-content"
-                        >
-                          <Text
-                            string="common.show_products"
-                          >
-                            common.show_products
-                          </Text>
-                        </div>
-                      </button>
-                    </Button>
-                  </Button>
-                </RippleButton>
-              </div>
-            </ActionButton>
-          </ButtonLink>
-        </Connect(ButtonLink)>
+                  common.show_products
+                </Text>
+              </span>
+              <Ripple
+                ripples={[]}
+              >
+                <span
+                  className="sg-sfhzfw-ButtonBaseRipple-container"
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component={null}
+                    exit={true}
+                  />
+                </span>
+              </Ripple>
+            </button>
+          </ButtonBase>
+        </Button>
       </div>
     </div>
   </NestedCategoryFilter>
@@ -2679,7 +2591,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -2910,7 +2822,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -3183,7 +3095,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -3414,7 +3326,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -3584,103 +3496,74 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="sg-nxzo2r-buttonContainer"
+        className="sg-47jbj8-buttonContainer"
       >
-        <Connect(ButtonLink)
-          className="sg-1fwzktp-button"
+        <Button
+          color="primary"
           disabled={false}
-          flat={false}
+          fullWidth={true}
           href="/category/312d31"
         >
-          <ButtonLink
-            className="sg-1fwzktp-button"
+          <ButtonBase
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-52j5a3-Button-root-Button-contained-Button-fullWidth"
+            data-color="primary"
+            data-full-width={true}
+            data-size="medium"
+            data-variant="contained"
+            disableBaseClassName={true}
+            disableRipple={false}
             disabled={false}
-            flat={false}
             href="/category/312d31"
-            navigate={[Function]}
-            noGap={false}
           >
-            <ActionButton
-              className="sg-1fwzktp-button"
-              disableClickDelay={false}
+            <button
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-s2meix-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
+              data-color="primary"
+              data-full-width={true}
+              data-size="medium"
+              data-variant="contained"
               disabled={false}
-              flat={false}
-              loading={false}
-              noGap={false}
               onClick={[Function]}
-              rippleClassName=""
-              rippleSize={null}
-              testId={null}
-              type="secondary"
-              wrapContent={true}
+              onKeyDown={[Function]}
+              onLostPointerCapture={[Function]}
+              onPointerCancel={[Function]}
+              onPointerDown={[Function]}
+              onPointerLeave={[Function]}
+              onPointerUp={[Function]}
+              type="button"
             >
-              <div
-                className="ui-shared__action-button sg-berhvi-withGap"
-                data-test-id={null}
+              <span
+                className="sg-85tluf-Button-label"
               >
-                <RippleButton
-                  className="sg-1fwzktp-button"
-                  disabled={false}
-                  flat={false}
-                  onClick={[Function]}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId="Button"
-                  type="secondary"
-                  wrapContent={true}
+                <span
+                  className="sg-18jpr3t-Button-loader"
+                  style={
+                    {
+                      "display": "contents",
+                    }
+                  }
+                />
+                <Text
+                  string="common.show_products"
                 >
-                  <Button
-                    className="sg-1fwzktp-button ui-shared__ripple-button"
-                    disabled={false}
-                    flat={false}
-                    onClick={[Function]}
-                    testId="Button"
-                    type="secondary"
-                    wrapContent={false}
-                  >
-                    <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
-                      disabled={false}
-                      onClick={[Function]}
-                      testId="Button"
-                    >
-                      <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
-                        data-test-id="Button"
-                        disabled={false}
-                        onClick={[Function]}
-                      >
-                        <Ripple
-                          className="sg-fpa50s-contentWrapper"
-                          color="var(--sg-palette-common-black)"
-                          disabled={false}
-                          fill={true}
-                          onClick={[Function]}
-                          onComplete={[Function]}
-                          overflow={true}
-                          size={null}
-                        >
-                          <div
-                            className="ui-shared__ripple sg-fpa50s-contentWrapper"
-                            data-test-id="Ripple"
-                            onClick={[Function]}
-                            style={null}
-                          >
-                            <Text
-                              string="common.show_products"
-                            >
-                              common.show_products
-                            </Text>
-                          </div>
-                        </Ripple>
-                      </button>
-                    </Button>
-                  </Button>
-                </RippleButton>
-              </div>
-            </ActionButton>
-          </ButtonLink>
-        </Connect(ButtonLink)>
+                  common.show_products
+                </Text>
+              </span>
+              <Ripple
+                ripples={[]}
+              >
+                <span
+                  className="sg-sfhzfw-ButtonBaseRipple-container"
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component={null}
+                    exit={true}
+                  />
+                </span>
+              </Ripple>
+            </button>
+          </ButtonBase>
+        </Button>
       </div>
     </div>
   </NestedCategoryFilter>
@@ -3902,89 +3785,74 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="sg-nxzo2r-buttonContainer"
+        className="sg-47jbj8-buttonContainer"
       >
-        <Connect(ButtonLink)
-          className="sg-1fwzktp-button"
+        <Button
+          color="primary"
           disabled={true}
-          flat={false}
+          fullWidth={true}
           href="/category/6e756c6c"
         >
-          <ButtonLink
-            className="sg-1fwzktp-button"
+          <ButtonBase
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1g605d0-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+            data-color="primary"
+            data-full-width={true}
+            data-size="medium"
+            data-variant="contained"
+            disableBaseClassName={true}
+            disableRipple={false}
             disabled={true}
-            flat={false}
             href="/category/6e756c6c"
-            navigate={[Function]}
-            noGap={false}
           >
-            <ActionButton
-              className="sg-1fwzktp-button"
-              disableClickDelay={false}
+            <button
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-r3j5cu-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+              data-color="primary"
+              data-full-width={true}
+              data-size="medium"
+              data-variant="contained"
               disabled={true}
-              flat={false}
-              loading={false}
-              noGap={false}
               onClick={[Function]}
-              rippleClassName=""
-              rippleSize={null}
-              testId={null}
-              type="secondary"
-              wrapContent={true}
+              onKeyDown={[Function]}
+              onLostPointerCapture={[Function]}
+              onPointerCancel={[Function]}
+              onPointerDown={[Function]}
+              onPointerLeave={[Function]}
+              onPointerUp={[Function]}
+              type="button"
             >
-              <div
-                className="ui-shared__action-button sg-berhvi-withGap"
-                data-test-id={null}
+              <span
+                className="sg-85tluf-Button-label"
               >
-                <RippleButton
-                  className="sg-1fwzktp-button"
-                  disabled={true}
-                  flat={false}
-                  onClick={[Function]}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId="Button"
-                  type="secondary"
-                  wrapContent={true}
+                <span
+                  className="sg-18jpr3t-Button-loader"
+                  style={
+                    {
+                      "display": "contents",
+                    }
+                  }
+                />
+                <Text
+                  string="common.show_products"
                 >
-                  <Button
-                    className="sg-1fwzktp-button ui-shared__ripple-button"
-                    disabled={true}
-                    flat={false}
-                    onClick={[Function]}
-                    testId="Button"
-                    type="secondary"
-                    wrapContent={true}
-                  >
-                    <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-13yvck0-button-button"
-                      disabled={true}
-                      onClick={[Function]}
-                      testId="Button"
-                    >
-                      <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-17fplr3-root-button-button"
-                        data-test-id="Button"
-                        disabled={true}
-                        onClick={null}
-                      >
-                        <div
-                          className="sg-ig6wzi-content"
-                        >
-                          <Text
-                            string="common.show_products"
-                          >
-                            common.show_products
-                          </Text>
-                        </div>
-                      </button>
-                    </Button>
-                  </Button>
-                </RippleButton>
-              </div>
-            </ActionButton>
-          </ButtonLink>
-        </Connect(ButtonLink)>
+                  common.show_products
+                </Text>
+              </span>
+              <Ripple
+                ripples={[]}
+              >
+                <span
+                  className="sg-sfhzfw-ButtonBaseRipple-container"
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component={null}
+                    exit={true}
+                  />
+                </span>
+              </Ripple>
+            </button>
+          </ButtonBase>
+        </Button>
       </div>
     </div>
   </NestedCategoryFilter>
@@ -4133,7 +4001,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -4364,7 +4232,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -4534,103 +4402,74 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
         </Connect(CategoryPicker)>
       </div>
       <div
-        className="sg-nxzo2r-buttonContainer"
+        className="sg-47jbj8-buttonContainer"
       >
-        <Connect(ButtonLink)
-          className="sg-1fwzktp-button"
+        <Button
+          color="primary"
           disabled={false}
-          flat={false}
+          fullWidth={true}
           href="/category/32"
         >
-          <ButtonLink
-            className="sg-1fwzktp-button"
+          <ButtonBase
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-52j5a3-Button-root-Button-contained-Button-fullWidth"
+            data-color="primary"
+            data-full-width={true}
+            data-size="medium"
+            data-variant="contained"
+            disableBaseClassName={true}
+            disableRipple={false}
             disabled={false}
-            flat={false}
             href="/category/32"
-            navigate={[Function]}
-            noGap={false}
           >
-            <ActionButton
-              className="sg-1fwzktp-button"
-              disableClickDelay={false}
+            <button
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-s2meix-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
+              data-color="primary"
+              data-full-width={true}
+              data-size="medium"
+              data-variant="contained"
               disabled={false}
-              flat={false}
-              loading={false}
-              noGap={false}
               onClick={[Function]}
-              rippleClassName=""
-              rippleSize={null}
-              testId={null}
-              type="secondary"
-              wrapContent={true}
+              onKeyDown={[Function]}
+              onLostPointerCapture={[Function]}
+              onPointerCancel={[Function]}
+              onPointerDown={[Function]}
+              onPointerLeave={[Function]}
+              onPointerUp={[Function]}
+              type="button"
             >
-              <div
-                className="ui-shared__action-button sg-berhvi-withGap"
-                data-test-id={null}
+              <span
+                className="sg-85tluf-Button-label"
               >
-                <RippleButton
-                  className="sg-1fwzktp-button"
-                  disabled={false}
-                  flat={false}
-                  onClick={[Function]}
-                  rippleClassName=""
-                  rippleSize={null}
-                  testId="Button"
-                  type="secondary"
-                  wrapContent={true}
+                <span
+                  className="sg-18jpr3t-Button-loader"
+                  style={
+                    {
+                      "display": "contents",
+                    }
+                  }
+                />
+                <Text
+                  string="common.show_products"
                 >
-                  <Button
-                    className="sg-1fwzktp-button ui-shared__ripple-button"
-                    disabled={false}
-                    flat={false}
-                    onClick={[Function]}
-                    testId="Button"
-                    type="secondary"
-                    wrapContent={false}
-                  >
-                    <Button
-                      className="ui-shared__button ui-shared__ripple-button sg-1i3rxg8-button-button"
-                      disabled={false}
-                      onClick={[Function]}
-                      testId="Button"
-                    >
-                      <button
-                        className="common__button ui-shared__button ui-shared__ripple-button sg-6dhyhz-root-button-button"
-                        data-test-id="Button"
-                        disabled={false}
-                        onClick={[Function]}
-                      >
-                        <Ripple
-                          className="sg-fpa50s-contentWrapper"
-                          color="var(--sg-palette-common-black)"
-                          disabled={false}
-                          fill={true}
-                          onClick={[Function]}
-                          onComplete={[Function]}
-                          overflow={true}
-                          size={null}
-                        >
-                          <div
-                            className="ui-shared__ripple sg-fpa50s-contentWrapper"
-                            data-test-id="Ripple"
-                            onClick={[Function]}
-                            style={null}
-                          >
-                            <Text
-                              string="common.show_products"
-                            >
-                              common.show_products
-                            </Text>
-                          </div>
-                        </Ripple>
-                      </button>
-                    </Button>
-                  </Button>
-                </RippleButton>
-              </div>
-            </ActionButton>
-          </ButtonLink>
-        </Connect(ButtonLink)>
+                  common.show_products
+                </Text>
+              </span>
+              <Ripple
+                ripples={[]}
+              >
+                <span
+                  className="sg-sfhzfw-ButtonBaseRipple-container"
+                >
+                  <TransitionGroup
+                    childFactory={[Function]}
+                    component={null}
+                    exit={true}
+                  />
+                </span>
+              </Ripple>
+            </button>
+          </ButtonBase>
+        </Button>
       </div>
     </div>
   </NestedCategoryFilter>

@@ -1,33 +1,17 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    position: 'absolute',
-    right: 0,
-    top: 0,
-    display: 'block',
-    flexGrow: 1,
-    background: theme.components.ctaButton.background,
-    color: theme.contrastColor(theme.components.ctaButton.background),
-    fontSize: theme.typography.body1.fontSize,
-    fontWeight: theme.typography.fontWeightBold,
-    borderRadius: 5,
-    width: '100%',
-    outline: 0,
-    transition: 'width 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-    padding: theme.spacing(1.375, 1.2, 1.625),
-    ':disabled': {
-      cursor: 'not-allowed',
-    },
-  },
-  disabled: {
-    background: theme.palette.action.disabledBackground,
-    color: theme.contrastColor(theme.palette.action.disabledBackground),
+    gridArea: '1 / 1',
+    justifySelf: 'end',
+    transition: theme.transitions.create(['width', 'background-color']),
+    padding: theme.spacing(1, 1),
   },
 }));
 
@@ -64,26 +48,21 @@ const AddToCartButton = ({
   }, [itemCount, handleAddToCart, onReset, openCart]);
 
   const style = opened ? { width: '40%' } : null;
-  const className = cx(
-    classes.button,
-    'theme__product__add-to-cart-bar__add-to-cart-button',
-    { [classes.disabled]: disabled }
-  );
-
   const ariaLabel = i18n.text(!itemCount ? 'product.add_to_cart' : 'product.go_to_cart');
 
   return (
-    <button
-      className={className}
+    <Button
+      color="cta"
+      fullWidth
+      className={cx(classes.button, 'theme__product__add-to-cart-bar__add-to-cart-button')}
       style={style}
       onClick={handleClick}
       disabled={disabled}
-      data-test-id="addToCartBarButton"
+      testId="addToCartBarButton"
       aria-label={ariaLabel}
-      type="button"
     >
       <I18n.Text string={!itemCount ? 'product.add_to_cart' : 'product.go_to_cart'} />
-    </button>
+    </Button>
   );
 };
 

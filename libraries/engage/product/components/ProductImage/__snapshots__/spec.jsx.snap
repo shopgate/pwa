@@ -33,11 +33,11 @@ exports[`<ProductImage /> inner shadow should apply it to the image when the hoo
     }
   >
     <div
-      className="engage__product__product-image"
+      className="sg-1ffblid-rounded engage__product__product-image"
     >
       <Image
         aria-hidden={true}
-        backgroundColor="var(--sg-palette-background-surface)"
+        backgroundColor="var(--sg-palette-common-white)"
         className="sg-ff8tgd-innerShadow"
         placeholder={
           <div
@@ -93,11 +93,11 @@ exports[`<ProductImage /> inner shadow should apply it to the placeholder when t
     props={null}
   >
     <div
-      className="engage__product__product-image"
+      className="sg-1ffblid-rounded engage__product__product-image"
     >
       <Image
         aria-hidden={true}
-        backgroundColor="var(--sg-palette-background-surface)"
+        backgroundColor="var(--sg-palette-common-white)"
         className="sg-ff8tgd-innerShadow"
         placeholder={
           <ProductImagePlaceholder
@@ -159,11 +159,11 @@ exports[`<ProductImage /> inner shadow should not apply it to the image when the
     }
   >
     <div
-      className="engage__product__product-image"
+      className="sg-1ffblid-rounded engage__product__product-image"
     >
       <Image
         aria-hidden={true}
-        backgroundColor="var(--sg-palette-background-surface)"
+        backgroundColor="var(--sg-palette-common-white)"
         className=""
         placeholder={
           <div
@@ -219,11 +219,11 @@ exports[`<ProductImage /> inner shadow should not apply it to the placeholder wh
     props={null}
   >
     <div
-      className="engage__product__product-image"
+      className="sg-1ffblid-rounded engage__product__product-image"
     >
       <Image
         aria-hidden={true}
-        backgroundColor="var(--sg-palette-background-surface)"
+        backgroundColor="var(--sg-palette-common-white)"
         className=""
         placeholder={
           <ProductImagePlaceholder
@@ -263,11 +263,11 @@ exports[`<ProductImage /> should render a placeholder if no src prop is provided
     props={null}
   >
     <div
-      className="engage__product__product-image"
+      className="sg-1ffblid-rounded engage__product__product-image"
     >
       <Image
         aria-hidden={true}
-        backgroundColor="var(--sg-palette-background-surface)"
+        backgroundColor="var(--sg-palette-common-white)"
         className=""
         placeholder={
           <div
@@ -333,11 +333,11 @@ exports[`<ProductImage /> should render the image without a placeholder 1`] = `
     }
   >
     <div
-      className="engage__product__product-image"
+      className="sg-1ffblid-rounded engage__product__product-image"
     >
       <Image
         aria-hidden={true}
-        backgroundColor="var(--sg-palette-background-surface)"
+        backgroundColor="var(--sg-palette-common-white)"
         className=""
         placeholder={
           <div

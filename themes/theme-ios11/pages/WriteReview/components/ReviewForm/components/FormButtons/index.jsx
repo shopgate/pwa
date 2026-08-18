@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
@@ -10,23 +10,8 @@ const useStyles = makeStyles()(theme => ({
   buttonLine: {
     float: 'right',
     marginTop: 14,
-  },
-  cancelButton: {
-    position: 'relative',
-    display: 'inline-block',
-    outline: 0,
-    color: theme.palette.text.primary,
-    backgroundColor: 'transparent',
-    minWidth: 64,
-    overflow: 'hidden',
-    border: 0,
-    borderRadius: 5,
-    fontWeight: 600,
-    fontSize: 17,
-    padding: theme.spacing(0, 2, 0),
-    '&:disabled': {
-      cursor: 'not-allowed',
-    },
+    display: 'flex',
+    gap: theme.spacing(1),
   },
 }));
 
@@ -40,21 +25,21 @@ const FormButtons = (props) => {
 
   return (
     <div className={classes.buttonLine}>
-      <button
-        type="button"
-        className={classes.cancelButton}
+      <Button
+        variant="text"
         onClick={props.cancel}
         data-test-id="reviewCancelButton"
       >
         <I18n.Text string="common.cancel" />
-      </button>
-      <RippleButton
-        type="secondary"
+      </Button>
+      <Button
+        type="submit"
+        color="primary"
         disabled={props.isLoading}
         testId="sendReviewButton"
       >
         <I18n.Text string="common.submit" />
-      </RippleButton>
+      </Button>
     </div>
   );
 };

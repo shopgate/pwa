@@ -3,7 +3,8 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { i18n, historyPush } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { RippleButton, Typography } from '@shopgate/engage/components';
+import { Typography } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import AddressCard from './ProfileAddressCard';
 import { useProfileContext } from './Profile.provider';
 import { PROFILE_ADDRESS_PATH } from '../../constants/routes';
@@ -16,7 +17,7 @@ const mapDispatchToProps = dispatch => ({
   push: props => dispatch(historyPush(props)),
 });
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()(() => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
@@ -24,22 +25,13 @@ const useStyles = makeStyles()(theme => ({
     margin: -4,
   },
   button: {
-    '&&': {
-      marginTop: 8,
-      marginRight: 16,
-      backgroundColor: theme.palette.primary.main,
-      borderRadius: 5,
-      fontSize: theme.typography.body2.fontSize,
-      textTransform: 'none',
-      padding: 0,
-      [responsiveMediaQuery('<md', { webOnly: false })]: {
-        width: '100%',
-        marginRight: 0,
-      },
+    marginTop: 8,
+    textTransform: 'none',
+    marginRight: 16,
+    [responsiveMediaQuery('<md', { webOnly: false })]: {
+      width: '100%',
+      marginRight: 0,
     },
-  },
-  ripple: {
-    padding: '8px 16px',
   },
   actions: {
     display: 'flex',
@@ -74,14 +66,13 @@ const ProfileAddressBook = ({ push }) => {
         ))}
       </div>
       <div className={classes.actions}>
-        <RippleButton
+        <Button
+          color="primary"
           className={classes.button}
-          rippleClassName={classes.ripple}
-          type="primary"
           onClick={() => push({ pathname: PROFILE_ADDRESS_PATH })}
         >
           {i18n.text('account.profile.address_book.add')}
-        </RippleButton>
+        </Button>
       </div>
     </div>
   );

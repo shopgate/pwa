@@ -1,9 +1,10 @@
-import { useCallback, useRef, useState } from 'react';
+import {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import { RIPPLE_MIN_VISIBLE_MS } from './constants';
 
 export interface RippleItem {
   key: number;
-  pointerId: number;
   x: number;
   y: number;
   size: number;
@@ -21,28 +22,45 @@ export interface RippleItem {
 export function usePressRipple() {
   const [ripples, setRipples] = useState<RippleItem[]>([]);
   const nextKey = useRef(0);
-  const startedAtByPointer = useRef(new Map<number, number>());
+  const startedAtByKey = useRef(new Map<number, number>());
+  const activeKeyByPointer = useRef(new Map<number, number>());
+  const pendingTimeouts = useRef(new Set<number>());
+
+  useEffect(() => () => {
+    pendingTimeouts.current.forEach(timeoutId => window.clearTimeout(timeoutId));
+    pendingTimeouts.current.clear();
+  }, []);
 
   const start = useCallback((event: React.PointerEvent<HTMLElement>) => {
     const element = event.currentTarget;
     const rect = element.getBoundingClientRect();
 
-    const rippleX = Math.round(event.clientX - rect.left);
-    const rippleY = Math.round(event.clientY - rect.top);
+    const hasPointerPosition = Number.isFinite(event.clientX) && Number.isFinite(event.clientY);
+
+    const rippleX = hasPointerPosition
+      ? Math.round(event.clientX - rect.left)
+      : Math.round(element.clientWidth / 2);
+    const rippleY = hasPointerPosition
+      ? Math.round(event.clientY - rect.top)
+      : Math.round(element.clientHeight / 2);
 
     const sizeX = Math.max(element.clientWidth - rippleX, rippleX) * 2 + 2;
     const sizeY = Math.max(element.clientHeight - rippleY, rippleY) * 2 + 2;
     const rippleSize = Math.sqrt(sizeX ** 2 + sizeY ** 2);
 
-    startedAtByPointer.current.set(event.pointerId, performance.now());
-
     nextKey.current += 1;
+    const key = nextKey.current;
+
+    startedAtByKey.current.set(key, performance.now());
+
+    // A mouse reuses one pointerId for every press, so the pointer only ever points at the newest
+    // one. Keying the rest by ripple instead means an earlier press can no longer end this one.
+    activeKeyByPointer.current.set(event.pointerId, key);
 
     setRipples(prev => [
       ...prev,
       {
-        key: nextKey.current,
-        pointerId: event.pointerId,
+        key,
         x: rippleX,
         y: rippleY,
         size: rippleSize,
@@ -51,7 +69,18 @@ export function usePressRipple() {
   }, []);
 
   const end = useCallback((pointerId: number) => {
-    const startedAt = startedAtByPointer.current.get(pointerId);
+    const key = activeKeyByPointer.current.get(pointerId);
+
+    if (key == null) {
+      return;
+    }
+
+    // Pointer up, cancel, leave and lost capture can all fire for a single press, and the press is
+    // over after whichever comes first.
+    activeKeyByPointer.current.delete(pointerId);
+
+    const startedAt = startedAtByKey.current.get(key);
+
     if (startedAt == null) {
       return;
     }
@@ -59,14 +88,20 @@ export function usePressRipple() {
     const elapsed = performance.now() - startedAt;
     const delay = Math.max(0, RIPPLE_MIN_VISIBLE_MS - elapsed);
 
-    window.setTimeout(() => {
-      setRipples(prev => prev.filter(ripple => ripple.pointerId !== pointerId));
-      startedAtByPointer.current.delete(pointerId);
+    const timeoutId = window.setTimeout(() => {
+      pendingTimeouts.current.delete(timeoutId);
+      setRipples(prev => prev.filter(ripple => ripple.key !== key));
+      startedAtByKey.current.delete(key);
     }, delay);
+
+    pendingTimeouts.current.add(timeoutId);
   }, []);
 
   const clearAll = useCallback(() => {
-    startedAtByPointer.current.clear();
+    pendingTimeouts.current.forEach(timeoutId => window.clearTimeout(timeoutId));
+    pendingTimeouts.current.clear();
+    startedAtByKey.current.clear();
+    activeKeyByPointer.current.clear();
     setRipples([]);
   }, []);
 

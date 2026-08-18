@@ -6,7 +6,8 @@ import { i18n, hasNewServices } from '@shopgate/engage/core/helpers';
 import { UIEvents } from '@shopgate/engage/core';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
-import { RippleButton, QuantityInput } from '@shopgate/engage/components';
+import { QuantityInput } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y/helpers';
 
 const useStyles = makeStyles()((theme, {
@@ -70,10 +71,8 @@ const useStyles = makeStyles()((theme, {
     },
     button: {
       width: sizeValue,
-      ' &&': {
-        minWidth: sizeValue,
-        padding: 0,
-      },
+      minWidth: sizeValue,
+      padding: 0,
       height: sizeValue,
       fontSize: `${Math.floor((sizeValue / 28) * 100)}%`,
       '&:not(:disabled)': {
@@ -81,25 +80,13 @@ const useStyles = makeStyles()((theme, {
         ...(buttonBgColor && { backgroundColor: `${buttonBgColor}` }),
       },
     },
-    buttonRipple: {
-      padding: 0,
-    },
     buttonNoRadiusLeft: {
-      ' &&': {
-        borderTopLeftRadius: 0,
-        borderBottomLeftRadius: 0,
-      },
+      borderTopLeftRadius: 0,
+      borderBottomLeftRadius: 0,
     },
     buttonNoRadiusRight: {
-      ' &&': {
-        borderTopRightRadius: 0,
-        borderBottomRightRadius: 0,
-      },
-    },
-    disabled: {
-      ' > div': {
-        padding: 0,
-      },
+      borderTopRightRadius: 0,
+      borderBottomRightRadius: 0,
     },
   };
 });
@@ -257,22 +244,15 @@ const UnitQuantityPicker = ({
         <div className={classes.backdrop} />
       )}
       <div className={cx(classes.root, className)}>
-        <RippleButton
-          type="secondary"
+        <Button
+          color="primary"
           disabled={!allowDecrement || disabled}
-          rippleClassName={classes.buttonRipple}
-          className={cx(
-            classes.button,
-            classes.buttonNoRadiusRight,
-            {
-              [classes.disabled]: !allowDecrement || disabled,
-            }
-          )}
+          className={cx(classes.button, classes.buttonNoRadiusRight)}
           onClick={handleDecrement}
           aria-label={i18n.text('product.decrease_quantity')}
         >
           -
-        </RippleButton>
+        </Button>
         <span
           className={classes.inputWrapper}
         >
@@ -298,22 +278,15 @@ const UnitQuantityPicker = ({
           />
         </span>
 
-        <RippleButton
-          type="secondary"
+        <Button
+          color="primary"
           disabled={!allowIncrement || disabled}
-          rippleClassName={classes.buttonRipple}
-          className={cx(
-            classes.button,
-            classes.buttonNoRadiusLeft,
-            {
-              [classes.disabled]: !allowIncrement || disabled,
-            }
-          )}
+          className={cx(classes.button, classes.buttonNoRadiusLeft)}
           onClick={handleIncrement}
           aria-label={i18n.text('product.increase_quantity')}
         >
           +
-        </RippleButton>
+        </Button>
       </div>
     </>
   );

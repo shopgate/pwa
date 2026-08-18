@@ -452,56 +452,160 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
               <Grid.Item
                 className="sg-u59bcx-gridItem theme__more-page__login-button__container"
               >
-                <Link
+                <Button
+                  className="sg-1fx370l-button theme__more-page__login-button"
+                  color="primary"
                   disabled={true}
+                  fullWidth={true}
                   href="/login"
-                  tabIndex={0}
+                  testId="UserMenuLogin"
                 >
-                  <Button
-                    className="sg-sv9uio-button theme__more-page__login-button"
+                  <ButtonBase
+                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-9awue0-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
+                    data-color="primary"
+                    data-full-width={true}
+                    data-size="medium"
+                    data-variant="contained"
+                    disableBaseClassName={true}
+                    disableRipple={false}
                     disabled={true}
+                    href="/login"
                     testId="UserMenuLogin"
-                    type="secondary"
                   >
-                    <Text
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="login.button"
-                      transform={null}
+                    <button
+                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-jh6sul-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
+                      data-color="primary"
+                      data-full-width={true}
+                      data-size="medium"
+                      data-test-id="UserMenuLogin"
+                      data-variant="contained"
+                      disabled={true}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      onLostPointerCapture={[Function]}
+                      onPointerCancel={[Function]}
+                      onPointerDown={[Function]}
+                      onPointerLeave={[Function]}
+                      onPointerUp={[Function]}
+                      type="button"
                     >
-                      login.button
-                    </Text>
-                  </Button>
-                </Link>
+                      <span
+                        className="sg-85tluf-Button-label"
+                      >
+                        <span
+                          className="sg-18jpr3t-Button-loader"
+                          style={
+                            {
+                              "display": "contents",
+                            }
+                          }
+                        />
+                        <Text
+                          acceptPlainTextWithPlaceholders={false}
+                          className={null}
+                          params={{}}
+                          role={null}
+                          string="login.button"
+                          transform={null}
+                        >
+                          login.button
+                        </Text>
+                      </span>
+                      <Ripple
+                        ripples={[]}
+                      >
+                        <span
+                          className="sg-sfhzfw-ButtonBaseRipple-container"
+                        >
+                          <TransitionGroup
+                            childFactory={[Function]}
+                            component={null}
+                            exit={true}
+                          />
+                        </span>
+                      </Ripple>
+                    </button>
+                  </ButtonBase>
+                </Button>
               </Grid.Item>
               <Grid.Item
                 className="sg-u59bcx-gridItem theme__more-page-register-button__container"
               >
-                <Link
+                <Button
+                  className="sg-1fx370l-button theme__more-page-register-button"
+                  color="primary"
                   disabled={true}
+                  fullWidth={true}
                   href="/register"
-                  tabIndex={0}
+                  testId="UserMenuRegister"
                 >
-                  <Button
-                    className="sg-sv9uio-button theme__more-page-register-button"
+                  <ButtonBase
+                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-9awue0-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
+                    data-color="primary"
+                    data-full-width={true}
+                    data-size="medium"
+                    data-variant="contained"
+                    disableBaseClassName={true}
+                    disableRipple={false}
                     disabled={true}
+                    href="/register"
                     testId="UserMenuRegister"
-                    type="secondary"
                   >
-                    <Text
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="login.signup"
-                      transform={null}
+                    <button
+                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-jh6sul-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
+                      data-color="primary"
+                      data-full-width={true}
+                      data-size="medium"
+                      data-test-id="UserMenuRegister"
+                      data-variant="contained"
+                      disabled={true}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      onLostPointerCapture={[Function]}
+                      onPointerCancel={[Function]}
+                      onPointerDown={[Function]}
+                      onPointerLeave={[Function]}
+                      onPointerUp={[Function]}
+                      type="button"
                     >
-                      login.signup
-                    </Text>
-                  </Button>
-                </Link>
+                      <span
+                        className="sg-85tluf-Button-label"
+                      >
+                        <span
+                          className="sg-18jpr3t-Button-loader"
+                          style={
+                            {
+                              "display": "contents",
+                            }
+                          }
+                        />
+                        <Text
+                          acceptPlainTextWithPlaceholders={false}
+                          className={null}
+                          params={{}}
+                          role={null}
+                          string="login.signup"
+                          transform={null}
+                        >
+                          login.signup
+                        </Text>
+                      </span>
+                      <Ripple
+                        ripples={[]}
+                      >
+                        <span
+                          className="sg-sfhzfw-ButtonBaseRipple-container"
+                        >
+                          <TransitionGroup
+                            childFactory={[Function]}
+                            component={null}
+                            exit={true}
+                          />
+                        </span>
+                      </Ripple>
+                    </button>
+                  </ButtonBase>
+                </Button>
               </Grid.Item>
             </Grid>
           </div>
@@ -580,56 +684,160 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
               <Grid.Item
                 className="sg-u59bcx-gridItem theme__more-page__login-button__container"
               >
-                <Link
+                <Button
+                  className="sg-1fx370l-button theme__more-page__login-button"
+                  color="primary"
                   disabled={false}
+                  fullWidth={true}
                   href="/login"
-                  tabIndex={0}
+                  testId="UserMenuLogin"
                 >
-                  <Button
-                    className="sg-sv9uio-button theme__more-page__login-button"
+                  <ButtonBase
+                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-244186-Button-root-Button-contained-Button-fullWidth-button"
+                    data-color="primary"
+                    data-full-width={true}
+                    data-size="medium"
+                    data-variant="contained"
+                    disableBaseClassName={true}
+                    disableRipple={false}
                     disabled={false}
+                    href="/login"
                     testId="UserMenuLogin"
-                    type="secondary"
                   >
-                    <Text
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="login.button"
-                      transform={null}
+                    <button
+                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-1vozyig-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
+                      data-color="primary"
+                      data-full-width={true}
+                      data-size="medium"
+                      data-test-id="UserMenuLogin"
+                      data-variant="contained"
+                      disabled={false}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      onLostPointerCapture={[Function]}
+                      onPointerCancel={[Function]}
+                      onPointerDown={[Function]}
+                      onPointerLeave={[Function]}
+                      onPointerUp={[Function]}
+                      type="button"
                     >
-                      login.button
-                    </Text>
-                  </Button>
-                </Link>
+                      <span
+                        className="sg-85tluf-Button-label"
+                      >
+                        <span
+                          className="sg-18jpr3t-Button-loader"
+                          style={
+                            {
+                              "display": "contents",
+                            }
+                          }
+                        />
+                        <Text
+                          acceptPlainTextWithPlaceholders={false}
+                          className={null}
+                          params={{}}
+                          role={null}
+                          string="login.button"
+                          transform={null}
+                        >
+                          login.button
+                        </Text>
+                      </span>
+                      <Ripple
+                        ripples={[]}
+                      >
+                        <span
+                          className="sg-sfhzfw-ButtonBaseRipple-container"
+                        >
+                          <TransitionGroup
+                            childFactory={[Function]}
+                            component={null}
+                            exit={true}
+                          />
+                        </span>
+                      </Ripple>
+                    </button>
+                  </ButtonBase>
+                </Button>
               </Grid.Item>
               <Grid.Item
                 className="sg-u59bcx-gridItem theme__more-page-register-button__container"
               >
-                <Link
+                <Button
+                  className="sg-1fx370l-button theme__more-page-register-button"
+                  color="primary"
                   disabled={false}
+                  fullWidth={true}
                   href="/register"
-                  tabIndex={0}
+                  testId="UserMenuRegister"
                 >
-                  <Button
-                    className="sg-sv9uio-button theme__more-page-register-button"
+                  <ButtonBase
+                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-244186-Button-root-Button-contained-Button-fullWidth-button"
+                    data-color="primary"
+                    data-full-width={true}
+                    data-size="medium"
+                    data-variant="contained"
+                    disableBaseClassName={true}
+                    disableRipple={false}
                     disabled={false}
+                    href="/register"
                     testId="UserMenuRegister"
-                    type="secondary"
                   >
-                    <Text
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="login.signup"
-                      transform={null}
+                    <button
+                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-1vozyig-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
+                      data-color="primary"
+                      data-full-width={true}
+                      data-size="medium"
+                      data-test-id="UserMenuRegister"
+                      data-variant="contained"
+                      disabled={false}
+                      onClick={[Function]}
+                      onKeyDown={[Function]}
+                      onLostPointerCapture={[Function]}
+                      onPointerCancel={[Function]}
+                      onPointerDown={[Function]}
+                      onPointerLeave={[Function]}
+                      onPointerUp={[Function]}
+                      type="button"
                     >
-                      login.signup
-                    </Text>
-                  </Button>
-                </Link>
+                      <span
+                        className="sg-85tluf-Button-label"
+                      >
+                        <span
+                          className="sg-18jpr3t-Button-loader"
+                          style={
+                            {
+                              "display": "contents",
+                            }
+                          }
+                        />
+                        <Text
+                          acceptPlainTextWithPlaceholders={false}
+                          className={null}
+                          params={{}}
+                          role={null}
+                          string="login.signup"
+                          transform={null}
+                        >
+                          login.signup
+                        </Text>
+                      </span>
+                      <Ripple
+                        ripples={[]}
+                      >
+                        <span
+                          className="sg-sfhzfw-ButtonBaseRipple-container"
+                        >
+                          <TransitionGroup
+                            childFactory={[Function]}
+                            component={null}
+                            exit={true}
+                          />
+                        </span>
+                      </Ripple>
+                    </button>
+                  </ButtonBase>
+                </Button>
               </Grid.Item>
             </Grid>
           </div>

@@ -56,6 +56,9 @@ const useStyles = makeStyles()(theme => ({
     transition: 'opacity 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
     opacity: 1,
     position: 'absolute',
+    display: 'flex',
+    left: '50%',
+    marginLeft: '-0.5em',
   },
   spinnerIcon: {
     left: '50%',

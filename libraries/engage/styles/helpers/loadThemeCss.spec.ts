@@ -6,7 +6,12 @@ import {
   PREVIEW_STYLE_TAG_ID,
   getOrCreateStyleTag,
 } from '@shopgate/engage/admin-preview/components/FrontendSettingsPreviewBridge/helpers';
+import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { loadThemeCss } from './loadThemeCss';
+
+jest.mock('@shopgate/engage/admin-preview/helpers', () => ({
+  isFrontendSettingsAdminPreviewActive: jest.fn(() => false),
+}));
 
 jest.mock('@shopgate/engage', () => ({
   __esModule: true,
@@ -55,6 +60,7 @@ describe('styles / helpers / loadThemeCss', () => {
     jest.clearAllMocks();
     document.head.innerHTML = '';
     delete config.themeCssUrl;
+    (isFrontendSettingsAdminPreviewActive as jest.Mock).mockReturnValue(false);
 
     // withScope is only used to configure the Sentry scope, so a stub scope is enough to let
     // the callback run and reach captureMessage.
@@ -68,6 +74,19 @@ describe('styles / helpers / loadThemeCss', () => {
 
   afterEach(() => {
     jest.useRealTimers();
+  });
+
+  describe('in the frontend settings admin preview', () => {
+    beforeEach(() => {
+      (isFrontendSettingsAdminPreviewActive as jest.Mock).mockReturnValue(true);
+      config.themeCssUrl = 'https://example.com/theme.css';
+    });
+
+    it('resolves without injecting a link', async () => {
+      await expect(loadThemeCss()).resolves.toBeUndefined();
+
+      expect(getLinkTag()).toBeNull();
+    });
   });
 
   describe('without a configured url', () => {

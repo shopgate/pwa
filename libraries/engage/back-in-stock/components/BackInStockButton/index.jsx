@@ -2,8 +2,9 @@ import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  Link, CheckedIcon, Button, NotificationIcon, Typography,
+  Link, CheckedIcon, NotificationIcon, Typography,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { BACK_IN_STOCK_PATTERN } from '@shopgate/engage/back-in-stock/constants';
 import { i18n } from '@shopgate/engage/core/helpers';
 import connect from './connector';
@@ -11,7 +12,6 @@ import connect from './connector';
 const useStyles = makeStyles()(theme => ({
   button: {
     color: theme.palette.warning.main,
-    width: '100%',
   },
   backInStockMessageContainer: {
     display: 'flex',
@@ -115,10 +115,10 @@ const BackInStockButton = ({
   if (showAsButton) {
     return (
       <Button
-        type="primary"
+        color="secondary"
+        fullWidth
         tabIndex={0}
         onClick={handleClick}
-        className={classes.button}
       >
         <span className={classes.buttonText}>
           {i18n.text('back_in_stock.get_notified')}

@@ -20,6 +20,7 @@ const useStyles = makeStyles()(theme => ({
   },
   inner: {
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'space-between',
     position: 'relative',
     zIndex: 1,

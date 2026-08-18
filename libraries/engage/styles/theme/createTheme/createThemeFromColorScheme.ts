@@ -63,9 +63,14 @@ export const contrastColor = (
 /**
  * Creates a theme object for a given color scheme (light or dark).
  * @param colorScheme The color scheme options.
+ * @param cssVarPrefix The theme's css variable prefix. Typography references some of the properties
+ * that are generated from it later, so it has to compose the same names.
  * @returns A theme object for the given color scheme.
  */
-const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): ColorSchemeTheme => {
+const createThemeFromColorScheme = (
+  colorScheme: ColorSchemeOptions,
+  cssVarPrefix?: string
+): ColorSchemeTheme => {
   const {
     palette: paletteInput = {},
     typography: typographyInput = {},
@@ -75,7 +80,7 @@ const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): ColorSchem
 
   const palette = createPalette(paletteInput);
 
-  const typography = createTypography(palette, typographyInput);
+  const typography = createTypography(palette, typographyInput, cssVarPrefix);
   const components = createComponents(componentsInput);
   const shape = createShape(shapeInput);
 

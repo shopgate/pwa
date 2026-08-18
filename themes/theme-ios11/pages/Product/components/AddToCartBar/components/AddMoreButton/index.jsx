@@ -5,18 +5,25 @@ import { withForwardedRef } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 
+// Width comes from `aspectRatio`, which Safari only supports from 15 on. The supported range starts
+// at iOS 13.4, and there the button has no in flow content to size against, so this is its floor.
+const MIN_SIZE = 46;
+
 const useStyles = makeStyles()(theme => ({
   container: {
     display: 'block',
     flexShrink: 0,
+    alignSelf: 'stretch',
+    aspectRatio: '1',
+    minWidth: MIN_SIZE,
     fontSize: '1.75rem !important',
     background: theme.palette.grey.light,
     transform: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1) !important',
     outline: 0,
     boxShadow: 'none !important',
-    borderRadius: '5px !important',
-    width: '46px !important',
-    height: '46px !important',
+    borderRadius: `${theme.components.button.borderRadius} !important`,
+    width: 'auto !important',
+    height: 'auto !important',
     zIndex: '0 !important',
     color: 'inherit',
     '&:active svg': {

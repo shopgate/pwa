@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  Grid, I18n, Button, Modal, Typography,
+  Grid, I18n, Modal, Typography,
 } from '@shopgate/engage/components';
+import { Button, ButtonBase } from '@shopgate/engage/components/v2';
 import { appConfig } from '@shopgate/engage';
 import pushImage from './push-opt-in.svg';
 import connect from './connector';
@@ -132,12 +133,19 @@ const PushOptInModal = ({
             string={modalMessage || 'pushOptInModal.message'}
             id="pushOptInDialogMessage"
           />
-          <Button onClick={handleAllowPushOptIn} type="primary" className={cx(classes.button, 'push-opt-in-modal__button-allow')}>
+          <Button
+            onClick={handleAllowPushOptIn}
+            color="secondary"
+            className={cx(classes.button, 'push-opt-in-modal__button-allow')}
+          >
             <I18n.Text string={modalButtonAllow || 'pushOptInModal.buttonAllow'} />
           </Button>
-          <Button onClick={handleDenyPushOptIn} type="plain" className={cx(classes.button, 'push-opt-in-modal__button-deny')}>
+          <ButtonBase
+            onClick={handleDenyPushOptIn}
+            className={cx(classes.button, 'push-opt-in-modal__button-deny')}
+          >
             <I18n.Text string={modalButtonDeny || 'pushOptInModal.buttonDeny'} className={classes.buttonText} />
-          </Button>
+          </ButtonBase>
         </Grid.Item>
       </Grid>
     </Modal>

@@ -1,10 +1,11 @@
 import React, {
   useCallback, useEffect, useMemo, useState,
 } from 'react';
-import { I18n, ButtonLink } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
 import { bin2hex } from '@shopgate/engage/core/helpers';
 import { CATEGORY_PATH } from '@shopgate/engage/category';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Button } from '@shopgate/engage/components/v2';
 import { useRoute, usePrevious, useLocalStorage } from '@shopgate/engage/core/hooks';
 import { router } from '@virtuous/conductor';
 import CategoryPicker from './components/Picker';
@@ -19,9 +20,7 @@ const useStyles = makeStyles()(theme => ({
   },
   buttonContainer: {
     padding: theme.spacing(0, 2),
-  },
-  button: {
-    width: '100%',
+    margin: theme.spacing(1, 0),
   },
 }));
 
@@ -157,14 +156,15 @@ const NestedCategoryFilter = () => {
       ) : null}
       {categoryPickers}
       <div className={cx(classes.buttonContainer, 'widget__nested-category-filter__button-container')}>
-        <ButtonLink
-          className={cx(classes.button, 'widget__nested-category-filter__CTA-button')}
+        <Button
           href={`${CATEGORY_PATH}/${bin2hex(state.buttonCategoryId)}`}
+          color="primary"
+          fullWidth
+          className="widget__nested-category-filter__CTA-button"
           disabled={!state.buttonCategoryId}
-          flat={false}
         >
           <I18n.Text string="common.show_products" className="widget__nested-category-filter__CTA-button__text" />
-        </ButtonLink>
+        </Button>
       </div>
     </div>
   );

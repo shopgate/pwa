@@ -4,7 +4,7 @@ import React, {
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
 import { I18n } from '@shopgate/engage/components';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import { ButtonBase } from '@shopgate/engage/components/v2';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
 
 /**
@@ -178,14 +178,12 @@ const ChipLayout = ({
         ref={moreButtonRef}
         className={classes.moreButtonWrapper}
       >
-        <RippleButton
-          fill
-          type="plain"
+        <ButtonBase
           className={moreButtonClassName}
           onClick={handleMoreButton}
         >
           <I18n.Text string={moreLabel} />
-        </RippleButton>
+        </ButtonBase>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ import { historyReset } from '@shopgate/pwa-common/actions/router/historyReset';
 function mapDispatchToProps(dispatch) {
   return {
     push: params => dispatch(historyPush(params)),
-    pop: () => dispatch(historyPop()),
+    pop: params => dispatch(historyPop(params)),
     replace: params => dispatch(historyReplace(params)),
     reset: () => dispatch(historyReset()),
   };

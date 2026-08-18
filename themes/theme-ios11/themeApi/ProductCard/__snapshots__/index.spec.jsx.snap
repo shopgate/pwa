@@ -79,7 +79,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
         <Paper
           background="var(--sg-components-cards-backgroundColor)"
           border="var(--sg-components-cards-border)"
-          borderRadius="var(--sg-shape-cardsBorderRadius)"
+          borderRadius="var(--sg-components-cards-borderRadius)"
           className="sg-5e7qca-Card-root engage__card ui-shared__card theme__product-card"
           component="section"
           data-test-id="Product: Product Name"
@@ -90,7 +90,7 @@ exports[`<ProductCard /> should render as expected 1`] = `
           variant="elevation"
         >
           <section
-            className="engage__paper engage__card ui-shared__card theme__product-card sg-1k2lror-Paper-root-Card-root"
+            className="engage__paper engage__card ui-shared__card theme__product-card sg-bz1aa9-Paper-root-Card-root"
             data-test-id="Product: Product Name"
             style={{}}
           >
@@ -181,7 +181,7 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
         <Paper
           background="var(--sg-components-cards-backgroundColor)"
           border="var(--sg-components-cards-border)"
-          borderRadius="var(--sg-shape-cardsBorderRadius)"
+          borderRadius="var(--sg-components-cards-borderRadius)"
           className="sg-5e7qca-Card-root engage__card ui-shared__card theme__product-card"
           component="section"
           data-test-id="Product: Product Name"
@@ -192,7 +192,7 @@ exports[`<ProductCard /> should render with a custom render prop 1`] = `
           variant="elevation"
         >
           <section
-            className="engage__paper engage__card ui-shared__card theme__product-card sg-1k2lror-Paper-root-Card-root"
+            className="engage__paper engage__card ui-shared__card theme__product-card sg-bz1aa9-Paper-root-Card-root"
             data-test-id="Product: Product Name"
             style={{}}
           >
