@@ -3,8 +3,9 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  Grid, I18n, Button, Modal, Link, ConditionalWrapper, Typography,
+  Grid, I18n, Modal, Link, ConditionalWrapper, Typography,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { appConfig } from '@shopgate/engage';
 import connect from './connector';
 import cookieImage from './tracking-opt-in.svg';
@@ -168,7 +169,7 @@ const CookieConsentModal = ({
           <Grid.Item component="div" className={classes.buttonWrapper}>
             <Button
               onClick={handleAcceptAllCookies}
-              type="primary"
+              color="secondary"
               className={cx(classes.button, 'cookie-consent-modal__button-accept-all')}
             >
               <I18n.Text string={modalButtonAcceptAll || 'cookieConsentModal.buttonAcceptAll'} />
@@ -176,7 +177,6 @@ const CookieConsentModal = ({
             {showRequiredCookiesButton ? (
               <Button
                 onClick={handleAcceptRequiredCookies}
-                type="simple"
                 className={cx(classes.button, 'cookie-consent-modal__button-accept-required')}
               >
                 <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
@@ -184,7 +184,6 @@ const CookieConsentModal = ({
             ) : null}
             <Button
               onClick={handleOpenPrivacySettings}
-              type="simple"
               className={cx(classes.button, 'cookie-consent-modal__button-open-settings')}
             >
               <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />

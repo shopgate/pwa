@@ -53,7 +53,13 @@ describe('<NavigationHandler />', () => {
 
   it('should trigger the pop() callbacks on navigation.pop event', async () => {
     await pop();
-    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_POP);
+    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_POP, undefined);
+    UIEvents.emit.mockClear();
+  });
+
+  it('should forward pop() params so that multiple routes can be popped', async () => {
+    await pop({ steps: 2 });
+    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_POP, { steps: 2 });
     UIEvents.emit.mockClear();
   });
 

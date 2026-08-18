@@ -21,4 +21,12 @@ export type FrontendSettingsPreviewBridgeMessage =
   | {
     type: 'frontendSettingsPreviewReady';
     payload?: never;
+  }
+  | {
+    /**
+     * Outbound. Announces that the first settings payload has been applied and the app rendered
+     * with it, so the admin can drop the loading overlay it shows while the preview boots.
+     */
+    type: 'frontendSettingsPreviewApplied';
+    payload?: never;
   };

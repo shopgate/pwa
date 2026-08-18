@@ -2,7 +2,7 @@
 
 exports[`<Button /> should render as a primary button 1`] = `
 <Button
-  className="ui-shared__button sg-vspxep-button"
+  className="ui-shared__button sg-11zobba-button"
   disabled={false}
   onClick={null}
   testId="Button"
@@ -17,7 +17,7 @@ exports[`<Button /> should render as a primary button 1`] = `
 
 exports[`<Button /> should render as a regular button if type is explicitly defined 1`] = `
 <Button
-  className="ui-shared__button sg-1srupkh-button"
+  className="ui-shared__button sg-vq0e5s-button"
   disabled={false}
   onClick={null}
   testId="Button"
@@ -32,7 +32,7 @@ exports[`<Button /> should render as a regular button if type is explicitly defi
 
 exports[`<Button /> should render as a regular button if type is omitted 1`] = `
 <Button
-  className="ui-shared__button sg-vspxep-button"
+  className="ui-shared__button sg-11zobba-button"
   disabled={false}
   onClick={null}
   testId="Button"
@@ -47,7 +47,7 @@ exports[`<Button /> should render as a regular button if type is omitted 1`] = `
 
 exports[`<Button /> should render as a secondary button 1`] = `
 <Button
-  className="ui-shared__button sg-so4hxh-button"
+  className="ui-shared__button sg-gsa8mt-button"
   disabled={false}
   onClick={null}
   testId="Button"

@@ -14,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
   card: {
     display: 'flex',
     flexDirection: 'row',
-    fontSize: theme.typography.body1.fontSize,
+    fontSize: theme.typography.body2.fontSize,
     width: '100%',
     overflow: 'inherit !important',
     marginBottom: theme.spacing(2),
@@ -43,7 +43,9 @@ const useStyles = makeStyles()(theme => ({
     ' tr:last-of-type td': {
       paddingTop: 8,
       borderTop: `1px solid ${theme.components.border.medium}`,
-      fontWeight: theme.typography.fontWeightBold,
+      '& span': {
+        fontWeight: `${theme.typography.fontWeightBold} !important`,
+      },
     },
   },
   actionsContainer: {
@@ -112,6 +114,7 @@ const CheckoutSection = ({
                         <td>
                           <Typography
                             component="span"
+                            variant="body2"
                             className={cx({
                               [classes.labelWithInfoIcon]: !!info,
                             })}
@@ -124,7 +127,7 @@ const CheckoutSection = ({
                         </td>
                         <td>
                           {typeof text === 'string'
-                            ? <Typography component="span">{text}</Typography>
+                            ? <Typography component="span" variant="body2">{text}</Typography>
                             : text}
                         </td>
                       </tr>

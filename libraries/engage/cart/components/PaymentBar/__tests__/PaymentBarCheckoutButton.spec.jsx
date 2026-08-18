@@ -7,20 +7,18 @@ function mockFactories() {
   return jest.requireActual('../testUtils/mockFactories');
 }
 
-const mockLink = jest.fn(props => <div data-testid="link">{props.children}</div>);
 const mockText = jest.fn(() => <div data-testid="text" />);
 
 jest.mock('@shopgate/engage/components', () => ({
   SurroundPortals: mockFactories().createSurroundPortalsMock(),
-  Link: props => mockLink(props),
   I18n: {
     Text: props => mockText(props),
   },
 }));
 
-jest.mock('@shopgate/pwa-ui-shared/RippleButton', () => mockFactories().createRippleButtonMock());
-
-jest.mock('@shopgate/engage/styles', () => mockFactories().createStylesMock());
+jest.mock('@shopgate/engage/components/v2', () => ({
+  Button: mockFactories().createButtonMock(),
+}));
 
 jest.mock('../PaymentBarCheckoutButton.connector', () => cmp => cmp);
 
@@ -40,17 +38,28 @@ describe('<PaymentBarCheckoutButton />', () => {
   });
 
   it('should render disabled button', () => {
-    const { container } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable={false} />);
+    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable={false} />);
 
-    expect(container.firstChild).toBeTruthy();
-    expect(mockLink).toHaveBeenCalledWith(expect.objectContaining({ disabled: true }));
+    expect(getByRole('button')).toBeDisabled();
     expect(mockText).toHaveBeenCalledWith(expect.objectContaining({ string: 'cart.checkout' }));
   });
 
   it('should render enabled button', () => {
-    const { container } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable />);
+    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable />);
 
-    expect(container.firstChild).toBeTruthy();
-    expect(mockLink).toHaveBeenCalledWith(expect.objectContaining({ disabled: false }));
+    expect(getByRole('button')).not.toBeDisabled();
+  });
+
+  // The button navigates through the router itself now, rather than being wrapped in a Link.
+  it('should link to the checkout', () => {
+    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable />);
+
+    expect(getByRole('button')).toHaveAttribute('data-href', '/checkout');
+  });
+
+  it('should render the button in the merchant configurable cta color', () => {
+    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable />);
+
+    expect(getByRole('button')).toHaveAttribute('data-color', 'cta');
   });
 });

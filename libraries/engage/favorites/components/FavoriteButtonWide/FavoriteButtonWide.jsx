@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { RippleButton } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { toggleFavoriteWithListChooser } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
@@ -32,20 +32,10 @@ const mapDispatchToProps = dispatch => ({
   toggle: productId => dispatch(toggleFavoriteWithListChooser(productId)),
 });
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()(() => ({
   root: {
-    '&&': {
-      margin: '0 0px 16px 16px',
-      backgroundColor: theme.palette.background.surface,
-      border: `1px solid ${theme.palette.primary.main}`,
-      borderRadius: theme.shape.borderRadius,
-      fontSize: theme.typography.body2.fontSize,
-      textTransform: 'none',
-      padding: 0,
-    },
-  },
-  ripple: {
-    padding: '8px 16px',
+    margin: '0 0 16px 16px',
+    textTransform: 'none',
   },
 }));
 
@@ -74,14 +64,14 @@ const FavoriteButtonWide = ({
   }
 
   return (
-    <RippleButton
+    <Button
+      variant="outlined"
+      color="primary"
       className={classes.root}
-      rippleClassName={classes.ripple}
-      type="primary"
       onClick={() => toggle(productId)}
     >
       { i18n.text(label) }
-    </RippleButton>
+    </Button>
   );
 };
 

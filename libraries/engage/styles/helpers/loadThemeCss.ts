@@ -4,10 +4,17 @@ import {
   Severity as SentrySeverity,
 } from '@sentry/browser';
 import { appConfig } from '@shopgate/engage';
+import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 
 const REQUEST_TIMEOUT = 3000;
 const LINK_TAG_ID = 'theme-css';
 const INSERTION_POINT_SELECTOR = 'meta[name="theme-css-insertion-point"]';
+
+/**
+ * Temporary switch. Set to false to load the theme css file in the frontend settings preview
+ * again, or remove it together with the guard in loadThemeCss and the import above.
+ */
+const SKIP_IN_FRONTEND_SETTINGS_PREVIEW = true;
 
 /**
  * Inserts the link at the theme css insertion point, which the html template declares between the
@@ -43,6 +50,11 @@ const insertLinkTag = (linkTag: HTMLLinkElement) => {
  * @returns A promise that resolves once the file settled.
  */
 export const loadThemeCss = (): Promise<void> => new Promise((resolve) => {
+  if (SKIP_IN_FRONTEND_SETTINGS_PREVIEW && isFrontendSettingsAdminPreviewActive()) {
+    resolve();
+    return;
+  }
+
   const { themeCssUrl: href } = appConfig as { themeCssUrl?: string | null };
 
   if (!href) {

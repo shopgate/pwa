@@ -1,0 +1,109 @@
+import {
+  withScope,
+  captureMessage,
+  Severity as SentrySeverity,
+} from '@sentry/browser';
+import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
+import { isFrontendSettingsAdminPreviewActive } from '../helpers';
+import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '../constants';
+import {
+  getOrCreateStyleTag,
+  serializeStyling,
+} from '../components/FrontendSettingsPreviewBridge/helpers';
+import type {
+  FrontendSettingsPreviewBridgeMessage,
+} from '../components/FrontendSettingsPreviewBridge/types';
+import { setInitialFrontendSettings } from './_internal/initialFrontendSettings';
+
+const REQUEST_TIMEOUT = 3000;
+
+interface PreviewStore {
+  dispatch: (action: unknown) => void;
+}
+
+/**
+ * Waits for the first settings message from the admin and applies it before the app renders.
+ *
+ * Without this the app paints with the theme defaults first: the bridge that owns the message
+ * listener only mounts once React committed, so everything the admin sent before that is dropped
+ * and the styling arrives as a visible restyle.
+ *
+ * The handshake goes to every allowed origin rather than to a single guessed one. Nothing has been
+ * received at this point, so there is no known parent origin, and the referrer is not guaranteed to
+ * survive the admin's referrer policy. The browser drops the copies whose target does not match.
+ *
+ * Resolves when the payload arrived or when REQUEST_TIMEOUT elapsed, and never rejects - an admin
+ * that stays silent has to fall back to the unstyled app, never to an iframe that never renders.
+ * @param store Reference to the store.
+ * @returns A promise that resolves once the first payload settled.
+ */
+export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void> =>
+  new Promise((resolve) => {
+    if (!isFrontendSettingsAdminPreviewActive()) {
+      resolve();
+      return;
+    }
+
+    let settled = false;
+    let timeout: ReturnType<typeof setTimeout>;
+
+    /**
+     * Resolves the promise once, whichever of payload / timeout comes first, and stops listening.
+     * The bridge attaches its own listener when it mounts and re-sends the handshake, so the admin
+     * resyncs from there.
+     */
+    const settle = () => {
+      if (settled) {
+        return;
+      }
+
+      settled = true;
+      clearTimeout(timeout);
+      window.removeEventListener('message', handleMessage);
+      resolve();
+    };
+
+    /**
+     * Handles the first trusted message. A function declaration, so `settle` can detach it again
+     * without a forward reference.
+     * @param event The message event.
+     */
+    function handleMessage(event: MessageEvent<FrontendSettingsPreviewBridgeMessage>) {
+      if (!ALLOWED_ADMIN_PREVIEW_ORIGINS.includes(event.origin)) return;
+      if (event.source !== window.parent) return;
+
+      const { data } = event;
+
+      if (data?.type !== 'receiveFrontendSettings') return;
+
+      const styling = data.payload?.styling ?? null;
+
+      if (styling) {
+        getOrCreateStyleTag().textContent = serializeStyling(styling);
+      }
+
+      if (data.payload?.appSettings) {
+        store.dispatch(receiveAppSettings(data.payload.appSettings));
+      }
+
+      setInitialFrontendSettings(styling);
+
+      settle();
+    }
+
+    window.addEventListener('message', handleMessage);
+
+    timeout = setTimeout(() => {
+      withScope((scope) => {
+        scope.setLevel(SentrySeverity.Warning);
+        scope.setExtra('timeout', REQUEST_TIMEOUT);
+        captureMessage('Waiting for the initial frontend settings took too long');
+      });
+
+      settle();
+    }, REQUEST_TIMEOUT);
+
+    ALLOWED_ADMIN_PREVIEW_ORIGINS.forEach((origin) => {
+      window.parent.postMessage({ type: 'frontendSettingsPreviewReady' }, origin);
+    });
+  });

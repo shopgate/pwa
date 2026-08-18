@@ -25,12 +25,12 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
   },
   total: {
-    fontSize: theme.typography.body1.fontSize,
+    fontSize: theme.typography.body2.fontSize,
     padding: theme.spacing(1, 0),
     color: theme.palette.text.primary,
   },
   grandTotal: {
-    fontSize: `${theme.typography.h3.fontSize} !important`,
+    fontSize: theme.typography.h4.fontSize,
     fontWeight: theme.typography.fontWeightMedium,
     borderTop: `1px solid ${theme.components.border.medium}`,
     padding: theme.spacing(1, 0),

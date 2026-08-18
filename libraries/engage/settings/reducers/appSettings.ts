@@ -70,6 +70,9 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     style: 'shadow',
     shadow: { size: 'medium' },
   },
+  typography: {
+    variants: {},
+  },
   images: {
     quality: DEFAULT_IMAGE_QUALITY,
     // Already in the image service's format, so the unhydrated path needs no conversion.
@@ -96,7 +99,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   action = { type: '' }
 ) => {
   if (isReceiveAppSettingsAction(action)) {
-    const { images } = action.settings ?? {};
+    const { images, typography } = action.settings ?? {};
 
     // Merged over the defaults rather than over the current state, so a field an incoming payload
     // omits falls back to its default instead of keeping the value of an earlier one. The admin
@@ -109,6 +112,10 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       images: images === null ? undefined : {
         ...images,
         product: images?.product ?? undefined,
+      },
+      typography: typography === null ? undefined : {
+        ...typography,
+        variants: typography?.variants ?? undefined,
       },
     }, { isHydrated: true });
 

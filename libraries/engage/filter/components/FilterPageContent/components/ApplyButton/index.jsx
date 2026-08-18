@@ -1,18 +1,17 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, Button, SurroundPortals } from '@shopgate/engage/components';
+import { I18n, SurroundPortals } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PORTAL_FILTER_APPLY_BUTTON } from '@shopgate/engage/filter/constants';
 import { withWidgetSettings } from '@shopgate/engage/core';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'flex',
+    marginRight: theme.spacing(2),
   },
-  button: {
-    padding: '0 !important',
-  },
-});
+}));
 
 /**
  * The filter apply button component.
@@ -37,9 +36,8 @@ const FilterApplyButton = ({ disabled, onClick, widgetSettings }) => {
     >
       <div className={classes.wrapper}>
         <Button
-          className={classes.button}
-          flat
-          type="primary"
+          variant="link"
+          color="secondary"
           onClick={onClick}
           disabled={disabled}
           testId="applyFilterButton"

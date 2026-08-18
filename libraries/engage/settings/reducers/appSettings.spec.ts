@@ -70,6 +70,12 @@ describe('settings / reducers / appSettings', () => {
         style: 'border',
         shadow: { size: 'low' },
       },
+      typography: {
+        fontCssUrl: 'https://cdn.example/fonts.css',
+        variants: {
+          h1: { fontCssUrl: 'https://cdn.example/h1.css' },
+        },
+      },
       images: {
         quality: 75,
         fillColor: 'FFFFFF',
@@ -90,6 +96,26 @@ describe('settings / reducers / appSettings', () => {
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
     expect(state.product).toEqual(settings.product);
     expect(state.cards).toEqual(settings.cards);
+  });
+
+  it('keeps the typography defaults when the branch is cleared', () => {
+    // The preview clears a branch by sending a null. Without mapping it to undefined the slice
+    // would hold null and getTypographyFontCssUrls would throw reading it.
+    const state = appSettings(
+      DEFAULT_APP_SETTINGS,
+      receiveAppSettings({ typography: null } as unknown as AppSettingsPayload)
+    );
+
+    expect(state.typography).toEqual({ variants: {} });
+  });
+
+  it('keeps the variants default when only the variants are cleared', () => {
+    const state = appSettings(
+      DEFAULT_APP_SETTINGS,
+      receiveAppSettings({ typography: { variants: null } } as unknown as AppSettingsPayload)
+    );
+
+    expect(state.typography.variants).toEqual({});
   });
 
   it('deep merges a partial payload over the defaults', () => {

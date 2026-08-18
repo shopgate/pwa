@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ProductList, ProductGrid } from '@shopgate/engage/product/components';
-import { ActionButton, I18n } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { transformDisplayOptions } from '@shopgate/engage/core/helpers';
 import { withStyles } from '@shopgate/engage/styles';
 import Headline from 'Components/Headline';
@@ -144,12 +145,16 @@ class ProductsWidget extends Component {
     }
 
     return (
-      <ActionButton
-        loading={this.props.isFetching}
-        onClick={this.handleClickMore}
-      >
-        <I18n.Text string="common.load_more" />
-      </ActionButton>
+      <div style={{ textAlign: 'center', margin: '8px 0' }}>
+        <Button
+          variant="text"
+          color="secondary"
+          loading={this.props.isFetching}
+          onClick={this.handleClickMore}
+        >
+          <I18n.Text string="common.load_more" />
+        </Button>
+      </div>
     );
   };
 

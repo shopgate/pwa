@@ -1,6 +1,7 @@
 import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useCheckoutContext } from '../../hooks/common';
 import { SupplementalContent } from '../SupplementalContent';
@@ -30,13 +31,13 @@ const Actions = () => {
   } = useCheckoutContext();
 
   const originalButton = (
-    <RippleButton
-      type="secondary"
+    <Button
+      color="primary"
       onClick={handleSubmitOrder}
       disabled={isButtonLocked}
     >
       {i18n.text('checkout.submit_order')}
-    </RippleButton>
+    </Button>
   );
 
   return (

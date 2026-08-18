@@ -13,7 +13,12 @@ import fetchClientInformation from '@shopgate/pwa-common/actions/client/fetchCli
 import { appConfig } from '@shopgate/engage';
 import { appInitialization, configuration } from '@shopgate/engage/core/collections';
 import { CONFIGURATION_COLLECTION_KEY_BASE_URL } from '@shopgate/engage/core/constants';
-import { loadCustomStyles, loadThemeCss } from '@shopgate/engage/styles';
+import { loadCustomStyles, loadThemeCss, loadFontCss } from '@shopgate/engage/styles';
+import { getTypographyFontCssUrls } from '@shopgate/engage/settings/selectors/appSettings';
+import type { AppSettingsState } from '@shopgate/engage/settings/types/appSettings';
+// Imported via its module path rather than the admin-preview helpers barrel, which ThemeProvider
+// and loadThemeCss already import - this module reaches into the settings action creators.
+import { awaitInitialFrontendSettings } from '@shopgate/engage/admin-preview/initialization/awaitInitialFrontendSettings';
 import { fetchSettings } from './fetchSettings';
 
 declare global {
@@ -88,14 +93,35 @@ export const initialize = async (
   store.dispatch(appWillInit(`${window.location.pathname}${window.location.search}`));
 
   try {
-    // The order of the style loaders does not affect the cascade: loadThemeCss pins its link to
-    // the theme css insertion point in the html template, while loadCustomStyles appends its link
-    // to the end of the head.
-    const promises = [fetchSettings(store), loadCustomStyles(), loadThemeCss()];
+    // The order of the style loaders does not affect the cascade: loadThemeCss and loadFontCss pin
+    // their links to their insertion points in the html template, while loadCustomStyles appends
+    // its link to the end of the head.
+    //
+    // The font css urls come from the app settings, so that loader is chained onto fetchSettings
+    // rather than started alongside it. Chaining keeps the other two running in parallel with the
+    // settings request instead of serializing everything behind it.
+    const promises = [
+      fetchSettings(store).then(
+        () => loadFontCss(getTypographyFontCssUrls(store.getState() as AppSettingsState))
+      ),
+      loadCustomStyles(),
+      loadThemeCss(),
+    ];
     await Promise.all(promises);
   } catch (e) {
     // Nothing to see here.
   }
+
+  // Resolves at once outside the admin preview. Inside it, this holds app start until the admin
+  // sent its first settings payload, so the preview renders styled instead of painting the theme
+  // defaults first. Runs after fetchSettings, since the reducer merges and the preview has to be
+  // the later write.
+  await awaitInitialFrontendSettings(store);
+
+  // That payload can replace the configured font files, which were loaded above from whatever the
+  // jsonp settings carried, so they are synced again before anything renders. Outside the preview
+  // the urls are unchanged, and loadFontCss leaves the existing tags alone and resolves at once.
+  await loadFontCss(getTypographyFontCssUrls(store.getState() as AppSettingsState));
 
   // Execute all registered handlers from the AppInitialization collection
   await appInitialization.initialize({

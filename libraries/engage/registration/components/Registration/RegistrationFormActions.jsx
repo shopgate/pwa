@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n, isIOSTheme } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
-import { RippleButton } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { useRegistration } from '../../hooks';
 
 const useStyles = makeStyles()(theme => ({
@@ -15,7 +15,6 @@ const useStyles = makeStyles()(theme => ({
     } : null),
   },
   submitButton: {
-    width: '100%',
     marginTop: 8,
   },
 }));
@@ -50,14 +49,15 @@ const RegisterFormActions = ({ isGuest }) => {
 
   return (
     <div className={classes.submitButtonContainer}>
-      <RippleButton
-        type="secondary"
+      <Button
+        color="primary"
+        fullWidth
         onClick={handleSubmit}
         disabled={isLocked}
         className={classes.submitButton}
       >
         {i18n.text(label)}
-      </RippleButton>
+      </Button>
     </div>
   );
 };

@@ -269,6 +269,11 @@ export const componentsSchema = {
  * - functions get proper `Theme` typing
  */
 export const componentsDefaults = {
+  button: {
+    vars: {
+      borderRadius: 'var(--sg-shape-borderRadius, 4px)',
+    },
+  },
   border: {
     vars: {
       light: '#F2F2F2',

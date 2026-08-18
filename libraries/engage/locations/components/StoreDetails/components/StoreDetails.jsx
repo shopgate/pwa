@@ -1,7 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 import {
-  LocationIcon, Button, Link, ConditionalWrapper, Typography,
+  LocationIcon, Link, ConditionalWrapper, Typography,
 } from '@shopgate/engage/components';
+import { Button, ButtonBase } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   getWeekDaysOrder,
@@ -57,9 +58,6 @@ const useStyles = makeStyles()(theme => ({
   phoneNumber: {
     textDecoration: 'underline',
   },
-  makeMyStoreButton: {
-    color: theme.palette.primary.main,
-  },
   comingSoon: {
     fontStyle: 'italic',
   },
@@ -106,13 +104,9 @@ const StoreDetails = () => {
       <ConditionalWrapper
         condition={!isRouteLocationPreferred}
         wrapper={children => (
-          <Button
-            onClick={() => selectLocation(routeLocation, true)}
-            role="button"
-            type="plain"
-          >
+          <ButtonBase onClick={() => selectLocation(routeLocation, true)}>
             {children}
-          </Button>
+          </ButtonBase>
         )}
       >
         <div className={classes.headerWrapper}>
@@ -157,10 +151,9 @@ const StoreDetails = () => {
             <GetDirectionsButton address={address} />
             { (!isComingSoon && !isRouteLocationPreferred) &&
             <Button
+              variant="text"
+              color="primary"
               onClick={() => selectLocation(routeLocation, true)}
-              role="button"
-              type="plain"
-              className={classes.makeMyStoreButton}
             >
               <span>
                 {i18n.text('location.makeMyStore')}

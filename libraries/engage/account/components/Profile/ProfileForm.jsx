@@ -1,7 +1,8 @@
 import React, { useMemo, useCallback, forwardRef } from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { FormBuilder, RippleButton } from '@shopgate/engage/components';
+import { FormBuilder } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { useProfileContext } from './Profile.provider';
 import generateFormConfig from './Profile.config';
@@ -22,37 +23,12 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   button: {
-    '&&': {
-      marginTop: 8,
-      marginRight: 16,
-      backgroundColor: theme.palette.primary.main,
-      borderRadius: theme.shape.borderRadius,
-      fontSize: theme.typography.body2.fontSize,
-      textTransform: 'none',
-      padding: 0,
-      [responsiveMediaQuery('<md', { webOnly: false })]: {
-        marginRight: 0,
-      },
+    marginTop: 8,
+    textTransform: 'none',
+    marginRight: 16,
+    [responsiveMediaQuery('<md', { webOnly: false })]: {
+      marginRight: 0,
     },
-  },
-  buttonDelete: {
-    '&&': {
-      marginTop: 8,
-      marginRight: 16,
-      border: `1px solid ${theme.palette.error.main}`,
-      backgroundColor: theme.palette.common.white,
-      color: theme.palette.error.main,
-      borderRadius: theme.shape.borderRadius,
-      fontSize: theme.typography.body2.fontSize,
-      textTransform: 'none',
-      padding: 0,
-      [responsiveMediaQuery('<md', { webOnly: false })]: {
-        marginRight: 0,
-      },
-    },
-  },
-  ripple: {
-    padding: '8px 16px',
   },
   actions: {
     display: 'flex',
@@ -113,22 +89,21 @@ const ProfileForm = forwardRef((_, ref) => {
         handleUpdate={handleUpdate}
       />
       <div className={classes.actions}>
-        <RippleButton
-          className={classes.buttonDelete}
-          rippleClassName={classes.ripple}
-          type="primary"
+        <Button
+          variant="outlined"
+          color="error"
+          className={classes.button}
           onClick={deleteCustomer}
         >
           {i18n.text('account.profile.delete')}
-        </RippleButton>
-        <RippleButton
+        </Button>
+        <Button
+          color="primary"
           className={classes.button}
-          rippleClassName={classes.ripple}
-          type="primary"
           onClick={saveForm}
         >
           {i18n.text('account.profile.form.save')}
-        </RippleButton>
+        </Button>
       </div>
     </div>
   );

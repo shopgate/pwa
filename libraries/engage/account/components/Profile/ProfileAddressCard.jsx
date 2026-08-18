@@ -8,11 +8,12 @@ import {
   ADDRESS_TYPE_SHIPPING,
 } from '@shopgate/engage/checkout';
 import {
-  RippleButton, Card, ContextMenu, Typography,
+  Card, ContextMenu, Typography,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import iso3166 from '../../../components/Form/Builder/helpers/iso-3166-2';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()(() => ({
   root: {
     margin: '5px 5px 10px',
     padding: 16,
@@ -55,19 +56,8 @@ const useStyles = makeStyles()(theme => ({
     flex: 1,
   },
   button: {
-    '&&:disabled': {
-      padding: '8px 0',
-    },
-    '&&': {
-      marginTop: 8,
-      borderRadius: theme.shape.borderRadius,
-      fontSize: theme.typography.body2.fontSize,
-      padding: 0,
-      textTransform: 'none',
-    },
-  },
-  ripple: {
-    padding: '8px 16px',
+    marginTop: 8,
+    textTransform: 'none',
   },
 }));
 
@@ -155,15 +145,15 @@ const ProfileAddressCard = ({
         </div>
         <div className={cx(classes.column, classes.selectButtonColumn)}>
           { isCheckout ? (
-            <RippleButton
+            <Button
+              color="primary"
+              size="small"
               className={classes.button}
-              rippleClassName={classes.ripple}
-              type="secondary"
               disabled={selected}
               onClick={selectContact}
             >
               {i18n.text(`account.profile.address_book.${selected ? 'selected' : 'select'}`)}
-            </RippleButton>
+            </Button>
           ) : null}
         </div>
       </div>

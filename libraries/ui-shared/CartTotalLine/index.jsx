@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
   },
   grandTotal: {
     color: theme.palette.text.primary,
-    fontSize: `${theme.typography.body1.fontSize} !important`,
+    fontSize: theme.typography.body1.fontSize,
   },
 }));
 

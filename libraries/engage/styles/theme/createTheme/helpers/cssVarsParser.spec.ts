@@ -48,4 +48,34 @@ describe('styles/theme/createTheme/helpers/cssVarsParser', () => {
 
     expect(body2).toBe('0.75rem');
   });
+
+  it('emits a var() reference verbatim', () => {
+    // Variant font weights reference the shared `fontWeight*` tokens (see createTypography), so the
+    // reference has to survive the parser unchanged - no `px` suffix, no rewriting.
+    const css = parse({
+      typography: {
+        fontWeightRegular: 400,
+        body2: { fontWeight: 'var(--sg-typography-fontWeightRegular, 400)' },
+      },
+    });
+
+    expect(css['--sg-typography-fontWeightRegular']).toBe(400);
+    expect(css['--sg-typography-body2-fontWeight']).toBe('var(--sg-typography-fontWeightRegular, 400)');
+  });
+
+  it('emits empty strings as empty vars, and still exposes their names', () => {
+    // Unseeded component tokens (e.g. `components.button.*`) stay empty on purpose - they are
+    // override hooks for CSS injection. The parser emits them as empty declarations, which stylis
+    // then drops, so consumers like the v2 Button fall back to the default in
+    // `var(--sg-components-button-color, <fallback>)`.
+    //
+    // The var name has to keep being generated regardless. Skipping generation for empty values
+    // would drop the name from `theme.vars` too, turning consumers into `var(undefined, ...)`.
+    const { css, varNames } = cssVarsParser<{ components: { button: { color: string } } }>({
+      components: { button: { color: '' } },
+    }, { prefix: 'sg' });
+
+    expect(css['--sg-components-button-color']).toBe('');
+    expect(varNames.components.button.color).toBe('--sg-components-button-color');
+  });
 });

@@ -1,25 +1,11 @@
 import React, { useContext, useMemo } from 'react';
-import { I18n, Link, SurroundPortals } from '@shopgate/engage/components';
-import { makeStyles } from '@shopgate/engage/styles';
+import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import { Button } from '@shopgate/engage/components/v2';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import PropTypes from 'prop-types';
 import { CartContext } from '../../cart.context';
 import connect from './PaymentBarCheckoutButton.connector';
-
-const useStyles = makeStyles()(theme => ({
-  button: {
-    width: '100%',
-    background: theme.components.ctaButton.background,
-    color: `${theme.contrastColor(theme.components.ctaButton.background)}!important`,
-  },
-  disabledButton: {
-    width: '100%',
-    background: theme.palette.action.disabledBackground,
-    color: `${theme.contrastColor(theme.palette.action.disabledBackground)}!important`,
-  },
-}));
 
 /**
  * Renders the cart payment bar checkout button.
@@ -27,21 +13,14 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX.Element}
  */
 const PaymentBarCheckoutButton = ({ isOrderable }) => {
-  const { classes } = useStyles();
   const { isLoading } = useContext(CartContext);
   const isActive = useMemo(() => (isOrderable && !isLoading), [isLoading, isOrderable]);
 
   return (
     <SurroundPortals portalName={CART_CHECKOUT_BUTTON} portalProps={{ isActive }}>
-      <Link href={CHECKOUT_PATH} disabled={!isActive} tabIndex={0} role="button" aria-disabled={!isActive}>
-        <RippleButton
-          disabled={!isActive}
-          type="regular"
-          className={isActive ? classes.button : classes.disabledButton}
-        >
-          <I18n.Text string="cart.checkout" />
-        </RippleButton>
-      </Link>
+      <Button href={CHECKOUT_PATH} color="cta" fullWidth disabled={!isActive}>
+        <I18n.Text string="cart.checkout" />
+      </Button>
     </SurroundPortals>
   );
 };

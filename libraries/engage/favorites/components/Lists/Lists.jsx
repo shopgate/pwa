@@ -1,7 +1,8 @@
 import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import {
   getFavoritesLists,
@@ -63,7 +64,7 @@ const mapDispatchToProps = dispatch => ({
   fetchLocations: (productId, params) => dispatch(fetchProductLocations(productId, params)),
 });
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   root: {
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       margin: 8,
@@ -72,13 +73,12 @@ const useStyles = makeStyles()(theme => ({
   addButton: {
     width: 'calc(100% - 32px)',
     margin: 16,
-    borderRadius: theme.shape.borderRadius,
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       width: 240,
       float: 'right',
     },
   },
-}));
+});
 
 /**
  * @param {Object} props Props
@@ -322,14 +322,13 @@ const FavoriteLists = ({
       />
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
         {hasMultipleFavoritesListsSupport ? (
-          <RippleButton
-            type="primary"
+          <Button
+            color="secondary"
             className={classes.addButton}
             onClick={openAddModal}
-            disabled={false}
           >
             {i18n.text('favorites.add_list')}
-          </RippleButton>
+          </Button>
         ) : null}
       </SurroundPortals>
     </div>

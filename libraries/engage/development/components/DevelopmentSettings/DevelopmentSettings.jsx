@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
-import { SheetDrawer, RippleButton } from '@shopgate/engage/components';
+import { SheetDrawer } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getEnabledCMSVersion } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { getEnableCms2ForAllShoppers } from '@shopgate/engage/settings/selectors/shopSettings';
@@ -50,9 +51,8 @@ const DevelopmentSettings = ({
       onClose={onClose}
     >
       <div className={classes.container}>
-        <RippleButton
+        <Button
           className={classes.button}
-          type="simple"
           onClick={() => {
             onClose();
             setTimeout(() => {
@@ -61,7 +61,7 @@ const DevelopmentSettings = ({
           }}
         >
           { `${isCMS2PreviewEnabled ? 'Disable' : 'Enable'} CMS 2.0 Preview`}
-        </RippleButton>
+        </Button>
       </div>
     </SheetDrawer>
   );

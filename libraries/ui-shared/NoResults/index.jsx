@@ -44,7 +44,7 @@ const NoResults = (props) => {
 
   return (
     <div
-      className={cx(classes.wrapper, props.className, ' ui-shared__no-results')}
+      className={cx(classes.wrapper, props.className, 'ui-shared__no-results')}
       data-test-id="noResults"
     >
       <div className={cx(classes.icon, 'no-results__image')}>

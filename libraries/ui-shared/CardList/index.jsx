@@ -1,6 +1,7 @@
 import React, { Component, Children, isValidElement } from 'react';
 import PropTypes from 'prop-types';
 import List from '@shopgate/pwa-common/components/List';
+import { cx } from '@shopgate/engage/styles';
 import Item from './components/Item';
 
 /**
@@ -31,7 +32,7 @@ class CardList extends Component {
     }
 
     return (
-      <List className={`ui-shared__card-list ${className}`}>
+      <List className={cx('ui-shared__card-list', className)}>
         {Children.map(children, (child) => {
           if (!isValidElement(child)) {
             return null;

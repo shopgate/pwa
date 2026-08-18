@@ -9,9 +9,10 @@ import {
   CHECKOUT_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
-  View, TextLink, I18n, RippleButton, TextField, Portal,
+  View, TextLink, I18n, TextField, Portal,
   PersonIcon, LockIcon, VisibilityIcon, VisibilityOffIcon,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { validate, i18n } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
@@ -117,9 +118,7 @@ const useStyles = makeStyles()(theme => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(3),
   },
-  button: {
-    width: '100%',
-  },
+
   noAccount: {
     marginRight: theme.spacing(0.5),
   },
@@ -307,13 +306,14 @@ const Login = ({
                 <ForgotPassword />
               </div>
               <div className={classes.buttonWrapper} data-test-id="LoginButton">
-                <RippleButton
-                  className={classes.button}
-                  type="secondary"
+                <Button
+                  type="submit"
+                  color="primary"
+                  fullWidth
                   disabled={isLoading || isDisabled}
                 >
                   <I18n.Text string="login.button" />
-                </RippleButton>
+                </Button>
               </div>
             </form>
           </Portal>

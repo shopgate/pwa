@@ -51,5 +51,6 @@ export interface TypographyOptions
 
 export default function createTypography(
   palette: Palette,
-  typography: TypographyOptions | ((palette: Palette) => TypographyOptions)
+  typography: TypographyOptions | ((palette: Palette) => TypographyOptions),
+  cssVarPrefix?: string
 ): Typography;
