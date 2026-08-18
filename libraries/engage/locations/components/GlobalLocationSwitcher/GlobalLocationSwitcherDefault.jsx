@@ -37,7 +37,7 @@ const GlobalLocationSwitcherDefault = ({ locationName, handleChange, editable })
           {locationName}
         </Typography>
         <Button
-          variant="text"
+          variant="link"
           color="primary"
           size="small"
           dense

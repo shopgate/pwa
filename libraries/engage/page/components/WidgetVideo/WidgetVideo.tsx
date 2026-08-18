@@ -21,7 +21,7 @@ const Link = EngageLink as unknown as ComponentType<{
  * Style parameters for the widget video.
  */
 interface WidgetVideoStyleParams {
-  borderRadius?: number;
+  borderRadius?: number | string;
 }
 
 const useStyles = makeStyles<WidgetVideoStyleParams>()((_theme, { borderRadius }) => ({
@@ -83,7 +83,7 @@ export interface WidgetVideoProps {
   /**
    * The border radius value.
    */
-  borderRadius?: number;
+  borderRadius?: number | string;
   /**
    * The link URL.
    */

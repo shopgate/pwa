@@ -15,7 +15,7 @@ const buttonTypes = [
 /**
  * @param {string} text Text color.
  * @param {string|null} background Fill color.
- * @param {Object} theme Theme with spacing().
+ * @param {Object} theme Theme with button border radius.
  * @returns {Object} JSS for root button.
  */
 const baseButton = (text, background, theme) => ({

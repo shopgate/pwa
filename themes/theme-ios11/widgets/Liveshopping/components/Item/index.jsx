@@ -17,11 +17,9 @@ const liveshoppingCardStyle = {
 const useStyles = makeStyles()(theme => ({
   image: {
     width: '50%',
-    background: theme.palette.background.surface,
   },
   infoPane: {
     width: '50%',
-    background: theme.palette.background.surface,
     padding: 16,
     display: 'flex',
     flexDirection: 'column',

@@ -114,7 +114,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               contentRef={
                 {
                   "current": <div
-                    class="sg-e47i1i-content"
+                    class="sg-19voeta-content"
                   >
                     <button
                       class="sg-1yjeh22-button"
@@ -322,7 +322,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-e47i1i-content"
+                      className="sg-19voeta-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -556,7 +556,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               contentRef={
                 {
                   "current": <div
-                    class="sg-e47i1i-content"
+                    class="sg-19voeta-content"
                   >
                     <button
                       class="sg-1yjeh22-button"
@@ -764,7 +764,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-e47i1i-content"
+                      className="sg-19voeta-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -1038,7 +1038,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               contentRef={
                 {
                   "current": <div
-                    class="sg-e47i1i-content"
+                    class="sg-19voeta-content"
                   >
                     <button
                       class="sg-1yjeh22-button"
@@ -1246,7 +1246,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-e47i1i-content"
+                      className="sg-19voeta-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -1481,7 +1481,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               contentRef={
                 {
                   "current": <div
-                    class="sg-e47i1i-content"
+                    class="sg-19voeta-content"
                   >
                     <button
                       class="sg-1mothy2-buttonSelected"
@@ -1689,7 +1689,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-e47i1i-content"
+                      className="sg-19voeta-content"
                       onScroll={[Function]}
                     >
                       <SheetList

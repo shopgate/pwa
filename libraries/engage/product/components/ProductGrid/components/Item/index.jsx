@@ -18,6 +18,8 @@ const useStyles = makeStyles()((theme, { display }) => ({
     height: '100%',
     padding: theme.components.tiles.padding,
     background: theme.components.tiles.backgroundColor,
+    border: theme.components.tiles.border,
+    borderRadius: theme.components.tiles.borderRadius,
   },
   image: {
     display: 'block',

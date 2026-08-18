@@ -26,7 +26,7 @@ exports[`<Sheet /> should open 1`] = `
     contentRef={
       {
         "current": <div
-          class="sg-e47i1i-content"
+          class="sg-19voeta-content"
         >
           <div>
             Test
@@ -227,7 +227,7 @@ exports[`<Sheet /> should open 1`] = `
             </ProgressBar>
           </div>
           <div
-            className="sg-e47i1i-content"
+            className="sg-19voeta-content"
             onScroll={[Function]}
           >
             <div
@@ -425,7 +425,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
     contentRef={
       {
         "current": <div
-          class="sg-e47i1i-content"
+          class="sg-19voeta-content"
         >
           <div>
             Test
@@ -626,7 +626,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             </ProgressBar>
           </div>
           <div
-            className="sg-e47i1i-content"
+            className="sg-19voeta-content"
             onScroll={[Function]}
           >
             <div

@@ -461,7 +461,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -692,7 +692,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -1765,7 +1765,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -1996,7 +1996,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -2591,7 +2591,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -2822,7 +2822,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -3095,7 +3095,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -3326,7 +3326,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList
@@ -4001,7 +4001,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                     contentRef={
                       {
                         "current": <div
-                          class="sg-e47i1i-content"
+                          class="sg-19voeta-content"
                         >
                           <ul
                             class="engage__sheet-list common_list"
@@ -4232,7 +4232,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
                             </ProgressBar>
                           </div>
                           <div
-                            className="sg-e47i1i-content"
+                            className="sg-19voeta-content"
                             onScroll={[Function]}
                           >
                             <SheetList

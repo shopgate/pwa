@@ -25,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     paddingRight: theme.spacing(1),
   },
   button: {
-    marginLeft: 'auto',
+    marginLeft: theme.spacing(2),
     textTransform: 'none',
   },
 }));
@@ -48,7 +48,7 @@ const GlobalLocationSwitcherBar = ({ locationName, handleChange, standalone }) =
           </Typography>
         </span>
         <Button
-          variant="text"
+          variant="link"
           size="small"
           dense
           onClick={handleChange}
