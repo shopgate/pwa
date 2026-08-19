@@ -1,22 +1,17 @@
 import React, {
-  useState, useEffect, useCallback, useRef, memo,
+  useState, useEffect, useCallback, memo,
 } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion, SurroundPortals } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { useElementSize } from '@shopgate/engage/core/hooks';
-import clamp from 'lodash/clamp';
-import { makeStyles, useTheme } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { FilterItem } from '@shopgate/engage/filter';
 import { PORTAL_FILTER_SELECTOR } from '@shopgate/engage/filter/constants';
 import ValueCheckbox from './components/ValueCheckbox';
 import Toggle from './components/Toggle';
 import Selected from './components/Selected';
 
-const MAX_COLUMNS = 3;
-const COLUMN_GAP = 2;
-
-const useStyles = makeStyles()((theme, { columns }) => ({
+const useStyles = makeStyles()(theme => ({
   accordion: {
     overflow: 'hidden',
   },
@@ -25,10 +20,8 @@ const useStyles = makeStyles()((theme, { columns }) => ({
   },
   content: {
     paddingBottom: theme.spacing(1),
-    display: 'grid',
-    gridTemplateColumns: `repeat(${columns}, 1fr)`,
-    justifyItems: 'start',
-    columnGap: theme.spacing(COLUMN_GAP),
+    display: 'flex',
+    flexDirection: 'column',
   },
 }));
 
@@ -45,35 +38,12 @@ const Selector = ({
   onChange,
   selected: selectedFromProps,
 }) => {
-  const theme = useTheme();
-  const contentRef = useRef(null);
-  const { width } = useElementSize(contentRef, { includeWidth: true });
-  const [valueWidth, setValueWidth] = useState(0);
-  const gap = theme.spacing(COLUMN_GAP);
-
-  const columns = valueWidth
-    ? clamp(Math.floor((width + gap) / (valueWidth + gap)), 1, MAX_COLUMNS)
-    : 1;
-
-  const { classes } = useStyles({ columns });
+  const { classes } = useStyles();
   const [selected, setSelected] = useState(() => selectedFromProps || []);
 
   useEffect(() => {
     setSelected(selectedFromProps || []);
   }, [selectedFromProps]);
-
-  useEffect(() => {
-    const element = contentRef.current;
-    const items = Array.from(element?.children ?? []);
-
-    if (!items.length) {
-      return;
-    }
-
-    element.style.gridTemplateColumns = '1fr';
-    setValueWidth(Math.max(0, ...items.map(item => item.getBoundingClientRect().width)));
-    element.style.gridTemplateColumns = '';
-  }, [values]);
 
   const handleToggle = useCallback((value) => {
     setSelected((prev) => {
@@ -122,7 +92,7 @@ const Selector = ({
           className={classes.accordion}
           chevronClassName={classes.chevron}
         >
-          <div className={classes.content} ref={contentRef}>
+          <div className={classes.content}>
             {values.map(value => (
               <ValueCheckbox
                 key={value.id}
