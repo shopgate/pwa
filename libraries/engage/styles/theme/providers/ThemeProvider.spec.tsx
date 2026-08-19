@@ -69,12 +69,14 @@ let rerenderWithConfigured: (configured: string) => void;
  * @param persisted The color scheme the visitor picked themselves, if any.
  * @param configured The color scheme configured within the app settings.
  * @param prefersDark Whether the operating system asks for a dark color scheme.
+ * @param themeOverrides Theme properties to override for this render.
  * @returns The captured color scheme context value.
  */
 const renderProvider = (
   persisted: string | null,
   configured = 'light',
-  prefersDark = false
+  prefersDark = false,
+  themeOverrides: Partial<ThemeInternal> = {}
 ) => {
   persistedColorScheme = persisted;
 
@@ -97,9 +99,11 @@ const renderProvider = (
     return null;
   };
 
+  const theme = { ...themeStub, ...themeOverrides } as ThemeInternal;
+
   // A fresh element per render, so the memoized provider does not bail out on the rerender below.
   const element = () => (
-    <ThemeProvider theme={themeStub}>
+    <ThemeProvider theme={theme}>
       <Consumer />
     </ThemeProvider>
   );
@@ -153,7 +157,16 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
       renderProvider(null, 'blue');
 
       expect(mockedSetActiveColorScheme).toHaveBeenCalledWith(themeStub.defaultColorScheme);
-      expect(logger.warn).toHaveBeenCalled();
+      expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('blue'));
+    });
+
+    it('should name the resolved scheme when the system asks for an unsupported one', () => {
+      renderProvider('system', 'light', true, {
+        colorSchemes: { light: {} },
+      } as unknown as Partial<ThemeInternal>);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith(themeStub.defaultColorScheme);
+      expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('dark'));
     });
   });
 

@@ -61,7 +61,7 @@ const ThemeProvider = ({
       return resolved;
     }
 
-    logger.warn(`ThemeProvider: "${mode}" is not a supported color scheme.`);
+    logger.warn(`ThemeProvider: "${resolved}" is not a supported color scheme.`);
     return theme.defaultColorScheme ?? null;
   }, [mode, systemColorScheme, colorSchemes, theme]);
 
