@@ -120,7 +120,10 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
         ...typography,
         variants: typography?.variants ?? undefined,
       },
-      appearance: appearance === null ? undefined : appearance,
+      appearance: appearance === null ? undefined : {
+        ...appearance,
+        defaultColorSchemeMode: appearance?.defaultColorSchemeMode ?? undefined,
+      },
     }, { isHydrated: true });
 
     // Converted on the way in, so the slice holds wire ready values and every image url does not

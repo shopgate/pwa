@@ -13,3 +13,4 @@ export {
   useColorScheme,
 } from './hooks';
 export { withTheme, type WithThemeProps } from './hocs';
+export type { ColorSchemeContextValue } from './providers/ColorSchemeContext';

@@ -126,6 +126,17 @@ describe('settings / reducers / appSettings', () => {
     expect(state.appearance).toEqual({ defaultColorSchemeMode: 'light' });
   });
 
+  it('keeps the color scheme default when only the field is cleared', () => {
+    const state = appSettings(
+      DEFAULT_APP_SETTINGS,
+      receiveAppSettings({
+        appearance: { defaultColorSchemeMode: null },
+      } as unknown as AppSettingsPayload)
+    );
+
+    expect(state.appearance.defaultColorSchemeMode).toBe('light');
+  });
+
   it('keeps the typography defaults when the branch is cleared', () => {
     // The preview clears a branch by sending a null. Without mapping it to undefined the slice
     // would hold null and getTypographyFontCssUrls would throw reading it.

@@ -1,6 +1,5 @@
 import { RadioGroup, RadioGroupItem } from '@shopgate/engage/components';
-import { useColorScheme, makeStyles } from '@shopgate/engage/styles';
-import { type ColorSchemeMode } from '@shopgate/engage/styles/theme/createTheme';
+import { useColorScheme, makeStyles, type ColorSchemeMode } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
   root: {

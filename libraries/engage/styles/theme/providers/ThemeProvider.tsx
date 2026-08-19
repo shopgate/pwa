@@ -1,5 +1,5 @@
 import {
-  memo, useCallback, useMemo, useLayoutEffect,
+  memo, useCallback, useEffect, useMemo, useLayoutEffect,
 } from 'react';
 import { useSelector } from 'react-redux';
 import useLocalStorage from '@shopgate/engage/core/hooks/useLocalStorage';
@@ -13,7 +13,7 @@ import { getDefaultColorSchemeMode } from '@shopgate/engage/settings/selectors/a
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 import { ColorSchemeContext, type ColorSchemeContextValue } from './ColorSchemeContext';
 import { ThemeContext } from './ThemeContext';
-import useMediaQuery from '../hooks/useMediaQuery';
+import { useMatchMedia } from '../hooks/useMediaQuery';
 import {
   COLOR_SCHEME_SYSTEM, type ThemeInternal, type ColorSchemeMode, type ColorSchemeName,
 } from '../createTheme';
@@ -39,7 +39,7 @@ const ThemeProvider = ({
   );
 
   const defaultMode = useSelector(getDefaultColorSchemeMode);
-  const prefersDarkColorScheme = useMediaQuery('(prefers-color-scheme: dark)');
+  const prefersDarkColorScheme = useMatchMedia('(prefers-color-scheme: dark)');
   const systemColorScheme: ColorSchemeName = prefersDarkColorScheme ? 'dark' : 'light';
 
   const [pickedMode, setPersistedMode] = useLocalStorage<ColorSchemeMode>('persistedColorScheme', {
@@ -54,16 +54,22 @@ const ThemeProvider = ({
   // and lets the preview apply the merchant's edits live.
   const mode = pickedMode ?? defaultMode;
 
-  const activeColorScheme = useMemo(() => {
-    const resolved = mode === COLOR_SCHEME_SYSTEM ? systemColorScheme : mode;
+  const resolvedColorScheme = useMemo<ColorSchemeName>(
+    () => (mode === COLOR_SCHEME_SYSTEM ? systemColorScheme : mode),
+    [mode, systemColorScheme]
+  );
 
-    if (colorSchemes.includes(resolved)) {
-      return resolved;
-    }
+  const isSupportedColorScheme = colorSchemes.includes(resolvedColorScheme);
 
-    logger.warn(`ThemeProvider: "${resolved}" is not a supported color scheme.`);
-    return theme.defaultColorScheme ?? null;
-  }, [mode, systemColorScheme, colorSchemes, theme]);
+  const activeColorScheme = isSupportedColorScheme
+    ? resolvedColorScheme
+    : (theme.defaultColorScheme ?? null);
+
+  useEffect(() => {
+    if (isSupportedColorScheme) return;
+
+    logger.warn(`ThemeProvider: "${resolvedColorScheme}" is not a supported color scheme.`);
+  }, [isSupportedColorScheme, resolvedColorScheme]);
 
   // What a picker can offer and what setMode accepts. 'system' is not a scheme the theme styles -
   // it resolves to one above - so it is added here rather than derived from the theme.

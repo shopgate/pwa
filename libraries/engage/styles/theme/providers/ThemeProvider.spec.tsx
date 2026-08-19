@@ -6,7 +6,7 @@ import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-pre
 import ThemeProvider from './ThemeProvider';
 import type { ColorSchemeContextValue } from './ColorSchemeContext';
 import useColorScheme from '../hooks/useColorScheme';
-import useMediaQuery from '../hooks/useMediaQuery';
+import { useMatchMedia } from '../hooks/useMediaQuery';
 import type { ColorSchemeMode, ColorSchemeName, ThemeInternal } from '../createTheme';
 
 const mockedSetActiveColorScheme = jest.fn();
@@ -49,7 +49,9 @@ jest.mock('./ActiveBreakpointProvider', () => ({
   default: ({ children }: { children: React.ReactNode }) => children,
 }));
 
-jest.mock('../hooks/useMediaQuery', () => jest.fn(() => false));
+jest.mock('../hooks/useMediaQuery', () => ({
+  useMatchMedia: jest.fn(() => false),
+}));
 
 const themeStub = {
   defaultColorScheme: 'light',
@@ -86,7 +88,7 @@ const renderProvider = (
   });
   (useLocalStorage as jest.Mock).mockImplementation(() => [persistedColorScheme, mockedSetValue]);
   (useSelector as jest.Mock).mockReturnValue(configured);
-  (useMediaQuery as jest.Mock).mockReturnValue(prefersDark);
+  (useMatchMedia as jest.Mock).mockReturnValue(prefersDark);
 
   let context: ColorSchemeContextValue | undefined;
 
@@ -201,7 +203,7 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
     it('should ask for the operating system preference', () => {
       renderProvider(null, 'system');
 
-      expect(useMediaQuery).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
+      expect(useMatchMedia).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
     });
   });
 
