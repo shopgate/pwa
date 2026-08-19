@@ -4,10 +4,14 @@ exports[`Filter: <Selected /> should not render without selected 1`] = `<Documen
 
 exports[`Filter: <Selected /> should render with selected 1`] = `
 <DocumentFragment>
-  <span
-    class="sg-4wcraw-elipsed"
+  <div
+    class="sg-5pkevj-chips"
   >
-    fooLabel
-  </span>
+    <span
+      class="sg-yot632-chip"
+    >
+      fooLabel
+    </span>
+  </div>
 </DocumentFragment>
 `;

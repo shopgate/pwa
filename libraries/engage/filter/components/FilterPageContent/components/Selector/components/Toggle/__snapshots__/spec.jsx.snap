@@ -3,18 +3,14 @@
 exports[`<Toggle /> should render with selected 1`] = `
 <DocumentFragment>
   <div
-    class="sg-1a4ev5x-toggle"
+    class="sg-mx2uls-toggle"
   >
     <span
-      class="sg-11pywio-label-closed"
+      class="sg-1h1yc6m-label"
     >
       somelabel
     </span>
-    <span
-      class="sg-guvefl-selected"
-    >
-      Some, Thing, Selected
-    </span>
+    Some, Thing, Selected
   </div>
 </DocumentFragment>
 `;
@@ -22,18 +18,14 @@ exports[`<Toggle /> should render with selected 1`] = `
 exports[`<Toggle /> should render with selected as open 1`] = `
 <DocumentFragment>
   <div
-    class="sg-1a4ev5x-toggle"
+    class="sg-mx2uls-toggle"
   >
     <span
-      class="sg-14gm6rw-label-open"
+      class="sg-1h1yc6m-label"
     >
       somelabel
     </span>
-    <span
-      class="sg-guvefl-selected"
-    >
-      Some, Thing, Selected
-    </span>
+    Some, Thing, Selected
   </div>
 </DocumentFragment>
 `;
@@ -41,10 +33,10 @@ exports[`<Toggle /> should render with selected as open 1`] = `
 exports[`<Toggle /> should render without selected 1`] = `
 <DocumentFragment>
   <div
-    class="sg-1a4ev5x-toggle"
+    class="sg-mx2uls-toggle"
   >
     <span
-      class="sg-11pywio-label-closed"
+      class="sg-1h1yc6m-label"
     >
       somelabel
     </span>
@@ -55,10 +47,10 @@ exports[`<Toggle /> should render without selected 1`] = `
 exports[`<Toggle /> should render without selected as open 1`] = `
 <DocumentFragment>
   <div
-    class="sg-1a4ev5x-toggle"
+    class="sg-mx2uls-toggle"
   >
     <span
-      class="sg-14gm6rw-label-open"
+      class="sg-1h1yc6m-label"
     >
       somelabel
     </span>

@@ -22,12 +22,7 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
       variant="link"
     >
       <Text
-        string="filter.apply"
-        style={
-          {
-            "color": undefined,
-          }
-        }
+        string="common.apply"
       />
     </Button>
   </div>
@@ -56,12 +51,7 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
       variant="link"
     >
       <Text
-        string="filter.apply"
-        style={
-          {
-            "color": undefined,
-          }
-        }
+        string="common.apply"
       />
     </Button>
   </div>
@@ -90,12 +80,7 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
       variant="link"
     >
       <Text
-        string="filter.apply"
-        style={
-          {
-            "color": undefined,
-          }
-        }
+        string="common.apply"
       />
     </Button>
   </div>

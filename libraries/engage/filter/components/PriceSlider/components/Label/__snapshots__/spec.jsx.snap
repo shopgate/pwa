@@ -1,22 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PriceSlider: <Label /> should render 1`] = `
-<div
-  class="sg-4iy9ul-editableContainer"
->
+<div>
   <span
     class="sg-b9l18s-srOnly"
   >
     price.range
   </span>
-  <span
-    class="sg-j50sqw-price"
-    style="min-width: 5;"
-  />
-  <span
-    class="sg-j50sqw-price"
-    style="min-width: 5;"
-  />
   <span
     aria-hidden="true"
     hidden=""
@@ -27,24 +17,24 @@ exports[`PriceSlider: <Label /> should render 1`] = `
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_from"
-    class="sg-13mc69o-editableField"
+    class="sg-i0gqr9-editableField"
     id="priceMin"
     inputmode="numeric"
     name="priceMin"
     pattern="[0-9]*"
-    style="left: 0px;"
+    style="width: 7ch;"
     type="number"
     value="25"
   />
   <input
     aria-describedby="price-slider-currency-label"
     aria-label="price.range_to"
-    class="sg-13mc69o-editableField"
+    class="sg-i0gqr9-editableField"
     id="priceMax"
     inputmode="numeric"
     name="priceMax"
     pattern="[0-9]*"
-    style="left: 0px;"
+    style="width: 7ch;"
     type="number"
     value="999"
   />
