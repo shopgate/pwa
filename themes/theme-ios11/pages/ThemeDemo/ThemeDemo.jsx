@@ -3,7 +3,7 @@ import { View } from '@shopgate/engage/components';
 import { DefaultBar } from 'Components/AppBar/presets';
 import { makeStyles } from '@shopgate/engage/styles';
 import Palette from './Palette';
-import ColorSchemeToggle from './ColorSchemeToggle';
+import ColorSchemePicker from './ColorSchemePicker';
 import CSSColorOverride from './CSSColorOverride';
 import {
   Buttons,
@@ -31,7 +31,7 @@ const ThemeDemo = () => {
     <View noContentPortal>
       <DefaultBar title="Theme Demo" />
       <div className={classes.root}>
-        <ColorSchemeToggle />
+        <ColorSchemePicker />
         <Buttons />
         <Misc />
         <CSSColorOverride />

@@ -88,6 +88,9 @@ describe('settings / reducers / appSettings', () => {
           showInnerShadow: false,
         },
       },
+      appearance: {
+        defaultColorSchemeMode: 'dark',
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
@@ -96,6 +99,31 @@ describe('settings / reducers / appSettings', () => {
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
     expect(state.product).toEqual(settings.product);
     expect(state.cards).toEqual(settings.cards);
+    expect(state.appearance).toEqual(settings.appearance);
+  });
+
+  it('defaults the color scheme to light', () => {
+    const state = appSettings(undefined, { type: '@@INIT' });
+
+    expect(state.appearance.defaultColorSchemeMode).toBe('light');
+  });
+
+  it('stores the system color scheme', () => {
+    const state = appSettings(
+      DEFAULT_APP_SETTINGS,
+      receiveAppSettings({ appearance: { defaultColorSchemeMode: 'system' } })
+    );
+
+    expect(state.appearance.defaultColorSchemeMode).toBe('system');
+  });
+
+  it('keeps the appearance defaults when the branch is cleared', () => {
+    const state = appSettings(
+      DEFAULT_APP_SETTINGS,
+      receiveAppSettings({ appearance: null } as unknown as AppSettingsPayload)
+    );
+
+    expect(state.appearance).toEqual({ defaultColorSchemeMode: 'light' });
   });
 
   it('keeps the typography defaults when the branch is cleared', () => {

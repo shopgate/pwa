@@ -19,6 +19,13 @@ export const COLOR_SCHEME_NAMES = ['light', 'dark'] as const;
 
 export type ColorSchemeName = (typeof COLOR_SCHEME_NAMES)[number];
 
+export const COLOR_SCHEME_SYSTEM = 'system';
+
+/**
+ * A selectable color scheme: one the theme provides, or `system` to follow the operating system.
+ */
+export type ColorSchemeMode = ColorSchemeName | typeof COLOR_SCHEME_SYSTEM;
+
 const selectorTypes = ['data', 'class'] as const;
 
 export type ColorSchemeSelectorType = (typeof selectorTypes)[number];

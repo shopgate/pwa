@@ -1,6 +1,6 @@
-import { getTypographyFontCssUrls, getTypographySettings } from './appSettings';
+import { getDefaultColorSchemeMode, getTypographyFontCssUrls, getTypographySettings } from './appSettings';
 import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
-import type { AppSettingsState, TypographySettings } from '../types/appSettings';
+import type { AppearanceSettings, AppSettingsState, TypographySettings } from '../types/appSettings';
 
 const stateWith = (typography: TypographySettings): AppSettingsState => ({
   settings: {
@@ -11,7 +11,38 @@ const stateWith = (typography: TypographySettings): AppSettingsState => ({
   },
 });
 
+const stateWithAppearance = (appearance: AppearanceSettings): AppSettingsState => ({
+  settings: {
+    appSettings: {
+      ...DEFAULT_APP_SETTINGS,
+      appearance,
+    },
+  },
+});
+
 describe('settings/selectors/appSettings', () => {
+  describe('getDefaultColorSchemeMode', () => {
+    it('returns the configured color scheme', () => {
+      expect(getDefaultColorSchemeMode(stateWithAppearance({ defaultColorSchemeMode: 'dark' }))).toBe('dark');
+    });
+
+    it('falls back to the default when the slice is missing', () => {
+      expect(getDefaultColorSchemeMode({} as AppSettingsState)).toBe('light');
+    });
+
+    it('returns the system color scheme', () => {
+      expect(getDefaultColorSchemeMode(stateWithAppearance({ defaultColorSchemeMode: 'system' }))).toBe('system');
+    });
+
+    it('falls back to the default when the branch is missing', () => {
+      const state = {
+        settings: { appSettings: { } },
+      } as AppSettingsState;
+
+      expect(getDefaultColorSchemeMode(state)).toBe('light');
+    });
+  });
+
   describe('getTypographySettings', () => {
     it('falls back to the defaults when the slice is missing', () => {
       expect(getTypographySettings({} as AppSettingsState)).toEqual({ variants: {} });

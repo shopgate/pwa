@@ -103,6 +103,16 @@ export const getCardShadowSize = createSelector(
 );
 
 /**
+ * Selects the color scheme mode that applies while the visitor has no own preference stored. A
+ * mode rather than a scheme name, since it can also ask to follow the operating system.
+ */
+export const getDefaultColorSchemeMode = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.appearance?.defaultColorSchemeMode
+    ?? DEFAULT_APP_SETTINGS.appearance.defaultColorSchemeMode
+);
+
+/**
  * Selects the typography settings.
  */
 export const getTypographySettings = createSelector(

@@ -1,9 +1,13 @@
-import type { ShadowSize, TypographyVariant } from '@shopgate/engage/styles/theme';
+import type {
+  ColorSchemeMode, ColorSchemeName, ShadowSize, TypographyVariant,
+} from '@shopgate/engage/styles/theme';
 
 // Re-exported so consumers of these settings do not have to reach into the styles layer, which
-// owns the type because it owns the elevation scale the sizes map to. `TypographyVariant` is
-// reused for the same reason - the theme owns the variant list.
-export type { ShadowSize, TypographyVariant };
+// owns the type because it owns the elevation scale the sizes map to. `TypographyVariant` and the
+// color scheme types are reused for the same reason - the theme owns the variant and scheme lists.
+export type {
+  ColorSchemeMode, ColorSchemeName, ShadowSize, TypographyVariant,
+};
 
 /**
  * Recursively optional variant of `T`. The settings sources send only what a merchant configured,
@@ -211,6 +215,17 @@ export interface ImageSettings {
   product: ProductImageSettings;
 }
 
+/**
+ * Settings for the app's overall appearance.
+ */
+export interface AppearanceSettings {
+  /**
+   * The color scheme mode the app starts in. A visitor who picked one themselves keeps their
+   * choice - this one only applies while no such preference is stored.
+   */
+  defaultColorSchemeMode: ColorSchemeMode;
+}
+
 export interface AppSettings {
   navigation: {
     tabBar: {
@@ -236,6 +251,7 @@ export interface AppSettings {
   images: ImageSettings;
   cards: CardSettings;
   typography: TypographySettings;
+  appearance: AppearanceSettings;
 }
 
 /**

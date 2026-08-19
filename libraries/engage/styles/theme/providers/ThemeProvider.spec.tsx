@@ -1,11 +1,13 @@
 import { render } from '@testing-library/react';
+import { useSelector } from 'react-redux';
 import useLocalStorage from '@shopgate/engage/core/hooks/useLocalStorage';
 import { logger } from '@shopgate/engage/core/helpers';
 import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import ThemeProvider from './ThemeProvider';
 import type { ColorSchemeContextValue } from './ColorSchemeContext';
 import useColorScheme from '../hooks/useColorScheme';
-import type { ColorSchemeName, ThemeInternal } from '../createTheme';
+import useMediaQuery from '../hooks/useMediaQuery';
+import type { ColorSchemeMode, ColorSchemeName, ThemeInternal } from '../createTheme';
 
 const mockedSetActiveColorScheme = jest.fn();
 const mockedSetValue = jest.fn();
@@ -15,6 +17,14 @@ const mockedSetValue = jest.fn();
  * actually persisted.
  */
 let persistedColorScheme: string | null = null;
+
+jest.mock('react-redux', () => ({
+  useSelector: jest.fn(),
+}));
+
+jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
+  getDefaultColorSchemeMode: jest.fn(),
+}));
 
 jest.mock('@shopgate/engage/core/hooks/useLocalStorage', () => jest.fn());
 
@@ -39,27 +49,42 @@ jest.mock('./ActiveBreakpointProvider', () => ({
   default: ({ children }: { children: React.ReactNode }) => children,
 }));
 
+jest.mock('../hooks/useMediaQuery', () => jest.fn(() => false));
+
 const themeStub = {
   defaultColorScheme: 'light',
-  // The provider derives the supported modes from the schemes the theme actually resolved.
+  // The provider derives the selectable schemes from the ones the theme actually resolved.
   colorSchemes: { light: {}, dark: {} },
   setActiveColorScheme: mockedSetActiveColorScheme,
   generateStyleSheets: () => [],
 } as unknown as ThemeInternal;
 
 /**
- * Renders the provider with a persisted color scheme and captures the color scheme context.
- * @param persisted The value returned by the persisted color scheme storage.
+ * Re-renders the provider with another configured color scheme. Set up by renderProvider.
+ */
+let rerenderWithConfigured: (configured: string) => void;
+
+/**
+ * Renders the provider and captures the color scheme context.
+ * @param persisted The color scheme the visitor picked themselves, if any.
+ * @param configured The color scheme configured within the app settings.
+ * @param prefersDark Whether the operating system asks for a dark color scheme.
  * @returns The captured color scheme context value.
  */
-const renderProvider = (persisted: string | null) => {
+const renderProvider = (
+  persisted: string | null,
+  configured = 'light',
+  prefersDark = false
+) => {
   persistedColorScheme = persisted;
 
   // Mirrors useLocalStorage's setter: it resolves an updater against the currently stored value.
   mockedSetValue.mockImplementation((value) => {
     persistedColorScheme = typeof value === 'function' ? value(persistedColorScheme) : value;
   });
-  (useLocalStorage as jest.Mock).mockReturnValue([persistedColorScheme, mockedSetValue]);
+  (useLocalStorage as jest.Mock).mockImplementation(() => [persistedColorScheme, mockedSetValue]);
+  (useSelector as jest.Mock).mockReturnValue(configured);
+  (useMediaQuery as jest.Mock).mockReturnValue(prefersDark);
 
   let context: ColorSchemeContextValue | undefined;
 
@@ -72,11 +97,19 @@ const renderProvider = (persisted: string | null) => {
     return null;
   };
 
-  render(
+  // A fresh element per render, so the memoized provider does not bail out on the rerender below.
+  const element = () => (
     <ThemeProvider theme={themeStub}>
       <Consumer />
     </ThemeProvider>
   );
+
+  const { rerender } = render(element());
+
+  rerenderWithConfigured = (nextConfigured) => {
+    (useSelector as jest.Mock).mockReturnValue(nextConfigured);
+    rerender(element());
+  };
 
   return context as ColorSchemeContextValue;
 };
@@ -87,30 +120,110 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
   });
 
   describe('applying the color scheme', () => {
-    it('should apply the persisted color scheme to the theme', () => {
-      renderProvider('dark');
+    it('should apply the color scheme the visitor picked', () => {
+      renderProvider('dark', 'light');
 
       expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('dark');
     });
 
-    it('should not apply anything when no color scheme is persisted', () => {
-      renderProvider(null);
+    it('should apply the configured color scheme when the visitor picked none', () => {
+      renderProvider(null, 'dark');
 
-      expect(mockedSetActiveColorScheme).not.toHaveBeenCalled();
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('dark');
+    });
+
+    it('should apply a configured color scheme that changes after mount', () => {
+      renderProvider(null, 'light');
+
+      rerenderWithConfigured('dark');
+
+      expect(mockedSetActiveColorScheme).toHaveBeenLastCalledWith('dark');
+      expect(persistedColorScheme).toBeNull();
+    });
+
+    it('should keep the picked color scheme when the configured one changes', () => {
+      renderProvider('light', 'light');
+
+      rerenderWithConfigured('dark');
+
+      expect(mockedSetActiveColorScheme).toHaveBeenLastCalledWith('light');
+    });
+
+    it('should fall back to the theme default when the configured scheme is not supported', () => {
+      renderProvider(null, 'blue');
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith(themeStub.defaultColorScheme);
+      expect(logger.warn).toHaveBeenCalled();
+    });
+  });
+
+  describe('system color scheme', () => {
+    it('should apply the light scheme when the system asks for it', () => {
+      renderProvider(null, 'system', false);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('light');
+      expect(logger.warn).not.toHaveBeenCalled();
+    });
+
+    it('should apply the dark scheme when the system asks for it', () => {
+      renderProvider(null, 'system', true);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('dark');
+      expect(logger.warn).not.toHaveBeenCalled();
+    });
+
+    it('should not override the color scheme the visitor picked', () => {
+      renderProvider('light', 'system', true);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('light');
+    });
+
+    it('should follow the system when the visitor picked it', () => {
+      renderProvider('system', 'light', true);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('dark');
+      expect(logger.warn).not.toHaveBeenCalled();
+    });
+
+    it('should ask for the operating system preference', () => {
+      renderProvider(null, 'system');
+
+      expect(useMediaQuery).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
     });
   });
 
   describe('color scheme context', () => {
-    it('should expose the supported modes', () => {
+    it('should expose the modes that can be set', () => {
       const { modes } = renderProvider('light');
 
-      expect(modes).toEqual(['light', 'dark']);
+      expect(modes).toEqual(['light', 'dark', 'system']);
     });
 
-    it('should expose the active mode', () => {
-      const { mode } = renderProvider('dark');
+    it('should expose the configured default mode', () => {
+      const { defaultMode } = renderProvider(null, 'dark');
 
-      expect(mode).toBe<ColorSchemeName>('dark');
+      expect(defaultMode).toBe('dark');
+    });
+
+    it('should expose the mode the visitor picked', () => {
+      const { mode, activeColorScheme } = renderProvider('dark');
+
+      expect(mode).toBe<ColorSchemeMode>('dark');
+      expect(activeColorScheme).toBe<ColorSchemeName>('dark');
+    });
+
+    it('should expose the configured mode while the visitor picked none', () => {
+      const { mode, activeColorScheme } = renderProvider(null, 'dark');
+
+      expect(mode).toBe<ColorSchemeMode>('dark');
+      expect(activeColorScheme).toBe<ColorSchemeName>('dark');
+    });
+
+    it('should expose the system mode next to the scheme it resolves to', () => {
+      const { mode, activeColorScheme } = renderProvider('system', 'light', true);
+
+      expect(mode).toBe<ColorSchemeMode>('system');
+      expect(activeColorScheme).toBe<ColorSchemeName>('dark');
     });
   });
 
@@ -148,10 +261,19 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
       expect(logger.warn).not.toHaveBeenCalled();
     });
 
+    it('should persist the system mode', () => {
+      const { setMode } = renderProvider('light');
+
+      setMode('system');
+
+      expect(persistedColorScheme).toBe('system');
+      expect(logger.warn).not.toHaveBeenCalled();
+    });
+
     it('should not persist an unknown color scheme', () => {
       const { setMode } = renderProvider('light');
 
-      setMode('blue' as ColorSchemeName);
+      setMode('blue' as ColorSchemeMode);
 
       expect(persistedColorScheme).toBe('light');
       expect(logger.warn).toHaveBeenCalled();
@@ -166,6 +288,14 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
       expect(logger.warn).not.toHaveBeenCalled();
     });
 
+    it('should resolve an updater against the configured mode while the visitor picked none', () => {
+      const { setMode } = renderProvider(null, 'dark');
+
+      setMode(current => (current === 'dark' ? 'light' : 'dark'));
+
+      expect(persistedColorScheme).toBe('light');
+    });
+
     it('should resolve an updater function and persist a supported result', () => {
       const { setMode } = renderProvider('light');
 
@@ -178,7 +308,7 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
     it('should reject an unsupported result returned by an updater function', () => {
       const { setMode } = renderProvider('light');
 
-      setMode(() => 'blue' as ColorSchemeName);
+      setMode(() => 'blue' as ColorSchemeMode);
 
       expect(persistedColorScheme).toBe('light');
       expect(logger.warn).toHaveBeenCalled();
