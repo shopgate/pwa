@@ -2,6 +2,7 @@ import { memo, useCallback } from 'react';
 import type { ComponentType, ReactNode } from 'react';
 import noop from 'lodash/noop';
 import { Checkbox } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 
 /**
@@ -30,7 +31,15 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   label: {
+    width: '100%',
+    display: 'flex',
+    justifyContent: 'space-between',
+    gap: theme.spacing(2),
     paddingLeft: theme.spacing(1),
+    [theme.breakpoints.up('md')]: {
+      width: 'max-content',
+      maxWidth: '100%',
+    },
   },
 }));
 
@@ -43,6 +52,10 @@ export interface ValueCheckboxProps {
    * Display label of the filter value. Rendered as is — never translated.
    */
   label: string;
+  /**
+   * Number of products that are available for the filter value.
+   */
+  hits?: number;
   /**
    * Whether the value is currently selected.
    */
@@ -60,6 +73,7 @@ export interface ValueCheckboxProps {
 const ValueCheckbox = ({
   id,
   label,
+  hits,
   isActive = false,
   onToggle = noop,
 }: ValueCheckboxProps) => {
@@ -77,7 +91,20 @@ const ValueCheckbox = ({
         name={id}
         checked={isActive}
         onChange={handleChange}
-        label={<div className={classes.label}>{label}</div>}
+        label={(
+          <div
+            className={classes.label}
+            aria-label={hits === undefined
+              ? label
+              : i18n.text('filter.hits', {
+                label,
+                count: hits,
+              })}
+          >
+            <span>{label}</span>
+            {hits !== undefined && <span>{`(${hits})`}</span>}
+          </div>
+        )}
       />
     </div>
   );

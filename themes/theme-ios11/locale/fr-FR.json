@@ -206,6 +206,7 @@
     "remove": "Supprimer {filter} filtre",
     "edit": "Modifier {filter} filtrer",
     "filter_by": "Filtrer par {label}",
+    "hits": "{label} ({count, plural, =1 {un résultat} other {{count} résultats}})",
     "label": {
       "price": "Prix",
       "category": "Catégorie",

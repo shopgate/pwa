@@ -98,6 +98,7 @@ const Selector = ({
                 key={value.id}
                 id={value.id}
                 label={value.label}
+                hits={value.hits}
                 isActive={(selected && selected.includes(value.id))}
                 onToggle={handleToggle}
               />

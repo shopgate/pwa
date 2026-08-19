@@ -206,6 +206,7 @@
     "remove": "{filter} Szűrő eltávolítása",
     "edit": "{filter} Szűrő szerkesztése",
     "filter_by": "Szűrés {label}",
+    "hits": "{label} ({count, plural, =1 {egy találat} other {{count} találat}})",
     "label": {
       "price": "Ár",
       "category": "Kategória",

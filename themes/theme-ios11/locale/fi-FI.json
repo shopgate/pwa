@@ -206,6 +206,7 @@
     "remove": "{filter} poista suodatin",
     "edit": "{filter} Muokkaa suodatinta",
     "filter_by": "Suodata {label}",
+    "hits": "{label} ({count, plural, =1 {yksi tulos} other {{count} tulosta}})",
     "label": {
       "price": "Hinta",
       "category": "Kategoria",
