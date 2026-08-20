@@ -25,9 +25,10 @@ export interface ColorSchemeContextValue {
    */
   activeColorScheme: ColorSchemeName | null;
   /**
-   * Whether the merchant lets visitors pick a color scheme themselves. False while the app settings
-   * configure a binding color scheme, in which case a stored pick is ignored. A picker should
-   * render only where this is true.
+   * Whether visitors may pick a color scheme themselves. False while the app settings configure a
+   * binding color scheme, in which case a stored pick is ignored. Always true in development
+   * builds, which have no app settings to configure. A picker should render only where this is
+   * true.
    */
   canSelectColorScheme: boolean;
   /**

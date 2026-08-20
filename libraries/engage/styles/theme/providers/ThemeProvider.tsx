@@ -39,9 +39,13 @@ const ThemeProvider = ({
   );
 
   const defaultMode = useSelector(getDefaultColorSchemeMode);
+  const isColorSchemeSelectable = useSelector(getCanSelectColorScheme);
+
   // Whether the merchant lets visitors choose. A binding `light` or `dark` rules a pick out, so one
-  // left over from when selecting still was allowed does not keep overriding it.
-  const canSelectColorScheme = useSelector(getCanSelectColorScheme);
+  // left over from when selecting still was allowed does not keep overriding it. Development builds
+  // have no app settings to configure at all, so both schemes stay reachable there.
+  const canSelectColorScheme = isColorSchemeSelectable
+    || process.env.NODE_ENV === 'development';
   const prefersDarkColorScheme = useMatchMedia('(prefers-color-scheme: dark)');
   const systemColorScheme: ColorSchemeName = prefersDarkColorScheme ? 'dark' : 'light';
 
@@ -53,7 +57,8 @@ const ThemeProvider = ({
   });
 
   // The preview forces a scheme through the same setter to show the admin either appearance, which
-  // has to work regardless of what the previewed settings configure.
+  // has to work regardless of what the previewed settings configure. It stays out of
+  // `canSelectColorScheme`, so the previewed shop offers a picker exactly where visitors get one.
   const isPickApplied = canSelectColorScheme || isFrontendSettingsAdminPreviewActive();
 
   // The mode the visitor picked wins where it applies, otherwise the configured one does. Resolving
@@ -89,9 +94,10 @@ const ThemeProvider = ({
   // Setting null is allowed and clears the stored preference, which returns to the configured one.
   const setMode = useCallback<ColorSchemeContextValue['setMode']>((value) => {
     setPersistedMode((currentMode) => {
-      // An updater is resolved against the effective mode, so it sees what `mode` exposes rather
-      // than the empty storage behind it.
-      const nextMode = typeof value === 'function' ? value(currentMode ?? defaultMode) : value;
+      // An updater is resolved the same way `mode` is, so it sees what the context exposes rather
+      // than the storage behind it - which holds no value yet, or one that is currently ignored.
+      const effectiveMode = (isPickApplied && currentMode) || defaultMode;
+      const nextMode = typeof value === 'function' ? value(effectiveMode) : value;
 
       if (nextMode !== null && !modes.includes(nextMode)) {
         logger.warn(`ThemeProvider: "${nextMode}" is not a supported color scheme.`);
@@ -100,7 +106,7 @@ const ThemeProvider = ({
 
       return nextMode;
     });
-  }, [defaultMode, modes, setPersistedMode]);
+  }, [defaultMode, isPickApplied, modes, setPersistedMode]);
 
   const colorSchemeContextValue = useMemo(() => ({
     mode,

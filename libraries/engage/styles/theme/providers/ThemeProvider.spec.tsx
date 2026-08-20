@@ -237,6 +237,19 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
       expect(useMatchMedia).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
     });
 
+    it('should apply a picked scheme in a development build', () => {
+      const nodeEnv = process.env.NODE_ENV;
+      process.env.NODE_ENV = 'development';
+
+      try {
+        renderProvider('dark', 'light');
+
+        expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('dark');
+      } finally {
+        process.env.NODE_ENV = nodeEnv;
+      }
+    });
+
     it('should apply a picked scheme within the frontend settings preview', () => {
       (isFrontendSettingsAdminPreviewActive as jest.Mock).mockReturnValue(true);
 
@@ -287,6 +300,27 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
     });
 
     it('should tell that visitors may not select a color scheme', () => {
+      const { canSelectColorScheme } = renderProvider(null, 'dark');
+
+      expect(canSelectColorScheme).toBe(false);
+    });
+
+    it('should let visitors select a color scheme in a development build', () => {
+      const nodeEnv = process.env.NODE_ENV;
+      process.env.NODE_ENV = 'development';
+
+      try {
+        const { canSelectColorScheme } = renderProvider(null, 'dark');
+
+        expect(canSelectColorScheme).toBe(true);
+      } finally {
+        process.env.NODE_ENV = nodeEnv;
+      }
+    });
+
+    it('should not let visitors select a color scheme within the frontend settings preview', () => {
+      (isFrontendSettingsAdminPreviewActive as jest.Mock).mockReturnValue(true);
+
       const { canSelectColorScheme } = renderProvider(null, 'dark');
 
       expect(canSelectColorScheme).toBe(false);
@@ -352,6 +386,22 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
 
       expect(persistedColorScheme).toBeNull();
       expect(logger.warn).not.toHaveBeenCalled();
+    });
+
+    it('should resolve an updater against the configured mode while a pick is ignored', () => {
+      const { setMode } = renderProvider('dark', 'light');
+
+      setMode(current => (current === 'light' ? 'dark' : 'light'));
+
+      expect(persistedColorScheme).toBe('dark');
+    });
+
+    it('should resolve an updater against the picked mode while it applies', () => {
+      const { setMode } = renderProvider('dark', 'selectable');
+
+      setMode(current => (current === 'dark' ? 'light' : 'dark'));
+
+      expect(persistedColorScheme).toBe('light');
     });
 
     it('should resolve an updater against the configured mode while the visitor picked none', () => {

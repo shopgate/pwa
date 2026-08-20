@@ -17,11 +17,18 @@ const LABELS: Record<ColorSchemeMode, string> = {
 
 /**
  * Provides a picker to choose between the color schemes the theme provides and following the
- * operating system.
+ * operating system. Renders nothing while the app settings configure a binding color scheme, since
+ * a pick would not apply.
  */
 const ColorSchemePicker = () => {
   const { classes } = useStyles();
-  const { mode, modes, setMode } = useColorScheme();
+  const {
+    mode, modes, setMode, canSelectColorScheme,
+  } = useColorScheme();
+
+  if (!canSelectColorScheme) {
+    return null;
+  }
 
   return (
     <RadioGroup

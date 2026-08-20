@@ -14,7 +14,7 @@ const theme = createTheme(createDefaultThemeOptions());
  * @param defaultColorSchemeMode The color scheme mode configured within the app settings.
  * @returns The render result.
  */
-const renderPicker = (defaultColorSchemeMode = 'light') => {
+const renderPicker = (defaultColorSchemeMode = 'selectable') => {
   const store = createStore(() => ({
     settings: { appSettings: { appearance: { defaultColorSchemeMode } } },
   }));
@@ -55,11 +55,10 @@ describe('<ColorSchemePicker />', () => {
     expect(document.documentElement.getAttribute('data-sg-color-scheme')).toBe('light');
   });
 
-  it('preselects the configured scheme while nothing is picked', () => {
-    renderPicker('dark');
+  it('renders nothing while a binding color scheme is configured', () => {
+    const { container } = renderPicker('dark');
 
-    expect(screen.getByLabelText('Dark')).toBeChecked();
-    expect(screen.getByLabelText('Light')).not.toBeChecked();
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('applies and persists the picked scheme', () => {
@@ -71,11 +70,9 @@ describe('<ColorSchemePicker />', () => {
     expect(document.documentElement.getAttribute('data-sg-color-scheme')).toBe('dark');
   });
 
-  it('ignores a picked scheme while a fixed one is configured', () => {
-    renderPicker('light');
+  it('renders nothing while the light scheme is configured', () => {
+    const { container } = renderPicker('light');
 
-    fireEvent.click(screen.getByLabelText('Dark'));
-
-    expect(document.documentElement.getAttribute('data-sg-color-scheme')).toBe('light');
+    expect(container).toBeEmptyDOMElement();
   });
 });
