@@ -89,6 +89,7 @@ const useStyles = makeStyles()(theme => ({
   },
   input: {
     margin: '3px 0',
+    color: theme.palette.text.secondary,
     width: '100%',
     lineHeight: '28px',
     outline: 'none',

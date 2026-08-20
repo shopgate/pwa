@@ -78,12 +78,19 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
   );
 });
 
+/**
+ * Opacity the separator between grouped text buttons defaults to. Published as a custom property
+ * below, so the value is not baked into the border declarations.
+ */
+const SEPARATOR_OPACITY = '0.5';
+
 const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
   name: 'ButtonGroup',
 })((theme, props) => {
   const { color, variant } = props;
 
   let cssColor = '';
+  let darkCssColor = '';
 
   if (color === 'cta') {
     cssColor = theme.components.ctaButton.background;
@@ -94,6 +101,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
   } else if (variant === 'contained') {
     // eslint-disable-next-line prefer-destructuring
     cssColor = theme.palette.grey[200];
+    darkCssColor = theme.palette.background.emphasized;
   } else {
     cssColor = 'currentColor';
   }
@@ -101,7 +109,17 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
   return {
     root: {
       '--button-group-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
+      '--button-group-divider': theme.darken('var(--button-group-color)'),
+      ...(darkCssColor ? theme.applyStyles('dark', {
+        '--button-group-color': `var(${theme.vars.components.button.color}, ${darkCssColor})`,
+        '--button-group-divider': theme.lighten('var(--button-group-color)'),
+      }) : {}),
       '--disabledColor': theme.palette.action.disabled,
+      '--button-group-separator-opacity': SEPARATOR_OPACITY,
+      '--button-group-separator': theme.alpha(
+        'var(--button-group-color)',
+        'var(--button-group-separator-opacity)'
+      ),
       display: 'inline-flex',
       borderRadius: theme.components.button.borderRadius,
     },
@@ -146,7 +164,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       '&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: theme.darken('var(--button-group-color)'),
+        borderRightColor: 'var(--button-group-divider)',
         '&:disabled, &[aria-disabled="true"]': {
           borderRightColor: 'var(--disabledColor)',
         },
@@ -156,17 +174,13 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       '&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: theme.darken('var(--button-group-color)'),
+        borderBottomColor: 'var(--button-group-divider)',
         '&:disabled, &[aria-disabled="true"]': {
           borderBottomColor: 'var(--disabledColor)',
         },
       },
     },
     groupedOutlined: {
-      borderColor: `${theme.lighten('var(--button-group-color)', 0.5)} !important`,
-      '&:hover': {
-        borderColor: 'var(--button-group-color)',
-      },
       '&:disabled, &[aria-disabled="true"]': {
         borderColor: 'var(--disabledColor) !important',
       },
@@ -194,7 +208,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       '&&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: `${theme.lighten('var(--button-group-color)', 0.5)}`,
+        borderRightColor: 'var(--button-group-separator)',
         '&:disabled, &[aria-disabled="true"]': {
           borderRightColor: 'var(--disabledColor)',
         },
@@ -204,7 +218,7 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       '&&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: `${theme.lighten('var(--button-group-color)', 0.5)}`,
+        borderBottomColor: 'var(--button-group-separator)',
         '&:disabled, &[aria-disabled="true"]': {
           borderBottomColor: 'var(--disabledColor)',
         },

@@ -784,7 +784,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           testId="UserMenuLogin"
                         >
                           <ButtonBase
-                            className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-244186-Button-root-Button-contained-Button-fullWidth-button"
+                            className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-1kn27ek-Button-root-Button-contained-Button-fullWidth-button"
                             data-color="primary"
                             data-full-width={true}
                             data-size="medium"
@@ -796,7 +796,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             testId="UserMenuLogin"
                           >
                             <button
-                              className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-1vozyig-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
+                              className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-qnrtwf-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
                               data-color="primary"
                               data-full-width={true}
                               data-size="medium"
@@ -863,7 +863,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                           testId="UserMenuRegister"
                         >
                           <ButtonBase
-                            className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-244186-Button-root-Button-contained-Button-fullWidth-button"
+                            className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-1kn27ek-Button-root-Button-contained-Button-fullWidth-button"
                             data-color="primary"
                             data-full-width={true}
                             data-size="medium"
@@ -875,7 +875,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                             testId="UserMenuRegister"
                           >
                             <button
-                              className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-1vozyig-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
+                              className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-qnrtwf-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
                               data-color="primary"
                               data-full-width={true}
                               data-size="medium"

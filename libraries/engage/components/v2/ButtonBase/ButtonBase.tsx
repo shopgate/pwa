@@ -12,6 +12,21 @@ import { usePressRipple } from './hooks';
 const supportedButtonTypes = ['button', 'submit', 'reset'] as const;
 
 /**
+ * Whether a pointer position sits within the bounds of an element.
+ * @param element The element to measure.
+ * @param clientX Horizontal position of the pointer.
+ * @param clientY Vertical position of the pointer.
+ * @returns Whether the position is inside the element.
+ */
+const containsPoint = (element: HTMLElement, clientX: number, clientY: number) => {
+  const {
+    top, right, bottom, left,
+  } = element.getBoundingClientRect();
+
+  return clientX >= left && clientX <= right && clientY >= top && clientY <= bottom;
+};
+
+/**
  * Props read off the resolved element rather than declared on `ButtonBaseOwnProps`. Typed loosely
  * because the element type is generic - `React.ComponentPropsWithRef<C>` keeps consumers exact.
  */
@@ -116,6 +131,15 @@ function ButtonBase<C extends React.ElementType = 'button'>(
       return;
     }
 
+    // The pointer capture taken on pointer down redirects the release to this element, so a pointer
+    // that went up somewhere else still arrives here as a click. Without the capture the browser
+    // would have dropped it. Keyboard activation reports no button presses and carries no position,
+    // so it never takes this path.
+    if (event.detail > 0 && !containsPoint(event.currentTarget, event.clientX, event.clientY)) {
+      event.preventDefault();
+      return;
+    }
+
     onClick?.(event);
 
     if (!href || event.defaultPrevented) {
@@ -127,9 +151,13 @@ function ButtonBase<C extends React.ElementType = 'button'>(
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
+    if (disabled) {
+      return;
+    }
+
     onKeyDown?.(event);
 
-    if (isButtonElement || disabled || event.defaultPrevented) {
+    if (isButtonElement || event.defaultPrevented) {
       return;
     }
 
@@ -144,7 +172,11 @@ function ButtonBase<C extends React.ElementType = 'button'>(
   };
 
   const handlePointerDown = (event: React.PointerEvent<HTMLElement>) => {
-    if (!disabled && !disableRipple) {
+    if (disabled) {
+      return;
+    }
+
+    if (!disableRipple) {
       event.currentTarget.setPointerCapture?.(event.pointerId);
       start(event);
     }
@@ -172,6 +204,10 @@ function ButtonBase<C extends React.ElementType = 'button'>(
       end(event.pointerId);
     }
 
+    if (disabled) {
+      return;
+    }
+
     onPointerUp?.(event);
   };
 
@@ -180,6 +216,10 @@ function ButtonBase<C extends React.ElementType = 'button'>(
 
     if (!disableRipple) {
       end(event.pointerId);
+    }
+
+    if (disabled) {
+      return;
     }
 
     onPointerCancel?.(event);
@@ -199,6 +239,10 @@ function ButtonBase<C extends React.ElementType = 'button'>(
   const handlePointerLeave = (event: React.PointerEvent<HTMLElement>) => {
     if (!disableRipple && event.buttons === 1) {
       end(event.pointerId);
+    }
+
+    if (disabled) {
+      return;
     }
 
     onPointerLeave?.(event);

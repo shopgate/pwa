@@ -60,6 +60,7 @@ const useStyles = makeStyles()(theme => ({
       bottom: 'auto',
       fontSize: theme.typography.caption.fontSize,
       background: theme.components.swiper.paginationFractionBackground,
+      color: theme.contrastColor(theme.components.swiper.paginationFractionBackground),
       borderRadius: '50px',
       width: 'fit-content',
       padding: '4px 8px',

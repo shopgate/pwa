@@ -121,6 +121,22 @@ function Button<C extends React.ElementType = 'button'>(
   );
 }
 
+/**
+ * Opacity of the overlay that the text and outlined variants tint themselves with on hover. The
+ * dark scheme needs more of it: the overlay takes the color of the label, and a light tint over a
+ * dark surface reads as a far smaller change than a dark tint over a light one.
+ */
+const HOVER_OVERLAY_OPACITY = 0.1;
+const HOVER_OVERLAY_OPACITY_DARK = 0.28;
+
+/**
+ * Opacity the outlined border rests at, leaving it somewhere to go on hover where it returns to the
+ * full color. The dark scheme keeps more of it: fading toward a dark backdrop cuts the brightness
+ * of the border, where fading toward a light one mostly cuts its saturation.
+ */
+const OUTLINED_BORDER_OPACITY = 0.5;
+const OUTLINED_BORDER_OPACITY_DARK = 0.7;
+
 const useStyles = makeStyles<ButtonOwnProps>({
   name: 'Button',
 })((theme, props) => {
@@ -135,6 +151,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
 
   let cssColor = '';
   let contrastText = '';
+  let darkCssColor = '';
 
   if (color === 'cta') {
     // The call to action color is not part of the palette. It's a component token so that merchants
@@ -150,8 +167,12 @@ const useStyles = makeStyles<ButtonOwnProps>({
       ? theme.palette[color].contrastText
       : theme.palette.primary.contrastText;
   } else if (variant === 'contained') {
+    // The numeric grey scale is absolute rather than per scheme, so it stays light in both. The
+    // light value is kept as it is and only the dark scheme swaps in a surface that its inherited
+    // text color can be read on.
     // eslint-disable-next-line prefer-destructuring
     cssColor = theme.palette.grey[200];
+    darkCssColor = theme.palette.background.emphasized;
     contrastText = 'inherit';
   } else {
     cssColor = 'currentColor';
@@ -165,6 +186,14 @@ const useStyles = makeStyles<ButtonOwnProps>({
       // turn these into `var(undefined, ...)`.
       '--button-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
       '--text-color': `var(${theme.vars.components.button.textColor}, ${contrastText})`,
+      // A single `applyStyles` call for the whole scheme. A second one would land on the same
+      // object key and quietly replace this one.
+      ...theme.applyStyles('dark', {
+        ...(darkCssColor ? {
+          '--button-color': `var(${theme.vars.components.button.color}, ${darkCssColor})`,
+        } : {}),
+        '--variant-outlinedBorder': theme.alpha('var(--button-color)', OUTLINED_BORDER_OPACITY_DARK),
+      }),
       '--border-radius': theme.components.button.borderRadius,
 
       '--font-size': theme.typography.button.fontSize,
@@ -173,7 +202,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
       '--variant-textDisabledColor': theme.palette.action.disabled,
 
       '--variant-outlinedColor': 'var(--button-color)',
-      '--variant-outlinedBorder': 'var(--button-color)',
+      '--variant-outlinedBorder': theme.alpha('var(--button-color)', OUTLINED_BORDER_OPACITY),
       '--variant-outlinedDisabledColor': theme.palette.action.disabled,
       '--variant-outlinedDisabledBorder': theme.palette.action.disabled,
 
@@ -196,16 +225,26 @@ const useStyles = makeStyles<ButtonOwnProps>({
       borderRadius: 'var(--border-radius)',
 
       '&:hover': {
-        '--variant-textBg': theme.alpha(cssColor, 0.1),
-        '--variant-outlinedBg': theme.alpha(cssColor, 0.1),
         textDecoration: 'none',
-        '&:disabled, &[aria-disabled="true"]': {
-          backgroundColor: 'transparent',
-        },
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           backgroundColor: 'transparent',
         },
+      },
+
+      // A disabled button keeps taking pointer events so that it can show a not-allowed cursor,
+      // which leaves it matching `:hover`. Its hover backgrounds stay unset instead, so the colors
+      // the variants give it while disabled are what remains visible.
+      '&:hover:not(:disabled):not([aria-disabled="true"])': {
+        '--variant-textBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY),
+        '--variant-outlinedBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY),
+        // The resting border sits at a fraction of the color, so hover brings it back to the full
+        // one. The root transition covers `border`, which carries the change over.
+        '--variant-outlinedBorder': 'var(--button-color)',
+        ...theme.applyStyles('dark', {
+          '--variant-textBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY_DARK),
+          '--variant-outlinedBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY_DARK),
+        }),
       },
     },
     small: {
@@ -233,7 +272,9 @@ const useStyles = makeStyles<ButtonOwnProps>({
       border: 0,
       textTransform: 'none',
       color: 'var(--variant-textColor)',
-      '&:active': {
+      // Scoped like the hover backgrounds are: a disabled button stays hit testable for its
+      // not-allowed cursor, so it would otherwise dim on press like an operable one.
+      '&:active:not(:disabled):not([aria-disabled="true"])': {
         opacity: 0.5,
       },
       '&:disabled, &[aria-disabled="true"]': {
