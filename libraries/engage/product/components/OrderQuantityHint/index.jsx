@@ -5,14 +5,22 @@ import { i18n, hasNewServices, isBeta } from '@shopgate/engage/core/helpers';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { PRODUCT_ORDER_QUANTITY } from '@shopgate/engage/product';
 import { formatFloat } from '@shopgate/engage/components/QuantityInput/helper';
+import { makeStyles } from '@shopgate/engage/styles';
 import withProductStock from '../../hocs/withProductStock';
 import withProduct from '../../hocs/withProduct';
+
+const useStyles = makeStyles()({
+  hint: {
+    lineHeight: 1.3,
+  },
+});
 
 /**
  * The Product Order Quantity Hint component.
  * @return {JSX}
  */
 const OrderQuantityHint = ({ stock, product, className }) => {
+  const { classes } = useStyles();
   const { hasCatchWeight, unit: productUnit } = product || {};
 
   const settings = useWidgetSettings('@shopgate/engage/product/OrderQuantityHint');
@@ -45,7 +53,12 @@ const OrderQuantityHint = ({ stock, product, className }) => {
     <div className={className}>
       <SurroundPortals portalName={PRODUCT_ORDER_QUANTITY} portalProps={{ stock }}>
         {showContent && stock && !!stock.minOrderQuantity &&
-          <Typography variant="caption" component="div" color="textSecondary">
+          <Typography
+            variant="caption"
+            component="div"
+            color="textSecondary"
+            classes={{ caption: classes.hint }}
+          >
             <I18n.Text
               string="product.minOrderQuantity"
               params={{
@@ -55,7 +68,12 @@ const OrderQuantityHint = ({ stock, product, className }) => {
             />
           </Typography>}
         {showContent && stock && !!stock.maxOrderQuantity &&
-          <Typography variant="caption" component="div" color="textSecondary">
+          <Typography
+            variant="caption"
+            component="div"
+            color="textSecondary"
+            classes={{ caption: classes.hint }}
+          >
             <I18n.Text
               string="product.maxOrderQuantity"
               params={{
