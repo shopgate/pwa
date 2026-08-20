@@ -111,9 +111,12 @@ export default function createCssVarsForColorSchemeThemes(
         },
       });
 
-      // Create a style sheet selector for the color scheme with the generated CSS variables
+      // Create a style sheet selector for the color scheme with the generated CSS variables.
+      // `only` opts the page out of the browser applying a color scheme of its own on top of the
+      // active one - forced dark repaints the palette's own colors and inverts light surfaces.
       styleSheets.push({
         [`${schemeName === 'light' ? ':root, ' : ''}${getColorSchemeSelector(schemeName)}`]: {
+          colorScheme: `only ${schemeName}`,
           ...colorSchemeMap[schemeName].css,
         },
       });
