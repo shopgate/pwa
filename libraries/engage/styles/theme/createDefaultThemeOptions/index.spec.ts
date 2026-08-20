@@ -1,9 +1,23 @@
 import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
 
+/**
+ * A color scheme of the returned options, narrowed for assertions. `ThemeOptions` types these
+ * through a `DeepPartial` that TypeScript cannot resolve, leaving every access untyped.
+ */
+type SchemeOptions = {
+  palette: Record<string, Record<string, string>>;
+  components: Record<string, { vars: Record<string, string> }>;
+};
+
+const colorSchemes = () => createDefaultThemeOptions().colorSchemes as unknown as {
+  light: SchemeOptions;
+  dark: SchemeOptions;
+};
+
 describe('engage > styles > theme > createDefaultThemeOptions', () => {
   describe('light color scheme', () => {
     it('should keep deriving its values from the legacy config', () => {
-      const { colorSchemes: { light } } = createDefaultThemeOptions();
+      const { light } = colorSchemes();
 
       // From themeConfig.colors.placeholder rather than the hard coded fallback next to it.
       expect(light.palette.background.emphasized).toBe('#f2f2f2');
@@ -14,7 +28,7 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
     });
 
     it('should not carry any of the color scheme specific dark values', () => {
-      const { colorSchemes: { light } } = createDefaultThemeOptions();
+      const { light } = colorSchemes();
 
       expect(light.palette.background.default).not.toBe('#000000');
       expect(light.palette.background.surface).not.toBe('#1C1C1E');
@@ -24,7 +38,7 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
 
   describe('dark color scheme', () => {
     it('should provide its own surfaces and text colors', () => {
-      const { colorSchemes: { dark } } = createDefaultThemeOptions();
+      const { dark } = colorSchemes();
 
       expect(dark.palette.background).toEqual({
         default: '#000000',
@@ -38,7 +52,7 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
     });
 
     it('should provide its own status colors', () => {
-      const { colorSchemes: { dark } } = createDefaultThemeOptions();
+      const { dark } = colorSchemes();
 
       expect(dark.palette.error.main).toBe('#FF6B6B');
       expect(dark.palette.warning.main).toBe('#FFA726');
@@ -48,7 +62,7 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
     // The brand colors are the reason the whole scheme is a partial one. Inheriting them keeps a
     // merchant's configured colors in place, so a value here would replace them for every shop.
     it('should not provide brand colors of its own', () => {
-      const { colorSchemes: { dark } } = createDefaultThemeOptions();
+      const { dark } = colorSchemes();
 
       expect(dark.palette).not.toHaveProperty('primary');
       expect(dark.palette).not.toHaveProperty('secondary');
@@ -59,7 +73,7 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
     });
 
     it('should darken the components that would otherwise inherit a light surface', () => {
-      const { colorSchemes: { dark } } = createDefaultThemeOptions();
+      const { dark } = colorSchemes();
 
       expect(dark.components.appBar.vars.background).toBe('#1C1C1E');
       expect(dark.components.tabBar.vars.background).toBe('#1C1C1E');
@@ -75,12 +89,18 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
       });
     });
 
+    it('should give every swiper variable a dark counterpart', () => {
+      const { light, dark } = colorSchemes();
+
+      expect(Object.keys(dark.components.swiper.vars).sort())
+        .toEqual(Object.keys(light.components.swiper.vars).sort());
+    });
+
     it('should not read the legacy light only css custom properties', () => {
-      const { colorSchemes: { dark } } = createDefaultThemeOptions();
+      const { dark } = colorSchemes();
 
       const values = Object.values(dark.components)
-        .flatMap(component => Object.values(component.vars ?? {}))
-        .filter(value => typeof value === 'string');
+        .flatMap(component => Object.values(component.vars));
 
       expect(values).not.toHaveLength(0);
       values.forEach((value) => {
@@ -89,7 +109,7 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
     });
 
     it('should not leave the derived contrast colors to the light scheme', () => {
-      const { colorSchemes: { dark } } = createDefaultThemeOptions();
+      const { dark } = colorSchemes();
 
       expect(dark.components.appBar.vars).not.toHaveProperty('color');
       expect(dark.palette.error).not.toHaveProperty('contrastText');

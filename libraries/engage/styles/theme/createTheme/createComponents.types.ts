@@ -316,7 +316,7 @@ export const componentsDefaults = {
   },
   discountBadge: {
     vars: {
-      background: '#857500',
+      background: '#FF0000',
     },
   },
   icon: {

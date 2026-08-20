@@ -208,6 +208,10 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         },
         swiper: {
           vars: {
+            paginationBulletColor: '#AEAEB2',
+            paginationBulletActiveColor: '#F2F2F7',
+            paginationFractionBackground: '#2C2C2E',
+            paginationProgressbarBackground: '#48484A',
             paginationProgressbarActiveColor: '#FFFFFF',
           },
         },

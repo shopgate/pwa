@@ -239,7 +239,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           href="/category/6e756c6c"
         >
           <ButtonBase
-            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-yl2mqu-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-8il9vf-Button-root-Button-contained-Button-disabled-Button-fullWidth"
             data-color="primary"
             data-full-width={true}
             data-size="medium"
@@ -250,7 +250,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             href="/category/6e756c6c"
           >
             <button
-              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-13lid6h-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1g9e8mm-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth"
               data-color="primary"
               data-full-width={true}
               data-size="medium"
@@ -871,7 +871,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
           href="/category/312d31"
         >
           <ButtonBase
-            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1l4rgii-Button-root-Button-contained-Button-fullWidth"
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1m4sszv-Button-root-Button-contained-Button-fullWidth"
             data-color="primary"
             data-full-width={true}
             data-size="medium"
@@ -882,7 +882,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget for a category 
             href="/category/312d31"
           >
             <button
-              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1e0w1qe-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-i6kbr2-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
               data-color="primary"
               data-full-width={true}
               data-size="medium"
@@ -1525,7 +1525,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           href="/category/312d322d31"
         >
           <ButtonBase
-            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1l4rgii-Button-root-Button-contained-Button-fullWidth"
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1m4sszv-Button-root-Button-contained-Button-fullWidth"
             data-color="primary"
             data-full-width={true}
             data-size="medium"
@@ -1536,7 +1536,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             href="/category/312d322d31"
           >
             <button
-              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1e0w1qe-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-i6kbr2-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
               data-color="primary"
               data-full-width={true}
               data-size="medium"
@@ -2351,7 +2351,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           href="/category/6e756c6c"
         >
           <ButtonBase
-            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-yl2mqu-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-8il9vf-Button-root-Button-contained-Button-disabled-Button-fullWidth"
             data-color="primary"
             data-full-width={true}
             data-size="medium"
@@ -2362,7 +2362,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             href="/category/6e756c6c"
           >
             <button
-              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-13lid6h-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1g9e8mm-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth"
               data-color="primary"
               data-full-width={true}
               data-size="medium"
@@ -3505,7 +3505,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
           href="/category/312d31"
         >
           <ButtonBase
-            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1l4rgii-Button-root-Button-contained-Button-fullWidth"
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1m4sszv-Button-root-Button-contained-Button-fullWidth"
             data-color="primary"
             data-full-width={true}
             data-size="medium"
@@ -3516,7 +3516,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget with a persiste
             href="/category/312d31"
           >
             <button
-              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1e0w1qe-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-i6kbr2-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
               data-color="primary"
               data-full-width={true}
               data-size="medium"
@@ -3794,7 +3794,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           href="/category/6e756c6c"
         >
           <ButtonBase
-            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-yl2mqu-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-8il9vf-Button-root-Button-contained-Button-disabled-Button-fullWidth"
             data-color="primary"
             data-full-width={true}
             data-size="medium"
@@ -3805,7 +3805,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             href="/category/6e756c6c"
           >
             <button
-              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-13lid6h-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth"
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1g9e8mm-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth"
               data-color="primary"
               data-full-width={true}
               data-size="medium"
@@ -4411,7 +4411,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
           href="/category/32"
         >
           <ButtonBase
-            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1l4rgii-Button-root-Button-contained-Button-fullWidth"
+            className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1m4sszv-Button-root-Button-contained-Button-fullWidth"
             data-color="primary"
             data-full-width={true}
             data-size="medium"
@@ -4422,7 +4422,7 @@ exports[`<NestedCategoryFilterWidget /> should render the widget without a headl
             href="/category/32"
           >
             <button
-              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-1e0w1qe-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
+              className="engage__button common__button ui-shared__button ui-shared__ripple-button sg-i6kbr2-ButtonBase-root-Button-root-Button-contained-Button-fullWidth"
               data-color="primary"
               data-full-width={true}
               data-size="medium"

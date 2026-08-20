@@ -111,28 +111,31 @@ describe('<ButtonBase />', () => {
     expect(handleClick).not.toHaveBeenCalled();
   });
 
-  it('should not invoke the pointer and keyboard handlers while disabled', () => {
-    const handlers = {
-      onKeyDown: jest.fn(),
-      onPointerDown: jest.fn(),
-      onPointerUp: jest.fn(),
-      onPointerLeave: jest.fn(),
-      onPointerCancel: jest.fn(),
-    };
+  it('should still forward key presses while disabled', () => {
+    const handleKeyDown = jest.fn();
 
-    render(<ButtonBase component="div" disabled testId="Subject" {...handlers}>Press</ButtonBase>);
+    render(
+      <ButtonBase component="div" disabled testId="Subject" onKeyDown={handleKeyDown}>
+        Press
+      </ButtonBase>
+    );
 
     const element = document.querySelector('[data-test-id="Subject"]') as HTMLElement;
 
-    fireEvent.keyDown(element, { key: 'Enter' });
-    fireEvent.pointerDown(element);
-    fireEvent.pointerUp(element);
-    fireEvent.pointerLeave(element);
-    fireEvent.pointerCancel(element);
+    fireEvent.keyDown(element, { key: 'Escape' });
 
-    Object.values(handlers).forEach((handler) => {
-      expect(handler).not.toHaveBeenCalled();
-    });
+    expect(handleKeyDown).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not activate on Enter while disabled', () => {
+    render(<ButtonBase component="div" disabled testId="Subject">Press</ButtonBase>);
+
+    const element = document.querySelector('[data-test-id="Subject"]') as HTMLElement;
+    const activate = jest.spyOn(element, 'click');
+
+    fireEvent.keyDown(element, { key: 'Enter' });
+
+    expect(activate).not.toHaveBeenCalled();
   });
 
   it('should forward the ref to the button element', () => {

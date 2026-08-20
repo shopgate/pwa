@@ -151,13 +151,9 @@ function ButtonBase<C extends React.ElementType = 'button'>(
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
-    if (disabled) {
-      return;
-    }
-
     onKeyDown?.(event);
 
-    if (isButtonElement || event.defaultPrevented) {
+    if (isButtonElement || disabled || event.defaultPrevented) {
       return;
     }
 
