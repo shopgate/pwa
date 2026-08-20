@@ -30,7 +30,12 @@ const useStyles = makeStyles()(theme => ({
   },
   rangeSliderHandleInner: {
     background: theme.palette.common.white,
-    boxShadow: '0 0 8px rgba(0, 0, 0, .16)',
+    border: `1px solid ${theme.components.border.light}`,
+    boxShadow: theme.shadows[2],
+    ...theme.applyStyles('dark', {
+      boxShadow: 'none',
+      border: 'none',
+    }),
     borderRadius: '50%',
     width: theme.spacing(3),
     height: theme.spacing(3),
