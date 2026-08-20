@@ -1,4 +1,9 @@
-import { getDefaultColorSchemeMode, getTypographyFontCssUrls, getTypographySettings } from './appSettings';
+import {
+  getCanSelectColorScheme,
+  getDefaultColorSchemeMode,
+  getTypographyFontCssUrls,
+  getTypographySettings,
+} from './appSettings';
 import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
 import type { AppearanceSettings, AppSettingsState, TypographySettings } from '../types/appSettings';
 
@@ -30,8 +35,8 @@ describe('settings/selectors/appSettings', () => {
       expect(getDefaultColorSchemeMode({} as AppSettingsState)).toBe('light');
     });
 
-    it('returns the system color scheme', () => {
-      expect(getDefaultColorSchemeMode(stateWithAppearance({ defaultColorSchemeMode: 'system' }))).toBe('system');
+    it('maps a selectable setting to the system mode', () => {
+      expect(getDefaultColorSchemeMode(stateWithAppearance({ defaultColorSchemeMode: 'selectable' }))).toBe('system');
     });
 
     it('falls back to the default when the branch is missing', () => {
@@ -40,6 +45,20 @@ describe('settings/selectors/appSettings', () => {
       } as AppSettingsState;
 
       expect(getDefaultColorSchemeMode(state)).toBe('light');
+    });
+  });
+
+  describe('getCanSelectColorScheme', () => {
+    it('allows selecting while the setting is selectable', () => {
+      expect(getCanSelectColorScheme(stateWithAppearance({ defaultColorSchemeMode: 'selectable' }))).toBe(true);
+    });
+
+    it('does not allow selecting while a color scheme is configured', () => {
+      expect(getCanSelectColorScheme(stateWithAppearance({ defaultColorSchemeMode: 'dark' }))).toBe(false);
+    });
+
+    it('does not allow selecting when the slice is missing', () => {
+      expect(getCanSelectColorScheme({} as AppSettingsState)).toBe(false);
     });
   });
 

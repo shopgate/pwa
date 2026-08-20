@@ -9,6 +9,16 @@ export type {
   ColorSchemeMode, ColorSchemeName, ShadowSize, TypographyVariant,
 };
 
+export const COLOR_SCHEME_SELECTABLE = 'selectable';
+
+/**
+ * What the app settings can configure: a color scheme that is binding, or `selectable` to let
+ * visitors pick one themselves. Distinct from the theme's `ColorSchemeMode`, which is what a
+ * visitor can pick - `selectable` is a permission rather than an appearance, and maps to the
+ * theme's `system` mode.
+ */
+export type DefaultColorSchemeMode = ColorSchemeName | typeof COLOR_SCHEME_SELECTABLE;
+
 /**
  * Recursively optional variant of `T`. The settings sources send only what a merchant configured,
  * and the admin preview additionally prunes the fields its visibility conditions hide.
@@ -220,10 +230,10 @@ export interface ImageSettings {
  */
 export interface AppearanceSettings {
   /**
-   * The color scheme mode the app starts in. A visitor who picked one themselves keeps their
-   * choice - this one only applies while no such preference is stored.
+   * The color scheme the app renders in. A binding `light` or `dark` always applies, while
+   * `selectable` starts from the operating system preference and lets the visitor pick another.
    */
-  defaultColorSchemeMode: ColorSchemeMode;
+  defaultColorSchemeMode: DefaultColorSchemeMode;
 }
 
 export interface AppSettings {

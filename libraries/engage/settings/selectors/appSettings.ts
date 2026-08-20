@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
-import type { AppSettingsSlice, AppSettingsState } from '../types/appSettings';
+import { COLOR_SCHEME_SELECTABLE } from '../types/appSettings';
+import type { AppSettingsSlice, AppSettingsState, ColorSchemeMode } from '../types/appSettings';
 import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
 
 /**
@@ -103,13 +104,32 @@ export const getCardShadowSize = createSelector(
 );
 
 /**
- * Selects the color scheme mode that applies while the visitor has no own preference stored. A
- * mode rather than a scheme name, since it can also ask to follow the operating system.
+ * Selects the raw appearance setting: a binding color scheme, or `selectable`.
  */
-export const getDefaultColorSchemeMode = createSelector(
+const getConfiguredColorSchemeMode = createSelector(
   getAppSettingsState,
   appSettings => appSettings.appearance?.defaultColorSchemeMode
     ?? DEFAULT_APP_SETTINGS.appearance.defaultColorSchemeMode
+);
+
+/**
+ * Selects the color scheme mode that applies while the visitor has no own preference stored. A
+ * mode rather than a scheme name, since it can also ask to follow the operating system: a
+ * `selectable` setting starts there, so the theme layer only ever sees its own vocabulary.
+ */
+export const getDefaultColorSchemeMode = createSelector(
+  getConfiguredColorSchemeMode,
+  (configured): ColorSchemeMode =>
+    (configured === COLOR_SCHEME_SELECTABLE ? 'system' : configured)
+);
+
+/**
+ * Selects whether visitors may pick a color scheme themselves. False while a binding `light` or
+ * `dark` is configured, in which case a stored pick of theirs does not apply.
+ */
+export const getCanSelectColorScheme = createSelector(
+  getConfiguredColorSchemeMode,
+  configured => configured === COLOR_SCHEME_SELECTABLE
 );
 
 /**

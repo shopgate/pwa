@@ -25,8 +25,14 @@ export interface ColorSchemeContextValue {
    */
   activeColorScheme: ColorSchemeName | null;
   /**
+   * Whether the merchant lets visitors pick a color scheme themselves. False while the app settings
+   * configure a binding color scheme, in which case a stored pick is ignored. A picker should
+   * render only where this is true.
+   */
+  canSelectColorScheme: boolean;
+  /**
    * Updates the color scheme. Setting null clears the visitor's pick, so the configured default
-   * applies again.
+   * applies again. Takes effect only while `canSelectColorScheme` is true.
    */
   setMode: (value: SetColorSchemeMode) => void;
   /**
@@ -40,6 +46,7 @@ export const ColorSchemeContext = createContext<ColorSchemeContextValue>({
   mode: 'light',
   defaultMode: 'light',
   activeColorScheme: 'light',
+  canSelectColorScheme: false,
   setMode: () => undefined,
   modes: ['light'],
 });

@@ -9,7 +9,7 @@ import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-pre
 import { FrontendSettingsPreviewBridge } from '@shopgate/engage/admin-preview/components';
 // Imported via its module path rather than a settings barrel, to keep this module out of an import
 // cycle - the settings types reach back into the "styles/theme" barrel, which exports this file.
-import { getDefaultColorSchemeMode } from '@shopgate/engage/settings/selectors/appSettings';
+import { getCanSelectColorScheme, getDefaultColorSchemeMode } from '@shopgate/engage/settings/selectors/appSettings';
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 import { ColorSchemeContext, type ColorSchemeContextValue } from './ColorSchemeContext';
 import { ThemeContext } from './ThemeContext';
@@ -39,6 +39,9 @@ const ThemeProvider = ({
   );
 
   const defaultMode = useSelector(getDefaultColorSchemeMode);
+  // Whether the merchant lets visitors choose. A binding `light` or `dark` rules a pick out, so one
+  // left over from when selecting still was allowed does not keep overriding it.
+  const canSelectColorScheme = useSelector(getCanSelectColorScheme);
   const prefersDarkColorScheme = useMatchMedia('(prefers-color-scheme: dark)');
   const systemColorScheme: ColorSchemeName = prefersDarkColorScheme ? 'dark' : 'light';
 
@@ -49,10 +52,14 @@ const ThemeProvider = ({
     persist: !isFrontendSettingsAdminPreviewActive(),
   });
 
-  // The mode the visitor picked wins, otherwise the configured one applies. Resolving that on every
-  // render rather than seeding the storage with it keeps `system` following the operating system
-  // and lets the preview apply the merchant's edits live.
-  const mode = pickedMode ?? defaultMode;
+  // The preview forces a scheme through the same setter to show the admin either appearance, which
+  // has to work regardless of what the previewed settings configure.
+  const isPickApplied = canSelectColorScheme || isFrontendSettingsAdminPreviewActive();
+
+  // The mode the visitor picked wins where it applies, otherwise the configured one does. Resolving
+  // that on every render rather than seeding the storage with it keeps `system` following the
+  // operating system and lets the preview apply the merchant's edits live.
+  const mode = (isPickApplied && pickedMode) || defaultMode;
 
   const resolvedColorScheme = useMemo<ColorSchemeName>(
     () => (mode === COLOR_SCHEME_SYSTEM ? systemColorScheme : mode),
@@ -99,9 +106,10 @@ const ThemeProvider = ({
     mode,
     defaultMode,
     activeColorScheme,
+    canSelectColorScheme,
     setMode,
     modes,
-  }), [mode, defaultMode, activeColorScheme, modes, setMode]);
+  }), [mode, defaultMode, activeColorScheme, canSelectColorScheme, modes, setMode]);
 
   useLayoutEffect(() => {
     if (!activeColorScheme) return;

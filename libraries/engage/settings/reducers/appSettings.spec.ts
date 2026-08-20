@@ -111,10 +111,10 @@ describe('settings / reducers / appSettings', () => {
   it('stores the system color scheme', () => {
     const state = appSettings(
       DEFAULT_APP_SETTINGS,
-      receiveAppSettings({ appearance: { defaultColorSchemeMode: 'system' } })
+      receiveAppSettings({ appearance: { defaultColorSchemeMode: 'selectable' } })
     );
 
-    expect(state.appearance.defaultColorSchemeMode).toBe('system');
+    expect(state.appearance.defaultColorSchemeMode).toBe('selectable');
   });
 
   it('keeps the appearance defaults when the branch is cleared', () => {

@@ -39,14 +39,14 @@ describe('<ColorSchemePicker />', () => {
     expect(screen.getByLabelText('System')).toBeInTheDocument();
   });
 
-  it('preselects the configured system mode', () => {
-    renderPicker('system');
+  it('preselects the configured selectable mode', () => {
+    renderPicker('selectable');
 
     expect(screen.getByLabelText('System')).toBeChecked();
   });
 
   it('applies the system mode when picked', () => {
-    renderPicker('light');
+    renderPicker('selectable');
 
     fireEvent.click(screen.getByLabelText('System'));
 
@@ -63,11 +63,19 @@ describe('<ColorSchemePicker />', () => {
   });
 
   it('applies and persists the picked scheme', () => {
-    renderPicker('light');
+    renderPicker('selectable');
 
     fireEvent.click(screen.getByLabelText('Dark'));
 
     expect(screen.getByLabelText('Dark')).toBeChecked();
     expect(document.documentElement.getAttribute('data-sg-color-scheme')).toBe('dark');
+  });
+
+  it('ignores a picked scheme while a fixed one is configured', () => {
+    renderPicker('light');
+
+    fireEvent.click(screen.getByLabelText('Dark'));
+
+    expect(document.documentElement.getAttribute('data-sg-color-scheme')).toBe('light');
   });
 });
