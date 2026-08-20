@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.31.6](https://github.com/shopgate/pwa/compare/v7.31.5...v7.31.6) (2026-08-20)
+
+#### :rocket: Enhancement
+* [#1489](https://github.com/shopgate/pwa/pull/1489) Simplify writing unit tests in extensions ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.31.5](https://github.com/shopgate/pwa/compare/v7.31.4...v7.31.5) (2026-08-04)
 
 #### :rocket: Enhancement
