@@ -8,6 +8,7 @@ const useStyles = makeStyles()((theme, { columns }) => ({
     padding: '0 16px',
     ':not(:empty)': {
       marginTop: 16,
+      marginBottom: 16,
     },
     ...(columns <= 2 ? {
       rowGap: 16,

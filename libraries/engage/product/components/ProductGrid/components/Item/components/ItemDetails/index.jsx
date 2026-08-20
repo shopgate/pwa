@@ -19,6 +19,9 @@ import ItemPrice from '../ItemPrice';
 const useStyles = makeStyles()(theme => ({
   root: {
     lineHeight: 1.2,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(0.5),
     ':not(:empty)': {
       padding: theme.components.tiles.textPadding,
       // Floored at the favorites button overhang so a small configured inner padding
@@ -27,7 +30,9 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   quantityHint: {
-    paddingTop: 8,
+    ':empty': {
+      display: 'none',
+    },
   },
 }));
 

@@ -9,7 +9,6 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   priceWrapper: {
-    marginTop: 4,
     alignItems: 'center',
   },
   strikedPrice: {

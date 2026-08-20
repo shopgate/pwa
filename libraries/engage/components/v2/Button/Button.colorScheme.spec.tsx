@@ -91,7 +91,8 @@ describe('<Button /> color schemes', () => {
     const borderRules = Array.from(document.styleSheets)
       .flatMap(sheet => Array.from(sheet.cssRules || []).map(rule => rule.cssText))
       .filter(rule => classNames.some(className => rule.includes(`.${className}`)))
-      .filter(rule => rule.includes('--variant-outlinedBorder: oklch'));
+      .filter(rule => rule.includes('--variant-outlinedBorder: oklch'))
+      .filter(rule => !rule.startsWith('@media'));
 
     const light = borderRules.filter(rule => !rule.includes('data-sg-color-scheme="dark"'));
     const dark = borderRules.filter(rule => rule.includes('data-sg-color-scheme="dark"'));

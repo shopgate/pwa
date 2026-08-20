@@ -217,6 +217,15 @@ describe('<Button />', () => {
       expect(getButtonStateRule(':hover')).toContain('--variant-outlinedBorder: var(--button-color);');
     });
 
+    it('should restore the resting border where hovering is not possible', () => {
+      render(<Button variant="outlined">Press</Button>);
+
+      const hoverRule = getButtonStateRule(':hover');
+
+      expect(hoverRule).toContain('@media (hover: none)');
+      expect(hoverRule).toContain('--variant-outlinedBorder: oklch(from var(--button-color) l c h / 0.5)');
+    });
+
     it('should carry the border change over the root transition', () => {
       render(<Button variant="outlined">Press</Button>);
 

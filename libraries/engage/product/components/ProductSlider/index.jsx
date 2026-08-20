@@ -12,7 +12,7 @@ import { WIDGET_ID } from './constants';
 
 const useStyles = makeStyles()({
   container: {
-    padding: '8px 9px 16px !important',
+    padding: '8px 0 16px !important',
   },
 });
 

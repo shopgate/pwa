@@ -245,6 +245,15 @@ const useStyles = makeStyles<ButtonOwnProps>({
           '--variant-textBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY_DARK),
           '--variant-outlinedBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY_DARK),
         }),
+        '@media (hover: none)': {
+          '--variant-outlinedBorder': theme.alpha('var(--button-color)', OUTLINED_BORDER_OPACITY),
+          ...theme.applyStyles('dark', {
+            '--variant-outlinedBorder': theme.alpha(
+              'var(--button-color)',
+              OUTLINED_BORDER_OPACITY_DARK
+            ),
+          }),
+        },
       },
     },
     small: {

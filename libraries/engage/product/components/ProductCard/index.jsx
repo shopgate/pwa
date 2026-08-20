@@ -32,12 +32,19 @@ import ProductGridPrice from '../ProductGridPrice';
 const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.components.productCard.padding,
+
   },
   image: {
     padding: theme.components.productCard.imagePadding,
   },
   details: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 4,
     padding: theme.components.productCard.textPadding,
+    '& div:empty': {
+      display: 'none',
+    },
   },
   title: {
     fontSize: theme.typography.body2.fontSize,

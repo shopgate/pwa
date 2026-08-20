@@ -75,6 +75,19 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
       });
     });
 
+    it('should not read the legacy light only css custom properties', () => {
+      const { colorSchemes: { dark } } = createDefaultThemeOptions();
+
+      const values = Object.values(dark.components)
+        .flatMap(component => Object.values(component.vars ?? {}))
+        .filter(value => typeof value === 'string');
+
+      expect(values).not.toHaveLength(0);
+      values.forEach((value) => {
+        expect(value).not.toContain('var(--');
+      });
+    });
+
     it('should not leave the derived contrast colors to the light scheme', () => {
       const { colorSchemes: { dark } } = createDefaultThemeOptions();
 
