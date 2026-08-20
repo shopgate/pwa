@@ -145,6 +145,7 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
         action: {
           disabled: '#8E8E93',
           disabledBackground: '#48484A',
+          pressed: '#2C2C2E',
         },
       },
       components: {

@@ -51,6 +51,18 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
       });
     });
 
+    // Interaction states fall back to the light schema defaults when the scheme omits them, which
+    // would paint a near white press highlight onto the dark surfaces.
+    it('should provide its own interaction state colors', () => {
+      const { dark } = colorSchemes();
+
+      expect(dark.palette.action).toEqual({
+        disabled: '#8E8E93',
+        disabledBackground: '#48484A',
+        pressed: '#2C2C2E',
+      });
+    });
+
     it('should provide its own status colors', () => {
       const { dark } = colorSchemes();
 

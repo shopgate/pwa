@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
   container: {
@@ -40,6 +40,7 @@ const Glow = ({
   ...rest
 }) => {
   const { classes, cx } = useStyles();
+  const theme = useTheme();
   const [hover, setHover] = useState(false);
   const timeoutRef = useRef(null);
 
@@ -61,7 +62,7 @@ const Glow = ({
     ? {
       ...propStyles.glow,
       ...propStyles.hover,
-      background: color,
+      background: color || theme?.palette?.action?.pressed,
     }
     : {
       ...propStyles.glow,
@@ -99,7 +100,7 @@ Glow.propTypes = {
 };
 
 Glow.defaultProps = {
-  color: 'var(--sg-palette-grey-light)',
+  color: null,
   className: null,
   forwardedRef: null,
   disabled: false,
