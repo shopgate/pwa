@@ -11,6 +11,8 @@ export {
   type Theme,
   type ShadowSize,
   type ColorSchemeName,
+  type ColorSchemeMode,
+  type ColorSchemeContextValue,
   type PaletteColorsWithMain,
   type WithThemeProps,
 } from './theme';

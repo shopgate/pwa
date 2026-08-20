@@ -19,6 +19,13 @@ export const COLOR_SCHEME_NAMES = ['light', 'dark'] as const;
 
 export type ColorSchemeName = (typeof COLOR_SCHEME_NAMES)[number];
 
+export const COLOR_SCHEME_SYSTEM = 'system';
+
+/**
+ * A selectable color scheme: one the theme provides, or `system` to follow the operating system.
+ */
+export type ColorSchemeMode = ColorSchemeName | typeof COLOR_SCHEME_SYSTEM;
+
 const selectorTypes = ['data', 'class'] as const;
 
 export type ColorSchemeSelectorType = (typeof selectorTypes)[number];
@@ -37,7 +44,8 @@ export type ColorSchemeOptions = Pick<ThemeOptions, 'palette' | 'typography' | '
 
 export interface ThemeOptions {
   /**
-   * The default color scheme to use when the user has not specified a preference.
+   * The color scheme to fall back to when the configured mode resolves to a scheme this theme does
+   * not style. The scheme the app starts in comes from the app settings.
    * @default 'light'
    */
   defaultColorScheme?: ColorSchemeName;
@@ -140,7 +148,8 @@ export interface BaseTheme {
 
 export interface Theme extends BaseTheme {
   /**
-   * The default color scheme to use when the user has not specified a preference.
+   * The color scheme to fall back to when the configured mode resolves to a scheme this theme does
+   * not style. The scheme the app starts in comes from the app settings.
    */
   defaultColorScheme?: ColorSchemeName;
   /**

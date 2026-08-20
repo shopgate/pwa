@@ -1,9 +1,23 @@
-import type { ShadowSize, TypographyVariant } from '@shopgate/engage/styles/theme';
+import type {
+  ColorSchemeMode, ColorSchemeName, ShadowSize, TypographyVariant,
+} from '@shopgate/engage/styles/theme';
 
 // Re-exported so consumers of these settings do not have to reach into the styles layer, which
-// owns the type because it owns the elevation scale the sizes map to. `TypographyVariant` is
-// reused for the same reason - the theme owns the variant list.
-export type { ShadowSize, TypographyVariant };
+// owns the type because it owns the elevation scale the sizes map to. `TypographyVariant` and the
+// color scheme types are reused for the same reason - the theme owns the variant and scheme lists.
+export type {
+  ColorSchemeMode, ColorSchemeName, ShadowSize, TypographyVariant,
+};
+
+export const COLOR_SCHEME_SELECTABLE = 'selectable';
+
+/**
+ * What the app settings can configure: a color scheme that is binding, or `selectable` to let
+ * visitors pick one themselves. Distinct from the theme's `ColorSchemeMode`, which is what a
+ * visitor can pick - `selectable` is a permission rather than an appearance, and maps to the
+ * theme's `system` mode.
+ */
+export type DefaultColorSchemeMode = ColorSchemeName | typeof COLOR_SCHEME_SELECTABLE;
 
 /**
  * Recursively optional variant of `T`. The settings sources send only what a merchant configured,
@@ -211,6 +225,17 @@ export interface ImageSettings {
   product: ProductImageSettings;
 }
 
+/**
+ * Settings for the app's overall appearance.
+ */
+export interface AppearanceSettings {
+  /**
+   * The color scheme the app renders in. A binding `light` or `dark` always applies, while
+   * `selectable` starts from the operating system preference and lets the visitor pick another.
+   */
+  defaultColorSchemeMode: DefaultColorSchemeMode;
+}
+
 export interface AppSettings {
   navigation: {
     tabBar: {
@@ -236,6 +261,7 @@ export interface AppSettings {
   images: ImageSettings;
   cards: CardSettings;
   typography: TypographySettings;
+  appearance: AppearanceSettings;
 }
 
 /**
