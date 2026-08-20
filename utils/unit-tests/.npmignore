@@ -1,0 +1,7 @@
+# Tests of this package are not part of the published package
+spec.js
+spec.jsx
+*.spec.js
+*.spec.jsx
+__tests__
+__snapshots__

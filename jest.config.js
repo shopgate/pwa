@@ -67,18 +67,16 @@ module.exports = {
     ...skipPatterns,
   ],
   transformIgnorePatterns: [
-    'node_modules/(?!(swiper|dom7|intl-messageformat|@formatjs)/)',
+    // Spread the defaults, since they would be replaced otherwise
+    ...jestConfig.transformIgnorePatterns,
     '/themes/*/extensions/',
     '/themes/*/e2e/',
     '/dist/',
   ],
   moduleNameMapper: {
-    '\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$': '<rootDir>/__mocks__/fileMock.js',
-    '\\.(css|less)$': '<rootDir>/__mocks__/fileMock.js',
-    // Fix issue with Swiper ES module imports that work via "exports" field in package.json
-    '^swiper/react$': '<rootDir>/node_modules/swiper/swiper-react.mjs',
-    // Mock Swiper styles since they are not needed for unit tests
-    '^swiper/css(?:/.*)?$': '<rootDir>/__mocks__/styleMock.js',
+    // Spread the defaults, since they would be replaced otherwise. They already cover styles,
+    // assets and the swiper mappings.
+    ...jestConfig.moduleNameMapper,
   },
   modulePathIgnorePatterns: [
     '<rootDir>/.*/dist/.*',
