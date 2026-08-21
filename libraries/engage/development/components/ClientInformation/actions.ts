@@ -3,7 +3,7 @@ import { setDebugLoggingEnabled } from '@shopgate/engage/core/commands';
 
 /**
  * Enable debug logging.
- * @return {Function} A redux thunk.
+ * @returns A redux thunk.
  */
 export const enableDebugLogging = () => () => {
   setDebugLoggingEnabled();

@@ -1,6 +1,6 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
+import type { ReactNode } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import PropTypes from 'prop-types';
 import { useLongPress } from '@shopgate/engage/core/hooks';
 import {
   getAreSimulatedInsetsInjected,
@@ -10,13 +10,17 @@ import { toggleInsetHighlight, toggleInsets } from '@shopgate/engage/development
 import SimulatedInsetTop from './SimulatedInsetTop';
 import SimulatedInsetBottom from './SimulatedInsetBottom';
 
+export interface SimulatedInsetsProps {
+  /**
+   * The child components.
+   */
+  children: ReactNode;
+}
+
 /**
  * Simulates iOS insets in development mode.
- * @param {Object} props The component props.
- * @param {React.ReactNode} props.children The child components.
- * @returns {JSX.Element}
  */
-const SimulatedInsets = ({ children }) => {
+const SimulatedInsets = ({ children }: SimulatedInsetsProps) => {
   const hasSimulatedSafeAreaInsets = useSelector(getAreSimulatedInsetsInjected);
 
   const dispatch = useDispatch();
@@ -49,10 +53,6 @@ const SimulatedInsets = ({ children }) => {
       )}
     </>
   );
-};
-
-SimulatedInsets.propTypes = {
-  children: PropTypes.node.isRequired,
 };
 
 export default SimulatedInsets;

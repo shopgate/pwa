@@ -4,27 +4,31 @@ import {
   isDev as isDevelopment,
   hasSGJavaScriptBridge,
 } from '@shopgate/engage/core/helpers';
+import { DEFAULT_DEVELOPMENT_SETTINGS } from '../reducers/settings';
+import type { DevelopmentSettingsState, DevelopmentState } from '../types';
 
 const md = new MobileDetect(navigator.userAgent);
 
 /**
- * Retrieves the development settings state from the store.
- * @param {Object} state The current application state.
- * @return {Object} The development settings state.
+ * Retrieves the development settings state from the store. Falls back to the defaults when the
+ * slice is not present - the theme provider reads these on every render, including in tests and
+ * hosts that do not register the development reducers.
+ * @param state The current application state.
+ * @returns The development settings state.
  */
-const getState = state => state.development.settings;
+const getState = (state: DevelopmentState): DevelopmentSettingsState =>
+  state?.development?.settings ?? DEFAULT_DEVELOPMENT_SETTINGS;
 
 /**
  * Creates a selector to determine if development mode is enabled.
- * @type {(state: any) => boolean}
  */
 export const getIsDev = createSelector(
-  () => isDevelopment
+  (_state: DevelopmentState) => isDevelopment,
+  isDev => isDev
 );
 
 /**
  * Creates a selector to determine if the simulated iOS insets are supposed to be shown.
- * @type {(state: any) => boolean}
  */
 export const getAreInsetsVisible = createSelector(
   getIsDev,
@@ -38,7 +42,6 @@ export const getAreInsetsVisible = createSelector(
 
 /**
  * Creates a selector to determine if the inset highlight is visible.
- * @type {(state: any) => boolean}
  */
 export const getIsInsetHighlightVisible = createSelector(
   getIsDev,
@@ -52,7 +55,6 @@ export const getIsInsetHighlightVisible = createSelector(
 
 /**
  * Creates a selector to check if simulated safe area insets are supposed to be injected.
- * @type {(state: any) => boolean}
  */
 export const getAreSimulatedInsetsInjected = createSelector(
   getIsDev,
@@ -78,7 +80,6 @@ export const getAreSimulatedInsetsInjected = createSelector(
 
 /**
  * Creates a selector to determine if the CMS2 preview is enabled.
- * @type {(state: any) => boolean}
  */
 export const getIsCMS2PreviewEnabled = createSelector(
   getState,
@@ -89,7 +90,6 @@ export const getIsCMS2PreviewEnabled = createSelector(
  * Creates a selector to determine if a color scheme may be selected without the app settings
  * allowing it. Development only - in production the merchant's appearance setting is the only
  * thing that may enable it.
- * @type {(state: any) => boolean}
  */
 export const getIsColorSchemeSelectionEnabled = createSelector(
   getIsDev,

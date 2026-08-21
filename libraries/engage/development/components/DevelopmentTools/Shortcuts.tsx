@@ -5,7 +5,6 @@ import { useShortcut } from './hooks';
 
 /**
  * The Shortcuts component maps shortcuts to actions in development mode.
- * @returns {JSX.Element}
  */
 const Shortcuts = () => {
   const dispatch = useDispatch();

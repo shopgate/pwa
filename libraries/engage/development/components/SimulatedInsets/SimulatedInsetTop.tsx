@@ -1,10 +1,8 @@
-import React, {
-  useState, useEffect, useMemo,
-} from 'react';
-import PropTypes from 'prop-types';
+import { useState, useEffect, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getStatusBarStyleStorage } from '@shopgate/engage/development/selectors';
+import type { SimulatedInsetProps } from './types';
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -49,7 +47,7 @@ const useStyles = makeStyles()(theme => ({
 
 /**
  * Creates a human readable time string to mimic the iOS clock.
- * @returns {string} The current time in a human readable format.
+ * @returns The current time in a human readable format.
  */
 const getTime = () => {
   const now = new Date();
@@ -61,16 +59,12 @@ const getTime = () => {
 
 /**
  * Renders a simulated iOS top inset in development.
- * @param {Object} props The component props.
- * @param {boolean} props.highlightInset Whether the inset is highlighted.
- * @param {Function} props.onClick The function to call when the inset is clicked.
- * @returns {JSX.Element}
  */
 const SimulatedInsetTop = ({
   highlightInset,
   onClick,
   ...props
-}) => {
+}: SimulatedInsetProps) => {
   const { classes, cx } = useStyles();
   // State to hold the current time string for the status bar
   const [time, setTime] = useState(getTime());
@@ -109,11 +103,6 @@ const SimulatedInsetTop = ({
       <div className={classes.info}>5G</div>
     </div>
   );
-};
-
-SimulatedInsetTop.propTypes = {
-  highlightInset: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
 };
 
 export default SimulatedInsetTop;

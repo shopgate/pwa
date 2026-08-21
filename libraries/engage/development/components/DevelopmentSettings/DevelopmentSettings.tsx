@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
+import type { UnknownAction } from 'redux';
 import { SheetDrawer } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -22,17 +21,24 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
+export interface DevelopmentSettingsProps {
+  /**
+   * Whether the drawer is open.
+   */
+  isOpen: boolean;
+  /**
+   * The function to call when the drawer should be closed.
+   */
+  onClose: () => void;
+}
+
 /**
  * Development settings component.
- * @param {Object} props The component props.
- * @param {boolean} props.isOpen Whether the drawer is open.
- * @param {Function} props.onClose The function to call when the drawer should be closed.
- * @returns {JSX.Element}
  */
 const DevelopmentSettings = ({
   isOpen,
   onClose,
-}) => {
+}: DevelopmentSettingsProps) => {
   const { classes } = useStyles();
   const dispatch = useDispatch();
 
@@ -53,9 +59,9 @@ const DevelopmentSettings = ({
   /**
    * Closes the drawer before dispatching, so the action does not re-render behind the closing
    * animation.
-   * @param {Object} action The action to dispatch.
+   * @param action The action to dispatch.
    */
-  const closeAndDispatch = (action) => {
+  const closeAndDispatch = (action: UnknownAction) => {
     onClose();
     setTimeout(() => {
       dispatch(action);
@@ -63,6 +69,7 @@ const DevelopmentSettings = ({
   };
 
   return (
+    // @ts-expect-error - SheetDrawer is not typed yet
     <SheetDrawer
       title=" "
       isOpen={isOpen}
@@ -90,11 +97,6 @@ const DevelopmentSettings = ({
       </div>
     </SheetDrawer>
   );
-};
-
-DevelopmentSettings.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  onClose: PropTypes.func.isRequired,
 };
 
 export default DevelopmentSettings;

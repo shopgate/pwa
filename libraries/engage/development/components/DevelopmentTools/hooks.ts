@@ -3,11 +3,10 @@ import { useEffect, useCallback } from 'react';
 /**
  * Hook to handle a single keyboard shortcut.
  * Supports both 'cmd' (meta) and 'ctrl' keys explicitly.
- *
- * @param {string} shortcut - Shortcut string using mac-style notation, e.g. 'cmd+i'.
- * @param {Function} callback - Function to call when the shortcut is triggered.
+ * @param shortcut Shortcut string using mac-style notation, e.g. 'cmd+i'.
+ * @param callback Function to call when the shortcut is triggered.
  */
-export function useShortcut(shortcut, callback) {
+export function useShortcut(shortcut: string, callback: (event: KeyboardEvent) => void) {
   const normalizeShortcut = useCallback(() => shortcut
     .toLowerCase()
     .split('+')
@@ -16,7 +15,7 @@ export function useShortcut(shortcut, callback) {
     .join('+'), [shortcut]);
 
   const handleKeyDown = useCallback(
-    (event) => {
+    (event: KeyboardEvent) => {
       const keys = [];
 
       if (event.ctrlKey) keys.push('ctrl');

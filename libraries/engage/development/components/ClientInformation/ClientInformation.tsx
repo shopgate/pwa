@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Typography } from '@shopgate/engage/components';
@@ -27,15 +27,24 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
- * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * The client information the app reports about itself.
+ */
+interface ClientInformationState {
+  appVersion: string;
+  codebaseVersion: string;
+  deviceId: string | null;
+  libVersion: string;
+}
+
+/**
+ * Renders the client information, and reveals the development settings on a long press.
  */
 const ClientInformation = () => {
   const { classes, cx } = useStyles();
   const [deviceIdVisible, setDeviceIdVisible] = useState(false);
   const [developmentSettingsVisible, setDevelopmentSettingsVisible] = useState(false);
 
-  // Press handler to show the device ID
+  // Press handler to show the device ID.
   const longPressAttrs = useLongPress(() => {
     if (!deviceIdVisible) {
       setDeviceIdVisible(true);
@@ -49,7 +58,7 @@ const ClientInformation = () => {
     codebaseVersion,
     deviceId,
     libVersion,
-  } = useSelector(getClientInformation);
+  } = useSelector(getClientInformation) as ClientInformationState;
 
   if (!codebaseVersion) {
     return null;
