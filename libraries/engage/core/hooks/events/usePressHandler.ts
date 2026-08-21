@@ -1,22 +1,48 @@
 import { useCallback } from 'react';
+import type { KeyboardEvent as ReactKeyboardEvent, MouseEvent as ReactMouseEvent } from 'react';
 
 /**
- * @typedef {Object} PressHandlers
- * @property {Function} onClick - Click event handler.
- * @property {Function} onKeyDown - Keydown handler for Enter/Space.
+ * The events that can activate a pressable element.
  */
+export type PressEvent = ReactMouseEvent | ReactKeyboardEvent;
+
+/**
+ * Event handlers to spread onto the element that should react to a press.
+ */
+export interface PressHandlers {
+  /**
+   * Click event handler.
+   */
+  onClick: (e: ReactMouseEvent) => void;
+  /**
+   * Keydown handler for Enter/Space.
+   */
+  onKeyDown: (e: ReactKeyboardEvent) => void;
+}
+
+/**
+ * Optional configuration for the press handlers.
+ */
+export interface UsePressHandlerOptions {
+  /**
+   * Whether Space triggers the callback.
+   * @default true
+   */
+  triggerOnSpace?: boolean;
+  /**
+   * Whether Enter triggers the callback.
+   * @default false
+   */
+  triggerOnEnter?: boolean;
+}
 
 /**
  * Improves development for accessibility by simplifying registration of multiple
  * listeners (click, Enter, Space) to invoke the a callback when an element is
  * interacted with.
- *
- * @param {Function} onPress Callback to run when the element is interacted with
- * @param {Object} [options] Optional configuration
- * @param {boolean} [options.triggerOnSpace=true] Whether Space triggers onActivate
- * @param {boolean} [options.triggerOnEnter=false] Whether Enter triggers onActivate
- * @returns {PressHandlers} handlers - Event handlers to spread onto an element
- *
+ * @param onPress Callback to run when the element is interacted with.
+ * @param options Optional configuration.
+ * @returns Event handlers to spread onto an element.
  * @example
  * ```js
  * function MyPressableButton({ onActivate }) {
@@ -38,14 +64,17 @@ import { useCallback } from 'react';
  * }
  * ```
  */
-function usePressHandler(onPress, options = {}) {
+function usePressHandler(
+  onPress: (e: PressEvent) => void,
+  options: UsePressHandlerOptions = {}
+): PressHandlers {
   const {
     triggerOnSpace = true,
     triggerOnEnter = false,
   } = options;
 
   const handleKeyDown = useCallback(
-    (e) => {
+    (e: ReactKeyboardEvent) => {
       // Check for Enter
       if (triggerOnEnter && e.key === 'Enter') {
         e.preventDefault();
@@ -64,7 +93,7 @@ function usePressHandler(onPress, options = {}) {
   );
 
   const handleClick = useCallback(
-    (e) => {
+    (e: ReactMouseEvent) => {
       onPress(e);
     },
     [onPress]
