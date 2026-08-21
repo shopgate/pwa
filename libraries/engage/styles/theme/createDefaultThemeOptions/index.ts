@@ -98,6 +98,11 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             background: settings?.['@shopgate/engage/components/AppBar']?.background || '#FFF',
           },
         },
+        discountBadge: {
+          vars: {
+            background: 'var(--sg-palette-primary-main)',
+          },
+        },
         ratingStars: {
           vars: {
             filled: `var(--rating-stars-filled, ${getCSSCustomProp('--color-primary')})`,
