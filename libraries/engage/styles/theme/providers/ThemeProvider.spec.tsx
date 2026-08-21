@@ -4,6 +4,7 @@ import useLocalStorage from '@shopgate/engage/core/hooks/useLocalStorage';
 import { logger } from '@shopgate/engage/core/helpers';
 import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { getCanSelectColorScheme } from '@shopgate/engage/settings/selectors/appSettings';
+import { getIsColorSchemeSelectionEnabled } from '@shopgate/engage/development/selectors';
 import ThemeProvider from './ThemeProvider';
 import type { ColorSchemeContextValue } from './ColorSchemeContext';
 import useColorScheme from '../hooks/useColorScheme';
@@ -28,17 +29,29 @@ jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
   getCanSelectColorScheme: jest.fn(),
 }));
 
+jest.mock('@shopgate/engage/development/selectors', () => ({
+  getIsColorSchemeSelectionEnabled: jest.fn(),
+}));
+
 /**
  * Mirrors how the settings layer maps the appearance setting onto what the provider consumes: the
  * theme only ever sees its own modes, so `selectable` reaches it as `system`.
  * @param configured The color scheme mode configured within the app settings.
+ * @param developmentSelection Whether the development setting simulates a selectable appearance.
  * @returns The mocked useSelector implementation.
  */
-const selectorsFor = (configured: string) => (selector: unknown) => (
-  selector === getCanSelectColorScheme
-    ? configured === 'selectable'
-    : (configured === 'selectable' && 'system') || configured
-);
+const selectorsFor = (configured: string, developmentSelection = false) =>
+  (selector: unknown) => {
+    if (selector === getCanSelectColorScheme) {
+      return configured === 'selectable';
+    }
+
+    if (selector === getIsColorSchemeSelectionEnabled) {
+      return developmentSelection;
+    }
+
+    return (configured === 'selectable' && 'system') || configured;
+  };
 
 jest.mock('@shopgate/engage/core/hooks/useLocalStorage', () => jest.fn());
 
@@ -87,13 +100,15 @@ let rerenderWithConfigured: (configured: string) => void;
  * 'selectable' to let the visitor pick one.
  * @param prefersDark Whether the operating system asks for a dark color scheme.
  * @param themeOverrides Theme properties to override for this render.
+ * @param developmentSelection Whether the development setting simulates a selectable appearance.
  * @returns The captured color scheme context value.
  */
 const renderProvider = (
   persisted: string | null,
   configured = 'light',
   prefersDark = false,
-  themeOverrides: Partial<ThemeInternal> = {}
+  themeOverrides: Partial<ThemeInternal> = {},
+  developmentSelection = false
 ) => {
   persistedColorScheme = persisted;
 
@@ -102,7 +117,7 @@ const renderProvider = (
     persistedColorScheme = typeof value === 'function' ? value(persistedColorScheme) : value;
   });
   (useLocalStorage as jest.Mock).mockImplementation(() => [persistedColorScheme, mockedSetValue]);
-  (useSelector as jest.Mock).mockImplementation(selectorsFor(configured));
+  (useSelector as jest.Mock).mockImplementation(selectorsFor(configured, developmentSelection));
   (useMatchMedia as jest.Mock).mockReturnValue(prefersDark);
 
   let context: ColorSchemeContextValue | undefined;
@@ -203,6 +218,67 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
     });
   });
 
+  // The dark scheme may only ever render where the merchant configured `dark` or `selectable`.
+  // Anything else that can ask for it - a stale pick, the operating system, a browser that enforces
+  // dark by setting the media query - has to lose against a binding scheme.
+  describe('binding the color scheme to the configured setting', () => {
+    it('should stay light while the system asks for dark', () => {
+      renderProvider(null, 'light', true);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('light');
+      expect(mockedSetActiveColorScheme).not.toHaveBeenCalledWith('dark');
+    });
+
+    it('should stay light while a stored pick follows the system that asks for dark', () => {
+      renderProvider('system', 'light', true);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('light');
+      expect(mockedSetActiveColorScheme).not.toHaveBeenCalledWith('dark');
+    });
+
+    it('should stay light while a stored pick asks for dark', () => {
+      renderProvider('dark', 'light', true);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('light');
+      expect(mockedSetActiveColorScheme).not.toHaveBeenCalledWith('dark');
+    });
+
+    it('should follow the system that asks for dark once visitors may select a scheme', () => {
+      renderProvider(null, 'selectable', true);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('dark');
+    });
+
+    it('should apply dark when it is the configured scheme', () => {
+      renderProvider(null, 'dark', false);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('dark');
+    });
+  });
+
+  // The development setting is the one sanctioned way past a binding scheme. It simulates the
+  // `selectable` appearance, so a development build resolves the scheme exactly like a shop that
+  // configured it - the selector behind it is false outside development builds.
+  describe('color scheme selection enabled for development', () => {
+    it('should follow the system while a fixed scheme is configured', () => {
+      renderProvider(null, 'light', true, {}, true);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenLastCalledWith('dark');
+    });
+
+    it('should let a picked scheme win over the system', () => {
+      renderProvider('light', 'light', true, {}, true);
+
+      expect(mockedSetActiveColorScheme).toHaveBeenLastCalledWith('light');
+    });
+
+    it('should let visitors select a scheme', () => {
+      const { canSelectColorScheme } = renderProvider(null, 'light', false, {}, true);
+
+      expect(canSelectColorScheme).toBe(true);
+    });
+  });
+
   describe('selectable color scheme', () => {
     it('should apply the light scheme when the system asks for it', () => {
       renderProvider(null, 'selectable', false);
@@ -235,19 +311,6 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
       renderProvider(null, 'selectable');
 
       expect(useMatchMedia).toHaveBeenCalledWith('(prefers-color-scheme: dark)');
-    });
-
-    it('should apply a picked scheme in a development build', () => {
-      const nodeEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'development';
-
-      try {
-        renderProvider('dark', 'light');
-
-        expect(mockedSetActiveColorScheme).toHaveBeenCalledWith('dark');
-      } finally {
-        process.env.NODE_ENV = nodeEnv;
-      }
     });
 
     it('should apply a picked scheme within the frontend settings preview', () => {
@@ -303,19 +366,6 @@ describe('engage > styles > theme > providers > ThemeProvider', () => {
       const { canSelectColorScheme } = renderProvider(null, 'dark');
 
       expect(canSelectColorScheme).toBe(false);
-    });
-
-    it('should let visitors select a color scheme in a development build', () => {
-      const nodeEnv = process.env.NODE_ENV;
-      process.env.NODE_ENV = 'development';
-
-      try {
-        const { canSelectColorScheme } = renderProvider(null, 'dark');
-
-        expect(canSelectColorScheme).toBe(true);
-      } finally {
-        process.env.NODE_ENV = nodeEnv;
-      }
     });
 
     it('should not let visitors select a color scheme within the frontend settings preview', () => {

@@ -84,3 +84,19 @@ export const getIsCMS2PreviewEnabled = createSelector(
   getState,
   settings => !!settings.cms2PreviewEnabled
 );
+
+/**
+ * Creates a selector to determine if a color scheme may be selected without the app settings
+ * allowing it. Development only - in production the merchant's appearance setting is the only
+ * thing that may enable it.
+ * @type {(state: any) => boolean}
+ */
+export const getIsColorSchemeSelectionEnabled = createSelector(
+  getIsDev,
+  getState,
+  (isDev, settings) => {
+    if (!isDev) { return false; }
+
+    return !!settings.colorSchemeSelectionEnabled;
+  }
+);

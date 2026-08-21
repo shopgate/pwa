@@ -4,12 +4,15 @@ import {
   DEVELOPMENT_TOOLS_TOGGLE_INSETS,
   DEVELOPMENT_TOOLS_TOGGLE_INSET_HIGHLIGHT,
   DEVELOPMENT_TOOLS_TOGGLE_CMS2_PREVIEW,
+  DEVELOPMENT_TOOLS_TOGGLE_COLOR_SCHEME_SELECTION,
 } from '../constants';
 
 /**
  * @typedef {Object} DevToolsSettingsState
  * @property {boolean} showInsets
  * @property {boolean} showInsetHighlight
+ * @property {boolean} cms2PreviewEnabled
+ * @property {boolean} colorSchemeSelectionEnabled
  */
 
 /** @type DevToolsSettingsState */
@@ -17,6 +20,7 @@ const initialState = {
   showInsets: null,
   showInsetHighlight: false,
   cms2PreviewEnabled: false,
+  colorSchemeSelectionEnabled: false,
 };
 
 /**
@@ -44,6 +48,13 @@ export default function settingsReducer(state = initialState, action = {}) {
 
       case DEVELOPMENT_TOOLS_TOGGLE_CMS2_PREVIEW: {
         draft.cms2PreviewEnabled = action.enabled;
+        break;
+      }
+
+      case DEVELOPMENT_TOOLS_TOGGLE_COLOR_SCHEME_SELECTION: {
+        if (isDev) {
+          draft.colorSchemeSelectionEnabled = action.enabled;
+        }
         break;
       }
 

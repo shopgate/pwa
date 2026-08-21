@@ -2,6 +2,7 @@ import {
   DEVELOPMENT_TOOLS_TOGGLE_INSETS,
   DEVELOPMENT_TOOLS_TOGGLE_INSET_HIGHLIGHT,
   DEVELOPMENT_TOOLS_TOGGLE_CMS2_PREVIEW,
+  DEVELOPMENT_TOOLS_TOGGLE_COLOR_SCHEME_SELECTION,
 } from '../constants';
 
 /**
@@ -31,5 +32,15 @@ export const toggleInsetHighlight = (visible = true) => ({
  */
 export const toggleCms2Preview = (enabled = true) => ({
   type: DEVELOPMENT_TOOLS_TOGGLE_CMS2_PREVIEW,
+  enabled,
+});
+
+/**
+ * Toggles whether a color scheme can be selected without the app settings allowing it.
+ * @param {boolean} enabled Whether the selection should be enabled or not.
+ * @returns {Object} The action object.
+ */
+export const toggleColorSchemeSelection = (enabled = true) => ({
+  type: DEVELOPMENT_TOOLS_TOGGLE_COLOR_SCHEME_SELECTION,
   enabled,
 });

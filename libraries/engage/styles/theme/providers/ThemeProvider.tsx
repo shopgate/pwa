@@ -10,6 +10,7 @@ import { FrontendSettingsPreviewBridge } from '@shopgate/engage/admin-preview/co
 // Imported via its module path rather than a settings barrel, to keep this module out of an import
 // cycle - the settings types reach back into the "styles/theme" barrel, which exports this file.
 import { getCanSelectColorScheme, getDefaultColorSchemeMode } from '@shopgate/engage/settings/selectors/appSettings';
+import { getIsColorSchemeSelectionEnabled } from '@shopgate/engage/development/selectors';
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 import { ColorSchemeContext, type ColorSchemeContextValue } from './ColorSchemeContext';
 import { ThemeContext } from './ThemeContext';
@@ -38,14 +39,19 @@ const ThemeProvider = ({
     [theme]
   );
 
-  const defaultMode = useSelector(getDefaultColorSchemeMode);
+  const configuredMode = useSelector(getDefaultColorSchemeMode);
   const isColorSchemeSelectable = useSelector(getCanSelectColorScheme);
 
+  // The development setting simulates the `selectable` appearance rather than lifting the gate on
+  // its own, so a development build resolves the scheme along the very same path a shop does. It is
+  // false outside development builds, where the merchant's setting stays the only input.
+  const isSelectionEnabledForDevelopment = useSelector(getIsColorSchemeSelectionEnabled);
+
   // Whether the merchant lets visitors choose. A binding `light` or `dark` rules a pick out, so one
-  // left over from when selecting still was allowed does not keep overriding it. Development builds
-  // have no app settings to configure at all, so both schemes stay reachable there.
-  const canSelectColorScheme = isColorSchemeSelectable
-    || process.env.NODE_ENV === 'development';
+  // left over from when selecting still was allowed does not keep overriding it - and with it the
+  // operating system, which only ever reaches the scheme through a `system` pick.
+  const canSelectColorScheme = isColorSchemeSelectable || isSelectionEnabledForDevelopment;
+  const defaultMode = isSelectionEnabledForDevelopment ? COLOR_SCHEME_SYSTEM : configuredMode;
   const prefersDarkColorScheme = useMatchMedia('(prefers-color-scheme: dark)');
   const systemColorScheme: ColorSchemeName = prefersDarkColorScheme ? 'dark' : 'light';
 
