@@ -20,6 +20,10 @@ import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import SwiperItem from './components/SwiperItem';
 
+const INSET_LEFT = 'var(--swiper-pagination-inset-left, 0px)';
+const INSET_RIGHT = 'var(--swiper-pagination-inset-right, 0px)';
+const INSET_WIDTH = `calc(100% - ${INSET_LEFT} - ${INSET_RIGHT})`;
+
 const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
@@ -27,6 +31,8 @@ const useStyles = makeStyles()(theme => ({
     '&.pagination-below': {
       '& .swiper-pagination.swiper-pagination-bullets': {
         '--swiper-pagination-bottom': 0,
+        '--swiper-pagination-inset-left': '0px',
+        '--swiper-pagination-inset-right': '0px',
         position: 'relative',
         height: 32,
         lineHeight: '40px',
@@ -56,7 +62,7 @@ const useStyles = makeStyles()(theme => ({
     '& .swiper-pagination-fraction': {
       top: 'var(--swiper-pagination-fraction-top-offset, 4px)',
       left: 'auto',
-      right: 0,
+      right: INSET_RIGHT,
       bottom: 'auto',
       fontSize: theme.typography.caption.fontSize,
       background: theme.components.swiper.paginationFractionBackground,
@@ -67,7 +73,16 @@ const useStyles = makeStyles()(theme => ({
       margin: '4px 16px',
       transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
     },
-    '& .swiper-pagination-progressbar': {
+    '&& .swiper-pagination-bullets': {
+      left: INSET_LEFT,
+      width: INSET_WIDTH,
+    },
+    '&& .swiper-pagination-bullets.swiper-pagination-bullets-dynamic': {
+      left: `calc(50% + (${INSET_LEFT} - ${INSET_RIGHT}) / 2)`,
+    },
+    '&& .swiper-pagination-progressbar': {
+      left: INSET_LEFT,
+      width: INSET_WIDTH,
       background: theme.components.swiper.paginationProgressbarBackground,
       '& .swiper-pagination-progressbar-fill': {
         background: theme.components.swiper.paginationProgressbarActiveColor,
