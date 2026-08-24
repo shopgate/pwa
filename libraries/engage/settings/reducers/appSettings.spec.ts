@@ -96,6 +96,14 @@ describe('settings / reducers / appSettings', () => {
       appearance: {
         defaultColorSchemeMode: 'dark',
       },
+      widgets: {
+        layout: {
+          marginTop: 16,
+          marginBottom: 16,
+          marginLeft: 8,
+          marginRight: 8,
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
@@ -105,6 +113,45 @@ describe('settings / reducers / appSettings', () => {
     expect(state.product).toEqual(settings.product);
     expect(state.cards).toEqual(settings.cards);
     expect(state.appearance).toEqual(settings.appearance);
+    expect(state.widgets).toEqual(settings.widgets);
+  });
+
+  it('defaults the widget container margins to zero', () => {
+    expect(DEFAULT_APP_SETTINGS.widgets.layout).toEqual({
+      marginTop: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginRight: 0,
+    });
+  });
+
+  it('deep merges a partial widget layout payload', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      widgets: { layout: { marginTop: 24 } },
+    }));
+
+    expect(state.widgets.layout).toEqual({
+      marginTop: 24,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginRight: 0,
+    });
+  });
+
+  it('keeps the widget defaults when the branch is cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      widgets: null,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.widgets).toEqual(DEFAULT_APP_SETTINGS.widgets);
+  });
+
+  it('keeps the widget defaults when only the layout is cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      widgets: { layout: null },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.widgets).toEqual(DEFAULT_APP_SETTINGS.widgets);
   });
 
   it('defaults the color scheme to light', () => {

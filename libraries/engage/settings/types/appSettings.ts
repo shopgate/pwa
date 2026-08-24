@@ -226,6 +226,38 @@ export interface ImageSettings {
 }
 
 /**
+ * Default margins of a widget container. Applied per side to widgets that ask for them.
+ */
+export interface WidgetLayoutSettings {
+  /**
+   * Default top margin.
+   */
+  marginTop: number;
+  /**
+   * Default bottom margin.
+   */
+  marginBottom: number;
+  /**
+   * Default left margin.
+   */
+  marginLeft: number;
+  /**
+   * Default right margin.
+   */
+  marginRight: number;
+}
+
+/**
+ * Settings for the cms widgets.
+ */
+export interface WidgetSettings {
+  /**
+   * Layout defaults for the widget containers.
+   */
+  layout: WidgetLayoutSettings;
+}
+
+/**
  * Settings for the app's overall appearance.
  */
 export interface AppearanceSettings {
@@ -262,6 +294,10 @@ export interface AppSettings {
   cards: CardSettings;
   typography: TypographySettings;
   appearance: AppearanceSettings;
+  /**
+   * Settings for the cms widgets.
+   */
+  widgets: WidgetSettings;
 }
 
 /**

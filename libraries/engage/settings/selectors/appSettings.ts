@@ -104,6 +104,14 @@ export const getCardShadowSize = createSelector(
 );
 
 /**
+ * Selects the default margins of the widget containers.
+ */
+export const getWidgetLayoutSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.widgets?.layout ?? DEFAULT_APP_SETTINGS.widgets.layout
+);
+
+/**
  * Selects the raw appearance setting: a binding color scheme, or `selectable`.
  */
 const getConfiguredColorSchemeMode = createSelector(

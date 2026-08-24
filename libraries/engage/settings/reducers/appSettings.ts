@@ -76,6 +76,14 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   appearance: {
     defaultColorSchemeMode: 'light',
   },
+  widgets: {
+    layout: {
+      marginTop: 0,
+      marginBottom: 0,
+      marginLeft: 0,
+      marginRight: 0,
+    },
+  },
   images: {
     quality: DEFAULT_IMAGE_QUALITY,
     // Already in the image service's format, so the unhydrated path needs no conversion.
@@ -102,7 +110,9 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   action = { type: '' }
 ) => {
   if (isReceiveAppSettingsAction(action)) {
-    const { images, typography, appearance } = action.settings ?? {};
+    const {
+      images, typography, appearance, widgets,
+    } = action.settings ?? {};
 
     // Merged over the defaults rather than over the current state, so a field an incoming payload
     // omits falls back to its default instead of keeping the value of an earlier one. The admin
@@ -123,6 +133,10 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       appearance: appearance === null ? undefined : {
         ...appearance,
         defaultColorSchemeMode: appearance?.defaultColorSchemeMode ?? undefined,
+      },
+      widgets: widgets === null ? undefined : {
+        ...widgets,
+        layout: widgets?.layout ?? undefined,
       },
     }, { isHydrated: true });
 

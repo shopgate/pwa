@@ -3,9 +3,15 @@ import {
   getDefaultColorSchemeMode,
   getTypographyFontCssUrls,
   getTypographySettings,
+  getWidgetLayoutSettings,
 } from './appSettings';
 import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
-import type { AppearanceSettings, AppSettingsState, TypographySettings } from '../types/appSettings';
+import type {
+  AppearanceSettings,
+  AppSettingsState,
+  TypographySettings,
+  WidgetSettings,
+} from '../types/appSettings';
 
 const stateWith = (typography: TypographySettings): AppSettingsState => ({
   settings: {
@@ -25,7 +31,42 @@ const stateWithAppearance = (appearance: AppearanceSettings): AppSettingsState =
   },
 });
 
+const stateWithWidgets = (widgets: WidgetSettings): AppSettingsState => ({
+  settings: {
+    appSettings: {
+      ...DEFAULT_APP_SETTINGS,
+      widgets,
+    },
+  },
+});
+
 describe('settings/selectors/appSettings', () => {
+  describe('getWidgetLayoutSettings', () => {
+    it('returns the configured default margins', () => {
+      const layout = {
+        marginTop: 16,
+        marginBottom: 16,
+        marginLeft: 8,
+        marginRight: 8,
+      };
+
+      expect(getWidgetLayoutSettings(stateWithWidgets({ layout }))).toEqual(layout);
+    });
+
+    it('falls back to the defaults when the slice is missing', () => {
+      expect(getWidgetLayoutSettings({} as AppSettingsState))
+        .toEqual(DEFAULT_APP_SETTINGS.widgets.layout);
+    });
+
+    it('falls back to the defaults when the branch is missing', () => {
+      const state = {
+        settings: { appSettings: { } },
+      } as AppSettingsState;
+
+      expect(getWidgetLayoutSettings(state)).toEqual(DEFAULT_APP_SETTINGS.widgets.layout);
+    });
+  });
+
   describe('getDefaultColorSchemeMode', () => {
     it('returns the configured color scheme', () => {
       expect(getDefaultColorSchemeMode(stateWithAppearance({ defaultColorSchemeMode: 'dark' }))).toBe('dark');
