@@ -461,7 +461,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   testId="UserMenuLogin"
                 >
                   <ButtonBase
-                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-9awue0-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
+                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-rwijui-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
                     data-color="primary"
                     data-full-width={true}
                     data-size="medium"
@@ -473,7 +473,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                     testId="UserMenuLogin"
                   >
                     <button
-                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-jh6sul-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
+                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-wxzmff-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
                       data-color="primary"
                       data-full-width={true}
                       data-size="medium"
@@ -540,7 +540,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   testId="UserMenuRegister"
                 >
                   <ButtonBase
-                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-9awue0-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
+                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-rwijui-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
                     data-color="primary"
                     data-full-width={true}
                     data-size="medium"
@@ -552,7 +552,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                     testId="UserMenuRegister"
                   >
                     <button
-                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-jh6sul-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
+                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-wxzmff-ButtonBase-root-Button-root-Button-contained-Button-disabled-Button-fullWidth-button"
                       data-color="primary"
                       data-full-width={true}
                       data-size="medium"
@@ -693,7 +693,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   testId="UserMenuLogin"
                 >
                   <ButtonBase
-                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-244186-Button-root-Button-contained-Button-fullWidth-button"
+                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-2kvgs2-Button-root-Button-contained-Button-fullWidth-button"
                     data-color="primary"
                     data-full-width={true}
                     data-size="medium"
@@ -705,7 +705,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                     testId="UserMenuLogin"
                   >
                     <button
-                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-1vozyig-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
+                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-bltuy1-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
                       data-color="primary"
                       data-full-width={true}
                       data-size="medium"
@@ -772,7 +772,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                   testId="UserMenuRegister"
                 >
                   <ButtonBase
-                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-244186-Button-root-Button-contained-Button-fullWidth-button"
+                    className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-2kvgs2-Button-root-Button-contained-Button-fullWidth-button"
                     data-color="primary"
                     data-full-width={true}
                     data-size="medium"
@@ -784,7 +784,7 @@ exports[`<UserMenu /> should render as expected when the user is logged out and 
                     testId="UserMenuRegister"
                   >
                     <button
-                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-1vozyig-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
+                      className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-bltuy1-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
                       data-color="primary"
                       data-full-width={true}
                       data-size="medium"

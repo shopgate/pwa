@@ -98,6 +98,11 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             background: settings?.['@shopgate/engage/components/AppBar']?.background || '#FFF',
           },
         },
+        discountBadge: {
+          vars: {
+            background: 'var(--sg-palette-primary-main)',
+          },
+        },
         ratingStars: {
           vars: {
             filled: `var(--rating-stars-filled, ${getCSSCustomProp('--color-primary')})`,
@@ -117,12 +122,104 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
     },
     dark: {
       palette: {
+        // No primary or secondary here on purpose. Both inherit from the light scheme, so a
+        // merchant's brand colors carry over instead of being replaced by a hard coded pair.
+        error: {
+          main: '#FF6B6B',
+        },
+        warning: {
+          main: '#FFA726',
+        },
+        success: {
+          main: '#5DD954',
+        },
         background: {
-          default: '#000',
+          default: '#000000',
+          surface: '#1C1C1E',
+          emphasized: '#2C2C2E',
         },
         text: {
-          primary: '#fff',
-          secondary: '#808080',
+          primary: '#F2F2F7',
+          secondary: '#AEAEB2',
+        },
+        grey: {
+          light: '#2C2C2E',
+          medium: '#48484A',
+          dark: '#8E8E93',
+        },
+        action: {
+          disabled: '#8E8E93',
+          disabledBackground: '#48484A',
+          pressed: '#2C2C2E',
+        },
+      },
+      components: {
+        border: {
+          vars: {
+            light: '#38383A',
+            medium: '#48484A',
+            dark: '#8E8E93',
+          },
+        },
+        input: {
+          vars: {
+            background: '#2C2C2E',
+            border: '#48484A',
+          },
+        },
+        separatorLine: {
+          vars: {
+            borderColor: '#38383A',
+          },
+        },
+        snackbar: {
+          vars: {
+            background: '#2C2C2E',
+          },
+        },
+        tabBar: {
+          vars: {
+            background: '#1C1C1E',
+            border: '#374151',
+            inactive: '#9CA3AF',
+            floatingBoxShadow: '0 0 12px rgba(0, 0, 0, 0.6)',
+          },
+        },
+        appBar: {
+          vars: {
+            background: '#1C1C1E',
+          },
+        },
+        discountBadge: {
+          vars: {
+            background: '#FF0000',
+          },
+        },
+        ratingStars: {
+          vars: {
+            empty: '#48484A',
+          },
+        },
+        cards: {
+          vars: {
+            backgroundColor: '#1C1C1E',
+            borderColor: '#38383A',
+          },
+        },
+        tiles: {
+          vars: {
+            backgroundColor: '#1C1C1E',
+            borderColor: '#38383A',
+          },
+        },
+        swiper: {
+          vars: {
+            paginationBulletColor: '#AEAEB2',
+            paginationBulletActiveColor: '#F2F2F7',
+            paginationFractionBackground: '#2C2C2E',
+            paginationProgressbarBackground: '#48484A',
+            paginationProgressbarActiveColor: '#FFFFFF',
+          },
         },
       },
     },

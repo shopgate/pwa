@@ -157,6 +157,7 @@ export const paletteSchema = {
   action: {
     disabled: '#808080',
     disabledBackground: '#CCCCCC',
+    pressed: '#F2F2F2',
   },
   /**
    * Color for the box-shadow.

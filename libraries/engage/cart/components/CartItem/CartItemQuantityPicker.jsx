@@ -10,6 +10,7 @@ const useStyles = makeStyles()(theme => ({
   inputStyle: {
     border: 'none',
     background: theme.palette.background.emphasized,
+    color: theme.contrastColor(theme.palette.background.emphasized),
     display: 'block',
     fontSize: theme.typography.caption.fontSize,
     textAlign: 'center',

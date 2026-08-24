@@ -57,7 +57,7 @@ const FrontendSettingsPreviewBridge = () => {
 
       // setMode rejects unsupported schemes as well, but this message arrives from another origin,
       // so it is worth naming the admin as the source of the bad value. The `colorScheme` guard also
-      // narrows away the defensive `undefined`, so `modes.includes` and `setMode` typecheck strictly.
+      // narrows away the defensive `undefined`, so the check and `setMode` typecheck strictly.
       if (!colorScheme || !modes.includes(colorScheme)) {
         logger.warn(`FrontendSettingsPreviewBridge: received unsupported color scheme "${colorScheme}"`);
         return;

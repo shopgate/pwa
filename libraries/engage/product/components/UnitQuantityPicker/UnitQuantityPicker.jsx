@@ -61,6 +61,7 @@ const useStyles = makeStyles()((theme, {
       fontWeight,
       height: '100%',
       width: '100%',
+      color: theme.contrastColor(inputBgColor || theme.components.input.background),
       ...(inputColor && { color: `${inputColor}` }),
       ...(inputBgColor && { backgroundColor: `${inputBgColor}` }),
       ...(hasLabel && { paddingLeft: 0 }),

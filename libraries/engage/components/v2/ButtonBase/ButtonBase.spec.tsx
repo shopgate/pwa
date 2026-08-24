@@ -111,6 +111,33 @@ describe('<ButtonBase />', () => {
     expect(handleClick).not.toHaveBeenCalled();
   });
 
+  it('should still forward key presses while disabled', () => {
+    const handleKeyDown = jest.fn();
+
+    render(
+      <ButtonBase component="div" disabled testId="Subject" onKeyDown={handleKeyDown}>
+        Press
+      </ButtonBase>
+    );
+
+    const element = document.querySelector('[data-test-id="Subject"]') as HTMLElement;
+
+    fireEvent.keyDown(element, { key: 'Escape' });
+
+    expect(handleKeyDown).toHaveBeenCalledTimes(1);
+  });
+
+  it('should not activate on Enter while disabled', () => {
+    render(<ButtonBase component="div" disabled testId="Subject">Press</ButtonBase>);
+
+    const element = document.querySelector('[data-test-id="Subject"]') as HTMLElement;
+    const activate = jest.spyOn(element, 'click');
+
+    fireEvent.keyDown(element, { key: 'Enter' });
+
+    expect(activate).not.toHaveBeenCalled();
+  });
+
   it('should forward the ref to the button element', () => {
     const ref = createRef<HTMLButtonElement>();
 
@@ -301,6 +328,67 @@ describe('<ButtonBase /> rendered as another element', () => {
   });
 });
 
+describe('<ButtonBase /> pointer release', () => {
+  /**
+   * Renders a button that reports a fixed position, so a release can be placed inside or outside
+   * of it. jsdom lays nothing out on its own and would report an empty rect at the origin.
+   * @returns The click handler and the rendered button.
+   */
+  const renderPositioned = () => {
+    const handleClick = jest.fn();
+
+    render(<ButtonBase onClick={handleClick}>Press</ButtonBase>);
+
+    const button = screen.getByRole('button');
+
+    button.getBoundingClientRect = () => ({
+      top: 0,
+      left: 0,
+      right: 100,
+      bottom: 40,
+      width: 100,
+      height: 40,
+      x: 0,
+      y: 0,
+      toJSON: () => ({}),
+    });
+
+    fireEvent.pointerDown(button, { pointerId: 1, clientX: 10, clientY: 10 });
+
+    return { handleClick, button };
+  };
+
+  // The ripple takes a pointer capture on pointer down, which redirects the release to the button
+  // and has the browser report a click for it. Without the capture it would have dropped that.
+  it('should not invoke onClick when the pointer is released outside', () => {
+    const { handleClick, button } = renderPositioned();
+
+    fireEvent.pointerUp(button, { pointerId: 1, clientX: 900, clientY: 900 });
+    fireEvent.click(button, { detail: 1, clientX: 900, clientY: 900 });
+
+    expect(handleClick).not.toHaveBeenCalled();
+  });
+
+  it('should invoke onClick when the pointer is released over the button', () => {
+    const { handleClick, button } = renderPositioned();
+
+    fireEvent.pointerUp(button, { pointerId: 1, clientX: 20, clientY: 20 });
+    fireEvent.click(button, { detail: 1, clientX: 20, clientY: 20 });
+
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+
+  // Keyboard activation reports no button presses and carries no position, so the check above has
+  // to leave it alone rather than read it as a release at the origin.
+  it('should invoke onClick for a click that carries no pointer position', () => {
+    const { handleClick, button } = renderPositioned();
+
+    fireEvent.click(button, { detail: 0 });
+
+    expect(handleClick).toHaveBeenCalledTimes(1);
+  });
+});
+
 describe('<ButtonBase /> disabled cursor', () => {
   /**
    * Reads the css rules that apply to an element in a given state.
@@ -326,6 +414,8 @@ describe('<ButtonBase /> disabled cursor', () => {
     expect(stateRule(screen.getByRole('button'), ':disabled')).toContain('cursor: not-allowed;');
   });
 
+  // A cursor cannot be shown on an element that takes no pointer events, so a disabled button stays
+  // hit testable on purpose. Hover styling is kept off it by the variants instead.
   it('should not suppress pointer events on a disabled button', () => {
     render(<ButtonBase disabled>Press</ButtonBase>);
 

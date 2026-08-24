@@ -1,25 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
 import Paper from './Paper';
-
-// ThemeProvider resolves the active breakpoint via matchMedia, which jsdom doesn't implement.
-Object.defineProperty(window, 'matchMedia', {
-  writable: true,
-  value: (query: string) => ({
-    matches: false,
-    media: query,
-    addEventListener: jest.fn(),
-    removeEventListener: jest.fn(),
-  }),
-});
-
-const theme = createTheme();
-
-const renderWithTheme = (ui: React.ReactElement) => render(
-  <ThemeProvider theme={theme}>{ui}</ThemeProvider>
-);
 
 // tss keeps injected rules in the document across tests, so assertions have to be scoped to the
 // element under test — a global sweep would also match rules another test left behind.
@@ -37,13 +19,13 @@ const styleTextFor = (element: Element) => Array.from(document.styleSheets)
   .join('');
 
 const renderPaper = (ui: React.ReactElement) => {
-  renderWithTheme(ui);
+  render(ui);
   return styleTextFor(screen.getByTestId('paper'));
 };
 
 describe('<Paper />', () => {
   it('renders children and the engage__paper class next to a caller className', () => {
-    renderWithTheme(<Paper className="custom" data-testid="paper">content</Paper>);
+    render(<Paper className="custom" data-testid="paper">content</Paper>);
     const el = screen.getByTestId('paper');
 
     expect(el).toHaveTextContent('content');
@@ -52,13 +34,13 @@ describe('<Paper />', () => {
   });
 
   it('renders as the given component', () => {
-    renderWithTheme(<Paper component="section" data-testid="paper">x</Paper>);
+    render(<Paper component="section" data-testid="paper">x</Paper>);
 
     expect(screen.getByTestId('paper').tagName).toBe('SECTION');
   });
 
   it('passes data attributes through to the element', () => {
-    renderWithTheme(<Paper data-testid="paper" data-foo="bar">x</Paper>);
+    render(<Paper data-testid="paper" data-foo="bar">x</Paper>);
 
     expect(screen.getByTestId('paper')).toHaveAttribute('data-foo', 'bar');
   });

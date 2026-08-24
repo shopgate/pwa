@@ -81,8 +81,12 @@ const Item = ({
   testId,
 }) => {
   const theme = useTheme();
-  const glowHover = useMemo(() => ({
-    boxShadow: `${theme.spacing(-2.5)}px 0 0 ${theme.palette.grey.light}, ${theme.spacing(2.5)}px 0 0 ${theme.palette.grey.light}`,
+  const glowStyles = useMemo(() => ({
+    glow: {
+      left: theme.spacing(-2),
+      right: theme.spacing(-2),
+      width: 'auto',
+    },
   }), [theme]);
   const { classes, cx } = useStyles();
 
@@ -156,7 +160,7 @@ const Item = ({
       <Glow
         ref={forwardedRef}
         className={className}
-        styles={{ hover: glowHover }}
+        styles={glowStyles}
       >
         <LinkComponent href={link} onClick={onClick} state={linkState} tabIndex={0}>
           {renderContent()}
@@ -175,7 +179,7 @@ const Item = ({
       role="option"
       aria-selected={isSelected}
     >
-      <Glow className={className} styles={{ hover: glowHover }}>
+      <Glow className={className} styles={glowStyles}>
         {renderContent()}
       </Glow>
     </div>

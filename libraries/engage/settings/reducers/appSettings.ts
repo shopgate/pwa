@@ -57,7 +57,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
     },
     rating: {
-      showEmptyStars: false,
+      showEmptyStars: true,
     },
     card: {
       productName: { maxLines: 3 },
@@ -72,6 +72,9 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   },
   typography: {
     variants: {},
+  },
+  appearance: {
+    defaultColorSchemeMode: 'light',
   },
   images: {
     quality: DEFAULT_IMAGE_QUALITY,
@@ -99,7 +102,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
   action = { type: '' }
 ) => {
   if (isReceiveAppSettingsAction(action)) {
-    const { images, typography } = action.settings ?? {};
+    const { images, typography, appearance } = action.settings ?? {};
 
     // Merged over the defaults rather than over the current state, so a field an incoming payload
     // omits falls back to its default instead of keeping the value of an earlier one. The admin
@@ -116,6 +119,10 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       typography: typography === null ? undefined : {
         ...typography,
         variants: typography?.variants ?? undefined,
+      },
+      appearance: appearance === null ? undefined : {
+        ...appearance,
+        defaultColorSchemeMode: appearance?.defaultColorSchemeMode ?? undefined,
       },
     }, { isHydrated: true });
 

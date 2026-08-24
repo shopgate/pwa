@@ -1,6 +1,4 @@
-import {
-  Suspense, useCallback, type ComponentType, type DOMAttributes,
-} from 'react';
+import { Suspense, useCallback, type ComponentType } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { VisibilityOffIcon, TimeIcon, Loading } from '@shopgate/engage/components';
 import { usePressHandler } from '@shopgate/engage/core/hooks';
@@ -106,7 +104,7 @@ const Widget = ({
     dispatchWidgetPreviewEvent('widget-clicked', definition.code);
   }, [activeWidget, definition.code, setActiveWidget]);
 
-  const handlers = usePressHandler(handleInteraction) as DOMAttributes<HTMLElement>;
+  const handlers = usePressHandler(handleInteraction);
 
   if (!Component) {
     return null;

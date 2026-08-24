@@ -25,21 +25,25 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
       className={null}
       styles={
         {
-          "hover": {
-            "boxShadow": "-20px 0 0 var(--sg-palette-grey-light), 20px 0 0 var(--sg-palette-grey-light)",
+          "glow": {
+            "left": -16,
+            "right": -16,
+            "width": "auto",
           },
         }
       }
     >
       <Glow
         className={null}
-        color="var(--sg-palette-grey-light)"
+        color={null}
         disabled={false}
         forwardedRef={null}
         styles={
           {
-            "hover": {
-              "boxShadow": "-20px 0 0 var(--sg-palette-grey-light), 20px 0 0 var(--sg-palette-grey-light)",
+            "glow": {
+              "left": -16,
+              "right": -16,
+              "width": "auto",
             },
           }
         }
@@ -50,7 +54,13 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
         >
           <div
             className="sg-f2xef3-glow"
-            style={{}}
+            style={
+              {
+                "left": -16,
+                "right": -16,
+                "width": "auto",
+              }
+            }
           />
           <Link
             href="url/to/somewhere"
@@ -301,21 +311,25 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
         className={null}
         styles={
           {
-            "hover": {
-              "boxShadow": "-20px 0 0 var(--sg-palette-grey-light), 20px 0 0 var(--sg-palette-grey-light)",
+            "glow": {
+              "left": -16,
+              "right": -16,
+              "width": "auto",
             },
           }
         }
       >
         <Glow
           className={null}
-          color="var(--sg-palette-grey-light)"
+          color={null}
           disabled={false}
           forwardedRef={null}
           styles={
             {
-              "hover": {
-                "boxShadow": "-20px 0 0 var(--sg-palette-grey-light), 20px 0 0 var(--sg-palette-grey-light)",
+              "glow": {
+                "left": -16,
+                "right": -16,
+                "width": "auto",
               },
             }
           }
@@ -326,7 +340,13 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           >
             <div
               className="sg-f2xef3-glow"
-              style={{}}
+              style={
+                {
+                  "left": -16,
+                  "right": -16,
+                  "width": "auto",
+                }
+              }
             />
             <div
               className="engage__sheet-list__item"

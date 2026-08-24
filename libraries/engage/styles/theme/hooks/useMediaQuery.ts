@@ -3,12 +3,12 @@ import useTheme from './useTheme';
 import { type Theme } from '..';
 
 /**
- * React hook to check if a media query matches the current viewport.
- * Doesn't accept media query strings that start with '@media'.
+ * React hook to check if a media query matches the current viewport. Independent of the theme
+ * context, so it can be used by the provider that establishes it.
  * @param query A media query string, e.g. '(min-width: 600px)'
  * @returns Returns true if the media query matches, false otherwise.
  */
-const useMediaQueryInternal = (query: string): boolean => {
+export const useMatchMedia = (query: string): boolean => {
   const [match, setMatch] = useState(() => window.matchMedia(query).matches);
 
   useEffect(() => {
@@ -66,10 +66,10 @@ const useMediaQuery = (queryInput: string | ((theme: Theme) => string)): boolean
   const theme = useTheme();
 
   let query = typeof queryInput === 'function' ? queryInput(theme) : queryInput;
-  // Remove the '@media' prefix if it exists, as useMediaQueryInternal expects a plain media query.
+  // Remove the '@media' prefix if it exists, as useMatchMedia expects a plain media query.
   query = query.replace(/^@media( ?)/m, '');
 
-  const match = useMediaQueryInternal(query);
+  const match = useMatchMedia(query);
   return match;
 };
 

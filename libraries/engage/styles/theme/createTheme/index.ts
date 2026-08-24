@@ -22,11 +22,12 @@ export type {
   ThemeOptions,
   Breakpoint,
   ColorSchemeName,
+  ColorSchemeMode,
   ColorSchemeSelectorType,
   PaletteColorsWithMain,
 } from './types';
 
-export { COLOR_SCHEME_NAMES } from './types';
+export { COLOR_SCHEME_NAMES, COLOR_SCHEME_SYSTEM } from './types';
 
 /**
  * Creates a theme object for the ThemeProvider.

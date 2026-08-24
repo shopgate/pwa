@@ -179,10 +179,57 @@ describe('<Button />', () => {
       expect(getButtonStateRule(':disabled')).toContain('color: var(--variant-textDisabledColor);');
     });
 
+    // A disabled button keeps taking pointer events so that it can show a not-allowed cursor, so
+    // the press state has to exclude it rather than rely on the browser never matching it.
+    it('should not dim on press while disabled', () => {
+      render(<Button variant="link" disabled>Press</Button>);
+
+      const button = screen.getByRole('button');
+      const className = button.className.trim().split(' ').pop();
+      const pressSelectors = Array.from(document.styleSheets)
+        .flatMap(sheet => Array.from(sheet.cssRules))
+        .filter((rule): rule is CSSStyleRule => 'selectorText' in rule)
+        .map(rule => rule.selectorText)
+        .filter(selector => selector.includes(`.${className}:active`));
+
+      expect(pressSelectors.length).toBeGreaterThan(0);
+      pressSelectors.forEach((selector) => {
+        // `:active` is dropped before matching, since nothing is ever actively pressed in jsdom.
+        // What remains answers whether the rule would apply to this button once it were.
+        expect(button.matches(selector.replace(':active', ''))).toBe(false);
+      });
+    });
+
     it('should expose the variant as a data attribute', () => {
       render(<Button variant="link">Press</Button>);
 
       expect(screen.getByRole('button')).toHaveAttribute('data-variant', 'link');
+    });
+  });
+
+  describe('outlined variant', () => {
+    // The border rests at a fraction of the color so that hover has somewhere to take it, the way
+    // ButtonGroup and MUI both do it.
+    it('should rest on a faded border and return to the full color on hover', () => {
+      render(<Button variant="outlined">Press</Button>);
+
+      expect(getButtonRule()).toContain('--variant-outlinedBorder: oklch(from var(--button-color) l c h / 0.5);');
+      expect(getButtonStateRule(':hover')).toContain('--variant-outlinedBorder: var(--button-color);');
+    });
+
+    it('should restore the resting border where hovering is not possible', () => {
+      render(<Button variant="outlined">Press</Button>);
+
+      const hoverRule = getButtonStateRule(':hover');
+
+      expect(hoverRule).toContain('@media (hover: none)');
+      expect(hoverRule).toContain('--variant-outlinedBorder: oklch(from var(--button-color) l c h / 0.5)');
+    });
+
+    it('should carry the border change over the root transition', () => {
+      render(<Button variant="outlined">Press</Button>);
+
+      expect(getButtonRule()).toContain('border 250ms');
     });
   });
 

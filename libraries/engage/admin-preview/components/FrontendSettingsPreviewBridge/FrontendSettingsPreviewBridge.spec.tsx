@@ -113,7 +113,7 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
     (useColorScheme as jest.Mock).mockReturnValue({
       mode: 'light',
       setMode: mockedSetMode,
-      modes: ['light', 'dark'],
+      modes: ['light', 'dark', 'system'],
     });
     document.getElementById(PREVIEW_STYLE_TAG_ID)?.remove();
     resetInitialFrontendSettings();
@@ -164,11 +164,11 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
       expect(logger.warn).toHaveBeenCalled();
     });
 
-    it('should ignore a scheme that is not among the available modes', () => {
+    it('should ignore a scheme the theme does not provide', () => {
       (useColorScheme as jest.Mock).mockReturnValue({
         mode: 'light',
         setMode: mockedSetMode,
-        modes: ['light'],
+        modes: ['light', 'system'],
       });
       render(<FrontendSettingsPreviewBridge />);
 
