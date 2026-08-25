@@ -85,6 +85,15 @@ describe('page / components / Widgets / helpers', () => {
       });
     });
 
+    it('applies the margins when the page config omits the sides', () => {
+      expect(resolveWidgetLayout({}, ALL_SIDES, SETTINGS)).toEqual({
+        marginTop: 16,
+        marginBottom: 16,
+        marginLeft: 8,
+        marginRight: 8,
+      });
+    });
+
     it('leaves out the sides a widget did not ask for', () => {
       const layout = resolveWidgetLayout(NO_LAYOUT, VERTICAL_ONLY, SETTINGS);
 
