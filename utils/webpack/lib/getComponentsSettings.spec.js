@@ -48,6 +48,11 @@ describe('getComponentsSettings', () => {
         .toThrow(new RegExp(`${escapeForRegExp(path.join('UnparsableWidget', 'config.json'))}" could not be read`));
     });
 
+    it('fails on a config file that holds no object', () => {
+      expect(() => getComponentsSettings(fixtureTheme('theme-empty')))
+        .toThrow(/must be object/);
+    });
+
     it('fails on a config file that does not match the schema', () => {
       expect(() => getComponentsSettings(fixtureTheme('theme-invalid')))
         .toThrow(/must NOT have additional properties/);

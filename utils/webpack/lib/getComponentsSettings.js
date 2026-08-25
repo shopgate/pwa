@@ -155,27 +155,21 @@ const loadWidgetConfig = (componentPath, themePath) => {
     return {};
   }
 
-  const config = getWidgetConfigPaths(componentPath, themePath)
-    .reduce((loaded, configPath) => {
-      if (loaded) {
-        return loaded;
-      }
+  // Whether a widget brings a config is decided by the file system. Every file that is there has
+  // to be readable and valid, no matter what it contains.
+  const configPath = getWidgetConfigPaths(componentPath, themePath)
+    .find(candidate => fs.existsSync(candidate));
 
-      try {
-        return importFresh(configPath);
-      } catch (e) {
-        // A widget is not required to bring a config file. Anything else means it brought one that
-        // cannot be read, which the author needs to hear about.
-        if (e.code === 'MODULE_NOT_FOUND') {
-          return null;
-        }
-
-        throw new WidgetConfigError(`Widget config "${configPath}" could not be read: ${e.message}`);
-      }
-    }, null);
-
-  if (!config) {
+  if (!configPath) {
     return {};
+  }
+
+  let config;
+
+  try {
+    config = importFresh(configPath);
+  } catch (e) {
+    throw new WidgetConfigError(`Widget config "${configPath}" could not be read: ${e.message}`);
   }
 
   if (!validateWidgetConfig(config)) {
