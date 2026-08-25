@@ -226,25 +226,26 @@ export interface ImageSettings {
 }
 
 /**
- * Default margins of a widget container. Applied per side to widgets that ask for them.
+ * Margins around media widgets - the widgets that bring no spacing of their own, like images,
+ * sliders and videos. Applied per side, and only to widgets that ask for them.
  */
-export interface WidgetLayoutSettings {
+export interface MediaMarginSettings {
   /**
-   * Default top margin.
+   * Margin above the widget.
    */
-  marginTop: number;
+  top: number;
   /**
-   * Default bottom margin.
+   * Margin below the widget.
    */
-  marginBottom: number;
+  bottom: number;
   /**
-   * Default left margin.
+   * Margin left of the widget.
    */
-  marginLeft: number;
+  left: number;
   /**
-   * Default right margin.
+   * Margin right of the widget.
    */
-  marginRight: number;
+  right: number;
 }
 
 /**
@@ -252,9 +253,9 @@ export interface WidgetLayoutSettings {
  */
 export interface WidgetSettings {
   /**
-   * Layout defaults for the widget containers.
+   * Margins around media widgets.
    */
-  layout: WidgetLayoutSettings;
+  mediaMargins: MediaMarginSettings;
 }
 
 /**

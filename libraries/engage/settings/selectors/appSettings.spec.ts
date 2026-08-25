@@ -3,7 +3,7 @@ import {
   getDefaultColorSchemeMode,
   getTypographyFontCssUrls,
   getTypographySettings,
-  getWidgetLayoutSettings,
+  getWidgetMediaMargins,
 } from './appSettings';
 import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
 import type {
@@ -41,21 +41,21 @@ const stateWithWidgets = (widgets: WidgetSettings): AppSettingsState => ({
 });
 
 describe('settings/selectors/appSettings', () => {
-  describe('getWidgetLayoutSettings', () => {
-    it('returns the configured default margins', () => {
-      const layout = {
-        marginTop: 16,
-        marginBottom: 16,
-        marginLeft: 8,
-        marginRight: 8,
+  describe('getWidgetMediaMargins', () => {
+    it('returns the configured media widget margins', () => {
+      const mediaMargins = {
+        top: 16,
+        bottom: 16,
+        left: 8,
+        right: 8,
       };
 
-      expect(getWidgetLayoutSettings(stateWithWidgets({ layout }))).toEqual(layout);
+      expect(getWidgetMediaMargins(stateWithWidgets({ mediaMargins }))).toEqual(mediaMargins);
     });
 
     it('falls back to the defaults when the slice is missing', () => {
-      expect(getWidgetLayoutSettings({} as AppSettingsState))
-        .toEqual(DEFAULT_APP_SETTINGS.widgets.layout);
+      expect(getWidgetMediaMargins({} as AppSettingsState))
+        .toEqual(DEFAULT_APP_SETTINGS.widgets.mediaMargins);
     });
 
     it('falls back to the defaults when the branch is missing', () => {
@@ -63,7 +63,7 @@ describe('settings/selectors/appSettings', () => {
         settings: { appSettings: { } },
       } as AppSettingsState;
 
-      expect(getWidgetLayoutSettings(state)).toEqual(DEFAULT_APP_SETTINGS.widgets.layout);
+      expect(getWidgetMediaMargins(state)).toEqual(DEFAULT_APP_SETTINGS.widgets.mediaMargins);
     });
   });
 

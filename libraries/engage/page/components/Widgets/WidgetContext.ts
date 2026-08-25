@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import {
-  type WidgetDefinitionLayout,
   type WidgetDefinitionVisibility,
+  type WidgetLayout,
 } from './types';
 
 export { type WidgetDefinition } from './types';
@@ -23,9 +23,9 @@ export interface WidgetContextType<C = Record<string, unknown>> {
    */
   config: C;
   /**
-   * The widget layout settings.
+   * The resolved margins of the widget container.
    */
-  layout: WidgetDefinitionLayout;
+  layout: WidgetLayout;
   /**
    * The widget visibility settings.
    */

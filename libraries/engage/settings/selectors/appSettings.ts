@@ -104,11 +104,11 @@ export const getCardShadowSize = createSelector(
 );
 
 /**
- * Selects the default margins of the widget containers.
+ * Selects the margins that are applied around media widgets.
  */
-export const getWidgetLayoutSettings = createSelector(
+export const getWidgetMediaMargins = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.widgets?.layout ?? DEFAULT_APP_SETTINGS.widgets.layout
+  appSettings => appSettings.widgets?.mediaMargins ?? DEFAULT_APP_SETTINGS.widgets.mediaMargins
 );
 
 /**

@@ -97,11 +97,11 @@ describe('settings / reducers / appSettings', () => {
         defaultColorSchemeMode: 'dark',
       },
       widgets: {
-        layout: {
-          marginTop: 16,
-          marginBottom: 16,
-          marginLeft: 8,
-          marginRight: 8,
+        mediaMargins: {
+          top: 16,
+          bottom: 16,
+          left: 8,
+          right: 8,
         },
       },
     };
@@ -116,25 +116,25 @@ describe('settings / reducers / appSettings', () => {
     expect(state.widgets).toEqual(settings.widgets);
   });
 
-  it('defaults the widget container margins to zero', () => {
-    expect(DEFAULT_APP_SETTINGS.widgets.layout).toEqual({
-      marginTop: 0,
-      marginBottom: 0,
-      marginLeft: 0,
-      marginRight: 0,
+  it('defaults the media widget margins to zero', () => {
+    expect(DEFAULT_APP_SETTINGS.widgets.mediaMargins).toEqual({
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
     });
   });
 
-  it('deep merges a partial widget layout payload', () => {
+  it('deep merges a partial media margins payload', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
-      widgets: { layout: { marginTop: 24 } },
+      widgets: { mediaMargins: { top: 24 } },
     }));
 
-    expect(state.widgets.layout).toEqual({
-      marginTop: 24,
-      marginBottom: 0,
-      marginLeft: 0,
-      marginRight: 0,
+    expect(state.widgets.mediaMargins).toEqual({
+      top: 24,
+      bottom: 0,
+      left: 0,
+      right: 0,
     });
   });
 
@@ -146,9 +146,27 @@ describe('settings / reducers / appSettings', () => {
     expect(state.widgets).toEqual(DEFAULT_APP_SETTINGS.widgets);
   });
 
-  it('keeps the widget defaults when only the layout is cleared', () => {
+  it('keeps the default of a single cleared side', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
-      widgets: { layout: null },
+      widgets: {
+        mediaMargins: {
+          top: 16,
+          bottom: null,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.widgets.mediaMargins).toEqual({
+      top: 16,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    });
+  });
+
+  it('keeps the widget defaults when only the media margins are cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      widgets: { mediaMargins: null },
     } as unknown as AppSettingsPayload));
 
     expect(state.widgets).toEqual(DEFAULT_APP_SETTINGS.widgets);

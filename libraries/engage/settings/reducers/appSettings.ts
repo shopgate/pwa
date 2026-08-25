@@ -77,11 +77,11 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     defaultColorSchemeMode: 'light',
   },
   widgets: {
-    layout: {
-      marginTop: 0,
-      marginBottom: 0,
-      marginLeft: 0,
-      marginRight: 0,
+    mediaMargins: {
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
     },
   },
   images: {
@@ -113,6 +113,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
     const {
       images, typography, appearance, widgets,
     } = action.settings ?? {};
+    const { mediaMargins } = widgets ?? {};
 
     // Merged over the defaults rather than over the current state, so a field an incoming payload
     // omits falls back to its default instead of keeping the value of an earlier one. The admin
@@ -136,7 +137,14 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       },
       widgets: widgets === null ? undefined : {
         ...widgets,
-        layout: widgets?.layout ?? undefined,
+        // Sides are mapped one by one, because the admin clears a single margin with a null just
+        // like it clears a whole branch with one.
+        mediaMargins: !mediaMargins ? undefined : {
+          top: mediaMargins.top ?? undefined,
+          bottom: mediaMargins.bottom ?? undefined,
+          left: mediaMargins.left ?? undefined,
+          right: mediaMargins.right ?? undefined,
+        },
       },
     }, { isHydrated: true });
 
