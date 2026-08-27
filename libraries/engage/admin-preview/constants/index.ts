@@ -11,6 +11,7 @@ export const ALLOWED_ADMIN_PREVIEW_ORIGINS = [
   'https://admin-mono.shopgatedev.com',
   'https://admin-mono.shopgatepg.com',
   'https://admin-mono.shopgate.com',
+  'https://admin-mono-us.shopgate.com',
   'http://localhost.localdev.cc',
   'http://localhost:1337',
 ];
