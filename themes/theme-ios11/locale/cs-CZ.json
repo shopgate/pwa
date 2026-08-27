@@ -206,6 +206,7 @@
     "remove": "{filter} odstranit filtr",
     "edit": "{filter} editovat filtr",
     "filter_by": "Filtrovat podle {label}",
+    "filter_by_with_selected": "Filtrovat podle {label}, vybráno: {selected}",
     "hits": "{label} ({count, plural, =1 {jeden výsledek} other {{count} výsledků}})",
     "label": {
       "price": "Cena",

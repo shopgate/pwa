@@ -4,7 +4,7 @@ import { useRoute } from '@shopgate/engage/core/hooks';
 import { View } from '@shopgate/engage/components';
 import Content from '@shopgate/engage/filter/components/FilterPageContentWithProvider';
 import type { RouteFilters } from '@shopgate/engage/filter/providers/FilterPageProvider.context';
-import { CancelBar } from 'Components/AppBar/presets';
+import { CloseBar } from 'Components/AppBar/presets';
 
 /**
  * The subset of the current route that the filter page reads.
@@ -24,6 +24,15 @@ const ViewComponent = View as React.ComponentType<{
   'aria-hidden'?: boolean;
   children?: React.ReactNode;
 }>;
+
+const CloseBarComponent = CloseBar as unknown as React.ComponentType<{ asCancel?: boolean }>;
+
+/**
+ * The app bar for the filter page, rendered as a "Cancel" text button.
+ * @param props The component props.
+ * @returns The rendered app bar.
+ */
+const CancelBar = (props: object) => <CloseBarComponent asCancel {...props} />;
 
 /**
  * The Filter page.

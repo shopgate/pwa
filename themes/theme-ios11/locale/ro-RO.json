@@ -206,6 +206,7 @@
     "remove": "{filter} eliminarea filtrului",
     "edit": "{filter} editează filtrul",
     "filter_by": "Filtrează după {label}",
+    "filter_by_with_selected": "Filtrează după {label}, selectat: {selected}",
     "hits": "{label} ({count, plural, =1 {un rezultat} other {{count} rezultate}})",
     "label": {
       "price": "Preț",

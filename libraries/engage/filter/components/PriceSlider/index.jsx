@@ -32,6 +32,9 @@ const useStyles = makeStyles()(theme => ({
   rangeSliderHandleInner: {
     background: theme.palette.grey.light,
     boxShadow: '0 0 8px rgba(0, 0, 0, .32)',
+    ...theme.applyStyles('dark', {
+      background: '#F2F2F2',
+    }),
     borderRadius: '50%',
     width: theme.spacing(3),
     height: theme.spacing(3),

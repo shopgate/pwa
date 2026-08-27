@@ -206,6 +206,7 @@
     "remove": "{filter} Αφαιρέστε το φίλτρο",
     "edit": "{filter} Επεξεργασία φίλτρου",
     "filter_by": "Φίλτρο κατά {label}",
+    "filter_by_with_selected": "Φίλτρο κατά {label}, επιλεγμένα: {selected}",
     "hits": "{label} ({count, plural, =1 {ένα αποτέλεσμα} other {{count} αποτελέσματα}})",
     "label": {
       "price": "Τιμή",

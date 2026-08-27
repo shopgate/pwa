@@ -1,5 +1,5 @@
 import React, {
-  useState, useEffect, useCallback, memo,
+  useState, useEffect, useCallback, useMemo, memo,
 } from 'react';
 import PropTypes from 'prop-types';
 import { Accordion, SurroundPortals } from '@shopgate/engage/components';
@@ -24,6 +24,19 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
   },
 }));
+
+/**
+ * Formats selected filter value labels into a readable enumeration.
+ * @param {string[]} labels Labels of the selected values.
+ * @returns {string}
+ */
+const formatSelectedLabels = (labels) => {
+  if (typeof Intl.ListFormat !== 'function') {
+    return labels.join(', ');
+  }
+
+  return new Intl.ListFormat(i18n.getLang()).format(labels);
+};
 
 /**
  * The selector component.
@@ -62,13 +75,29 @@ const Selector = ({
     });
   }, [id, multi, onChange]);
 
+  const selectedValues = useMemo(
+    () => values.filter(value => selected.includes(value.id)),
+    [selected, values]
+  );
+
   const renderLabel = useCallback(props => (
     <Toggle
       {...props}
       label={label}
-      selected={<Selected values={values} selected={selected} />}
+      selected={<Selected values={selectedValues} />}
     />
-  ), [label, selected, values]);
+  ), [label, selectedValues]);
+
+  const handleLabel = useMemo(() => {
+    if (selectedValues.length === 0) {
+      return i18n.text('filter.filter_by', { label });
+    }
+
+    return i18n.text('filter.filter_by_with_selected', {
+      label,
+      selected: formatSelectedLabels(selectedValues.map(value => value.label)),
+    });
+  }, [label, selectedValues]);
 
   return (
     <SurroundPortals
@@ -88,7 +117,7 @@ const Selector = ({
         <Accordion
           renderLabel={renderLabel}
           testId={id}
-          handleLabel={i18n.text('filter.filter_by', { label })}
+          handleLabel={handleLabel}
           className={classes.accordion}
           chevronClassName={classes.chevron}
         >
@@ -99,7 +128,7 @@ const Selector = ({
                 id={value.id}
                 label={value.label}
                 hits={value.hits}
-                isActive={(selected && selected.includes(value.id))}
+                isActive={selected.includes(value.id)}
                 onToggle={handleToggle}
               />
             ))}
@@ -116,7 +145,7 @@ Selector.propTypes = {
   values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
   multi: PropTypes.bool,
   onChange: PropTypes.func,
-  selected: PropTypes.node,
+  selected: PropTypes.arrayOf(PropTypes.string),
 };
 
 Selector.defaultProps = {

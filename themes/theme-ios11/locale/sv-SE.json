@@ -206,6 +206,7 @@
     "remove": "{filter} ta bort filter",
     "edit": "{filter} redigera filter",
     "filter_by": "Filtrera efter {label}",
+    "filter_by_with_selected": "Filtrera efter {label}, valt: {selected}",
     "hits": "{label} ({count, plural, =1 {ett resultat} other {{count} resultat}})",
     "label": {
       "price": "Pris",

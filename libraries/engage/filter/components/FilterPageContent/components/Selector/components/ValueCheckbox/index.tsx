@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
   },
   checkbox: {
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'flex-start',
     padding: theme.spacing(0.75, 0),
     '& .checkedIcon': {
       color: theme.palette.secondary.main,
@@ -34,7 +34,7 @@ const useStyles = makeStyles()(theme => ({
     width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
-    gap: theme.spacing(2),
+    gap: theme.spacing(1),
     paddingLeft: theme.spacing(1),
     [theme.breakpoints.up('md')]: {
       width: 'max-content',

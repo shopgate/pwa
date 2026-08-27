@@ -39,6 +39,14 @@ const useStyles = makeStyles()(theme => ({
     whiteSpace: 'nowrap',
     border: 0,
   },
+  priceField: {
+    display: 'inline-flex',
+    alignItems: 'center',
+  },
+  currencySymbol: {
+    color: theme.palette.text.secondary,
+    marginRight: theme.spacing(0.25),
+  },
 }));
 
 /**
@@ -110,41 +118,48 @@ function Label(props) {
           toPrice: i18n.price(priceMax, currency, false),
         })}
       </span>
-      <span aria-hidden hidden id="price-slider-currency-label">
-        {currencySymbol}
-      </span>
       <I18n.Text string="price.range" aria-hidden>
         <I18n.Placeholder forKey="fromPrice">
-          <input
-            type="number"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            id="priceMin"
-            name="priceMin"
-            value={minValue}
-            onChange={handleChangeMin}
-            onClick={handleFieldClick}
-            style={{ width: fieldWidth(Math.max(priceLength, String(minValue).length)) }}
-            className={classes.editableField}
-            aria-label={i18n.text('price.range_from')}
-            aria-describedby="price-slider-currency-label"
-          />
+          <span className={classes.priceField}>
+            <span aria-hidden className={classes.currencySymbol} id="price-slider-currency-label-min">
+              {currencySymbol}
+            </span>
+            <input
+              type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              id="priceMin"
+              name="priceMin"
+              value={minValue}
+              onChange={handleChangeMin}
+              onClick={handleFieldClick}
+              style={{ width: fieldWidth(Math.max(priceLength, String(minValue).length)) }}
+              className={classes.editableField}
+              aria-label={i18n.text('price.range_from')}
+              aria-describedby="price-slider-currency-label-min"
+            />
+          </span>
         </I18n.Placeholder>
         <I18n.Placeholder forKey="toPrice">
-          <input
-            type="number"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            id="priceMax"
-            name="priceMax"
-            value={maxValue}
-            onChange={handleChangeMax}
-            onClick={handleFieldClick}
-            style={{ width: fieldWidth(Math.max(priceLength, String(maxValue).length)) }}
-            className={classes.editableField}
-            aria-label={i18n.text('price.range_to')}
-            aria-describedby="price-slider-currency-label"
-          />
+          <span className={classes.priceField}>
+            <span aria-hidden className={classes.currencySymbol} id="price-slider-currency-label-max">
+              {currencySymbol}
+            </span>
+            <input
+              type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              id="priceMax"
+              name="priceMax"
+              value={maxValue}
+              onChange={handleChangeMax}
+              onClick={handleFieldClick}
+              style={{ width: fieldWidth(Math.max(priceLength, String(maxValue).length)) }}
+              className={classes.editableField}
+              aria-label={i18n.text('price.range_to')}
+              aria-describedby="price-slider-currency-label-max"
+            />
+          </span>
         </I18n.Placeholder>
       </I18n.Text>
     </div>

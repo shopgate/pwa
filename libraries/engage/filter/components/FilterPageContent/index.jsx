@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { SurroundPortals, ResponsiveContainer } from '@shopgate/engage/components';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { useFilterPage } from '@shopgate/engage/filter/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
@@ -84,9 +84,7 @@ const FilterPageContent = ({ AppBarComponent }) => {
             />
           );
         })}
-        <ResponsiveContainer breakpoint="<sm" appAlways>
-          <ResetButton disabled={!resetPossible} onClick={resetAllFilters} />
-        </ResponsiveContainer>
+        <ResetButton disabled={!resetPossible} onClick={resetAllFilters} />
       </div>
     </SurroundPortals>
   );

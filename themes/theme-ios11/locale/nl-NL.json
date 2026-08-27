@@ -206,6 +206,7 @@
     "remove": "Verwijder {filter} filter",
     "edit": "Bewerk {filter} filter",
     "filter_by": "Filteren op {label}",
+    "filter_by_with_selected": "Filteren op {label}, geselecteerd: {selected}",
     "hits": "{label} ({count, plural, =1 {één resultaat} other {{count} resultaten}})",
     "label": {
       "price": "Prijs",
