@@ -148,7 +148,13 @@ const config = {
       'process.env': {
         NODE_ENV: JSON.stringify(ENV),
         APP_CONFIG: JSON.stringify(appConfig),
-        COMPONENTS_CONFIG: JSON.stringify(getComponentsSettings(themePath)),
+        // A runtime value, so that a change to a widget config is picked up by a running build.
+        // The dependencies make webpack watch the config files, including the ones that do not
+        // exist yet.
+        COMPONENTS_CONFIG: webpack.DefinePlugin.runtimeValue(
+          () => JSON.stringify(getComponentsSettings(themePath)),
+          getComponentsSettings.getWidgetConfigDependencies(themePath)
+        ),
         THEME_CONFIG: JSON.stringify(themeConfig),
         THEME: JSON.stringify(process.env.theme),
         THEME_PATH: JSON.stringify(themePath),

@@ -104,6 +104,14 @@ export const getCardShadowSize = createSelector(
 );
 
 /**
+ * Selects the margins that are applied around media widgets.
+ */
+export const getWidgetMediaMargins = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.widgets?.mediaMargins ?? DEFAULT_APP_SETTINGS.widgets.mediaMargins
+);
+
+/**
  * Selects the raw appearance setting: a binding color scheme, or `selectable`.
  */
 const getConfiguredColorSchemeMode = createSelector(
