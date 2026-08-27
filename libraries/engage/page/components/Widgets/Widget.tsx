@@ -1,24 +1,19 @@
-import { Suspense, useCallback, type ComponentType } from 'react';
+import {
+  Suspense, useCallback, useMemo, type ComponentType,
+} from 'react';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { VisibilityOffIcon, TimeIcon, Loading } from '@shopgate/engage/components';
 import { usePressHandler } from '@shopgate/engage/core/hooks';
+import { getWidgetMediaMargins } from '@shopgate/engage/settings/selectors/appSettings';
 import WidgetProvider from './WidgetProvider';
 import { dispatchWidgetPreviewEvent } from './events';
 import { useWidgetsPreview } from './hooks';
+import { getAppliedMediaMargins, resolveWidgetLayout } from './helpers';
 import Tooltip from './Tooltip';
-import { type WidgetDefinition } from './types';
+import { type WidgetDefinition, type WidgetLayout } from './types';
 
-/**
- * Style parameters for the widget, derived from its layout margins.
- */
-interface WidgetStyleParams {
-  marginTop: number;
-  marginBottom: number;
-  marginLeft: number;
-  marginRight: number;
-}
-
-const useStyles = makeStyles<WidgetStyleParams>()((theme, {
+const useStyles = makeStyles<WidgetLayout>()((theme, {
   marginTop,
   marginLeft,
 }) => ({
@@ -87,12 +82,15 @@ const Widget = ({
   isPreview,
   isCustomLegacyWidget = false,
 }: WidgetProps) => {
-  const { classes, cx } = useStyles({
-    marginTop: definition?.layout?.marginTop ?? 0,
-    marginBottom: definition?.layout?.marginBottom ?? 0,
-    marginLeft: definition?.layout?.marginLeft ?? 0,
-    marginRight: definition?.layout?.marginRight ?? 0,
-  });
+  const mediaMargins = useSelector(getWidgetMediaMargins);
+
+  const layout = useMemo(() => resolveWidgetLayout(
+    definition?.layout,
+    getAppliedMediaMargins(definition?.widgetConfigDefinitionCode),
+    mediaMargins
+  ), [definition, mediaMargins]);
+
+  const { classes, cx } = useStyles(layout);
 
   const { setActiveWidget, activeWidget } = useWidgetsPreview();
 
@@ -117,10 +115,10 @@ const Widget = ({
         [classes.preview]: isPreview,
       })}
       style={{
-        marginTop: definition?.layout?.marginTop,
-        marginBottom: definition?.layout?.marginBottom,
-        marginLeft: definition?.layout?.marginLeft,
-        marginRight: definition?.layout?.marginRight,
+        marginTop: layout.marginTop || undefined,
+        marginBottom: layout.marginBottom || undefined,
+        marginLeft: layout.marginLeft || undefined,
+        marginRight: layout.marginRight || undefined,
       }}
       data-widget-name={definition.widgetConfigDefinitionCode}
       {... (isPreview && {
@@ -144,7 +142,7 @@ const Widget = ({
           )}
         </div>
       )}
-      <WidgetProvider definition={definition} isPreview={isPreview}>
+      <WidgetProvider definition={definition} isPreview={isPreview} layout={layout}>
         <Suspense fallback={<Loading />}>
           <Component
             {...(isCustomLegacyWidget ? {

@@ -226,6 +226,39 @@ export interface ImageSettings {
 }
 
 /**
+ * Margins around media widgets - the widgets that bring no spacing of their own, like images,
+ * sliders and videos. Applied per side, and only to widgets that ask for them.
+ */
+export interface MediaMarginSettings {
+  /**
+   * Margin above the widget.
+   */
+  top: number;
+  /**
+   * Margin below the widget.
+   */
+  bottom: number;
+  /**
+   * Margin left of the widget.
+   */
+  left: number;
+  /**
+   * Margin right of the widget.
+   */
+  right: number;
+}
+
+/**
+ * Settings for the cms widgets.
+ */
+export interface WidgetSettings {
+  /**
+   * Margins around media widgets.
+   */
+  mediaMargins: MediaMarginSettings;
+}
+
+/**
  * Settings for the app's overall appearance.
  */
 export interface AppearanceSettings {
@@ -262,6 +295,10 @@ export interface AppSettings {
   cards: CardSettings;
   typography: TypographySettings;
   appearance: AppearanceSettings;
+  /**
+   * Settings for the cms widgets.
+   */
+  widgets: WidgetSettings;
 }
 
 /**

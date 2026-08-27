@@ -1,0 +1,7 @@
+{
+  "widgetsV2": {
+    "@broken/ext/UnparsableWidget": {
+      "path": "ext-broken/frontend/widgets/UnparsableWidget"
+    }
+  }
+}

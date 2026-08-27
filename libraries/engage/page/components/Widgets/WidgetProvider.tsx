@@ -1,6 +1,6 @@
 import { useMemo, type ReactNode } from 'react';
 import { WidgetContext, type WidgetContextType } from './WidgetContext';
-import { type WidgetDefinition } from './types';
+import { type WidgetDefinition, type WidgetLayout } from './types';
 
 /**
  * Props of the {@link WidgetProvider} component.
@@ -18,15 +18,21 @@ export interface WidgetProviderProps {
    * Whether the widget is in preview mode.
    */
   isPreview: boolean;
+  /**
+   * The resolved margins of the widget container.
+   */
+  layout: WidgetLayout;
 }
 
 /**
  * The WidgetProvider component provides the context for a single widget.
  */
-const WidgetProvider = ({ children, definition, isPreview }: WidgetProviderProps) => {
+const WidgetProvider = ({
+  children, definition, isPreview, layout,
+}: WidgetProviderProps) => {
   const value = useMemo<WidgetContextType>(() => {
     const {
-      widgetConfig, layout, visibility, code, widgetConfigDefinitionCode,
+      widgetConfig, visibility, code, widgetConfigDefinitionCode,
     } = definition;
     return {
       code,
@@ -36,7 +42,7 @@ const WidgetProvider = ({ children, definition, isPreview }: WidgetProviderProps
       visibility,
       isPreview,
     };
-  }, [definition, isPreview]);
+  }, [definition, isPreview, layout]);
 
   return (
     <WidgetContext.Provider value={value}>

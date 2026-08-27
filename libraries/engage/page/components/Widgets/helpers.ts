@@ -1,4 +1,13 @@
+import { componentsConfig } from '@shopgate/pwa-common/helpers/config';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
+import { type MediaMarginSettings } from '@shopgate/engage/settings/types/appSettings';
+import {
+  type AppliedMediaMargins,
+  type WidgetConfig,
+  type WidgetDefinitionLayout,
+  type WidgetLayout,
+} from './types';
+import { MARGIN_SIDES, MARGIN_SIDE_SETTINGS, MEDIA_MARGIN_SIDES } from './constants';
 
 /**
  * Retrieves the scroll container for the current page. Depending on the PWA mode this can be
@@ -75,4 +84,69 @@ export function checkScheduled(
     isActive,
     isExpired,
   };
+}
+
+/**
+ * The widget mapping of the components config, reduced to what the layout resolution reads. The
+ * config itself comes from untyped JS, so the shape is described here at the consumption boundary.
+ */
+interface WidgetComponentsConfig {
+  /**
+   * The widgets of the v2 widget system, keyed by widget name.
+   */
+  widgetsV2?: Record<string, {
+    /**
+     * What the widget declared about itself in its config file.
+     */
+    config?: WidgetConfig;
+  }>;
+}
+
+/**
+ * Retrieves the sides on which a widget gets the media widget margins. Widgets declare them in a
+ * "config.json" inside their folder, which the build adds to the widget mapping. A widget that
+ * declares nothing keeps the margins of its own configuration.
+ * @param name The name of the widget.
+ * @returns The sides that get the media widget margins.
+ */
+export function getAppliedMediaMargins(name: string): AppliedMediaMargins {
+  const { widgetsV2 } = componentsConfig as WidgetComponentsConfig;
+  const declared = widgetsV2?.[name]?.config?.layout?.applyMediaMargins;
+
+  if (declared === true) {
+    return MEDIA_MARGIN_SIDES.reduce<AppliedMediaMargins>((sides, side) => ({
+      ...sides,
+      [side]: true,
+    }), {});
+  }
+
+  if (declared && typeof declared === 'object') {
+    return declared;
+  }
+
+  return {};
+}
+
+/**
+ * Resolves the margins of a widget container. The configuration of the widget instance wins over
+ * the media widget margin, which only applies to the sides the widget asked for.
+ * @param definitionLayout The layout settings of the widget instance.
+ * @param appliedMediaMargins The sides on which the widget gets the media widget margins.
+ * @param settings The media widget margins.
+ * @returns The resolved margins.
+ */
+export function resolveWidgetLayout(
+  definitionLayout: Partial<WidgetDefinitionLayout> | undefined,
+  appliedMediaMargins: AppliedMediaMargins,
+  settings: MediaMarginSettings
+): WidgetLayout {
+  return MARGIN_SIDES.reduce<WidgetLayout>((layout, side) => {
+    const mediaSide = MARGIN_SIDE_SETTINGS[side];
+
+    return {
+      ...layout,
+      [side]: definitionLayout?.[side]
+        ?? (appliedMediaMargins?.[mediaSide] ? settings?.[mediaSide] ?? 0 : 0),
+    };
+  }, {} as WidgetLayout);
 }
