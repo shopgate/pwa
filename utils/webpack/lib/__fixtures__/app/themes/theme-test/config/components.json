@@ -1,0 +1,29 @@
+{
+  "widgets": {
+    "@fixture/ext/LegacyWidget": {
+      "path": "ext-fixture/frontend/widgets/LegacyWidget"
+    }
+  },
+  "widgetsV2": {
+    "@fixture/ext/AlphaWidget": {
+      "path": "ext-fixture/frontend/widgets/AlphaWidget"
+    },
+    "@fixture/ext/BetaWidget": {
+      "path": "ext-fixture/frontend/widgets/BetaWidget"
+    },
+    "@fixture/ext/DistWidget": {
+      "path": "ext-fixture/frontend/dist/widgets/DistWidget"
+    }
+  },
+  "portals": {
+    "@fixture/ext/SomePortal": {
+      "path": "ext-fixture/frontend/portals/Some",
+      "target": "app.routes"
+    }
+  },
+  "reducers": {
+    "@shopgate/product-reviews/reducer": {
+      "path": "ext-product-reviews/frontend/reducer"
+    }
+  }
+}

@@ -96,6 +96,14 @@ describe('settings / reducers / appSettings', () => {
       appearance: {
         defaultColorSchemeMode: 'dark',
       },
+      widgets: {
+        mediaMargins: {
+          top: 16,
+          bottom: 16,
+          left: 8,
+          right: 8,
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
@@ -105,6 +113,63 @@ describe('settings / reducers / appSettings', () => {
     expect(state.product).toEqual(settings.product);
     expect(state.cards).toEqual(settings.cards);
     expect(state.appearance).toEqual(settings.appearance);
+    expect(state.widgets).toEqual(settings.widgets);
+  });
+
+  it('defaults the media widget margins to zero', () => {
+    expect(DEFAULT_APP_SETTINGS.widgets.mediaMargins).toEqual({
+      top: 0,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    });
+  });
+
+  it('deep merges a partial media margins payload', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      widgets: { mediaMargins: { top: 24 } },
+    }));
+
+    expect(state.widgets.mediaMargins).toEqual({
+      top: 24,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    });
+  });
+
+  it('keeps the widget defaults when the branch is cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      widgets: null,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.widgets).toEqual(DEFAULT_APP_SETTINGS.widgets);
+  });
+
+  it('keeps the default of a single cleared side', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      widgets: {
+        mediaMargins: {
+          top: 16,
+          bottom: null,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.widgets.mediaMargins).toEqual({
+      top: 16,
+      bottom: 0,
+      left: 0,
+      right: 0,
+    });
+  });
+
+  it('keeps the widget defaults when only the media margins are cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      widgets: { mediaMargins: null },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.widgets).toEqual(DEFAULT_APP_SETTINGS.widgets);
   });
 
   it('defaults the color scheme to light', () => {

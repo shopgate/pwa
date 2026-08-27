@@ -1,3 +1,5 @@
+import { type MediaMarginSettings } from '@shopgate/engage/settings/types/appSettings';
+
 /**
  * Visibility settings for a widget.
  */
@@ -17,25 +19,53 @@ export interface WidgetDefinitionVisibility {
 }
 
 /**
- * Layout settings for a widget.
+ * Layout settings for a widget. A side is null when it has no own configuration.
  */
 export interface WidgetDefinitionLayout {
   /**
    * Top margin for the widget.
    */
-  marginTop: number;
+  marginTop: number | null;
   /**
    * Bottom margin for the widget.
    */
-  marginBottom: number;
+  marginBottom: number | null;
   /**
    * Left margin for the widget.
    */
-  marginLeft: number;
+  marginLeft: number | null;
   /**
    * Right margin for the widget.
    */
-  marginRight: number;
+  marginRight: number | null;
+}
+
+/**
+ * Margins of a widget container after resolution. Every side is a number, never null.
+ */
+export type WidgetLayout = Record<keyof WidgetDefinitionLayout, number>;
+
+/**
+ * The sides on which a widget gets the media widget margins. An omitted side does not.
+ */
+export type AppliedMediaMargins = Partial<Record<keyof MediaMarginSettings, boolean>>;
+
+/**
+ * Static configuration a widget declares about itself. It is picked up at build time, so its
+ * values are known before the widget is loaded.
+ */
+export interface WidgetConfig {
+  /**
+   * How the container that the page builder renders around the widget behaves.
+   */
+  layout?: {
+    /**
+     * On which sides the widget gets the media widget margins that merchants configure in the
+     * theme settings. True for all sides, false for none, or an object to opt in per side.
+     * Margins configured for a single widget instance always win.
+     */
+    applyMediaMargins?: boolean | AppliedMediaMargins;
+  };
 }
 
 /**
