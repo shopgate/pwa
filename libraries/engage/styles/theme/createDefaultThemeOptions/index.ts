@@ -5,10 +5,22 @@ import type { ThemeOptions } from '../createTheme';
 const { colors, settings } = themeConfig;
 
 /**
+ * Options of `createDefaultThemeOptions`.
+ */
+type DefaultThemeOptions = {
+  /** Whether the app settings have been hydrated from a source (admin sync / jsonp). */
+  isHydrated?: boolean;
+};
+
+/**
  * Creates the default theme options with legacy palette values.
+ * @param options Options.
+ * @param options.isHydrated Whether the app settings have been hydrated.
  * @returns The theme object
  */
-export const createDefaultThemeOptions = (): ThemeOptions => ({
+export const createDefaultThemeOptions = (
+  { isHydrated = false }: DefaultThemeOptions = {}
+): ThemeOptions => ({
   colorSchemes: {
     light: {
       palette: {
@@ -61,11 +73,15 @@ export const createDefaultThemeOptions = (): ThemeOptions => ({
             borderColor: '#EBEBEF',
           },
         },
-        ctaButton: {
-          vars: {
-            background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
+        // CTA button legacy fallbacks are only used when the shop has no theme configuration yet.
+        // When app settings / theme configuration is present, CTA buttons use the primary color.
+        ...(!isHydrated && {
+          ctaButton: {
+            vars: {
+              background: getCSSCustomProp('--color-button-cta') || getCSSCustomProp('--color-primary'),
+            },
           },
-        },
+        }),
         badge: {
           vars: {
             background: getCSSCustomProp('--color-secondary'),
