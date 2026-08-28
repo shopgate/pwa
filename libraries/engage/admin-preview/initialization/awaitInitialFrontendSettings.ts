@@ -4,7 +4,11 @@ import {
   Severity as SentrySeverity,
 } from '@sentry/browser';
 import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
-import { isFrontendSettingsAdminPreviewActive } from '../helpers';
+import {
+  getReferrerOrigin,
+  isAllowedOrigin,
+  isFrontendSettingsAdminPreviewActive,
+} from '../helpers';
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '../constants';
 import {
   getOrCreateStyleTag,
@@ -69,7 +73,7 @@ export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void>
      * @param event The message event.
      */
     function handleMessage(event: MessageEvent<FrontendSettingsPreviewBridgeMessage>) {
-      if (!ALLOWED_ADMIN_PREVIEW_ORIGINS.includes(event.origin)) return;
+      if (!isAllowedOrigin(event.origin, ALLOWED_ADMIN_PREVIEW_ORIGINS)) return;
       if (event.source !== window.parent) return;
 
       const { data } = event;
@@ -103,7 +107,11 @@ export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void>
       settle();
     }, REQUEST_TIMEOUT);
 
-    ALLOWED_ADMIN_PREVIEW_ORIGINS.forEach((origin) => {
-      window.parent.postMessage({ type: 'frontendSettingsPreviewReady' }, origin);
-    });
+    // Allowed origins can be patterns, which are no valid postMessage targets, so the ready
+    // message goes to the document that embedded us - as long as it is an allowed origin.
+    const parentOrigin = getReferrerOrigin();
+
+    if (isAllowedOrigin(parentOrigin, ALLOWED_ADMIN_PREVIEW_ORIGINS)) {
+      window.parent.postMessage({ type: 'frontendSettingsPreviewReady' }, parentOrigin);
+    }
   });
