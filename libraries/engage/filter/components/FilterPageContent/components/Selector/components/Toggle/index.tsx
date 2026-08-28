@@ -33,11 +33,11 @@ export interface ToggleProps {
  * @returns The rendered component.
  */
 const Toggle = ({ label, selected = null }: ToggleProps) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
     <div className={classes.toggle}>
-      <span className={classes.label}>
+      <span className={cx(classes.label, 'filter-selector-toggle-label')}>
         {label}
       </span>
       {selected}

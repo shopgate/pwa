@@ -33,7 +33,6 @@ const FilterResetButton = ({ disabled = false, onClick, className }: FilterReset
     <Button
       className={className}
       variant="outlined"
-      color="secondary"
       onClick={onClick}
       disabled={disabled}
       fullWidth
