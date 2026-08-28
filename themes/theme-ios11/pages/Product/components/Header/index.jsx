@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
     // so we apply a shadow custom property for the IconButton component to the whole header section
     // to make sure that also buttons that are rendered by extensions (e.g. the share button) are
     // elevated.
-    [theme.vars.components.iconButton.boxShadow]: theme.shadowSizes.strong,
+    [theme.vars.components.iconButton.boxShadow]: theme.shadowSizes.medium,
     position: 'relative',
     padding: theme.spacing(2),
   },
