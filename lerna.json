@@ -1,6 +1,6 @@
 {
   "lerna": "2.9.0",
-  "version": "7.31.8",
+  "version": "7.32.0-beta.15",
   "packages": [
     "extensions/@shopgate-theme-config/frontend",
     "libraries/*",
