@@ -1,18 +1,47 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { IconButton } from '@shopgate/engage/components/v2';
+import { Ripple } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import TrashOutlineIcon from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
+
+const useStyles = makeStyles()(theme => ({
+  root: {
+    display: 'flex',
+    borderRadius: '50%',
+    color: theme.palette.text.primary,
+    fontSize: theme.components.icon.medium,
+    padding: '0 8px 8px 8px',
+    outline: 0,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: -1,
+  },
+  ripple: {
+    flexShrink: 0,
+  },
+}));
 
 /**
  * The remove favorites button component.
  * @returns {JSX}
  */
-const RemoveButton = ({ onClick }) => (
-  <IconButton aria-label={i18n.text('favorites.remove')} onClick={onClick}>
-    <TrashOutlineIcon />
-  </IconButton>
-);
+const RemoveButton = ({ onClick }) => {
+  const { classes } = useStyles();
+
+  return (
+    <button
+      className={classes.root}
+      onClick={onClick}
+      type="button"
+      aria-label={i18n.text('favorites.remove')}
+    >
+      <Ripple className={classes.ripple}>
+        <TrashOutlineIcon />
+      </Ripple>
+    </button>
+  );
+};
 
 RemoveButton.propTypes = {
   onClick: PropTypes.func.isRequired,

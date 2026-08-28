@@ -13,7 +13,7 @@ import type { ButtonBaseOwnProps, ButtonBaseProps } from '../ButtonBase';
  */
 function IconButton<C extends React.ElementType = 'button'>(
   props: IconButtonProps<C>,
-  ref: React.Ref<Element>
+  ref: React.ComponentPropsWithRef<C>['ref']
 ) {
   const {
     variant = 'plain',
@@ -44,6 +44,9 @@ function IconButton<C extends React.ElementType = 'button'>(
 
   return (
     <ButtonBase
+      // Rendered through the default `button` view of ButtonBase: TypeScript cannot check an
+      // object literal against `ComponentPropsWithRef<C>` while `C` is unresolved. The ref is
+      // forwarded untouched, and the public signature below restores the caller's element type.
       ref={ref as React.Ref<HTMLButtonElement>}
       className={cx(classes.root, {
         [classes.surface]: variant === 'surface',
