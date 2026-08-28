@@ -141,6 +141,11 @@ export const usePreviewIframeCommunication = (isActive = false) => {
   }, [considerContainerMarginsOnScroll]);
 
   const { sendToParent } = useIframeMessenger((data) => {
+    // Allowed parents can also emit unrelated messages with arbitrary payloads.
+    if (typeof data !== 'object' || data === null) {
+      return;
+    }
+
     if (data.type === 'receivePageConfig') {
       // Page preview config received from the parent window.
       dispatch(receivePageConfigV2({
