@@ -15,6 +15,7 @@ import FilterButtonBar from './components/FilterButtonBar';
 
 const useStyles = makeStyles()(theme => ({
   content: {
+    color: theme.palette.text.primary,
     [theme.breakpoints.up('md')]: {
       width: '100%',
       maxWidth: 640,
