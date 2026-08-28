@@ -44,7 +44,7 @@ function IconButton<C extends React.ElementType = 'button'>(
 
   return (
     <ButtonBase
-      ref={ref as React.Ref<HTMLButtonElement>}
+      ref={ref}
       className={cx(classes.root, {
         [classes.surface]: variant === 'surface',
         [classes.circular]: shape === 'circular',
