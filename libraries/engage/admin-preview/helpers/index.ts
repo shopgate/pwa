@@ -45,7 +45,7 @@ export const isNavigationBlocked = (): boolean =>
 export const isAllowedOrigin = (
   origin: string | null | undefined,
   patterns: string[] = []
-): boolean => matchesAllowedOrigin(origin, patterns);
+): origin is string => matchesAllowedOrigin(origin, patterns);
 
 /**
  * Determines the origin of the document that embeds the current page.

@@ -32,9 +32,10 @@ interface PreviewStore {
  * listener only mounts once React committed, so everything the admin sent before that is dropped
  * and the styling arrives as a visible restyle.
  *
- * The handshake goes to every allowed origin rather than to a single guessed one. Nothing has been
- * received at this point, so there is no known parent origin, and the referrer is not guaranteed to
- * survive the admin's referrer policy. The browser drops the copies whose target does not match.
+ * The handshake goes to the origin of the embedding document. Nothing has been received at this
+ * point, so that referrer is the only concrete parent origin available - the allow list holds
+ * patterns, and a pattern is no valid postMessage target. An admin that strips its referrer
+ * therefore gets no ready message, and the app falls back to the timeout below.
  *
  * Resolves when the payload arrived or when REQUEST_TIMEOUT elapsed, and never rejects - an admin
  * that stays silent has to fall back to the unstyled app, never to an iframe that never renders.

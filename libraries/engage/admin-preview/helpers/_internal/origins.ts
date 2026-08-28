@@ -35,7 +35,7 @@ const createOriginRegExp = (pattern: string): RegExp => {
 export const matchesAllowedOrigin = (
   origin: string | null | undefined,
   patterns: string[] = []
-): boolean => {
+): origin is string => {
   // Opaque origins are serialized as "null" and must never be trusted.
   if (typeof origin !== 'string' || origin === '' || origin === 'null') {
     return false;
@@ -50,11 +50,14 @@ export const matchesAllowedOrigin = (
       return pattern === origin;
     }
 
-    if (!originPatternCache.has(pattern)) {
-      originPatternCache.set(pattern, createOriginRegExp(pattern));
+    let regExp = originPatternCache.get(pattern);
+
+    if (!regExp) {
+      regExp = createOriginRegExp(pattern);
+      originPatternCache.set(pattern, regExp);
     }
 
-    return originPatternCache.get(pattern).test(origin);
+    return regExp.test(origin);
   });
 };
 
