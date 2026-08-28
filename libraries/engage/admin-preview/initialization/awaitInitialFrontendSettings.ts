@@ -4,7 +4,11 @@ import {
   Severity as SentrySeverity,
 } from '@sentry/browser';
 import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
-import { isFrontendSettingsAdminPreviewActive } from '../helpers';
+import {
+  getReferrerOrigin,
+  isAllowedOrigin,
+  isFrontendSettingsAdminPreviewActive,
+} from '../helpers';
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '../constants';
 import {
   getOrCreateStyleTag,
@@ -28,9 +32,10 @@ interface PreviewStore {
  * listener only mounts once React committed, so everything the admin sent before that is dropped
  * and the styling arrives as a visible restyle.
  *
- * The handshake goes to every allowed origin rather than to a single guessed one. Nothing has been
- * received at this point, so there is no known parent origin, and the referrer is not guaranteed to
- * survive the admin's referrer policy. The browser drops the copies whose target does not match.
+ * The handshake goes to the origin of the embedding document. Nothing has been received at this
+ * point, so that referrer is the only concrete parent origin available - the allow list holds
+ * patterns, and a pattern is no valid postMessage target. An admin that strips its referrer
+ * therefore gets no ready message, and the app falls back to the timeout below.
  *
  * Resolves when the payload arrived or when REQUEST_TIMEOUT elapsed, and never rejects - an admin
  * that stays silent has to fall back to the unstyled app, never to an iframe that never renders.
@@ -69,7 +74,7 @@ export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void>
      * @param event The message event.
      */
     function handleMessage(event: MessageEvent<FrontendSettingsPreviewBridgeMessage>) {
-      if (!ALLOWED_ADMIN_PREVIEW_ORIGINS.includes(event.origin)) return;
+      if (!isAllowedOrigin(event.origin, ALLOWED_ADMIN_PREVIEW_ORIGINS)) return;
       if (event.source !== window.parent) return;
 
       const { data } = event;
@@ -103,7 +108,11 @@ export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void>
       settle();
     }, REQUEST_TIMEOUT);
 
-    ALLOWED_ADMIN_PREVIEW_ORIGINS.forEach((origin) => {
-      window.parent.postMessage({ type: 'frontendSettingsPreviewReady' }, origin);
-    });
+    // Allowed origins can be patterns, which are no valid postMessage targets, so the ready
+    // message goes to the document that embedded us - as long as it is an allowed origin.
+    const parentOrigin = getReferrerOrigin();
+
+    if (isAllowedOrigin(parentOrigin, ALLOWED_ADMIN_PREVIEW_ORIGINS)) {
+      window.parent.postMessage({ type: 'frontendSettingsPreviewReady' }, parentOrigin);
+    }
   });
