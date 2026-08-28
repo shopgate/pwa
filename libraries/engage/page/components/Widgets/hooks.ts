@@ -56,6 +56,11 @@ export const usePreviewIframeCommunication = (isActive = false) => {
   }, [considerContainerMarginsOnScroll]);
 
   const { sendToParent } = useIframeMessenger<WidgetPreviewMessage>((data) => {
+    // Allowed parents can also emit unrelated messages with arbitrary payloads.
+    if (typeof data !== 'object' || data === null) {
+      return;
+    }
+
     if (data.type === 'receivePageConfig') {
       // Page preview config received from the parent window.
       dispatch(receivePageConfigV2({
@@ -130,7 +135,7 @@ export const usePreviewIframeCommunication = (isActive = false) => {
         });
       }
     }
-  }, ALLOWED_ADMIN_PREVIEW_ORIGINS);
+  }, ALLOWED_ADMIN_PREVIEW_ORIGINS, isActive);
 
   useWidgetPreviewEvent('widget-clicked', (e) => {
     if (!isActive) {

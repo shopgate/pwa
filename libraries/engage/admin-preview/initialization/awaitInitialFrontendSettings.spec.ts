@@ -1,7 +1,6 @@
 import { withScope, captureMessage } from '@sentry/browser';
 import { RECEIVE_APP_SETTINGS } from '@shopgate/engage/settings/constants/appSettings';
-import { isFrontendSettingsAdminPreviewActive } from '../helpers';
-import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '../constants';
+import { getReferrerOrigin, isFrontendSettingsAdminPreviewActive } from '../helpers';
 import { PREVIEW_STYLE_TAG_ID } from '../components/FrontendSettingsPreviewBridge/helpers';
 import type { FrontendSettingsPreviewBridgeMessage } from '../components/FrontendSettingsPreviewBridge/types';
 import { awaitInitialFrontendSettings } from './awaitInitialFrontendSettings';
@@ -12,7 +11,9 @@ import {
 } from './_internal/initialFrontendSettings';
 
 jest.mock('../helpers', () => ({
+  ...jest.requireActual('../helpers'),
   isFrontendSettingsAdminPreviewActive: jest.fn(() => true),
+  getReferrerOrigin: jest.fn(() => 'https://admin-mono.shopgate.com'),
 }));
 
 jest.mock('@sentry/browser', () => ({
@@ -25,7 +26,7 @@ jest.mock('@sentry/browser', () => ({
 }));
 
 const REQUEST_TIMEOUT = 3000;
-const ALLOWED_ORIGIN = ALLOWED_ADMIN_PREVIEW_ORIGINS[0];
+const ALLOWED_ORIGIN = 'https://admin-mono.shopgate.com';
 
 const dispatch = jest.fn();
 const store = { dispatch };
@@ -97,19 +98,34 @@ describe('engage > admin-preview > awaitInitialFrontendSettings', () => {
   });
 
   describe('in the preview', () => {
-    it('should announce readiness to every allowed origin', () => {
+    it('should announce readiness to the embedding admin', () => {
       const postMessage = jest.spyOn(window.parent, 'postMessage');
 
       awaitInitialFrontendSettings(store);
 
-      expect(postMessage).toHaveBeenCalledTimes(ALLOWED_ADMIN_PREVIEW_ORIGINS.length);
+      expect(postMessage).toHaveBeenCalledTimes(1);
+      expect(postMessage).toHaveBeenCalledWith(
+        { type: 'frontendSettingsPreviewReady' },
+        ALLOWED_ORIGIN
+      );
+    });
 
-      ALLOWED_ADMIN_PREVIEW_ORIGINS.forEach((origin) => {
-        expect(postMessage).toHaveBeenCalledWith(
-          { type: 'frontendSettingsPreviewReady' },
-          origin
-        );
-      });
+    it('should not announce readiness to a foreign embedder', () => {
+      (getReferrerOrigin as jest.Mock).mockReturnValueOnce('https://attacker.example');
+      const postMessage = jest.spyOn(window.parent, 'postMessage');
+
+      awaitInitialFrontendSettings(store);
+
+      expect(postMessage).not.toHaveBeenCalled();
+    });
+
+    it('should not announce readiness without a known embedder', () => {
+      (getReferrerOrigin as jest.Mock).mockReturnValueOnce(null);
+      const postMessage = jest.spyOn(window.parent, 'postMessage');
+
+      awaitInitialFrontendSettings(store);
+
+      expect(postMessage).not.toHaveBeenCalled();
     });
 
     it('should apply the received styling before it resolves', async () => {
