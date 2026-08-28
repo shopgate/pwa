@@ -19,21 +19,11 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
     <FavoritesButton
       active={false}
       addFavorites={[Function]}
-      aria-hidden={null}
-      className=""
       loadWishlistOnAppStartEnabled={true}
-      noShadow={false}
-      onRippleComplete={[Function]}
-      once={false}
-      productId={null}
       removeFavorites={[Function]}
-      removeThrottle={0}
-      removeWithRelatives={false}
-      size="small"
       wishlistItemQuantityEnabled={false}
     >
       <IconButton
-        aria-hidden={null}
         aria-label="favorites.add"
         className="ui-shared__favorites-button"
         color="secondary"
@@ -43,7 +33,6 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
         variant="surface"
       >
         <ButtonBase
-          aria-hidden={null}
           aria-label="favorites.add"
           className="engage__icon-button ui-shared__favorites-button sg-1m9ee2q-IconButton-root-IconButton-surface-IconButton-circular"
           data-color="secondary"
@@ -56,7 +45,6 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
           testId="favoriteButton"
         >
           <button
-            aria-hidden={null}
             aria-label="favorites.add"
             className="engage__icon-button ui-shared__favorites-button sg-1vaqabz-ButtonBase-root-IconButton-root-IconButton-surface-IconButton-circular"
             data-color="secondary"
@@ -136,21 +124,11 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
     <FavoritesButton
       active={true}
       addFavorites={[Function]}
-      aria-hidden={null}
-      className=""
       loadWishlistOnAppStartEnabled={true}
-      noShadow={false}
-      onRippleComplete={[Function]}
-      once={false}
-      productId={null}
       removeFavorites={[Function]}
-      removeThrottle={0}
-      removeWithRelatives={false}
-      size="small"
       wishlistItemQuantityEnabled={false}
     >
       <IconButton
-        aria-hidden={null}
         aria-label="favorites.remove"
         className="ui-shared__favorites-button"
         color="secondary"
@@ -160,7 +138,6 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
         variant="surface"
       >
         <ButtonBase
-          aria-hidden={null}
           aria-label="favorites.remove"
           className="engage__icon-button ui-shared__favorites-button sg-1m9ee2q-IconButton-root-IconButton-surface-IconButton-circular"
           data-color="secondary"
@@ -173,7 +150,6 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
           testId="favoriteButton"
         >
           <button
-            aria-hidden={null}
             aria-label="favorites.remove"
             className="engage__icon-button ui-shared__favorites-button sg-1vaqabz-ButtonBase-root-IconButton-root-IconButton-surface-IconButton-circular"
             data-color="secondary"

@@ -206,5 +206,5 @@ export { default as Card } from './Card';
 export type { CardProps, CardVariant } from './Card';
 
 // V2
-export { default as IconButton, type IconButtonProps } from './v2/IconButton';
+export { default as IconButton, type IconButtonProps, type IconButtonSize } from './v2/IconButton';
 
