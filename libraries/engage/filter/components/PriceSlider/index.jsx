@@ -4,13 +4,14 @@ import React, {
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import { makeStyles } from '@shopgate/engage/styles';
-import { RangeSlider } from '@shopgate/engage/components';
+import { Accordion, RangeSlider } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { FilterItem } from '@shopgate/engage/filter';
 import Label from './components/Label';
 
 const useStyles = makeStyles()(theme => ({
-  wrapper: {
-    padding: theme.spacing(1.5, 2),
+  accordionContent: {
+    padding: theme.spacing(0, 2, 1),
   },
   rangeSliderContainer: {
     paddingTop: theme.spacing(2),
@@ -29,18 +30,18 @@ const useStyles = makeStyles()(theme => ({
     marginRight: theme.spacing(1),
   },
   rangeSliderHandleInner: {
-    background: theme.palette.common.white,
-    border: `1px solid ${theme.components.border.light}`,
-    boxShadow: theme.shadows[2],
+    background: theme.palette.grey.light,
+    boxShadow: '0 0 8px rgba(0, 0, 0, .32)',
     ...theme.applyStyles('dark', {
-      boxShadow: 'none',
-      border: 'none',
+      background: '#F2F2F2',
     }),
     borderRadius: '50%',
     width: theme.spacing(3),
     height: theme.spacing(3),
   },
-  rangeSliderHandleOuter: {},
+  rangeSliderHandleOuter: {
+    padding: theme.spacing(1),
+  },
 }));
 
 /**
@@ -86,32 +87,43 @@ const PriceSlider = ({
 
   const priceMin = Math.floor(value[0] / 100);
   const priceMax = Math.ceil(value[1] / 100);
-  const priceLength = `${(max / 100).toString().length + 2}ch`;
+  const priceLength = (max / 100).toString().length;
+
+  const renderLabel = useCallback(() => (
+    <Label
+      priceLength={priceLength}
+      priceMax={priceMax}
+      priceMin={priceMin}
+      onChange={handleChange}
+    />
+  ), [handleChange, priceLength, priceMax, priceMin]);
 
   return (
     <FilterItem>
-      <div className={classes.wrapper} data-test-id="priceRangeSlider">
-        <Label
-          priceLength={priceLength}
-          priceMax={priceMax}
-          priceMin={priceMin}
-          onChange={handleChange}
-        />
-        <RangeSlider
-          classNames={{
-            container: classes.rangeSliderContainer,
-            outerRange: classes.rangeSliderOuterRange,
-            range: classes.rangeSliderRange,
-            handleInner: classes.rangeSliderHandleInner,
-            handleOuter: classes.rangeSliderHandleOuter,
-          }}
-          easing={useLinearEasing ? 'linear' : 'exponential'}
-          factor={3}
-          max={max}
-          min={min}
-          onChange={handleChange}
-          value={value}
-        />
+      <div data-test-id="priceRangeSlider">
+        <Accordion
+          openWithChevron
+          startOpened
+          renderLabel={renderLabel}
+          contentClassName={classes.accordionContent}
+          handleLabel={i18n.text('filter.filter_by', { label: i18n.text('filter.label.price') })}
+        >
+          <RangeSlider
+            classNames={{
+              container: classes.rangeSliderContainer,
+              outerRange: classes.rangeSliderOuterRange,
+              range: classes.rangeSliderRange,
+              handleInner: classes.rangeSliderHandleInner,
+              handleOuter: classes.rangeSliderHandleOuter,
+            }}
+            easing={useLinearEasing ? 'linear' : 'exponential'}
+            factor={3}
+            max={max}
+            min={min}
+            onChange={handleChange}
+            value={value}
+          />
+        </Accordion>
       </div>
     </FilterItem>
   );

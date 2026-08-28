@@ -15,12 +15,12 @@ const values = [
 
 describe('Filter: <Selected />', () => {
   it('should not render without selected', () => {
-    const wrapper = render(<Selected values={values} />);
+    const wrapper = render(<Selected values={[]} />);
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('should render with selected', () => {
-    const wrapper = render(<Selected values={values} selected={['foo']} />);
+    const wrapper = render(<Selected values={[values[0]]} />);
     expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

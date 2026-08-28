@@ -83,6 +83,7 @@ export const TimeIcon = () => null;
 export const ProgressBar = () => null;
 export const MessageBar = () => null;
 export const Input = () => null;
+export const Checkbox = ({ label }) => label;
 export const Link = ({ children }) => children;
 export const Ellipsis = ({ children }) => children;
 /** @returns {ReactElement} */

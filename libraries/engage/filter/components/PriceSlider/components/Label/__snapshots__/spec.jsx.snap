@@ -1,52 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PriceSlider: <Label /> should render 1`] = `
-<div
-  class="sg-4iy9ul-editableContainer"
->
+<div>
   <span
     class="sg-b9l18s-srOnly"
   >
     price.range
   </span>
   <span
-    class="sg-j50sqw-price"
-    style="min-width: 5;"
-  />
-  <span
-    class="sg-j50sqw-price"
-    style="min-width: 5;"
-  />
-  <span
-    aria-hidden="true"
-    hidden=""
-    id="price-slider-currency-label"
+    class="sg-f670y6-priceField"
   >
-    $
+    <span
+      aria-hidden="true"
+      class="sg-zrkkw5-currencySymbol"
+      id="price-slider-currency-label-min"
+    >
+      $
+    </span>
+    <input
+      aria-describedby="price-slider-currency-label-min"
+      aria-label="price.range_from"
+      class="sg-i0gqr9-editableField"
+      id="priceMin"
+      inputmode="numeric"
+      name="priceMin"
+      pattern="[0-9]*"
+      style="width: 7ch;"
+      type="number"
+      value="25"
+    />
   </span>
-  <input
-    aria-describedby="price-slider-currency-label"
-    aria-label="price.range_from"
-    class="sg-13mc69o-editableField"
-    id="priceMin"
-    inputmode="numeric"
-    name="priceMin"
-    pattern="[0-9]*"
-    style="left: 0px;"
-    type="number"
-    value="25"
-  />
-  <input
-    aria-describedby="price-slider-currency-label"
-    aria-label="price.range_to"
-    class="sg-13mc69o-editableField"
-    id="priceMax"
-    inputmode="numeric"
-    name="priceMax"
-    pattern="[0-9]*"
-    style="left: 0px;"
-    type="number"
-    value="999"
-  />
+  <span
+    class="sg-f670y6-priceField"
+  >
+    <span
+      aria-hidden="true"
+      class="sg-zrkkw5-currencySymbol"
+      id="price-slider-currency-label-max"
+    >
+      $
+    </span>
+    <input
+      aria-describedby="price-slider-currency-label-max"
+      aria-label="price.range_to"
+      class="sg-i0gqr9-editableField"
+      id="priceMax"
+      inputmode="numeric"
+      name="priceMax"
+      pattern="[0-9]*"
+      style="width: 7ch;"
+      type="number"
+      value="999"
+    />
+  </span>
 </div>
 `;

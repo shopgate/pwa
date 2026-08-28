@@ -5,8 +5,15 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()(theme => ({
   item: {
     background: theme.palette.background.surface,
-    marginTop: 4,
-    borderTop: `1px solid ${theme.components.separatorLine.borderColor}`,
+    position: 'relative',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: theme.spacing(2),
+      right: theme.spacing(2),
+      borderTop: `1px solid ${theme.components.separatorLine.borderColor}`,
+    },
   },
 }));
 

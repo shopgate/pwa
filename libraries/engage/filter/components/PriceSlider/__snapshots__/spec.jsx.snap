@@ -2,7 +2,6 @@
 
 exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
 <div
-  class="sg-1167cjk-wrapper"
   data-test-id="priceRangeSlider"
 >
   <div
@@ -13,7 +12,6 @@ exports[`Filter: <PriceSlider /> should render with custom props 1`] = `
 
 exports[`Filter: <PriceSlider /> should render with default props 1`] = `
 <div
-  class="sg-1167cjk-wrapper"
   data-test-id="priceRangeSlider"
 >
   <div

@@ -1,24 +1,41 @@
 import React, { useCallback, useMemo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
+import { useDispatch } from 'react-redux';
 import { router } from '@virtuous/conductor';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { Chip, ChipLayout } from '@shopgate/engage/components';
+import { updateFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
+import { I18n } from '@shopgate/engage/components';
 import { FILTER_TYPE_RANGE, FILTER_TYPE_MULTISELECT, translateFilterLabel } from '@shopgate/engage/filter';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import connect from './connector';
+import FilterChip from './components/FilterChip';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    overflow: 'auto',
-    padding: theme.spacing(0, 1.5),
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(1),
+    overflowX: 'auto',
+    overflowY: 'hidden',
+    padding: theme.spacing(0.5, 1.5, 1.5),
     width: '100%',
+    scrollbarWidth: 'none',
+    '&::-webkit-scrollbar': {
+      display: 'none',
+    },
+    '& > *': {
+      flexShrink: 0,
+    },
   },
-  label: {
-    // TODO: This CSS variable is re-defined inside the Chip component. So refactoring to the
-    // theme need some planning.
-    color: 'var(--color-text-high-emphasis)',
+  clearAll: {
+    ...theme.typography.body2,
+    color: theme.palette.text.primary,
+    outline: 0,
+    padding: theme.spacing(0.5, 1, 0.5, 0),
+    whiteSpace: 'nowrap',
+    textDecoration: 'underline',
+    textUnderlineOffset: 3,
   },
 }));
 
@@ -29,13 +46,13 @@ const useStyles = makeStyles()(theme => ({
 const FilterChips = ({
   filters,
   routeId,
-  updateFilters,
   scrollTop,
   openFilters,
-  currentPathname,
   onChipCountUpdate,
 }) => {
   const { classes, cx } = useStyles();
+  const dispatch = useDispatch();
+
   const handleRemove = useCallback((id, value) => {
     const { [id]: selected, ...rest } = filters;
 
@@ -56,7 +73,7 @@ const FilterChips = ({
         // setTimeout prevents double click while VoiceOver is active (CCP-2485)
         setTimeout(() => {
           router.update(routeId, { filters: newFilters });
-          updateFilters(newFilters);
+          dispatch(updateFilters(newFilters));
           scrollTop();
         }, 0);
         return;
@@ -65,9 +82,15 @@ const FilterChips = ({
 
     const newFilters = (Object.keys(rest).length) ? rest : null;
     router.update(routeId, { filters: newFilters });
-    updateFilters(newFilters);
+    dispatch(updateFilters(newFilters));
     scrollTop();
-  }, [filters, routeId, scrollTop, updateFilters]);
+  }, [dispatch, filters, routeId, scrollTop]);
+
+  const handleClearAll = useCallback(() => {
+    router.update(routeId, { filters: null });
+    dispatch(updateFilters(null));
+    scrollTop();
+  }, [dispatch, routeId, scrollTop]);
 
   const chips = useMemo(() => {
     if (filters === null || !Object.keys(filters).length) {
@@ -102,7 +125,7 @@ const FilterChips = ({
           const editLabel = i18n.text('filter.edit', { filter: labelValue });
 
           entries.push((
-            <Chip
+            <FilterChip
               id={key}
               key={`filter-${key}`}
               onRemove={handleRemove}
@@ -110,10 +133,8 @@ const FilterChips = ({
               removeLabel={removeLabel}
               editLabel={editLabel}
             >
-              <span className={classes.label}>
-                {pricesFormatted}
-              </span>
-            </Chip>
+              {pricesFormatted}
+            </FilterChip>
           ));
 
           break;
@@ -129,7 +150,7 @@ const FilterChips = ({
             const editLabel = i18n.text('filter.edit', { filter: filterFormatted });
 
             entries.push((
-              <Chip
+              <FilterChip
                 id={value.id}
                 key={`filter-${value.id}`}
                 onRemove={() => handleRemove(filter.id, value.id)}
@@ -137,10 +158,8 @@ const FilterChips = ({
                 removeLabel={removeLabel}
                 editLabel={editLabel}
               >
-                <span className={classes.label}>
-                  {filterFormatted}
-                </span>
-              </Chip>
+                {filterFormatted}
+              </FilterChip>
             ));
           });
 
@@ -149,7 +168,7 @@ const FilterChips = ({
     });
 
     return entries;
-  }, [classes.label, filters, handleRemove, openFilters]);
+  }, [filters, handleRemove, openFilters]);
 
   useEffect(() => {
     onChipCountUpdate(chips.length);
@@ -161,13 +180,17 @@ const FilterChips = ({
 
   return (
     <div className={cx(classes.container, 'theme__filter-bar__filter-chips')}>
-      <ChipLayout
-        moreLabel="filter.more"
-        handleMoreButton={openFilters}
-        pathname={currentPathname}
-      >
-        {chips}
-      </ChipLayout>
+      {chips.length > 3 && (
+        <button
+          className={classes.clearAll}
+          onClick={handleClearAll}
+          data-test-id="clearAllFilters"
+          type="button"
+        >
+          <I18n.Text string="filter.clear_all" />
+        </button>
+      )}
+      {chips}
     </div>
   );
 };
@@ -175,18 +198,15 @@ const FilterChips = ({
 FilterChips.propTypes = {
   openFilters: PropTypes.func.isRequired,
   routeId: PropTypes.string.isRequired,
-  updateFilters: PropTypes.func.isRequired,
-  currentPathname: PropTypes.string,
   filters: PropTypes.shape(),
   onChipCountUpdate: PropTypes.func,
   scrollTop: PropTypes.func,
 };
 
 FilterChips.defaultProps = {
-  currentPathname: '',
   filters: null,
   scrollTop: noop,
   onChipCountUpdate: noop,
 };
 
-export default connect(FilterChips);
+export default FilterChips;

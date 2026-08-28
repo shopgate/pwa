@@ -1,6 +1,4 @@
-import React, {
-  memo, useState, useEffect, useRef,
-} from 'react';
+import React, { memo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
@@ -10,37 +8,21 @@ import { i18n } from '@shopgate/engage/core/helpers';
 const { currency } = appConfig;
 
 const useStyles = makeStyles()(theme => ({
-  price: {
-    color: theme.palette.secondary.main,
-    display: 'inline-block',
+  editableField: {
+    color: theme.palette.text.primary,
     fontWeight: theme.typography.fontWeightMedium,
     textAlign: 'center',
-  },
-  editableContainer: {
-    position: 'relative',
-  },
-  editableField: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    textAlign: 'center',
-    background: 'transparent',
-    zIndex: 2,
-    textIndent: -800,
+    background: theme.palette.background.surface,
     outline: 'none',
-    padding: 0,
-    margin: 0,
-    border: '1px solid transparent',
+    padding: theme.spacing(0.5, 0),
+    margin: theme.spacing(0, 0.5),
+    border: `1px solid ${theme.components.input.border}`,
     borderRadius: 3,
     ':focus': {
-      background: theme.components.input.background,
-      textIndent: 0,
       borderColor: theme.components.border.medium,
     },
     [responsiveMediaQuery('>=xs', { webOnly: true })]: {
       borderColor: theme.palette.primary.main,
-      padding: '4px 0',
-      top: -4,
       ':focus': {
         borderColor: theme.palette.primary.main,
       },
@@ -57,7 +39,22 @@ const useStyles = makeStyles()(theme => ({
     whiteSpace: 'nowrap',
     border: 0,
   },
+  priceField: {
+    display: 'inline-flex',
+    alignItems: 'center',
+  },
+  currencySymbol: {
+    color: theme.palette.text.secondary,
+    marginRight: theme.spacing(0.25),
+  },
 }));
+
+/**
+ * Builds the width a price field needs to fit the longer of its value and the highest price.
+ * @param {number} length Amount of characters the field has to fit.
+ * @returns {string}
+ */
+const fieldWidth = length => `${length + 2}ch`;
 
 /**
  * The filter price range slider label component.
@@ -71,10 +68,6 @@ function Label(props) {
   } = props;
   const [minValue, setMinValue] = useState(priceMin);
   const [maxValue, setMaxValue] = useState(priceMax);
-  const [minOffset, setMinOffset] = useState(0);
-  const [maxOffset, setMMaxOffset] = useState(0);
-  const minRef = useRef(null);
-  const maxRef = useRef(null);
 
   // Set new values, when prices change from outside.
   useEffect(() => {
@@ -82,18 +75,12 @@ function Label(props) {
     setMaxValue(priceMax);
   }, [priceMin, priceMax]);
 
-  // Store the leftOffset when the reference changes.
-  useEffect(() => {
-    setMinOffset(minRef.current.offsetLeft);
-    setMMaxOffset(maxRef.current.offsetLeft);
-  }, [minRef, maxRef]);
-
   /**
    * Selects the field content on click.
    * @param {SyntheticEvent} event The click event object.
    */
   function handleFieldClick({ target }) {
-    target.setSelectionRange(0, target.value.length);
+    target.select();
   }
 
   /**
@@ -124,7 +111,7 @@ function Label(props) {
   }).format('0').replace('0.00', '');
 
   return (
-    <div className={classes.editableContainer}>
+    <div>
       <span className={classes.srOnly}>
         {i18n.text('price.range', {
           fromPrice: i18n.price(priceMin, currency, false),
@@ -133,60 +120,55 @@ function Label(props) {
       </span>
       <I18n.Text string="price.range" aria-hidden>
         <I18n.Placeholder forKey="fromPrice">
-          <span className={classes.price} style={{ minWidth: priceLength }} ref={minRef}>
-            <I18n.Price price={priceMin} currency={currency} fractions={false} />
+          <span className={classes.priceField}>
+            <span aria-hidden className={classes.currencySymbol} id="price-slider-currency-label-min">
+              {currencySymbol}
+            </span>
+            <input
+              type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              id="priceMin"
+              name="priceMin"
+              value={minValue}
+              onChange={handleChangeMin}
+              onClick={handleFieldClick}
+              style={{ width: fieldWidth(Math.max(priceLength, String(minValue).length)) }}
+              className={classes.editableField}
+              aria-label={i18n.text('price.range_from')}
+              aria-describedby="price-slider-currency-label-min"
+            />
           </span>
         </I18n.Placeholder>
         <I18n.Placeholder forKey="toPrice">
-          <span className={classes.price} style={{ minWidth: priceLength }} ref={maxRef}>
-            <I18n.Price price={priceMax} currency={currency} fractions={false} />
+          <span className={classes.priceField}>
+            <span aria-hidden className={classes.currencySymbol} id="price-slider-currency-label-max">
+              {currencySymbol}
+            </span>
+            <input
+              type="number"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              id="priceMax"
+              name="priceMax"
+              value={maxValue}
+              onChange={handleChangeMax}
+              onClick={handleFieldClick}
+              style={{ width: fieldWidth(Math.max(priceLength, String(maxValue).length)) }}
+              className={classes.editableField}
+              aria-label={i18n.text('price.range_to')}
+              aria-describedby="price-slider-currency-label-max"
+            />
           </span>
         </I18n.Placeholder>
       </I18n.Text>
-      <span aria-hidden hidden id="price-slider-currency-label">
-        {currencySymbol}
-      </span>
-      <input
-        type="number"
-        inputMode="numeric"
-        pattern="[0-9]*"
-        id="priceMin"
-        name="priceMin"
-        value={minValue}
-        onChange={handleChangeMin}
-        onClick={handleFieldClick}
-        style={{
-          width: priceLength,
-          left: minOffset,
-        }}
-        className={classes.editableField}
-        aria-label={i18n.text('price.range_from')}
-        aria-describedby="price-slider-currency-label"
-      />
-      <input
-        type="number"
-        inputMode="numeric"
-        pattern="[0-9]*"
-        id="priceMax"
-        name="priceMax"
-        value={maxValue}
-        onChange={handleChangeMax}
-        onClick={handleFieldClick}
-        style={{
-          width: priceLength,
-          left: maxOffset,
-        }}
-        className={classes.editableField}
-        aria-label={i18n.text('price.range_to')}
-        aria-describedby="price-slider-currency-label"
-      />
     </div>
   );
 }
 
 Label.propTypes = {
   onChange: PropTypes.func.isRequired,
-  priceLength: PropTypes.string.isRequired,
+  priceLength: PropTypes.number.isRequired,
   priceMax: PropTypes.number.isRequired,
   priceMin: PropTypes.number.isRequired,
 };

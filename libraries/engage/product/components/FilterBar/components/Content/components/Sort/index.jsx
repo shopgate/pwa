@@ -36,7 +36,7 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 2,
     top: '100%',
     left: 0,
-    background: theme.palette.background.emphasized,
+    background: theme.palette.background.surface,
     boxShadow: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       top: 'inherit',

@@ -3,28 +3,32 @@
 exports[`Filter: <Selector /> should render with minimum props 1`] = `
 <DocumentFragment>
   <div
-    class="sg-zw23ax-content"
+    class="sg-9f2nkn-content"
   >
-    <button
-      aria-checked="false"
-      class="sg-13fqxlu-inactive"
+    <div
       data-test-id="foo"
-      role="checkbox"
-      type="button"
-      value="foo"
     >
-      fooLabel
-    </button>
-    <button
-      aria-checked="false"
-      class="sg-13fqxlu-inactive"
+      <div
+        aria-label="fooLabel"
+        class="sg-dj9d2p-label"
+      >
+        <span>
+          fooLabel
+        </span>
+      </div>
+    </div>
+    <div
       data-test-id="bar"
-      role="checkbox"
-      type="button"
-      value="bar"
     >
-      barLabel
-    </button>
+      <div
+        aria-label="barLabel"
+        class="sg-dj9d2p-label"
+      >
+        <span>
+          barLabel
+        </span>
+      </div>
+    </div>
   </div>
 </DocumentFragment>
 `;

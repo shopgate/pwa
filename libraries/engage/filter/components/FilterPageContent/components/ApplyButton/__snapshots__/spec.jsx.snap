@@ -11,26 +11,19 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
     }
   }
 >
-  <div
-    className="sg-dpfgvb-wrapper"
+  <Button
+    color="primary"
+    disabled={false}
+    fullWidth={true}
+    onClick={[MockFunction]}
+    size="small"
+    testId="applyFilterButton"
+    variant="contained"
   >
-    <Button
-      color="secondary"
-      disabled={false}
-      onClick={[MockFunction]}
-      testId="applyFilterButton"
-      variant="link"
-    >
-      <Text
-        string="filter.apply"
-        style={
-          {
-            "color": undefined,
-          }
-        }
-      />
-    </Button>
-  </div>
+    <Text
+      string="filter.view_results"
+    />
+  </Button>
 </SurroundPortals>
 `;
 
@@ -45,26 +38,19 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
     }
   }
 >
-  <div
-    className="sg-dpfgvb-wrapper"
+  <Button
+    color="primary"
+    disabled={false}
+    fullWidth={true}
+    onClick={[Function]}
+    size="small"
+    testId="applyFilterButton"
+    variant="contained"
   >
-    <Button
-      color="secondary"
-      disabled={false}
-      onClick={[Function]}
-      testId="applyFilterButton"
-      variant="link"
-    >
-      <Text
-        string="filter.apply"
-        style={
-          {
-            "color": undefined,
-          }
-        }
-      />
-    </Button>
-  </div>
+    <Text
+      string="filter.view_results"
+    />
+  </Button>
 </SurroundPortals>
 `;
 
@@ -79,25 +65,18 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
     }
   }
 >
-  <div
-    className="sg-dpfgvb-wrapper"
+  <Button
+    color="primary"
+    disabled={true}
+    fullWidth={true}
+    onClick={[Function]}
+    size="small"
+    testId="applyFilterButton"
+    variant="contained"
   >
-    <Button
-      color="secondary"
-      disabled={true}
-      onClick={[Function]}
-      testId="applyFilterButton"
-      variant="link"
-    >
-      <Text
-        string="filter.apply"
-        style={
-          {
-            "color": undefined,
-          }
-        }
-      />
-    </Button>
-  </div>
+    <Text
+      string="filter.view_results"
+    />
+  </Button>
 </SurroundPortals>
 `;
