@@ -8,35 +8,50 @@ exports[`PriceSlider: <Label /> should render 1`] = `
     price.range
   </span>
   <span
-    aria-hidden="true"
-    hidden=""
-    id="price-slider-currency-label"
+    class="sg-f670y6-priceField"
   >
-    $
+    <span
+      aria-hidden="true"
+      class="sg-zrkkw5-currencySymbol"
+      id="price-slider-currency-label-min"
+    >
+      $
+    </span>
+    <input
+      aria-describedby="price-slider-currency-label-min"
+      aria-label="price.range_from"
+      class="sg-i0gqr9-editableField"
+      id="priceMin"
+      inputmode="numeric"
+      name="priceMin"
+      pattern="[0-9]*"
+      style="width: 7ch;"
+      type="number"
+      value="25"
+    />
   </span>
-  <input
-    aria-describedby="price-slider-currency-label"
-    aria-label="price.range_from"
-    class="sg-i0gqr9-editableField"
-    id="priceMin"
-    inputmode="numeric"
-    name="priceMin"
-    pattern="[0-9]*"
-    style="width: 7ch;"
-    type="number"
-    value="25"
-  />
-  <input
-    aria-describedby="price-slider-currency-label"
-    aria-label="price.range_to"
-    class="sg-i0gqr9-editableField"
-    id="priceMax"
-    inputmode="numeric"
-    name="priceMax"
-    pattern="[0-9]*"
-    style="width: 7ch;"
-    type="number"
-    value="999"
-  />
+  <span
+    class="sg-f670y6-priceField"
+  >
+    <span
+      aria-hidden="true"
+      class="sg-zrkkw5-currencySymbol"
+      id="price-slider-currency-label-max"
+    >
+      $
+    </span>
+    <input
+      aria-describedby="price-slider-currency-label-max"
+      aria-label="price.range_to"
+      class="sg-i0gqr9-editableField"
+      id="priceMax"
+      inputmode="numeric"
+      name="priceMax"
+      pattern="[0-9]*"
+      style="width: 7ch;"
+      type="number"
+      value="999"
+    />
+  </span>
 </div>
 `;

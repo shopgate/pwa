@@ -8,7 +8,7 @@ exports[`Filter: <Selected /> should render with selected 1`] = `
     class="sg-5pkevj-chips"
   >
     <span
-      class="sg-yot632-chip"
+      class="sg-yzdsl5-chip"
     >
       fooLabel
     </span>

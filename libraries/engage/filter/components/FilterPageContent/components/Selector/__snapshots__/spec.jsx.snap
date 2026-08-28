@@ -10,7 +10,7 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
     >
       <div
         aria-label="fooLabel"
-        class="sg-na4d2r-label"
+        class="sg-dj9d2p-label"
       >
         <span>
           fooLabel
@@ -22,7 +22,7 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
     >
       <div
         aria-label="barLabel"
-        class="sg-na4d2r-label"
+        class="sg-dj9d2p-label"
       >
         <span>
           barLabel

@@ -6,7 +6,7 @@ exports[`<Toggle /> should render with selected 1`] = `
     class="sg-mx2uls-toggle"
   >
     <span
-      class="sg-1h1yc6m-label"
+      class="sg-1h1yc6m-label filter-selector-toggle-label"
     >
       somelabel
     </span>
@@ -21,7 +21,7 @@ exports[`<Toggle /> should render with selected as open 1`] = `
     class="sg-mx2uls-toggle"
   >
     <span
-      class="sg-1h1yc6m-label"
+      class="sg-1h1yc6m-label filter-selector-toggle-label"
     >
       somelabel
     </span>
@@ -36,7 +36,7 @@ exports[`<Toggle /> should render without selected 1`] = `
     class="sg-mx2uls-toggle"
   >
     <span
-      class="sg-1h1yc6m-label"
+      class="sg-1h1yc6m-label filter-selector-toggle-label"
     >
       somelabel
     </span>
@@ -50,7 +50,7 @@ exports[`<Toggle /> should render without selected as open 1`] = `
     class="sg-mx2uls-toggle"
   >
     <span
-      class="sg-1h1yc6m-label"
+      class="sg-1h1yc6m-label filter-selector-toggle-label"
     >
       somelabel
     </span>
