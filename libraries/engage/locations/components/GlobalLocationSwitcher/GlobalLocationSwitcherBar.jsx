@@ -8,7 +8,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()(theme => ({
   wrapper: {
     color: theme.palette.text.primary,
-    background: theme.palette.background.emphasized,
+    background: theme.palette.background.surface,
   },
   inner: {
     display: 'flex',
@@ -17,6 +17,7 @@ const useStyles = makeStyles()(theme => ({
     borderBottom: `1px solid ${theme.components.border.light}`,
     alignItems: 'center',
     height: theme.components.filterBar.height,
+    justifyContent: 'space-between',
   },
   innerStandalone: {
     borderBottom: 'none',
@@ -26,6 +27,7 @@ const useStyles = makeStyles()(theme => ({
   },
   button: {
     marginLeft: theme.spacing(2),
+    marginTop: theme.spacing(0.5),
     textTransform: 'none',
   },
 }));
