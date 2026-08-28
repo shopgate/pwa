@@ -41,7 +41,7 @@ const FilterApplyButton = ({
     <Button
       className={className}
       variant="contained"
-      color="secondary"
+      color="primary"
       onClick={onClick}
       disabled={disabled}
       fullWidth

@@ -17,11 +17,11 @@ const useStyles = makeStyles<StyleParams>()((theme, { removable }) => ({
     maxWidth: '72%',
     height: 30,
     borderRadius: theme.shape.borderRadius,
-    border: `1px solid ${theme.components.border.medium}`,
+    border: `1px solid ${theme.palette.secondary.main}`,
     background: theme.palette.background.surface,
     color: theme.palette.text.primary,
-    paddingLeft: theme.spacing(1.25),
-    paddingRight: removable ? theme.spacing(0.75) : theme.spacing(1.25),
+    paddingLeft: removable ? theme.spacing(0.75) : theme.spacing(1.25),
+    paddingRight: theme.spacing(1.25),
     outline: 0,
   },
   name: {
@@ -30,7 +30,7 @@ const useStyles = makeStyles<StyleParams>()((theme, { removable }) => ({
     display: 'block',
     color: 'inherit',
     padding: 0,
-    paddingRight: removable ? theme.spacing(0.5) : 0,
+    paddingLeft: removable ? theme.spacing(0.5) : 0,
     maxWidth: '100%',
     overflow: 'hidden',
     textOverflow: 'ellipsis',
@@ -107,9 +107,6 @@ const FilterChip = ({
 
   return (
     <div className={classes.chip} data-test-id={id}>
-      <ChipButton className={classes.name} onClick={onClick} aria-label={editLabel}>
-        {children}
-      </ChipButton>
       {removable && (
         <ChipButton
           className={classes.removeButton}
@@ -120,6 +117,9 @@ const FilterChip = ({
           <CrossIcon size={16} />
         </ChipButton>
       )}
+      <ChipButton className={classes.name} onClick={onClick} aria-label={editLabel}>
+        {children}
+      </ChipButton>
     </div>
   );
 };
