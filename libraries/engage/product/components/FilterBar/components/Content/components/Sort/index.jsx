@@ -1,96 +1,98 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React from 'react';
 import {
-  SheetDrawer, SheetList, ArrowDropIcon, I18n, SurroundPortals,
+  SelectBox, ArrowDropIcon, SurroundPortals,
 } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core/helpers';
 import { useSort, PORTAL_FILTER_SORT_OPTIONS } from '@shopgate/engage/filter';
-import { makeStyles, useTheme } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import Item from './components/Item';
 
 const useStyles = makeStyles()(theme => ({
-  root: {
-    display: 'flex',
-    flexGrow: 2,
-    minWidth: 0,
-  },
   button: {
     color: 'inherit',
     outline: 0,
     marginLeft: 10,
     display: 'flex',
     alignItems: 'center',
-    gap: theme.spacing(0.5),
-    height: theme.components.filterBar.height,
-    minWidth: 0,
-  },
-  selection: {
-    ...theme.typography.body2,
-    fontWeight: theme.typography.fontWeightMedium,
-    overflow: 'hidden',
     textOverflow: 'ellipsis',
+    justifyContent: 'center',
+    height: theme.components.filterBar.height,
     whiteSpace: 'nowrap',
   },
+  selection: {
+    fontSize: theme.typography.body2.fontSize,
+    fontWeight: theme.typography.fontWeightMedium,
+    paddingTop: 1,
+    alignSelf: 'center',
+  },
   icon: {
-    flexShrink: 0,
+    fontSize: theme.components.icon.medium,
+  },
+  iconOpen: {
+    transform: 'rotate(180deg)',
+  },
+  dropdown: {
+    position: 'absolute',
+    width: '100%',
+    zIndex: 2,
+    top: '100%',
+    left: 0,
+    background: theme.palette.background.emphasized,
+    boxShadow: 'rgba(0, 0, 0, 0.16) 0 2px 2px',
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      top: 'inherit',
+    },
+  },
+  selectItem: {
+    padding: 0,
+    outline: 0,
+    overflow: 'hidden',
+    textAlign: 'left',
+    width: '100%',
+    color: theme.palette.text.primary,
+    ':first-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
+      marginTop: theme.spacing(1),
+    },
+    ':last-child/* emotion-disable-server-rendering-unsafe-selector-warning-please-do-not-use-this-the-warning-exists-for-a-reason */': {
+      marginBottom: theme.spacing(1),
+    },
+  },
+  selectItemSelected: {
+    fontWeight: theme.typography.fontWeightMedium,
+  },
+  selectBox: {
+    flexGrow: 2,
   },
 }));
 
 /**
  * The Sort component.
+ * @param {Object} props The component props
  * @returns {JSX}
  */
 const Sort = () => {
   const { classes, cx } = useStyles();
-  const theme = useTheme();
   const { activeOption, options, updateRoute } = useSort();
-  const [isOpen, setIsOpen] = useState(false);
-
-  const activeLabel = useMemo(
-    () => (options.find(option => option.value === activeOption) || options[0]).label,
-    [activeOption, options]
-  );
-
-  const handleOpen = useCallback(() => setIsOpen(true), []);
-  const handleClose = useCallback(() => setIsOpen(false), []);
-
-  const handleSelect = useCallback((value) => {
-    setIsOpen(false);
-    updateRoute(value);
-  }, [updateRoute]);
 
   return (
     <SurroundPortals portalName={PORTAL_FILTER_SORT_OPTIONS} portalProps={{ items: options }}>
-      <div className={cx(classes.root, 'theme__filter-bar__sort')} data-test-id="sorting">
-        <button
-          className={classes.button}
-          onClick={handleOpen}
-          aria-haspopup="listbox"
-          aria-expanded={isOpen}
-          type="button"
-        >
-          <span className={classes.selection}>
-            <I18n.Text string={activeLabel} />
-          </span>
-          <ArrowDropIcon className={classes.icon} size={theme.components.icon.medium} />
-        </button>
-      </div>
-      <SheetDrawer
-        title={i18n.text('filter.sort.default')}
-        isOpen={isOpen}
-        onClose={handleClose}
-      >
-        <SheetList>
-          {options.map(option => (
-            <Item
-              key={option.value}
-              label={option.label}
-              value={option.value}
-              isSelected={option.value === activeOption}
-              onClick={handleSelect}
-            />
-          ))}
-        </SheetList>
-      </SheetDrawer>
+      <SelectBox
+        handleSelectionUpdate={updateRoute}
+        items={options}
+        initialValue={activeOption}
+        icon={ArrowDropIcon}
+        item={Item}
+        className={cx(classes.selectBox, 'theme__filter-bar__sort')}
+        classNames={{
+          button: classes.button,
+          selection: classes.selection,
+          icon: classes.icon,
+          iconOpen: classes.iconOpen,
+          dropdown: classes.dropdown,
+          selectItem: classes.selectItem,
+          selectItemSelected: classes.selectItemSelected,
+        }}
+        testId="sorting"
+      />
     </SurroundPortals>
   );
 };
