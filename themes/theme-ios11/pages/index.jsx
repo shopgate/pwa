@@ -7,7 +7,6 @@ import { emotionCache } from '@shopgate/engage/styles/tss';
 import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
 import { CSS_ROOT_FONT_FAMILY } from '@shopgate/engage/styles/reset/typographyCustomProps';
 import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
-import { useSelector } from 'react-redux';
 import { getAreAppSettingsHydrated } from '@shopgate/engage/settings/selectors/appSettings';
 import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -97,40 +96,28 @@ const globalLocationSelectorAllowList = [
 ];
 
 /**
- * Provides the theme. It is rebuilt when the app settings hydrate, so that the values they carry
- * replace the legacy defaults instead of being overridden by them.
- * @param {Object} props Props.
- * @returns {JSX.Element}
+ * The theme's main component defines all the routes (views) inside the application.
+ * @returns {JSX}
  */
-const AppThemeProvider = ({ children }) => {
-  const isHydrated = useSelector(getAreAppSettingsHydrated);
+const Pages = ({ store }) => {
+  const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha || {};
 
   const theme = useMemo(() => {
     const extendedTypography = configuration.get(CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY);
 
     return createTheme({
-      ...createDefaultThemeOptions({ isHydrated }),
+      // The settings are fetched and dispatched by `initialize`, before the app is rendered, so
+      // the flag is settled by the time the theme is built.
+      ...createDefaultThemeOptions({
+        isHydrated: getAreAppSettingsHydrated(store.getState()),
+      }),
       typography: {
         // The property is defined by the css reset: libraries/engage/styles/reset/root.js
         fontFamily: `var(${CSS_ROOT_FONT_FAMILY})`,
         ...extendedTypography,
       },
     });
-  }, [isHydrated]);
-
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
-};
-
-AppThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-/**
- * The theme's main component defines all the routes (views) inside the application.
- * @returns {JSX}
- */
-const Pages = ({ store }) => {
-  const { enabled: recaptchaEnabled, googleCloudSiteKey } = appConfig?.recaptcha || {};
+  }, [store]);
 
   return (
     <App store={store}>
@@ -148,7 +135,7 @@ const Pages = ({ store }) => {
       <NavigationHandler>
         <AppProvider>
           <CacheProvider value={emotionCache}>
-            <AppThemeProvider>
+            <ThemeProvider theme={theme}>
               <ThemeResourcesProvider
                 widgets={{
                   v1: widgetsV1,
@@ -349,7 +336,7 @@ const Pages = ({ store }) => {
                   </ToastProvider>
                 </LoadingProvider>
               </ThemeResourcesProvider>
-            </AppThemeProvider>
+            </ThemeProvider>
           </CacheProvider>
         </AppProvider>
       </NavigationHandler>

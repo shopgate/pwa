@@ -20,10 +20,11 @@ import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig;
 
-const iconSize = 24;
-
 const useStyles = makeStyles()(theme => ({
   buttons: {
+    // Declared on the row rather than on the buttons, so that a shop can override the elevation of
+    // all of them through the `theme__product__header__cta-buttons` class this element carries.
+    [theme.vars.components.iconButton.boxShadow]: theme.shadowSizes.strong,
     position: 'absolute',
     right: theme.spacing(2),
     top: -30,
@@ -34,15 +35,11 @@ const useStyles = makeStyles()(theme => ({
   favButton: {
     marginRight: theme.spacing(2),
     zIndex: 1,
-    fontSize: iconSize,
   },
   wrapper: {
     position: 'relative',
     top: -38,
     right: -16,
-  },
-  ripple: {
-    padding: 8,
   },
 }));
 
@@ -66,7 +63,7 @@ const CTAButtons = ({
             { isProductActive && (
             <FavoritesButton
               className={classes.favButton}
-              rippleClassName={classes.ripple}
+              size="medium"
               active={isFavorite}
               productId={productId}
             />

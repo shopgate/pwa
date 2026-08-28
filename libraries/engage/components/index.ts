@@ -205,3 +205,6 @@ export type { PaperProps, PaperVariant } from './Paper';
 export { default as Card } from './Card';
 export type { CardProps, CardVariant } from './Card';
 
+// V2
+export { default as IconButton, type IconButtonProps } from './v2/IconButton';
+

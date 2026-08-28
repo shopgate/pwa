@@ -29,37 +29,50 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
       removeFavorites={[Function]}
       removeThrottle={0}
       removeWithRelatives={false}
-      rippleClassName=""
+      size="small"
       wishlistItemQuantityEnabled={false}
     >
-      <button
+      <IconButton
         aria-hidden={null}
         aria-label="favorites.add"
-        className="ui-shared__favorites-button sg-10svfko-button"
-        data-test-id="favoriteButton"
+        className="ui-shared__favorites-button"
+        color="secondary"
         onClick={[Function]}
-        type="button"
+        size="small"
+        testId="favoriteButton"
+        variant="surface"
       >
-        <Ripple
-          className="sg-m9vsu6-ripple"
-          color="var(--sg-palette-common-black)"
+        <ButtonBase
+          aria-hidden={null}
+          aria-label="favorites.add"
+          className="engage__icon-button ui-shared__favorites-button sg-1m9ee2q-IconButton-root-IconButton-surface-IconButton-circular"
+          data-color="secondary"
+          data-shape="circular"
+          data-size="small"
+          data-variant="surface"
+          disableBaseClassName={true}
           disabled={false}
-          fill={false}
           onClick={[Function]}
-          onComplete={[Function]}
-          overflow={false}
-          size={null}
+          testId="favoriteButton"
         >
-          <div
-            className="ui-shared__ripple sg-m9vsu6-ripple"
-            data-test-id="Ripple"
+          <button
+            aria-hidden={null}
+            aria-label="favorites.add"
+            className="engage__icon-button ui-shared__favorites-button sg-1vaqabz-ButtonBase-root-IconButton-root-IconButton-surface-IconButton-circular"
+            data-color="secondary"
+            data-shape="circular"
+            data-size="small"
+            data-test-id="favoriteButton"
+            data-variant="surface"
+            disabled={false}
             onClick={[Function]}
-            style={
-              {
-                "overflow": "hidden",
-                "position": "relative",
-              }
-            }
+            onKeyDown={[Function]}
+            onLostPointerCapture={[Function]}
+            onPointerCancel={[Function]}
+            onPointerDown={[Function]}
+            onPointerLeave={[Function]}
+            onPointerUp={[Function]}
+            type="button"
           >
             <HeartOutline>
               <Icon
@@ -83,9 +96,22 @@ exports[`<FavoritesButton /> should only render when no favorites set 1`] = `
                 />
               </Icon>
             </HeartOutline>
-          </div>
-        </Ripple>
-      </button>
+            <Ripple
+              ripples={[]}
+            >
+              <span
+                className="sg-sfhzfw-ButtonBaseRipple-container"
+              >
+                <TransitionGroup
+                  childFactory={[Function]}
+                  component={null}
+                  exit={true}
+                />
+              </span>
+            </Ripple>
+          </button>
+        </ButtonBase>
+      </IconButton>
     </FavoritesButton>
   </Connect(FavoritesButton)>
 </Provider>
@@ -120,37 +146,50 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
       removeFavorites={[Function]}
       removeThrottle={0}
       removeWithRelatives={false}
-      rippleClassName=""
+      size="small"
       wishlistItemQuantityEnabled={false}
     >
-      <button
+      <IconButton
         aria-hidden={null}
         aria-label="favorites.remove"
-        className="ui-shared__favorites-button sg-10svfko-button"
-        data-test-id="favoriteButton"
+        className="ui-shared__favorites-button"
+        color="secondary"
         onClick={[Function]}
-        type="button"
+        size="small"
+        testId="favoriteButton"
+        variant="surface"
       >
-        <Ripple
-          className="sg-m9vsu6-ripple"
-          color="var(--sg-palette-common-black)"
+        <ButtonBase
+          aria-hidden={null}
+          aria-label="favorites.remove"
+          className="engage__icon-button ui-shared__favorites-button sg-1m9ee2q-IconButton-root-IconButton-surface-IconButton-circular"
+          data-color="secondary"
+          data-shape="circular"
+          data-size="small"
+          data-variant="surface"
+          disableBaseClassName={true}
           disabled={false}
-          fill={false}
           onClick={[Function]}
-          onComplete={[Function]}
-          overflow={false}
-          size={null}
+          testId="favoriteButton"
         >
-          <div
-            className="ui-shared__ripple sg-m9vsu6-ripple"
-            data-test-id="Ripple"
+          <button
+            aria-hidden={null}
+            aria-label="favorites.remove"
+            className="engage__icon-button ui-shared__favorites-button sg-1vaqabz-ButtonBase-root-IconButton-root-IconButton-surface-IconButton-circular"
+            data-color="secondary"
+            data-shape="circular"
+            data-size="small"
+            data-test-id="favoriteButton"
+            data-variant="surface"
+            disabled={false}
             onClick={[Function]}
-            style={
-              {
-                "overflow": "hidden",
-                "position": "relative",
-              }
-            }
+            onKeyDown={[Function]}
+            onLostPointerCapture={[Function]}
+            onPointerCancel={[Function]}
+            onPointerDown={[Function]}
+            onPointerLeave={[Function]}
+            onPointerUp={[Function]}
+            type="button"
           >
             <Heart>
               <Icon
@@ -174,9 +213,22 @@ exports[`<FavoritesButton /> should render when favorites set 1`] = `
                 />
               </Icon>
             </Heart>
-          </div>
-        </Ripple>
-      </button>
+            <Ripple
+              ripples={[]}
+            >
+              <span
+                className="sg-sfhzfw-ButtonBaseRipple-container"
+              >
+                <TransitionGroup
+                  childFactory={[Function]}
+                  component={null}
+                  exit={true}
+                />
+              </span>
+            </Ripple>
+          </button>
+        </ButtonBase>
+      </IconButton>
     </FavoritesButton>
   </Connect(FavoritesButton)>
 </Provider>
