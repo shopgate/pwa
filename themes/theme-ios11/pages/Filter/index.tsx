@@ -25,14 +25,7 @@ const ViewComponent = View as React.ComponentType<{
   children?: React.ReactNode;
 }>;
 
-const CloseBarComponent = CloseBar as unknown as React.ComponentType<{ asCancel?: boolean }>;
-
-/**
- * The app bar for the filter page, rendered as a "Cancel" text button.
- * @param props The component props.
- * @returns The rendered app bar.
- */
-const CancelBar = (props: object) => <CloseBarComponent asCancel {...props} />;
+const CloseBarComponent = CloseBar as unknown as React.ComponentType;
 
 /**
  * The Filter page.
@@ -62,7 +55,7 @@ const Filter = () => {
     <ViewComponent aria-hidden={false}>
       {visible ? (
         <Content
-          AppBarComponent={CancelBar}
+          AppBarComponent={CloseBarComponent}
           activeFilters={filters}
           parentRouteId={parentId}
           {...sourceProps}

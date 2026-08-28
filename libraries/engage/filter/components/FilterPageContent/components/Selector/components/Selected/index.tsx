@@ -1,5 +1,4 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -11,18 +10,35 @@ const useStyles = makeStyles()(theme => ({
   chip: {
     ...theme.typography.body2,
     padding: theme.spacing(0.25, 1.25),
-    borderRadius: 16,
+    borderRadius: theme.shape.borderRadius,
     border: `1px solid ${theme.palette.secondary.main}`,
     overflowWrap: 'anywhere',
   },
 }));
 
+export interface SelectedValue {
+  /**
+   * Id of the filter value.
+   */
+  id: string;
+  /**
+   * Display label of the filter value.
+   */
+  label: string;
+}
+
+export interface SelectedProps {
+  /**
+   * The selected filter values, already ordered for display.
+   */
+  values: SelectedValue[];
+}
+
 /**
- * The filter selected component.
- * @param {Object} props Props.
- * @returns {JSX.Element|null}
+ * Renders the selected filter values as chips in the accordion header.
+ * @returns The rendered component.
  */
-const Selected = ({ values }) => {
+const Selected = ({ values }: SelectedProps) => {
   const { classes } = useStyles();
 
   if (values.length === 0) {
@@ -36,10 +52,6 @@ const Selected = ({ values }) => {
       ))}
     </div>
   );
-};
-
-Selected.propTypes = {
-  values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
 };
 
 export default memo(Selected);

@@ -203,6 +203,7 @@
     "more": "więcej",
     "reset": "Zresetuj wszystkie filtry",
     "clear_all": "Wyczyść wszystko",
+    "view_results": "Zobacz wyniki",
     "remove": "{filter} Usuń filtr",
     "edit": "{filter} Edytuj filtr",
     "filter_by": "Filtrowanie według {label}",

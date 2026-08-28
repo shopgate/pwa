@@ -203,6 +203,7 @@
     "more": "mai mult",
     "reset": "Resetează toate filtrele",
     "clear_all": "Șterge tot",
+    "view_results": "Vezi rezultatele",
     "remove": "{filter} eliminarea filtrului",
     "edit": "{filter} editează filtrul",
     "filter_by": "Filtrează după {label}",

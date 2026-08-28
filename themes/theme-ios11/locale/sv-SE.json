@@ -203,6 +203,7 @@
     "more": "Mer",
     "reset": "Återställ alla filter",
     "clear_all": "Rensa alla",
+    "view_results": "Visa resultat",
     "remove": "{filter} ta bort filter",
     "edit": "{filter} redigera filter",
     "filter_by": "Filtrera efter {label}",

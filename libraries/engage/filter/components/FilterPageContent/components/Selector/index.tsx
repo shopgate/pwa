@@ -1,7 +1,7 @@
-import React, {
+import {
   useState, useEffect, useCallback, useMemo, memo,
 } from 'react';
-import PropTypes from 'prop-types';
+import noop from 'lodash/noop';
 import { Accordion, SurroundPortals } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -27,38 +27,83 @@ const useStyles = makeStyles()(theme => ({
 
 /**
  * Formats selected filter value labels into a readable enumeration.
- * @param {string[]} labels Labels of the selected values.
- * @returns {string}
+ * @param labels Labels of the selected values.
+ * @returns The formatted enumeration.
  */
-const formatSelectedLabels = (labels) => {
-  if (typeof Intl.ListFormat !== 'function') {
+const formatSelectedLabels = (labels: string[]): string => {
+  const { ListFormat } = Intl as typeof Intl & {
+    ListFormat?: new (locales?: string) => { format(list: string[]): string };
+  };
+
+  if (typeof ListFormat !== 'function') {
     return labels.join(', ');
   }
 
-  return new Intl.ListFormat(i18n.getLang()).format(labels);
+  return new ListFormat(i18n.getLang()).format(labels);
 };
 
+export interface FilterValue {
+  /**
+   * Id of the filter value.
+   */
+  id: string;
+  /**
+   * Display label of the filter value.
+   */
+  label: string;
+  /**
+   * Number of products available for the filter value.
+   */
+  hits?: number;
+}
+
+export interface SelectorProps {
+  /**
+   * Id of the filter.
+   */
+  id: string;
+  /**
+   * Display label of the filter.
+   */
+  label: string;
+  /**
+   * The selectable values of the filter.
+   */
+  values: FilterValue[];
+  /**
+   * Whether multiple values can be selected at once.
+   */
+  multi?: boolean;
+  /**
+   * Invoked with the filter id and the updated selection whenever a value is toggled.
+   */
+  onChange?: (id: string, selected: string[]) => void;
+  /**
+   * The currently selected value ids.
+   */
+  selected?: string[] | null;
+}
+
 /**
- * The selector component.
- * @param {Object} props Props.
- * @returns {JSX.Element}
+ * The selector component renders a single filter as an accordion with selectable values.
+ * @returns The rendered component.
  */
 const Selector = ({
   id,
   label,
   values,
-  multi,
-  onChange,
-  selected: selectedFromProps,
-}) => {
+  multi = false,
+  onChange = noop,
+  selected: selectedFromProps = null,
+}: SelectorProps) => {
   const { classes } = useStyles();
-  const [selected, setSelected] = useState(() => selectedFromProps || []);
+  const [selected, setSelected] = useState<string[]>(() => selectedFromProps || []);
 
   useEffect(() => {
     setSelected(selectedFromProps || []);
   }, [selectedFromProps]);
 
-  const handleToggle = useCallback((value) => {
+  const handleToggle = useCallback((value: string) => {
     setSelected((prev) => {
       let newSelected = [...prev, value];
 
@@ -80,9 +125,8 @@ const Selector = ({
     [selected, values]
   );
 
-  const renderLabel = useCallback(props => (
+  const renderLabel = useCallback(() => (
     <Toggle
-      {...props}
       label={label}
       selected={<Selected values={selectedValues} />}
     />
@@ -137,21 +181,6 @@ const Selector = ({
       </FilterItem>
     </SurroundPortals>
   );
-};
-
-Selector.propTypes = {
-  id: PropTypes.string.isRequired,
-  label: PropTypes.string.isRequired,
-  values: PropTypes.arrayOf(PropTypes.shape()).isRequired,
-  multi: PropTypes.bool,
-  onChange: PropTypes.func,
-  selected: PropTypes.arrayOf(PropTypes.string),
-};
-
-Selector.defaultProps = {
-  multi: false,
-  onChange() {},
-  selected: null,
 };
 
 export default memo(Selector);

@@ -16,7 +16,7 @@ const useStyles = makeStyles<StyleParams>()((theme, { removable }) => ({
     minWidth: 0,
     maxWidth: '72%',
     height: 30,
-    borderRadius: 999,
+    borderRadius: theme.shape.borderRadius,
     border: `1px solid ${theme.components.border.medium}`,
     background: theme.palette.background.surface,
     color: theme.palette.text.primary,

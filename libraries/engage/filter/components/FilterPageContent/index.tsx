@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import { Fragment } from 'react';
+import type { ComponentType } from 'react';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { useFilterPage } from '@shopgate/engage/filter/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -11,8 +11,7 @@ import {
   PriceSlider,
 } from '@shopgate/engage/filter';
 import Selector from './components/Selector';
-import ApplyButton from './components/ApplyButton';
-import ResetButton from './components/ResetButton';
+import FilterButtonBar from './components/FilterButtonBar';
 
 const useStyles = makeStyles()(theme => ({
   content: {
@@ -24,20 +23,21 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
+export interface FilterPageContentProps {
+  /**
+   * The component to be rendered as the app bar.
+   */
+  AppBarComponent?: ComponentType<{ title?: string }> | null;
+}
+
 /**
  * The FilterPageContent component renders all filters for the filter page.
- * @param {Object} props The component props.
- * @param {React.ComponentType} props.AppBarComponent The component to be rendered as the app bar
- * @returns {JSX.Element}
+ * @returns The rendered component.
  */
-const FilterPageContent = ({ AppBarComponent }) => {
+const FilterPageContent = ({ AppBarComponent = null }: FilterPageContentProps) => {
   const { classes } = useStyles();
   const {
     apiFilters,
-    resetPossible,
-    hasChanged,
-    applyFilters,
-    resetAllFilters,
     getSelectedFilterValues,
     updateSelectedFilterValues,
   } = useFilterPage();
@@ -45,10 +45,7 @@ const FilterPageContent = ({ AppBarComponent }) => {
   return (
     <SurroundPortals portalName={PORTAL_FILTER_PAGE_CONTENT}>
       { AppBarComponent && (
-        <AppBarComponent
-          title="titles.filter"
-          right={<ApplyButton disabled={!hasChanged} onClick={applyFilters} />}
-        />
+        <AppBarComponent title="titles.filter" />
       )}
       <div className={classes.content}>
         {apiFilters.map((filter) => {
@@ -84,18 +81,10 @@ const FilterPageContent = ({ AppBarComponent }) => {
             />
           );
         })}
-        <ResetButton disabled={!resetPossible} onClick={resetAllFilters} />
       </div>
+      <FilterButtonBar />
     </SurroundPortals>
   );
-};
-
-FilterPageContent.propTypes = {
-  AppBarComponent: PropTypes.elementType,
-};
-
-FilterPageContent.defaultProps = {
-  AppBarComponent: null,
 };
 
 export default FilterPageContent;

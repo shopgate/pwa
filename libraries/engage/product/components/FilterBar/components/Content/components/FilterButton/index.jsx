@@ -17,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
     margin: theme.spacing(0, 1.5),
     padding: theme.spacing(0.25, 1),
     border: `1px solid ${theme.components.border.medium}`,
-    borderRadius: 999,
+    borderRadius: theme.shape.borderRadius,
   },
   buttonActive: {
     borderColor: theme.components.badge.background,

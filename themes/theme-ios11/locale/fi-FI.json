@@ -203,6 +203,7 @@
     "more": "Lisää",
     "reset": "Nollaa kaikki suodattimet",
     "clear_all": "Tyhjennä kaikki",
+    "view_results": "Näytä tulokset",
     "remove": "{filter} poista suodatin",
     "edit": "{filter} Muokkaa suodatinta",
     "filter_by": "Suodata {label}",

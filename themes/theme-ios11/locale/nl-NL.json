@@ -203,6 +203,7 @@
     "more": "meer",
     "reset": "Alle filters wissen",
     "clear_all": "Alles wissen",
+    "view_results": "Resultaten bekijken",
     "remove": "Verwijder {filter} filter",
     "edit": "Bewerk {filter} filter",
     "filter_by": "Filteren op {label}",

@@ -203,6 +203,7 @@
     "more": "további",
     "reset": "Összes szűrő törlése",
     "clear_all": "Összes törlése",
+    "view_results": "Eredmények megtekintése",
     "remove": "{filter} Szűrő eltávolítása",
     "edit": "{filter} Szűrő szerkesztése",
     "filter_by": "Szűrés {label}",

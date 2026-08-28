@@ -203,6 +203,7 @@
     "more": "více",
     "reset": "Resetovat všechny filtry",
     "clear_all": "Vymazat vše",
+    "view_results": "Zobrazit výsledky",
     "remove": "{filter} odstranit filtr",
     "edit": "{filter} editovat filtr",
     "filter_by": "Filtrovat podle {label}",

@@ -1,5 +1,5 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from 'react';
+import type { ReactNode } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -17,15 +17,22 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
+export interface ToggleProps {
+  /**
+   * The filter label.
+   */
+  label: ReactNode;
+  /**
+   * The selected values element rendered below the label.
+   */
+  selected?: ReactNode;
+}
+
 /**
- * The toggle component.
- * @param {Object} props Props.
- * @returns {JSX.Element}
+ * Renders the filter label and its selected values in the accordion header.
+ * @returns The rendered component.
  */
-const Toggle = ({
-  label,
-  selected,
-}) => {
+const Toggle = ({ label, selected = null }: ToggleProps) => {
   const { classes } = useStyles();
 
   return (
@@ -36,15 +43,6 @@ const Toggle = ({
       {selected}
     </div>
   );
-};
-
-Toggle.propTypes = {
-  label: PropTypes.node.isRequired,
-  selected: PropTypes.node,
-};
-
-Toggle.defaultProps = {
-  selected: null,
 };
 
 export default memo(Toggle);
