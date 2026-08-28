@@ -117,7 +117,7 @@ function useIframeMessenger(onMessage, parentOrigins, enabled = true) {
     return () => {
       window.removeEventListener('message', handler);
     };
-  }, [enabled, parentOrigins, sendToParent]);
+  }, [enabled, parentOrigins]);
 
   return { sendToParent };
 }

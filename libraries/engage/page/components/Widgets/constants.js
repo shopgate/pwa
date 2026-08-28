@@ -1,7 +1,8 @@
 /**
- * List of allowed origin patterns for cms page preview iFrame communication. Incoming messages are
- * only processed when their origin matches one of these patterns, and outgoing messages are only
- * posted to origins that matched before.
+ * List of allowed origin patterns for cms page preview iFrame communication. Both directions are
+ * validated against these patterns: incoming messages are only processed when their origin matches,
+ * and outgoing messages are only posted to a matching origin - either the origin of the last
+ * accepted incoming message, or the origin of the embedding document.
  *
  * A "*" acts as a wildcard for one or more domain labels, so "https://*.shopgate.com" matches
  * "https://app.shopgate.com" as well as "https://next.us.admin.shopgate.com", but neither
