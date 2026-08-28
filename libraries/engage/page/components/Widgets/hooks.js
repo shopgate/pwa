@@ -10,7 +10,7 @@ import {
   ALLOWED_PAGE_PREVIEW_ORIGINS,
   CONSIDER_CONTAINER_MARGINS_ON_SCROLL_DEFAULT,
 } from './constants';
-import { getScrollContainer } from './helpers';
+import { getScrollContainer, isAllowedOrigin, getReferrerOrigin } from './helpers';
 import { WidgetsPreviewContext } from './WidgetsPreviewContext';
 import {
   dispatchWidgetPreviewEvent,
@@ -34,22 +34,26 @@ import {
 /**
  * Hook for postMessage communication when your component is inside an iframe.
  *
- * Listens on window for "message" events from any origin in parentOrigins,
- * and only calls onMessage(data, rawEvent) if both origin and source match.
+ * Listens on window for "message" events, and only calls onMessage(data, rawEvent) if the origin
+ * of the event is covered by parentOrigins and the message actually came from window.parent.
  *
  * @param {function(MessageData, any): void} onMessage
  *   Callback invoked when a trusted message arrives. Receives data and the
  *   raw event (so you can inspect origin, source, etc.).
  * @param {string[]} parentOrigins
- *   Array of allowed parent origin strings (e.g.
- *   ['https://a.example.com','https://b.example.com']).
+ *   Array of allowed parent origin patterns (e.g.
+ *   ['https://a.example.com','https://*.example.com']). See ALLOWED_PAGE_PREVIEW_ORIGINS for
+ *   details about the supported wildcard syntax.
+ * @param {boolean} [enabled]
+ *   Whether the message listener is supposed to be attached.
  * @returns {IframeMessengerResult}
  *   An object with a single method:
  *   • sendToParent(data, [targetOrigin]): void
  *     – Posts data up to window.parent. By default it uses the most recently
- *       seen origin (from an incoming message). If none, uses parentOrigins[0].
+ *       seen origin (from an incoming message), otherwise the origin of the embedding document.
+ *       Nothing is sent when neither of them is covered by parentOrigins.
  */
-function useIframeMessenger(onMessage, parentOrigins) {
+function useIframeMessenger(onMessage, parentOrigins, enabled = true) {
   // Keep a ref to the latest onMessage callback so the listener always has it.
   const onMessageRef = useRef(onMessage);
   useEffect(() => {
@@ -63,22 +67,20 @@ function useIframeMessenger(onMessage, parentOrigins) {
    * Send a message up to the parent window.
    * @param {MessageData} data       - The data object to post.
    * @param {string}      [targetOrigin]
-   *   Optional override for the origin to post to. Must be one of
-   *   parentOrigins. If omitted, uses the last seen origin (lastOriginRef),
-   *   or parentOrigins[0], or "*" if array is empty.
+   *   Optional override for the origin to post to. Must be covered by parentOrigins. If omitted,
+   *   the last seen origin (lastOriginRef) or the origin of the embedding document is used.
    */
   const sendToParent = useCallback(
     (data, targetOrigin) => {
-      // Determine which origin to use: explicit, then last seen, then first, then "*".
-      const originToUse =
-        typeof targetOrigin === 'string'
-          ? targetOrigin
-          : lastOriginRef.current || new URL(document.referrer).origin || parentOrigins[0] || '*';
+      // Determine which origin to use: explicit, then last seen, then the embedding document.
+      // Patterns are no valid postMessage targets, so an unresolved origin aborts the send.
+      const originToUse = [targetOrigin, lastOriginRef.current, getReferrerOrigin()]
+        .find(origin => isAllowedOrigin(origin, parentOrigins));
 
       if (!originToUse) {
         logger.warn(
-          'useIframeMessenger: no targetOrigin available. ' +
-            'Provide parentOrigins or pass targetOrigin.'
+          'useIframeMessenger: no allowed targetOrigin available. ' +
+            'Provide parentOrigins or pass an allowed targetOrigin.'
         );
         return;
       }
@@ -90,13 +92,17 @@ function useIframeMessenger(onMessage, parentOrigins) {
 
   // Attach / detach the "message" listener.
   useEffect(() => {
+    if (!enabled) {
+      return undefined;
+    }
+
     /**
      * Handler for incoming postMessage events.
      * @param {any} rawEvent  – The original MessageEvent object.
      */
     function handler(rawEvent) {
-      // Only proceed if the origin is in our whitelist.
-      if (!parentOrigins.includes(rawEvent.origin)) return;
+      // Only proceed if the origin is covered by our whitelist.
+      if (!isAllowedOrigin(rawEvent.origin, parentOrigins)) return;
       // Ensure the message actually came from window.parent.
       if (rawEvent.source !== window.parent) return;
 
@@ -111,7 +117,7 @@ function useIframeMessenger(onMessage, parentOrigins) {
     return () => {
       window.removeEventListener('message', handler);
     };
-  }, [parentOrigins, sendToParent]);
+  }, [enabled, parentOrigins, sendToParent]);
 
   return { sendToParent };
 }
@@ -208,7 +214,7 @@ export const usePreviewIframeCommunication = (isActive = false) => {
         });
       }
     }
-  }, ALLOWED_PAGE_PREVIEW_ORIGINS);
+  }, ALLOWED_PAGE_PREVIEW_ORIGINS, isActive);
 
   useWidgetPreviewEvent('widget-clicked', (e) => {
     if (!isActive) {
