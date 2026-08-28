@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.31.8](https://github.com/shopgate/pwa/compare/v7.31.7...v7.31.8) (2026-08-28)
+
+#### :house: Internal
+* [#1497](https://github.com/shopgate/pwa/pull/1497) Reworked cms preview iFrame origin validation ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.31.7](https://github.com/shopgate/pwa/compare/v7.31.6...v7.31.7) (2026-08-27)
 
 #### :house: Internal
