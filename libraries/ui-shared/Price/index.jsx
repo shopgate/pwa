@@ -12,6 +12,9 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     whiteSpace: 'nowrap',
     color: theme.components.price.default,
+    fontFamily: theme.components.price.fontFamily,
+    fontWeight: theme.components.price.fontWeight,
+    fontSize: theme.components.price.fontSize,
   },
   disclaimer: {
     color: 'initial',
