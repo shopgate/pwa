@@ -48,7 +48,7 @@ const useStyles = makeStyles()(theme => ({
     flexGrow: 1,
   },
   input: {
-    borderRadius: 10,
+    borderRadius: theme.shape.borderRadius,
     width: '100%',
     padding: '9px 10px 9px 30px',
     outline: 'none',

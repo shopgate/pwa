@@ -8,6 +8,7 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'center',
     background: theme.components.badge.background,
     color: theme.contrastColor(theme.components.badge.background),
+    lineHeight: 1,
     borderRadius: theme.spacing(1),
     height: theme.spacing(2),
     minWidth: theme.spacing(2),

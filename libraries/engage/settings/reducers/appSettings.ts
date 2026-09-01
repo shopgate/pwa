@@ -57,7 +57,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
     },
     rating: {
-      showEmptyStars: true,
+      showEmptyStars: false,
     },
     card: {
       productName: { maxLines: 3 },
