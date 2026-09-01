@@ -134,6 +134,13 @@ export const componentsSchema = {
       textColor: '',
     },
   },
+  iconButton: {
+    vars: {
+      background: '',
+      borderRadius: '',
+      boxShadow: '',
+    },
+  },
   input: {
     vars: {
       background: '',
@@ -272,6 +279,12 @@ export const componentsDefaults = {
   button: {
     vars: {
       borderRadius: 'var(--sg-shape-borderRadius, 4px)',
+    },
+  },
+  iconButton: {
+    vars: {
+      background: t => t.palette.background.surface,
+      borderRadius: t => t.shape.borderRadius,
     },
   },
   border: {

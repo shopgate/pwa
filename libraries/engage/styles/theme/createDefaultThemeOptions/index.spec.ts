@@ -1,4 +1,5 @@
 import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
+import { createTheme } from '@shopgate/engage/styles';
 
 /**
  * A color scheme of the returned options, narrowed for assertions. `ThemeOptions` types these
@@ -9,10 +10,11 @@ type SchemeOptions = {
   components: Record<string, { vars: Record<string, string> }>;
 };
 
-const colorSchemes = () => createDefaultThemeOptions().colorSchemes as unknown as {
-  light: SchemeOptions;
-  dark: SchemeOptions;
-};
+const colorSchemes = (options?: { isHydrated: boolean }) => createDefaultThemeOptions(options)
+  .colorSchemes as unknown as {
+    light: SchemeOptions;
+    dark: SchemeOptions;
+  };
 
 describe('engage > styles > theme > createDefaultThemeOptions', () => {
   describe('light color scheme', () => {
@@ -33,6 +35,22 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
       expect(light.palette.background.default).not.toBe('#000000');
       expect(light.palette.background.surface).not.toBe('#1C1C1E');
       expect(light.components.appBar.vars.background).not.toBe('#1C1C1E');
+    });
+  });
+
+  describe('cta button', () => {
+    // The app settings own the color once they carry one. Seeding the legacy custom properties
+    // here would keep overriding what they hydrate.
+    it('should seed the legacy cta color while the app settings are unhydrated', () => {
+      const { light } = colorSchemes();
+
+      expect(light.components).toHaveProperty('ctaButton');
+    });
+
+    it('should leave the cta color to the app settings once they are hydrated', () => {
+      const { light } = colorSchemes({ isHydrated: true });
+
+      expect(light.components).not.toHaveProperty('ctaButton');
     });
   });
 
@@ -125,6 +143,21 @@ describe('engage > styles > theme > createDefaultThemeOptions', () => {
 
       expect(dark.components.appBar.vars).not.toHaveProperty('color');
       expect(dark.palette.error).not.toHaveProperty('contrastText');
+    });
+  });
+
+  describe('resolved theme', () => {
+    // What the product header cta row overrides for its subtree, and what a merchant overrides
+    // from the theme css file.
+    it('should expose the new component tokens as css variable references', () => {
+      const theme = createTheme(createDefaultThemeOptions());
+
+      expect(theme.components.iconButton.boxShadow)
+        .toBe('var(--sg-components-iconButton-boxShadow)');
+      expect(theme.components.iconButton.background)
+        .toBe('var(--sg-components-iconButton-background)');
+      expect(theme.components.iconButton.borderRadius)
+        .toBe('var(--sg-components-iconButton-borderRadius)');
     });
   });
 });

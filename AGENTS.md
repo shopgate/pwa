@@ -85,6 +85,17 @@ emit **stable, unhashed classes** that merchant CSS can target. There are ~200 o
   `[data-full-width]`.
 - **Don't duplicate what the DOM already exposes.** Disabled is addressable via `:disabled` and
   `[aria-disabled="true"]`; a `data-disabled` would just be a third spelling.
+- **Read component tokens as vars, so a subtree can be restyled.** A component that renders
+  `theme.components.x.y` emits `var(--sg-components-x-y)`, which resolves on the element itself — so
+  any ancestor that redeclares the var restyles everything below it. `components/v2/IconButton`
+  draws `components.iconButton.boxShadow`, a token left unseeded so that only a declaration reaches
+  it — the component itself falls back to `none`. The gmd product header declares it on the cta row
+  carrying `theme__product__header__cta-buttons`, the ios11 one on the whole header section
+  (`theme__product__header`), which is what also elevates the buttons extensions render into the
+  surrounding cta portals. Merchant CSS overrides either element (equal specificity, `theme.css`
+  later in the cascade). Resolving the token to a literal on a container instead would break this:
+  custom properties substitute at computed-value time, so a `--a: var(--b)` on an ancestor freezes
+  against that ancestor's `--b` and a later override of `--b` no longer reaches it.
 - **Cascade:** `<meta>` anchors in `utils/webpack/templates/default.ejs` fix the layer order as
   emotion/tss → font CSS → `theme.css` → admin preview. All four are equal specificity, so document
   order decides and merchant CSS wins without `!important`.

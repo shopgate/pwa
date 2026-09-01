@@ -41,7 +41,6 @@ const ItemFavoritesButton = ({
         <FavoritesButton
           active={isFavorite}
           productId={productId}
-          noShadow
           removeWithRelatives
         />
       </div>

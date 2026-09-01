@@ -7,6 +7,7 @@ import { Spring } from 'react-spring/renderprops.cjs';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { useLongPress } from '@shopgate/engage/core/hooks/events';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const defaultToast = {};
@@ -58,12 +59,8 @@ const useStyles = makeStyles()(theme => ({
     overflow: 'hidden',
   },
   actionButton: {
-    color: theme.palette.secondary.main,
-    fontWeight: theme.typography.fontWeightMedium,
-    height: 36,
-    letterSpacing: 'inherit',
     margin: '0 -8px 0 8px',
-    outline: 0,
+    minWidth: 0,
     padding: '0 8px',
     textTransform: 'uppercase',
   },
@@ -232,14 +229,16 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
                 </span>
               </Ellipsis>
               {(action && actionLabel) && (
-                <button
+                <Button
                   className={classes.actionButton}
+                  variant="text"
+                  size="small"
+                  color="secondary"
                   onClick={handleAction}
-                  type="button"
                   aria-hidden
                 >
                   {actionLabel}
-                </button>
+                </Button>
               )}
             </div>
           </div>

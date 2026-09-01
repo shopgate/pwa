@@ -9,6 +9,7 @@ import {
 } from '@shopgate/engage/styles';
 import { CSS_ROOT_FONT_FAMILY } from '@shopgate/engage/styles/reset/typographyCustomProps';
 import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
+import { getAreAppSettingsHydrated } from '@shopgate/engage/settings/selectors/appSettings';
 import { ThemeConfigResolver, AppProvider, hasWebBridge } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { themeConfig } from '@shopgate/engage';
@@ -157,14 +158,18 @@ const Pages = ({ store }) => {
     const extendedTypography = configuration.get(CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY);
 
     return createTheme({
-      ...createDefaultThemeOptions(),
+      // The settings are fetched and dispatched by `initialize`, before the app is rendered, so
+      // the flag is settled by the time the theme is built.
+      ...createDefaultThemeOptions({
+        isHydrated: getAreAppSettingsHydrated(store.getState()),
+      }),
       typography: {
         // The property is defined by the css reset: libraries/engage/styles/reset/root.js
         fontFamily: `var(${CSS_ROOT_FONT_FAMILY})`,
         ...extendedTypography,
       },
     });
-  }, []);
+  }, [store]);
 
   return (
     <App store={store}>
