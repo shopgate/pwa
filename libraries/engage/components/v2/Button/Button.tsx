@@ -3,13 +3,16 @@ import { makeStyles } from '@shopgate/engage/styles';
 import type { PaletteColorsWithMain } from '@shopgate/engage/styles';
 import CircularProgress from '../CircularProgress';
 import ButtonBase from '../ButtonBase';
-import type { ButtonBaseProps } from '../ButtonBase';
+import type { ButtonBaseOwnProps, ButtonBaseProps } from '../ButtonBase';
 
 /**
  * The Button component is a versatile UI element that can be used to trigger actions or navigate users.
  * It supports multiple variants, colors, and sizes, making it suitable for a wide range of use cases.
  */
-const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
+function Button<C extends React.ElementType = 'button'>(
+  props: ButtonProps<C>,
+  ref: React.Ref<Element>
+) {
   const {
     variant = 'contained',
     color = 'inherit',
@@ -19,13 +22,16 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loadingPosition = 'center',
     loadingIndicator: loadingIndicatorProp,
     size = 'medium',
+    dense = false,
     disabled = false,
+    disableRipple = variant === 'link',
     fullWidth = false,
-    disableElevation = false,
+    enableElevation = false,
     className,
+    classes: classesProp,
     children,
     ...other
-  } = props;
+  } = props as ButtonOwnProps & ButtonBaseOwnProps;
 
   const { classes, cx } = useStyles({
     color,
@@ -34,7 +40,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
     loadingPosition,
     loading,
     fullWidth,
-  }, { props: { classes: props.classes } });
+  }, { props: { classes: classesProp } });
+
+  const staticClassNames = [
+    'engage__button',
+    'common__button',
+    'ui-shared__button',
+    !disableRipple && 'ui-shared__ripple-button',
+  ].filter(Boolean).join(' ');
 
   const loadingIndicator = loadingIndicatorProp ?? (
     <CircularProgress color="inherit" size={16} />
@@ -70,17 +83,30 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
 
   return (
     <ButtonBase
-      ref={ref}
-      className={cx(classes.root, className, {
+      ref={ref as React.Ref<HTMLButtonElement>}
+      className={cx(classes.root, {
         [classes.text]: variant === 'text',
         [classes.outlined]: variant === 'outlined',
         [classes.contained]: variant === 'contained',
         [classes.small]: size === 'small',
         [classes.large]: size === 'large',
+        [classes.dense]: dense && size === 'medium',
+        [classes.denseSmall]: dense && size === 'small',
+        [classes.denseLarge]: dense && size === 'large',
+        [classes.link]: variant === 'link',
         [classes.disabled]: disabled || loading,
         [classes.fullWidth]: fullWidth,
-        [classes.disableElevation]: disableElevation,
-      })}
+        [classes.enableElevation]: enableElevation,
+      }, staticClassNames, className)}
+      disableRipple={disableRipple}
+      disableBaseClassName
+      data-variant={variant}
+      data-color={color}
+      data-size={size}
+      data-dense={dense || undefined}
+      data-full-width={fullWidth || undefined}
+      data-enable-elevation={enableElevation || undefined}
+      data-loading={loading || undefined}
       disabled={disabled || loading}
       {...other}
     >
@@ -93,7 +119,23 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       </span>
     </ButtonBase>
   );
-});
+}
+
+/**
+ * Opacity of the overlay that the text and outlined variants tint themselves with on hover. The
+ * dark scheme needs more of it: the overlay takes the color of the label, and a light tint over a
+ * dark surface reads as a far smaller change than a dark tint over a light one.
+ */
+const HOVER_OVERLAY_OPACITY = 0.1;
+const HOVER_OVERLAY_OPACITY_DARK = 0.28;
+
+/**
+ * Opacity the outlined border rests at, leaving it somewhere to go on hover where it returns to the
+ * full color. The dark scheme keeps more of it: fading toward a dark backdrop cuts the brightness
+ * of the border, where fading toward a light one mostly cuts its saturation.
+ */
+const OUTLINED_BORDER_OPACITY = 0.5;
+const OUTLINED_BORDER_OPACITY_DARK = 0.7;
 
 const useStyles = makeStyles<ButtonOwnProps>({
   name: 'Button',
@@ -109,8 +151,14 @@ const useStyles = makeStyles<ButtonOwnProps>({
 
   let cssColor = '';
   let contrastText = '';
+  let darkCssColor = '';
 
-  if (color !== 'inherit') {
+  if (color === 'cta') {
+    // The call to action color is not part of the palette. It's a component token so that merchants
+    // can configure it separately from the primary color via `--color-button-cta`.
+    cssColor = theme.components.ctaButton.background;
+    contrastText = theme.components.ctaButton.color;
+  } else if (color !== 'inherit') {
     cssColor = color && theme.palette?.[color]?.main
       ? theme.palette[color].main
       : theme.palette.primary.main;
@@ -119,8 +167,12 @@ const useStyles = makeStyles<ButtonOwnProps>({
       ? theme.palette[color].contrastText
       : theme.palette.primary.contrastText;
   } else if (variant === 'contained') {
+    // The numeric grey scale is absolute rather than per scheme, so it stays light in both. The
+    // light value is kept as it is and only the dark scheme swaps in a surface that its inherited
+    // text color can be read on.
     // eslint-disable-next-line prefer-destructuring
     cssColor = theme.palette.grey[200];
+    darkCssColor = theme.palette.background.emphasized;
     contrastText = 'inherit';
   } else {
     cssColor = 'currentColor';
@@ -128,9 +180,21 @@ const useStyles = makeStyles<ButtonOwnProps>({
 
   return {
     root: {
+      // The `components.button` vars are override hooks for CSS injection and are intentionally
+      // left unseeded, so these fallbacks are what render by default. Don't "fix" the empty values
+      // by skipping their generation - that would also drop them from `theme.vars`, which would
+      // turn these into `var(undefined, ...)`.
       '--button-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
       '--text-color': `var(${theme.vars.components.button.textColor}, ${contrastText})`,
-      '--border-radius': `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
+      // A single `applyStyles` call for the whole scheme. A second one would land on the same
+      // object key and quietly replace this one.
+      ...theme.applyStyles('dark', {
+        ...(darkCssColor ? {
+          '--button-color': `var(${theme.vars.components.button.color}, ${darkCssColor})`,
+        } : {}),
+        '--variant-outlinedBorder': theme.alpha('var(--button-color)', OUTLINED_BORDER_OPACITY_DARK),
+      }),
+      '--border-radius': theme.components.button.borderRadius,
 
       '--font-size': theme.typography.button.fontSize,
 
@@ -138,7 +202,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
       '--variant-textDisabledColor': theme.palette.action.disabled,
 
       '--variant-outlinedColor': 'var(--button-color)',
-      '--variant-outlinedBorder': 'var(--button-color)',
+      '--variant-outlinedBorder': theme.alpha('var(--button-color)', OUTLINED_BORDER_OPACITY),
       '--variant-outlinedDisabledColor': theme.palette.action.disabled,
       '--variant-outlinedDisabledBorder': theme.palette.action.disabled,
 
@@ -147,90 +211,131 @@ const useStyles = makeStyles<ButtonOwnProps>({
       '--variant-containedDisabledColor': theme.palette.action.disabled,
       '--variant-containedDisabledBg': theme.palette.action.disabledBackground,
 
-      '--icon-size': theme.vars.typography.button.fontSize,
       ...theme.typography.button,
       fontSize: 'var(--font-size)',
       boxSizing: 'border-box',
       minWidth: 64,
-      padding: '6px 16px',
+      // Every variant reserves the same 1px border box, so that an outlined button doesn't render
+      // 2px larger than a contained one. The paddings are 1px smaller than they look because of it.
+      border: '1px solid transparent',
+      padding: '5px 15px',
       transition: theme.transitions.create(['background-color', 'box-shadow', 'border'], {
         duration: theme.transitions.duration.short,
       }),
       borderRadius: 'var(--border-radius)',
 
       '&:hover': {
-        '--variant-textBg': theme.alpha(cssColor, 0.1),
-        '--variant-outlinedBg': theme.alpha(cssColor, 0.1),
         textDecoration: 'none',
-        '&:disabled': {
-          backgroundColor: 'transparent',
-        },
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           backgroundColor: 'transparent',
         },
       },
-      ...(loading && loadingPosition === 'center' && {
 
-      }),
+      // A disabled button keeps taking pointer events so that it can show a not-allowed cursor,
+      // which leaves it matching `:hover`. Its hover backgrounds stay unset instead, so the colors
+      // the variants give it while disabled are what remains visible.
+      '&:hover:not(:disabled):not([aria-disabled="true"])': {
+        '--variant-textBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY),
+        '--variant-outlinedBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY),
+        // The resting border sits at a fraction of the color, so hover brings it back to the full
+        // one. The root transition covers `border`, which carries the change over.
+        '--variant-outlinedBorder': 'var(--button-color)',
+        ...theme.applyStyles('dark', {
+          '--variant-textBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY_DARK),
+          '--variant-outlinedBg': theme.alpha(cssColor, HOVER_OVERLAY_OPACITY_DARK),
+        }),
+        '@media (hover: none)': {
+          '--variant-outlinedBorder': theme.alpha('var(--button-color)', OUTLINED_BORDER_OPACITY),
+          ...theme.applyStyles('dark', {
+            '--variant-outlinedBorder': theme.alpha(
+              'var(--button-color)',
+              OUTLINED_BORDER_OPACITY_DARK
+            ),
+          }),
+        },
+      },
     },
     small: {
       '--font-size': `calc(${theme.typography.button.fontSize} * 0.875)`,
-      padding: '4px 10px',
+      padding: '4px 9px',
     },
     large: {
       '--font-size': `calc(${theme.typography.button.fontSize} * 1.125)`,
-      padding: '8px 22px',
+      padding: '7px 21px',
+    },
+    // The dense paddings roughly halve the regular ones. They are applied after the size classes,
+    // so they win by declaration order without needing extra specificity.
+    dense: {
+      padding: '2px 7px',
+    },
+    denseSmall: {
+      padding: '2px 4px',
+    },
+    denseLarge: {
+      padding: '3px 10px',
+    },
+    link: {
+      padding: 0,
+      minWidth: 0,
+      border: 0,
+      textTransform: 'none',
+      color: 'var(--variant-textColor)',
+      // Scoped like the hover backgrounds are: a disabled button stays hit testable for its
+      // not-allowed cursor, so it would otherwise dim on press like an operable one.
+      '&:active:not(:disabled):not([aria-disabled="true"])': {
+        opacity: 0.5,
+      },
+      '&:disabled, &[aria-disabled="true"]': {
+        color: 'var(--variant-textDisabledColor)',
+      },
     },
     disabled: {},
     text: {
       color: 'var(--variant-textColor)',
       background: 'var(--variant-textBg)',
-      '&:disabled': {
+      '&:disabled, &[aria-disabled="true"]': {
         color: 'var(--variant-textDisabledColor)',
       },
     },
     outlined: {
       color: 'var(--variant-outlinedColor)',
-      border: '1px solid var(--variant-outlinedBorder)',
+      borderColor: 'var(--variant-outlinedBorder)',
       background: 'var(--variant-outlinedBg)',
-      '&:disabled': {
-        border: '1px solid var(--variant-outlinedDisabledBorder)',
+      '&:disabled, &[aria-disabled="true"]': {
+        borderColor: 'var(--variant-outlinedDisabledBorder)',
         color: 'var(--variant-outlinedDisabledColor)',
       },
     },
     contained: {
       color: 'var(--variant-containedColor)',
       background: 'var(--variant-containedBg)',
-      boxShadow: theme.shadows[2],
       '&:hover': {
         background: theme.darken('var(--variant-containedBg)'),
-        boxShadow: theme.shadows[4],
         // Reset on touch devices, it doesn't add specificity
         '@media (hover: none)': {
           background: 'var(--variant-containedBg)',
+        },
+      },
+      '&:disabled, &[aria-disabled="true"]': {
+        color: 'var(--variant-containedDisabledColor)',
+        backgroundColor: 'var(--variant-containedDisabledBg)',
+      },
+    },
+    enableElevation: {
+      boxShadow: theme.shadows[2],
+      '&:hover': {
+        boxShadow: theme.shadows[4],
+        // Reset on touch devices, it doesn't add specificity
+        '@media (hover: none)': {
           boxShadow: theme.shadows[2],
         },
       },
       '&:active': {
         boxShadow: theme.shadows[6],
       },
-      '&:disabled': {
-        color: 'var(--variant-containedDisabledColor)',
-        backgroundColor: 'var(--variant-containedDisabledBg)',
+      '&:disabled, &[aria-disabled="true"]': {
         boxShadow: theme.shadows[0],
-      },
-    },
-    disableElevation: {
-      boxShadow: 'none',
-      '&:hover': {
-        boxShadow: 'none',
-      },
-      '&:active': {
-        boxShadow: 'none',
-      },
-      '&$disabled': {
-        boxShadow: 'none',
       },
     },
     label: {
@@ -340,20 +445,27 @@ const useStyles = makeStyles<ButtonOwnProps>({
 
 export interface ButtonOwnProps {
   /**
-   * The variant to use.
+   * The variant to use. `link` renders a sentence case button without padding or decoration, and
+   * dims on press instead of showing a ripple.
    * @default 'contained'
    */
-  variant?: 'contained' | 'outlined' | 'text';
+  variant?: 'contained' | 'outlined' | 'text' | 'link';
+  /**
+   * If true, the ripple effect is disabled. Defaults to true for `variant="link"`, which dims on
+   * press instead.
+   * @default false
+   */
+  disableRipple?: boolean;
   /**
    * The color of the component.
    * @default 'inherit'
    */
-  color?: PaletteColorsWithMain | 'inherit';
+  color?: PaletteColorsWithMain | 'inherit' | 'cta';
   /**
-   * If `true`, no elevation is used for contained buttons.
+   * If `true`, a drop shadow is added to the button. Buttons are flat by default.
    * @default false
    */
-  disableElevation?: boolean;
+  enableElevation?: boolean;
   /**
    * Element placed before the children.
    */
@@ -388,11 +500,25 @@ export interface ButtonOwnProps {
    */
   size?: 'small' | 'medium' | 'large';
   /**
+   * If `true`, the button uses reduced padding. Combines with `size`, which keeps controlling the
+   * font size.
+   * @default false
+   */
+  dense?: boolean;
+  /**
    * Override or extend the styles applied to the component.
    */
   classes?: Partial<ReturnType<typeof useStyles>['classes']>;
 }
 
-export type ButtonProps = ButtonOwnProps & ButtonBaseProps;
+export type ButtonProps<C extends React.ElementType = 'button'> =
+  ButtonOwnProps & ButtonBaseProps<C>;
 
-export default Button;
+const ButtonWithRef = forwardRef(Button);
+
+ButtonWithRef.displayName = 'Button';
+
+// `forwardRef` erases the generic, so the call signature is restored with a cast.
+export default ButtonWithRef as <C extends React.ElementType = 'button'>(
+  props: ButtonProps<C> & { ref?: React.ComponentPropsWithRef<C>['ref'] }
+) => React.ReactElement | null;

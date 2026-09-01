@@ -1,16 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   item: {
-    background: colors.light,
-    marginTop: 4,
+    background: theme.palette.background.surface,
+    position: 'relative',
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: theme.spacing(2),
+      right: theme.spacing(2),
+      borderTop: `1px solid ${theme.components.separatorLine.borderColor}`,
+    },
   },
-});
+}));
 
 /**
  * Wraps a single filter page item.

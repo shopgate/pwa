@@ -1,20 +1,44 @@
 import { merge } from 'lodash';
-import { isDev } from '@shopgate/engage/core/helpers';
+// Imported from the defining modules rather than a barrel: this module runs at import time in
+// every spec that touches the theme, and specs that replace a barrel with a partial mock would
+// leave these undefined.
+import { isDev } from '@shopgate/pwa-common/helpers/environment';
+import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+
+const {
+  fontWeight: buttonFontWeight = 600,
+  textTransform: buttonTextTransform,
+} = themeConfig?.variables?.buttonBase ?? {};
 
 const caseAllCaps = {
   textTransform: 'uppercase',
 };
+const caseButton = {
+  textTransform: buttonTextTransform === 'uppercase' ? 'uppercase' : 'none',
+};
 const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
+
+/**
+ * Builds the prefix of the custom properties that cssVarsParser derives from the `typography` keys.
+ * Mirrors how the parser composes a name, so a theme configured with a different `cssVarPrefix`
+ * references the properties it actually emits.
+ * @param {string} cssVarPrefix The theme's css variable prefix.
+ * @returns {string} The prefix, e.g. `--sg-typography`.
+ */
+const typographyVarPrefix = cssVarPrefix =>
+  `--${cssVarPrefix ? `${cssVarPrefix}-` : ''}typography`;
 
 /**
  * Creates the typography object for the theme.
  * @param {Object} palette The theme palette.
  * @param {Object|Function} typography The typography options or a function that returns them.
+ * @param {string} [cssVarPrefix] The theme's css variable prefix, matching the one cssVarsParser
+ * generates the properties with. Defaults to the `sg` default of createTheme.
  * @returns {Object} The typography object.
  * @see @link{https://material.io/design/typography/the-type-system.html}
  * @see @link{https://material.io/design/typography/understanding-typography.html}
  */
-export default function createTypography(palette, typography) {
+export default function createTypography(palette, typography, cssVarPrefix = 'sg') {
   const {
     fontFamily = defaultFontFamily,
     // The default font size of the Material Specification.
@@ -34,11 +58,31 @@ export default function createTypography(palette, typography) {
 
   if (isDev) {
     if (typeof fontSize !== 'number') {
+      // eslint-disable-next-line no-console
       console.error('Shopgate Theme: `fontSize` is required to be a number.');
     }
   }
 
   const coef = fontSize / 14;
+
+  const fontWeights = {
+    fontWeightLight,
+    fontWeightRegular,
+    fontWeightMedium,
+    fontWeightBold,
+  };
+
+  /**
+   * Builds a reference to one of the shared font weight custom properties. The property itself is
+   * emitted by cssVarsParser from `typography.fontWeight*`, so overriding it on `:root` (admin css,
+   * live preview, an extension) cascades into every variant that uses that token. The resolved
+   * weight stays as the fallback, so the variant still renders when the property is absent.
+   * @param {string} token One of `fontWeightLight`, `fontWeightRegular`, `fontWeightMedium`,
+   * `fontWeightBold`.
+   * @returns {string} The css var reference.
+   */
+  const fontWeightVar = token =>
+    `var(${typographyVarPrefix(cssVarPrefix)}-${token}, ${fontWeights[token]})`;
 
   /**
    * Calculates a rem value for a passed pixel value.
@@ -49,15 +93,16 @@ export default function createTypography(palette, typography) {
 
   /**
    * Creates a typography variant object.
-   * @param {number} fontWeight The font weight to use for the variant.
+   * @param {string} fontWeightToken The name of the shared font weight token to use, e.g.
+   * `fontWeightBold`. The variant references it as a custom property instead of inlining its value.
    * @param {number} size Font size in pixels.
    * @param {number} lineHeight Line height as a unitless number.
    * @param {Object} casing Casing styles to apply, e.g. textTransform.
    * @returns {Object} The typography variant object.
    */
-  const buildVariant = (fontWeight, size, lineHeight, casing) => ({
+  const buildVariant = (fontWeightToken, size, lineHeight, casing) => ({
     fontFamily,
-    fontWeight,
+    fontWeight: fontWeightVar(fontWeightToken),
     fontSize: pxToRem(size),
     lineHeight,
     ...casing,
@@ -65,19 +110,24 @@ export default function createTypography(palette, typography) {
   });
 
   const variants = {
-    h1: buildVariant(fontWeightBold, 34, 1.15),
-    h2: buildVariant(fontWeightBold, 22, 1.3),
-    h3: buildVariant(fontWeightMedium, 20, 1.35),
-    h4: buildVariant(fontWeightMedium, 18, 1.4),
-    h5: buildVariant(fontWeightMedium, 16, 1.5),
-    h6: buildVariant(fontWeightMedium, 14, 1.5),
-    subtitle1: buildVariant(fontWeightRegular, 16, 1.75),
-    subtitle2: buildVariant(fontWeightMedium, 14, 1.57),
-    body1: buildVariant(fontWeightRegular, 16, 1.5),
-    body2: buildVariant(fontWeightRegular, 14, 1.43),
-    button: buildVariant(fontWeightMedium, 14, 1.75, caseAllCaps),
-    caption: buildVariant(fontWeightRegular, 12, 1.66),
-    overline: buildVariant(fontWeightRegular, 12, 2.66, caseAllCaps),
+    h1: buildVariant('fontWeightBold', 34, 1.15),
+    h2: buildVariant('fontWeightBold', 22, 1.3),
+    h3: buildVariant('fontWeightMedium', 20, 1.35),
+    h4: buildVariant('fontWeightMedium', 18, 1.4),
+    h5: buildVariant('fontWeightMedium', 16, 1.5),
+    h6: buildVariant('fontWeightMedium', 14, 1.5),
+    subtitle1: buildVariant('fontWeightRegular', 16, 1.75),
+    subtitle2: buildVariant('fontWeightMedium', 14, 1.57),
+    body1: buildVariant('fontWeightRegular', 16, 1.5),
+    body2: buildVariant('fontWeightRegular', 14, 1.43),
+    button: buildVariant(
+      buttonFontWeight > fontWeightMedium ? 'fontWeightBold' : 'fontWeightMedium',
+      16,
+      1.75,
+      caseButton
+    ),
+    caption: buildVariant('fontWeightRegular', 12, 1.66),
+    overline: buildVariant('fontWeightRegular', 12, 2.66, caseAllCaps),
   };
 
   return merge(

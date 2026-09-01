@@ -6,7 +6,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import groupBy from 'lodash/groupBy';
-import { SheetDrawer, Button } from '@shopgate/engage/components';
+import { SheetDrawer, Typography } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getActiveFulfillmentSlot } from '@shopgate/engage/cart/cart.selectors';
 import { makeGetFulfillmentSlotsForLocation, getPreferredLocation } from '../../selectors';
@@ -36,7 +37,7 @@ const mapDispatchToProps = dispatch => ({
   fetch: locationCode => dispatch(fetchFulfillmentSlots(locationCode)),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
     display: 'flex',
@@ -45,13 +46,9 @@ const useStyles = makeStyles()({
     paddingBottom: 0,
   },
   title: {
-    fontSize: 24,
-    fontWeight: '500',
     marginBottom: 8,
   },
   subtitle: {
-    fontSize: 20,
-    fontWeight: '500',
     marginBottom: 8,
     marginTop: 16,
   },
@@ -69,15 +66,15 @@ const useStyles = makeStyles()({
     margin: 8,
     justifyContent: 'center',
     alignItems: 'center',
-    border: '1px solid var(--color-secondary)',
+    border: `1px solid ${theme.palette.secondary.main}`,
     borderRadius: 4,
-    background: '#fff',
+    background: theme.palette.common.white,
     transition: 'background, color 500ms',
     outline: 'none',
   },
   buttonActive: {
-    color: '#fff',
-    background: 'var(--color-secondary)',
+    color: theme.palette.common.white,
+    background: theme.palette.secondary.main,
   },
   buttonDate: {
     width: 124,
@@ -85,22 +82,20 @@ const useStyles = makeStyles()({
     lineHeight: 1.3,
   },
   buttonLabel: {
-    fontSize: 20,
     textAlign: 'center',
   },
   buttonLabelSlot: {
     padding: 2,
-    fontSize: 16,
     textAlign: 'center',
   },
   buttonDisabled: {
     cursor: 'blocked',
     pointerEvents: 'none',
-    border: '1px solid #444',
+    border: `1px solid ${theme.palette.action.disabled}`,
   },
   buttonStrikethrough: {
     position: 'absolute',
-    background: '#444',
+    background: theme.palette.action.disabled,
     left: 0,
     right: 0,
     height: 2,
@@ -111,16 +106,11 @@ const useStyles = makeStyles()({
     bottom: 'calc(-1 * env(safe-area-inset-bottom))',
     margin: -16,
     marginTop: 8,
-    background: '#fff',
+    background: theme.palette.background.surface,
     padding: 16,
     paddingBottom: 24,
   },
-  buttonSchedule: {
-    '&&': {
-      width: '100%',
-    },
-  },
-});
+}));
 
 /**
  * Get Month day time.
@@ -164,7 +154,7 @@ const RANGES = {
 
 /**
  * @param {Object} props Props.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FulfillmentSlotSheet = ({
   isOpen,
@@ -268,9 +258,9 @@ const FulfillmentSlotSheet = ({
       allowClose={allowClose}
     >
       <div className={classes.root}>
-        <span className={classes.title}>
+        <Typography variant="h3" component="span" className={classes.title}>
           {i18n.text('locations.your_current_timeslot.dialog.date')}
-        </span>
+        </Typography>
         <div className={classes.row}>
           {Object.keys(groupedSlots).map(date => (
             <button
@@ -285,19 +275,19 @@ const FulfillmentSlotSheet = ({
               )}
               onClick={() => setSelectedDate(date)}
             >
-              <span className={classes.buttonLabel}>
+              <Typography variant="h3" component="span" className={classes.buttonLabel}>
                 {moment(date, 'YYYY-MM-DD').format('dddd')}
                 {' '}
                 {getMonthDay(date)}
-              </span>
+              </Typography>
             </button>
           ))}
         </div>
         {slotGroups && slotGroups.map(group => (
           <Fragment key={group.name}>
-            <span className={classes.subtitle}>
+            <Typography variant="h3" component="span" className={classes.subtitle}>
               {i18n.text(`locations.your_current_timeslot.dialog.${group.name}`)}
-            </span>
+            </Typography>
             <div className={classes.row}>
               {group.slots.map(slot => (
                 <button
@@ -312,9 +302,9 @@ const FulfillmentSlotSheet = ({
                     }
                   )}
                 >
-                  <span className={classes.buttonLabelSlot}>
+                  <Typography component="span" className={classes.buttonLabelSlot}>
                     {getRange(slot.from, slot.to)}
-                  </span>
+                  </Typography>
                   {slot.status !== 'active' ? (
                     <div className={classes.buttonStrikethrough} />
                   ) : null}
@@ -325,8 +315,8 @@ const FulfillmentSlotSheet = ({
         ))}
         <div className={classes.buttonScheduleContainer}>
           <Button
-            className={classes.buttonSchedule}
-            type="secondary"
+            color="primary"
+            fullWidth
             onClick={handleChange}
             disabled={!selectedDate || !selectedSlot}
           >

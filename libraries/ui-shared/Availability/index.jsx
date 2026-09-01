@@ -5,22 +5,13 @@ import {
   AVAILABILITY_STATE_WARNING,
   AVAILABILITY_STATE_ALERT,
 } from '@shopgate/pwa-common-commerce/product/constants';
-import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 
-const useStyles = makeStyles()(theme => ({
-  base: {
-    fontSize: '0.875rem',
-  },
-  stateOk: {
-    color: theme.palette.success.main,
-  },
-  stateWarning: {
-    color: theme.palette.warning.main,
-  },
-  stateAlert: {
-    color: theme.palette.error.main,
-  },
-}));
+const stateColorMap = {
+  [AVAILABILITY_STATE_OK]: 'success',
+  [AVAILABILITY_STATE_WARNING]: 'warning',
+  [AVAILABILITY_STATE_ALERT]: 'error',
+};
 
 /**
  * This component renders the availability text for a product
@@ -35,27 +26,20 @@ const useStyles = makeStyles()(theme => ({
 const Availability = ({
   text, state, showWhenAvailable = false, className = null,
 }) => {
-  const { classes, cx } = useStyles();
-
   if (!text || (state === AVAILABILITY_STATE_OK && !showWhenAvailable)) {
     return null;
   }
 
-  let stateClass = classes.stateOk;
-  if (state === AVAILABILITY_STATE_WARNING) {
-    stateClass = classes.stateWarning;
-  }
-  if (state === AVAILABILITY_STATE_ALERT) {
-    stateClass = classes.stateAlert;
-  }
-
   return (
-    <div
-      className={cx('ui-shared__availability', classes.base, stateClass, className)}
+    <Typography
+      variant="body2"
+      component="div"
+      color={stateColorMap[state]}
+      className={`ui-shared__availability${className ? ` ${className}` : ''}`}
       data-test-id={`availabilityText: ${text}`}
     >
       {text}
-    </div>
+    </Typography>
   );
 };
 

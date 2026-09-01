@@ -2,16 +2,16 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
     height: 2,
     bottom: 0,
     width: '100%',
     transition: 'left .2s ease',
-    backgroundColor: 'var(--color-primary)',
+    backgroundColor: theme.palette.primary.main,
   },
-});
+}));
 
 /**
  * Tab indicator component

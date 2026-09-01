@@ -4,6 +4,7 @@ import { isBeta } from '@shopgate/engage/core/helpers';
 import {
   SurroundPortals,
   PlaceholderLabel,
+  Typography,
 } from '@shopgate/engage/components';
 import { PRODUCT_NAME } from '@shopgate/engage/product/constants';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -11,9 +12,6 @@ import connect from './connector';
 
 const useStyles = makeStyles()({
   name: {
-    fontWeight: 'bold',
-    fontSize: '1.25rem',
-    lineHeight: '1.25',
     marginBottom: 2,
     marginRight: 72,
     wordBreak: 'break-word',
@@ -35,8 +33,8 @@ const Content = ({ longName, name }) => {
   const { classes, cx } = useStyles();
 
   return (
-    // eslint-disable-next-line jsx-a11y/role-has-required-aria-props
-    <div className={cx(classes.name, 'product-name')} role="heading">
+
+    <Typography variant="h3" component="div" fontWeight="bold" className={cx(classes.name, 'product-name')} role="heading">
       {/* This feature is currently in BETA testing.
         It should only be used for approved BETA Client Projects */}
       { isBeta()
@@ -58,7 +56,7 @@ const Content = ({ longName, name }) => {
             />
           </PlaceholderLabel>
         )}
-    </div>
+    </Typography>
 
   );
 };

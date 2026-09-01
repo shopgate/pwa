@@ -1,9 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()((theme) => {
   const buttonDefaults = {
@@ -14,7 +11,7 @@ const useStyles = makeStyles()((theme) => {
     textAlign: 'left',
     lineHeight: 1.2,
     outline: 'none',
-    background: colors.shade8,
+    background: theme.palette.grey.light,
   };
 
   return {
@@ -23,20 +20,20 @@ const useStyles = makeStyles()((theme) => {
     },
     buttonDisabled: {
       ...buttonDefaults,
-      color: colors.shade4,
+      color: theme.palette.grey.medium,
     },
     label: {
       display: 'block',
-      fontWeight: 500,
+      fontWeight: theme.typography.fontWeightMedium,
       ':not(:only-child)': {
-        fontWeight: 400,
-        fontSize: '0.75rem',
+        fontWeight: theme.typography.fontWeightRegular,
+        fontSize: theme.typography.caption.fontSize,
         marginBottom: 4,
       },
     },
     value: {
       display: 'block',
-      fontWeight: 500,
+      fontWeight: theme.typography.fontWeightMedium,
     },
   };
 });
@@ -75,7 +72,7 @@ Button.propTypes = {
 
 Button.defaultProps = {
   disabled: false,
-  openList: () => {},
+  openList: () => { },
 };
 
 export default Button;

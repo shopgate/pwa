@@ -1,12 +1,5 @@
-import {
-  getThemeSettings,
-} from '@shopgate/engage/core';
 import { getImageFormat } from '../getImageFormat';
 import { getFullImageSource } from '../getFullImageSource';
-
-jest.mock('@shopgate/engage/core/config/getThemeSettings', () => ({
-  getThemeSettings: jest.fn(() => ({})),
-}));
 
 jest.mock('../getImageFormat', () => ({
   getImageFormat: jest.fn(() => 'jpeg'),
@@ -65,17 +58,27 @@ describe('getFullImageSource()', () => {
       expect(result).toBe(`${baseUrl}&format=png&width=1024&height=1024&quality=75&fill=FFFFFF,1`);
     });
 
-    it('should use parameters from the theme settings', () => {
-      getThemeSettings.mockReturnValueOnce({
+    it('should use the image service settings when they are passed in', () => {
+      const result = getFullImageSource(baseUrl, {
+        width: 1024,
+        height: 1024,
+      }, {
         quality: 10,
-        fillColor: 'AAA,0',
+        fillColor: 'AAA',
+        fillTransparent: false,
       });
+
+      expect(result).toBe(`${baseUrl}&format=jpeg&width=1024&height=1024&quality=10&fill=AAA`);
+    });
+
+    it('should apply the built-in defaults for callers that pass no settings', () => {
+      // Plain function callers, e.g. extensions, get exactly what they got before.
       const result = getFullImageSource(baseUrl, {
         width: 1024,
         height: 1024,
       });
 
-      expect(result).toBe(`${baseUrl}&format=jpeg&width=1024&height=1024&quality=10&fill=AAA,0`);
+      expect(result).toBe(`${baseUrl}&format=jpeg&width=1024&height=1024&quality=75&fill=FFFFFF,1`);
     });
   });
 

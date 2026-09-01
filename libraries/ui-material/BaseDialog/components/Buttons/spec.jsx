@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Button from '@shopgate/pwa-ui-shared/Button';
+import { Button } from '@shopgate/engage/components/v2';
 import Buttons from './index';
 
 const actions = [

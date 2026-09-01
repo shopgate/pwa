@@ -3,13 +3,10 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { useWidgetSettings, useTheme } from '../../../core';
 import { SheetDrawer, I18n, Button } from '../../../components';
 import { WIDGET_ID } from './constants';
 import connect from './RelationsSheet.connector';
-
-const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   showMore: {
@@ -19,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     padding: `${theme.spacing(0.5, 0)} !important`,
   },
   sheet: {
-    maxHeight: `calc(100vh - ${variables.navigator.height}px)`,
+    maxHeight: `calc(100vh - ${theme.components.navigator.height})`,
   },
 }));
 

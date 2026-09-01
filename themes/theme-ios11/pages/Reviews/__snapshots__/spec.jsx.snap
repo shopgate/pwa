@@ -140,7 +140,7 @@ exports[`<Reviews> page should not crash 1`] = `
                   className="engage__reviews__list"
                 >
                   <li
-                    className="sg-4bfwpo-item"
+                    className="sg-1pvwwup-item"
                     data-test-id="reviewTitle: "
                     key="1"
                   >
@@ -163,7 +163,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="sg-m3j5n0-root"
+                          className="sg-5rdyxc-root"
                         />
                       </Title>
                       <Rating
@@ -181,12 +181,12 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-gv0hw9-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
                               <div
-                                className="sg-170uo4n-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -340,7 +340,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8o0m3k-filledStars rating-stars-filled"
+                                className="sg-d9opiy-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -500,11 +500,17 @@ exports[`<Reviews> page should not crash 1`] = `
                       <Text
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
-                        <div
-                          className="sg-78jqgy-root"
+                        <Typography
+                          className="sg-1ub84xp-root"
+                          component="div"
+                          variant="body2"
                         >
-                          "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-                        </div>
+                          <div
+                            className="sg-1ub84xp-root"
+                          >
+                            "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
+                          </div>
+                        </Typography>
                       </Text>
                       <Info
                         review={
@@ -518,30 +524,36 @@ exports[`<Reviews> page should not crash 1`] = `
                           }
                         }
                       >
-                        <div
-                          className="sg-ustu6l-root"
+                        <Typography
+                          color="textSecondary"
+                          component="div"
                           role="text"
+                          variant="body2"
                         >
-                          <ReviewDate
-                            date="2017-09-06T12:38:51.000Z"
+                          <div
+                            role="text"
                           >
-                            <Date
-                              format="long"
-                              timestamp={1504701531000}
+                            <ReviewDate
+                              date="2017-09-06T12:38:51.000Z"
                             >
-                              1504701531000-long
-                            </Date>
-                          </ReviewDate>
-                           
-                          <Author
-                            author=""
-                          />
-                        </div>
+                              <Date
+                                format="long"
+                                timestamp={1504701531000}
+                              >
+                                1504701531000-long
+                              </Date>
+                            </ReviewDate>
+                             
+                            <Author
+                              author=""
+                            />
+                          </div>
+                        </Typography>
                       </Info>
                     </SurroundPortals>
                   </li>
                   <li
-                    className="sg-4bfwpo-item"
+                    className="sg-1pvwwup-item"
                     data-test-id="reviewTitle: "
                     key="2"
                   >
@@ -564,7 +576,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="sg-m3j5n0-root"
+                          className="sg-5rdyxc-root"
                         />
                       </Title>
                       <Rating
@@ -582,12 +594,12 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-gv0hw9-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
                               <div
-                                className="sg-170uo4n-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -741,7 +753,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8o0m3k-filledStars rating-stars-filled"
+                                className="sg-d9opiy-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -901,11 +913,17 @@ exports[`<Reviews> page should not crash 1`] = `
                       <Text
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
-                        <div
-                          className="sg-78jqgy-root"
+                        <Typography
+                          className="sg-1ub84xp-root"
+                          component="div"
+                          variant="body2"
                         >
-                          "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-                        </div>
+                          <div
+                            className="sg-1ub84xp-root"
+                          >
+                            "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
+                          </div>
+                        </Typography>
                       </Text>
                       <Info
                         review={
@@ -919,30 +937,36 @@ exports[`<Reviews> page should not crash 1`] = `
                           }
                         }
                       >
-                        <div
-                          className="sg-ustu6l-root"
+                        <Typography
+                          color="textSecondary"
+                          component="div"
                           role="text"
+                          variant="body2"
                         >
-                          <ReviewDate
-                            date="2017-09-06T12:38:51.000Z"
+                          <div
+                            role="text"
                           >
-                            <Date
-                              format="long"
-                              timestamp={1504701531000}
+                            <ReviewDate
+                              date="2017-09-06T12:38:51.000Z"
                             >
-                              1504701531000-long
-                            </Date>
-                          </ReviewDate>
-                           
-                          <Author
-                            author=""
-                          />
-                        </div>
+                              <Date
+                                format="long"
+                                timestamp={1504701531000}
+                              >
+                                1504701531000-long
+                              </Date>
+                            </ReviewDate>
+                             
+                            <Author
+                              author=""
+                            />
+                          </div>
+                        </Typography>
                       </Info>
                     </SurroundPortals>
                   </li>
                   <li
-                    className="sg-4bfwpo-item"
+                    className="sg-1pvwwup-item"
                     data-test-id="reviewTitle: "
                     key="3"
                   >
@@ -965,7 +989,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="sg-m3j5n0-root"
+                          className="sg-5rdyxc-root"
                         />
                       </Title>
                       <Rating
@@ -983,12 +1007,12 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-gv0hw9-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
                               <div
-                                className="sg-170uo4n-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1142,7 +1166,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8o0m3k-filledStars rating-stars-filled"
+                                className="sg-d9opiy-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1302,11 +1326,17 @@ exports[`<Reviews> page should not crash 1`] = `
                       <Text
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
-                        <div
-                          className="sg-78jqgy-root"
+                        <Typography
+                          className="sg-1ub84xp-root"
+                          component="div"
+                          variant="body2"
                         >
-                          "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-                        </div>
+                          <div
+                            className="sg-1ub84xp-root"
+                          >
+                            "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
+                          </div>
+                        </Typography>
                       </Text>
                       <Info
                         review={
@@ -1320,30 +1350,36 @@ exports[`<Reviews> page should not crash 1`] = `
                           }
                         }
                       >
-                        <div
-                          className="sg-ustu6l-root"
+                        <Typography
+                          color="textSecondary"
+                          component="div"
                           role="text"
+                          variant="body2"
                         >
-                          <ReviewDate
-                            date="2017-09-06T12:38:51.000Z"
+                          <div
+                            role="text"
                           >
-                            <Date
-                              format="long"
-                              timestamp={1504701531000}
+                            <ReviewDate
+                              date="2017-09-06T12:38:51.000Z"
                             >
-                              1504701531000-long
-                            </Date>
-                          </ReviewDate>
-                           
-                          <Author
-                            author=""
-                          />
-                        </div>
+                              <Date
+                                format="long"
+                                timestamp={1504701531000}
+                              >
+                                1504701531000-long
+                              </Date>
+                            </ReviewDate>
+                             
+                            <Author
+                              author=""
+                            />
+                          </div>
+                        </Typography>
                       </Info>
                     </SurroundPortals>
                   </li>
                   <li
-                    className="sg-4bfwpo-item"
+                    className="sg-1pvwwup-item"
                     data-test-id="reviewTitle: "
                     key="4"
                   >
@@ -1366,7 +1402,7 @@ exports[`<Reviews> page should not crash 1`] = `
                         title=""
                       >
                         <div
-                          className="sg-m3j5n0-root"
+                          className="sg-5rdyxc-root"
                         />
                       </Title>
                       <Rating
@@ -1384,12 +1420,12 @@ exports[`<Reviews> page should not crash 1`] = `
                           >
                             <div
                               aria-label="reviews.rating_stars"
-                              className="ui-shared__rating-stars sg-1ecuo2n-container-stars"
+                              className="ui-shared__rating-stars sg-gv0hw9-container-stars"
                               data-test-id="ratedStars: 5"
                               role="img"
                             >
                               <div
-                                className="sg-170uo4n-emptyStars rating-stars-empty"
+                                className="sg-1b3lv7i-emptyStars rating-stars-empty"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1543,7 +1579,7 @@ exports[`<Reviews> page should not crash 1`] = `
                                 </div>
                               </div>
                               <div
-                                className="sg-8o0m3k-filledStars rating-stars-filled"
+                                className="sg-d9opiy-filledStars rating-stars-filled"
                               >
                                 <div
                                   className="sg-1jcir28-icon-iconGapSmall"
@@ -1703,11 +1739,17 @@ exports[`<Reviews> page should not crash 1`] = `
                       <Text
                         review="No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
                       >
-                        <div
-                          className="sg-78jqgy-root"
+                        <Typography
+                          className="sg-1ub84xp-root"
+                          component="div"
+                          variant="body2"
                         >
-                          "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
-                        </div>
+                          <div
+                            className="sg-1ub84xp-root"
+                          >
+                            "No Name and Title Lorem ipsum dolor sit amet, con… takimata sanctus est Lorem ipsum dolor sit amet."
+                          </div>
+                        </Typography>
                       </Text>
                       <Info
                         review={
@@ -1721,25 +1763,31 @@ exports[`<Reviews> page should not crash 1`] = `
                           }
                         }
                       >
-                        <div
-                          className="sg-ustu6l-root"
+                        <Typography
+                          color="textSecondary"
+                          component="div"
                           role="text"
+                          variant="body2"
                         >
-                          <ReviewDate
-                            date="2017-09-06T12:38:51.000Z"
+                          <div
+                            role="text"
                           >
-                            <Date
-                              format="long"
-                              timestamp={1504701531000}
+                            <ReviewDate
+                              date="2017-09-06T12:38:51.000Z"
                             >
-                              1504701531000-long
-                            </Date>
-                          </ReviewDate>
-                           
-                          <Author
-                            author=""
-                          />
-                        </div>
+                              <Date
+                                format="long"
+                                timestamp={1504701531000}
+                              >
+                                1504701531000-long
+                              </Date>
+                            </ReviewDate>
+                             
+                            <Author
+                              author=""
+                            />
+                          </div>
+                        </Typography>
                       </Info>
                     </SurroundPortals>
                   </li>

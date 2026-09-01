@@ -4,18 +4,15 @@ import React, {
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import QuantityInput from '@shopgate/engage/components/QuantityInput';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   inputStyle: {
     border: 'none',
-    background: colors.placeholder,
+    background: theme.palette.background.emphasized,
+    color: theme.contrastColor(theme.palette.background.emphasized),
     display: 'block',
-    fontSize: '0.75rem',
-    lineHeight: 1,
+    fontSize: theme.typography.caption.fontSize,
     textAlign: 'center',
     padding: theme.spacing(0.75, 1),
     outline: 0,
@@ -129,10 +126,10 @@ CartItemQuantityPicker.propTypes = {
 
 CartItemQuantityPicker.defaultProps = {
   editMode: false,
-  onChange: () => {},
+  onChange: () => { },
   unit: null,
   quantity: 1,
-  onToggleEditMode: () => {},
+  onToggleEditMode: () => { },
   disabled: false,
   hasCatchWeight: false,
 };

@@ -4,7 +4,7 @@ import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getPreferredLocation, makeGetLocationInventory } from '../../selectors';
-import { I18n, SurroundPortals } from '../../../components';
+import { I18n, SurroundPortals, Typography } from '../../../components';
 import { StockInfo } from '../StockInfo';
 import { PRODUCT_LOCATION_STOCK_INFO_LIST } from '../../constants/Portals';
 import { showInventoryInLists } from '../../helpers/showInventoryInLists';
@@ -30,7 +30,6 @@ const useStyles = makeStyles()({
   wrapper: {
     flexDirection: 'row',
     alignItems: 'flex-end',
-    fontSize: '0.65rem',
   },
   text: {
     margin: '0 !important',
@@ -59,10 +58,9 @@ const StockInfoLists = ({
     location: preferredLocation,
     product,
   };
-  /* eslint-disable jsx-a11y/aria-role */
   return (
     <SurroundPortals portalName={PRODUCT_LOCATION_STOCK_INFO_LIST} portalProps={portalProps}>
-      <div className={classes.wrapper} role="text">
+      <Typography variant="caption" component="div" className={classes.wrapper}>
         <PlaceholderLabel ready={!!inventory}>
           <StockInfo product={product} location={preferredLocation} />
           {' '}
@@ -74,10 +72,9 @@ const StockInfoLists = ({
           {' '}
           <span className={classes.location}>{preferredLocation.name}</span>
         </PlaceholderLabel>
-      </div>
+      </Typography>
     </SurroundPortals>
   );
-  /* eslint-enable jsx-a11y/aria-role */
 };
 
 StockInfoLists.propTypes = {

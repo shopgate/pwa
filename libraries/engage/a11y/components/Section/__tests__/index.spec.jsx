@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Section from '../index';
 
 const mockTranslate = jest.fn();
@@ -22,14 +22,15 @@ describe('<Section />', () => {
   });
 
   it('should render with a label', () => {
-    const wrapper = mount((
+    const { container } = render((
       <Section title={title} titleParams={titleParams}>
         <div id="child-component" />
       </Section>
     ));
+    const section = container.querySelector('section');
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('h2').exists()).toBe(true);
+    expect(section).toMatchSnapshot();
+    expect(container.querySelector('h2')).not.toBeNull();
     expect(mockTranslate).toHaveBeenCalledWith({
       string: title,
       params: titleParams,
@@ -37,17 +38,21 @@ describe('<Section />', () => {
   });
 
   it('should render hidden when no children rendered', () => {
-    const wrapper = mount(<Section title={title} />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('h2').exists()).toBe(false);
+    const { container } = render(<Section title={title} />);
+    const section = container.querySelector('section');
+
+    expect(section).toMatchSnapshot();
+    expect(container.querySelector('h2')).toBeNull();
     expect(mockTranslate).toHaveBeenCalledTimes(0);
   });
 
   describe('MutationObserver', () => {
-    let wrapper;
+    let rendered;
+    let sectionElement;
 
     beforeEach(() => {
-      wrapper = mount(<Section title={title} />);
+      rendered = render(<Section title={title} />);
+      sectionElement = rendered.container.querySelector('section');
     });
 
     it('should create an observer instance', () => {
@@ -58,7 +63,7 @@ describe('<Section />', () => {
     it('should observe with the correct initialization', () => {
       expect(global.mutationObserveSpy).toHaveBeenCalledTimes(1);
       expect(global.mutationObserveSpy).toHaveBeenCalledWith(
-        wrapper.find('section').instance(),
+        sectionElement,
         {
           childList: true,
         }
@@ -66,7 +71,7 @@ describe('<Section />', () => {
     });
 
     it('should call disconnect on unmount', () => {
-      wrapper.unmount();
+      rendered.unmount();
       expect(global.mutationDisconnectSpy).toHaveBeenCalledTimes(1);
     });
   });

@@ -1,15 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { getProductImageSettings } from '@shopgate/engage/product/helpers';
+import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { Swiper, Image } from '@shopgate/engage/components';
 import { appConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import connect from './connector';
 
-const { colors } = themeConfig;
 const { pdpImageSliderPaginationType } = appConfig || {};
 
 const fullSize = {
@@ -18,10 +16,10 @@ const fullSize = {
   height: '100%',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     ...fullSize,
-    background: colors.dark,
+    background: theme.palette.common.black,
     position: 'fixed',
     top: 0,
     bottom: 0,
@@ -30,8 +28,8 @@ const useStyles = makeStyles()({
   },
   slider: {
     height: '100%',
-    '--swiper-pagination-fraction-top-offset': 'calc(4px + var(--safe-area-inset-top))',
-    '--swiper-pagination-bottom': 'max(var(--safe-area-inset-bottom), 8px)',
+    '--swiper-pagination-fraction-top-offset': `calc(4px + ${theme.layout.safeArea.top})`,
+    '--swiper-pagination-bottom': `max(${theme.layout.safeArea.bottom}, 8px)`,
   },
   slide: {
     position: 'relative',
@@ -44,13 +42,13 @@ const useStyles = makeStyles()({
     position: 'absolute',
     bottom: [
       '2px',
-      'calc(2px + var(--safe-area-inset-bottom))',
+      `calc(2px + ${theme.layout.safeArea.bottom})`,
     ],
     left: '50%',
     transform: 'translateX(-50%)',
     zIndex: 10,
   },
-});
+}));
 
 /**
  * The Product media gallery component.
@@ -59,13 +57,12 @@ const useStyles = makeStyles()({
  */
 const ProductGalleryMedia = ({ initialSlide, media }) => {
   const { classes } = useStyles();
+  const { gallery } = useProductImageSettings();
   const settings = useWidgetSettings('@shopgate/engage/product/Gallery');
 
   if (!Array.isArray(media) || media.length === 0) {
     return <div className={classes.container} />;
   }
-
-  const { GalleryImage: galleryResolutions } = getProductImageSettings();
 
   const sliderClassNames = {
     container: classes.swiperContainer,
@@ -94,7 +91,8 @@ const ProductGalleryMedia = ({ initialSlide, media }) => {
                 src={singleMedia.url}
                 alt={singleMedia.altText}
                 classNameImg={classes.slide}
-                resolutions={galleryResolutions}
+                resolutions={gallery.resolutions}
+                ratio={gallery.ratio}
                 unwrapped
               />
             </div>

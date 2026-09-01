@@ -1,13 +1,22 @@
 import React from 'react';
-import { mount } from 'enzyme';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { render, screen } from '@testing-library/react';
 import List from './index';
 
-jest.mock('@shopgate/engage/components');
+const mockTitle = jest.fn(({ title }) => <div data-testid="review-title">{title}</div>);
+const mockRating = jest.fn(({ rate }) => <div data-testid="review-rating">{rate}</div>);
+const mockText = jest.fn(({ review }) => <div data-testid="review-text">{review}</div>);
+const mockInfo = jest.fn(({ review }) => <div data-testid="review-info">{review.date}</div>);
+
+jest.mock('@shopgate/engage/components', () => ({
+  SurroundPortals: ({ children }) => children,
+}));
+
+jest.mock('./components/Title', () => props => mockTitle(props));
+jest.mock('./components/Rating', () => props => mockRating(props));
+jest.mock('./components/Text', () => props => mockText(props));
+jest.mock('./components/Info', () => props => mockInfo(props));
 
 describe('<List />', () => {
-  let list = null;
-
   const reviews = [
     {
       id: 'a',
@@ -44,38 +53,41 @@ describe('<List />', () => {
   ];
 
   beforeEach(() => {
-    list = mount(<List reviews={[]} />, mockRenderOptions);
+    jest.clearAllMocks();
   });
 
-  it('should not render when no reviews given', () => {
-    expect(list).toMatchSnapshot();
-    expect(list.find('Review').exists()).toBe(false);
+  it('should not render when no reviews exist', () => {
+    const { container } = render(<List reviews={[]} />);
+
+    expect(container.firstChild).toBeNull();
+    expect(screen.queryByRole('list')).toBeNull();
+    expect(mockTitle).not.toHaveBeenCalled();
   });
 
   it('should render list with reviews', () => {
-    list.setProps({ reviews });
+    const { container } = render(<List reviews={reviews} />);
 
-    expect(list).toMatchSnapshot();
-    expect(list.find('List > ul').exists()).toBe(true);
+    expect(screen.getByRole('list')).toBeTruthy();
+    expect(container.querySelectorAll('li')).toHaveLength(reviews.length);
 
-    list.find('Review').forEach((node, i) => {
-      const ratingNode = node.find('Rating');
+    expect(mockTitle).toHaveBeenCalledTimes(reviews.length);
+    expect(mockRating).toHaveBeenCalledTimes(reviews.length);
+    expect(mockText).toHaveBeenCalledTimes(reviews.length);
+    expect(mockInfo).toHaveBeenCalledTimes(reviews.length);
 
-      expect(ratingNode.prop('rate')).toEqual(reviews[i].rate);
-      expect(ratingNode.find('RatingStars').prop('value')).toEqual(reviews[i].rate);
-      expect(node.find('Info').prop('review').date).toEqual(reviews[i].date);
-
-      if (reviews[i].author) {
-        expect(node.find('Info').prop('review').author).toEqual(reviews[i].author);
-      }
-
-      if (reviews[i].title) {
-        expect(node.find('Title').prop('title')).toEqual(reviews[i].title);
-      }
-
-      if (reviews[i].review) {
-        expect(node.find('Text').prop('review')).toEqual(reviews[i].review);
-      }
+    reviews.forEach((review, i) => {
+      expect(mockTitle).toHaveBeenNthCalledWith(i + 1, expect.objectContaining({
+        title: review.title,
+      }));
+      expect(mockRating).toHaveBeenNthCalledWith(i + 1, expect.objectContaining({
+        rate: review.rate,
+      }));
+      expect(mockText).toHaveBeenNthCalledWith(i + 1, expect.objectContaining({
+        review: review.review,
+      }));
+      expect(mockInfo).toHaveBeenNthCalledWith(i + 1, expect.objectContaining({
+        review,
+      }));
     });
   });
 });

@@ -5,6 +5,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
+    "types": ["jest"],
 
     "strict": true,
     "isolatedModules": true,

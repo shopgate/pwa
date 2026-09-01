@@ -31,11 +31,15 @@ const testedExtensions = [
 
 module.exports = {
   ...jestConfig,
-  // Ensure Jest recognizes and loads .mjs files
+  // Ensure Jest recognizes and loads .mjs and TypeScript files
   moduleFileExtensions: [
     ...(jestConfig.moduleFileExtensions || []),
     'mjs',
+    'ts',
+    'tsx',
   ],
+  // Extend the base spec pattern (js/jsx) to also pick up TypeScript specs
+  testRegex: '(/__tests__/.*|(\\.|/)spec)\\.(js|jsx|ts|tsx)?$',
   collectCoverageFrom: [
     'extensions/*/frontend/**/*.{js,jsx}',
     'libraries/*/**/*.{js,jsx}',

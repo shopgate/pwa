@@ -2,30 +2,29 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import pick from 'lodash/pick';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 import Chevron from '../../icons/ChevronIcon';
 import InfoField from '../InfoField';
 import ContextMenu from '../../ContextMenu';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   chevron: {
     position: 'absolute',
     top: '50%',
     right: 0,
     transform: 'translateY(-50%) rotateZ(-90deg)',
-    fontSize: '1.3em !important',
+    fontSize: `${theme.components.icon.medium} !important`,
     marginTop: -3,
   },
   toggle: {
-    fontSize: '1rem',
     paddingRight: '2rem',
   },
   itemSelected: {
-    backgroundColor: themeConfig.colors.shade8,
-    fontWeight: 500,
+    backgroundColor: theme.palette.grey.light,
+    fontWeight: theme.typography.fontWeightMedium,
   },
-});
+}));
 
 /**
  * @param {Object} props Props.
@@ -63,7 +62,8 @@ const SelectContextChoices = ({
       hasValue
       rightElement={<Chevron className={classes.chevron} />}
     >
-      <div
+      <Typography
+        component="div"
         role="button"
         onClick={() => setOpened(true)}
         aria-hidden
@@ -72,7 +72,7 @@ const SelectContextChoices = ({
       >
         {!hasValue && (placeholder || i18n.text('common.please_choose'))}
         {hasValue && values.join(', ')}
-      </div>
+      </Typography>
 
       <ContextMenu
         isOpened={opened}

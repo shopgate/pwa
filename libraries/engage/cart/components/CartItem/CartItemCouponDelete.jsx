@@ -4,14 +4,14 @@ import { CrossIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     padding: 0,
-    fontSize: '1.5rem',
+    fontSize: theme.components.icon.medium,
     marginTop: -2,
     marginRight: -5,
   },
-});
+}));
 /**
  * The Coupon Delete component.
  * @param {Object} props The component properties.

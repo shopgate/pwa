@@ -13,12 +13,12 @@ import ItemDetails from './components/ItemDetails';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    background: colors.light,
+    background: theme.palette.background.surface,
     fontSize: 14,
     height: '100%',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
@@ -45,7 +45,7 @@ const useStyles = makeStyles()({
       width: 'inherit',
     },
   },
-});
+}));
 
 /**
  * The Product Grid Item component.

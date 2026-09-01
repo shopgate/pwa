@@ -6,7 +6,7 @@ import {
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getWishlistItemQuantityEnabled } from '../../../core/selectors/shopSettings';
+import { getWishlistItemQuantityEnabled } from '@shopgate/engage/settings/selectors/shopSettings';
 
 /**
  * @returns {Object}

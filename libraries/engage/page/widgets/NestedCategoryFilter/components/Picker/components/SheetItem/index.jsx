@@ -11,8 +11,8 @@ const useStyles = makeStyles()(theme => ({
     color: theme.palette.text.primary,
   },
   buttonSelected: {
-    background: 'var(--color-background-accent)',
-    boxShadow: `${theme.spacing(-2.5)}px 0px 0px var(--color-background-accent), ${theme.spacing(2.5)}px 0px 0px var(--color-background-accent)`,
+    background: theme.palette.background.emphasized,
+    boxShadow: `${theme.spacing(-2.5)}px 0px 0px ${theme.palette.background.emphasized}, ${theme.spacing(2.5)}px 0px 0px ${theme.palette.background.emphasized}`,
     margin: '-1px 0',
     paddingTop: 17,
     paddingBottom: 17,

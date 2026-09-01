@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
 import { Provider } from 'react-redux';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
@@ -30,7 +30,7 @@ describe('<ProductDiscountBadge />', () => {
    */
   const createComponent = (mockedState) => {
     const store = mockedStore(mockedState);
-    return mount(
+    return render(
       <Provider store={store}>
         <ProductDiscountBadge productId={mockedProduct1.productId} />
       </Provider>
@@ -39,12 +39,12 @@ describe('<ProductDiscountBadge />', () => {
 
   it('should render without discount', () => {
     const wrapper = createComponent(mockedStateWithoutDiscount);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('should render with discount', () => {
     const wrapper = createComponent(mockedStateWithDiscount);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('should not render with discount if widgetSetting is false', () => {
@@ -56,6 +56,6 @@ describe('<ProductDiscountBadge />', () => {
     });
 
     const wrapper = createComponent(mockedStateWithDiscount);
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

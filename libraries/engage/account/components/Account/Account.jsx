@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n, ResponsiveContainer } from '@shopgate/engage/components';
+import { I18n, ResponsiveContainer, Typography } from '@shopgate/engage/components';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { i18n, useRoute } from '@shopgate/engage/core';
@@ -14,7 +14,6 @@ import Profile from '../Profile';
 
 const useStyles = makeStyles()(theme => ({
   title: {
-    fontSize: '1.5rem',
     padding: theme.spacing(2),
   },
   tabs: {
@@ -49,9 +48,9 @@ const Account = ({ historyReplace }) => {
         className={classes.tabs}
       >
         <ResponsiveContainer webOnly breakpoint=">xs">
-          <div className={classes.title}>
+          <Typography variant="h2" component="div" className={classes.title}>
             <I18n.Text string="titles.your_account" />
-          </div>
+          </Typography>
         </ResponsiveContainer>
         <Tabs
           indicatorColor="primary"

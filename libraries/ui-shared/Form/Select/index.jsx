@@ -6,7 +6,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import Chevron from '../../icons/ChevronIcon';
 import FormElement from '../../FormElement';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   select: {
     appearance: 'none',
     position: 'relative',
@@ -17,8 +17,7 @@ const useStyles = makeStyles()({
     width: '100%',
     margin: '24px 0 0 0',
     outline: 0,
-    fontSize: 16,
-    lineHeight: '19px',
+    fontSize: theme.typography.body1.fontSize,
     zIndex: 10,
   },
   chevron: {
@@ -26,10 +25,10 @@ const useStyles = makeStyles()({
     top: '50%',
     right: 0,
     transform: 'translateY(-50%) rotateZ(-90deg)',
-    fontSize: '1.3em !important',
+    fontSize: `${theme.components.icon.medium} !important`,
     marginTop: -3,
   },
-});
+}));
 
 /**
  * Styled select for material-style forms (native select + chevron).

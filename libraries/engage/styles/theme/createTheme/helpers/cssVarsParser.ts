@@ -109,12 +109,29 @@ const walkObjectDeep = <Value, T = Record<string, unknown>>(
  */
 const getCssValue = (keys: string[], value: string | number) => {
   if (typeof value === 'number') {
-    if (['lineHeight', 'fontWeight', 'opacity', 'zIndex'].some(prop => keys.includes(prop))) {
-      // CSS property that are unitless
+    const lastKey = keys[keys.length - 1];
+
+    if ([
+      'lineHeight',
+      'fontWeight',
+      'opacity',
+      'zIndex',
+      'fontWeightLight',
+      'fontWeightRegular',
+      'fontWeightMedium',
+      'fontWeightBold',
+    ].some(prop => lastKey === prop)) {
+      // CSS properties that are unitless
       return value;
     }
 
-    const lastKey = keys[keys.length - 1];
+    // `typography.fontSize` is MUI's base font-size coefficient and stays unitless, but variant
+    // font sizes (e.g. `typography.body2.fontSize`) are lengths and need a `px` unit - otherwise a
+    // numeric override would produce an invalid `font-size: 12` custom property.
+    if (lastKey === 'fontSize' && keys[keys.length - 2] === 'typography') {
+      return value;
+    }
+
     if (lastKey.toLowerCase().includes('opacity')) {
       // opacity values are unitless
       return value;

@@ -25,21 +25,25 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
       className={null}
       styles={
         {
-          "hover": {
-            "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+          "glow": {
+            "left": -16,
+            "right": -16,
+            "width": "auto",
           },
         }
       }
     >
       <Glow
         className={null}
-        color="#f7f7f7"
+        color={null}
         disabled={false}
         forwardedRef={null}
         styles={
           {
-            "hover": {
-              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+            "glow": {
+              "left": -16,
+              "right": -16,
+              "width": "auto",
             },
           }
         }
@@ -50,7 +54,13 @@ exports[`<SheetList.Item /> should render with a link 1`] = `
         >
           <div
             className="sg-f2xef3-glow"
-            style={{}}
+            style={
+              {
+                "left": -16,
+                "right": -16,
+                "width": "auto",
+              }
+            }
           />
           <Link
             href="url/to/somewhere"
@@ -109,13 +119,13 @@ exports[`<SheetList.Item /> should render with a right component 1`] = `
           className="common__grid sg-1m2nk0b-root-noWrap-grid"
         >
           <GridItem
-            className="sg-h6motv-title"
+            className="sg-15zoq8q-title"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="sg-427d4o-root-title"
+              className="sg-1wdpu4f-root-title"
             >
               <div>
                 My Title
@@ -176,13 +186,13 @@ exports[`<SheetList.Item /> should render with a title but no image 1`] = `
           className="common__grid sg-1m2nk0b-root-noWrap-grid"
         >
           <GridItem
-            className="sg-h6motv-title"
+            className="sg-15zoq8q-title"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="sg-427d4o-root-title"
+              className="sg-1wdpu4f-root-title"
             >
               <div>
                 My Title
@@ -248,13 +258,13 @@ exports[`<SheetList.Item /> should render with an image 1`] = `
             />
           </div>
           <GridItem
-            className="sg-h6motv-title"
+            className="sg-15zoq8q-title"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="sg-427d4o-root-title"
+              className="sg-1wdpu4f-root-title"
             >
               <div>
                 My Title
@@ -301,21 +311,25 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
         className={null}
         styles={
           {
-            "hover": {
-              "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+            "glow": {
+              "left": -16,
+              "right": -16,
+              "width": "auto",
             },
           }
         }
       >
         <Glow
           className={null}
-          color="#f7f7f7"
+          color={null}
           disabled={false}
           forwardedRef={null}
           styles={
             {
-              "hover": {
-                "boxShadow": "-20px 0 0 #f7f7f7, 20px 0 0 #f7f7f7",
+              "glow": {
+                "left": -16,
+                "right": -16,
+                "width": "auto",
               },
             }
           }
@@ -326,7 +340,13 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
           >
             <div
               className="sg-f2xef3-glow"
-              style={{}}
+              style={
+                {
+                  "left": -16,
+                  "right": -16,
+                  "width": "auto",
+                }
+              }
             />
             <div
               className="engage__sheet-list__item"
@@ -341,13 +361,13 @@ exports[`<SheetList.Item /> should render with an onClick element 1`] = `
                   className="common__grid sg-1m2nk0b-root-noWrap-grid"
                 >
                   <GridItem
-                    className="sg-h6motv-title"
+                    className="sg-15zoq8q-title"
                     component="div"
                     grow={1}
                     shrink={1}
                   >
                     <div
-                      className="sg-427d4o-root-title"
+                      className="sg-1wdpu4f-root-title"
                     >
                       <div>
                         My Title
@@ -399,13 +419,13 @@ exports[`<SheetList.Item /> should render without a Glow when disabled 1`] = `
           className="common__grid sg-1m2nk0b-root-noWrap-grid"
         >
           <GridItem
-            className="sg-1hibuk7-title-disabled"
+            className="sg-4ewarv-title-disabled"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="sg-1n1osdl-root-title-disabled"
+              className="sg-188lypi-root-title-disabled"
             >
               <div>
                 My Title
@@ -445,21 +465,21 @@ exports[`<SheetList.Item /> should render without a Glow when selected 1`] = `
       data-test-id={null}
     >
       <Grid
-        className="sg-1n7wr56-grid-selected"
+        className="sg-1h60jfn-grid-selected"
         component="div"
         wrap={false}
       >
         <div
-          className="common__grid sg-6eunye-root-noWrap-grid-selected"
+          className="common__grid sg-fi2k43-root-noWrap-grid-selected"
         >
           <GridItem
-            className="sg-h6motv-title"
+            className="sg-15zoq8q-title"
             component="div"
             grow={1}
             shrink={1}
           >
             <div
-              className="sg-427d4o-root-title"
+              className="sg-1wdpu4f-root-title"
             >
               <div>
                 My Title

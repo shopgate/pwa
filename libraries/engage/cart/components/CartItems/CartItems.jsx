@@ -1,8 +1,7 @@
 import React from 'react';
-import { CardList, ResponsiveContainer } from '@shopgate/engage/components';
+import { ResponsiveContainer, Card } from '@shopgate/engage/components';
 import { FulfillmentSlotSwitcher } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import PropTypes from 'prop-types';
 import CartItemsHeaderWide from './CartItemsHeaderWide';
 import { CartItemProvider, CartItem } from '../CartItem';
@@ -11,20 +10,15 @@ import CartItemsSubstitution from './CartItemsSubstitution';
 
 const useStyles = makeStyles()(theme => ({
   items: {
-    background: 'var(--color-background-accent)',
     padding: theme.spacing(1.5, 1.5, 2),
     marginBottom: theme.spacing(-1.5),
   },
   card: {
-    background: themeColors.light,
     marginBottom: theme.spacing(1.5),
     ':last-of-type': {
       marginBottom: 0,
     },
-    border: `1px solid ${themeColors.shade7}`,
     boxSizing: 'border-box',
-    boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
-    borderRadius: 5,
   },
 }));
 
@@ -55,7 +49,7 @@ const CartItems = ({
   currencyOverride,
   isDirectShipOnly,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   if (!cartItems || cartItems.length === 0) {
     return null;
   }
@@ -71,7 +65,7 @@ const CartItems = ({
         />
       </ResponsiveContainer>
 
-      <CardList className={classes.items}>
+      <ul className={cx('ui-shared__card-list', classes.items)}>
         {!isOrderDetails ? (
           <ResponsiveContainer appAlways breakpoint="<=xs">
             <FulfillmentSlotSwitcher renderBar card editable={editable} />
@@ -83,7 +77,11 @@ const CartItems = ({
           </ResponsiveContainer>
         )}
         {cartItems.map(item => (
-          <CardList.Item className={classes.card} key={item.id}>
+          <Card
+            className={classes.card}
+            key={item.id}
+            component="li"
+          >
             <CartItemProvider
               cartItem={item}
               isEditable={editable}
@@ -108,9 +106,9 @@ const CartItems = ({
                 </CartItemCard>
               </ul>
             </CartItemProvider>
-          </CardList.Item>
+          </Card>
         ))}
-      </CardList>
+      </ul>
     </>
   );
 };

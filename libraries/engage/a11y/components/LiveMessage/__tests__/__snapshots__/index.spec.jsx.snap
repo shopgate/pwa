@@ -3,29 +3,19 @@
 exports[`<LiveMessage /> should render a polite simple message 1`] = `
 <div
   aria-live="polite"
-  className="sg-1pj3g40-hiddenLiveRegion"
+  class="sg-1pj3g40-hiddenLiveRegion"
   role="log"
 >
-  <Translate
-    params={null}
-    string="My Message"
-  />
+  My Message
 </div>
 `;
 
 exports[`<LiveMessage /> should render an assertive message with params  1`] = `
 <div
   aria-live="assertive"
-  className="sg-1pj3g40-hiddenLiveRegion"
+  class="sg-1pj3g40-hiddenLiveRegion"
   role="log"
 >
-  <Translate
-    params={
-      {
-        "my": "param",
-      }
-    }
-    string="My Message"
-  />
+  My Message
 </div>
 `;

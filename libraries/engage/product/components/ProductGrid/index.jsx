@@ -7,11 +7,11 @@ import {
 } from '@shopgate/engage/components';
 import { ProductListTypeProvider } from '@shopgate/engage/product';
 import { ITEMS_PER_LOAD } from '@shopgate/engage/core/constants';
-import { useResponsiveValue } from '@shopgate/engage/styles';
 import Iterator from './components/Iterator';
 import Layout from './components/Layout';
+import { useProductGridColumns } from './hooks';
 
-export const WIDGET_ID = '@shopgate/engage/product/ProductGrid';
+export { WIDGET_ID } from './constants';
 
 /**
  * The Product Grid component.
@@ -48,10 +48,7 @@ const ProductGrid = ({
 }) => {
   const { getContentRef } = useContext(ViewContext);
 
-  const columns = useResponsiveValue({
-    xs: 2,
-    md: 4,
-  });
+  const columns = useProductGridColumns();
 
   if (!infiniteLoad) {
     return (

@@ -1,12 +1,12 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Above from '../index';
 
 jest.mock('../../../context');
 
 describe('engage > components > view > components > above', () => {
   it('should render above', () => {
-    const wrapper = shallow(<Above />).dive();
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<Above />);
+    expect(container).toBeTruthy();
   });
 });

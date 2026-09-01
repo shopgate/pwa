@@ -1,4 +1,7 @@
-import { isDev } from '@shopgate/engage/core/helpers';
+// Import `isDev` from the leaf environment module rather than the `@shopgate/engage/core/helpers`
+// barrel: the barrel pulls in providers -> toast -> the theme, creating an import cycle back into
+// createTheme (which uses this module) and breaking theme creation during module init.
+import { isDev } from '@shopgate/pwa-common/helpers/environment';
 
 const spacingUnit = 8;
 

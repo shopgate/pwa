@@ -1,7 +1,6 @@
 import React, { useMemo, useRef, useLayoutEffect } from 'react';
 import PropTypes from 'prop-types';
 import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, setCSSCustomProp } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { APP_BAR_CONTENT } from '@shopgate/engage/core/constants';
@@ -13,19 +12,20 @@ import Center from './components/Center';
 import Left from './components/Left';
 import Below from './components/Below';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   outer: {
     boxSizing: 'content-box',
     minHeight: 44,
-    paddingTop: 'var(--safe-area-inset-top)',
+    paddingTop: theme.layout.safeArea.top,
   },
   inner: {
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'space-between',
     position: 'relative',
     zIndex: 1,
   },
-});
+}));
 
 /**
  * Updates the --app-bar-height custom property
@@ -112,7 +112,7 @@ AppBar.propTypes = {
 
 AppBar.defaultProps = {
   'aria-hidden': null,
-  backgroundColor: themeColors.light,
+  backgroundColor: 'var(--sg-components-appBar-background)',
   below: null,
   center: null,
   classes: {
@@ -121,7 +121,7 @@ AppBar.defaultProps = {
   },
   left: null,
   right: null,
-  textColor: themeColors.dark,
+  textColor: 'var(--sg-components-appBar-color)',
 };
 
 AppBar.Field = Field;

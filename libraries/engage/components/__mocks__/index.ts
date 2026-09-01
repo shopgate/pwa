@@ -83,6 +83,7 @@ export const TimeIcon = () => null;
 export const ProgressBar = () => null;
 export const MessageBar = () => null;
 export const Input = () => null;
+export const Checkbox = ({ label }) => label;
 export const Link = ({ children }) => children;
 export const Ellipsis = ({ children }) => children;
 /** @returns {ReactElement} */
@@ -107,6 +108,7 @@ export const RangeSlider = () => null;
 export const RatingStars = () => null;
 export const RatingNumber = ({ rating }) => rating;
 export const Availability = () => null;
+export const FavoritesButton = () => null;
 export const TextLink = () => null;
 export const ProductImage = ({ children }) => children;
 export const PlaceholderParagraph = ({ children }) => children;
@@ -115,6 +117,41 @@ export const PlaceholderLabel = ({ children }) => children;
 export const HtmlSanitizer = ({ children }) => children;
 export const RippleButton = ({ children }) => children;
 export const Button = ({ children }) => children;
+const typographyVariantMapping = {
+  h1: 'h1',
+  h2: 'h2',
+  h3: 'h3',
+  h4: 'h4',
+  h5: 'h5',
+  h6: 'h6',
+  subtitle1: 'h6',
+  subtitle2: 'h6',
+  body1: 'p',
+  body2: 'p',
+};
+export const Typography = (props) => {
+  const {
+    children, component, variant = 'body1', paragraph, ...rest
+  } = props;
+  // Strip styling-only props so they don't leak onto the rendered DOM node.
+  ['align', 'color', 'display', 'gutterBottom', 'noWrap', 'classes', 'variantMapping']
+    .forEach((prop) => { delete rest[prop]; });
+  const Component = component || (paragraph ? 'p' : typographyVariantMapping[variant]) || 'span';
+  return jest.requireActual('react').createElement(Component, rest, children);
+};
+export const Badge = (props) => {
+  const {
+    // eslint-disable-next-line react/prop-types
+    count, max, showCount = true, ...rest
+  } = props;
+  if (!count) {
+    return null;
+  }
+  const label = max !== null && max !== undefined && count > max ? `${max}+` : `${count}`;
+  // Strip styling-only props so they don't leak onto the rendered DOM node.
+  ['style'].forEach((prop) => { delete rest[prop]; });
+  return jest.requireActual('react').createElement('div', rest, showCount ? label : '');
+};
 export const SheetDrawer = UISharedSheet;
 export const SheetList = ({ children }) => children;
 SheetList.Item = () => null;

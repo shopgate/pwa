@@ -2,12 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: '20px',
   },
-});
+}));
 
 /**
  * Review Title Component.

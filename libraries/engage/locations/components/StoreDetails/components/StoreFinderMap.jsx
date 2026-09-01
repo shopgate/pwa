@@ -16,7 +16,7 @@ import { historyPush } from '@shopgate/engage/core';
 import { MAP_RADIUS_KM } from '../../../constants';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     height: '100%',
     width: '100%',
@@ -25,11 +25,11 @@ const useStyles = makeStyles()({
     ' svg': {
       height: 40,
       width: 40,
-      fontSize: '1.5rem',
-      color: 'var(--color-primary)',
+      fontSize: theme.components.icon.medium,
+      color: theme.palette.primary.main,
     },
   },
-});
+}));
 
 Leaflet.Map.addInitHook('addHandler', 'gestureHandling', GestureHandling);
 

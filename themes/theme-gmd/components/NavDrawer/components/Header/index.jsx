@@ -18,11 +18,11 @@ const ellipsis = {
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    color: 'var(--color-secondary-contrast)',
+    color: theme.palette.secondary.contrastText,
     marginBottom: 4,
   },
   loggedIn: {
-    background: 'var(--color-secondary)',
+    background: theme.palette.secondary.main,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
@@ -48,17 +48,17 @@ const useStyles = makeStyles()(theme => ({
 const NavDrawerHeader = ({
   isLoggedIn, email, name, openLogin,
 }) => {
-  const { classes, cx } = useStyles();
+  const { classes, cx, theme } = useStyles();
 
   if (!isLoggedIn) {
     return (
       <NavDrawer.Item
-        icon={props => <AccountBoxIcon color="var(--color-primary-contrast)" {...props} />}
+        icon={props => <AccountBoxIcon color={theme.palette.primary.contrastText} {...props} />}
         label="navigation.login_register"
         onClick={openLogin}
         style={{
-          background: 'var(--color-primary)',
-          color: 'var(--color-primary-contrast)',
+          background: theme.palette.primary.main,
+          color: theme.palette.primary.contrastText,
         }}
         testId="navDrawerLoginButton"
       />

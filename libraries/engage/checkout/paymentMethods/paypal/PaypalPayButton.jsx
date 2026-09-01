@@ -8,19 +8,17 @@ import {
   getThemeSettings, showModal, MODAL_PIPELINE_ERROR,
 } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
+import { Typography } from '@shopgate/engage/components';
 import { i18n } from '../../../core/helpers/i18n';
 import { useCheckoutContext } from '../../hooks/common';
 import { usePaypal } from './sdk';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   headline: {
-    fontSize: '1.25rem',
-    fontWeight: 'normal',
     margin: '12px 0 12px 0',
-    color: theme.palette.text.primary,
     textTransform: 'none',
   },
-}));
+});
 
 /**
  * Paypal Pay button
@@ -119,7 +117,9 @@ const PaypalPayButton = ({
 
   return (
     <>
-      <h3 className={classes.headline}>{i18n.text('checkout.finalizePayment')}</h3>
+      <Typography variant="h3" color="textPrimary" fontWeight="regular" className={classes.headline}>
+        {i18n.text('checkout.finalizePayment')}
+      </Typography>
       <div ref={button} />
     </>
   );

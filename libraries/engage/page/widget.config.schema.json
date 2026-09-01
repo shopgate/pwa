@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Widget configuration",
+  "description": "Declares how the page builder treats a widget. The file lives next to the widget implementation and is read at build time, so its values are known before the widget itself is loaded.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path or url of this schema. Enables autocompletion and validation in the editor."
+    },
+    "layout": {
+      "type": "object",
+      "description": "How the container that the page builder renders around the widget behaves.",
+      "additionalProperties": false,
+      "properties": {
+        "applyMediaMargins": {
+          "description": "On which sides the widget gets the media widget margins that merchants configure in the theme settings. Margins configured for a single widget instance in the page builder always win. Widgets that bring their own spacing should leave this out.",
+          "default": false,
+          "oneOf": [
+            {
+              "type": "boolean",
+              "description": "true applies the media widget margins to all four sides, false to none."
+            },
+            {
+              "type": "object",
+              "description": "Opts in per side. An omitted side does not get the margin.",
+              "additionalProperties": false,
+              "minProperties": 1,
+              "properties": {
+                "top": {
+                  "type": "boolean",
+                  "description": "Whether the widget gets the media widget margin above it."
+                },
+                "bottom": {
+                  "type": "boolean",
+                  "description": "Whether the widget gets the media widget margin below it."
+                },
+                "left": {
+                  "type": "boolean",
+                  "description": "Whether the widget gets the media widget margin on its left. Widgets that are meant to touch the screen edges leave this out."
+                },
+                "right": {
+                  "type": "boolean",
+                  "description": "Whether the widget gets the media widget margin on its right. Widgets that are meant to touch the screen edges leave this out."
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

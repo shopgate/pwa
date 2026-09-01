@@ -7,10 +7,7 @@ import {
   SEARCH_SUGGESTION_ITEM_CONTENT,
 } from '@shopgate/engage/search/constants';
 import { withStyles, cx } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
-
-const { colors } = themeConfig;
 
 /**
  * The SuggestionList component.
@@ -126,15 +123,15 @@ class SuggestionList extends Component {
 
 const StyledSuggestionList = withStyles(SuggestionList, (theme, { bottomHeight = 0 }) => ({
   list: {
-    fontSize: 16,
-    fontWeight: 400,
+    fontSize: theme.typography.body1.fontSize,
+    fontWeight: theme.typography.fontWeightRegular,
     marginTop: 4,
     bottom: 0,
     position: 'absolute',
     left: 0,
     right: 0,
     top: 120,
-    backgroundColor: colors.light,
+    backgroundColor: theme.palette.background.surface,
     overflowY: 'scroll',
     zIndex: 3,
     paddingTop: 5,
@@ -144,7 +141,7 @@ const StyledSuggestionList = withStyles(SuggestionList, (theme, { bottomHeight =
   },
   item: {
     alignItems: 'center',
-    background: colors.light,
+    background: theme.palette.background.surface,
     display: 'flex',
     marginTop: 2,
     outline: 0,

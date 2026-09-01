@@ -26,7 +26,7 @@ exports[`<Sheet /> should open 1`] = `
     contentRef={
       {
         "current": <div
-          class="sg-12f1i2r-content"
+          class="sg-19voeta-content"
         >
           <div>
             Test
@@ -58,7 +58,7 @@ exports[`<Sheet /> should open 1`] = `
             "out": "sg-1uynekm-drawerAnimOut",
           }
         }
-        className="sg-omro4t-container"
+        className="sg-1us1dh1-container"
         isOpen={true}
         onClose={[Function]}
         onDidClose={[Function]}
@@ -67,7 +67,7 @@ exports[`<Sheet /> should open 1`] = `
       >
         <div
           aria-modal={true}
-          className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
+          className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
           onAnimationEnd={[Function]}
           role="dialog"
           style={
@@ -98,13 +98,13 @@ exports[`<Sheet /> should open 1`] = `
                 >
                   <button
                     aria-label="common.close"
-                    className="sg-cb4y3g-closeButton"
+                    className="sg-nop4m7-closeButton"
                     onClick={[Function]}
                     type="button"
                   >
                     <Ripple
                       className="sg-8ivrra-closeIcon"
-                      color="#000"
+                      color="var(--sg-palette-common-black)"
                       disabled={false}
                       fill={false}
                       onClick={[Function]}
@@ -152,7 +152,7 @@ exports[`<Sheet /> should open 1`] = `
                     </Ripple>
                   </button>
                   <GridItem
-                    className="sg-1gh7dpa-title"
+                    className="sg-1ff2avy-title"
                     component="div"
                     grow={1}
                     role="heading"
@@ -160,11 +160,22 @@ exports[`<Sheet /> should open 1`] = `
                     tabIndex={0}
                   >
                     <div
-                      className="sg-1yim49x-root-title"
+                      className="sg-12wzbts-root-title"
                       role="heading"
                       tabIndex={0}
                     >
-                      Test-Title
+                      <ForwardRef(Typography)
+                        className="sg-9uf2sj-titleText"
+                        component="div"
+                        noWrap={true}
+                        variant="h3"
+                      >
+                        <div
+                          className="engage__typography engage__typography_h3 sg-10s498a-Typography-root-Typography-h3-Typography-noWrap-titleText"
+                        >
+                          Test-Title
+                        </div>
+                      </ForwardRef(Typography)>
                     </div>
                   </GridItem>
                 </div>
@@ -196,15 +207,7 @@ exports[`<Sheet /> should open 1`] = `
                   className="ui-shared__progress-bar"
                   style={
                     {
-                      "background": {
-                        "color": [
-                          92,
-                          206,
-                          227,
-                        ],
-                        "model": "rgb",
-                        "valpha": 0.4,
-                      },
+                      "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                       "bottom": 0,
                       "height": 4,
                       "overflow": "hidden",
@@ -217,14 +220,14 @@ exports[`<Sheet /> should open 1`] = `
                   }
                 >
                   <div
-                    className="sg-hmfbp5-innerElement"
+                    className="sg-1cn0v06-innerElement"
                   />
                 </div>
               </Transition>
             </ProgressBar>
           </div>
           <div
-            className="sg-12f1i2r-content"
+            className="sg-19voeta-content"
             onScroll={[Function]}
           >
             <div
@@ -237,7 +240,7 @@ exports[`<Sheet /> should open 1`] = `
       </Drawer>
       <Backdrop
         className=""
-        color="#000"
+        color="var(--sg-palette-common-black)"
         duration={200}
         isVisible={true}
         level={4}
@@ -257,7 +260,7 @@ exports[`<Sheet /> should open 1`] = `
                 aria-hidden="true"
                 class="sg-1tlnanp-backdrop  common__backdrop"
                 data-test-id="Backdrop"
-                style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
               />,
             }
           }
@@ -277,7 +280,7 @@ exports[`<Sheet /> should open 1`] = `
             onClick={[Function]}
             style={
               {
-                "background": "#000",
+                "background": "var(--sg-palette-common-black)",
                 "opacity": 0.2,
                 "pointerEvents": "auto",
                 "transition": "opacity 200ms ease-out",
@@ -422,7 +425,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
     contentRef={
       {
         "current": <div
-          class="sg-12f1i2r-content"
+          class="sg-19voeta-content"
         >
           <div>
             Test
@@ -454,7 +457,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             "out": "sg-1uynekm-drawerAnimOut",
           }
         }
-        className="sg-omro4t-container"
+        className="sg-1us1dh1-container"
         isOpen={false}
         onClose={[Function]}
         onDidClose={[Function]}
@@ -463,7 +466,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       >
         <div
           aria-modal={true}
-          className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
+          className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
           onAnimationEnd={[Function]}
           role="dialog"
           style={
@@ -494,13 +497,13 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                 >
                   <button
                     aria-label="common.close"
-                    className="sg-cb4y3g-closeButton"
+                    className="sg-nop4m7-closeButton"
                     onClick={[Function]}
                     type="button"
                   >
                     <Ripple
                       className="sg-8ivrra-closeIcon"
-                      color="#000"
+                      color="var(--sg-palette-common-black)"
                       disabled={false}
                       fill={false}
                       onClick={[Function]}
@@ -548,7 +551,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                     </Ripple>
                   </button>
                   <GridItem
-                    className="sg-1gh7dpa-title"
+                    className="sg-1ff2avy-title"
                     component="div"
                     grow={1}
                     role="heading"
@@ -556,11 +559,22 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                     tabIndex={0}
                   >
                     <div
-                      className="sg-1yim49x-root-title"
+                      className="sg-12wzbts-root-title"
                       role="heading"
                       tabIndex={0}
                     >
-                      Test-Title
+                      <ForwardRef(Typography)
+                        className="sg-9uf2sj-titleText"
+                        component="div"
+                        noWrap={true}
+                        variant="h3"
+                      >
+                        <div
+                          className="engage__typography engage__typography_h3 sg-10s498a-Typography-root-Typography-h3-Typography-noWrap-titleText"
+                        >
+                          Test-Title
+                        </div>
+                      </ForwardRef(Typography)>
                     </div>
                   </GridItem>
                 </div>
@@ -592,15 +606,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   className="ui-shared__progress-bar"
                   style={
                     {
-                      "background": {
-                        "color": [
-                          92,
-                          206,
-                          227,
-                        ],
-                        "model": "rgb",
-                        "valpha": 0.4,
-                      },
+                      "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                       "bottom": 0,
                       "height": 4,
                       "overflow": "hidden",
@@ -613,14 +619,14 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
                   }
                 >
                   <div
-                    className="sg-hmfbp5-innerElement"
+                    className="sg-1cn0v06-innerElement"
                   />
                 </div>
               </Transition>
             </ProgressBar>
           </div>
           <div
-            className="sg-12f1i2r-content"
+            className="sg-19voeta-content"
             onScroll={[Function]}
           >
             <div
@@ -633,7 +639,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
       </Drawer>
       <Backdrop
         className=""
-        color="#000"
+        color="var(--sg-palette-common-black)"
         duration={200}
         isVisible={false}
         level={4}
@@ -668,7 +674,7 @@ exports[`<Sheet /> should trigger onClose callback and close the Sheet 1`] = `
             onClick={[Function]}
             style={
               {
-                "background": "#000",
+                "background": "var(--sg-palette-common-black)",
                 "opacity": 0,
                 "pointerEvents": "none",
                 "transition": "opacity 200ms ease-out",

@@ -34,8 +34,8 @@
     "test:short": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
-    "lint": "eslint --quiet --ignore-pattern extensions --ext .js --ext .jsx --ext .json .",
-    "lint:summary": "eslint --ignore-pattern extensions --ext .js --ext .jsx --ext .json . -f summary",
+    "lint": "eslint --quiet --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json .",
+    "lint:summary": "eslint --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json . -f summary",
     "release": "make release",
     "e2e:gmd": "make e2e-gmd",
     "e2e:ios11": "make e2e-ios11",
@@ -50,12 +50,12 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx,json}": "eslint"
+    "*.{js,jsx,ts,tsx,json}": "eslint"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
-    "@types/react": "^17.0.39",
-    "baseline-browser-mapping": "^2.10.23",
+    "@types/react": "^17.0.93",
+    "baseline-browser-mapping": "^2.10.42",
     "detector": "^2.5.0",
     "eslint": "^8.57.1",
     "eslint-formatter-summary": "^1.1.0",
@@ -72,12 +72,12 @@
     "yargs": "^11.0.0"
   },
   "dependencies": {
-    "@babel/cli": "^7.28.6",
-    "@babel/core": "^7.28.6",
-    "@babel/plugin-transform-runtime": "^7.28.5",
-    "@babel/preset-env": "^7.28.6",
-    "@babel/preset-react": "^7.28.5",
-    "@babel/runtime": "^7.28.6",
+    "@babel/cli": "^7.29.7",
+    "@babel/core": "^7.29.7",
+    "@babel/plugin-transform-runtime": "^7.29.7",
+    "@babel/preset-env": "^7.29.7",
+    "@babel/preset-react": "^7.29.7",
+    "@babel/runtime": "^7.29.7",
     "@sigmacomputing/babel-plugin-lodash": "3.3.5",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",

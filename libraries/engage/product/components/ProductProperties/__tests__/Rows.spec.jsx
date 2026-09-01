@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen, within } from '@testing-library/react';
 import Rows from '../Rows';
 
 jest.mock('@shopgate/engage/components');
@@ -21,8 +21,16 @@ const properties = [
 
 describe('<Rows />', () => {
   it('should render three rows of properties', () => {
-    const wrapper = shallow(<Rows properties={properties} />);
-    expect(wrapper.find('Row').length).toEqual(3);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<table><tbody><Rows properties={properties} /></tbody></table>);
+
+    const rows = screen.getAllByRole('row');
+    expect(rows).toHaveLength(3);
+
+    rows.forEach((row, index) => {
+      expect(within(row).getByText(properties[index].label)).toBeTruthy();
+      expect(within(row).getByText(properties[index].value)).toBeTruthy();
+    });
+
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

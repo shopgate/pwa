@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { svgToDataUrl } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -22,11 +22,9 @@ const useStyles = makeStyles()(theme => ({
   },
   icon: {
     width: 216,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
   headline: {
-    fontSize: '1.25rem',
-    fontWeight: 500,
     marginTop: 30,
   },
   text: {
@@ -46,16 +44,16 @@ const NoResults = (props) => {
 
   return (
     <div
-      className={cx(classes.wrapper, props.className, ' ui-shared__no-results')}
+      className={cx(classes.wrapper, props.className, 'ui-shared__no-results')}
       data-test-id="noResults"
     >
       <div className={cx(classes.icon, 'no-results__image')}>
         {noResultsImage ? <img src={imageSRC} alt="" /> : <Icon />}
       </div>
       <div role="alert" aria-atomic="true">
-        <div className={classes.headline}>
+        <Typography variant="h3" component="div" className={classes.headline}>
           <I18n.Text string={props.headlineText} params={props} />
-        </div>
+        </Typography>
         <div className={classes.text}>
           <I18n.Text string={props.bodyText} params={props} />
         </div>

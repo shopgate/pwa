@@ -4,8 +4,6 @@ import BaseButton from '@shopgate/pwa-common/components/Button';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const { colors } = themeConfig;
-
 const buttonTypes = [
   'plain',
   'regular',
@@ -17,9 +15,10 @@ const buttonTypes = [
 /**
  * @param {string} text Text color.
  * @param {string|null} background Fill color.
+ * @param {Object} theme Theme with button border radius.
  * @returns {Object} JSS for root button.
  */
-const baseButton = (text, background) => ({
+const baseButton = (text, background, theme) => ({
   position: 'relative',
   display: 'inline-block',
   outline: 0,
@@ -31,6 +30,8 @@ const baseButton = (text, background) => ({
     cursor: 'not-allowed',
   },
   ...themeConfig.variables.buttonBase,
+  borderRadius: theme.components.button.borderRadius,
+  ...theme.typography.button,
 });
 
 /**
@@ -40,7 +41,7 @@ const baseButton = (text, background) => ({
  * @returns {Object} Object with `button` and `content` style maps.
  */
 const pairFromColors = (textColor, fillColor, theme) => ({
-  button: baseButton(textColor, fillColor),
+  button: baseButton(textColor, fillColor, theme),
   content: {
     padding: theme.spacing(0, 2, 0),
     color: textColor,
@@ -61,40 +62,50 @@ const useStyles = makeStyles()((theme, { type, flat, disabled }) => {
 
   if (type === 'simple') {
     return disabled
-      ? pairFromColors(themeConfig.colors.shade4, themeConfig.colors.shade7, theme)
-      : pairFromColors(themeConfig.colors.dark, themeConfig.colors.shade7, theme);
+      ? pairFromColors(
+        theme.palette.action.disabled, theme.palette.action.disabledBackground, theme
+      )
+      : pairFromColors(theme.palette.common.black, theme.palette.grey.light, theme);
   }
 
   if (type === 'regular') {
     return disabled
-      ? pairFromColors(colors.shade4, null, theme)
-      : pairFromColors(colors.dark, null, theme);
+      ? pairFromColors(theme.palette.action.disabled, null, theme)
+      : pairFromColors(theme.palette.common.black, null, theme);
   }
 
   if (type === 'secondary') {
     if (!flat) {
       return disabled
-        ? pairFromColors(colors.shade4, colors.shade7, theme)
-        : pairFromColors('var(--color-primary-contrast)', 'var(--color-primary)', theme);
+        ? pairFromColors(
+          theme.palette.action.disabled, theme.palette.action.disabledBackground, theme
+        )
+        : pairFromColors(theme.palette.primary.contrastText, theme.palette.primary.main, theme);
     }
     return disabled
-      ? pairFromColors(colors.shade4, null, theme)
-      : pairFromColors('var(--color-primary)', null, theme);
+      ? pairFromColors(theme.palette.action.disabled, null, theme)
+      : pairFromColors(theme.palette.primary.main, null, theme);
   }
 
   if (!flat) {
     return disabled
-      ? pairFromColors(colors.shade4, colors.shade7, theme)
-      : pairFromColors('var(--color-secondary-contrast)', 'var(--color-secondary)', theme);
+      ? pairFromColors(
+        theme.palette.action.disabled, theme.palette.action.disabledBackground, theme
+      )
+      : pairFromColors(theme.palette.secondary.contrastText, theme.palette.secondary.main, theme);
   }
 
   return disabled
-    ? pairFromColors(colors.shade4, null, theme)
-    : pairFromColors('var(--color-secondary)', null, theme);
+    ? pairFromColors(theme.palette.action.disabled, null, theme)
+    : pairFromColors(theme.palette.secondary.main, null, theme);
 });
 
 /**
  * The basic button component.
+ * @deprecated Use `Button` from `@shopgate/engage/components/v2` instead. Map `flat` to
+ * `variant="text"` and omit it for `variant="contained"`. The colors are named differently:
+ * `type="secondary"` becomes `color="primary"`, while `type="primary"` and the default become
+ * `color="secondary"`. `type="plain"` is unstyled — use `ButtonBase` for it.
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */

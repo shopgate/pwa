@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { Ripple, CrossIcon } from '@shopgate/engage/components';
+import { Ripple, CrossIcon, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'row',
@@ -16,29 +16,28 @@ const useStyles = makeStyles()({
   },
   title: {
     flex: 1,
-    fontSize: '1.25rem',
   },
   closeButton: {
-    fontSize: 21,
+    fontSize: theme.components.icon.small,
     marginRight: 12,
     cursor: 'pointer',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
   actionButton: {
     cursor: 'pointer',
     marginLeft: 16,
-    color: 'var(--color-primary)',
-    fontWeight: '600',
+    color: theme.palette.primary.main,
+    fontWeight: theme.typography.fontWeightBold,
     padding: 8,
   },
   actionButtonSecondary: {
     cursor: 'pointer',
     marginLeft: 16,
-    color: 'var(--color-primary)',
-    fontWeight: '500',
+    color: theme.palette.primary.main,
+    fontWeight: theme.typography.fontWeightMedium,
     padding: 8,
   },
-});
+}));
 
 /**
  * Filter Modal Title
@@ -53,9 +52,9 @@ const FilterModalTitle = ({ apply, reset, close }) => {
       <Ripple onClick={close} className={classes.closeButton}>
         <CrossIcon />
       </Ripple>
-      <span className={classes.title}>
+      <Typography variant="h3" component="span" className={classes.title}>
         {i18n.text('titles.filter')}
-      </span>
+      </Typography>
       <Ripple fill className={classes.actionButtonSecondary} onClick={reset}>
         {i18n.text('filter.reset')}
       </Ripple>

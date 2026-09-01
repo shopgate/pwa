@@ -1,18 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '../../../core';
 import { RadioGroupItem } from '../../../components';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   radioItem: {
     display: 'flex',
     alignItems: 'center',
     padding: theme.spacing(2, 0),
-    boxShadow: `0 1px 0 ${colors.darkGray}`,
+    boxShadow: `0 1px 0 ${theme.components.border.light}`,
   },
   itemLabel: {
     display: 'flex',
@@ -23,8 +20,6 @@ const useStyles = makeStyles()(theme => ({
   },
   radioGroupLabel: {
     flex: 1,
-    fontSize: '1rem',
-    lineHeight: 1.5,
     marginLeft: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },

@@ -11,7 +11,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import Label from './components/Label';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   placeholder: {
     height: 16,
     width: '70%',
@@ -19,9 +19,9 @@ const useStyles = makeStyles()({
     marginBottom: 2,
   },
   shipping: {
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
   },
-});
+}));
 
 /**
  * The Shipping Info component.

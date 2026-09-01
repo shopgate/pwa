@@ -15,7 +15,7 @@
     "connect"
   ],
   "dependencies": {
-    "immer": "^11.1.3",
+    "immer": "^11.1.11",
     "react-cookie": "^4.0.3",
     "reselect": "^4.1.8"
   },

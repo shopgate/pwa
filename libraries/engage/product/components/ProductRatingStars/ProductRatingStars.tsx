@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { RatingStars } from '@shopgate/engage/components';
-import { useWidgetSettings } from '@shopgate/engage/core/hooks';
+import useShowEmptyRatingStars from '../../hooks/useShowEmptyRatingStars';
 
 const { hasReviews } = appConfig as { hasReviews: boolean };
 
@@ -38,7 +38,7 @@ const ProductRatingStars = ({
     // @ts-expect-error - getProductRating is not typed yet
     getProductRating(state, { productId })) as RatingState['rating'];
 
-  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating') as { showEmptyRatingStars: boolean };
+  const showEmptyRatingStars = useShowEmptyRatingStars();
 
   const showRatings = useMemo(() => {
     if (hasReviews && (rating?.average ?? 0) > 0) {

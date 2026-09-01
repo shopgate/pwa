@@ -11,12 +11,12 @@ const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     flexFlow: 'row nowrap',
-    color: 'var(--color-text-medium-emphasis)',
+    color: theme.palette.text.secondary,
     marginBottom: 4,
   },
   addressIcon: {
-    color: 'var(--color-text-medium-emphasis)',
-    fontSize: '1.4rem',
+    color: theme.palette.text.secondary,
+    fontSize: theme.components.icon.medium,
     padding: theme.spacing(0.5, 2, 0, 0),
   },
   stockInfoContainer: {

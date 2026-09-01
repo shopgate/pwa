@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { ConnectedReactPortal } from '@shopgate/engage/components';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Position from './components/Position';
 import Item from './components/Item';
 
@@ -24,9 +23,9 @@ const useStyles = makeStyles()(theme => ({
     left: 0,
     padding: theme.spacing(1, 0),
     minWidth: 130,
-    background: themeConfig.colors.light,
+    background: theme.palette.background.surface,
     borderRadius: 2,
-    boxShadow: themeConfig.shadows.contextMenu,
+    boxShadow: '0 2px 6px rgba(0, 0, 0, .4)',
   },
 }));
 
@@ -60,7 +59,7 @@ const Menu = ({
       top: 0,
       left: 0,
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isOpen]);
 
   return (
@@ -96,7 +95,7 @@ Menu.defaultProps = {
   children: null,
   contextRef: null,
   isOpen: false,
-  onClose: () => {},
+  onClose: () => { },
 };
 
 export default Menu;

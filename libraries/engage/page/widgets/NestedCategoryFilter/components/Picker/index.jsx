@@ -4,17 +4,15 @@ import React, {
 import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCategoryOrRootCategories } from '@shopgate/engage/category';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core/helpers';
 import Sheet from './components/Sheet';
 import { getCategoriesById } from '../../../CategoryList/selectors';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   button: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     color: theme.palette.text.primary,
     display: 'flex',
     flexDirection: 'column',
@@ -27,16 +25,15 @@ const useStyles = makeStyles()(theme => ({
     cursor: 'pointer',
   },
   buttonDisabled: {
-    color: colors.shade4,
+    color: theme.palette.grey.medium,
     cursor: 'not-allowed',
   },
   label: {
-    fontSize: 12,
     marginTop: -2,
     marginBottom: 4,
   },
   selection: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.125,
   },
 }));
@@ -110,7 +107,11 @@ const CategoryPicker = ({
           { [classes.buttonDisabled]: disabled },
           'widget__nested-category-filter__category-picker')}
       >
-        {label && <div className={classes.label}>{label}</div>}
+        {label && (
+        <Typography variant="caption" component="div" className={classes.label}>
+          {label}
+        </Typography>
+        )}
         <div className={classes.selection}>{buttonLabel}</div>
       </div>
       <Sheet

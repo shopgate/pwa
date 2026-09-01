@@ -1,7 +1,4 @@
 import { css } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
 
 const responsiveContainer = css({
   position: 'relative',
@@ -30,21 +27,20 @@ const consentContainer = css({
   justifyContent: 'center',
   textAlign: 'center',
   gap: 16,
-  background: colors.shade10,
-  border: `1px solid ${colors.shade5}`,
-  // Add a tiny little border radius to make the message container look nice with padding
+  background: 'var(--sg-palette-grey-light)',
+  border: '1px solid var(--sg-components-border-medium)',
   borderRadius: 4,
   top: 0,
 });
 
 const consentLink = css({
   textAlign: 'center',
-  color: colors.primary,
+  color: 'var(--sg-palette-primary-main)',
   fontWeight: 500,
 }).toString();
 
 const consentIcon = css({
-  fill: colors.shade5,
+  fill: 'var(--sg-palette-grey-medium)',
   height: 40,
 });
 

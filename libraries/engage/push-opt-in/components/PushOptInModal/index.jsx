@@ -3,24 +3,23 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  Grid, I18n, Button, Modal,
+  Grid, I18n, Modal, Typography,
 } from '@shopgate/engage/components';
-import { appConfig, themeConfig } from '@shopgate/engage';
+import { Button, ButtonBase } from '@shopgate/engage/components/v2';
+import { appConfig } from '@shopgate/engage';
 import pushImage from './push-opt-in.svg';
 import connect from './connector';
 import { svgToDataUrl } from '../../../core';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   modalContent: {
     width: '100%',
   },
   modalLayout: {
-    backgroundColor: colors.lightOverlay,
+    backgroundColor: theme.palette.background.surface,
   },
   container: {
-    backgroundColor: colors.lightOverlay,
+    backgroundColor: theme.palette.background.surface,
     textAlign: 'center',
     padding: '30px',
     justifyContent: 'center',
@@ -28,8 +27,6 @@ const useStyles = makeStyles()(() => ({
     flexDirection: 'column',
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: '1.35rem',
     paddingTop: '30px',
     paddingBottom: '30px',
   },
@@ -46,7 +43,7 @@ const useStyles = makeStyles()(() => ({
     marginTop: '30px',
   },
   buttonText: {
-    color: colors.gray,
+    color: theme.palette.text.secondary,
   },
 }));
 
@@ -120,22 +117,35 @@ const PushOptInModal = ({
       >
         <Grid.Item className={classes.item}>
           <img src={imageSRC} className={cx(classes.image, 'push-opt-in-modal__image')} alt="" aria-hidden="true" />
-          <I18n.Text
+          <Typography
+            variant="h3"
+            component="div"
+            fontWeight="bold"
             className={cx(classes.title, 'push-opt-in-modal__title')}
-            string={modalTitle || 'pushOptInModal.title'}
-            id="pushOptInDialogTitle"
-          />
+          >
+            <I18n.Text
+              string={modalTitle || 'pushOptInModal.title'}
+              id="pushOptInDialogTitle"
+            />
+          </Typography>
           <I18n.Text
             className={cx('push-opt-in-modal__message')}
             string={modalMessage || 'pushOptInModal.message'}
             id="pushOptInDialogMessage"
           />
-          <Button onClick={handleAllowPushOptIn} type="primary" className={cx(classes.button, 'push-opt-in-modal__button-allow')}>
+          <Button
+            onClick={handleAllowPushOptIn}
+            color="secondary"
+            className={cx(classes.button, 'push-opt-in-modal__button-allow')}
+          >
             <I18n.Text string={modalButtonAllow || 'pushOptInModal.buttonAllow'} />
           </Button>
-          <Button onClick={handleDenyPushOptIn} type="plain" className={cx(classes.button, 'push-opt-in-modal__button-deny')}>
+          <ButtonBase
+            onClick={handleDenyPushOptIn}
+            className={cx(classes.button, 'push-opt-in-modal__button-deny')}
+          >
             <I18n.Text string={modalButtonDeny || 'pushOptInModal.buttonDeny'} className={classes.buttonText} />
-          </Button>
+          </ButtonBase>
         </Grid.Item>
       </Grid>
     </Modal>

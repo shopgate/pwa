@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   label: {
-    background: themeConfig.colors.dark,
+    background: theme.palette.common.black,
     opacity: 0.1,
     width: '100%',
     height: 16,

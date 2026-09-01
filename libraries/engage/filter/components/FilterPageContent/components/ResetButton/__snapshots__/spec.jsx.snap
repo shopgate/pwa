@@ -10,26 +10,23 @@ exports[`Filter: <ResetButton /> should handle clicks 1`] = `
     }
   }
 >
-  <div
-    className="sg-e8nrsd-buttonContainer"
+  <Button
+    disabled={false}
+    fullWidth={true}
+    onClick={[MockFunction]}
+    size="small"
+    testId="clearAllButton"
+    variant="outlined"
   >
-    <Button
-      disabled={false}
-      flat={true}
-      onClick={[MockFunction]}
-      testId="clearAllButton"
-      type="primary"
-    >
-      <Text
-        acceptPlainTextWithPlaceholders={false}
-        className={null}
-        params={{}}
-        role={null}
-        string="filter.reset"
-        transform={null}
-      />
-    </Button>
-  </div>
+    <Text
+      acceptPlainTextWithPlaceholders={false}
+      className={null}
+      params={{}}
+      role={null}
+      string="filter.clear_all"
+      transform={null}
+    />
+  </Button>
 </SurroundPortals>
 `;
 
@@ -43,26 +40,23 @@ exports[`Filter: <ResetButton /> should render as activated 1`] = `
     }
   }
 >
-  <div
-    className="sg-e8nrsd-buttonContainer"
+  <Button
+    disabled={false}
+    fullWidth={true}
+    onClick={[Function]}
+    size="small"
+    testId="clearAllButton"
+    variant="outlined"
   >
-    <Button
-      disabled={false}
-      flat={true}
-      onClick={[Function]}
-      testId="clearAllButton"
-      type="primary"
-    >
-      <Text
-        acceptPlainTextWithPlaceholders={false}
-        className={null}
-        params={{}}
-        role={null}
-        string="filter.reset"
-        transform={null}
-      />
-    </Button>
-  </div>
+    <Text
+      acceptPlainTextWithPlaceholders={false}
+      className={null}
+      params={{}}
+      role={null}
+      string="filter.clear_all"
+      transform={null}
+    />
+  </Button>
 </SurroundPortals>
 `;
 
@@ -76,25 +70,22 @@ exports[`Filter: <ResetButton /> should render as deactivated 1`] = `
     }
   }
 >
-  <div
-    className="sg-e8nrsd-buttonContainer"
+  <Button
+    disabled={true}
+    fullWidth={true}
+    onClick={[Function]}
+    size="small"
+    testId="clearAllButton"
+    variant="outlined"
   >
-    <Button
-      disabled={true}
-      flat={true}
-      onClick={[Function]}
-      testId="clearAllButton"
-      type="primary"
-    >
-      <Text
-        acceptPlainTextWithPlaceholders={false}
-        className={null}
-        params={{}}
-        role={null}
-        string="filter.reset"
-        transform={null}
-      />
-    </Button>
-  </div>
+    <Text
+      acceptPlainTextWithPlaceholders={false}
+      className={null}
+      params={{}}
+      role={null}
+      string="filter.clear_all"
+      transform={null}
+    />
+  </Button>
 </SurroundPortals>
 `;

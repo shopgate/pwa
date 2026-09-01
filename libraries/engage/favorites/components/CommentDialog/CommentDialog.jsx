@@ -10,6 +10,7 @@ import {
   Dialog,
   TextField,
   I18n,
+  Typography,
 } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import {
@@ -39,22 +40,19 @@ const mapDispatchToProps = dispatch => ({
   },
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
   },
   input: {
     textAlign: 'left',
-    fontSize: '1rem',
+    fontSize: theme.typography.body1.fontSize,
   },
   characterCount: {
-    textAlign: 'right',
     marginTop: -16,
-    fontSize: '0.875rem',
-    color: 'var(--color-text-medium-emphasis)',
   },
-});
+}));
 
 const MAX_CHARACTER_COUNT = 250;
 
@@ -153,15 +151,16 @@ const CommentDialog = ({
           multiLine
           tabIndex={0}
         />
-        <I18n.Text
-          className={classes.characterCount}
-          string="favorites.comment_modal.characterCount"
-          aria-hidden
-          params={{
-            maxCount: MAX_CHARACTER_COUNT,
-            count: value?.length || 0,
-          }}
-        />
+        <Typography variant="body2" color="textSecondary" align="right" className={classes.characterCount}>
+          <I18n.Text
+            string="favorites.comment_modal.characterCount"
+            aria-hidden
+            params={{
+              maxCount: MAX_CHARACTER_COUNT,
+              count: value?.length || 0,
+            }}
+          />
+        </Typography>
       </div>
     </Dialog>
   );

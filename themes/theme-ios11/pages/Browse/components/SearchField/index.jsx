@@ -26,14 +26,13 @@ import {
 } from '@shopgate/engage/components';
 import { SCANNER_ICON } from '@shopgate/engage/scanner/constants';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import TabBar from 'Components/TabBar';
 import SuggestionList from './components/SuggestionList';
 import connect from './connector';
 
 const SUGGESTIONS_MIN = 1;
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     position: 'relative',
@@ -42,6 +41,7 @@ const useStyles = makeStyles()(() => ({
     marginBottom: 4,
     paddingLeft: 16,
     paddingRight: 16,
+    alignItems: 'center',
   },
   inputWrapper: {
     position: 'relative',
@@ -50,10 +50,9 @@ const useStyles = makeStyles()(() => ({
   input: {
     borderRadius: 10,
     width: '100%',
-    padding: '4px 10px 4px 30px',
-    lineHeight: '28px',
+    padding: '9px 10px 9px 30px',
     outline: 'none',
-    background: themeColors.shade7,
+    background: theme.palette.grey.light,
     verticalAlign: 'middle',
     WebkitAppearance: 'none',
   },
@@ -62,9 +61,9 @@ const useStyles = makeStyles()(() => ({
   },
   label: {
     alignItems: 'center',
-    color: themeColors.shade3,
+    color: theme.palette.grey.medium,
     display: 'flex',
-    height: '36px',
+    height: '100%',
     position: 'absolute',
     pointerEvents: 'none',
     width: '100%',
@@ -73,30 +72,32 @@ const useStyles = makeStyles()(() => ({
     display: 'none',
   },
   button: {
-    lineHeight: '34px',
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     paddingTop: 0,
     paddingLeft: 16,
     paddingRight: 0,
     marginLeft: 0,
     marginRight: 0,
-    verticalAlign: 'middle',
     outline: 0,
   },
   icon: {
     padding: '0 6px',
-    color: themeColors.shade11,
-    fontSize: '1.235rem',
+    color: theme.palette.grey.dark,
+    fontSize: theme.components.icon.small,
   },
   scannerIcon: {
     padding: '4px 6px 4px 4px',
-    color: themeColors.shade11,
-    fontSize: '1.7rem',
+    color: theme.palette.grey.dark,
+    fontSize: theme.components.icon.medium,
     position: 'absolute',
     right: 0,
+    top: 0,
+    bottom: 0,
+    display: 'flex',
+    alignItems: 'center',
   },
   overlay: {
-    background: themeColors.darkTransparent,
+    background: 'rgba(0,0,0, 0.4)',
     position: 'absolute',
     left: 0,
     width: '100%',

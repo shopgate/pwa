@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import { applyScrollContainer } from '@shopgate/engage/core/helpers';
 import { RouteContext } from '@shopgate/pwa-common/context';
@@ -8,8 +7,6 @@ import { setPageBackgroundColor } from '../../styles';
 import Content from './components/Content';
 import ViewProvider from './provider';
 import { ViewContext } from './context';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(() => ({
   root: applyScrollContainer() ? {
@@ -83,7 +80,7 @@ ViewContainer.propTypes = {
 
 ViewContainer.defaultProps = {
   'aria-hidden': false,
-  background: colors.light,
+  background: 'var(--sg-palette-background-default)',
   children: null,
   noScrollOnKeyboard: false,
   noContentPortal: false,

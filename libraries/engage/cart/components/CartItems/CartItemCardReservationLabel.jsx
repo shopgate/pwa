@@ -1,10 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { LocationIcon, ResponsiveContainer } from '@shopgate/engage/components';
+import { LocationIcon, ResponsiveContainer, Typography } from '@shopgate/engage/components';
 import { BOPIS, CartItemProductChangeLocation } from '@shopgate/engage/locations';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { useCartItem } from '../CartItem';
 import CartItemCardReservationLabelChangeStore from './CartItemCardReservationLabelChangeStore';
 /** @typedef {import('@shopgate/engage/locations/locations.types').LocationAware} LocationAware */
@@ -15,7 +14,7 @@ const useStyles = makeStyles()(theme => ({
     flexFlow: 'row nowrap',
   },
   addressIcon: {
-    fontSize: '1.25rem',
+    fontSize: theme.components.icon.small,
     marginRight: theme.spacing(2.5),
     flexShrink: 0,
     color: theme.palette.text.primary,
@@ -26,16 +25,12 @@ const useStyles = makeStyles()(theme => ({
     paddingRight: theme.spacing(4),
   },
   name: {
-    fontSize: '0.85rem',
-    fontWeight: 500,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      fontSize: '1.25rem',
-      lineHeight: '1.5rem',
+      fontSize: theme.typography.h3.fontSize,
     },
   },
   method: {
-    fontSize: '0.75rem',
-    color: themeColors.shade11,
+    color: theme.palette.grey.dark,
   },
 }));
 
@@ -60,9 +55,9 @@ export function CartItemCardReservationLabel({ location, fulfillmentMethod }) {
         <LocationIcon />
       </div>
       <div className={classes.titles}>
-        <div className={classes.name}>
+        <Typography variant="body2" component="div" fontWeight="medium" className={classes.name}>
           {location.name}
-        </div>
+        </Typography>
         {isEditable && (
           <ResponsiveContainer webOnly breakpoint=">xs">
             <CartItemCardReservationLabelChangeStore />
@@ -74,9 +69,9 @@ export function CartItemCardReservationLabel({ location, fulfillmentMethod }) {
         )}
 
         <ResponsiveContainer appAlways breakpoint="<=xs">
-          <div className={classes.method}>
+          <Typography variant="caption" component="div" className={classes.method}>
             {i18n.text(`locations.method.${suffix}`)}
-          </div>
+          </Typography>
         </ResponsiveContainer>
       </div>
     </div>

@@ -1,119 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProductProperties /> should not render when an empty list of properties is passed 1`] = `
-<Properties
-  className={null}
-  lineClamp={null}
-  properties={[]}
-/>
-`;
+exports[`<ProductProperties /> should not render when an empty list of properties is passed 1`] = `null`;
 
-exports[`<ProductProperties /> should not render when no properties are passed 1`] = `
-<Properties
-  className={null}
-  lineClamp={null}
-  properties={[]}
-/>
-`;
+exports[`<ProductProperties /> should not render when no properties are passed 1`] = `null`;
 
 exports[`<ProductProperties /> should render as expected when properties are passed 1`] = `
-<Properties
-  className={null}
-  lineClamp={null}
-  properties={
-    [
-      {
-        "label": "Label One",
-        "value": "Value One",
-      },
-      {
-        "label": "Label Two",
-        "value": "Value Two",
-      },
-    ]
-  }
+<ul
+  class="ui-shared__product-properties"
 >
-  <ul
-    className="ui-shared__product-properties"
-  >
-    <li
-      key="Label One-Value One"
-    >
-      Label One: Value One
-    </li>
-    <li
-      key="Label Two-Value Two"
-    >
-      Label Two: Value Two
-    </li>
-  </ul>
-</Properties>
+  <li>
+    Label One: Value One
+  </li>
+  <li>
+    Label Two: Value Two
+  </li>
+</ul>
 `;
 
 exports[`<ProductProperties /> should use the ellipsis component when the lineClamp prop is passed  1`] = `
-<Properties
-  className={null}
-  lineClamp={2}
-  properties={
-    [
-      {
-        "label": "Label One",
-        "value": "Value One",
-      },
-      {
-        "label": "Label Two",
-        "value": "Value Two",
-      },
-    ]
-  }
+<ul
+  class="ui-shared__product-properties"
 >
-  <ul
-    className="ui-shared__product-properties"
-  >
-    <li
-      key="Label One-Value One"
+  <li>
+    <div
+      class=" common__ellipsis"
+      style="overflow: hidden; text-overflow: ellipsis; webkit-box-orient: vertical; display: -webkit-box; webkit-line-clamp: 2;"
     >
-      <Ellipsis
-        className=""
-        rows={2}
-      >
-        <Dotdotdot
-          clamp={2}
-          className=" common__ellipsis"
-          tagName="div"
-          truncationChar="…"
-          useNativeClamp={true}
-        >
-          <div
-            className=" common__ellipsis"
-          >
-            Label One: Value One
-          </div>
-        </Dotdotdot>
-      </Ellipsis>
-    </li>
-    <li
-      key="Label Two-Value Two"
+      Label One: Value One
+    </div>
+  </li>
+  <li>
+    <div
+      class=" common__ellipsis"
+      style="overflow: hidden; text-overflow: ellipsis; webkit-box-orient: vertical; display: -webkit-box; webkit-line-clamp: 2;"
     >
-      <Ellipsis
-        className=""
-        rows={2}
-      >
-        <Dotdotdot
-          clamp={2}
-          className=" common__ellipsis"
-          tagName="div"
-          truncationChar="…"
-          useNativeClamp={true}
-        >
-          <div
-            className=" common__ellipsis"
-          >
-            Label Two: Value Two
-          </div>
-        </Dotdotdot>
-      </Ellipsis>
-    </li>
-  </ul>
-</Properties>
+      Label Two: Value Two
+    </div>
+  </li>
+</ul>
 `;

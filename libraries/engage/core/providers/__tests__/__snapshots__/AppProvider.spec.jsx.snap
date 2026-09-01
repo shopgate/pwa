@@ -1,17 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`engage > core > providers > AppProvider should initialize as expected 1`] = `
-<ContextProvider
-  value={
-    {
-      "appConfig": {
-        "some": "prop",
-      },
-      "isVisible": true,
-      "setIsVisible": [Function],
-    }
-  }
+<pre
+  data-testid="app-context"
 >
-  <MockComponent />
-</ContextProvider>
+  {"appConfig":{"some":"prop"},"isVisible":true,"hasSetIsVisible":true}
+</pre>
 `;

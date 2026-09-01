@@ -8,7 +8,7 @@ import { useWidgetSettings } from '@shopgate/engage/core';
 import ProductBadges from '../ProductBadges';
 import connect from './connector';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   portal: {
     top: 12,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
@@ -24,9 +24,9 @@ const useStyles = makeStyles()(() => ({
     },
   },
   badge: {
-    fontSize: '1.15rem',
+    fontSize: theme.typography.h4.fontSize,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      fontSize: 14,
+      fontSize: theme.typography.body2.fontSize,
     },
   },
 }));

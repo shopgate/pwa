@@ -1,47 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<DiscountBadge /> should render the text 1`] = `
-<div
-  aria-label="cart.discount: foo"
-  className="ui-shared__discount-badge"
-  data-test-id="foo"
-  tabIndex={-1}
->
-  <Text
-    acceptPlainTextWithPlaceholders={false}
-    aria-hidden={true}
-    className="sg-yzhxh7-small theme__discount-badge"
-    params={
-      [
-        null,
-      ]
-    }
-    role={null}
-    string="foo"
-    transform={null}
-  />
-</div>
+<DocumentFragment>
+  <div
+    aria-label="cart.discount: foo"
+    class="ui-shared__discount-badge"
+    data-test-id="foo"
+    tabindex="-1"
+  >
+    <span
+      aria-hidden="true"
+      class="sg-1ysfu9i-small theme__discount-badge"
+      font-weight="bold"
+    >
+      foo
+    </span>
+  </div>
+</DocumentFragment>
 `;
 
 exports[`<DiscountBadge /> should render the text and discount 1`] = `
-<div
-  aria-label="cart.discount: SAVE {0}%"
-  className="ui-shared__discount-badge"
-  data-test-id="SAVE {0}%"
-  tabIndex={-1}
->
-  <Text
-    acceptPlainTextWithPlaceholders={false}
-    aria-hidden={true}
-    className="sg-yzhxh7-small theme__discount-badge"
-    params={
-      [
-        20,
-      ]
-    }
-    role={null}
-    string="SAVE {0}%"
-    transform={null}
-  />
-</div>
+<DocumentFragment>
+  <div
+    aria-label="cart.discount: SAVE {0}%"
+    class="ui-shared__discount-badge"
+    data-test-id="SAVE {0}%"
+    tabindex="-1"
+  >
+    <span
+      aria-hidden="true"
+      class="sg-1ysfu9i-small theme__discount-badge"
+      font-weight="bold"
+    >
+      SAVE {0}%
+    </span>
+  </div>
+</DocumentFragment>
 `;

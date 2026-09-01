@@ -6,21 +6,21 @@ import {
   ProductListEntryProvider,
 } from '@shopgate/engage/product/providers';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
-import { withWidgetSettings } from '@shopgate/engage/core';
-import appConfig, { themeColors } from '@shopgate/pwa-common/helpers/config';
-import {
-  ProductSlider as EngageProductSlider,
-  ProductCard,
-} from '@shopgate/engage/product/components';
+import appConfig from '@shopgate/pwa-common/helpers/config';
+import { ProductCard } from '@shopgate/engage/product/components';
+import { useSlidesPerView } from '@shopgate/engage/product/hooks';
 import { makeStyles, cx } from '@shopgate/engage/styles';
 import Headline from 'Components/Headline';
 import connect from './connector';
 
 export const PRODUCT_SLIDER_WIDGET_LIMIT = 30;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(() => ({
+  // The `.swiper` element clips its slides via swiper/css `overflow: hidden`, so the card shadow
+  // has to fit inside: the largest preset reaches 6px above, 14px below and 9px to each side of
+  // the card, rounded up here. Swiper subtracts this padding before it sizes its slides.
   sliderContainer: {
-    paddingBottom: '10px !important',
+    padding: '8px 9px 16px !important',
   },
   slider: {
     width: '100%',
@@ -29,12 +29,10 @@ const useStyles = makeStyles()({
     paddingBottom: 16,
   },
   card: {
-    background: themeColors.light,
     height: '100%',
     margin: '0px 8px',
-    borderRadius: 11,
   },
-});
+}));
 
 /**
  * The core product slider widget.
@@ -47,11 +45,10 @@ const ProductSlider = ({
   id,
   products,
   settings,
-  widgetSettings,
 }) => {
   const { classes } = useStyles();
   const { sliderSettings } = settings;
-  const { slidesPerView = 2.3 } = widgetSettings;
+  const slidesPerView = useSlidesPerView();
 
   useEffect(() => {
     const { queryType, queryParams, sortOrder } = settings;
@@ -87,7 +84,6 @@ const ProductSlider = ({
               hideName={!settings.showName}
               hidePrice={!settings.showPrice}
               hideRating={!showReviewsSanitized}
-              titleRows={2}
             />
           </Card>
         </ProductListEntryProvider>
@@ -151,17 +147,13 @@ ProductSlider.propTypes = {
   }).isRequired,
   hash: PropTypes.string,
   products: PropTypes.arrayOf(PropTypes.shape()),
-  widgetSettings: PropTypes.shape({
-    slidesPerView: PropTypes.number,
-  }),
 };
 
 ProductSlider.defaultProps = {
   products: [],
-  widgetSettings: {},
   hash: null,
 };
 
-export default withWidgetSettings(connect(ProductSlider), EngageProductSlider.WIDGET_ID);
+export default connect(ProductSlider);
 
 export { ProductSlider as UnwrappedProductSlider };

@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { ConditionalWrapper } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './PriceInfo.connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    color: themeConfig.colors.shade3,
+    color: theme.palette.grey.medium,
   },
   noWrap: {
     whiteSpace: 'nowrap',
   },
-});
+}));
 
 /**
  * The price info component

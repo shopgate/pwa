@@ -1,7 +1,8 @@
 import React, { useState, useCallback, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { RippleButton, SurroundPortals } from '@shopgate/engage/components';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import {
   getFavoritesLists,
@@ -13,10 +14,12 @@ import updateFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions
 import removeFavoritesList from '@shopgate/pwa-common-commerce/favorites/actions/removeFavoritesList';
 import { removeFavorites } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { FulfillmentSheet, MULTI_LINE_RESERVE, STAGE_SELECT_STORE } from '@shopgate/engage/locations';
+import {
+  FulfillmentSheet, MULTI_LINE_RESERVE, STAGE_SELECT_STORE, DIRECT_SHIP,
+} from '@shopgate/engage/locations';
 import { openSheet } from '@shopgate/engage/locations/providers/FulfillmentProvider';
-import { getWishlistMode } from '@shopgate/engage/core/selectors/shopSettings';
-import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/core/constants/shopSettings';
+import { getWishlistMode } from '@shopgate/engage/settings/selectors/shopSettings';
+import { WISHLIST_MODE_PERSIST_ON_ADD } from '@shopgate/engage/settings/constants/shopSettings';
 import { getPreferredLocation, getPreferredFulfillmentMethod, getUserSearch } from '@shopgate/engage/locations/selectors';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { makeGetEnabledFulfillmentMethods } from '@shopgate/engage/core/config';
@@ -70,7 +73,6 @@ const useStyles = makeStyles()({
   addButton: {
     width: 'calc(100% - 32px)',
     margin: 16,
-    borderRadius: 5,
     [responsiveMediaQuery('>=md', { webOnly: true })]: {
       width: 240,
       float: 'right',
@@ -181,6 +183,22 @@ const FavoriteLists = ({
     ) || [];
     if (activeLocation && !activeFulfillmentMethod && availableFulfillmentMethods.length === 1) {
       [activeFulfillmentMethod] = availableFulfillmentMethods;
+    }
+
+    // Direct ship needs neither a location nor an explicit method selection. When it's the only
+    // available fulfillment method for the product, add straight to the cart without prompting
+    // the user with the fulfillment method chooser.
+    if (
+      !activeFulfillmentMethod
+      && availableFulfillmentMethods.length === 1
+      && availableFulfillmentMethods[0] === DIRECT_SHIP
+    ) {
+      addToCart([{
+        productId: product.id,
+        quantity,
+      }]);
+      promiseRef.current.resolve();
+      return promise;
     }
 
     // If all options are already configured immediately add it to the cart.
@@ -304,14 +322,13 @@ const FavoriteLists = ({
       />
       <SurroundPortals portalName={FAVORITES_LIST_ADD_BUTTON}>
         {hasMultipleFavoritesListsSupport ? (
-          <RippleButton
-            type="primary"
+          <Button
+            color="secondary"
             className={classes.addButton}
             onClick={openAddModal}
-            disabled={false}
           >
             {i18n.text('favorites.add_list')}
-          </RippleButton>
+          </Button>
         ) : null}
       </SurroundPortals>
     </div>

@@ -3,21 +3,17 @@ import PropTypes from 'prop-types';
 import { i18n, generateGoogleMapsDirectionsUrl } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  LocationIcon, Link, Ellipsis, I18n,
+  LocationIcon, Link, Ellipsis, Typography,
 } from '@shopgate/engage/components';
 import { StoreDetailsLine } from './StoreDetailsLine';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   detailsPrimary: {
     margin: 0,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     lineHeight: '1.375rem',
   },
-  detailsSecondary: {
-    color: 'var(--color-text-medium-emphasis)',
-    fontSize: '0.75rem',
-  },
-});
+}));
 
 /**
  * Renders the pickup location's address information.
@@ -74,11 +70,14 @@ export function StoreAddressShort({ address, showFull }) {
         <Ellipsis rows={1} className={classes.detailsPrimary}>
           {i18n.text('locations.address', address)}
         </Ellipsis>
-        <I18n.Text
-          string="locations.map_open"
-          className={classes.detailsSecondary}
+        <Typography
+          variant="caption"
+          component="span"
+          color="textSecondary"
           aria-label={`: ${i18n.text('locations.map_open')}`}
-        />
+        >
+          {i18n.text('locations.map_open')}
+        </Typography>
       </StoreDetailsLine>
     </Link>
   );

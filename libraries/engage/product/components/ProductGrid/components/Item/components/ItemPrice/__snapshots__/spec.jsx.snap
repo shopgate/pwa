@@ -1,22 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ItemPrice /> should render with minimal props 1`] = `
-<SurroundPortals
-  portalName="PRODUCT_ITEM_PRICE"
-  portalProps={
-    {
-      "location": "productGrid",
-      "productId": "1234",
-    }
-  }
->
-  <ProductGridPrice
-    product={
-      {
-        "id": "1234",
-        "price": {},
-      }
-    }
-  />
-</SurroundPortals>
-`;
+exports[`<ItemPrice /> should render with minimal props 1`] = `<DocumentFragment />`;

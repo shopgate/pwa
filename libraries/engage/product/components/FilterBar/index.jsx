@@ -1,49 +1,29 @@
-import React, {
-  useState, useMemo, memo, useCallback,
-} from 'react';
+import React, { useState, useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
 import { ResponsiveContainer } from '@shopgate/engage/components';
-import { hasNewServices } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/engage';
 import { SortProvider, SORT_SCOPE_CATEGORY, SORT_SCOPE_SEARCH } from '@shopgate/engage/filter';
-import { makeStyles, useTheme } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import Provider from './FilterBarProvider';
 import Content from './components/Content';
 import Modal from './components/FilterModal';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     transition: 'transform 200ms cubic-bezier(0.25, 0.1, 0.25, 1)',
+    background: theme.palette.background.surface,
+    color: theme.palette.text.primary,
+    borderBottom: `1px solid ${theme.components.separatorLine.borderColor}`,
   },
-});
+}));
 
 /**
  * The FilterBar component.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const FilterBar = ({ filters, categoryId }) => {
-  const theme = useTheme();
+const FilterBar = ({ categoryId }) => {
   const { classes, cx } = useStyles();
-  const [active, setActive] = useState(filters !== null && Object.keys(filters).length > 0);
-
-  const handleChipCountUpdate = useCallback((count) => {
-    setActive(count > 0);
-  }, []);
-
-  const style = useMemo(() => (hasNewServices() ? {
-    background: active
-      ? 'var(--color-background-accent)'
-      : 'var(--color-background-accent)',
-    color: active
-      ? 'var(--color-primary)'
-      : theme.palette.text.primary,
-  } : {
-    background: active ? 'var(--color-secondary)' : colors.background,
-    color: active ? 'var(--color-secondary-contrast)' : colors.dark,
-  }), [active, theme]);
+  const [filterCount, setFilterCount] = useState(0);
 
   const sortScope = useMemo(
     () => (categoryId ? SORT_SCOPE_CATEGORY : SORT_SCOPE_SEARCH),
@@ -51,10 +31,10 @@ const FilterBar = ({ filters, categoryId }) => {
   );
 
   return (
-    <div className={cx(classes.root, 'theme__filter-bar')} data-test-id="filterBar" style={style}>
+    <div className={cx(classes.root, 'theme__filter-bar')} data-test-id="filterBar">
       <SortProvider scope={sortScope}>
         <Provider>
-          <Content onChipCountUpdate={handleChipCountUpdate} />
+          <Content onChipCountUpdate={setFilterCount} filterCount={filterCount} />
           <ResponsiveContainer breakpoint=">xs" webOnly>
             <Modal />
           </ResponsiveContainer>
@@ -66,11 +46,9 @@ const FilterBar = ({ filters, categoryId }) => {
 
 FilterBar.propTypes = {
   categoryId: PropTypes.string,
-  filters: PropTypes.shape(),
 };
 
 FilterBar.defaultProps = {
-  filters: null,
   categoryId: null,
 };
 

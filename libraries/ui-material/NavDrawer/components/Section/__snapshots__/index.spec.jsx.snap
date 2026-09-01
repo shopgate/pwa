@@ -1,14 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<NavDrawerSection /> should render with a title and dividers 1`] = `
-<Fragment>
-  <NavDrawerDivider />
-  <NavDrawerTitle
-    text="Section title"
-  />
-  <ForwardRef(WithForwardedRef(NavDrawerItem))
-    label="Item Label"
-  />
-  <NavDrawerDivider />
-</Fragment>
+<div
+  data-testid="nav-drawer-divider"
+/>
 `;

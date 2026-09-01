@@ -1,23 +1,22 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery, useTheme } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import Link from '@shopgate/pwa-common/components/Link';
 import Glow from '@shopgate/pwa-ui-shared/Glow';
 
-const { colors } = themeConfig;
 const IMAGE_SPACE = 72;
 
 const useStyles = makeStyles()(theme => ({
   disabled: {
-    color: colors.shade5,
+    color: theme.palette.grey.medium,
     cursor: 'not-allowed',
   },
   selected: {
-    background: 'var(--color-background-accent)',
-    boxShadow: '-16px 0 0 0 var(--color-background-accent) !important',
+    background: theme.palette.background.emphasized,
+    boxShadow: `-16px 0 0 0 ${theme.palette.background.emphasized} !important`,
   },
   title: {
     width: '100%',
@@ -30,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       padding: theme.spacing(2),
       margin: 0,
-      fontSize: '1.25rem',
+      fontSize: theme.typography.h3.fontSize,
       lineHeight: '1.5rem',
     },
   },
@@ -38,10 +37,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'none',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       display: 'block',
-      color: 'var(--color-text-medium-emphasis)',
-      fontSize: '0.875rem',
       lineHeight: '1.25rem',
-      fontWeight: 'initial',
       paddingTop: theme.spacing(1),
     },
   },
@@ -85,8 +81,12 @@ const Item = ({
   testId,
 }) => {
   const theme = useTheme();
-  const glowHover = useMemo(() => ({
-    boxShadow: `${theme.spacing(-2.5)}px 0 0 ${colors.shade8}, ${theme.spacing(2.5)}px 0 0 ${colors.shade8}`,
+  const glowStyles = useMemo(() => ({
+    glow: {
+      left: theme.spacing(-2),
+      right: theme.spacing(-2),
+      width: 'auto',
+    },
   }), [theme]);
   const { classes, cx } = useStyles();
 
@@ -119,10 +119,12 @@ const Item = ({
             <div>
               {title}
             </div>
-            { description && (
-              <div
+            {description && (
+              <Typography
+                variant="body2"
+                component="div"
+                color="textSecondary"
                 className={classes.description}
-                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{ __html: description }}
               />
             )}
@@ -158,7 +160,7 @@ const Item = ({
       <Glow
         ref={forwardedRef}
         className={className}
-        styles={{ hover: glowHover }}
+        styles={glowStyles}
       >
         <LinkComponent href={link} onClick={onClick} state={linkState} tabIndex={0}>
           {renderContent()}
@@ -177,7 +179,7 @@ const Item = ({
       role="option"
       aria-selected={isSelected}
     >
-      <Glow className={className} styles={{ hover: glowHover }}>
+      <Glow className={className} styles={glowStyles}>
         {renderContent()}
       </Glow>
     </div>

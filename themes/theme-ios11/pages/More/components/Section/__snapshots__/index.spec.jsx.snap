@@ -19,26 +19,39 @@ exports[`<Section /> should render with a headline and items 1`] = `
     tag="h2"
     text="Headline"
   >
-    <h2
-      className="sg-1e76cvh-root headline theme__headline"
+    <Typography
+      align="inherit"
+      className="sg-1ivqote-root headline theme__headline"
+      component="h2"
       data-test-id="Headline"
       style={
         {
           "margin": "24px 20px 16px",
         }
       }
+      variant="h2"
     >
-      <Text
-        acceptPlainTextWithPlaceholders={false}
-        className={null}
-        params={{}}
-        role={null}
-        string="Headline"
-        transform={null}
+      <h2
+        className="sg-1ivqote-root headline theme__headline"
+        data-test-id="Headline"
+        style={
+          {
+            "margin": "24px 20px 16px",
+          }
+        }
       >
-        Headline
-      </Text>
-    </h2>
+        <Text
+          acceptPlainTextWithPlaceholders={false}
+          className={null}
+          params={{}}
+          role={null}
+          string="Headline"
+          transform={null}
+        >
+          Headline
+        </Text>
+      </h2>
+    </Typography>
   </Headline>
   <div
     className="sg-1sqpupb-list"
@@ -52,7 +65,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-xorol2-root"
+        className="sg-10l03g-root"
         href="/link/one"
         role="button"
       >
@@ -76,7 +89,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-xorol2-root"
+        className="sg-10l03g-root"
         href="/link/two"
         role="button"
       >
@@ -121,7 +134,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-xorol2-root"
+        className="sg-10l03g-root"
         href="/link/one"
         role="button"
       >
@@ -145,7 +158,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-xorol2-root"
+        className="sg-10l03g-root"
         href="/link/two"
         role="button"
       >

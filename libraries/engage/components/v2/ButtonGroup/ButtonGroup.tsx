@@ -10,13 +10,15 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
   const {
     variant = 'contained',
     size = 'medium',
+    dense = false,
     orientation = 'horizontal',
-    disableElevation = false,
+    enableElevation = false,
     fullWidth = false,
     disableRipple = false,
     disabled = false,
     color = 'inherit',
     className,
+    classes: classesProp,
     children,
     ...other
   } = props;
@@ -24,7 +26,7 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
   const { classes, cx } = useStyles({
     color,
     variant,
-  }, { props: { classes: props.classes } });
+  }, { props: { classes: classesProp } });
 
   const buttonClassName = cx(
     classes.grouped,
@@ -40,11 +42,18 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
     <div
       role="group"
       className={cx(classes.root, {
-        [classes.contained]: variant === 'contained',
         [classes.vertical]: orientation === 'vertical',
         [classes.fullWidth]: fullWidth,
-        [classes.disableElevation]: disableElevation,
-      }, className)}
+        [classes.enableElevation]: enableElevation && variant === 'contained',
+      }, 'engage__button-group', className)}
+      data-variant={variant}
+      data-color={color}
+      data-size={size}
+      data-orientation={orientation}
+      data-dense={dense || undefined}
+      data-full-width={fullWidth || undefined}
+      data-enable-elevation={enableElevation || undefined}
+      data-disabled={disabled || undefined}
       ref={ref}
       {...other}
     >
@@ -57,10 +66,11 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
           className: cx(buttonClassName, child.props.className),
           color: child.props.color || color,
           disabled: child.props.disabled || disabled,
-          disableElevation: child.props.disableElevation || disableElevation,
+          enableElevation: child.props.enableElevation || enableElevation,
           disableRipple,
           fullWidth,
           size: child.props.size || size,
+          dense: child.props.dense || dense,
           variant: child.props.variant || variant,
         });
       })}
@@ -68,20 +78,30 @@ const ButtonGroup = forwardRef<HTMLDivElement, ButtonGroupProps>((props, ref) =>
   );
 });
 
+/**
+ * Opacity the separator between grouped text buttons defaults to. Published as a custom property
+ * below, so the value is not baked into the border declarations.
+ */
+const SEPARATOR_OPACITY = '0.5';
+
 const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
   name: 'ButtonGroup',
 })((theme, props) => {
   const { color, variant } = props;
 
   let cssColor = '';
+  let darkCssColor = '';
 
-  if (color !== 'inherit') {
+  if (color === 'cta') {
+    cssColor = theme.components.ctaButton.background;
+  } else if (color !== 'inherit') {
     cssColor = color && theme.palette?.[color]?.main
       ? theme.palette[color].main
       : theme.palette.primary.main;
   } else if (variant === 'contained') {
     // eslint-disable-next-line prefer-destructuring
     cssColor = theme.palette.grey[200];
+    darkCssColor = theme.palette.background.emphasized;
   } else {
     cssColor = 'currentColor';
   }
@@ -89,16 +109,23 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
   return {
     root: {
       '--button-group-color': `var(${theme.vars.components.button.color}, ${cssColor})`,
+      '--button-group-divider': theme.darken('var(--button-group-color)'),
+      ...(darkCssColor ? theme.applyStyles('dark', {
+        '--button-group-color': `var(${theme.vars.components.button.color}, ${darkCssColor})`,
+        '--button-group-divider': theme.lighten('var(--button-group-color)'),
+      }) : {}),
       '--disabledColor': theme.palette.action.disabled,
+      '--button-group-separator-opacity': SEPARATOR_OPACITY,
+      '--button-group-separator': theme.alpha(
+        'var(--button-group-color)',
+        'var(--button-group-separator-opacity)'
+      ),
       display: 'inline-flex',
-      borderRadius: `var(${theme.vars.components.button.borderRadius}, ${theme.shape.borderRadius})`,
-    },
-    contained: {
-      boxShadow: theme.shadows[2],
+      borderRadius: theme.components.button.borderRadius,
     },
     disabled: {},
-    disableElevation: {
-      boxShadow: 'none',
+    enableElevation: {
+      boxShadow: theme.shadows[2],
     },
     fullWidth: {
       width: '100%',
@@ -137,8 +164,8 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       '&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: theme.darken('var(--button-group-color)'),
-        '&:disabled': {
+        borderRightColor: 'var(--button-group-divider)',
+        '&:disabled, &[aria-disabled="true"]': {
           borderRightColor: 'var(--disabledColor)',
         },
       },
@@ -147,18 +174,14 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       '&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: theme.darken('var(--button-group-color)'),
-        '&:disabled': {
+        borderBottomColor: 'var(--button-group-divider)',
+        '&:disabled, &[aria-disabled="true"]': {
           borderBottomColor: 'var(--disabledColor)',
         },
       },
     },
     groupedOutlined: {
-      borderColor: `${theme.lighten('var(--button-group-color)', 0.5)} !important`,
-      '&:hover': {
-        borderColor: 'var(--button-group-color)',
-      },
-      '&:disabled': {
+      '&:disabled, &[aria-disabled="true"]': {
         borderColor: 'var(--disabledColor) !important',
       },
     },
@@ -178,15 +201,15 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
         borderBottomColor: 'transparent !important',
       },
     },
-    groupedText: {
-
-    },
+    // Text buttons need no shared styles, but the key has to exist because the class is looked up
+    // dynamically as `grouped${capitalize(variant)}`.
+    groupedText: {},
     groupedTextHorizontal: {
       '&&:not(:last-of-type)': {
         borderRightWidth: 1,
         borderRightStyle: 'solid',
-        borderRightColor: `${theme.lighten('var(--button-group-color)', 0.5)}`,
-        '&:disabled': {
+        borderRightColor: 'var(--button-group-separator)',
+        '&:disabled, &[aria-disabled="true"]': {
           borderRightColor: 'var(--disabledColor)',
         },
       },
@@ -195,8 +218,8 @@ const useStyles = makeStyles<Omit<ButtonGroupOwnProps, 'children'>>({
       '&&:not(:last-of-type)': {
         borderBottomWidth: 1,
         borderBottomStyle: 'solid',
-        borderBottomColor: `${theme.lighten('var(--button-group-color)', 0.5)}`,
-        '&:disabled': {
+        borderBottomColor: 'var(--button-group-separator)',
+        '&:disabled, &[aria-disabled="true"]': {
           borderBottomColor: 'var(--disabledColor)',
         },
       },
@@ -217,20 +240,26 @@ export interface ButtonGroupOwnProps {
    */
   size?: 'small' | 'medium' | 'large';
   /**
+   * If true, the buttons use reduced padding.
+   * @default false
+   */
+  dense?: boolean;
+  /**
    * The orientation of the buttons in the group.
    * @default 'horizontal'
    */
   orientation?: 'horizontal' | 'vertical';
   /**
-   * If true, no elevation is used for contained buttons.
+   * If true, a drop shadow is added to the group. Button groups are flat by default.
    * @default false
    */
-  disableElevation?: boolean;
+  enableElevation?: boolean;
   /**
-   * The color of the component.
+   * The color of the component. Besides the palette colors, `cta` is supported. It resolves to the
+   * merchant configurable call to action color from `components.ctaButton`.
    * @default 'inherit'
    */
-  color?: PaletteColorsWithMain | 'inherit';
+  color?: PaletteColorsWithMain | 'inherit' | 'cta';
   /**
    * If true, the buttons will take up the full width of their container.
    * @default false
@@ -255,5 +284,7 @@ export interface ButtonGroupOwnProps {
 }
 
 export type ButtonGroupProps = ButtonGroupOwnProps & React.HTMLAttributes<HTMLDivElement>
+
+ButtonGroup.displayName = 'ButtonGroup';
 
 export default ButtonGroup;

@@ -11,7 +11,7 @@ const useStyles = makeStyles()((theme, params, classes) => ({
     display: 'block',
     height: 20,
     width: 44,
-    background: '#898989',
+    background: theme.palette.grey.medium,
     borderRadius: 100,
     cursor: 'pointer',
     bottom: -4,
@@ -33,20 +33,20 @@ const useStyles = makeStyles()((theme, params, classes) => ({
   },
   checkbox: {
     [`&:checked ~ .${classes.label}`]: {
-      background: 'var(--color-primary)',
+      background: theme.palette.primary.main,
       opacity: 0.5,
     },
     [`&:checked ~ .${classes.thumb}`]: {
       left: 20,
-      background: 'var(--color-primary)',
+      background: theme.palette.primary.main,
     },
     [`&:disabled ~ .${classes.label}`]: {
-      background: '#D5D5D5',
+      background: theme.palette.action.disabledBackground,
       pointerEvents: 'none',
       filter: 'none',
     },
     [`&:disabled ~ .${classes.thumb}`]: {
-      background: '#BCBDBC',
+      background: theme.palette.action.disabled,
       filter: 'none',
     },
     // a11y configuration: hide visually but keep interactive

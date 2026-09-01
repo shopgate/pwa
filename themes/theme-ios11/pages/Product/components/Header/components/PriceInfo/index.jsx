@@ -11,17 +11,17 @@ import { PriceInfo as PriceInfoBase } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   placeholder: {
     height: 20,
     width: '50px',
     display: 'inline-block',
   },
   priceInfo: {
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
     marginTop: 4,
   },
-});
+}));
 
 /**
  * The PriceInfo component.

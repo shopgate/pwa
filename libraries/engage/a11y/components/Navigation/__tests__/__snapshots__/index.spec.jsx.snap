@@ -1,61 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Navigation /> should render empty when no entries are passed 1`] = `
-<Navigation
-  entries={[]}
-  title={null}
-/>
-`;
+exports[`<Navigation /> should render empty when no entries are passed 1`] = `null`;
 
 exports[`<Navigation /> should render with an aria label and entries 1`] = `
-<Navigation
-  entries={
-    [
-      {
-        "link": "/some-link",
-        "title": "Title One",
-      },
-      {
-        "link": "/another-link",
-        "title": "Title Two",
-      },
-    ]
-  }
-  title="Navigation Title"
+<nav
+  aria-label="Navigation Title"
 >
-  <nav
-    aria-label="Navigation Title"
+  <ul
+    class="sg-dmchcx-hiddenNavigation"
   >
-    <ul
-      className="sg-dmchcx-hiddenNavigation"
-    >
-      <li
-        key="/some-link"
-      >
-        <Link
-          href="/some-link"
-        >
-          <Translate
-            string="Title One"
-          >
-            Title One
-          </Translate>
-        </Link>
-      </li>
-      <li
-        key="/another-link"
-      >
-        <Link
-          href="/another-link"
-        >
-          <Translate
-            string="Title Two"
-          >
-            Title Two
-          </Translate>
-        </Link>
-      </li>
-    </ul>
-  </nav>
-</Navigation>
+    <li>
+      Title One
+    </li>
+    <li>
+      Title Two
+    </li>
+  </ul>
+</nav>
 `;

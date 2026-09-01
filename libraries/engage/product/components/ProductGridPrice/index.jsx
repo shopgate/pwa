@@ -6,25 +6,18 @@ import {
 import { PriceInfo } from '@shopgate/engage/product/components';
 import { withPriceCalculation } from '@shopgate/engage/product/hocs';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeName } from '@shopgate/pwa-common/helpers/config';
 
-const isIOS = themeName.includes('ios');
-
-const useStyles = makeStyles()({
-  priceWrapper: isIOS ? {
-    lineHeight: 1.75,
-    marginTop: 2,
+const useStyles = makeStyles()(theme => ({
+  priceWrapper: {
     alignItems: 'center',
-  } : {
-    lineHeight: 1.75,
+  },
+  strikedPrice: {
+    fontSize: theme.typography.caption.fontSize,
   },
   basicPrice: {
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
   },
-  strikedPrice: isIOS ? {
-    fontSize: '0.75rem',
-  } : {},
-});
+}));
 
 /**
  * The ProductGridPrice component is supposed to be used to display prices at product grids. It

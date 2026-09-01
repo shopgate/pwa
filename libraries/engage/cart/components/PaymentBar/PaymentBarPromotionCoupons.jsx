@@ -9,14 +9,14 @@ import { CartContext } from '../../cart.context';
 import PaymentBarPromotionalText from './PaymentBarPromotionalText';
 import connect from './PaymentBarPromotionCoupons.connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   icon: {
-    backgroundColor: '#898989',
-    color: '#fff',
+    backgroundColor: theme.palette.grey.dark,
+    color: theme.contrastColor(theme.palette.grey.dark),
     borderRadius: 32,
     padding: 4,
     cursor: 'pointer',
-    fontSize: '0.75rem',
+    fontSize: theme.components.icon.xsmall,
     display: 'inline-flex',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       padding: 3,
@@ -30,7 +30,7 @@ const useStyles = makeStyles()({
     order: 1,
     flexShrink: 0,
   },
-});
+}));
 
 /**
  * @returns {JSX}

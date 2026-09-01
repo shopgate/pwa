@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    color: themeConfig.colors.shade3,
+    color: theme.palette.grey.medium,
   },
-});
+}));
 
 /**
  * The price info component

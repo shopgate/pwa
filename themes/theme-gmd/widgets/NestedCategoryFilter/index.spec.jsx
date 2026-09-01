@@ -17,6 +17,7 @@ jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
 
 jest.mock('@shopgate/engage/components', () => ({
+  Typography: ({ children }) => children,
   SheetDrawer: props => <MockSheet {...props} />,
   SheetList: jest.requireActual('@shopgate/engage/components/SheetList').default,
   I18n: {
@@ -78,7 +79,7 @@ const checkWrapper = (wrapper, expectedProps, buttonCategoryId = null) => {
     });
   });
 
-  const button = wrapper.find('Connect(ButtonLink)');
+  const button = wrapper.find('Button[href]');
   expect(button.prop('href')).toBe(`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`);
   expect(button.prop('disabled')).toBe(!buttonCategoryId);
   expect(button.text()).toBe('common.show_products');

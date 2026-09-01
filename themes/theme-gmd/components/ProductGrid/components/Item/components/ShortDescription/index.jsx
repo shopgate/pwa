@@ -2,15 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'none',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       display: 'block',
-      color: 'var(--color-text-medium-emphasis)',
+      color: theme.palette.text.secondary,
     },
   },
-});
+}));
 
 /**
  * The ShortDescription component.

@@ -1,24 +1,80 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Rows /> should render three rows of properties 1`] = `
-[
-  <Row
-    key="test1-123"
-    label="test1"
-    type={null}
-    value="123"
-  />,
-  <Row
-    key="test2-456"
-    label="test2"
-    type={null}
-    value="456"
-  />,
-  <Row
-    key="test3-789"
-    label="test3"
-    type={null}
-    value="789"
-  />,
-]
+<table>
+  <tbody>
+    <tr
+      aria-label="test1: 123"
+      class="engage__product__product-property"
+      data-label="test1"
+      tabindex="0"
+    >
+      <td
+        aria-hidden="true"
+        class="sg-15jjn2r-tableCell"
+      >
+        <span>
+          test1
+        </span>
+      </td>
+      <td
+        aria-hidden="true"
+        class="sg-15jjn2r-tableCell"
+        data-test-id="property: 123"
+      >
+        <span>
+          123
+        </span>
+      </td>
+    </tr>
+    <tr
+      aria-label="test2: 456"
+      class="engage__product__product-property"
+      data-label="test2"
+      tabindex="0"
+    >
+      <td
+        aria-hidden="true"
+        class="sg-15jjn2r-tableCell"
+      >
+        <span>
+          test2
+        </span>
+      </td>
+      <td
+        aria-hidden="true"
+        class="sg-15jjn2r-tableCell"
+        data-test-id="property: 456"
+      >
+        <span>
+          456
+        </span>
+      </td>
+    </tr>
+    <tr
+      aria-label="test3: 789"
+      class="engage__product__product-property"
+      data-label="test3"
+      tabindex="0"
+    >
+      <td
+        aria-hidden="true"
+        class="sg-15jjn2r-tableCell"
+      >
+        <span>
+          test3
+        </span>
+      </td>
+      <td
+        aria-hidden="true"
+        class="sg-15jjn2r-tableCell"
+        data-test-id="property: 789"
+      >
+        <span>
+          789
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;

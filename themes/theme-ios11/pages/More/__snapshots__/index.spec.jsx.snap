@@ -41,26 +41,39 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
             tag="h1"
             text="navigation.welcome_message"
           >
-            <h1
-              className="sg-1e76cvh-root headline theme__headline"
+            <Typography
+              align="inherit"
+              className="sg-1ivqote-root headline theme__headline"
+              component="h1"
               data-test-id="Headline"
               style={
                 {
                   "margin": "24px 20px 16px",
                 }
               }
+              variant="h1"
             >
-              <Text
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={{}}
-                role={null}
-                string="navigation.welcome_message"
-                transform={null}
+              <h1
+                className="sg-1ivqote-root headline theme__headline"
+                data-test-id="Headline"
+                style={
+                  {
+                    "margin": "24px 20px 16px",
+                  }
+                }
               >
-                navigation.welcome_message
-              </Text>
-            </h1>
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="navigation.welcome_message"
+                  transform={null}
+                >
+                  navigation.welcome_message
+                </Text>
+              </h1>
+            </Typography>
           </Headline>
           <Portal
             name="nav-menu.content.before"
@@ -139,26 +152,39 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         tag="h2"
                         text="navigation.your_account"
                       >
-                        <h2
-                          className="sg-1e76cvh-root headline theme__headline"
+                        <Typography
+                          align="inherit"
+                          className="sg-1ivqote-root headline theme__headline"
+                          component="h2"
                           data-test-id="Headline"
                           style={
                             {
                               "margin": "24px 20px 16px",
                             }
                           }
+                          variant="h2"
                         >
-                          <Text
-                            acceptPlainTextWithPlaceholders={false}
-                            className={null}
-                            params={{}}
-                            role={null}
-                            string="navigation.your_account"
-                            transform={null}
+                          <h2
+                            className="sg-1ivqote-root headline theme__headline"
+                            data-test-id="Headline"
+                            style={
+                              {
+                                "margin": "24px 20px 16px",
+                              }
+                            }
                           >
-                            navigation.your_account
-                          </Text>
-                        </h2>
+                            <Text
+                              acceptPlainTextWithPlaceholders={false}
+                              className={null}
+                              params={{}}
+                              role={null}
+                              string="navigation.your_account"
+                              transform={null}
+                            >
+                              navigation.your_account
+                            </Text>
+                          </h2>
+                        </Typography>
                       </Headline>
                       <div
                         className="sg-1sqpupb-list"
@@ -180,7 +206,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             testId="logoutButton"
                           >
                             <button
-                              className="sg-xorol2-root"
+                              className="sg-10l03g-root"
                               data-test-id="logoutButton"
                               onClick={[Function]}
                               type="button"
@@ -256,26 +282,39 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                   tag="h2"
                   text="navigation.store_information"
                 >
-                  <h2
-                    className="sg-1e76cvh-root headline theme__headline"
+                  <Typography
+                    align="inherit"
+                    className="sg-1ivqote-root headline theme__headline"
+                    component="h2"
                     data-test-id="Headline"
                     style={
                       {
                         "margin": "24px 20px 16px",
                       }
                     }
+                    variant="h2"
                   >
-                    <Text
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="navigation.store_information"
-                      transform={null}
+                    <h2
+                      className="sg-1ivqote-root headline theme__headline"
+                      data-test-id="Headline"
+                      style={
+                        {
+                          "margin": "24px 20px 16px",
+                        }
+                      }
                     >
-                      navigation.store_information
-                    </Text>
-                  </h2>
+                      <Text
+                        acceptPlainTextWithPlaceholders={false}
+                        className={null}
+                        params={{}}
+                        role={null}
+                        string="navigation.store_information"
+                        transform={null}
+                      >
+                        navigation.store_information
+                      </Text>
+                    </h2>
+                  </Typography>
                 </Headline>
                 <div
                   className="sg-1sqpupb-list"
@@ -310,7 +349,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/shipping"
                           role="button"
                         >
@@ -367,7 +406,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/payment"
                           role="button"
                         >
@@ -424,7 +463,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/terms"
                           role="button"
                         >
@@ -481,7 +520,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/privacy"
                           role="button"
                         >
@@ -560,7 +599,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/imprint"
                           role="button"
                         >
@@ -658,26 +697,39 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
             tag="h1"
             text="login.headline"
           >
-            <h1
-              className="sg-1e76cvh-root headline theme__headline"
+            <Typography
+              align="inherit"
+              className="sg-1ivqote-root headline theme__headline"
+              component="h1"
               data-test-id="Headline"
               style={
                 {
                   "margin": "24px 20px 16px",
                 }
               }
+              variant="h1"
             >
-              <Text
-                acceptPlainTextWithPlaceholders={false}
-                className={null}
-                params={{}}
-                role={null}
-                string="login.headline"
-                transform={null}
+              <h1
+                className="sg-1ivqote-root headline theme__headline"
+                data-test-id="Headline"
+                style={
+                  {
+                    "margin": "24px 20px 16px",
+                  }
+                }
               >
-                login.headline
-              </Text>
-            </h1>
+                <Text
+                  acceptPlainTextWithPlaceholders={false}
+                  className={null}
+                  params={{}}
+                  role={null}
+                  string="login.headline"
+                  transform={null}
+                >
+                  login.headline
+                </Text>
+              </h1>
+            </Typography>
           </Headline>
           <UserMenu
             entries={null}
@@ -723,56 +775,160 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                       <Grid.Item
                         className="sg-u59bcx-gridItem theme__more-page__login-button__container"
                       >
-                        <Link
+                        <Button
+                          className="sg-1fx370l-button theme__more-page__login-button"
+                          color="primary"
                           disabled={false}
+                          fullWidth={true}
                           href="/login"
-                          tabIndex={0}
+                          testId="UserMenuLogin"
                         >
-                          <Button
-                            className="sg-sv9uio-button theme__more-page__login-button"
+                          <ButtonBase
+                            className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-2kvgs2-Button-root-Button-contained-Button-fullWidth-button"
+                            data-color="primary"
+                            data-full-width={true}
+                            data-size="medium"
+                            data-variant="contained"
+                            disableBaseClassName={true}
+                            disableRipple={false}
                             disabled={false}
+                            href="/login"
                             testId="UserMenuLogin"
-                            type="secondary"
                           >
-                            <Text
-                              acceptPlainTextWithPlaceholders={false}
-                              className={null}
-                              params={{}}
-                              role={null}
-                              string="login.button"
-                              transform={null}
+                            <button
+                              className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page__login-button sg-bltuy1-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
+                              data-color="primary"
+                              data-full-width={true}
+                              data-size="medium"
+                              data-test-id="UserMenuLogin"
+                              data-variant="contained"
+                              disabled={false}
+                              onClick={[Function]}
+                              onKeyDown={[Function]}
+                              onLostPointerCapture={[Function]}
+                              onPointerCancel={[Function]}
+                              onPointerDown={[Function]}
+                              onPointerLeave={[Function]}
+                              onPointerUp={[Function]}
+                              type="button"
                             >
-                              login.button
-                            </Text>
-                          </Button>
-                        </Link>
+                              <span
+                                className="sg-85tluf-Button-label"
+                              >
+                                <span
+                                  className="sg-18jpr3t-Button-loader"
+                                  style={
+                                    {
+                                      "display": "contents",
+                                    }
+                                  }
+                                />
+                                <Text
+                                  acceptPlainTextWithPlaceholders={false}
+                                  className={null}
+                                  params={{}}
+                                  role={null}
+                                  string="login.button"
+                                  transform={null}
+                                >
+                                  login.button
+                                </Text>
+                              </span>
+                              <Ripple
+                                ripples={[]}
+                              >
+                                <span
+                                  className="sg-sfhzfw-ButtonBaseRipple-container"
+                                >
+                                  <TransitionGroup
+                                    childFactory={[Function]}
+                                    component={null}
+                                    exit={true}
+                                  />
+                                </span>
+                              </Ripple>
+                            </button>
+                          </ButtonBase>
+                        </Button>
                       </Grid.Item>
                       <Grid.Item
                         className="sg-u59bcx-gridItem theme__more-page-register-button__container"
                       >
-                        <Link
+                        <Button
+                          className="sg-1fx370l-button theme__more-page-register-button"
+                          color="primary"
                           disabled={false}
+                          fullWidth={true}
                           href="/register"
-                          tabIndex={0}
+                          testId="UserMenuRegister"
                         >
-                          <Button
-                            className="sg-sv9uio-button theme__more-page-register-button"
+                          <ButtonBase
+                            className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-2kvgs2-Button-root-Button-contained-Button-fullWidth-button"
+                            data-color="primary"
+                            data-full-width={true}
+                            data-size="medium"
+                            data-variant="contained"
+                            disableBaseClassName={true}
+                            disableRipple={false}
                             disabled={false}
+                            href="/register"
                             testId="UserMenuRegister"
-                            type="secondary"
                           >
-                            <Text
-                              acceptPlainTextWithPlaceholders={false}
-                              className={null}
-                              params={{}}
-                              role={null}
-                              string="login.signup"
-                              transform={null}
+                            <button
+                              className="engage__button common__button ui-shared__button ui-shared__ripple-button theme__more-page-register-button sg-bltuy1-ButtonBase-root-Button-root-Button-contained-Button-fullWidth-button"
+                              data-color="primary"
+                              data-full-width={true}
+                              data-size="medium"
+                              data-test-id="UserMenuRegister"
+                              data-variant="contained"
+                              disabled={false}
+                              onClick={[Function]}
+                              onKeyDown={[Function]}
+                              onLostPointerCapture={[Function]}
+                              onPointerCancel={[Function]}
+                              onPointerDown={[Function]}
+                              onPointerLeave={[Function]}
+                              onPointerUp={[Function]}
+                              type="button"
                             >
-                              login.signup
-                            </Text>
-                          </Button>
-                        </Link>
+                              <span
+                                className="sg-85tluf-Button-label"
+                              >
+                                <span
+                                  className="sg-18jpr3t-Button-loader"
+                                  style={
+                                    {
+                                      "display": "contents",
+                                    }
+                                  }
+                                />
+                                <Text
+                                  acceptPlainTextWithPlaceholders={false}
+                                  className={null}
+                                  params={{}}
+                                  role={null}
+                                  string="login.signup"
+                                  transform={null}
+                                >
+                                  login.signup
+                                </Text>
+                              </span>
+                              <Ripple
+                                ripples={[]}
+                              >
+                                <span
+                                  className="sg-sfhzfw-ButtonBaseRipple-container"
+                                >
+                                  <TransitionGroup
+                                    childFactory={[Function]}
+                                    component={null}
+                                    exit={true}
+                                  />
+                                </span>
+                              </Ripple>
+                            </button>
+                          </ButtonBase>
+                        </Button>
                       </Grid.Item>
                     </Grid>
                   </div>
@@ -838,26 +994,39 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                   tag="h2"
                   text="navigation.store_information"
                 >
-                  <h2
-                    className="sg-1e76cvh-root headline theme__headline"
+                  <Typography
+                    align="inherit"
+                    className="sg-1ivqote-root headline theme__headline"
+                    component="h2"
                     data-test-id="Headline"
                     style={
                       {
                         "margin": "24px 20px 16px",
                       }
                     }
+                    variant="h2"
                   >
-                    <Text
-                      acceptPlainTextWithPlaceholders={false}
-                      className={null}
-                      params={{}}
-                      role={null}
-                      string="navigation.store_information"
-                      transform={null}
+                    <h2
+                      className="sg-1ivqote-root headline theme__headline"
+                      data-test-id="Headline"
+                      style={
+                        {
+                          "margin": "24px 20px 16px",
+                        }
+                      }
                     >
-                      navigation.store_information
-                    </Text>
-                  </h2>
+                      <Text
+                        acceptPlainTextWithPlaceholders={false}
+                        className={null}
+                        params={{}}
+                        role={null}
+                        string="navigation.store_information"
+                        transform={null}
+                      >
+                        navigation.store_information
+                      </Text>
+                    </h2>
+                  </Typography>
                 </Headline>
                 <div
                   className="sg-1sqpupb-list"
@@ -892,7 +1061,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/shipping"
                           role="button"
                         >
@@ -949,7 +1118,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/payment"
                           role="button"
                         >
@@ -1006,7 +1175,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/terms"
                           role="button"
                         >
@@ -1063,7 +1232,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/privacy"
                           role="button"
                         >
@@ -1142,7 +1311,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-xorol2-root"
+                          className="sg-10l03g-root"
                           href="/page/imprint"
                           role="button"
                         >

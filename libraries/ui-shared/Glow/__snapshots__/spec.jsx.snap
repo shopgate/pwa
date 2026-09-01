@@ -1,33 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Glow /> should render with a smile 1`] = `
-<ForwardRef(WithForwardedRef(Glow))>
-  <Glow
-    className={null}
-    color="#f7f7f7"
-    disabled={false}
-    forwardedRef={null}
-    styles={
-      {
-        "container": null,
-        "glow": null,
-        "hover": null,
-      }
-    }
+<DocumentFragment>
+  <div
+    class="sg-p4e9kp-container ui-shared__glow"
   >
     <div
-      className="sg-p4e9kp-container ui-shared__glow"
-      onClick={[Function]}
-      style={null}
-    >
-      <div
-        className="sg-f2xef3-glow"
-        style={{}}
-      />
-      <p>
-        Glowing!
-      </p>
-    </div>
-  </Glow>
-</ForwardRef(WithForwardedRef(Glow))>
+      class="sg-f2xef3-glow"
+    />
+    <p>
+      Glowing!
+    </p>
+  </div>
+</DocumentFragment>
 `;

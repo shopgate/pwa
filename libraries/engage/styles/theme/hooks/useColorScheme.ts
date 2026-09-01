@@ -1,9 +1,10 @@
 import { useContext } from 'react';
-import { ColorSchemeContext } from '../providers/ThemeProvider';
+import { ColorSchemeContext } from '../providers/ColorSchemeContext';
 
 /**
- * Returns the currently selected color scheme and a function to update it.
- * @returns An object containing the current color scheme and a function to update it.
+ * Provides access to the color scheme context.
+ * @returns The color scheme context value, containing the current `mode`, a `setMode` function to
+ * update it, and the `modes` that can be set.
  */
 const useColorScheme = () => useContext(ColorSchemeContext);
 

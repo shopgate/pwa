@@ -1,9 +1,8 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import spring from 'css-spring';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { withForwardedRef } from '@shopgate/engage/core';
-import { keyframes, makeStyles } from '@shopgate/engage/styles';
+import { keyframes, makeStyles, useTheme } from '@shopgate/engage/styles';
 import CartPlusIcon from '../icons/CartPlusIcon';
 import TickIcon from '../icons/TickIcon';
 import IndicatorCircle from '../IndicatorCircle';
@@ -40,7 +39,7 @@ const springToBottomKeyframes = keyframes(spring(
   springOptions
 ));
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   springFromBottom: {
     animation: `${springFromBottomKeyframes} 600ms`,
   },
@@ -57,27 +56,30 @@ const useStyles = makeStyles()({
     transition: 'opacity 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
     opacity: 1,
     position: 'absolute',
+    display: 'flex',
+    left: '50%',
+    marginLeft: '-0.5em',
   },
   spinnerIcon: {
     left: '50%',
     top: '50%',
-    marginTop: -(themeConfig.variables.loadingIndicator.size) / 2,
-    marginLeft: -(themeConfig.variables.loadingIndicator.size) / 2,
+    marginTop: -32 / 2,
+    marginLeft: -32 / 2,
   },
   buttonReady: {
-    background: `var(--color-button-cta, ${themeConfig.colors.cta})`,
-    color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
+    background: theme.components.ctaButton.background,
+    color: theme.contrastColor(theme.components.ctaButton.background),
   },
   buttonSuccess: {
-    background: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
-    color: `var(--color-button-cta, ${themeConfig.colors.cta})`,
+    background: theme.contrastColor(theme.components.ctaButton.background),
+    color: theme.components.ctaButton.background,
   },
   buttonDisabled: {
-    background: themeConfig.colors.shade5,
-    color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
-    boxShadow: themeConfig.shadows.buttons.disabled,
+    background: theme.palette.action.disabledBackground,
+    color: theme.contrastColor(theme.palette.action.disabledBackground),
+    boxShadow: '0 3px 4px rgba(0, 0, 0, 0.13)',
   },
-});
+}));
 
 /**
  * @param {number} bSize .
@@ -117,6 +119,7 @@ const AddToCartButton = ({
   onReset,
 }) => {
   const { classes, cx } = useStyles();
+  const theme = useTheme();
   const [showCheckmark, setShowCheckmark] = useState(null);
 
   /**
@@ -228,7 +231,7 @@ const AddToCartButton = ({
       {isLoading && (
         <div className={cx(classes.icon, classes.spinnerIcon)} style={spinnerInlineStyle}>
           <IndicatorCircle
-            color={themeConfig.colors.primaryContrast}
+            color={theme.contrastColor(theme.components.ctaButton.background)}
             strokeWidth={5}
             paused={!isLoading}
           />

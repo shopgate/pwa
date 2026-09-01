@@ -2,16 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     '&:first-of-type': {
       boxShadow: '0 0 0 0',
     },
-    boxShadow: `0 -1px 0 0 ${colors.darkGray}`,
+    boxShadow: `0 -1px 0 0 ${theme.components.border.light}`,
     padding: '12px 0',
     'button&': {
       outline: 0,
@@ -19,7 +16,7 @@ const useStyles = makeStyles()({
       width: '100%',
     },
   },
-});
+}));
 
 /**
  * @returns {JSX.Element}

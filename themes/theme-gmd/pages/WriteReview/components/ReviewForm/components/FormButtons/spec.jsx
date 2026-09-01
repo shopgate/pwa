@@ -29,9 +29,11 @@ describe('<FormButtons />', () => {
     const comp = createComponent();
     expect(comp).toMatchSnapshot();
 
-    const submitButton = comp.find('Button').at(0);
-    const cancelButton = comp.find('button').at(0);
+    const submitButton = comp.find('button[data-test-id="sendReviewButton"]');
+    const cancelButton = comp.find('button[data-test-id="reviewCancelButton"]');
     expect(submitButton.find('Translate').prop('string')).toEqual('common.submit');
+    // The form is submitted implicitly - the button has no onClick of its own.
+    expect(submitButton.prop('type')).toEqual('submit');
     expect(cancelButton.length).toEqual(1);
     expect(cancelButton.find('Translate').prop('string')).toEqual('common.cancel');
   });

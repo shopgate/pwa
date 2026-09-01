@@ -14,9 +14,6 @@ const useStyles = makeStyles()({
     marginTop: 5,
     marginBottom: 2,
   },
-  availability: {
-    fontSize: '0.875rem',
-  },
 });
 
 /**
@@ -34,7 +31,6 @@ const StockInfo = ({ stock }) => {
         <PlaceholderLabel className={classes.placeholder} ready={(stock !== null)}>
           {stock && (
             <AvailableText
-              className={classes.availability}
               showWhenAvailable={false}
               text={stock.text}
               state={stock.state}

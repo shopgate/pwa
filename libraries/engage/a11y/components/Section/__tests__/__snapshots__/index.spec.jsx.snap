@@ -1,56 +1,27 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Section /> should render hidden when no children rendered 1`] = `
-<Section
-  className=""
-  title="my.headline"
-  titleParams={{}}
->
-  <section
-    className=""
-  />
-</Section>
+<section
+  class=""
+/>
 `;
 
 exports[`<Section /> should render with a label 1`] = `
-<Section
-  className=""
-  title="my.headline"
-  titleParams={
-    {
-      "some": "params",
-    }
-  }
+<section
+  aria-labelledby="my-headline"
+  class=""
 >
-  <section
-    aria-labelledby="my-headline"
-    className=""
+  <span
+    class="sg-1plkyt0-root"
   >
-    <VisuallyHidden
-      tag="span"
+    <h2
+      id="my-headline"
     >
-      <span
-        className="sg-1plkyt0-root"
-      >
-        <h2
-          id="my-headline"
-        >
-          <Translate
-            params={
-              {
-                "some": "params",
-              }
-            }
-            string="my.headline"
-          >
-            my.headline
-          </Translate>
-        </h2>
-      </span>
-    </VisuallyHidden>
-    <div
-      id="child-component"
-    />
-  </section>
-</Section>
+      my.headline
+    </h2>
+  </span>
+  <div
+    id="child-component"
+  />
+</section>
 `;

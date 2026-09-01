@@ -3,16 +3,13 @@ import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { BackBar } from 'Components/AppBar/presets';
 import { BackInStockReminders } from '@shopgate/engage/back-in-stock/components';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-
-const { colors } = themeConfig;
 
 /**
  * The BackInStockPage component.
  * @returns {JSX}
  */
 const BackInStockPage = () => (
-  <View aria-hidden={false} background={colors.background}>
+  <View aria-hidden={false}>
     <BackBar title={i18n.text('titles.back_in_stock')} />
     <BackInStockReminders />
   </View>

@@ -1,10 +1,12 @@
 import React, { useEffect, useState, memo } from 'react';
 import PropTypes from 'prop-types';
-import Color from 'color';
 import Transition from 'react-transition-group/Transition';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { getCSSCustomProp, makeStyles, keyframes } from '@shopgate/engage/styles';
+import {
+  makeStyles,
+  keyframes,
+  useTheme,
+} from '@shopgate/engage/styles';
 
 const duration = 150;
 
@@ -22,8 +24,6 @@ const transitionStyles = {
     transform: 'scale(1, 0)',
   },
 };
-
-const { colors } = themeConfig;
 
 const progressBarHeight = 4;
 
@@ -57,12 +57,12 @@ const indeterminateShort = keyframes({
   },
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   innerElement: {
     ':before': {
       content: '""',
       position: 'absolute',
-      background: 'var(--color-secondary)',
+      background: theme.palette.secondary.main,
       top: 0,
       left: 0,
       bottom: 0,
@@ -71,7 +71,7 @@ const useStyles = makeStyles()({
     ':after': {
       content: '""',
       position: 'absolute',
-      background: 'var(--color-secondary)',
+      background: theme.palette.secondary.main,
       top: 0,
       left: 0,
       bottom: 0,
@@ -87,7 +87,7 @@ const useStyles = makeStyles()({
       animationDelay: '1.15s',
     },
   },
-});
+}));
 
 /**
  * A component for visualizing any kind of progress.
@@ -95,6 +95,7 @@ const useStyles = makeStyles()({
  */
 const ProgressBar = memo(({ isVisible }) => {
   const { classes, cx } = useStyles();
+  const theme = useTheme();
   const [isAnimating, setIsAnimating] = useState(isVisible);
   const [visible, setVisible] = useState(isVisible);
 
@@ -106,8 +107,6 @@ const ProgressBar = memo(({ isVisible }) => {
       setVisible(false);
     }
   }, [isVisible]);
-
-  const wrapperBackground = Color(getCSSCustomProp('--color-secondary') || colors.accent).fade(0.6);
 
   return (
     <Transition
@@ -121,7 +120,7 @@ const ProgressBar = memo(({ isVisible }) => {
           style={{
             position: 'absolute',
             bottom: 0,
-            background: wrapperBackground,
+            background: theme.alpha(theme.palette.secondary.main, 0.6),
             width: '100%',
             height: progressBarHeight,
             overflow: 'hidden',

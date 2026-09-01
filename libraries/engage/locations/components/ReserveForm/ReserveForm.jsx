@@ -4,8 +4,9 @@ import React, {
 } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  TextField, RippleButton, RadioGroup, RadioGroupItem, ProgressBar,
+  TextField, RadioGroup, RadioGroupItem, ProgressBar, Typography,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { useFormState } from '../../../core/hooks/useFormState';
 import { FulfillmentContext } from '../../locations.context';
@@ -14,13 +15,11 @@ import { constraints } from './ReserveForm.constraints';
 
 const useStyles = makeStyles()(theme => ({
   form: {
-    background: theme.palette.background.default,
+    background: theme.palette.background.surface,
     padding: theme.spacing(1.5, 1.5, 2),
     boxShadow: 'inset rgba(0, 0, 0, .117647) 0 1px 6px, inset rgba(0, 0, 0, .117647) 0 1px 4px',
   },
   formHeading: {
-    fontSize: '1.125rem',
-    fontWeight: 'bold',
     margin: theme.spacing(0, 0, 1),
   },
   fieldset: {
@@ -40,9 +39,6 @@ const useStyles = makeStyles()(theme => ({
     ':last-of-type': {
       paddingRight: 0,
     },
-  },
-  button: {
-    width: '100%',
   },
   progressBar: {
     height: '4px',
@@ -190,9 +186,9 @@ function ReserveFormUnwrapped() {
             errorText={i18n.text(validationErrors.email)}
           />
         </fieldset>
-        <p className={classes.formHeading}>
+        <Typography variant="h4" component="p" fontWeight="bold" className={classes.formHeading}>
           {i18n.text('locations.who_will_pickup')}
-        </p>
+        </Typography>
         <div className={classes.pickerSwitch}>
           <RadioGroup name="picker" direction="row" value={picker} onChange={setPicker}>
             <RadioGroupItem
@@ -242,13 +238,14 @@ function ReserveFormUnwrapped() {
             />
           </fieldset>
         )}
-        <RippleButton
-          type="secondary"
+        <Button
+          type="submit"
+          color="primary"
+          fullWidth
           disabled={changed || valid === false || isSubmitting}
-          className={classes.button}
         >
           {i18n.text('locations.place_reservation')}
-        </RippleButton>
+        </Button>
       </form>
     </>
   );

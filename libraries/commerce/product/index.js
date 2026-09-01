@@ -15,7 +15,6 @@ export { default as fetchProductShipping } from './actions/fetchProductShipping'
 export { default as fetchProductVariants } from './actions/fetchProductVariants';
 
 // COLLECTIONS
-export { default as productImageFormats } from './collections/ProductImageFormats';
 
 // CONSTANTS
 export * from './constants/index';

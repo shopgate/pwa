@@ -5,15 +5,12 @@ import { injectGlobal, makeStyles, setViewportHeight } from '@shopgate/engage/st
 import { Footer } from '@shopgate/engage/components';
 import { LiveMessenger } from '@shopgate/engage/a11y';
 import { applyScrollContainer, hasWebBridge } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import TabBar from 'Components/TabBar';
-
-const { colors } = themeConfig;
-const defaultBackgroundColor = colors.light;
 
 injectGlobal({
   html: {
-    '--page-background-color': defaultBackgroundColor,
+    '--page-background-color': 'var(--sg-palette-background-default)',
     '--tabbar-height': '0px',
     '--app-bar-height': '0px',
   },
@@ -26,7 +23,9 @@ const useStyles = makeStyles()({
     minHeight: '100vh',
     overflow: applyScrollContainer() ? 'hidden' : 'inherit',
     position: 'relative',
-    width: '100vw',
+    // In the admin preview iframe (Safari) `100vw` includes the vertical scrollbar
+    // width, overflowing the iframe body and producing spurious double scrollbars.
+    width: isAdminPreviewActive() ? '100%' : '100vw',
   },
   content: {
     flexGrow: 1,

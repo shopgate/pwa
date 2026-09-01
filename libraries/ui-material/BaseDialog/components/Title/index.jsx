@@ -1,14 +1,11 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, Ellipsis } from '@shopgate/engage/components';
-import { themeConfig } from '@shopgate/engage';
+import { I18n, Ellipsis, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   title: {
-    fontSize: '1.25em',
-    lineHeight: themeConfig.typography.lineHeight,
-    fontWeight: 500,
+    lineHeight: theme.typography.body2.lineHeight,
     paddingBottom: theme.spacing(1),
     marginTop: '-.25em',
   },
@@ -26,11 +23,11 @@ const Title = ({ title }) => {
   }
 
   return (
-    <div className={classes.title} id="basicDialogTitle" role="heading" aria-level="2">
+    <Typography variant="h3" component="div" className={classes.title} id="basicDialogTitle" role="heading" aria-level="2">
       <Ellipsis rows={3}>
         {typeof title === 'string' ? <I18n.Text string={title} /> : title}
       </Ellipsis>
-    </div>
+    </Typography>
   );
 };
 

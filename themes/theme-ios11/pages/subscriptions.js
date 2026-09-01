@@ -15,10 +15,8 @@ import {
 import { LEGACY_URL as ORDERS_LEGACY_PATH } from '@shopgate/pwa-common-commerce/orders/constants';
 import {
   ITEM_PATH,
-  productImageFormats,
   enableRedirectHandler,
   setDefaultProductFetchParams,
-  getProductImageSettings,
 } from '@shopgate/engage/product';
 import { grantCameraPermissions } from '@shopgate/engage/core';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
@@ -26,14 +24,6 @@ import {
   CHECKOUT_ADDRESS_BOOK_PATTERN,
   CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN,
 } from '@shopgate/engage/checkout';
-import {
-  PRODUCT_SLIDER_IMAGE_COLLECTION_KEY,
-  PRODUCT_SLIDER_IMAGE_FORMATS,
-} from './Product/constants';
-import {
-  GALLERY_SLIDER_IMAGE_COLLECTION_KEY,
-  GALLERY_SLIDER_IMAGE_FORMATS,
-} from './ProductGallery/constants';
 
 /**
  * App subscriptions.
@@ -70,20 +60,6 @@ export default function app(subscribe) {
           resolve(granted ? pathname : null);
         });
     }));
-
-    // set formats for product images
-    let { HeroImage: pdpResolutions, GalleryImage: galleryResolutions } = getProductImageSettings();
-
-    if (!(pdpResolutions && pdpResolutions.length)) {
-      pdpResolutions = PRODUCT_SLIDER_IMAGE_FORMATS;
-    }
-
-    if (!(galleryResolutions && galleryResolutions.length)) {
-      galleryResolutions = GALLERY_SLIDER_IMAGE_FORMATS;
-    }
-
-    productImageFormats.set(PRODUCT_SLIDER_IMAGE_COLLECTION_KEY, pdpResolutions);
-    productImageFormats.set(GALLERY_SLIDER_IMAGE_COLLECTION_KEY, galleryResolutions);
 
     /**
      * This feature is currently in BETA testing.

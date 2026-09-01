@@ -1,17 +1,16 @@
 import React, { useMemo } from 'react';
 import { historyPush } from '@shopgate/pwa-common/actions/router';
 import PropTypes from 'prop-types';
-import { Button } from '@shopgate/engage/components';
+import { ButtonBase } from '@shopgate/engage/components/v2';
 import { generateGoogleMapsDirectionsUrl, i18n } from '@shopgate/engage/core';
 import { useDispatch } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
-  container: {},
+const useStyles = makeStyles()(theme => ({
   buttonText: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
-});
+}));
 
 /**
  * @param {Object} props The component props
@@ -36,16 +35,12 @@ const GetDirectionsButton = ({ address }) => {
   };
 
   return (
-    <div className={classes.container}>
-      <Button
-        onClick={handleClick}
-        role="button"
-        type="plain"
-      >
+    <div>
+      <ButtonBase onClick={handleClick}>
         <span className={classes.buttonText}>
           {i18n.text('location.getDirections')}
         </span>
-      </Button>
+      </ButtonBase>
     </div>
 
   );

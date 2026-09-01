@@ -32,6 +32,8 @@ jest.mock('@shopgate/engage/styles', () => ({
     classes: new Proxy({}, { get: (_, prop) => prop }),
     cx: (...args) => args.filter(Boolean).join(' '),
   }),
+  // The v2 Button pulls in the press ripple, which builds its animations at module scope.
+  keyframes: () => 'keyframes',
 }));
 
 // Render the Spring render-prop child immediately without animating. onRest is fired on a 0ms

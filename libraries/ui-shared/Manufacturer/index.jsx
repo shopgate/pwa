@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   root: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
 }));
 

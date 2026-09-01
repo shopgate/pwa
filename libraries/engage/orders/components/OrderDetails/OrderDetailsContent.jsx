@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
 import { useOrderDetails } from '../../hooks';
 import OrderDetailsOrder from './OrderDetailsOrder';
 import OrderDetailsAuthenticate from './OrderDetailsAuthenticate';
@@ -10,8 +10,6 @@ const useStyles = makeStyles()(theme => ({
     display: 'none',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       display: 'block',
-      fontSize: '2rem',
-      fontWeight: 'normal',
       paddingBottom: theme.spacing(2),
       padding: theme.spacing(2, 2, 0),
     },
@@ -32,9 +30,9 @@ const OrderDetailsContent = () => {
   return (
     <>
       { (showForm || order || errorMessage) && (
-        <div className={classes.headline}>
+        <Typography variant="h1" component="div" fontWeight="regular" className={classes.headline}>
           <I18n.Text string="titles.order_details" />
-        </div>
+        </Typography>
       )}
       <OrderDetailsAuthenticate />
       <OrderDetailsOrder />

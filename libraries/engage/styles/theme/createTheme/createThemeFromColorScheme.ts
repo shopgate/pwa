@@ -2,8 +2,8 @@ import createPalette from './createPalette';
 import createTypography from './createTypography';
 import createComponents from './createComponents';
 import createShape from './createShape';
-import shadows from './shadows';
-import type { ColorSchemeOptions, BaseTheme } from './types';
+import shadows, { shadowSizes } from './shadows';
+import type { ColorSchemeOptions, ColorSchemeTheme } from './types';
 
 /**
  * Calculates the percentage value for a given coefficient, which can be a number or a string representing a CSS calculation.
@@ -51,11 +51,26 @@ export const darken = (
 ): string => `color-mix(in oklch, ${color}, #000 ${coefficientToPercentage(coefficient)})`;
 
 /**
+ * Helper function to calculate a contrast color (either black or white) based on the lightness of
+ * the input color.
+ * @param color The color to evaluate.
+ * @returns A string representing the contrast color (either black or white) for the input color.
+ */
+export const contrastColor = (
+  color: string
+): string => `oklch(from ${color} var(--__l) 0 h / var(--__a))`;
+
+/**
  * Creates a theme object for a given color scheme (light or dark).
  * @param colorScheme The color scheme options.
+ * @param cssVarPrefix The theme's css variable prefix. Typography references some of the properties
+ * that are generated from it later, so it has to compose the same names.
  * @returns A theme object for the given color scheme.
  */
-const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): BaseTheme => {
+const createThemeFromColorScheme = (
+  colorScheme: ColorSchemeOptions,
+  cssVarPrefix?: string
+): ColorSchemeTheme => {
   const {
     palette: paletteInput = {},
     typography: typographyInput = {},
@@ -65,7 +80,7 @@ const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): BaseTheme 
 
   const palette = createPalette(paletteInput);
 
-  const typography = createTypography(palette, typographyInput);
+  const typography = createTypography(palette, typographyInput, cssVarPrefix);
   const components = createComponents(componentsInput);
   const shape = createShape(shapeInput);
 
@@ -75,9 +90,11 @@ const createThemeFromColorScheme = (colorScheme: ColorSchemeOptions): BaseTheme 
     components,
     shape,
     shadows,
+    shadowSizes,
     alpha,
     lighten,
     darken,
+    contrastColor,
   };
 
   return theme;

@@ -24,7 +24,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button sg-wd65dq-buttonReady"
+      className="ui-shared__add-to-cart-button sg-6rg5es-buttonReady"
       data-test-id="addToCartButton"
       onClick={[Function]}
       style={
@@ -46,7 +46,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
       type="button"
     >
       <div
-        className="sg-pqhwvv-icon-spinnerIcon"
+        className="sg-fe7959-icon-spinnerIcon"
         style={
           {
             "opacity": 1,
@@ -54,7 +54,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
         }
       >
         <IndicatorCircle
-          color="#fff"
+          color="oklch(from var(--sg-components-ctaButton-background) var(--__l) 0 h / var(--__a))"
           paused={false}
           size={32}
           strokeWidth={5}
@@ -68,7 +68,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
             xmlns="http://www.w3.org/2000/svg"
           >
             <circle
-              className="sg-ge029-circle"
+              className="sg-6colin-circle"
               cx="50"
               cy="50"
               r="20"
@@ -77,7 +77,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
         </IndicatorCircle>
       </div>
       <div
-        className="sg-4825tr-icon"
+        className="sg-j5u200-icon"
         style={
           {
             "opacity": 0,
@@ -109,7 +109,7 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
         </Tick>
       </div>
       <div
-        className="sg-4825tr-icon"
+        className="sg-j5u200-icon"
         onAnimationEnd={[Function]}
         style={
           {
@@ -198,7 +198,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button sg-ut1w4n-buttonSuccess"
+      className="ui-shared__add-to-cart-button sg-qq4p6o-buttonSuccess"
       data-test-id="addToCartButton"
       onClick={[Function]}
       style={
@@ -220,7 +220,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
       type="button"
     >
       <div
-        className="sg-650bug-icon-springFromBottom"
+        className="sg-1gm11kn-icon-springFromBottom"
         style={
           {
             "opacity": 1,
@@ -252,7 +252,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
         </Tick>
       </div>
       <div
-        className="sg-okslb8-icon-springToTop"
+        className="sg-16si5p6-icon-springToTop"
         onAnimationEnd={[Function]}
         style={
           {
@@ -341,7 +341,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       aria-disabled={false}
       aria-hidden={false}
       aria-label={null}
-      className="ui-shared__add-to-cart-button sg-ut1w4n-buttonSuccess"
+      className="ui-shared__add-to-cart-button sg-qq4p6o-buttonSuccess"
       data-test-id="addToCartButton"
       onClick={[Function]}
       style={
@@ -363,7 +363,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
       type="button"
     >
       <div
-        className="sg-650bug-icon-springFromBottom"
+        className="sg-1gm11kn-icon-springFromBottom"
         style={
           {
             "opacity": 1,
@@ -395,7 +395,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
         </Tick>
       </div>
       <div
-        className="sg-okslb8-icon-springToTop"
+        className="sg-16si5p6-icon-springToTop"
         onAnimationEnd={[Function]}
         style={
           {

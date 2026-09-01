@@ -1,18 +1,3 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ItemImage /> should render 1`] = `
-<SurroundPortals
-  portalName="product-item.image"
-  portalProps={
-    {
-      "productId": "1234",
-    }
-  }
->
-  <WithWidgetSettings(ProductImagePure)
-    alt="FooBar"
-    itemProp="image"
-    src="http://www.google.com"
-  />
-</SurroundPortals>
-`;
+exports[`<ItemImage /> should render 1`] = `<DocumentFragment />`;

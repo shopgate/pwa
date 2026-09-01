@@ -10,7 +10,6 @@ import throttle from 'lodash/throttle';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Backdrop from '@shopgate/pwa-common/components/Backdrop';
 import Drawer from '@shopgate/pwa-common/components/Drawer';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, keyframes, responsiveMediaQuery } from '@shopgate/engage/styles';
 import ProgressBar from '../ProgressBar';
 import Header from './components/Header';
@@ -61,7 +60,7 @@ const useStyles = makeStyles()(theme => ({
   },
   container: {
     bottom: 0,
-    background: themeConfig.colors.light,
+    background: theme.palette.background.surface,
     width: '100vw',
     [responsiveMediaQuery('<xl', { appOnly: true })]: {
       maxWidth: 640,
@@ -79,32 +78,42 @@ const useStyles = makeStyles()(theme => ({
   },
   containerFullScreen: {
     height: [
-      `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px)`,
-      `calc(100vh - ${themeConfig.variables.navigator.height}px - 51px - var(--safe-area-inset-top))`,
+      `calc(100vh - ${theme.components.navigator.height} - 51px)`,
+      `calc(100vh - ${theme.components.navigator.height} - 51px - ${theme.layout.safeArea.top})`,
     ],
   },
   progressBarContainer: {
     position: 'relative',
   },
   sheetShadow: {
-    boxShadow: themeConfig.shadows.sheet,
+    boxShadow: '0 -2px 4px rgba(0, 0, 0, 0.1)',
   },
   content: {
     maxHeight: [
-      `calc(var(--vh-100, 100vh) - ${themeConfig.variables.navigator.height}px)`,
-      `calc(var(--vh-100, 100vh) - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
+      `calc(var(--vh-100, 100vh) - ${theme.components.navigator.height})`,
+      `calc(var(--vh-100, 100vh) - ${theme.components.navigator.height} - ${theme.layout.safeArea.top})`,
     ],
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
       maxHeight: [
-        `calc(var(--vh-80, 80vh) - ${themeConfig.variables.navigator.height}px)`,
-        `calc(var(--vh-80, 80vh) - ${themeConfig.variables.navigator.height}px - var(--safe-area-inset-top))`,
+        `calc(var(--vh-80, 80vh) - ${theme.components.navigator.height})`,
+        `calc(var(--vh-80, 80vh) - ${theme.components.navigator.height} - ${theme.layout.safeArea.top})`,
       ],
     },
     paddingBottom: [
-      'var(--safe-area-inset-bottom)',
+      theme.layout.safeArea.bottom,
     ],
     overflowY: 'scroll',
     WebkitOverflowScrolling: 'touch',
+    '@media (hover: hover) and (pointer: fine)': {
+      '::-webkit-scrollbar': {
+        width: 6,
+        background: 'transparent',
+      },
+      '::-webkit-scrollbar-thumb': {
+        background: theme.components.border.medium,
+        borderRadius: 4,
+      },
+    },
   },
   drawerAnimIn: {
     [responsiveMediaQuery('<=sm', { appAlways: true })]: {
@@ -215,7 +224,7 @@ const SheetView = ({
         <Backdrop
           isVisible={isOpen}
           level={4}
-          onClick={allowClose ? onClose : () => {}}
+          onClick={allowClose ? onClose : () => { }}
           opacity={20}
         />
       )}

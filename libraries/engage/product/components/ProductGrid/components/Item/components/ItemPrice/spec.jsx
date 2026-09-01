@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import ItemPrice from './index';
 
 jest.mock('@shopgate/engage/product', () => ({
@@ -25,12 +25,12 @@ const display = {
 
 describe('<ItemPrice />', () => {
   it('should render with minimal props', () => {
-    const wrapper = shallow(<ItemPrice {...props} />);
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = render(<ItemPrice {...props} />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 
   it('should not render with display props set', () => {
-    const wrapper = shallow(<ItemPrice {...props} display={display} />);
+    const wrapper = render(<ItemPrice {...props} display={display} />);
     expect(wrapper).toBeEmptyRender();
   });
 });

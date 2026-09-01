@@ -1,4 +1,5 @@
-import { UnwrappedProductsWidget } from './ProductsWidget';
+import { withStyles } from '@shopgate/engage/styles';
+import { UnwrappedProductsWidget, styles } from './ProductsWidget';
 import connect from './connector';
 
 /**
@@ -53,4 +54,4 @@ class ProductsIdsWidget extends UnwrappedProductsWidget {
   hasAllProducts = () => this.productCount >= this.props.products.length;
 }
 
-export default connect(ProductsIdsWidget);
+export default connect(withStyles(ProductsIdsWidget, styles));

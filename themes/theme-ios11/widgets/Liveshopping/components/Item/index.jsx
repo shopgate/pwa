@@ -4,20 +4,11 @@ import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import CountdownTimer from '@shopgate/pwa-common/components/CountdownTimer';
 import Link from '@shopgate/pwa-common/components/Link';
 import Grid from '@shopgate/pwa-common/components/Grid';
-import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import { ProductImage, ProductBadges, ProductName } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import Discount from '../Discount';
 import Price from '../Price';
 import { getLiveshoppingTimeout } from './helpers';
-
-const { colors } = themeConfig;
-
-const paneBase = {
-  width: '50%',
-  background: colors.light,
-};
 
 const liveshoppingCardStyle = {
   margin: '5px 15px 10px',
@@ -25,10 +16,10 @@ const liveshoppingCardStyle = {
 
 const useStyles = makeStyles()(theme => ({
   image: {
-    ...paneBase,
+    width: '50%',
   },
   infoPane: {
-    ...paneBase,
+    width: '50%',
     padding: 16,
     display: 'flex',
     flexDirection: 'column',
@@ -41,16 +32,16 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: 28,
   },
   title: {
-    fontWeight: '500',
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.15,
     marginTop: 1,
     marginBottom: theme.spacing(0.5),
   },
   timer: {
-    fontSize: '0.875rem',
-    color: 'var(--color-primary)',
+    fontSize: theme.typography.body2.fontSize,
+    color: theme.palette.primary.main,
     fontStyle: 'italic',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   badgesPortal: {
     width: '50%',
@@ -91,7 +82,6 @@ function LiveshoppingItem({
           price,
         } = product;
         const timeout = getLiveshoppingTimeout(liveshoppings);
-        const { ListImage: gridResolutions } = getProductImageSettings();
 
         return (
           <Link
@@ -103,7 +93,7 @@ function LiveshoppingItem({
               <Grid.Item className={classes.image}>
                 <ProductImage
                   src={featuredImageBaseUrl}
-                  resolutions={gridResolutions}
+                  context="list"
                   alt={name}
                 />
               </Grid.Item>
@@ -118,7 +108,7 @@ function LiveshoppingItem({
                     className={classes.badgesPortal}
                   >
                     {price.discount > 0 &&
-                    <Discount discount={price.discount} productId={productId} />}
+                      <Discount discount={price.discount} productId={productId} />}
                   </ProductBadges>
                   <ProductName
                     name={name}
@@ -127,7 +117,7 @@ function LiveshoppingItem({
                     rows={2}
                   />
                   {timeout &&
-                  <CountdownTimer className={classes.timer} timeout={timeout / 1000} />}
+                    <CountdownTimer className={classes.timer} timeout={timeout / 1000} />}
                 </div>
                 <Price price={price} />
               </Grid.Item>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   BOPIS,
@@ -9,8 +10,6 @@ import { useCartItemProduct } from './CartItem.hooks';
 
 const useStyles = makeStyles()({
   label: {
-    color: 'var(--color-secondary)',
-    fontSize: '0.875rem',
     marginTop: 'auto',
   },
 });
@@ -32,9 +31,9 @@ const CartItemProductLayoutWideFulfillmentLabel = () => {
   }
 
   return (
-    <div className={classes.label}>
+    <Typography variant="body2" component="div" color="secondary" className={classes.label}>
       {i18n.text(`locations.method.${suffix}`)}
-    </div>
+    </Typography>
   );
 };
 

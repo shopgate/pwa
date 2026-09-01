@@ -3,10 +3,9 @@ import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { I18n } from '@shopgate/engage/components';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   srOnly: {
     clip: 'rect(1px, 1px, 1px, 1px)',
     height: '1px',
@@ -18,20 +17,20 @@ const useStyles = makeStyles()({
     width: '1px',
     zIndex: -1000,
     '&:first-of-type': {
-      marginTop: 'calc(16px + var(--safe-area-inset-top))',
+      marginTop: `calc(16px + ${theme.layout.safeArea.top})`,
     },
   },
   button: {
     alignItems: 'flex-start',
     color: 'inherit',
     display: 'flex',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     outline: 0,
     padding: '16px 8px 16px 0',
     position: 'relative',
     width: '100%',
     '&:first-of-type': {
-      paddingTop: 'calc(16px + var(--safe-area-inset-top))',
+      paddingTop: `calc(16px + ${theme.layout.safeArea.top})`,
     },
   },
   label: {
@@ -44,10 +43,10 @@ const useStyles = makeStyles()({
   },
   icon: {
     boxSizing: 'content-box',
-    color: themeColors.gray,
+    color: theme.palette.grey.dark,
     padding: '0 32px 0 16px',
   },
-});
+}));
 
 /**
  * The NavDrawerItem component.

@@ -5,10 +5,11 @@ import Helmet from 'react-helmet';
 import { CacheProvider } from '@emotion/react';
 import { emotionCache } from '@shopgate/engage/styles/tss';
 import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
+import { CSS_ROOT_FONT_FAMILY } from '@shopgate/engage/styles/reset/typographyCustomProps';
 import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
+import { getAreAppSettingsHydrated } from '@shopgate/engage/settings/selectors/appSettings';
 import { ThemeConfigResolver, AppProvider } from '@shopgate/engage/core';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { themeConfig } from '@shopgate/engage';
 import { isWindows, isLinux } from '@shopgate/engage/core/helpers';
 import { history } from '@shopgate/pwa-common/helpers/router';
 import routePortals from '@shopgate/pwa-common/helpers/portals/routePortals';
@@ -83,11 +84,6 @@ const fallbackFontsUrl = 'https://connect.shopgate.com/assets/fonts/roboto/font.
 // Add fallback font on known OS that don't have default iOS theme fonts available
 const needsFallbackFont = isWindows || isLinux;
 
-// Include Roboto font as a fallback when other fonts are not available
-const fontFamily = (themeConfig.typography.family || '').includes('Roboto')
-  ? themeConfig.typography.family
-  : `${(themeConfig.typography.family || '')}, Roboto`;
-
 new ThemeConfigResolver().resolveAll();
 
 const globalLocationSelectorAllowList = [
@@ -110,13 +106,18 @@ const Pages = ({ store }) => {
     const extendedTypography = configuration.get(CONFIGURATION_COLLECTION_KEY_THEME_TYPOGRAPHY);
 
     return createTheme({
-      ...createDefaultThemeOptions(),
+      // The settings are fetched and dispatched by `initialize`, before the app is rendered, so
+      // the flag is settled by the time the theme is built.
+      ...createDefaultThemeOptions({
+        isHydrated: getAreAppSettingsHydrated(store.getState()),
+      }),
       typography: {
-        fontFamily,
+        // The property is defined by the css reset: libraries/engage/styles/reset/root.js
+        fontFamily: `var(${CSS_ROOT_FONT_FAMILY})`,
         ...extendedTypography,
       },
     });
-  }, []);
+  }, [store]);
 
   return (
     <App store={store}>
