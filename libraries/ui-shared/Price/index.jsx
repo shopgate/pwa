@@ -6,11 +6,12 @@ import { makeStyles } from '@shopgate/engage/styles';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     position: 'relative',
     whiteSpace: 'nowrap',
+    color: theme.components.price.default,
   },
   disclaimer: {
     color: 'initial',
@@ -19,9 +20,9 @@ const useStyles = makeStyles()({
     top: 0,
   },
   discounted: {
-    color: 'var(--color-primary)',
+    color: theme.components.price.sale,
   },
-});
+}));
 
 /**
  * The Price component

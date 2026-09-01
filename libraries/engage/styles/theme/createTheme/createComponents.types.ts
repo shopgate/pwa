@@ -125,6 +125,9 @@ export const componentsSchema = {
   price: {
     vars: {
       color: '',
+      default: '',
+      sale: '',
+      striked: '',
     },
   },
   button: {
@@ -145,6 +148,7 @@ export const componentsSchema = {
     vars: {
       background: '',
       border: '',
+      text: '',
     },
   },
   separatorLine: {
@@ -297,12 +301,16 @@ export const componentsDefaults = {
   price: {
     vars: {
       color: t => t.palette.primary.main,
+      default: t => t.palette.text.primary,
+      sale: t => t.palette.primary.main,
+      striked: t => t.palette.grey.dark,
     },
   },
   input: {
     vars: {
       background: '#F2F2F2',
       border: '#CCCCCC',
+      text: t => t.palette.text.primary,
     },
   },
   separatorLine: {

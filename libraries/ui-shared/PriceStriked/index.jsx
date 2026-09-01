@@ -28,7 +28,7 @@ const calcAngle = (element) => {
 const useStyles = makeStyles()(theme => ({
   root: {
     whiteSpace: 'nowrap',
-    color: theme.palette.grey.dark,
+    color: theme.components.price.striked,
     '& span': {
       position: 'relative',
       '&::before': {
