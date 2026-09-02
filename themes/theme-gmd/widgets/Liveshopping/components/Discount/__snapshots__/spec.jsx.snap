@@ -36,13 +36,13 @@ exports[`<LiveshoppingDiscount /> should not render the widget without any data 
         <Typography
           align="center"
           aria-hidden={true}
-          className="theme__discount-badge sg-ss5rk2-big-root"
+          className="theme__discount-badge sg-128jnzk-big-root"
           fontWeight="bold"
           variant="caption"
         >
           <span
             aria-hidden={true}
-            className="theme__discount-badge sg-ss5rk2-big-root"
+            className="theme__discount-badge sg-128jnzk-big-root"
             fontWeight="bold"
           >
             <Text
