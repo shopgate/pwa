@@ -20,9 +20,9 @@ describe('settings / reducers / appSettings', () => {
     expect(state.isHydrated).toBe(false);
   });
 
-  it('defaults to showing empty rating stars', () => {
+  it('defaults to hiding empty rating stars', () => {
     // Only reachable once hydrated, so it matches the admin default rather than the legacy one.
-    expect(DEFAULT_APP_SETTINGS.product.rating.showEmptyStars).toBe(true);
+    expect(DEFAULT_APP_SETTINGS.product.rating.showEmptyStars).toBe(false);
   });
 
   it('ignores unrelated actions', () => {

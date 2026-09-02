@@ -29,14 +29,14 @@ exports[`pages / Browse / components / SearchField Check search field should ren
             htmlFor="search"
           >
             <div
-              className="sg-1iew895-icon"
+              className="sg-8uu90g-icon"
             >
               <MagnifierIcon />
             </div>
           </label>
           <_default
             autoComplete={false}
-            className="sg-e0adzg-input"
+            className="sg-22nt4y-input"
             onChange={[Function]}
             onFocusChange={[Function]}
             onSubmit={[Function]}
@@ -48,7 +48,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="sg-e0adzg-input"
+              className="sg-22nt4y-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -71,7 +71,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="sg-e0adzg-input simpleInput common__simple-input"
+                className="sg-22nt4y-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}
@@ -148,14 +148,14 @@ exports[`pages / Browse / components / SearchField Check search field should sho
             htmlFor="search"
           >
             <div
-              className="sg-1iew895-icon"
+              className="sg-8uu90g-icon"
             >
               <MagnifierIcon />
             </div>
           </label>
           <_default
             autoComplete={false}
-            className="sg-e0adzg-input"
+            className="sg-22nt4y-input"
             onChange={[Function]}
             onFocusChange={[Function]}
             onSubmit={[Function]}
@@ -167,7 +167,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               attributes={null}
               autoComplete={false}
               autoCorrect={false}
-              className="sg-e0adzg-input"
+              className="sg-22nt4y-input"
               disabled={false}
               id={null}
               inputComponent="input"
@@ -190,7 +190,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
               <input
                 autoComplete="off"
                 autoCorrect="off"
-                className="sg-e0adzg-input simpleInput common__simple-input"
+                className="sg-22nt4y-input simpleInput common__simple-input"
                 disabled={false}
                 id={null}
                 inputMode={null}
