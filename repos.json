@@ -1,6 +1,5 @@
 {
   "themes": {
-    "theme-gmd": "git@github.com:shopgate/theme-gmd.git",
     "theme-ios11": "git@github.com:shopgate/theme-ios11.git"
   }
 }

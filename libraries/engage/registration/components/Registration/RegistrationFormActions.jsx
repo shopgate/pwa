@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { i18n, isIOSTheme } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Button } from '@shopgate/engage/components/v2';
 import { useRegistration } from '../../hooks';
@@ -8,11 +8,6 @@ import { useRegistration } from '../../hooks';
 const useStyles = makeStyles()(theme => ({
   submitButtonContainer: {
     margin: theme.spacing(0, 2, 2),
-    ...(!isIOSTheme() ? {
-      '@media(min-width: 768px)': {
-        width: `calc(50% - ${theme.spacing(2)}px)`,
-      },
-    } : null),
   },
   submitButton: {
     marginTop: 8,
