@@ -1,11 +1,23 @@
-import React from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { injectGlobal, makeStyles, setViewportHeight } from '@shopgate/engage/styles';
-import { Footer } from '@shopgate/engage/components';
+import {
+  injectGlobal,
+  makeStyles,
+  responsiveMediaQuery,
+  setPageContentWidth,
+  setViewportHeight,
+} from '@shopgate/engage/styles';
+import {
+  Footer,
+  NavigationDrawer,
+  ResponsiveContainer,
+  WideBar,
+} from '@shopgate/engage/components';
 import { LiveMessenger } from '@shopgate/engage/a11y';
 import { applyScrollContainer, hasWebBridge } from '@shopgate/engage/core/helpers';
 import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
+import { MAX_DESKTOP_WIDTH } from '@shopgate/engage/components/constants';
 import TabBar from 'Components/TabBar';
 
 injectGlobal({
@@ -35,19 +47,41 @@ const useStyles = makeStyles()({
       display: 'flex',
       justifyContent: 'center',
     } : {}),
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      margin: '0 auto',
+      maxWidth: MAX_DESKTOP_WIDTH,
+      width: '100%',
+    },
   },
   header: {
     top: 0,
     flexShrink: 1,
     position: hasWebBridge() ? 'sticky' : 'relative',
     zIndex: 1,
+    // The WideBar replaces the narrow app bar on wide website viewports.
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      display: 'none',
+    },
   },
 });
 
+/**
+ * Publishes the width the page content is actually rendered at.
+ */
+const updatePageContentWidth = () => {
+  const { clientWidth } = document.body;
+
+  setPageContentWidth(
+    hasWebBridge() ? Math.min(clientWidth, MAX_DESKTOP_WIDTH) : clientWidth
+  );
+};
+
 window.onresize = debounce(() => {
+  updatePageContentWidth();
   setViewportHeight();
 }, 200);
 
+updatePageContentWidth();
 setViewportHeight();
 
 /**
@@ -57,18 +91,36 @@ setViewportHeight();
  */
 const Viewport = (props) => {
   const { classes, cx } = useStyles();
+  const [drawerOpen, setDrawerOpen] = useState(false);
+
+  const handleDrawerOpen = useCallback(() => setDrawerOpen(true), []);
+  const handleDrawerClose = useCallback(() => setDrawerOpen(false), []);
 
   return (
-    <main className={cx(classes.viewport, 'theme__viewport')} role="main" itemScope itemProp="http://schema.org/MobileApplication">
-      <LiveMessenger />
-      <header className={classes.header} id="AppHeader" />
-      <section className={classes.content} id="AppContent">
-        {props.children}
-      </section>
-      <Footer>
-        <TabBar />
-      </Footer>
-    </main>
+    <>
+      <ResponsiveContainer webOnly breakpoint=">xs">
+        <NavigationDrawer onOpen={handleDrawerOpen} onClose={handleDrawerClose} />
+      </ResponsiveContainer>
+      <main
+        className={cx(classes.viewport, 'theme__viewport')}
+        role="main"
+        itemScope
+        itemProp="http://schema.org/MobileApplication"
+        aria-hidden={drawerOpen}
+      >
+        <LiveMessenger />
+        <ResponsiveContainer webOnly breakpoint=">xs">
+          <WideBar />
+        </ResponsiveContainer>
+        <header className={classes.header} id="AppHeader" />
+        <section className={classes.content} id="AppContent">
+          {props.children}
+        </section>
+        <Footer>
+          <TabBar />
+        </Footer>
+      </main>
+    </>
   );
 };
 

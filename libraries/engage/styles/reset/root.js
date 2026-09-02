@@ -72,4 +72,11 @@ injectGlobal({
   button: {
     color: 'inherit',
   },
+  ...hasWebBridge() && {
+    '@media (min-width: 600px)': {
+      html: {
+        backgroundColor: 'var(--color-background-gutter-body, var(--page-background-color))',
+      },
+    },
+  },
 });
