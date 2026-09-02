@@ -20,16 +20,12 @@
 Check out our [documentation website](https://developer.shopgate.com/guides)!
 
 ## PWA 7 specialities
-The GMD theme of PWA 7 supports a special mode to display responsive content for desktop browsers. To enable PWA in desktop browsers, pipeline requests (that are an app concept originally) are transformed to AJAX requests which are send to a special proxy which is called "web bridge".
+PWA 7 supports a special mode to run in browsers instead of the native app. Pipeline requests (that are an app concept originally) are transformed to AJAX requests which are send to a special proxy which is called "web bridge".
 
 To enable the bridge, frontend needs to be started with a special environment parameter.
 
 ```shell
 WEB_BRIDGE=1 sgconnect frontend start
-```
-or
-```shell
-WEB_BRIDGE=1 sgconnect frontend start -t theme-gmd
 ```
 
 ## About Shopgate
