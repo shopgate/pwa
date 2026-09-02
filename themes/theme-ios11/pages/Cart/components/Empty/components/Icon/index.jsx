@@ -6,13 +6,14 @@ const useStyles = makeStyles()(theme => ({
     fill: theme.palette.primary.main,
   },
   background: {
-    fill: theme.palette.background.surface,
+    fill: theme.palette.secondary.main,
   },
   shadow: {
-    fill: theme.palette.grey.light,
+    fill: theme.contrastColor(theme.palette.secondary.main),
+    opacity: 0.12,
   },
   basket: {
-    fill: theme.palette.secondary.main,
+    fill: theme.contrastColor(theme.palette.secondary.main),
   },
 }));
 

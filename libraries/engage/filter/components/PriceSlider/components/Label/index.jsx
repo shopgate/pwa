@@ -8,6 +8,9 @@ import { i18n } from '@shopgate/engage/core/helpers';
 const { currency } = appConfig;
 
 const useStyles = makeStyles()(theme => ({
+  priceRange: {
+    whiteSpace: 'nowrap',
+  },
   editableField: {
     color: theme.palette.text.primary,
     fontWeight: theme.typography.fontWeightMedium,
@@ -18,6 +21,16 @@ const useStyles = makeStyles()(theme => ({
     margin: theme.spacing(0, 0.5),
     border: `1px solid ${theme.components.input.border}`,
     borderRadius: 3,
+    appearance: 'textfield',
+    WebkitAppearance: 'textfield',
+    '&::-webkit-outer-spin-button': {
+      WebkitAppearance: 'none',
+      margin: 0,
+    },
+    '&::-webkit-inner-spin-button': {
+      WebkitAppearance: 'none',
+      margin: 0,
+    },
     ':focus': {
       borderColor: theme.components.border.medium,
     },
@@ -111,7 +124,7 @@ function Label(props) {
   }).format('0').replace('0.00', '');
 
   return (
-    <div>
+    <div className={classes.priceRange}>
       <span className={classes.srOnly}>
         {i18n.text('price.range', {
           fromPrice: i18n.price(priceMin, currency, false),

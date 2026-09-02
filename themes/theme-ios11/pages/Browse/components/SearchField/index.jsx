@@ -62,7 +62,8 @@ const useStyles = makeStyles()(theme => ({
   },
   label: {
     alignItems: 'center',
-    color: theme.palette.grey.medium,
+    color: theme.components.input.text,
+    opacity: 0.6,
     display: 'flex',
     height: '100%',
     position: 'absolute',

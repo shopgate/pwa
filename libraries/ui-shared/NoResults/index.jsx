@@ -22,7 +22,7 @@ const useStyles = makeStyles()(theme => ({
   },
   icon: {
     width: 216,
-    color: theme.palette.primary.main,
+    color: theme.contrastColor(theme.palette.secondary.main),
   },
   headline: {
     marginTop: 30,
