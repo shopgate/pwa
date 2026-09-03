@@ -9,7 +9,11 @@ const { currency } = appConfig;
 
 const useStyles = makeStyles()(theme => ({
   priceRange: {
-    whiteSpace: 'nowrap',
+    display: 'flex',
+    flexWrap: 'wrap',
+    alignItems: 'center',
+    columnGap: theme.spacing(0.5),
+    rowGap: theme.spacing(1),
   },
   editableField: {
     color: theme.palette.text.primary,
@@ -67,7 +71,7 @@ const useStyles = makeStyles()(theme => ({
  * @param {number} length Amount of characters the field has to fit.
  * @returns {string}
  */
-const fieldWidth = length => `${length + 2}ch`;
+const fieldWidth = length => `${length + 1}ch`;
 
 /**
  * The filter price range slider label component.
@@ -124,14 +128,14 @@ function Label(props) {
   }).format('0').replace('0.00', '');
 
   return (
-    <div className={classes.priceRange}>
+    <div>
       <span className={classes.srOnly}>
         {i18n.text('price.range', {
           fromPrice: i18n.price(priceMin, currency, false),
           toPrice: i18n.price(priceMax, currency, false),
         })}
       </span>
-      <I18n.Text string="price.range" aria-hidden>
+      <I18n.Text string="price.range" aria-hidden className={classes.priceRange}>
         <I18n.Placeholder forKey="fromPrice">
           <span className={classes.priceField}>
             <span aria-hidden className={classes.currencySymbol} id="price-slider-currency-label-min">
