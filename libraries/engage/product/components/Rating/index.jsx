@@ -1,4 +1,4 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
@@ -11,8 +11,6 @@ import { PRODUCT_RATING } from '@shopgate/engage/product/constants';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
 import { useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
-
-const { hasReviews } = appConfig;
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -54,17 +52,8 @@ const Rating = ({ productId }) => {
   const rating = useSelector(state => getProductRating(state, { productId }));
   const showEmptyRatingStars = useShowEmptyRatingStars();
 
-  const showRatings = useMemo(() => {
-    if (hasReviews && (rating?.average ?? 0) > 0) {
-      return true;
-    }
-
-    if (hasReviews && showEmptyRatingStars && rating) {
-      return true;
-    }
-
-    return false;
-  }, [rating, showEmptyRatingStars]);
+  const showRatings = appConfig.hasReviews
+    && ((rating?.average ?? 0) > 0 || (showEmptyRatingStars && Boolean(rating)));
 
   return (
     <SurroundPortals portalName={PRODUCT_RATING}>

@@ -1,11 +1,9 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { RatingStars } from '@shopgate/engage/components';
 import useShowEmptyRatingStars from '../../hooks/useShowEmptyRatingStars';
-
-const { hasReviews } = appConfig as { hasReviews: boolean };
 
 type RatingState = {
   rating: {
@@ -40,17 +38,8 @@ const ProductRatingStars = ({
 
   const showEmptyRatingStars = useShowEmptyRatingStars();
 
-  const showRatings = useMemo(() => {
-    if (hasReviews && (rating?.average ?? 0) > 0) {
-      return true;
-    }
-
-    if (hasReviews && showEmptyRatingStars && rating) {
-      return true;
-    }
-
-    return false;
-  }, [rating, showEmptyRatingStars]);
+  const showRatings = (appConfig as { hasReviews: boolean }).hasReviews
+    && ((rating?.average ?? 0) > 0 || (showEmptyRatingStars && Boolean(rating)));
 
   if (!showRatings) {
     return null;
