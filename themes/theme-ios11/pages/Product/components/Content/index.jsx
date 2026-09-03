@@ -12,6 +12,7 @@ import {
   RelationsSlider,
   Description,
   UnitQuantityPickerWithSection,
+  ProductContentTop,
 } from '@shopgate/engage/product/components';
 import {
   FulfillmentSelector,
@@ -192,24 +193,25 @@ class ProductContent extends PureComponent {
       <div data-test-id={productId}>
         <AppBar productId={productId} />
         <ProductContext.Provider value={contextValue}>
-          <Media aria-hidden />
-          <Header />
-          {/*
-            This feature is currently in BETA testing.
-            It should only be used for approved BETA Client Projects
-          */}
-          <RelationsSlider desiredPosition="header" />
-          <UnitQuantityPickerWithSection productId={productId} variantId={variantId} />
-          <Section title="product.sections.options">
-            <Characteristics productId={productId} variantId={variantId} />
-            <Options />
-          </Section>
-          <Section title="product.sections.fulfillment">
-            <FulfillmentSelector
-              productId={variantId || productId}
-              conditioner={this.baseContextValue.conditioner}
-            />
-          </Section>
+          <ProductContentTop media={<Media aria-hidden />}>
+            <Header />
+            {/*
+              This feature is currently in BETA testing.
+              It should only be used for approved BETA Client Projects
+            */}
+            <RelationsSlider desiredPosition="header" />
+            <UnitQuantityPickerWithSection productId={productId} variantId={variantId} />
+            <Section title="product.sections.options">
+              <Characteristics productId={productId} variantId={variantId} />
+              <Options />
+            </Section>
+            <Section title="product.sections.fulfillment">
+              <FulfillmentSelector
+                productId={variantId || productId}
+                conditioner={this.baseContextValue.conditioner}
+              />
+            </Section>
+          </ProductContentTop>
           <Section title="product.sections.description">
             <Description productId={productId} variantId={variantId} />
           </Section>

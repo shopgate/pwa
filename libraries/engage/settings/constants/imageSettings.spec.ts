@@ -63,8 +63,7 @@ describe('settings / constants / imageSettings', () => {
   });
 
   describe('DEFAULT_SHOW_INNER_SHADOW', () => {
-    // The legacy flag is inverted, and its default differs per theme - gmd ships true, ios11
-    // false - so the polarity has to survive.
+    // The legacy flag is inverted, so the polarity has to survive.
     it.each([
       ['true', true, false],
       ['false', false, true],

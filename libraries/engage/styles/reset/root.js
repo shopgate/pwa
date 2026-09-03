@@ -1,7 +1,6 @@
 import {
   applyScrollContainer,
   hasWebBridge,
-  isIOSTheme,
 } from '@shopgate/engage/core/helpers';
 import { configuration } from '@shopgate/engage/core/collections';
 import { CONFIGURATION_COLLECTION_KEY_HAS_ROOT_TYPOGRAPHY } from '@shopgate/engage/core/constants';
@@ -13,7 +12,6 @@ import {
 } from './typographyCustomProps';
 
 const { typography } = themeConfig;
-const iosThemeActive = isIOSTheme();
 
 // Flag (for feature-detecting extensions) that base typography uses the `--sg-root-*` custom
 // properties and the `body1` variant.
@@ -41,7 +39,7 @@ injectGlobal({
     // override (admin css / live preview / extension) wins. The family default is the property
     // value, not a `var()` fallback (a comma list can't be a fallback). Roboto is an iOS fallback.
     [CSS_ROOT_FONT_FAMILY]: `${typography.family}${
-      iosThemeActive && !(typography.family || '').includes('Roboto') ? ', Roboto' : ''
+      !(typography.family || '').includes('Roboto') ? ', Roboto' : ''
     }`,
     [CSS_ROOT_FONT_SIZE]: `${typography.rootSize}px`,
     fontSize: `var(${CSS_ROOT_FONT_SIZE})`,
@@ -74,7 +72,7 @@ injectGlobal({
   button: {
     color: 'inherit',
   },
-  ...hasWebBridge() && !iosThemeActive && {
+  ...hasWebBridge() && {
     '@media (min-width: 600px)': {
       html: {
         backgroundColor: 'var(--color-background-gutter-body, var(--page-background-color))',
