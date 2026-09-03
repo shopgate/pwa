@@ -67,11 +67,11 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
- * Builds the width a price field needs to fit the longer of its value and the highest price.
- * @param {number} length Amount of characters the field has to fit.
+ * Builds the width a price field needs to fit its current value.
+ * @param {number|string} value The value the field has to fit.
  * @returns {string}
  */
-const fieldWidth = length => `${length + 1}ch`;
+const fieldWidth = value => `${Math.max(String(value).length, 2) + 1}ch`;
 
 /**
  * The filter price range slider label component.
@@ -81,7 +81,7 @@ const fieldWidth = length => `${length + 1}ch`;
 function Label(props) {
   const { classes } = useStyles();
   const {
-    priceLength, priceMax, priceMin, onChange,
+    priceMax, priceMin, onChange,
   } = props;
   const [minValue, setMinValue] = useState(priceMin);
   const [maxValue, setMaxValue] = useState(priceMax);
@@ -150,7 +150,7 @@ function Label(props) {
               value={minValue}
               onChange={handleChangeMin}
               onClick={handleFieldClick}
-              style={{ width: fieldWidth(Math.max(priceLength, String(minValue).length)) }}
+              style={{ width: fieldWidth(minValue) }}
               className={classes.editableField}
               aria-label={i18n.text('price.range_from')}
               aria-describedby="price-slider-currency-label-min"
@@ -171,7 +171,7 @@ function Label(props) {
               value={maxValue}
               onChange={handleChangeMax}
               onClick={handleFieldClick}
-              style={{ width: fieldWidth(Math.max(priceLength, String(maxValue).length)) }}
+              style={{ width: fieldWidth(maxValue) }}
               className={classes.editableField}
               aria-label={i18n.text('price.range_to')}
               aria-describedby="price-slider-currency-label-max"
@@ -185,7 +185,6 @@ function Label(props) {
 
 Label.propTypes = {
   onChange: PropTypes.func.isRequired,
-  priceLength: PropTypes.number.isRequired,
   priceMax: PropTypes.number.isRequired,
   priceMin: PropTypes.number.isRequired,
 };

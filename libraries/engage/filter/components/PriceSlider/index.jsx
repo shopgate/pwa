@@ -87,16 +87,14 @@ const PriceSlider = ({
 
   const priceMin = Math.floor(value[0] / 100);
   const priceMax = Math.ceil(value[1] / 100);
-  const priceLength = (max / 100).toString().length;
 
   const renderLabel = useCallback(() => (
     <Label
-      priceLength={priceLength}
       priceMax={priceMax}
       priceMin={priceMin}
       onChange={handleChange}
     />
-  ), [handleChange, priceLength, priceMax, priceMin]);
+  ), [handleChange, priceMax, priceMin]);
 
   return (
     <FilterItem>
