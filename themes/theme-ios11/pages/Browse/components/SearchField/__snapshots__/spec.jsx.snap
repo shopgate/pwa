@@ -25,7 +25,7 @@ exports[`pages / Browse / components / SearchField Check search field should ren
           onSubmit={[Function]}
         >
           <label
-            className="sg-1iurg13-label"
+            className="sg-116nvjn-label"
             htmlFor="search"
           >
             <div
@@ -144,7 +144,7 @@ exports[`pages / Browse / components / SearchField Check search field should sho
           onSubmit={[Function]}
         >
           <label
-            className="sg-1iurg13-label"
+            className="sg-116nvjn-label"
             htmlFor="search"
           >
             <div
