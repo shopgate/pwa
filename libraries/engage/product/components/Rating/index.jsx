@@ -1,6 +1,8 @@
-import React, { memo, useMemo } from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
   RatingStars,
   SurroundPortals,
@@ -9,9 +11,6 @@ import { PRODUCT_RATING } from '@shopgate/engage/product/constants';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
 import { useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
-import connect from './connector';
-
-const { hasReviews } = appConfig;
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -48,21 +47,13 @@ const scrollToRating = () => {
  * @param {Object} props The component props.
  * @return {JSX.Element}
  */
-const Rating = ({ rating }) => {
+const Rating = ({ productId }) => {
   const { classes } = useStyles();
+  const rating = useSelector(state => getProductRating(state, { productId }));
   const showEmptyRatingStars = useShowEmptyRatingStars();
 
-  const showRatings = useMemo(() => {
-    if (hasReviews && (rating?.average ?? 0) > 0) {
-      return true;
-    }
-
-    if (hasReviews && showEmptyRatingStars && rating) {
-      return true;
-    }
-
-    return false;
-  }, [rating, showEmptyRatingStars]);
+  const showRatings = appConfig.hasReviews
+    && ((rating?.average ?? 0) > 0 || (showEmptyRatingStars && Boolean(rating)));
 
   return (
     <SurroundPortals portalName={PRODUCT_RATING}>
@@ -80,11 +71,11 @@ const Rating = ({ rating }) => {
 };
 
 Rating.propTypes = {
-  rating: PropTypes.shape(),
+  productId: PropTypes.string,
 };
 
 Rating.defaultProps = {
-  rating: null,
+  productId: null,
 };
 
-export default connect(memo(Rating));
+export default memo(Rating);

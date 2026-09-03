@@ -10,7 +10,7 @@ exports[`<DiscountBadge /> should render the text 1`] = `
   >
     <span
       aria-hidden="true"
-      class="sg-1ysfu9i-small theme__discount-badge"
+      class="sg-158omdk-small theme__discount-badge"
       font-weight="bold"
     >
       foo
@@ -29,7 +29,7 @@ exports[`<DiscountBadge /> should render the text and discount 1`] = `
   >
     <span
       aria-hidden="true"
-      class="sg-1ysfu9i-small theme__discount-badge"
+      class="sg-158omdk-small theme__discount-badge"
       font-weight="bold"
     >
       SAVE {0}%

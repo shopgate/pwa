@@ -45,7 +45,10 @@ exports[`<RootCategories /> should render category list with root categories fro
           <Headline
             style={
               {
+                "background": "var(--sg-palette-background-surface)",
+                "margin": 0,
                 "marginTop": 20,
+                "padding": "20px 16px 12px",
               }
             }
             text=""

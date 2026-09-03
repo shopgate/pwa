@@ -12,7 +12,7 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
   },
   strikedPrice: {
-    fontSize: theme.typography.caption.fontSize,
+    fontSize: `calc(${theme.components.price.fontSize} * 0.75)`,
   },
   basicPrice: {
     fontSize: theme.typography.body2.fontSize,
