@@ -5,17 +5,16 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   magnifier: {
-    fill: 'currentColor',
+    fill: theme.contrastColor(theme.palette.primary.main),
   },
   background: {
-    fill: theme.palette.secondary.main,
-  },
-  cloud: {
     fill: theme.palette.primary.main,
   },
+  cloud: {
+    fill: theme.alpha(theme.contrastColor(theme.palette.primary.main), 0.35),
+  },
   circle: {
-    fill: 'currentColor',
-    opacity: 0.065,
+    fill: theme.alpha(theme.contrastColor(theme.palette.primary.main), 0.08),
   },
 }));
 

@@ -3,17 +3,16 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   leaf: {
-    fill: theme.palette.primary.main,
+    fill: theme.contrastColor(theme.palette.primary.main),
   },
   background: {
-    fill: theme.palette.secondary.main,
+    fill: theme.palette.primary.main,
   },
   shadow: {
-    fill: theme.contrastColor(theme.palette.secondary.main),
-    opacity: 0.12,
+    fill: theme.alpha(theme.contrastColor(theme.palette.primary.main), 0.12),
   },
   basket: {
-    fill: theme.contrastColor(theme.palette.secondary.main),
+    fill: theme.contrastColor(theme.palette.primary.main),
   },
 }));
 

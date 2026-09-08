@@ -4,17 +4,16 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   outerCircle: {
-    fill: theme.palette.secondary.light,
+    fill: theme.alpha(theme.palette.primary.main, 0.25),
   },
   innerCircle: {
-    fill: 'currentColor',
-    opacity: 0.065,
+    fill: theme.alpha(theme.palette.primary.main, 0.5),
   },
   disc: {
-    fill: theme.palette.secondary.light,
+    fill: theme.palette.primary.main,
   },
   heart: {
-    fill: theme.palette.primary.main,
+    fill: theme.contrastColor(theme.palette.primary.main),
     stroke: 'none',
   },
   viewBox: {
