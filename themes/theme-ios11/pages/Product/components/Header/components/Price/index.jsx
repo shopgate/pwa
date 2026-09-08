@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'inline-block',
   },
   price: {
-    fontSize: `calc(${theme.components.price.fontSize} * 1.25)`,
+    ...theme.typography.priceDetail,
     justifyContent: 'flex-end',
   },
 }));

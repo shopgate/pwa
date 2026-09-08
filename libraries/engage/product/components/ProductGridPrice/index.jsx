@@ -11,9 +11,6 @@ const useStyles = makeStyles()(theme => ({
   priceWrapper: {
     alignItems: 'center',
   },
-  strikedPrice: {
-    fontSize: `calc(${theme.components.price.fontSize} * 0.75)`,
-  },
   basicPrice: {
     fontSize: theme.typography.body2.fontSize,
   },
@@ -44,7 +41,6 @@ const ProductGridPrice = ({ product }) => {
         {(price.msrp > 0 && price.unitPrice !== price.msrp) && (
           <Grid.Item>
             <PriceStriked
-              className={classes.strikedPrice}
               value={price.msrp}
               currency={price.currency}
             />
@@ -56,7 +52,6 @@ const ProductGridPrice = ({ product }) => {
         ) && (
           <Grid.Item>
             <PriceStriked
-              className={classes.strikedPrice}
               value={price.unitPriceStriked}
               currency={price.currency}
             />
