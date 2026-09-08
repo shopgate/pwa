@@ -75,7 +75,12 @@ injectGlobal({
   ...hasWebBridge() && {
     '@media (min-width: 600px)': {
       html: {
-        backgroundColor: 'var(--color-background-gutter-body, var(--page-background-color))',
+        '& #root': {
+          backgroundColor: 'var(--color-background-gutter-body, var(--page-background-color))',
+          '& #AppContent': {
+            backgroundColor: 'var(--page-background-color)',
+          },
+        },
       },
     },
   },
