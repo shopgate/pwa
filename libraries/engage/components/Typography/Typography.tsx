@@ -69,6 +69,12 @@ const useStyles = makeStyles({
   subtitle2: theme.typography.subtitle2,
   /* Styles applied to the root element if `variant="overline"`. */
   overline: theme.typography.overline,
+  /* Styles applied to the root element if `variant="price"`. */
+  price: theme.typography.price,
+  /* Styles applied to the root element if `variant="priceStriked"`. */
+  priceStriked: theme.typography.priceStriked,
+  /* Styles applied to the root element if `variant="priceDetail"`. */
+  priceDetail: theme.typography.priceDetail,
   /* Styles applied to the root element if `variant="srOnly"`. Only accessible to screen readers. */
   srOnly: {
     position: 'absolute',

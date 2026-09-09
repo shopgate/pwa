@@ -9,8 +9,8 @@ import QuantityInput from '@shopgate/engage/components/QuantityInput';
 const useStyles = makeStyles()(theme => ({
   inputStyle: {
     border: 'none',
-    background: theme.palette.background.emphasized,
-    color: theme.contrastColor(theme.palette.background.emphasized),
+    background: theme.components.input.background,
+    color: theme.components.input.text,
     display: 'block',
     fontSize: theme.typography.caption.fontSize,
     textAlign: 'center',

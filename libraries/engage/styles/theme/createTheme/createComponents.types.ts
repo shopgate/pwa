@@ -128,9 +128,6 @@ export const componentsSchema = {
       default: '',
       sale: '',
       striked: '',
-      fontFamily: '',
-      fontWeight: '',
-      fontSize: '',
     },
   },
   button: {
@@ -303,13 +300,9 @@ export const componentsDefaults = {
   },
   price: {
     vars: {
-      color: t => t.palette.primary.main,
       default: t => t.palette.text.primary,
       sale: t => t.palette.primary.main,
       striked: t => t.palette.grey.dark,
-      fontFamily: 'inherit',
-      fontWeight: 'inherit',
-      fontSize: '16px',
     },
   },
   input: {

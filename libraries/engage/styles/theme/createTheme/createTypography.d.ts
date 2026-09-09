@@ -16,7 +16,10 @@ export type Variant =
   | 'body2'
   | 'caption'
   | 'button'
-  | 'overline';
+  | 'overline'
+  | 'price'
+  | 'priceStriked'
+  | 'priceDetail';
 
 export interface FontStyle
   extends Required<{

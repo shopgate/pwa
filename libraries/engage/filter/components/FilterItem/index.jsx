@@ -14,6 +14,9 @@ const useStyles = makeStyles()(theme => ({
       right: theme.spacing(2),
       borderTop: `1px solid ${theme.components.separatorLine.borderColor}`,
     },
+    '&:first-child::before': {
+      display: 'none',
+    },
   },
 }));
 
