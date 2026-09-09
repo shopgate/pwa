@@ -112,11 +112,9 @@ export default function createTypography(palette, typography, cssVarPrefix = 'sg
   const price = {
     fontFamily,
     fontWeight: fontWeightVar('fontWeightRegular'),
-    fontSize: pxToRem(16),
+    fontSize: `var(${typographyVarPrefix(cssVarPrefix)}-price-fontSize, ${pxToRem(16)})`,
     ...allVariants,
   };
-
-  const priceFontSize = `var(${typographyVarPrefix(cssVarPrefix)}-price-fontSize, ${price.fontSize})`;
 
   const variants = {
     h1: buildVariant('fontWeightBold', 34, 1.15),
@@ -138,14 +136,6 @@ export default function createTypography(palette, typography, cssVarPrefix = 'sg
     caption: buildVariant('fontWeightRegular', 12, 1.66),
     overline: buildVariant('fontWeightRegular', 12, 2.66, caseAllCaps),
     price,
-    priceStriked: {
-      ...price,
-      fontSize: `calc(${priceFontSize} * 0.75)`,
-    },
-    priceDetail: {
-      ...price,
-      fontSize: `calc(${priceFontSize} * 1.25)`,
-    },
   };
 
   return merge(

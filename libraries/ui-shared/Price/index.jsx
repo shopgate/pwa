@@ -11,8 +11,11 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     position: 'relative',
     whiteSpace: 'nowrap',
-    color: theme.components.price.default,
-    ...theme.typography.price,
+    color: theme.components.price.defaultColor,
+    '--font-size': theme.typography.price.fontSize,
+    '--font-family': theme.typography.price.fontFamily,
+    fontSize: 'var(--font-size)',
+    fontFamily: 'var(--font-family)',
   },
   disclaimer: {
     color: 'initial',
@@ -21,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
     top: 0,
   },
   discounted: {
-    color: theme.components.price.sale,
+    color: theme.components.price.saleColor,
   },
 }));
 

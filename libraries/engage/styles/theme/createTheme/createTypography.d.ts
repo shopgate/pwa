@@ -17,9 +17,7 @@ export type Variant =
   | 'caption'
   | 'button'
   | 'overline'
-  | 'price'
-  | 'priceStriked'
-  | 'priceDetail';
+  | 'price';
 
 export interface FontStyle
   extends Required<{

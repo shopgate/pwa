@@ -5,10 +5,10 @@ const useStyles = makeStyles()(theme => ({
     '--sg-palette-price-color': theme.palette.primary.main,
   },
   price: {
-    color: theme.components.price.color,
+    color: theme.components.price.defaultColor,
   },
   card: {
-    [theme.vars.components.price.color]: theme.palette.secondary.main,
+    [theme.vars.components.price.defaultColor]: theme.palette.secondary.main,
     height: 100,
     width: 100,
     backgroundColor: '#fff',
