@@ -7,6 +7,7 @@ import WidgetHeadline from '../../components/WidgetHeadline';
 const useStyles = makeStyles()(theme => ({
   headline: {
     paddingBottom: theme.spacing(0),
+    background: theme.palette.background.surface,
   },
 }));
 

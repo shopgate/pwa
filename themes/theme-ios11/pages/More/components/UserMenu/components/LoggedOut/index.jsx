@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, I18n, Link, Button,
+  Grid, I18n,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import {
   LOGIN_PATH,
   REGISTER_PATH,
@@ -22,7 +23,6 @@ const useStyles = makeStyles()({
     padding: '0 5px',
   },
   button: {
-    width: '100%',
     '& *': {
       textAlign: 'center',
     },
@@ -41,28 +41,28 @@ const LoggedOut = ({ isDisabled }) => {
     <div data-test-id="userMenu">
       <Grid className={cx(classes.grid, 'theme__more-page__user-menu__container')}>
         <Grid.Item className={cx(classes.gridItem, 'theme__more-page__login-button__container')}>
-          <Link tabIndex={0} href={LOGIN_PATH} disabled={isDisabled}>
-            <Button
-              type="secondary"
-              className={cx(classes.button, 'theme__more-page__login-button')}
-              testId="UserMenuLogin"
-              disabled={isDisabled}
-            >
-              <I18n.Text string="login.button" />
-            </Button>
-          </Link>
+          <Button
+            href={LOGIN_PATH}
+            color="primary"
+            fullWidth
+            className={cx(classes.button, 'theme__more-page__login-button')}
+            testId="UserMenuLogin"
+            disabled={isDisabled}
+          >
+            <I18n.Text string="login.button" />
+          </Button>
         </Grid.Item>
         <Grid.Item className={cx(classes.gridItem, 'theme__more-page-register-button__container')}>
-          <Link tabIndex={0} href={REGISTER_PATH} disabled={isDisabled}>
-            <Button
-              type="secondary"
-              className={cx(classes.button, 'theme__more-page-register-button')}
-              testId="UserMenuRegister"
-              disabled={isDisabled}
-            >
-              <I18n.Text string="login.signup" />
-            </Button>
-          </Link>
+          <Button
+            href={REGISTER_PATH}
+            color="primary"
+            fullWidth
+            className={cx(classes.button, 'theme__more-page-register-button')}
+            testId="UserMenuRegister"
+            disabled={isDisabled}
+          >
+            <I18n.Text string="login.signup" />
+          </Button>
         </Grid.Item>
       </Grid>
     </div>

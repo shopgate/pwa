@@ -31,10 +31,15 @@ jest.mock('@shopgate/engage/components', () => {
     }, children);
   }
 
+  function Typography({ children }) {
+    return mockReact.createElement('span', null, children);
+  }
+
   return {
     I18n,
     Ellipsis,
     Button,
+    Typography,
   };
 });
 

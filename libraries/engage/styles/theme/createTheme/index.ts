@@ -3,6 +3,7 @@ import createBreakpoints from './createBreakpoints';
 import createSpacing from './createSpacing';
 import transitions from './transitions';
 import zIndex from './zIndex';
+import layout from './layout';
 import createThemeFromColorScheme from './createThemeFromColorScheme';
 import createCssVarsForColorSchemeThemes from './createCssVarsForColorSchemeThemes';
 import applyStyles from './applyStyles';
@@ -21,9 +22,12 @@ export type {
   ThemeOptions,
   Breakpoint,
   ColorSchemeName,
+  ColorSchemeMode,
   ColorSchemeSelectorType,
   PaletteColorsWithMain,
 } from './types';
+
+export { COLOR_SCHEME_NAMES, COLOR_SCHEME_SYSTEM } from './types';
 
 /**
  * Creates a theme object for the ThemeProvider.
@@ -55,7 +59,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
         { palette: { mode: type } },
         defaultScheme,
         scheme
-      ));
+      ), cssVarPrefix);
       return acc;
     }, {} as ColorSchemeThemes);
 
@@ -78,8 +82,7 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
   const breakpoints = createBreakpoints();
   const spacing = createSpacing();
 
-  // @ts-expect-error applyStyles is added to the theme object after its creation
-  const theme: ThemeInternal = {
+  const theme = {
     ...currentTheme,
     ...cssVarsTheme,
     defaultColorScheme,
@@ -87,11 +90,12 @@ export const createTheme = (options: ThemeOptions = {}): ThemeInternal => {
     spacing,
     transitions,
     zIndex,
+    layout,
     colorSchemes,
     getColorSchemeSelector,
     setActiveColorScheme,
     generateStyleSheets,
-  };
+  } as ThemeInternal;
 
   theme.applyStyles = applyStyles;
 

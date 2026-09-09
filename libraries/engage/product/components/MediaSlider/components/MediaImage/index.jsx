@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
+import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { MediaImage as Image } from '../../../Media';
-import { PRODUCT_SLIDER_IMAGE_FORMATS } from '../../constants';
 
 const useStyles = makeStyles()({
   full: {
@@ -19,6 +19,8 @@ const useStyles = makeStyles()({
 const MediaImage = ({ media, onClick }) => {
   const { classes } = useStyles();
 
+  const { pdp } = useProductImageSettings();
+
   return (
     <div
       onClick={onClick}
@@ -30,7 +32,8 @@ const MediaImage = ({ media, onClick }) => {
       <Image
         url={media.url}
         altText={media.altText}
-        resolutions={PRODUCT_SLIDER_IMAGE_FORMATS}
+        resolutions={pdp.resolutions}
+        ratio={pdp.ratio}
       />
     </div>
   );

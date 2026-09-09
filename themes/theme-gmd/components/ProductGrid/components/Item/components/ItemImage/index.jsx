@@ -7,9 +7,6 @@ import {
   PRODUCT_ITEM_IMAGE_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { ProductImage } from '@shopgate/engage/product';
-import { getProductImageSettings } from '@shopgate/engage/product/helpers';
-
-const { ListImage: gridResolutions } = getProductImageSettings();
 
 /**
  * The item image component.
@@ -40,7 +37,7 @@ class ItemImage extends PureComponent {
           <ProductImage
             alt={name}
             src={imageUrl}
-            resolutions={gridResolutions}
+            context="list"
             itemProp="image"
           />
         </Portal>

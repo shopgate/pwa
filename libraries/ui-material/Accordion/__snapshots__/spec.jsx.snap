@@ -69,7 +69,7 @@ exports[`<Accordion /> should render with renderLabel prop and children 1`] = `
           <div />
           <div
             aria-label="favorites.open_list"
-            className="sg-fj274v-chevronContainer"
+            className="sg-cxopq5-chevronContainer"
           >
             <ChevronIcon
               className="sg-1ojuoqg-chevronClosed"

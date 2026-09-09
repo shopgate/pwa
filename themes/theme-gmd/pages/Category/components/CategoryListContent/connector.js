@@ -8,7 +8,7 @@ import {
   getCategory,
 } from '@shopgate/pwa-common-commerce/category/selectors';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
-import { getShowCategoryImages } from '@shopgate/engage/core/selectors/shopSettings';
+import { getShowCategoryImages } from '@shopgate/engage/settings/selectors/shopSettings';
 
 /**
  * Maps the contents of the state to the component props.

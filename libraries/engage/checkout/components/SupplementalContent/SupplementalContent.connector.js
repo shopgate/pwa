@@ -1,8 +1,6 @@
 import { connect } from 'react-redux';
-import {
-  makeGetShopSettingByKey,
-  SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT,
-} from '@shopgate/engage/core';
+import { makeGetShopSettingByKey } from '@shopgate/engage/settings/selectors/shopSettings';
+import { SHOP_SETTING_ORDER_SUPPLEMENTAL_CONTENT } from '@shopgate/engage/settings/constants/shopSettings';
 
 /**
  * Creates the mapStateToProps connector function.

@@ -1,26 +1,23 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { RippleButton, I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { getTimeSlotDisplayText } from './time';
-
-const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   wrapper: {
-    fontSize: '0.875rem',
     color: theme.palette.text.primary,
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
   },
   inner: {
     display: 'flex',
     flexShrink: 0,
     margin: theme.spacing(0, 2),
-    borderBottom: '1px solid #eaeaea',
+    borderBottom: `1px solid ${theme.components.border.light}`,
     alignItems: 'center',
-    height: variables.filterbar.height,
+    height: theme.components.filterBar.height,
   },
   innerStandalone: {
     borderBottom: 'none',
@@ -31,25 +28,15 @@ const useStyles = makeStyles()(theme => ({
       content: '":"',
     },
   },
-  name: {
-    fontWeight: 500,
-  },
   button: {
     marginLeft: 'auto',
-    letterSpacing: '0.05em',
-    padding: `${theme.spacing(0.375, 0)} !important`,
-    ' *': {
-      fontSize: '0.875rem',
-      textTransform: 'initial',
-      padding: '0 !important',
-      color: theme.palette.text.primary,
-      fontWeight: 500,
-    },
+    textTransform: 'none',
+    padding: theme.spacing(0.375, 0),
   },
 }));
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FulfillmentSlotSwitcherBar = ({
   fulfillmentSlot, handleChange, standalone, editable,
@@ -59,19 +46,22 @@ const FulfillmentSlotSwitcherBar = ({
   return (
     <div className={classes.wrapper}>
       <div className={cx(classes.inner, { [classes.innerStandalone]: standalone })}>
-        <span className={classes.heading}>
+        <Typography variant="body2" component="span" className={classes.heading}>
           {i18n.text('locations.your_current_timeslot.heading')}
-        </span>
-        <span className={classes.name}>{displayTime}</span>
+        </Typography>
+        <Typography variant="body2" component="span" fontWeight="medium">
+          {displayTime}
+        </Typography>
         { editable && (
-          <RippleButton
+          <Button
+            variant="text"
+            color="inherit"
+            size="small"
             onClick={handleChange}
-            type="secondary"
             className={classes.button}
-            flat
           >
             <I18n.Text string="locations.your_current_location.change" />
-          </RippleButton>
+          </Button>
         )}
       </div>
     </div>);

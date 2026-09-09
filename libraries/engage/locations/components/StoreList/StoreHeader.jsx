@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Grid, ResponsiveContainer } from '@shopgate/engage/components';
+import { Grid, ResponsiveContainer, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isProductAvailable } from '../../helpers';
 import { FulfillmentContext } from '../../locations.context';
@@ -13,10 +13,6 @@ const useStyles = makeStyles()(theme => ({
   storeHeader: {
     cursor: 'pointer',
     padding: theme.spacing(1, 2, 0.5),
-  },
-  storeName: {
-    fontSize: '1rem',
-    fontWeight: 500,
   },
   disabled: {
     cursor: 'not-allowed',
@@ -40,8 +36,10 @@ export function StoreHeader() {
       className={cx(classes.storeHeader, { [classes.disabled]: !isAvailable })}
     >
       <Grid>
-        <Grid.Item grow={1} className={classes.storeName}>
-          {name}
+        <Grid.Item grow={1}>
+          <Typography variant="body1" component="div" fontWeight="medium">
+            {name}
+          </Typography>
           <ResponsiveContainer breakpoint=">=sm" webOnly>
             <ul>
               <Grid.Item shrink={0}>

@@ -1,28 +1,32 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import showTaxDisclaimer from '@shopgate/pwa-common-commerce/market/helpers/showTaxDisclaimer';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks/useWidgetSettings';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     position: 'relative',
     whiteSpace: 'nowrap',
+    color: theme.components.price.defaultColor,
+    '--font-size': theme.typography.price.fontSize,
+    '--font-family': theme.typography.price.fontFamily,
+    fontSize: 'var(--font-size)',
+    fontFamily: 'var(--font-family)',
   },
   disclaimer: {
     color: 'initial',
-    fontSize: 14,
     position: 'absolute',
     right: -10,
     top: 0,
   },
   discounted: {
-    color: 'var(--color-primary)',
+    color: theme.components.price.saleColor,
   },
-});
+}));
 
 /**
  * The Price component
@@ -124,12 +128,12 @@ const Price = (props) => {
         {priceContent}
       </span>
       {props.taxDisclaimer && showDisclaimer ? (
-        <div className={classes.disclaimer}>
+        <Typography variant="body2" component="div" className={classes.disclaimer}>
           <span aria-hidden>{hint || '*'}</span>
           <span className="sr-only" aria-label={hint || i18n.text('product.tax_disclaimer_aria')}>
             {i18n.text('product.tax_disclaimer_aria')}
           </span>
-        </div>
+        </Typography>
       ) : null}
     </div>
   );

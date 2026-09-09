@@ -152,10 +152,12 @@ export const useImageSliderWidget = () => {
           ...layout.marginLeft ? {
             marginLeft: layout.marginLeft * -1,
             paddingLeft: layout.marginLeft,
+            '--swiper-pagination-inset-left': `${layout.marginLeft}px`,
           } : {},
           ...layout.marginRight ? {
             marginRight: layout.marginRight * -1,
             paddingRight: layout.marginRight,
+            '--swiper-pagination-inset-right': `${layout.marginRight}px`,
           } : {},
         },
       } : null),

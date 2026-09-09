@@ -4,13 +4,13 @@ import React, {
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
+import { Typography } from '@shopgate/engage/components';
 import Sheet from './components/Sheet';
 import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     color: theme.palette.text.primary,
     display: 'flex',
     flexDirection: 'column',
@@ -23,16 +23,15 @@ const useStyles = makeStyles()(theme => ({
     cursor: 'pointer',
   },
   buttonDisabled: {
-    color: themeColors.shade4,
+    color: theme.palette.action.disabledBackground,
     cursor: 'not-allowed',
   },
   label: {
-    fontSize: 12,
     marginTop: -2,
     marginBottom: 4,
   },
   selection: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.125,
   },
 }));
@@ -99,7 +98,7 @@ const CategoryPicker = ({
         onClick={handlePickerClick}
         className={pickerClasses}
       >
-        {label && <div className={classes.label} data-test-id="nested-picker-label">{label}</div>}
+        {label && <Typography variant="caption" component="div" className={classes.label} data-test-id="nested-picker-label">{label}</Typography>}
         <div className={classes.selection} data-test-id="nested-picker-selection">{buttonLabel}</div>
       </div>
       <Sheet

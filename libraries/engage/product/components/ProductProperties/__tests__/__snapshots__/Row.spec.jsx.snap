@@ -1,43 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Row /> should render as expected 1`] = `
-<Row
-  label="TestLabel"
-  type={null}
-  value="TestValue"
->
-  <tr
-    aria-label="TestLabel: TestValue"
-    className="engage__product__product-property"
-    data-label="TestLabel"
-    data-type={null}
-    tabIndex={0}
-  >
-    <td
-      aria-hidden={true}
-      className="sg-15jjn2r-tableCell"
+<table>
+  <tbody>
+    <tr
+      aria-label="TestLabel: TestValue"
+      class="engage__product__product-property"
+      data-label="TestLabel"
+      tabindex="0"
     >
-      <span
-        dangerouslySetInnerHTML={
-          {
-            "__html": "TestLabel",
-          }
-        }
-      />
-    </td>
-    <td
-      aria-hidden={true}
-      className="sg-15jjn2r-tableCell"
-      data-test-id="property: TestValue"
-    >
-      <span
-        dangerouslySetInnerHTML={
-          {
-            "__html": "TestValue",
-          }
-        }
-      />
-    </td>
-  </tr>
-</Row>
+      <td
+        aria-hidden="true"
+        class="sg-15jjn2r-tableCell"
+      >
+        <span>
+          TestLabel
+        </span>
+      </td>
+      <td
+        aria-hidden="true"
+        class="sg-15jjn2r-tableCell"
+        data-test-id="property: TestValue"
+      >
+        <span>
+          TestValue
+        </span>
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;

@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
-import { app } from '@shopgate/engage/core/reducers';
+import app from '@shopgate/engage/core/reducers/app';
 import locations from '@shopgate/engage/locations/reducers';
 import { routeDidEnter } from '@shopgate/pwa-common/action-creators/router';
 import receiveSearchResults from '@shopgate/pwa-common-commerce/search/action-creators/receiveSearchResults';

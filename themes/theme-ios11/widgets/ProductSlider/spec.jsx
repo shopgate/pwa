@@ -7,7 +7,10 @@ import {
 
 jest.mock('@shopgate/engage/core', () => ({
   hasWebBridge: jest.fn(() => false),
-  withWidgetSettings: component => component,
+}));
+
+jest.mock('@shopgate/engage/product/hooks', () => ({
+  useSlidesPerView: jest.fn(() => 2.3),
 }));
 
 jest.mock('@shopgate/engage/components', () => {

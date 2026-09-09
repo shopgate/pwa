@@ -8,8 +8,9 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import { useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import { useScrollTo } from '@shopgate/engage/core/hooks/useScrollTo';
 import {
-  LoadingProvider, i18n, useAsyncMemo, useRoute, SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
+  LoadingProvider, i18n, useAsyncMemo, useRoute,
 } from '@shopgate/engage/core';
+import { SHOP_SETTING_REGISTRATION_MODE_EXTENDED } from '@shopgate/engage/settings/constants/shopSettings';
 import {
   ADDRESS_TYPE_SHIPPING,
   ADDRESS_TYPE_PICKUP,

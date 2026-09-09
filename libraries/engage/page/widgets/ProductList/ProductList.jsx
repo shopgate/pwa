@@ -1,22 +1,26 @@
 import React, { useCallback } from 'react';
-import { ActionButton, I18n } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { ProductGrid } from '@shopgate/engage/product/components';
 import { useWidgetProducts } from '@shopgate/engage/page/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useProductListWidget } from './hooks';
 import WidgetHeadline from '../../components/WidgetHeadline';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    // Prevent that the ActionButton margin messes with the layout of the sibling widgets
     overflow: 'hidden',
+  },
+  loadMore: {
+    textAlign: 'center',
+    margin: theme.spacing(1, 0),
   },
   grid: {
     '&&': {
       marginTop: 0,
     },
   },
-});
+}));
 
 /**
  * The ProductListWidget is used to display product lists.
@@ -67,14 +71,16 @@ const ProductListWidget = () => {
         className={classes.grid}
       />
       { hasNext && showLoadMore && (
-        <ActionButton
-          loading={isFetching}
-          onClick={handleFetchNext}
-          // Disable click delay in preview mode to enable stopping of propagation.
-          {...(isPreview && { disableClickDelay: true })}
-        >
-          <I18n.Text string="common.load_more" />
-        </ActionButton>
+        <div className={classes.loadMore}>
+          <Button
+            variant="text"
+            color="secondary"
+            loading={isFetching}
+            onClick={handleFetchNext}
+          >
+            <I18n.Text string="common.load_more" />
+          </Button>
+        </div>
       )}
     </div>
   );

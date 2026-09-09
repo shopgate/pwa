@@ -25,7 +25,6 @@
 
 /**
  * @typedef {Object} StateProps
- * @property {boolean} [isAndroid]
  * @property {string} [currency]
  */
 

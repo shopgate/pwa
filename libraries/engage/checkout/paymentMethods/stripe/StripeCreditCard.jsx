@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import { themeConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { TextField } from '@shopgate/engage/components';
-import { getCSSCustomProp, makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import {
   CardNumberElement,
   CardCvcElement,
@@ -12,8 +11,6 @@ import Section from '../../components/Checkout/CheckoutSection';
 import { useCheckoutContext } from '../../hooks/common';
 import StripeContext from './StripeProvider.context';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   root: {
     padding: '0 16px',
@@ -21,12 +18,12 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
     flex: '0 0 auto',
     ' .formElement': {
-      background: 'var(--color-background-accent)',
+      background: theme.palette.background.emphasized,
       padding: 0,
       marginBottom: 38,
       borderTopLeftRadius: 4,
       borderTopRightRadius: 4,
-      borderBottom: `1px solid ${colors.shade12}`,
+      borderBottom: `1px solid ${theme.components.border.medium}`,
     },
     ' .formElement label': {
       color: theme.palette.text.secondary,
@@ -89,6 +86,7 @@ const StripeCardExpiryElement = wrapStripeElement(CardExpiryElement);
  */
 const StripeCreditCard = () => {
   const { classes } = useStyles();
+  const theme = useTheme();
   const cardRef = React.useRef();
   const { error, setError } = useContext(StripeContext);
   const { needsPayment, paymentData } = useCheckoutContext();
@@ -110,9 +108,9 @@ const StripeCreditCard = () => {
   const textFieldStyles = {
     style: {
       base: {
-        color: getCSSCustomProp('--color-text-high-emphasis'),
+        color: theme.palette.text.primary,
         '::placeholder': {
-          color: getCSSCustomProp('--color-text-low-emphasis'),
+          color: theme.palette.text.secondary,
         },
       },
     },

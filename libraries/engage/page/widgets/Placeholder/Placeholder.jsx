@@ -1,5 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
+import { Typography } from '@shopgate/engage/components';
 import { usePlaceholderWidget } from './hooks';
 
 const useStyles = makeStyles()(theme => ({
@@ -7,14 +8,11 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
     minHeight: 200,
   },
-  name: {
-    fontSize: 14,
-  },
   pre: {
-    background: '#f7f9fc',
-    border: '1px solid #dbdde2',
+    background: theme.palette.background.emphasized,
+    border: `1px solid ${theme.components.border.light}`,
     borderRadius: 8,
-    color: '#000',
+    color: theme.contrastColor(theme.palette.background.emphasized),
     fontSize: 10,
     overflowY: 'auto',
     padding: theme.spacing(1),
@@ -35,7 +33,7 @@ const PlaceholderWidget = () => {
 
   return (
     <div className={classes.root}>
-      <div className={classes.name}>{name}</div>
+      <Typography variant="body2" component="div">{name}</Typography>
       <pre className={classes.pre}>
         {JSON.stringify({
           code,

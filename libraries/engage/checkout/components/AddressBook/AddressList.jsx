@@ -7,7 +7,10 @@ import {
 } from '@shopgate/engage/checkout/selectors/order';
 import { i18n, historyPush } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { RippleButton, ResponsiveContainer } from '@shopgate/engage/components';
+import {
+  ResponsiveContainer, Typography,
+} from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { ResponsiveBackButton } from '../ResponsiveBackButton';
 import AddressCard from '../../../account/components/Profile/ProfileAddressCard';
 import { useProfileContext } from '../../../account/components/Profile/Profile.provider';
@@ -35,38 +38,25 @@ const mapDispatchToProps = dispatch => ({
   push: props => dispatch(historyPush(props)),
 });
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(() => ({
   container: {
     display: 'flex',
     flexDirection: 'row',
     flexWrap: 'wrap',
-    margin: -4,
     padding: 16,
   },
   headline: {
     padding: 16,
-    fontSize: '2.125rem',
-    fontWeight: 'normal',
     margin: 0,
-    lineHeight: '2.25rem',
   },
   button: {
-    '&&': {
-      marginTop: 8,
-      marginRight: 16,
-      backgroundColor: 'var(--color-primary)',
-      borderRadius: 5,
-      fontSize: 14,
-      textTransform: 'none',
-      padding: 0,
-      [responsiveMediaQuery('<md', { webOnly: false })]: {
-        width: '100%',
-        marginRight: 0,
-      },
+    marginTop: 8,
+    marginRight: 16,
+    textTransform: 'none',
+    [responsiveMediaQuery('<md', { webOnly: false })]: {
+      width: '100%',
+      marginRight: 0,
     },
-  },
-  ripple: {
-    padding: '8px 16px',
   },
   actions: {
     display: 'flex',
@@ -77,7 +67,7 @@ const useStyles = makeStyles()({
       flex: 1,
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}
@@ -113,9 +103,9 @@ const AddressList = ({
     <div>
       <ResponsiveContainer webOnly breakpoint=">xs">
         <ResponsiveBackButton />
-        <h1 className={classes.headline}>
+        <Typography variant="h1" component="h1" className={classes.headline}>
           {title}
-        </h1>
+        </Typography>
       </ResponsiveContainer>
       <div className={classes.container}>
         {contacts && contacts.map(contact => (
@@ -131,16 +121,16 @@ const AddressList = ({
         ))}
       </div>
       <div className={classes.actions}>
-        <RippleButton
+        <Button
+          color="primary"
+          size="small"
           className={classes.button}
-          rippleClassName={classes.ripple}
-          type="primary"
           onClick={() => push({
             pathname: `${CHECKOUT_ADDRESS_BOOK_CONTACT_PATTERN}`.replace(':type', type),
           })}
         >
           {i18n.text('account.profile.address_book.add')}
-        </RippleButton>
+        </Button>
       </div>
     </div>
   );

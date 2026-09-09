@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, Button } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -22,8 +23,8 @@ const Buttons = ({ actions }) => {
     <Button
       key={label}
       className={classes.button}
-      flat
-      type="primary"
+      variant="text"
+      color="secondary"
       onClick={action}
       disabled={disabled}
     >

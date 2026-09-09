@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import {
   BOPIS,
   ROPIS,
@@ -14,7 +13,7 @@ import Substitution, { SubstitutionWrapper } from '../Substitution';
 const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.spacing(2),
-    borderTop: `1px solid ${themeColors.shade7}`,
+    borderTop: `1px solid ${theme.components.border.light}`,
   },
 }));
 

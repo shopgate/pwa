@@ -1,13 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { UIEvents } from '@shopgate/pwa-core';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { withTheme } from '@shopgate/engage/styles/theme/hocs/withTheme';
 import ToastContext from './context';
 
-const { variables: { toast: { duration = 5000 } = {} } = {} } = themeConfig;
+/**
+ * @typedef {Object} ToastProviderProps
+ * @property {import('react').ReactNode} children
+ * @property {import('@shopgate/engage/styles').Theme} theme
+ */
 
 /**
  * The ToastProvider component
+ * @augments {Component<ToastProviderProps>}
  */
 class ToastProvider extends Component {
   static ADD = 'toast_add';
@@ -19,6 +24,7 @@ class ToastProvider extends Component {
       PropTypes.element,
       PropTypes.arrayOf(PropTypes.element),
     ]).isRequired,
+    theme: PropTypes.shape().isRequired,
   };
 
   /**
@@ -77,7 +83,7 @@ class ToastProvider extends Component {
       onLongPress: toast.onLongPress,
       message: toast.message,
       messageParams: toast.messageParams,
-      duration: toast.duration || duration,
+      duration: toast.duration || this.props.theme.transitions.duration.toast,
     };
 
     // Update the queue immutably: consumers rely on the array reference changing to re-render
@@ -121,4 +127,12 @@ class ToastProvider extends Component {
   }
 }
 
-export default ToastProvider;
+const ThemedToastProvider = withTheme(ToastProvider);
+
+// The HOC returns a new component which doesn't carry over the statics of the wrapped class. They
+// are part of the public API of this module (consumers emit UIEvents on ToastProvider.ADD), so they
+// are re-attached explicitly.
+ThemedToastProvider.ADD = ToastProvider.ADD;
+ThemedToastProvider.FLUSH = ToastProvider.FLUSH;
+
+export default ThemedToastProvider;

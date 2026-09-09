@@ -3,9 +3,7 @@ import {
   makeGetUnifiedCMSPageData,
 } from '@shopgate/engage/page/selectors';
 import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
-import {
-  getIsLocationBasedShopping,
-} from '@shopgate/engage/core/selectors';
+import { getIsLocationBasedShopping } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { getPreferredLocation } from '@shopgate/engage/locations/selectors';
 
 /**

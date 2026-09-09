@@ -6,7 +6,7 @@ import {
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { checkoutRoutes } from '@shopgate/engage/checkout';
-import { CATEGORY_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
+import { CATEGORY_FILTER_PATTERN, CATEGORY_ALL_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
@@ -30,6 +30,7 @@ const blacklist = [
   ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
   CATEGORY_FILTER_PATTERN,
+  CATEGORY_ALL_FILTER_PATTERN,
   SEARCH_FILTER_PATTERN,
   LOGIN_PATH,
   CHECKOUT_PATH,

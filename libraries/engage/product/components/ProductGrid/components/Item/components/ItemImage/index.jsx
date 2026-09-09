@@ -2,9 +2,7 @@ import React, { useMemo, memo } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_ITEM_IMAGE } from '@shopgate/engage/category/constants';
-import { getProductImageSettings, ProductImage } from '@shopgate/engage/product';
-
-const { ListImage: gridResolutions } = getProductImageSettings();
+import { ProductImage } from '@shopgate/engage/product';
 
 /**
  * The item image component.
@@ -23,7 +21,7 @@ const ItemImage = ({
       <ProductImage
         alt={name}
         src={imageUrl}
-        resolutions={gridResolutions}
+        context="list"
         itemProp="image"
       />
     </SurroundPortals>

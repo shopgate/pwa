@@ -83,3 +83,22 @@ const localStorageMock = (() => {
 })();
 
 Object.defineProperty(window, 'localStorage', { value: localStorageMock });
+
+// jsdom doesn't implement matchMedia. Components that check media queries - the `useReduceMotion`
+// hook behind every v2 button, breakpoint providers - would throw in every spec that renders them.
+// Specs that care about the result can still override this with their own stub.
+if (!window.matchMedia) {
+  Object.defineProperty(window, 'matchMedia', {
+    writable: true,
+    value: query => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(),
+      removeListener: jest.fn(),
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    }),
+  });
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useImageServiceSettings } from '@shopgate/engage/settings/hooks';
 import { loadProductImage } from '../helpers/index';
 
 /**
@@ -9,6 +10,7 @@ import { loadProductImage } from '../helpers/index';
  */
 export function useLoadProductImage(src, resolution = null) {
   const [loadedImage, setLoadedImage] = useState(null);
+  const imageServiceSettings = useImageServiceSettings();
 
   useEffect(() => {
     if (src) {
@@ -18,9 +20,10 @@ export function useLoadProductImage(src, resolution = null) {
 
   useEffect(() => {
     if (src && !loadedImage) {
-      loadProductImage(src, resolution).then(imageSrc => setLoadedImage(imageSrc));
+      loadProductImage(src, resolution, imageServiceSettings)
+        .then(imageSrc => setLoadedImage(imageSrc));
     }
-  }, [loadedImage, resolution, src]);
+  }, [imageServiceSettings, loadedImage, resolution, src]);
 
   return loadedImage;
 }

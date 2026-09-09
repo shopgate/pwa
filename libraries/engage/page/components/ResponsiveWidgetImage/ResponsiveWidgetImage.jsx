@@ -2,7 +2,7 @@ import React, { useMemo, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, useResponsiveValue } from '@shopgate/engage/styles';
 import { useParallax } from 'react-scroll-parallax';
-import { IS_PAGE_PREVIEW_ACTIVE } from '../../constants';
+import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { parseImageUrl } from '../../helpers';
 
 /**
@@ -13,7 +13,7 @@ import { parseImageUrl } from '../../helpers';
 /**
  * @typedef {Object} CustomResponsiveImageProps
  * @property {boolean} [enableParallax] Whether to enable the parallax effect.
- * @property {number} [borderRadius] The border radius to apply to the image.
+ * @property {number|string} [borderRadius] The border radius to apply to the image.
  * @property {Breakpoint} [breakpoint] The breakpoint from which on a higher resolution image should
  * be loaded.
  * @property {boolean} [isBanner] Whether the image is used as a banner (full width and height of
@@ -135,7 +135,7 @@ const ResponsiveWidgetImage = ({
         [classes.container]: !isBanner,
       })}
       style={{
-        borderRadius: `${borderRadius}px`,
+        borderRadius,
         ...(!isBanner && enableParallax ? { aspectRatio: containerRatio } : {}),
       }}
     >
@@ -147,7 +147,7 @@ const ResponsiveWidgetImage = ({
         // re-posts an updated page config and never triggers it again, so widget images stay at
         // height 0 until a resize forces the browser to re-evaluate. Load eagerly there; keep lazy
         // loading for the live app.
-        loading={IS_PAGE_PREVIEW_ACTIVE ? 'eager' : 'lazy'}
+        loading={isAdminPreviewActive() ? 'eager' : 'lazy'}
         className={cx(classes.preventSave, classes.image, {
           [classes.banner]: isBanner,
         }, className)}
@@ -163,7 +163,7 @@ const ResponsiveWidgetImage = ({
 
 ResponsiveWidgetImage.propTypes = {
   alt: PropTypes.string,
-  borderRadius: PropTypes.number,
+  borderRadius: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   breakpoint: PropTypes.oneOf(['xs', 'sm', 'md', 'lg', 'xl']),
   className: PropTypes.string,
   enableParallax: PropTypes.bool,

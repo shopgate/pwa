@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { Badge } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
 import connect from './connector';
@@ -7,19 +8,10 @@ import connect from './connector';
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'absolute',
-    background: 'var(--tab-bar-item-badge-background)',
-    color: 'var(--tab-bar-item-badge-color)',
-    fontSize: '0.7rem',
-    lineHeight: 1.5,
-    fontWeight: 'bold',
-    borderRadius: 'var(--tab-bar-item-badge-border-radius)',
-    height: theme.spacing(2),
-    top: 'var(--tab-bar-item-badge-top)',
-    paddingLeft: theme.spacing(0.5),
-    paddingRight: theme.spacing(0.5),
-    minWidth: theme.spacing(2),
+    borderRadius: theme.components.tabBar.badgeBorderRadius,
+    top: theme.components.tabBar.badgeTop,
     transform: 'translateX(-50%)',
-    left: 'var(--tab-bar-item-badge-left)',
+    left: theme.components.tabBar.badgeLeft,
   },
 }));
 
@@ -32,20 +24,12 @@ const useStyles = makeStyles()(theme => ({
 const CartItemBadge = (props) => {
   const { classes, cx } = useStyles();
 
-  if (!props.cartProductCount) {
-    return null;
-  }
-
-  let cartProductCount = `${props.cartProductCount}`;
-
-  if (props.cartProductCount > CART_MAX_ITEMS) {
-    cartProductCount = `${CART_MAX_ITEMS}+`;
-  }
-
   return (
-    <div className={cx(classes.root, 'theme__tab-bar__cart-item-badge theme__badge')}>
-      {cartProductCount}
-    </div>
+    <Badge
+      count={props.cartProductCount}
+      max={CART_MAX_ITEMS}
+      className={cx(classes.root, 'theme__tab-bar__cart-item-badge')}
+    />
   );
 };
 

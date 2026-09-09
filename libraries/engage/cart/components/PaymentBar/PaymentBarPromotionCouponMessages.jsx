@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { errorBehavior, isIOSTheme } from '@shopgate/engage/core';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
 
@@ -9,7 +10,6 @@ const useStyles = makeStyles()(theme => ({
   line: {
     justifyContent: 'start',
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
-      fontSize: '0.75rem',
       paddingBottom: 3,
     },
   },
@@ -57,7 +57,9 @@ const PaymentBarPromotionCouponMessages = ({ messages }) => {
           [classes.info]: type === 'info',
         })}
         >
-          {errorBehavior.getErrorMessage(message, additionalParams)}
+          <Typography variant="caption" component="span">
+            {errorBehavior.getErrorMessage(message, additionalParams)}
+          </Typography>
         </div>
       </>
     </CartTotalLine>

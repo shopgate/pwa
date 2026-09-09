@@ -1,4 +1,7 @@
 export interface Shape {
+  /**
+   * The app wide corner style. Every rounded surface derives from it.
+   */
   borderRadius: number | string;
 }
 

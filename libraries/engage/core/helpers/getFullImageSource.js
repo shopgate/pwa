@@ -1,7 +1,20 @@
 import { CONFIGURATION_COLLECTION_CREATE_EXTERNAL_IMAGE_URL } from '@shopgate/engage/core/constants';
 import { configuration } from '@shopgate/engage/core/collections';
-import { getProductImageSettings } from '../../product/helpers';
+import {
+  DEFAULT_IMAGE_FILL_COLOR,
+  DEFAULT_IMAGE_FILL_TRANSPARENT,
+  DEFAULT_IMAGE_QUALITY,
+} from '@shopgate/engage/settings/constants/imageSettings';
 import { getImageFormat } from './getImageFormat';
+
+/**
+ * The settings applied when the caller passes none.
+ */
+const defaultSettings = {
+  quality: DEFAULT_IMAGE_QUALITY,
+  fillColor: DEFAULT_IMAGE_FILL_COLOR,
+  fillTransparent: DEFAULT_IMAGE_FILL_TRANSPARENT,
+};
 
 /**
  * Regex to detect the "fill" query parameter
@@ -38,16 +51,29 @@ const buildUrl = (baseUrl, params = {}) => {
 };
 
 /**
- * Returns the actual url to the image, by adding url parameters with the dimensions for img-cdn
- * @param {string} src Source to the image.
+ * Builds the url that requests an image at a given size. A src that no known image source
+ * recognizes is returned untouched.
+ * @param {string|null} src Source to the image.
  * @param {Object} dimension Dimension of the requested image.
  * @param {number} dimension.width Width in pixels.
  * @param {number} dimension.height Height in pixels.
+ * @param {Object} [settings] Image service settings, as resolved by useImageServiceSettings.
+ * @param {number} [settings.quality] Compression quality.
+ * @param {string} [settings.fillColor] Fill color as a hash free hex, not a CSS color.
+ * @param {boolean} [settings.fillTransparent] Whether transparent areas are filled too.
  * @returns {string}
  */
-export const getFullImageSource = (src, { width, height } = {}) => {
+export const getFullImageSource = (src, { width, height } = {}, settings = {}) => {
+  const {
+    quality,
+    fillColor,
+    fillTransparent,
+  } = {
+    ...defaultSettings,
+    ...settings,
+  };
+
   if (src && src.includes('images.shopgate.services')) {
-    const { fillColor, quality } = getProductImageSettings();
     const format = getImageFormat();
 
     return buildUrl(src, {
@@ -55,7 +81,7 @@ export const getFullImageSource = (src, { width, height } = {}) => {
       width,
       height,
       quality,
-      fill: fillColor.replace('#', ''),
+      fill: fillTransparent ? `${fillColor},1` : fillColor,
     });
   }
 
@@ -65,7 +91,8 @@ export const getFullImageSource = (src, { width, height } = {}) => {
       h: height,
       q: 70,
       zd: 'resize',
-      fillc: 'FFFFFF',
+      // No transparency flag here - the legacy cdn only understands a plain color.
+      fillc: fillColor,
     });
   }
 
@@ -73,7 +100,6 @@ export const getFullImageSource = (src, { width, height } = {}) => {
   const createUrlFn = configuration.get(CONFIGURATION_COLLECTION_CREATE_EXTERNAL_IMAGE_URL);
 
   if (typeof createUrlFn === 'function') {
-    const { fillColor, quality } = getProductImageSettings();
     const format = getImageFormat();
 
     // Invoke the handler with all relevant parameters.
@@ -81,6 +107,7 @@ export const getFullImageSource = (src, { width, height } = {}) => {
       width,
       height,
       fillColor,
+      fillTransparent,
       quality,
       format,
     });

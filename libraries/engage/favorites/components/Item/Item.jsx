@@ -22,7 +22,6 @@ import {
   bin2hex,
   showModal as showModalAction,
   historyPush as historyPushAction,
-  getThemeSettings,
   i18n,
 } from '@shopgate/engage/core';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
@@ -30,6 +29,7 @@ import {
   Link,
   TextLink,
   SurroundPortals,
+  Typography,
 } from '@shopgate/engage/components';
 import {
   makeIsRopeProductOrderable,
@@ -147,9 +147,7 @@ const useStyles = makeStyles()(theme => ({
   },
   priceInfo: {
     wordBreak: 'break-word',
-    fontSize: '0.875rem',
     lineHeight: '0.875rem',
-    color: theme.palette.text.secondary,
     padding: theme.spacing(0.5, 0),
   },
   titleWrapper: {
@@ -160,11 +158,6 @@ const useStyles = makeStyles()(theme => ({
   titleContainer: {
     marginRight: 10,
     flex: 1,
-  },
-  title: {
-    fontSize: 17,
-
-    fontWeight: 600,
   },
   removeContainer: {
     display: 'flex',
@@ -194,7 +187,6 @@ const FavoriteItem = ({
   openCommentDialog,
 }) => {
   const { classes, cx } = useStyles();
-  const { ListImage: gridResolutions } = getThemeSettings('AppImages') || {};
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
@@ -240,8 +232,11 @@ const FavoriteItem = ({
       return false;
     }
 
-    if (hasNewServices() && !isRopeProductOrderable) {
-      // Product is not orderable for ROPE. So users need to do some corrections. Just redirect.
+    if (hasNewServices() && isRopeProductOrderable === false) {
+      // Product is explicitly not orderable for ROPE (a fulfillment method other than direct ship
+      // that isn't available for the current product/location). Users need to correct the
+      // selection on the PDP, so redirect. `null` means ROPE doesn't apply (direct ship) and must
+      // fall through to the regular add-to-cart below.
       historyPush({ pathname: productLink });
       return false;
     }
@@ -326,7 +321,11 @@ const FavoriteItem = ({
             href={productLink}
             aria-hidden
           >
-            <ProductImage className={cx('engage__favorites__item__image')} src={product.featuredImageBaseUrl} resolutions={gridResolutions} />
+            <ProductImage
+              className={cx('engage__favorites__item__image')}
+              src={product.featuredImageBaseUrl}
+              context="list"
+            />
           </Link>
 
           <div className={cx(classes.infoContainer, 'engage__favorites__item__info-container')}>
@@ -341,9 +340,9 @@ const FavoriteItem = ({
                     tag="span"
                     className={cx(classes.titleContainer, 'engage__favorites__item__title-container')}
                   >
-                    <span
-                      className={classes.title}
-                      // eslint-disable-next-line react/no-danger
+                    <Typography
+                      component="span"
+                      fontWeight="bold"
                       dangerouslySetInnerHTML={{ __html: `${product.name}` }}
                     />
                   </TextLink>
@@ -394,11 +393,13 @@ const FavoriteItem = ({
                         className={classes.price}
                       />
                     </div>
-                    <PriceInfo
-                      product={product}
-                      currency={currency}
-                      className={classes.priceInfo}
-                    />
+                    <Typography variant="body2" component="div" color="textSecondary" className={classes.priceInfo}>
+                      <PriceInfo
+                        product={product}
+                        currency={currency}
+                        className={classes.priceInfo}
+                      />
+                    </Typography>
                   </div>
                 </SurroundPortals>
               </div>

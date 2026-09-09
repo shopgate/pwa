@@ -1,8 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/helpers';
-import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { useProductListType } from '@shopgate/engage/product/hooks';
+import { useProductListType, useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
 import {
   Link,
   RatingStars,
@@ -21,28 +20,42 @@ import {
   ProductName,
   ProductBadges,
 } from '@shopgate/engage/product/components';
-import { getProductImageSettings } from '@shopgate/engage/product/helpers';
 import {
   PRODUCT_ITEM_DISCOUNT,
   PRODUCT_ITEM_PRICE,
 } from '@shopgate/engage/category';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
+import { getProductCardNameMaxLines } from '@shopgate/engage/settings/selectors/appSettings';
 import ProductGridPrice from '../ProductGridPrice';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
+  root: {
+    padding: theme.components.productCard.padding,
+
+  },
+  image: {
+    padding: theme.components.productCard.imagePadding,
+  },
   details: {
-    padding: '12px 16px',
-    lineHeight: 1.35,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 4,
+    padding: theme.components.productCard.textPadding,
+    '& div:empty': {
+      display: 'none',
+    },
   },
   title: {
-    fontWeight: '500',
+    fontSize: theme.typography.body2.fontSize,
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.15,
     marginTop: 1,
   },
   badgeWrapper: {
     minWidth: 40,
   },
-});
+}));
 
 const location = 'productCard';
 
@@ -53,7 +66,8 @@ const location = 'productCard';
  * @param {boolean} props.hidePrice Whether the price should be hidden.
  * @param {boolean} props.hideRating Whether the rating should be hidden.
  * @param {boolean} props.hideName Whether the name should be hidden.
- * @param {number} props.titleRows The max number of rows for the product title.
+ * @param {number} props.titleRows Optional override for the max number of rows for the product
+ * title
  * @param {string} props.url Optional alternative url for the product link
  * @return {JSX.Element}
  */
@@ -63,9 +77,9 @@ function ProductCard(props) {
     product, hidePrice, hideRating, hideName, titleRows, url,
   } = props;
   const { meta } = useProductListType();
+  const productNameLines = useSelector(getProductCardNameMaxLines);
 
-  const { ListImage: gridResolutions } = getProductImageSettings();
-  const { showEmptyRatingStars = false } = useWidgetSettings('@shopgate/engage/rating');
+  const showEmptyRatingStars = useShowEmptyRatingStars();
 
   const showRatings = useMemo(() => {
     if (!hideRating && product?.rating?.average > 0) {
@@ -81,7 +95,7 @@ function ProductCard(props) {
 
   return (
     <Link
-      className="engage__product-card"
+      className={cx(classes.root, 'engage__product-card')}
       href={url || getProductRoute(product.id)}
       itemProp="item"
       itemScope
@@ -91,18 +105,20 @@ function ProductCard(props) {
         ...meta,
       }}
     >
-      {isBeta() && product.featuredMedia
-        ? <FeaturedMedia
-            type={product.featuredMedia.type}
-            url={product.featuredMedia.url}
-            altText={product.featuredMedia.altText}
-        />
-        : <ProductImage
-            src={product.featuredImageBaseUrl}
-            resolutions={gridResolutions}
-            alt={product.name}
-            itemProp="image"
-        />}
+      <div className={classes.image}>
+        {isBeta() && product.featuredMedia
+          ? <FeaturedMedia
+              type={product.featuredMedia.type}
+              url={product.featuredMedia.url}
+              altText={product.featuredMedia.altText}
+          />
+          : <ProductImage
+              src={product.featuredImageBaseUrl}
+              context="list"
+              alt={product.name}
+              itemProp="image"
+          />}
+      </div>
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (
         <div className={classes.badgeWrapper}>
@@ -129,7 +145,7 @@ function ProductCard(props) {
               className={classes.title}
               testId={`Productname: ${product.name}`}
               itemProp="name"
-              rows={titleRows || 3}
+              rows={titleRows || productNameLines}
             />
           )}
 
@@ -189,7 +205,7 @@ ProductCard.defaultProps = {
   hideName: false,
   hidePrice: false,
   hideRating: false,
-  titleRows: 3,
+  titleRows: null,
   url: null,
 };
 

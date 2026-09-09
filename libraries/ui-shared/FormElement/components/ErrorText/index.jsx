@@ -1,21 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   root: {
-    bottom: 2,
-    color: theme.palette.error.main,
-    fontSize: 12,
-    lineHeight: '14px',
     overflow: 'hidden',
     position: 'absolute',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',
     width: '100%',
   },
-}));
+});
 
 /**
  * Error message component.
@@ -28,7 +24,10 @@ const ErrorText = ({
   const { classes, cx } = useStyles();
 
   return (
-    <div
+    <Typography
+      variant="caption"
+      component="div"
+      color="error"
       id={`ariaError-${elementName}`}
       className={cx(classes.root, 'errorText', className)}
       aria-live="assertive"
@@ -37,7 +36,7 @@ const ErrorText = ({
     >
       {translate && <I18n.Text string={errorText} />}
       {!translate && errorText}
-    </div>
+    </Typography>
   );
 };
 

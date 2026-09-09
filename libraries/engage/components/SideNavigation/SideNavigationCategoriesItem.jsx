@@ -18,8 +18,8 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
     outline: 0,
     margin: theme.spacing(0, -2, 0, 1),
-    fontSize: '1.6em',
-    color: '#373D41',
+    fontSize: theme.components.icon.medium,
+    color: theme.palette.common.black,
     position: 'relative',
   },
   chevronDown: {

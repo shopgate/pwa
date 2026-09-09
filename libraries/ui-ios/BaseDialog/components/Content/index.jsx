@@ -1,17 +1,15 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   body: {
-    color: themeColors.dark,
+    color: theme.palette.common.black,
     flexGrow: 1,
-    fontSize: '13px',
-    textAlign: 'center',
     overflow: 'auto',
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.
@@ -25,9 +23,9 @@ const Content = ({ content }) => {
   }
 
   return (
-    <div className={classes.body} id="basicDialogDesc">
+    <Typography variant="body2" component="div" align="center" className={classes.body} id="basicDialogDesc">
       {content}
-    </div>
+    </Typography>
   );
 };
 

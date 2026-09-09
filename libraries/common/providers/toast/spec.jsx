@@ -34,6 +34,12 @@ const toast = (id, message) => ({
 describe('ToastProvider', () => {
   beforeEach(() => { ctx = undefined; });
 
+  it('exposes the event name statics on the exported component', () => {
+    // They survive the withTheme() wrapping - consumers emit UIEvents on them.
+    expect(ToastProvider.ADD).toBe('toast_add');
+    expect(ToastProvider.FLUSH).toBe('toast_flush');
+  });
+
   it('appends a toast and applies the default duration', () => {
     renderProvider();
     act(() => { ctx.addToast(toast('a', 'A')); });

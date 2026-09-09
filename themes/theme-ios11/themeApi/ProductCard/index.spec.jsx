@@ -61,6 +61,19 @@ describe('<ProductCard />', () => {
     expect(renderWrapper.prop('product')).toBe(mockProduct);
   });
 
+  it('should suppress the card shadow for legacy shadow={false} callers', () => {
+    // The card draws its own elevation from the merchant configuration, so the legacy prop is
+    // honoured by pinning the Card to elevation 0 — the one entry of the scale with no shadow.
+    const withShadow = renderComponent({ productId: mockProductId });
+    expect(withShadow.find('Card').prop('elevation')).toBeUndefined();
+
+    const withoutShadow = renderComponent({
+      productId: mockProductId,
+      shadow: false,
+    });
+    expect(withoutShadow.find('Card').prop('elevation')).toBe(0);
+  });
+
   it('should render with a custom render prop', () => {
     const text = 'Custom Output';
 

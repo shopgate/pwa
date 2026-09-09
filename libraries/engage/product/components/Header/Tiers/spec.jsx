@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Tiers from './index';
 
 jest.mock('./connector', () => cmp => cmp);
@@ -28,20 +28,20 @@ describe('<Tiers />', () => {
         currency: 'USD',
       };
 
-      const wrapper = shallow(<Tiers price={price} />);
+      const wrapper = render(<Tiers price={price} />);
 
-      expect(wrapper).toMatchSnapshot();
+      expect(wrapper.asFragment()).toMatchSnapshot();
     });
   });
 
   describe('Rendering without data', () => {
     it('should render nothing when price data are not available ({})', () => {
-      const wrapper = shallow(<Tiers price={{}} />);
+      const wrapper = render(<Tiers price={{}} />);
       expect(wrapper).toBeEmptyRender();
     });
 
     it('should render nothing when price data are not available (null)', () => {
-      const wrapper = shallow(<Tiers price={null} />);
+      const wrapper = render(<Tiers price={null} />);
       expect(wrapper).toBeEmptyRender();
     });
 
@@ -51,13 +51,13 @@ describe('<Tiers />', () => {
         currency: 'USD',
       };
 
-      const wrapper = shallow(<Tiers price={price} />);
+      const wrapper = render(<Tiers price={price} />);
       expect(wrapper).toBeEmptyRender();
     });
 
     it('should render nothing when tier prices are not available (field missing)', () => {
       const price = { currency: 'USD' };
-      const wrapper = shallow(<Tiers price={price} />);
+      const wrapper = render(<Tiers price={price} />);
       expect(wrapper).toBeEmptyRender();
     });
   });

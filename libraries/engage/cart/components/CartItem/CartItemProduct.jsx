@@ -2,7 +2,6 @@ import React from 'react';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import CardListItem from '@shopgate/pwa-ui-shared/CardList/components/Item';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { MessageBar, ResponsiveContainer } from '@shopgate/engage/components';
 import { getPageSettings } from '@shopgate/engage/core/config';
 import { CartItemProductLayout } from './CartItemProductLayout';
@@ -10,15 +9,13 @@ import { CartItemProductLayoutWide } from './CartItemProductLayoutWide';
 import { useCartItemProduct } from './CartItem.hooks';
 import CartItemSubstitution from './CartItemSubstitution';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   noGap: {
     marginBottom: 0,
     background: 'none',
   },
   messagesContainerCard: {
-    background: colors.light,
+    background: theme.palette.background.surface,
     padding: theme.spacing(0, 0, 2, 0),
   },
   messagesCard: {
@@ -26,7 +23,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(1, 1.75),
   },
   messagesContainerLine: {
-    background: colors.light,
+    background: theme.palette.background.surface,
     padding: theme.spacing(2, 2, 0),
   },
   messagesLine: {

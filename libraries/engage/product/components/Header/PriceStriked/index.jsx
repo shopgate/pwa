@@ -14,10 +14,7 @@ import {
 import { withPriceCalculation } from '@shopgate/engage/product/hocs';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import connect from './connector';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   placeholder: {
@@ -27,13 +24,13 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: 2,
   },
   msrp: {
-    color: colors.shade11,
-    fontSize: '0.875rem',
+    color: theme.palette.grey.dark,
     marginRight: theme.spacing(0.5),
+    fontSize: theme.typography.body2.fontSize,
   },
   msrpStriked: {
     display: 'inline',
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
   },
 }));
 

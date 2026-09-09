@@ -1,4 +1,5 @@
 import merge from 'lodash/merge';
+import omit from 'lodash/omit';
 import type { CSSInterpolation } from 'tss-react';
 import { cssVarsParser, cssVarsColorAugmentation } from './helpers';
 import type { GetColorSchemeSelector } from './helpers';
@@ -70,11 +71,17 @@ export default function createCssVarsForColorSchemeThemes(
       css, vars, varsWithDefaults, varNames,
     } = cssVarsColorAugmentation(cssVarsParser<BaseTheme>(rest, {
       prefix: cssVarPrefix,
+      // Keep as literal strings, not `:root` vars, so their inline `var(--sg-palette-shadow)`
+      // resolves on the element using the shadow (recolorable) instead of freezing against `:root`.
+      shouldSkipGeneratingVar: keys => ['shadows', 'shadowSizes'].includes(keys[0]),
       // @ts-expect-error - We are sure about the type here
-    }), rest);
+    }), rest, cssVarPrefix);
 
     // Resolve component token values to actual CSS variable references
-    const resolvedComponents = flattenComponentVars(resolveComponentsValues(componentsInput, vars));
+    const resolvedComponents = flattenComponentVars(resolveComponentsValues(componentsInput, {
+      ...rest,
+      ...vars,
+    }));
 
     const {
       css: componentsCss,
@@ -95,19 +102,50 @@ export default function createCssVarsForColorSchemeThemes(
     };
 
     if (Array.isArray(styleSheets)) {
-      // Create a style sheet selector for the color scheme with the generated CSS variables
+      styleSheets.push({
+        ':root': {
+          // use double underscore to indicate that these are private variables
+          '--__l-threshold': '0.7',
+          '--__l': 'clamp(0, (l / var(--__l-threshold) - 1) * -infinity, 1)',
+          '--__a': 'clamp(0.87, (l / var(--__l-threshold) - 1) * -infinity, 1)', // 0.87 is the default alpha value for black text.
+        },
+      });
+
+      // Create a style sheet selector for the color scheme with the generated CSS variables.
+      // `only` opts the page out of the browser applying a color scheme of its own on top of the
+      // active one - forced dark repaints the palette's own colors and inverts light surfaces.
       styleSheets.push({
         [`${schemeName === 'light' ? ':root, ' : ''}${getColorSchemeSelector(schemeName)}`]: {
+          colorScheme: `only ${schemeName}`,
           ...colorSchemeMap[schemeName].css,
         },
       });
     }
   });
 
+  // Keep `components`, but remove each nested `vars` object because those raw values
+  // should not leak into the final cssVars theme object.
+  const componentsWithoutVars = Object
+    .entries(colorSchemes.light.components || {})
+    .reduce((acc, [key, value]) => {
+      if (value && typeof value === 'object') {
+        acc[key] = omit(value, ['vars']);
+        return acc;
+      }
+
+      acc[key] = value;
+      return acc;
+    }, {} as Record<string, unknown>);
+
+  const lightSchemeWithoutComponentVars = {
+    ...colorSchemes.light,
+    components: componentsWithoutVars,
+  };
+
   return {
     cssVarsTheme: merge(
       {},
-      colorSchemes.light,
+      lightSchemeWithoutComponentVars,
       colorSchemeMap.light.vars,
       { vars: colorSchemeMap.light.varNames }
     ),

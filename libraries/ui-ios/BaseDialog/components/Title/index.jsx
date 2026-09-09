@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import { I18n, Ellipsis } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   title: {
     textAlign: 'center',
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightBold,
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

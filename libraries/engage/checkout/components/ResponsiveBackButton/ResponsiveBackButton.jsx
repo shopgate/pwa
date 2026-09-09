@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { RippleButton, I18n, ArrowIcon } from '@shopgate/engage/components';
+import { I18n, ArrowIcon } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { useNavigation } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 
@@ -9,21 +10,11 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     padding: theme.spacing(4, 2, 2, 2),
   },
-  button: {
-    fontSize: '0.875rem !important',
-    padding: '0 !important',
-    ' > div ': {
-      padding: 0,
-      display: 'flex',
-    },
-  },
   buttonIcon: {
     display: 'inline-block',
-    fontSize: '1.375rem !important',
+    fontSize: theme.components.icon.medium,
     alignSelf: 'center',
     marginRight: theme.spacing(0.5),
-    marginLeft: -3,
-    marginTop: -2,
   },
 }));
 
@@ -46,15 +37,14 @@ const ResponsiveBackButton = ({ label, onClick }) => {
 
   return (
     <div className={classes.container}>
-      <RippleButton
-        flat
-        className={classes.button}
-        type="secondary"
+      <Button
+        variant="link"
+        color="primary"
         onClick={handleClick}
       >
         <ArrowIcon className={classes.buttonIcon} />
         <I18n.Text string={label} />
-      </RippleButton>
+      </Button>
     </div>
   );
 };

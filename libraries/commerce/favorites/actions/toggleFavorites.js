@@ -2,7 +2,7 @@ import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import {
   getWishlistItemQuantityEnabled,
   getLoadWishlistOnAppStartEnabled,
-} from '@shopgate/engage/core/selectors/shopSettings';
+} from '@shopgate/engage/settings/selectors/shopSettings';
 import {
   getFavoritesDefaultList,
   getFavoritesLists,

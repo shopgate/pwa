@@ -3,24 +3,23 @@ import PropTypes from 'prop-types';
 import throttle from 'lodash/throttle';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
-  Grid, I18n, Button, Modal, Link, ConditionalWrapper,
+  Grid, I18n, Modal, Link, ConditionalWrapper, Typography,
 } from '@shopgate/engage/components';
-import { appConfig, themeConfig } from '@shopgate/engage';
+import { Button } from '@shopgate/engage/components/v2';
+import { appConfig } from '@shopgate/engage';
 import connect from './connector';
 import cookieImage from './tracking-opt-in.svg';
 import { svgToDataUrl } from '../../../core';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   modalContent: {
     width: '100%',
   },
   modalLayout: {
-    backgroundColor: colors.lightOverlay,
+    backgroundColor: theme.palette.background.surface,
   },
   container: {
-    backgroundColor: colors.lightOverlay,
+    backgroundColor: theme.palette.background.surface,
     padding: '30px',
     justifyContent: 'center',
     display: 'flex',
@@ -28,8 +27,6 @@ const useStyles = makeStyles()(theme => ({
     textAlign: 'center',
   },
   title: {
-    fontWeight: 'bold',
-    fontSize: '1.35rem',
     paddingTop: '30px',
     paddingBottom: '30px',
   },
@@ -140,11 +137,15 @@ const CookieConsentModal = ({
       >
         <Grid.Item component="div" className={classes.item}>
           <img src={imageSRC} className={cx(classes.image, 'cookie-consent-modal__image')} alt="" aria-hidden="true" />
-          <I18n.Text
+          <Typography
+            variant="h3"
+            component="div"
+            fontWeight="bold"
             className={cx(classes.title, 'cookie-consent-modal__title')}
-            string={modalTitle || 'cookieConsentModal.title'}
             id="cookieConsentDialogTitle"
-          />
+          >
+            <I18n.Text string={modalTitle || 'cookieConsentModal.title'} />
+          </Typography>
           <I18n.Text
             string={modalMessage || 'cookieConsentModal.message'}
             className={cx('cookie-consent-modal__message')}
@@ -168,7 +169,7 @@ const CookieConsentModal = ({
           <Grid.Item component="div" className={classes.buttonWrapper}>
             <Button
               onClick={handleAcceptAllCookies}
-              type="primary"
+              color="secondary"
               className={cx(classes.button, 'cookie-consent-modal__button-accept-all')}
             >
               <I18n.Text string={modalButtonAcceptAll || 'cookieConsentModal.buttonAcceptAll'} />
@@ -176,7 +177,6 @@ const CookieConsentModal = ({
             {showRequiredCookiesButton ? (
               <Button
                 onClick={handleAcceptRequiredCookies}
-                type="simple"
                 className={cx(classes.button, 'cookie-consent-modal__button-accept-required')}
               >
                 <I18n.Text string={modalButtonOnlyRequired || 'cookieConsentModal.modalButtonOnlyRequired'} />
@@ -184,7 +184,6 @@ const CookieConsentModal = ({
             ) : null}
             <Button
               onClick={handleOpenPrivacySettings}
-              type="simple"
               className={cx(classes.button, 'cookie-consent-modal__button-open-settings')}
             >
               <I18n.Text string={modalButtonConfigureSettings || 'cookieConsentModal.buttonConfigure'} />

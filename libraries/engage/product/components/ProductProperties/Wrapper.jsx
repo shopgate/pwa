@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    fontSize: '0.875rem',
     padding: theme.spacing(0, 2, 2),
     marginBottom: theme.spacing(1.5),
   },
@@ -25,7 +25,9 @@ const Wrapper = ({
   const { classes, cx } = useStyles();
 
   return (
-    <div
+    <Typography
+      variant="body2"
+      component="div"
       className={cx('engage__product__product-property-group', {
         [classes.container]: !dense,
         [classes.containerDense]: dense,
@@ -40,7 +42,7 @@ const Wrapper = ({
           </tbody>
         </table>
       )}
-    </div>
+    </Typography>
   );
 };
 
