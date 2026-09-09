@@ -8,7 +8,10 @@ const useStyles = makeStyles()(theme => ({
     fill: 'currentColor',
   },
   background: {
-    fill: theme.palette.background.surface,
+    fill: theme.palette.common.white,
+    ...theme.applyStyles('dark', {
+      fill: theme.palette.grey[200],
+    }),
   },
   circle: {
     fill: 'currentColor',

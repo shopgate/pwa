@@ -12,7 +12,7 @@ behavior here drifts from the code, update this document in the same PR.
 
 4. Flag uncertainty explicitly. If you are not confident about an approach or technical detail, say so before proceeding. Confidence without certainty causes more damage than admitting a gap.
 
-5. Never update snapshots. Do not run `jest -u` / `--updateSnapshot`, and do not hand-edit `.snap` files. When a change makes snapshots stale, show the diff and stop — the developer reviews and updates them. A snapshot diff is how humans catch unintended UI changes; an agent accepting it destroys that signal. A local `PreToolUse` hook blocks the command, but the rule stands regardless of tooling.
+5. Leave snapshots alone entirely. Do not update them (`jest -u` / `--updateSnapshot`), do not hand-edit `.snap` files, and do not spend tokens running or inspecting snapshot tests to see whether a change made them stale — the developer reviews and updates snapshots themselves. Do not report on snapshot status or remind about stale snapshots after a change; assume the developer will handle them. A snapshot diff is how humans catch unintended UI changes; an agent touching it destroys that signal. A local `PreToolUse` hook blocks the update command, but the rule stands regardless of tooling.
 
 6. Don't comment your code. Do not add comments that explain what the code does or why you chose an approach — write code that reads clearly instead, and put the reasoning in your reply. The only comments to write are doc comments on types (interfaces, type aliases and their members), and those are two lines at most.
 

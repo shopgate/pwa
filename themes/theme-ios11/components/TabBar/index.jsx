@@ -55,7 +55,7 @@ const useStyles = makeStyles()(theme => ({
     minHeight: theme.components.tabBar.floatingMinHeight,
     padding: '4px 0',
     marginBottom: `max(16px, calc(${theme.layout.safeArea.bottom} + ${isAndroidOs ? '8px' : '0px'}))`,
-    borderRadius: theme.components.tabBar.floatingBorderRadius,
+    borderRadius: theme.shape.borderRadius,
     boxShadow: theme.components.tabBar.floatingBoxShadow,
   },
   transitionFadeBase: {

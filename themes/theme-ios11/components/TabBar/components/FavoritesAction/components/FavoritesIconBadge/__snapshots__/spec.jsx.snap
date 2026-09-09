@@ -12,13 +12,13 @@ exports[`TabBar favorites action - behavior should cap display at MAX when numbe
     showCount={true}
   >
     <ForwardRef(Typography)
-      className="theme__tab-bar__favorites-icon-badge theme__badge sg-aibdx1-root-root"
+      className="theme__tab-bar__favorites-icon-badge theme__badge sg-udeanh-root-root"
       component="div"
       fontWeight="bold"
       variant="caption"
     >
       <div
-        className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-1radaz1-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
+        className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-9ltu9z-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
       >
         999+
       </div>
@@ -39,13 +39,13 @@ exports[`TabBar favorites action - behavior should show count when number is cha
     showCount={true}
   >
     <ForwardRef(Typography)
-      className="theme__tab-bar__favorites-icon-badge theme__badge sg-aibdx1-root-root"
+      className="theme__tab-bar__favorites-icon-badge theme__badge sg-udeanh-root-root"
       component="div"
       fontWeight="bold"
       variant="caption"
     >
       <div
-        className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-1radaz1-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
+        className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-9ltu9z-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
       >
         99
       </div>
@@ -80,13 +80,13 @@ exports[`TabBar favorites action should render exact number 1`] = `
         showCount={true}
       >
         <ForwardRef(Typography)
-          className="theme__tab-bar__favorites-icon-badge theme__badge sg-aibdx1-root-root"
+          className="theme__tab-bar__favorites-icon-badge theme__badge sg-udeanh-root-root"
           component="div"
           fontWeight="bold"
           variant="caption"
         >
           <div
-            className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-1radaz1-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
+            className="engage__typography engage__typography_caption theme__tab-bar__favorites-icon-badge theme__badge sg-9ltu9z-Typography-root-Typography-caption-Typography-fontWeightBold-root-root"
           >
             1
           </div>

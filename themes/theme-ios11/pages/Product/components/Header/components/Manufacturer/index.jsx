@@ -16,6 +16,9 @@ const useStyles = makeStyles()(theme => ({
     alignSelf: 'flex-end',
     fontWeight: theme.typography.fontWeightMedium,
     marginTop: -2,
+    '& .ui-shared__manufacturer': {
+      color: theme.palette.text.primary,
+    },
   },
   placeholder: {
     height: 16,

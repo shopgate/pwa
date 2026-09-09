@@ -7,7 +7,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 const useStyles = makeStyles()((theme) => {
   const badgeBase = {
     background: theme.components.discountBadge.background,
-    borderRadius: 2,
+    borderRadius: theme.shape.borderRadius,
     color: theme.contrastColor(theme.components.discountBadge.background),
     padding: 5,
     width: '100%',

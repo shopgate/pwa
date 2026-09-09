@@ -4,14 +4,17 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
   outerCircle: {
-    fill: theme.palette.primary.contrastText,
+    fill: theme.palette.common.white,
+    ...theme.applyStyles('dark', {
+      fill: theme.palette.grey[200],
+    }),
   },
   innerCircle: {
     fill: 'currentColor',
     opacity: 0.065,
   },
   heart: {
-    fill: theme.palette.primary.contrastText,
+    fill: theme.palette.common.white,
     stroke: 'currentColor',
     strokeWidth: '4px',
   },

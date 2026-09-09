@@ -59,7 +59,7 @@ export const createDefaultThemeOptions = (
         },
         price: {
           vars: {
-            color: getCSSCustomProp('--color-primary'),
+            saleColor: getCSSCustomProp('--color-primary'),
           },
         },
         input: {
@@ -99,7 +99,6 @@ export const createDefaultThemeOptions = (
             border: '#E6E6E6',
             inactive: 'var(--tab-bar-item-default-color, #747474)',
             active: `var(--tab-bar-item-highlighted-color, ${getCSSCustomProp('--color-secondary')})`,
-            floatingBorderRadius: 'var(--tab-bar-floating-border-radius, 16px)',
             floatingBoxShadow: 'var(--tab-bar-floating-box-shadow, 0 0 12px rgba(0, 0, 0, 0.24))',
             floatingMinHeight: 'var(--tab-bar-floating-min-height, 59px)',
             badgeColor: 'var(--tab-bar-item-badge-color, #FFFFFF)',
