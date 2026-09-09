@@ -31,4 +31,3 @@ export * from './Swatches';
 export * from './UnitQuantityPicker';
 export { default as FilterBar } from './FilterBar';
 export { default as ProductFilters } from './ProductFilters';
-export { default as ProductContentTop } from './ProductContentTop';

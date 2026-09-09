@@ -60,7 +60,7 @@ export const useProductGridColumns = (): number => {
 
       // The app settings only reach up to `md`. In website mode the viewport keeps growing
       // beyond that, so widen the grid instead of stretching the tiles.
-      if (hasWebBridge()) {
+      if (hasWebBridge() && !areAppSettingsHydrated) {
         const widest = mapped.md ?? mapped.sm ?? mapped.xs;
 
         if (typeof widest === 'number') {
@@ -71,7 +71,7 @@ export const useProductGridColumns = (): number => {
 
       return mapped;
     },
-    [sizes]
+    [sizes, areAppSettingsHydrated]
   );
 
   return useResponsiveValue(breakpoints) as number;

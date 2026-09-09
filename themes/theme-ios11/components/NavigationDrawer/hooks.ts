@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { useNavigation } from '@shopgate/engage/core/hooks';
 
 /**
  * Dispatch that also accepts the thunks the untyped action creators return.
@@ -19,13 +19,13 @@ export const useThunkDispatch = (): ThunkDispatch =>
  * @returns A factory that builds the click handler for one entry.
  */
 export const useNavDrawerNavigate = () => {
-  const dispatch = useThunkDispatch();
+  const { push } = useNavigation();
 
   return useCallback(
-    (pathname: string, title?: string) => () => dispatch(historyPush({
+    (pathname: string, title?: string) => () => push({
       pathname,
       state: { title },
-    })),
-    [dispatch]
+    }),
+    [push]
   );
 };

@@ -3,15 +3,14 @@ import { useSelector } from 'react-redux';
 import NavDrawer from '@shopgate/pwa-ui-material/NavDrawer';
 import AccountBoxIcon from '@shopgate/pwa-ui-shared/icons/AccountBoxIcon';
 import I18n from '@shopgate/pwa-common/components/I18n';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
   isUserLoggedIn,
   getUserEmail,
   getUserDisplayName,
 } from '@shopgate/pwa-common/selectors/user';
+import { useNavigation } from '@shopgate/engage/core/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
-import { useThunkDispatch } from '../hooks';
 
 const ellipsis = {
   lineHeight: 1.3,
@@ -48,14 +47,14 @@ const useStyles = makeStyles()(theme => ({
  */
 const Header = () => {
   const { classes, cx, theme } = useStyles();
-  const dispatch = useThunkDispatch();
+  const { push } = useNavigation();
   const isLoggedIn = useSelector(isUserLoggedIn);
   const email = useSelector(getUserEmail);
   const name = useSelector(getUserDisplayName);
 
   const openLogin = useCallback(
-    () => dispatch(historyPush({ pathname: LOGIN_PATH })),
-    [dispatch]
+    () => push({ pathname: LOGIN_PATH }),
+    [push]
   );
 
   if (!isLoggedIn) {

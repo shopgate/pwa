@@ -18,7 +18,7 @@ import {
   RETURN_POLICY_PATH,
   TERMS_PATH,
 } from '@shopgate/engage/page/constants';
-import { ConditionalWrapper } from '../../../ConditionalWrapper';
+import { ConditionalWrapper } from '@shopgate/engage/components';
 import { useNavDrawerNavigate } from '../../hooks';
 import portalProps from '../../portalProps';
 

@@ -6,7 +6,7 @@ import { RETURN_POLICY_PATH } from '@shopgate/engage/page/constants';
 import { useNavDrawerNavigate } from '../../hooks';
 import portalProps from '../../portalProps';
 
-const LABEL = 'navigation.returns';
+const LABEL = 'navigation.return_policy';
 
 /**
  * Renders the return policy entry of the navigation drawer.
