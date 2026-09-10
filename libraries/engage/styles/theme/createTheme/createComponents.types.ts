@@ -124,10 +124,9 @@ export const componentsSchema = {
   },
   price: {
     vars: {
-      color: '',
-      default: '',
-      sale: '',
-      striked: '',
+      defaultColor: '',
+      saleColor: '',
+      strikedColor: '',
     },
   },
   button: {
@@ -199,7 +198,6 @@ export const componentsSchema = {
       border: '',
       inactive: '',
       active: '',
-      floatingBorderRadius: '',
       floatingBoxShadow: '',
       floatingMinHeight: '',
       badgeColor: '',
@@ -300,9 +298,9 @@ export const componentsDefaults = {
   },
   price: {
     vars: {
-      default: t => t.palette.text.primary,
-      sale: t => t.palette.primary.main,
-      striked: t => t.palette.grey.dark,
+      defaultColor: t => t.palette.text.primary,
+      saleColor: t => t.palette.primary.main,
+      strikedColor: t => t.palette.grey.dark,
     },
   },
   input: {
@@ -359,7 +357,6 @@ export const componentsDefaults = {
       border: '#E6E6E6',
       inactive: '#747474',
       active: t => t.palette.secondary.main,
-      floatingBorderRadius: '16px',
       floatingBoxShadow: '0 0 12px rgba(0, 0, 0, 0.24)',
       floatingMinHeight: '59px',
       badgeColor: '#FFFFFF',
