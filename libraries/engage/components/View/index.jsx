@@ -18,6 +18,7 @@ const useStyles = makeStyles()(() => ({
     zIndex: 1,
   } : {
     height: '100%',
+    width: '100%',
   },
 }));
 
