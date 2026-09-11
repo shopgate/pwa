@@ -5,7 +5,6 @@ This is the Integration of [Cypress](https://www.cypress.io/) into the Shopgate 
 ## Execution
 from pwa root folder:
 ```sh
-npm run e2e:gmd 
 npm run e2e:ios11
 ```
 
@@ -34,7 +33,7 @@ The [Support](https://on.cypress.io/custom-commands) folder can hold custom comm
 
 ### Tests
 ```
-|-- gmd/ios11
+|-- ios11
   |-- cypress.json
   |-- integration
     |-- newTest.js
