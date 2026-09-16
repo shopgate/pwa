@@ -29,8 +29,10 @@ const useStyles = makeStyles()(theme => ({
   root: {
     '--font-size': `calc(${theme.typography.price.fontSize} * 0.75)`,
     '--font-family': theme.typography.price.fontFamily,
+    '--font-weight': theme.typography.price.fontWeight,
     fontSize: 'var(--font-size)',
     fontFamily: 'var(--font-family)',
+    fontWeight: 'var(--font-weight)',
     whiteSpace: 'nowrap',
     color: theme.components.price.strikedColor,
     '& span': {
