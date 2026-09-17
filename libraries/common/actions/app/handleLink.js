@@ -1,6 +1,7 @@
 import { logger } from '@shopgate/pwa-core/helpers';
 import { DEEPLINK_CART_ADD_PRODUCT_PATTERN } from '@shopgate/pwa-common-commerce/cart/constants';
 import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchProduct';
+import { sanitizeLink } from '../../helpers/router';
 import { historyPush, historyReset } from '../router';
 import {
   INDEX_PATH_DEEPLINK,
@@ -21,8 +22,12 @@ export default function handleLink(payload, allowExternalLinks = false) {
       return;
     }
 
-    // cast to string
-    link = String(link);
+    // Cast to string and remove potentially malicious content from the external link
+    link = sanitizeLink(String(link));
+
+    if (!link) {
+      return;
+    }
 
     let pathname;
     if (link.startsWith('http')) {

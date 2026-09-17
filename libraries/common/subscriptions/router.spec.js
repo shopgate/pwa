@@ -9,6 +9,7 @@ import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { logger } from '@shopgate/pwa-core/helpers';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
+import { Linking } from '@shopgate/native-modules';
 import { historyRedirect, historyPush, windowOpenOverride } from '../actions/router';
 import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
@@ -66,6 +67,11 @@ jest.mock('../selectors/router', () => ({
 }));
 jest.mock('../selectors/client', () => ({
   getIsConnected: jest.fn().mockReturnValue(true),
+}));
+jest.mock('@shopgate/native-modules', () => ({
+  Linking: {
+    addEventListener: jest.fn(),
+  },
 }));
 jest.mock('@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart', () => jest.fn(
   () => 'addCouponsToCartDispatched'
@@ -713,6 +719,54 @@ describe('Router subscriptions', () => {
         }));
       });
     });
+
+    describe('windowOpenRequested event', () => {
+      let listener;
+
+      beforeEach(() => {
+        callback(createCallbackPayload({}));
+        [[, listener]] = Linking.addEventListener.mock.calls
+          .filter(([eventName]) => eventName === 'windowOpenRequested');
+        dispatch.mockClear();
+      });
+
+      it('should dispatch historyPush with the target url', () => {
+        const targetUrl = 'https://example.com/page?foo=bar';
+        listener({ detail: { targetUrl } });
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(historyPush).toHaveBeenCalledWith({
+          pathname: targetUrl,
+          state: {},
+        });
+      });
+
+      it('should remove markup from the target url', () => {
+        listener({ detail: { targetUrl: '/search?s=<img src=x onerror=alert(1)>test' } });
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(historyPush).toHaveBeenCalledWith({
+          pathname: '/search?s=test',
+          state: {},
+        });
+      });
+
+      it('should NOT dispatch historyPush for urls with a script protocol', () => {
+        // eslint-disable-next-line no-script-url
+        listener({ detail: { targetUrl: 'javascript:alert(1)' } });
+
+        expect(dispatch).not.toHaveBeenCalled();
+        expect(historyPush).not.toHaveBeenCalled();
+      });
+
+      it('should NOT dispatch historyPush when the event has no target url', () => {
+        listener({ detail: {} });
+        listener({});
+
+        expect(dispatch).not.toHaveBeenCalled();
+        expect(historyPush).not.toHaveBeenCalled();
+      });
+    });
   });
 
   describe('windowOpenOverride$', () => {
@@ -739,6 +793,40 @@ describe('Router subscriptions', () => {
       expect(dispatch).toHaveBeenCalledWith(historyPush({
         pathname,
       }));
+    });
+
+    it('should dispatch historyPush when invoked with an URL object', () => {
+      const url = new URL('https://example.com/page?foo=bar');
+
+      callback(createCallbackPayload(windowOpenOverride({
+        pathname: url,
+      })));
+
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({
+        pathname: url.toString(),
+      });
+    });
+
+    it('should remove markup from the url before dispatching historyPush', () => {
+      callback(createCallbackPayload(windowOpenOverride({
+        pathname: 'https://example.com/search?s=%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3Etest',
+      })));
+
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({
+        pathname: 'https://example.com/search?s=test',
+      });
+    });
+
+    it('should NOT dispatch historyPush for urls with a script protocol', () => {
+      callback(createCallbackPayload(windowOpenOverride({
+        // eslint-disable-next-line no-script-url
+        pathname: 'javascript:alert(1)',
+      })));
+
+      expect(dispatch).not.toBeCalled();
+      expect(historyPush).not.toBeCalled();
     });
 
     it('should NOT dispatch historyPush when invoked with an empty url', () => {

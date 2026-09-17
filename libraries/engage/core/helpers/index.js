@@ -53,6 +53,7 @@ export {
   isWindows,
 } from '@shopgate/pwa-common/helpers/environment';
 export { default as decodeHTML } from '@shopgate/pwa-common/helpers/html/decodeHTML';
+export { default as htmlToText } from '@shopgate/pwa-common/helpers/html/htmlToText';
 export * from '@shopgate/pwa-common/helpers/html/handleDOM';
 export { default as parseHTML } from '@shopgate/pwa-common/helpers/html/parseHTML';
 export { default as getTranslator } from '@shopgate/pwa-common/helpers/i18n/getTranslator';
