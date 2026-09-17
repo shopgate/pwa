@@ -95,7 +95,7 @@ export const createDefaultThemeOptions = (
         tabBar: {
           vars: {
             background: 'var(--tab-bar-background, #FFFFFF)',
-            minHeight: 'var(--tab-bar-min-height, 0px)',
+            minHeight: 'var(--tab-bar-min-height, 49px)',
             border: '#E6E6E6',
             inactive: 'var(--tab-bar-item-default-color, #747474)',
             active: `var(--tab-bar-item-highlighted-color, ${getCSSCustomProp('--color-secondary')})`,

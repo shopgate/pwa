@@ -14,8 +14,10 @@ const useStyles = makeStyles()(theme => ({
     color: theme.components.price.defaultColor,
     '--font-size': theme.typography.price.fontSize,
     '--font-family': theme.typography.price.fontFamily,
+    '--font-weight': theme.typography.price.fontWeight,
     fontSize: 'var(--font-size)',
     fontFamily: 'var(--font-family)',
+    fontWeight: 'var(--font-weight)',
   },
   disclaimer: {
     color: 'initial',
