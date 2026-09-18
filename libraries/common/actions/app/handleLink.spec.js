@@ -11,6 +11,7 @@ jest.mock('../../actions/router', () => ({
 jest.mock('@shopgate/pwa-core/helpers', () => ({
   logger: {
     error: jest.fn(),
+    warn: jest.fn(),
   },
 }));
 
@@ -44,6 +45,33 @@ describe('handleLink()', () => {
       expect(dispatch).toHaveBeenCalledTimes(1);
       expect(historyPush).toHaveBeenCalledTimes(1);
       expect(historyPush).toHaveBeenCalledWith({ pathname: link });
+    });
+  });
+
+  describe('handle malicious links', () => {
+    it('should remove markup from query parameters of deeplinks', () => {
+      handleLink({ link: 'shopgate-10006://search?s=<img src=x onerror=alert(1)>test' })(dispatch);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({ pathname: '/search?s=test' });
+    });
+
+    it('should remove markup from query parameters of push message links', () => {
+      const link = 'https://example.com/search?s=%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3Etest';
+      handleLink({ link }, true)(dispatch);
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({ pathname: 'https://example.com/search?s=test' });
+    });
+
+    it('should not modify regular deeplinks with query parameters', () => {
+      handleLink({ link: 'shopgate-10006://search?s=Tom%20%26%20Jerry' })(dispatch);
+      expect(historyPush).toHaveBeenCalledWith({ pathname: '/search?s=Tom%20%26%20Jerry' });
+    });
+
+    it('should ignore links with a script protocol', () => {
+      // eslint-disable-next-line no-script-url
+      handleLink({ link: 'javascript:alert(1)' }, true)(dispatch);
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(historyPush).not.toHaveBeenCalled();
     });
   });
 

@@ -1,14 +1,16 @@
 /**
  * Unescape HTML entities.
+ * The input is assigned to a textarea element whose content is parsed as plain text, so markup
+ * within the input is never turned into DOM nodes and can't execute scripts.
  * @param {string} input The escaped HTML.
  * @returns {string} The unescaped HTML.
  */
 const decodeHTML = (input) => {
-  const e = document.createElement('div');
+  const textarea = document.createElement('textarea');
 
-  e.innerHTML = input;
+  textarea.innerHTML = input;
 
-  return e.childNodes.length === 0 ? '' : e.childNodes[0].nodeValue;
+  return textarea.value;
 };
 
 export default decodeHTML;

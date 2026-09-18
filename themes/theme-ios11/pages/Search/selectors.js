@@ -3,8 +3,14 @@ import { hasActiveFilters } from '@shopgate/pwa-common-commerce/filter/selectors
 import { getResultByHash } from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 export const showNoResults = createSelector(
+  (state, props = {}) => props.searchPhrase,
   getResultByHash,
-  (results) => {
+  (searchPhrase, results) => {
+    // Search results are not requested for empty search phrases, so there will never be a result.
+    if (!searchPhrase) {
+      return true;
+    }
+
     if (results === null) {
       return false;
     }

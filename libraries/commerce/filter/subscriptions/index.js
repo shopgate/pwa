@@ -6,6 +6,7 @@ import {
 import {
   CATEGORY_ALL_FILTER_PATTERN,
 } from '../../category/constants';
+import { SEARCH_FILTER_PATTERN } from '../../search/constants';
 import fetchCategory from '../../category/actions/fetchCategory';
 import {
   getShowAllProductsFilters,
@@ -19,6 +20,11 @@ import { filterDidEnter$ } from '../streams';
  */
 export default function filters(subscribe) {
   subscribe(filterDidEnter$, async ({ dispatch, action }) => {
+    if (action?.route?.pattern === SEARCH_FILTER_PATTERN && !action.route.query?.s) {
+      // Filters can't be requested without a search phrase.
+      return;
+    }
+
     let { filters: routeFilters } = action?.route?.state || {};
 
     if (action?.route?.pattern === CATEGORY_ALL_FILTER_PATTERN) {

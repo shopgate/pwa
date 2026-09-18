@@ -72,6 +72,11 @@ export default function search(subscribe) {
       }
     }
 
+    if (!searchPhrase) {
+      // Nothing to search for - the search page shows its "no results" state.
+      return;
+    }
+
     const { hash, expired } = getProductsResult(getState(), {
       searchPhrase,
       routeId: action?.route?.id,
