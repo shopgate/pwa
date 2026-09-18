@@ -3,7 +3,6 @@ import React, {
 } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { parsePhoneNumber } from 'react-phone-number-input';
 import PhoneInput from 'react-phone-number-input/mobile';
@@ -14,12 +13,11 @@ import es from 'react-phone-number-input/locale/es.json';
 import fr from 'react-phone-number-input/locale/fr.json';
 import pt from 'react-phone-number-input/locale/pt.json';
 import flags from 'react-phone-number-input/flags';
+import { Typography } from '@shopgate/engage/components';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
 import { useCountriesNames } from '@shopgate/engage/i18n';
 import { FulfillmentContext } from '../../locations.context';
 import connect from './ReserveFormPhone.connector';
-
-const { colors } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   formField: {
@@ -34,11 +32,11 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: theme.spacing(1),
     ' input.PhoneInputInput': {
       outline: 'none',
-      fontSize: '1rem',
+      fontSize: theme.typography.body1.fontSize,
       lineHeight: '1.1875rem',
       borderRadius: 0,
       paddingBottom: theme.spacing(0.75),
-      borderBottom: `1px solid ${colors.shade12}`,
+      borderBottom: `1px solid ${theme.components.border.dark}`,
       '&:focus': {
         borderBottom: `2px solid ${theme.palette.primary.main}`,
         paddingBottom: theme.spacing(0.75) - 1,
@@ -55,9 +53,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'absolute',
     width: '100%',
     bottom: 2,
-    fontSize: '0.75rem',
     lineHeight: 0.875,
-    color: theme.palette.error.main,
     overflow: 'hidden',
     whiteSpace: 'nowrap',
     textOverflow: 'ellipsis',
@@ -202,9 +198,14 @@ const ReserveFormPhoneUnwrapped = memo((props) => {
         labels={labels}
       />
       {!!errorText && (
-        <div className={classes.phoneFieldErrorText}>
+        <Typography
+          variant="caption"
+          component="div"
+          color="error"
+          className={classes.phoneFieldErrorText}
+        >
           {errorText}
-        </div>
+        </Typography>
       )}
     </div>
   );

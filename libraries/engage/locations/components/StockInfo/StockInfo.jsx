@@ -2,6 +2,7 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import defaultsDeep from 'lodash/defaultsDeep';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { makeGetLocationInventory } from '../../selectors';
 import { getThemeSettings } from '../../../core';
@@ -14,7 +15,6 @@ import { StockInfoInventory } from './StockInfoInventory';
 const useStyles = makeStyles()((theme, { availabilityTextColor }) => ({
   defaultClassName: {
     color: availabilityTextColor,
-    fontSize: '0.75rem',
     margin: 0,
     ':not(:empty) ~ *': {
       marginLeft: 14,
@@ -74,7 +74,7 @@ const StockInfoUnwrapped = ({ location, inventory, className }) => {
 
   return (
     <SurroundPortals portalName={PRODUCT_LOCATION_STOCK_INFO} portalProps={portalProps}>
-      <span className={cx(classes.defaultClassName, className)}>
+      <Typography variant="caption" component="span" className={cx(classes.defaultClassName, className)}>
         <StockInfoInventory
           availabilityText={availabilityText}
           comingSoon={comingSoon}
@@ -83,7 +83,7 @@ const StockInfoUnwrapped = ({ location, inventory, className }) => {
           maxNumberVisible={settings.maxNumberOfVisibleInventory}
           aboveMaxExtension={settings.aboveMaxExtension}
         />
-      </span>
+      </Typography>
     </SurroundPortals>
   );
 };

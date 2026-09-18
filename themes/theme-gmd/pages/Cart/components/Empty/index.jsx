@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import * as portals from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import RippleButton from '@shopgate/pwa-ui-shared/RippleButton';
+import { Button } from '@shopgate/engage/components/v2';
 import { themeConfig } from '@shopgate/engage';
 import { applyScrollContainer, svgToDataUrl } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -42,9 +42,6 @@ const useStyles = makeStyles()(theme => ({
     flexGrow: '0',
     padding: theme.spacing(3, 2),
   },
-  button: {
-    width: '100%',
-  },
 }));
 
 /**
@@ -76,9 +73,9 @@ const Empty = ({ goBackHistory }) => {
       </Portal>
       <Portal name={portals.CART_EMPTY_AFTER} />
       <div className={classes.buttonContainer}>
-        <RippleButton onClick={goBackHistory} className={classes.button} type="secondary">
+        <Button onClick={goBackHistory} color="primary" fullWidth>
           <I18n.Text string="cart.continue" />
-        </RippleButton>
+        </Button>
       </div>
     </div>
   );

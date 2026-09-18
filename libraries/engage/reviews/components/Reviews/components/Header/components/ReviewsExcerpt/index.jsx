@@ -8,11 +8,11 @@ import WriteReviewLink from '../WriteReviewLink';
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     margin: 0,
   },
   withTopGapContainer: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     margin: 0,
     marginTop: theme.spacing(4),
   },
@@ -24,7 +24,7 @@ const useStyles = makeStyles()(theme => ({
     marginBottom: -2,
   },
   averageRatingNumber: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     marginLeft: theme.spacing(1),
   },
   averageRatingText: {

@@ -7,6 +7,7 @@ import {
   ConditionalWrapper,
   MessageBar,
   SurroundPortals,
+  Typography,
 } from '@shopgate/engage/components';
 import {
   ProductImage,
@@ -35,7 +36,6 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   },
   imageColumn: {
     width: 120,
-    height: 120,
     marginRight: theme.spacing(1),
     flexShrink: 0,
     flexGrow: 0,
@@ -77,16 +77,16 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     },
   },
   productName: {
-    fontSize: '1.25rem',
+    fontSize: theme.typography.h3.fontSize,
     lineHeight: '1.5rem',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     wordBreak: ['keep-all', 'break-word'],
     hyphens: 'auto',
   },
   productProperties: {
     paddingTop: theme.spacing(1),
     color: theme.palette.text.secondary,
-    fontSize: '1rem',
+    fontSize: theme.typography.body1.fontSize,
   },
   quantityPicker: {
     width: 140,
@@ -94,11 +94,13 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   quantityPickerDisabled: {
     padding: theme.spacing(0, 1),
     textAlign: 'center',
-    fontSize: '1.25rem',
-    lineHeight: '1.625rem',
+    fontSize: theme.typography.h3.fontSize,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     height: 28,
     width: '100%',
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     color: theme.palette.text.primary,
     whiteSpace: 'nowrap',
   },
@@ -112,7 +114,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     },
   },
   price: {
-    fontSize: '1.25rem !important',
+    fontSize: `${theme.typography.h3.fontSize} !important`,
     lineHeight: '1.625rem  !important',
   },
   priceListEntry: {
@@ -124,9 +126,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   },
   priceInfo: {
     wordBreak: 'break-word',
-    fontSize: '0.75rem',
     lineHeight: '0.875rem',
-    color: theme.palette.text.secondary,
     padding: theme.spacing(0.5, 0),
   },
   contextMenu: {
@@ -174,7 +174,10 @@ const CartItemProductLayoutWide = () => {
       })}
       >
         <div className={classes.imageColumn}>
-          <ProductImage src={product.featuredImageBaseUrl || product.featuredImageUrl} />
+          <ProductImage
+            src={product.featuredImageBaseUrl || product.featuredImageUrl}
+            context="list"
+          />
         </div>
         <div className={classes.detailsColumn}>
           <ConditionalWrapper
@@ -212,7 +215,9 @@ const CartItemProductLayoutWide = () => {
               promo: classes.priceListPromo,
             }}
           />
-          <PriceInfo product={product} currency={currency} className={classes.priceInfo} />
+          <Typography variant="caption" component="div" color="textSecondary">
+            <PriceInfo product={product} currency={currency} className={classes.priceInfo} />
+          </Typography>
           <CartItemProductPriceCaption />
         </div>
         { isOrderDetails && (

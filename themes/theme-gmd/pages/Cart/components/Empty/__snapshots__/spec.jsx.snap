@@ -42,16 +42,10 @@ exports[`<CartEmpty /> should render 1`] = `
   <div
     className="sg-iwde4c-buttonContainer"
   >
-    <RippleButton
-      className="sg-1fwzktp-button"
-      disabled={false}
-      flat={false}
+    <Button
+      color="primary"
+      fullWidth={true}
       onClick={[Function]}
-      rippleClassName=""
-      rippleSize={null}
-      testId="Button"
-      type="secondary"
-      wrapContent={true}
     >
       <Translate
         acceptPlainTextWithPlaceholders={false}
@@ -61,7 +55,7 @@ exports[`<CartEmpty /> should render 1`] = `
         string="cart.continue"
         transform={null}
       />
-    </RippleButton>
+    </Button>
   </div>
 </div>
 `;

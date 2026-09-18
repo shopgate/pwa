@@ -2,14 +2,16 @@ import React, { useMemo, useCallback, useRef } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import {
-  i18n, useRoute, historyPop, getNumberOfAddressLines,
+  i18n, useRoute, historyPop,
 } from '@shopgate/engage/core';
+import { getNumberOfAddressLines } from '@shopgate/engage/settings/selectors/shopSettings';
 import { convertValidationErrors, useFormState } from '@shopgate/engage/core/hooks/useFormState';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { getShopSettings } from '@shopgate/engage/core/config';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
 
-import { FormBuilder, RippleButton } from '@shopgate/engage/components';
+import { FormBuilder } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { useAddressBook } from '@shopgate/engage/checkout';
@@ -57,22 +59,13 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   button: {
-    '&&': {
-      marginTop: 8,
-      marginRight: 16,
-      backgroundColor: 'var(--color-primary)',
-      borderRadius: 5,
-      fontSize: 14,
-      textTransform: 'none',
-      padding: 0,
-      [responsiveMediaQuery('<md', { webOnly: false })]: {
-        width: '100%',
-        marginRight: 0,
-      },
+    marginTop: 8,
+    textTransform: 'none',
+    marginRight: 16,
+    [responsiveMediaQuery('<md', { webOnly: false })]: {
+      width: '100%',
+      marginRight: 0,
     },
-  },
-  ripple: {
-    padding: '8px 16px',
   },
   actions: {
     display: 'flex',
@@ -189,14 +182,14 @@ const ProfileContact = ({
         handleUpdate={handleUpdate}
       />
       <div className={classes.actions}>
-        <RippleButton
+        <Button
+          color="primary"
+          size="small"
           className={classes.button}
-          rippleClassName={classes.ripple}
-          type="primary"
           onClick={formState.handleSubmit}
         >
           {i18n.text('account.profile.form.save')}
-        </RippleButton>
+        </Button>
       </div>
     </div>
   );

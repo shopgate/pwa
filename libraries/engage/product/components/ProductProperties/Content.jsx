@@ -9,7 +9,7 @@ import Rows from './Rows';
 
 const useStyles = makeStyles()(theme => ({
   groupsContainer: {
-    borderBottom: `3px solid ${theme.palette.background.default}`,
+    borderBottom: `3px solid ${theme.palette.background.surface}`,
     marginBottom: theme.spacing(1.5),
   },
 }));

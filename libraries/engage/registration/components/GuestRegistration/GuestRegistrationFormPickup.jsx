@@ -22,13 +22,13 @@ const useStyles = makeStyles()(theme => ({
     },
     ' .guestFormPickupPerson .label span': {
       color: theme.palette.text.primary,
-      fontWeight: 'bold',
+      fontWeight: theme.typography.fontWeightBold,
     },
     ' .guestFormPickupPerson .radioGroup': {
       marginTop: theme.spacing(1),
       flexDirection: 'row',
       ' .uncheckedIcon': {
-        color: 'var(--color-text-medium-emphasis)',
+        color: theme.palette.text.secondary,
       },
     },
     ...StylePresets.getOutlinedFormFields(theme),

@@ -1,7 +1,6 @@
 import React, { memo, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Transition } from 'react-transition-group';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(() => ({
@@ -119,7 +118,7 @@ RippleAnimation.propTypes = {
 };
 
 RippleAnimation.defaultProps = {
-  color: themeConfig.colors.dark,
+  color: 'var(--sg-palette-common-black)',
   duration: 300,
   onComplete: () => {},
   size: 48,

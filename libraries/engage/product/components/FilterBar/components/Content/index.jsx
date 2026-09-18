@@ -12,6 +12,7 @@ import FilterChips from './components/FilterChips';
 const useStyles = makeStyles()({
   root: {
     display: 'flex',
+    alignItems: 'center',
   },
 });
 
@@ -19,7 +20,7 @@ const useStyles = makeStyles()({
  * The filter bar content component.
  * @returns {JSX}
  */
-function FilterBarContent({ onChipCountUpdate }) {
+function FilterBarContent({ onChipCountUpdate, filterCount }) {
   const { classes } = useStyles();
   const { state, id: routeId } = useRoute();
   const { scrollTop } = useContext(ViewContext);
@@ -30,7 +31,7 @@ function FilterBarContent({ onChipCountUpdate }) {
     <>
       <div className={classes.root}>
         <Sort />
-        <FilterButton openFilters={openFilters} />
+        <FilterButton openFilters={openFilters} filterCount={filterCount} />
       </div>
       <FilterChips
         openFilters={openFilters}
@@ -44,10 +45,12 @@ function FilterBarContent({ onChipCountUpdate }) {
 }
 
 FilterBarContent.propTypes = {
+  filterCount: PropTypes.number,
   onChipCountUpdate: PropTypes.func,
 };
 
 FilterBarContent.defaultProps = {
+  filterCount: 0,
   onChipCountUpdate: noop,
 };
 

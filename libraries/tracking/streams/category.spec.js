@@ -9,7 +9,7 @@ import receiveRootCategories from '@shopgate/pwa-common-commerce/category/action
 import requestProducts from '@shopgate/pwa-common-commerce/product/action-creators/requestProducts';
 import receiveProducts from '@shopgate/pwa-common-commerce/product/action-creators/receiveProducts';
 import { pwaDidAppear, pwaDidDisappear } from '@shopgate/pwa-common/action-creators';
-import { app } from '@shopgate/engage/core/reducers';
+import app from '@shopgate/engage/core/reducers/app';
 import { generateResultHash, bin2hex } from '@shopgate/engage/core/helpers';
 import {
   ROOT_CATEGORY_PATTERN,

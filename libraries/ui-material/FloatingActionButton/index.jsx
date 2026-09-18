@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const SIZE_BIG = 'big';
@@ -30,7 +29,7 @@ const useStyles = makeStyles()({
     width: 56,
   },
   buttonShadow: {
-    boxShadow: themeConfig.shadows.buttons.elevated,
+    boxShadow: '0 8px 13px rgba(0, 0, 0, 0.25)',
   },
 });
 

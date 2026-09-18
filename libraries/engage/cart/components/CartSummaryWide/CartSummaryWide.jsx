@@ -1,7 +1,7 @@
 import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { Typography } from '@shopgate/engage/components';
 import PaymentBarSubTotal from '../PaymentBar/PaymentBarSubTotal';
 import PaymentBarGrandTotal from '../PaymentBar/PaymentBarGrandTotal';
 import PaymentBarShippingCost from '../PaymentBar/PaymentBarShippingCost';
@@ -12,8 +12,6 @@ import PaymentBarPromotionCoupons from '../PaymentBar/PaymentBarPromotionCoupons
 import CartSummaryWideCheckoutButton from './CartSummaryWideCheckoutButton';
 import CartSummaryWideFooter from './CartSummaryWideFooter';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
@@ -22,24 +20,19 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2),
     width: 420,
   },
-  headline: {
-    fontSize: '1.25rem',
-    fontWeight: 500,
-    lineHeight: '1.5rem',
-  },
   summary: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     padding: theme.spacing(2),
   },
   total: {
-    fontSize: '1rem',
+    fontSize: theme.typography.body2.fontSize,
     padding: theme.spacing(1, 0),
     color: theme.palette.text.primary,
   },
   grandTotal: {
-    fontSize: '1.25rem !important',
-    fontWeight: 500,
-    borderTop: `1px solid ${colors.shade4}`,
+    fontSize: theme.typography.h4.fontSize,
+    fontWeight: theme.typography.fontWeightMedium,
+    borderTop: `1px solid ${theme.components.border.medium}`,
     padding: theme.spacing(1, 0),
     color: theme.palette.text.primary,
     '&:last-child': {
@@ -57,9 +50,9 @@ const CartSummaryWide = () => {
 
   return (
     <div className={classes.container}>
-      <h2 className={classes.headline}>
+      <Typography variant="h3" component="h2">
         {i18n.text('checkout.summary.headline')}
-      </h2>
+      </Typography>
       <div className={classes.summary}>
         <PaymentBarSubTotal showSeparator={false} label="cart.subtotal" className={classes.total} />
         <PaymentBarAppliedPromotions showSeparator={false} className={classes.total} />

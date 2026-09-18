@@ -1,13 +1,10 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import { ResponsiveContainer, ArrowDropIcon } from '@shopgate/engage/components';
+import { ResponsiveContainer, ArrowDropIcon, Typography } from '@shopgate/engage/components';
 import { withStyles, cx } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/engage';
 import Sheet from './components/Sheet';
 import transition from '../transition';
-
-const { colors: themeColors } = themeConfig;
 
 /**
  * A single characteristic.
@@ -145,7 +142,7 @@ class Characteristic extends PureComponent {
         style={transition[state]}
         data-test-id={label}
       >
-        {selected && <div className={`${classes.label} theme__product__characteristic__label`}>{label}</div>}
+        {selected && <Typography variant="caption" component="div" className={`${classes.label} theme__product__characteristic__label`}>{label}</Typography>}
         <div
           className={`${classes.selection} theme__product__characteristic__selection`}
           {...selected && { 'data-selected': true }}
@@ -195,7 +192,7 @@ class Characteristic extends PureComponent {
 
 export default withStyles(Characteristic, theme => ({
   button: {
-    background: 'var(--color-background-accent)',
+    background: theme.palette.background.emphasized,
     color: theme.palette.text.primary,
     position: 'relative',
     cursor: 'pointer',
@@ -209,20 +206,19 @@ export default withStyles(Characteristic, theme => ({
     transition: 'background 250ms ease-in, color 250ms ease-in',
   },
   buttonDisabled: {
-    color: `${themeColors.shade4} !important`,
+    color: `${theme.palette.grey.medium} !important`,
   },
   label: {
-    fontSize: 12,
     marginTop: -2,
     marginBottom: 4,
   },
   selection: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.125,
   },
   arrow: {
     position: 'absolute',
     right: 32,
-    fontSize: 20,
+    fontSize: theme.components.icon.small,
   },
 }));

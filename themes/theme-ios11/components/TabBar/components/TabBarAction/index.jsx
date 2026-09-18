@@ -1,14 +1,17 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import Button from '@shopgate/pwa-common/components/Button';
+import { ButtonBase } from '@shopgate/engage/components/v2';
 import { I18n } from '@shopgate/engage/components';
+import { useTabBarSettings } from '../../hooks';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     position: 'relative',
+    // ButtonBase hides overflow to contain its ripple, which would clip the cart badge that sits
+    // above the tab. The ripple is disabled here anyway.
+    overflow: 'visible',
     flexBasis: 0,
     flexDirection: 'column',
     flexGrow: 1,
@@ -24,17 +27,17 @@ const useStyles = makeStyles()({
     },
   },
   regular: {
-    color: 'var(--tab-bar-item-default-color)',
+    color: theme.components.tabBar.inactive,
   },
   highlighted: {
-    color: 'var(--tab-bar-item-highlighted-color)',
+    color: theme.components.tabBar.active,
   },
   label: {
     '&:not(:empty)': {
       display: 'block',
     },
   },
-});
+}));
 
 /**
  * Renders the tab bar action component.
@@ -61,7 +64,7 @@ const TabBarAction = ({
   ...props
 }) => {
   const { classes, cx } = useStyles();
-  const { showLabels = true } = useWidgetSettings('@shopgate/engage/components/TabBar');
+  const { showLabels = true } = useTabBarSettings();
 
   // Remove some props that are not meant for the Button component.
   const {
@@ -78,7 +81,8 @@ const TabBarAction = ({
   );
 
   return (
-    <Button
+    <ButtonBase
+      disableRipple
       className={className}
       onClick={onClick}
       aria-selected={!ariaHidden && isHighlighted}
@@ -94,7 +98,7 @@ const TabBarAction = ({
         {showLabels && <I18n.Text string={label} />}
       </div>
       {children}
-    </Button>
+    </ButtonBase>
   );
 };
 

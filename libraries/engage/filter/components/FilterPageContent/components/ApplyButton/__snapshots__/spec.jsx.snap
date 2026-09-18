@@ -11,27 +11,19 @@ exports[`Filter: <ApplyButton /> should handle clicks 1`] = `
     }
   }
 >
-  <div
-    className="sg-d9m8pl-wrapper"
+  <Button
+    color="primary"
+    disabled={false}
+    fullWidth={true}
+    onClick={[MockFunction]}
+    size="small"
+    testId="applyFilterButton"
+    variant="contained"
   >
-    <Button
-      className="sg-1obactg-button"
-      disabled={false}
-      flat={true}
-      onClick={[MockFunction]}
-      testId="applyFilterButton"
-      type="primary"
-    >
-      <Text
-        string="filter.apply"
-        style={
-          {
-            "color": undefined,
-          }
-        }
-      />
-    </Button>
-  </div>
+    <Text
+      string="filter.view_results"
+    />
+  </Button>
 </SurroundPortals>
 `;
 
@@ -46,27 +38,19 @@ exports[`Filter: <ApplyButton /> should render as activated 1`] = `
     }
   }
 >
-  <div
-    className="sg-d9m8pl-wrapper"
+  <Button
+    color="primary"
+    disabled={false}
+    fullWidth={true}
+    onClick={[Function]}
+    size="small"
+    testId="applyFilterButton"
+    variant="contained"
   >
-    <Button
-      className="sg-1obactg-button"
-      disabled={false}
-      flat={true}
-      onClick={[Function]}
-      testId="applyFilterButton"
-      type="primary"
-    >
-      <Text
-        string="filter.apply"
-        style={
-          {
-            "color": undefined,
-          }
-        }
-      />
-    </Button>
-  </div>
+    <Text
+      string="filter.view_results"
+    />
+  </Button>
 </SurroundPortals>
 `;
 
@@ -81,26 +65,18 @@ exports[`Filter: <ApplyButton /> should render as deactivated 1`] = `
     }
   }
 >
-  <div
-    className="sg-d9m8pl-wrapper"
+  <Button
+    color="primary"
+    disabled={true}
+    fullWidth={true}
+    onClick={[Function]}
+    size="small"
+    testId="applyFilterButton"
+    variant="contained"
   >
-    <Button
-      className="sg-1obactg-button"
-      disabled={true}
-      flat={true}
-      onClick={[Function]}
-      testId="applyFilterButton"
-      type="primary"
-    >
-      <Text
-        string="filter.apply"
-        style={
-          {
-            "color": undefined,
-          }
-        }
-      />
-    </Button>
-  </div>
+    <Text
+      string="filter.view_results"
+    />
+  </Button>
 </SurroundPortals>
 `;

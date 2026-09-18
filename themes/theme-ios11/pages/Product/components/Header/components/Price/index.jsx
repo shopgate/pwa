@@ -12,18 +12,17 @@ import { ProductContext } from '@shopgate/engage/product/contexts';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   placeholder: {
     height: 20,
     width: '50px',
     display: 'inline-block',
   },
   price: {
-    fontSize: '1.25rem',
+    '--font-size': `calc(${theme.typography.price.fontSize} * 1.25)`,
     justifyContent: 'flex-end',
-    lineHeight: 1,
   },
-});
+}));
 
 /**
  * Calculate total price to show with additions

@@ -1,5 +1,4 @@
 import { connect } from 'react-redux';
-import { isIos } from '@shopgate/pwa-common/selectors/client';
 import {
   hasCouponSupport,
   getCouponFieldValue,
@@ -14,7 +13,6 @@ import {
  * @return {Object} The extended component props.
  */
 const mapStateToProps = state => ({
-  isIos: isIos(state),
   isSupported: hasCouponSupport(state),
   error: getCouponFieldError(state),
   value: getCouponFieldValue(state),

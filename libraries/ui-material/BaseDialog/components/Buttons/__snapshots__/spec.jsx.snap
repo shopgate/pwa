@@ -6,13 +6,11 @@ exports[`<Buttons /> should render buttons 1`] = `
 [
   <Button
     className="sg-n3c0zm-button"
+    color="secondary"
     disabled={false}
-    flat={true}
     key="action0"
     onClick={[MockFunction]}
-    testId="Button"
-    type="primary"
-    wrapContent={true}
+    variant="text"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
@@ -25,13 +23,11 @@ exports[`<Buttons /> should render buttons 1`] = `
   </Button>,
   <Button
     className="sg-n3c0zm-button"
+    color="secondary"
     disabled={false}
-    flat={true}
     key="action1"
     onClick={[MockFunction]}
-    testId="Button"
-    type="primary"
-    wrapContent={true}
+    variant="text"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}
@@ -44,13 +40,11 @@ exports[`<Buttons /> should render buttons 1`] = `
   </Button>,
   <Button
     className="sg-n3c0zm-button"
+    color="secondary"
     disabled={false}
-    flat={true}
     key="action2"
     onClick={[MockFunction]}
-    testId="Button"
-    type="primary"
-    wrapContent={true}
+    variant="text"
   >
     <Translate
       acceptPlainTextWithPlaceholders={false}

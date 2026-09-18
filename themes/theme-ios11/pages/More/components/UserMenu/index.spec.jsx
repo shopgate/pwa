@@ -47,11 +47,11 @@ describe('<UserMenu />', () => {
       </Provider>), mockRenderOptions);
 
     expect(wrapper).toMatchSnapshot();
-    const links = wrapper.find('Link');
-    expect(links.find('Text').at(0).prop('string')).toBe('login.button');
-    expect(links.at(0).prop('disabled')).toBe(false);
-    expect(links.find('Text').at(1).prop('string')).toBe('login.signup');
-    expect(links.at(1).prop('disabled')).toBe(false);
+    const buttons = wrapper.find('Button');
+    expect(buttons.find('Text').at(0).prop('string')).toBe('login.button');
+    expect(buttons.at(0).prop('disabled')).toBe(false);
+    expect(buttons.find('Text').at(1).prop('string')).toBe('login.signup');
+    expect(buttons.at(1).prop('disabled')).toBe(false);
   });
 
   it('should render as expected when the user is logged out and the buttons are disabled', () => {
@@ -63,9 +63,9 @@ describe('<UserMenu />', () => {
       </Provider>), mockRenderOptions);
 
     expect(wrapper).toMatchSnapshot();
-    const links = wrapper.find('Link');
-    expect(links.at(0).prop('disabled')).toBe(true);
-    expect(links.at(1).prop('disabled')).toBe(true);
+    const buttons = wrapper.find('Button');
+    expect(buttons.at(0).prop('disabled')).toBe(true);
+    expect(buttons.at(1).prop('disabled')).toBe(true);
   });
 
   it('should render additional links when logged in and new services are enabled', () => {

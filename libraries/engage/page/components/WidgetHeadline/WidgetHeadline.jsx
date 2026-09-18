@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { Typography } from '@shopgate/engage/components';
 import PropTypes from 'prop-types';
 
@@ -34,6 +34,7 @@ const WidgetHeadline = ({
   ...rest
 }) => {
   const { classes, cx, css } = useStyles();
+  const theme = useTheme();
 
   const {
     typography = 'h3',
@@ -45,10 +46,10 @@ const WidgetHeadline = ({
   } = headline || {};
 
   const styles = useMemo(() => ({
-    ...(bold && { fontWeight: 'bold' }),
+    ...(bold && { fontWeight: theme.typography.fontWeightBold }),
     ...(italic && { fontStyle: 'italic' }),
     ...(underline && { textDecoration: 'underline' }),
-  }), [bold, italic, underline]);
+  }), [bold, italic, underline, theme]);
 
   if (!text) return null;
 

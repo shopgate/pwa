@@ -1,0 +1,51 @@
+import { produce } from 'immer';
+import appConfig from '@shopgate/pwa-common/helpers/config';
+import {
+  RECEIVE_MERCHANT_SETTINGS,
+  MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED,
+  MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
+  MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS,
+  MERCHANT_SETTINGS_DEFAULT_CURRENCY,
+  MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
+  MERCHANT_SETTINGS_ENABLED_CMS_VERSION,
+} from '../constants/merchantSettings';
+
+const { locales: { currency = null } = {} } = appConfig;
+
+/**
+ * The built-in default merchant settings. Used as the reducer's initial state
+ * and as a safe fallback for selectors when the slice is not present in the
+ * store yet.
+ */
+export const DEFAULT_MERCHANT_SETTINGS = {
+  [MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED]: false,
+  [MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED]: false,
+  [MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS]: false,
+  [MERCHANT_SETTINGS_DEFAULT_CURRENCY]: currency,
+  [MERCHANT_SETTINGS_ENABLE_WEB_INDEXING]: false,
+  [MERCHANT_SETTINGS_ENABLED_CMS_VERSION]: 'v1',
+};
+
+/**
+ * Stores the merchant settings.
+ * @param {Object} [state={}] The current state.
+ * @param {Object} action The action object.
+ * @returns {Object} The new state.
+ */
+export default function merchantSettings(state = DEFAULT_MERCHANT_SETTINGS, action = {}) {
+  const producer = produce((draft) => {
+    switch (action.type) {
+      case RECEIVE_MERCHANT_SETTINGS: {
+        Object.keys(action.settings).forEach((key) => {
+          draft[key] = action.settings[key];
+        });
+
+        break;
+      }
+      default:
+        break;
+    }
+  });
+
+  return producer(state);
+}

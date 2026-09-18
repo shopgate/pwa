@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { RippleButton, I18n } from '@shopgate/engage/components';
+import { I18n, Typography } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getTimeSlotDisplayText } from './time';
@@ -9,29 +10,19 @@ const useStyles = makeStyles()(theme => ({
   wrapper: {
     display: 'flex',
     flexDirection: 'column',
-    fontSize: '0.875rem',
     padding: theme.spacing(0, 2),
     flexShrink: 0,
   },
-  heading: {
-    color: 'var(--color-text-medium-emphasis)',
-  },
-  name: {
-    fontWeight: 500,
-    color: theme.palette.text.primary,
-  },
   button: {
-    fontSize: '0.625rem !important',
-    letterSpacing: '0.05em',
-    padding: `${theme.spacing(0.375, 0)} !important`,
-    ' *': {
-      padding: '0 !important',
-    },
+    // Inline affordance that follows the location name, so it carries no button chrome and
+    // stays sentence case - matching the switcher bars that render the same action.
+    padding: theme.spacing(0.375, 0),
+    textTransform: 'none',
   },
 }));
 
 /**
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
 const FulfillmentSlotSwitcherDefault = ({ handleChange, fulfillmentSlot, editable }) => {
   const { classes } = useStyles();
@@ -39,18 +30,23 @@ const FulfillmentSlotSwitcherDefault = ({ handleChange, fulfillmentSlot, editabl
 
   return (
     <div className={classes.wrapper}>
-      <div className={classes.heading}>{i18n.text('locations.your_current_timeslot.heading')}</div>
-      <div className={classes.name}>
-        <span>{displayTime}</span>
-        <RippleButton
+      <Typography variant="body2" component="div" color="textSecondary">
+        {i18n.text('locations.your_current_timeslot.heading')}
+      </Typography>
+      <div>
+        <Typography variant="body2" component="span" color="textPrimary" fontWeight="medium">
+          {displayTime}
+        </Typography>
+        <Button
+          variant="text"
+          color="primary"
+          size="small"
           onClick={handleChange}
-          type="secondary"
           className={classes.button}
           disabled={!editable}
-          flat
         >
           <I18n.Text string="locations.your_current_location.change" />
-        </RippleButton>
+        </Button>
       </div>
     </div>
   );

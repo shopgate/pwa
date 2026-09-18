@@ -47,7 +47,6 @@ export { ProductContext, VariantContext } from './components/context';
 export { default as ProductListTypeContext } from './providers/ProductListType/context';
 export { default as ProductListEntryContext } from './providers/ProductListEntry/context';
 
-export * from './collections';
 export * from './constants';
 export * from './helpers';
 export * from './components';

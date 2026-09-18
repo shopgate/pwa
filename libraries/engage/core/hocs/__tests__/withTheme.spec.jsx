@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { withTheme } from '../withTheme';
 
 const mockTheme = {
@@ -15,7 +15,9 @@ jest.mock('@shopgate/pwa-common/context', () => ({
   },
 }));
 
-const MockComponent = () => null;
+const mockWrappedComponent = jest.fn(props => (
+  <pre data-testid="wrapped-props">{JSON.stringify(props)}</pre>
+));
 
 describe('engage > core > hocs > withTheme', () => {
   beforeEach(() => {
@@ -23,24 +25,29 @@ describe('engage > core > hocs > withTheme', () => {
   });
 
   it('should inject the context properties into the component', () => {
-    const ComposedComponent = withTheme(MockComponent);
-    const wrapper = mount(<ComposedComponent someProp />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockComponent).props()).toEqual({
+    const ComposedComponent = withTheme(mockWrappedComponent);
+    const { container } = render(<ComposedComponent someProp />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       someProp: true,
       ...mockTheme,
     });
   });
 
   it('should inject a single property with the context into the component', () => {
-    const ComposedComponent = withTheme(MockComponent, { prop: 'theme' });
-    const wrapper = mount(<ComposedComponent someProp />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockComponent).props()).toEqual({
+    const ComposedComponent = withTheme(mockWrappedComponent, { prop: 'theme' });
+    const { container } = render(<ComposedComponent someProp />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       someProp: true,
       theme: {
         ...mockTheme,
       },
     });
+    expect(screen.getByTestId('wrapped-props')).toHaveTextContent('"theme"');
   });
 });

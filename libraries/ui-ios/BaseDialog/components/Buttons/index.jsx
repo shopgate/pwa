@@ -1,34 +1,45 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { I18n, Button } from '@shopgate/engage/components';
+import { I18n } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const borderColor = 'rgba(0,0,0,0.2)';
+const pressedColor = 'rgba(0,0,0,0.08)';
+const hoverColor = 'rgba(0,0,0,0.04)';
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    '&& > *': {
+    '& > *': {
       color: 'var(--color-button-dialog-ios, #1a73e8)',
     },
-    '&&': {
-      fontWeight: 400,
-      minWidth: '50%',
-      flexGrow: 1,
-      paddingTop: 10,
-      paddingBottom: 10,
-    },
+    fontWeight: theme.typography.fontWeightRegular,
+    minWidth: '50%',
+    flexGrow: 1,
+    lineHeight: 1.2,
+    paddingTop: 11,
+    paddingBottom: 11,
     marginBottom: -1,
     marginRight: theme.spacing(-0.5),
+    '&:active': {
+      background: pressedColor,
+    },
+    '&:focus-visible': {
+      background: pressedColor,
+    },
+    '@media (hover: hover)': {
+      '&:hover': {
+        background: hoverColor,
+      },
+    },
     '&:not(:last-child)': {
-      borderRadius: '0 !important',
+      borderRadius: 0,
       borderRight: `0.5px solid ${borderColor}`,
       borderBottom: `0.5px solid ${borderColor}`,
     },
   },
   buttonPrimary: {
-    '&&': {
-      fontWeight: 400,
-    },
+    fontWeight: theme.typography.fontWeightRegular,
   },
   buttonText: {
     overflow: 'hidden',
@@ -50,10 +61,11 @@ const Buttons = ({ actions }) => {
     <Button
       key={label}
       className={cx(classes.button, type === 'primary' && classes.buttonPrimary)}
-      type="primary"
+      variant="link"
+      color="secondary"
       onClick={action}
       disabled={disabled}
-      flat
+      disableRipple
     >
       <I18n.Text className={classes.buttonText} string={label} />
     </Button>

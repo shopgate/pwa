@@ -56,27 +56,34 @@ describe('<RatingStars />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call onSelection callback when component is selectable', () => {
-    const spy = jest.fn();
+  it('should call onSelection with the clicked rating in selectable mode', () => {
+    const selections = [];
     const wrapper = shallow(
       <RatingStars
-        value={100}
+        value={20}
         isSelectable
         onSelection={(e) => {
+          selections.push(e.target.value);
           wrapper.setProps({ value: e.target.value });
-          spy();
         }}
       />,
       mockRenderOptions
     );
-    // Click on 1 filled star.
-    wrapper.find('[role="button"]').at(5).simulate('click', { target: { value: 10 } });
-    expect(spy.mock.calls.length).toBe(1);
-    expect(wrapper.find('[role="button"]').length).toBe(6);
-    // Click on 4th empty star
-    wrapper.find('[role="button"]').at(3).simulate('click', { target: { value: 80 } });
-    expect(wrapper.find('[role="button"]').length).toBe(9);
-    expect(spy.mock.calls.length).toBe(2);
+
+    // Only the empty-star layer is interactive: one button per position, always five.
+    // The decorative filled overlay is pointer-transparent and carries no buttons.
+    expect(wrapper.find('[role="button"]').length).toBe(numEmptyStars);
+
+    // Regression: at a low rating the higher positions used to be covered by the
+    // filled layer's invisible placeholders, which swallowed the click. Clicking the
+    // 5th star must still raise the rating to the full 5 stars.
+    wrapper.find('[role="button"]').at(4).simulate('click', { target: {} });
+    expect(selections).toEqual([100]);
+
+    // The interactive layer is unaffected by the rating; clicking the 1st star lowers it.
+    expect(wrapper.find('[role="button"]').length).toBe(numEmptyStars);
+    wrapper.find('[role="button"]').at(0).simulate('click', { target: {} });
+    expect(selections).toEqual([100, 20]);
   });
 
   it('should NOT call onSelection callback when component is NOT selectable', () => {

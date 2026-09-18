@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getFulfillmentSchedulingEnabled } from '@shopgate/engage/core';
+import { getFulfillmentSchedulingEnabled } from '@shopgate/engage/settings/selectors/merchantSettings';
 import setFulfillmentSlot from '@shopgate/pwa-common-commerce/cart/action-creators/setFulfillmentSlot';
 
 /**

@@ -42,8 +42,6 @@ const CartButton = ({ count, navigate, widgetSettings }) => {
   const {
     buttonCartBackground,
     buttonCartColor,
-    buttonCartBadgeBackground,
-    buttonCartBadgeColor,
   } = widgetSettings;
 
   const iconStyle = useMemo(() => ({
@@ -51,14 +49,9 @@ const CartButton = ({ count, navigate, widgetSettings }) => {
     color: buttonCartColor,
   }), [buttonCartBackground, buttonCartColor]);
 
-  const badgeStyle = useMemo(() => ({
-    background: buttonCartBadgeBackground,
-    color: buttonCartBadgeColor,
-  }), [buttonCartBadgeBackground, buttonCartBadgeColor]);
-
   const renderBadge = useCallback(() => (
-    <Badge style={badgeStyle} count={count} />
-  ), [badgeStyle, count]);
+    <Badge count={count} />
+  ), [count]);
 
   return (
     <Fragment key="cart">

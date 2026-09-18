@@ -1,13 +1,12 @@
 import React, { useContext } from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import StoresNearbyListItem from './StoresNearbyListItem';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 
 const useStyles = makeStyles()({
   title: {
-    fontSize: 20,
-    fontWeight: '600',
     marginBottom: 12,
   },
   table: {
@@ -25,9 +24,9 @@ const StoresNearby = () => {
 
   return (
     <div>
-      <div className={classes.title}>
+      <Typography variant="h3" component="div" fontWeight="bold" className={classes.title}>
         {i18n.text('location.storesNearby')}
-      </div>
+      </Typography>
       {nearbyLocations.length > 0 && (
       <table className={classes.table}>
         <tbody>

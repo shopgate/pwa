@@ -9,7 +9,7 @@ import {
   getActiveFulfillmentSlotLocationCode,
 } from '@shopgate/engage/cart/cart.selectors';
 import { makeGetFulfillmentPaths, makeGetEnabledFulfillmentMethods, getShopSettings } from '@shopgate/engage/core/config';
-import { getRestrictMultiLocationOrders, getFulfillmentSchedulingEnabled } from '@shopgate/engage/core';
+import { getRestrictMultiLocationOrders, getFulfillmentSchedulingEnabled } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { selectLocation, storeFormInput } from '../action-creators';
 import {
   getFilteredLocations,

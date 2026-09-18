@@ -31,22 +31,22 @@ const useStyles = makeStyles()((theme, { removable, invert }) => ({
     ...(hasNewServices()
       ? {
         backgroundColor: invert
-          ? 'var(--color-primary)'
-          : 'var(--color-primary-contrast)',
+          ? theme.palette.primary.main
+          : theme.palette.primary.contrastText,
         color: invert
-          ? 'var(--color-primary-contrast)'
-          : 'var(--color-primary)',
+          ? theme.palette.primary.contrastText
+          : theme.palette.primary.main,
       }
       : {
         backgroundColor: invert
-          ? 'var(--color-secondary)'
-          : 'var(--color-secondary-contrast)',
+          ? theme.palette.secondary.main
+          : theme.palette.secondary.contrastText,
         color: invert
-          ? 'var(--color-secondary-contrast)'
-          : 'var(--color-secondary)',
+          ? theme.palette.secondary.contrastText
+          : theme.palette.secondary.main,
         '--color-text-high-emphasis': invert
-          ? 'var(--color-secondary-contrast)'
-          : 'var(--color-secondary)',
+          ? theme.palette.secondary.contrastText
+          : theme.palette.secondary.main,
       }),
   },
   removeButton: {
@@ -54,25 +54,24 @@ const useStyles = makeStyles()((theme, { removable, invert }) => ({
     padding: 0,
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       padding: '0 5px',
-      fontSize: '1.125rem',
+      fontSize: theme.typography.h4.fontSize,
     },
   },
   name: {
-    paddingLeft: (theme.spacing(0.5)),
-    paddingRight: (theme.spacing(0.5)),
+    paddingLeft: theme.spacing(0.5),
+    paddingRight: theme.spacing(0.5),
     paddingTop: 3,
     paddingBottom: 3,
-    fontSize: 12,
-    fontWeight: 500,
+    fontSize: theme.typography.caption.fontSize,
+    fontWeight: theme.typography.fontWeightMedium,
     textOverflow: 'ellipsis',
     maxWidth: '100%',
     whiteSpace: 'nowrap',
     overflow: 'hidden',
     display: 'block',
-    lineHeight: '1',
     color: 'inherit',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      fontSize: '0.875rem',
+      fontSize: theme.typography.body2.fontSize,
       lineHeight: '1.25rem',
       padding: '6px 8px 6px 0',
     },

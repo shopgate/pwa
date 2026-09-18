@@ -1,12 +1,11 @@
 import React, { useContext } from 'react';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Ellipsis } from '../../../components';
 import { FulfillmentContext } from '../../locations.context';
 
 const useStyles = makeStyles()(theme => ({
   productName: {
-    fontSize: '1.25rem',
-    fontWeight: 600,
     marginBottom: theme.spacing(1),
   },
 }));
@@ -23,10 +22,10 @@ function StoreListProductName() {
   }
 
   return (
-    <div className={classes.productName}>
+    <Typography variant="h3" component="div" className={classes.productName}>
       {/* eslint-disable-next-line react/no-danger */}
       <Ellipsis><span dangerouslySetInnerHTML={{ __html: baseProduct.name }} /></Ellipsis>
-    </div>
+    </Typography>
   );
 }
 

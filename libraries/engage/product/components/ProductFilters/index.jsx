@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useWidgetSettings, useRoute, useResponsiveValue } from '@shopgate/engage/core/hooks';
+import { useWidgetSettings, useResponsiveValue } from '@shopgate/engage/core/hooks';
 import { applyScrollContainer } from '@shopgate/engage/core/helpers';
 import { ResponsiveContainer, ScrollHeader, SurroundPortals } from '@shopgate/engage/components';
 import { GlobalLocationSwitcher, FulfillmentSlotSwitcher } from '@shopgate/engage/locations/components';
@@ -42,7 +42,6 @@ const ProductFilters = ({
 }) => {
   const { classes } = useStyles();
   const { hideOnScroll } = useWidgetSettings('@shopgate/engage/components/FilterBar');
-  const { state } = useRoute();
 
   // When the PWA is in website mode, we apply a higher offset value than usual because the AppBar
   // is larger.
@@ -73,10 +72,7 @@ const ProductFilters = ({
         </ResponsiveContainer>
 
         {showFilters && (
-        <FilterBar
-          categoryId={categoryId}
-          filters={state.filters}
-        />
+        <FilterBar categoryId={categoryId} />
         )}
       </SurroundPortals>
     </ScrollHeader>

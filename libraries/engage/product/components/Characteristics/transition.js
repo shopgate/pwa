@@ -1,10 +1,10 @@
 export default {
   entering: {
-    background: 'var(--color-primary)',
-    color: 'var(--color-primary-contrast)',
+    background: 'var(--sg-palette-primary-main)',
+    color: 'var(--sg-palette-primary-contrastText)',
   },
   entered: {
-    background: 'var(--color-primary)',
-    color: 'var(--color-primary-contrast)',
+    background: 'var(--sg-palette-primary-main)',
+    color: 'var(--sg-palette-primary-contrastText)',
   },
 };

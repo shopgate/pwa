@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { getIsLocationBasedShopping } from '@shopgate/engage/core';
+import { getIsLocationBasedShopping } from '@shopgate/engage/settings/selectors/merchantSettings';
 import { getPreferredLocation } from '@shopgate/engage/locations/selectors';
 import { selectGlobalLocation } from '@shopgate/engage/locations/action-creators';
 import { getIsCartStateConfigurable } from '../../selectors';

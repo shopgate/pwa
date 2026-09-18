@@ -1,42 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<LiveMessenger /> should render 1`] = `
-<LiveMessenger
-  id={null}
->
-  <div>
-    <LiveMessage
-      aria-live="assertive"
-      message=""
-      params={null}
-    >
-      <div
-        aria-live="assertive"
-        className="sg-1pj3g40-hiddenLiveRegion"
-        role="log"
-      >
-        <Translate
-          params={null}
-          string=""
-        />
-      </div>
-    </LiveMessage>
-    <LiveMessage
-      aria-live="polite"
-      message=""
-      params={null}
-    >
-      <div
-        aria-live="polite"
-        className="sg-1pj3g40-hiddenLiveRegion"
-        role="log"
-      >
-        <Translate
-          params={null}
-          string=""
-        />
-      </div>
-    </LiveMessage>
-  </div>
-</LiveMessenger>
+<div>
+  <pre
+    data-testid="live-assertive"
+  >
+    {"aria-live":"assertive","message":"","params":null}
+  </pre>
+  <pre
+    data-testid="live-polite"
+  >
+    {"aria-live":"polite","message":"","params":null}
+  </pre>
+</div>
 `;

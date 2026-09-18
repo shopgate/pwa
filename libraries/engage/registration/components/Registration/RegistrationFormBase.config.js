@@ -1,8 +1,8 @@
+import { i18n } from '@shopgate/engage/core';
 import {
-  i18n,
   SHOP_SETTING_REGISTRATION_MODE_SIMPLE,
   SHOP_SETTING_REGISTRATION_MODE_EXTENDED,
-} from '@shopgate/engage/core';
+} from '@shopgate/engage/settings/constants/shopSettings';
 
 /**
  * Generates form configuration.

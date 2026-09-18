@@ -3,12 +3,9 @@ import PropTypes from 'prop-types';
 import noop from 'lodash/noop';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PRODUCT_SWATCH } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   swatch: {
     display: 'grid',
     gridTemplateColumns: 'repeat(auto-fill, minmax(12px, 1fr))',
@@ -25,11 +22,11 @@ const useStyles = makeStyles()(() => ({
     borderRadius: '50%',
     borderWidth: '1px',
     borderStyle: 'solid',
-    borderColor: colors.shade4,
+    borderColor: theme.components.border.medium,
     backgroundSize: 'cover',
   },
   itemSelected: {
-    borderColor: 'var(--color-secondary)',
+    borderColor: theme.palette.secondary.main,
   },
 }));
 

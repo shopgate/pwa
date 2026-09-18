@@ -1,0 +1,87 @@
+import { createSelector } from 'reselect';
+import { DEFAULT_MERCHANT_SETTINGS } from '../reducers/merchantSettings';
+import {
+  MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED,
+  MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
+  MERCHANT_SETTINGS_CUSTOMER_ATTRIBUTES,
+  MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED,
+  MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS,
+  MERCHANT_SETTINGS_DEFAULT_CURRENCY,
+  MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
+  MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION,
+  MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
+  MERCHANT_SETTINGS_ENABLED_CMS_VERSION,
+} from '../constants/merchantSettings';
+
+/**
+ * Retrieves the merchantSettings state from the store.
+ * @param {Object} state The current application state.
+ * @return {Object} The merchant settings state.
+ */
+const getState = state => state?.settings?.merchantSettings ?? DEFAULT_MERCHANT_SETTINGS;
+
+/**
+ * Creates a selector to retrieve a single merchant setting.
+ * @param {string} key The key of the merchant setting
+ * @param {*} [fallback=null] The fallback value when no value can be determined.
+ * @returns {Function}
+ */
+const makeGetMerchantSettingByKey = (key, fallback = null) => createSelector(
+  getState,
+  state => (typeof state?.[key] !== 'undefined' ? state?.[key] : fallback)
+);
+
+export const getIsLocationBasedShopping = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_LOCATION_BASED_SHOPPING_ENABLED,
+  false
+);
+
+export const getSubstitutionPreferencesEnabled = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_SUBSTITUTION_PREFERENCES_ENABLED,
+  false
+);
+
+export const getMerchantCustomerAttributes = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_CUSTOMER_ATTRIBUTES,
+  []
+);
+
+export const getFulfillmentSchedulingEnabled = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_FULFILLMENT_SCHEDULED_ENABLED,
+  false
+);
+
+export const getRestrictMultiLocationOrders = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_RESTRICT_MULTI_LOCATION_ORDERS,
+  false
+);
+
+export const getDefaultCurrency = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_DEFAULT_CURRENCY
+);
+
+export const getEnableWebIndexing = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_ENABLE_WEB_INDEXING,
+  false
+);
+
+export const getProductShowAlternativeLocation = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_PRODUCT_SHOW_ALTERNATIVE_LOCATION,
+  false
+);
+
+export const getProductListShowInventory = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_PRODUCTLIST_SHOW_INVENTORY,
+  false
+);
+
+/**
+ * Selector that retrieves the enabled CMS version.
+ * @type {(state: RootState) => "v1" | "v2" | "both"}
+ */
+export const getEnabledCMSVersion = makeGetMerchantSettingByKey(
+  MERCHANT_SETTINGS_ENABLED_CMS_VERSION,
+  'v1'
+);
+
+export { getState };

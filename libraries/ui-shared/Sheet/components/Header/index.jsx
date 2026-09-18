@@ -2,7 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import Ripple from '../../../Ripple';
 import CrossIcon from '../../../icons/CrossIcon';
@@ -14,16 +14,14 @@ const useStyles = makeStyles()(theme => ({
     zIndex: 2,
   },
   closePlaceholder: {
-    height: themeConfig.variables.navigator.height,
+    height: theme.components.navigator.height,
     padding: 0,
-    lineHeight: 1,
   },
   closeButton: {
-    lineHeight: 1,
     outline: 0,
     padding: 0,
-    minWidth: themeConfig.variables.navigator.height,
-    height: themeConfig.variables.navigator.height,
+    minWidth: theme.components.navigator.height,
+    height: theme.components.navigator.height,
     position: 'relative',
     zIndex: 2,
     color: theme.palette.text.primary,
@@ -36,18 +34,17 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
   },
   title: {
-    fontSize: '1.25rem',
-    fontWeight: 500,
     position: 'relative',
     alignItems: 'center',
     padding: theme.spacing(0, 2),
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    whiteSpace: 'nowrap',
     alignSelf: 'center',
+    minWidth: 0,
+  },
+  titleText: {
+    minWidth: 0,
   },
   headerShadow: {
-    boxShadow: themeConfig.shadows.material,
+    boxShadow: '0 1px 6px rgba(0, 0, 0, .117647), 0 1px 4px rgba(0, 0, 0, .117647)',
   },
 }));
 
@@ -87,7 +84,9 @@ const Header = ({
           role="heading"
           {...(allowClose ? { tabIndex: 0 } : null)}
         >
-          {title}
+          <Typography variant="h3" component="div" noWrap className={classes.titleText}>
+            {title}
+          </Typography>
         </Grid.Item>
       </Grid>
       {showSearch && <SearchBar handleChange={handleChange} />}
@@ -108,10 +107,10 @@ Header.propTypes = {
 };
 
 Header.defaultProps = {
-  onToggleClose: () => {},
+  onToggleClose: () => { },
   shadow: false,
   allowClose: true,
-  handleChange: () => {},
+  handleChange: () => { },
   showSearch: false,
 };
 

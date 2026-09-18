@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useScrollDirectionChange, useRoute } from '@shopgate/engage/core/hooks';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     position: 'sticky',
     left: 0,
-    backgroundColor: '#fff',
+    backgroundColor: theme.palette.common.white,
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       boxShadow: 'rgba(0, 0, 0, 0.118) 0px 1px 6px, rgba(0, 0, 0, 0.118) 0px 1px 4px',
     },
@@ -25,7 +25,7 @@ const useStyles = makeStyles()({
   transition: {
     transition: 'transform 0.2s ease,transform 0.2s',
   },
-});
+}));
 
 /* eslint-disable react/prop-types */
 /**

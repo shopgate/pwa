@@ -1,44 +1,30 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { i18n } from '@shopgate/engage/core/helpers';
 import {
-  Grid, I18n, Ripple, FilterIcon,
+  Badge, I18n, FilterIcon, Typography,
 } from '@shopgate/engage/components';
-
-const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   button: {
-    color: 'inherit',
-    fontSize: '1.5rem',
-    lineHeight: 1,
-    outline: 0,
-    padding: 0,
-    minWidth: variables.navigator.height,
-    height: variables.filterbar.height,
-    position: 'relative',
-    zIndex: 1,
-    overflow: 'hidden',
-  },
-  filterButton: {
     display: 'flex',
-  },
-  filterButtonLabel: {
-    alignSelf: 'center',
-    fontSize: '0.875rem',
-    fontWeight: '500',
-    lineHeight: 1,
-    paddingRight: theme.spacing(1),
-  },
-  filterButtonRipple: {
-    display: 'flex',
-    height: '100%',
-    width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
-    margin: 0,
-    padding: '6px 10px',
+    gap: theme.spacing(0.75),
+    color: 'inherit',
+    outline: 0,
+    flexShrink: 0,
+    margin: theme.spacing(0, 1.5),
+    padding: theme.spacing(0.25, 1),
+    border: `1px solid ${theme.components.border.medium}`,
+    borderRadius: theme.shape.borderRadius,
+  },
+  buttonActive: {
+    borderColor: theme.components.badge.background,
+  },
+  icon: {
+    fontSize: theme.components.icon.medium,
+    display: 'flex',
   },
 }));
 
@@ -47,28 +33,37 @@ const useStyles = makeStyles()(theme => ({
  * @param {Object} props The component props.
  * @return {JSX}
  */
-function FilterButton({ openFilters }) {
+function FilterButton({ openFilters, filterCount }) {
   const { classes, cx } = useStyles();
+
   return (
-    <button className={cx(classes.button, 'theme__filter-bar__filter-button')} onClick={openFilters} data-test-id="filterButton" type="button">
-      <Ripple className={classes.filterButtonRipple} fill>
-        <Grid component="div">
-          <Grid.Item className={classes.filterButton} component="div">
-            <span className={classes.filterButtonLabel}>
-              <I18n.Text string="titles.filter" />
-            </span>
-          </Grid.Item>
-          <Grid.Item component="div">
-            <FilterIcon />
-          </Grid.Item>
-        </Grid>
-      </Ripple>
+    <button
+      className={cx(classes.button, {
+        [classes.buttonActive]: filterCount > 0,
+      }, 'theme__filter-bar__filter-button')}
+      onClick={openFilters}
+      data-test-id="filterButton"
+      aria-label={i18n.text('titles.filter')}
+      type="button"
+    >
+      <span className={classes.icon}>
+        <FilterIcon />
+      </span>
+      <Typography variant="subtitle2" component="span">
+        <I18n.Text string="titles.filter" />
+      </Typography>
+      <Badge count={filterCount} max={9} aria-hidden />
     </button>
   );
 }
 
 FilterButton.propTypes = {
   openFilters: PropTypes.func.isRequired,
+  filterCount: PropTypes.number,
+};
+
+FilterButton.defaultProps = {
+  filterCount: 0,
 };
 
 export default FilterButton;

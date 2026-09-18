@@ -2,7 +2,6 @@ import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import times from 'lodash/times';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import StarIcon from '../icons/StarIcon';
 import StarHalfIcon from '../icons/StarHalfIcon';
@@ -16,10 +15,10 @@ const ICON_SIZES = {
   large: '2.3em',
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
-    display: 'inline-block',
+    display: 'inline-flex',
     verticalAlign: 'middle',
     maxWidth: '100%',
   },
@@ -38,7 +37,7 @@ const useStyles = makeStyles()({
     marginRight: '0.23em',
   },
   emptyStars: {
-    color: themeConfig.colors.shade7,
+    color: theme.components.ratingStars.empty,
     display: 'inline-flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
@@ -47,12 +46,17 @@ const useStyles = makeStyles()({
     position: 'absolute',
     left: 0,
     top: 0,
-    color: 'var(--color-primary)',
+    // Purely decorative overlay: let every pointer event fall through to the
+    // empty-star buttons underneath, which span all slots and handle selection.
+    // Without this, the invisible spacers/half-stars cover the higher-index
+    // buttons and swallow clicks in selectable mode.
+    pointerEvents: 'none',
+    color: theme.components.ratingStars.filled,
     display: 'inline-flex',
     alignItems: 'center',
     flexWrap: 'nowrap',
   },
-});
+}));
 
 const numStars = 5;
 
@@ -124,10 +128,10 @@ const RatingStars = ({
       const starProps = {
         className: iconClassName,
         key: numStars + pos,
+        // Decorative duplicate of the underlying empty-star button; hidden from
+        // assistive tech and non-interactive (the empty layer handles clicks).
         ...(isSelectable) && {
           'aria-hidden': true,
-          role: 'button',
-          onClick: e => handleSelection(e, pos),
         },
       };
 
@@ -142,7 +146,18 @@ const RatingStars = ({
         <StarHalfIcon size={size} />
       </div>
     )),
-  ], [iconClassName, numFullStars, numHalfStars, size, handleSelection, isSelectable]);
+    // Invisible spacers keep the filled layer the same width as the empty
+    // layer (both always span numStars slots) so the two overlapping rows
+    // shrink in lockstep and stay aligned in tight spaces.
+    ...times(Math.max(numStars - numFullStars - numHalfStars, 0), i => (
+      <div
+        className={iconClassName}
+        style={{ width: size }}
+        key={`placeholder-${i}`}
+        aria-hidden
+      />
+    )),
+  ], [iconClassName, numFullStars, numHalfStars, size, isSelectable]);
 
   return (
     <div

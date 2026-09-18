@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { withCurrentProduct } from '../withCurrentProduct';
 
 jest.mock('@shopgate/pwa-common/context', () => {
@@ -22,7 +22,9 @@ jest.mock('@shopgate/pwa-common/context', () => {
   };
 });
 
-const MockComponent = () => null;
+const mockWrappedComponent = jest.fn(props => (
+  <pre data-testid="wrapped-props">{JSON.stringify(props)}</pre>
+));
 
 describe('engage > core > hocs > withCurrentProduct', () => {
   beforeEach(() => {
@@ -30,10 +32,12 @@ describe('engage > core > hocs > withCurrentProduct', () => {
   });
 
   it('should inject the context properties into the component', () => {
-    const ComposedComponent = withCurrentProduct(MockComponent);
-    const wrapper = mount(<ComposedComponent someProp />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockComponent).props()).toEqual({
+    const ComposedComponent = withCurrentProduct(mockWrappedComponent);
+    const { container } = render(<ComposedComponent someProp />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       someProp: true,
       id: '123',
       name: 'acme',
@@ -46,10 +50,12 @@ describe('engage > core > hocs > withCurrentProduct', () => {
   });
 
   it('should inject a single property with the context into the component', () => {
-    const ComposedComponent = withCurrentProduct(MockComponent, { prop: 'product' });
-    const wrapper = mount(<ComposedComponent someProp />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockComponent).props()).toEqual({
+    const ComposedComponent = withCurrentProduct(mockWrappedComponent, { prop: 'product' });
+    const { container } = render(<ComposedComponent someProp />);
+
+    expect(container.firstChild).toMatchSnapshot();
+    expect(mockWrappedComponent).toHaveBeenCalledTimes(1);
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
       someProp: true,
       product: {
         id: '123',

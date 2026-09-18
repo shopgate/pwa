@@ -7,9 +7,7 @@ import {
   ProductListTypeProvider,
   ProductProvider,
 } from '@shopgate/engage/product/providers';
-import {
-  RippleButton,
-} from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { getUseGetFavoriteIdsPipeline } from '@shopgate/engage/favorites';
 import ListItemWrapper from './ListItemWrapper';
 
@@ -25,7 +23,6 @@ const useStyles = makeStyles()({
   loadMoreButton: {
     width: 'calc(100% - 32px)',
     margin: '16px 16px 0 16px',
-    borderRadius: 5,
   },
 });
 
@@ -97,13 +94,13 @@ const ListContent = ({
             ))}
       </ProductListTypeProvider>
       {showLoadMoreButton &&
-        <RippleButton
-          type="primary"
+        <Button
+          color="secondary"
           className={classes.loadMoreButton}
           onClick={onLoadMore}
         >
           {i18n.text('favorites.load_more_button')}
-        </RippleButton>}
+        </Button>}
     </>
   );
 };

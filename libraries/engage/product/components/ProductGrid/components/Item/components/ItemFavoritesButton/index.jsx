@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import { SurroundPortals, FavoritesButton } from '@shopgate/engage/components';
 import { PRODUCT_ITEM_FAVORITES_BUTTON } from '@shopgate/engage/category';
 import { isRelativeProductOnList } from '@shopgate/engage/favorites';
-import { getLoadWishlistOnAppStartEnabled } from '@shopgate/engage/core';
+import { getLoadWishlistOnAppStartEnabled } from '@shopgate/engage/settings/selectors/shopSettings';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
@@ -41,7 +41,6 @@ const ItemFavoritesButton = ({
         <FavoritesButton
           active={isFavorite}
           productId={productId}
-          noShadow
           removeWithRelatives
         />
       </div>

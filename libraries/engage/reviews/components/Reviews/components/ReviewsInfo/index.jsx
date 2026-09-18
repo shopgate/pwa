@@ -1,23 +1,19 @@
 import React from 'react';
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { Link } from '@shopgate/engage/components';
+import { Link, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    textAlign: 'center',
     marginTop: 8,
-    fontSize: '.875rem',
-    fontWeight: 300,
-    lineHeight: 1.5,
     padding: '0 1rem 1rem',
   },
   link: {
     textAlign: 'center',
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightBold,
     marginTop: 8,
   },
-});
+}));
 
 const {
   reviewsInfo: {
@@ -38,7 +34,7 @@ const ReviewsInfo = () => {
   }
 
   return (
-    <div className={cx(classes.root, 'engage__reviews__review_info_text')}>
+    <Typography variant="body2" component="div" align="center" fontWeight="light" className={cx(classes.root, 'engage__reviews__review_info_text')}>
       <div>
         {text}
         { linkText && linkUrl && (
@@ -47,7 +43,7 @@ const ReviewsInfo = () => {
           </Link>
         )}
       </div>
-    </div>
+    </Typography>
   );
 };
 

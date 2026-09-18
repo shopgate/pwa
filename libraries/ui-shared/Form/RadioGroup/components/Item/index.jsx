@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { camelCase } from 'lodash';
-import { I18n, CheckedIcon, UncheckedIcon } from '@shopgate/engage/components';
+import {
+  I18n, CheckedIcon, UncheckedIcon,
+} from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -20,13 +22,11 @@ const useStyles = makeStyles()(theme => ({
   },
   label: {
     flex: 1,
-    fontSize: '1rem',
-    lineHeight: 1.5,
     marginLeft: theme.spacing(1),
     marginBottom: theme.spacing(1),
   },
   active: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
 }));
 

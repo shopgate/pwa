@@ -10,7 +10,7 @@ import {
   APP_BAR_CART_BUTTON_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
 import { withWidgetSettings, i18n } from '@shopgate/engage/core';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import Badge from '../CartBadge';
 import connect from './connector';
 import transition from './transition';
@@ -33,6 +33,7 @@ const useStyles = makeStyles()({
  */
 const CartButton = ({ count, navigate, widgetSettings }) => {
   const { classes } = useStyles();
+  const theme = useTheme();
 
   const {
     buttonCartBackground,
@@ -42,9 +43,10 @@ const CartButton = ({ count, navigate, widgetSettings }) => {
   } = widgetSettings;
 
   const iconStyle = useMemo(() => ({
-    background: buttonCartBackground || 'var(--color-primary)',
-    color: buttonCartColor || 'var(--color-primary-contrast)',
-  }), [buttonCartBackground, buttonCartColor]);
+    background: buttonCartBackground || theme.palette.primary.main,
+    color: buttonCartColor || theme.palette.primary.contrastText,
+  }), [buttonCartBackground, buttonCartColor, theme.palette.primary.main,
+    theme.palette.primary.contrastText]);
 
   const badgeStyle = useMemo(() => ({
     background: buttonCartBadgeBackground,

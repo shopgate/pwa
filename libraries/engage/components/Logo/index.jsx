@@ -1,11 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import appConfig, { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import appConfig from '@shopgate/pwa-common/helpers/config';
 import noop from 'lodash/noop';
 import connect from './connector';
-
-const { variables } = themeConfig;
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -15,8 +13,8 @@ const useStyles = makeStyles()(theme => ({
   },
   image: {
     margin: '0 auto',
-    maxHeight: variables.navigator.height,
-    maxWidth: `calc(var(--page-content-width) - ${(variables.navigator.height * 3) + theme.spacing(4)}px)`,
+    maxHeight: theme.components.navigator.height,
+    maxWidth: `calc(var(--page-content-width) - (${theme.components.navigator.height} * 3) - ${theme.spacing(4)}px)`,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',

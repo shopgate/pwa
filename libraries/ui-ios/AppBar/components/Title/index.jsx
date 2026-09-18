@@ -1,22 +1,17 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import htmlToText from '@shopgate/pwa-common/helpers/html/htmlToText';
 
 const useStyles = makeStyles()({
   root: {
-    fontSize: 17,
-    fontWeight: 600,
     flexGrow: 1,
     lineHeight: '44px',
     left: 90,
-    overflow: 'hidden',
     position: 'absolute',
     right: 90,
-    textAlign: 'center',
-    textOverflow: 'ellipsis',
     top: 0,
-    whiteSpace: 'nowrap',
   },
 });
 
@@ -36,7 +31,12 @@ const AppBarTitle = ({ title }) => {
   }
 
   return (
-    <div
+    <Typography
+      variant="h4"
+      component="div"
+      noWrap
+      align="center"
+      fontWeight="bold"
       className={cx(classes.root, 'theme__app-bar__title')}
       role="heading"
       aria-level="1"
@@ -45,7 +45,7 @@ const AppBarTitle = ({ title }) => {
       data-test-id={`title: ${text}`}
     >
       {text}
-    </div>
+    </Typography>
   );
 };
 

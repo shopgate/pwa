@@ -1,6 +1,6 @@
 import React from 'react';
 import { act } from 'react-dom/test-utils';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { UIEvents } from '../../../../core';
 import LiveMessage from '../../LiveMessage';
 import {
@@ -18,6 +18,11 @@ jest.mock('../../../../components', () => ({
   },
 }));
 
+jest.mock('../../LiveMessage', () => jest.fn((props) => {
+  const liveType = props['aria-live'];
+  return <pre data-testid={`live-${liveType}`}>{JSON.stringify(props)}</pre>;
+}));
+
 jest.mock('../../../../core', () => ({
   UIEvents: {
     addListener: jest.fn(),
@@ -26,22 +31,26 @@ jest.mock('../../../../core', () => ({
 }));
 
 describe('<LiveMessenger />', () => {
+  const getRenderedLiveMessageProps = liveType => JSON.parse(
+    screen.getByTestId(`live-${liveType}`).textContent
+  );
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should render', () => {
-    const wrapper = mount(<LiveMessenger />);
-    expect(wrapper).toMatchSnapshot();
+    render(<LiveMessenger />);
+    const liveContainer = screen.getByTestId('live-assertive').parentElement;
 
-    const liveMessages = wrapper.find(LiveMessage);
-    expect(liveMessages).toHaveLength(2);
-    expect(liveMessages.at(0).props()).toEqual({
+    expect(liveContainer).toMatchSnapshot();
+    expect(LiveMessage).toHaveBeenCalledTimes(2);
+    expect(getRenderedLiveMessageProps('assertive')).toEqual({
       'aria-live': 'assertive',
       message: '',
       params: null,
     });
-    expect(liveMessages.at(1).props()).toEqual({
+    expect(getRenderedLiveMessageProps('polite')).toEqual({
       'aria-live': 'polite',
       message: '',
       params: null,
@@ -49,14 +58,14 @@ describe('<LiveMessenger />', () => {
   });
 
   it('should register and remove the events as expected', () => {
-    const wrapper = mount(<LiveMessenger />);
+    const { unmount } = render(<LiveMessenger />);
     const [[, callback]] = UIEvents.addListener.mock.calls;
 
     expect(UIEvents.addListener).toHaveBeenCalledTimes(1);
     expect(UIEvents.addListener).toHaveBeenCalledWith(EVENT_LIVE_MESSAGE, expect.any(Function));
     expect(UIEvents.removeListener).not.toHaveBeenCalled();
 
-    wrapper.unmount();
+    unmount();
 
     expect(UIEvents.addListener).toHaveBeenCalledTimes(1);
     expect(UIEvents.removeListener).toHaveBeenCalledTimes(1);
@@ -69,15 +78,14 @@ describe('<LiveMessenger />', () => {
       params: { some: 'param' },
     };
 
-    const wrapper = mount(<LiveMessenger />);
+    render(<LiveMessenger />);
     const [[, callback]] = UIEvents.addListener.mock.calls;
 
     act(() => {
       callback(message, options);
     });
 
-    wrapper.update();
-    expect(wrapper.find(LiveMessage).at(1).props()).toEqual({
+    expect(getRenderedLiveMessageProps('polite')).toEqual({
       'aria-live': 'polite',
       params: options.params,
       message,
@@ -91,15 +99,14 @@ describe('<LiveMessenger />', () => {
       params: { some: 'param' },
     };
 
-    const wrapper = mount(<LiveMessenger />);
+    render(<LiveMessenger />);
     const [[, callback]] = UIEvents.addListener.mock.calls;
 
     act(() => {
       callback(message, options);
     });
 
-    wrapper.update();
-    expect(wrapper.find(LiveMessage).at(1).props()).toEqual({
+    expect(getRenderedLiveMessageProps('polite')).toEqual({
       'aria-live': 'polite',
       message,
       params: options.params,
@@ -113,15 +120,14 @@ describe('<LiveMessenger />', () => {
       params: { some: 'param' },
     };
 
-    const wrapper = mount(<LiveMessenger />);
+    render(<LiveMessenger />);
     const [[, callback]] = UIEvents.addListener.mock.calls;
 
     act(() => {
       callback(message, options);
     });
 
-    wrapper.update();
-    expect(wrapper.find(LiveMessage).at(0).props()).toEqual({
+    expect(getRenderedLiveMessageProps('assertive')).toEqual({
       'aria-live': 'assertive',
       params: options.params,
       message,
@@ -133,15 +139,14 @@ describe('<LiveMessenger />', () => {
     const message = 'My Message';
     const options = {};
 
-    const wrapper = mount(<LiveMessenger id={id} />);
+    render(<LiveMessenger id={id} />);
     const [[, callback]] = UIEvents.addListener.mock.calls;
 
     act(() => {
       callback(message, options);
     });
 
-    wrapper.update();
-    expect(wrapper.find(LiveMessage).at(1).props()).toEqual({
+    expect(getRenderedLiveMessageProps('polite')).toEqual({
       'aria-live': 'polite',
       params: null,
       message: '',
@@ -151,8 +156,7 @@ describe('<LiveMessenger />', () => {
       callback(message, { id });
     });
 
-    wrapper.update();
-    expect(wrapper.find(LiveMessage).at(1).props()).toEqual({
+    expect(getRenderedLiveMessageProps('polite')).toEqual({
       'aria-live': 'polite',
       params: null,
       message,

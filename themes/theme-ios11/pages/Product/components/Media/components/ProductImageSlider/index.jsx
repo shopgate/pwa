@@ -9,8 +9,8 @@ import {
   loadProductImage,
   ITEM_PATH,
   ProductImage,
-  getProductImageSettings,
 } from '@shopgate/engage/product';
+import { useImageServiceSettings, useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { appConfig } from '@shopgate/engage';
 import connect from './connector';
 
@@ -27,6 +27,8 @@ class ProductImageSlider extends Component {
     className: PropTypes.string,
     historyPush: PropTypes.func,
     images: PropTypes.arrayOf(PropTypes.string),
+    imageServiceSettings: PropTypes.shape(),
+    pdpResolutions: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
     productId: PropTypes.string,
     variantId: PropTypes.string,
@@ -37,6 +39,8 @@ class ProductImageSlider extends Component {
     className: null,
     historyPush: noop,
     images: null,
+    imageServiceSettings: undefined,
+    pdpResolutions: null,
     product: null,
     productId: null,
     variantId: null,
@@ -94,7 +98,11 @@ class ProductImageSlider extends Component {
         this.mediaRef.current.style.filter = 'blur(3px)';
       }
       this.setState({ depImage });
-      loadProductImage(depImage)
+      loadProductImage(
+        depImage,
+        nextProps.pdpResolutions?.[0],
+        nextProps.imageServiceSettings
+      )
         .then(() => {
           if (this.mounted) {
             if (this.mediaRef.current) {
@@ -140,7 +148,6 @@ class ProductImageSlider extends Component {
     const {
       product, productId, images, 'aria-hidden': ariaHidden, className,
     } = this.props;
-    const { HeroImage: pdpResolutions } = getProductImageSettings();
     let content;
 
     if (images && images.length > 1) {
@@ -162,8 +169,7 @@ class ProductImageSlider extends Component {
             <Swiper.Item key={`${productId}-${image}`}>
               <ProductImage
                 src={image}
-                animating={false}
-                resolutions={pdpResolutions}
+                context="pdp"
                 noBackground
               />
             </Swiper.Item>
@@ -186,7 +192,7 @@ class ProductImageSlider extends Component {
           src={src}
           className={className}
           forcePlaceholder={!src}
-          resolutions={pdpResolutions}
+          context="pdp"
           noBackground
           alt={product ? product.name : ''}
           aria-hidden={ariaHidden}
@@ -222,10 +228,21 @@ class ProductImageSlider extends Component {
  * @param {Object} props The component props.
  * @return {JSX.Element}
  */
-const Wrapper = props => (
-  <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
-    <ProductImageSlider {...props} />
-  </SurroundPortals>
-);
+const Wrapper = (props) => {
+  // The slider is a class component, so it cannot call the hooks itself. Both feed the preload in
+  // loadProductImage - the rendered images resolve their own settings from the context prop.
+  const { pdp } = useProductImageSettings();
+  const imageServiceSettings = useImageServiceSettings();
+
+  return (
+    <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
+      <ProductImageSlider
+        {...props}
+        pdpResolutions={pdp.resolutions}
+        imageServiceSettings={imageServiceSettings}
+      />
+    </SurroundPortals>
+  );
+};
 
 export default withNavigation(connect(Wrapper));

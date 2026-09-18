@@ -7,14 +7,14 @@ import { svgToDataUrl } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import Icon from './components/Icon';
 
-const { variables, svgImages = {} } = themeConfig || {};
+const { svgImages = {} } = themeConfig || {};
 const { emptyFavorites = '' } = svgImages || {};
 
 const useStyles = makeStyles()(theme => ({
   container: {
     flexGrow: 1,
     padding: theme.spacing(2),
-    paddingBottom: variables.emptyPage.buttonVerticalGap,
+    paddingBottom: 24,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -28,7 +28,7 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'center',
   },
   title: {
-    paddingTop: variables.emptyPage.titleTopGap,
+    paddingTop: 36,
     textAlign: 'center',
   },
 }));

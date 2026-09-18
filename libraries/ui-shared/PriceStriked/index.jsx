@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 
 /**
  * Calculates the angle for the strike-through line
@@ -26,10 +25,16 @@ const calcAngle = (element) => {
   return Math.round(90 - (Math.atan(width / height) * (180 / Math.PI)));
 };
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
+    '--font-size': `calc(${theme.typography.price.fontSize} * 0.75)`,
+    '--font-family': theme.typography.price.fontFamily,
+    '--font-weight': theme.typography.price.fontWeight,
+    fontSize: 'var(--font-size)',
+    fontFamily: 'var(--font-family)',
+    fontWeight: 'var(--font-weight)',
     whiteSpace: 'nowrap',
-    color: themeColors.shade11,
+    color: theme.components.price.strikedColor,
     '& span': {
       position: 'relative',
       '&::before': {
@@ -50,7 +55,7 @@ const useStyles = makeStyles()({
       },
     },
   },
-});
+}));
 
 /**
  * The price striked component

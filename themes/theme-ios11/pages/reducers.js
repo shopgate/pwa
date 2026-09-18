@@ -4,7 +4,7 @@ import {
   configuration,
   RESET_APP_REDUCERS,
 } from '@shopgate/engage/core';
-import { IS_PAGE_PREVIEW_ACTIVE } from '@shopgate/engage/page/constants';
+import { isPageAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import backInStock from '@shopgate/engage/back-in-stock/reducers';
 import checkout from '@shopgate/engage/checkout/reducers';
 import client from '@shopgate/pwa-common/reducers/client';
@@ -21,7 +21,8 @@ import category from '@shopgate/pwa-common-commerce/category/reducers';
 import favorites from '@shopgate/pwa-common-commerce/favorites/reducers';
 import filter from '@shopgate/pwa-common-commerce/filter/reducers';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
-import { settings, app } from '@shopgate/engage/core/reducers';
+import { settings } from '@shopgate/engage/settings/reducers';
+import app from '@shopgate/engage/core/reducers/app';
 import locations from '@shopgate/engage/locations/reducers';
 import orders from '@shopgate/engage/orders/reducers';
 import a11y from '@shopgate/engage/a11y/reducers';
@@ -39,7 +40,7 @@ persistedReducers.set([
   'client.info',
   'page',
   // Preview page data should not persist
-  ...IS_PAGE_PREVIEW_ACTIVE ? [] : ['pageV2'],
+  ...isPageAdminPreviewActive() ? [] : ['pageV2'],
   'locations.storage',
   'locations.userFormInput',
   'locations.userSearch',

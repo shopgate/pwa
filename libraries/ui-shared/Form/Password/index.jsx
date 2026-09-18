@@ -1,18 +1,15 @@
 import React, { useState, useCallback } from 'react';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import ToggleIcon from '../../ToggleIcon';
 import VisibilityIcon from '../../icons/VisibilityIcon';
 import VisibilityOffIcon from '../../icons/VisibilityOffIcon';
 import TextField from '../TextField';
 
-const { colors } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   visOff: {
-    color: colors.shade4,
+    color: theme.palette.grey.medium,
   },
-});
+}));
 
 /**
  * A component that provides a password field with visibility toggle.

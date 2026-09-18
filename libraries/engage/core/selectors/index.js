@@ -24,7 +24,6 @@ export {
   getProductListShowInventory,
   getEnabledCMSVersion,
 } from './merchantSettings';
-
 export * from '../config/config.selectors';
 
 export * from './app';

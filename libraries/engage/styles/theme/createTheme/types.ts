@@ -1,22 +1,30 @@
 import type { PaletteOptions, Palette } from './createPalette';
 import type { Typography, TypographyOptions } from './createTypography';
-import type { Components, ComponentsOptions, ComponentVars } from './createComponents';
+import type { ComponentsOptions, ComponentVars, Components } from './createComponents';
 import type { Breakpoints } from './createBreakpoints';
 import type { Spacing } from './createSpacing';
 import type { Transitions } from './transitions';
 import type { ZIndex } from './zIndex';
+import type { Layout } from './layout';
 import type { ApplyStyles } from './applyStyles';
 import type { GetColorSchemeSelector, ActiveColorSchemeSwitcher } from './helpers';
 import type { CreateCssVarsForColorSchemeThemesReturnValue } from './createCssVarsForColorSchemeThemes';
 import type { Shape, ShapeOptions } from './createShape';
-import type { Shadows } from './shadows';
+import type { Shadows, ShadowSize } from './shadows';
 
 export type { Breakpoint } from './createBreakpoints';
 export type { PaletteColorsWithMain } from './createPalette';
 
-const colorSchemes = ['light', 'dark'] as const;
+export const COLOR_SCHEME_NAMES = ['light', 'dark'] as const;
 
-export type ColorSchemeName = (typeof colorSchemes)[number];
+export type ColorSchemeName = (typeof COLOR_SCHEME_NAMES)[number];
+
+export const COLOR_SCHEME_SYSTEM = 'system';
+
+/**
+ * A selectable color scheme: one the theme provides, or `system` to follow the operating system.
+ */
+export type ColorSchemeMode = ColorSchemeName | typeof COLOR_SCHEME_SYSTEM;
 
 const selectorTypes = ['data', 'class'] as const;
 
@@ -36,7 +44,8 @@ export type ColorSchemeOptions = Pick<ThemeOptions, 'palette' | 'typography' | '
 
 export interface ThemeOptions {
   /**
-   * The default color scheme to use when the user has not specified a preference.
+   * The color scheme to fall back to when the configured mode resolves to a scheme this theme does
+   * not style. The scheme the app starts in comes from the app settings.
    * @default 'light'
    */
   defaultColorScheme?: ColorSchemeName;
@@ -97,12 +106,16 @@ export interface BaseTheme {
   /**
    * Component specific styling tokes.
    */
-  components: Components;
+  components: ComponentVars;
   shape: Shape;
   /**
    * Pre-defined shadow styles for different elevation levels, following Material Design guidelines.
    */
   shadows: Shadows;
+  /**
+   * The finished box-shadow size (`none` | `low` | `medium` | `strong`)
+   */
+  shadowSizes: Record<ShadowSize, string>;
   /**
    * Adds an alpha value to a color, returning a new color string with the applied alpha.
    * @param color The color to modify.
@@ -125,11 +138,18 @@ export interface BaseTheme {
    * @returns A string representing the darkened color.
    */
   darken(color: string, coefficient?: number | string): string;
+  /**
+   * Calculates a contrast color (either black or white) based on the lightness of the input color.
+   * @param color The color to evaluate.
+   * @returns A string representing the contrast color (either black or white) for the input color.
+   */
+  contrastColor(color: string): string;
 }
 
 export interface Theme extends BaseTheme {
   /**
-   * The default color scheme to use when the user has not specified a preference.
+   * The color scheme to fall back to when the configured mode resolves to a scheme this theme does
+   * not style. The scheme the app starts in comes from the app settings.
    */
   defaultColorScheme?: ColorSchemeName;
   /**
@@ -148,6 +168,12 @@ export interface Theme extends BaseTheme {
    * Reference to z-index values for multiple components.
    */
   zIndex: ZIndex;
+  /**
+   * Mappings to runtime layout CSS variables (safe-area insets).
+   * The values are `var(--...)` references to variables updated at runtime elsewhere in the app;
+   * this node does not generate any new CSS variables.
+   */
+  layout: Layout;
   /**
    * An object that contains the CSS variable references for the theme properties.
    * It has the same structure as the theme, but the values are CSS variable references
@@ -176,12 +202,25 @@ export interface Theme extends BaseTheme {
 }
 
 /**
- * A record of themes for each color scheme. Each key is a color scheme name (e.g., 'light', 'dark'),
- * and the value is a theme object that contains e.g. the palette and typography for that color scheme.
+ * A single fully-resolved color-scheme theme. Identical to {@link BaseTheme} except that its
+ * `components` keep the nested `vars` level (the raw per-scheme token defaults produced by
+ * `createComponents`), whereas the flattened `BaseTheme['components']` shape is only produced for
+ * the final merged theme.
  */
-export type ColorSchemeThemes = Record<ColorSchemeName, BaseTheme>
+export type ColorSchemeTheme = Omit<BaseTheme, 'components'> & { components: Components };
 
-export type ThemeInternal = Theme & Pick<CreateCssVarsForColorSchemeThemesReturnValue, 'generateStyleSheets'> & {
+/**
+ * A record of themes for each color scheme. Each key is a color scheme name (e.g., 'light', 'dark'),
+ * and the value is a fully-resolved color-scheme theme ({@link ColorSchemeTheme}).
+ */
+export type ColorSchemeThemes = Record<ColorSchemeName, ColorSchemeTheme>
+
+export type ThemeInternal = Omit<Theme, 'colorSchemes'> & {
+  /**
+   * Internal runtime map of fully resolved color-scheme themes.
+   */
+  colorSchemes: ColorSchemeThemes;
+} & Pick<CreateCssVarsForColorSchemeThemesReturnValue, 'generateStyleSheets'> & {
   /**
    * Function that generates a CSS selector string for a given color scheme.
    */
