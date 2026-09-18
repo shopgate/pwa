@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.31.9](https://github.com/shopgate/pwa/compare/v7.31.8...v7.31.9) (2026-09-18)
+
+#### :bug: Bug Fix
+* [#1502](https://github.com/shopgate/pwa/pull/1502) Prevent XSS via search phrase and sanitize navigation targets ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.31.8](https://github.com/shopgate/pwa/compare/v7.31.7...v7.31.8) (2026-08-28)
 
 #### :house: Internal
