@@ -42,6 +42,7 @@ const useStyles = makeStyles()(theme => ({
     flexDirection: 'column',
     gap: 4,
     padding: theme.components.productCard.textPadding,
+    paddingTop: theme.components.productCard.textPaddingTop,
     '& div:empty': {
       display: 'none',
     },
