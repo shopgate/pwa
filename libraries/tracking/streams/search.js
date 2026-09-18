@@ -20,10 +20,20 @@ import {
 } from '@shopgate/engage/search/streams';
 
 /**
+ * Checks whether the current route contains a search query. Searches without a query don't
+ * request any results, so they are not tracked.
+ * @param {Object} params The stream params.
+ * @param {Function} params.getState The getState function.
+ * @returns {boolean}
+ */
+const hasSearchQuery = ({ getState }) => !!getCurrentSearchQuery(getState());
+
+/**
  * Emits when the search route comes active again after a legacy page was active.
  */
 const searchRouteReappeared$ = pwaDidAppear$
-  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN);
+  .filter(({ action }) => action.route.pattern === SEARCH_PATTERN)
+  .filter(hasSearchQuery);
 
 /**
  * Emits when search results are received.
@@ -37,6 +47,7 @@ const resultsReceived$ = main$
 export const searchIsReady$ = searchDidEnter$
   // Do not track while PWA webview is in the background
   .filter(({ getState }) => getIsAppWebViewVisible(getState()))
+  .filter(hasSearchQuery)
   .switchMap((data) => {
     const { getState } = data;
     const query = getCurrentSearchQuery(getState());
