@@ -80,6 +80,22 @@ describe('Search streams', () => {
         expect(searchIsReadySubscriber).not.toHaveBeenCalled();
       });
 
+      it.each([
+        ['an empty', ''],
+        ['a missing', null],
+      ])('should not emit when the search route is active with %s search query', (_, query) => {
+        dispatch(routeDidEnterWrapped(SEARCH_PATTERN, query));
+        dispatch(receiveSearchResults());
+        expect(searchIsReadySubscriber).not.toHaveBeenCalled();
+      });
+
+      it('should not emit when a search without a query is followed by results of another search', () => {
+        dispatch(routeDidEnterWrapped(SEARCH_PATTERN, ''));
+        mockedSearchQuery = searchQuery;
+        dispatch(receiveSearchResults());
+        expect(searchIsReadySubscriber).not.toHaveBeenCalled();
+      });
+
       it('should not emit when search results came in but the route is not active', () => {
         dispatch(routeDidEnterWrapped('/some/pattern'));
         dispatch(receiveSearchResults());
@@ -90,8 +106,15 @@ describe('Search streams', () => {
     describe('navigating back from legacy pages', () => {
       it('should emit when pwaDidAppear is dispatched and a search route is active', () => {
         mockedRoutePattern = SEARCH_PATTERN;
+        mockedSearchQuery = searchQuery;
         dispatch(pwaDidAppear());
         expect(searchIsReadySubscriber).toHaveBeenCalledTimes(1);
+      });
+
+      it('should not emit when pwaDidAppear is dispatched and the search route has no query', () => {
+        mockedRoutePattern = SEARCH_PATTERN;
+        dispatch(pwaDidAppear());
+        expect(searchIsReadySubscriber).not.toHaveBeenCalled();
       });
 
       it('should not emit when pwaDidAppear is dispatched and no search route is active', () => {

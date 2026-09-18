@@ -7,8 +7,10 @@ import {
 } from '@virtuous/conductor';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
+import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
 import { logger } from '@shopgate/pwa-core/helpers';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
+import { Linking } from '@shopgate/native-modules';
 import { historyRedirect, historyPush, windowOpenOverride } from '../actions/router';
 import authRoutes from '../collections/AuthRoutes';
 import * as handler from './helpers/handleLinks';
@@ -66,6 +68,11 @@ jest.mock('../selectors/router', () => ({
 }));
 jest.mock('../selectors/client', () => ({
   getIsConnected: jest.fn().mockReturnValue(true),
+}));
+jest.mock('@shopgate/native-modules', () => ({
+  Linking: {
+    addEventListener: jest.fn(),
+  },
 }));
 jest.mock('@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart', () => jest.fn(
   () => 'addCouponsToCartDispatched'
@@ -254,6 +261,209 @@ describe('Router subscriptions', () => {
         emitBefore: true,
         emitAfter: true,
         pathname: params.pathname.slice(0, -1),
+        state: params.state,
+      });
+    });
+
+    it('should remove markup from query parameters', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/search?s=<img src=x onerror=alert(1)>shoes',
+        state: {},
+        silent: true,
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(router.push).toHaveBeenCalledWith({
+        emitBefore: true,
+        emitAfter: true,
+        pathname: '/search?s=shoes',
+        state: params.state,
+      });
+    });
+
+    it('should remove URL encoded markup from query parameters', async () => {
+      const params = {
+        action: ACTION_REPLACE,
+        pathname: '/search?s=%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3Eshoes&sort=relevance',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(router.replace).toHaveBeenCalledWith(expect.objectContaining({
+        pathname: '/search?s=shoes&sort=relevance',
+      }));
+    });
+
+    it('should not modify regular links with query parameters', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/search?s=Tom%20%26%20Jerry',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(router.push).toHaveBeenCalledWith(expect.objectContaining({
+        pathname: params.pathname,
+      }));
+    });
+
+    it('should abort navigation for links with a script protocol', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        // eslint-disable-next-line no-script-url
+        pathname: 'javascript:alert(1)',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      testExpectedCall();
+    });
+
+    it('should remove markup from the pathname of HISTORY_RESET_TO actions', async () => {
+      getRouterStackIndex.mockReturnValueOnce(1);
+
+      await callback(createCallbackPayload({
+        params: {
+          action: HISTORY_RESET_TO,
+          pathname: '/search?s=<img src=x onerror=alert(1)>shoes',
+        },
+      }));
+
+      expect(router.replace).toHaveBeenCalledWith(expect.objectContaining({
+        pathname: '/search?s=shoes',
+      }));
+    });
+
+    it('should abort HISTORY_RESET_TO actions with a script protocol before the history is reset', async () => {
+      getRouterStackIndex.mockReturnValueOnce(1);
+
+      await callback(createCallbackPayload({
+        params: {
+          action: HISTORY_RESET_TO,
+          // eslint-disable-next-line no-script-url
+          pathname: 'javascript:alert(1)',
+        },
+      }));
+
+      testExpectedCall();
+    });
+
+    it('should abort HISTORY_RESET_TO actions without a pathname before the history is reset', async () => {
+      getRouterStackIndex.mockReturnValueOnce(1);
+
+      await callback(createCallbackPayload({
+        params: {
+          action: HISTORY_RESET_TO,
+        },
+      }));
+
+      testExpectedCall();
+    });
+
+    it('should navigate to URL objects', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: new URL('https://www.awesome-shop.com/some_route?q=<img src=x>foo'),
+      };
+
+      await callback(createCallbackPayload({ params }));
+      testExpectedCall(openExternalLinkSpy);
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        'https://www.awesome-shop.com/some_route?q=foo',
+        params.action,
+        mockedRouterState,
+        undefined
+      );
+    });
+
+    it('should remove markup from the location which is stored for the protector redirect', async () => {
+      getState.mockReturnValueOnce({
+        ...mockedRouterState,
+        user: { login: { isLoggedIn: false } },
+      });
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: `${protectedRoute}?s=<img src=x onerror=alert(1)>shoes`,
+      };
+
+      await callback(createCallbackPayload({ params }));
+      testExpectedCall(dispatch);
+      expect(dispatch).toHaveBeenCalledWith(navigate({
+        action: params.action,
+        pathname: protectorRoute,
+        state: {
+          redirect: {
+            location: `${protectedRoute}?s=shoes`,
+            state: params.state,
+          },
+        },
+      }));
+    });
+
+    it('should pass the sanitized location to redirect handlers', async () => {
+      const redirectHandler = jest.fn(() => Promise.resolve('/some_other_route'));
+      redirects.set('/some_route', redirectHandler);
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route?s=<img src=x onerror=alert(1)>shoes',
+      };
+
+      await callback(createCallbackPayload({ params }));
+
+      expect(redirectHandler).toHaveBeenCalledTimes(1);
+      const [[{ action }]] = redirectHandler.mock.calls;
+      expect(action.params.pathname).toBe('/some_route?s=shoes');
+      expect(action.redirectMeta.location).toBe('/some_route?s=shoes');
+      expect(action.redirectMeta.queryParams).toEqual({ s: 'shoes' });
+
+      // Query parameters of the original location are merged into the redirect target.
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_other_route?s=shoes',
+        state: params.state,
+      });
+    });
+
+    it('should remove markup from coupon codes before they are redeemed', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: '/some_route?coupon=<img src=x onerror=alert(1)>ABC',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(addCouponsToCart).toHaveBeenCalledTimes(1);
+      expect(addCouponsToCart).toHaveBeenCalledWith(['ABC'], false);
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/some_route',
+      });
+    });
+
+    it('should remove markup from external links', async () => {
+      const params = {
+        action: ACTION_PUSH,
+        pathname: 'https://www.awesome-shop.com/some_route?q=<img src=x onerror=alert(1)>foo',
+      };
+
+      await callback(createCallbackPayload({ params }));
+      testExpectedCall(openExternalLinkSpy);
+      expect(openExternalLinkSpy).toHaveBeenCalledWith(
+        'https://www.awesome-shop.com/some_route?q=foo',
+        params.action,
+        mockedRouterState,
+        undefined
+      );
+    });
+
+    it('should remove markup from shop links', async () => {
+      mockedShopCNAME = 'm.awesomeshop.com';
+
+      const params = {
+        action: ACTION_PUSH,
+        pathname: `https://${mockedShopCNAME}/search?s=<img src=x onerror=alert(1)>shoes`,
+      };
+
+      await callback(createCallbackPayload({ params }));
+      expect(router.push).toHaveBeenCalledWith({
+        pathname: '/search?s=shoes',
         state: params.state,
       });
     });
@@ -713,6 +923,54 @@ describe('Router subscriptions', () => {
         }));
       });
     });
+
+    describe('windowOpenRequested event', () => {
+      let listener;
+
+      beforeEach(() => {
+        callback(createCallbackPayload({}));
+        [[, listener]] = Linking.addEventListener.mock.calls
+          .filter(([eventName]) => eventName === 'windowOpenRequested');
+        dispatch.mockClear();
+      });
+
+      it('should dispatch historyPush with the target url', () => {
+        const targetUrl = 'https://example.com/page?foo=bar';
+        listener({ detail: { targetUrl } });
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(historyPush).toHaveBeenCalledWith({
+          pathname: targetUrl,
+          state: {},
+        });
+      });
+
+      it('should remove markup from the target url', () => {
+        listener({ detail: { targetUrl: '/search?s=<img src=x onerror=alert(1)>test' } });
+
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(historyPush).toHaveBeenCalledWith({
+          pathname: '/search?s=test',
+          state: {},
+        });
+      });
+
+      it('should NOT dispatch historyPush for urls with a script protocol', () => {
+        // eslint-disable-next-line no-script-url
+        listener({ detail: { targetUrl: 'javascript:alert(1)' } });
+
+        expect(dispatch).not.toHaveBeenCalled();
+        expect(historyPush).not.toHaveBeenCalled();
+      });
+
+      it('should NOT dispatch historyPush when the event has no target url', () => {
+        listener({ detail: {} });
+        listener({});
+
+        expect(dispatch).not.toHaveBeenCalled();
+        expect(historyPush).not.toHaveBeenCalled();
+      });
+    });
   });
 
   describe('windowOpenOverride$', () => {
@@ -739,6 +997,40 @@ describe('Router subscriptions', () => {
       expect(dispatch).toHaveBeenCalledWith(historyPush({
         pathname,
       }));
+    });
+
+    it('should dispatch historyPush when invoked with an URL object', () => {
+      const url = new URL('https://example.com/page?foo=bar');
+
+      callback(createCallbackPayload(windowOpenOverride({
+        pathname: url,
+      })));
+
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({
+        pathname: url.toString(),
+      });
+    });
+
+    it('should remove markup from the url before dispatching historyPush', () => {
+      callback(createCallbackPayload(windowOpenOverride({
+        pathname: 'https://example.com/search?s=%3Cimg%20src%3Dx%20onerror%3Dalert(1)%3Etest',
+      })));
+
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyPush).toHaveBeenCalledWith({
+        pathname: 'https://example.com/search?s=test',
+      });
+    });
+
+    it('should NOT dispatch historyPush for urls with a script protocol', () => {
+      callback(createCallbackPayload(windowOpenOverride({
+        // eslint-disable-next-line no-script-url
+        pathname: 'javascript:alert(1)',
+      })));
+
+      expect(dispatch).not.toBeCalled();
+      expect(historyPush).not.toBeCalled();
     });
 
     it('should NOT dispatch historyPush when invoked with an empty url', () => {

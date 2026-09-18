@@ -24,6 +24,7 @@ import {
 import { isUserLoggedIn } from '../selectors/user';
 import { getIsConnected } from '../selectors/client';
 import { INDEX_PATH } from '../constants/RoutePaths';
+import { sanitizeLink } from '../helpers/router';
 import appConfig from '../helpers/config';
 import authRoutes from '../collections/AuthRoutes';
 import ToastProvider from '../providers/toast';
@@ -104,6 +105,12 @@ export default function routerSubscriptions(subscribe) {
         return;
       }
       case HISTORY_RESET_TO: {
+        const sanitizedResetToPathname = sanitizeLink(String(resetToPathname || ''));
+
+        if (!sanitizedResetToPathname) {
+          return;
+        }
+
         await router.pop({
           steps: historyLength - 1,
           state: routeState,
@@ -112,7 +119,7 @@ export default function routerSubscriptions(subscribe) {
         });
 
         await router.replace({
-          pathname: resetToPathname,
+          pathname: sanitizedResetToPathname,
           state: routeState,
         });
 
@@ -120,6 +127,13 @@ export default function routerSubscriptions(subscribe) {
       }
       default:
         break;
+    }
+
+    // Remove HTML markup from the location (e.g. within query parameters of links from CMS content)
+    // to prevent that it's rendered within pages or sent within requests. Links with a script
+    // protocol are rejected.
+    if (location) {
+      location = sanitizeLink(String(location));
     }
 
     // Remove trailing slashes from internal links, since they might break the routing mechanism.
@@ -335,7 +349,11 @@ export default function routerSubscriptions(subscribe) {
      * so that the router can decide how to handle the URL.
      */
     Linking.addEventListener('windowOpenRequested', (event) => {
-      const { targetUrl } = event.detail;
+      const targetUrl = sanitizeLink(String(event.detail?.targetUrl || ''));
+
+      if (!targetUrl) {
+        return;
+      }
 
       dispatch(historyPush({
         pathname: targetUrl,
@@ -372,9 +390,11 @@ export default function routerSubscriptions(subscribe) {
   });
 
   subscribe(windowOpenOverride$, ({ action, dispatch }) => {
-    if (action.pathname) {
+    const pathname = sanitizeLink(String(action.pathname || ''));
+
+    if (pathname) {
       dispatch(historyPush({
-        pathname: action.pathname,
+        pathname,
       }));
     }
   });
