@@ -577,7 +577,12 @@
     "order_history": "Rendelési előzmények",
     "profile": "Profil",
     "back": "Vissza a {title}",
-    "open_menu": "Menü megnyitása"
+    "open_menu": "Menü megnyitása",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Több",
+      "about": "Rólunk"
+    }
   },
   "reviews": {
     "rating": "Értékelés",

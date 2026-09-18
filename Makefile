@@ -9,7 +9,7 @@ export FORCE_COLOR = true
 LIBRARIES = engage commerce common core tracking tracking-core webcheckout ui-ios ui-material ui-shared
 TRANSPILED_UTILS = benchmark unit-tests
 UTILS = eslint-config e2e webpack
-THEMES = theme-gmd theme-ios11
+THEMES = theme-ios11
 
 # Adds "@shopgate/pwa-" in front of all package names except "@shopgate/eslint-config" and "@shopgate/tracking-core".
 # Optionally takes a version number as second parameter.
@@ -210,33 +210,16 @@ setup-frontend-with-current-ip:
 		echo '{\n  "ip": "0.0.0.0",\n  "startpageIp": "$(shell ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1' | awk '{print $1}' | head -1)",\n  "port": 8080,\n  "apiPort": 9666,\n  "hmrPort": 3000,\n  "remotePort": 8000,\n  "sourceMapsType": "cheap-eval-source-map"\n}\n' > ./.sgcloud/frontend.json;
 
 
-# Open cypress UI for GMD theme
-e2e-gmd:
-	cd themes/theme-gmd && yarn run e2e;
-
 # Open cypress UI for IOS theme
 e2e-ios11:
 	cd themes/theme-ios11 && yarn run e2e;
-
-# Run GMD legacy tests
-e2e-gmd-legacy:
-	npx cypress run -P ./themes/theme-gmd/e2e -s 'themes/theme-gmd/e2e/integration/specFiles/consistency/legacy.js,themes/theme-gmd/e2e/integration/specFiles/functional/legacy.js'
 
 # Run IOS legacy tests
 e2e-ios11-legacy:
 	npx cypress run -P ./themes/theme-ios11/e2e -s 'themes/theme-ios11/e2e/integration/specFiles/consistency/legacy.js,themes/theme-ios11/e2e/integration/specFiles/functional/legacy.js'
 
-e2e-checkout:
-	cd themes/theme-gmd && yarn run e2e:checkout;
-
-e2e-user:
-	cd themes/theme-gmd && yarn run e2e:user;
-
 e2e-install:
 	# Symlinking support, plugins, fixtures
-	npx symlink-dir ./utils/e2e/support ./themes/theme-gmd/e2e/cypress/support
-	npx symlink-dir ./utils/e2e/fixtures ./themes/theme-gmd/e2e/cypress/fixtures
-	npx symlink-dir ./utils/e2e/plugins ./themes/theme-gmd/e2e/cypress/plugins
 	npx symlink-dir ./utils/e2e/support ./themes/theme-ios11/e2e/cypress/support
 	npx symlink-dir ./utils/e2e/fixtures ./themes/theme-ios11/e2e/cypress/fixtures
 	npx symlink-dir ./utils/e2e/plugins ./themes/theme-ios11/e2e/cypress/plugins
