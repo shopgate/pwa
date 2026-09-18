@@ -58,12 +58,14 @@ class SearchContent extends Component {
               showFilters={showFilterBar}
             />
             <SurroundPortals portalName={VIEW_CONTENT}>
-              <Products
-                searchPhrase={searchPhrase}
-                filters={state.filters}
-                sort={query.sort || DEFAULT_SORT}
-                routeId={routeId}
-              />
+              {searchPhrase && (
+                <Products
+                  searchPhrase={searchPhrase}
+                  filters={state.filters}
+                  sort={query.sort || DEFAULT_SORT}
+                  routeId={routeId}
+                />
+              )}
               {showNoResults && (
               <SurroundPortals portalName={NO_RESULTS_CONTENT}>
                 <NoResults
