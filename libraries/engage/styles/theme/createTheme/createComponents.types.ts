@@ -246,6 +246,7 @@ export const componentsSchema = {
     vars: {
       padding: '',
       textPadding: '',
+      textPaddingTop: '',
       imagePadding: '',
     },
   },
@@ -405,6 +406,7 @@ export const componentsDefaults = {
     vars: {
       padding: 0,
       textPadding: 16,
+      textPaddingTop: 'max(var(--sg-components-productCard-textPadding), 12px)',
       imagePadding: 0,
     },
   },
