@@ -577,7 +577,12 @@
     "order_history": "Bestelgeschiedenis",
     "profile": "Profiel",
     "back": "Terug naar {title}",
-    "open_menu": "Menu openen"
+    "open_menu": "Menu openen",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Meer",
+      "about": "Over ons"
+    }
   },
   "reviews": {
     "rating": "Rating",

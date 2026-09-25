@@ -21,64 +21,55 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
       <div
         aria-labelledby="basicDialogTitle basicDialogDesc"
         aria-modal={true}
-        className="sg-1pcx6xq-container ui-material__base-dialog"
+        className="sg-1at7hhn-container ui-ios__base-dialog"
         data-test-id="basicDialog"
         role="alertdialog"
       >
         <div
-          className="sg-1t4okzq-content"
+          className="sg-1o3pu1m-content"
         >
           <Title
             title="modal.title_error"
           >
-            <ForwardRef(Typography)
+            <div
               aria-level="2"
-              className="sg-7aik3e-title"
-              component="div"
+              className="sg-1prssjv-title"
               id="basicDialogTitle"
               role="heading"
-              variant="h3"
             >
-              <div
-                aria-level="2"
-                className="engage__typography engage__typography_h3 sg-urd2kp-Typography-root-Typography-h3-title"
-                id="basicDialogTitle"
-                role="heading"
+              <Ellipsis
+                className=""
+                rows={3}
               >
-                <Ellipsis
-                  className=""
-                  rows={3}
+                <Dotdotdot
+                  clamp={3}
+                  className=" common__ellipsis"
+                  tagName="div"
+                  truncationChar="…"
+                  useNativeClamp={true}
                 >
-                  <Dotdotdot
-                    clamp={3}
+                  <div
                     className=" common__ellipsis"
-                    tagName="div"
-                    truncationChar="…"
-                    useNativeClamp={true}
                   >
-                    <div
-                      className=" common__ellipsis"
+                    <Translate
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
+                      string="modal.title_error"
+                      transform={null}
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
+                      <span
                         className={null}
-                        params={{}}
                         role={null}
-                        string="modal.title_error"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          modal.title_error
-                        </span>
-                      </Translate>
-                    </div>
-                  </Dotdotdot>
-                </Ellipsis>
-              </div>
-            </ForwardRef(Typography)>
+                        modal.title_error
+                      </span>
+                    </Translate>
+                  </div>
+                </Dotdotdot>
+              </Ellipsis>
+            </div>
           </Title>
           <Content
             content={
@@ -98,42 +89,46 @@ exports[`<PipelineErrorDialog /> should render with minimal props 1`] = `
               </div>
             }
           >
-            <div
-              className="sg-jwwtvb-body"
+            <ForwardRef(Typography)
+              align="center"
+              className="sg-1u4u647-body"
+              component="div"
               id="basicDialogDesc"
+              variant="body2"
             >
               <div
-                onClick={[Function]}
+                className="engage__typography engage__typography_body2 sg-dqeyds-Typography-root-Typography-body2-Typography-alignCenter-body"
+                id="basicDialogDesc"
               >
-                <Translate
-                  acceptPlainTextWithPlaceholders={false}
-                  className={null}
-                  params={{}}
-                  role={null}
-                  string="Error message"
-                  transform={null}
+                <div
+                  onClick={[Function]}
                 >
-                  <span
+                  <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
+                    params={{}}
                     role={null}
+                    string="Error message"
+                    transform={null}
                   >
-                    Error message
-                  </span>
-                </Translate>
+                    <span
+                      className={null}
+                      role={null}
+                    >
+                      Error message
+                    </span>
+                  </Translate>
+                </div>
               </div>
-            </div>
+            </ForwardRef(Typography)>
           </Content>
         </div>
         <div
-          className="sg-3766ab-actions"
+          className="sg-knc55g-actions"
         >
-          <div
-            className="sg-1orvbrr-innerActions"
-          >
-            <Buttons
-              actions={[]}
-            />
-          </div>
+          <Buttons
+            actions={[]}
+          />
         </div>
       </div>
     </FocusTrap>
@@ -162,64 +157,55 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
       <div
         aria-labelledby="basicDialogTitle basicDialogDesc"
         aria-modal={true}
-        className="sg-1pcx6xq-container ui-material__base-dialog"
+        className="sg-1at7hhn-container ui-ios__base-dialog"
         data-test-id="basicDialog"
         role="alertdialog"
       >
         <div
-          className="sg-1t4okzq-content"
+          className="sg-1o3pu1m-content"
         >
           <Title
             title="modal.title_error"
           >
-            <ForwardRef(Typography)
+            <div
               aria-level="2"
-              className="sg-7aik3e-title"
-              component="div"
+              className="sg-1prssjv-title"
               id="basicDialogTitle"
               role="heading"
-              variant="h3"
             >
-              <div
-                aria-level="2"
-                className="engage__typography engage__typography_h3 sg-urd2kp-Typography-root-Typography-h3-title"
-                id="basicDialogTitle"
-                role="heading"
+              <Ellipsis
+                className=""
+                rows={3}
               >
-                <Ellipsis
-                  className=""
-                  rows={3}
+                <Dotdotdot
+                  clamp={3}
+                  className=" common__ellipsis"
+                  tagName="div"
+                  truncationChar="…"
+                  useNativeClamp={true}
                 >
-                  <Dotdotdot
-                    clamp={3}
+                  <div
                     className=" common__ellipsis"
-                    tagName="div"
-                    truncationChar="…"
-                    useNativeClamp={true}
                   >
-                    <div
-                      className=" common__ellipsis"
+                    <Translate
+                      acceptPlainTextWithPlaceholders={false}
+                      className={null}
+                      params={{}}
+                      role={null}
+                      string="modal.title_error"
+                      transform={null}
                     >
-                      <Translate
-                        acceptPlainTextWithPlaceholders={false}
+                      <span
                         className={null}
-                        params={{}}
                         role={null}
-                        string="modal.title_error"
-                        transform={null}
                       >
-                        <span
-                          className={null}
-                          role={null}
-                        >
-                          modal.title_error
-                        </span>
-                      </Translate>
-                    </div>
-                  </Dotdotdot>
-                </Ellipsis>
-              </div>
-            </ForwardRef(Typography)>
+                        modal.title_error
+                      </span>
+                    </Translate>
+                  </div>
+                </Dotdotdot>
+              </Ellipsis>
+            </div>
           </Title>
           <Content
             content={
@@ -239,42 +225,46 @@ exports[`<PipelineErrorDialog /> should show a custom message if a message is is
               </div>
             }
           >
-            <div
-              className="sg-jwwtvb-body"
+            <ForwardRef(Typography)
+              align="center"
+              className="sg-1u4u647-body"
+              component="div"
               id="basicDialogDesc"
+              variant="body2"
             >
               <div
-                onClick={[Function]}
+                className="engage__typography engage__typography_body2 sg-dqeyds-Typography-root-Typography-body2-Typography-alignCenter-body"
+                id="basicDialogDesc"
               >
-                <Translate
-                  acceptPlainTextWithPlaceholders={false}
-                  className={null}
-                  params={{}}
-                  role={null}
-                  string="Custom message"
-                  transform={null}
+                <div
+                  onClick={[Function]}
                 >
-                  <span
+                  <Translate
+                    acceptPlainTextWithPlaceholders={false}
                     className={null}
+                    params={{}}
                     role={null}
+                    string="Custom message"
+                    transform={null}
                   >
-                    Custom message
-                  </span>
-                </Translate>
+                    <span
+                      className={null}
+                      role={null}
+                    >
+                      Custom message
+                    </span>
+                  </Translate>
+                </div>
               </div>
-            </div>
+            </ForwardRef(Typography)>
           </Content>
         </div>
         <div
-          className="sg-3766ab-actions"
+          className="sg-knc55g-actions"
         >
-          <div
-            className="sg-1orvbrr-innerActions"
-          >
-            <Buttons
-              actions={[]}
-            />
-          </div>
+          <Buttons
+            actions={[]}
+          />
         </div>
       </div>
     </FocusTrap>
