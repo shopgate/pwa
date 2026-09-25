@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react';
-import { Button } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useNavigation } from '@shopgate/engage/core';
@@ -40,9 +40,8 @@ const ButtonWidget = () => {
   return (
     <div className={classes.root}>
       <Button
-        type="secondary"
+        color="primary"
         onClick={handleClick}
-        wrapContent={false}
       >
         <span className={classes.text}>{text}</span>
       </Button>

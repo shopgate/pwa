@@ -3,14 +3,14 @@ import PropTypes from 'prop-types';
 import Input from '@shopgate/pwa-common/components/Input';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   input: {
     position: 'relative',
     padding: 0,
     width: '100%',
     marginTop: 24,
     outline: 0,
-    fontSize: 16,
+    fontSize: theme.typography.body1.fontSize,
     lineHeight: '19px',
   },
   multiLine: {
@@ -25,7 +25,7 @@ const useStyles = makeStyles()({
     lineHeight: '19px',
     verticalAlign: 'top',
   },
-});
+}));
 
 /**
  * Creates an input or a multiLine based on the type prop.

@@ -7,7 +7,7 @@ import { svgToDataUrl } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import Icon from './components/Icon';
 
-const { svgImages = {}, variables } = themeConfig || {};
+const { svgImages = {} } = themeConfig || {};
 const { emptyCart = '' } = svgImages || {};
 
 const useStyles = makeStyles()({
@@ -26,11 +26,11 @@ const useStyles = makeStyles()({
     flexShrink: '0',
   },
   icon: {
-    width: variables.emptyPage.icon,
+    width: 216,
   },
   title: {
     textAlign: 'center',
-    paddingTop: variables.emptyPage.titleTopGap,
+    paddingTop: 36,
   },
 });
 

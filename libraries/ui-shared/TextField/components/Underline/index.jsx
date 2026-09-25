@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import color from 'color';
-import { getCSSCustomProp, makeStyles, useTheme } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 
-const { colors } = themeConfig;
 const easing = '450ms cubic-bezier(0.23, 1, 0.32, 1)';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   underlineWrapper: {
     position: 'relative',
     width: '100%',
-    borderBottom: `1px solid ${colors.shade12}`,
+    borderBottom: `1px solid ${theme.components.border.dark}`,
     marginTop: 2,
     marginBottom: 7,
   },
@@ -24,25 +21,21 @@ const useStyles = makeStyles()({
     willChange: 'transform',
     transition: `transform ${easing}`,
   },
-});
+}));
 
 /**
  * Returns the underline inline style.
+ * @param {Object} theme The theme object.
  * @param {boolean} focused Is focused set or not.
  * @param {boolean} hasError Has error set or not.
  * @param {string} errorColor Theme error main color.
  * @return {Object} style
  */
-const getUnderlineStyle = (focused, hasError, errorColor) => {
-  const primaryColor = getCSSCustomProp('--color-primary') || colors.primary;
-  let focusColor = '--color-primary';
-
-  if (color(primaryColor).luminosity() >= 0.8) {
-    focusColor = '--color-secondary';
-  }
+const getUnderlineStyle = (theme, focused, hasError, errorColor) => {
+  const focusColor = theme.palette.primary.main;
 
   return {
-    borderBottomColor: hasError ? errorColor : `var(${focusColor}, ${colors.focus})`,
+    borderBottomColor: hasError ? errorColor : focusColor,
     ...(!focused && !hasError) && { transform: 'scale3d(0,1,1)' },
   };
 };
@@ -61,6 +54,7 @@ const Underline = (props) => {
       <div
         className={classes.underline}
         style={getUnderlineStyle(
+          theme,
           props.isFocused,
           props.hasErrorMessage,
           theme.palette.error.main

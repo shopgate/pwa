@@ -24,19 +24,19 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip sg-ih9beq-chip"
+          className="ui-shared__chip sg-e9rqvi-chip"
           data-test-id="some-id"
         >
           <Button
             aria-label={null}
-            className="sg-18bi9x7-removeButton"
+            className="sg-1g4u82s-removeButton"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="common__button sg-1bdmg0z-root-removeButton"
+              className="common__button sg-3ns3ho-root-removeButton"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
@@ -85,14 +85,14 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
           </Button>
           <Button
             aria-label={null}
-            className="sg-cgogq3-name"
+            className="sg-1p000sf-name"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="common__button sg-llt41d-root-name"
+              className="common__button sg-4vcewk-root-name"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -106,76 +106,52 @@ exports[`<ChipsLayout /> should render with one chip 1`] = `
     <div
       className="sg-1l5tw3l-moreButtonWrapper"
     >
-      <RippleButton
-        className="sg-jtmjaa-moreButton"
-        disabled={false}
-        fill={true}
-        flat={false}
+      <ButtonBase
+        className="sg-vwngim-moreButton"
         onClick={[Function]}
-        rippleClassName=""
-        rippleSize={null}
-        testId="Button"
-        type="plain"
-        wrapContent={true}
       >
-        <Button
-          className="sg-jtmjaa-moreButton ui-shared__ripple-button"
+        <button
+          className="engage__button-base sg-11i8owp-ButtonBase-root-moreButton"
           disabled={false}
-          flat={false}
           onClick={[Function]}
-          testId="Button"
-          type="plain"
-          wrapContent={false}
+          onKeyDown={[Function]}
+          onLostPointerCapture={[Function]}
+          onPointerCancel={[Function]}
+          onPointerDown={[Function]}
+          onPointerLeave={[Function]}
+          onPointerUp={[Function]}
+          type="button"
         >
-          <Button
-            className="ui-shared__button ui-shared__ripple-button sg-13li33e-button-moreButton"
-            disabled={false}
-            onClick={[Function]}
-            testId="Button"
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string="more"
+            transform={null}
           >
-            <button
-              className="common__button ui-shared__button ui-shared__ripple-button sg-11ej0u6-root-button-moreButton"
-              data-test-id="Button"
-              disabled={false}
-              onClick={[Function]}
+            <span
+              className={null}
+              role={null}
             >
-              <Ripple
-                className="sg-fpa50s-contentWrapper"
-                color="#000"
-                disabled={false}
-                fill={true}
-                onClick={[Function]}
-                onComplete={[Function]}
-                overflow={true}
-                size={null}
-              >
-                <div
-                  className="ui-shared__ripple sg-fpa50s-contentWrapper"
-                  data-test-id="Ripple"
-                  onClick={[Function]}
-                  style={null}
-                >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
-                    className={null}
-                    params={{}}
-                    role={null}
-                    string="more"
-                    transform={null}
-                  >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      more
-                    </span>
-                  </Translate>
-                </div>
-              </Ripple>
-            </button>
-          </Button>
-        </Button>
-      </RippleButton>
+              more
+            </span>
+          </Translate>
+          <Ripple
+            ripples={[]}
+          >
+            <span
+              className="sg-sfhzfw-ButtonBaseRipple-container"
+            >
+              <TransitionGroup
+                childFactory={[Function]}
+                component={null}
+                exit={true}
+              />
+            </span>
+          </Ripple>
+        </button>
+      </ButtonBase>
     </div>
   </div>
 </ChipLayout>
@@ -205,19 +181,19 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip sg-ih9beq-chip"
+          className="ui-shared__chip sg-e9rqvi-chip"
           data-test-id="some-id"
         >
           <Button
             aria-label={null}
-            className="sg-18bi9x7-removeButton"
+            className="sg-1g4u82s-removeButton"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="common__button sg-1bdmg0z-root-removeButton"
+              className="common__button sg-3ns3ho-root-removeButton"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
@@ -266,14 +242,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           </Button>
           <Button
             aria-label={null}
-            className="sg-cgogq3-name"
+            className="sg-1p000sf-name"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="common__button sg-llt41d-root-name"
+              className="common__button sg-4vcewk-root-name"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -293,19 +269,19 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
         removeLabel={null}
       >
         <div
-          className="ui-shared__chip sg-ih9beq-chip"
+          className="ui-shared__chip sg-e9rqvi-chip"
           data-test-id="some-other-id"
         >
           <Button
             aria-label={null}
-            className="sg-18bi9x7-removeButton"
+            className="sg-1g4u82s-removeButton"
             disabled={false}
             onClick={[Function]}
             testId="removeFilter"
           >
             <button
               aria-label={null}
-              className="common__button sg-1bdmg0z-root-removeButton"
+              className="common__button sg-3ns3ho-root-removeButton"
               data-test-id="removeFilter"
               disabled={false}
               onClick={[Function]}
@@ -354,14 +330,14 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
           </Button>
           <Button
             aria-label={null}
-            className="sg-cgogq3-name"
+            className="sg-1p000sf-name"
             disabled={false}
             onClick={[Function]}
             testId="Button"
           >
             <button
               aria-label={null}
-              className="common__button sg-llt41d-root-name"
+              className="common__button sg-4vcewk-root-name"
               data-test-id="Button"
               disabled={false}
               onClick={[Function]}
@@ -375,76 +351,52 @@ exports[`<ChipsLayout /> should render with two chips 1`] = `
     <div
       className="sg-1l5tw3l-moreButtonWrapper"
     >
-      <RippleButton
-        className="sg-jtmjaa-moreButton"
-        disabled={false}
-        fill={true}
-        flat={false}
+      <ButtonBase
+        className="sg-vwngim-moreButton"
         onClick={[Function]}
-        rippleClassName=""
-        rippleSize={null}
-        testId="Button"
-        type="plain"
-        wrapContent={true}
       >
-        <Button
-          className="sg-jtmjaa-moreButton ui-shared__ripple-button"
+        <button
+          className="engage__button-base sg-11i8owp-ButtonBase-root-moreButton"
           disabled={false}
-          flat={false}
           onClick={[Function]}
-          testId="Button"
-          type="plain"
-          wrapContent={false}
+          onKeyDown={[Function]}
+          onLostPointerCapture={[Function]}
+          onPointerCancel={[Function]}
+          onPointerDown={[Function]}
+          onPointerLeave={[Function]}
+          onPointerUp={[Function]}
+          type="button"
         >
-          <Button
-            className="ui-shared__button ui-shared__ripple-button sg-13li33e-button-moreButton"
-            disabled={false}
-            onClick={[Function]}
-            testId="Button"
+          <Translate
+            acceptPlainTextWithPlaceholders={false}
+            className={null}
+            params={{}}
+            role={null}
+            string="more"
+            transform={null}
           >
-            <button
-              className="common__button ui-shared__button ui-shared__ripple-button sg-11ej0u6-root-button-moreButton"
-              data-test-id="Button"
-              disabled={false}
-              onClick={[Function]}
+            <span
+              className={null}
+              role={null}
             >
-              <Ripple
-                className="sg-fpa50s-contentWrapper"
-                color="#000"
-                disabled={false}
-                fill={true}
-                onClick={[Function]}
-                onComplete={[Function]}
-                overflow={true}
-                size={null}
-              >
-                <div
-                  className="ui-shared__ripple sg-fpa50s-contentWrapper"
-                  data-test-id="Ripple"
-                  onClick={[Function]}
-                  style={null}
-                >
-                  <Translate
-                    acceptPlainTextWithPlaceholders={false}
-                    className={null}
-                    params={{}}
-                    role={null}
-                    string="more"
-                    transform={null}
-                  >
-                    <span
-                      className={null}
-                      role={null}
-                    >
-                      more
-                    </span>
-                  </Translate>
-                </div>
-              </Ripple>
-            </button>
-          </Button>
-        </Button>
-      </RippleButton>
+              more
+            </span>
+          </Translate>
+          <Ripple
+            ripples={[]}
+          >
+            <span
+              className="sg-sfhzfw-ButtonBaseRipple-container"
+            >
+              <TransitionGroup
+                childFactory={[Function]}
+                component={null}
+                exit={true}
+              />
+            </span>
+          </Ripple>
+        </button>
+      </ButtonBase>
     </div>
   </div>
 </ChipLayout>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Selector from './index';
 
 jest.mock('@shopgate/engage/core', () => ({
@@ -26,7 +26,7 @@ const values = [
 
 describe('Filter: <Selector />', () => {
   it('should render with minimum props', () => {
-    const wrapper = shallow(<Selector id="foo" label="bar" values={values} />);
-    expect(wrapper).toMatchSnapshot();
+    const wrapper = render(<Selector id="foo" label="bar" values={values} />);
+    expect(wrapper.asFragment()).toMatchSnapshot();
   });
 });

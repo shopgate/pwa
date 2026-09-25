@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getSubstitutionPreferencesEnabled } from '@shopgate/engage/core/selectors/merchantSettings';
+import { getSubstitutionPreferencesEnabled } from '@shopgate/engage/settings/selectors/merchantSettings';
 
 /**
  * Maps the current application state to the component props.

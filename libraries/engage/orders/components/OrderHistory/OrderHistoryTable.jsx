@@ -6,10 +6,13 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { getTranslatedOrderStatus } from '../../helpers';
 
 const useStyles = makeStyles()(theme => ({
+  card: {
+    margin: '5px 5px 10px',
+  },
   tableHeader: {
     '& > th': {
       padding: theme.spacing(2),
-      fontWeight: 500,
+      fontWeight: theme.typography.fontWeightMedium,
       textOverflow: 'ellipsis',
       overflow: 'hidden',
     },
@@ -86,7 +89,7 @@ export const Table = ({ children }) => {
   const { classes } = useStyles();
 
   return (
-    <Card>
+    <Card className={classes.card}>
       <table>
         <thead>
           <tr className={classes.tableHeader}>

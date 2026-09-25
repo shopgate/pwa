@@ -26,7 +26,7 @@ export const CartItemCouponLayoutContext = React.createContext({
 
 const useStyles = makeStyles()(theme => ({
   item: {
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
     padding: theme.spacing(0.5, 2),
   },
   icon: {

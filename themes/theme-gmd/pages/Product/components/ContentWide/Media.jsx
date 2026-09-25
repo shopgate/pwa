@@ -5,17 +5,11 @@ import {
 } from '@shopgate/engage/components';
 import {
   ProductImage,
-  getProductImageSettings,
   ProductListTypeProvider,
   ProductListEntryProvider,
 } from '@shopgate/engage/product';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import connect from './Media.connector';
-
-const {
-  HeroImage: pdpResolutions,
-  GalleryImage: galleryResolutions,
-} = getProductImageSettings();
 
 const useStyles = makeStyles()({
   root: {
@@ -170,7 +164,7 @@ const Media = ({
                     <ProductImage
                       onClick={() => handleOpenGallery(0)}
                       src={images[imageIndex]}
-                      resolutions={galleryResolutions}
+                      context="gallery"
                     />
                   </div>
                   <div className={classes.modalGallery}>
@@ -185,7 +179,7 @@ const Media = ({
                       >
                         <ProductImage
                           src={image}
-                          resolutions={galleryResolutions}
+                          context="gallery"
                         />
                       </div>
                     ))}
@@ -209,7 +203,7 @@ const Media = ({
             <ProductImage
               className={classes.image}
               src={featuredImage}
-              resolutions={pdpResolutions}
+              context="pdp"
             />
           </div>
           <div className={classes.gallery}>
@@ -222,7 +216,7 @@ const Media = ({
                 >
                   <ProductImage
                     src={image}
-                    resolutions={pdpResolutions}
+                    context="pdp"
                   />
                 </div>
               )))

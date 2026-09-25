@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import Card from '@shopgate/pwa-ui-shared/Card';
+import Card from '../Card';
 import { useRadioGroup } from '../RadioGroup';
 import Radio from '../Radio';
 
 const useStyles = makeStyles()(theme => ({
   card: {
+    margin: '5px 5px 10px',
     borderRadius: 4,
     padding: '8px 8px 8px 4px',
     display: 'flex',

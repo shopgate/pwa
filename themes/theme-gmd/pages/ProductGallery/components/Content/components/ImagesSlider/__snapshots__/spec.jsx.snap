@@ -93,9 +93,9 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                 >
                   <Image
                     alt=""
-                    animating={false}
                     backgroundColor="transparent"
                     classNameImg="sg-1nm4qaq-slide"
+                    ratio={null}
                     resolutions={
                       [
                         {
@@ -123,9 +123,9 @@ exports[`<ProductGallery.Content> page should pass initialSlide prop 1`] = `
                 >
                   <Image
                     alt=""
-                    animating={false}
                     backgroundColor="transparent"
                     classNameImg="sg-1nm4qaq-slide"
+                    ratio={null}
                     resolutions={
                       [
                         {
@@ -247,9 +247,9 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                 >
                   <Image
                     alt=""
-                    animating={false}
                     backgroundColor="transparent"
                     classNameImg="sg-1nm4qaq-slide"
+                    ratio={null}
                     resolutions={
                       [
                         {
@@ -277,9 +277,9 @@ exports[`<ProductGallery.Content> page should render Swiper with images 1`] = `
                 >
                   <Image
                     alt=""
-                    animating={false}
                     backgroundColor="transparent"
                     classNameImg="sg-1nm4qaq-slide"
+                    ratio={null}
                     resolutions={
                       [
                         {

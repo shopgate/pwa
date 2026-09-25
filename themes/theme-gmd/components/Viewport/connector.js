@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { getEnableWebIndexing, getFavicon, getGoogleSiteVerificationCode } from '@shopgate/engage/core';
+import { getEnableWebIndexing } from '@shopgate/engage/settings/selectors/merchantSettings';
+import { getFavicon, getGoogleSiteVerificationCode } from '@shopgate/engage/settings/selectors/shopSettings';
 
 /**
  * Maps the contents of the state to the component props.

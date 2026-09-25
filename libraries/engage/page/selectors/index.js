@@ -2,8 +2,8 @@ import { createSelector } from 'reselect';
 import {
   makeGetMenu,
   makeGetIsFetchingMenu,
-  getEnableCms2ForAllShoppers,
 } from '@shopgate/engage/core/selectors';
+import { getEnableCms2ForAllShoppers } from '@shopgate/engage/settings/selectors/shopSettings';
 import {
   getFulfillmentParams,
   getPopulatedProductsResult,

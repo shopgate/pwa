@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { StoreContext } from '../Store.context';
 import { StoreDetails } from '../StoreDetails';
 
@@ -34,11 +34,21 @@ describe('engage > locations > StoreList > StoreDetails', () => {
   };
 
   it('should render as expected', () => {
-    const wrapper = mount((
+    render((
       <StoreContext.Provider value={store}>
         <StoreDetails />
       </StoreContext.Provider>
     ));
-    expect(wrapper).toMatchSnapshot();
+
+    expect(screen.getByRole('row', { name: 'locations.mon: 09:00 - 17:00' })).toBeTruthy();
+    expect(screen.getByRole('row', { name: 'locations.sun: 09:00 - 17:00' })).toBeTruthy();
+
+    const phoneLink = screen.getByRole('link', { name: /locations.phone: 06033123/i });
+    expect(phoneLink.getAttribute('href')).toEqual('tel:06033123');
+
+    expect(screen.getByText('Marktplatz 12')).toBeTruthy();
+    expect(screen.getByText('06033123')).toBeTruthy();
+    expect(document.body).toHaveTextContent('locations.address');
+    expect(document.body).toHaveTextContent('locations.map_open');
   });
 });

@@ -20,8 +20,7 @@ import { ConditionalWrapper } from '../../../components';
 
 const useStyles = makeStyles()(theme => ({
   title: {
-    fontWeight: 500,
-    lineHeight: 1.125,
+    fontWeight: theme.typography.fontWeightMedium,
     wordBreak: ['keep-all', 'break-word'],
     hyphens: 'auto',
   },
@@ -35,7 +34,7 @@ const useStyles = makeStyles()(theme => ({
   menuToggleButton: {
     height: theme.spacing(4),
     width: theme.spacing(4),
-    fontSize: theme.spacing(3),
+    fontSize: theme.components.icon.medium,
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',

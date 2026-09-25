@@ -3,7 +3,7 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import {
   getWishlistItemNotesEnabled,
   getWishlistItemQuantityEnabled,
-} from '@shopgate/engage/core/selectors';
+} from '@shopgate/engage/settings/selectors/shopSettings';
 import { SHOPGATE_USER_ADD_FAVORITES } from '../constants/Pipelines';
 import { successAddFavorites, errorAddFavorites } from '../action-creators';
 import {

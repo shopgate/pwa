@@ -1,8 +1,9 @@
 import React, { useMemo, useCallback } from 'react';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
-  FormBuilder, I18n, Link, RippleButton, MessageBar, ResponsiveContainer,
+  FormBuilder, I18n, Link, MessageBar, ResponsiveContainer,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { LOGIN_PATH, useRoute, i18n } from '@shopgate/engage/core';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import generateFormConfig from './OrderDetailsAuthenticateForm.config';
@@ -21,11 +22,8 @@ const useStyles = makeStyles()(theme => ({
   form: {
     ...StylePresets.getOutlinedFormFields(theme),
   },
-  submitButton: {
-    width: '100%',
-  },
   loginLink: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     ':hover': {
       textDecoration: 'underline',
     },
@@ -133,14 +131,14 @@ const OrderDetailsAuthenticate = () => {
             onSubmit={handleSubmit}
           />
           <div>
-            <RippleButton
-              type="secondary"
+            <Button
+              color="primary"
+              fullWidth
               onClick={handleSubmit}
               disabled={isLoading}
-              className={classes.submitButton}
             >
               {i18n.text('common.submit')}
-            </RippleButton>
+            </Button>
           </div>
         </>
         )}

@@ -3,15 +3,15 @@ import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   tier: {
     display: 'block',
     lineHeight: 1.35,
   },
   price: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.

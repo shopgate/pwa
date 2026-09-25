@@ -5,19 +5,21 @@ import {
   PRODUCT_ITEM_NAME_BEFORE,
   PRODUCT_ITEM_NAME_AFTER,
 } from '@shopgate/engage/category/constants';
+import { useSelector } from 'react-redux';
 import { Portal } from '@shopgate/engage/components';
 import { ProductName, ProductRatingStars } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
+import { getProductTileNameMaxLines } from '@shopgate/engage/settings/selectors/appSettings';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    fontWeight: '500',
-    lineHeight: 1.15,
+    fontSize: theme.typography.body2.fontSize,
+    fontWeight: theme.typography.fontWeightMedium,
     marginTop: 1,
     wordBreak: ['keep-all', 'break-word'],
     hyphens: 'auto',
   },
-});
+}));
 
 /**
  * The item name component.
@@ -30,6 +32,7 @@ const ItemName = ({
   name,
 }) => {
   const { classes, cx } = useStyles();
+  const productNameLines = useSelector(getProductTileNameMaxLines);
   const portalProps = useMemo(() => ({
     productId,
     display,
@@ -64,6 +67,7 @@ const ItemName = ({
         portalName={PRODUCT_ITEM_NAME}
         portalProps={portalProps}
         testId={`Productname: ${name}`}
+        rows={productNameLines}
       />
     </>
   );

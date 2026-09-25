@@ -9,6 +9,6 @@ describe('<Header />', () => {
     const wrapper = shallow(<Header title={title} />, mockRenderOptions);
 
     expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('GridItem').first().props().children).toEqual(title);
+    expect(wrapper.find({ variant: 'h3' }).first().props().children).toEqual(title);
   });
 });

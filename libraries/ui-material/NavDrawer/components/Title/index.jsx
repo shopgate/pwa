@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
+import { I18n, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    color: themeColors.shade11,
-    fontSize: '0.875rem',
-    fontWeight: 500,
+    color: theme.palette.grey.dark,
     margin: '16px 0 0 16px',
   },
-});
+}));
 
 /**
  * @param {Object} props The component props.
@@ -25,9 +22,9 @@ const NavDrawerTitle = ({ text }) => {
   }
 
   return (
-    <div className={classes.root}>
+    <Typography variant="subtitle2" component="div" className={classes.root}>
       <I18n.Text string={text} />
-    </div>
+    </Typography>
   );
 };
 

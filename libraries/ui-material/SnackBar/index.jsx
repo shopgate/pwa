@@ -2,13 +2,12 @@ import React, {
   useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import PropTypes from 'prop-types';
-import Color from 'color';
 import { config } from 'react-spring';
 import { Spring } from 'react-spring/renderprops.cjs';
 import Ellipsis from '@shopgate/pwa-common/components/Ellipsis';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { useLongPress } from '@shopgate/engage/core/hooks/events';
-import { themeColors, themeShadows } from '@shopgate/pwa-common/helpers/config';
+import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const defaultToast = {};
@@ -19,16 +18,11 @@ const defaultToast = {};
 // onRest callback, which fires unreliably during the toast-to-toast handoff.
 const EXIT_ANIMATION_MS = 500;
 
-const backgroundColor = themeColors.lightDark;
-const buttonColor = themeColors.accent;
-const buttonColorContrast = Color(buttonColor).contrast(Color(backgroundColor));
-const safeButtonColor = buttonColorContrast > 4 ? buttonColor : themeColors.light;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'fixed',
     height: 'var(--snack-bar-height, 80px)',
-    bottom: 'max(var(--footer-height), var(--safe-area-inset-bottom))',
+    bottom: `max(var(--footer-height), ${theme.layout.safeArea.bottom})`,
     transition: 'bottom 0.3s ease',
     overflow: 'hidden',
     zIndex: 6,
@@ -45,12 +39,12 @@ const useStyles = makeStyles()({
   },
   box: {
     alignItems: 'center',
-    background: backgroundColor,
+    background: theme.components.snackbar.background,
     borderRadius: 3,
-    boxShadow: themeShadows.toast,
-    color: themeColors.light,
+    boxShadow: '0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12)',
+    color: theme.contrastColor(theme.components.snackbar.background),
     display: 'flex',
-    fontSize: '0.875rem',
+    fontSize: theme.typography.body2.fontSize,
     justifyContent: 'space-between',
     letterSpacing: 0.5,
     margin: 16,
@@ -65,16 +59,12 @@ const useStyles = makeStyles()({
     overflow: 'hidden',
   },
   actionButton: {
-    color: safeButtonColor,
-    fontWeight: 500,
-    height: 36,
-    letterSpacing: 'inherit',
     margin: '0 -8px 0 8px',
-    outline: 0,
+    minWidth: 0,
     padding: '0 8px',
     textTransform: 'uppercase',
   },
-});
+}));
 
 /**
  * Calculates the required amount of rows for the snack bar.
@@ -239,14 +229,16 @@ const SnackBar = ({ removeToast, toasts: toastsProp }) => {
                 </span>
               </Ellipsis>
               {(action && actionLabel) && (
-                <button
+                <Button
                   className={classes.actionButton}
+                  variant="text"
+                  size="small"
+                  color="secondary"
                   onClick={handleAction}
-                  type="button"
                   aria-hidden
                 >
                   {actionLabel}
-                </button>
+                </Button>
               )}
             </div>
           </div>

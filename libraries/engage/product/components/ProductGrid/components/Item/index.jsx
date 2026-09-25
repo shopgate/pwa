@@ -4,22 +4,26 @@ import { isBeta } from '@shopgate/engage/core';
 import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/product';
 import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
-import { themeConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
 
-const { colors } = themeConfig;
-
 const useStyles = makeStyles()((theme, { display }) => ({
   root: {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    background: colors.light,
     height: '100%',
+    padding: theme.components.tiles.padding,
+    background: theme.components.tiles.backgroundColor,
+    border: theme.components.tiles.border,
+    borderRadius: theme.components.tiles.borderRadius,
+  },
+  image: {
+    display: 'block',
+    padding: theme.components.tiles.imagePadding,
   },
   itemDetails: {
     position: 'relative',
@@ -43,6 +47,7 @@ const Item = ({ product, display }) => {
   return (
     <div className={cx(classes.root, 'theme__product-grid__item')}>
       <Link
+        className={classes.image}
         role="none"
         href={getProductRoute(product.id)}
         state={{

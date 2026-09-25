@@ -7,11 +7,11 @@ import SideNavigationLinks from './SideNavigationLinks';
 import SideNavigationItem from './SideNavigationItem';
 import { useSideNavigation } from './SideNavigation.hooks';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   container: {
-    background: '#fff',
+    background: theme.palette.background.surface,
   },
-});
+}));
 
 /**
  * SideNavigationContent component.

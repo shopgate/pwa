@@ -9,10 +9,10 @@ import user from './user';
  * @typedef {import('../locations.types').LocationsState} LocationsState
  */
 
-export default combineReducers(/** @type {LocationsState} */({
+export default combineReducers({
   userFormInput,
   userSearch,
   user,
   storeFinderSearch,
   storage,
-}));
+});

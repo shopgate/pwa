@@ -1,26 +1,25 @@
 import React, { useContext } from 'react';
 import { every, isEmpty } from 'lodash';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { StoreContext } from './Store.context';
 import { StoreOpeningHours } from '../StoreList/StoreOpeningHours';
 import { Accordion, I18n } from '../../../components';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   accordionHeader: {
-    borderTop: `1px solid ${themeColors.shade7}`,
+    borderTop: `1px solid ${theme.components.border.light}`,
     cursor: 'pointer',
     ' svg': {
       display: 'inline',
     },
   },
   accordionContent: {
-    fontSize: '0.875rem',
     ' > div': {
       padding: 0,
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}
@@ -40,9 +39,9 @@ const StoreFinderLocationDetails = () => {
         <I18n.Text string="locations.details" />
       )}
     >
-      <div className={classes.accordionContent}>
+      <Typography variant="body2" component="div" className={classes.accordionContent}>
         <StoreOpeningHours hours={operationHours} pure />
-      </div>
+      </Typography>
     </Accordion>
   );
 };

@@ -1,74 +1,80 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { FulfillmentContext } from '../../../locations.context';
-import StoreContext from '../Store.context';
-import StoreDetails from '../StoreAddress';
+import { StoreContext } from '../Store.context';
+import { StoreAddress } from '../StoreAddress';
 
-const addresses = [
-  {
-    code: 'address',
-    phoneNumber: '000-000-0000',
+/* eslint-disable react/prop-types */
+
+jest.mock('../../../../components', () => ({
+  LocationIcon: () => <span data-testid="location-icon" />,
+}));
+
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  i18n: {
+    text: jest.fn(() => 'locations.address'),
   },
-];
+}));
+
+jest.mock('../../StockInfo', () => ({
+  StockInfo: ({ location }) => <div data-testid="stock-info">{location?.name}</div>,
+}));
+
+const address = {
+  street: 'Main St 1',
+  street2: 'Building A',
+  street3: '',
+  street4: null,
+  city: 'Town',
+  postalCode: '12345',
+};
 
 const store = {
   code: 'store',
   name: 'SomeStore',
-  operationHours: {
-    mon: '8:00am - 4:00pm',
-  },
-  productInventory: {
-    visible: 10,
-  },
-  addresses,
-};
-
-const context = {
-  selectLocation: jest.fn(),
+  address,
 };
 
 describe.skip('<StoreAddress />', () => {
-  it('should not render if no store is passed', () => {
-    const wrapper = mount((
-      <FulfillmentContext.Provider value={context}>
+  it('should not render if no address is passed', () => {
+    const { container } = render((
+      <FulfillmentContext.Provider value={{ product: null }}>
         <StoreContext.Provider value={store}>
-          <StoreDetails address={addresses} />
+          <StoreAddress address={null} />
         </StoreContext.Provider>
       </FulfillmentContext.Provider>
     ));
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance()).toEqual(null);
+
+    expect(container.firstChild).toBeNull();
   });
 
-  it('should render as expected', () => {
-    const wrapper = mount((
-      <FulfillmentContext.Provider value={context}>
+  it('should render the store address', () => {
+    render((
+      <FulfillmentContext.Provider value={{ product: { id: 'p1' } }}>
         <StoreContext.Provider value={store}>
-          <StoreDetails address={addresses} />
+          <StoreAddress address={address} />
         </StoreContext.Provider>
       </FulfillmentContext.Provider>
     ));
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('[data-test-id="store-name"]').text()).toEqual(store.name);
-    expect(wrapper.find('StoreAddressHoursToday').props().hours).toEqual(store.operationHours);
-    expect(wrapper.find('StoreAddressOpeningHours').props().hours).toEqual(store.operationHours);
-    expect(wrapper.find('StoreAddressMailingAddress').props().address).toEqual(store.addresses[0]);
-    expect(wrapper.find('StoreAddressPhoneNumber').props().phone).toEqual(store.addresses[0].phoneNumber);
+
+    expect(screen.getByTestId('location-icon')).toBeTruthy();
+    expect(screen.getByText('Main St 1')).toBeTruthy();
+    expect(screen.getByText('Building A')).toBeTruthy();
+    expect(screen.getByText('locations.address')).toBeTruthy();
+    expect(screen.getByTestId('stock-info')).toHaveTextContent('SomeStore');
   });
 
-  it('should handle the store selection', () => {
-    const wrapper = mount((
-      <FulfillmentContext.Provider value={context}>
+  it('should not render stock info without product in context', () => {
+    render((
+      <FulfillmentContext.Provider value={{ product: null }}>
         <StoreContext.Provider value={store}>
-          <StoreDetails address={addresses} />
+          <StoreAddress address={address} />
         </StoreContext.Provider>
       </FulfillmentContext.Provider>
     ));
-    expect(wrapper).toMatchSnapshot();
-    wrapper.find('div[role="button"]').simulate('click');
-    expect(context.selectLocation).toHaveBeenCalledWith({
-      code: store.code,
-      name: store.name,
-    });
+
+    expect(screen.queryByTestId('stock-info')).toBeNull();
   });
 });
+
+/* eslint-enable react/prop-types */

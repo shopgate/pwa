@@ -1,5 +1,4 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
@@ -95,21 +94,6 @@ describe('<FavoritesButton />', () => {
       expect(dispatcher).toHaveBeenCalled();
       done();
     }, 0);
-  });
-
-  it('should process ripple complete callback', async () => {
-    const onRippleComplete = jest.fn();
-    component = createComponent(mockedStateOnList, {
-      productId: '1',
-      active: true,
-      onRippleComplete,
-    });
-
-    await act(async () => {
-      component.find('Ripple').invoke('onComplete')();
-    });
-    component.update();
-    expect(onRippleComplete).toHaveBeenCalled();
   });
 
   it('should only react on first click', (done) => {

@@ -1,22 +1,29 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import ActionButton from '../ActionButton';
+import { fireEvent, render } from '@testing-library/react';
 import { UnwrappedButtonLink as ButtonLink } from './index';
 
 describe('<ButtonLink>', () => {
   describe('On click action', () => {
-    beforeAll(() => {
-      ActionButton.clickDelay = 0;
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+
+    afterEach(() => {
+      jest.runOnlyPendingTimers();
+      jest.useRealTimers();
     });
 
     it('should create component and open page on click', () => {
       const mockedNavigate = jest.fn();
       const link = 'https://example.com';
-      const component = shallow((
+      const component = render((
         <ButtonLink href={link} navigate={mockedNavigate}>Text inside</ButtonLink>
       ));
-      expect(component).toMatchSnapshot();
-      component.simulate('click');
+
+      expect(component.container.firstChild).toMatchSnapshot();
+      fireEvent.click(component.container.querySelector('button'));
+      jest.runOnlyPendingTimers();
+
       expect(mockedNavigate).toHaveBeenCalledTimes(1);
       expect(mockedNavigate).toHaveBeenCalledWith(link);
     });

@@ -9,9 +9,10 @@ import {
   CHECKOUT_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
-  View, I18n, Link, Portal, TextField, RippleButton,
-  PersonIcon, LockIcon, VisibilityIcon, VisibilityOffIcon,
+  View, I18n, Link, Portal, TextField,
+  PersonIcon, LockIcon, VisibilityIcon, VisibilityOffIcon, Typography,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { validate, i18n } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import { RouteContext } from '@shopgate/pwa-common/context';
@@ -68,16 +69,9 @@ const useStyles = makeStyles()(theme => ({
     flexGrow: 1,
     padding: theme.spacing(3, 2),
   },
-  headline: {
-    fontSize: '2rem',
-    lineHeight: 1.2,
-    fontWeight: 700,
-  },
   subline: {
-    fontSize: '1.125rem',
     marginBottom: theme.spacing(3),
     marginTop: 4,
-    color: 'var(--color-text-medium-emphasis)',
   },
   form: {
     paddingTop: theme.spacing(3),
@@ -90,8 +84,6 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   forgotWrapper: {
-    textAlign: 'right',
-    fontSize: '0.75rem',
     marginTop: theme.spacing(-2),
     marginBottom: theme.spacing(2),
   },
@@ -99,21 +91,19 @@ const useStyles = makeStyles()(theme => ({
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(3),
   },
-  button: {
-    width: '100%',
-  },
+
   noAccount: {
     marginRight: theme.spacing(0.5),
   },
   signup: {
     display: 'inline-block',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     width: 'auto',
     margin: '-.35em 0 -.35em -.35em',
     padding: '.35em',
   },
   icon: {
-    fill: 'var(--color-text-medium-emphasis)',
+    fill: theme.palette.text.secondary,
     width: '24px',
     height: '24px',
   },
@@ -230,12 +220,12 @@ const Login = ({
       <section className={classes.container} data-test-id="LoginPage">
         <Portal name={PAGE_LOGIN_BEFORE} />
         <Portal name={PAGE_LOGIN}>
-          <div className={cx(classes.headline, 'theme__headline')}>
+          <Typography variant="h1" component="div" className="theme__headline">
             <I18n.Text string="login.headline" />
-          </div>
-          <div className={cx(classes.subline, 'theme__sub-headline')}>
+          </Typography>
+          <Typography variant="h4" component="div" color="textSecondary" className={cx(classes.subline, 'theme__sub-headline')}>
             <I18n.Text string="login.subline" />
-          </div>
+          </Typography>
           <Portal name={PAGE_LOGIN_FORM_BEFORE} />
           <Portal name={PAGE_LOGIN_FORM}>
             <form onSubmit={handleSubmitForm} noValidate className={classes.form}>
@@ -285,17 +275,18 @@ const Login = ({
                   </div>
                 )}
               />
-              <div className={classes.forgotWrapper}>
+              <Typography variant="caption" align="right" component="div" className={classes.forgotWrapper}>
                 <ForgotPassword />
-              </div>
+              </Typography>
               <div className={classes.buttonWrapper} data-test-id="LoginButton">
-                <RippleButton
-                  className={classes.button}
-                  type="secondary"
+                <Button
+                  type="submit"
+                  color="primary"
+                  fullWidth
                   disabled={isLoading || isDisabled}
                 >
                   <I18n.Text string="login.button" />
-                </RippleButton>
+                </Button>
               </div>
             </form>
           </Portal>

@@ -2,21 +2,19 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { PRODUCT_SWATCHES } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '../../../components';
 import { isBeta, useWidgetSettings } from '../../../core';
 import { Swatch } from '../Swatch';
 import connect from './connector';
 
 const WIDGET_ID = '@shopgate/engage/product/Swatches';
-const { typography } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   swatches: {
     marginTop: '8px',
-    lineHeight: typography.lineHeight,
+    lineHeight: theme.typography.body1.lineHeight,
   },
-});
+}));
 
 /**
  * Renders only product swatches from a list of characteristics.

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FocusTrap } from '@shopgate/engage/a11y/components';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import Title from './components/Title';
 import Content from './components/Content';
@@ -19,7 +18,7 @@ const useStyles = makeStyles()({
     width: 270,
     maxHeight: `calc(100vh - ${outerGap * 2}px)`,
     borderRadius: 14,
-    background: themeColors.lightTransparent,
+    background: 'rgba(255, 255, 255, 0.82)',
     backdropFilter: 'blur(20px)',
   },
   content: {

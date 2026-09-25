@@ -18,16 +18,21 @@ import 'swiper/css/navigation';
 import 'swiper/css/zoom';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeColors } from '@shopgate/pwa-common/helpers/config';
 import SwiperItem from './components/SwiperItem';
 
-const useStyles = makeStyles()(() => ({
+const INSET_LEFT = 'var(--swiper-pagination-inset-left, 0px)';
+const INSET_RIGHT = 'var(--swiper-pagination-inset-right, 0px)';
+const INSET_WIDTH = `calc(100% - ${INSET_LEFT} - ${INSET_RIGHT})`;
+
+const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
     maxHeight: '100%',
     '&.pagination-below': {
       '& .swiper-pagination.swiper-pagination-bullets': {
         '--swiper-pagination-bottom': 0,
+        '--swiper-pagination-inset-left': '0px',
+        '--swiper-pagination-inset-right': '0px',
         position: 'relative',
         height: 32,
         lineHeight: '40px',
@@ -36,7 +41,7 @@ const useStyles = makeStyles()(() => ({
   },
   innerContainer: {
     overflow: 'hidden',
-    '--swiper-navigation-color': themeColors.gray,
+    '--swiper-navigation-color': theme.components.swiper.paginationBulletColor,
     '& .swiper-wrapper': {
       alignItems: 'stretch',
     },
@@ -45,11 +50,10 @@ const useStyles = makeStyles()(() => ({
     },
     '& .swiper-pagination': {
       '& .swiper-pagination-bullet': {
-        background: themeColors.gray,
+        background: theme.components.swiper.paginationBulletActiveColor,
         opacity: '.5',
         margin: '0 4px',
         transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
-        border: `1px solid ${themeColors.dark}`,
       },
       '& .swiper-pagination-bullet-active.swiper-pagination-bullet-active-main': {
         opacity: 1,
@@ -58,20 +62,30 @@ const useStyles = makeStyles()(() => ({
     '& .swiper-pagination-fraction': {
       top: 'var(--swiper-pagination-fraction-top-offset, 4px)',
       left: 'auto',
-      right: 0,
+      right: INSET_RIGHT,
       bottom: 'auto',
-      fontSize: 12,
-      background: themeColors.background,
+      fontSize: theme.typography.caption.fontSize,
+      background: theme.components.swiper.paginationFractionBackground,
+      color: theme.contrastColor(theme.components.swiper.paginationFractionBackground),
       borderRadius: '50px',
       width: 'fit-content',
       padding: '4px 8px',
       margin: '4px 16px',
       transition: 'opacity 300ms cubic-bezier(0.25, 0.1, 0.25, 1)',
     },
-    '& .swiper-pagination-progressbar': {
-      background: themeColors.shade7,
+    '&& .swiper-pagination-bullets': {
+      left: INSET_LEFT,
+      width: INSET_WIDTH,
+    },
+    '&& .swiper-pagination-bullets.swiper-pagination-bullets-dynamic': {
+      left: `calc(50% + (${INSET_LEFT} - ${INSET_RIGHT}) / 2)`,
+    },
+    '&& .swiper-pagination-progressbar': {
+      left: INSET_LEFT,
+      width: INSET_WIDTH,
+      background: theme.components.swiper.paginationProgressbarBackground,
       '& .swiper-pagination-progressbar-fill': {
-        background: themeColors.dark,
+        background: theme.components.swiper.paginationProgressbarActiveColor,
       },
     },
   },

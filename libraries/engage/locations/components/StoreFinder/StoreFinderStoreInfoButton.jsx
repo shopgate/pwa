@@ -1,6 +1,6 @@
 import React, { useCallback, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { RippleButton } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { historyPush } from '@shopgate/engage/core';
 import { connect } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -10,14 +10,6 @@ import { StoreFinderContext } from '../../locations.context';
 import { STORE_DETAILS_PATH } from '../../constants';
 
 const useStyles = makeStyles()(theme => ({
-  showStoreInfoButton: {
-    width: '100%',
-    fontSize: '.875rem !important',
-    ':not(:disabled)': {
-      background: 'var(--color-primary)!important',
-      color: 'var(--color-primary-contrast)!important',
-    },
-  },
   showStoreInfoButtonWrapper: {
     padding: theme.spacing(0, 2, 1, 2),
   },
@@ -50,13 +42,15 @@ const StoreFinderStoreInfoButton = ({ openStoreDetail }) => {
 
   return (
     <div className={classes.showStoreInfoButtonWrapper}>
-      <RippleButton
+      <Button
+        color="primary"
+        size="small"
+        fullWidth
         onClick={handleClick}
-        className={classes.showStoreInfoButton}
         disabled={isLoading}
       >
         {i18n.text('locations.store_info')}
-      </RippleButton>
+      </Button>
     </div>
   );
 };

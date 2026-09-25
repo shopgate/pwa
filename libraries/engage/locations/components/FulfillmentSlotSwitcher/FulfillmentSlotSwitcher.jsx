@@ -6,7 +6,7 @@ import FulfillmentSlotSwitcherBar from './FulfillmentSlotSwitcherBar';
 import connect from './FulfillmentSlotSwitcher.connector';
 import { forceOpenFulfillmentSlotDialog } from './FulfillmentSlotProvider';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   card: {
     boxShadow: '0px 4px 2px rgba(0, 0, 0, 0.05)',
     marginBottom: 16,
@@ -14,13 +14,13 @@ const useStyles = makeStyles()({
       borderBottom: 0,
     },
     ' > div': {
-      borderRadius: 5,
+      borderRadius: theme.shape.borderRadius,
       margin: -1,
-      background: '#fff',
-      border: '1px solid #eaeaea',
+      background: theme.palette.background.surface,
+      border: `1px solid ${theme.components.border.light}`,
     },
   },
-});
+}));
 
 /**
  * @returns {JSX}

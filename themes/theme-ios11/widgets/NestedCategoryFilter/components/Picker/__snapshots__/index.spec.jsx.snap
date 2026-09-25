@@ -44,18 +44,20 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -114,7 +116,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
               contentRef={
                 {
                   "current": <div
-                    class="sg-12f1i2r-content"
+                    class="sg-19voeta-content"
                   >
                     <button
                       class="sg-h22tyc-button"
@@ -157,7 +159,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -166,7 +168,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
+                    className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -197,13 +199,13 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-nop4m7-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
                               <Ripple
                                 className="sg-8ivrra-closeIcon"
-                                color="#000"
+                                color="var(--sg-palette-common-black)"
                                 disabled={false}
                                 fill={false}
                                 onClick={[Function]}
@@ -251,7 +253,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -259,11 +261,18 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -295,15 +304,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             className="ui-shared__progress-bar"
                             style={
                               {
-                                "background": {
-                                  "color": [
-                                    92,
-                                    206,
-                                    227,
-                                  ],
-                                  "model": "rgb",
-                                  "valpha": 0.4,
-                                },
+                                "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                 "bottom": 0,
                                 "height": 4,
                                 "overflow": "hidden",
@@ -316,14 +317,14 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                             }
                           >
                             <div
-                              className="sg-hmfbp5-innerElement"
+                              className="sg-1cn0v06-innerElement"
                             />
                           </div>
                         </Transition>
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-12f1i2r-content"
+                      className="sg-19voeta-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -383,7 +384,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                 </Drawer>
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={true}
                   level={4}
@@ -403,7 +404,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                           aria-hidden="true"
                           class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
-                          style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                          style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                         />,
                       }
                     }
@@ -423,7 +424,7 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                       onClick={[Function]}
                       style={
                         {
-                          "background": "#000",
+                          "background": "var(--sg-palette-common-black)",
                           "opacity": 0.2,
                           "pointerEvents": "auto",
                           "transition": "opacity 200ms ease-out",
@@ -487,18 +488,20 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -557,7 +560,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               contentRef={
                 {
                   "current": <div
-                    class="sg-12f1i2r-content"
+                    class="sg-19voeta-content"
                   >
                     <button
                       class="sg-h22tyc-button"
@@ -600,7 +603,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -609,7 +612,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
+                    className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -640,13 +643,13 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-nop4m7-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
                               <Ripple
                                 className="sg-8ivrra-closeIcon"
-                                color="#000"
+                                color="var(--sg-palette-common-black)"
                                 disabled={false}
                                 fill={false}
                                 onClick={[Function]}
@@ -694,7 +697,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -702,11 +705,18 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -738,15 +748,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             className="ui-shared__progress-bar"
                             style={
                               {
-                                "background": {
-                                  "color": [
-                                    92,
-                                    206,
-                                    227,
-                                  ],
-                                  "model": "rgb",
-                                  "valpha": 0.4,
-                                },
+                                "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                 "bottom": 0,
                                 "height": 4,
                                 "overflow": "hidden",
@@ -759,14 +761,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             }
                           >
                             <div
-                              className="sg-hmfbp5-innerElement"
+                              className="sg-1cn0v06-innerElement"
                             />
                           </div>
                         </Transition>
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-12f1i2r-content"
+                      className="sg-19voeta-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -826,7 +828,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 </Drawer>
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={true}
                   level={4}
@@ -846,7 +848,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           aria-hidden="true"
                           class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
-                          style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                          style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                         />,
                       }
                     }
@@ -866,7 +868,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       onClick={[Function]}
                       style={
                         {
-                          "background": "#000",
+                          "background": "var(--sg-palette-common-black)",
                           "opacity": 0.2,
                           "pointerEvents": "auto",
                           "transition": "opacity 200ms ease-out",
@@ -970,18 +972,20 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -1040,7 +1044,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
               contentRef={
                 {
                   "current": <div
-                    class="sg-12f1i2r-content"
+                    class="sg-19voeta-content"
                   >
                     <button
                       class="sg-h22tyc-button"
@@ -1083,7 +1087,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1092,7 +1096,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-1wgf7aq-container-drawerAnimOut-container"
+                    className="common__drawer sg-ehcq6i-container-drawerAnimOut-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -1123,13 +1127,13 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-nop4m7-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
                               <Ripple
                                 className="sg-8ivrra-closeIcon"
-                                color="#000"
+                                color="var(--sg-palette-common-black)"
                                 disabled={false}
                                 fill={false}
                                 onClick={[Function]}
@@ -1177,7 +1181,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -1185,11 +1189,18 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -1221,15 +1232,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             className="ui-shared__progress-bar"
                             style={
                               {
-                                "background": {
-                                  "color": [
-                                    92,
-                                    206,
-                                    227,
-                                  ],
-                                  "model": "rgb",
-                                  "valpha": 0.4,
-                                },
+                                "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                 "bottom": 0,
                                 "height": 4,
                                 "overflow": "hidden",
@@ -1242,14 +1245,14 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                             }
                           >
                             <div
-                              className="sg-hmfbp5-innerElement"
+                              className="sg-1cn0v06-innerElement"
                             />
                           </div>
                         </Transition>
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-12f1i2r-content"
+                      className="sg-19voeta-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -1309,7 +1312,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                 </Drawer>
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={false}
                   level={4}
@@ -1329,7 +1332,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                           aria-hidden="true"
                           class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
-                          style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
+                          style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0; pointer-events: none;"
                         />,
                       }
                     }
@@ -1349,7 +1352,7 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                       onClick={[Function]}
                       style={
                         {
-                          "background": "#000",
+                          "background": "var(--sg-palette-common-black)",
                           "opacity": 0,
                           "pointerEvents": "none",
                           "transition": "opacity 200ms ease-out",
@@ -1414,18 +1417,20 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           Category 1-1
@@ -1484,10 +1489,10 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
               contentRef={
                 {
                   "current": <div
-                    class="sg-12f1i2r-content"
+                    class="sg-19voeta-content"
                   >
                     <button
-                      class="sg-y1zczv-buttonSelected"
+                      class="sg-130gbr2-buttonSelected"
                       type="button"
                       value="1-1"
                     >
@@ -1527,7 +1532,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={true}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1536,7 +1541,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 >
                   <div
                     aria-modal={true}
-                    className="common__drawer sg-14bsy0q-container-drawerAnimIn-container"
+                    className="common__drawer sg-y74jk3-container-drawerAnimIn-container"
                     onAnimationEnd={[Function]}
                     role="dialog"
                     style={
@@ -1567,13 +1572,13 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           >
                             <button
                               aria-label="common.close"
-                              className="sg-cb4y3g-closeButton"
+                              className="sg-nop4m7-closeButton"
                               onClick={[Function]}
                               type="button"
                             >
                               <Ripple
                                 className="sg-8ivrra-closeIcon"
-                                color="#000"
+                                color="var(--sg-palette-common-black)"
                                 disabled={false}
                                 fill={false}
                                 onClick={[Function]}
@@ -1621,7 +1626,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                               </Ripple>
                             </button>
                             <GridItem
-                              className="sg-1gh7dpa-title"
+                              className="sg-1ff2avy-title"
                               component="div"
                               grow={1}
                               role="heading"
@@ -1629,11 +1634,18 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                               tabIndex={0}
                             >
                               <div
-                                className="sg-1yim49x-root-title"
+                                className="sg-12wzbts-root-title"
                                 role="heading"
                                 tabIndex={0}
                               >
-                                Picker Label
+                                <Typography
+                                  className="sg-9uf2sj-titleText"
+                                  component="div"
+                                  noWrap={true}
+                                  variant="h3"
+                                >
+                                  Picker Label
+                                </Typography>
                               </div>
                             </GridItem>
                           </div>
@@ -1665,15 +1677,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             className="ui-shared__progress-bar"
                             style={
                               {
-                                "background": {
-                                  "color": [
-                                    92,
-                                    206,
-                                    227,
-                                  ],
-                                  "model": "rgb",
-                                  "valpha": 0.4,
-                                },
+                                "background": "oklch(from var(--sg-palette-secondary-main) l c h / 0.6)",
                                 "bottom": 0,
                                 "height": 4,
                                 "overflow": "hidden",
@@ -1686,14 +1690,14 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                             }
                           >
                             <div
-                              className="sg-hmfbp5-innerElement"
+                              className="sg-1cn0v06-innerElement"
                             />
                           </div>
                         </Transition>
                       </ProgressBar>
                     </div>
                     <div
-                      className="sg-12f1i2r-content"
+                      className="sg-19voeta-content"
                       onScroll={[Function]}
                     >
                       <SheetList
@@ -1715,7 +1719,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           selected={true}
                         >
                           <button
-                            className="sg-y1zczv-buttonSelected"
+                            className="sg-130gbr2-buttonSelected"
                             key="1-1"
                             onClick={[Function]}
                             type="button"
@@ -1753,7 +1757,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                 </Drawer>
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={true}
                   level={4}
@@ -1773,7 +1777,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                           aria-hidden="true"
                           class="sg-1tlnanp-backdrop  common__backdrop"
                           data-test-id="Backdrop"
-                          style="background: rgb(0, 0, 0); z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
+                          style="z-index: 4; transition: opacity 200ms ease-out; opacity: 0.2; pointer-events: auto;"
                         />,
                       }
                     }
@@ -1793,7 +1797,7 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                       onClick={[Function]}
                       style={
                         {
-                          "background": "#000",
+                          "background": "var(--sg-palette-common-black)",
                           "opacity": 0.2,
                           "pointerEvents": "auto",
                           "transition": "opacity 200ms ease-out",
@@ -1856,18 +1860,20 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
       <div
         aria-disabled={true}
         aria-hidden={true}
-        className="sg-hlwkfd-button-buttonDisabled"
+        className="sg-1qwgkbk-button-buttonDisabled"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -1952,7 +1958,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -1961,7 +1967,7 @@ exports[`<NestedCategoryFilterPicker /> should not accept user interaction when 
                 />
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={false}
                   level={4}
@@ -2044,18 +2050,20 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
-        <div
-          className="sg-1pccjd4-label"
+        <Typography
+          className="sg-at9m9c-label"
+          component="div"
           data-test-id="nested-picker-label"
+          variant="caption"
         >
           Picker Label
-        </div>
+        </Typography>
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -2140,7 +2148,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2149,7 +2157,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker with no initial
                 />
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={false}
                   level={4}
@@ -2232,12 +2240,12 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
       <div
         aria-disabled={false}
         aria-hidden={true}
-        className="sg-tky32e-button"
+        className="sg-bkdzwf-button"
         data-test-id="nested-picker-trigger"
         onClick={[Function]}
       >
         <div
-          className="sg-2yv5tj-selection"
+          className="sg-zq8tsh-selection"
           data-test-id="nested-picker-selection"
         >
           common.please_choose
@@ -2322,7 +2330,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                       "out": "sg-1uynekm-drawerAnimOut",
                     }
                   }
-                  className="sg-omro4t-container"
+                  className="sg-1us1dh1-container"
                   isOpen={false}
                   onClose={[Function]}
                   onDidClose={[Function]}
@@ -2331,7 +2339,7 @@ exports[`<NestedCategoryFilterPicker /> should render the picker without a label
                 />
                 <Backdrop
                   className=""
-                  color="#000"
+                  color="var(--sg-palette-common-black)"
                   duration={200}
                   isVisible={false}
                   level={4}

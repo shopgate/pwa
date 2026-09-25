@@ -52,3 +52,7 @@ extensions/*
 !extensions/@shopgate-theme-config
 themes/*/config/
 .nyc_output
+
+# AI coding assistants — share settings.json, ignore local state
+.claude/*
+!.claude/settings.json

@@ -9,7 +9,7 @@ import transition from './transition';
 
 const { colors } = themeConfig;
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(() => ({
   container: {
     transition: 'transform 400ms cubic-bezier(0.4, 0.0, 0.2, 1)',
     willChange: 'transform',
@@ -29,7 +29,7 @@ const useStyles = makeStyles()({
     padding: 16,
     fill: 'var(--color-button-cta)',
   },
-});
+}));
 
 /**
  * The CartButtonIcon component.

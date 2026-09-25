@@ -1,36 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProductSlider /> should match snapshot 1`] = `
-<ProductListTypeProvider
-  meta={null}
-  subType={null}
-  type="productSlider"
->
-  <Swiper
-    className="engage__product__product-slider"
-    controls={false}
-    freeMode={true}
-    indicators={false}
-    slidesPerView={2.3}
-  >
-    <Swiper.Item
-      className="sg-14dn61s-container"
-      key="prod1"
-    >
-      <ProductListEntryProvider
-        productId="prod1"
-      >
-        <ProductCard
-          productId="prod1"
-          style={
-            {
-              "height": "100%",
-              "margin": "0 8px",
-            }
-          }
-        />
-      </ProductListEntryProvider>
-    </Swiper.Item>
-  </Swiper>
-</ProductListTypeProvider>
+<div
+  data-testid="product-card"
+/>
 `;

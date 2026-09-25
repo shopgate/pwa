@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import { FulfillmentContext } from '../../locations.context';
 import {
   STAGE_SELECT_STORE,
@@ -16,16 +15,14 @@ import { ReserveForm } from '../ReserveForm';
 import { ReservationSuccess, ReservationError } from '../ReservationResponses';
 import { FulfillmentPath } from '../FulfillmentPath';
 
-const { variables } = themeConfig;
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   sheet: {
-    maxHeight: `calc(var(--vh-100, 100vh) - ${variables.navigator.height}px)`,
+    maxHeight: `calc(var(--vh-100, 100vh) - ${theme.components.navigator.height})`,
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
-      maxHeight: `calc(var(--vh-80, 80vh) - ${variables.navigator.height}px)`,
+      maxHeight: `calc(var(--vh-80, 80vh) - ${theme.components.navigator.height})`,
     },
   },
-});
+}));
 
 /**
  * Renders the content of the fulfillment sheet.

@@ -1,132 +1,146 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import React, { useContext } from 'react';
-import { shallow, mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
+import React from 'react';
+import {
+  render,
+  screen,
+  fireEvent,
+  waitFor,
+} from '@testing-library/react';
 import StoreListSearch from '../StoreListSearch';
+import { FulfillmentContext } from '../../../locations.context';
 
-jest.mock('@shopgate/engage/core');
-jest.mock('@shopgate/engage/components');
-jest.mock('@shopgate/engage/i18n/countries.hooks');
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useContext: jest.fn(),
-  memo: component => component,
+/* eslint-disable react/prop-types */
+
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  i18n: {
+    text: key => key,
+  },
 }));
-jest.mock('../../../locations.context', () => 'FulfillmentContext');
+jest.mock('@shopgate/engage/components', () => ({
+  InfoIcon: () => null,
+  LocatorIcon: () => null,
+  MagnifierIcon: () => null,
+  SurroundPortals: ({ children }) => children,
+  MessageBar: ({ messages }) => <div data-testid="message-bar">{messages[0]?.message}</div>,
+}));
+jest.mock('@shopgate/engage/i18n', () => ({
+  useCountriesNames: jest.fn(codes => codes.reduce((acc, code) => ({ ...acc, [code]: code }), {})),
+}));
+jest.mock('../StoreListSearchRadius', () => function StoreListSearchRadius() {
+  return <div data-testid="store-list-search-radius" />;
+});
 jest.mock('../StoreListSearch.connector', () => cmp => cmp);
 
 describe.skip('engage > locations > components > StoreListSearch', () => {
-  let wrapper;
-  const getProductLocations = jest.fn();
-  const setCountryCode = jest.fn((countryCode) => {
-    wrapper.setProps({ countryCode });
-  });
-  const setPostalCode = jest.fn((postalCode) => {
-    wrapper.setProps({ postalCode });
-  });
+  const setCountryCode = jest.fn();
+  const setPostalCode = jest.fn();
+  const setGeolocation = jest.fn(() => Promise.resolve());
+  const setIsLoading = jest.fn();
 
   const productId = 'ABC123';
   const countryCode = 'DE';
   const postalCode = 'ACME';
 
   const defaultProps = {
-    getProductLocations,
     setCountryCode,
     setPostalCode,
+    setGeolocation,
     countryCode,
     postalCode: null,
   };
+
   const context = {
+    isLoading: false,
+    setIsLoading,
     product: { id: productId },
     locations: [{ code: 'LOCCODE' }],
     shopSettings: { supportedCountries: [countryCode, countryCode] },
   };
 
-  beforeEach(() => {
-    useContext.mockReturnValue(context);
-  });
+  const renderWithContext = (props = {}, contextValue = context) => render(
+    <FulfillmentContext.Provider value={contextValue}>
+      <StoreListSearch {...defaultProps} {...props} />
+    </FulfillmentContext.Provider>
+  );
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should render as expected', () => {
-    wrapper = shallow((
-      <StoreListSearch {...defaultProps} />
-    ));
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ProgressBar').prop('isVisible')).toEqual(false);
-    expect(wrapper.find('input').prop('disabled')).toEqual(false);
+    renderWithContext();
+
+    expect(screen.getByRole('searchbox', { name: 'locations.search_placeholder' })).toBeTruthy();
+    expect(screen.getByRole('searchbox', { name: 'locations.search_placeholder' })).not.toBeDisabled();
   });
 
-  it('should call getProductLocations with a postal code after filling the input and pressing enter', async () => {
-    wrapper = mount((
-      <StoreListSearch {...defaultProps} />
-    ));
+  it('should call setPostalCode with a postal code after filling the input and pressing enter', async () => {
+    renderWithContext();
+    const input = screen.getByRole('searchbox', { name: 'locations.search_placeholder' });
 
-    await act(async () => {
-      await wrapper.find('input').simulate('change', {
-        target: {
-          name: 'postalCode',
-          value: postalCode,
-        },
-      });
-      await wrapper.find('input').simulate('keyDown', { keyCode: 13 });
-      await wrapper.find('input').simulate('blur');
+    fireEvent.change(input, {
+      target: {
+        name: 'postalCode',
+        value: postalCode,
+      },
+    });
+    fireEvent.keyDown(input, { keyCode: 13 });
+
+    await waitFor(() => {
+      expect(setPostalCode).toHaveBeenCalledWith(postalCode, productId, false);
     });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(getProductLocations).toHaveBeenCalledTimes(2);
-    expect(getProductLocations).toHaveBeenCalledWith(productId, null, true);
-    expect(getProductLocations).toHaveBeenCalledWith(productId, {
-      postalCode,
-      countryCode,
-    }, false);
     expect(setCountryCode).not.toHaveBeenCalled();
-    expect(setPostalCode).toHaveBeenCalledWith(postalCode);
-    expect(wrapper.find('input').prop('value')).toEqual(postalCode);
+    expect(input).toHaveValue(postalCode);
   });
 
-  it('should call getProductLocations with a country code after changing country', async () => {
-    wrapper = mount(<StoreListSearch {...defaultProps} postalCode={postalCode} />);
+  it('should call setCountryCode after changing country', async () => {
+    renderWithContext({ postalCode });
 
-    await act(async () => {
-      await wrapper.find('select').simulate('change', { target: { name: 'countryCode', value: 'AT' } });
+    const select = screen.getByRole('combobox');
+    fireEvent.change(select, { target: { name: 'countryCode', value: 'AT' } });
+
+    await waitFor(() => {
+      expect(setCountryCode).toHaveBeenCalledWith('AT', productId, false);
     });
 
-    expect(getProductLocations).toHaveBeenCalledTimes(2);
-    expect(getProductLocations).toHaveBeenCalledWith(productId, { postalCode, countryCode: 'AT' }, false);
-    expect(setCountryCode).toHaveBeenCalledWith('AT');
     expect(setPostalCode).not.toHaveBeenCalled();
-    expect(wrapper.find('select').prop('value')).toEqual('AT');
+    expect(select).toHaveValue('AT');
   });
 
-  it('should NOT call getProductLocations when the country was changed but the postal code input is empty', async () => {
-    wrapper = mount(<StoreListSearch {...defaultProps} postalCode="" />);
-    await act(async () => {
-      await wrapper.find('select').simulate('change', { target: { name: 'countryCode', value: 'AT' } });
+  it('should not trigger postal search updates when country changes and postal code is empty', async () => {
+    renderWithContext({ postalCode: '' });
+
+    const select = screen.getByRole('combobox');
+    fireEvent.change(select, { target: { name: 'countryCode', value: 'AT' } });
+
+    await waitFor(() => {
+      expect(setCountryCode).toHaveBeenCalledWith('AT', productId, false);
     });
 
-    expect(getProductLocations).toHaveBeenCalledTimes(1);
-    expect(getProductLocations).toHaveBeenCalledWith(productId, { countryCode, postalCode: '' }, true);
-    expect(setCountryCode).toHaveBeenCalledWith('AT');
     expect(setPostalCode).not.toHaveBeenCalled();
+    expect(setGeolocation).not.toHaveBeenCalled();
   });
 
-  it('should call getProductLocations after clicking the locate button', async () => {
-    wrapper = mount((
-      <StoreListSearch {...defaultProps} />
-    ));
+  it('should call setGeolocation after clicking the locate button', async () => {
+    renderWithContext();
+    const input = screen.getByRole('searchbox', { name: 'locations.search_placeholder' });
 
-    await act(async () => {
-      await wrapper.find('input').simulate('change', { target: { name: 'postalCode', value: postalCode } });
-      await wrapper.find('button').simulate('click');
-      await wrapper.update();
+    fireEvent.change(input, { target: { name: 'postalCode', value: postalCode } });
+    fireEvent.click(screen.getByRole('button', { name: 'locations.stores_near.location' }));
+
+    await waitFor(() => {
+      expect(setGeolocation).toHaveBeenCalledWith({
+        productId,
+        isStoreFinder: false,
+      });
     });
 
-    expect(getProductLocations).toHaveBeenCalledTimes(2);
-    expect(getProductLocations).toHaveBeenCalledWith(productId, null, false);
-    expect(wrapper.find('input').prop('value')).toEqual('');
+    expect(setIsLoading).toHaveBeenCalledWith(true);
+    expect(setIsLoading).toHaveBeenCalledWith(false);
+    expect(input).toHaveValue('');
   });
 });
+
+/* eslint-enable react/prop-types */
 /* eslint-enable extra-rules/no-single-line-objects */

@@ -1,0 +1,6 @@
+{
+  "$schema": "../../../../../some/where/widget.config.schema.json",
+  "layout": {
+    "applyMediaMargins": { "top": true, "bottom": true }
+  }
+}

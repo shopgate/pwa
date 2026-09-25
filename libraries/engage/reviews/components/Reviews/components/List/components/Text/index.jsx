@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
   root: {
-    fontSize: 14,
     fontStyle: 'italic',
     whiteSpace: 'pre-line',
   },
@@ -23,7 +23,7 @@ const Text = ({ review }) => {
   }
 
   return (
-    <div className={classes.root}>{`"${review}"`}</div>
+    <Typography variant="body2" component="div" className={classes.root}>{`"${review}"`}</Typography>
   );
 };
 

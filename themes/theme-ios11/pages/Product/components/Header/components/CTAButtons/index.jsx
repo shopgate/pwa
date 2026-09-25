@@ -16,8 +16,6 @@ import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig;
 
-const iconSize = 24;
-
 const useStyles = makeStyles()(theme => ({
   buttons: {
     position: 'absolute',
@@ -29,15 +27,11 @@ const useStyles = makeStyles()(theme => ({
   },
   favButton: {
     zIndex: 1,
-    fontSize: iconSize,
   },
   wrapper: {
     position: 'relative',
     top: -40,
     right: -16,
-  },
-  ripple: {
-    padding: 8,
   },
 }));
 
@@ -61,7 +55,7 @@ const CTAButtons = ({
             { isProductActive && (
               <FavoritesButton
                 className={classes.favButton}
-                rippleClassName={classes.ripple}
+                size="medium"
                 active={isFavorite}
                 productId={productId}
               />

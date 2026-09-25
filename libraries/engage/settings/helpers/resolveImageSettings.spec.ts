@@ -1,0 +1,348 @@
+import { getThemeSettings } from '@shopgate/engage/core/config/getThemeSettings';
+import type { ImageSettings } from '../types/appSettings';
+import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
+import { DEFAULT_IMAGE_QUALITY } from '../constants/imageSettings';
+import {
+  resolveImageServiceSettings,
+  resolveProductImageSettings,
+} from './resolveImageSettings';
+
+jest.mock('@shopgate/engage/core/config/getThemeSettings', () => ({
+  getThemeSettings: jest.fn(),
+}));
+
+jest.mock('@shopgate/pwa-core/helpers', () => ({
+  logger: { warn: jest.fn() },
+}));
+
+const mockedGetThemeSettings = getThemeSettings as jest.Mock;
+
+/**
+ * The resolutions the legacy defaults shipped with. Everything derived at a 1:1 ratio has to
+ * reproduce these exactly, otherwise the migration silently changed every image in the app.
+ */
+const LEGACY_RESOLUTIONS = {
+  pdp: [{ width: 440, height: 440 }, { width: 1024, height: 1024 }],
+  gallery: [{ width: 1024, height: 1024 }, { width: 2048, height: 2048 }],
+  list: [{ width: 440, height: 440 }],
+};
+
+/**
+ * Builds image settings on top of the built-in defaults.
+ * @param overrides Partial settings to apply.
+ * @returns The image settings.
+ */
+const buildImageSettings = (overrides: Partial<ImageSettings> = {}): ImageSettings => ({
+  ...DEFAULT_APP_SETTINGS.images,
+  ...overrides,
+});
+
+describe('settings / helpers / resolveImageSettings', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockedGetThemeSettings.mockReturnValue(undefined);
+  });
+
+  describe('resolveProductImageSettings', () => {
+    describe('hydrated', () => {
+      it('reproduces the legacy resolutions at the default 1:1 ratio', () => {
+        const resolved = resolveProductImageSettings(true, buildImageSettings());
+
+        expect(resolved.pdp.resolutions).toEqual(LEGACY_RESOLUTIONS.pdp);
+        expect(resolved.gallery.resolutions).toEqual(LEGACY_RESOLUTIONS.gallery);
+        expect(resolved.list.resolutions).toEqual(LEGACY_RESOLUTIONS.list);
+      });
+
+      // The tuple describes the image that is requested, so it reduces to the configured ratio
+      // rather than repeating its parts.
+      it('reports the ratio of the image it requests', () => {
+        const resolved = resolveProductImageSettings(true, buildImageSettings());
+
+        expect(resolved.pdp.ratio).toEqual([1024, 1024]);
+      });
+
+      it('fans a single global ratio out across every context', () => {
+        const settings = buildImageSettings({
+          product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: { width: 4, height: 5 } },
+        });
+
+        const resolved = resolveProductImageSettings(true, settings);
+
+        expect(resolved.list.resolutions).toEqual([{ width: 440, height: 550 }]);
+        expect(resolved.pdp.resolutions).toEqual([
+          { width: 440, height: 550 },
+          { width: 1024, height: 1280 },
+        ]);
+        expect(resolved.gallery.resolutions).toEqual([
+          { width: 1024, height: 1280 },
+          { width: 2048, height: 2560 },
+        ]);
+        expect(resolved.pdp.ratio).toEqual([1024, 1280]);
+      });
+
+      describe('extreme ratios', () => {
+        // The admin dispatches on every keystroke, so a merchant on their way to a sane value sends
+        // ratios that would ask the image service for dimensions it rejects.
+        it('scales the whole resolution down rather than only capping the height', () => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio: {
+                width: 1,
+                height: 9999,
+              },
+            },
+          });
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 1,
+            height: 4096,
+          }]);
+        });
+
+        // The ratio drives the box the layout reserves. Reporting the configured value there would
+        // reserve one the bounded image cannot fill - or, wide enough, one no percentage expresses.
+        it.each([
+          ['taller than the bound allows', { width: 1, height: 9999 }, [1, 4096]],
+          ['wider than the bound allows', { width: 9999, height: 1 }, [440, 1]],
+          ['beyond what a percentage holds', { width: 1e-300, height: 1e300 }, [1, 4096]],
+        ])('reports a bounded ratio for one %s', (_, ratio, expected) => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio,
+            },
+          });
+
+          const { list } = resolveProductImageSettings(true, settings);
+
+          expect(list.ratio).toEqual(expected);
+          expect(list.ratio).toEqual([list.resolutions[0].width, list.resolutions[0].height]);
+        });
+
+        it('keeps a height of at least one pixel when the ratio rounds it away', () => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio: {
+                width: 9999,
+                height: 1,
+              },
+            },
+          });
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 440,
+            height: 1,
+          }]);
+        });
+
+        it('leaves a ratio that stays within the bound untouched', () => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio: {
+                width: 1,
+                height: 2,
+              },
+            },
+          });
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 440,
+            height: 880,
+          }]);
+        });
+
+        it.each([
+          ['a zero', { width: 0, height: 5 }],
+          ['a NaN', { width: NaN, height: NaN }],
+          ['a negative', { width: -4, height: 5 }],
+          ['an Infinity', { width: 1, height: Infinity }],
+        ])('falls back to a square for %s ratio part', (_, ratio) => {
+          const settings = buildImageSettings({
+            product: {
+              ...DEFAULT_APP_SETTINGS.images.product,
+              ratio,
+            },
+          });
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 440,
+            height: 440,
+          }]);
+          expect(resolved.list.ratio).toEqual([440, 440]);
+        });
+
+        // lodash merge assigns a null over the default rather than skipping it, the way it skips
+        // undefined, so a source that clears a key puts one straight into the slice.
+        it.each([
+          ['the ratio', { product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: null } }],
+          ['the product settings', { product: null }],
+          ['the image settings', null],
+        ])('survives a source that nulls out %s', (_, overrides) => {
+          const settings = (overrides
+            ? buildImageSettings(overrides as unknown as Partial<ImageSettings>)
+            : null) as ImageSettings;
+
+          const resolved = resolveProductImageSettings(true, settings);
+
+          expect(resolved.list.resolutions).toEqual([{
+            width: 440,
+            height: 440,
+          }]);
+          expect(resolved.list.ratio).toEqual([440, 440]);
+        });
+      });
+
+      it('lets a per context override win for that context only', () => {
+        const settings = buildImageSettings({
+          product: {
+            ...DEFAULT_APP_SETTINGS.images.product,
+            ratio: { width: 4, height: 5 },
+            list: { ratio: { width: 1, height: 1 } },
+          },
+        });
+
+        const resolved = resolveProductImageSettings(true, settings);
+
+        expect(resolved.list.resolutions).toEqual([{ width: 440, height: 440 }]);
+        expect(resolved.list.ratio).toEqual([440, 440]);
+        expect(resolved.pdp.ratio).toEqual([1024, 1280]);
+        expect(resolved.gallery.ratio).toEqual([2048, 2560]);
+      });
+
+      it('rounds derived heights to whole pixels', () => {
+        const settings = buildImageSettings({
+          product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: { width: 16, height: 9 } },
+        });
+
+        // 440 * 9 / 16 = 247.5
+        expect(resolveProductImageSettings(true, settings).list.resolutions)
+          .toEqual([{ width: 440, height: 248 }]);
+      });
+
+      it('ignores the legacy settings entirely', () => {
+        mockedGetThemeSettings.mockReturnValue({ ListImage: [{ width: 1, height: 1 }] });
+
+        expect(resolveProductImageSettings(true, buildImageSettings()).list.resolutions)
+          .toEqual(LEGACY_RESOLUTIONS.list);
+      });
+    });
+
+    describe('not hydrated', () => {
+      it('passes the legacy resolutions through unchanged, with no ratio', () => {
+        const legacyList = [{ width: 300, height: 400 }];
+        mockedGetThemeSettings.mockReturnValue({ ListImage: legacyList });
+
+        const resolved = resolveProductImageSettings(false, buildImageSettings());
+
+        expect(resolved.list.resolutions).toBe(legacyList);
+        expect(resolved.list.ratio).toBeNull();
+      });
+
+      it('ignores the configured ratio', () => {
+        mockedGetThemeSettings.mockReturnValue({ ListImage: [{ width: 300, height: 400 }] });
+
+        const settings = buildImageSettings({
+          product: { ...DEFAULT_APP_SETTINGS.images.product, ratio: { width: 4, height: 5 } },
+        });
+
+        expect(resolveProductImageSettings(false, settings).list.resolutions)
+          .toEqual([{ width: 300, height: 400 }]);
+      });
+
+      it.each([
+        ['undefined', undefined],
+        ['an empty object', {}],
+        ['empty arrays', { HeroImage: [], GalleryImage: [], ListImage: [] }],
+      ])('falls back to the legacy defaults when the theme config is %s', (_, themeSettings) => {
+        mockedGetThemeSettings.mockReturnValue(themeSettings);
+
+        const resolved = resolveProductImageSettings(false, buildImageSettings());
+
+        expect(resolved.pdp.resolutions).toEqual(LEGACY_RESOLUTIONS.pdp);
+        expect(resolved.gallery.resolutions).toEqual(LEGACY_RESOLUTIONS.gallery);
+        expect(resolved.list.resolutions).toEqual(LEGACY_RESOLUTIONS.list);
+      });
+    });
+  });
+
+  describe('resolveImageServiceSettings', () => {
+    it('reports the color and the transparency flag separately', () => {
+      expect(resolveImageServiceSettings(true, buildImageSettings())).toMatchObject({
+        fillColor: 'FFFFFF',
+        fillTransparent: true,
+      });
+    });
+
+    it('carries a disabled transparency flag through', () => {
+      const settings = buildImageSettings({ fillTransparent: false });
+
+      expect(resolveImageServiceSettings(true, settings)).toMatchObject({
+        fillColor: 'FFFFFF',
+        fillTransparent: false,
+      });
+    });
+
+    it('splits the packed legacy value', () => {
+      mockedGetThemeSettings.mockReturnValue({ fillColor: 'AAAAAA,0' });
+
+      expect(resolveImageServiceSettings(false, buildImageSettings())).toMatchObject({
+        fillColor: 'AAAAAA',
+        fillTransparent: false,
+      });
+    });
+
+    // Theme configurations carry values the image service does not take - the helper this replaced
+    // stripped the hash off every one of them.
+    it('normalizes a legacy color the image service would not take', () => {
+      mockedGetThemeSettings.mockReturnValue({ fillColor: '#EEEEEE,1' });
+
+      expect(resolveImageServiceSettings(false, buildImageSettings()).fillColor).toBe('EEEEEE');
+    });
+
+    it('defaults the legacy flag to enabled when the suffix is absent', () => {
+      mockedGetThemeSettings.mockReturnValue({ fillColor: '000000' });
+
+      expect(resolveImageServiceSettings(false, buildImageSettings())).toMatchObject({
+        fillColor: '000000',
+        fillTransparent: true,
+      });
+    });
+
+    it('falls back to the default color when the legacy value is missing', () => {
+      expect(resolveImageServiceSettings(false, buildImageSettings()).fillColor)
+        .toBe('FFFFFF');
+    });
+
+    it('reports the configured quality', () => {
+      const settings = buildImageSettings({ quality: 42 });
+
+      expect(resolveImageServiceSettings(true, settings).quality).toBe(42);
+    });
+
+    // The unhydrated slice holds DEFAULT_IMAGE_QUALITY, which is derived from the legacy theme
+    // config, so the quality needs no hydration branch of its own.
+    it('falls back to the defaults when a source nulls the branch out', () => {
+      expect(resolveImageServiceSettings(true, null as unknown as ImageSettings)).toEqual({
+        quality: DEFAULT_IMAGE_QUALITY,
+        fillColor: 'FFFFFF',
+        fillTransparent: true,
+      });
+    });
+
+    it('reports the default quality before hydration', () => {
+      expect(resolveImageServiceSettings(false, buildImageSettings()).quality)
+        .toBe(DEFAULT_IMAGE_QUALITY);
+    });
+  });
+});

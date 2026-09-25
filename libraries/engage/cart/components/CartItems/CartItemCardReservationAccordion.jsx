@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Accordion } from '@shopgate/engage/components';
+import { Accordion, Typography } from '@shopgate/engage/components';
 import { StoreAddress, StoreOpeningHours } from '@shopgate/engage/locations';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CartItemCardReservationLabel } from './CartItemCardReservationLabel';
@@ -12,13 +12,8 @@ const useStyles = makeStyles()(theme => ({
   accordionToggle: {
     padding: theme.spacing(2.5, 2),
   },
-  locationAddress: {
-    fontSize: '0.85rem',
-    color: theme.palette.text.secondary,
-  },
   locationHours: {
     paddingTop: theme.spacing(2),
-    fontSize: '0.85rem',
   },
 }));
 // eslint-disable-next-line max-len
@@ -47,13 +42,13 @@ const CartItemCardReservationAccordion = ({
         />}
     >
       <div className={classes.accordionContent}>
-        <div className={classes.locationAddress}>
+        <Typography variant="body2" component="div" color="textSecondary">
           <StoreAddress address={location.address} pure />
-        </div>
+        </Typography>
         {operationHours && (
-          <div className={classes.locationHours}>
+          <Typography variant="body2" component="div" className={classes.locationHours}>
             <StoreOpeningHours hours={operationHours} pure />
-          </div>
+          </Typography>
         )}
       </div>
     </Accordion>

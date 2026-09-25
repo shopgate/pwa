@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { Ripple } from '@shopgate/engage/components';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import { CartIcon } from '@shopgate/pwa-ui-shared';
 import connect from './Cart.connector';
 import CartBadge from '../CartBadge';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     cursor: 'pointer',
     marginLeft: 32,
@@ -28,13 +28,13 @@ const useStyles = makeStyles()({
     fontSize: 10,
     fontWeight: '500',
     paddingBottom: 4,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     textTransform: 'uppercase',
   },
   price: {
     fontSize: 24,
     textAlign: 'right',
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
   icon: {
     display: 'flex',
@@ -44,22 +44,11 @@ const useStyles = makeStyles()({
     justifyContent: 'center',
     alignItems: 'flex-end',
     outline: 0,
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
     padding: 0,
     position: 'relative',
   },
-});
-
-const badgeStyles = {
-  background: 'var(--color-primary)',
-  color: 'var(--color-primary-contrast)',
-  top: -2,
-  right: 2,
-  boxShadow: 'none',
-  display: 'flex',
-  justifyContent: 'center',
-  alignItems: 'center',
-};
+}));
 
 /**
  * Search component
@@ -72,10 +61,21 @@ const Cart = ({
   count,
 }) => {
   const { classes } = useStyles();
+  const theme = useTheme();
+  const badgeStyles = useMemo(() => ({
+    background: theme.palette.primary.main,
+    color: theme.palette.primary.contrastText,
+    top: -2,
+    right: 2,
+    boxShadow: 'none',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }), [theme]);
 
   return currency ? (
     <div className={classes.root}>
-      <Ripple onClick={navigate} className={classes.ripple} color="var(--color-primary)" fill>
+      <Ripple onClick={navigate} className={classes.ripple} color={theme.palette.primary.main} fill>
         <div className={classes.priceContainer}>
           <span className={classes.priceHeader}>{i18n.text('cart.current_total')}</span>
           <span className={classes.price}>

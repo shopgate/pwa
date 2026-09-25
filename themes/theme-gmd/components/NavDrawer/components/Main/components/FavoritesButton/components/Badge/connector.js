@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { getFavoritesCount } from '@shopgate/engage/favorites';
-import { getShowWishlistItemsCountBadge } from '@shopgate/engage/core';
+import { getShowWishlistItemsCountBadge } from '@shopgate/engage/settings/selectors/shopSettings';
 
 /**
  * Maps the contents of the state to the component props.

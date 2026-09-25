@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { getShopSettings, getConfigFetching } from '@shopgate/engage/core/config';
 import { hasDirectShipItems } from '@shopgate/engage/cart';
 import { getPreferredLocationAddress } from '@shopgate/engage/locations/selectors';
-import { getMerchantCustomerAttributes } from '@shopgate/engage/core/selectors/merchantSettings';
+import { getMerchantCustomerAttributes } from '@shopgate/engage/settings/selectors/merchantSettings';
 import {
   getCheckoutBillingAddress,
   getCheckoutShippingAddress,
@@ -22,8 +22,8 @@ import {
   historyPush,
   historyPop,
   makeIsLastStackEntry,
-  getNumberOfAddressLines,
 } from '@shopgate/engage/core';
+import { getNumberOfAddressLines } from '@shopgate/engage/settings/selectors/shopSettings';
 import { submitGuestRegistration } from './GuestRegistrationProvider.actions';
 
 /**

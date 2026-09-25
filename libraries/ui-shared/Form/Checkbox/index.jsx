@@ -20,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
     marginLeft: theme.spacing(4),
   },
   checked: {
-    color: 'var(--color-primary)',
+    color: theme.palette.primary.main,
   },
 }));
 

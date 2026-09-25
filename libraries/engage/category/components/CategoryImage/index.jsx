@@ -1,7 +1,15 @@
-import React, { useState, useCallback } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Image } from '@shopgate/engage/components';
+import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
+
+const useStyles = makeStyles()(theme => ({
+  root: {
+    borderRadius: theme.shape.borderRadius,
+    overflow: 'hidden',
+  },
+}));
 
 /**
  * The CategoryImage component
@@ -9,21 +17,21 @@ import connect from './connector';
  * @returns {JSX.Element}
  */
 const CategoryImage = ({ className, src, placeholderSrc }) => {
-  const [showPlaceholder, setShowPlaceholder] = useState(!src);
+  const { classes, cx } = useStyles();
 
-  const onImageError = useCallback(() => {
-    setShowPlaceholder(true);
-  }, [setShowPlaceholder]);
-
-  if (!showPlaceholder) {
-    return (<Image className={className} src={src} onError={onImageError} />);
-  }
-
-  if (!placeholderSrc) {
+  if (!src && !placeholderSrc) {
     return null;
   }
 
-  return (<Image key="placeholder" className={className} src={placeholderSrc} />);
+  return (
+    <Image
+      className={cx(classes.root, className)}
+      src={src}
+      // Unwrapped, so the fallback renders into the container the outer Image already provides
+      // rather than nesting a second aspect ratio box inside it.
+      placeholder={placeholderSrc ? <Image unwrapped src={placeholderSrc} /> : null}
+    />
+  );
 };
 
 CategoryImage.propTypes = {

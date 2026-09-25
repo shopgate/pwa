@@ -4,6 +4,7 @@ import {
   SurroundPortals,
   I18n,
   TimeBoundary,
+  Typography,
 } from '@shopgate/engage/components';
 import { isBeta, useWidgetSettings, useWidgetStyles } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -12,9 +13,6 @@ import { showHint } from './helpers';
 import connect from './connector';
 
 const useStyles = makeStyles()((_, { hintStyle }) => ({
-  defaultStyle: {
-    fontSize: '0.75rem',
-  },
   hintStyle: hintStyle || {},
 }));
 
@@ -44,10 +42,15 @@ const MapPriceHint = ({ price, mapPrice }) => {
         >
           {({ between }) => (
             between &&
-            <I18n.Text
-              string={settings.hint}
-              className={cx('engage__product__map-price-hint', cx(classes.defaultStyle, classes.hintStyle))}
-            />
+            (
+              <Typography
+                variant="caption"
+                component="div"
+                className={cx('engage__product__map-price-hint', classes.hintStyle)}
+              >
+                <I18n.Text string={settings.hint} />
+              </Typography>
+            )
           )}
         </TimeBoundary>}
     </SurroundPortals>

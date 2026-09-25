@@ -16,17 +16,25 @@ import { makeStyles } from '@shopgate/engage/styles';
 import ItemName from '../ItemName';
 import ItemPrice from '../ItemPrice';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     lineHeight: 1.2,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(0.5),
     ':not(:empty)': {
-      padding: '12px 0 16px',
+      padding: theme.components.tiles.textPadding,
+      // Floored at the favorites button overhang so a small configured inner padding
+      // can't let the button overlap the product name.
+      paddingTop: theme.components.tiles.textPaddingTop,
     },
   },
   quantityHint: {
-    paddingTop: 8,
+    ':empty': {
+      display: 'none',
+    },
   },
-});
+}));
 
 /**
  * The Product Grid Item Detail component.

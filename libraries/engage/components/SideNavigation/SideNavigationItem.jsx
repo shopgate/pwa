@@ -27,7 +27,6 @@ const useStyles = makeStyles()((theme, { level }) => ({
     padding: theme.spacing(2),
     position: 'relative',
     width: '100%',
-    lineHeight: '1.45em',
   },
   itemActive: {
     background: 'var(--color-side-navigation-active-background)',
@@ -38,11 +37,11 @@ const useStyles = makeStyles()((theme, { level }) => ({
     outline: 0,
     color: theme.palette.text.primary,
     ':hover': {
-      color: 'var(--color-primary)',
+      color: theme.palette.primary.main,
     },
   },
   linkActive: {
-    color: 'var(--color-primary) !important',
+    color: `${theme.palette.primary.main} !important`,
   },
 }));
 

@@ -1,7 +1,8 @@
 import React, { useContext, useMemo } from 'react';
 import {
-  LocationIcon, Button, Link, ConditionalWrapper,
+  LocationIcon, Link, ConditionalWrapper, Typography,
 } from '@shopgate/engage/components';
+import { Button, ButtonBase } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   getWeekDaysOrder,
@@ -11,24 +12,20 @@ import moment from 'moment';
 import { StoreDetailsContext } from '../../../providers/StoreDetailsContext';
 import GetDirectionsButton from './GetDirectionsButton';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   headerWrapper: {
     display: 'flex',
   },
   headerIcon: {
-    color: 'var(--color-primary)',
-    fontSize: 20,
+    color: theme.palette.primary.main,
+    fontSize: theme.components.icon.small,
     alignContent: 'center',
     marginRight: 4,
   },
   header: {
-    color: 'var(--color-primary)',
-    fontWeight: '600',
-    fontSize: 20,
+    color: theme.palette.primary.main,
   },
   locationName: {
-    fontSize: 20,
-    fontWeight: '600',
     marginBottom: 8,
   },
   locationRow: {
@@ -48,29 +45,18 @@ const useStyles = makeStyles()({
     minWidth: '250px',
     maxWidth: '455px',
   },
-  storeHours: {
-    fontSize: 17,
-    fontWeight: '600',
-  },
   storeHoursLine: { },
   storeHoursWeekday: {
     textAlign: 'left',
   },
   bold: {
-    fontWeight: '600',
+    fontWeight: theme.typography.fontWeightBold,
   },
   storeHoursOpeningTime: {
     textAlign: 'right',
   },
-  phone: {
-    fontSize: 17,
-    fontWeight: '600',
-  },
   phoneNumber: {
     textDecoration: 'underline',
-  },
-  makeMyStoreButton: {
-    color: 'var(--color-primary)',
   },
   comingSoon: {
     fontStyle: 'italic',
@@ -82,7 +68,7 @@ const useStyles = makeStyles()({
     flexWrap: 'wrap',
     margin: '8px 0',
   },
-});
+}));
 
 /**
  * Store details component.
@@ -118,29 +104,25 @@ const StoreDetails = () => {
       <ConditionalWrapper
         condition={!isRouteLocationPreferred}
         wrapper={children => (
-          <Button
-            onClick={() => selectLocation(routeLocation, true)}
-            role="button"
-            type="plain"
-          >
+          <ButtonBase onClick={() => selectLocation(routeLocation, true)}>
             {children}
-          </Button>
+          </ButtonBase>
         )}
       >
         <div className={classes.headerWrapper}>
           <div className={classes.headerIcon}>
             <LocationIcon className={classes.icon} size={20} />
           </div>
-          <div className={classes.header}>
+          <Typography variant="h3" component="div" fontWeight="bold" className={classes.header}>
             {isRouteLocationPreferred ?
               i18n.text('location.myStore') :
               i18n.text('location.makeMyStore')}
-          </div>
+          </Typography>
         </div>
       </ConditionalWrapper>
-      <div className={classes.locationName}>
+      <Typography variant="h3" component="div" fontWeight="bold" className={classes.locationName}>
         {routeLocation.name}
-      </div>
+      </Typography>
       <div className={classes.locationRow}>
         <div className={classes.locationColumn}>
           <p>
@@ -169,10 +151,9 @@ const StoreDetails = () => {
             <GetDirectionsButton address={address} />
             { (!isComingSoon && !isRouteLocationPreferred) &&
             <Button
+              variant="text"
+              color="primary"
               onClick={() => selectLocation(routeLocation, true)}
-              role="button"
-              type="plain"
-              className={classes.makeMyStoreButton}
             >
               <span>
                 {i18n.text('location.makeMyStore')}
@@ -187,9 +168,9 @@ const StoreDetails = () => {
           </div>
           {address?.phoneNumber && (
             <>
-              <div className={classes.phone}>
+              <Typography variant="h4" component="div" fontWeight="bold">
                 {`${i18n.text('location.phone')}: `}
-              </div>
+              </Typography>
 
               <div className={classes.phoneNumber}>
                 <Link
@@ -207,9 +188,9 @@ const StoreDetails = () => {
         </div>
         {hasOpeningHours && (
         <div className={classes.storeHoursColumn}>
-          <div className={classes.storeHours}>
+          <Typography variant="h4" component="div" fontWeight="bold">
             {`${i18n.text('location.storeHours')}:`}
-          </div>
+          </Typography>
           <table>
             <tbody>
               {getWeekDaysOrder().map((weekDay) => {

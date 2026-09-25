@@ -13,6 +13,10 @@ jest.mock('@shopgate/pwa-common-commerce/favorites/selectors', () => ({
   getFavoritesCount: jest.fn(() => 1),
 }));
 
+jest.mock('../../hooks', () => ({
+  useShowFavoritesCounter: jest.fn(() => true),
+}));
+
 const mockedStore = configureStore();
 /**
  * Creates component

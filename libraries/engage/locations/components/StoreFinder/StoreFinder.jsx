@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     gridArea: 'search',
     padding: theme.spacing(2, 0.5, 0, 0.5),
     ' select': {
-      color: 'var(--color-text-medium-emphasis)',
+      color: theme.palette.text.secondary,
     },
   },
   storeList: {

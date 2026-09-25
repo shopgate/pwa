@@ -4,7 +4,7 @@ import { bin2hex as mockBin2Hex } from '@shopgate/pwa-common/helpers/data';
 import { routeWillEnter } from '@shopgate/pwa-common/action-creators/router';
 import { HISTORY_PUSH_ACTION } from '@shopgate/pwa-common/constants/ActionTypes';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
-import { app } from '@shopgate/engage/core/reducers';
+import app from '@shopgate/engage/core/reducers/app';
 import requestProducts from '@shopgate/pwa-common-commerce/product/action-creators/requestProducts';
 import receiveProducts from '@shopgate/pwa-common-commerce/product/action-creators/receiveProducts';
 import receiveProduct from '@shopgate/pwa-common-commerce/product/action-creators/receiveProduct';

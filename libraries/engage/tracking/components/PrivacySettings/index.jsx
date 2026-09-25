@@ -1,14 +1,15 @@
 import React, { useCallback, useState } from 'react';
 import {
-  Button, Grid, I18n, Link, Switch, ConditionalWrapper,
+  Grid, I18n, Link, Switch, ConditionalWrapper,
 } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { appConfig } from '@shopgate/engage';
 import { i18n } from '@shopgate/engage/core/helpers';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     marginTop: '20px',
   },
@@ -30,7 +31,7 @@ const useStyles = makeStyles()({
     flexDirection: 'column',
   },
   link: {
-    color: 'var(--color-secondary)',
+    color: theme.palette.secondary.main,
     textDecoration: 'underline',
   },
   switchWrapper: {
@@ -40,10 +41,10 @@ const useStyles = makeStyles()({
     justifyContent: 'space-between',
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: theme.typography.fontWeightBold,
     display: 'block',
   },
-});
+}));
 
 /**
  * The PrivacySettings component.
@@ -135,7 +136,7 @@ const PrivacySettings = ({
       <Grid.Item component="div" className={classes.buttonWrapper}>
         <Button
           onClick={() => handleAcceptAllCookies()}
-          type="primary"
+          color="secondary"
           className={cx(classes.button, 'privacy-settings__button-accept-all')}
         >
           <I18n.Text string="cookieConsentModal.buttonAcceptAll" />
@@ -145,7 +146,6 @@ const PrivacySettings = ({
             comfortCookiesAccepted: areComfortCookiesSelected,
             statisticsCookiesAccepted: areStatisticsCookiesSelected,
           })}
-          type="simple"
           className={cx(classes.button, 'privacy-settings__button-accept-selected')}
         >
           <I18n.Text string="cookieConsentModal.modalButtonConfirmSelected" />

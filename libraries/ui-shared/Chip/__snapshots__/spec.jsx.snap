@@ -11,19 +11,19 @@ exports[`<Chip /> should render a tag 1`] = `
   removeLabel={null}
 >
   <div
-    className="ui-shared__chip sg-ih9beq-chip"
+    className="ui-shared__chip sg-e9rqvi-chip"
     data-test-id="some-id"
   >
     <Button
       aria-label={null}
-      className="sg-18bi9x7-removeButton"
+      className="sg-1g4u82s-removeButton"
       disabled={false}
       onClick={[Function]}
       testId="removeFilter"
     >
       <button
         aria-label={null}
-        className="common__button sg-1bdmg0z-root-removeButton"
+        className="common__button sg-3ns3ho-root-removeButton"
         data-test-id="removeFilter"
         disabled={false}
         onClick={[Function]}
@@ -72,14 +72,14 @@ exports[`<Chip /> should render a tag 1`] = `
     </Button>
     <Button
       aria-label={null}
-      className="sg-cgogq3-name"
+      className="sg-1p000sf-name"
       disabled={false}
       onClick={[Function]}
       testId="Button"
     >
       <button
         aria-label={null}
-        className="common__button sg-llt41d-root-name"
+        className="common__button sg-4vcewk-root-name"
         data-test-id="Button"
         disabled={false}
         onClick={[Function]}
@@ -102,19 +102,19 @@ exports[`<Chip /> should render a without removable icon 1`] = `
   removeLabel={null}
 >
   <div
-    className="ui-shared__chip sg-p201bj-chip"
+    className="ui-shared__chip sg-wf36mw-chip"
     data-test-id="some-id"
   >
     <Button
       aria-label={null}
-      className="sg-cgogq3-name"
+      className="sg-1p000sf-name"
       disabled={false}
       onClick={[Function]}
       testId="Button"
     >
       <button
         aria-label={null}
-        className="common__button sg-llt41d-root-name"
+        className="common__button sg-4vcewk-root-name"
         data-test-id="Button"
         disabled={false}
         onClick={[Function]}

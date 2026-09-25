@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { errorBehavior } from '@shopgate/engage/core';
+import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -8,7 +9,6 @@ const useStyles = makeStyles()(theme => ({
     paddingTop: theme.spacing(0.5),
   },
   message: {
-    fontSize: ' 0.75rem',
   },
   error: {
     color: theme.palette.error.main,
@@ -35,7 +35,9 @@ const CheckoutSectionMessages = ({ messages }) => {
   return (
     <ul className={classes.wrapper}>
       {messages.map(({ message, additionalParams, type }) => (
-        <li
+        <Typography
+          variant="caption"
+          component="li"
           key={message}
           className={cx(classes.message, {
             [classes.error]: type === 'error',
@@ -44,7 +46,7 @@ const CheckoutSectionMessages = ({ messages }) => {
           })}
         >
           {errorBehavior.getErrorMessage(message, additionalParams)}
-        </li>
+        </Typography>
       ))}
     </ul>
   );

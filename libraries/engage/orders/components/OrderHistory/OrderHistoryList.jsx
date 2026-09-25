@@ -1,20 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { I18n, CardList, Link } from '@shopgate/engage/components';
+import {
+  I18n, Card, Link,
+} from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { themeConfig, themeColors, themeName } from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getTranslatedOrderStatus } from '../../helpers';
 import { getOrderDetailsRoute } from '../../helpers/orderDetails';
 
-const isIOS = themeName.includes('ios');
-
 const useStyles = makeStyles()(theme => ({
   orderNumber: {
-    fontWeight: 500,
+    fontWeight: theme.typography.fontWeightMedium,
   },
   list: {
-    background: 'var(--color-background-accent)',
     marginBottom: theme.spacing(-1.5),
   },
   cardContent: {
@@ -35,10 +33,7 @@ const useStyles = makeStyles()(theme => ({
     ':last-of-type': {
       marginBottom: 0,
     },
-    background: themeColors.light,
     boxSizing: 'border-box',
-    boxShadow: themeConfig.shadows.productCard,
-    borderRadius: isIOS ? 10 : 2,
   },
 }));
 
@@ -51,7 +46,12 @@ export const Row = (props) => {
   const { classes } = useStyles();
 
   return (
-    <CardList.Item key={props.orderNumber} className={classes.card} onClick={props.openDetails}>
+    <Card
+      key={props.orderNumber}
+      className={classes.card}
+      onClick={props.openDetails}
+      component="li"
+    >
       <Link className={classes.cardContent} href={getOrderDetailsRoute(props.orderNumber)}>
         <div className={classes.column}>
           <span className={classes.orderNumber}>
@@ -64,7 +64,7 @@ export const Row = (props) => {
               timestamp={new Date(props.submitDate).getTime()}
               format="short"
             />
-                &nbsp;
+            &nbsp;
             <I18n.Time
               timestamp={new Date(props.submitDate).getTime()}
               format="short"
@@ -93,7 +93,7 @@ export const Row = (props) => {
           </span>
         </div>
       </Link>
-    </CardList.Item>
+    </Card>
   );
 };
 
@@ -113,12 +113,12 @@ Row.propTypes = {
  * @returns {JSX}
  */
 export const List = ({ children }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <CardList className={classes.list}>
+    <ul className={cx(classes.list, 'engage__orders__order-history-list')}>
       {children}
-    </CardList>
+    </ul>
   );
 };
 

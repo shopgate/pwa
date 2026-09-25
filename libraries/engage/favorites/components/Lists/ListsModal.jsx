@@ -2,21 +2,18 @@ import React, { useState, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import { Dialog, TextField } from '@shopgate/engage/components';
-import { themeName } from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const isIos = themeName.includes('ios');
-
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
   },
   input: {
     textAlign: 'left',
-    fontSize: '1rem',
+    fontSize: theme.typography.body1.fontSize,
   },
-});
+}));
 
 /**
  * @param {Object} props Props
@@ -56,14 +53,12 @@ const ListsModal = ({ type, onConfirm, onDismiss }) => {
       }}
     >
       <div className={classes.root}>
-        <span>{i18n.text(`favorites.${type}_modal.message`)}</span>
+        <span>
+          {i18n.text(`favorites.${type}_modal.message`)}
+        </span>
         <TextField
           name="name"
-          {...isIos ? {
-            placeholder: i18n.text(`favorites.${type}_modal.label`),
-          } : {
-            label: i18n.text(`favorites.${type}_modal.label`),
-          }}
+          placeholder={i18n.text(`favorites.${type}_modal.label`)}
           maxLength={textFieldMaxLength}
           onChange={onChange}
           value={input}

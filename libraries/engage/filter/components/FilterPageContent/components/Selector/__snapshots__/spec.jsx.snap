@@ -1,56 +1,34 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Filter: <Selector /> should render with minimum props 1`] = `
-<SurroundPortals
-  portalName="filter.selector"
-  portalProps={
-    {
-      "filter": {
-        "id": "foo",
-        "isMultiSelect": false,
-        "label": "bar",
-        "values": [
-          {
-            "id": "foo",
-            "label": "fooLabel",
-          },
-          {
-            "id": "bar",
-            "label": "barLabel",
-          },
-        ],
-      },
-      "onChange": [Function],
-      "selectedValueIds": [],
-    }
-  }
->
-  <FilterItem>
-    <Accordion
-      className="sg-v3twtx-accordion"
-      handleLabel="filter.filter_by"
-      renderLabel={[Function]}
-      testId="foo"
+<DocumentFragment>
+  <div
+    class="sg-9f2nkn-content"
+  >
+    <div
+      data-test-id="foo"
     >
       <div
-        className="sg-zw23ax-content"
+        aria-label="fooLabel"
+        class="sg-dj9d2p-label"
       >
-        <ValueButton
-          id="foo"
-          isActive={false}
-          key="foo"
-          label="fooLabel"
-          onClick={[Function]}
-        />
-        <ValueButton
-          id="bar"
-          isActive={false}
-          key="bar"
-          label="barLabel"
-          onClick={[Function]}
-        />
+        <span>
+          fooLabel
+        </span>
       </div>
-    </Accordion>
-  </FilterItem>
-</SurroundPortals>
+    </div>
+    <div
+      data-test-id="bar"
+    >
+      <div
+        aria-label="barLabel"
+        class="sg-dj9d2p-label"
+      >
+        <span>
+          barLabel
+        </span>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
 `;

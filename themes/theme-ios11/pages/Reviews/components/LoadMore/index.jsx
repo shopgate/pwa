@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ActionButton from '@shopgate/pwa-ui-shared/ActionButton';
 import { I18n } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import connect from './connector';
 import { REVIEW_ITEMS_PER_PAGE } from '../../constants';
 
@@ -47,12 +47,20 @@ class LoadMore extends Component {
       return null;
     }
     return (
-      <ActionButton
-        onClick={this.handleClick}
-        loading={this.props.isFetching}
+      <div style={{
+        textAlign: 'center',
+        margin: '8px 0',
+      }}
       >
-        <I18n.Text string="common.load_more" />
-      </ActionButton>
+        <Button
+          variant="text"
+          color="secondary"
+          onClick={this.handleClick}
+          loading={this.props.isFetching}
+        >
+          <I18n.Text string="common.load_more" />
+        </Button>
+      </div>
     );
   }
 }

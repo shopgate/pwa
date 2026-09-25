@@ -1,0 +1,7 @@
+{
+  "widgetsV2": {
+    "@broken/ext/EmptyWidget": {
+      "path": "ext-broken/frontend/widgets/EmptyWidget"
+    }
+  }
+}

@@ -1,13 +1,17 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Filter: <Selected /> should not render without selected 1`] = `""`;
+exports[`Filter: <Selected /> should not render without selected 1`] = `<DocumentFragment />`;
 
 exports[`Filter: <Selected /> should render with selected 1`] = `
-<Fragment>
-  <span
-    className="sg-4wcraw-elipsed"
+<DocumentFragment>
+  <div
+    class="sg-5pkevj-chips"
   >
-    fooLabel
-  </span>
-</Fragment>
+    <span
+      class="sg-yzdsl5-chip"
+    >
+      fooLabel
+    </span>
+  </div>
+</DocumentFragment>
 `;
