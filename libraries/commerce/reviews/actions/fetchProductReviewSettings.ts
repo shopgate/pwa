@@ -1,5 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
-import { shouldFetchData } from '@shopgate/pwa-common/helpers/redux';
+import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import type { Dispatch } from 'redux';
 import {
   requestProductReviewSettings,
@@ -40,4 +40,4 @@ const fetchProductReviewSettings = () => (
   return request;
 };
 
-export default fetchProductReviewSettings;
+export default mutable(fetchProductReviewSettings);
