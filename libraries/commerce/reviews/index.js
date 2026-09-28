@@ -1,6 +1,7 @@
 // ACTIONS
 export { default as fetchProductReviews } from './actions/fetchProductReviews';
 export { default as fetchReviews } from './actions/fetchReviews';
+export { default as fetchProductReviewSettings } from './actions/fetchProductReviewSettings';
 export { default as fetchUserReview } from './actions/fetchUserReview';
 export { default as flushUserReview } from './actions/flushUserReview';
 export { default as submitReview } from './actions/submitReview';
@@ -8,6 +9,7 @@ export { default as submitReview } from './actions/submitReview';
 // CONSTANTS
 export * from './constants/index';
 export * from './constants/Pipelines';
+export * from './constants/reviewSettings';
 
 // SELECTORS
 export * from './selectors';
