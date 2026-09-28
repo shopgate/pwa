@@ -2,7 +2,7 @@ import {
   REQUEST_PRODUCT_REVIEW_SETTINGS,
   RECEIVE_PRODUCT_REVIEW_SETTINGS,
   ERROR_PRODUCT_REVIEW_SETTINGS,
-} from '../constants/reviewSettings';
+} from '../constants';
 import reviewSettings from './reviewSettings';
 
 describe('Reviews reducers: reviewSettings', () => {

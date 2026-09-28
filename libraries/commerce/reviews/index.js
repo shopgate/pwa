@@ -9,7 +9,6 @@ export { default as submitReview } from './actions/submitReview';
 // CONSTANTS
 export * from './constants/index';
 export * from './constants/Pipelines';
-export * from './constants/reviewSettings';
 
 // SELECTORS
 export * from './selectors';

@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { PAGINATION_TYPE_CURSOR } from '../constants/reviewSettings';
+import { PAGINATION_TYPE_CURSOR } from '../constants';
 import type {
   ReviewPaginationType,
   ReviewSettingsSliceState,

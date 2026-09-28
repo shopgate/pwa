@@ -3,7 +3,7 @@ import {
   REQUEST_PRODUCT_REVIEW_SETTINGS,
   RECEIVE_PRODUCT_REVIEW_SETTINGS,
   ERROR_PRODUCT_REVIEW_SETTINGS,
-} from '../constants/reviewSettings';
+} from '../constants';
 import type { ReviewSettingsState } from '../types/reviewSettings';
 import fetchProductReviewSettings from './fetchProductReviewSettings';
 

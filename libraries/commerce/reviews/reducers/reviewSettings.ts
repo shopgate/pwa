@@ -4,7 +4,7 @@ import {
   RECEIVE_PRODUCT_REVIEW_SETTINGS,
   ERROR_PRODUCT_REVIEW_SETTINGS,
   REVIEW_SETTINGS_LIFETIME,
-} from '../constants/reviewSettings';
+} from '../constants';
 import type { ReceiveProductReviewSettingsAction } from '../action-creators/reviewSettings';
 import type { ReviewSettingsSliceState } from '../types/reviewSettings';
 
