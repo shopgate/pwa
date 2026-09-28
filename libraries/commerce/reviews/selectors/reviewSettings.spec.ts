@@ -1,4 +1,4 @@
-import type { ReviewSettingsState } from '../types/reviewSettings';
+import type { ReviewSettingsSliceState, ReviewSettingsState } from '../types/reviewSettings';
 import {
   getReviewSettingsState,
   getReviewFeatures,
@@ -14,7 +14,7 @@ import {
  * @param reviewSettings The review settings slice.
  * @returns The application state.
  */
-const buildState = (reviewSettings: object): ReviewSettingsState => ({
+const buildState = (reviewSettings: ReviewSettingsSliceState): ReviewSettingsState => ({
   reviews: { reviewSettings },
 });
 
