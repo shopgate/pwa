@@ -65,7 +65,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-10l03g-root"
+        className="sg-1l2vvm1-root"
         href="/link/one"
         role="button"
       >
@@ -89,7 +89,7 @@ exports[`<Section /> should render with a headline and items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-10l03g-root"
+        className="sg-1l2vvm1-root"
         href="/link/two"
         role="button"
       >
@@ -134,7 +134,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-10l03g-root"
+        className="sg-1l2vvm1-root"
         href="/link/one"
         role="button"
       >
@@ -158,7 +158,7 @@ exports[`<Section /> should render without a headline but items 1`] = `
       testId={null}
     >
       <Link
-        className="sg-10l03g-root"
+        className="sg-1l2vvm1-root"
         href="/link/two"
         role="button"
       >

@@ -130,7 +130,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 testId={null}
               >
                 <Link
-                  className="sg-10l03g-root"
+                  className="sg-1l2vvm1-root"
                   href="/some/url"
                   role="button"
                 >
@@ -155,7 +155,7 @@ exports[`<Quicklinks /> should render quicklinks 1`] = `
                 testId={null}
               >
                 <Link
-                  className="sg-10l03g-root"
+                  className="sg-1l2vvm1-root"
                   href="/another/url"
                   role="button"
                 >

@@ -5,14 +5,14 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { useBackInStockSubscriptions } from '@shopgate/engage/back-in-stock/hooks';
 import Subscription from '../Subscription';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
     margin: '8px 8px 10px',
   },
   divider: {
     height: 1,
     width: 'calc(100% + 32px)',
-    backgroundColor: 'rgb(234, 234, 234)',
+    backgroundColor: theme.components.separatorLine.borderColor,
     marginLeft: -16,
     marginRight: -16,
     marginBottom: 16,
@@ -20,7 +20,7 @@ const useStyles = makeStyles()({
   emptyText: {
     marginBottom: 16,
   },
-});
+}));
 
 /**
  * The Back In Stock Subscriptions List.

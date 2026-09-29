@@ -20,6 +20,9 @@ const useStyles = makeStyles()({
     borderRadius: 14,
     background: 'rgba(255, 255, 255, 0.82)',
     backdropFilter: 'blur(20px)',
+    '& input, & textarea': {
+      color: 'inherit',
+    },
   },
   content: {
     padding: '16px',
