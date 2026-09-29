@@ -76,6 +76,14 @@ export interface CreateReleaseOptions {
 }
 
 /**
+ * Returns the GitHub token from GITHUB_AUTH_TOKEN (or the legacy GITHUB_AUTH).
+ * @returns The token, or undefined when none is set.
+ */
+export const getGithubToken = () => (
+  process.env.GITHUB_AUTH_TOKEN || process.env.GITHUB_AUTH || undefined
+);
+
+/**
  * Calls the GitHub REST API, authenticated with GITHUB_AUTH_TOKEN when it's set.
  * @param method The HTTP method.
  * @param pathname The API path, e.g. "/repos/shopgate/pwa/releases".
@@ -87,7 +95,7 @@ const request = async <T>(
   pathname: string,
   body?: unknown
 ): Promise<T | null> => {
-  const token = process.env.GITHUB_AUTH_TOKEN || process.env.GITHUB_AUTH;
+  const token = getGithubToken();
   const response = await fetch(`https://api.github.com${pathname}`, {
     method,
     headers: {

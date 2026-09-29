@@ -7,7 +7,12 @@ import {
 } from './config.ts';
 import { logStep } from './lib/exec.ts';
 import { remoteBranchExists, remoteTagExists } from './lib/git.ts';
-import { findRelease, getCommitSubjects, getMissingCommits } from './lib/github.ts';
+import {
+  findRelease,
+  getCommitSubjects,
+  getGithubToken,
+  getMissingCommits,
+} from './lib/github.ts';
 import { findStagedVersion, getDistTagVersion, isPublished } from './lib/npm.ts';
 import type { ReleaseOptions } from './lib/options.ts';
 import { compareVersions, isValidVersion, parseVersion } from './lib/version.ts';
@@ -161,6 +166,11 @@ const checkMasterIsMerged = async (options: ReleaseOptions) => {
  */
 export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
   const { version, resume } = options;
+
+  if (process.env.CI === 'true' && !getGithubToken()) {
+    throw new Error('GITHUB_AUTH_TOKEN is not set. It is needed to create the GitHub releases in finalize.');
+  }
+
   await checkMasterIsMerged(options);
 
   logStep(`Checking availability of ${version.version}`);
