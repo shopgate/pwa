@@ -11,11 +11,13 @@ import { Button } from '@shopgate/engage/components/v2';
 import { getUseGetFavoriteIdsPipeline } from '@shopgate/engage/favorites';
 import ListItemWrapper from './ListItemWrapper';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()((theme, { isAccordion }) => ({
   divider: {
     height: 1,
     width: 'calc(100% + 32px)',
-    backgroundColor: 'rgb(234, 234, 234)',
+    ...(isAccordion && {
+      backgroundColor: theme.components.separatorLine.borderColor,
+    }),
     marginLeft: -16,
     marginRight: -16,
     marginBottom: 16,
@@ -24,7 +26,7 @@ const useStyles = makeStyles()({
     width: 'calc(100% - 32px)',
     margin: '16px 16px 0 16px',
   },
-});
+}));
 
 /**
  * @param {Object} state State
@@ -47,8 +49,9 @@ const ListContent = ({
   useGetFavoriteIdsPipeline,
   showLoadMoreButton,
   onLoadMore,
+  isAccordion,
 }) => {
-  const { classes } = useStyles();
+  const { classes } = useStyles({ isAccordion });
 
   return (
     <>
@@ -113,6 +116,11 @@ ListContent.propTypes = {
   removeItem: PropTypes.func.isRequired,
   showLoadMoreButton: PropTypes.bool.isRequired,
   useGetFavoriteIdsPipeline: PropTypes.bool.isRequired,
+  isAccordion: PropTypes.bool,
+};
+
+ListContent.defaultProps = {
+  isAccordion: false,
 };
 
 export default connect(mapStateToProps)(ListContent);
