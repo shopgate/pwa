@@ -1,22 +1,24 @@
 import readline from 'node:readline/promises';
 import { PUBLISHABLE_PACKAGES, ROOT, getPackageName } from './config.ts';
+import { findMissingMasterCommits } from './check.ts';
 import { logStep } from './lib/exec.ts';
 import { approveStaged, findStagedVersion, isPublished } from './lib/npm.ts';
 import type { StagedVersion } from './lib/npm.ts';
 import type { ReleaseVersion } from './lib/version.ts';
 
 /**
- * Asks for the npm one-time password on the terminal.
- * @returns The entered password.
+ * Asks a question on the terminal.
+ * @param question The question.
+ * @returns The trimmed answer.
  */
-const askForOtp = async () => {
+const ask = async (question: string) => {
   const prompt = readline.createInterface({
     input: process.stdin,
     output: process.stdout,
   });
-  const otp = await prompt.question('npm one-time password: ');
+  const answer = await prompt.question(question);
   prompt.close();
-  return otp.trim();
+  return answer.trim();
 };
 
 /**
@@ -63,7 +65,16 @@ export const approveRelease = async (version: ReleaseVersion, root = ROOT) => {
     tag,
   })));
 
-  const otp = await askForOtp();
+  if (version.stable) {
+    logStep(`Checking that releases/${version.name} contains master`);
+    const missingCommits = await findMissingMasterCommits(`releases/${version.name}`);
+
+    if (missingCommits > 0 && (await ask('Approve anyway? (y/N) ')).toLowerCase() !== 'y') {
+      throw new Error('Approval cancelled. Reject the staged packages with "npm stage reject" or on npmjs.com, merge master into the source branch and release again.');
+    }
+  }
+
+  const otp = await ask('npm one-time password: ');
 
   logStep(`Approving ${pending.length} packages`);
   pending.forEach(staged => approveStaged(staged.id, otp));

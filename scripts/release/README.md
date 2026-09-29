@@ -16,7 +16,7 @@ yarn release:new <command> [version] [options]
 
 | Command | Where | What it does |
 |---|---|---|
-| `check <version>` | local, CI | Checks that the version is still free on npm, git and GitHub. Read-only |
+| `check <version>` | local, CI | Checks that the version is still free on npm, git and GitHub and that the branch contains master. Read-only |
 | `prepare <version>` | CI | Bumps the versions, builds, writes the changelog, pushes the release branches and stages the packages on npm |
 | `approve <version>` | local | Approves the staged packages with your npm 2FA code |
 | `finalize <version>` | CI | Updates master (stable releases only) and creates the GitHub releases |
@@ -54,6 +54,12 @@ variables.
 4. **Run the manual `release:finalize` job** in the pipeline. It fails as long as a package isn't
    published yet, so it can simply be retried after the approval.
 5. With `RELEASE_TABLET_THEMES=true`, the tablet themes are uploaded after finalize.
+
+Stable releases with `UPDATE_MASTER=true` must be released from a branch that contains all
+commits of master. Otherwise `check` aborts, because the release would drop these commits and
+the master merge in `finalize` could conflict after the packages are already public. Merge master
+into the branch and start the pipeline again. For other releases, `check` only warns. `approve`
+compares the release branch of stable versions with master again and asks before approving.
 
 Pre-releases (`-alpha.N`, `-beta.N`, `-rc.N`) are published with the npm dist-tag `beta`, stable
 releases with `latest`. Master is only updated for stable releases with `UPDATE_MASTER=true`.

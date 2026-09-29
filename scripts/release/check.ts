@@ -7,7 +7,7 @@ import {
 } from './config.ts';
 import { logStep } from './lib/exec.ts';
 import { remoteBranchExists, remoteTagExists } from './lib/git.ts';
-import { findRelease, getCommitSubjects } from './lib/github.ts';
+import { findRelease, getCommitSubjects, getMissingCommits } from './lib/github.ts';
 import { findStagedVersion, getDistTagVersion, isPublished } from './lib/npm.ts';
 import type { ReleaseOptions } from './lib/options.ts';
 import { compareVersions, isValidVersion, parseVersion } from './lib/version.ts';
@@ -107,6 +107,53 @@ const warnAboutOlderVersion = (version: ReleaseVersion, root = ROOT) => {
 };
 
 /**
+ * Prints the master commits that a branch doesn't contain.
+ * @param branch The branch to compare with master.
+ * @returns The number of missing commits.
+ */
+export const findMissingMasterCommits = async (branch: string) => {
+  const missing = await getMissingCommits(GITHUB_REPO, branch, 'master');
+
+  if (missing === null) {
+    throw new Error(`Can't compare ${branch} with master: the branch doesn't exist on GitHub.`);
+  }
+
+  if (missing.total > 0) {
+    console.warn(`⚠ master has ${missing.total} commits that aren't in ${branch}:`);
+    missing.subjects.slice(0, 10).forEach(subject => console.warn(`  - ${subject}`));
+
+    if (missing.total > 10) {
+      console.warn(`  … and ${missing.total - 10} more`);
+    }
+  }
+
+  return missing.total;
+};
+
+/**
+ * Fails for stable releases that update master when the source branch misses commits from
+ * master, since the release would drop them and the master merge in finalize could conflict.
+ * Other releases only get a warning.
+ * @param options The release settings.
+ */
+const checkMasterIsMerged = async (options: ReleaseOptions) => {
+  const { version, branch, updateMaster } = options;
+
+  if (!branch) {
+    return;
+  }
+
+  logStep(`Checking that ${branch} contains master`);
+  const missing = await findMissingMasterCommits(branch);
+
+  if (missing === 0) {
+    console.log(`✔ ${branch} contains all commits of master`);
+  } else if (version.stable && updateMaster) {
+    throw new Error(`Merge master into ${branch} before releasing ${version.version}.`);
+  }
+};
+
+/**
  * Fails when the version is already (partially) released, unless "resume" is set and the
  * release branch proves that it's an interrupted run of this release.
  * @param options The release settings.
@@ -114,6 +161,8 @@ const warnAboutOlderVersion = (version: ReleaseVersion, root = ROOT) => {
  */
 export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
   const { version, resume } = options;
+  await checkMasterIsMerged(options);
+
   logStep(`Checking availability of ${version.version}`);
   warnAboutOlderVersion(version, root);
 

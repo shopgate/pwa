@@ -137,6 +137,47 @@ export const getCommitSubjects = async (repo: string, branch: string, count = 30
 };
 
 /**
+ * Commits that are in one branch but not in another.
+ */
+export interface MissingCommits {
+  /**
+   * Number of missing commits.
+   */
+  total: number;
+  /**
+   * Subjects of the newest missing commits (at most 250), newest first.
+   */
+  subjects: string[];
+}
+
+/**
+ * Finds the commits that are in one branch but not in another.
+ * @param repo GitHub "owner/repo".
+ * @param branch The branch that might miss commits.
+ * @param source The branch whose commits are expected in "branch", e.g. "master".
+ * @returns The missing commits, or null when a branch doesn't exist.
+ */
+export const getMissingCommits = async (
+  repo: string,
+  branch: string,
+  source: string
+): Promise<MissingCommits | null> => {
+  const comparison = await request<{
+    ahead_by: number;
+    commits: Array<{ commit: { message: string } }>;
+  }>('GET', `/repos/${repo}/compare/${encodeURIComponent(branch)}...${encodeURIComponent(source)}`);
+
+  if (!comparison) {
+    return null;
+  }
+
+  return {
+    total: comparison.ahead_by,
+    subjects: comparison.commits.map(({ commit }) => commit.message.split('\n')[0]).reverse(),
+  };
+};
+
+/**
  * Finds a release by tag or name among the latest 100 releases, including drafts.
  * @param repo GitHub "owner/repo".
  * @param tag The release tag, e.g. "v7.33.0".
