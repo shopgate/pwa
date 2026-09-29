@@ -43,16 +43,16 @@ export interface Theme {
 }
 
 const TRANSPILED_PACKAGE_DIRS = [
-  'libraries/engage',
-  'libraries/commerce',
   'libraries/common',
+  'libraries/commerce',
   'libraries/core',
-  'libraries/tracking',
   'libraries/tracking-core',
+  'libraries/tracking',
   'libraries/webcheckout',
   'libraries/ui-ios',
   'libraries/ui-material',
   'libraries/ui-shared',
+  'libraries/engage',
   'utils/unit-tests',
 ];
 
