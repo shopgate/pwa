@@ -4,7 +4,11 @@
   "description": "Tracking core library for the Shopgate Connect PWA.",
   "author": "Shopgate <support@shopgate.com>",
   "license": "Apache-2.0",
-  "repository": "shopgate/pwa",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shopgate/pwa.git",
+    "directory": "libraries/tracking-core"
+  },
   "bugs": "https://github.com/shopgate/pwa/issues",
   "homepage": "https://github.com/shopgate/pwa/tree/master/libraries/tracking-core",
   "keywords": [

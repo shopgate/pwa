@@ -45,7 +45,8 @@ Requires the external `sgconnect` CLI (not installed by `yarn install`).
 - Test: **`yarn test:short` is the default** — use it for routine runs, and scope it to the paths you touched (`yarn test:short <path>`) rather than sweeping the repo. `yarn test` (`RUN_LONG=true jest`) is the full run, reserved for changes that touch `@shopgate/engage/*` exports (see Pitfalls); `yarn test:watch`; `yarn cover`.
 - Lint: `yarn lint` (eslint `.js/.jsx/.ts/.tsx/.json`, ignores `extensions/`); `yarn lint:summary`. A Husky pre-commit hook runs `lint-staged`.
 - Theme git subtrees: `yarn add-remotes` / `yarn remove-remotes`.
-- Release / build: `yarn release` → `make release` (publishes npm + GitHub releases — **verify before use**; `make release-dry-run` to inspect output). `yarn clean` → `make clean`.
+- Release / build: `yarn release` → `make release` (legacy process, publishes npm + GitHub releases — **verify before use**; `make release-dry-run` to inspect output). `yarn clean` → `make clean`.
+- New release process (TypeScript in `scripts/release/`, run by Node ≥ 24 without build step; started from the GitLab release pipeline): one CLI, `yarn release:new` lists all commands and options. Docs: `scripts/release/README.md`. Flow: `check <version>` → `prepare` (bump, build, changelog, push release branches, `npm stage publish`) → `approve <version>` (developer approves the staged packages with npm 2FA) → `finalize` (master update, GitHub releases). `build` builds all packages into `dist` without publishing. Tests: `yarn release:test`, types: `yarn release:typecheck`.
 
 ## Repository Structure
 
@@ -54,7 +55,7 @@ Requires the external `sgconnect` CLI (not installed by `yarn install`).
 - **`libraries/engage`** is the umbrella library themes consume. It has **no `main`/`exports`** — imports like `@shopgate/engage/core` resolve to `libraries/engage/core/index.js` (directory-as-subpath, via workspace symlinks in `node_modules/@shopgate/`). API lives in per-domain `index.js` barrels (`cart/`, `product/`, `checkout/`, `styles/`, …).
 - **App entry point:** `themes/theme-ios11/index.jsx` — imports `initialize` from `@shopgate/engage/core`, builds the store from `pages/reducers` + `pages/subscribers`, renders `<Pages/>` into `#root`.
 - **Themes are git subtrees** (`theme-gmd`, `theme-ios11`, defined in `repos.json`); they may be absent in a fresh checkout. `theme-gmd` is on its way out and must not be changed — see Editing Guidelines.
-- **`utils/*`** are tooling packages: `unit-tests` → `@shopgate/pwa-unit-test` (root `jest.config.js` extends it), `webpack`, `eslint-config`, `e2e`, `benchmark`.
+- **`utils/*`** are tooling packages: `unit-tests` → `@shopgate/pwa-unit-test` (root `jest.config.js` extends it), `webpack`, `eslint-config`.
 - **`pipelines/` / `trustedPipelines/`** are backend pipeline JSON definitions, not JS.
 - **Naming conventions:** tests `*.spec.js(x)` colocated; `index.js` barrels; colocated `*.types.js`. Existing redux wiring lives in `connector.js` (not `connect.js`) — these are legacy; do not add new `connector.js` files (see Editing Guidelines).
 - **`.sgcloud/`** is local `sgconnect` dev state (gitignored, machine-specific).
