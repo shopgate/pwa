@@ -89,7 +89,7 @@ node scripts/release/cli.ts prepare 7.33.0-beta.1 --branch <branch> --dry-run
 ```
 
 To test changes in CI, run the pipeline of `pwa-liveupdate` with `BRANCH` set to your branch (the
-scripts are taken from it) and add `DRY_RUN=true` as a pipeline variable.
+scripts are taken from it) and `DRY_RUN=true`.
 
 ## Files
 
