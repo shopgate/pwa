@@ -26,7 +26,6 @@ const defaultAppConfig = {
   shopCNAME: null,
   currency: 'USD',
   showGmdMenuSubHeaders: false,
-  benchmark: false,
   sentry: {},
   theme: {},
   cartShippingHideAnonymousLegacy: null,

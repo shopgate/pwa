@@ -2,11 +2,9 @@ import { createStore, applyMiddleware } from 'redux';
 import { thunk } from 'redux-thunk';
 import { composeWithDevTools } from '@redux-devtools/extension';
 import { persistState } from '@virtuous/redux-persister';
-import benchmarkMiddleware from '@shopgate/pwa-benchmark/profilers/redux';
-import benchmarkController from '@shopgate/pwa-benchmark';
 import persistedReducers from '../collections/PersistedReducers';
 import initSubscribers from '../subscriptions';
-import appConfig, { themeName, shopNumber } from '../helpers/config';
+import { themeName, shopNumber } from '../helpers/config';
 import makeRootReducer from '../reducers';
 import streams from './middelwares/streams';
 import logger from './middelwares/logger';
@@ -33,7 +31,7 @@ function getInitialState() {
     return undefined;
   }
 
-  const normalizedState = storedState.replace(new RegExp('"isFetching":true', 'g'), '"isFetching":false');
+  const normalizedState = storedState.replace(/"isFetching":true/g, '"isFetching":false');
   return JSON.parse(normalizedState);
 }
 
@@ -44,18 +42,12 @@ function getInitialState() {
  * @return {Object} The redux store.
  */
 export function configureStore(reducers, subscribers) {
-  // Starts benchmark controller BEFORE adding the middleware.
-  if (appConfig.benchmark) {
-    benchmarkController.startup();
-  }
-
   const store = createStore(
     makeRootReducer(reducers),
     getInitialState(),
     composeWithDevTools(
       applyMiddleware(...[
         thunk,
-        ...appConfig.benchmark ? [benchmarkMiddleware] : [],
         streams,
         logger,
       ]),
@@ -67,10 +59,6 @@ export function configureStore(reducers, subscribers) {
   );
 
   initSubscribers(subscribers);
-
-  if (window.Cypress) {
-    window.store = store;
-  }
 
   return store;
 }
