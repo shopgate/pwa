@@ -11,8 +11,6 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
-    "e2e": "cypress open -P ./e2e",
-    "e2e:checkout": "cypress open -P ./e2e/extensions/checkout",
     "postinstall": "npx rimraf ../../.cache-loader"
   },
   "dependencies": {
@@ -63,7 +61,6 @@
   },
   "devDependencies": {
     "@shopgate/eslint-config": "7.32.0",
-    "@shopgate/pwa-e2e-test": "7.32.0",
     "@shopgate/pwa-unit-test": "7.32.0",
     "@types/lodash": "^4.17.24",
     "@types/react": "^17.0.93",
