@@ -105,6 +105,23 @@ export const capture = (
 ): CaptureResult => spawn(command, args, options, true);
 
 /**
+ * Turns an error into a message that includes its causes, e.g. the network error behind
+ * "fetch failed".
+ * @param error The error.
+ * @returns The message.
+ */
+export const describeError = (error: unknown): string => {
+  if (!(error instanceof Error)) {
+    return String(error);
+  }
+
+  const { code } = error as { code?: string };
+  const message = code && !error.message.includes(code) ? `${error.message} (${code})` : error.message;
+
+  return error.cause === undefined ? message : `${message}: ${describeError(error.cause)}`;
+};
+
+/**
  * Runs a script entry point and turns errors into a readable message and exit code 1.
  * @param main The entry point.
  */
@@ -112,7 +129,7 @@ export const runMain = (main: () => Promise<void> | void) => {
   Promise.resolve()
     .then(main)
     .catch((error: unknown) => {
-      console.error(`\n✖ ${error instanceof Error ? error.message : String(error)}`);
+      console.error(`\n✖ ${describeError(error)}`);
       process.exitCode = 1;
     });
 };

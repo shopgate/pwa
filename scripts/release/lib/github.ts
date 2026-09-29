@@ -1,3 +1,5 @@
+import { setTimeout } from 'node:timers/promises';
+
 /**
  * The subset of a GitHub release that the release scripts use.
  */
@@ -96,16 +98,32 @@ const request = async <T>(
   body?: unknown
 ): Promise<T | null> => {
   const token = getGithubToken();
-  const response = await fetch(`https://api.github.com${pathname}`, {
-    method,
-    headers: {
-      Accept: 'application/vnd.github+json',
-      'X-GitHub-Api-Version': '2022-11-28',
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
-      ...(body ? { 'Content-Type': 'application/json' } : {}),
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
+  const attempts = method === 'GET' ? 3 : 1;
+  let response: Response | undefined;
+
+  for (let attempt = 1; !response; attempt += 1) {
+    try {
+      // eslint-disable-next-line no-await-in-loop
+      response = await fetch(`https://api.github.com${pathname}`, {
+        method,
+        headers: {
+          Accept: 'application/vnd.github+json',
+          'X-GitHub-Api-Version': '2022-11-28',
+          ...(token ? { Authorization: `Bearer ${token}` } : {}),
+          ...(body ? { 'Content-Type': 'application/json' } : {}),
+        },
+        body: body ? JSON.stringify(body) : undefined,
+      });
+    } catch (error) {
+      if (attempt >= attempts) {
+        throw new Error(`GitHub API ${method} ${pathname} failed`, { cause: error });
+      }
+
+      console.warn(`GitHub API ${method} ${pathname} failed, retrying (${attempt}/${attempts - 1})`);
+      // eslint-disable-next-line no-await-in-loop
+      await setTimeout(attempt * 1000);
+    }
+  }
 
   if (response.status === 404) {
     return null;

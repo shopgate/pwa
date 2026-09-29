@@ -82,6 +82,50 @@ describe('github', () => {
     });
   });
 
+  describe('network errors', () => {
+    it('retries GET requests', async () => {
+      mock.method(console, 'warn', () => undefined);
+      let calls = 0;
+      mock.method(globalThis, 'fetch', async () => {
+        calls += 1;
+
+        if (calls === 1) {
+          throw new TypeError('fetch failed');
+        }
+
+        return new Response(JSON.stringify({
+          ahead_by: 0,
+          commits: [],
+        }));
+      });
+
+      assert.deepEqual(await getMissingCommits('shopgate/pwa', 'feature', 'master'), {
+        total: 0,
+        subjects: [],
+      });
+      assert.equal(calls, 2);
+    });
+
+    it('does not retry POST requests', async () => {
+      const fetchMock = mock.method(globalThis, 'fetch', async () => {
+        throw new TypeError('fetch failed', { cause: new Error('other side closed') });
+      });
+
+      await assert.rejects(
+        createRelease('shopgate/pwa', {
+          tag: 'v7.33.0',
+          target: 'master',
+          draft: false,
+          prerelease: false,
+          body: '',
+        }),
+        (error: Error) => error.message === 'GitHub API POST /repos/shopgate/pwa/releases failed'
+          && (error.cause as Error).message === 'fetch failed'
+      );
+      assert.equal(fetchMock.mock.callCount(), 1);
+    });
+  });
+
   describe('createRelease', () => {
     const options = {
       tag: 'v7.33.0',
