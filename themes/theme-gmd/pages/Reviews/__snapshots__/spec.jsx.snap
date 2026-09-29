@@ -134,7 +134,7 @@ exports[`<Reviews> page should not crash 1`] = `
                   className="engage__reviews__list"
                 >
                   <li
-                    className="sg-1pvwwup-item"
+                    className="sg-120zi6b-item"
                     data-test-id="reviewTitle: "
                     key="1"
                   >
@@ -547,7 +547,7 @@ exports[`<Reviews> page should not crash 1`] = `
                     </SurroundPortals>
                   </li>
                   <li
-                    className="sg-1pvwwup-item"
+                    className="sg-120zi6b-item"
                     data-test-id="reviewTitle: "
                     key="2"
                   >
@@ -960,7 +960,7 @@ exports[`<Reviews> page should not crash 1`] = `
                     </SurroundPortals>
                   </li>
                   <li
-                    className="sg-1pvwwup-item"
+                    className="sg-120zi6b-item"
                     data-test-id="reviewTitle: "
                     key="3"
                   >
@@ -1373,7 +1373,7 @@ exports[`<Reviews> page should not crash 1`] = `
                     </SurroundPortals>
                   </li>
                   <li
-                    className="sg-1pvwwup-item"
+                    className="sg-120zi6b-item"
                     data-test-id="reviewTitle: "
                     key="4"
                   >

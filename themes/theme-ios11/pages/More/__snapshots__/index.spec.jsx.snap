@@ -206,7 +206,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                             testId="logoutButton"
                           >
                             <button
-                              className="sg-10l03g-root"
+                              className="sg-1l2vvm1-root"
                               data-test-id="logoutButton"
                               onClick={[Function]}
                               type="button"
@@ -349,7 +349,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/shipping"
                           role="button"
                         >
@@ -406,7 +406,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/payment"
                           role="button"
                         >
@@ -463,7 +463,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/terms"
                           role="button"
                         >
@@ -520,7 +520,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/privacy"
                           role="button"
                         >
@@ -599,7 +599,7 @@ exports[`<More /> should render as expected when the user is logged in 1`] = `
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/imprint"
                           role="button"
                         >
@@ -1061,7 +1061,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/shipping"
                           role="button"
                         >
@@ -1118,7 +1118,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/payment"
                           role="button"
                         >
@@ -1175,7 +1175,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/terms"
                           role="button"
                         >
@@ -1232,7 +1232,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/privacy"
                           role="button"
                         >
@@ -1311,7 +1311,7 @@ exports[`<More /> should render as expected when the user is not logged in 1`] =
                         testId={null}
                       >
                         <Link
-                          className="sg-10l03g-root"
+                          className="sg-1l2vvm1-root"
                           href="/page/imprint"
                           role="button"
                         >
