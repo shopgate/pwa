@@ -43,9 +43,9 @@ export interface Theme {
 }
 
 const TRANSPILED_PACKAGE_DIRS = [
+  'libraries/core',
   'libraries/common',
   'libraries/commerce',
-  'libraries/core',
   'libraries/tracking-core',
   'libraries/tracking',
   'libraries/webcheckout',

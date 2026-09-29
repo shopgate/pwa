@@ -95,5 +95,5 @@ export const stagePublish = (dir: string, tag: string, dryRun: boolean) => {
  * @param otp The npm one-time password. Empty to let npm ask for it.
  */
 export const approveStaged = (id: string, otp: string) => {
-  run('npm', ['stage', 'approve', id, ...(otp ? ['--otp', otp] : [])]);
+  run('npm', ['stage', 'approve', id], otp ? { env: { npm_config_otp: otp } } : {});
 };

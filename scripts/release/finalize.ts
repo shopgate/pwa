@@ -61,7 +61,6 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
     themes.forEach((theme) => {
       logStep(`Updating master of ${theme.githubRepo}`);
       git(['subtree', 'pull', '-q', `--prefix=${theme.dir}`, theme.gitUrl, 'master', '-m', `Merge ${theme.name} master into ${releaseBranch}`], {
-        allowFailure: true,
         env: { GIT_MERGE_AUTOEDIT: 'no' },
       });
       git(['subtree', 'push', '-q', `--prefix=${theme.dir}`, theme.gitUrl, 'master']);
