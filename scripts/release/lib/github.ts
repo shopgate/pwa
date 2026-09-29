@@ -1,4 +1,5 @@
 import { setTimeout } from 'node:timers/promises';
+import { describeError } from './exec.ts';
 
 /**
  * The subset of a GitHub release that the release scripts use.
@@ -119,7 +120,7 @@ const request = async <T>(
         throw new Error(`GitHub API ${method} ${pathname} failed`, { cause: error });
       }
 
-      console.warn(`GitHub API ${method} ${pathname} failed, retrying (${attempt}/${attempts - 1})`);
+      console.warn(`GitHub API ${method} ${pathname} failed (${describeError(error)}), retrying (${attempt}/${attempts - 1})`);
       // eslint-disable-next-line no-await-in-loop
       await setTimeout(attempt * 1000);
     }

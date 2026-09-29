@@ -363,8 +363,16 @@ export const renderChangelog = async (version: ReleaseVersion, root = ROOT) => {
 export const generateChangelog = async (version: ReleaseVersion, root = ROOT) => {
   const changelogFile = path.join(root, 'CHANGELOG.md');
   const content = fs.existsSync(changelogFile) ? fs.readFileSync(changelogFile, 'utf8') : '';
-  const { title, latestChanges } = await renderChangelog(version, root);
+  const { title, latestChanges, exists } = await renderChangelog(version, root);
   const updated = insertIntoChangelog(content, latestChanges, title);
+
+  if (exists) {
+    console.log(`CHANGELOG.md already contains ${version.baseName}.`);
+  } else if (!latestChanges) {
+    console.log('No labeled pull requests since the previous stable version, CHANGELOG.md is unchanged.');
+  } else {
+    console.log(`Added the changelog entry for ${version.baseName}.`);
+  }
 
   fs.writeFileSync(changelogFile, updated);
   getThemes(root).forEach((theme) => {
