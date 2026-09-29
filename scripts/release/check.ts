@@ -141,7 +141,7 @@ export const findMissingMasterCommits = async (branch: string) => {
  * Other releases only get a warning.
  * @param options The release settings.
  */
-const checkMasterIsMerged = async (options: ReleaseOptions) => {
+export const checkMasterIsMerged = async (options: ReleaseOptions) => {
   const { version, branch, updateMaster } = options;
 
   if (!branch) {
