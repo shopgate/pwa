@@ -82,4 +82,10 @@ describe('getOptions', () => {
 
     assert.equal(getOptions(['7.33.0', '--no-draft-release']).draftRelease, false);
   });
+
+  it('rejects malformed boolean variables', () => {
+    process.env.DRAFT_RELEASE = 'tru';
+
+    assert.throws(() => getOptions(['7.33.0']), /Invalid value "tru" for DRAFT_RELEASE/);
+  });
 });

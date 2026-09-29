@@ -41,7 +41,16 @@ export interface ReleaseOptions {
  */
 const envFlag = (name: string, fallback: boolean) => {
   const value = process.env[name]?.trim().toLowerCase();
-  return value === undefined || value === '' ? fallback : value === 'true';
+
+  if (value === undefined || value === '') {
+    return fallback;
+  }
+
+  if (value !== 'true' && value !== 'false') {
+    throw new Error(`Invalid value "${process.env[name]}" for ${name}. Use "true" or "false".`);
+  }
+
+  return value === 'true';
 };
 
 /**

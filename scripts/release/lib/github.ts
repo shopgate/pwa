@@ -194,13 +194,19 @@ export const findRelease = async (repo: string, tag: string) => {
  * @param options The release settings.
  * @returns The created release.
  */
-export const createRelease = (repo: string, options: CreateReleaseOptions) => (
-  request<GithubRelease>('POST', `/repos/${repo}/releases`, {
+export const createRelease = async (repo: string, options: CreateReleaseOptions) => {
+  const release = await request<GithubRelease>('POST', `/repos/${repo}/releases`, {
     tag_name: options.tag,
     target_commitish: options.target,
     name: options.tag,
     body: options.body,
     draft: options.draft,
     prerelease: options.prerelease,
-  })
-);
+  });
+
+  if (!release) {
+    throw new Error(`Can't create the GitHub release ${options.tag} in ${repo}: the repository wasn't found or the token has no access to it.`);
+  }
+
+  return release;
+};

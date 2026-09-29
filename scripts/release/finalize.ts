@@ -36,8 +36,17 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
     .map(pkg => getPackageName(pkg.dir, root))
     .filter(name => !isPublished(name, version.version));
 
-  if (unpublished.length > 0) {
+  if (unpublished.length > 0 && !dryRun) {
     throw new Error(`Not published yet: ${unpublished.join(', ')}. Approve them with "npm run release:new -- approve ${version.version}" or on npmjs.com.`);
+  }
+
+  if (dryRun) {
+    if (unpublished.length > 0) {
+      console.log(`Dry run: not published yet: ${unpublished.join(', ')}`);
+    }
+
+    console.log(`Dry run: would ${updatesMaster ? 'update master and ' : ''}create the GitHub releases.`);
+    return;
   }
 
   if (!remoteBranchExists('origin', releaseBranch)) {
@@ -47,11 +56,6 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   logStep(`Checking out ${releaseBranch}`);
   git(['fetch', 'origin']);
   git(['checkout', '-B', releaseBranch, `origin/${releaseBranch}`]);
-
-  if (dryRun) {
-    console.log(`Dry run: would ${updatesMaster ? 'update master and ' : ''}create the GitHub releases.`);
-    return;
-  }
 
   if (updatesMaster) {
     themes.forEach((theme) => {
