@@ -266,16 +266,29 @@ export const insertIntoChangelog = (content: string, latestChanges: string, titl
 };
 
 /**
- * Returns the changelog entries of a release, without its heading.
+ * Returns the changelog entries of a release, followed by the compare link of its heading.
  * @param content The changelog.
  * @param baseName The release name without pre-release suffix, e.g. "v7.33.0".
- * @returns The entries, or an empty string when the release has no heading.
+ * @param tag The tag of the release, e.g. "v7.33.0-beta.1". The compare link ends there.
+ * @returns The release notes, or an empty string when the release has no heading.
  */
-export const extractReleaseNotes = (content: string, baseName: string) => {
+export const extractReleaseNotes = (content: string, baseName: string, tag: string) => {
   const sections = content.split(/^(?=## )/m);
   const section = sections.find(part => part.startsWith(`## [${baseName}](`));
 
-  return section ? section.slice(section.indexOf('\n') + 1).trim() : '';
+  if (!section) {
+    return '';
+  }
+
+  const heading = section.slice(0, section.indexOf('\n'));
+  const entries = section.slice(heading.length + 1).trim();
+  const compareUrl = heading.match(/^## \[[^\]]+\]\((\S+)\)/)?.[1];
+
+  if (!compareUrl?.endsWith(`...${baseName}`)) {
+    return entries;
+  }
+
+  return `${entries}\n\n**Full Changelog**: ${compareUrl.slice(0, -baseName.length)}${tag}`;
 };
 
 /**

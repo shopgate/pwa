@@ -4,14 +4,13 @@ This folder contains the scripts for releasing the PWA npm packages and themes. 
 the GitLab pipeline of `pwa-liveupdate`. Its npm token can only **stage** packages, so a developer
 approves each release with npm 2FA before anything becomes public.
 
-The scripts are TypeScript and run directly with Node ≥ 24; there is no build step. The legacy
-process (`yarn release` → `make release`) still exists as a fallback and is not described here.
+The scripts are TypeScript and run directly with Node ≥ 24; there is no build step.
 
 ## Usage
 
 ```sh
-yarn release:new                       # overview of all commands and options
-yarn release:new <command> [version] [options]
+npm run release:new                    # overview of all commands and options
+npm run release:new -- <command> [version] [options]
 ```
 
 | Command | Where | What it does |
@@ -19,50 +18,57 @@ yarn release:new <command> [version] [options]
 | `check <version>` | local, CI | Checks that the version is still free on npm, git and GitHub and that the branch contains master. Read-only |
 | `prepare <version>` | CI | Bumps the versions, builds, writes the changelog, pushes the release branches and stages the packages on npm |
 | `approve <version>` | local | Approves the staged packages with your npm 2FA code |
-| `finalize <version>` | CI | Updates master (stable releases only) and creates the GitHub releases |
+| `finalize <version>` | CI | Updates master (only when the version becomes `latest`) and creates the GitHub releases |
 | `changelog <version>` | local | Shows the changelog entry of the version without writing any files (`GITHUB_AUTH_TOKEN` avoids the GitHub rate limit) |
 | `build` | local | Builds all packages into `dist` without publishing. `--purge` deletes the `dist` folders, `--normalize-only` removes test files from existing ones |
 
-| Option | Variable | Description |
-|---|---|---|
-| `--branch <name>` | `BRANCH` | Branch to release from |
-| `--update-master` | `UPDATE_MASTER` | Update master of pwa and the themes (stable releases only) |
-| `--no-draft-release` | `DRAFT_RELEASE` | Publish the GitHub releases instead of creating drafts |
-| `--resume` | `RESUME` | Continue an interrupted release of the same version |
-| `--dry-run` | `DRY_RUN` | No pushes, packages are only packed (`npm stage publish --dry-run`) |
+| Option | Variable | Pipeline input | Description |
+|---|---|---|---|
+| `<version>` | `VERSION` | `version` | Version to release |
+| `--branch <name>` | `BRANCH` | `branch` | Branch to release from |
+| `--resume` | `RESUME` | `resume` | Continue an interrupted release of the same version in a new pipeline |
+| `--dry-run` | `DRY_RUN` | `dry_run` | No pushes, packages are only packed (`npm stage publish --dry-run`) |
+| `--skip-master-update` | `SKIP_MASTER_UPDATE` | `skip_master_update` | Don't update master, although the version becomes `latest` |
+| – | `MUTE_SLACK` | `mute_slack` | No Slack notifications (pipeline only) |
 
 Locally, `check`, `prepare` and `approve` need an npm login (`npm login`) with access to the
 `@shopgate` packages, since they read the staged versions. `GITHUB_AUTH_TOKEN` avoids the GitHub rate
 limit.
 
 The version can also be passed via `VERSION`. Command line options take precedence over the
-variables.
+variables. The pipeline form of `pwa-liveupdate` shows the inputs and passes them to the jobs as
+these variables.
 
 ## Releasing a version
 
-1. **Check the version** (optional): `yarn release:new check 7.33.0`. The pipeline does the same
+1. **Check the version** (optional): `npm run release:new -- check 7.33.0`. The pipeline does the same
    check first, but locally you get the answer before filling in the form.
-2. **Start the pipeline** of `pwa-liveupdate` with `RELEASE_PROCESS=new`, `BRANCH`, `VERSION` and,
-   for stable releases, `UPDATE_MASTER=true`. The jobs `release:check` and `release:prepare` run
-   automatically. When they're done, Slack posts "staged on npm".
+2. **Start the pipeline** of `pwa-liveupdate` with the inputs `version` and `branch`. The jobs `release:check`
+   and `release:prepare` run automatically. When they're done, Slack posts "staged on npm".
 3. **Approve the packages** on your machine:
    ```sh
-   yarn release:new approve 7.33.0
+   npm run release:new -- approve 7.33.0
    ```
    It lists the staged packages and asks for your npm 2FA code. If the code expires, npm asks for
    a new one. You can also approve the packages on npmjs.com.
 4. **Run the manual `release:finalize` job** in the pipeline. It fails as long as a package isn't
    published yet, so it can simply be retried after the approval.
-5. With `RELEASE_TABLET_THEMES=true`, the tablet themes are uploaded after finalize.
-
-Stable releases with `UPDATE_MASTER=true` must be released from a branch that contains all
-commits of master. Otherwise `check` aborts, because the release would drop these commits and
-the master merge in `finalize` could conflict after the packages are already public. Merge master
-into the branch and start the pipeline again. For other releases, `check` only warns. `approve`
-compares the release branch of stable versions with master again and asks before approving.
+5. For stable versions, the tablet themes are uploaded automatically after finalize. For
+   prereleases, `release:tablet-themes` is a manual job that can be skipped.
 
 Pre-releases (`-alpha.N`, `-beta.N`, `-rc.N`) are published with the npm dist-tag `beta`, stable
-releases with `latest`. Master is only updated for stable releases with `UPDATE_MASTER=true`.
+releases with `latest` (patches of older release lines see below).
+
+**Master is updated exactly when the version becomes `latest`**, i.e. for the newest stable
+version. Pre-releases and patches of older release lines never reach master, and there is no
+option to force it. `SKIP_MASTER_UPDATE=true` (`--skip-master-update`) is the only exception: it
+keeps master unchanged for a newest stable version. `check` logs which case applies.
+
+A release that updates master must be released from a branch that contains all commits of master.
+Otherwise `check` aborts, because the release would drop these commits and the master merge in
+`finalize` could conflict after the packages are already public. Merge master into the branch and
+start the pipeline again. For other releases, `check` only warns. `approve` compares the release
+branch with master again for releases that update master and asks before approving.
 
 ### Patching an older release line
 
@@ -70,7 +76,8 @@ To fix e.g. 7.32 while 7.33.0 is the current release:
 
 1. Create a branch from the tag of the last release of that line (`v7.32.2`), commit the fix and
    push the branch.
-2. Start the pipeline with that branch, `VERSION=7.32.3` and `UPDATE_MASTER=false`.
+2. Start the pipeline with that branch and `version` 7.32.3. Master is not updated, since the
+   version doesn't become `latest`.
 
 A stable version that is lower than the current `latest` version is published with the dist-tag
 `latest-<major>.<minor>` (here `latest-7.32`), and its GitHub releases are not marked as latest, so
@@ -94,15 +101,17 @@ Only reads, changes nothing.
 
 1. In CI, fails when `GITHUB_AUTH_TOKEN` is not set, since `finalize` needs it later.
 2. Compares `BRANCH` with master via the GitHub API. Fails when master has commits that are missing
-   in the branch and the release is stable with `UPDATE_MASTER=true`, otherwise only warns.
+   in the branch and the release updates master, otherwise only warns. Logs whether `finalize`
+   updates master.
 3. Warns when the version is not higher than the current version of its npm dist-tag.
 4. Looks for the version in every place a release leaves behind: published or staged versions of
    all packages on npm, the tag `vX`, the branches `releases/vX` and `vX` and GitHub releases
    (including drafts) in pwa and the theme repositories. When something is found, it lists it and
-   aborts, unless `RESUME=true` is set and `releases/vX` contains the "Released X" commit.
+   aborts, unless `releases/vX` contains the "Released X" commit and either this pipeline created
+   it (a retried job) or `RESUME=true` is set.
 
-With `RELEASE_TABLET_THEMES=true`, the job also logs in with `sgconnect` first, so invalid platform
-credentials fail the pipeline before the release starts instead of in the tablet job.
+The job also logs in with `sgconnect` first, so invalid platform credentials fail the pipeline
+before the release starts instead of in the tablet job.
 
 ### `prepare` (job `release:prepare`)
 
@@ -110,10 +119,12 @@ credentials fail the pipeline before the release starts instead of in the tablet
 2. Creates `releases/vX` from `BRANCH`. When the branch already exists on GitHub (resume), it
    continues on it.
 3. Sets the version in all `package.json` files of the workspace (internal `@shopgate` dependencies
-   exactly pinned), the `extension-config.json` of the themes and `lerna.json`.
+   exactly pinned) and the `extension-config.json` of the themes.
 4. Builds the packages into `dist`: babel, type declarations with tsc for packages with a
    `tsconfig.build.json`, then removes tests, snapshots, specs and tsconfig files.
-5. Commits the version changes as "Released X". `dist` is not committed.
+5. Commits the version changes as "Released X". In the pipeline, the commit message also contains
+   the line `Pipeline: <ID>`, so a retried job recognizes the release as its own. `dist` is not
+   committed.
 6. Adds the entries of all labeled pull requests since the previous stable tag to `CHANGELOG.md`,
    copies it to the themes and commits it as "Created changelog for version 'vX'.".
 7. Pushes `releases/vX` to pwa and, with `git subtree push`, to `releases/vX` of `theme-gmd` and
@@ -131,8 +142,8 @@ Needs your npm login with write access to the `@shopgate` packages and 2FA.
 
 1. Looks up the staged version of every package. Aborts when a package is neither staged nor
    published.
-2. For stable versions, compares `releases/vX` with master and asks before approving when master
-   has commits that are missing in the release.
+2. For versions that update master, compares `releases/vX` with master and asks before approving
+   when master has commits that are missing in the release.
 3. Asks for your one-time password and approves the packages, dependencies first, so that no package
    is public before the packages it depends on.
 4. Checks that npm shows every approved version as published. A new version can take a moment to
@@ -145,24 +156,25 @@ After this step, the packages are public on npm.
 
 1. Aborts when a package is not published yet.
 2. Checks out `releases/vX`.
-3. Only for stable releases with `UPDATE_MASTER=true`:
+3. Only when the version becomes `latest` and `SKIP_MASTER_UPDATE` isn't set:
    1. For each theme: merges the master of the theme repository into `releases/vX`
       (`git subtree pull`) and pushes the result to that master (`git subtree push`).
    2. Merges master of pwa into `releases/vX` and pushes it to `releases/vX`, `vX` and master.
-4. Creates the GitHub release `vX` in pwa and both theme repositories. The target is master with
-   `UPDATE_MASTER`, otherwise `releases/vX`. The release notes are the changelog entry of the
-   version, pre-releases are marked as such, patches of an older release line are not marked as
-   latest, and `DRAFT_RELEASE` decides between draft and published.
+4. Creates the GitHub release `vX` in pwa and both theme repositories. The target is master when master
+   was updated, otherwise `releases/vX`. The release notes are the changelog entry of the
+   version plus a compare link to the previous stable version, or "No notable changes in this
+   release." without an entry. Pre-releases are marked as such, and patches of an older release
+   line are not marked as latest.
    Publishing a release creates its tag. The published release in pwa starts the upload of both
    themes to the extension service (`.github/workflows/main.yml`), which checks out the tag `vX`
    in the theme repositories. So the theme releases are created first and the pwa release last.
-   When you publish drafts by hand, keep that order: themes first, pwa last.
 
 With `DRY_RUN=true`, it only lists the packages that are not published and stops.
 
 ### `release:tablet-themes`
 
-Runs after `finalize` when `RELEASE_TABLET_THEMES=true`. It checks out `releases/vX`, renames the
+Runs automatically after `finalize` for stable versions; for prereleases it's a manual job that
+can be skipped. It checks out `releases/vX`, renames the
 themes to `*-tablet` and uploads them with `sgconnect`. A failed upload, including a failed
 processing of the theme on the platform, fails the job, which can be retried on its own. With `DRY_RUN=true`, it checks out `BRANCH`
 instead, since `releases/vX` isn't pushed, and skips the upload.
@@ -175,11 +187,19 @@ With `DRY_RUN=true`, all Slack messages of the new process are sent as well, mar
 Every step checks what is already done and skips it, so a failed job can be **retried** as it is.
 No step force-pushes, so a push can be rejected, but never overwrites anything.
 
-When the pipeline has to be started again for the same version, `check` reports the version as
-taken. Start it with `RESUME=true` to continue. Resuming is only allowed when the release branch
-contains the "Released X" commit of this version, so a typo in the version can't continue someone
-else's release. A resumed release continues on `releases/vX`, so later changes to `BRANCH` are
+This includes `release:prepare`: once it has pushed `releases/vX`, its `check` finds the version
+taken, but continues because the "Released X" commit names the same pipeline.
+
+When the pipeline has to be started again for the same version, for example after it was
+cancelled, `check` reports the version as taken. Start the new pipeline with the input `resume` to
+continue. Resuming is only allowed when the release branch contains the "Released X" commit of
+this version, so a typo in the version can't continue someone else's release. A resumed release continues on `releases/vX`, so later changes to `BRANCH` are
 not part of it.
+
+**`check` stops because master has commits that are missing in `BRANCH`** (only for releases that
+update master, e.g. after someone merged into master by mistake): nothing was created yet. Merge
+master into `BRANCH`, or revert the unwanted commits on master first and then merge it. Afterwards
+retry the job or start a new pipeline, `RESUME` isn't needed.
 
 **Before the approval**, nothing is public. Failed pushes and failed staging are fixed by retrying
 or resuming.
@@ -214,9 +234,9 @@ tagged commit, so releases from branches without the current workflow behave lik
 ## Testing changes
 
 ```sh
-yarn release:typecheck && yarn release:test
-yarn release:new check 7.33.0-beta.1
-yarn release:new build
+npm run release:typecheck && npm run release:test
+npm run release:new -- check 7.33.0-beta.1
+npm run release:new -- build
 ```
 
 For a complete local run, use a **separate clone**: `prepare` needs a clean working tree and creates

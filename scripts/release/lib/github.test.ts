@@ -115,7 +115,6 @@ describe('github', () => {
         createRelease('shopgate/pwa', {
           tag: 'v7.33.0',
           target: 'master',
-          draft: false,
           prerelease: false,
           body: '',
           latest: true,
@@ -131,7 +130,6 @@ describe('github', () => {
     const options = {
       tag: 'v7.33.0',
       target: 'master',
-      draft: false,
       prerelease: false,
       body: '',
       latest: true,

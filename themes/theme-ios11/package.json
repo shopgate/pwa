@@ -1,6 +1,7 @@
 {
   "name": "@shopgate/theme-ios11",
   "version": "7.32.1",
+  "private": true,
   "description": "iOS11 theme for the Shopgate Connect PWA.",
   "repository": "shopgate/theme-ios11",
   "bugs": "https://github.com/shopgate/theme-ios11/issues",

@@ -15,14 +15,10 @@ export interface ReleaseOptions {
    */
   branch: string;
   /**
-   * Update master and the theme master branches for stable releases (UPDATE_MASTER).
+   * Don't update master, although the version becomes "latest" (SKIP_MASTER_UPDATE).
    * Defaults to false.
    */
-  updateMaster: boolean;
-  /**
-   * Create the GitHub releases as drafts (DRAFT_RELEASE). Defaults to true.
-   */
-  draftRelease: boolean;
+  skipMasterUpdate: boolean;
   /**
    * Allow continuing an interrupted release of the same version (RESUME). Defaults to false.
    */
@@ -64,8 +60,7 @@ export const getOptions = (argv = process.argv.slice(2)): ReleaseOptions => {
     allowPositionals: true,
     options: {
       branch: { type: 'string' },
-      'update-master': { type: 'boolean' },
-      'draft-release': { type: 'boolean' },
+      'skip-master-update': { type: 'boolean' },
       resume: { type: 'boolean' },
       'dry-run': { type: 'boolean' },
     },
@@ -81,8 +76,7 @@ export const getOptions = (argv = process.argv.slice(2)): ReleaseOptions => {
   return {
     version: parseVersion(version),
     branch: values.branch ?? process.env.BRANCH?.trim() ?? '',
-    updateMaster: values['update-master'] ?? envFlag('UPDATE_MASTER', false),
-    draftRelease: values['draft-release'] ?? envFlag('DRAFT_RELEASE', true),
+    skipMasterUpdate: values['skip-master-update'] ?? envFlag('SKIP_MASTER_UPDATE', false),
     resume: values.resume ?? envFlag('RESUME', false),
     dryRun: values['dry-run'] ?? envFlag('DRY_RUN', false),
   };

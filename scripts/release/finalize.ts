@@ -12,11 +12,11 @@ import { logStep } from './lib/exec.ts';
 import { git, remoteBranchExists } from './lib/git.ts';
 import { createRelease, findRelease } from './lib/github.ts';
 import { isPublished } from './lib/npm.ts';
-import { resolveDistTag } from './steps/stage.ts';
+import { resolveDistTag, updatesMaster } from './steps/stage.ts';
 import type { ReleaseOptions } from './lib/options.ts';
 
 /**
- * Finishes an approved release: updates master (stable releases with UPDATE_MASTER) and
+ * Finishes an approved release: updates master (versions that become "latest") and
  * creates the GitHub releases. Fails as long as a package is not published on npm.
  * @param options The release settings.
  * @param root The repository root.
@@ -24,13 +24,12 @@ import type { ReleaseOptions } from './lib/options.ts';
 export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   const {
     version,
-    updateMaster,
-    draftRelease,
+    skipMasterUpdate,
     dryRun,
   } = options;
   const releaseBranch = `releases/${version.name}`;
   const themes = getThemes(root);
-  const updatesMaster = version.stable && updateMaster;
+  const masterUpdate = !skipMasterUpdate && updatesMaster(version, root);
 
   logStep('Checking npm packages');
   const unpublished = PUBLISHABLE_PACKAGES
@@ -50,7 +49,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
       console.log(`Dry run: not published yet: ${unpublished.join(', ')}`);
     }
 
-    console.log(`Dry run: would ${updatesMaster ? 'update master and ' : ''}create the GitHub releases.`);
+    console.log(`Dry run: would ${masterUpdate ? 'update master and ' : ''}create the GitHub releases.`);
     return;
   }
 
@@ -62,7 +61,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   git(['fetch', 'origin']);
   git(['checkout', '-B', releaseBranch, `origin/${releaseBranch}`]);
 
-  if (updatesMaster) {
+  if (masterUpdate) {
     themes.forEach((theme) => {
       logStep(`Updating master of ${theme.githubRepo}`);
       git(['subtree', 'pull', '-q', `--prefix=${theme.dir}`, theme.gitUrl, 'master', '-m', `Merge ${theme.name} master into ${releaseBranch}`], {
@@ -78,9 +77,10 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
     git(['push', 'origin', `${releaseBranch}:master`]);
   }
 
-  const target = updatesMaster ? 'master' : releaseBranch;
+  const target = masterUpdate ? 'master' : releaseBranch;
   const latest = resolveDistTag(version, root) === 'latest';
-  const body = extractReleaseNotes(fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8'), version.baseName);
+  const body = extractReleaseNotes(fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8'), version.baseName, version.name)
+    || 'No notable changes in this release.';
 
   for (const repo of [...themes.map(theme => theme.githubRepo), GITHUB_REPO]) {
     logStep(`Creating GitHub release ${version.name} in ${repo}`);
@@ -95,12 +95,11 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
       const release = await createRelease(repo, {
         tag: version.name,
         target,
-        draft: draftRelease,
         prerelease: !version.stable,
         body,
         latest,
       });
-      console.log(`✔ ${release.draft ? 'Created draft' : 'Released'}: ${release.html_url}`);
+      console.log(`✔ Released: ${release.html_url}`);
     }
   }
 

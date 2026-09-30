@@ -8,9 +8,7 @@
 
 <div align="center">
 
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=v6.X)](https://coveralls.io/github/shopgate/pwa?branch=v6.X)
 [![GitHub (pre-)release](https://img.shields.io/github/release/shopgate/pwa/all.svg)](https://github.com/shopgate/pwa/releases)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 </div>

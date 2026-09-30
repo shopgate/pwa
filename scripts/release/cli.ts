@@ -28,10 +28,9 @@ interface Command {
 
 const OPTIONS_HELP = [
   ['--branch <name>', 'Source branch of the release', 'BRANCH'],
-  ['--update-master', 'Update master for stable releases', 'UPDATE_MASTER'],
-  ['--no-draft-release', 'Publish the GitHub releases directly', 'DRAFT_RELEASE'],
-  ['--resume', 'Continue an interrupted release of the same version', 'RESUME'],
+  ['--resume', 'Continue an interrupted release of the same version in a new pipeline', 'RESUME'],
   ['--dry-run', 'Local only: no pushes, "npm stage publish --dry-run"', 'DRY_RUN'],
+  ['--skip-master-update', 'Don\'t update master, although the version becomes "latest"', 'SKIP_MASTER_UPDATE'],
 ];
 
 const COMMANDS: Record<string, Command> = {
@@ -115,14 +114,6 @@ const printHelp = () => {
 };
 
 const [name, ...args] = process.argv.slice(2);
-
-if (process.env.npm_config_user_agent?.startsWith('yarn/')) {
-  Object.keys(process.env)
-    .filter(key => key.toLowerCase().startsWith('npm_config_'))
-    .forEach((key) => {
-      delete process.env[key];
-    });
-}
 
 if (!name || name === 'help' || name === '--help') {
   printHelp();

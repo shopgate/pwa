@@ -271,18 +271,33 @@ describe('extractReleaseNotes', () => {
     '',
   ].join('\n');
 
-  it('returns the entries of the release without its heading', () => {
+  it('returns the entries of the release and the compare link of its heading', () => {
     assert.equal(
-      extractReleaseNotes(changelog, 'v7.33.0'),
+      extractReleaseNotes(changelog, 'v7.33.0', 'v7.33.0'),
       '#### :bug: Bug Fix\n* [#1](https://github.com/shopgate/pwa/pull/1) Fix ([@a](https://github.com/a))'
+        + '\n\n**Full Changelog**: https://github.com/shopgate/pwa/compare/v7.32.0...v7.33.0'
+    );
+  });
+
+  it('ends the compare link of a pre-release at its own tag', () => {
+    assert.match(
+      extractReleaseNotes(changelog, 'v7.33.0', 'v7.33.0-beta.1'),
+      /\*\*Full Changelog\*\*: https:\/\/github\.com\/shopgate\/pwa\/compare\/v7\.32\.0\.\.\.v7\.33\.0-beta\.1$/
     );
   });
 
   it('returns the last release up to the end of the file', () => {
-    assert.match(extractReleaseNotes(changelog, 'v7.32.0'), /^#### :rocket: Enhancement\n\* \[#2\]/);
+    assert.match(extractReleaseNotes(changelog, 'v7.32.0', 'v7.32.0'), /^#### :rocket: Enhancement\n\* \[#2\]/);
+  });
+
+  it('returns only the entries when the heading links somewhere else', () => {
+    assert.equal(
+      extractReleaseNotes('## [v7.33.0](https://github.com/shopgate/pwa) (2026-10-01)\n\n#### :bug: Bug Fix\n* Fix\n', 'v7.33.0', 'v7.33.0'),
+      '#### :bug: Bug Fix\n* Fix'
+    );
   });
 
   it('returns an empty string for unknown releases', () => {
-    assert.equal(extractReleaseNotes(changelog, 'v7.3.0'), '');
+    assert.equal(extractReleaseNotes(changelog, 'v7.3.0', 'v7.3.0'), '');
   });
 });

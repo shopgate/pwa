@@ -38,7 +38,7 @@ const EXACT_VERSION = /^\d+\.\d+\.\d+(-[0-9A-Za-z.]+)?$/;
 const readJson = <T>(file: string): T => JSON.parse(fs.readFileSync(file, 'utf8')) as T;
 
 /**
- * Writes JSON with 2-space indentation and a trailing newline, like lerna did.
+ * Writes JSON with 2-space indentation and a trailing newline.
  * @param file The file path.
  * @param content The content to write.
  */
@@ -101,7 +101,7 @@ const bumpDependencies = (
 
 /**
  * Sets the version of all workspaces, their exact internal (dev)dependency pins,
- * the theme extension-config.json files and lerna.json.
+ * and the theme extension-config.json files.
  * @param version The new version.
  * @param root The repository root.
  */
@@ -125,10 +125,7 @@ export const bumpVersions = (version: string, root = ROOT) => {
     console.log(`${path.relative(root, file)} -> ${version}`);
   });
 
-  const versionFiles = [
-    ...getThemes(root).map(theme => path.join(theme.dir, 'extension-config.json')),
-    'lerna.json',
-  ];
+  const versionFiles = getThemes(root).map(theme => path.join(theme.dir, 'extension-config.json'));
 
   versionFiles.forEach((file) => {
     replaceVersionField(path.join(root, file), version);

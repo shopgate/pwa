@@ -9,11 +9,12 @@ import { logStep } from './lib/exec.ts';
 import { remoteBranchExists, remoteTagExists } from './lib/git.ts';
 import {
   findRelease,
-  getCommitSubjects,
+  getCommitMessages,
   getGithubToken,
   getMissingCommits,
 } from './lib/github.ts';
 import { findStagedVersion, getDistTagVersion, isPublished } from './lib/npm.ts';
+import { updatesMaster } from './steps/stage.ts';
 import type { ReleaseOptions } from './lib/options.ts';
 import {
   compareVersions,
@@ -147,13 +148,14 @@ export const findMissingMasterCommits = async (branch: string) => {
 };
 
 /**
- * Fails for stable releases that update master when the source branch misses commits from
- * master, since the release would drop them and the master merge in finalize could conflict.
+ * Fails for releases that update master when the source branch misses commits from master,
+ * since the release would drop them and the master merge in finalize could conflict.
  * Other releases only get a warning.
  * @param options The release settings.
+ * @param masterUpdate Whether the release updates master.
  */
-export const checkMasterIsMerged = async (options: ReleaseOptions) => {
-  const { version, branch, updateMaster } = options;
+export const checkMasterIsMerged = async (options: ReleaseOptions, masterUpdate: boolean) => {
+  const { version, branch } = options;
 
   if (!branch) {
     return;
@@ -164,14 +166,49 @@ export const checkMasterIsMerged = async (options: ReleaseOptions) => {
 
   if (missing === 0) {
     console.log(`✔ ${branch} contains all commits of master`);
-  } else if (version.stable && updateMaster) {
-    throw new Error(`Merge master into ${branch} before releasing ${version.version}.`);
+  } else if (masterUpdate) {
+    throw new Error(`Merge master into ${branch} before releasing ${version.version}. Revert unwanted commits on master first. Then retry the job or start a new pipeline.`);
   }
 };
 
 /**
- * Fails when the version is already (partially) released, unless "resume" is set and the
- * release branch proves that it's an interrupted run of this release.
+ * Returns the line of the "Released X" commit message that names the pipeline which created it.
+ * @param pipelineId The GitLab pipeline ID.
+ * @returns The line.
+ */
+export const pipelineLine = (pipelineId: string) => `Pipeline: ${pipelineId}`;
+
+/**
+ * Decides whether a taken version may be continued, based on the commits of its release branch.
+ * @param messages The commit messages of releases/vX, newest first.
+ * @param version The version to release.
+ * @param resume Whether RESUME is set.
+ * @param pipelineId The ID of the current GitLab pipeline, if any.
+ * @returns "retry" for a job retried in the pipeline that created the release commit, "resume"
+ * for an allowed RESUME, otherwise null.
+ */
+export const getContinuation = (
+  messages: string[],
+  version: ReleaseVersion,
+  resume: boolean,
+  pipelineId?: string
+) => {
+  const releaseCommit = messages.find(message => message.split('\n')[0] === `Released ${version.version}`);
+
+  if (!releaseCommit) {
+    return null;
+  }
+
+  if (pipelineId && releaseCommit.split('\n').includes(pipelineLine(pipelineId))) {
+    return 'retry';
+  }
+
+  return resume ? 'resume' : null;
+};
+
+/**
+ * Fails when the version is already (partially) released, unless the release branch proves that
+ * it's an interrupted run of this release: either a job retried in the same pipeline or RESUME.
  * @param options The release settings.
  * @param root The repository root.
  */
@@ -182,7 +219,12 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
     throw new Error('GITHUB_AUTH_TOKEN is not set. It is needed to create the GitHub releases in finalize.');
   }
 
-  await checkMasterIsMerged(options);
+  const masterUpdate = !options.skipMasterUpdate && updatesMaster(version, root);
+  console.log(masterUpdate
+    ? `✔ finalize updates master, since ${version.version} becomes "latest"`
+    : `✔ finalize doesn't update master${options.skipMasterUpdate ? ' (SKIP_MASTER_UPDATE)' : `, since ${version.version} doesn't become "latest"`}`);
+
+  await checkMasterIsMerged(options, masterUpdate);
 
   logStep(`Checking availability of ${version.version}`);
   warnAboutOlderVersion(version, root);
@@ -196,15 +238,22 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
 
   console.table(taken);
 
-  if (!resume) {
-    throw new Error(`${version.version} is already taken. Set RESUME=true (or --resume) to continue an interrupted release.`);
+  const messages = await getCommitMessages(GITHUB_REPO, `releases/${version.name}`);
+  const continuation = getContinuation(messages, version, resume, process.env.CI_PIPELINE_ID);
+
+  if (continuation === 'retry') {
+    console.log(`✔ Continuing the release of ${version.version} started in this pipeline`);
+    return;
   }
 
-  const subjects = await getCommitSubjects(GITHUB_REPO, `releases/${version.name}`);
+  if (continuation === 'resume') {
+    console.log(`✔ Resuming the interrupted release of ${version.version}`);
+    return;
+  }
 
-  if (!subjects.includes(`Released ${version.version}`)) {
+  if (resume) {
     throw new Error(`Can't resume: releases/${version.name} doesn't contain the "Released ${version.version}" commit.`);
   }
 
-  console.log(`✔ Resuming the interrupted release of ${version.version}`);
+  throw new Error(`${version.version} is already taken. To continue an interrupted release in a new pipeline, set RESUME=true (or --resume).`);
 };

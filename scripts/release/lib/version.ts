@@ -134,3 +134,12 @@ export const getDistTag = (version: ReleaseVersion, latest: string) => {
 
   return 'latest';
 };
+
+/**
+ * Whether a release updates master: only versions that become "latest" on npm do, so pre-releases
+ * and patches of older release lines never reach master.
+ * @param version The version to release.
+ * @param latest The version the "latest" dist-tag currently points to, empty when unknown.
+ * @returns Whether master gets updated.
+ */
+export const isMasterRelease = (version: ReleaseVersion, latest: string) => getDistTag(version, latest) === 'latest';

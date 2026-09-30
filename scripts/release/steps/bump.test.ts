@@ -41,11 +41,6 @@ describe('bump', () => {
       private: true,
       workspaces: ['libraries/*', 'themes/*', 'extensions/theme-config/frontend'],
     });
-    writeJson(root, 'lerna.json', {
-      lerna: '2.9.0',
-      version: '7.32.0',
-      packages: ['libraries/*'],
-    });
     writeJson(root, 'repos.json', {
       themes: { 'theme-gmd': 'git@github.com:shopgate/theme-gmd.git' },
     });
@@ -132,17 +127,12 @@ describe('bump', () => {
     assert.equal(readJson(root, 'libraries/common/package.json').dependencies.lodash, '^4.17.21');
   });
 
-  it('bumps the theme extension-config.json and lerna.json', () => {
+  it('bumps the theme extension-config.json', () => {
     bumpVersions('7.33.0', root);
 
     assert.deepEqual(readJson(root, 'themes/theme-gmd/extension-config.json'), {
       version: '7.33.0',
       id: '@shopgate/theme-gmd',
-    });
-    assert.deepEqual(readJson(root, 'lerna.json'), {
-      lerna: '2.9.0',
-      version: '7.33.0',
-      packages: ['libraries/*'],
     });
   });
 

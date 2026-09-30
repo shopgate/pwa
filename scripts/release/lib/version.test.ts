@@ -3,6 +3,7 @@ import { describe, it } from 'node:test';
 import {
   compareVersions,
   getDistTag,
+  isMasterRelease,
   isValidVersion,
   parseVersion,
 } from './version.ts';
@@ -90,5 +91,26 @@ describe('getDistTag', () => {
   it('keeps "latest" for patches of older release lines', () => {
     assert.equal(getDistTag(parseVersion('7.32.3'), '7.33.0'), 'latest-7.32');
     assert.equal(getDistTag(parseVersion('6.9.1'), '7.33.0'), 'latest-6.9');
+  });
+});
+
+describe('isMasterRelease', () => {
+  it('never updates master for pre-releases', () => {
+    ['alpha', 'beta', 'rc'].forEach((type) => {
+      assert.equal(isMasterRelease(parseVersion(`7.33.0-${type}.1`), '7.32.1'), false);
+    });
+  });
+
+  it('never updates master for patches of an older release line', () => {
+    assert.equal(isMasterRelease(parseVersion('7.31.10'), '7.32.1'), false);
+  });
+
+  it('updates master for the newest stable version', () => {
+    assert.equal(isMasterRelease(parseVersion('7.32.2'), '7.32.1'), true);
+    assert.equal(isMasterRelease(parseVersion('7.33.0'), '7.32.1'), true);
+  });
+
+  it('still updates master once the version is published as "latest"', () => {
+    assert.equal(isMasterRelease(parseVersion('7.33.0'), '7.33.0'), true);
   });
 });

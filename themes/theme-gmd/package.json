@@ -1,6 +1,7 @@
 {
   "name": "@shopgate/theme-gmd",
   "version": "7.32.1",
+  "private": true,
   "description": "Google Material Design theme for the Shopgate Connect PWA.",
   "repository": "shopgate/theme-gmd",
   "bugs": "https://github.com/shopgate/theme-gmd/issues",

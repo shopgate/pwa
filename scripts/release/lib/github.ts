@@ -69,10 +69,6 @@ export interface CreateReleaseOptions {
    */
   target: string;
   /**
-   * Create the release as unpublished draft.
-   */
-  draft: boolean;
-  /**
    * Mark the release as pre-release on GitHub.
    */
   prerelease: boolean;
@@ -156,19 +152,19 @@ export const getIssue = (repo: string, issueNumber: string) => (
 );
 
 /**
- * Returns the subjects of the latest commits on a branch.
+ * Returns the messages of the latest commits on a branch.
  * @param repo GitHub "owner/repo".
  * @param branch The branch name.
  * @param count Number of commits to read.
- * @returns The commit subjects, newest first. Empty when the branch doesn't exist.
+ * @returns The full commit messages, newest first. Empty when the branch doesn't exist.
  */
-export const getCommitSubjects = async (repo: string, branch: string, count = 30) => {
+export const getCommitMessages = async (repo: string, branch: string, count = 30) => {
   const commits = await request<Array<{ commit: { message: string } }>>(
     'GET',
     `/repos/${repo}/commits?sha=${encodeURIComponent(branch)}&per_page=${count}`
   ) ?? [];
 
-  return commits.map(({ commit }) => commit.message.split('\n')[0]);
+  return commits.map(({ commit }) => commit.message);
 };
 
 /**
@@ -235,7 +231,6 @@ export const createRelease = async (repo: string, options: CreateReleaseOptions)
     target_commitish: options.target,
     name: options.tag,
     body: options.body,
-    draft: options.draft,
     prerelease: options.prerelease,
     ...(options.latest ? {} : { make_latest: 'false' }),
   });

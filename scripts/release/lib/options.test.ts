@@ -7,7 +7,7 @@ import {
 } from 'node:test';
 import { getOptions } from './options.ts';
 
-const ENV_NAMES = ['VERSION', 'BRANCH', 'UPDATE_MASTER', 'DRAFT_RELEASE', 'RESUME', 'DRY_RUN'];
+const ENV_NAMES = ['VERSION', 'BRANCH', 'SKIP_MASTER_UPDATE', 'RESUME', 'DRY_RUN'];
 
 describe('getOptions', () => {
   let savedEnv: Record<string, string | undefined>;
@@ -34,8 +34,7 @@ describe('getOptions', () => {
 
     assert.equal(options.version.version, '7.33.0');
     assert.equal(options.branch, '');
-    assert.equal(options.updateMaster, false);
-    assert.equal(options.draftRelease, true);
+    assert.equal(options.skipMasterUpdate, false);
     assert.equal(options.resume, false);
     assert.equal(options.dryRun, false);
   });
@@ -44,8 +43,7 @@ describe('getOptions', () => {
     Object.assign(process.env, {
       VERSION: '7.33.0-beta.1',
       BRANCH: 'develop7',
-      UPDATE_MASTER: 'true',
-      DRAFT_RELEASE: 'false',
+      SKIP_MASTER_UPDATE: 'true',
       RESUME: 'true',
       DRY_RUN: 'true',
     });
@@ -54,8 +52,7 @@ describe('getOptions', () => {
 
     assert.equal(options.version.version, '7.33.0-beta.1');
     assert.equal(options.branch, 'develop7');
-    assert.equal(options.updateMaster, true);
-    assert.equal(options.draftRelease, false);
+    assert.equal(options.skipMasterUpdate, true);
     assert.equal(options.resume, true);
     assert.equal(options.dryRun, true);
   });
@@ -78,14 +75,14 @@ describe('getOptions', () => {
   });
 
   it('supports negated flags', () => {
-    process.env.DRAFT_RELEASE = 'true';
+    process.env.SKIP_MASTER_UPDATE = 'true';
 
-    assert.equal(getOptions(['7.33.0', '--no-draft-release']).draftRelease, false);
+    assert.equal(getOptions(['7.33.0', '--no-skip-master-update']).skipMasterUpdate, false);
   });
 
   it('rejects malformed boolean variables', () => {
-    process.env.DRAFT_RELEASE = 'tru';
+    process.env.SKIP_MASTER_UPDATE = 'tru';
 
-    assert.throws(() => getOptions(['7.33.0']), /Invalid value "tru" for DRAFT_RELEASE/);
+    assert.throws(() => getOptions(['7.33.0']), /Invalid value "tru" for SKIP_MASTER_UPDATE/);
   });
 });

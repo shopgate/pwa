@@ -13,7 +13,7 @@ import {
   isPublished,
   stagePublish,
 } from '../lib/npm.ts';
-import { getDistTag } from '../lib/version.ts';
+import { getDistTag, isMasterRelease } from '../lib/version.ts';
 import type { ReleaseVersion } from '../lib/version.ts';
 
 /**
@@ -24,6 +24,16 @@ import type { ReleaseVersion } from '../lib/version.ts';
  */
 export const resolveDistTag = (version: ReleaseVersion, root = ROOT) => (
   getDistTag(version, getDistTagVersion(getPackageName(PUBLISHABLE_PACKAGES[0].dir, root), 'latest'))
+);
+
+/**
+ * Whether the release updates master, based on the current "latest" version on npm.
+ * @param version The version to release.
+ * @param root The repository root.
+ * @returns Whether master gets updated.
+ */
+export const updatesMaster = (version: ReleaseVersion, root = ROOT) => (
+  isMasterRelease(version, getDistTagVersion(getPackageName(PUBLISHABLE_PACKAGES[0].dir, root), 'latest'))
 );
 
 /**

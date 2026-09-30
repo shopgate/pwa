@@ -3,7 +3,7 @@ import { ROOT, getThemes } from './config.ts';
 import { buildAll } from './build.ts';
 import { bumpVersions } from './steps/bump.ts';
 import { generateChangelog } from './steps/changelog.ts';
-import { checkVersion } from './check.ts';
+import { checkVersion, pipelineLine } from './check.ts';
 import { logStep } from './lib/exec.ts';
 import {
   git,
@@ -51,8 +51,9 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
   buildAll(root);
 
   if (!hasCommitWithMessage('HEAD', releasedMessage)) {
+    const pipelineId = process.env.CI_PIPELINE_ID;
     git(['add', '-u']);
-    git(['commit', '-m', releasedMessage]);
+    git(['commit', '-m', releasedMessage, ...(pipelineId ? ['-m', pipelineLine(pipelineId)] : [])]);
   }
 
   logStep('Generating changelog');

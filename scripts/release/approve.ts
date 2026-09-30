@@ -4,6 +4,7 @@ import { PUBLISHABLE_PACKAGES, ROOT, getPackageName } from './config.ts';
 import { findMissingMasterCommits } from './check.ts';
 import { logStep } from './lib/exec.ts';
 import { approveStaged, findStagedVersion, isPublished } from './lib/npm.ts';
+import { updatesMaster } from './steps/stage.ts';
 import type { StagedVersion } from './lib/npm.ts';
 import type { ReleaseVersion } from './lib/version.ts';
 
@@ -89,7 +90,7 @@ export const approveRelease = async (version: ReleaseVersion, root = ROOT) => {
     tag,
   })));
 
-  if (version.stable) {
+  if (updatesMaster(version, root)) {
     logStep(`Checking that releases/${version.name} contains master`);
     const missingCommits = await findMissingMasterCommits(`releases/${version.name}`);
 

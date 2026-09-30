@@ -6,7 +6,7 @@ import {
   it,
   mock,
 } from 'node:test';
-import { checkMasterIsMerged, checkVersion } from './check.ts';
+import { checkMasterIsMerged, checkVersion, getContinuation } from './check.ts';
 import type { ReleaseOptions } from './lib/options.ts';
 import { parseVersion } from './lib/version.ts';
 
@@ -24,8 +24,7 @@ const createOptions = (
 ): ReleaseOptions => ({
   version: parseVersion(version),
   branch: 'feature',
-  updateMaster: false,
-  draftRelease: true,
+  skipMasterUpdate: false,
   resume: false,
   dryRun: false,
   ...overrides,
@@ -82,47 +81,70 @@ describe('check', () => {
     it('is skipped without a branch', async () => {
       const fetchMock = mockCompare(3);
 
-      await checkMasterIsMerged(createOptions('7.33.0', {
-        branch: '',
-        updateMaster: true,
-      }));
+      await checkMasterIsMerged(createOptions('7.33.0', { branch: '' }), true);
       assert.equal(fetchMock.mock.callCount(), 0);
     });
 
-    it('fails for stable releases that update master when master commits are missing', async () => {
+    it('fails for releases that update master when master commits are missing', async () => {
       mockCompare(3);
 
       await assert.rejects(
-        checkMasterIsMerged(createOptions('7.33.0', { updateMaster: true })),
+        checkMasterIsMerged(createOptions('7.33.0'), true),
         /Merge master into feature before releasing 7.33.0/
       );
     });
 
-    it('only warns for stable releases without master update', async () => {
+    it('only warns for releases without master update', async () => {
       mockCompare(3);
 
-      await checkMasterIsMerged(createOptions('7.33.0'));
-    });
-
-    it('only warns for pre-releases', async () => {
-      mockCompare(3);
-
-      await checkMasterIsMerged(createOptions('7.33.0-beta.1', { updateMaster: true }));
+      await checkMasterIsMerged(createOptions('7.33.0'), false);
     });
 
     it('passes when the branch contains master', async () => {
       mockCompare(0);
 
-      await checkMasterIsMerged(createOptions('7.33.0', { updateMaster: true }));
+      await checkMasterIsMerged(createOptions('7.33.0'), true);
     });
 
     it('fails when the branch does not exist', async () => {
       mock.method(globalThis, 'fetch', async () => new Response('{}', { status: 404 }));
 
       await assert.rejects(
-        checkMasterIsMerged(createOptions('7.33.0')),
+        checkMasterIsMerged(createOptions('7.33.0'), false),
         /Can't compare feature with master/
       );
+    });
+  });
+
+  describe('getContinuation', () => {
+    const version = parseVersion('7.33.0');
+    const messages = [
+      "Created changelog for version 'v7.33.0'.",
+      'Released 7.33.0\n\nPipeline: 123',
+      'Some feature',
+    ];
+
+    it('continues a job retried in the pipeline that created the release commit', () => {
+      assert.equal(getContinuation(messages, version, false, '123'), 'retry');
+    });
+
+    it('needs RESUME in another pipeline', () => {
+      assert.equal(getContinuation(messages, version, false, '456'), null);
+      assert.equal(getContinuation(messages, version, true, '456'), 'resume');
+    });
+
+    it('needs RESUME outside of a pipeline', () => {
+      assert.equal(getContinuation(messages, version, false), null);
+      assert.equal(getContinuation(messages, version, true), 'resume');
+    });
+
+    it('never continues without the release commit of this version', () => {
+      assert.equal(getContinuation(['Released 7.33.1\n\nPipeline: 123'], version, true, '123'), null);
+    });
+
+    it('supports release commits without pipeline', () => {
+      assert.equal(getContinuation(['Released 7.33.0'], version, false, '123'), null);
+      assert.equal(getContinuation(['Released 7.33.0'], version, true, '123'), 'resume');
     });
   });
 });
