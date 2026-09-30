@@ -23,6 +23,10 @@ function reviewsById(state = {}, action = {}) {
     }
     case RECEIVE_SUBMIT_REVIEW:
     case RECEIVE_USER_REVIEW:
+      if (!action.review?.id) {
+        return state;
+      }
+
       return {
         ...state,
         [action.review.id]: action.review,

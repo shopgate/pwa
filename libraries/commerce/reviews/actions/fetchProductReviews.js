@@ -7,11 +7,13 @@ import requestProductReviews from '../action-creators/requestProductReviews';
 import receiveProductReviews from '../action-creators/receiveProductReviews';
 import errorProductReviews from '../action-creators/errorProductReviews';
 
+let lastRequestId = 0;
+
 /**
  * Request product reviews for a product from server.
  * @param {string} productId The product ID
  * @param {number} [limit=REVIEW_PREVIEW_COUNT] The maximum number of reviews to fetch
- * @param {('relevance'|'dateDesc'|'dateAsc'|'rateDesc'|'rateAsc')} [sort=SORT_RELEVANCE] Sorting.
+ * @param {string} [sort=SORT_RELEVANCE] Sorting, passed through to the pipeline unchanged.
  * @returns {Promise} The dispatched action.
  */
 function fetchProductReviews(productId, limit = REVIEW_PREVIEW_COUNT, sort = SORT_RELEVANCE) {
@@ -22,7 +24,13 @@ function fetchProductReviews(productId, limit = REVIEW_PREVIEW_COUNT, sort = SOR
       return Promise.resolve(null);
     }
 
-    dispatch(requestProductReviews(productId, limit));
+    lastRequestId += 1;
+    const meta = {
+      requestId: lastRequestId,
+      sort,
+    };
+
+    dispatch(requestProductReviews(productId, limit, meta));
 
     const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS)
       .setInput({
@@ -34,10 +42,10 @@ function fetchProductReviews(productId, limit = REVIEW_PREVIEW_COUNT, sort = SOR
 
     request
       .then(({ reviews, totalReviewCount }) => {
-        dispatch(receiveProductReviews(productId, reviews, totalReviewCount));
+        dispatch(receiveProductReviews(productId, reviews, totalReviewCount, meta));
       })
       .catch(() => {
-        dispatch(errorProductReviews(productId));
+        dispatch(errorProductReviews(productId, meta));
       });
 
     return request;

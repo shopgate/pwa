@@ -8,6 +8,8 @@ import {
 
 /**
  * Stores a collection of products by the related hash of the request parameters.
+ * Responses are only applied when they belong to the latest request of a collection.
+ * A first page replaces the collection, later pages are only appended for the same sort.
  * @param {Object} [state={}] The current state.
  * @param {Object} action The current redux action.
  * @return {Object} The new state.
@@ -21,42 +23,63 @@ function reviewsByHash(state = {}, action = {}) {
           ...state[action.hash],
           isFetching: true,
           expires: 0,
+          requestId: action.requestId,
+          requestOffset: action.offset,
+          requestSort: action.sort,
         },
       };
     case RECEIVE_REVIEWS: {
-      const reviews = state[action.hash].reviews || [];
-      const nextReviews = action.reviews || [];
+      const collection = state[action.hash];
 
-      /**
-       * If there are no previous reviews and no incoming reviews
-       * its set to empty array, otherwise it will be an array of the previous and the
-       * new reviews. Duplicates are removed.
-       */
-      const stateReviews = (reviews || nextReviews.length) ? uniq([
-        ...reviews,
-        ...nextReviews.map(review => review.id),
-      ]) : [];
+      if (!collection || collection.requestId !== action.requestId) {
+        return state;
+      }
+
+      const nextReviewIds = (action.reviews || []).map(review => review.id);
+      const isFirstPage = action.offset === 0;
+
+      if (!isFirstPage && collection.sort !== action.sort) {
+        return {
+          ...state,
+          [action.hash]: {
+            ...collection,
+            isFetching: false,
+          },
+        };
+      }
 
       return {
         ...state,
         [action.hash]: {
-          ...state[action.hash],
-          reviews: stateReviews,
-          totalReviewCount: action.totalReviewCount || null,
+          ...collection,
+          reviews: isFirstPage
+            ? uniq(nextReviewIds)
+            : uniq([...(collection.reviews || []), ...nextReviewIds]),
+          sort: action.sort,
+          totalReviewCount: typeof action.totalReviewCount === 'number'
+            ? action.totalReviewCount
+            : null,
           isFetching: false,
           expires: Date.now() + REVIEWS_LIFETIME,
         },
       };
     }
-    case ERROR_REVIEWS:
+    case ERROR_REVIEWS: {
+      const collection = state[action.hash];
+
+      if (!collection || collection.requestId !== action.requestId) {
+        return state;
+      }
+
       return {
         ...state,
         [action.hash]: {
-          ...state[action.hash],
+          ...collection,
           isFetching: false,
           expires: 0,
         },
       };
+    }
     default:
       return state;
   }

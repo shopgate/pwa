@@ -2,7 +2,7 @@ import { appWillStart$ } from '@shopgate/pwa-common/streams';
 import fetchProductReviews from '../actions/fetchProductReviews';
 import fetchProductReviewSettings from '../actions/fetchProductReviewSettings';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
-import { shouldFetchReviews$ } from '../streams';
+import { reviewsDidReset$, shouldFetchReviews$ } from '../streams';
 import subscriptions from './index';
 
 jest.mock('../actions/fetchProductReviews', () => jest.fn().mockReturnValue('fetchProductReviews'));
@@ -31,17 +31,30 @@ describe('Reviews subscriptions', () => {
 
   describe('reviews enabled', () => {
     let appWillStartCallback;
+    let reviewsDidResetCallback;
     let shouldFetchReviewsCallback;
 
     beforeEach(() => {
       subscriptions(subscribe);
-      [[, appWillStartCallback], [, shouldFetchReviewsCallback]] = subscribe.mock.calls;
+      [
+        [, appWillStartCallback],
+        [, reviewsDidResetCallback],
+        [, shouldFetchReviewsCallback],
+      ] = subscribe.mock.calls;
     });
 
     it('should subscribe to the expected streams', () => {
-      expect(subscribe).toHaveBeenCalledTimes(2);
+      expect(subscribe).toHaveBeenCalledTimes(3);
       expect(subscribe.mock.calls[0][0]).toBe(appWillStart$);
-      expect(subscribe.mock.calls[1][0]).toBe(shouldFetchReviews$);
+      expect(subscribe.mock.calls[1][0]).toBe(reviewsDidReset$);
+      expect(subscribe.mock.calls[2][0]).toBe(shouldFetchReviews$);
+    });
+
+    it('should fetch the review settings after the reviews state was reset', () => {
+      reviewsDidResetCallback({ dispatch });
+
+      expect(fetchProductReviewSettings).toHaveBeenCalledTimes(1);
+      expect(dispatch).toHaveBeenCalledWith('fetchProductReviewSettings');
     });
 
     it('should fetch the review settings on app start', () => {

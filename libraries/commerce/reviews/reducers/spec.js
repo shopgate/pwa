@@ -127,6 +127,300 @@ describe('Reviews reducers', () => {
       });
     });
   });
+  describe('ReviewsByHash request tracking', () => {
+    const hash = 'bar';
+
+    /**
+     * @param {Object} state The current state.
+     * @param {Object} meta Request metadata.
+     * @returns {Object}
+     */
+    const request = (state, meta) => reducers(state, {
+      type: REQUEST_REVIEWS,
+      hash,
+      ...meta,
+    });
+
+    /**
+     * @param {Object} state The current state.
+     * @param {Object} meta Request metadata.
+     * @param {Array} reviews The received reviews.
+     * @param {number} count The total review count.
+     * @returns {Object}
+     */
+    const receive = (state, meta, reviews, count = totalReviewCount) => reducers(state, {
+      type: RECEIVE_REVIEWS,
+      hash,
+      reviews,
+      totalReviewCount: count,
+      ...meta,
+    });
+
+    it('should replace the collection with a successful first page', () => {
+      const first = {
+        requestId: 1,
+        offset: 0,
+        sort: 'dateDesc',
+      };
+      let state = receive(request({}, first), first, mockedReviews);
+      const next = {
+        requestId: 2,
+        offset: 0,
+        sort: 'dateDesc',
+      };
+      state = receive(request(state, next), next, moreMockedReviews);
+
+      expect(state.reviewsByHash[hash].reviews)
+        .toEqual(moreMockedReviews.map(review => review.id));
+      expect(state.reviewsByHash[hash].sort).toBe('dateDesc');
+    });
+
+    it('should append a later page with the same sort without duplicates', () => {
+      const first = {
+        requestId: 1,
+        offset: 0,
+        sort: 'dateDesc',
+      };
+      let state = receive(request({}, first), first, mockedReviews);
+      const next = {
+        requestId: 2,
+        offset: mockedReviews.length,
+        sort: 'dateDesc',
+      };
+      state = receive(request(state, next), next, [...mockedReviews, ...moreMockedReviews]);
+
+      expect(state.reviewsByHash[hash].reviews)
+        .toEqual([...mockedReviews, ...moreMockedReviews].map(review => review.id));
+    });
+
+    it('should not append a later page with another sort', () => {
+      const first = {
+        requestId: 1,
+        offset: 0,
+        sort: 'dateDesc',
+      };
+      let state = receive(request({}, first), first, mockedReviews);
+      const next = {
+        requestId: 2,
+        offset: mockedReviews.length,
+        sort: 'rateDesc',
+      };
+      state = receive(request(state, next), next, moreMockedReviews);
+
+      expect(state.reviewsByHash[hash].reviews).toEqual(mockedReviews.map(review => review.id));
+      expect(state.reviewsByHash[hash].isFetching).toBe(false);
+    });
+
+    it('should accept an opaque sort string set by an extension', () => {
+      const sort = JSON.stringify({
+        sort: 'dateDesc',
+        filter: 5,
+      });
+      const first = {
+        requestId: 1,
+        offset: 0,
+        sort,
+      };
+      let state = receive(request({}, first), first, mockedReviews);
+      const next = {
+        requestId: 2,
+        offset: mockedReviews.length,
+        sort,
+      };
+      state = receive(request(state, next), next, moreMockedReviews);
+
+      expect(state.reviewsByHash[hash].reviews)
+        .toEqual([...mockedReviews, ...moreMockedReviews].map(review => review.id));
+      expect(state.reviewsByHash[hash].sort).toBe(sort);
+    });
+
+    it('should not append a later page when no sort is stored yet', () => {
+      const meta = {
+        requestId: 1,
+        offset: 10,
+        sort: 'dateDesc',
+      };
+      const state = receive(request({}, meta), meta, mockedReviews);
+
+      expect(state.reviewsByHash[hash].reviews).toBeUndefined();
+      expect(state.reviewsByHash[hash].isFetching).toBe(false);
+    });
+
+    it('should ignore an error for a collection removed by an app reset', () => {
+      const state = reducers({}, {
+        type: ERROR_REVIEWS,
+        hash,
+        requestId: 1,
+      });
+
+      expect(state.reviewsByHash[hash]).toBeUndefined();
+    });
+
+    it('should ignore responses and errors of superseded requests', () => {
+      const first = {
+        requestId: 1,
+        offset: 0,
+        sort: 'dateDesc',
+      };
+      const next = {
+        requestId: 2,
+        offset: 0,
+        sort: 'rateDesc',
+      };
+      let state = request(request({}, first), next);
+      state = receive(state, first, mockedReviews);
+
+      expect(state.reviewsByHash[hash].reviews).toBeUndefined();
+      expect(state.reviewsByHash[hash].isFetching).toBe(true);
+
+      state = reducers(state, {
+        type: ERROR_REVIEWS,
+        hash,
+        ...first,
+      });
+      expect(state.reviewsByHash[hash].isFetching).toBe(true);
+
+      state = receive(state, next, moreMockedReviews);
+      expect(state.reviewsByHash[hash].reviews)
+        .toEqual(moreMockedReviews.map(review => review.id));
+      expect(state.reviewsByHash[hash].sort).toBe('rateDesc');
+    });
+
+    it('should ignore a response for a collection removed by an app reset', () => {
+      const meta = {
+        requestId: 1,
+        offset: 0,
+        sort: 'dateDesc',
+      };
+      const state = receive({}, meta, mockedReviews);
+
+      expect(state.reviewsByHash[hash]).toBeUndefined();
+    });
+
+    it('should keep a total review count of zero', () => {
+      const meta = {
+        requestId: 1,
+        offset: 0,
+        sort: 'dateDesc',
+      };
+      const state = receive(request({}, meta), meta, [], 0);
+
+      expect(state.reviewsByHash[hash].totalReviewCount).toBe(0);
+      expect(state.reviewsByHash[hash].reviews).toEqual([]);
+    });
+
+    it('should store null when the total review count is missing', () => {
+      const meta = {
+        requestId: 1,
+        offset: 0,
+        sort: 'dateDesc',
+      };
+      const state = reducers(request({}, meta), {
+        type: RECEIVE_REVIEWS,
+        hash,
+        reviews: mockedReviews,
+        ...meta,
+      });
+
+      expect(state.reviewsByHash[hash].totalReviewCount).toBeNull();
+    });
+  });
+  describe('ReviewsByProductId request tracking', () => {
+    /**
+     * @param {Object} state The current state.
+     * @param {Object} meta Request metadata.
+     * @returns {Object}
+     */
+    const request = (state, meta) => reducers(state, {
+      type: REQUEST_PRODUCT_REVIEWS,
+      productId: 'foo',
+      ...meta,
+    });
+
+    it('should ignore responses and errors of superseded requests', () => {
+      let state = request(request({}, { requestId: 1 }), { requestId: 2 });
+      state = reducers(state, {
+        type: RECEIVE_PRODUCT_REVIEWS,
+        productId: 'foo',
+        reviews: mockedReviews,
+        totalReviewCount,
+        requestId: 1,
+      });
+      state = reducers(state, {
+        type: ERROR_PRODUCT_REVIEWS,
+        productId: 'foo',
+        requestId: 1,
+      });
+
+      expect(state.reviewsByProductId.foo.reviews).toBeUndefined();
+      expect(state.reviewsByProductId.foo.isFetching).toBe(true);
+    });
+
+    it('should ignore a response for a product removed by an app reset', () => {
+      const state = reducers({}, {
+        type: RECEIVE_PRODUCT_REVIEWS,
+        productId: 'foo',
+        reviews: mockedReviews,
+        totalReviewCount,
+        requestId: 1,
+      });
+
+      expect(state.reviewsByProductId.foo).toBeUndefined();
+    });
+
+    it('should ignore an error for a product removed by an app reset', () => {
+      const state = reducers({}, {
+        type: ERROR_PRODUCT_REVIEWS,
+        productId: 'foo',
+        requestId: 1,
+      });
+
+      expect(state.reviewsByProductId.foo).toBeUndefined();
+    });
+
+    it('should keep a total review count of zero and store the sort', () => {
+      let state = request({}, {
+        requestId: 1,
+        sort: 'relevance',
+      });
+      state = reducers(state, {
+        type: RECEIVE_PRODUCT_REVIEWS,
+        productId: 'foo',
+        reviews: [],
+        totalReviewCount: 0,
+        requestId: 1,
+        sort: 'relevance',
+      });
+
+      expect(state.reviewsByProductId.foo.totalReviewCount).toBe(0);
+      expect(state.reviewsByProductId.foo.sort).toBe('relevance');
+    });
+  });
+  describe('ReviewsById', () => {
+    it('should not store a submitted review without an id', () => {
+      const state = reducers({}, {
+        type: RECEIVE_SUBMIT_REVIEW,
+        review: {
+          productId: 'foo',
+          rate: 80,
+        },
+      });
+
+      expect(state.reviewsById).toEqual({});
+    });
+
+    it('should not store a user review without an id', () => {
+      const state = reducers({}, {
+        type: RECEIVE_USER_REVIEW,
+        productId: 'foo',
+        review: {
+          rate: 80,
+        },
+      });
+
+      expect(state.reviewsById).toEqual({});
+    });
+  });
   describe('userReviewsByProductId', () => {
     let state = {};
     const review = {

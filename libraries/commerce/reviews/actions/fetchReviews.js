@@ -7,22 +7,42 @@ import requestProductReviewsList from '../action-creators/requestReviews';
 import receiveProductReviewsList from '../action-creators/receiveReviews';
 import errorProductReviewsList from '../action-creators/errorReviews';
 
+let lastRequestId = 0;
+
 /**
  * Request product reviews for a product by the given id.
  * @param {string} productId The product ID.
  * @param {number} [limit=REVIEW_PREVIEW_COUNT] The maximum number of reviews to fetch.
  * @param {number} [offset=0] The list offset (defaults to 0).
- * @param {('relevance'|'dateDesc'|'dateAsc'|'rateDesc'|'rateAsc')} sort Sorting.
- * @returns {Function} The dispatched action.
+ * @param {string} [sort=SORT_DATE_DESC] Sorting, passed through to the pipeline unchanged.
+ * @returns {Function} The dispatched action. It resolves with `null` when an identical request
+ * is still in flight.
  */
 function fetchReviews(productId, limit = REVIEW_PREVIEW_COUNT, offset = 0, sort = SORT_DATE_DESC) {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const hash = generateResultHash({
       pipeline: SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS,
       productId,
     }, false);
 
-    dispatch(requestProductReviewsList(hash));
+    const collection = getState().reviews.reviewsByHash[hash];
+
+    if (
+      collection?.isFetching
+      && collection.requestOffset === offset
+      && collection.requestSort === sort
+    ) {
+      return Promise.resolve(null);
+    }
+
+    lastRequestId += 1;
+    const meta = {
+      requestId: lastRequestId,
+      offset,
+      sort,
+    };
+
+    dispatch(requestProductReviewsList(hash, meta));
 
     const request = new PipelineRequest(SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS)
       .setInput({
@@ -35,10 +55,10 @@ function fetchReviews(productId, limit = REVIEW_PREVIEW_COUNT, offset = 0, sort 
 
     request
       .then(({ reviews, totalReviewCount }) => {
-        dispatch(receiveProductReviewsList(hash, productId, reviews, totalReviewCount));
+        dispatch(receiveProductReviewsList(hash, productId, reviews, totalReviewCount, meta));
       })
       .catch(() => {
-        dispatch(errorProductReviewsList(hash));
+        dispatch(errorProductReviewsList(hash, meta));
       });
 
     return request;

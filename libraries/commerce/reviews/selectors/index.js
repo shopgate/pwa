@@ -1,7 +1,6 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
-import { REVIEW_PREVIEW_COUNT } from '../constants';
 import * as pipelines from '../constants/Pipelines';
 import { getBaseProductId } from '../../product/selectors/product';
 
@@ -82,7 +81,7 @@ export const getProductReviewCount = createSelector(
   (productId, reviewsState) => {
     const collection = reviewsState[productId];
 
-    if (!collection || !collection.totalReviewCount) {
+    if (!collection || typeof collection.totalReviewCount !== 'number') {
       return null;
     }
 
@@ -98,7 +97,7 @@ export const getProductReviewCount = createSelector(
 export const getReviewsTotalCount = createSelector(
   getCollectionForCurrentBaseProduct,
   (collection) => {
-    if (!collection || !collection.totalReviewCount) {
+    if (!collection || typeof collection.totalReviewCount !== 'number') {
       return null;
     }
 
@@ -187,37 +186,24 @@ export const getDefaultAuthorName = state => (
 );
 
 /**
- * Retrieves the current product reviews.
- * When the user review is available, it will always be the first entry.
+ * Retrieves the current product reviews in the order returned by the pipeline.
  * @param {Object} state The current application state.
- * @return {Array|null} The reviews for a product.
+ * @return {Array} The reviews for a product.
  */
 export const getProductReviews = createSelector(
   getCollectionForCurrentBaseProduct,
   getReviews,
-  getUserReviewForProduct,
-  (collection, allReviews, userReview) => {
+  (collection, allReviews) => {
     if (!collection || !collection.reviews) {
       return [];
     }
 
-    const reviews = collection.reviews.map(id => allReviews[id]);
-    // There is no user review. Returning only from reviews collection.
-    if (!userReview.id) {
-      return reviews;
-    }
-
-    // User review always on top. Avoid duplicates.
-    return [
-      userReview,
-      ...reviews.filter(r => r.id !== userReview.id),
-    ];
+    return collection.reviews.map(id => allReviews[id]);
   }
 );
 
 /**
- * Retrieves the current product reviews excerpt.
- * When user review is available, it will always be the first entry.
+ * Retrieves the current product reviews excerpt in the order returned by the pipeline.
  * @param {Object} state The current application state.
  * @return {Array|null} The reviews for a product
  */
@@ -225,23 +211,13 @@ export const getProductReviewsExcerpt = createSelector(
   getBaseProductId,
   getProductReviewsExcerptState,
   getReviews,
-  getUserReviewForProduct,
-  (productId, productReviewsState, reviewsState, userReview) => {
+  (productId, productReviewsState, reviewsState) => {
     const collection = productReviewsState[productId];
 
     if (!collection || !collection.reviews) {
       return null;
     }
 
-    const reviews = collection.reviews.map(id => reviewsState[id]);
-
-    if (!userReview.id) {
-      return reviews;
-    }
-
-    return [
-      userReview,
-      ...reviews.filter(r => r.id !== userReview.id),
-    ].slice(0, REVIEW_PREVIEW_COUNT);
+    return collection.reviews.map(id => reviewsState[id]);
   }
 );
