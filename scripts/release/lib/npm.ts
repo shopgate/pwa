@@ -46,9 +46,17 @@ export const isPublished = (name: string, version: string) => {
  * @param tag The dist-tag, e.g. "latest".
  * @returns The version, or an empty string when the tag doesn't exist.
  */
-export const getDistTagVersion = (name: string, tag: string) => (
-  capture('npm', ['view', name, `dist-tags.${tag}`], { allowFailure: true }).stdout.trim()
-);
+export const getDistTagVersion = (name: string, tag: string) => {
+  const { status, stdout, stderr } = capture('npm', ['view', name, `dist-tags.${tag}`], {
+    allowFailure: true,
+  });
+
+  if (status !== 0 && !stderr.includes('E404')) {
+    throw new Error(`npm view ${name} dist-tags.${tag} failed:\n${stderr.trim()}`);
+  }
+
+  return stdout.trim();
+};
 
 /**
  * Lists all staged versions of a package. Needs npm authentication.
