@@ -1,19 +1,19 @@
 import path from 'node:path';
-import { ROOT, getThemes } from './config.ts';
+import { ROOT, getThemes } from '../config.ts';
 import { buildAll } from './build.ts';
-import { bumpVersions } from './steps/bump.ts';
-import { generateChangelog } from './steps/changelog.ts';
+import { bumpVersions } from '../steps/bump.ts';
+import { generateChangelog } from '../steps/changelog.ts';
 import { checkVersion, pipelineLine } from './check.ts';
-import { logStep } from './lib/exec.ts';
+import { logStep } from '../lib/exec.ts';
 import {
   git,
   hasChanges,
   hasCommitWithMessage,
   isWorkingTreeClean,
   remoteBranchExists,
-} from './lib/git.ts';
-import type { ReleaseOptions } from './lib/options.ts';
-import { stagePackages } from './steps/stage.ts';
+} from '../lib/git.ts';
+import type { ReleaseOptions } from '../lib/options.ts';
+import { stagePackages } from '../steps/stage.ts';
 
 /**
  * Creates or continues the release branch, bumps and builds the packages, adds the changelog,
@@ -86,7 +86,7 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
     '',
     `✔ ${version.version} is prepared and staged on npm.`,
     'Next steps:',
-    `  1. Approve the staged packages: "npm run release:new -- approve ${version.version}" or on npmjs.com`,
+    `  1. Approve the staged packages: "npm run release -- approve ${version.version}" or on npmjs.com`,
     '  2. Run the manual "release:finalize" job of the GitLab pipeline',
   ].join('\n'));
 };

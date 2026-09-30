@@ -1,12 +1,12 @@
 import readline from 'node:readline/promises';
 import { setTimeout } from 'node:timers/promises';
-import { PUBLISHABLE_PACKAGES, ROOT, getPackageName } from './config.ts';
+import { PUBLISHABLE_PACKAGES, ROOT, getPackageName } from '../config.ts';
 import { findMissingMasterCommits } from './check.ts';
-import { logStep } from './lib/exec.ts';
-import { approveStaged, findStagedVersion, isPublished } from './lib/npm.ts';
-import { updatesMaster } from './steps/stage.ts';
-import type { StagedVersion } from './lib/npm.ts';
-import type { ReleaseVersion } from './lib/version.ts';
+import { logStep } from '../lib/exec.ts';
+import { approveStaged, findStagedVersion, isPublished } from '../lib/npm.ts';
+import { updatesMaster } from '../steps/stage.ts';
+import type { StagedVersion } from '../lib/npm.ts';
+import type { ReleaseVersion } from '../lib/version.ts';
 
 /**
  * Asks a question on the terminal.

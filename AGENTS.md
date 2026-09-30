@@ -40,11 +40,11 @@ consumed, not published from here.
 
 Requires the external `sgconnect` CLI (not installed by `npm install`).
 
-- Install / setup: `npm install`, then `npm run setup` (`sgconnect init && npm install`). Full reset: `npm run clean` (deletes all `node_modules`, `.cache-loader` and log files, reinstalls).
+- Install / setup: `npm install`, then `npm run setup` (`sgconnect init && npm install`). Full reset: `npm ci` (alias `npm run clean`): empties `node_modules` in the root and all workspaces and reinstalls exactly from `package-lock.json`.
 - Run locally: `npm start` (`sgconnect frontend start`); `npm run start-cloud` (backend + frontend). Desktop web bridge: `WEB_BRIDGE=1 sgconnect frontend start -t theme-gmd`.
 - Test: **`npm run test:short` is the default** — use it for routine runs, and scope it to the paths you touched (`npm run test:short -- <path>`) rather than sweeping the repo. `npm test` (`RUN_LONG=true jest`) is the full run, reserved for changes that touch `@shopgate/engage/*` exports (see Pitfalls); `npm run test:watch`; `npm run cover`.
 - Lint: `npm run lint` (eslint `.js/.jsx/.ts/.tsx/.json`, ignores `extensions/`); `npm run lint:summary`. A Husky pre-commit hook runs `lint-staged`.
-- New release process (TypeScript in `scripts/release/`, run by Node ≥ 24 without build step; started from the GitLab release pipeline): one CLI, `npm run release:new` lists all commands and options. Docs: `scripts/release/README.md`. Flow: `check <version>` → `prepare` (bump, build, changelog, push release branches, `npm stage publish`) → `approve <version>` (developer approves the staged packages with npm 2FA) → `finalize` (master update, GitHub releases). `build` builds all packages into `dist` without publishing. Tests: `npm run release:test`, types: `npm run release:typecheck`.
+- Release process (TypeScript in `scripts/release/`, run by Node ≥ 24 without build step; started from the GitLab release pipeline): one CLI, `npm run release` lists all commands and options. Docs: `scripts/release/README.md`. Flow: `check <version>` → `prepare` (bump, build, changelog, push release branches, `npm stage publish`) → `approve <version>` (developer approves the staged packages with npm 2FA) → `finalize` (master update, GitHub releases). `build` builds all packages into `dist` without publishing. Tests: `npm run release:test`, types: `npm run release:typecheck`.
 
 ## Repository Structure
 

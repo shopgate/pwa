@@ -37,19 +37,19 @@
   "scripts": {
     "start": "sgconnect frontend start",
     "setup": "sgconnect init && npm install",
-    "clean": "node scripts/clean.mts",
+    "clean": "npm ci",
     "test": "RUN_LONG=true jest",
     "test:short": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
     "lint": "eslint --quiet --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json .",
     "lint:summary": "eslint --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json . -f summary",
-    "release:new": "node scripts/release/cli.ts",
+    "release": "node scripts/release/cli.ts",
     "release:typecheck": "tsc -p scripts/release",
     "release:test": "node --test 'scripts/release/**/*.test.ts'",
     "start-cloud": "sgconnect backend start & sgconnect frontend start",
     "lint-staged": "lint-staged",
-    "resetup": "npm run clean"
+    "resetup": "npm ci"
   },
   "husky": {
     "hooks": {

@@ -4,25 +4,25 @@ import {
   ROOT,
   getPackageName,
   getThemes,
-} from './config.ts';
-import { logStep } from './lib/exec.ts';
-import { remoteBranchExists, remoteTagExists } from './lib/git.ts';
+} from '../config.ts';
+import { logStep } from '../lib/exec.ts';
+import { remoteBranchExists, remoteTagExists } from '../lib/git.ts';
 import {
   findRelease,
   getCommitMessages,
   getGithubToken,
   getMissingCommits,
-} from './lib/github.ts';
-import { findStagedVersion, getDistTagVersion, isPublished } from './lib/npm.ts';
-import { updatesMaster } from './steps/stage.ts';
-import type { ReleaseOptions } from './lib/options.ts';
+} from '../lib/github.ts';
+import { findStagedVersion, getDistTagVersion, isPublished } from '../lib/npm.ts';
+import { updatesMaster } from '../steps/stage.ts';
+import type { ReleaseOptions } from '../lib/options.ts';
 import {
   compareVersions,
   getDistTag,
   isValidVersion,
   parseVersion,
-} from './lib/version.ts';
-import type { ReleaseVersion } from './lib/version.ts';
+} from '../lib/version.ts';
+import type { ReleaseVersion } from '../lib/version.ts';
 
 /**
  * A place where the requested version already exists.

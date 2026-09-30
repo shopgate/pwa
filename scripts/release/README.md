@@ -9,8 +9,8 @@ The scripts are TypeScript and run directly with Node ≥ 24; there is no build 
 ## Usage
 
 ```sh
-npm run release:new                    # overview of all commands and options
-npm run release:new -- <command> [version] [options]
+npm run release                        # overview of all commands and options
+npm run release -- <command> [version] [options]
 ```
 
 | Command | Where | What it does |
@@ -41,13 +41,13 @@ these variables.
 
 ## Releasing a version
 
-1. **Check the version** (optional): `npm run release:new -- check 7.33.0`. The pipeline does the same
+1. **Check the version** (optional): `npm run release -- check 7.33.0`. The pipeline does the same
    check first, but locally you get the answer before filling in the form.
 2. **Start the pipeline** of `pwa-liveupdate` with the inputs `version` and `branch`. The jobs `release:check`
    and `release:prepare` run automatically. When they're done, Slack posts "staged on npm".
 3. **Approve the packages** on your machine:
    ```sh
-   npm run release:new -- approve 7.33.0
+   npm run release -- approve 7.33.0
    ```
    It lists the staged packages and asks for your npm 2FA code. If the code expires, npm asks for
    a new one. You can also approve the packages on npmjs.com.
@@ -235,8 +235,8 @@ tagged commit, so releases from branches without the current workflow behave lik
 
 ```sh
 npm run release:typecheck && npm run release:test
-npm run release:new -- check 7.33.0-beta.1
-npm run release:new -- build
+npm run release -- check 7.33.0-beta.1
+npm run release -- build
 ```
 
 For a complete local run, use a **separate clone**: `prepare` needs a clean working tree and creates
@@ -246,15 +246,15 @@ the release branch, commits and changelog in the repository it runs in.
 node scripts/release/cli.ts prepare 7.33.0-beta.1 --branch <branch> --dry-run
 ```
 
-To test changes in CI, run the pipeline of `pwa-liveupdate` with `BRANCH` set to your branch (the
-scripts are taken from it) and `DRY_RUN=true`.
+To test changes in CI, run the pipeline of `pwa-liveupdate` with the input `branch` set to your
+branch (the scripts are taken from it) and `dry_run` enabled.
 
 ## Files
 
 | Path | Content |
 |---|---|
 | `cli.ts` | Entry point and command overview |
-| `check.ts`, `prepare.ts`, `approve.ts`, `finalize.ts`, `build.ts` | The commands |
+| `commands/` | The commands `check`, `prepare`, `approve`, `finalize` and `build` |
 | `steps/` | Steps of `prepare`: version bump, changelog, npm staging |
 | `lib/` | Helpers for git, npm, GitHub, options and version parsing |
 | `config.ts` | Published packages and themes |

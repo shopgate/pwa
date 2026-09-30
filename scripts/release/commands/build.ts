@@ -1,8 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { PUBLISHABLE_PACKAGES, ROOT, getPublishDir } from './config.ts';
-import type { PublishablePackage } from './config.ts';
-import { logStep, run } from './lib/exec.ts';
+import { PUBLISHABLE_PACKAGES, ROOT, getPublishDir } from '../config.ts';
+import type { PublishablePackage } from '../config.ts';
+import { logStep, run } from '../lib/exec.ts';
 
 const REMOVED_DIRS = new Set(['__tests__', 'tests', '__mocks__', '__snapshots__']);
 

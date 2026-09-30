@@ -1,19 +1,19 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { extractReleaseNotes } from './steps/changelog.ts';
+import { extractReleaseNotes } from '../steps/changelog.ts';
 import {
   GITHUB_REPO,
   PUBLISHABLE_PACKAGES,
   ROOT,
   getPackageName,
   getThemes,
-} from './config.ts';
-import { logStep } from './lib/exec.ts';
-import { git, remoteBranchExists } from './lib/git.ts';
-import { createRelease, findRelease } from './lib/github.ts';
-import { isPublished } from './lib/npm.ts';
-import { resolveDistTag, updatesMaster } from './steps/stage.ts';
-import type { ReleaseOptions } from './lib/options.ts';
+} from '../config.ts';
+import { logStep } from '../lib/exec.ts';
+import { git, remoteBranchExists } from '../lib/git.ts';
+import { createRelease, findRelease } from '../lib/github.ts';
+import { isPublished } from '../lib/npm.ts';
+import { resolveDistTag, updatesMaster } from '../steps/stage.ts';
+import type { ReleaseOptions } from '../lib/options.ts';
 
 /**
  * Finishes an approved release: updates master (versions that become "latest") and
@@ -37,7 +37,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
     .filter(name => !isPublished(name, version.version));
 
   if (unpublished.length > 0 && !dryRun) {
-    throw new Error(`Not published yet: ${unpublished.join(', ')}. Approve them with "npm run release:new -- approve ${version.version}" or on npmjs.com.`);
+    throw new Error(`Not published yet: ${unpublished.join(', ')}. Approve them with "npm run release -- approve ${version.version}" or on npmjs.com.`);
   }
 
   if (unpublished.length === 0) {

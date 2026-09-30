@@ -1,11 +1,11 @@
 import { parseArgs } from 'node:util';
-import { approveRelease } from './approve.ts';
-import { buildAll, normalizeAll, purgeAll } from './build.ts';
-import { checkVersion } from './check.ts';
-import { finalizeRelease } from './finalize.ts';
+import { approveRelease } from './commands/approve.ts';
+import { buildAll, normalizeAll, purgeAll } from './commands/build.ts';
+import { checkVersion } from './commands/check.ts';
+import { finalizeRelease } from './commands/finalize.ts';
 import { runMain } from './lib/exec.ts';
 import { getOptions } from './lib/options.ts';
-import { prepareRelease } from './prepare.ts';
+import { prepareRelease } from './commands/prepare.ts';
 import { renderChangelog } from './steps/changelog.ts';
 
 /**
@@ -100,7 +100,7 @@ const printHelp = () => {
     .map(([flag, description, env]) => `  ${flag.padEnd(40)}${description} (${env})`);
 
   console.log([
-    'Usage: npm run release:new -- <command> [version] [options]',
+    'Usage: npm run release -- <command> [version] [options]',
     '',
     'Commands:',
     ...commands,

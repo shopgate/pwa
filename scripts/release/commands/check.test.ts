@@ -7,8 +7,8 @@ import {
   mock,
 } from 'node:test';
 import { checkMasterIsMerged, checkVersion, getContinuation } from './check.ts';
-import type { ReleaseOptions } from './lib/options.ts';
-import { parseVersion } from './lib/version.ts';
+import type { ReleaseOptions } from '../lib/options.ts';
+import { parseVersion } from '../lib/version.ts';
 
 const ENV_NAMES = ['CI', 'GITHUB_AUTH_TOKEN', 'GITHUB_AUTH'];
 
