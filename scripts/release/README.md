@@ -147,8 +147,10 @@ After this step, the packages are public on npm.
    `UPDATE_MASTER`, otherwise `releases/vX`. The release notes are the changelog entry of the
    version, pre-releases are marked as such, patches of an older release line are not marked as
    latest, and `DRAFT_RELEASE` decides between draft and published.
-   Publishing a release creates its tag, and the published release in pwa starts the theme
-   pipelines.
+   Publishing a release creates its tag. The published release in pwa starts the upload of both
+   themes to the extension service (`.github/workflows/main.yml`), which checks out the tag `vX`
+   in the theme repositories. So the theme releases are created first and the pwa release last.
+   When you publish drafts by hand, keep that order: themes first, pwa last.
 
 With `DRY_RUN=true`, it only lists the packages that are not published and stops.
 
@@ -181,6 +183,22 @@ or resuming.
 
 The themes are handled one after another, so after such a failure a theme master can already be
 updated while the other one and master of pwa are not. Retrying `finalize` completes them.
+
+### Theme upload
+
+The published GitHub release in pwa starts the workflow "Trigger GitLab Pipelines on Release"
+(`.github/workflows/main.yml`). It starts one pipeline per theme in the GitLab project
+`github-extension-upload`, which uploads the theme at the tag `vX` to the extension service.
+
+| What failed | Where to see it | What to do |
+|---|---|---|
+| Creating a GitHub release in `finalize` | `release:finalize` job | Retry `finalize`. The pwa release is created last, so nothing was uploaded yet |
+| Triggering the upload | Actions tab of pwa on GitHub, the run is red and shows the answer of GitLab | Fix the cause (e.g. `GITLAB_PIPELINE_TOKEN`) and use "Re-run jobs". This triggers both themes again |
+| The upload of a theme | Pipelines of `github-extension-upload` in GitLab (source "trigger") | Retry the failed job there. It keeps its variables. Pipelines can't be started by hand there, since they only run for triggers |
+
+If only the upload of one theme failed, retry its pipeline in GitLab instead of re-running the
+workflow, since a re-run uploads the other theme again as well. The workflow file is taken from the
+tagged commit, so releases from branches without the current workflow behave like before.
 
 ## Testing changes
 

@@ -13,7 +13,7 @@ jobs:
           GITLAB_PIPELINE_TOKEN: ${{ secrets.GITLAB_PIPELINE_TOKEN }}
           GITLAB_URL: ${{ secrets.GITLAB_URL }}
         run: |
-          curl --request POST \
+          curl --fail-with-body --request POST \
             --url $GITLAB_URL \
             --header 'content-type: application/x-www-form-urlencoded' \
             --data ref=main \
@@ -21,11 +21,12 @@ jobs:
             --data-urlencode variables[TAG_NAME]=${{ github.event.release.tag_name }} \
             --data token=$GITLAB_PIPELINE_TOKEN
       - name: Trigger GitLab pipeline via curl
+        if: ${{ !cancelled() }}
         env:
           GITLAB_PIPELINE_TOKEN: ${{ secrets.GITLAB_PIPELINE_TOKEN }}
           GITLAB_URL: ${{ secrets.GITLAB_URL }}
         run: |
-          curl --request POST \
+          curl --fail-with-body --request POST \
             --url $GITLAB_URL \
             --header 'content-type: application/x-www-form-urlencoded' \
             --data ref=main \

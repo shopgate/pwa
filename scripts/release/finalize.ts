@@ -78,7 +78,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   const latest = resolveDistTag(version, root) === 'latest';
   const body = extractReleaseNotes(fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8'), version.baseName);
 
-  for (const repo of [GITHUB_REPO, ...themes.map(theme => theme.githubRepo)]) {
+  for (const repo of [...themes.map(theme => theme.githubRepo), GITHUB_REPO]) {
     logStep(`Creating GitHub release ${version.name} in ${repo}`);
 
     // eslint-disable-next-line no-await-in-loop
