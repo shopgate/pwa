@@ -87,14 +87,16 @@ export const getPreviousTagPrefix = (version: ReleaseVersion) => {
 };
 
 /**
- * Returns the highest stable tag with the given prefix.
+ * Returns the highest stable tag with the given prefix that is lower than the released version.
  * @param tags All tag names.
  * @param prefix The tag prefix.
+ * @param version The version to release. Its own tag and higher ones are ignored.
  * @returns The tag, or null when there is none.
  */
-export const findPreviousTag = (tags: string[], prefix: string) => (
+export const findPreviousTag = (tags: string[], prefix: string, version: ReleaseVersion) => (
   tags
     .filter(tag => tag.startsWith(prefix) && !tag.includes('-') && isValidVersion(tag))
+    .filter(tag => compareVersions(parseVersion(tag), version) < 0)
     .sort((a, b) => compareVersions(parseVersion(a), parseVersion(b)))
     .pop() ?? null
 );
@@ -307,7 +309,8 @@ const fetchIssues = async (commits: CommitInfo[]) => {
  */
 export const renderChangelog = async (version: ReleaseVersion, root = ROOT) => {
   const tags = gitOutput(['tag'], { cwd: root }).split('\n');
-  const previousTag = findPreviousTag(tags, getPreviousTagPrefix(version));
+  const previousTag = findPreviousTag(tags, getPreviousTagPrefix(version), version)
+    ?? findPreviousTag(tags, 'v', version);
 
   if (!previousTag) {
     throw new Error(`No previous stable tag found for ${version.name}`);

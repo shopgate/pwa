@@ -81,11 +81,19 @@ describe('findPreviousTag', () => {
   const tags = ['v7.31.2', 'v7.31.10', 'v7.31.9', 'v7.31.11-beta.1', 'v7.3.99', 'v7.32.0', 'other'];
 
   it('returns the highest stable tag with the prefix', () => {
-    assert.equal(findPreviousTag(tags, 'v7.31.'), 'v7.31.10');
+    assert.equal(findPreviousTag(tags, 'v7.31.', parseVersion('7.32.0')), 'v7.31.10');
+  });
+
+  it('ignores the tag of the released version and higher ones', () => {
+    assert.equal(findPreviousTag(tags, 'v7.31.', parseVersion('7.31.10')), 'v7.31.9');
+  });
+
+  it('finds the highest lower tag of all release lines with the prefix "v"', () => {
+    assert.equal(findPreviousTag(tags, 'v', parseVersion('7.33.0')), 'v7.32.0');
   });
 
   it('returns null without matching tag', () => {
-    assert.equal(findPreviousTag(tags, 'v6.'), null);
+    assert.equal(findPreviousTag(tags, 'v6.', parseVersion('7.0.0')), null);
   });
 });
 
