@@ -135,6 +135,9 @@ Needs your npm login with write access to the `@shopgate` packages and 2FA.
    has commits that are missing in the release.
 3. Asks for your one-time password and approves the packages, dependencies first, so that no package
    is public before the packages it depends on.
+4. Checks that npm shows every approved version as published. A new version can take a moment to
+   appear, so it checks again every 10 seconds for up to a minute and fails with the missing
+   packages otherwise.
 
 After this step, the packages are public on npm.
 
