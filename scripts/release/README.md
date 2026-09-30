@@ -156,8 +156,12 @@ With `DRY_RUN=true`, it only lists the packages that are not published and stops
 
 ### `release:tablet-themes`
 
-Runs after `finalize` when `RELEASE_TABLET_THEMES=true` and not in dry runs. It checks out
-`releases/vX`, renames the themes to `*-tablet` and uploads them with `sgconnect`.
+Runs after `finalize` when `RELEASE_TABLET_THEMES=true`. It checks out `releases/vX`, renames the
+themes to `*-tablet` and uploads them with `sgconnect`. With `DRY_RUN=true`, it checks out `BRANCH`
+instead, since `releases/vX` isn't pushed, and skips the upload.
+
+With `DRY_RUN=true`, all Slack messages of the new process are sent as well, marked with
+"[DRY RUN]". Set `MUTE_SLACK=true` to send none.
 
 ## When something fails
 
