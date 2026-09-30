@@ -41,6 +41,7 @@
     "test": "RUN_LONG=true jest",
     "test:short": "jest",
     "test:watch": "jest --watch",
+    "test:extension": "node scripts/test-extension/run.mts",
     "cover": "jest --coverage",
     "lint": "eslint --quiet --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json .",
     "lint:summary": "eslint --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json . -f ./scripts/eslint-summary-formatter.cjs",
@@ -89,7 +90,7 @@
   },
   "overrides": {
     "enzyme": {
-      "cheerio": "1.0.0-rc.3"
+      "cheerio": "1.0.0-rc.10"
     }
   },
   "allowScripts": {

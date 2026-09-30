@@ -15,7 +15,8 @@
     "@testing-library/user-event": "^13.5.0",
     "@wojtekmaj/enzyme-adapter-react-17": "^0.8.0",
     "babel-jest": "^29.7.0",
-    "cheerio": "1.0.0-rc.3",
+    "cheerio": "1.0.0-rc.10",
+    "css-spring": "git+https://github.com/shopgate/css-spring.git#master",
     "enzyme": "^3.11.0",
     "enzyme-to-json": "^3.6.2",
     "jest-environment-jsdom": "^29.7.0"

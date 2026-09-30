@@ -77,6 +77,10 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
 - **Check dependency changes against a standalone theme install**, not only against this
   workspace: peer dependency conflicts that npm resolves here by nesting (e.g. the dev server
   vs. `@pmmmwh/react-refresh-webpack-plugin`) fail with `ERESOLVE` there.
+- **Extension tests pass here by accident:** Node and Jest fall back to this repo's
+  `node_modules` for anything an extension doesn't install. `npm run test:extension --
+  <extension> [jest options]` runs an extension's tests without that fallback, like an
+  external setup (run `npm install` in its `frontend` folder first).
 - **Node requirements:** the SDK requires Node ≥ 20.19, the themes ≥ 22.15 (`engines`, warning
   only). Raising a requirement affects external developers with the next theme release; mention
   it in the release notes.
