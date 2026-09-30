@@ -118,6 +118,7 @@ describe('github', () => {
           draft: false,
           prerelease: false,
           body: '',
+          latest: true,
         }),
         (error: Error) => error.message === 'GitHub API POST /repos/shopgate/pwa/releases failed'
           && (error.cause as Error).message === 'fetch failed'
@@ -133,6 +134,7 @@ describe('github', () => {
       draft: false,
       prerelease: false,
       body: '',
+      latest: true,
     };
 
     it('returns the created release', async () => {
@@ -144,6 +146,26 @@ describe('github', () => {
       });
 
       assert.equal((await createRelease('shopgate/pwa', options)).id, 1);
+    });
+
+    it('only lets GitHub mark the release as latest when allowed', async () => {
+      const fetchMock = mockFetch(201, {
+        id: 1,
+        name: 'v7.32.3',
+        tag_name: 'v7.32.3',
+        draft: false,
+      });
+
+      await createRelease('shopgate/pwa', options);
+      await createRelease('shopgate/pwa', {
+        ...options,
+        latest: false,
+      });
+
+      const bodies = fetchMock.mock.calls
+        .map(call => JSON.parse(String((call.arguments[1] as RequestInit).body)));
+      assert.equal(bodies[0].make_latest, undefined);
+      assert.equal(bodies[1].make_latest, 'false');
     });
 
     it('throws when the repository is not found', async () => {

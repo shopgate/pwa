@@ -76,6 +76,10 @@ export interface CreateReleaseOptions {
    * Release notes in markdown.
    */
   body: string;
+  /**
+   * Whether GitHub may mark the release as the latest one. False for patches of older release lines.
+   */
+  latest: boolean;
 }
 
 /**
@@ -229,6 +233,7 @@ export const createRelease = async (repo: string, options: CreateReleaseOptions)
     body: options.body,
     draft: options.draft,
     prerelease: options.prerelease,
+    ...(options.latest ? {} : { make_latest: 'false' }),
   });
 
   if (!release) {

@@ -1,6 +1,11 @@
 import assert from 'node:assert/strict';
 import { describe, it } from 'node:test';
-import { compareVersions, isValidVersion, parseVersion } from './version.ts';
+import {
+  compareVersions,
+  getDistTag,
+  isValidVersion,
+  parseVersion,
+} from './version.ts';
 
 describe('parseVersion', () => {
   it('parses a stable version', () => {
@@ -14,7 +19,6 @@ describe('parseVersion', () => {
       preRelease: null,
       preReleaseNumber: null,
       stable: true,
-      distTag: 'latest',
     });
   });
 
@@ -25,12 +29,6 @@ describe('parseVersion', () => {
     assert.equal(version.name, 'v7.33.0-rc.2');
     assert.equal(version.baseName, 'v7.33.0');
     assert.equal(version.stable, false);
-  });
-
-  it('publishes all pre-release types with the "beta" dist-tag', () => {
-    ['alpha', 'beta', 'rc'].forEach((type) => {
-      assert.equal(parseVersion(`7.33.0-${type}.1`).distTag, 'beta');
-    });
   });
 
   it('rejects unsupported versions', () => {
@@ -73,5 +71,24 @@ describe('compareVersions', () => {
 
   it('treats equal versions as equal', () => {
     assert.equal(compareVersions(parseVersion('7.33.0'), parseVersion('v7.33.0')), 0);
+  });
+});
+
+describe('getDistTag', () => {
+  it('publishes all pre-release types with the "beta" dist-tag', () => {
+    ['alpha', 'beta', 'rc'].forEach((type) => {
+      assert.equal(getDistTag(parseVersion(`7.33.0-${type}.1`), '7.34.0'), 'beta');
+    });
+  });
+
+  it('publishes stable versions with the "latest" dist-tag', () => {
+    assert.equal(getDistTag(parseVersion('7.33.0'), '7.32.1'), 'latest');
+    assert.equal(getDistTag(parseVersion('7.33.0'), '7.33.0'), 'latest');
+    assert.equal(getDistTag(parseVersion('7.33.0'), ''), 'latest');
+  });
+
+  it('keeps "latest" for patches of older release lines', () => {
+    assert.equal(getDistTag(parseVersion('7.32.3'), '7.33.0'), 'latest-7.32');
+    assert.equal(getDistTag(parseVersion('6.9.1'), '7.33.0'), 'latest-6.9');
   });
 });

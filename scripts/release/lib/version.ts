@@ -45,10 +45,6 @@ export interface ReleaseVersion {
    * Whether this is a stable version without pre-release part.
    */
   stable: boolean;
-  /**
-   * npm dist-tag: "latest" for stable versions, "beta" for all pre-releases (like the legacy release).
-   */
-  distTag: 'latest' | 'beta';
 }
 
 const VERSION_PATTERN = /^v?(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-(alpha|beta|rc)\.([1-9]\d*))?$/;
@@ -79,7 +75,6 @@ export const parseVersion = (input: string): ReleaseVersion => {
     preRelease: (preRelease as PreReleaseType | undefined) ?? null,
     preReleaseNumber: preReleaseNumber ? Number(preReleaseNumber) : null,
     stable: !preRelease,
-    distTag: preRelease ? 'beta' : 'latest',
   };
 };
 
@@ -118,4 +113,24 @@ export const compareVersions = (a: ReleaseVersion, b: ReleaseVersion): number =>
   }
 
   return Math.sign((a.preReleaseNumber ?? 0) - (b.preReleaseNumber ?? 0));
+};
+
+/**
+ * Returns the npm dist-tag of a version. Pre-releases get "beta" (like the legacy release). Stable
+ * versions get "latest", unless they are lower than the current "latest" version, e.g. a patch for
+ * an older release line. Those get "latest-<major>.<minor>" so that "latest" doesn't go back.
+ * @param version The version to release.
+ * @param latest The version the "latest" dist-tag currently points to, empty when unknown.
+ * @returns The dist-tag.
+ */
+export const getDistTag = (version: ReleaseVersion, latest: string) => {
+  if (!version.stable) {
+    return 'beta';
+  }
+
+  if (isValidVersion(latest) && compareVersions(version, parseVersion(latest)) < 0) {
+    return `latest-${version.major}.${version.minor}`;
+  }
+
+  return 'latest';
 };

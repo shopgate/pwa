@@ -7,8 +7,24 @@ import {
   getPublishDir,
 } from '../config.ts';
 import { logStep } from '../lib/exec.ts';
-import { findStagedVersion, isPublished, stagePublish } from '../lib/npm.ts';
+import {
+  findStagedVersion,
+  getDistTagVersion,
+  isPublished,
+  stagePublish,
+} from '../lib/npm.ts';
+import { getDistTag } from '../lib/version.ts';
 import type { ReleaseVersion } from '../lib/version.ts';
+
+/**
+ * Returns the npm dist-tag of a version, based on the version "latest" currently points to.
+ * @param version The version to release.
+ * @param root The repository root.
+ * @returns The dist-tag.
+ */
+export const resolveDistTag = (version: ReleaseVersion, root = ROOT) => (
+  getDistTag(version, getDistTagVersion(getPackageName(PUBLISHABLE_PACKAGES[0].dir, root), 'latest'))
+);
 
 /**
  * Stages all publishable packages on npm. Versions that are already staged or published
@@ -18,7 +34,8 @@ import type { ReleaseVersion } from '../lib/version.ts';
  * @param root The repository root.
  */
 export const stagePackages = (version: ReleaseVersion, dryRun: boolean, root = ROOT) => {
-  logStep(`Staging ${PUBLISHABLE_PACKAGES.length} packages on npm (dist-tag "${version.distTag}")`);
+  const distTag = resolveDistTag(version, root);
+  logStep(`Staging ${PUBLISHABLE_PACKAGES.length} packages on npm (dist-tag "${distTag}")`);
 
   PUBLISHABLE_PACKAGES.forEach((pkg) => {
     const name = getPackageName(pkg.dir, root);
@@ -43,6 +60,6 @@ export const stagePackages = (version: ReleaseVersion, dryRun: boolean, root = R
       throw new Error(`${path.relative(root, publishDir)} contains version ${builtVersion}, expected ${version.version}. Run the build first.`);
     }
 
-    stagePublish(publishDir, version.distTag, dryRun);
+    stagePublish(publishDir, distTag, dryRun);
   });
 };

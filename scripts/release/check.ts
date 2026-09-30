@@ -15,7 +15,12 @@ import {
 } from './lib/github.ts';
 import { findStagedVersion, getDistTagVersion, isPublished } from './lib/npm.ts';
 import type { ReleaseOptions } from './lib/options.ts';
-import { compareVersions, isValidVersion, parseVersion } from './lib/version.ts';
+import {
+  compareVersions,
+  getDistTag,
+  isValidVersion,
+  parseVersion,
+} from './lib/version.ts';
 import type { ReleaseVersion } from './lib/version.ts';
 
 /**
@@ -98,16 +103,22 @@ export const findTakenLocations = async (version: ReleaseVersion, root = ROOT) =
 };
 
 /**
- * Warns when the version isn't higher than the one its dist-tag currently points to.
+ * Warns when the version isn't higher than the one its dist-tag currently points to. For patches of
+ * an older release line, it also tells that "latest" stays unchanged.
  * @param version The version to release.
  * @param root The repository root.
  */
 const warnAboutOlderVersion = (version: ReleaseVersion, root = ROOT) => {
   const packageName = getPackageName(PUBLISHABLE_PACKAGES[0].dir, root);
-  const current = getDistTagVersion(packageName, version.distTag);
+  const tag = version.stable ? 'latest' : 'beta';
+  const current = getDistTagVersion(packageName, tag);
 
   if (isValidVersion(current) && compareVersions(version, parseVersion(current)) <= 0) {
-    console.warn(`⚠ ${version.version} is not higher than the current "${version.distTag}" version ${current}.`);
+    console.warn(`⚠ ${version.version} is not higher than the current "${tag}" version ${current}.`);
+
+    if (version.stable) {
+      console.warn(`  It gets the dist-tag "${getDistTag(version, current)}", so "latest" and the latest GitHub releases stay unchanged.`);
+    }
   }
 };
 

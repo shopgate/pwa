@@ -12,6 +12,7 @@ import { logStep } from './lib/exec.ts';
 import { git, remoteBranchExists } from './lib/git.ts';
 import { createRelease, findRelease } from './lib/github.ts';
 import { isPublished } from './lib/npm.ts';
+import { resolveDistTag } from './steps/stage.ts';
 import type { ReleaseOptions } from './lib/options.ts';
 
 /**
@@ -74,6 +75,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   }
 
   const target = updatesMaster ? 'master' : releaseBranch;
+  const latest = resolveDistTag(version, root) === 'latest';
   const body = extractReleaseNotes(fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8'), version.baseName);
 
   for (const repo of [GITHUB_REPO, ...themes.map(theme => theme.githubRepo)]) {
@@ -90,6 +92,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
         draft: draftRelease,
         prerelease: !version.stable,
         body,
+        latest,
       });
     }
   }
