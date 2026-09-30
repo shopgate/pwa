@@ -1,20 +1,30 @@
 import uniq from 'lodash/uniq';
+import type { Reducer } from 'redux';
 import {
   REVIEWS_LIFETIME,
   REQUEST_REVIEWS,
   RECEIVE_REVIEWS,
   ERROR_REVIEWS,
 } from '../constants';
+import type { RequestReviewsAction } from '../action-creators/requestReviews';
+import type { ReceiveReviewsAction } from '../action-creators/receiveReviews';
+import type { ErrorReviewsAction } from '../action-creators/errorReviews';
+import type { ReviewsByHash } from '../types/reviews';
+
+type ReviewsByHashAction = RequestReviewsAction | ReceiveReviewsAction | ErrorReviewsAction;
 
 /**
  * Stores a collection of products by the related hash of the request parameters.
  * Responses are only applied when they belong to the latest request of a collection.
  * A first page replaces the collection, later pages are only appended for the same sort.
- * @param {Object} [state={}] The current state.
- * @param {Object} action The current redux action.
- * @return {Object} The new state.
+ * @param state The current state.
+ * @param action The current redux action.
+ * @returns The new state.
  */
-function reviewsByHash(state = {}, action = {}) {
+const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
+  state = {},
+  action = {} as ReviewsByHashAction
+) => {
   switch (action.type) {
     case REQUEST_REVIEWS:
       return {
@@ -83,6 +93,6 @@ function reviewsByHash(state = {}, action = {}) {
     default:
       return state;
   }
-}
+};
 
 export default reviewsByHash;

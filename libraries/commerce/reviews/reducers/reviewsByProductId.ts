@@ -1,3 +1,4 @@
+import type { Reducer } from 'redux';
 import {
   REQUEST_PRODUCT_REVIEWS,
   RECEIVE_PRODUCT_REVIEWS,
@@ -5,15 +6,35 @@ import {
   REQUEST_SUBMIT_REVIEW,
   REVIEWS_LIFETIME,
 } from '../constants';
+import type { RequestProductReviewsAction } from '../action-creators/requestProductReviews';
+import type { ReceiveProductReviewsAction } from '../action-creators/receiveProductReviews';
+import type { ErrorProductReviewsAction } from '../action-creators/errorProductReviews';
+import type { ReviewsByProductId } from '../types/reviews';
+
+type RequestSubmitReviewAction = {
+  type: typeof REQUEST_SUBMIT_REVIEW;
+  review: {
+    productId: string;
+  };
+};
+
+type ReviewsByProductIdAction =
+  | RequestProductReviewsAction
+  | ReceiveProductReviewsAction
+  | ErrorProductReviewsAction
+  | RequestSubmitReviewAction;
 
 /**
  * Stores product reviews by their product ID.
  * Responses are only applied when they belong to the latest request of a product.
- * @param {Object} [state={}] The current state.
- * @param {Object} action The action object.
- * @return {Object} The new state.
+ * @param state The current state.
+ * @param action The action object.
+ * @returns The new state.
  */
-export default function reviewsByProductId(state = {}, action = {}) {
+const reviewsByProductId: Reducer<ReviewsByProductId, ReviewsByProductIdAction> = (
+  state = {},
+  action = {} as ReviewsByProductIdAction
+) => {
   switch (action.type) {
     case REQUEST_PRODUCT_REVIEWS:
       return {
@@ -73,4 +94,6 @@ export default function reviewsByProductId(state = {}, action = {}) {
     default:
       return state;
   }
-}
+};
+
+export default reviewsByProductId;
