@@ -101,6 +101,9 @@ Only reads, changes nothing.
    (including drafts) in pwa and the theme repositories. When something is found, it lists it and
    aborts, unless `RESUME=true` is set and `releases/vX` contains the "Released X" commit.
 
+With `RELEASE_TABLET_THEMES=true`, the job also logs in with `sgconnect` first, so invalid platform
+credentials fail the pipeline before the release starts instead of in the tablet job.
+
 ### `prepare` (job `release:prepare`)
 
 1. Runs `check`.
@@ -157,7 +160,8 @@ With `DRY_RUN=true`, it only lists the packages that are not published and stops
 ### `release:tablet-themes`
 
 Runs after `finalize` when `RELEASE_TABLET_THEMES=true`. It checks out `releases/vX`, renames the
-themes to `*-tablet` and uploads them with `sgconnect`. With `DRY_RUN=true`, it checks out `BRANCH`
+themes to `*-tablet` and uploads them with `sgconnect`. A failed upload, including a failed
+processing of the theme on the platform, fails the job, which can be retried on its own. With `DRY_RUN=true`, it checks out `BRANCH`
 instead, since `releases/vX` isn't pushed, and skips the upload.
 
 With `DRY_RUN=true`, all Slack messages of the new process are sent as well, marked with
