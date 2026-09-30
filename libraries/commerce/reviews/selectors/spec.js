@@ -150,5 +150,12 @@ describe('Reviews selectors', () => {
       const result = getDefaultAuthorName(emptyState, propsProductId);
       expect(result).toBe('');
     });
+
+    it('should return empty string for a logged out user with remaining user data', () => {
+      const state = _.cloneDeep(finalState);
+      state.user.login.isLoggedIn = false;
+      const result = getDefaultAuthorName(state, propsProductId);
+      expect(result).toBe('');
+    });
   });
 });

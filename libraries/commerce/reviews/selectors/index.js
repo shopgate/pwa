@@ -181,7 +181,7 @@ export const getUserReviewFirstFetchState = createSelector(
  * @returns {string} A user name.
  */
 export const getDefaultAuthorName = state => (
-  (isUserLoggedIn && state.user.data && state.user.data.firstName)
+  (isUserLoggedIn(state) && state.user.data && state.user.data.firstName)
     ? `${state.user.data.firstName} ${state.user.data.lastName}` : ''
 );
 
