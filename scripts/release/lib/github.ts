@@ -21,6 +21,10 @@ export interface GithubRelease {
    * Whether the release is an unpublished draft.
    */
   draft: boolean;
+  /**
+   * Link to the release on GitHub.
+   */
+  html_url: string;
 }
 
 /**

@@ -41,6 +41,10 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
     throw new Error(`Not published yet: ${unpublished.join(', ')}. Approve them with "npm run release:new -- approve ${version.version}" or on npmjs.com.`);
   }
 
+  if (unpublished.length === 0) {
+    console.log(`✔ All ${PUBLISHABLE_PACKAGES.length} packages are published`);
+  }
+
   if (dryRun) {
     if (unpublished.length > 0) {
       console.log(`Dry run: not published yet: ${unpublished.join(', ')}`);
@@ -82,11 +86,13 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
     logStep(`Creating GitHub release ${version.name} in ${repo}`);
 
     // eslint-disable-next-line no-await-in-loop
-    if (await findRelease(repo, version.name)) {
-      console.log('Release already exists, skipping');
+    const existing = await findRelease(repo, version.name);
+
+    if (existing) {
+      console.log(`Release already exists, skipping: ${existing.html_url}`);
     } else {
       // eslint-disable-next-line no-await-in-loop
-      await createRelease(repo, {
+      const release = await createRelease(repo, {
         tag: version.name,
         target,
         draft: draftRelease,
@@ -94,6 +100,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
         body,
         latest,
       });
+      console.log(`✔ ${release.draft ? 'Created draft' : 'Released'}: ${release.html_url}`);
     }
   }
 

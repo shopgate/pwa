@@ -116,6 +116,14 @@ const printHelp = () => {
 
 const [name, ...args] = process.argv.slice(2);
 
+if (process.env.npm_config_user_agent?.startsWith('yarn/')) {
+  Object.keys(process.env)
+    .filter(key => key.toLowerCase().startsWith('npm_config_'))
+    .forEach((key) => {
+      delete process.env[key];
+    });
+}
+
 if (!name || name === 'help' || name === '--help') {
   printHelp();
 } else if (!COMMANDS[name]) {
