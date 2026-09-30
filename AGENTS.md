@@ -58,6 +58,29 @@ Requires the external `sgconnect` CLI (not installed by `npm install`).
 - **Naming conventions:** tests `*.spec.js(x)` colocated; `index.js` barrels; colocated `*.types.js`. Existing redux wiring lives in `connector.js` (not `connect.js`) — these are legacy; do not add new `connector.js` files (see Editing Guidelines).
 - **`.sgcloud/`** is local `sgconnect` dev state (gitignored, machine-specific).
 
+## External Development
+
+External developers don't use this monorepo. `sgconnect init` (platform-sdk) creates a project
+with only `.sgcloud`, `extensions`, `pipelines`, `trustedPipelines` and `themes` — no `libraries`,
+`utils` or `scripts`. They check out a theme from its own GitHub repository (the mirror the
+release pushes to) and develop extensions in `extensions/*/frontend`.
+
+- **The published packages and the themes are their build setup.** The theme is the root npm
+  project there; it brings `@shopgate/webpack` (webpack, dev server, build plugins) and the
+  libraries from npm. Their extension code is compiled by the theme's webpack, which aliases
+  shared packages (React, glamor, lodash, `@virtuous`, …) to the theme's single copy.
+- **Extensions depend on a few foundation packages:** `@shopgate/engage` (brings the other
+  libraries, mainly for IDE import resolution), `@shopgate/eslint-config` for linting and
+  `@shopgate/pwa-unit-test` for Jest. Changes to these three reach every extension. Many
+  public Shopgate extensions serve as blueprints; older ones still list individual libraries
+  (`pwa-common`, `pwa-core`, …), the direction is `engage` + the two foundation packages only.
+- **Check dependency changes against a standalone theme install**, not only against this
+  workspace: peer dependency conflicts that npm resolves here by nesting (e.g. the dev server
+  vs. `@pmmmwh/react-refresh-webpack-plugin`) fail with `ERESOLVE` there.
+- **Node requirements:** the SDK requires Node ≥ 20.19, the themes ≥ 22.15 (`engines`, warning
+  only). Raising a requirement affects external developers with the next theme release; mention
+  it in the release notes.
+
 ## Human-Readable CSS Classes
 
 Merchants restyle the app with injected CSS — a `theme.css` fetched from `appConfig.themeCssUrl`
