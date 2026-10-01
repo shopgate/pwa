@@ -99,9 +99,9 @@ extension that uses them, migrate it. `@shopgate/eslint-config` reports both as
 - **`glamor`** → `makeStyles` / `useStyles` from `@shopgate/engage/styles`. Nothing in this repo
   imports glamor anymore; the themes and libraries only keep it as a dependency for extensions.
 
-Larger postponed clean-ups (glamor removal, validate.js replacement, Sentry upgrade and others)
-are listed in [docs/renovations.md](docs/renovations.md). Check it before starting related work,
-and update it when an entry is done.
+Larger postponed clean-ups (glamor removal, validate.js replacement, browser targets and Sentry
+upgrade, and others) are listed in [docs/renovations.md](docs/renovations.md). Check it before
+starting related work, and update it when an entry is done.
 
 ## Human-Readable CSS Classes
 

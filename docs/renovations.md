@@ -28,11 +28,26 @@ open, what is in place until then, and what has to happen. Remove an entry once 
   checkout, profile, contact, reservation, order details) and deprecate the validate.js constraint
   syntax, which extensions may pass. Login and registration are the forms customers use most.
 
-## Upgrade Sentry beyond 7
+## Raise the browser targets, then upgrade Sentry
 
-- **Status:** `@sentry/browser` 7 only gets critical fixes. Version 8 changed the integration API.
-- **To do:** upgrade, check the options in `libraries/common/subscriptions/error.js` and the
-  events in a dev project. Consider making the DSN configurable and using Sentry's EU region.
+- **Status:** the `.browserslistrc` files (root, `themes/theme-gmd`, `themes/theme-ios11`) target
+  `iOS >= 13.4`, set in CURB-4562 (November 2025) without a documented reason. The PWA runs in the
+  React Native app (`react-native-engage`: iOS 15.6 since September 2025, Android 8.0 / API 26)
+  and on the website.
+  `@sentry/browser` stays on 7 because Sentry 9 and later officially require Safari 14. Babel
+  doesn't transpile `node_modules`, so Sentry has to run as published.
+- **Decided:** the website may drop iOS 13 and 14 (based on Google Analytics, October 2026).
+- **To do:**
+  1. Raise the targets in all three `.browserslistrc` files to `iOS >= 15.6`. Keep
+     `Chrome >= 80`, since the Android system WebView has no guaranteed minimum version. Smoke
+     test on iOS and Android devices (start page, product page, cart, login), since the whole
+     bundle changes.
+  2. Upgrade `@sentry/browser` to the latest version in a separate commit. The code in
+     `libraries/common/subscriptions/error.js` only uses APIs that still exist (`setTags`, string
+     levels, `withScope`, `beforeSend`). Check the events in the browser again: an exception, a
+     failed login, the event content. Since version 8, Sentry no longer infers IP addresses by
+     default.
+  3. Consider making the DSN configurable and using Sentry's EU region.
 
 ## Unhandled rejections of pipeline actions
 
