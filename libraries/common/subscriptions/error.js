@@ -8,6 +8,7 @@ import {
   captureEvent,
   withScope,
 } from '@sentry/browser';
+import { router } from '@virtuous/conductor';
 import {
   EBIGAPI,
   emitter,
@@ -209,10 +210,22 @@ export default (subscribe) => {
   ];
 
   /**
-   * @param {string} url The URL.
-   * @returns {string} The URL without its query string.
+   * @param {string} url An absolute or relative URL of the app.
+   * @returns {string} The URL with its route path replaced by the route pattern, e.g.
+   * `/orders/:orderId`, and without query string and hash.
    */
-  const stripQuery = url => (typeof url === 'string' ? url.split('?')[0] : url);
+  const redactUrl = (url) => {
+    if (typeof url !== 'string') {
+      return url;
+    }
+
+    const [path] = url.split(/[?#]/);
+    const [, base, routePath] = /^(.*?index\.html)(.*)$/.exec(path)
+      || /^([a-z][a-z\d+.-]*:\/\/[^/]+)(.*)$/i.exec(path)
+      || [null, '', path];
+
+    return `${base}${router.findPattern(routePath || '/') || '/(unknown route)'}`;
+  };
 
   let trackedSeverities = Object.values(severityMap);
   const minSeverityIndex = Object.keys(severityMap).indexOf(level);
@@ -237,8 +250,8 @@ export default (subscribe) => {
           return {
             ...breadcrumb,
             data: {
-              from: stripQuery(breadcrumb.data.from),
-              to: stripQuery(breadcrumb.data.to),
+              from: redactUrl(breadcrumb.data.from),
+              to: redactUrl(breadcrumb.data.to),
             },
           };
         }
@@ -255,20 +268,17 @@ export default (subscribe) => {
           ...event,
           request: event.request && {
             ...event.request,
-            url: stripQuery(event.request.url),
+            url: redactUrl(event.request.url),
             headers: event.request.headers && {
               ...event.request.headers,
-              Referer: stripQuery(event.request.headers.Referer),
+              Referer: redactUrl(event.request.headers.Referer),
             },
           },
           extra: {
             ...event.extra || {},
             routerStack: getRouterStack(getState())
               .slice(-5)
-              .map(({ pattern, pathname }) => ({
-                pattern,
-                pathname,
-              })),
+              .map(({ pattern }) => ({ pattern })),
           },
         };
       },

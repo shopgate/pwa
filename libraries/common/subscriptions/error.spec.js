@@ -4,6 +4,7 @@ import {
   setTags,
   captureEvent,
 } from '@sentry/browser';
+import { router } from '@virtuous/conductor';
 import { emitter } from '@shopgate/pwa-core';
 import { SOURCE_CONSOLE } from '@shopgate/pwa-core/constants/ErrorManager';
 import appConfig from '../helpers/config';
@@ -86,17 +87,28 @@ const callbackFor = (subscriptions, stream) => subscriptions
  */
 const sentryOptions = () => init.mock.calls[init.mock.calls.length - 1][0];
 
+const routePatterns = {
+  '/': /^\/$/,
+  '/reset/:token': /^\/reset\/[^/]+$/,
+  '/orders/:orderId': /^\/orders\/[^/]+$/,
+};
+
 describe('Error subscriptions', () => {
   let addEventListener;
+  let findPattern;
 
   beforeEach(() => {
     jest.clearAllMocks();
     mockEnv = 'development';
     addEventListener = jest.spyOn(window, 'addEventListener');
+    findPattern = jest.spyOn(router, 'findPattern').mockImplementation(pathname => (
+      Object.keys(routePatterns).find(pattern => routePatterns[pattern].test(pathname)) || null
+    ));
   });
 
   afterEach(() => {
     addEventListener.mockRestore();
+    findPattern.mockRestore();
   });
 
   describe('Sentry level filter', () => {
@@ -158,35 +170,47 @@ describe('Error subscriptions', () => {
       expect(beforeSend({ level: 'error' }, { originalException: new Error('boom') })).not.toBeNull();
     });
 
-    it('should send URLs without query strings and a minimal router stack', () => {
+    it('should send route patterns instead of URLs with parameters and a minimal router stack', () => {
       const event = sentryOptions().beforeSend({
         level: 'error',
         request: {
-          url: 'https://shop.example/reset?email=jane@example.com',
-          headers: { Referer: 'https://shop.example/login?email=jane@example.com' },
+          url: 'https://cdn.example/shop_1/theme/index.html/reset/abc?email=jane@example.com#top',
+          headers: { Referer: 'https://shop.example/orders/123?email=jane@example.com' },
         },
       }, {});
 
-      expect(event.request.url).toBe('https://shop.example/reset');
-      expect(event.request.headers.Referer).toBe('https://shop.example/login');
-      expect(event.extra.routerStack).toEqual([{
-        pattern: '/reset/:token',
-        pathname: '/reset/abc',
-      }]);
+      expect(event.request.url).toBe('https://cdn.example/shop_1/theme/index.html/reset/:token');
+      expect(event.request.headers.Referer).toBe('https://shop.example/orders/:orderId');
+      expect(event.extra.routerStack).toEqual([{ pattern: '/reset/:token' }]);
     });
 
-    it('should strip query strings from navigation breadcrumbs', () => {
+    it('should send route patterns in navigation breadcrumbs', () => {
       const breadcrumb = sentryOptions().beforeBreadcrumb({
         category: 'navigation',
         data: {
-          from: '/login?email=jane@example.com',
-          to: '/reset?token=abc',
+          from: '/shop_1/theme/index.html?email=jane@example.com',
+          to: '/orders/123',
         },
       });
 
       expect(breadcrumb.data).toEqual({
-        from: '/login',
-        to: '/reset',
+        from: '/shop_1/theme/index.html/',
+        to: '/orders/:orderId',
+      });
+    });
+
+    it('should not send paths without a registered route', () => {
+      const breadcrumb = sentryOptions().beforeBreadcrumb({
+        category: 'navigation',
+        data: {
+          from: 'https://shop.example/unregistered/jane@example.com',
+          to: '/unregistered/abc',
+        },
+      });
+
+      expect(breadcrumb.data).toEqual({
+        from: 'https://shop.example/(unknown route)',
+        to: '/(unknown route)',
       });
     });
 
