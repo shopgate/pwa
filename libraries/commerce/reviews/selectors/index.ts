@@ -6,6 +6,7 @@ import { getBaseProductId as getBaseProductIdSelector } from '../../product/sele
 import type { Review, ReviewId, ReviewsState } from '../types/reviews';
 
 export * from './reviewSettings';
+export * from './reviewSummary';
 
 type ProductProps = {
   productId?: string | null;
