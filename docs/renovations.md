@@ -68,9 +68,22 @@ open, what is in place until then, and what has to happen. Remove an entry once 
 
 ## query-string in @virtuous/conductor
 
-- **Status:** `@virtuous/conductor` depends on `query-string`, whose `decode-uri-component` has a
-  ReDoS finding without a fixed version. The risk is limited to the user's own browser.
-- **To do:** replace `query-string` with `URLSearchParams` in conductor, or replace conductor.
+- **Status:** `@virtuous/conductor` and `@virtuous/react-conductor` (the router) are no longer
+  maintained, and nobody can publish new versions. Conductor requires `query-string` 6, whose
+  `decode-uri-component` 0.2.2 has a denial of service vulnerability: a URL with crafted percent
+  encoding can freeze the tab. `decode-uri-component` 0.5.0 fixes it, but it's ESM-only, so
+  `query-string` 6 can't use it.
+- **Tried and postponed:** an npm override `"@virtuous/conductor": { "query-string": "^9.5.1" }`
+  (root and both theme `package.json` files) removes the finding. `query-string` 9 behaved
+  identically for our `parseUrl` / `stringify` calls in a comparison of 28 cases. It and its
+  dependencies (`decode-uri-component`, `filter-obj`, `split-on-first`) are ESM and use newer
+  syntax, so the webpack Babel rule in `utils/webpack` and the Jest `transformIgnorePatterns` in
+  `utils/unit-tests` have to transpile them. `common`, `commerce` and `tracking` import
+  `query-string` directly without declaring it.
+- **To do:** apply the override as described and test the routing in the browser (search, filters,
+  login redirect, deep links), or replace the router. When replacing it, keep
+  `@virtuous/conductor` resolvable for extensions (e.g. through a webpack alias), so that there's
+  only one router instance.
 
 ## JSDoc type imports in engage
 
