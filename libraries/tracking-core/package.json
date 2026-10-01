@@ -22,7 +22,7 @@
   "devDependencies": {
     "@shopgate/eslint-config": "7.32.1",
     "@shopgate/pwa-core": "7.32.1",
-    "@types/lodash": "^4.17.24",
-    "lodash": "^4.17.23"
+    "@types/lodash": "^4.17.25",
+    "lodash": "^4.18.1"
   }
 }
