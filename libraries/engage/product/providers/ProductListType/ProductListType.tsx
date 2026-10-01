@@ -1,6 +1,27 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
-import Context from './context';
+import React, { useMemo, type ReactNode } from 'react';
+import Context, {
+  type ProductListTypeContextSubType,
+  type ProductListTypeContextType,
+} from './context';
+
+export interface ProductListTypeProviderProps {
+  /**
+   * Type of the product list, e.g. "productSlider" or "productGrid".
+   */
+  type: ProductListTypeContextType;
+  /**
+   * Optional sub type that tells in which context the product list is used, e.g. "widgets".
+   */
+  subType?: ProductListTypeContextSubType | null;
+  /**
+   * Optional meta information that can be used by child components.
+   */
+  meta?: Record<string, unknown> | null;
+  /**
+   * Content that renders the product list.
+   */
+  children?: ReactNode;
+}
 
 /**
  * The ProductListTypeProvider is usually wrapped around components that render product lists.
@@ -9,20 +30,13 @@ import Context from './context';
  *
  * Context values can be accessed via the `useProductListType` hook, or injected into a class
  * component via the `withProductListType` HOC. Both can be imported from `@shopgate/engage/product`
- *
- * @param {Object} param The component props
- * @param {string} param.type Type of the context e.g. "productSlider" or "productGrid".
- * @param {string} param.subType Optional sub type of the context. Depending on its usage it can
- * make a statement about in which context the product list is used e.g. "widgets".
- * @param {Object} param.meta Optional meta information that can be used by child components
- * @returns {JSX}
  */
-function ProductListTypeProvider({
-  children,
+const ProductListTypeProvider = ({
   type,
-  subType,
-  meta,
-}) {
+  subType = null,
+  meta = null,
+  children = null,
+}: ProductListTypeProviderProps) => {
   const value = useMemo(() => ({
     type,
     subType,
@@ -31,22 +45,9 @@ function ProductListTypeProvider({
 
   return (
     <Context.Provider value={value}>
-      { children }
+      {children}
     </Context.Provider>
   );
-}
-
-ProductListTypeProvider.propTypes = {
-  type: PropTypes.string.isRequired,
-  children: PropTypes.node,
-  meta: PropTypes.shape(),
-  subType: PropTypes.string,
-};
-
-ProductListTypeProvider.defaultProps = {
-  children: null,
-  subType: null,
-  meta: null,
 };
 
 export default ProductListTypeProvider;

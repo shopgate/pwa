@@ -1,32 +1,48 @@
-import React from 'react';
-
-/* eslint-disable max-len */
-/**
- * @typedef {"productSlider"|"productGrid"|"productList"|"favoritesList"|"cart"|"liveshopping"|"pdp"|"productGallery"} ProductListTypeContextType
- */
-export {};
+import { createContext } from 'react';
 
 /**
- * @typedef {"widgets"|"category"} ProductListTypeContextSubType
+ * Type of a product list. Lists the types used by the PWA; extensions can use their own.
  */
-export {};
-
-/* eslint-enable max-len */
+export type ProductListTypeContextType =
+  | 'productSlider'
+  | 'productGrid'
+  | 'productList'
+  | 'favoritesList'
+  | 'cart'
+  | 'liveshopping'
+  | 'pdp'
+  | 'productGallery'
+  | (string & NonNullable<unknown>);
 
 /**
- * @typedef ProductListTypeContextValue
- * @property {ProductListTypeContextType} [type=null] Type of the active ProductListTypeContext
- * e.g. "productSlider" or "productGrid".
- * @property {ProductListTypeContextSubType} [subType=null] Optional sub type of the active
- * ProductListTypeContext. Depending on its usage it can make a statement about in which context
- * the product list is used e.g. "widgets".
- * @property {Object} [meta=null] Optional meta information that can be used by child components
+ * Sub type of a product list. Lists the sub types used by the PWA; extensions can use their own.
  */
-export {};
+export type ProductListTypeContextSubType =
+  | 'widgets'
+  | 'category'
+  | 'mediaSection'
+  | (string & NonNullable<unknown>);
 
-export default React.createContext({
+/**
+ * Context value provided by the ProductListTypeProvider.
+ */
+export interface ProductListTypeContextValue {
+  /**
+   * Type of the product list, e.g. "productSlider" or "productGrid".
+   */
+  type: ProductListTypeContextType | null;
+  /**
+   * Optional sub type that tells in which context the product list is used, e.g. "widgets".
+   */
+  subType: ProductListTypeContextSubType | null;
+  /**
+   * Optional meta information that can be used by child components.
+   */
+  meta: Record<string, unknown> | null;
+}
+
+export default createContext<ProductListTypeContextValue>({
   type: null,
   subType: null,
   meta: null,
 });
-

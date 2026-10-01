@@ -1,14 +1,12 @@
 import { useContext } from 'react';
 import ProductListTypeContext, {
-  // eslint-disable-next-line import/named, no-unused-vars
-  ProductListTypeContextValue,
+  type ProductListTypeContextValue,
 } from '../providers/ProductListType/context';
 
 /**
  * Provides the properties of the ProductListTypeContext.
- * @returns {ProductListTypeContextValue}
+ * @returns The context value.
  */
-export default function useProductListType() {
-  const context = useContext(ProductListTypeContext);
-  return context;
+export default function useProductListType(): ProductListTypeContextValue {
+  return useContext(ProductListTypeContext);
 }

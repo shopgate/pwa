@@ -1,7 +1,17 @@
-import React, { useMemo } from 'react';
-import PropTypes from 'prop-types';
+import React, { useMemo, type ReactNode } from 'react';
 import useProductListType from '../../hooks/useProductListType';
 import Context from './context';
+
+export interface ProductListEntryProviderProps {
+  /**
+   * Identifier of the product the entry renders.
+   */
+  productId: string;
+  /**
+   * Content that renders the product.
+   */
+  children?: ReactNode;
+}
 
 /**
  * The ProductListEntryProvider is usually wrapped around components that render products and
@@ -9,15 +19,11 @@ import Context from './context';
  *
  * Context values can be accessed via the `useProductListEntry` hook, or injected into a class
  * component via the `withProductListEntry` HOC. Both can be imported via `@shopgate/engage/product`
- *
- * @param {Object} param The component props
- * @param {string} param.productId Product identifier.
- * @returns {JSX}
  */
-function ProductListEntryProvider({
-  children,
+const ProductListEntryProvider = ({
   productId,
-}) {
+  children = null,
+}: ProductListEntryProviderProps) => {
   const {
     type,
     subType,
@@ -31,19 +37,9 @@ function ProductListEntryProvider({
 
   return (
     <Context.Provider value={value}>
-      { children }
+      {children}
     </Context.Provider>
   );
-}
-
-ProductListEntryProvider.propTypes = {
-  productId: PropTypes.string.isRequired,
-  children: PropTypes.node,
-};
-
-ProductListEntryProvider.defaultProps = {
-  children: null,
 };
 
 export default ProductListEntryProvider;
-

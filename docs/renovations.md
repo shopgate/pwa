@@ -84,15 +84,3 @@ open, what is in place until then, and what has to happen. Remove an entry once 
   login redirect, deep links), or replace the router. When replacing it, keep
   `@virtuous/conductor` resolvable for extensions (e.g. through a webpack alias), so that there's
   only one router instance.
-
-## JSDoc type imports in engage
-
-- **Status:** five places in `libraries/engage` import names that only exist as JSDoc
-  `@typedef`: `RouteFilters` (`filter/components/FilterPageContentWithProvider`),
-  `ProductListEntryContextValue` (`product/hooks/useProductListEntry`),
-  `ProductListTypeContextValue` (`product/hooks/useProductListType`) and
-  `ProductListTypeContextType` / `ProductListTypeContextSubType`
-  (`product/providers/ProductListEntry/context`). Webpack 5.108 ignores them; 5.111 and later
-  print "export … was not found" warnings.
-- **To do:** replace each import with `/** @typedef {import('<path>').Name} Name */` and remove
-  the `eslint-disable` comments, at the latest with the next webpack update.
