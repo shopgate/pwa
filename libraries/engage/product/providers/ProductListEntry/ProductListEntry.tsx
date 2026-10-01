@@ -1,4 +1,4 @@
-import React, { useMemo, type ReactNode } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import useProductListType from '../../hooks/useProductListType';
 import Context from './context';
 

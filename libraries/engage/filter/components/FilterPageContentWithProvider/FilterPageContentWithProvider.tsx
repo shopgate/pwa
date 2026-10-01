@@ -1,4 +1,4 @@
-import React, { type ComponentType, type ReactNode } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { FilterPageProvider } from '../../providers';
 import Content, { type FilterPageContentProps } from '../FilterPageContent';
 import type { RouteFilters } from '../../providers/FilterPageProvider.context';
