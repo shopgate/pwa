@@ -1,6 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { ROOT, getThemes } from '../config.ts';
+import { run } from '../lib/exec.ts';
 
 /**
  * The parts of a package.json that the version bump touches.
@@ -130,5 +131,16 @@ export const bumpVersions = (version: string, root = ROOT) => {
   versionFiles.forEach((file) => {
     replaceVersionField(path.join(root, file), version);
     console.log(`${file} -> ${version}`);
+  });
+};
+
+/**
+ * Writes the bumped workspace versions and pins into package-lock.json without installing
+ * anything, so that the release commit contains a lockfile that matches the package.json files.
+ * @param root The repository root.
+ */
+export const updateLockfile = (root = ROOT) => {
+  run('npm', ['install', '--package-lock-only', '--ignore-scripts', '--no-audit', '--no-fund'], {
+    cwd: root,
   });
 };

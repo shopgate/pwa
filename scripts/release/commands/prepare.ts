@@ -1,7 +1,7 @@
 import path from 'node:path';
 import { ROOT, getThemes } from '../config.ts';
 import { buildAll } from './build.ts';
-import { bumpVersions } from '../steps/bump.ts';
+import { bumpVersions, updateLockfile } from '../steps/bump.ts';
 import { generateChangelog } from '../steps/changelog.ts';
 import { checkVersion, pipelineLine } from './check.ts';
 import { logStep } from '../lib/exec.ts';
@@ -45,6 +45,7 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
   if (!hasCommitWithMessage('HEAD', releasedMessage)) {
     logStep(`Bumping versions to ${version.version}`);
     bumpVersions(version.version, root);
+    updateLockfile(root);
   }
 
   logStep('Building packages');
