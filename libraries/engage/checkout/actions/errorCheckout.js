@@ -81,11 +81,13 @@ export const errorCheckout = (
     },
   }));
 
-  // Log to sentry.
   Sentry.withScope((scope) => {
     scope.setLevel('fatal');
+    scope.setTag('errorCode', errorObject.code);
     scope.setExtra('origin', 'checkout');
-    Sentry.captureException(errorObject);
+    scope.setExtra('pipeline', pipeline);
+    scope.setExtra('subCode', subCode);
+    Sentry.captureMessage(`Checkout error ${errorObject.code}`);
   });
 
   return {

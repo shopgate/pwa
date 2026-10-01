@@ -222,17 +222,31 @@ describe('Error subscriptions', () => {
       });
     });
 
-    it('should send user errors without the pipeline input', () => {
+    it('should send user errors without the pipeline input and the backend message', () => {
+      const scope = {
+        setLevel: jest.fn(),
+        setExtra: jest.fn(),
+        setTag: jest.fn(),
+      };
+      jest.requireMock('@sentry/browser').withScope.mockImplementationOnce(callback => callback(scope));
       const [, callback] = subscriptions[subscriptions.length - 1];
       callback({ action: { error: pipelineError } });
 
       expect(captureEvent).toHaveBeenCalledWith({
-        message: 'Invalid credentials',
+        message: 'User error EINVALIDCREDENTIALS',
         extra: {
           code: 'EINVALIDCREDENTIALS',
           pipeline: 'shopgate.user.loginUser.v1',
         },
       });
+      expect(scope.setTag.mock.calls).toEqual([
+        ['error', 'E_USER'],
+        ['errorCode', 'EINVALIDCREDENTIALS'],
+      ]);
+    });
+
+    it('should leave window.onerror to Sentry', () => {
+      expect(window.onerror).toBeNull();
     });
 
     it('should send console errors as text', () => {

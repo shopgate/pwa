@@ -282,12 +282,6 @@ export default (subscribe) => {
       merchantCode: appConfig.omniMerchantCode,
     });
 
-    if (window) {
-      window.onerror = (message, source, lineno, colno, error) => {
-        captureException(error);
-      };
-    }
-
     emitter.addListener(SOURCE_TRACKING, (error) => {
       withScope((scope) => {
         if (error.context) {
@@ -344,19 +338,12 @@ export default (subscribe) => {
   // Log all error messages which are presented to the user
   subscribe(allErrors$, ({ action }) => {
     const { error = {} } = action;
-    const {
-      code,
-      message,
-      meta: {
-        message: metaMessage,
-      } = {},
-    } = error;
+    const { code } = error;
     withScope((scope) => {
       scope.setTag('error', 'E_USER');
       scope.setTag('errorCode', code);
-      scope.setTag('errorMessage', message);
       captureEvent({
-        message: metaMessage || message,
+        message: code ? `User error ${code}` : 'User error',
         extra: {
           code,
           pipeline: error.context,
