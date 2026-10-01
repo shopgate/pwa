@@ -35,7 +35,6 @@
     "color": "^4.2.3",
     "focus-trap-react": "^10.3.1",
     "immer": "^11.1.11",
-    "intersection-observer": "^0.6.0",
     "leaflet": "^1.8.0",
     "leaflet-gesture-handling": "^1.2.2",
     "lodash": "^4.17.23",

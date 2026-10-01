@@ -206,7 +206,6 @@ module.exports = {
       '.tsx',
     ],
     'import/resolver': {
-      exports: {},
       node: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'] },
       typescript: {
         alwaysTryTypes: true,
