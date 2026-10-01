@@ -14,6 +14,7 @@ import {
   stagePublish,
 } from '../lib/npm.ts';
 import { getDistTag, isMasterRelease } from '../lib/version.ts';
+import type { ReleaseOptions } from '../lib/options.ts';
 import type { ReleaseVersion } from '../lib/version.ts';
 
 /**
@@ -27,13 +28,18 @@ export const resolveDistTag = (version: ReleaseVersion, root = ROOT) => (
 );
 
 /**
- * Whether the release updates master, based on the current "latest" version on npm.
- * @param version The version to release.
+ * Whether the release updates master: the version becomes "latest" on npm and SKIP_MASTER_UPDATE
+ * isn't set.
+ * @param options The release settings.
  * @param root The repository root.
  * @returns Whether master gets updated.
  */
-export const updatesMaster = (version: ReleaseVersion, root = ROOT) => (
-  isMasterRelease(version, getDistTagVersion(getPackageName(PUBLISHABLE_PACKAGES[0].dir, root), 'latest'))
+export const updatesMaster = (
+  options: Pick<ReleaseOptions, 'version' | 'skipMasterUpdate'>,
+  root = ROOT
+) => (
+  !options.skipMasterUpdate
+  && isMasterRelease(options.version, getDistTagVersion(getPackageName(PUBLISHABLE_PACKAGES[0].dir, root), 'latest'))
 );
 
 /**

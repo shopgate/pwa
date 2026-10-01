@@ -1,4 +1,4 @@
-import React from 'react';
+import type { ReactElement } from 'react';
 import { render } from '@testing-library/react';
 import ProductListTypeProvider from '../providers/ProductListType';
 import ProductListEntryProvider from '../providers/ProductListEntry';
@@ -18,7 +18,7 @@ interface HookValues {
  * @returns The values returned by the hooks.
  */
 const readContexts = (
-  wrap: (children: React.ReactElement) => React.ReactElement = children => children
+  wrap: (children: ReactElement) => ReactElement = children => children
 ): HookValues => {
   let values = {} as HookValues;
 

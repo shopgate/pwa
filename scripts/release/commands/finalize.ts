@@ -22,14 +22,10 @@ import type { ReleaseOptions } from '../lib/options.ts';
  * @param root The repository root.
  */
 export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
-  const {
-    version,
-    skipMasterUpdate,
-    dryRun,
-  } = options;
+  const { version, dryRun } = options;
   const releaseBranch = `releases/${version.name}`;
   const themes = getThemes(root);
-  const masterUpdate = !skipMasterUpdate && updatesMaster(version, root);
+  const masterUpdate = updatesMaster(options, root);
 
   logStep('Checking npm packages');
   const unpublished = PUBLISHABLE_PACKAGES

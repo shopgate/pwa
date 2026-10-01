@@ -47,7 +47,7 @@ const COMMANDS: Record<string, Command> = {
   approve: {
     usage: '<version>',
     description: 'Approve the staged packages with your npm 2FA (developer machine)',
-    run: args => approveRelease(getOptions(args).version),
+    run: args => approveRelease(getOptions(args)),
   },
   finalize: {
     usage: '<version>',

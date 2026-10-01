@@ -143,7 +143,8 @@ Needs your npm login with write access to the `@shopgate` packages and 2FA.
 1. Looks up the staged version of every package. Aborts when a package is neither staged nor
    published.
 2. For versions that update master, compares `releases/vX` with master and asks before approving
-   when master has commits that are missing in the release.
+   when master has commits that are missing in the release. Pass `--skip-master-update` for
+   releases started with that option, since they leave master unchanged.
 3. Asks for your one-time password and approves the packages, dependencies first, so that no package
    is public before the packages it depends on.
 4. Checks that npm shows every approved version as published. A new version can take a moment to

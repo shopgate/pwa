@@ -219,7 +219,7 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
     throw new Error('GITHUB_AUTH_TOKEN is not set. It is needed to create the GitHub releases in finalize.');
   }
 
-  const masterUpdate = !options.skipMasterUpdate && updatesMaster(version, root);
+  const masterUpdate = updatesMaster(options, root);
   console.log(masterUpdate
     ? `✔ finalize updates master, since ${version.version} becomes "latest"`
     : `✔ finalize doesn't update master${options.skipMasterUpdate ? ' (SKIP_MASTER_UPDATE)' : `, since ${version.version} doesn't become "latest"`}`);
