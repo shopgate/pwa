@@ -61,8 +61,11 @@ export default (subscribe) => {
       }
       event.preventDefault();
       if (env === 'development') {
+        const hint = reason.handled
+          ? 'The default error handling already handled it'
+          : 'The request excluded it from the default error handling (blacklisted or suppressed), so the action is expected to handle it';
         // eslint-disable-next-line no-console
-        console.info(`Pipeline error not handled by the caller: ${reason.code} (${reason.message}). The action already handled it; add .catch() if the caller needs to react.`);
+        console.info(`Pipeline error not handled by the caller: ${reason.code} (${reason.message}). ${hint}; add .catch() if the caller needs to react.`);
       }
     });
   });

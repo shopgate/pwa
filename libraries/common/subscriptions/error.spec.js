@@ -296,6 +296,19 @@ describe('Error subscriptions', () => {
 
       expect(event.preventDefault).toHaveBeenCalled();
       expect(info).toHaveBeenCalledWith(expect.stringContaining('EINVALIDCREDENTIALS (Invalid credentials)'));
+      expect(info).toHaveBeenCalledWith(expect.stringContaining('The default error handling already handled it'));
+    });
+
+    it('should name the exclusion from the default handling for blacklisted errors', () => {
+      setup({ enabled: false });
+      const event = reject(Object.assign(new Error('Cart error'), {
+        code: 'ECART',
+        handled: false,
+      }));
+
+      expect(event.preventDefault).toHaveBeenCalled();
+      expect(info).toHaveBeenCalledWith(expect.stringContaining('ECART (Cart error)'));
+      expect(info).toHaveBeenCalledWith(expect.stringContaining('excluded it from the default error handling'));
     });
 
     it('should log nothing in production', () => {
