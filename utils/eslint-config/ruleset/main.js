@@ -5,7 +5,6 @@ module.exports = {
     node: true,
     jest: true,
     mocha: true,
-    'cypress/globals': true,
   },
   parserOptions: {
     ecmaVersion: 2022,

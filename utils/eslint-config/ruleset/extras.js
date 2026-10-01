@@ -1,12 +1,10 @@
 module.exports = {
   extends: [
     'plugin:eslint-comments/recommended',
-    'plugin:cypress/recommended',
   ],
   plugins: [
     'extra-rules',
     'json',
-    'cypress',
     'tss-unused-classes',
   ],
   rules: {
