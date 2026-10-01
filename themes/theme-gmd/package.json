@@ -59,7 +59,7 @@
     "reselect": "^4.1.8",
     "smoothscroll-polyfill": "^0.4.4",
     "typescript": "^5.9.3",
-    "webpack": "^5.108.4",
+    "webpack": "^5.111.1",
     "webpack-cli": "^7.2.3"
   },
   "devDependencies": {
