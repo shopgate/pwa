@@ -8,7 +8,6 @@
 
 <div align="center">
 
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=v6.X)](https://coveralls.io/github/shopgate/pwa?branch=v6.X)
 [![GitHub (pre-)release](https://img.shields.io/github/release/shopgate/pwa/all.svg)](https://github.com/shopgate/pwa/releases)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -22,12 +21,6 @@ Install with `npm`:
 
 ```sh
 npm install @shopgate/engage
-```
-
-Install with `yarn`:
-
-```sh
-yarn add @shopgate/engage
 ```
 
 ## Contents

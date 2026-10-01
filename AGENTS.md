@@ -81,9 +81,9 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   `node_modules` for anything an extension doesn't install. `npm run test:extension --
   <extension> [jest options]` runs an extension's tests without that fallback, like an
   external setup (run `npm install` in its `frontend` folder first).
-- **Node requirements:** the SDK requires Node ≥ 20.19, the themes ≥ 22.15 (`engines`, warning
-  only). Raising a requirement affects external developers with the next theme release; mention
-  it in the release notes.
+- **Node requirements:** the SDK requires Node `^20.19.0 || >=22.12.0`, the themes ≥ 22.15
+  (`engines`, warning only). Raising a requirement affects external developers with the next theme
+  release; mention it in the release notes.
 
 ## Deprecated APIs
 

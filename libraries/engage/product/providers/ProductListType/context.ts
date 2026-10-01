@@ -38,7 +38,7 @@ export interface ProductListTypeContextValue {
   /**
    * Optional meta information that can be used by child components.
    */
-  meta: Record<string, unknown> | null;
+  meta: object | null;
 }
 
 export default createContext<ProductListTypeContextValue>({

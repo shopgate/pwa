@@ -122,4 +122,59 @@ describe('<AddToCartButton />', () => {
       expect(screen.getByRole('button').className).toMatch(/buttonReady/);
     });
   });
+
+  describe('checkmark timer', () => {
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
+    it('does not update the state after the button was unmounted', async () => {
+      const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+      let resolveClick;
+      const onClick = jest.fn(() => new Promise((resolve) => { resolveClick = resolve; }));
+      const { unmount, rerender } = render(
+        <AddToCartButton onClick={onClick} isLoading={false} isDisabled={false} successCount={0} />
+      );
+
+      fireEvent.click(screen.getByRole('button'));
+      rerender(
+        <AddToCartButton onClick={onClick} isLoading={false} isDisabled={false} successCount={1} />
+      );
+      unmount();
+      await act(async () => {
+        resolveClick();
+        await flushMicrotasks();
+      });
+      act(() => {
+        jest.advanceTimersByTime(1000);
+      });
+
+      expect(consoleError).not.toHaveBeenCalled();
+      consoleError.mockRestore();
+    });
+
+    it('restarts the timer when another add succeeds during the animation', () => {
+      const props = {
+        onClick: jest.fn(),
+        isLoading: false,
+        isDisabled: false,
+      };
+      const { rerender } = render(<AddToCartButton {...props} successCount={0} />);
+
+      rerender(<AddToCartButton {...props} successCount={1} />);
+      act(() => {
+        jest.advanceTimersByTime(600);
+      });
+      rerender(<AddToCartButton {...props} successCount={2} />);
+      act(() => {
+        jest.advanceTimersByTime(600);
+      });
+
+      expect(screen.getByRole('button').className).toMatch(/buttonSuccess/);
+    });
+  });
 });

@@ -168,10 +168,22 @@ const AddToCartButton = ({
   const theme = useTheme();
   const [showCheckmark, setShowCheckmark] = useState<boolean | null>(null);
   const previousSuccessCount = useRef(successCount);
+  const isMounted = useRef(true);
+  const checkmarkTimeout = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => {
+    isMounted.current = false;
+    clearTimeout(checkmarkTimeout.current);
+  }, []);
 
   const handleCompletion = useCallback(() => {
+    if (!isMounted.current) {
+      return;
+    }
+
+    clearTimeout(checkmarkTimeout.current);
     setShowCheckmark(true);
-    setTimeout(() => {
+    checkmarkTimeout.current = setTimeout(() => {
       setShowCheckmark(false);
     }, 900);
   }, []);
