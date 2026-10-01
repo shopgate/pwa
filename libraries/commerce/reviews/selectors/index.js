@@ -5,6 +5,8 @@ import { REVIEW_PREVIEW_COUNT } from '../constants';
 import * as pipelines from '../constants/Pipelines';
 import { getBaseProductId } from '../../product/selectors/product';
 
+export * from './reviewSettings';
+
 /**
  * @param {Object} state The global state.
  * @return {Object}
