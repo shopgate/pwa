@@ -4,7 +4,7 @@ export type ReviewPaginationType = 'offset' | 'cursor';
  * Provider review capabilities returned by shopgate.catalog.getProductReviewSettings.v1.
  */
 export interface ReviewSettings {
-  /** Enabled optional review capabilities; unknown entries are ignored by the PWA. */
+  /** Optional capabilities the provider supports; the PWA only acts on identifiers it knows. */
   features: string[];
   /** Whether the review list paginates by offset or cursor. */
   paginationType: ReviewPaginationType;

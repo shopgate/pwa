@@ -46,8 +46,8 @@ export const isReviewCursorPagination = createSelector(
 );
 
 /**
- * Whether the active provider reports a given optional capability. Unknown capabilities
- * are simply not present, so they enable nothing.
+ * Whether the active provider reports the given capability. A capability missing from the
+ * settings enables nothing.
  * @param state The application state.
  * @param feature The capability identifier to check.
  * @returns Whether the capability is enabled.
