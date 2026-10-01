@@ -61,8 +61,9 @@ open, what is in place until then, and what has to happen. Remove an entry once 
 ## Replace enzyme
 
 - **Status:** enzyme is unmaintained and doesn't support React 18. `@shopgate/pwa-unit-test`
-  pins `cheerio` to a CommonJS release candidate for it, which causes most of the remaining
-  `npm audit` findings.
+  pins `cheerio` to the CommonJS release candidate 1.0.0-rc.10 for it (newer cheerio versions are
+  ESM-only and break enzyme). That version has no known vulnerabilities, but it keeps the
+  test setup on an outdated library.
 - **To do:** migrate the enzyme tests to React Testing Library, then remove enzyme and the
   cheerio pin from `@shopgate/pwa-unit-test`. Breaking for extension tests that use enzyme.
 
