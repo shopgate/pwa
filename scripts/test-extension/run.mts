@@ -24,10 +24,17 @@ if (!fs.existsSync(path.join(frontendDir, 'node_modules'))) {
   process.exit(1);
 }
 
+const jestBin = path.join(frontendDir, 'node_modules', 'jest', 'bin', 'jest.js');
+
+if (!fs.existsSync(jestBin)) {
+  console.error(`${path.relative(root, frontendDir)} has no jest installed. Add jest to its devDependencies and run "npm install" there.`);
+  process.exit(1);
+}
+
 console.log(`Running the tests of ${path.relative(root, frontendDir)} without modules from outside the extension`);
 
-const { status } = spawnSync('npx', [
-  'jest',
+const { status } = spawnSync(process.execPath, [
+  jestBin,
   '--config',
   path.join(import.meta.dirname, 'jest.config.cjs'),
   ...jestArgs,
