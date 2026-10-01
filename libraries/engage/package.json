@@ -48,8 +48,7 @@
     "react-portal": "^3.1.0",
     "react-scroll-parallax": "^3.5.0",
     "react-transition-group": "^4.4.5",
-    "tss-react": "4.9.21",
-    "validate.js": "^0.13.1"
+    "tss-react": "4.9.21"
   },
   "devDependencies": {
     "@shopgate/pwa-unit-test": "7.31.3",
