@@ -2,12 +2,11 @@ import { isAvailable } from '@shopgate/native-modules';
 import {
   init,
   addBreadcrumb,
-  configureScope,
+  setTags,
   captureException,
   captureMessage,
   captureEvent,
   withScope,
-  Severity as SentrySeverity,
 } from '@sentry/browser';
 import {
   EBIGAPI,
@@ -31,8 +30,6 @@ import { env } from '../helpers/environment';
 import { transformGeneralPipelineError, getDisplayErrorMessage } from './helpers/pipeline';
 import { historyPop } from '../actions/router';
 import showModal from '../actions/modal/showModal';
-import { getUserData } from '../selectors/user';
-import { userDidUpdate$ } from '../streams/user';
 import { clientInformationDidUpdate$ } from '../streams/client';
 import { appWillInit$, appWillStart$, appDidStart$ } from '../streams/app';
 import { appError$, pipelineError$ } from '../streams/error';
@@ -171,12 +168,12 @@ export default (subscribe) => {
   }
 
   const severityMap = {
-    [Severity.Fatal]: SentrySeverity.Fatal,
-    [Severity.Error]: SentrySeverity.Error,
-    [Severity.Critical]: SentrySeverity.Critical,
-    [Severity.Warning]: SentrySeverity.Warning,
-    [Severity.Info]: SentrySeverity.Info,
-    [Severity.Debug]: SentrySeverity.Debug,
+    [Severity.Fatal]: 'fatal',
+    [Severity.Error]: 'error',
+    [Severity.Critical]: 'fatal',
+    [Severity.Warning]: 'warning',
+    [Severity.Info]: 'info',
+    [Severity.Debug]: 'debug',
   };
 
   const ignoredDefaultBreadcrumbs = [
@@ -186,8 +183,14 @@ export default (subscribe) => {
     'ui.click',
   ];
 
-  let trackedSeverities = Object.getOwnPropertySymbols(severityMap).map(s => severityMap[s]);
-  const minSeverityIndex = trackedSeverities.indexOf(level);
+  /**
+   * @param {string} url The URL.
+   * @returns {string} The URL without its query string.
+   */
+  const stripQuery = url => (typeof url === 'string' ? url.split('?')[0] : url);
+
+  let trackedSeverities = Object.values(severityMap);
+  const minSeverityIndex = Object.keys(severityMap).indexOf(level);
   if (minSeverityIndex > -1) {
     trackedSeverities = trackedSeverities.slice(0, minSeverityIndex + 1);
   }
@@ -200,35 +203,62 @@ export default (subscribe) => {
       release: pckVersion,
       attachStacktrace: true,
       sampleRate,
+      ignoreErrors: [/play\(\) failed because the user didn't interact/],
       beforeBreadcrumb(breadcrumb) {
         if (ignoredDefaultBreadcrumbs.includes(breadcrumb.category)) {
           return null;
         }
+        if (breadcrumb.category === 'navigation' && breadcrumb.data) {
+          return {
+            ...breadcrumb,
+            data: {
+              from: stripQuery(breadcrumb.data.from),
+              to: stripQuery(breadcrumb.data.to),
+            },
+          };
+        }
         return breadcrumb;
       },
-      beforeSend(event) {
+      beforeSend(event, hint) {
         if (event.level && !trackedSeverities.includes(event.level)) {
           return null;
         }
-        // eslint-disable-next-line no-param-reassign
-        event.extra = {
-          ...event.extra || {},
-          routerStack: getRouterStack(getState()).slice(-5),
+        const error = hint?.originalException;
+        if (error && typeof error.code === 'string' && typeof error.handled === 'boolean') {
+          return null;
+        }
+        return {
+          ...event,
+          request: event.request && {
+            ...event.request,
+            url: stripQuery(event.request.url),
+            headers: event.request.headers && {
+              ...event.request.headers,
+              Referer: stripQuery(event.request.headers.Referer),
+            },
+          },
+          extra: {
+            ...event.extra || {},
+            routerStack: getRouterStack(getState())
+              .slice(-5)
+              .map(({ pattern, pathname }) => ({
+                pattern,
+                pathname,
+              })),
+          },
         };
-
-        return event;
       },
     });
 
-    configureScope((scope) => {
-      scope.setTag('marketId', appConfig.marketId);
-      scope.setTag('appId', appConfig.appId);
-      scope.setTag('pwaVersion', pckVersion);
-      scope.setTag('theme', themeName);
-      scope.setTag('language', appConfig.language);
-      scope.setTag('isWebsite', hasWebBridge());
-      scope.setTag('isReactNativeApp', isAvailable());
-      scope.setTag('merchantCode', appConfig.omniMerchantCode);
+    setTags({
+      marketId: appConfig.marketId,
+      appId: appConfig.appId,
+      pwaVersion: pckVersion,
+      theme: themeName,
+      language: appConfig.language,
+      isWebsite: hasWebBridge(),
+      isReactNativeApp: isAvailable(),
+      merchantCode: appConfig.omniMerchantCode,
     });
 
     if (window) {
@@ -247,8 +277,8 @@ export default (subscribe) => {
     });
     emitter.addListener(SOURCE_CONSOLE, (args) => {
       withScope((scope) => {
-        scope.setLevel(SentrySeverity.Error);
-        scope.setExtra('error', args);
+        scope.setLevel('error');
+        scope.setExtra('error', args.map(arg => (arg instanceof Error ? arg.message : String(arg))));
         captureMessage('Console error');
       });
     });
@@ -258,32 +288,23 @@ export default (subscribe) => {
     addBreadcrumb({
       category: 'redux',
       message: `[Redux] ${action.type}`,
-      level: SentrySeverity.Info,
-      data: { ...action },
-    });
-  });
-
-  subscribe(userDidUpdate$, ({ getState }) => {
-    const { id: userId } = getUserData(getState());
-    configureScope((scope) => {
-      scope.setTag('userId', userId);
+      level: 'info',
     });
   });
 
   // Add client lib versions
   subscribe(clientInformationDidUpdate$, ({ action }) => {
-    const { appVersion, libVersion, deviceId } = action.data;
-    configureScope((scope) => {
-      scope.setTag('appVersion', appVersion);
-      scope.setTag('libVersion', libVersion);
-      scope.setTag('deviceId', deviceId);
+    const { appVersion, libVersion } = action.data;
+    setTags({
+      appVersion,
+      libVersion,
     });
   });
 
   // Add app start event for debugging
   subscribe(appDidStart$, () => {
     withScope((scope) => {
-      scope.setLevel(SentrySeverity.Debug);
+      scope.setLevel('debug');
       captureMessage('App did start');
     });
   });
@@ -315,7 +336,10 @@ export default (subscribe) => {
       scope.setTag('errorMessage', message);
       captureEvent({
         message: metaMessage || message,
-        extra: error,
+        extra: {
+          code,
+          pipeline: error.context,
+        },
       });
     });
   });

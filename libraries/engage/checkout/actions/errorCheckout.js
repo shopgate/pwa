@@ -83,7 +83,7 @@ export const errorCheckout = (
 
   // Log to sentry.
   Sentry.withScope((scope) => {
-    scope.setLevel(Sentry.Severity.Critical);
+    scope.setLevel('fatal');
     scope.setExtra('origin', 'checkout');
     Sentry.captureException(errorObject);
   });

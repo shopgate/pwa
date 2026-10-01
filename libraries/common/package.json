@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
-    "@sentry/browser": "6.0.1",
+    "@sentry/browser": "^7.120.4",
     "@virtuous/conductor": "~2.5.0",
     "@virtuous/react-conductor": "~2.5.0",
     "@virtuous/redux-persister": "1.1.0-beta.7",
