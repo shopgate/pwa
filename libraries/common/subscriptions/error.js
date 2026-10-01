@@ -41,10 +41,32 @@ import ToastProvider from '../providers/toast';
 const GENERIC_ERROR_MESSAGE = 'modal.body_error';
 
 /**
+ * @param {*} error The rejection reason or exception.
+ * @returns {boolean} Whether the error was created by the PipelineManager.
+ */
+const isPipelineError = error => !!error
+  && typeof error.code === 'string'
+  && typeof error.handled === 'boolean';
+
+/**
  * App errors subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default (subscribe) => {
+  subscribe(appWillInit$, () => {
+    window.addEventListener('unhandledrejection', (event) => {
+      const { reason } = event;
+      if (!isPipelineError(reason)) {
+        return;
+      }
+      event.preventDefault();
+      if (env === 'development') {
+        // eslint-disable-next-line no-console
+        console.info(`Pipeline error not handled by the caller: ${reason.code} (${reason.message}). The action already handled it; add .catch() if the caller needs to react.`);
+      }
+    });
+  });
+
   /** Set general error transformations */
   subscribe(appWillStart$, () => {
     errorManager.setMessage({
@@ -223,8 +245,7 @@ export default (subscribe) => {
         if (event.level && !trackedSeverities.includes(event.level)) {
           return null;
         }
-        const error = hint?.originalException;
-        if (error && typeof error.code === 'string' && typeof error.handled === 'boolean') {
+        if (isPipelineError(hint?.originalException)) {
           return null;
         }
         return {
