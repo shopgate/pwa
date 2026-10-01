@@ -85,6 +85,20 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   only). Raising a requirement affects external developers with the next theme release; mention
   it in the release notes.
 
+## Deprecated APIs
+
+Kept only so that existing extensions keep working. Don't use them in new code; when you touch an
+extension that uses them, migrate it. `@shopgate/eslint-config` reports both as
+`no-restricted-imports` warnings, so `npm run lint` in an extension lists every occurrence.
+
+- **`@shopgate/pwa-ui-shared/AddToCartButton/style`** (class names of the old button styles; logs a
+  deprecation warning when imported) → render `AddToCartButton` from `@shopgate/engage/components`.
+  For buttons whose click doesn't add to the cart directly (e.g. it opens a picker), pass
+  `successCount` and increase it after each add to play the checkmark. Otherwise style the button
+  in the extension with `makeStyles`.
+- **`glamor`** → `makeStyles` / `useStyles` from `@shopgate/engage/styles`. Nothing in this repo
+  imports glamor anymore; the themes and libraries only keep it as a dependency for extensions.
+
 ## Human-Readable CSS Classes
 
 Merchants restyle the app with injected CSS — a `theme.css` fetched from `appConfig.themeCssUrl`

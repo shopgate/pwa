@@ -1,6 +1,7 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import { act } from 'react-dom/test-utils';
+import { render, screen, fireEvent } from '@testing-library/react';
 import AddToCartButton from './index';
 
 /**
@@ -79,5 +80,46 @@ describe('<AddToCartButton />', () => {
 
     expect(wrapper).toMatchSnapshot();
     expect(spy).toHaveBeenCalledTimes(1);
+  });
+
+  describe('successCount', () => {
+    it('shows the checkmark when the count increases', () => {
+      const onClick = jest.fn();
+      const { rerender } = render(
+        <AddToCartButton onClick={onClick} isLoading={false} isDisabled={false} successCount={0} />
+      );
+
+      expect(screen.getByRole('button').className).toMatch(/buttonReady/);
+
+      rerender(
+        <AddToCartButton onClick={onClick} isLoading={false} isDisabled={false} successCount={1} />
+      );
+
+      expect(screen.getByRole('button').className).toMatch(/buttonSuccess/);
+      expect(onClick).not.toHaveBeenCalled();
+    });
+
+    it('does not animate when the count stays the same', () => {
+      const props = {
+        onClick: jest.fn(),
+        isLoading: false,
+        isDisabled: false,
+        successCount: 2,
+      };
+      const { rerender } = render(<AddToCartButton {...props} />);
+      rerender(<AddToCartButton {...props} />);
+
+      expect(screen.getByRole('button').className).toMatch(/buttonReady/);
+    });
+
+    it('does not animate a click when onClick returns false', () => {
+      const onClick = jest.fn(() => false);
+      render(<AddToCartButton onClick={onClick} isLoading={false} isDisabled={false} />);
+
+      fireEvent.click(screen.getByRole('button'));
+
+      expect(onClick).toHaveBeenCalledTimes(1);
+      expect(screen.getByRole('button').className).toMatch(/buttonReady/);
+    });
   });
 });

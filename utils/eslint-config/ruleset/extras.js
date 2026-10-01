@@ -19,5 +19,17 @@ module.exports = {
     'eslint-comments/no-unused-disable': 'error',
     'eslint-comments/no-unused-enable': 'error',
     'tss-unused-classes/unused-classes': 'warn',
+    'no-restricted-imports': ['warn', {
+      paths: [
+        {
+          name: '@shopgate/pwa-ui-shared/AddToCartButton/style',
+          message: 'Deprecated and will be removed. Use AddToCartButton from @shopgate/engage/components (its successCount prop plays the checkmark for adds outside the click) or style the button with makeStyles from @shopgate/engage/styles.',
+        },
+        {
+          name: 'glamor',
+          message: 'glamor is deprecated and will be removed. Write styles with makeStyles from @shopgate/engage/styles.',
+        },
+      ],
+    }],
   },
 };

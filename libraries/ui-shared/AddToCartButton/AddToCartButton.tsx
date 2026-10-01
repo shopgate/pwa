@@ -1,5 +1,6 @@
-import React, { useCallback, useState } from 'react';
-import PropTypes from 'prop-types';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import spring from 'css-spring';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { keyframes, makeStyles, useTheme } from '@shopgate/engage/styles';
@@ -81,12 +82,7 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
-/**
- * @param {number} bSize .
- * @param {number} iSize .
- * @returns {Object}
- */
-const getWrapperStyle = (bSize, iSize) => ({
+const getWrapperStyle = (bSize: number, iSize: number): React.CSSProperties => ({
   transition: 'background 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   borderRadius: '50%',
   width: bSize,
@@ -101,44 +97,98 @@ const getWrapperStyle = (bSize, iSize) => ({
   flexShrink: 0,
 });
 
+export interface AddToCartButtonProps {
+  /**
+   * Whether the button is disabled.
+   */
+  isDisabled: boolean;
+  /**
+   * Shows a spinner instead of the icons and ignores clicks.
+   */
+  isLoading: boolean;
+  /**
+   * Called on click. `false` skips the checkmark animation, a promise delays it until it
+   * resolves.
+   */
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => unknown;
+  /**
+   * Hides the button from assistive technology.
+   */
+  'aria-hidden'?: boolean;
+  /**
+   * Accessible label of the button.
+   */
+  'aria-label'?: string;
+  /**
+   * Size of the button in pixels.
+   * @default 40
+   */
+  buttonSize?: number;
+  /**
+   * Custom class name for the button.
+   */
+  className?: string;
+  /**
+   * Ref of the button element, set by `withForwardedRef`.
+   */
+  forwardedRef?: React.Ref<HTMLButtonElement>;
+  /**
+   * Size of the icons in pixels.
+   * @default 20
+   */
+  iconSize?: number;
+  /**
+   * Called when the checkmark animation has finished.
+   */
+  onReset?: () => void;
+  /**
+   * Counts adds that happen outside the click, e.g. in a picker; each increase plays the checkmark.
+   * @default 0
+   */
+  successCount?: number;
+}
+
 /**
- * AddToCartButton component.
- * @param {Object} props Props.
- * @returns {JSX.Element}
+ * The add to cart button with its checkmark animation.
  */
 const AddToCartButton = ({
-  'aria-hidden': ariaHidden,
+  'aria-hidden': ariaHidden = false,
   'aria-label': ariaLabel,
-  buttonSize,
+  buttonSize = DEFAULT_BUTTON_SIZE,
   className,
   forwardedRef,
-  iconSize,
+  iconSize = DEFAULT_ICON_SIZE,
   isDisabled,
   isLoading,
   onClick,
   onReset,
-}) => {
+  successCount = 0,
+}: AddToCartButtonProps) => {
   const { classes, cx } = useStyles();
   const theme = useTheme();
-  const [showCheckmark, setShowCheckmark] = useState(null);
+  const [showCheckmark, setShowCheckmark] = useState<boolean | null>(null);
+  const previousSuccessCount = useRef(successCount);
 
-  /**
-   * @param {Event} e Click event.
-   */
-  const handleClick = useCallback((e) => {
+  const handleCompletion = useCallback(() => {
+    setShowCheckmark(true);
+    setTimeout(() => {
+      setShowCheckmark(false);
+    }, 900);
+  }, []);
+
+  useEffect(() => {
+    if (successCount > previousSuccessCount.current) {
+      handleCompletion();
+    }
+    previousSuccessCount.current = successCount;
+  }, [successCount, handleCompletion]);
+
+  const handleClick = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     if (showCheckmark || isLoading || isDisabled) {
       return;
     }
 
-    /** Completes the success checkmark animation cycle. */
-    const handleCompletion = () => {
-      setShowCheckmark(true);
-      setTimeout(() => {
-        setShowCheckmark(false);
-      }, 900);
-    };
-
-    const result = onClick(e);
+    const result = onClick(event);
 
     if (result === false) {
       return;
@@ -157,13 +207,13 @@ const AddToCartButton = ({
     }
 
     handleCompletion();
-  }, [showCheckmark, isLoading, isDisabled, onClick]);
+  }, [showCheckmark, isLoading, isDisabled, onClick, handleCompletion]);
 
   const handleCartAnimationEnd = useCallback(() => {
     if (showCheckmark === false) {
       setShowCheckmark(null);
     }
-    onReset();
+    onReset?.();
   }, [showCheckmark, onReset]);
 
   let buttonStateClass = classes.buttonReady;
@@ -173,15 +223,15 @@ const AddToCartButton = ({
   const iconOpacity = isLoading ? { opacity: 0 } : { opacity: 1 };
   const spinnerInlineStyle = isLoading ? { opacity: 1 } : { opacity: 0 };
 
-  let tickInlineStyle = showCheckmark === null ? {
+  let tickInlineStyle: React.CSSProperties | undefined = showCheckmark === null ? {
     transform: 'translate3d(0, 300%, 0)',
     ...iconOpacity,
-  } : null;
+  } : undefined;
 
-  let cartInlineStyle = showCheckmark === null ? {
+  let cartInlineStyle: React.CSSProperties | undefined = showCheckmark === null ? {
     transform: 'translate3d(0, -50%, 0)',
     ...iconOpacity,
-  } : null;
+  } : undefined;
 
   if (isDisabled && !isLoading) {
     buttonStateClass = classes.buttonDisabled;
@@ -251,27 +301,6 @@ const AddToCartButton = ({
   );
 };
 
-AddToCartButton.propTypes = {
-  isDisabled: PropTypes.bool.isRequired,
-  isLoading: PropTypes.bool.isRequired,
-  onClick: PropTypes.func.isRequired,
-  'aria-hidden': PropTypes.bool,
-  'aria-label': PropTypes.string,
-  buttonSize: PropTypes.number,
-  className: PropTypes.string,
-  forwardedRef: PropTypes.shape(),
-  iconSize: PropTypes.number,
-  onReset: PropTypes.func,
-};
-
-AddToCartButton.defaultProps = {
-  'aria-hidden': false,
-  'aria-label': null,
-  buttonSize: DEFAULT_BUTTON_SIZE,
-  className: null,
-  forwardedRef: null,
-  iconSize: DEFAULT_ICON_SIZE,
-  onReset: () => { },
-};
-
-export default withForwardedRef(AddToCartButton);
+export default withForwardedRef(AddToCartButton) as React.ForwardRefExoticComponent<
+  Omit<AddToCartButtonProps, 'forwardedRef'> & React.RefAttributes<HTMLButtonElement>
+>;
