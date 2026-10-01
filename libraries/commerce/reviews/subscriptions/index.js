@@ -3,7 +3,7 @@ import { appWillStart$ } from '@shopgate/pwa-common/streams';
 import fetchProductReviews from '../actions/fetchProductReviews';
 import fetchProductReviewSettings from '../actions/fetchProductReviewSettings';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
-import { shouldFetchReviews$ } from '../streams';
+import { reviewsDidReset$, shouldFetchReviews$ } from '../streams';
 
 /**
  * Review subscriptions.
@@ -15,6 +15,10 @@ export default function product(subscribe) {
   }
 
   subscribe(appWillStart$, ({ dispatch }) => {
+    dispatch(fetchProductReviewSettings());
+  });
+
+  subscribe(reviewsDidReset$, ({ dispatch }) => {
     dispatch(fetchProductReviewSettings());
   });
 

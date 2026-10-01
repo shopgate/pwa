@@ -9,9 +9,9 @@ import {
   getUserReviewForProduct,
   getDefaultAuthorName,
 } from './index';
-import { REVIEW_PREVIEW_COUNT } from '../constants';
 import {
   emptyState,
+  existingHash,
   finalState,
   testReviews,
 } from './mock';
@@ -36,12 +36,27 @@ describe('Reviews selectors', () => {
       const reviews = getProductReviews(emptyState, propsProductId);
       expect(reviews).toEqual([]);
     });
+
+    it('should keep the pipeline order and not pin the user review', () => {
+      const state = _.cloneDeep(finalState);
+      state.reviews.userReviewsByProductId['9209597131'].review = testReviews[2].id;
+      const reviews = getProductReviews(state, propsProductId);
+      expect(reviews).toEqual(testReviews);
+    });
   });
 
   describe('getProductReviewsExcerpt', () => {
     it('should return product reviews when reviews are available', () => {
       const reviews = getProductReviewsExcerpt(finalState, propsProductId);
-      expect(reviews).toEqual(testReviews.slice(0, REVIEW_PREVIEW_COUNT));
+      expect(reviews).toEqual(testReviews);
+    });
+
+    it('should keep the pipeline order and not pin the user review', () => {
+      const state = _.cloneDeep(finalState);
+      state.reviews.reviewsByProductId['9209597131'].reviews = [1, 2];
+      state.reviews.userReviewsByProductId['9209597131'].review = testReviews[2].id;
+      const reviews = getProductReviewsExcerpt(state, propsProductId);
+      expect(reviews).toEqual(testReviews.slice(0, 2));
     });
 
     it('should return null when state has no reviews for current product', () => {
@@ -65,6 +80,12 @@ describe('Reviews selectors', () => {
     it('should return number when reviews are available', () => {
       const totalCount = getReviewsTotalCount(finalState, propsProductId);
       expect(totalCount).toBeGreaterThan(1);
+    });
+
+    it('should return zero when the product has no reviews', () => {
+      const state = _.cloneDeep(finalState);
+      state.reviews.reviewsByHash[existingHash].totalReviewCount = 0;
+      expect(getReviewsTotalCount(state, propsProductId)).toBe(0);
     });
   });
 
@@ -97,6 +118,12 @@ describe('Reviews selectors', () => {
       const result = getProductReviewCount(emptyState, propsProductId);
       expect(result).toBe(null);
     });
+
+    it('should return zero when the product has no reviews', () => {
+      const state = _.cloneDeep(finalState);
+      state.reviews.reviewsByProductId['9209597131'].totalReviewCount = 0;
+      expect(getProductReviewCount(state, propsProductId)).toBe(0);
+    });
   });
 
   describe('getUserReviewForProduct', () => {
@@ -121,6 +148,13 @@ describe('Reviews selectors', () => {
 
     it('should return empty string, when user it not logged in', () => {
       const result = getDefaultAuthorName(emptyState, propsProductId);
+      expect(result).toBe('');
+    });
+
+    it('should return empty string for a logged out user with remaining user data', () => {
+      const state = _.cloneDeep(finalState);
+      state.user.login.isLoggedIn = false;
+      const result = getDefaultAuthorName(state, propsProductId);
       expect(result).toBe('');
     });
   });
