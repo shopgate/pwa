@@ -8,7 +8,7 @@ import { normalize } from './build.ts';
 /**
  * Lists all files below a directory.
  * @param dir The directory.
- * @returns File paths relative to the directory, sorted.
+ * @returns File paths relative to the directory with forward slashes on every OS, sorted.
  */
 const listFiles = (dir: string) => (
   fs.readdirSync(dir, {
@@ -16,7 +16,7 @@ const listFiles = (dir: string) => (
     withFileTypes: true,
   })
     .filter(entry => entry.isFile())
-    .map(entry => path.relative(dir, path.join(entry.parentPath, entry.name)))
+    .map(entry => path.relative(dir, path.join(entry.parentPath, entry.name)).split(path.sep).join('/'))
     .sort()
 );
 
