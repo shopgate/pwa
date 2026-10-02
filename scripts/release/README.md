@@ -194,6 +194,18 @@ No step force-pushes, so a push can be rejected, but never overwrites anything.
 This includes `release:prepare`: once it has pushed `releases/vX`, its `check` finds the version
 taken, but continues because the "Released X" commit names the same pipeline.
 
+A retry clones the repositories again and continues from what is already on GitHub and npm, so a
+job that failed halfway doesn't leave anything behind that blocks it:
+
+- Pushes that already went through report "Everything up-to-date". `git subtree push` produces the
+  same commits again, so a theme branch that was already pushed doesn't reject the retry.
+- A push that was rejected because the target moved in the meantime (e.g. someone merged into
+  master during `finalize`) goes through on the retry, since the job fetches and merges first.
+- A theme master that was already updated in a failed `finalize` gets merged into `releases/vX`
+  once more. That adds a merge commit without changes, and the push stays a fast-forward.
+- External causes (SSH key, `GITHUB_AUTH_TOKEN`, npm token, GitHub or npm outages): fix the cause,
+  then retry.
+
 When the pipeline has to be started again for the same version, for example after it was
 cancelled, `check` reports the version as taken. Start the new pipeline with the input `resume` to
 continue. Resuming is only allowed when the release branch contains the "Released X" commit of
@@ -207,6 +219,11 @@ retry the job or start a new pipeline, `RESUME` isn't needed.
 
 **Before the approval**, nothing is public. Failed pushes and failed staging are fixed by retrying
 or resuming.
+
+**Aborting a release** before the approval, e.g. after a wrong version: reject the staged packages
+with `npm stage reject` or on npmjs.com, and delete the branch `releases/vX` in pwa, `theme-gmd`
+and `theme-ios11` on GitHub. Otherwise `check` reports the version as taken in later pipelines.
+After the approval, treat the version as final and release a new one instead of unpublishing it.
 
 **After the approval**, the packages are public and `finalize` has to be completed:
 
