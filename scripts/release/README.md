@@ -4,7 +4,9 @@ This folder contains the scripts for releasing the PWA npm packages and themes. 
 the GitLab pipeline of `pwa-liveupdate`. Its npm token can only **stage** packages, so a developer
 approves each release with npm 2FA before anything becomes public.
 
-The scripts are TypeScript and run directly with Node ≥ 24; there is no build step.
+The scripts are TypeScript and run directly with Node ≥ 24; there is no build step. They run on
+Linux (the GitLab pipeline) and macOS. Windows isn't supported, since they start npm and the build
+tools directly.
 
 ## Usage
 
