@@ -53,8 +53,9 @@ these variables.
    a new one. You can also approve the packages on npmjs.com.
 4. **Run the manual `release:finalize` job** in the pipeline. It fails as long as a package isn't
    published yet, so it can simply be retried after the approval.
-5. For stable versions, the tablet themes are uploaded automatically after finalize. For
-   prereleases, `release:tablet-themes` is a manual job that can be skipped.
+5. After finalize, the themes are uploaded: `release:themes` for every version,
+   `release:tablet-themes` automatically for stable versions and as a manual job that can be
+   skipped for prereleases.
 
 Pre-releases (`-alpha.N`, `-beta.N`, `-rc.N`) are published with the npm dist-tag `beta`, stable
 releases with `latest` (patches of older release lines see below).
@@ -86,14 +87,16 @@ lists the pull requests since the previous release of the same line and is only 
 `CHANGELOG.md` of the branch.
 
 The branch needs this release CLI. For lines released before it existed, use the legacy process or
-cherry-pick `scripts/release` onto the branch. The published GitHub release also starts the theme
-pipelines, as for every release.
+cherry-pick `scripts/release` onto the branch. These branches contain the GitHub workflow
+`.github/workflows/main.yml`, which uploads the themes for the legacy process when the GitHub
+release is published. When you cherry-pick the release CLI, delete the workflow on the branch as
+well, otherwise the themes are uploaded twice.
 
 ## What the steps do
 
 Nothing becomes public before the approval. `prepare` only pushes release branches and stages the
-packages. Master, the tags and the GitHub releases, which start the theme pipelines, are created in
-`finalize`, after the packages are published.
+packages. Master, the tags and the GitHub releases are created in `finalize`, after the packages are
+published.
 
 ### `check` (job `release:check`)
 
@@ -165,20 +168,20 @@ After this step, the packages are public on npm.
    was updated, otherwise `releases/vX`. The release notes are the changelog entry of the
    version plus a compare link to the previous stable version, or "No notable changes in this
    release." without an entry. Pre-releases are marked as such, and patches of an older release
-   line are not marked as latest.
-   Publishing a release creates its tag. The published release in pwa starts the upload of both
-   themes to the extension service (`.github/workflows/main.yml`), which checks out the tag `vX`
-   in the theme repositories. So the theme releases are created first and the pwa release last.
+   line are not marked as latest. Publishing a release creates its tag.
 
 With `DRY_RUN=true`, it only lists the packages that are not published and stops.
 
-### `release:tablet-themes`
+### `release:themes` and `release:tablet-themes`
 
-Runs automatically after `finalize` for stable versions; for prereleases it's a manual job that
-can be skipped. It checks out `releases/vX`, renames the
-themes to `*-tablet` and uploads them with `sgconnect`. A failed upload, including a failed
-processing of the theme on the platform, fails the job, which can be retried on its own. With `DRY_RUN=true`, it checks out `BRANCH`
-instead, since `releases/vX` isn't pushed, and skips the upload.
+Both run one job per theme after `finalize`. Each job checks out `releases/vX` and uploads the
+theme with `sgconnect`. A failed upload, including a failed processing of the theme on the
+platform, fails the job, which can be retried on its own. With `DRY_RUN=true`, they check out
+`BRANCH` instead, since `releases/vX` isn't pushed, and skip the upload.
+
+- `release:themes` uploads the themes under their own IDs for every version.
+- `release:tablet-themes` renames the themes to `*-tablet` before the upload. It runs
+  automatically for stable versions; for prereleases it's a manual job that can be skipped.
 
 With `DRY_RUN=true`, all Slack messages of the new process are sent as well, marked with
 "[DRY RUN]". Set `MUTE_SLACK=true` to send none.
@@ -218,19 +221,15 @@ updated while the other one and master of pwa are not. Retrying `finalize` compl
 
 ### Theme upload
 
-The published GitHub release in pwa starts the workflow "Trigger GitLab Pipelines on Release"
-(`.github/workflows/main.yml`). It starts one pipeline per theme in the GitLab project
-`github-extension-upload`, which uploads the theme at the tag `vX` to the extension service.
+A failed `release:themes` or `release:tablet-themes` job only affects its theme: retry that job in
+the pipeline. The packages and the GitHub releases are already done at that point.
 
-| What failed | Where to see it | What to do |
-|---|---|---|
-| Creating a GitHub release in `finalize` | `release:finalize` job | Retry `finalize`. The pwa release is created last, so nothing was uploaded yet |
-| Triggering the upload | Actions tab of pwa on GitHub, the run is red and shows the answer of GitLab | Fix the cause (e.g. `GITLAB_PIPELINE_TOKEN`) and use "Re-run jobs". This triggers both themes again |
-| The upload of a theme | Pipelines of `github-extension-upload` in GitLab (source "trigger") | Retry the failed job there. It keeps its variables. Pipelines can't be started by hand there, since they only run for triggers |
-
-If only the upload of one theme failed, retry its pipeline in GitLab instead of re-running the
-workflow, since a re-run uploads the other theme again as well. The workflow file is taken from the
-tagged commit, so releases from branches without the current workflow behave like before.
+Releases with the legacy process upload the regular themes through the GitHub workflow "Trigger
+GitLab Pipelines on Release" of their branch, which starts one pipeline per theme in the GitLab
+project `github-extension-upload`. GitHub takes the workflow file from the tagged commit, so it only
+runs for branches that still contain it. If its upload fails, retry the pipeline of the theme in
+`github-extension-upload` instead of re-running the workflow, since a re-run uploads both themes
+again.
 
 ## Testing changes
 

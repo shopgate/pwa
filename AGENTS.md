@@ -164,7 +164,7 @@ Do not copy Knowledge Base content into this file. Keep AGENTS.md focused on thi
 
 ## Deployment / CI Notes
 
-- **GitHub Actions** (`.github/workflows/main.yml`) does **not** run tests — it only triggers GitLab theme pipelines on `release: published`.
+- **GitHub Actions:** none. Branches of older release lines still contain `.github/workflows/main.yml`, which uploads the themes for releases with the legacy process; the new process uploads them in the pwa-liveupdate pipeline (`scripts/release/README.md`).
 
 ## Project-Specific Pitfalls
 
