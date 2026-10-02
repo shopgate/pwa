@@ -3,7 +3,13 @@ import { setTimeout } from 'node:timers/promises';
 import { PUBLISHABLE_PACKAGES, ROOT, getPackageName } from '../config.ts';
 import { findMissingMasterCommits } from './check.ts';
 import { logStep } from '../lib/exec.ts';
-import { approveStaged, findStagedVersion, isPublished } from '../lib/npm.ts';
+import {
+  approveStaged,
+  findStagedVersion,
+  isLoggedIn,
+  isPublished,
+  isReviewPending,
+} from '../lib/npm.ts';
 import { updatesMaster } from '../steps/stage.ts';
 import type { StagedVersion } from '../lib/npm.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
@@ -72,6 +78,43 @@ export const confirmMasterIsMerged = async (
 };
 
 /**
+ * Approves a staged package. While npm's automated review of the package is still running, npm
+ * rejects the approval, so it's retried every 30 seconds for up to 10 minutes.
+ * @param staged The staged package version.
+ * @param otp The npm one-time password.
+ * @param approve Runs "npm stage approve".
+ * @param delay Milliseconds between the attempts.
+ * @param attempts How often to try.
+ */
+export const approveAfterReview = async (
+  staged: StagedVersion,
+  otp: string,
+  approve = approveStaged,
+  delay = 30000,
+  attempts = 20
+): Promise<void> => {
+  const { status, stderr } = await approve(staged.id, otp);
+
+  if (status === 0) {
+    return;
+  }
+
+  const name = `${staged.packageName}@${staged.version}`;
+
+  if (!isReviewPending(stderr)) {
+    throw new Error(`Approving ${name} failed. Run approve again to continue with the remaining packages.`);
+  }
+
+  if (attempts <= 1) {
+    throw new Error(`npm's automated review of ${name} still isn't finished. Run approve again later to continue with the remaining packages.`);
+  }
+
+  console.log(`npm's automated review of ${name} isn't finished yet, trying again in ${delay / 1000} seconds`);
+  await setTimeout(delay);
+  await approveAfterReview(staged, otp, approve, delay, attempts - 1);
+};
+
+/**
  * Approves all staged packages of a version with the developer's npm 2FA. Aborts before
  * approving anything when a package is neither staged nor published.
  * @param options The release settings.
@@ -79,6 +122,11 @@ export const confirmMasterIsMerged = async (
  */
 export const approveRelease = async (options: ReleaseOptions, root = ROOT) => {
   const { version } = options;
+
+  if (!isLoggedIn()) {
+    throw new Error('Not logged in to npm. A login lasts 12 hours, so run "npm login" right before approving and try again.');
+  }
+
   logStep(`Looking up staged packages of ${version.version}`);
 
   const pending: StagedVersion[] = [];
@@ -121,7 +169,10 @@ export const approveRelease = async (options: ReleaseOptions, root = ROOT) => {
   const otp = await ask('npm one-time password: ');
 
   logStep(`Approving ${pending.length} packages`);
-  pending.forEach(staged => approveStaged(staged.id, otp));
+  for (const staged of pending) {
+    // eslint-disable-next-line no-await-in-loop
+    await approveAfterReview(staged, otp);
+  }
 
   logStep('Checking that the packages are published');
   const unpublished = await waitUntilPublished(

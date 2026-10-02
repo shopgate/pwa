@@ -6,10 +6,32 @@ import {
   it,
   mock,
 } from 'node:test';
-import { confirmMasterIsMerged } from './approve.ts';
+import { approveAfterReview, confirmMasterIsMerged } from './approve.ts';
+import type { ApproveResult } from '../lib/npm.ts';
 import { parseVersion } from '../lib/version.ts';
 
 const ENV_NAMES = ['CI', 'GITHUB_AUTH_TOKEN', 'GITHUB_AUTH'];
+
+const REVIEW_PENDING = 'npm error code E409\nnpm error 409 Conflict - POST https://registry.npmjs.org/-/stage/***/approve - @shopgate/engage@7.32.2-alpha.2 can\'t be approved yet because automated review hasn\'t finished. Try again in a few minutes.';
+
+const staged = {
+  id: '428275a4',
+  packageName: '@shopgate/engage',
+  version: '7.32.2-alpha.2',
+};
+
+/**
+ * Creates a fake "npm stage approve" that returns the given results one after another.
+ * @param results The results of the attempts.
+ * @returns The mock.
+ */
+const mockApprove = (...results: ApproveResult[]) => {
+  const queue = [...results];
+  return mock.fn(async () => queue.shift() ?? {
+    status: 0,
+    stderr: '',
+  });
+};
 
 /**
  * Replaces fetch with a stub for the GitHub compare API.
@@ -83,6 +105,65 @@ describe('approve', () => {
 
       await confirmMasterIsMerged(version, true, confirm);
       assert.equal(confirm.mock.callCount(), 1);
+    });
+  });
+
+  describe('approveAfterReview', () => {
+    it('approves once without waiting', async () => {
+      const approve = mockApprove({
+        status: 0,
+        stderr: '',
+      });
+
+      await approveAfterReview(staged, '123456', approve, 0);
+      assert.deepEqual(approve.mock.calls[0].arguments, ['428275a4', '123456']);
+      assert.equal(approve.mock.callCount(), 1);
+    });
+
+    it('retries while npm\'s automated review is running', async () => {
+      const approve = mockApprove(
+        {
+          status: 1,
+          stderr: REVIEW_PENDING,
+        },
+        {
+          status: 1,
+          stderr: REVIEW_PENDING,
+        },
+        {
+          status: 0,
+          stderr: '',
+        }
+      );
+
+      await approveAfterReview(staged, '123456', approve, 0);
+      assert.equal(approve.mock.callCount(), 3);
+    });
+
+    it('gives up when the review takes longer than the attempts', async () => {
+      const approve = mockApprove(...Array.from({ length: 3 }, () => ({
+        status: 1,
+        stderr: REVIEW_PENDING,
+      })));
+
+      await assert.rejects(
+        approveAfterReview(staged, '123456', approve, 0, 3),
+        /automated review of @shopgate\/engage@7\.32\.2-alpha\.2 still isn't finished/
+      );
+      assert.equal(approve.mock.callCount(), 3);
+    });
+
+    it('fails right away for other errors', async () => {
+      const approve = mockApprove({
+        status: 1,
+        stderr: 'npm error code EOTP',
+      });
+
+      await assert.rejects(
+        approveAfterReview(staged, '123456', approve, 0),
+        /Approving @shopgate\/engage@7\.32\.2-alpha\.2 failed/
+      );
+      assert.equal(approve.mock.callCount(), 1);
     });
   });
 });

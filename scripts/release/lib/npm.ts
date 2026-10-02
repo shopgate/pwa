@@ -1,3 +1,4 @@
+import { spawn } from 'node:child_process';
 import { capture, run } from './exec.ts';
 
 /**
@@ -98,10 +99,63 @@ export const stagePublish = (dir: string, tag: string, dryRun: boolean) => {
 };
 
 /**
- * Approves (publishes) a staged package. npm asks for a new OTP when the given one expired.
+ * Result of an approval attempt.
+ */
+export interface ApproveResult {
+  /**
+   * Exit status of "npm stage approve". 0 means the package is published.
+   */
+  status: number;
+  /**
+   * Error output of npm, which is also shown on the terminal.
+   */
+  stderr: string;
+}
+
+/**
+ * Checks whether npm accepts the current login. Logins via "npm login" last 12 hours.
+ * @returns Whether npm knows the user.
+ */
+export const isLoggedIn = () => capture('npm', ['whoami'], { allowFailure: true }).status === 0;
+
+/**
+ * Approves (publishes) a staged package. npm asks for a new OTP when the given one expired, so
+ * the terminal stays interactive and the error output is shown while it's collected.
  * @param id The stage ID.
  * @param otp The npm one-time password. Empty to let npm ask for it.
+ * @returns The exit status and the error output.
  */
-export const approveStaged = (id: string, otp: string) => {
-  run('npm', ['stage', 'approve', id, '--loglevel', 'warn'], otp ? { env: { npm_config_otp: otp } } : {});
+export const approveStaged = (id: string, otp: string): Promise<ApproveResult> => {
+  const args = ['stage', 'approve', id, '--loglevel', 'warn'];
+  console.log(`$ npm ${args.join(' ')}`);
+
+  return new Promise((resolve, reject) => {
+    const child = spawn('npm', args, {
+      env: {
+        ...process.env,
+        ...(otp ? { npm_config_otp: otp } : {}),
+      },
+      stdio: ['inherit', 'inherit', 'pipe'],
+    });
+    let stderr = '';
+
+    child.stderr.on('data', (chunk: Buffer) => {
+      process.stderr.write(chunk);
+      stderr += chunk.toString();
+    });
+    child.on('error', reject);
+    child.on('close', status => resolve({
+      status: status ?? 1,
+      stderr,
+    }));
+  });
 };
+
+/**
+ * Whether npm rejected an approval because its automated review of the package isn't done yet.
+ * @param stderr The error output of "npm stage approve".
+ * @returns Whether the approval can be retried later.
+ */
+export const isReviewPending = (stderr: string) => (
+  stderr.includes('E409') && /automated review/i.test(stderr)
+);

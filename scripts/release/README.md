@@ -32,8 +32,8 @@ npm run release -- <command> [version] [options]
 | – | `MUTE_SLACK` | `mute_slack` | No Slack notifications (pipeline only) |
 
 Locally, `check`, `prepare` and `approve` need an npm login (`npm login`) with access to the
-`@shopgate` packages, since they read the staged versions. `GITHUB_AUTH_TOKEN` avoids the GitHub rate
-limit.
+`@shopgate` packages, since they read the staged versions. A login lasts 12 hours, so log in right
+before approving. `GITHUB_AUTH_TOKEN` avoids the GitHub rate limit.
 
 The version can also be passed via `VERSION`. Command line options take precedence over the
 variables. The pipeline form of `pwa-liveupdate` shows the inputs and passes them to the jobs as
@@ -141,7 +141,8 @@ skipped and step 8 only packs the packages (`npm stage publish --dry-run`).
 
 ### `approve` (your machine)
 
-Needs your npm login with write access to the `@shopgate` packages and 2FA.
+Needs your npm login with write access to the `@shopgate` packages and 2FA. It stops right away
+when npm doesn't accept the login, e.g. because it's older than 12 hours.
 
 1. Looks up the staged version of every package. Aborts when a package is neither staged nor
    published.
@@ -149,7 +150,11 @@ Needs your npm login with write access to the `@shopgate` packages and 2FA.
    when master has commits that are missing in the release. Pass `--skip-master-update` for
    releases started with that option, since they leave master unchanged.
 3. Asks for your one-time password and approves the packages, dependencies first, so that no package
-   is public before the packages it depends on.
+   is public before the packages it depends on. npm only accepts a package once its automated
+   review is finished, which can take a few minutes for large packages like `@shopgate/engage`.
+   Until then, it tries again every 30 seconds for up to 10 minutes. When the one-time password
+   has expired in the meantime, npm asks for a new one. If it still fails, run `approve` again: it
+   continues with the packages that aren't published yet.
 4. Checks that npm shows every approved version as published. A new version can take a moment to
    appear, so it checks again every 10 seconds for up to a minute and fails with the missing
    packages otherwise.
