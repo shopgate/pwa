@@ -8,6 +8,9 @@ import {
   getProductReviewCount,
   getUserReviewForProduct,
   getDefaultAuthorName,
+  isProductReviewsExcerptMissing,
+  isProductReviewsExcerptLoading,
+  hasProductReviewsExcerptError,
 } from './index';
 import {
   emptyState,
@@ -156,6 +159,97 @@ describe('Reviews selectors', () => {
       state.user.login.isLoggedIn = false;
       const result = getDefaultAuthorName(state, propsProductId);
       expect(result).toBe('');
+    });
+  });
+
+  describe('review preview state', () => {
+    /**
+     * Builds a state with the given preview collection for the test product.
+     * @param {Object} [collection] The preview collection.
+     * @returns {Object}
+     */
+    const buildState = (collection) => {
+      const state = _.cloneDeep(finalState);
+      if (collection) {
+        state.reviews.reviewsByProductId['9209597131'] = collection;
+      } else {
+        delete state.reviews.reviewsByProductId['9209597131'];
+      }
+      return state;
+    };
+
+    /**
+     * @param {Object} state The state.
+     * @returns {Object} The three preview flags.
+     */
+    const getFlags = state => ({
+      missing: isProductReviewsExcerptMissing(state, propsProductId),
+      loading: isProductReviewsExcerptLoading(state, propsProductId),
+      error: hasProductReviewsExcerptError(state, propsProductId),
+    });
+
+    it('should report a preview that was not requested yet as missing and loading', () => {
+      expect(getFlags(buildState())).toEqual({
+        missing: true,
+        loading: true,
+        error: false,
+      });
+    });
+
+    it('should report a running request as loading', () => {
+      expect(getFlags(buildState({
+        isFetching: true,
+        requestId: 1,
+      }))).toEqual({
+        missing: false,
+        loading: true,
+        error: false,
+      });
+    });
+
+    it('should report received reviews as neither loading nor failed', () => {
+      expect(getFlags(buildState({
+        isFetching: false,
+        requestId: 1,
+        reviews: [],
+      }))).toEqual({
+        missing: false,
+        loading: false,
+        error: false,
+      });
+    });
+
+    it('should report a failed first request as error', () => {
+      expect(getFlags(buildState({
+        isFetching: false,
+        requestId: 1,
+        expires: 0,
+      }))).toEqual({
+        missing: false,
+        loading: false,
+        error: true,
+      });
+    });
+
+    it('should keep previously received reviews after a failed refresh', () => {
+      expect(getFlags(buildState({
+        isFetching: false,
+        requestId: 2,
+        reviews: [1, 2],
+        expires: 0,
+      }))).toEqual({
+        missing: false,
+        loading: false,
+        error: false,
+      });
+    });
+
+    it('should not report an entry created by a review submit as error', () => {
+      expect(getFlags(buildState({ expires: 0 }))).toEqual({
+        missing: false,
+        loading: true,
+        error: false,
+      });
     });
   });
 });

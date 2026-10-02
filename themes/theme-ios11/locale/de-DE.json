@@ -584,7 +584,7 @@
     "no_reviews": "Verfassen Sie die erste Bewertung.",
     "review_count": "({count} {count, plural, =1 {Bewertung} other {Bewertungen}})",
     "button_add": "Produkt bewerten",
-    "button_all": "Alle {count} Bewertungen",
+    "button_all": "Alle {count} Rezensionen",
     "author": "von {author}",
     "rating_stars": "{rate, plural, =1 {Ein Stern} other {{rate} Sterne}} von {maxRate}.",
     "review_form_rate": "Bewerten Sie dieses Produkt:",

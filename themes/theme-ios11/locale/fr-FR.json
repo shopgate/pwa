@@ -584,7 +584,7 @@
     "no_reviews": "Soyez le premier à évaluer ce produit:",
     "review_count": "({count} {count, plural, =1 {Revue} other {Revues}})",
     "button_add": "Ecrire une revue",
-    "button_all": "Tous les {count} revues",
+    "button_all": "Tous les {count} avis",
     "author": "par {author}",
     "rating_stars": "{rate, plural, =1 {Une étoile} other {{rate} étoiles}} sur {maxRate}.",
     "review_form_rate": "Evaluer ce produit:",

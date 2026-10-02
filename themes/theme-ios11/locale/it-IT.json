@@ -584,7 +584,7 @@
     "no_reviews": "Vota prima degli altri questo prodotto:",
     "review_count": "({count} {count, plural, =1 {Recensione} other {Recensioni}})",
     "button_add": "Scrivi una recensione",
-    "button_all": "Tutte le {count} Recensioni",
+    "button_all": "Tutte le {count} recensioni",
     "author": "da {author}",
     "rating_stars": "{rate, plural, =1 {Una stella} other {{rate} stelle}} su {maxRate}.",
     "review_form_rate": "Vota questo prodotto:",

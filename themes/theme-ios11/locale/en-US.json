@@ -584,7 +584,7 @@
     "no_reviews": "Be the first to rate this product:",
     "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
     "button_add": "Write a Review",
-    "button_all": "All {count} Reviews",
+    "button_all": "All {count} reviews",
     "author": "by {author}",
     "rating_stars": "{rate, plural, =1 {One star} other {{rate} stars}} of {maxRate}.",
     "review_form_rate": "Rate this product:",

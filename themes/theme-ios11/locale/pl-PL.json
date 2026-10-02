@@ -583,7 +583,7 @@
     "no_reviews": "Napisz pierwszą ocenę.",
     "review_count": "({count} {count, plural, =1 {ocena} other {oceny}})",
     "button_add": "Oceń ten produkt",
-    "button_all": "Wszystkie {count} recenzji",
+    "button_all": "{count, plural, few {Wszystkie # recenzje} other {Wszystkich # recenzji}}",
     "author": "przez {author}",
     "rating_stars": "{rate, plural, =1 {Jedna gwiazdka} other {{rate} gwiazdki}} z {maxRate}.",
     "review_form_rate": "Oceń ten produkt:",

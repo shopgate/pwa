@@ -8,11 +8,15 @@ import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';
 
-const useStyles = makeStyles()(() => ({
+const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
     justifyContent: 'flex-end',
     textAlign: 'right',
+  },
+  fullWidth: {
+    display: 'block',
+    marginTop: theme.spacing(2),
   },
 }));
 
@@ -28,10 +32,19 @@ const AllReviewsLink = (props) => {
   }
 
   return (
-    <div className={cx(classes.container, 'engage__reviews__all-reviews-link')} data-test-id="showAllReviewsButton">
+    <div
+      className={cx(
+        classes.container,
+        { [classes.fullWidth]: props.fullWidth },
+        'engage__reviews__all-reviews-link'
+      )}
+      data-test-id="showAllReviewsButton"
+      data-full-width={props.fullWidth || undefined}
+    >
       <Button
-        variant="text"
+        variant={props.fullWidth ? 'outlined' : 'text'}
         color="primary"
+        fullWidth={props.fullWidth}
         href={`${ITEM_PATH}/${bin2hex(props.productId)}/reviews`}
       >
         <I18n.Text string="reviews.button_all" params={props} />
@@ -42,11 +55,13 @@ const AllReviewsLink = (props) => {
 
 AllReviewsLink.propTypes = {
   count: PropTypes.number,
+  fullWidth: PropTypes.bool,
   productId: PropTypes.string,
 };
 
 AllReviewsLink.defaultProps = {
   count: 0,
+  fullWidth: false,
   productId: null,
 };
 

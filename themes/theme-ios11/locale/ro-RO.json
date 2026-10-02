@@ -584,7 +584,7 @@
     "no_reviews": "Scrieți prima recenzie.",
     "review_count": "({count} {count, plural, =1 {Evaluare} other {Recenzii}})",
     "button_add": "Evaluați produsul",
-    "button_all": "Toate {count} evaluările ",
+    "button_all": "{count, plural, few {Toate cele # recenzii} other {Toate cele # de recenzii}}",
     "author": "de la {author}",
     "rating_stars": "{rate, plural, =1 {O stea} other {{rate} stele}} din {maxRate}.",
     "review_form_rate": "Evaluați acest produs:",

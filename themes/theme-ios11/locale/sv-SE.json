@@ -583,7 +583,7 @@
     "no_reviews": "Skriv den första recensionen.",
     "review_count": "({count} {count, plural, =1 {Värdering} other {Värderingar}})",
     "button_add": "Betygsätt produkt",
-    "button_all": "Alla {count} Värderingar",
+    "button_all": "Alla {count} recensioner",
     "author": "av {author}",
     "rating_stars": "{rate, plural, =1 {En stjärna} other {{rate} stjärnor}} av {maxRate}.",
     "review_form_rate": "Betygsätt den här Produkten:",

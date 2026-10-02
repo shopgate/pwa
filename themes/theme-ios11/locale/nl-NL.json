@@ -584,7 +584,7 @@
     "no_reviews": "Wees de eerste die dit product beoordeelt:",
     "review_count": "({count} {count, plural, =1 {Beoordeling} other {Beoordelingen}})",
     "button_add": "Schrijf een beoordeling",
-    "button_all": "Alle {count} Beoordelingen",
+    "button_all": "Alle {count} reviews",
     "author": "door {author}",
     "rating_stars": "{rate, plural, =1 {Eén ster} other {{rate} sterren}} van {maxRate}.",
     "review_form_rate": "Beoordeel dit product:",
