@@ -146,6 +146,53 @@ export const runAsync = (
 };
 
 /**
+ * Runs a command silently without blocking and returns its exit status and output, so several
+ * commands can run at the same time. Rejects when the command fails, unless allowFailure is set.
+ * @param command The executable.
+ * @param args The command arguments.
+ * @param options The run options.
+ * @returns The exit status and the captured output.
+ */
+export const captureAsync = (
+  command: string,
+  args: string[],
+  options: RunOptions = {}
+): Promise<CaptureResult> => new Promise((resolve, reject) => {
+  const child = spawnAsync(command, args, {
+    cwd: options.cwd,
+    env: {
+      ...process.env,
+      ...options.env,
+    },
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  let stdout = '';
+  let stderr = '';
+
+  child.stdout.on('data', (chunk: Buffer) => {
+    stdout += chunk.toString();
+  });
+  child.stderr.on('data', (chunk: Buffer) => {
+    stderr += chunk.toString();
+  });
+  child.on('error', reject);
+  child.on('close', (code) => {
+    const status = code ?? 1;
+
+    if (status !== 0 && !options.allowFailure) {
+      reject(new Error(describeFailure(command, args, status, `\n${stderr.trim()}`)));
+      return;
+    }
+
+    resolve({
+      status,
+      stdout,
+      stderr,
+    });
+  });
+});
+
+/**
  * Runs a command silently and returns its exit status and output.
  * @param command The executable.
  * @param args The command arguments.

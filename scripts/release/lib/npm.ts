@@ -1,5 +1,6 @@
 import { spawn } from 'node:child_process';
-import { capture, run } from './exec.ts';
+import { capture, captureAsync, run } from './exec.ts';
+import type { CaptureResult } from './exec.ts';
 
 const NPM_UNREACHABLE = 'npm may be unreachable: retry now. If https://status.npmjs.org reports an incident, retry once it is resolved.';
 
@@ -26,15 +27,14 @@ export interface StagedVersion {
 }
 
 /**
- * Checks whether a package version is live on npm.
+ * Interprets the output of "npm view <name>@<version> version".
  * @param name The package name.
  * @param version The package version.
+ * @param result The exit status and output of npm.
  * @returns Whether the version is published.
  */
-export const isPublished = (name: string, version: string) => {
-  const { status, stdout, stderr } = capture('npm', ['view', `${name}@${version}`, 'version'], {
-    allowFailure: true,
-  });
+const toPublished = (name: string, version: string, result: CaptureResult) => {
+  const { status, stdout, stderr } = result;
 
   if (status !== 0 && !stderr.includes('E404')) {
     throw new Error(`npm view ${name}@${version} failed:\n${stderr.trim()}\n${NPM_UNREACHABLE}`);
@@ -42,6 +42,31 @@ export const isPublished = (name: string, version: string) => {
 
   return stdout.trim() !== '';
 };
+
+/**
+ * Checks whether a package version is live on npm.
+ * @param name The package name.
+ * @param version The package version.
+ * @returns Whether the version is published.
+ */
+export const isPublished = (name: string, version: string) => toPublished(
+  name,
+  version,
+  capture('npm', ['view', `${name}@${version}`, 'version'], { allowFailure: true })
+);
+
+/**
+ * Checks whether a package version is live on npm without blocking, so several packages can be
+ * checked at the same time.
+ * @param name The package name.
+ * @param version The package version.
+ * @returns Whether the version is published.
+ */
+export const isPublishedAsync = async (name: string, version: string) => toPublished(
+  name,
+  version,
+  await captureAsync('npm', ['view', `${name}@${version}`, 'version'], { allowFailure: true })
+);
 
 /**
  * Returns the version a dist-tag currently points to.
@@ -62,14 +87,20 @@ export const getDistTagVersion = (name: string, tag: string) => {
 };
 
 /**
+ * Parses the output of "npm stage list --json".
+ * @param stdout The output of npm.
+ * @returns The staged versions.
+ */
+const parseStagedVersions = (stdout: string) => JSON.parse(stdout || '[]') as StagedVersion[];
+
+/**
  * Lists all staged versions of a package. Needs npm authentication.
  * @param name The package name.
  * @returns The staged versions.
  */
-export const listStagedVersions = (name: string): StagedVersion[] => {
-  const { stdout } = capture('npm', ['stage', 'list', name, '--json']);
-  return JSON.parse(stdout || '[]') as StagedVersion[];
-};
+export const listStagedVersions = (name: string): StagedVersion[] => (
+  parseStagedVersions(capture('npm', ['stage', 'list', name, '--json']).stdout)
+);
 
 /**
  * Finds the staged entry of a package version.
@@ -79,6 +110,18 @@ export const listStagedVersions = (name: string): StagedVersion[] => {
  */
 export const findStagedVersion = (name: string, version: string) => (
   listStagedVersions(name).find(staged => staged.version === version)
+);
+
+/**
+ * Finds the staged entry of a package version without blocking, so several packages can be
+ * checked at the same time. Needs npm authentication.
+ * @param name The package name.
+ * @param version The package version.
+ * @returns The staged version, or undefined when it isn't staged.
+ */
+export const findStagedVersionAsync = async (name: string, version: string) => (
+  parseStagedVersions((await captureAsync('npm', ['stage', 'list', name, '--json'])).stdout)
+    .find(staged => staged.version === version)
 );
 
 /**

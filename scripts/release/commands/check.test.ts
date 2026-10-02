@@ -6,7 +6,12 @@ import {
   it,
   mock,
 } from 'node:test';
-import { checkMasterIsMerged, checkVersion, getContinuation } from './check.ts';
+import {
+  checkMasterIsMerged,
+  checkVersion,
+  findTakenPackages,
+  getContinuation,
+} from './check.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
 import { parseVersion } from '../lib/version.ts';
 
@@ -145,6 +150,51 @@ describe('check', () => {
     it('supports release commits without pipeline', () => {
       assert.equal(getContinuation(['Released 7.33.0'], version, false, '123'), null);
       assert.equal(getContinuation(['Released 7.33.0'], version, true, '123'), 'resume');
+    });
+  });
+
+  describe('findTakenPackages', () => {
+    it('lists published and staged packages in the order of the names', async () => {
+      const states: Record<string, 'published' | 'staged' | null> = {
+        '@shopgate/pwa-core': 'published',
+        '@shopgate/pwa-common': null,
+        '@shopgate/engage': 'staged',
+      };
+
+      const taken = await findTakenPackages(
+        Object.keys(states),
+        '7.33.0',
+        async name => states[name]
+      );
+
+      assert.deepEqual(taken, [
+        {
+          location: 'npm @shopgate/pwa-core@7.33.0',
+          detail: 'published',
+        },
+        {
+          location: 'npm @shopgate/engage@7.33.0',
+          detail: 'staged',
+        },
+      ]);
+    });
+
+    it('looks up at most six packages at the same time', async () => {
+      let running = 0;
+      let maximum = 0;
+      const names = Array.from({ length: 13 }, (_, index) => `@shopgate/package-${index}`);
+
+      await findTakenPackages(names, '7.33.0', async () => {
+        running += 1;
+        maximum = Math.max(maximum, running);
+        await new Promise((resolve) => {
+          setTimeout(resolve, 5);
+        });
+        running -= 1;
+        return null;
+      });
+
+      assert.equal(maximum, 6);
     });
   });
 });

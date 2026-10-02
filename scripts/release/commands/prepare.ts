@@ -63,7 +63,7 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
   if (!hasCommitWithMessage('HEAD', releasedMessage)) {
     const pipelineId = process.env.CI_PIPELINE_ID;
     git(['add', '-u']);
-    git(['commit', '-m', releasedMessage, ...(pipelineId ? ['-m', pipelineLine(pipelineId)] : [])]);
+    git(['commit', '--no-verify', '-m', releasedMessage, ...(pipelineId ? ['-m', pipelineLine(pipelineId)] : [])]);
   }
 
   logStep('Generating changelog');
@@ -72,7 +72,7 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
 
   if (hasChanges(changelogFiles)) {
     git(['add', ...changelogFiles]);
-    git(['commit', '-m', `Created changelog for version '${version.name}'.`]);
+    git(['commit', '--no-verify', '-m', `Created changelog for version '${version.name}'.`]);
   }
 
   if (dryRun) {

@@ -13,7 +13,8 @@ import {
   getGithubToken,
   getMissingCommits,
 } from '../lib/github.ts';
-import { findStagedVersion, getDistTagVersion, isPublished } from '../lib/npm.ts';
+import { mapWithLimit } from '../lib/concurrency.ts';
+import { findStagedVersionAsync, getDistTagVersion, isPublishedAsync } from '../lib/npm.ts';
 import { updatesMaster } from '../steps/stage.ts';
 import { symbols } from '../lib/symbols.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
@@ -40,30 +41,54 @@ export interface TakenLocation {
 }
 
 /**
+ * Looks up whether a package version is published or staged on npm.
+ * @param name The package name.
+ * @param version The package version.
+ * @returns "published", "staged" or null when npm doesn't know the version.
+ */
+const findNpmState = async (name: string, version: string) => {
+  if (await isPublishedAsync(name, version)) {
+    return 'published';
+  }
+
+  return await findStagedVersionAsync(name, version) ? 'staged' : null;
+};
+
+/**
+ * Collects the packages whose version is already published or staged on npm. The lookups run in
+ * parallel, but at most six at a time to stay far below npm's rate limits.
+ * @param names The package names.
+ * @param version The version to release.
+ * @param lookup Looks up the npm state of a package version.
+ * @returns The taken packages in the order of the names.
+ */
+export const findTakenPackages = async (
+  names: string[],
+  version: string,
+  lookup = findNpmState
+): Promise<TakenLocation[]> => {
+  const states = await mapWithLimit(names, 6, name => lookup(name, version));
+
+  return names.flatMap((name, index) => {
+    const state = states[index];
+    return state ? [{
+      location: `npm ${name}@${version}`,
+      detail: state,
+    }] : [];
+  });
+};
+
+/**
  * Collects every npm package, git ref and GitHub release that already uses the version.
  * @param version The version to release.
  * @param root The repository root.
  * @returns The taken locations. Empty when the version is available.
  */
 export const findTakenLocations = async (version: ReleaseVersion, root = ROOT) => {
-  const taken: TakenLocation[] = [];
-
-  PUBLISHABLE_PACKAGES.forEach((pkg) => {
-    const name = getPackageName(pkg.dir, root);
-    const location = `npm ${name}@${version.version}`;
-
-    if (isPublished(name, version.version)) {
-      taken.push({
-        location,
-        detail: 'published',
-      });
-    } else if (findStagedVersion(name, version.version)) {
-      taken.push({
-        location,
-        detail: 'staged',
-      });
-    }
-  });
+  const taken = await findTakenPackages(
+    PUBLISHABLE_PACKAGES.map(pkg => getPackageName(pkg.dir, root)),
+    version.version
+  );
 
   const repos = [
     {

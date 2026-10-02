@@ -6,7 +6,12 @@ import {
   it,
   mock,
 } from 'node:test';
-import { capture, describeError, runAsync } from './exec.ts';
+import {
+  capture,
+  captureAsync,
+  describeError,
+  runAsync,
+} from './exec.ts';
 
 describe('describeError', () => {
   it('includes the causes and error codes', () => {
@@ -80,5 +85,36 @@ describe('capture', () => {
       () => capture('git', ['push', '/nonexistent/release-test', 'HEAD']),
       /Command failed \(exit \d+\): git push \/nonexistent\/release-test HEAD\n.*nonexistent.*\n[\s\S]*Retry the job/
     );
+  });
+});
+
+describe('captureAsync', () => {
+  it('returns the output of the command', async () => {
+    const result = await captureAsync('node', ['-e', 'console.log("out"); console.error("err")']);
+
+    assert.deepEqual(result, {
+      status: 0,
+      stdout: 'out\n',
+      stderr: 'err\n',
+    });
+  });
+
+  it('runs commands at the same time', async () => {
+    const started = Date.now();
+    await Promise.all([1, 2].map(() => captureAsync('node', ['-e', 'setTimeout(() => {}, 500)'])));
+
+    assert.ok(Date.now() - started < 900);
+  });
+
+  it('rejects with the error output and a hint when the command fails', async () => {
+    await assert.rejects(
+      captureAsync('git', ['push', '/nonexistent/release-test', 'HEAD']),
+      /Command failed \(exit \d+\): git push \/nonexistent\/release-test HEAD\n.*nonexistent.*\n[\s\S]*Retry the job/
+    );
+  });
+
+  it('resolves with the failed status when failures are allowed', async () => {
+    const result = await captureAsync('node', ['-e', 'process.exit(3)'], { allowFailure: true });
+    assert.equal(result.status, 3);
   });
 });
