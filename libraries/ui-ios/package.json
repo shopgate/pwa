@@ -4,6 +4,11 @@
   "description": "Shopgate's iOS UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shopgate/pwa.git",
+    "directory": "libraries/ui-ios"
+  },
   "devDependencies": {
     "@shopgate/pwa-common": "7.32.1",
     "react": "^17.0.2"

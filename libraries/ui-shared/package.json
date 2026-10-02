@@ -4,6 +4,11 @@
   "description": "Shopgate's shared UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shopgate/pwa.git",
+    "directory": "libraries/ui-shared"
+  },
   "dependencies": {
     "@shopgate/pwa-ui-ios": "7.32.1",
     "@shopgate/pwa-ui-material": "7.32.1",

@@ -4,6 +4,11 @@
   "description": "The webpack configuration for Shopgate's Engage.",
   "main": "webpack.config.js",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shopgate/pwa.git",
+    "directory": "utils/webpack"
+  },
   "dependencies": {
     "@pmmmwh/react-refresh-webpack-plugin": "0.6.3",
     "ajv": "^8.17.1",
