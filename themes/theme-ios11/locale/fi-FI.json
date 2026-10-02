@@ -584,7 +584,7 @@
     "no_reviews": "Kirjoita ensimmäinen arvostelu.",
     "review_count": "({count} {count, plural, =1 {Arviointi} other {Arviot}})",
     "button_add": "Arvioi tuote",
-    "button_all": "Kaikki {count} arvostelut",
+    "button_all": "Kaikki {count} arvostelua",
     "author": "osoitteesta {author}",
     "rating_stars": "{rate, plural, =1 {Yksi tähti} other {{rate} tähteä}} {maxRate} tähdestä.",
     "review_form_rate": "Arvioi tämä tuote:",

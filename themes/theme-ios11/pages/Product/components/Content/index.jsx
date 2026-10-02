@@ -18,7 +18,7 @@ import {
   FulfillmentSheet,
   FulfillmentPathSelector,
 } from '@shopgate/engage/locations';
-import { Reviews } from '@shopgate/engage/reviews';
+import { ReviewsPreview } from '@shopgate/engage/reviews';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import Media from '../Media';
 import Header from '../Header';
@@ -230,7 +230,7 @@ class ProductContent extends PureComponent {
             */}
           <RelationsSlider desiredPosition="properties" />
           <Section title="product.sections.ratings">
-            <Reviews productId={productId} />
+            <ReviewsPreview productId={productId} />
           </Section>
           <TaxDisclaimer />
           <AddToCartBar

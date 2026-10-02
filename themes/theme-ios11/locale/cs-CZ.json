@@ -584,7 +584,7 @@
     "no_reviews": "Napište první recenzi.",
     "review_count": "({count} {count, plural, =1 {Oceňování} other {Oceňování}})",
     "button_add": "Hodnotit produkt",
-    "button_all": "Všechna {count} hodnocení",
+    "button_all": "{count, plural, one {# recenze} few {Všechny # recenze} other {Všech # recenzí}}",
     "author": "z {author}",
     "rating_stars": "{rate, plural, =1 {Jedna hvězda} other {{rate} hvězdiček}} z {maxRate}.",
     "review_form_rate": "Ohodnoťte tento produkt:",

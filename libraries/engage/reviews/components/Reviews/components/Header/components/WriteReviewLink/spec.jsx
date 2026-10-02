@@ -47,6 +47,22 @@ describe('<WriteReviewLink>', () => {
 
     expect(mockPush).toHaveBeenCalledWith({ pathname: '/item/666f6f/write_review' });
   });
+
+  it('should render a regular width button by default', () => {
+    const { container } = createComponent();
+
+    expect(container.querySelector('.engage__reviews__write-review-link'))
+      .not.toHaveAttribute('data-full-width');
+    expect(screen.getByRole('button')).not.toHaveAttribute('data-full-width');
+  });
+
+  it('should render a full width button', () => {
+    const { container } = render(<WriteReviewLink productId="foo" fullWidth />);
+
+    expect(container.querySelector('.engage__reviews__write-review-link'))
+      .toHaveAttribute('data-full-width', 'true');
+    expect(screen.getByRole('button')).toHaveAttribute('data-full-width');
+  });
 });
 
 /* eslint-enable react/prop-types */

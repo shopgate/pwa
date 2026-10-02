@@ -249,3 +249,49 @@ export const getProductReviewsExcerpt = createSelector(
     return collection.reviews.map(id => reviewsState[id]);
   }
 );
+
+/**
+ * Retrieves the review preview collection of the current base product.
+ * @param state The current application state.
+ * @returns The collection, or null when the preview was not requested yet.
+ */
+const getProductReviewsExcerptCollection = createSelector(
+  getBaseProductId,
+  getProductReviewsExcerptState,
+  (productId, productReviewsState) => productReviewsState[productId as string] || null
+);
+
+/**
+ * Whether the review preview of the current base product was not requested yet.
+ * @param state The current application state.
+ * @returns True when no preview collection exists.
+ */
+export const isProductReviewsExcerptMissing = createSelector(
+  getProductReviewsExcerptCollection,
+  collection => collection === null
+);
+
+/**
+ * Whether the last review preview request of the current base product failed before any
+ * reviews were received.
+ * @param state The current application state.
+ * @returns True when the preview request failed.
+ */
+export const hasProductReviewsExcerptError = createSelector(
+  getProductReviewsExcerptCollection,
+  collection => !!collection
+    && !collection.isFetching
+    && !collection.reviews
+    && collection.requestId !== undefined
+);
+
+/**
+ * Whether the review preview of the current base product is still loading.
+ * @param state The current application state.
+ * @returns True while a request runs or before the first response, unless the last request failed.
+ */
+export const isProductReviewsExcerptLoading = createSelector(
+  getProductReviewsExcerptCollection,
+  hasProductReviewsExcerptError,
+  (collection, hasError) => !!collection?.isFetching || (!collection?.reviews && !hasError)
+);
