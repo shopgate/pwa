@@ -48,10 +48,13 @@ export const remoteTagExists = (remote: string, tag: string) => (
 );
 
 /**
- * Checks whether the working tree has no uncommitted changes.
- * @returns Whether the working tree is clean.
+ * Lists uncommitted and untracked changes in the format of "git status --porcelain".
+ * @param cwd The repository directory. Defaults to the current process directory.
+ * @returns One line per changed file, or an empty string when the working tree is clean.
  */
-export const isWorkingTreeClean = () => gitOutput(['status', '--porcelain']) === '';
+export const getWorkingTreeChanges = (cwd?: string) => (
+  capture('git', ['status', '--porcelain'], { cwd }).stdout.trimEnd()
+);
 
 /**
  * Checks whether the history of a ref contains a commit with exactly this subject.

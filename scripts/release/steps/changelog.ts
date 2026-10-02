@@ -326,7 +326,9 @@ export const renderChangelog = async (version: ReleaseVersion, root = ROOT) => {
     ?? findPreviousTag(tags, 'v', version);
 
   if (!previousTag) {
-    throw new Error(`No previous stable tag found for ${version.name}`);
+    // Only happens in clones without tags (--no-tags or shallow), since the fallback accepts any
+    // lower stable tag. The full clone in CI always has them.
+    throw new Error(`No previous stable tag found for ${version.name}. The changelog needs the release tags: run "git fetch --tags" and try again.`);
   }
 
   const compareUrl = `https://github.com/${GITHUB_REPO}/compare/${previousTag}...${version.baseName}`;

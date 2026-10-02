@@ -132,7 +132,7 @@ export const findMissingMasterCommits = async (branch: string) => {
   const missing = await getMissingCommits(GITHUB_REPO, branch, 'master');
 
   if (missing === null) {
-    throw new Error(`Can't compare ${branch} with master: the branch doesn't exist on GitHub.`);
+    throw new Error(`Can't compare ${branch} with master: the branch doesn't exist on GitHub. Check the branch input or push the branch, then start a new pipeline.`);
   }
 
   if (missing.total > 0) {
@@ -216,7 +216,7 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
   const { version, resume } = options;
 
   if (process.env.CI === 'true' && !getGithubToken()) {
-    throw new Error('GITHUB_AUTH_TOKEN is not set. It is needed to create the GitHub releases in finalize.');
+    throw new Error('GITHUB_AUTH_TOKEN is not set. It is needed to create the GitHub releases in finalize. Add it to the CI/CD variables of pwa-liveupdate, then retry the job.');
   }
 
   const masterUpdate = updatesMaster(options, root);
@@ -252,7 +252,7 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
   }
 
   if (resume) {
-    throw new Error(`Can't resume: releases/${version.name} doesn't contain the "Released ${version.version}" commit.`);
+    throw new Error(`Can't resume: releases/${version.name} doesn't contain the "Released ${version.version}" commit, so the places listed above don't belong to an interrupted run of this release. Check the version. If it's really taken, release the next one. Leftovers of an aborted attempt are removed as described in "Aborting a release" of scripts/release/README.md.`);
   }
 
   throw new Error(`${version.version} is already taken. To continue an interrupted release in a new pipeline, set RESUME=true (or --resume).`);

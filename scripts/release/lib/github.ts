@@ -1,5 +1,6 @@
 import { setTimeout } from 'node:timers/promises';
 import { describeError } from './exec.ts';
+import { getGithubHint } from './hints.ts';
 
 /**
  * The subset of a GitHub release that the release scripts use.
@@ -121,7 +122,7 @@ const request = async <T>(
       });
     } catch (error) {
       if (attempt >= attempts) {
-        throw new Error(`GitHub API ${method} ${pathname} failed`, { cause: error });
+        throw new Error(`GitHub API ${method} ${pathname} failed: ${describeError(error)}\nGitHub may be unreachable: retry now. If https://www.githubstatus.com reports an incident, retry once it is resolved.`);
       }
 
       console.warn(`GitHub API ${method} ${pathname} failed (${describeError(error)}), retrying (${attempt}/${attempts - 1})`);
@@ -135,7 +136,7 @@ const request = async <T>(
   }
 
   if (!response.ok) {
-    throw new Error(`GitHub API ${method} ${pathname} failed: ${response.status} ${await response.text()}`);
+    throw new Error(`GitHub API ${method} ${pathname} failed: ${response.status} ${await response.text()}\n${getGithubHint(response.status)}`);
   }
 
   return response.json() as Promise<T>;
@@ -236,7 +237,7 @@ export const createRelease = async (repo: string, options: CreateReleaseOptions)
   });
 
   if (!release) {
-    throw new Error(`Can't create the GitHub release ${options.tag} in ${repo}: the repository wasn't found or the token has no access to it.`);
+    throw new Error(`Can't create the GitHub release ${options.tag} in ${repo}: the repository wasn't found or the token has no access to it. Give GITHUB_AUTH_TOKEN write access to ${repo} (contents), then retry the job.`);
   }
 
   return release;

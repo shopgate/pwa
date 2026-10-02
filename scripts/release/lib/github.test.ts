@@ -119,8 +119,7 @@ describe('github', () => {
           body: '',
           latest: true,
         }),
-        (error: Error) => error.message === 'GitHub API POST /repos/shopgate/pwa/releases failed'
-          && (error.cause as Error).message === 'fetch failed'
+        (error: Error) => error.message.startsWith('GitHub API POST /repos/shopgate/pwa/releases failed: fetch failed: other side closed\nGitHub may be unreachable')
       );
       assert.equal(fetchMock.mock.callCount(), 1);
     });

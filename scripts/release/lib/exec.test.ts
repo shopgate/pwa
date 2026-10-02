@@ -6,7 +6,7 @@ import {
   it,
   mock,
 } from 'node:test';
-import { describeError, runAsync } from './exec.ts';
+import { capture, describeError, runAsync } from './exec.ts';
 
 describe('describeError', () => {
   it('includes the causes and error codes', () => {
@@ -45,6 +45,13 @@ describe('runAsync', () => {
     assert.ok(Date.now() - started < 900);
   });
 
+  it('adds a hint how to continue to failed commands', async () => {
+    await assert.rejects(
+      runAsync('git', ['push', '/nonexistent/release-test', 'HEAD'], { allowFailure: false }),
+      /Command failed \(exit \d+\): git push \/nonexistent\/release-test HEAD\nRetry the job/
+    );
+  });
+
   it('rejects when the command fails', async () => {
     await assert.rejects(
       runAsync('node', ['-e', 'process.exit(3)']),
@@ -64,5 +71,14 @@ describe('runAsync', () => {
     );
 
     assert.equal(status, 0);
+  });
+});
+
+describe('capture', () => {
+  it('adds the error output and a hint how to continue to failed commands', () => {
+    assert.throws(
+      () => capture('git', ['push', '/nonexistent/release-test', 'HEAD']),
+      /Command failed \(exit \d+\): git push \/nonexistent\/release-test HEAD\n.*nonexistent.*\n[\s\S]*Retry the job/
+    );
   });
 });

@@ -6,10 +6,10 @@ import { generateChangelog } from '../steps/changelog.ts';
 import { checkVersion, pipelineLine } from './check.ts';
 import { logStep } from '../lib/exec.ts';
 import {
+  getWorkingTreeChanges,
   git,
   hasChanges,
   hasCommitWithMessage,
-  isWorkingTreeClean,
   remoteBranchExists,
 } from '../lib/git.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
@@ -34,8 +34,15 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
 
   await checkVersion(options, root);
 
-  if (!isWorkingTreeClean()) {
-    throw new Error('The working tree has uncommitted changes.');
+  const changes = getWorkingTreeChanges();
+
+  if (changes) {
+    throw new Error([
+      'The working tree has uncommitted or untracked changes:',
+      changes,
+      'In CI, a step before the release changed the clone: make it leave these files unchanged or add them to .gitignore.',
+      'Locally: commit them, stash them with "git stash -u" or remove them.',
+    ].join('\n'));
   }
 
   logStep(`Checking out ${releaseBranch}`);

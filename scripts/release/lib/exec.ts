@@ -1,4 +1,5 @@
 import { spawn as spawnAsync, spawnSync } from 'node:child_process';
+import { README_HINT, getCommandHint } from './hints.ts';
 
 /**
  * Options for running an external command.
@@ -37,6 +38,19 @@ export interface CaptureResult {
 }
 
 /**
+ * Builds the error message of a failed command, with a hint how to continue when there is one.
+ * @param command The executable.
+ * @param args The command arguments.
+ * @param status The exit status.
+ * @param details Captured error output.
+ * @returns The message.
+ */
+const describeFailure = (command: string, args: string[], status: number, details = '') => {
+  const hint = getCommandHint(command, args);
+  return `Command failed (exit ${status}): ${command} ${args.join(' ')}${details}${hint ? `\n${hint}` : ''}`;
+};
+
+/**
  * Spawns a command synchronously, either capturing or streaming its output.
  * @param command The executable.
  * @param args The command arguments.
@@ -69,7 +83,7 @@ const spawn = (
 
   if (status !== 0 && !options.allowFailure) {
     const details = capture ? `\n${result.stderr.trim()}` : '';
-    throw new Error(`Command failed (exit ${status}): ${command} ${args.join(' ')}${details}`);
+    throw new Error(describeFailure(command, args, status, details));
   }
 
   return {
@@ -121,7 +135,7 @@ export const runAsync = (
       const status = code ?? 1;
 
       if (status !== 0 && !options.allowFailure) {
-        reject(new Error(`Command failed (exit ${status}): ${command} ${args.join(' ')}`));
+        reject(new Error(describeFailure(command, args, status)));
         return;
       }
 
@@ -168,7 +182,7 @@ export const runMain = (main: () => Promise<void> | void) => {
   Promise.resolve()
     .then(main)
     .catch((error: unknown) => {
-      console.error(`\n✖ ${describeError(error)}`);
+      console.error(`\n✖ ${describeError(error)}\n\n${README_HINT}`);
       process.exitCode = 1;
     });
 };

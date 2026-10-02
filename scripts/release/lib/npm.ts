@@ -1,6 +1,8 @@
 import { spawn } from 'node:child_process';
 import { capture, run } from './exec.ts';
 
+const NPM_UNREACHABLE = 'npm may be unreachable: retry now. If https://status.npmjs.org reports an incident, retry once it is resolved.';
+
 /**
  * A package version that is staged on npm and waits for approval.
  */
@@ -35,7 +37,7 @@ export const isPublished = (name: string, version: string) => {
   });
 
   if (status !== 0 && !stderr.includes('E404')) {
-    throw new Error(`npm view ${name}@${version} failed:\n${stderr.trim()}`);
+    throw new Error(`npm view ${name}@${version} failed:\n${stderr.trim()}\n${NPM_UNREACHABLE}`);
   }
 
   return stdout.trim() !== '';
@@ -53,7 +55,7 @@ export const getDistTagVersion = (name: string, tag: string) => {
   });
 
   if (status !== 0 && !stderr.includes('E404')) {
-    throw new Error(`npm view ${name} dist-tags.${tag} failed:\n${stderr.trim()}`);
+    throw new Error(`npm view ${name} dist-tags.${tag} failed:\n${stderr.trim()}\n${NPM_UNREACHABLE}`);
   }
 
   return stdout.trim();

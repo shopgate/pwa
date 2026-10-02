@@ -35,6 +35,6 @@ export const pushSubtrees = async (
   const failed = themes.filter((_, index) => results[index].status === 'rejected');
 
   if (failed.length > 0) {
-    throw new Error(`Pushing ${failed.map(theme => theme.githubRepo).join(' and ')} to ${branch} failed. See the git output above.`);
+    throw new Error(`Pushing ${failed.map(theme => theme.githubRepo).join(' and ')} to ${branch} failed. See the git output above, then retry the job: themes that were already pushed report "Everything up-to-date".`);
   }
 };
