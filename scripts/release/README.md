@@ -131,7 +131,8 @@ before the release starts instead of in the tablet job.
 6. Adds the entries of all labeled pull requests since the previous stable tag to `CHANGELOG.md`,
    copies it to the themes and commits it as "Created changelog for version 'vX'.".
 7. Pushes `releases/vX` to pwa and, with `git subtree push`, to `releases/vX` of `theme-gmd` and
-   `theme-ios11`.
+   `theme-ios11`. Both subtree pushes run at the same time, since each one spends minutes splitting
+   the history.
 8. Stages the packages on npm, dependencies first, with the dist-tag `beta`, `latest` or, for
    patches of an older release line, `latest-<major>.<minor>`.
 
@@ -166,8 +167,9 @@ After this step, the packages are public on npm.
 1. Aborts when a package is not published yet.
 2. Checks out `releases/vX`.
 3. Only when the version becomes `latest` and `SKIP_MASTER_UPDATE` isn't set:
-   1. For each theme: merges the master of the theme repository into `releases/vX`
-      (`git subtree pull`) and pushes the result to that master (`git subtree push`).
+   1. For each theme, one after another: merges the master of the theme repository into
+      `releases/vX` (`git subtree pull`). Then pushes the result to both theme masters at the same
+      time (`git subtree push`).
    2. Merges master of pwa into `releases/vX` and pushes it to `releases/vX`, `vX` and master.
 4. Creates the GitHub release `vX` in pwa and both theme repositories. The target is master when master
    was updated, otherwise `releases/vX`. The release notes are the changelog entry of the
@@ -238,8 +240,9 @@ After the approval, treat the version as final and release a new one instead of 
 - **Merge conflict with master of pwa**: merge master into `releases/vX`, resolve the conflict, push
   `releases/vX` and retry `finalize`.
 
-The themes are handled one after another, so after such a failure a theme master can already be
-updated while the other one and master of pwa are not. Retrying `finalize` completes them.
+The theme masters are pushed at the same time, so after a failure one of them can already be
+updated while the other one and master of pwa are not. The job waits for both pushes and names the
+failed theme. Retrying `finalize` completes them.
 
 ### Theme upload
 

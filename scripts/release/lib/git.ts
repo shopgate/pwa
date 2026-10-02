@@ -1,4 +1,4 @@
-import { capture, run } from './exec.ts';
+import { capture, run, runAsync } from './exec.ts';
 import type { RunOptions } from './exec.ts';
 
 /**
@@ -8,6 +8,14 @@ import type { RunOptions } from './exec.ts';
  * @returns The exit status.
  */
 export const git = (args: string[], options?: RunOptions) => run('git', args, options);
+
+/**
+ * Runs a git command with live output without blocking.
+ * @param args The git arguments.
+ * @param options The run options.
+ * @returns The exit status.
+ */
+export const gitAsync = (args: string[], options?: RunOptions) => runAsync('git', args, options);
 
 /**
  * Runs a git command and returns its trimmed output.

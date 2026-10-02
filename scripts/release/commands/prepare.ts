@@ -14,6 +14,7 @@ import {
 } from '../lib/git.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
 import { stagePackages } from '../steps/stage.ts';
+import { pushSubtrees } from '../steps/subtree.ts';
 
 /**
  * Creates or continues the release branch, bumps and builds the packages, adds the changelog,
@@ -76,10 +77,7 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
   logStep(`Pushing ${releaseBranch}`);
   git(['push', 'origin', releaseBranch]);
 
-  themes.forEach((theme) => {
-    logStep(`Pushing ${theme.dir} to ${theme.githubRepo} ${releaseBranch}`);
-    git(['subtree', 'push', '-q', `--prefix=${theme.dir}`, theme.gitUrl, releaseBranch]);
-  });
+  await pushSubtrees(themes, releaseBranch);
 
   stagePackages(version, false, root);
 

@@ -1,4 +1,4 @@
-import { spawnSync } from 'node:child_process';
+import { spawn as spawnAsync, spawnSync } from 'node:child_process';
 
 /**
  * Options for running an external command.
@@ -89,6 +89,45 @@ const spawn = (
 export const run = (command: string, args: string[], options: RunOptions = {}): number => {
   console.log(`$ ${command} ${args.join(' ')}`);
   return spawn(command, args, options, false).status;
+};
+
+/**
+ * Runs a command with live output without blocking, so several commands can run at the same
+ * time. Rejects when the command fails, unless allowFailure is set.
+ * @param command The executable.
+ * @param args The command arguments.
+ * @param options The run options.
+ * @returns The exit status.
+ */
+export const runAsync = (
+  command: string,
+  args: string[],
+  options: RunOptions = {}
+): Promise<number> => {
+  console.log(`$ ${command} ${args.join(' ')}`);
+
+  return new Promise((resolve, reject) => {
+    const child = spawnAsync(command, args, {
+      cwd: options.cwd,
+      env: {
+        ...process.env,
+        ...options.env,
+      },
+      stdio: 'inherit',
+    });
+
+    child.on('error', reject);
+    child.on('close', (code) => {
+      const status = code ?? 1;
+
+      if (status !== 0 && !options.allowFailure) {
+        reject(new Error(`Command failed (exit ${status}): ${command} ${args.join(' ')}`));
+        return;
+      }
+
+      resolve(status);
+    });
+  });
 };
 
 /**

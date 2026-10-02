@@ -8,11 +8,13 @@ import {
   getPackageName,
   getThemes,
 } from '../config.ts';
+import type { Theme } from '../config.ts';
 import { logStep } from '../lib/exec.ts';
-import { git, remoteBranchExists } from '../lib/git.ts';
+import { git, gitOutput, remoteBranchExists } from '../lib/git.ts';
 import { createRelease, findRelease } from '../lib/github.ts';
 import { isPublished } from '../lib/npm.ts';
 import { resolveDistTag, updatesMaster } from '../steps/stage.ts';
+import { pushSubtrees } from '../steps/subtree.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
 
 /**
@@ -58,13 +60,14 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   git(['checkout', '-B', releaseBranch, `origin/${releaseBranch}`]);
 
   if (masterUpdate) {
-    themes.forEach((theme) => {
-      logStep(`Updating master of ${theme.githubRepo}`);
+    const mergedCommits = new Map(themes.map((theme): [Theme, string] => {
+      logStep(`Merging master of ${theme.githubRepo} into ${releaseBranch}`);
       git(['subtree', 'pull', '-q', `--prefix=${theme.dir}`, theme.gitUrl, 'master', '-m', `Merge ${theme.name} master into ${releaseBranch}`], {
         env: { GIT_MERGE_AUTOEDIT: 'no' },
       });
-      git(['subtree', 'push', '-q', `--prefix=${theme.dir}`, theme.gitUrl, 'master']);
-    });
+      return [theme, gitOutput(['rev-parse', 'HEAD'])];
+    }));
+    await pushSubtrees(themes, 'master', theme => mergedCommits.get(theme) ?? 'HEAD');
 
     logStep(`Updating master of ${GITHUB_REPO}`);
     git(['merge', '--no-edit', 'origin/master']);
