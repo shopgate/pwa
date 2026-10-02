@@ -1,8 +1,4 @@
-import {
-  withScope,
-  captureMessage,
-  Severity as SentrySeverity,
-} from '@sentry/browser';
+import { withScope, captureMessage } from '@sentry/browser';
 
 const REQUEST_TIMEOUT = 3000;
 const LINK_TAG_CLASS = 'font-css';
@@ -72,7 +68,7 @@ const loadOne = (href: string, sibling: Element | null) => {
 
     linkTag.onerror = () => {
       withScope((scope) => {
-        scope.setLevel(SentrySeverity.Error);
+        scope.setLevel('error');
         scope.setExtra('fontCssUrl', href);
         captureMessage('Fetching font css failed');
       });
@@ -82,7 +78,7 @@ const loadOne = (href: string, sibling: Element | null) => {
 
     timeout = setTimeout(() => {
       withScope((scope) => {
-        scope.setLevel(SentrySeverity.Warning);
+        scope.setLevel('warning');
         scope.setExtra('fontCssUrl', href);
         scope.setExtra('timeout', REQUEST_TIMEOUT);
         captureMessage('Fetching font css took too long');

@@ -1,8 +1,4 @@
-import {
-  withScope,
-  captureMessage,
-  Severity as SentrySeverity,
-} from '@sentry/browser';
+import { withScope, captureMessage } from '@sentry/browser';
 import { appConfig } from '@shopgate/engage';
 import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 
@@ -86,7 +82,7 @@ export const loadThemeCss = (): Promise<void> => new Promise((resolve) => {
   const startTimeoutFallback = () => {
     timeout = setTimeout(() => {
       withScope((scope) => {
-        scope.setLevel(SentrySeverity.Warning);
+        scope.setLevel('warning');
         scope.setExtra('themeCssUrl', href);
         scope.setExtra('timeout', REQUEST_TIMEOUT);
         captureMessage('Fetching theme css took too long');
@@ -123,7 +119,7 @@ export const loadThemeCss = (): Promise<void> => new Promise((resolve) => {
 
   linkTag.onerror = () => {
     withScope((scope) => {
-      scope.setLevel(SentrySeverity.Error);
+      scope.setLevel('error');
       scope.setExtra('themeCssUrl', href);
       captureMessage('Fetching theme css failed');
     });

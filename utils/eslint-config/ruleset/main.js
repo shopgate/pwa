@@ -5,7 +5,6 @@ module.exports = {
     node: true,
     jest: true,
     mocha: true,
-    'cypress/globals': true,
   },
   parserOptions: {
     ecmaVersion: 2022,
@@ -207,7 +206,6 @@ module.exports = {
       '.tsx',
     ],
     'import/resolver': {
-      exports: {},
       node: { extensions: ['.js', '.jsx', '.ts', '.tsx', '.d.ts'] },
       typescript: {
         alwaysTryTypes: true,

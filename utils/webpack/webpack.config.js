@@ -312,18 +312,18 @@ const config = {
     host: '0.0.0.0',
     port: process.env.optionsPort,
     historyApiFallback: true,
-    proxy: process.env.WEB_BRIDGE ? {
-      '/api': {
+    proxy: process.env.WEB_BRIDGE ? [
+      {
+        context: ['/api'],
         target: `http://${ip}:${apiPort}`,
         changeOrigin: true,
         pathRewrite: { '^/api': '' },
-        debug: true,
         secure: false,
         cookieDomainRewrite: {
           '*': '',
         },
       },
-    } : undefined,
+    ] : undefined,
   },
   optimization: {
     emitOnErrors: false,

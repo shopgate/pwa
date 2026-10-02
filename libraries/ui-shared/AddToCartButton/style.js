@@ -1,6 +1,7 @@
-import { css } from 'glamor';
 import spring from 'css-spring';
+import { logger } from '@shopgate/pwa-core/helpers';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { css, keyframes } from '@shopgate/engage/styles';
 
 /* eslint-disable max-len */
 // TODO This file was brought back since some extensions import it (@shopgate-project/tablet-adjustments, @shopgate/grouped-products).
@@ -8,6 +9,8 @@ import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 // of the extension, we temporarily keep this file. It should be removed in the future and the extensions should handle their styling
 // on their own
 /* eslint-enable max-len */
+
+logger.warn('DEPRECATED: @shopgate/pwa-ui-shared/AddToCartButton/style is deprecated and will be removed. Style the add to cart button inside the extension instead.');
 
 const options = {
   stiffness: 381.47,
@@ -21,25 +24,25 @@ const iconSize = 20;
  * Keyframe animations to create spring animation.
  * spring(..) automatically calculates all steps for the keyframe animation.
  */
-const springFromTopKeyframes = css.keyframes(spring(
+const springFromTopKeyframes = keyframes(spring(
   { transform: 'translate3d(0, 300%, 0)' },
   { transform: 'translate3d(0, -50%, 0)' },
   options
 ));
 
-const springFromBottomKeyframes = css.keyframes(spring(
+const springFromBottomKeyframes = keyframes(spring(
   { transform: 'translate3d(0, -300%, 0)' },
   { transform: 'translate3d(0, -50%, 0)' },
   options
 ));
 
-const springToTopKeyframes = css.keyframes(spring(
+const springToTopKeyframes = keyframes(spring(
   { transform: 'translate3d(0, -50%, 0)' },
   { transform: 'translate3d(0, 300%, 0)' },
   options
 ));
 
-const springToBottomKeyframes = css.keyframes(spring(
+const springToBottomKeyframes = keyframes(spring(
   { transform: 'translate3d(0, -50%, 0)' },
   { transform: 'translate3d(0, -300%, 0)' },
   options
@@ -47,19 +50,19 @@ const springToBottomKeyframes = css.keyframes(spring(
 
 const springFromBottom = css({
   animation: `${springFromBottomKeyframes} 600ms`,
-}).toString();
+});
 
 const springFromTop = css({
   animation: `${springFromTopKeyframes} 600ms`,
-}).toString();
+});
 
 const springToTop = css({
   animation: `${springToTopKeyframes} 600ms`,
-}).toString();
+});
 
 const springToBottom = css({
   animation: `${springToBottomKeyframes} 600ms`,
-}).toString();
+});
 
 /**
  * Circular button and container for the icons.
@@ -90,7 +93,7 @@ const buttonWrapperDefault = (bSize, iSize) => ({
  */
 const buttonWrapper = (bSize, iSize) => css({
   ...buttonWrapperDefault(bSize, iSize),
-}).toString();
+});
 
 /**
  * Circular button and container for the icons.
@@ -101,7 +104,7 @@ const buttonWrapper = (bSize, iSize) => css({
  */
 const buttonWrapperNoShadow = (bSize, iSize) => css({
   ...buttonWrapperDefault(bSize, iSize),
-}).toString();
+});
 
 /**
  * Styling that is applied to the button when cart icon is shown.
@@ -109,7 +112,7 @@ const buttonWrapperNoShadow = (bSize, iSize) => css({
 const buttonReady = css({
   background: `var(--color-button-cta, ${themeConfig.colors.cta})`,
   color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
-}).toString();
+});
 
 /**
  * Styling that is applied to the button when checkmark is shown.
@@ -117,7 +120,7 @@ const buttonReady = css({
 const buttonSuccess = css({
   background: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
   color: `var(--color-button-cta, ${themeConfig.colors.cta})`,
-}).toString();
+});
 
 /**
  * Styling that is applied to the button when it is disabled.
@@ -126,7 +129,7 @@ const buttonDisabled = css({
   background: themeConfig.colors.shade5,
   color: `var(--color-button-cta-contrast, ${themeConfig.colors.ctaContrast})`,
   boxShadow: themeConfig.shadows.buttons.disabled,
-}).toString();
+});
 
 /**
  * Basic icon style that is always applied to all icons.
@@ -135,7 +138,7 @@ const icon = css({
   transition: 'opacity 450ms cubic-bezier(0.4, 0.0, 0.2, 1)',
   opacity: 1,
   position: 'absolute',
-}).toString();
+});
 
 /**
  * Icon style that is applied only to the spinner icon.
@@ -145,7 +148,7 @@ const spinnerIcon = css({
   top: '50%',
   marginTop: -(themeConfig.variables.loadingIndicator.size) / 2,
   marginLeft: -(themeConfig.variables.loadingIndicator.size) / 2,
-}).toString();
+});
 
 export default {
   buttonWrapper,

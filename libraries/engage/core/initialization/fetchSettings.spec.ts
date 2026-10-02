@@ -12,10 +12,6 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
 jest.mock('@sentry/browser', () => ({
   withScope: jest.fn(),
   captureMessage: jest.fn(),
-  Severity: {
-    Error: 'error',
-    Warning: 'warning',
-  },
 }));
 
 const REQUEST_TIMEOUT = 3000;
