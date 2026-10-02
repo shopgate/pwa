@@ -595,7 +595,11 @@
     "review_form_rate_error": "Kolik hvězdiček dáváte?",
     "review_form_error_length": "Maximální povolená délka {length} znaků.",
     "press_to_rate_with_x_stars": "Vyberte pro hodnocení s {rate, plural, =1 {jednou hvězdou} other {{rate} hvězdičkami}}.",
-    "success_message": "Děkujeme vám za vaše hodnocení!"
+    "success_message": "Děkujeme vám za vaše hodnocení!",
+    "summary_count": "{count, plural, other {# hodnocení}}",
+    "list_count": "{count, plural, one {# recenze} few {# recenze} many {# recenze} other {# recenzí}}",
+    "list_empty": "Zatím žádné recenze",
+    "button_retry": "Zkusit znovu"
   },
   "tab_bar": {
     "home": "Domů",

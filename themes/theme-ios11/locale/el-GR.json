@@ -595,7 +595,11 @@
     "review_form_rate_error": "Πόσα αστέρια δίνετε;",
     "review_form_error_length": "Μέγιστο {length} επιτρεπόμενων χαρακτήρων.",
     "press_to_rate_with_x_stars": "Πατήστε για να βαθμολογήσετε με {rate, plural, =1 {ένα αστέρι} other {{rate} αστέρια}}.",
-    "success_message": "Σας ευχαριστούμε για την αξιολόγησή σας!"
+    "success_message": "Σας ευχαριστούμε για την αξιολόγησή σας!",
+    "summary_count": "{count, plural, =1 {# αξιολόγηση} other {# αξιολογήσεις}}",
+    "list_count": "{count, plural, =1 {# κριτική} other {# κριτικές}}",
+    "list_empty": "Δεν υπάρχουν ακόμη κριτικές",
+    "button_retry": "Δοκιμάστε ξανά"
   },
   "tab_bar": {
     "home": "Αρχική",

@@ -595,7 +595,11 @@
     "review_form_rate_error": "Selezionare le stelle per la valutazione prego.",
     "review_form_error_length": "Massima lunghezza {length} caratteri.",
     "press_to_rate_with_x_stars": "Premere per valutare con {rate, plural, =1 {una stella} other {{rate} stelle}}.",
-    "success_message": "Grazie per la tua recensione!"
+    "success_message": "Grazie per la tua recensione!",
+    "summary_count": "{count, plural, =1 {# valutazione} other {# valutazioni}}",
+    "list_count": "{count, plural, =1 {# recensione} other {# recensioni}}",
+    "list_empty": "Ancora nessuna recensione",
+    "button_retry": "Riprova"
   },
   "tab_bar": {
     "home": "Pagina Iniziale",
