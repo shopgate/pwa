@@ -584,7 +584,7 @@
     "no_reviews": "Soyez le premier à évaluer ce produit:",
     "review_count": "({count} {count, plural, =1 {Revue} other {Revues}})",
     "button_add": "Ecrire une revue",
-    "button_all": "Tous les {count} revues",
+    "button_all": "Tous les {count} avis",
     "author": "par {author}",
     "rating_stars": "{rate, plural, =1 {Une étoile} other {{rate} étoiles}} sur {maxRate}.",
     "review_form_rate": "Evaluer ce produit:",
@@ -595,7 +595,11 @@
     "review_form_rate_error": "Veuillez sélectionner une note en étoile.",
     "review_form_error_length": "Longueur caractère maximale {length}.",
     "press_to_rate_with_x_stars": "Appuyez pour noter avec {rate, plural, =1 {une étoile} other {{rate} étoiles}}.",
-    "success_message": "Merci pour votre revue!"
+    "success_message": "Merci pour votre revue!",
+    "summary_count": "{count, plural, =1 {# note} other {# notes}}",
+    "list_count": "{count, plural, =1 {# avis} other {# avis}}",
+    "list_empty": "Aucun avis pour le moment",
+    "button_retry": "Réessayer"
   },
   "tab_bar": {
     "home": "Accueil",

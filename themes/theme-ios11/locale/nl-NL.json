@@ -584,7 +584,7 @@
     "no_reviews": "Wees de eerste die dit product beoordeelt:",
     "review_count": "({count} {count, plural, =1 {Beoordeling} other {Beoordelingen}})",
     "button_add": "Schrijf een beoordeling",
-    "button_all": "Alle {count} Beoordelingen",
+    "button_all": "Alle {count} reviews",
     "author": "door {author}",
     "rating_stars": "{rate, plural, =1 {Eén ster} other {{rate} sterren}} van {maxRate}.",
     "review_form_rate": "Beoordeel dit product:",
@@ -595,7 +595,11 @@
     "review_form_rate_error": "Selecteer alstublieft een sterrenbeoordeling.",
     "review_form_error_length": "Maximum lengte {length} karakters.",
     "press_to_rate_with_x_stars": "Kies om te beoordelen met {rate, plural, =1 {één ster} other {{rate} sterren}}.",
-    "success_message": "Bedankt voor uw beoordeling!"
+    "success_message": "Bedankt voor uw beoordeling!",
+    "summary_count": "{count, plural, =1 {# beoordeling} other {# beoordelingen}}",
+    "list_count": "{count, plural, =1 {# review} other {# reviews}}",
+    "list_empty": "Nog geen reviews",
+    "button_retry": "Opnieuw proberen"
   },
   "tab_bar": {
     "home": "Home",

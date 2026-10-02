@@ -584,7 +584,7 @@
     "no_reviews": "Napište první recenzi.",
     "review_count": "({count} {count, plural, =1 {Oceňování} other {Oceňování}})",
     "button_add": "Hodnotit produkt",
-    "button_all": "Všechna {count} hodnocení",
+    "button_all": "{count, plural, one {# recenze} few {Všechny # recenze} other {Všech # recenzí}}",
     "author": "z {author}",
     "rating_stars": "{rate, plural, =1 {Jedna hvězda} other {{rate} hvězdiček}} z {maxRate}.",
     "review_form_rate": "Ohodnoťte tento produkt:",
@@ -595,7 +595,11 @@
     "review_form_rate_error": "Kolik hvězdiček dáváte?",
     "review_form_error_length": "Maximální povolená délka {length} znaků.",
     "press_to_rate_with_x_stars": "Vyberte pro hodnocení s {rate, plural, =1 {jednou hvězdou} other {{rate} hvězdičkami}}.",
-    "success_message": "Děkujeme vám za vaše hodnocení!"
+    "success_message": "Děkujeme vám za vaše hodnocení!",
+    "summary_count": "{count, plural, other {# hodnocení}}",
+    "list_count": "{count, plural, one {# recenze} few {# recenze} many {# recenze} other {# recenzí}}",
+    "list_empty": "Zatím žádné recenze",
+    "button_retry": "Zkusit znovu"
   },
   "tab_bar": {
     "home": "Domů",

@@ -10,11 +10,16 @@ import { Button } from '@shopgate/engage/components/v2';
  * Link to add a review.
  * @returns {JSX.Element}
  */
-const WriteReviewLink = ({ productId }) => (
-  <div data-test-id="writeReview" className="engage__reviews__write-review-link">
+const WriteReviewLink = ({ productId, fullWidth }) => (
+  <div
+    data-test-id="writeReview"
+    className="engage__reviews__write-review-link"
+    data-full-width={fullWidth || undefined}
+  >
     <Button
       variant="text"
       color="primary"
+      fullWidth={fullWidth}
       href={`${ITEM_PATH}/${bin2hex(productId)}/write_review`}
       aria-label={i18n.text('reviews.button_add')}
     >
@@ -25,6 +30,11 @@ const WriteReviewLink = ({ productId }) => (
 
 WriteReviewLink.propTypes = {
   productId: PropTypes.string.isRequired,
+  fullWidth: PropTypes.bool,
+};
+
+WriteReviewLink.defaultProps = {
+  fullWidth: false,
 };
 
 export default WriteReviewLink;

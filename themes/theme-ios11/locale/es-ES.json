@@ -584,7 +584,7 @@
     "no_reviews": "Sea el primero en calificar este producto:",
     "review_count": "({count} {count, plural, =1 {Comentario} other {Comentarios}})",
     "button_add": "Escriba un comentario",
-    "button_all": "Todos los {count} Comentarios",
+    "button_all": "Todas las {count} reseñas",
     "author": "por {author}",
     "rating_stars": "{rate, plural, =1 {Una estrella} other {{rate} estrellas}} de {maxRate}.",
     "review_form_rate": "Calificar este producto:",
@@ -595,7 +595,11 @@
     "review_form_rate_error": "Seleccione una estrella de calificación.",
     "review_form_error_length": "Máxima cantidad {length} de caracteres.",
     "press_to_rate_with_x_stars": "Pulse para calificar con {rate, plural, =1 {una estrella} other {{rate} estrellas}}.",
-    "success_message": "¡Gracias por su comentario!"
+    "success_message": "¡Gracias por su comentario!",
+    "summary_count": "{count, plural, =1 {# valoración} other {# valoraciones}}",
+    "list_count": "{count, plural, =1 {# reseña} other {# reseñas}}",
+    "list_empty": "Todavía no hay reseñas",
+    "button_retry": "Volver a intentarlo"
   },
   "tab_bar": {
     "home": "Inicio",

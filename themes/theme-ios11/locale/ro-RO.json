@@ -584,7 +584,7 @@
     "no_reviews": "Scrieți prima recenzie.",
     "review_count": "({count} {count, plural, =1 {Evaluare} other {Recenzii}})",
     "button_add": "Evaluați produsul",
-    "button_all": "Toate {count} evaluările ",
+    "button_all": "{count, plural, one {# recenzie} few {Toate cele # recenzii} other {Toate cele # de recenzii}}",
     "author": "de la {author}",
     "rating_stars": "{rate, plural, =1 {O stea} other {{rate} stele}} din {maxRate}.",
     "review_form_rate": "Evaluați acest produs:",
@@ -595,7 +595,11 @@
     "review_form_rate_error": "Câte stele dați?",
     "review_form_error_length": "Maxim {length} caractere permise.",
     "press_to_rate_with_x_stars": "Apăsați pentru a evalua cu {rate, plural, =1 {o stea} other {{rate} stele}}.",
-    "success_message": "Vă mulțumim pentru evaluare!"
+    "success_message": "Vă mulțumim pentru evaluare!",
+    "summary_count": "{count, plural, one {# evaluare} few {# evaluări} other {# de evaluări}}",
+    "list_count": "{count, plural, one {# recenzie} few {# recenzii} other {# de recenzii}}",
+    "list_empty": "Încă nu există recenzii",
+    "button_retry": "Încercați din nou"
   },
   "tab_bar": {
     "home": "Acasă",

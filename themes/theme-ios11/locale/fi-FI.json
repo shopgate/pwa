@@ -584,7 +584,7 @@
     "no_reviews": "Kirjoita ensimmäinen arvostelu.",
     "review_count": "({count} {count, plural, =1 {Arviointi} other {Arviot}})",
     "button_add": "Arvioi tuote",
-    "button_all": "Kaikki {count} arvostelut",
+    "button_all": "Kaikki {count} arvostelua",
     "author": "osoitteesta {author}",
     "rating_stars": "{rate, plural, =1 {Yksi tähti} other {{rate} tähteä}} {maxRate} tähdestä.",
     "review_form_rate": "Arvioi tämä tuote:",
@@ -595,7 +595,11 @@
     "review_form_rate_error": "Kuinka monta tähteä annat?",
     "review_form_error_length": "Enintään {length} merkkiä sallittu.",
     "press_to_rate_with_x_stars": "Valitse arvioidaksesi {rate, plural, =1 {yhdellä tähdellä} other {{rate} tähdellä}}.",
-    "success_message": "Kiitos luokituksestasi!"
+    "success_message": "Kiitos luokituksestasi!",
+    "summary_count": "{count, plural, =1 {# arvio} other {# arviota}}",
+    "list_count": "{count, plural, =1 {# arvostelu} other {# arvostelua}}",
+    "list_empty": "Ei vielä arvosteluja",
+    "button_retry": "Yritä uudelleen"
   },
   "tab_bar": {
     "home": "Koti",
