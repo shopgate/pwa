@@ -595,7 +595,11 @@
     "review_form_rate_error": "Hány csillagot ad?",
     "review_form_error_length": "Maximális {length} megengedett karakterek.",
     "press_to_rate_with_x_stars": "Válassza a {rate, plural, =1 {egy csillaggal} other {{rate} csillaggal}} történő értékeléshez.",
-    "success_message": "Köszönjük az értékelést!"
+    "success_message": "Köszönjük az értékelést!",
+    "summary_count": "{count, plural, other {# értékelés}}",
+    "list_count": "{count, plural, other {# vélemény}}",
+    "list_empty": "Még nincsenek vélemények",
+    "button_retry": "Próbálja újra"
   },
   "tab_bar": {
     "home": "Kezdőlap",

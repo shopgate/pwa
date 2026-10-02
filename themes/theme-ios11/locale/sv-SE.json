@@ -594,7 +594,11 @@
     "review_form_rate_error": "Hur många stjärnor ger du?",
     "review_form_error_length": "Maximalt {length} tecken tillåtna.",
     "press_to_rate_with_x_stars": "Tryck för att betygsätta med {rate, plural, =1 {en stjärna} other {{rate} stjärnor}}.",
-    "success_message": "Tack för ditt betyg!"
+    "success_message": "Tack för ditt betyg!",
+    "summary_count": "{count, plural, other {# betyg}}",
+    "list_count": "{count, plural, =1 {# recension} other {# recensioner}}",
+    "list_empty": "Inga recensioner ännu",
+    "button_retry": "Försök igen"
   },
   "tab_bar": {
     "home": "Hem",

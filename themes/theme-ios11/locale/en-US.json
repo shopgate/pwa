@@ -595,7 +595,11 @@
     "review_form_rate_error": "Please select a star rating.",
     "review_form_error_length": "Max length {length} characters.",
     "press_to_rate_with_x_stars": "Press to rate with {rate, plural, =1 {one star} other {{rate} stars}}.",
-    "success_message": "Thanks for your review!"
+    "success_message": "Thanks for your review!",
+    "summary_count": "{count, plural, =1 {# rating} other {# ratings}}",
+    "list_count": "{count, plural, =1 {# review} other {# reviews}}",
+    "list_empty": "No reviews yet",
+    "button_retry": "Try again"
   },
   "tab_bar": {
     "home": "Home",

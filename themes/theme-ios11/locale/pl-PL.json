@@ -594,7 +594,11 @@
     "review_form_rate_error": "Ile gwiazdek przyznasz?",
     "review_form_error_length": "Maksymalna dozwolona długość {length} znaków.",
     "press_to_rate_with_x_stars": "Wybierz, aby ocenić {rate, plural, =1 {jedną gwiazdką} other {{rate} gwiazdkami}}.",
-    "success_message": "Dziękujemy za ocenę!"
+    "success_message": "Dziękujemy za ocenę!",
+    "summary_count": "{count, plural, one {# ocena} few {# oceny} many {# ocen} other {# oceny}}",
+    "list_count": "{count, plural, one {# recenzja} few {# recenzje} many {# recenzji} other {# recenzji}}",
+    "list_empty": "Brak recenzji",
+    "button_retry": "Spróbuj ponownie"
   },
   "tab_bar": {
     "home": "Strona główna",

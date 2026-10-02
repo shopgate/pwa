@@ -595,7 +595,11 @@
     "review_form_rate_error": "Por favor, selecione uma qualificação com as estrelas.",
     "review_form_error_length": "Tamanho máximo de {length} caracteres.",
     "press_to_rate_with_x_stars": "Pressione para avaliar com {rate, plural, =1 {uma estrela} other {{rate} estrelas}}.",
-    "success_message": "Obrigado pela sua avaliação!"
+    "success_message": "Obrigado pela sua avaliação!",
+    "summary_count": "{count, plural, =1 {# avaliação} other {# avaliações}}",
+    "list_count": "{count, plural, =1 {# comentário} other {# comentários}}",
+    "list_empty": "Ainda não há comentários",
+    "button_retry": "Tentar novamente"
   },
   "tab_bar": {
     "home": "Início",
