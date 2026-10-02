@@ -1,13 +1,7 @@
-import { createLogger } from 'redux-logger';
 import { logger } from '@shopgate/pwa-core';
 
 const STORAGE_KEY = 'sgReduxLogger';
-
-const reduxLogger = createLogger({
-  logger,
-  collapsed: true,
-  duration: true,
-});
+const MUTED = 'color: gray; font-weight: lighter;';
 
 /**
  * Reads whether the logger was switched off with sgReduxLogger.off().
@@ -58,14 +52,75 @@ window.sgReduxLogger = {
 };
 
 /**
+ * Formats the time of a date, e.g. 14:03:07.042.
+ * @param {Date} date The date.
+ * @return {string}
+ */
+const formatTime = date => [date.getHours(), date.getMinutes(), date.getSeconds()]
+  .map(value => String(value).padStart(2, '0'))
+  .join(':')
+  .concat(`.${String(date.getMilliseconds()).padStart(3, '0')}`);
+
+/**
+ * Prints an action as a collapsed console group.
+ * @param {Object} entry The logged action with the states before and after it.
+ */
+const printEntry = ({
+  action, prevState, nextState, error, startedAt, took,
+}) => {
+  logger.groupCollapsed(
+    `%c action %c${String(action.type)} %c@ ${formatTime(startedAt)} %c(in ${took.toFixed(2)} ms)`,
+    MUTED,
+    'color: inherit;',
+    MUTED,
+    MUTED
+  );
+  logger.log('%c prev state', 'color: #9E9E9E; font-weight: bold', prevState);
+  logger.log('%c action    ', 'color: #03A9F4; font-weight: bold', action);
+  if (error) {
+    logger.log('%c error     ', 'color: #F20404; font-weight: bold;', error);
+  }
+  logger.log('%c next state', 'color: #4CAF50; font-weight: bold', nextState);
+  logger.groupEnd();
+};
+
+/**
  * Logs every action with the state before and after it to the console, unless the logger was
  * switched off with sgReduxLogger.off() in the console.
  * @param {Object} store The redux store.
  * @return {Function}
  */
-const loggerMiddleware = store => (next) => {
-  const logAndNext = reduxLogger(store)(next);
-  return action => (enabled ? logAndNext(action) : next(action));
+const loggerMiddleware = ({ getState }) => next => (action) => {
+  if (!enabled) {
+    return next(action);
+  }
+
+  const startedAt = new Date();
+  const started = performance.now();
+  const prevState = getState();
+  let result;
+  let error;
+
+  try {
+    result = next(action);
+  } catch (e) {
+    error = e;
+  }
+
+  printEntry({
+    action,
+    prevState,
+    nextState: getState(),
+    error,
+    startedAt,
+    took: performance.now() - started,
+  });
+
+  if (error) {
+    throw error;
+  }
+
+  return result;
 };
 
 export default loggerMiddleware;

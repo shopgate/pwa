@@ -11,10 +11,6 @@ import ModalContainer from './index';
 // Replacement for commented out configureStore()
 const store = {};
 
-jest.mock('redux-logger', () => ({
-  createLogger: () => () => next => action => next(action),
-}));
-
 global.requestAnimationFrame = fn => fn();
 
 /**
