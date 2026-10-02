@@ -12,6 +12,7 @@ import {
   hasCommitWithMessage,
   remoteBranchExists,
 } from '../lib/git.ts';
+import { symbols } from '../lib/symbols.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
 import { stagePackages } from '../steps/stage.ts';
 import { pushSubtrees } from '../steps/subtree.ts';
@@ -90,7 +91,7 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
 
   console.log([
     '',
-    `✔ ${version.version} is prepared and staged on npm.`,
+    `${symbols.ok} ${version.version} is prepared and staged on npm.`,
     'Next steps:',
     `  1. Approve the staged packages: "npm run release -- approve ${version.version}" or on npmjs.com`,
     '  2. Run the manual "release:finalize" job of the GitLab pipeline',

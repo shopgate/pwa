@@ -151,16 +151,23 @@ when npm doesn't accept the login, e.g. because it's older than 12 hours.
    when master has commits that are missing in the release. Pass `--skip-master-update` for
    releases started with that option, since they leave master unchanged.
 3. Asks for your one-time password and approves the packages, dependencies first, so that no package
-   is public before the packages it depends on. npm only accepts a package once its automated
+   is public before the packages it depends on. With a security key or passkey, leave the password
+   empty: npm then runs on the terminal and asks for the confirmation in the browser itself. npm only accepts a package once its automated
    review is finished, which can take a few minutes for large packages like `@shopgate/engage`.
-   Until then, it tries again every 30 seconds for up to 10 minutes. When the one-time password
-   has expired in the meantime, npm asks for a new one. If it still fails, run `approve` again: it
-   continues with the packages that aren't published yet.
+   Until then, it tries again every 30 seconds for up to 10 minutes. When npm rejects the one-time
+   password, e.g. because it expired in the meantime, `approve` asks for a new one and uses it for
+   the remaining packages. Each package gets one progress line; npm's own output is only shown
+   when an approval fails. When the approval is done, fails or needs a new one-time password, the
+   terminal rings its bell, and macOS also shows a notification. If it still fails, run `approve`
+   again: it continues with the packages that aren't published yet.
 4. Checks that npm shows every approved version as published. A new version can take a moment to
    appear, so it checks again every 10 seconds for up to a minute and fails with the missing
    packages otherwise.
 
 After this step, the packages are public on npm.
+
+With `--dry-run`, `approve` runs steps 1 and 2, then only shows the progress lines it would print,
+without asking for the one-time password or approving anything.
 
 ### `finalize` (manual job `release:finalize`)
 

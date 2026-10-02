@@ -60,8 +60,3 @@ export const getGithubHint = (status: number) => {
 
   return 'GitHub may have a problem: retry now. If https://www.githubstatus.com reports an incident, retry once it is resolved.';
 };
-
-/**
- * Where to read on after any failure of the release CLI.
- */
-export const README_HINT = 'How to continue: see "When something fails" in scripts/release/README.md.';

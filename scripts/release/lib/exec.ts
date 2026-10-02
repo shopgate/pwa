@@ -1,5 +1,6 @@
 import { spawn as spawnAsync, spawnSync } from 'node:child_process';
-import { README_HINT, getCommandHint } from './hints.ts';
+import { getCommandHint } from './hints.ts';
+import { symbols } from './symbols.ts';
 
 /**
  * Options for running an external command.
@@ -182,7 +183,7 @@ export const runMain = (main: () => Promise<void> | void) => {
   Promise.resolve()
     .then(main)
     .catch((error: unknown) => {
-      console.error(`\n✖ ${describeError(error)}\n\n${README_HINT}`);
+      console.error(`\n${symbols.error} ${describeError(error)}`);
       process.exitCode = 1;
     });
 };

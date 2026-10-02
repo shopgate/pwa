@@ -8,13 +8,14 @@ import {
   getPackageName,
   getThemes,
 } from '../config.ts';
-import type { Theme } from '../config.ts';
 import { logStep } from '../lib/exec.ts';
 import { git, gitOutput, remoteBranchExists } from '../lib/git.ts';
 import { createRelease, findRelease } from '../lib/github.ts';
 import { isPublished } from '../lib/npm.ts';
 import { resolveDistTag, updatesMaster } from '../steps/stage.ts';
 import { pushSubtrees } from '../steps/subtree.ts';
+import { symbols } from '../lib/symbols.ts';
+import type { Theme } from '../config.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
 
 /**
@@ -39,7 +40,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   }
 
   if (unpublished.length === 0) {
-    console.log(`✔ All ${PUBLISHABLE_PACKAGES.length} packages are published`);
+    console.log(`${symbols.ok} All ${PUBLISHABLE_PACKAGES.length} packages are published`);
   }
 
   if (dryRun) {
@@ -98,9 +99,9 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
         body,
         latest,
       });
-      console.log(`✔ Released: ${release.html_url}`);
+      console.log(`${symbols.ok} Released: ${release.html_url}`);
     }
   }
 
-  console.log(`\n✔ ${version.version} is released.`);
+  console.log(`\n${symbols.ok} ${version.version} is released.`);
 };

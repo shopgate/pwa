@@ -15,6 +15,7 @@ import {
 } from '../lib/github.ts';
 import { findStagedVersion, getDistTagVersion, isPublished } from '../lib/npm.ts';
 import { updatesMaster } from '../steps/stage.ts';
+import { symbols } from '../lib/symbols.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
 import {
   compareVersions,
@@ -115,7 +116,7 @@ const warnAboutOlderVersion = (version: ReleaseVersion, root = ROOT) => {
   const current = getDistTagVersion(packageName, tag);
 
   if (isValidVersion(current) && compareVersions(version, parseVersion(current)) <= 0) {
-    console.warn(`⚠ ${version.version} is not higher than the current "${tag}" version ${current}.`);
+    console.warn(`${symbols.warning} ${version.version} is not higher than the current "${tag}" version ${current}.`);
 
     if (version.stable) {
       console.warn(`  It gets the dist-tag "${getDistTag(version, current)}", so "latest" and the latest GitHub releases stay unchanged.`);
@@ -136,7 +137,7 @@ export const findMissingMasterCommits = async (branch: string) => {
   }
 
   if (missing.total > 0) {
-    console.warn(`⚠ master has ${missing.total} commits that aren't in ${branch}:`);
+    console.warn(`${symbols.warning} master has ${missing.total} commits that aren't in ${branch}:`);
     missing.subjects.slice(0, 10).forEach(subject => console.warn(`  - ${subject}`));
 
     if (missing.total > 10) {
@@ -165,7 +166,7 @@ export const checkMasterIsMerged = async (options: ReleaseOptions, masterUpdate:
   const missing = await findMissingMasterCommits(branch);
 
   if (missing === 0) {
-    console.log(`✔ ${branch} contains all commits of master`);
+    console.log(`${symbols.ok} ${branch} contains all commits of master`);
   } else if (masterUpdate) {
     throw new Error(`Merge master into ${branch} before releasing ${version.version}. Revert unwanted commits on master first. Then retry the job or start a new pipeline.`);
   }
@@ -221,8 +222,8 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
 
   const masterUpdate = updatesMaster(options, root);
   console.log(masterUpdate
-    ? `✔ finalize updates master, since ${version.version} becomes "latest"`
-    : `✔ finalize doesn't update master${options.skipMasterUpdate ? ' (SKIP_MASTER_UPDATE)' : `, since ${version.version} doesn't become "latest"`}`);
+    ? `${symbols.ok} finalize updates master, since ${version.version} becomes "latest"`
+    : `${symbols.ok} finalize doesn't update master${options.skipMasterUpdate ? ' (SKIP_MASTER_UPDATE)' : `, since ${version.version} doesn't become "latest"`}`);
 
   await checkMasterIsMerged(options, masterUpdate);
 
@@ -232,7 +233,7 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
   const taken = await findTakenLocations(version, root);
 
   if (taken.length === 0) {
-    console.log(`✔ ${version.version} is available`);
+    console.log(`${symbols.ok} ${version.version} is available`);
     return;
   }
 
@@ -242,12 +243,12 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
   const continuation = getContinuation(messages, version, resume, process.env.CI_PIPELINE_ID);
 
   if (continuation === 'retry') {
-    console.log(`✔ Continuing the release of ${version.version} started in this pipeline`);
+    console.log(`${symbols.ok} Continuing the release of ${version.version} started in this pipeline`);
     return;
   }
 
   if (continuation === 'resume') {
-    console.log(`✔ Resuming the interrupted release of ${version.version}`);
+    console.log(`${symbols.ok} Resuming the interrupted release of ${version.version}`);
     return;
   }
 

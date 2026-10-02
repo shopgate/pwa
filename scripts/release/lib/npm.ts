@@ -109,7 +109,7 @@ export interface ApproveResult {
    */
   status: number;
   /**
-   * Error output of npm, which is also shown on the terminal.
+   * Error output of npm.
    */
   stderr: string;
 }
@@ -121,28 +121,29 @@ export interface ApproveResult {
 export const isLoggedIn = () => capture('npm', ['whoami'], { allowFailure: true }).status === 0;
 
 /**
- * Approves (publishes) a staged package. npm asks for a new OTP when the given one expired, so
- * the terminal stays interactive and the error output is shown while it's collected.
+ * Approves (publishes) a staged package. With a one-time password, npm's output is collected
+ * instead of shown, so the caller can report the result in one line; sfw --verbose npm then can't ask for a new
+ * password itself and fails with EOTP. Without one, npm runs on the terminal and handles the 2FA
+ * itself, e.g. the browser confirmation of a security key or passkey.
  * @param id The stage ID.
- * @param otp The npm one-time password. Empty to let npm ask for it.
+ * @param otp The npm one-time password. Empty to let npm handle the 2FA on the terminal.
  * @returns The exit status and the error output.
  */
-export const approveStaged = (id: string, otp: string): Promise<ApproveResult> => {
-  const args = ['stage', 'approve', id, '--loglevel', 'warn'];
-  console.log(`$ npm ${args.join(' ')}`);
-
-  return new Promise((resolve, reject) => {
-    const child = spawn('npm', args, {
+export const approveStaged = (id: string, otp: string): Promise<ApproveResult> => (
+  new Promise((resolve, reject) => {
+    const child = spawn('npm', ['stage', 'approve', id, '--loglevel', 'warn'], {
       env: {
         ...process.env,
         ...(otp ? { npm_config_otp: otp } : {}),
       },
-      stdio: ['inherit', 'inherit', 'pipe'],
+      stdio: otp ? ['ignore', 'ignore', 'pipe'] : ['inherit', 'inherit', 'pipe'],
     });
     let stderr = '';
 
     child.stderr.on('data', (chunk: Buffer) => {
-      process.stderr.write(chunk);
+      if (!otp) {
+        process.stderr.write(chunk);
+      }
       stderr += chunk.toString();
     });
     child.on('error', reject);
@@ -150,8 +151,8 @@ export const approveStaged = (id: string, otp: string): Promise<ApproveResult> =
       status: status ?? 1,
       stderr,
     }));
-  });
-};
+  })
+);
 
 /**
  * Whether npm rejected an approval because its automated review of the package isn't done yet.
@@ -160,4 +161,13 @@ export const approveStaged = (id: string, otp: string): Promise<ApproveResult> =
  */
 export const isReviewPending = (stderr: string) => (
   stderr.includes('E409') && /automated review/i.test(stderr)
+);
+
+/**
+ * Whether npm rejected an approval because the one-time password is missing, wrong or expired.
+ * @param stderr The error output of "npm stage approve".
+ * @returns Whether the approval can be repeated with a new one-time password.
+ */
+export const isOtpRejected = (stderr: string) => (
+  /\bEOTP\b/.test(stderr) || (/\bE401\b/.test(stderr) && /one-time pass/i.test(stderr))
 );
