@@ -8,7 +8,7 @@ import {
   describe,
   it,
 } from 'node:test';
-import { bumpVersions, getWorkspaceDirs } from './bump.ts';
+import { bumpVersions, getWorkspaceDirs, updateLockfile } from './bump.ts';
 
 /**
  * Writes a JSON file into the fixture directory and creates missing folders.
@@ -155,5 +155,46 @@ describe('bump', () => {
       fs.readFileSync(path.join(root, 'libraries/unit-tests/package.json'), 'utf8'),
       '{\n  "name": "@shopgate/pwa-unit-test",\n  "version": "7.33.0"\n}\n'
     );
+  });
+});
+
+describe('updateLockfile', () => {
+  let root: string;
+
+  beforeEach(() => {
+    root = fs.mkdtempSync(path.join(os.tmpdir(), 'release-lockfile-'));
+
+    writeJson(root, 'package.json', {
+      private: true,
+      workspaces: ['libraries/*', 'extensions/theme-config/frontend'],
+    });
+    writeJson(root, 'repos.json', { themes: {} });
+    writeJson(root, 'libraries/common/package.json', {
+      name: '@shopgate/pwa-common',
+      version: '7.32.0',
+    });
+    writeJson(root, 'extensions/theme-config/frontend/package.json', {
+      name: '@shopgate/theme-config',
+      version: '7.32.0',
+      private: true,
+      peerDependencies: { '@shopgate/pwa-common': '>=7.20.0' },
+    });
+    updateLockfile(root);
+  });
+
+  afterEach(() => {
+    fs.rmSync(root, {
+      recursive: true,
+      force: true,
+    });
+  });
+
+  it('writes prerelease versions, which peer ranges like ">=7.20.0" don\'t include', () => {
+    bumpVersions('7.33.0-beta.1', root);
+    updateLockfile(root);
+
+    const { packages } = readJson(root, 'package-lock.json');
+    assert.equal(packages['libraries/common'].version, '7.33.0-beta.1');
+    assert.equal(packages['extensions/theme-config/frontend'].version, '7.33.0-beta.1');
   });
 });

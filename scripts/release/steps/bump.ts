@@ -137,10 +137,12 @@ export const bumpVersions = (version: string, root = ROOT) => {
 /**
  * Writes the bumped workspace versions and pins into package-lock.json without installing
  * anything, so that the release commit contains a lockfile that matches the package.json files.
+ * --force accepts prerelease versions for peer ranges like ">=7.20.0", which semver doesn't
+ * include them in; the lockfile is the same as for a stable version.
  * @param root The repository root.
  */
 export const updateLockfile = (root = ROOT) => {
-  run('npm', ['install', '--package-lock-only', '--ignore-scripts', '--no-audit', '--no-fund'], {
+  run('npm', ['install', '--package-lock-only', '--ignore-scripts', '--no-audit', '--no-fund', '--force'], {
     cwd: root,
   });
 };
