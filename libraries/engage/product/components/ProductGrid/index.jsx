@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   ViewContext,
@@ -50,6 +50,23 @@ const ProductGrid = ({
 
   const columns = useProductGridColumns();
 
+  const wrapper = useMemo(() => {
+    /**
+     * Grid layout around the items of the infinite container.
+     * @param {Object} props The props of the infinite container.
+     * @returns {JSX.Element}
+     */
+    const InfiniteLayout = props => (
+      <Layout
+        columns={columns}
+        className={className}
+        {...props}
+      />
+    );
+
+    return InfiniteLayout;
+  }, [className, columns]);
+
   if (!infiniteLoad) {
     return (
       <Layout columns={columns} className={className}>
@@ -71,13 +88,7 @@ const ProductGrid = ({
     <ProductListTypeProvider type="productGrid" subType={scope} meta={meta}>
       <InfiniteContainer
         containerRef={getContentRef()}
-        wrapper={props => (
-          <Layout
-            columns={columns}
-            className={className}
-            {...props}
-          />
-        )}
+        wrapper={wrapper}
         iterator={Iterator}
         loader={handleGetProducts}
         items={products}
