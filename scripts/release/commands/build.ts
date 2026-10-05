@@ -23,13 +23,18 @@ const BABEL_IGNORE = [
   'node_modules',
 ].join(',');
 
+const PUBLISHED_TSCONFIG = 'tsconfig.extension.json';
+
 /**
- * Checks whether a file must not be published (specs and tsconfig files).
+ * Checks whether a file must not be published: specs and tsconfig files, except the tsconfig
+ * that extensions extend.
  * @param name The file name.
  * @returns Whether the file gets removed from the build.
  */
 const isRemovedFile = (name: string) => (
-  name.includes('.spec.') || name.startsWith('spec.') || /^tsconfig.*\.json$/.test(name)
+  name.includes('.spec.')
+  || name.startsWith('spec.')
+  || (/^tsconfig.*\.json$/.test(name) && name !== PUBLISHED_TSCONFIG)
 );
 
 /**
@@ -52,7 +57,8 @@ export const purge = (pkg: PublishablePackage, root = ROOT) => {
 
 /**
  * Removes tests, jest mocks, snapshots, specs and tsconfig files from a build. Folders named
- * "mocks" stay, since they contain fixtures that extensions use.
+ * "mocks" stay, since they contain fixtures that extensions use, and so does the tsconfig for
+ * extensions.
  * @param dir The build directory.
  */
 export const normalize = (dir: string) => {

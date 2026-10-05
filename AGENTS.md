@@ -74,6 +74,16 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   `@shopgate/pwa-unit-test` for Jest. Changes to these three reach every extension. Many
   public Shopgate extensions serve as blueprints; older ones still list individual libraries
   (`pwa-common`, `pwa-core`, …), the direction is `engage` + the two foundation packages only.
+- **TypeScript in extensions:** an extension's `tsconfig.json` only needs
+  `{ "extends": "@shopgate/engage/tsconfig.extension.json" }`. It's the one tsconfig the release
+  build publishes. Most library files are still JavaScript without declarations; the config loads
+  `@shopgate/engage/untyped-modules.d.ts`, whose `declare module '@shopgate/*'` pattern turns such
+  imports into `any` instead of TS7016, while typed files keep their types. It covers bare package
+  imports (`@shopgate/engage`) as well as subpaths. Own `declare module '@shopgate/...'`
+  workarounds aren't needed. Don't switch to `maxNodeModuleJsDepth`: TypeScript then infers the
+  props of JavaScript components from their destructured parameters and reports all of them as
+  required. Keep the config free of `include` and `paths`, which resolve relative to the package.
+  It sets `types`, so `@shopgate/pwa-unit-test` has `@types/jest` as a dependency.
 - **Check dependency changes against a standalone theme install**, not only against this
   workspace: peer dependency conflicts that npm resolves here by nesting (e.g. the dev server
   vs. `@pmmmwh/react-refresh-webpack-plugin`) fail with `ERESOLVE` there.

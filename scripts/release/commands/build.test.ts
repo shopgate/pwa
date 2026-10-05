@@ -30,6 +30,7 @@ describe('normalize', () => {
       'index.d.ts',
       'tsconfig.json',
       'tsconfig.build.json',
+      'tsconfig.extension.json',
       'helpers/index.js',
       'helpers/index.spec.js',
       'helpers/spec.js',
@@ -51,6 +52,7 @@ describe('normalize', () => {
       'index.d.ts',
       'index.js',
       'package.json',
+      'tsconfig.extension.json',
     ]);
 
     fs.rmSync(dir, {
