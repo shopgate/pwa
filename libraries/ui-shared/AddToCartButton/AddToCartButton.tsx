@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="./css-spring.d.ts" />
 import React, {
   useCallback, useEffect, useRef, useState,
 } from 'react';

@@ -123,6 +123,8 @@ before the release starts instead of in the tablet job.
 1. Runs `check`.
 2. Creates `releases/vX` from `BRANCH`. When the branch already exists on GitHub (resume), it
    continues on it.
+   Then it runs the type check (`npm run typecheck`) on the branch. A type error stops the release
+   here, before anything is changed or pushed.
 3. Sets the version in all `package.json` files of the workspace (internal `@shopgate` dependencies
    exactly pinned) and the `extension-config.json` of the themes.
 4. Builds the packages into `dist`: babel, type declarations with tsc for packages with a

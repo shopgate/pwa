@@ -13,6 +13,7 @@ const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin'
 const rxPaths = require('rxjs/_esm5/path-mapping');
 const ShopgateIndexerPlugin = require('./plugins/ShopgateIndexerPlugin');
 const ShopgateThemeConfigValidatorPlugin = require('./plugins/ShopgateThemeConfigValidatorPlugin');
+const ShopgateTypeCheckPlugin = require('./plugins/ShopgateTypeCheckPlugin');
 const { ENV, isDev, PUBLIC_FOLDER } = require('./lib/variables');
 const getAppSettings = require('./lib/getAppSettings');
 const convertLanguageToISO = require('./lib/convertLanguageToISO');
@@ -35,6 +36,10 @@ const t = i18n(__filename);
 const devtool = isDev ? sourceMap : (process.env.SOURCE_MAPS || false);
 const fileSuffix = devtool ? '.sm' : '';
 const addBundleAnalyzer = !!process.env.BUNDLE_ANALYZER;
+const typeCheck = ['0', 'false'].includes(process.env.TYPE_CHECK) ? '' : process.env.TYPE_CHECK;
+const typeCheckPlugin = isDev && typeCheck
+  ? new ShopgateTypeCheckPlugin({ overlay: typeCheck === 'overlay' })
+  : null;
 
 /**
  * @type {import('webpack').Configuration}
@@ -213,6 +218,7 @@ const config = {
     ...(isDev ? [new ReactRefreshWebpackPlugin({
       overlay: false,
     })] : []),
+    ...(typeCheckPlugin ? [typeCheckPlugin] : []),
     ...(!isDev ? [
       new CompressionWebpackPlugin({
         filename: '[path][base].gz[query]',
@@ -306,9 +312,15 @@ const config = {
       directory: path.resolve(themePath, PUBLIC_FOLDER),
     },
     client: {
-      // Deactivate full-screen error overlay in dev server
-      overlay: false,
+      overlay: typeCheckPlugin && typeCheckPlugin.overlay ? {
+        errors: true,
+        warnings: false,
+        runtimeErrors: false,
+      } : false,
     },
+    ...(typeCheckPlugin ? {
+      onListening: devServer => typeCheckPlugin.setDevServer(devServer),
+    } : {}),
     host: '0.0.0.0',
     port: process.env.optionsPort,
     historyApiFallback: true,

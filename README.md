@@ -30,6 +30,21 @@ or
 WEB_BRIDGE=1 sgconnect frontend start -t theme-gmd
 ```
 
+## Type checking during development
+The development server transpiles TypeScript without checking the types. To see type errors while developing, start the frontend with the `TYPE_CHECK` environment parameter.
+
+```shell
+TYPE_CHECK=1 sgconnect frontend start
+```
+
+The theme and every attached extension with a `frontend/tsconfig.json` are then checked on each change, with the TypeScript version that is installed there. The errors are printed to the terminal and don't stop the build.
+
+To also see the errors in the browser, use the value `overlay`. An error then covers the app until it is fixed or the overlay is closed.
+
+```shell
+TYPE_CHECK=overlay sgconnect frontend start
+```
+
 ## About Shopgate
 
 Shopgate is the leading mobile commerce platform.
