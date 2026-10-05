@@ -2,7 +2,7 @@ import React, {
   useCallback, useEffect, useRef, useState,
 } from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
-import { Button, IconButton } from '@shopgate/engage/components/v2';
+import { Button, CircularProgress, IconButton } from '@shopgate/engage/components/v2';
 import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
 import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
@@ -87,8 +87,15 @@ const useStyles = makeStyles({ name: 'ProductCardAddToCart' })(theme => ({
     display: 'inline-flex',
     alignItems: 'center',
     '&[data-hidden]': {
-      visibility: 'hidden',
+      opacity: 0,
     },
+  },
+  overlay: {
+    position: 'absolute',
+    inset: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   tick: {
     position: 'absolute',
@@ -244,9 +251,13 @@ const ProductCardAddToCart = ({
   }, [addState, addToCart, dispatch, hasOptions, hasVariants, product]);
 
   const handleSheetAddToCart = useCallback((selected: VariantSheetProduct) => {
+    if (addState !== 'idle') {
+      return false;
+    }
+
     setSheetOpen(false);
     return addToCart(selected.id);
-  }, [addToCart]);
+  }, [addState, addToCart]);
 
   const closeSheet = useCallback(() => setSheetOpen(false), []);
 
@@ -274,15 +285,21 @@ const ProductCardAddToCart = ({
           size="small"
           fullWidth
           disabled={isDisabled}
-          loading={pending}
+          aria-disabled={pending || undefined}
+          aria-busy={pending || undefined}
           onClick={handleClick}
-          startIcon={compact || added ? undefined : <CartPlusIcon />}
+          startIcon={compact || added || pending ? undefined : <CartPlusIcon />}
           className={classes.labelButton}
           data-compact={compact ? 'true' : undefined}
         >
-          <span className={classes.content} data-hidden={added ? 'true' : undefined}>
+          <span className={classes.content} data-hidden={added || pending ? 'true' : undefined}>
             {i18n.text('product.add_to_cart')}
           </span>
+          {pending && (
+            <span className={classes.overlay} aria-hidden>
+              <CircularProgress color="inherit" size={16} />
+            </span>
+          )}
           {added && (
             <span className={classes.tick} aria-hidden>
               <TickIcon />
@@ -296,14 +313,17 @@ const ProductCardAddToCart = ({
           color="secondary"
           size="small"
           disabled={isDisabled}
-          loading={pending}
+          aria-disabled={pending || undefined}
+          aria-busy={pending || undefined}
           onClick={handleClick}
         >
-          {added ? (
+          {pending && <CircularProgress color="inherit" size={16} />}
+          {added && (
             <span className={classes.iconTick}>
               <TickIcon />
             </span>
-          ) : <CartPlusIcon />}
+          )}
+          {!pending && !added && <CartPlusIcon />}
         </IconButton>
       )}
       {hasVariants && sheetMounted && (

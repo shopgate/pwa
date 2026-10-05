@@ -47,6 +47,7 @@ const useStyles = makeStyles({ name: 'VariantChip' })(theme => ({
 export interface VariantChipProps {
   value: VariantSelectorValue;
   onSelect: (valueId: string) => void;
+  tabIndex?: number;
 }
 
 /**
@@ -54,7 +55,7 @@ export interface VariantChipProps {
  * @param props The component props.
  * @returns The chip.
  */
-const VariantChip = ({ value, onSelect }: VariantChipProps) => {
+const VariantChip = ({ value, onSelect, tabIndex }: VariantChipProps) => {
   const { classes, cx } = useStyles();
 
   return (
@@ -67,6 +68,8 @@ const VariantChip = ({ value, onSelect }: VariantChipProps) => {
       data-unavailable={value.available === false ? true : undefined}
       data-sold-out={value.soldOut ? true : undefined}
       data-test-id={value.label}
+      data-value-id={value.id}
+      tabIndex={tabIndex}
       onClick={() => {
         if (value.selectable) {
           onSelect(value.id);

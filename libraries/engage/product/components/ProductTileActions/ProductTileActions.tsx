@@ -1,10 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import {
-  getProductTileActions,
-  getProductTileActionsDirection,
-} from '@shopgate/engage/settings/selectors/appSettings';
+import { getProductTileActions } from '@shopgate/engage/settings/selectors/appSettings';
 import ItemFavoritesButton from '../ProductGrid/components/Item/components/ItemFavoritesButton';
 import { ProductCardAddToCart } from '../ProductCardAddToCart';
 
@@ -44,8 +41,7 @@ const useStyles = makeStyles({ name: 'ProductTileActions' })(theme => ({
  */
 const ProductTileActions = ({ productId, className }: ProductTileActionsProps) => {
   const { classes, cx } = useStyles();
-  const { position, addToCart } = useSelector(getProductTileActions);
-  const direction = useSelector(getProductTileActionsDirection);
+  const { position, addToCart, direction } = useSelector(getProductTileActions);
 
   return (
     <div

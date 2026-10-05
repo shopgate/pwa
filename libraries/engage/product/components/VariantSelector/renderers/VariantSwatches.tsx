@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import CharacteristicHeading from './CharacteristicHeading';
+import useRadioGroupKeys from './useRadioGroupKeys';
 import { getValueStateText } from './valueState';
 import VariantChip from './VariantChip';
 import type { VariantRendererProps, VariantSelectorValue } from '../types';
@@ -32,14 +33,6 @@ const useStyles = makeStyles({ name: 'VariantSwatches' })(theme => ({
     '&[data-shape="square"]': {
       borderRadius: theme.shape.borderRadius,
     },
-    '&[aria-checked="true"]': {
-      borderWidth: 2,
-      borderColor: theme.palette.primary.main,
-    },
-    '&:focus-visible': {
-      outline: `2px solid ${theme.palette.text.primary}`,
-      outlineOffset: 2,
-    },
     '&[data-unavailable]': {
       borderStyle: 'dashed',
       borderWidth: 2,
@@ -50,8 +43,16 @@ const useStyles = makeStyles({ name: 'VariantSwatches' })(theme => ({
         content: '""',
         position: 'absolute',
         inset: 0,
-        background: `linear-gradient(to top right, transparent calc(50% - 1.5px), ${theme.palette.text.primary} calc(50% - 1.5px), ${theme.palette.text.primary} calc(50% + 1.5px), transparent calc(50% + 1.5px))`,
+        background: `linear-gradient(to top right, transparent calc(50% - 3px), ${theme.palette.background.surface} calc(50% - 3px), ${theme.palette.background.surface} calc(50% - 1.5px), ${theme.palette.text.primary} calc(50% - 1.5px), ${theme.palette.text.primary} calc(50% + 1.5px), ${theme.palette.background.surface} calc(50% + 1.5px), ${theme.palette.background.surface} calc(50% + 3px), transparent calc(50% + 3px))`,
       },
+    },
+    '&[aria-checked="true"]': {
+      outline: `2px solid ${theme.palette.primary.main}`,
+      outlineOffset: 2,
+    },
+    '&:focus-visible': {
+      outline: `2px solid ${theme.palette.text.primary}`,
+      outlineOffset: 2,
     },
     '&[aria-disabled="true"]': {
       cursor: 'default',
@@ -68,6 +69,7 @@ const VariantSwatches = ({
   charRef,
   highlight,
   id,
+  domId = id,
   label,
   selected,
   values,
@@ -76,17 +78,24 @@ const VariantSwatches = ({
   swatchImageZoom = 100,
 }: VariantRendererProps) => {
   const { classes, cx } = useStyles();
-  const headingId = `variant-characteristic-${id}`;
+  const headingId = `variant-characteristic-${domId}`;
   const selectedLabel = values.find(value => value.id === selected)?.label ?? null;
 
   const handleSelect = useCallback((valueId: string) => {
     select({ id, value: valueId });
   }, [id, select]);
 
+  const { groupRef, onKeyDown, getTabIndex } = useRadioGroupKeys(values, selected, handleSelect);
+
   const renderSwatch = (value: VariantSelectorValue) => {
     if (!value.swatch?.color && !value.swatch?.imageUrl) {
       return (
-        <VariantChip key={value.id} value={value} onSelect={handleSelect} />
+        <VariantChip
+          key={value.id}
+          value={value}
+          onSelect={handleSelect}
+          tabIndex={getTabIndex(value.id)}
+        />
       );
     }
 
@@ -103,6 +112,8 @@ const VariantSwatches = ({
         data-sold-out={value.soldOut ? true : undefined}
         data-shape={swatchShape}
         data-test-id={value.label}
+        data-value-id={value.id}
+        tabIndex={getTabIndex(value.id)}
         style={{
           ...(value.swatch.color && { backgroundColor: value.swatch.color }),
           ...(value.swatch.imageUrl && {
@@ -128,8 +139,11 @@ const VariantSwatches = ({
         selectedLabel={selectedLabel}
         highlight={highlight}
       />
+      {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
       <div
+        ref={groupRef}
         role="radiogroup"
+        onKeyDown={onKeyDown}
         aria-labelledby={`${headingId}-label`}
         className={cx(classes.values, 'engage__variant-selector__values')}
       >

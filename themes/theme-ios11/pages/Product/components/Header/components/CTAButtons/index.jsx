@@ -13,10 +13,7 @@ import {
 import { appConfig } from '@shopgate/engage';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import {
-  getProductTileActions,
-  getProductTileActionsDirection,
-} from '@shopgate/engage/settings/selectors/appSettings';
+import { getProductTileActions } from '@shopgate/engage/settings/selectors/appSettings';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig;
@@ -63,8 +60,7 @@ const CTAButtons = ({
   isFavorite, productId, isProductActive, hasImageGallery,
 }) => {
   const { classes, cx } = useStyles();
-  const { position } = useSelector(getProductTileActions);
-  const direction = useSelector(getProductTileActionsDirection);
+  const { position, direction } = useSelector(getProductTileActions);
   const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery;
 
   return (

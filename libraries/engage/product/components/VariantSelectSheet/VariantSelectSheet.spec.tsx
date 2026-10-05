@@ -1,5 +1,7 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  act, fireEvent, render, screen,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import VariantSelectSheet from './VariantSelectSheet';
 import type { VariantSelectorProps } from '../VariantSelector';
@@ -42,20 +44,33 @@ jest.mock('@shopgate/pwa-ui-shared/PriceStriked', () => ({ value }: { value: num
   <span>{`striked ${value}`}</span>
 ));
 jest.mock('../ProductImage', () => () => null);
+let mockSelected = false;
+
 jest.mock('../VariantSelector', () => ({
-  VariantSelector: ({ onCharacteristicsChange, compact }: VariantSelectorProps) => (
-    <button
-      type="button"
-      data-compact={compact ? 'true' : undefined}
-      onClick={() => onCharacteristicsChange?.({ color: 'gold' })}
-    >
-      select gold
-    </button>
-  ),
+  VariantSelector: ({ onCharacteristicsChange, compact, conditioner }: VariantSelectorProps) => {
+    conditioner?.addConditioner('variants', () => mockSelected);
+
+    return (
+      <button
+        type="button"
+        data-compact={compact ? 'true' : undefined}
+        onClick={() => {
+          mockSelected = true;
+          onCharacteristicsChange?.({ color: 'gold' });
+        }}
+      >
+        select gold
+      </button>
+    );
+  },
 }));
 
 describe('<VariantSelectSheet />', () => {
-  it('enables add to cart once a variant is selected and passes the variant', () => {
+  beforeEach(() => {
+    mockSelected = false;
+  });
+
+  it('checks the selection first and passes the selected variant once', async () => {
     const onAddToCart = jest.fn();
     render(<VariantSelectSheet productId="base" isOpen onClose={jest.fn()} onAddToCart={onAddToCart} />);
 
@@ -64,11 +79,20 @@ describe('<VariantSelectSheet />', () => {
     expect(screen.getByRole('button', { name: 'select gold' })).toHaveAttribute('data-compact', 'true');
 
     const addButton = screen.getByRole('button', { name: 'product.add_to_cart' });
-    expect(addButton).toBeDisabled();
+    expect(addButton).toBeEnabled();
+
+    await act(async () => {
+      fireEvent.click(addButton);
+    });
+    expect(onAddToCart).not.toHaveBeenCalled();
 
     fireEvent.click(screen.getByRole('button', { name: 'select gold' }));
-    fireEvent.click(addButton);
+    await act(async () => {
+      fireEvent.click(addButton);
+      fireEvent.click(addButton);
+    });
 
+    expect(onAddToCart).toHaveBeenCalledTimes(1);
     expect(onAddToCart).toHaveBeenCalledWith(expect.objectContaining({ id: 'gold-1' }));
   });
 

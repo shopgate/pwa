@@ -73,6 +73,8 @@ export interface VariantRendererProps {
   disabled: boolean;
   highlight: boolean;
   id: string;
+  /** Unique id of the characteristic within the page, for DOM ids. Defaults to `id`. */
+  domId?: string;
   label: string;
   selected: string | null;
   swatch: boolean;

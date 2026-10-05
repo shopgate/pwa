@@ -1,7 +1,8 @@
 import {
   getCanSelectColorScheme,
   getDefaultColorSchemeMode,
-  getProductTileActionsDirection,
+  getProductTileActions,
+  getVariantSelectorSettings,
   getTypographyFontCssUrls,
   getTypographySettings,
   getWidgetMediaMargins,
@@ -189,23 +190,38 @@ describe('settings/selectors/appSettings', () => {
     });
   });
 
-  describe('getProductTileActionsDirection()', () => {
-    it('stacks the buttons at the top and lines them up at the bottom by default', () => {
-      expect(getProductTileActionsDirection(stateWithTileActions({ position: 'topRight' })))
-        .toBe('vertical');
-      expect(getProductTileActionsDirection(stateWithTileActions({ position: 'bottomRight' })))
-        .toBe('horizontal');
-    });
-
-    it('uses a configured direction regardless of the position', () => {
-      expect(getProductTileActionsDirection(stateWithTileActions({
-        position: 'topRight',
-        direction: 'horizontal',
-      }))).toBe('horizontal');
-      expect(getProductTileActionsDirection(stateWithTileActions({
-        position: 'bottomRight',
+  describe('getProductTileActions()', () => {
+    it('falls back to the default for single values that are null', () => {
+      expect(getProductTileActions(stateWithTileActions({
+        position: null,
         direction: 'vertical',
-      }))).toBe('vertical');
+      } as unknown as Partial<ProductTileActionsSettings>))).toEqual({
+        ...DEFAULT_APP_SETTINGS.product.tileActions,
+        direction: 'vertical',
+      });
+    });
+  });
+
+  describe('getVariantSelectorSettings()', () => {
+    it('falls back to the default for single values that are null', () => {
+      const settings = getVariantSelectorSettings({
+        settings: {
+          appSettings: {
+            ...DEFAULT_APP_SETTINGS,
+            product: {
+              ...DEFAULT_APP_SETTINGS.product,
+              variantSelector: {
+                ...DEFAULT_APP_SETTINGS.product.variantSelector,
+                type: null,
+                soldOut: 'hide',
+              },
+            },
+          },
+        },
+      } as unknown as AppSettingsState);
+
+      expect(settings.type).toBe(DEFAULT_APP_SETTINGS.product.variantSelector.type);
+      expect(settings.soldOut).toBe('hide');
     });
   });
 });

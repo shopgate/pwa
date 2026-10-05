@@ -93,8 +93,8 @@ export interface ProductTileActionsSettings {
   position: 'topRight' | 'bottomRight';
   /** `actionButton` adds a cart button next to the favorites button, `button` one below the tile. */
   addToCart: 'hidden' | 'actionButton' | 'button';
-  /** How the action buttons line up. `auto` stacks them at the top and lines them up at the bottom. */
-  direction: 'auto' | 'horizontal' | 'vertical';
+  /** Whether the action buttons line up side by side or stacked. */
+  direction: 'horizontal' | 'vertical';
 }
 
 /**

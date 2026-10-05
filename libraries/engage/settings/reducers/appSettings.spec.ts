@@ -85,7 +85,7 @@ describe('settings / reducers / appSettings', () => {
         tileActions: {
           position: 'topRight',
           addToCart: 'button',
-          direction: 'auto',
+          direction: 'vertical',
         },
       },
       cards: {

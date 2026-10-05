@@ -7,6 +7,7 @@ import { Portal } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import isMatch from 'lodash/isMatch';
+import uniqueId from 'lodash/uniqueId';
 import * as productSelectors from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { PRODUCT_VARIANT_SELECT_CHARACTERISTIC } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import VariantContext from '../ProductCharacteristics/context';
@@ -97,7 +98,7 @@ export interface VariantSelectorProps {
   characteristics?: VariantSelection | null;
   /** Called whenever the selection changes. */
   onCharacteristicsChange?: (selection: VariantSelection) => void;
-  /** Renders dropdowns as chips, e.g. inside a sheet. */
+  /** Renders dropdowns as inline lists, e.g. inside a sheet. */
   compact?: boolean;
 }
 
@@ -119,6 +120,16 @@ const VariantSelector = ({
   const variants = useSelector((state: unknown) => getProductVariants(state, { productId }));
   const isLoading = useSelector((state: unknown) => getAreVariantsLoading(state, { productId }));
   const [highlight, setHighlight] = useState<string | null>(null);
+  const instanceId = useMemo(() => uniqueId('variant-selector-'), []);
+  const announceTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const highlightFrame = useRef<number>();
+
+  useEffect(() => () => {
+    clearTimeout(announceTimeout.current);
+    if (highlightFrame.current) {
+      cancelAnimationFrame(highlightFrame.current);
+    }
+  }, []);
   const reduceMotion = useReduceMotion();
   const settings = useVariantSelectorSettings();
 
@@ -170,14 +181,18 @@ const VariantSelector = ({
       element.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
     }
 
-    setTimeout(() => {
+    clearTimeout(announceTimeout.current);
+    announceTimeout.current = setTimeout(() => {
       announce('product.pick_option_first', {
         params: { option: firstUnselected.label },
       });
     }, ANNOUNCE_DELAY);
 
     setHighlight(null);
-    requestAnimationFrame(() => setHighlight(firstUnselected.id));
+    if (highlightFrame.current) {
+      cancelAnimationFrame(highlightFrame.current);
+    }
+    highlightFrame.current = requestAnimationFrame(() => setHighlight(firstUnselected.id));
 
     return false;
   }, [findFirstUnselected, isComplete, reduceMotion, refs, selection, variantId, variants]);
@@ -239,31 +254,34 @@ const VariantSelector = ({
           ?? DEFAULT_RENDERERS[type]
           ?? DEFAULT_RENDERERS.dropdown;
 
+        const rendererProps: VariantRendererProps = {
+          charRef: refs[row.id],
+          disabled: row.disabled,
+          highlight: highlight === row.id,
+          id: row.id,
+          domId: `${instanceId}-${row.id}`,
+          label: row.label,
+          selected: row.selected,
+          swatch: row.swatch,
+          values: row.values,
+          select: handleSelect,
+          resetHighlight,
+          chipsLayout: settings.chipsLayout,
+          swatchShape: settings.swatchShape,
+          swatchImageZoom: settings.swatchImageZoom,
+        };
+
         return (
           <Portal
             key={row.id}
             name={PRODUCT_VARIANT_SELECT_CHARACTERISTIC}
             props={{
+              ...rendererProps,
               characteristic: row,
               type,
-              select: handleSelect,
             }}
           >
-            <Renderer
-              charRef={refs[row.id]}
-              disabled={row.disabled}
-              highlight={highlight === row.id}
-              id={row.id}
-              label={row.label}
-              selected={row.selected}
-              swatch={row.swatch}
-              values={row.values}
-              select={handleSelect}
-              resetHighlight={resetHighlight}
-              chipsLayout={settings.chipsLayout}
-              swatchShape={settings.swatchShape}
-              swatchImageZoom={settings.swatchImageZoom}
-            />
+            <Renderer {...rendererProps} />
           </Portal>
         );
       })}

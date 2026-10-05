@@ -4,6 +4,7 @@ import {
   getVariantId,
   getProductCurrency,
   getProduct,
+  getProductById,
 } from '@shopgate/pwa-common-commerce/product';
 import { getProductIsFetching } from '@shopgate/engage/product';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
@@ -21,6 +22,10 @@ function makeMapStateToProps() {
   return (state, props) => ({
     productIsFetching: getProductIsFetching(state, props),
     productDataLoaded: !!getProduct(state, { productId: props.productId }),
+    productRequestFailed: (() => {
+      const entry = getProductById(state, { productId: props.productId });
+      return !!entry && !entry.isFetching && !entry.productData;
+    })(),
     baseProductId: getBaseProductId(state, props),
     variantId: getVariantId(state, props),
     currency: getProductCurrency(state, props),

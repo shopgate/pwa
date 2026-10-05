@@ -1,10 +1,13 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import Transition from 'react-transition-group/Transition';
 import { ArrowDropIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import { makeStyles } from '@shopgate/engage/styles';
 import { VisuallyHidden } from '@shopgate/engage/a11y';
 import { getValueStateText } from './valueState';
+import useRadioGroupKeys from './useRadioGroupKeys';
 import transition from '../../Characteristics/transition';
 import type { VariantRendererProps } from '../types';
 
@@ -77,7 +80,7 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
       outline: `2px solid ${theme.palette.text.primary}`,
       outlineOffset: -2,
     },
-    '&[aria-selected="true"]': {
+    '&[aria-checked="true"]': {
       background: theme.palette.background.emphasized,
       fontWeight: theme.typography.fontWeightMedium,
     },
@@ -100,6 +103,7 @@ const VariantInlineDropdown = ({
   charRef,
   highlight: highlightProp,
   id,
+  domId = id,
   label,
   selected,
   values,
@@ -108,7 +112,9 @@ const VariantInlineDropdown = ({
   const { classes, cx } = useStyles();
   const [expanded, setExpanded] = useState(false);
   const [highlight, setHighlight] = useState(false);
-  const listId = `variant-inline-dropdown-${id}`;
+  const listId = `variant-inline-dropdown-${domId}`;
+  const labelId = `${listId}-label`;
+  const wasExpanded = useRef(false);
   const selectedLabel = values.find(value => value.id === selected)?.label;
 
   useEffect(() => {
@@ -124,6 +130,23 @@ const VariantInlineDropdown = ({
     select({ id, value: valueId });
     collapse();
   }, [collapse, id, select]);
+
+  const handleArrowSelect = useCallback((valueId: string) => {
+    select({ id, value: valueId });
+  }, [id, select]);
+
+  const { groupRef, onKeyDown, getTabIndex } = useRadioGroupKeys(
+    values,
+    selected,
+    handleArrowSelect
+  );
+
+  useEffect(() => {
+    if (expanded && !wasExpanded.current) {
+      groupRef.current?.querySelector<HTMLElement>('[role="radio"][tabindex="0"]')?.focus();
+    }
+    wasExpanded.current = expanded;
+  }, [expanded, groupRef]);
 
   const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
     if (event.key === 'Escape' && expanded) {
@@ -144,16 +167,16 @@ const VariantInlineDropdown = ({
           <button
             type="button"
             ref={charRef as React.RefObject<HTMLButtonElement>}
-            className={cx(classes.field, 'engage__variant-selector__inline-dropdown-field')}
+            className={cx(classes.field, 'engage__variant-selector__inline-dropdown__field')}
             aria-expanded={expanded}
             aria-controls={expanded ? listId : undefined}
             onClick={() => setExpanded(current => !current)}
             style={transition[state]}
           >
             <span className={classes.text}>
-              <span className={cx(classes.label, 'engage__variant-selector__label')}>{label}</span>
+              <span id={labelId} className={cx(classes.label, 'engage__variant-selector__label')}>{label}</span>
               <span className={cx(classes.selection, 'engage__variant-selector__selected-value')}>
-                {selectedLabel || i18n.text('product.pick_an_attribute', [label])}
+                {selectedLabel || i18n.text('common.please_choose')}
               </span>
             </span>
             <span className={classes.arrow} data-expanded={expanded ? true : undefined} aria-hidden>
@@ -163,17 +186,27 @@ const VariantInlineDropdown = ({
         )}
       </Transition>
       {expanded && (
-        <div id={listId} role="listbox" aria-label={label} className={classes.list}>
+        // eslint-disable-next-line jsx-a11y/interactive-supports-focus
+        <div
+          id={listId}
+          ref={groupRef}
+          role="radiogroup"
+          aria-labelledby={labelId}
+          className={classes.list}
+          onKeyDown={onKeyDown}
+        >
           {values.map(value => (
             <button
               key={value.id}
               type="button"
-              role="option"
-              aria-selected={value.selected}
+              role="radio"
+              aria-checked={value.selected}
               aria-disabled={!value.selectable}
-              className={cx(classes.option, 'engage__variant-selector__inline-dropdown-option')}
+              className={cx(classes.option, 'engage__variant-selector__inline-dropdown__option')}
               data-unavailable={value.available === false ? true : undefined}
               data-sold-out={value.soldOut ? true : undefined}
+              data-value-id={value.id}
+              tabIndex={getTabIndex(value.id)}
               onClick={() => {
                 if (value.selectable) {
                   handleSelect(value.id);

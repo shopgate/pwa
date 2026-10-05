@@ -80,7 +80,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     tileActions: {
       position: 'bottomRight',
       addToCart: 'hidden',
-      direction: 'auto',
+      direction: 'horizontal',
     },
   },
   cards: {

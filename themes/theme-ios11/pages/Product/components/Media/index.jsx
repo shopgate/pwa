@@ -19,11 +19,15 @@ import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
 import CTAButtons from '../Header/components/CTAButtons';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
+  wrapper: {
+    position: 'relative',
+    [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
+  },
   root: {
     position: 'relative',
   },
-});
+}));
 
 /**
  * The product media component.
@@ -39,12 +43,13 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
       }) => (
         <ProductListTypeProvider type="pdp" subType="mediaSection">
           <ProductListEntryProvider productId={variantId || productId}>
-            <div className={classes.root}>
+            <div className={classes.wrapper}>
               <SurroundPortals
                 portalName={PORTAL_PRODUCT_MEDIA_SECTION}
                 portalProps={{
                   productId,
-                  variantId,
+                  variantId: selectedVariantId,
+                  displayVariantId: variantId,
                 }}
               >
                 <div className={classes.root}>
@@ -54,7 +59,8 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
                     portalName={PORTAL_PRODUCT_IMAGE_SLIDER}
                     portalProps={{
                       productId,
-                      variantId,
+                      variantId: selectedVariantId,
+                      displayVariantId: variantId,
                     }}
                   >
                     {/* MediaSlider feature is currently in BETA testing.

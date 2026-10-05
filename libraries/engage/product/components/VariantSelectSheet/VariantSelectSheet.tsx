@@ -12,6 +12,8 @@ import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchProduct';
 import fetchProductVariants from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
 import * as productSelectors from '@shopgate/pwa-common-commerce/product/selectors/product';
+import ConditionerClass from '@shopgate/pwa-core/classes/Conditioner';
+import { ProductContext } from '../context';
 import ProductImage from '../ProductImage';
 import { VariantSelector } from '../VariantSelector';
 import type { ProductVariants, VariantProduct, VariantSelection } from '../VariantSelector';
@@ -157,12 +159,39 @@ const VariantSelectSheet = ({
   }, [dispatch, isOpen, productId]);
 
   const isOrderable = !!variant && variant.stock?.orderable !== false;
+  const conditioner = useMemo(() => new ConditionerClass(new Map()), []);
+  const submitted = useRef(false);
 
-  const handleAddToCart = useCallback(() => {
-    if (variant && isOrderable) {
-      onAddToCart(variant);
+  useEffect(() => {
+    if (isOpen) {
+      submitted.current = false;
     }
-  }, [isOrderable, onAddToCart, variant]);
+  }, [isOpen]);
+
+  const handleAddToCart = useCallback(async () => {
+    if (submitted.current) {
+      return;
+    }
+
+    submitted.current = true;
+
+    if (!(await conditioner.check()) || !variant || !isOrderable) {
+      submitted.current = false;
+      return;
+    }
+
+    onAddToCart(variant);
+  }, [conditioner, isOrderable, onAddToCart, variant]);
+
+  const contextValue = useMemo(() => ({
+    productId,
+    variantId,
+    characteristics: selection,
+    conditioner,
+    fulfillmentMethods: null,
+    options: {},
+    isFetching: false,
+  }), [conditioner, productId, selection, variantId]);
 
   const price = variantFromStore?.price || variantFromList?.price || baseProduct?.price;
   const strikePrice = price && Math.max(price.unitPriceStriked || 0, price.msrp || 0);
@@ -201,18 +230,21 @@ const VariantSelectSheet = ({
           )}
         </div>
       </div>
-      <VariantSelector
-        key={productId}
-        productId={productId}
-        variantId={variantId}
-        onCharacteristicsChange={setSelection}
-        compact
-      />
+      <ProductContext.Provider value={contextValue}>
+        <VariantSelector
+          key={productId}
+          productId={productId}
+          variantId={variantId}
+          onCharacteristicsChange={setSelection}
+          conditioner={conditioner}
+          compact
+        />
+      </ProductContext.Provider>
       <div className={cx(classes.footer, 'engage__variant-select-sheet__footer')}>
         <Button
           color="cta"
           fullWidth
-          disabled={!isOrderable}
+          disabled={!variants || (!!variant && !isOrderable)}
           onClick={handleAddToCart}
         >
           {i18n.text('product.add_to_cart')}

@@ -124,6 +124,7 @@ function ProductCard(props) {
   return (
     <div
       className={cx(classes.root, 'engage__product-card')}
+      itemProp="item"
       itemScope
       itemType="http://schema.org/Product"
     >

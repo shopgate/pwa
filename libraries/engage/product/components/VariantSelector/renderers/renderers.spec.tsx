@@ -77,6 +77,43 @@ describe('<VariantChips />', () => {
     expect(select).toHaveBeenCalledWith({ id: 'size', value: 'xl' });
   });
 
+  it('has one tab stop and moves the selection with arrow keys', () => {
+    const select = jest.fn();
+    render(<VariantChips {...renderProps({
+      select,
+      values: [
+        {
+          id: 's', label: 'S', selectable: true, selected: true,
+        },
+        {
+          id: 'm', label: 'M', selectable: true, selected: false,
+        },
+        {
+          id: 'l', label: 'L', selectable: false, selected: false,
+        },
+        {
+          id: 'xl', label: 'XL', selectable: true, selected: false,
+        },
+      ],
+    })}
+    />);
+
+    const radios = screen.getAllByRole('radio');
+    expect(radios.map(radio => radio.tabIndex)).toEqual([0, -1, -1, -1]);
+
+    radios[0].focus();
+    fireEvent.keyDown(radios[0], { key: 'ArrowRight' });
+    expect(radios[1]).toHaveFocus();
+    expect(select).toHaveBeenLastCalledWith({ id: 'size', value: 'm' });
+
+    fireEvent.keyDown(radios[1], { key: 'ArrowRight' });
+    expect(radios[3]).toHaveFocus();
+
+    fireEvent.keyDown(radios[3], { key: 'Home' });
+    expect(radios[0]).toHaveFocus();
+    expect(select).toHaveBeenLastCalledWith({ id: 'size', value: 's' });
+  });
+
   it('exposes the layout', () => {
     render(<VariantChips {...renderProps({ chipsLayout: 'scroll' })} />);
 
@@ -91,14 +128,14 @@ describe('<VariantInlineDropdown />', () => {
     render(<VariantInlineDropdown {...renderProps({ select, selected: null })} />);
 
     const field = screen.getByRole('button', { name: /Size/ });
-    expect(field).toHaveTextContent('product.pick_an_attribute:Size');
+    expect(field).toHaveTextContent('common.please_choose');
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
     fireEvent.click(field);
     expect(field).toHaveAttribute('aria-expanded', 'true');
-    expect(screen.getByRole('option', { name: /^M ?, product.available.not$/ })).toHaveAttribute('data-sold-out', 'true');
+    expect(screen.getByRole('radio', { name: /^M ?, product.available.not$/ })).toHaveAttribute('data-sold-out', 'true');
 
-    fireEvent.click(screen.getByRole('option', { name: /^M ?, product.available.not$/ }));
+    fireEvent.click(screen.getByRole('radio', { name: /^M ?, product.available.not$/ }));
     expect(select).toHaveBeenCalledWith({ id: 'size', value: 'm' });
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });

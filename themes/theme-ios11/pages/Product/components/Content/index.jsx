@@ -38,6 +38,7 @@ class ProductContent extends PureComponent {
     productDataLoaded: PropTypes.bool,
     productId: PropTypes.string,
     productIsFetching: PropTypes.bool,
+    productRequestFailed: PropTypes.bool,
     variantId: PropTypes.string,
   };
 
@@ -47,6 +48,7 @@ class ProductContent extends PureComponent {
     fulfillmentMethods: null,
     isVariant: false,
     productDataLoaded: false,
+    productRequestFailed: false,
     productId: null,
     variantId: null,
     productIsFetching: false,
@@ -106,7 +108,9 @@ class ProductContent extends PureComponent {
       variantId = nextProps.productId;
     }
 
-    const keepDisplayedVariant = !!variantId && !nextProps.productDataLoaded;
+    const keepDisplayedVariant = !!variantId
+      && !nextProps.productDataLoaded
+      && !nextProps.productRequestFailed;
 
     this.setState(prevState => ({
       productId,

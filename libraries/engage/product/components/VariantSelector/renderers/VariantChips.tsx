@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import CharacteristicHeading from './CharacteristicHeading';
 import VariantChip from './VariantChip';
+import useRadioGroupKeys from './useRadioGroupKeys';
 import type { VariantRendererProps } from '../types';
 
 const useStyles = makeStyles({ name: 'VariantChips' })({
@@ -35,6 +36,7 @@ const VariantChips = ({
   charRef,
   highlight,
   id,
+  domId = id,
   label,
   selected,
   values,
@@ -42,12 +44,14 @@ const VariantChips = ({
   chipsLayout = 'wrap',
 }: VariantRendererProps) => {
   const { classes, cx } = useStyles();
-  const headingId = `variant-characteristic-${id}`;
+  const headingId = `variant-characteristic-${domId}`;
   const selectedLabel = values.find(value => value.id === selected)?.label ?? null;
 
   const handleSelect = useCallback((valueId: string) => {
     select({ id, value: valueId });
   }, [id, select]);
+
+  const { groupRef, onKeyDown, getTabIndex } = useRadioGroupKeys(values, selected, handleSelect);
 
   return (
     <div className={cx(classes.root, 'engage__variant-selector__characteristic')} data-type="chips">
@@ -58,14 +62,22 @@ const VariantChips = ({
         selectedLabel={selectedLabel}
         highlight={highlight}
       />
+      {/* eslint-disable-next-line jsx-a11y/interactive-supports-focus */}
       <div
+        ref={groupRef}
         role="radiogroup"
+        onKeyDown={onKeyDown}
         aria-labelledby={`${headingId}-label`}
         className={cx(classes.values, 'engage__variant-selector__values')}
         data-layout={chipsLayout}
       >
         {values.map(value => (
-          <VariantChip key={value.id} value={value} onSelect={handleSelect} />
+          <VariantChip
+            key={value.id}
+            value={value}
+            onSelect={handleSelect}
+            tabIndex={getTabIndex(value.id)}
+          />
         ))}
       </div>
     </div>

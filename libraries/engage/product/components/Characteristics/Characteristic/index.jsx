@@ -131,8 +131,7 @@ class Characteristic extends PureComponent {
     const {
       disabled, selected, charRef, label, classes,
     } = this.props;
-    const translatedLabel = __('product.pick_an_attribute', [label]);
-    const buttonLabel = this.getButtonLabel(translatedLabel);
+    const buttonLabel = this.getButtonLabel(__('common.please_choose'));
     const cmpClasses = cx(
       classes.button,
       { [classes.buttonDisabled]: disabled },

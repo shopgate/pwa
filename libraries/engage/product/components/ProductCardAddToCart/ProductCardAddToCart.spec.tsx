@@ -35,32 +35,33 @@ jest.mock('@shopgate/engage/locations/selectors', () => ({
 jest.mock('@shopgate/engage/locations/constants', () => ({ DIRECT_SHIP: 'directShip' }));
 jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
 jest.mock('@shopgate/engage/components/v2', () => ({
+  CircularProgress: () => <span>loading</span>,
   IconButton: ({
-    onClick, disabled, loading, children,
+    onClick, disabled, children, 'aria-busy': busy,
   }: {
     onClick: (event: unknown) => unknown;
     disabled: boolean;
-    loading: boolean;
     children: React.ReactNode;
+    'aria-busy'?: boolean;
   }) => (
-    <button type="button" disabled={disabled} data-loading={loading} onClick={onClick}>
+    <button type="button" disabled={disabled} aria-busy={busy} onClick={onClick}>
       add
       {children}
     </button>
   ),
   Button: ({
-    onClick, disabled, loading, variant, children,
+    onClick, disabled, variant, children, 'aria-busy': busy,
   }: {
     onClick: (event: unknown) => unknown;
     disabled: boolean;
-    loading: boolean;
     variant: string;
     children: React.ReactNode;
+    'aria-busy'?: boolean;
   }) => (
     <button
       type="button"
       disabled={disabled}
-      data-loading={loading}
+      aria-busy={busy}
       data-variant={variant}
       onClick={onClick}
     >
@@ -130,14 +131,15 @@ describe('<ProductCardAddToCart />', () => {
 
     const button = screen.getByRole('button');
     fireEvent.click(button);
-    expect(button).toHaveAttribute('data-loading', 'true');
+    expect(button).toHaveAttribute('aria-busy', 'true');
+    expect(button).toBeEnabled();
     expect(screen.queryByText('tick')).not.toBeInTheDocument();
 
     await act(async () => {
       resolve({});
     });
 
-    expect(button).toHaveAttribute('data-loading', 'false');
+    expect(button).not.toHaveAttribute('aria-busy');
     expect(button).toHaveAttribute('data-variant', 'contained');
     expect(screen.getByText('tick')).toBeInTheDocument();
   });
@@ -162,7 +164,7 @@ describe('<ProductCardAddToCart />', () => {
     mockProduct = { id: 'simple', flags: {}, stock: { orderable: true } };
     render(<ProductCardAddToCart productId="simple" />);
 
-    const button = screen.getByRole('button', { name: 'add' });
+    const button = screen.getByRole('button', { name: /add/ });
     fireEvent.click(button);
     fireEvent.click(button);
 

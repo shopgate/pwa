@@ -1,4 +1,6 @@
 import { createSelector } from 'reselect';
+import isNil from 'lodash/isNil';
+import omitBy from 'lodash/omitBy';
 import { COLOR_SCHEME_SELECTABLE } from '../types/appSettings';
 import type { AppSettingsSlice, AppSettingsState, ColorSchemeMode } from '../types/appSettings';
 import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
@@ -70,22 +72,8 @@ export const getProductTileActions = createSelector(
   getAppSettingsState,
   appSettings => ({
     ...DEFAULT_APP_SETTINGS.product.tileActions,
-    ...appSettings.product?.tileActions,
+    ...omitBy(appSettings.product?.tileActions, isNil),
   })
-);
-
-/**
- * Selects how the action buttons on product tiles line up, with `auto` resolved by their position.
- */
-export const getProductTileActionsDirection = createSelector(
-  getProductTileActions,
-  ({ position, direction }) => {
-    if (direction === 'horizontal' || direction === 'vertical') {
-      return direction;
-    }
-
-    return position === 'topRight' ? 'vertical' : 'horizontal';
-  }
 );
 
 /**
@@ -95,7 +83,7 @@ export const getVariantSelectorSettings = createSelector(
   getAppSettingsState,
   appSettings => ({
     ...DEFAULT_APP_SETTINGS.product.variantSelector,
-    ...appSettings.product?.variantSelector,
+    ...omitBy(appSettings.product?.variantSelector, isNil),
   })
 );
 
