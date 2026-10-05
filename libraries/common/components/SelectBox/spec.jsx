@@ -93,9 +93,12 @@ describe('<SelectBox>', () => {
     expect(button).toHaveAttribute('aria-controls', 'My item #2');
     expect(screen.queryByText('Foo')).not.toBeInTheDocument();
     expect(screen.getByRole('menu', { hidden: true })).toHaveAttribute('id', 'My item #2');
-    expect(screen.getByRole('menuitem', {
+    const selectedItem = screen.getByRole('menuitem', {
       hidden: true,
       current: true,
-    })).toHaveTextContent('My item #2');
+    });
+
+    expect(selectedItem).toHaveTextContent('My item #2');
+    expect(selectedItem).not.toHaveClass('undefined');
   });
 });

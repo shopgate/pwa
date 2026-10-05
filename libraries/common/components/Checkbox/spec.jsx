@@ -131,10 +131,12 @@ describe('<Checkbox />', () => {
     ));
 
     expect(screen.getByText('unchecked icon')).toBeInTheDocument();
+    expect(screen.getByRole('checkbox')).not.toBeChecked();
 
     fireEvent.click(screen.getByRole('checkbox'));
 
     expect(screen.getByText('checked icon')).toBeInTheDocument();
     expect(screen.queryByText('unchecked icon')).not.toBeInTheDocument();
+    expect(screen.getByRole('checkbox')).toBeChecked();
   });
 });

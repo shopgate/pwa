@@ -162,7 +162,7 @@ class Checkbox extends Component {
         onClick={this.handleCheck}
         onKeyDown={this.handleKeyDown}
         role="checkbox"
-        aria-checked={this.props.checked}
+        aria-checked={this.isChecked()}
         tabIndex={0}
       >
         {this.renderInput()}

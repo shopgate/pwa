@@ -3,23 +3,11 @@ import {
 } from '@testing-library/react';
 import { i18n } from '@shopgate/engage/core/helpers';
 import TextMessageDialog from './index';
-import BasicDialog from '../BasicDialog';
 
 const message = 'This is the message.';
 const title = 'This is the title.';
 
 jest.mock('@shopgate/engage/a11y/components');
-jest.mock('../BasicDialog', () => {
-  const ActualBasicDialog = jest.requireActual('../BasicDialog').default;
-  const BasicDialogMock = jest.fn(props => <ActualBasicDialog {...props} />);
-  BasicDialogMock.propTypes = ActualBasicDialog.propTypes;
-  BasicDialogMock.defaultProps = ActualBasicDialog.defaultProps;
-
-  return {
-    __esModule: true,
-    default: BasicDialogMock,
-  };
-});
 
 describe('<TextMessageDialog />', () => {
   afterEach(() => {
@@ -86,18 +74,15 @@ describe('<TextMessageDialog />', () => {
   });
 
   it('should pass title through', () => {
-    const customTitle = <div>Title</div>;
-    BasicDialog.mockImplementationOnce(() => null);
-
     render((
       <TextMessageDialog
-        title={customTitle}
+        title={<div>Custom title</div>}
         message={message}
         params={{}}
         actions={[]}
       />
     ));
 
-    expect(BasicDialog.mock.lastCall[0]).toEqual(expect.objectContaining({ title: customTitle }));
+    expect(within(screen.getByRole('alertdialog')).getByText('Custom title')).toBeInTheDocument();
   });
 });
