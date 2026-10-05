@@ -60,7 +60,6 @@ describe('settings / reducers / appSettings', () => {
             medium: 2.2,
             large: 3.2,
           },
-          showActions: true,
         },
         rating: {
           showEmptyStars: false,
@@ -80,7 +79,7 @@ describe('settings / reducers / appSettings', () => {
           swatchImageZoom: 200,
           swatchProperty: '',
           chipsLayout: 'scroll',
-          sortSizes: false,
+          preselect: 'on',
           soldOut: 'hide',
         },
         tileActions: {

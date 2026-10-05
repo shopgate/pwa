@@ -248,7 +248,7 @@ export const decorateRows = (
   selection: VariantSelection,
   settings: Pick<
     VariantSelectorSettings,
-    'sortSizes' | 'soldOut' | 'swatchSource' | 'swatchProperty' | 'swatchImageZoom'
+    'soldOut' | 'swatchSource' | 'swatchProperty' | 'swatchImageZoom'
   >
 ): VariantSelectorRow[] => rows.map((row) => {
   const others = getOtherSelections(selection, row.id);
@@ -272,6 +272,6 @@ export const decorateRows = (
 
   return {
     ...row,
-    values: settings.sortSizes ? sortSizeValues(visible) : visible,
+    values: sortSizeValues(visible),
   };
 });

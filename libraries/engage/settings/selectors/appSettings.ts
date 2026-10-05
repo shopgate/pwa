@@ -72,14 +72,6 @@ export const getProductTileActions = createSelector(
 );
 
 /**
- * Selects whether product cards in sliders show the tile actions.
- */
-export const getProductSliderShowActions = createSelector(
-  getAppSettingsState,
-  appSettings => !!appSettings.product.slider.showActions
-);
-
-/**
  * Selects the variant selector settings.
  */
 export const getVariantSelectorSettings = createSelector(

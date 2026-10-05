@@ -28,7 +28,6 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   getProductCardNameMaxLines,
-  getProductSliderShowActions,
   getProductTileActions,
 } from '@shopgate/engage/settings/selectors/appSettings';
 import { ProductCardAddToCart } from '../ProductCardAddToCart';
@@ -90,7 +89,6 @@ function ProductCard(props) {
   } = props;
   const { meta } = useProductListType();
   const productNameLines = useSelector(getProductCardNameMaxLines);
-  const showActions = useSelector(getProductSliderShowActions);
   const { addToCart } = useSelector(getProductTileActions);
 
   const showEmptyRatingStars = useShowEmptyRatingStars();
@@ -132,7 +130,7 @@ function ProductCard(props) {
               alt={product.name}
               itemProp="image"
           />}
-        {showActions && <ProductTileActions productId={product.id} />}
+        <ProductTileActions productId={product.id} />
       </div>
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (
@@ -189,7 +187,7 @@ function ProductCard(props) {
           )}
         </div>
       )}
-      {showActions && addToCart === 'button' && (
+      {addToCart === 'button' && (
         <ProductCardAddToCart
           productId={product.id}
           variant="button"

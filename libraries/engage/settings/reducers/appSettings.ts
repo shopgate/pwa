@@ -55,7 +55,6 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
         medium: 3.3,
         large: 4.3,
       },
-      showActions: false,
     },
     rating: {
       showEmptyStars: false,
@@ -75,7 +74,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       swatchImageZoom: 100,
       swatchProperty: '',
       chipsLayout: 'wrap',
-      sortSizes: true,
+      preselect: 'inherit',
       soldOut: 'strike',
     },
     tileActions: {

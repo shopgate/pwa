@@ -83,8 +83,6 @@ export type SlidesPerView = PerScreenSize;
  */
 export interface ProductSliderSettings {
   slidesPerView: SlidesPerView;
-  /** Whether product cards in sliders show the tile actions. */
-  showActions: boolean;
 }
 
 /**
@@ -136,8 +134,8 @@ export interface ProductVariantSelectorSettings {
   swatchProperty: string;
   /** `wrap` breaks chips into lines, `scroll` keeps them in one swipeable row. */
   chipsLayout: 'wrap' | 'scroll';
-  /** Whether values that are recognized as sizes are sorted from small to large. */
-  sortSizes: boolean;
+  /** `inherit` keeps the shop setting, `on` and `off` override it. */
+  preselect: 'inherit' | 'on' | 'off';
   /** How values are shown whose variants are all sold out. */
   soldOut: 'strike' | 'hide' | 'none';
 }

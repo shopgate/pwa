@@ -162,9 +162,10 @@ export function prepareState(id, value, selections, characteristics, products) {
  * or pre-select the first available product
  * @param {string} [variantId=null] The selected variant
  * @param {{products: Object[], characteristics: Object[]}} [variants=null] All possible variants.
+ * @param {boolean} [preselect] Whether to preselect the first variant, defaults to the shop config.
  * @return {Object}
  */
-export function selectCharacteristics({ variantId, variants = {} }) {
+export function selectCharacteristics({ variantId, variants = {}, preselect = preselectVariant }) {
   if (!variants || !variants.products || !variants.products.length) {
     return {};
   }
@@ -180,7 +181,7 @@ export function selectCharacteristics({ variantId, variants = {} }) {
   }
 
   // Pre-selection is off
-  if (!preselectVariant) {
+  if (!preselect) {
     return {};
   }
 

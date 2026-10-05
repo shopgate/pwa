@@ -41,7 +41,7 @@ jest.mock('../../hooks/useVariantSelectorSettings', () => () => ({
   swatchImageZoom: 100,
   swatchProperty: '',
   chipsLayout: 'wrap',
-  sortSizes: true,
+  preselect: 'inherit',
   soldOut: 'strike',
 }));
 

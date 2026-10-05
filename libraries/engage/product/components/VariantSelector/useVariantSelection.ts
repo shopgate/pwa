@@ -18,6 +18,7 @@ import type {
 const selectCharacteristics = helpers.selectCharacteristics as unknown as (input: {
   variantId: string | null;
   variants: ProductVariants | null;
+  preselect?: boolean;
 }) => VariantSelection;
 
 export interface UseVariantSelectionOptions {
@@ -33,6 +34,8 @@ export interface UseVariantSelectionOptions {
   onVariantSelected?: (variantId: string) => void;
   /** Delay in ms before `onVariantSelected` is called. */
   finishTimeout?: number;
+  /** Whether the first variant is preselected, the shop config decides when undefined. */
+  preselect?: boolean;
 }
 
 export interface UseVariantSelectionResult {
@@ -58,6 +61,7 @@ export interface UseVariantSelectionResult {
  * @param options.onCharacteristicsChange Called whenever the selection changes.
  * @param options.onVariantSelected Called once the selection matches a variant.
  * @param options.finishTimeout Delay before `onVariantSelected` is called.
+ * @param options.preselect Whether the first variant is preselected.
  * @returns The selection state and handlers.
  */
 const useVariantSelection = ({
@@ -67,9 +71,10 @@ const useVariantSelection = ({
   onCharacteristicsChange,
   onVariantSelected,
   finishTimeout = 0,
+  preselect,
 }: UseVariantSelectionOptions): UseVariantSelectionResult => {
   const [selection, setSelection] = useState<VariantSelection>(
-    () => selectSingleValues(selectCharacteristics({ variantId, variants }), variants)
+    () => selectSingleValues(selectCharacteristics({ variantId, variants, preselect }), variants)
   );
   const [checkRequest, setCheckRequest] = useState(0);
   const initializedRef = useRef(!!variants);
@@ -88,11 +93,14 @@ const useVariantSelection = ({
     }
 
     initializedRef.current = true;
-    const initial = selectSingleValues(selectCharacteristics({ variantId, variants }), variants);
+    const initial = selectSingleValues(
+      selectCharacteristics({ variantId, variants, preselect }),
+      variants
+    );
     setSelection(initial);
     callbacksRef.current.onCharacteristicsChange?.(initial);
     setCheckRequest(value => value + 1);
-  }, [variants, variantId]);
+  }, [variants, variantId, preselect]);
 
   useEffect(() => {
     if (characteristics && !isEqual(characteristics, selection)) {

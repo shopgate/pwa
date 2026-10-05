@@ -125,7 +125,6 @@ describe('VariantSelector helpers', () => {
     }));
 
     const settings = {
-      sortSizes: true,
       soldOut: 'strike' as const,
       swatchSource: 'variantImage' as const,
       swatchProperty: '',

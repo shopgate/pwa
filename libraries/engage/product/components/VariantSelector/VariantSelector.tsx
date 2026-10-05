@@ -122,6 +122,7 @@ const VariantSelector = ({
     onCharacteristicsChange,
     onVariantSelected,
     finishTimeout,
+    preselect: settings.preselect === 'inherit' ? undefined : settings.preselect === 'on',
   });
 
   usePrefetchVariants(variants, selection);
