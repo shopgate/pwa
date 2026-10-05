@@ -1,6 +1,10 @@
-import React, { useCallback, useState } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
-import AddToCartButton from '@shopgate/pwa-ui-shared/AddToCartButton';
+import { IconButton } from '@shopgate/engage/components/v2';
+import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
+import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -45,6 +49,8 @@ const broadcastLiveMessage = broadcast as unknown as (
   options: { params: Record<string, number> }
 ) => void;
 
+const ADDED_FEEDBACK_DURATION = 1500;
+
 const useStyles = makeStyles({ name: 'ProductCardAddToCart' })({
   root: {
     display: 'inline-flex',
@@ -71,6 +77,10 @@ const ProductCardAddToCart = ({ productId, className }: ProductCardAddToCartProp
   const store = useStore();
   const product = useSelector((state: unknown) => getProduct(state, { productId }));
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [added, setAdded] = useState(false);
+  const addedTimeout = useRef<ReturnType<typeof setTimeout>>();
+
+  useEffect(() => () => clearTimeout(addedTimeout.current), []);
 
   const hasVariants = !!product?.flags?.hasVariants;
   const hasOptions = !!product?.flags?.hasOptions;
@@ -91,6 +101,10 @@ const ProductCardAddToCart = ({ productId, className }: ProductCardAddToCartProp
 
     broadcastLiveMessage('product.adding_item', { params: { count: 1 } });
 
+    clearTimeout(addedTimeout.current);
+    setAdded(true);
+    addedTimeout.current = setTimeout(() => setAdded(false), ADDED_FEEDBACK_DURATION);
+
     return dispatch(addProductsToCart([{
       productId: id,
       quantity: 1,
@@ -103,7 +117,7 @@ const ProductCardAddToCart = ({ productId, className }: ProductCardAddToCartProp
     }]) as never);
   }, [dispatch, store]);
 
-  const handleClick = useCallback((event: React.MouseEvent) => {
+  const handleClick = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
 
@@ -142,12 +156,17 @@ const ProductCardAddToCart = ({ productId, className }: ProductCardAddToCartProp
       onClick={stop}
       onKeyDown={stop}
     >
-      <AddToCartButton
-        onClick={handleClick}
-        isLoading={false}
-        isDisabled={isDisabled}
+      <IconButton
         aria-label={i18n.text('product.add_to_cart')}
-      />
+        variant="surface"
+        color="secondary"
+        size="small"
+        disabled={isDisabled}
+        onClick={handleClick}
+        data-added={added ? 'true' : undefined}
+      >
+        {added ? <TickIcon /> : <CartPlusIcon />}
+      </IconButton>
       {hasVariants && (
         <VariantSelectSheet
           productId={product.id}

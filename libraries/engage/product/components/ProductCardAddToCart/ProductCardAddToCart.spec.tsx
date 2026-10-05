@@ -31,12 +31,20 @@ jest.mock('@shopgate/engage/locations/selectors', () => ({
 }));
 jest.mock('@shopgate/engage/locations/constants', () => ({ DIRECT_SHIP: 'directShip' }));
 jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
-jest.mock('@shopgate/pwa-ui-shared/AddToCartButton', () => ({ onClick, isDisabled }: {
-  onClick: (event: unknown) => unknown;
-  isDisabled: boolean;
-}) => (
-  <button type="button" disabled={isDisabled} onClick={onClick}>add</button>
-));
+jest.mock('@shopgate/engage/components/v2', () => ({
+  IconButton: ({ onClick, disabled, children }: {
+    onClick: (event: unknown) => unknown;
+    disabled: boolean;
+    children: React.ReactNode;
+  }) => (
+    <button type="button" disabled={disabled} onClick={onClick}>
+      add
+      {children}
+    </button>
+  ),
+}));
+jest.mock('@shopgate/pwa-ui-shared/icons/CartPlusIcon', () => () => null);
+jest.mock('@shopgate/pwa-ui-shared/icons/TickIcon', () => () => null);
 jest.mock('../VariantSelectSheet', () => ({
   VariantSelectSheet: ({ isOpen, onAddToCart }: {
     isOpen: boolean;
