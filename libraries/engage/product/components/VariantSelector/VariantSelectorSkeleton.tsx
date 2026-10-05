@@ -7,9 +7,11 @@ const pulse = keyframes({
   '100%': { opacity: 1 },
 });
 
+const ROWS = 2;
+
 const useStyles = makeStyles({ name: 'VariantSelectorSkeleton' })(theme => ({
-  root: {
-    minHeight: 56,
+  row: {
+    minHeight: 62,
     margin: '0 16px 12px',
     borderRadius: theme.shape.borderRadius,
     background: theme.palette.background.emphasized,
@@ -29,10 +31,14 @@ const VariantSelectorSkeleton = () => {
 
   return (
     <div
-      className={cx(classes.root, 'engage__variant-selector__skeleton')}
+      className="engage__variant-selector__skeleton"
       aria-busy="true"
       data-testid="variant-selector-skeleton"
-    />
+    >
+      {Array.from({ length: ROWS }, (_, index) => (
+        <div key={index} className={cx(classes.row, 'engage__variant-selector__skeleton-row')} />
+      ))}
+    </div>
   );
 };
 
