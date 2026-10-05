@@ -35,6 +35,8 @@ jest.mock('../../hooks/useVariantSelectorSettings', () => () => ({
   swatchCharacteristics: [],
   chipCharacteristics: [],
   swatchSource: 'backend',
+  swatchShape: 'round',
+  swatchImageZoom: 100,
   swatchProperty: '',
   chipsLayout: 'wrap',
   sortSizes: true,

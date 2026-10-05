@@ -24,6 +24,10 @@ const useStyles = makeStyles({ name: 'VariantSwatches' })(theme => ({
     borderRadius: '50%',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    '&[data-shape="square"]': {
+      borderRadius: theme.shape.borderRadius,
+    },
     cursor: 'pointer',
     outline: 0,
     overflow: 'hidden',
@@ -64,6 +68,8 @@ const VariantSwatches = ({
   selected,
   values,
   select,
+  swatchShape = 'round',
+  swatchImageZoom = 100,
 }: VariantRendererProps) => {
   const { classes, cx } = useStyles();
   const headingId = `variant-characteristic-${id}`;
@@ -92,10 +98,14 @@ const VariantSwatches = ({
         className={cx(classes.swatch, 'engage__variant-selector__swatch')}
         data-unavailable={value.available === false ? true : undefined}
         data-sold-out={value.soldOut ? true : undefined}
+        data-shape={swatchShape}
         data-test-id={value.label}
         style={{
           ...(value.swatch.color && { backgroundColor: value.swatch.color }),
-          ...(value.swatch.imageUrl && { backgroundImage: `url("${value.swatch.imageUrl}")` }),
+          ...(value.swatch.imageUrl && {
+            backgroundImage: `url("${value.swatch.imageUrl}")`,
+            backgroundSize: swatchImageZoom > 100 ? `${swatchImageZoom}%` : 'cover',
+          }),
         }}
         onClick={() => {
           if (value.selectable) {

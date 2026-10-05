@@ -9,7 +9,7 @@ const useStyles = makeStyles({ name: 'VariantChip' })(theme => ({
     minHeight: 40,
     padding: '0 14px',
     border: `1px solid ${theme.components.input.border}`,
-    borderRadius: 20,
+    borderRadius: theme.shape.borderRadius,
     background: theme.palette.background.surface,
     color: theme.palette.text.primary,
     font: 'inherit',

@@ -81,6 +81,10 @@ export interface VariantRendererProps {
   resetHighlight: () => void;
   /** Layout of the chips renderer. */
   chipsLayout?: 'wrap' | 'scroll';
+  /** Shape of swatches. */
+  swatchShape?: 'round' | 'square';
+  /** Zoom of image swatches in percent. */
+  swatchImageZoom?: number;
 }
 
 /** Display types for characteristics. Extensions can register further types. */

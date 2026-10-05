@@ -11,7 +11,8 @@ import type {
   VariantSwatchData,
 } from './types';
 
-const SWATCH_IMAGE_SIZE = { width: 120, height: 120 };
+const SWATCH_IMAGE_SIZE = 120;
+const SWATCH_IMAGE_MAX_SIZE = 600;
 
 const LETTER_SIZE = /^(\d)?(X*)(S|M|L)$/;
 const NUMERIC_SIZE = /^W?(\d+(?:[.,]\d+)?)(?:\s*[/-]\s*L?(\d+(?:[.,]\d+)?))?$/;
@@ -159,13 +160,24 @@ const getPropertySwatch = (
 /**
  * Reads the featured image of the variants as swatch.
  * @param matching The variants with the value.
+ * @param zoom The zoom of image swatches in percent.
  * @returns The swatch or undefined.
  */
-const getImageSwatch = (matching: VariantProduct[]): VariantSwatchData | undefined => {
+const getImageSwatch = (
+  matching: VariantProduct[],
+  zoom: number
+): VariantSwatchData | undefined => {
   const product = matching.find(entry => entry.featuredImageBaseUrl || entry.featuredImageUrl);
 
   if (product?.featuredImageBaseUrl) {
-    return { imageUrl: getFullImageSource(product.featuredImageBaseUrl, SWATCH_IMAGE_SIZE) };
+    const size = Math.min(
+      SWATCH_IMAGE_MAX_SIZE,
+      Math.round(SWATCH_IMAGE_SIZE * Math.max(1, zoom / 100))
+    );
+
+    return {
+      imageUrl: getFullImageSource(product.featuredImageBaseUrl, { width: size, height: size }),
+    };
   }
 
   return product?.featuredImageUrl ? { imageUrl: product.featuredImageUrl } : undefined;
@@ -182,12 +194,12 @@ const getImageSwatch = (matching: VariantProduct[]): VariantSwatchData | undefin
 const resolveSwatch = (
   value: VariantSelectorValue,
   matching: VariantProduct[],
-  settings: Pick<VariantSelectorSettings, 'swatchSource' | 'swatchProperty'>
+  settings: Pick<VariantSelectorSettings, 'swatchSource' | 'swatchProperty' | 'swatchImageZoom'>
 ): VariantSwatchData | undefined => {
   const backendSwatch = value.swatch?.color || value.swatch?.imageUrl ? value.swatch : undefined;
 
   if (settings.swatchSource === 'variantImage') {
-    return getImageSwatch(matching) || backendSwatch;
+    return getImageSwatch(matching, settings.swatchImageZoom) || backendSwatch;
   }
 
   if (settings.swatchSource === 'property') {
@@ -238,7 +250,10 @@ export const decorateRows = (
   rows: VariantSelectorRow[],
   variants: ProductVariants,
   selection: VariantSelection,
-  settings: Pick<VariantSelectorSettings, 'sortSizes' | 'soldOut' | 'swatchSource' | 'swatchProperty'>
+  settings: Pick<
+    VariantSelectorSettings,
+    'sortSizes' | 'soldOut' | 'swatchSource' | 'swatchProperty' | 'swatchImageZoom'
+  >
 ): VariantSelectorRow[] => rows.map((row) => {
   const others = getOtherSelections(selection, row.id);
   const values = row.values.map((value) => {

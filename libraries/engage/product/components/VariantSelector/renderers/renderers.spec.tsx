@@ -103,4 +103,20 @@ describe('<VariantSwatches />', () => {
     fireEvent.click(screen.getByRole('radio', { name: 'Red' }));
     expect(select).toHaveBeenCalledWith({ id: 'color', value: 'red' });
   });
+
+  it('renders square swatches and zooms images', () => {
+    render(<VariantSwatches {...renderProps({
+      id: 'color',
+      label: 'Color',
+      selected: null,
+      values: swatchValues,
+      swatchShape: 'square',
+      swatchImageZoom: 250,
+    })}
+    />);
+
+    const blue = screen.getByRole('radio', { name: 'Blue' });
+    expect(blue).toHaveAttribute('data-shape', 'square');
+    expect(blue).toHaveStyle({ backgroundSize: '250%' });
+  });
 });

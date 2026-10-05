@@ -130,6 +130,7 @@ describe('VariantSelector helpers', () => {
       soldOut: 'strike' as const,
       swatchSource: 'variantImage' as const,
       swatchProperty: '',
+      swatchImageZoom: 100,
     };
 
     it('marks values whose variants are all sold out', () => {

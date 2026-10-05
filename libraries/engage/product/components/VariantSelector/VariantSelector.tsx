@@ -228,6 +228,8 @@ const VariantSelector = ({
               select={handleSelect}
               resetHighlight={resetHighlight}
               chipsLayout={settings.chipsLayout}
+              swatchShape={settings.swatchShape}
+              swatchImageZoom={settings.swatchImageZoom}
             />
           </Portal>
         );

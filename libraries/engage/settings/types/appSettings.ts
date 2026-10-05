@@ -116,6 +116,10 @@ export interface ProductVariantSelectorSettings {
   /** Comma separated characteristic labels that are shown as chips. */
   chipCharacteristics: string;
   swatchSource: VariantSwatchSource;
+  /** Shape of swatches. `square` uses the border radius of the theme. */
+  swatchShape: 'round' | 'square';
+  /** Zoom of image swatches in percent, 100 shows the whole image. */
+  swatchImageZoom: number;
   /** Product property that holds the swatch color or image when `swatchSource` is `property`. */
   swatchProperty: string;
   /** `wrap` breaks chips into lines, `scroll` keeps them in one swipeable row. */

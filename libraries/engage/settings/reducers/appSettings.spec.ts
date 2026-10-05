@@ -75,6 +75,8 @@ describe('settings / reducers / appSettings', () => {
           swatchCharacteristics: 'Farbe',
           chipCharacteristics: 'Größe',
           swatchSource: 'variantImage',
+          swatchShape: 'square',
+          swatchImageZoom: 200,
           swatchProperty: '',
           chipsLayout: 'scroll',
           sortSizes: false,
