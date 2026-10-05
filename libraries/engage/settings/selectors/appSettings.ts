@@ -64,19 +64,19 @@ export const getShowEmptyRatingStars = createSelector(
 );
 
 /**
- * Selects whether product tiles in grids show an add to cart button.
+ * Selects the buttons on product tiles and their position.
  */
-export const getProductGridShowAddToCart = createSelector(
+export const getProductTileActions = createSelector(
   getAppSettingsState,
-  appSettings => !!appSettings.product.grid.showAddToCart
+  appSettings => appSettings.product.tileActions
 );
 
 /**
- * Selects whether product cards in sliders show an add to cart button.
+ * Selects whether product cards in sliders show the tile actions.
  */
-export const getProductSliderShowAddToCart = createSelector(
+export const getProductSliderShowActions = createSelector(
   getAppSettingsState,
-  appSettings => !!appSettings.product.slider.showAddToCart
+  appSettings => !!appSettings.product.slider.showActions
 );
 
 /**

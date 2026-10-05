@@ -53,7 +53,6 @@ describe('settings / reducers / appSettings', () => {
             small: 1,
             large: 3,
           },
-          showAddToCart: true,
         },
         slider: {
           slidesPerView: {
@@ -61,7 +60,7 @@ describe('settings / reducers / appSettings', () => {
             medium: 2.2,
             large: 3.2,
           },
-          showAddToCart: true,
+          showActions: true,
         },
         rating: {
           showEmptyStars: false,
@@ -83,6 +82,10 @@ describe('settings / reducers / appSettings', () => {
           chipsLayout: 'scroll',
           sortSizes: false,
           soldOut: 'hide',
+        },
+        tileActions: {
+          position: 'topRight',
+          addToCart: 'button',
         },
       },
       favorites: {

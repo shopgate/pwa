@@ -2,7 +2,7 @@ import React, {
   useCallback, useEffect, useRef, useState,
 } from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
-import { IconButton } from '@shopgate/engage/components/v2';
+import { Button, IconButton } from '@shopgate/engage/components/v2';
 import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
 import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
@@ -27,6 +27,8 @@ interface CardProduct {
 export interface ProductCardAddToCartProps {
   productId: string;
   className?: string;
+  /** `icon` renders an action button, `button` a full width button with label. */
+  variant?: 'icon' | 'button';
 }
 
 const getProduct = productSelectors.getProduct as unknown as (
@@ -51,11 +53,21 @@ const broadcastLiveMessage = broadcast as unknown as (
 
 const ADDED_FEEDBACK_DURATION = 1500;
 
-const useStyles = makeStyles({ name: 'ProductCardAddToCart' })({
+const useStyles = makeStyles({ name: 'ProductCardAddToCart' })(theme => ({
   root: {
     display: 'inline-flex',
+    '&[data-variant="button"]': {
+      display: 'flex',
+      width: '100%',
+    },
   },
-});
+  labelButton: {
+    whiteSpace: 'nowrap',
+    paddingLeft: 8,
+    paddingRight: 8,
+    fontSize: theme.typography.body2.fontSize,
+  },
+}));
 
 /**
  * Stops events from reaching a surrounding product link.
@@ -71,7 +83,11 @@ const stop = (event: React.SyntheticEvent) => {
  * @param props The component props.
  * @returns The button.
  */
-const ProductCardAddToCart = ({ productId, className }: ProductCardAddToCartProps) => {
+const ProductCardAddToCart = ({
+  productId,
+  className,
+  variant = 'icon',
+}: ProductCardAddToCartProps) => {
   const { classes, cx } = useStyles();
   const dispatch = useDispatch();
   const store = useStore();
@@ -153,20 +169,37 @@ const ProductCardAddToCart = ({ productId, className }: ProductCardAddToCartProp
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={cx(classes.root, 'engage__product-card-add-to-cart', className)}
+      data-variant={variant}
       onClick={stop}
       onKeyDown={stop}
     >
-      <IconButton
-        aria-label={i18n.text('product.add_to_cart')}
-        variant="surface"
-        color="secondary"
-        size="small"
-        disabled={isDisabled}
-        onClick={handleClick}
-        data-added={added ? 'true' : undefined}
-      >
-        {added ? <TickIcon /> : <CartPlusIcon />}
-      </IconButton>
+      {variant === 'button' ? (
+        <Button
+          variant="outlined"
+          color="primary"
+          size="small"
+          fullWidth
+          disabled={isDisabled}
+          onClick={handleClick}
+          startIcon={added ? <TickIcon /> : <CartPlusIcon />}
+          className={classes.labelButton}
+          data-added={added ? 'true' : undefined}
+        >
+          {i18n.text('product.add_to_cart')}
+        </Button>
+      ) : (
+        <IconButton
+          aria-label={i18n.text('product.add_to_cart')}
+          variant="surface"
+          color="secondary"
+          size="small"
+          disabled={isDisabled}
+          onClick={handleClick}
+          data-added={added ? 'true' : undefined}
+        >
+          {added ? <TickIcon /> : <CartPlusIcon />}
+        </IconButton>
+      )}
       {hasVariants && (
         <VariantSelectSheet
           productId={product.id}

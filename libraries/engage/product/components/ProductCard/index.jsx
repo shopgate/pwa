@@ -28,9 +28,11 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   getProductCardNameMaxLines,
-  getProductSliderShowAddToCart,
+  getProductSliderShowActions,
+  getProductTileActions,
 } from '@shopgate/engage/settings/selectors/appSettings';
 import { ProductCardAddToCart } from '../ProductCardAddToCart';
+import { ProductTileActions } from '../ProductTileActions';
 import ProductGridPrice from '../ProductGridPrice';
 
 const useStyles = makeStyles()(theme => ({
@@ -42,10 +44,9 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     padding: theme.components.productCard.imagePadding,
   },
-  addToCart: {
-    position: 'absolute',
-    right: 8,
-    bottom: 8,
+  addToCartButton: {
+    padding: theme.components.productCard.textPadding,
+    paddingTop: 8,
   },
   details: {
     display: 'flex',
@@ -89,7 +90,8 @@ function ProductCard(props) {
   } = props;
   const { meta } = useProductListType();
   const productNameLines = useSelector(getProductCardNameMaxLines);
-  const showAddToCart = useSelector(getProductSliderShowAddToCart);
+  const showActions = useSelector(getProductSliderShowActions);
+  const { addToCart } = useSelector(getProductTileActions);
 
   const showEmptyRatingStars = useShowEmptyRatingStars();
 
@@ -130,9 +132,7 @@ function ProductCard(props) {
               alt={product.name}
               itemProp="image"
           />}
-        {showAddToCart && (
-          <ProductCardAddToCart productId={product.id} className={classes.addToCart} />
-        )}
+        {showActions && <ProductTileActions productId={product.id} />}
       </div>
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (
@@ -188,6 +188,13 @@ function ProductCard(props) {
             </SurroundPortals>
           )}
         </div>
+      )}
+      {showActions && addToCart === 'button' && (
+        <ProductCardAddToCart
+          productId={product.id}
+          variant="button"
+          className={classes.addToCartButton}
+        />
       )}
     </Link>
   );

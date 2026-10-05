@@ -17,6 +17,7 @@ import {
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
+import CTAButtons from '../Header/components/CTAButtons';
 
 const useStyles = makeStyles()({
   root: {
@@ -72,6 +73,7 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
                     />
                   )}
                 </SurroundPortals>
+                <CTAButtons productId={variantId || productId} />
               </div>
             </SurroundPortals>
           </ProductListEntryProvider>

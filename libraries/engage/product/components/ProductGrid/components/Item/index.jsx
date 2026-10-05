@@ -6,11 +6,11 @@ import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useSelector } from 'react-redux';
-import { getProductGridShowAddToCart } from '@shopgate/engage/settings/selectors/appSettings';
+import { getProductTileActions } from '@shopgate/engage/settings/selectors/appSettings';
 import { ProductCardAddToCart } from '../../../ProductCardAddToCart';
+import { ProductTileActions } from '../../../ProductTileActions';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
-import ItemFavoritesButton from './components/ItemFavoritesButton';
 import ItemDetails from './components/ItemDetails';
 
 const useStyles = makeStyles()((theme, { display }) => ({
@@ -28,11 +28,11 @@ const useStyles = makeStyles()((theme, { display }) => ({
     display: 'block',
     padding: theme.components.tiles.imagePadding,
   },
-  addToCart: {
-    position: 'absolute',
-    top: 0,
-    right: 64,
-    transform: 'translate3d(0, -50%, 0)',
+  imageWrapper: {
+    position: 'relative',
+  },
+  addToCartButton: {
+    marginTop: 8,
   },
   itemDetails: {
     position: 'relative',
@@ -52,30 +52,33 @@ const useStyles = makeStyles()((theme, { display }) => ({
 const Item = ({ product, display }) => {
   const { classes, cx } = useStyles({ display });
   const { meta } = useProductListType();
-  const showAddToCart = useSelector(getProductGridShowAddToCart);
+  const { addToCart } = useSelector(getProductTileActions);
 
   return (
     <div className={cx(classes.root, 'theme__product-grid__item')}>
-      <Link
-        className={classes.image}
-        role="none"
-        href={getProductRoute(product.id)}
-        state={{
-          title: product.name,
-          ...meta,
-        }}
-      >
-        {isBeta() && product.featuredMedia
-          ? <FeaturedMedia
-              type={product.featuredMedia.type}
-              url={product.featuredMedia.url}
-          />
-          : <ItemImage
-              productId={product.id}
-              name={product.name}
-              imageUrl={product.featuredImageBaseUrl}
-          />}
-      </Link>
+      <div className={classes.imageWrapper}>
+        <Link
+          className={classes.image}
+          role="none"
+          href={getProductRoute(product.id)}
+          state={{
+            title: product.name,
+            ...meta,
+          }}
+        >
+          {isBeta() && product.featuredMedia
+            ? <FeaturedMedia
+                type={product.featuredMedia.type}
+                url={product.featuredMedia.url}
+            />
+            : <ItemImage
+                productId={product.id}
+                name={product.name}
+                imageUrl={product.featuredImageBaseUrl}
+            />}
+        </Link>
+        <ProductTileActions productId={product.id} />
+      </div>
       <ProductBadges location="productGrid" productId={product.id}>
         <ItemDiscount
           productId={product.id}
@@ -88,9 +91,12 @@ const Item = ({ product, display }) => {
           display={display}
           productListTypeMeta={meta}
         />
-        <ItemFavoritesButton productId={product.id} />
-        {showAddToCart && (
-          <ProductCardAddToCart productId={product.id} className={classes.addToCart} />
+        {addToCart === 'button' && (
+          <ProductCardAddToCart
+            productId={product.id}
+            variant="button"
+            className={classes.addToCartButton}
+          />
         )}
       </div>
     </div>

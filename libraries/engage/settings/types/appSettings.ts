@@ -55,8 +55,6 @@ export type ProductColumns = PerScreenSize;
  */
 export interface ProductGridSettings {
   columns: ProductColumns;
-  /** Whether product tiles in grids show an add to cart button. */
-  showAddToCart: boolean;
 }
 
 /**
@@ -85,8 +83,18 @@ export type SlidesPerView = PerScreenSize;
  */
 export interface ProductSliderSettings {
   slidesPerView: SlidesPerView;
-  /** Whether product cards in sliders show an add to cart button. */
-  showAddToCart: boolean;
+  /** Whether product cards in sliders show the tile actions. */
+  showActions: boolean;
+}
+
+/**
+ * Buttons on product tiles and on the image of the product page.
+ */
+export interface ProductTileActionsSettings {
+  /** Corner of the image the action buttons are placed in. */
+  position: 'topRight' | 'bottomRight';
+  /** `actionButton` adds a cart button next to the favorites button, `button` one below the tile. */
+  addToCart: 'hidden' | 'actionButton' | 'button';
 }
 
 /**
@@ -146,6 +154,7 @@ export interface ProductSettings {
   /** Product grid tiles. */
   tile: { productName: ProductNameSettings };
   variantSelector: ProductVariantSelectorSettings;
+  tileActions: ProductTileActionsSettings;
 }
 
 /**

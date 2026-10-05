@@ -48,7 +48,6 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
         small: 2,
         large: 4,
       },
-      showAddToCart: false,
     },
     slider: {
       slidesPerView: {
@@ -56,7 +55,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
         medium: 3.3,
         large: 4.3,
       },
-      showAddToCart: false,
+      showActions: false,
     },
     rating: {
       showEmptyStars: false,
@@ -78,6 +77,10 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       chipsLayout: 'wrap',
       sortSizes: true,
       soldOut: 'strike',
+    },
+    tileActions: {
+      position: 'bottomRight',
+      addToCart: 'hidden',
     },
   },
   favorites: {

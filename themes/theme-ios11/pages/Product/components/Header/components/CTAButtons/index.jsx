@@ -11,27 +11,36 @@ import {
   PRODUCT_CTAS_FAVORITES_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { appConfig } from '@shopgate/engage';
+import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
+import { getProductTileActions } from '@shopgate/engage/settings/selectors/appSettings';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig;
+
+const BULLETS_BELOW_OFFSET = 28;
 
 const useStyles = makeStyles()(theme => ({
   buttons: {
     position: 'absolute',
     right: theme.spacing(2),
-    top: -20,
+    zIndex: 2,
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'center',
+    [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
+    '&[data-position="topRight"]': {
+      top: theme.spacing(2),
+    },
+    '&[data-position="bottomRight"]': {
+      bottom: theme.spacing(2),
+    },
+    '&[data-position="bottomRight"][data-bullets-below]': {
+      bottom: `calc(${theme.spacing(2)}px + ${BULLETS_BELOW_OFFSET}px)`,
+    },
   },
   favButton: {
     zIndex: 1,
-  },
-  wrapper: {
-    position: 'relative',
-    top: -40,
-    right: -16,
   },
 }));
 
@@ -44,12 +53,18 @@ const CTAButtons = ({
   isFavorite, productId, isProductActive, hasImageGallery,
 }) => {
   const { classes, cx } = useStyles();
+  const { position } = useSelector(getProductTileActions);
+  const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery;
 
   return (
-    <div className={pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery ? classes.wrapper : null}>
+    <>
       <Portal name={PRODUCT_CTAS_BEFORE} />
       <Portal name={PRODUCT_CTAS}>
-        <div className={cx(classes.buttons, 'theme__product__header__cta-buttons')}>
+        <div
+          className={cx(classes.buttons, 'theme__product__header__cta-buttons')}
+          data-position={position}
+          data-bullets-below={bulletsBelow ? true : undefined}
+        >
           <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
           <Portal name={PRODUCT_CTAS_FAVORITES}>
             { isProductActive && (
@@ -65,7 +80,7 @@ const CTAButtons = ({
         </div>
       </Portal>
       <Portal name={PRODUCT_CTAS_AFTER} />
-    </div>
+    </>
   );
 };
 
