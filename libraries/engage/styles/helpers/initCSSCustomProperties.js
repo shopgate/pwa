@@ -1,6 +1,6 @@
 import Color from 'color';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import { hasWebBridge, hasNewServices } from '@shopgate/engage/core/helpers';
+import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { getCSSCustomProp, setCSSCustomProp } from './cssCustomProperties';
 
 const { colors } = themeConfig;
