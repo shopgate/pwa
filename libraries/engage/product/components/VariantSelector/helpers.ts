@@ -1,3 +1,4 @@
+import { getFullImageSource } from '@shopgate/engage/core/helpers/getFullImageSource';
 import type { VariantSelectorSettings } from '../../hooks/useVariantSelectorSettings';
 import { findMatchingVariants, getOtherSelections } from './selection';
 import type {
@@ -9,6 +10,8 @@ import type {
   VariantSelectorValue,
   VariantSwatchData,
 } from './types';
+
+const SWATCH_IMAGE_SIZE = { width: 120, height: 120 };
 
 const LETTER_SIZE = /^(\d)?(X*)(S|M|L)$/;
 const NUMERIC_SIZE = /^W?(\d+(?:[.,]\d+)?)(?:\s*[/-]\s*L?(\d+(?:[.,]\d+)?))?$/;
@@ -160,9 +163,12 @@ const getPropertySwatch = (
  */
 const getImageSwatch = (matching: VariantProduct[]): VariantSwatchData | undefined => {
   const product = matching.find(entry => entry.featuredImageBaseUrl || entry.featuredImageUrl);
-  const imageUrl = product?.featuredImageBaseUrl || product?.featuredImageUrl;
 
-  return imageUrl ? { imageUrl } : undefined;
+  if (product?.featuredImageBaseUrl) {
+    return { imageUrl: getFullImageSource(product.featuredImageBaseUrl, SWATCH_IMAGE_SIZE) };
+  }
+
+  return product?.featuredImageUrl ? { imageUrl: product.featuredImageUrl } : undefined;
 };
 
 /**
