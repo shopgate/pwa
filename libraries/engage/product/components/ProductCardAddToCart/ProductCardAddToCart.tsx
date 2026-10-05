@@ -7,7 +7,7 @@ import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
 import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
-import { makeStyles } from '@shopgate/engage/styles';
+import { keyframes, makeStyles } from '@shopgate/engage/styles';
 import { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import * as productSelectors from '@shopgate/pwa-common-commerce/product/selectors/product';
@@ -27,12 +27,11 @@ interface CardProduct {
 export interface ProductCardAddToCartProps {
   productId: string;
   className?: string;
-  /**
-   * `icon` renders an action button, `button` a full width button with label and `footer` a
-   * full width action row for the bottom of a card.
-   */
-  variant?: 'icon' | 'button' | 'footer';
+  /** `icon` renders an action button, `button` a full width button with label. */
+  variant?: 'icon' | 'button';
 }
+
+type AddState = 'idle' | 'pending' | 'added';
 
 const getProduct = productSelectors.getProduct as unknown as (
   state: unknown,
@@ -54,6 +53,12 @@ const broadcastLiveMessage = broadcast as unknown as (
   options: { params: Record<string, number> }
 ) => void;
 
+const tickIn = keyframes({
+  '0%': { transform: 'scale(0.3)', opacity: 0 },
+  '60%': { transform: 'scale(1.15)', opacity: 1 },
+  '100%': { transform: 'scale(1)', opacity: 1 },
+});
+
 const ADDED_FEEDBACK_DURATION = 1500;
 
 const COMPACT_BUTTON_WIDTH = 160;
@@ -61,26 +66,47 @@ const COMPACT_BUTTON_WIDTH = 160;
 const useStyles = makeStyles({ name: 'ProductCardAddToCart' })(theme => ({
   root: {
     display: 'inline-flex',
-    '&[data-variant="button"], &[data-variant="footer"]': {
+    '&[data-variant="button"]': {
       display: 'flex',
       width: '100%',
     },
-    '&[data-variant="footer"]': {
-      borderTop: `1px solid ${theme.components.separatorLine.borderColor}`,
-    },
   },
   labelButton: {
+    position: 'relative',
     whiteSpace: 'nowrap',
     '&[data-compact]': {
       '--font-size': `calc(${theme.typography.button.fontSize} * 0.8)`,
-    },
-  },
-  footerButton: {
-    '&&': {
-      '--border-radius': 0,
-      minHeight: 44,
+      paddingLeft: 4,
+      paddingRight: 4,
       whiteSpace: 'normal',
       lineHeight: 1.2,
+      textAlign: 'center',
+    },
+  },
+  content: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    '&[data-hidden]': {
+      visibility: 'hidden',
+    },
+  },
+  tick: {
+    position: 'absolute',
+    inset: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    fontSize: '1.25em',
+    animation: `${tickIn} 400ms ${theme.transitions.easing.easeOut}`,
+    '@media (prefers-reduced-motion: reduce)': {
+      animation: 'none',
+    },
+  },
+  iconTick: {
+    display: 'flex',
+    animation: `${tickIn} 400ms ${theme.transitions.easing.easeOut}`,
+    '@media (prefers-reduced-motion: reduce)': {
+      animation: 'none',
     },
   },
 }));
@@ -109,12 +135,16 @@ const ProductCardAddToCart = ({
   const store = useStore();
   const product = useSelector((state: unknown) => getProduct(state, { productId }));
   const [sheetOpen, setSheetOpen] = useState(false);
-  const [added, setAdded] = useState(false);
+  const [addState, setAddState] = useState<AddState>('idle');
   const [compact, setCompact] = useState(false);
   const addedTimeout = useRef<ReturnType<typeof setTimeout>>();
   const rootRef = useRef<HTMLDivElement>(null);
+  const mounted = useRef(true);
 
-  useEffect(() => () => clearTimeout(addedTimeout.current), []);
+  useEffect(() => () => {
+    mounted.current = false;
+    clearTimeout(addedTimeout.current);
+  }, []);
 
   useEffect(() => {
     const element = rootRef.current;
@@ -151,10 +181,9 @@ const ProductCardAddToCart = ({
     broadcastLiveMessage('product.adding_item', { params: { count: 1 } });
 
     clearTimeout(addedTimeout.current);
-    setAdded(true);
-    addedTimeout.current = setTimeout(() => setAdded(false), ADDED_FEEDBACK_DURATION);
+    setAddState('pending');
 
-    return dispatch(addProductsToCart([{
+    const request = dispatch(addProductsToCart([{
       productId: id,
       quantity: 1,
       ...(method && method !== DIRECT_SHIP && location && {
@@ -163,14 +192,39 @@ const ProductCardAddToCart = ({
           location: { code: location.code, name: location.name || '' },
         },
       }),
-    }]) as never);
+    }]) as never) as Promise<{ messages?: { type?: string }[] } | undefined>;
+
+    Promise.resolve(request)
+      .then((result) => {
+        const failed = result?.messages?.some(message => message.type === 'error');
+
+        if (!mounted.current) {
+          return;
+        }
+
+        if (failed) {
+          setAddState('idle');
+          return;
+        }
+
+        broadcastLiveMessage('product.item_added', { params: { count: 1 } });
+        setAddState('added');
+        addedTimeout.current = setTimeout(() => setAddState('idle'), ADDED_FEEDBACK_DURATION);
+      })
+      .catch(() => {
+        if (mounted.current) {
+          setAddState('idle');
+        }
+      });
+
+    return request;
   }, [dispatch, store]);
 
   const handleClick = useCallback((event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     event.stopPropagation();
 
-    if (!product) {
+    if (!product || addState !== 'idle') {
       return false;
     }
 
@@ -185,7 +239,7 @@ const ProductCardAddToCart = ({
     }
 
     return addToCart(product.id);
-  }, [addToCart, dispatch, hasOptions, hasVariants, product]);
+  }, [addState, addToCart, dispatch, hasOptions, hasVariants, product]);
 
   const handleSheetAddToCart = useCallback((selected: VariantSheetProduct) => {
     setSheetOpen(false);
@@ -198,7 +252,8 @@ const ProductCardAddToCart = ({
     return null;
   }
 
-  const stateIcon = added ? <TickIcon /> : <CartPlusIcon />;
+  const added = addState === 'added';
+  const pending = addState === 'pending';
 
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
@@ -206,23 +261,31 @@ const ProductCardAddToCart = ({
       ref={rootRef}
       className={cx(classes.root, 'engage__product-card-add-to-cart', className)}
       data-variant={variant}
+      data-state={addState}
       onClick={stop}
       onKeyDown={stop}
     >
-      {variant !== 'icon' ? (
+      {variant === 'button' ? (
         <Button
-          variant={variant === 'footer' ? 'text' : 'outlined'}
+          variant={added ? 'contained' : 'outlined'}
           color="cta"
           size="small"
           fullWidth
           disabled={isDisabled}
+          loading={pending}
           onClick={handleClick}
-          startIcon={compact ? undefined : stateIcon}
-          className={cx(classes.labelButton, variant === 'footer' && classes.footerButton)}
-          data-added={added ? 'true' : undefined}
+          startIcon={compact || added ? undefined : <CartPlusIcon />}
+          className={classes.labelButton}
           data-compact={compact ? 'true' : undefined}
         >
-          {i18n.text('product.add_to_cart')}
+          <span className={classes.content} data-hidden={added ? 'true' : undefined}>
+            {i18n.text('product.add_to_cart')}
+          </span>
+          {added && (
+            <span className={classes.tick} aria-hidden>
+              <TickIcon />
+            </span>
+          )}
         </Button>
       ) : (
         <IconButton
@@ -231,10 +294,14 @@ const ProductCardAddToCart = ({
           color="secondary"
           size="small"
           disabled={isDisabled}
+          loading={pending}
           onClick={handleClick}
-          data-added={added ? 'true' : undefined}
         >
-          {stateIcon}
+          {added ? (
+            <span className={classes.iconTick}>
+              <TickIcon />
+            </span>
+          ) : <CartPlusIcon />}
         </IconButton>
       )}
       {hasVariants && (

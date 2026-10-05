@@ -1,12 +1,15 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  act, fireEvent, render, screen,
+} from '@testing-library/react';
 import '@testing-library/jest-dom';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
 import ProductCardAddToCart from './ProductCardAddToCart';
 
 let mockProduct: unknown = null;
-const mockDispatch = jest.fn(action => action);
+let mockAddResult: Promise<unknown> = Promise.resolve({});
+const mockDispatch = jest.fn(action => (action === 'ADD' ? mockAddResult : action));
 
 jest.mock('react-redux', () => ({
   useDispatch: () => mockDispatch,
@@ -32,19 +35,41 @@ jest.mock('@shopgate/engage/locations/selectors', () => ({
 jest.mock('@shopgate/engage/locations/constants', () => ({ DIRECT_SHIP: 'directShip' }));
 jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
 jest.mock('@shopgate/engage/components/v2', () => ({
-  IconButton: ({ onClick, disabled, children }: {
+  IconButton: ({
+    onClick, disabled, loading, children,
+  }: {
     onClick: (event: unknown) => unknown;
     disabled: boolean;
+    loading: boolean;
     children: React.ReactNode;
   }) => (
-    <button type="button" disabled={disabled} onClick={onClick}>
+    <button type="button" disabled={disabled} data-loading={loading} onClick={onClick}>
       add
+      {children}
+    </button>
+  ),
+  Button: ({
+    onClick, disabled, loading, variant, children,
+  }: {
+    onClick: (event: unknown) => unknown;
+    disabled: boolean;
+    loading: boolean;
+    variant: string;
+    children: React.ReactNode;
+  }) => (
+    <button
+      type="button"
+      disabled={disabled}
+      data-loading={loading}
+      data-variant={variant}
+      onClick={onClick}
+    >
       {children}
     </button>
   ),
 }));
 jest.mock('@shopgate/pwa-ui-shared/icons/CartPlusIcon', () => () => null);
-jest.mock('@shopgate/pwa-ui-shared/icons/TickIcon', () => () => null);
+jest.mock('@shopgate/pwa-ui-shared/icons/TickIcon', () => () => <span>tick</span>);
 jest.mock('../VariantSelectSheet', () => ({
   VariantSelectSheet: ({ isOpen, onAddToCart }: {
     isOpen: boolean;
@@ -57,6 +82,7 @@ jest.mock('../VariantSelectSheet', () => ({
 describe('<ProductCardAddToCart />', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    mockAddResult = Promise.resolve({});
   });
 
   it('adds a simple product directly', () => {
@@ -94,5 +120,52 @@ describe('<ProductCardAddToCart />', () => {
     render(<ProductCardAddToCart productId="soldout" />);
 
     expect(screen.getByRole('button', { name: 'add' })).toBeDisabled();
+  });
+
+  it('shows the tick only after the product was added', async () => {
+    let resolve: (value: unknown) => void = jest.fn();
+    mockAddResult = new Promise((done) => { resolve = done; });
+    mockProduct = { id: 'simple', flags: {}, stock: { orderable: true } };
+    render(<ProductCardAddToCart productId="simple" variant="button" />);
+
+    const button = screen.getByRole('button');
+    fireEvent.click(button);
+    expect(button).toHaveAttribute('data-loading', 'true');
+    expect(screen.queryByText('tick')).not.toBeInTheDocument();
+
+    await act(async () => {
+      resolve({});
+    });
+
+    expect(button).toHaveAttribute('data-loading', 'false');
+    expect(button).toHaveAttribute('data-variant', 'contained');
+    expect(screen.getByText('tick')).toBeInTheDocument();
+  });
+
+  it('returns to the initial state when adding fails', async () => {
+    mockAddResult = Promise.reject(new Error('failed'));
+    mockAddResult.catch(jest.fn());
+    mockProduct = { id: 'simple', flags: {}, stock: { orderable: true } };
+    render(<ProductCardAddToCart productId="simple" variant="button" />);
+
+    const button = screen.getByRole('button');
+    await act(async () => {
+      fireEvent.click(button);
+    });
+
+    expect(button).toHaveAttribute('data-variant', 'outlined');
+    expect(screen.queryByText('tick')).not.toBeInTheDocument();
+  });
+
+  it('ignores clicks while the product is being added', () => {
+    mockAddResult = new Promise(jest.fn());
+    mockProduct = { id: 'simple', flags: {}, stock: { orderable: true } };
+    render(<ProductCardAddToCart productId="simple" />);
+
+    const button = screen.getByRole('button', { name: 'add' });
+    fireEvent.click(button);
+    fireEvent.click(button);
+
+    expect(addProductsToCart).toHaveBeenCalledTimes(1);
   });
 });

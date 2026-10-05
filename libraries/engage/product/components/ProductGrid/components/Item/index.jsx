@@ -32,10 +32,15 @@ const useStyles = makeStyles()((theme, { display }) => ({
     position: 'relative',
   },
   addToCartButton: {
-    marginTop: 8,
+    marginTop: 'auto',
+    padding: theme.components.tiles.textPadding,
+    paddingTop: `max(0px, calc(8px - ${theme.components.tiles.textPadding}))`,
   },
   itemDetails: {
     position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
     ...display && !display.name && !display.price && !display.reviews && {
       paddingBottom: 30,
     },
