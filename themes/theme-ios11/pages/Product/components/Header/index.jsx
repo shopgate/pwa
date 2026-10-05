@@ -14,8 +14,6 @@ import ProductInfo from './components/ProductInfo';
 
 const useStyles = makeStyles()(theme => ({
   content: {
-    // Icon buttons inside the header section, including the ones rendered by extensions, use the
-    // shadow of the action buttons.
     [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
     position: 'relative',
     padding: theme.spacing(2),

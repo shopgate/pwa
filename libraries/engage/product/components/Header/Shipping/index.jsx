@@ -29,9 +29,9 @@ const useStyles = makeStyles()(theme => ({
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Shipping = ({ shipping: currentShipping }) => {
+const Shipping = ({ shipping: currentShipping, isLoading }) => {
   const { classes, cx } = useStyles();
-  const shipping = useStickyValue(currentShipping);
+  const shipping = useStickyValue(currentShipping, isLoading);
 
   return (
     <>
@@ -49,10 +49,12 @@ const Shipping = ({ shipping: currentShipping }) => {
 };
 
 Shipping.propTypes = {
+  isLoading: PropTypes.bool,
   shipping: PropTypes.shape(),
 };
 
 Shipping.defaultProps = {
+  isLoading: false,
   shipping: null,
 };
 

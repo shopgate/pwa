@@ -86,6 +86,15 @@ class Characteristic extends PureComponent {
   };
 
   /**
+   * @param {Object} event The keyboard event.
+   */
+  handleButtonKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.handleButtonClick(event);
+    }
+  };
+
+  /**
    * @param {string} valueId The ID of the selected value.
    */
   handleItemSelection = (valueId) => {
@@ -138,7 +147,7 @@ class Characteristic extends PureComponent {
         tabIndex={0}
         className={cmpClasses}
         onClick={this.handleButtonClick}
-        onKeyDown={() => { }}
+        onKeyDown={this.handleButtonKeyDown}
         ref={charRef}
         style={transition[state]}
         data-test-id={label}
@@ -208,7 +217,8 @@ export default withStyles(Characteristic, theme => ({
     margin: '0 16px 12px',
     transition: 'background 250ms ease-in, color 250ms ease-in, border-color 250ms ease-in',
     '&:focus-visible': {
-      borderColor: theme.palette.primary.main,
+      outline: `2px solid ${theme.palette.text.primary}`,
+      outlineOffset: 2,
     },
   },
   buttonDisabled: {

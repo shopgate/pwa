@@ -190,6 +190,7 @@ const FavoriteItem = ({
   const { classes, cx } = useStyles();
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const [variantSheetOpen, setVariantSheetOpen] = useState(false);
+  const [variantSheetMounted, setVariantSheetMounted] = useState(false);
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
@@ -221,6 +222,7 @@ const FavoriteItem = ({
 
     if (isBaseProduct && hasVariants) {
       if (!product.flags?.hasOptions) {
+        setVariantSheetMounted(true);
         setVariantSheetOpen(true);
         return false;
       }
@@ -271,7 +273,12 @@ const FavoriteItem = ({
       params: { count: 1 },
     });
 
-    return addToCart(null, variant);
+    const result = addToCart(null, variant);
+    if (result instanceof Promise) {
+      result.catch(() => {});
+    }
+
+    return result;
   }, [addToCart]);
 
   const closeVariantSheet = useCallback(() => setVariantSheetOpen(false), []);
@@ -430,7 +437,7 @@ const FavoriteItem = ({
                   aria-label={i18n.text('product.add_to_cart')}
                 />
               </SurroundPortals>
-              {hasVariants && (
+              {hasVariants && variantSheetMounted && (
                 <VariantSelectSheet
                   productId={product.id}
                   isOpen={variantSheetOpen}

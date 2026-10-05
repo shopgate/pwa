@@ -135,6 +135,7 @@ const ProductCardAddToCart = ({
   const store = useStore();
   const product = useSelector((state: unknown) => getProduct(state, { productId }));
   const [sheetOpen, setSheetOpen] = useState(false);
+  const [sheetMounted, setSheetMounted] = useState(false);
   const [addState, setAddState] = useState<AddState>('idle');
   const [compact, setCompact] = useState(false);
   const addedTimeout = useRef<ReturnType<typeof setTimeout>>();
@@ -234,6 +235,7 @@ const ProductCardAddToCart = ({
     }
 
     if (hasVariants) {
+      setSheetMounted(true);
       setSheetOpen(true);
       return false;
     }
@@ -304,7 +306,7 @@ const ProductCardAddToCart = ({
           ) : <CartPlusIcon />}
         </IconButton>
       )}
-      {hasVariants && (
+      {hasVariants && sheetMounted && (
         <VariantSelectSheet
           productId={product.id}
           isOpen={sheetOpen}

@@ -45,7 +45,11 @@ const ListItemWrapper = ({
             e.preventDefault();
             e.stopPropagation();
           }
-          return addToCart(variant || product, quantity, product.id);
+          const item = variant ? {
+            ...variant,
+            fulfillmentMethods: variant.fulfillmentMethods || product.fulfillmentMethods,
+          } : product;
+          return addToCart(item, quantity, product.id);
         }}
         remove={(e) => {
           e.preventDefault();

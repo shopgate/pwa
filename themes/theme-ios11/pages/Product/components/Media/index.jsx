@@ -34,48 +34,52 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
 
   return (
     <ProductContext.Consumer>
-      {({ productId, displayVariantId: variantId, characteristics }) => (
+      {({
+        productId, variantId: selectedVariantId, displayVariantId: variantId, characteristics,
+      }) => (
         <ProductListTypeProvider type="pdp" subType="mediaSection">
           <ProductListEntryProvider productId={variantId || productId}>
-            <SurroundPortals
-              portalName={PORTAL_PRODUCT_MEDIA_SECTION}
-              portalProps={{
-                productId,
-                variantId,
-              }}
-            >
-              <div className={classes.root}>
-                <ProductDiscountBadge productId={productId} />
+            <div className={classes.root}>
+              <SurroundPortals
+                portalName={PORTAL_PRODUCT_MEDIA_SECTION}
+                portalProps={{
+                  productId,
+                  variantId,
+                }}
+              >
+                <div className={classes.root}>
+                  <ProductDiscountBadge productId={productId} />
 
-                <SurroundPortals
-                  portalName={PORTAL_PRODUCT_IMAGE_SLIDER}
-                  portalProps={{
-                    productId,
-                    variantId,
-                  }}
-                >
-                  {/* MediaSlider feature is currently in BETA testing.
-                It should only be used for approved BETA Client Projects */}
-                  {isBeta() ? (
-                    <ProductMediaSlider
-                      productId={productId}
-                      variantId={variantId}
-                      characteristics={characteristics}
-                      aria-hidden={ariaHidden}
-                      className={className}
-                    />
-                  ) : (
-                    <ProductImageSlider
-                      productId={productId}
-                      variantId={variantId}
-                      aria-hidden={ariaHidden}
-                      className={className}
-                    />
-                  )}
-                </SurroundPortals>
-                <CTAButtons productId={variantId || productId} />
-              </div>
-            </SurroundPortals>
+                  <SurroundPortals
+                    portalName={PORTAL_PRODUCT_IMAGE_SLIDER}
+                    portalProps={{
+                      productId,
+                      variantId,
+                    }}
+                  >
+                    {/* MediaSlider feature is currently in BETA testing.
+                  It should only be used for approved BETA Client Projects */}
+                    {isBeta() ? (
+                      <ProductMediaSlider
+                        productId={productId}
+                        variantId={variantId}
+                        characteristics={characteristics}
+                        aria-hidden={ariaHidden}
+                        className={className}
+                      />
+                    ) : (
+                      <ProductImageSlider
+                        productId={productId}
+                        variantId={variantId}
+                        aria-hidden={ariaHidden}
+                        className={className}
+                      />
+                    )}
+                  </SurroundPortals>
+                </div>
+              </SurroundPortals>
+              <CTAButtons productId={selectedVariantId || productId} />
+            </div>
           </ProductListEntryProvider>
         </ProductListTypeProvider>
       )}

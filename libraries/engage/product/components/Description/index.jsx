@@ -46,12 +46,15 @@ const useStyles = makeStyles()(theme => ({
  * The product description.
  * @param {Object} props The component props.
  * @param {string} props.html html describing the product
+ * @param {boolean} props.isLoading Whether the description is loading
  * @param {Function} props.navigate where to navigate on click
  * @returns {JSX.Element}
  */
-function Description({ html: currentHtml, navigate, ...props }) {
+function Description({
+  html: currentHtml, isLoading, navigate, ...props
+}) {
   const { classes, cx } = useStyles();
-  const html = useStickyValue(currentHtml);
+  const html = useStickyValue(currentHtml, isLoading);
 
   return (
     <SurroundPortals
@@ -87,11 +90,13 @@ function Description({ html: currentHtml, navigate, ...props }) {
 
 Description.propTypes = {
   html: PropTypes.string,
+  isLoading: PropTypes.bool,
   navigate: PropTypes.func,
 };
 
 Description.defaultProps = {
   html: null,
+  isLoading: false,
   navigate: () => { },
 };
 

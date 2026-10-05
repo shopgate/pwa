@@ -1,5 +1,5 @@
 import React, {
-  useCallback, useEffect, useMemo, useState,
+  useCallback, useEffect, useMemo, useRef, useState,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import isMatch from 'lodash/isMatch';
@@ -40,6 +40,7 @@ export interface VariantSelectSheetProps {
 const SheetDrawer = SheetDrawerComponent as unknown as React.ComponentType<{
   isOpen: boolean;
   onClose: () => void;
+  onDidClose?: () => void;
   title?: string;
   contentClassName?: string;
   children?: React.ReactNode;
@@ -130,6 +131,22 @@ const VariantSelectSheet = ({
     setSelection({});
   }, [productId]);
 
+  const triggerRef = useRef<HTMLElement | null>(null);
+  const wasOpen = useRef(false);
+
+  if (isOpen && !wasOpen.current) {
+    triggerRef.current = document.activeElement as HTMLElement | null;
+  }
+  wasOpen.current = isOpen;
+
+  const restoreFocus = useCallback(() => {
+    const trigger = triggerRef.current;
+
+    if (trigger?.isConnected) {
+      trigger.focus();
+    }
+  }, []);
+
   useEffect(() => {
     if (!isOpen) {
       return;
@@ -147,13 +164,14 @@ const VariantSelectSheet = ({
     }
   }, [isOrderable, onAddToCart, variant]);
 
-  const price = variantFromStore?.price || baseProduct?.price || variantFromList?.price;
+  const price = variantFromStore?.price || variantFromList?.price || baseProduct?.price;
   const strikePrice = price && Math.max(price.unitPriceStriked || 0, price.msrp || 0);
 
   return (
     <SheetDrawer
       isOpen={isOpen}
       onClose={onClose}
+      onDidClose={restoreFocus}
       title={i18n.text('product.add_to_cart')}
       contentClassName={cx(classes.content, 'engage__variant-select-sheet')}
     >
