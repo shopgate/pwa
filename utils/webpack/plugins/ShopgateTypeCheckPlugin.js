@@ -61,12 +61,10 @@ class ShopgateTypeCheckPlugin {
   constructor({ overlay = false } = {}) {
     this.overlay = overlay;
     this.started = false;
-    this.processes = [];
     this.results = new Map();
     this.buildErrors = [];
     this.devServer = null;
     this.overlayShown = false;
-    this.stopping = false;
   }
 
   /**
@@ -120,11 +118,6 @@ class ShopgateTypeCheckPlugin {
 
       logger.log(blue(`  ${t('CHECKING', { name: project.name })}`));
       this.watch(project);
-    });
-
-    process.once('exit', () => {
-      this.stopping = true;
-      this.processes.forEach(child => child.kill());
     });
   }
 
@@ -193,7 +186,7 @@ class ShopgateTypeCheckPlugin {
     });
 
     child.on('exit', (code, signal) => {
-      if (this.stopping || code === 0) {
+      if (code === 0) {
         return;
       }
 
@@ -205,8 +198,6 @@ class ShopgateTypeCheckPlugin {
       this.results.delete(project.name);
       this.updateOverlay();
     });
-
-    this.processes.push(child);
   }
 
   /**

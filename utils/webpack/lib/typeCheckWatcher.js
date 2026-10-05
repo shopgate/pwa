@@ -15,7 +15,13 @@ const child = spawn(process.execPath, process.argv.slice(2), {
 function stop() {
   try {
     if (isWindows) {
-      spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true });
+      const { error, status } = spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], {
+        windowsHide: true,
+      });
+
+      if (error || status !== 0) {
+        child.kill();
+      }
     } else {
       process.kill(-child.pid, 'SIGTERM');
     }
