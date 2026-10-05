@@ -27,8 +27,11 @@ interface CardProduct {
 export interface ProductCardAddToCartProps {
   productId: string;
   className?: string;
-  /** `icon` renders an action button, `button` a full width button with label. */
-  variant?: 'icon' | 'button';
+  /**
+   * `icon` renders an action button, `button` a full width button with label and `footer` a
+   * full width action row for the bottom of a card.
+   */
+  variant?: 'icon' | 'button' | 'footer';
 }
 
 const getProduct = productSelectors.getProduct as unknown as (
@@ -58,15 +61,26 @@ const COMPACT_BUTTON_WIDTH = 160;
 const useStyles = makeStyles({ name: 'ProductCardAddToCart' })(theme => ({
   root: {
     display: 'inline-flex',
-    '&[data-variant="button"]': {
+    '&[data-variant="button"], &[data-variant="footer"]': {
       display: 'flex',
       width: '100%',
+    },
+    '&[data-variant="footer"]': {
+      borderTop: `1px solid ${theme.components.separatorLine.borderColor}`,
     },
   },
   labelButton: {
     whiteSpace: 'nowrap',
     '&[data-compact]': {
       '--font-size': `calc(${theme.typography.button.fontSize} * 0.8)`,
+    },
+  },
+  footerButton: {
+    '&&': {
+      '--border-radius': 0,
+      minHeight: 44,
+      whiteSpace: 'normal',
+      lineHeight: 1.2,
     },
   },
 }));
@@ -105,7 +119,7 @@ const ProductCardAddToCart = ({
   useEffect(() => {
     const element = rootRef.current;
 
-    if (variant !== 'button' || !element || typeof ResizeObserver === 'undefined') {
+    if (variant === 'icon' || !element || typeof ResizeObserver === 'undefined') {
       return undefined;
     }
 
@@ -195,16 +209,16 @@ const ProductCardAddToCart = ({
       onClick={stop}
       onKeyDown={stop}
     >
-      {variant === 'button' ? (
+      {variant !== 'icon' ? (
         <Button
-          variant="outlined"
+          variant={variant === 'footer' ? 'text' : 'outlined'}
           color="cta"
           size="small"
           fullWidth
           disabled={isDisabled}
           onClick={handleClick}
           startIcon={compact ? undefined : stateIcon}
-          className={classes.labelButton}
+          className={cx(classes.labelButton, variant === 'footer' && classes.footerButton)}
           data-added={added ? 'true' : undefined}
           data-compact={compact ? 'true' : undefined}
         >

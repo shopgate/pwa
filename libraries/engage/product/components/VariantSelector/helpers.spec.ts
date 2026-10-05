@@ -143,14 +143,10 @@ describe('VariantSelector helpers', () => {
       expect(size.values.find(value => value.id === 's')?.soldOut).toBe(false);
     });
 
-    it('uses the configured swatch source and falls back to the product data', () => {
-      const [imageColor] = decorateRows(rows, variants, {}, settings);
-      expect(imageColor.values[0].swatch).toEqual({ imageUrl: 'red.jpg' });
-      expect(imageColor.values[1].swatch).toEqual({ color: '#00f' });
-
-      const [backendColor] = decorateRows(rows, variants, {}, { ...settings, swatchSource: 'backend' });
-      expect(backendColor.values[0].swatch).toBeUndefined();
-      expect(backendColor.values[1].swatch).toEqual({ color: '#00f' });
+    it('uses the variant image and falls back to a swatch from the pipeline', () => {
+      const [color] = decorateRows(rows, variants, {}, settings);
+      expect(color.values[0].swatch).toEqual({ imageUrl: 'red.jpg' });
+      expect(color.values[1].swatch).toEqual({ color: '#00f' });
     });
 
     it('reads swatches from a product property', () => {

@@ -184,8 +184,8 @@ const getImageSwatch = (
 };
 
 /**
- * Resolves the swatch of a value from the configured source. Falls back to the swatch of the
- * product data when the source has nothing.
+ * Resolves the swatch of a value from the configured source. Falls back to a swatch that the
+ * variants pipeline delivers for the value.
  * @param value The value.
  * @param matching The variants with this value.
  * @param settings The swatch settings.
@@ -196,17 +196,12 @@ const resolveSwatch = (
   matching: VariantProduct[],
   settings: Pick<VariantSelectorSettings, 'swatchSource' | 'swatchProperty' | 'swatchImageZoom'>
 ): VariantSwatchData | undefined => {
-  const backendSwatch = value.swatch?.color || value.swatch?.imageUrl ? value.swatch : undefined;
+  const pipelineSwatch = value.swatch?.color || value.swatch?.imageUrl ? value.swatch : undefined;
+  const configured = settings.swatchSource === 'property'
+    ? getPropertySwatch(matching, settings.swatchProperty)
+    : getImageSwatch(matching, settings.swatchImageZoom);
 
-  if (settings.swatchSource === 'variantImage') {
-    return getImageSwatch(matching, settings.swatchImageZoom) || backendSwatch;
-  }
-
-  if (settings.swatchSource === 'property') {
-    return getPropertySwatch(matching, settings.swatchProperty) || backendSwatch;
-  }
-
-  return backendSwatch;
+  return configured || pipelineSwatch;
 };
 
 /**

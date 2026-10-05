@@ -69,7 +69,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       type: 'dropdown',
       swatchesEnabled: false,
       swatchCharacteristics: 'Farbe, Color',
-      swatchSource: 'backend',
+      swatchSource: 'variantImage',
       swatchShape: 'round',
       swatchImageZoom: 100,
       swatchProperty: '',

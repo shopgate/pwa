@@ -37,15 +37,18 @@ import ProductGridPrice from '../ProductGridPrice';
 const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.components.productCard.padding,
-
+  },
+  withFooter: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
   },
   image: {
     position: 'relative',
     padding: theme.components.productCard.imagePadding,
   },
   addToCartButton: {
-    padding: theme.components.productCard.textPadding,
-    paddingTop: 8,
+    marginTop: 'auto',
   },
   details: {
     display: 'flex',
@@ -107,7 +110,11 @@ function ProductCard(props) {
 
   return (
     <Link
-      className={cx(classes.root, 'engage__product-card')}
+      className={cx(
+        classes.root,
+        addToCart === 'button' && classes.withFooter,
+        'engage__product-card'
+      )}
       href={url || getProductRoute(product.id)}
       itemProp="item"
       itemScope
@@ -190,7 +197,7 @@ function ProductCard(props) {
       {addToCart === 'button' && (
         <ProductCardAddToCart
           productId={product.id}
-          variant="button"
+          variant="footer"
           className={classes.addToCartButton}
         />
       )}

@@ -111,9 +111,9 @@ export interface ProductRatingSettings {
 export type VariantSelectorType = 'dropdown' | 'chips';
 
 /**
- * Where swatch colors and images come from. `property` is filled in by the variants pipeline.
+ * Where swatch colors and images come from: the image of the variant or a property of it.
  */
-export type VariantSwatchSource = 'backend' | 'property' | 'variantImage';
+export type VariantSwatchSource = 'variantImage' | 'property';
 
 /**
  * Settings for the variant selector on the product page and in the variant sheet.

@@ -36,7 +36,7 @@ jest.mock('../../hooks/useVariantSelectorSettings', () => () => ({
   type: 'dropdown',
   swatchesEnabled: false,
   swatchCharacteristics: [],
-  swatchSource: 'backend',
+  swatchSource: 'variantImage',
   swatchShape: 'round',
   swatchImageZoom: 100,
   swatchProperty: '',
