@@ -55,6 +55,8 @@ export type ProductColumns = PerScreenSize;
  */
 export interface ProductGridSettings {
   columns: ProductColumns;
+  /** Whether product tiles in grids show an add to cart button. */
+  showAddToCart: boolean;
 }
 
 /**
@@ -83,6 +85,8 @@ export type SlidesPerView = PerScreenSize;
  */
 export interface ProductSliderSettings {
   slidesPerView: SlidesPerView;
+  /** Whether product cards in sliders show an add to cart button. */
+  showAddToCart: boolean;
 }
 
 /**
@@ -324,6 +328,10 @@ export interface AppSettings {
     }
   }
   product: ProductSettings;
+  favorites: {
+    /** Whether variant products can be added to the cart with a variant sheet. */
+    variantSelectSheet: boolean;
+  };
   /**
    * Settings for images that are served through the image service.
    */

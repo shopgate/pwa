@@ -26,7 +26,11 @@ import {
 } from '@shopgate/engage/category';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getProductCardNameMaxLines } from '@shopgate/engage/settings/selectors/appSettings';
+import {
+  getProductCardNameMaxLines,
+  getProductSliderShowAddToCart,
+} from '@shopgate/engage/settings/selectors/appSettings';
+import { ProductCardAddToCart } from '../ProductCardAddToCart';
 import ProductGridPrice from '../ProductGridPrice';
 
 const useStyles = makeStyles()(theme => ({
@@ -35,7 +39,13 @@ const useStyles = makeStyles()(theme => ({
 
   },
   image: {
+    position: 'relative',
     padding: theme.components.productCard.imagePadding,
+  },
+  addToCart: {
+    position: 'absolute',
+    right: 8,
+    bottom: 8,
   },
   details: {
     display: 'flex',
@@ -79,6 +89,7 @@ function ProductCard(props) {
   } = props;
   const { meta } = useProductListType();
   const productNameLines = useSelector(getProductCardNameMaxLines);
+  const showAddToCart = useSelector(getProductSliderShowAddToCart);
 
   const showEmptyRatingStars = useShowEmptyRatingStars();
 
@@ -119,6 +130,9 @@ function ProductCard(props) {
               alt={product.name}
               itemProp="image"
           />}
+        {showAddToCart && (
+          <ProductCardAddToCart productId={product.id} className={classes.addToCart} />
+        )}
       </div>
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (

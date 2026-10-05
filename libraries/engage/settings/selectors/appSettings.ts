@@ -64,6 +64,30 @@ export const getShowEmptyRatingStars = createSelector(
 );
 
 /**
+ * Selects whether product tiles in grids show an add to cart button.
+ */
+export const getProductGridShowAddToCart = createSelector(
+  getAppSettingsState,
+  appSettings => !!appSettings.product.grid.showAddToCart
+);
+
+/**
+ * Selects whether product cards in sliders show an add to cart button.
+ */
+export const getProductSliderShowAddToCart = createSelector(
+  getAppSettingsState,
+  appSettings => !!appSettings.product.slider.showAddToCart
+);
+
+/**
+ * Selects whether variant products can be added to the cart from favorites with a variant sheet.
+ */
+export const getFavoritesVariantSelectSheet = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.favorites?.variantSelectSheet !== false
+);
+
+/**
  * Selects the variant selector settings.
  */
 export const getVariantSelectorSettings = createSelector(

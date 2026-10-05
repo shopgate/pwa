@@ -87,6 +87,8 @@ export interface VariantSelectorProps {
   characteristics?: VariantSelection | null;
   /** Called whenever the selection changes. */
   onCharacteristicsChange?: (selection: VariantSelection) => void;
+  /** Renders dropdowns as chips, e.g. inside a sheet. */
+  compact?: boolean;
 }
 
 /**
@@ -102,6 +104,7 @@ const VariantSelector = ({
   conditioner = null,
   characteristics = null,
   onCharacteristicsChange,
+  compact = false,
 }: VariantSelectorProps) => {
   const variants = useSelector((state: unknown) => getProductVariants(state, { productId }));
   const isLoading = useSelector((state: unknown) => getAreVariantsLoading(state, { productId }));
@@ -190,11 +193,15 @@ const VariantSelector = ({
 
     const isBetaSwatch = isBeta();
 
-    return decorateRows(rows, variants, selection, settings).map(row => ({
-      row,
-      type: resolveRendererType(row, settings, isBetaSwatch),
-    }));
-  }, [rows, selection, settings, variants]);
+    return decorateRows(rows, variants, selection, settings).map((row) => {
+      const type = resolveRendererType(row, settings, isBetaSwatch);
+
+      return {
+        row,
+        type: compact && type === 'dropdown' ? 'chips' : type,
+      };
+    });
+  }, [compact, rows, selection, settings, variants]);
 
   if (!variants) {
     return isLoading ? <VariantSelectorSkeleton /> : null;

@@ -5,6 +5,9 @@ import { getProductRoute, FeaturedMedia, ProductBadges } from '@shopgate/engage/
 import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
+import { useSelector } from 'react-redux';
+import { getProductGridShowAddToCart } from '@shopgate/engage/settings/selectors/appSettings';
+import { ProductCardAddToCart } from '../../../ProductCardAddToCart';
 import ItemImage from './components/ItemImage';
 import ItemDiscount from './components/ItemDiscount';
 import ItemFavoritesButton from './components/ItemFavoritesButton';
@@ -25,6 +28,12 @@ const useStyles = makeStyles()((theme, { display }) => ({
     display: 'block',
     padding: theme.components.tiles.imagePadding,
   },
+  addToCart: {
+    position: 'absolute',
+    top: 0,
+    right: 64,
+    transform: 'translate3d(0, -50%, 0)',
+  },
   itemDetails: {
     position: 'relative',
     ...display && !display.name && !display.price && !display.reviews && {
@@ -43,6 +52,7 @@ const useStyles = makeStyles()((theme, { display }) => ({
 const Item = ({ product, display }) => {
   const { classes, cx } = useStyles({ display });
   const { meta } = useProductListType();
+  const showAddToCart = useSelector(getProductGridShowAddToCart);
 
   return (
     <div className={cx(classes.root, 'theme__product-grid__item')}>
@@ -79,6 +89,9 @@ const Item = ({ product, display }) => {
           productListTypeMeta={meta}
         />
         <ItemFavoritesButton productId={product.id} />
+        {showAddToCart && (
+          <ProductCardAddToCart productId={product.id} className={classes.addToCart} />
+        )}
       </div>
     </div>
   );

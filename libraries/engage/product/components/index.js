@@ -30,5 +30,7 @@ export * from './Swatch';
 export * from './Swatches';
 export * from './UnitQuantityPicker';
 export * from './VariantSelector';
+export * from './VariantSelectSheet';
+export * from './ProductCardAddToCart';
 export { default as FilterBar } from './FilterBar';
 export { default as ProductFilters } from './ProductFilters';

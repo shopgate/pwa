@@ -4,7 +4,9 @@ import {
 import isEqual from 'lodash/isEqual';
 import isMatch from 'lodash/isMatch';
 import * as helpers from '../ProductCharacteristics/helpers';
-import { applySelection, buildRows, orderSelection } from './selection';
+import {
+  applySelection, buildRows, orderSelection, selectSingleValues,
+} from './selection';
 import type {
   ProductVariants,
   VariantCharacteristic,
@@ -67,7 +69,7 @@ const useVariantSelection = ({
   finishTimeout = 0,
 }: UseVariantSelectionOptions): UseVariantSelectionResult => {
   const [selection, setSelection] = useState<VariantSelection>(
-    () => orderSelection(selectCharacteristics({ variantId, variants }), variants)
+    () => selectSingleValues(selectCharacteristics({ variantId, variants }), variants)
   );
   const [checkRequest, setCheckRequest] = useState(0);
   const initializedRef = useRef(!!variants);
@@ -86,7 +88,7 @@ const useVariantSelection = ({
     }
 
     initializedRef.current = true;
-    const initial = orderSelection(selectCharacteristics({ variantId, variants }), variants);
+    const initial = selectSingleValues(selectCharacteristics({ variantId, variants }), variants);
     setSelection(initial);
     callbacksRef.current.onCharacteristicsChange?.(initial);
     setCheckRequest(value => value + 1);

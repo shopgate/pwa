@@ -1,4 +1,6 @@
-import { applySelection, buildRows, orderSelection } from './selection';
+import {
+  applySelection, buildRows, orderSelection, selectSingleValues,
+} from './selection';
 import type { ProductVariants } from './types';
 
 const variants: ProductVariants = {
@@ -27,6 +29,18 @@ describe('VariantSelector selection', () => {
   it('orders a selection like the characteristics', () => {
     expect(Object.keys(orderSelection({ color: 'black', size: 's' }, variants)))
       .toEqual(['size', 'color']);
+  });
+
+  it('selects characteristics with a single value', () => {
+    const single: ProductVariants = {
+      characteristics: [
+        { id: 'size', label: 'Size', values: [{ id: 'one', label: 'onesize' }] },
+        variants.characteristics[1],
+      ],
+      products: [],
+    };
+
+    expect(selectSingleValues({}, single)).toEqual({ size: 'one' });
   });
 
   it('switches the color of a complete selection', () => {

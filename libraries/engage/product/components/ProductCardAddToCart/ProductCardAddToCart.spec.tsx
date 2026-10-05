@@ -1,0 +1,90 @@
+import React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
+import { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
+import ProductCardAddToCart from './ProductCardAddToCart';
+
+let mockProduct: unknown = null;
+const mockDispatch = jest.fn(action => action);
+
+jest.mock('react-redux', () => ({
+  useDispatch: () => mockDispatch,
+  useSelector: (selector: (state: unknown) => unknown) => selector({}),
+  useStore: () => ({ getState: () => ({}) }),
+}));
+jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
+  getProduct: () => mockProduct,
+}));
+jest.mock('@shopgate/pwa-common-commerce/cart/actions/addProductsToCart', () => jest.fn(() => 'ADD'));
+jest.mock('@shopgate/pwa-common/actions/router/historyPush', () => ({
+  historyPush: jest.fn(() => 'PUSH'),
+}));
+jest.mock('@shopgate/pwa-common-commerce/product/helpers', () => ({
+  getProductRoute: (id: string) => `/item/${id}`,
+}));
+jest.mock('@shopgate/engage/core/helpers', () => ({ hasNewServices: () => false }));
+jest.mock('@shopgate/engage/core/helpers/i18n', () => ({ i18n: { text: (key: string) => key } }));
+jest.mock('@shopgate/engage/locations/selectors', () => ({
+  getPreferredFulfillmentMethod: () => null,
+  getPreferredLocation: () => null,
+}));
+jest.mock('@shopgate/engage/locations/constants', () => ({ DIRECT_SHIP: 'directShip' }));
+jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
+jest.mock('@shopgate/pwa-ui-shared/AddToCartButton', () => ({ onClick, isDisabled }: {
+  onClick: (event: unknown) => unknown;
+  isDisabled: boolean;
+}) => (
+  <button type="button" disabled={isDisabled} onClick={onClick}>add</button>
+));
+jest.mock('../VariantSelectSheet', () => ({
+  VariantSelectSheet: ({ isOpen, onAddToCart }: {
+    isOpen: boolean;
+    onAddToCart: (variant: { id: string }) => unknown;
+  }) => (isOpen ? (
+    <button type="button" onClick={() => onAddToCart({ id: 'variant-1' })}>sheet</button>
+  ) : null),
+}));
+
+describe('<ProductCardAddToCart />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('adds a simple product directly', () => {
+    mockProduct = { id: 'simple', flags: {}, stock: { orderable: true } };
+    render(<ProductCardAddToCart productId="simple" />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'add' }));
+
+    expect(addProductsToCart).toHaveBeenCalledWith([{ productId: 'simple', quantity: 1 }]);
+  });
+
+  it('opens the variant sheet for variant products and adds the selected variant', () => {
+    mockProduct = { id: 'base', flags: { hasVariants: true } };
+    render(<ProductCardAddToCart productId="base" />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'add' }));
+    expect(addProductsToCart).not.toHaveBeenCalled();
+
+    fireEvent.click(screen.getByRole('button', { name: 'sheet' }));
+    expect(addProductsToCart).toHaveBeenCalledWith([{ productId: 'variant-1', quantity: 1 }]);
+  });
+
+  it('leads to the product page for products with options', () => {
+    mockProduct = { id: 'options', flags: { hasOptions: true } };
+    render(<ProductCardAddToCart productId="options" />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'add' }));
+
+    expect(historyPush).toHaveBeenCalledWith({ pathname: '/item/options' });
+    expect(addProductsToCart).not.toHaveBeenCalled();
+  });
+
+  it('disables the button for products that are not orderable', () => {
+    mockProduct = { id: 'soldout', flags: {}, stock: { orderable: false } };
+    render(<ProductCardAddToCart productId="soldout" />);
+
+    expect(screen.getByRole('button', { name: 'add' })).toBeDisabled();
+  });
+});

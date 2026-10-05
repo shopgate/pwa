@@ -32,6 +32,31 @@ export const orderSelection = (
 };
 
 /**
+ * Selects the value of every characteristic that has only one value.
+ * @param selection The selection.
+ * @param variants The variants.
+ * @returns The completed selection.
+ */
+export const selectSingleValues = (
+  selection: VariantSelection,
+  variants: ProductVariants | null
+): VariantSelection => {
+  if (!variants) {
+    return selection;
+  }
+
+  const completed = { ...selection };
+
+  variants.characteristics.forEach(({ id, values }) => {
+    if (!completed[id] && values.length === 1) {
+      completed[id] = values[0].id;
+    }
+  });
+
+  return orderSelection(completed, variants);
+};
+
+/**
  * Returns the variants that match a selection.
  * @param variants The variants.
  * @param selection The selection.
@@ -89,13 +114,14 @@ export const applySelection = (
     }
   });
 
-  const matching = findMatchingVariants(variants, next);
+  const completed = selectSingleValues(next, variants);
+  const matching = findMatchingVariants(variants, completed);
 
   if (matching.length === 1) {
     return orderSelection(matching[0].characteristics, variants);
   }
 
-  return orderSelection(next, variants);
+  return completed;
 };
 
 /**

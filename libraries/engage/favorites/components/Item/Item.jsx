@@ -7,7 +7,7 @@ import React, {
   useRef,
 } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { MODAL_VARIANT_SELECT } from '@shopgate/pwa-ui-shared/Dialog/constants';
 import {
   ProductImage,
@@ -43,6 +43,8 @@ import {
   FAVORITES_AVAILABILITY_TEXT,
 } from '@shopgate/engage/favorites';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import { getFavoritesVariantSelectSheet } from '@shopgate/engage/settings/selectors/appSettings';
+import { VariantSelectSheet } from '@shopgate/engage/product/components/VariantSelectSheet';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
@@ -188,6 +190,8 @@ const FavoriteItem = ({
 }) => {
   const { classes, cx } = useStyles();
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
+  const [variantSheetOpen, setVariantSheetOpen] = useState(false);
+  const variantSelectSheetEnabled = useSelector(getFavoritesVariantSelectSheet);
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
@@ -218,6 +222,11 @@ const FavoriteItem = ({
     e.stopPropagation();
 
     if (isBaseProduct && hasVariants) {
+      if (variantSelectSheetEnabled && !product.flags?.hasOptions) {
+        setVariantSheetOpen(true);
+        return false;
+      }
+
       // Called for a parent product. User needs to confirm the navigation to the PDP
       showModal({
         title: null,
@@ -252,10 +261,23 @@ const FavoriteItem = ({
     historyPush,
     isBaseProduct,
     isRopeProductOrderable,
+    product.flags,
     product.id,
     productLink,
     showModal,
+    variantSelectSheetEnabled,
   ]);
+
+  const handleVariantSheetAddToCart = useCallback((variant) => {
+    setVariantSheetOpen(false);
+    broadcastLiveMessage('product.adding_item', {
+      params: { count: 1 },
+    });
+
+    return addToCart(null, variant);
+  }, [addToCart]);
+
+  const closeVariantSheet = useCallback(() => setVariantSheetOpen(false), []);
 
   const commonPortalProps = useMemo(() => {
     const {
@@ -411,6 +433,14 @@ const FavoriteItem = ({
                   aria-label={i18n.text('product.add_to_cart')}
                 />
               </SurroundPortals>
+              {hasVariants && variantSelectSheetEnabled && (
+                <VariantSelectSheet
+                  productId={product.id}
+                  isOpen={variantSheetOpen}
+                  onClose={closeVariantSheet}
+                  onAddToCart={handleVariantSheetAddToCart}
+                />
+              )}
             </div>
             <SurroundPortals portalName={FAVORITES_NOTES} portalProps={commonPortalProps}>
               <ItemNotes
