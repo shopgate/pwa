@@ -5,6 +5,8 @@ import { useSelector } from 'react-redux';
 import { isBeta } from '@shopgate/engage/core/helpers';
 import { Portal } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
+import isMatch from 'lodash/isMatch';
 import * as productSelectors from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { PRODUCT_VARIANT_SELECT_CHARACTERISTIC } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import VariantContext from '../ProductCharacteristics/context';
@@ -26,6 +28,7 @@ import type {
 } from './types';
 
 const CONDITIONER_NAME = 'product-variants';
+const ANNOUNCE_DELAY = 150;
 
 type ProductSelector<T> = (state: unknown, props: { productId: string | null }) => T;
 
@@ -35,6 +38,8 @@ const hasProductVariants =
   productSelectors.hasProductVariants as unknown as ProductSelector<boolean | null>;
 const getBaseProductId =
   productSelectors.getBaseProductId as unknown as ProductSelector<string | null>;
+const getProduct =
+  productSelectors.getProduct as unknown as ProductSelector<{ active?: boolean } | null>;
 const getProductVariantsState =
   productSelectors.getProductVariantsState as unknown as (
     state: unknown
@@ -48,7 +53,10 @@ const getProductVariantsState =
  * @returns Whether the variants are loading.
  */
 const getAreVariantsLoading = (state: unknown, { productId }: { productId: string | null }) => {
-  if (!hasProductVariants(state, { productId })) {
+  if (
+    !hasProductVariants(state, { productId })
+    || getProduct(state, { productId })?.active === false
+  ) {
     return false;
   }
 
@@ -111,6 +119,7 @@ const VariantSelector = ({
   const variants = useSelector((state: unknown) => getProductVariants(state, { productId }));
   const isLoading = useSelector((state: unknown) => getAreVariantsLoading(state, { productId }));
   const [highlight, setHighlight] = useState<string | null>(null);
+  const reduceMotion = useReduceMotion();
   const settings = useVariantSelectorSettings();
 
   const {
@@ -122,7 +131,7 @@ const VariantSelector = ({
     onCharacteristicsChange,
     onVariantSelected,
     finishTimeout,
-    preselect: settings.preselect === 'inherit' ? undefined : settings.preselect === 'on',
+    preselect: settings.preselect,
   });
 
   usePrefetchVariants(variants, selection);
@@ -140,27 +149,38 @@ const VariantSelector = ({
       return true;
     }
 
-    if (isComplete && variantId) {
-      return true;
+    if (isComplete) {
+      const match = variants.products.find(product => (
+        isMatch(product.characteristics, selection)
+      ));
+
+      return !!match && match.id === variantId;
     }
 
     const firstUnselected = findFirstUnselected();
-    const element = firstUnselected ? refs[firstUnselected.id]?.current : null;
 
-    if (firstUnselected && element) {
-      element.focus();
-      announce('product.pick_option_first', {
-        params: { option: element.innerText },
-      });
-
-      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-
-      setHighlight(null);
-      requestAnimationFrame(() => setHighlight(firstUnselected.id));
+    if (!firstUnselected) {
+      return false;
     }
 
+    const element = refs[firstUnselected.id]?.current;
+
+    if (element) {
+      element.focus();
+      element.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+    }
+
+    setTimeout(() => {
+      announce('product.pick_option_first', {
+        params: { option: firstUnselected.label },
+      });
+    }, ANNOUNCE_DELAY);
+
+    setHighlight(null);
+    requestAnimationFrame(() => setHighlight(firstUnselected.id));
+
     return false;
-  }, [findFirstUnselected, isComplete, refs, variantId, variants]);
+  }, [findFirstUnselected, isComplete, reduceMotion, refs, selection, variantId, variants]);
 
   const checkSelectionRef = useRef(checkSelection);
   checkSelectionRef.current = checkSelection;

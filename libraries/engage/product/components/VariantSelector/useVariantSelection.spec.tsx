@@ -136,7 +136,7 @@ describe('useVariantSelection', () => {
     expect(onVariantSelected).toHaveBeenCalledWith('red-only');
   });
 
-  it('preselects the first variant when the setting overrides the shop config', () => {
+  it('preselects the first variant when preselection is switched on', () => {
     const hook = renderSelection({ variants, preselect: true });
 
     expect(hook.result.selection).toEqual({ color: 'red', size: 's' });

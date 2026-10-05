@@ -79,7 +79,7 @@ describe('settings / reducers / appSettings', () => {
           swatchImageZoom: 200,
           swatchProperty: '',
           chipsLayout: 'scroll',
-          preselect: 'on',
+          preselect: true,
           soldOut: 'hide',
         },
         tileActions: {

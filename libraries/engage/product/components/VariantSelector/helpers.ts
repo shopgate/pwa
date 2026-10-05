@@ -101,7 +101,8 @@ export const isVariantSoldOut = (product: VariantProduct): boolean => {
     return false;
   }
 
-  return stock.orderable === false || (stock.ignoreQuantity === false && stock.quantity === 0);
+  return stock.orderable === false
+    || (stock.ignoreQuantity === false && typeof stock.quantity === 'number' && stock.quantity <= 0);
 };
 
 /**
@@ -116,7 +117,7 @@ const toSwatch = (value: unknown): VariantSwatchData | undefined => {
 
   const trimmed = value.trim();
 
-  if (/^(https?:)?\/\//.test(trimmed)) {
+  if (/^(https?:)?\/\//i.test(trimmed)) {
     return { imageUrl: trimmed };
   }
 
@@ -145,7 +146,7 @@ const getPropertySwatch = (
 
   for (let i = 0; i < matching.length; i += 1) {
     const entry = (matching[i].properties || []).find(prop => (
-      prop.label?.toLowerCase() === name || prop.code?.toLowerCase() === name
+      prop.label?.trim().toLowerCase() === name || prop.code?.trim().toLowerCase() === name
     ));
     const swatch = toSwatch(entry?.value);
 
@@ -189,19 +190,26 @@ const getImageSwatch = (
  * @param value The value.
  * @param matching The variants with this value.
  * @param settings The swatch settings.
+ * @param configured Whether swatches are configured for the characteristic.
  * @returns The swatch or undefined.
  */
 const resolveSwatch = (
   value: VariantSelectorValue,
   matching: VariantProduct[],
-  settings: Pick<VariantSelectorSettings, 'swatchSource' | 'swatchProperty' | 'swatchImageZoom'>
+  settings: Pick<VariantSelectorSettings, 'swatchSource' | 'swatchProperty' | 'swatchImageZoom'>,
+  configured: boolean
 ): VariantSwatchData | undefined => {
   const pipelineSwatch = value.swatch?.color || value.swatch?.imageUrl ? value.swatch : undefined;
-  const configured = settings.swatchSource === 'property'
+
+  if (!configured) {
+    return pipelineSwatch;
+  }
+
+  const fromSource = settings.swatchSource === 'property'
     ? getPropertySwatch(matching, settings.swatchProperty)
     : getImageSwatch(matching, settings.swatchImageZoom);
 
-  return configured || pipelineSwatch;
+  return fromSource || pipelineSwatch;
 };
 
 /**
@@ -243,10 +251,11 @@ export const decorateRows = (
   selection: VariantSelection,
   settings: Pick<
     VariantSelectorSettings,
-    'soldOut' | 'swatchSource' | 'swatchProperty' | 'swatchImageZoom'
+    'soldOut' | 'swatchSource' | 'swatchProperty' | 'swatchImageZoom' | 'swatchCharacteristics'
   >
 ): VariantSelectorRow[] => rows.map((row) => {
   const others = getOtherSelections(selection, row.id);
+  const configured = settings.swatchCharacteristics.includes(row.label.trim().toLowerCase());
   const values = row.values.map((value) => {
     const withValue = findMatchingVariants(variants, { [row.id]: value.id });
     const matching = findMatchingVariants(variants, { ...others, [row.id]: value.id });
@@ -257,7 +266,7 @@ export const decorateRows = (
       value: {
         ...value,
         soldOut: settings.soldOut === 'strike' && soldOut,
-        swatch: resolveSwatch(value, withValue, settings),
+        swatch: resolveSwatch(value, withValue, settings, configured),
       },
       hidden: settings.soldOut === 'hide' && soldOutEverywhere && !value.selected,
     };
@@ -270,3 +279,32 @@ export const decorateRows = (
     values: sortSizeValues(visible),
   };
 });
+
+/**
+ * Preselects the first combination that is not sold out, following the displayed order of the
+ * values. Falls back to the first existing combination when every variant is sold out.
+ * @param variants The variants.
+ * @returns The selection.
+ */
+export const preselectFirstAvailable = (variants: ProductVariants): VariantSelection => {
+  /**
+   * Picks the first value per characteristic that still has a matching variant.
+   * @param accept Whether a matching variant qualifies.
+   * @returns The selection.
+   */
+  const pick = (accept: (product: VariantProduct) => boolean): VariantSelection => (
+    variants.characteristics.reduce<VariantSelection>((selection, char) => {
+      const value = sortSizeValues(char.values).find(candidate => (
+        findMatchingVariants(variants, { ...selection, [char.id]: candidate.id }).some(accept)
+      ));
+
+      return value ? { ...selection, [char.id]: value.id } : selection;
+    }, {})
+  );
+
+  const available = pick(product => !isVariantSoldOut(product));
+
+  return Object.keys(available).length === variants.characteristics.length
+    ? available
+    : pick(() => true);
+};

@@ -1,5 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
+import { VisuallyHidden } from '@shopgate/engage/a11y';
+import { getValueStateText } from './valueState';
 import type { VariantSelectorValue } from '../types';
 
 const useStyles = makeStyles({ name: 'VariantChip' })(theme => ({
@@ -13,13 +15,14 @@ const useStyles = makeStyles({ name: 'VariantChip' })(theme => ({
     background: theme.palette.background.surface,
     color: theme.palette.text.primary,
     font: 'inherit',
-    fontSize: '0.9375rem',
+    fontSize: theme.typography.body2.fontSize,
     lineHeight: 1.2,
     cursor: 'pointer',
     outline: 0,
     transition: 'background 150ms ease-in, color 150ms ease-in, border-color 150ms ease-in',
     '&:focus-visible': {
-      borderColor: theme.palette.primary.main,
+      outline: `2px solid ${theme.palette.text.primary}`,
+      outlineOffset: 2,
     },
     '&[data-unavailable]': {
       borderStyle: 'dashed',
@@ -71,6 +74,7 @@ const VariantChip = ({ value, onSelect }: VariantChipProps) => {
       }}
     >
       {value.label}
+      {getValueStateText(value) && <VisuallyHidden>{`, ${getValueStateText(value)}`}</VisuallyHidden>}
     </button>
   );
 };

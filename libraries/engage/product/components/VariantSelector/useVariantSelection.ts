@@ -3,10 +3,10 @@ import {
 } from 'react';
 import isEqual from 'lodash/isEqual';
 import isMatch from 'lodash/isMatch';
-import * as helpers from '../ProductCharacteristics/helpers';
 import {
   applySelection, buildRows, orderSelection, selectSingleValues,
 } from './selection';
+import { preselectFirstAvailable } from './helpers';
 import type {
   ProductVariants,
   VariantCharacteristic,
@@ -15,11 +15,34 @@ import type {
   VariantSelectorRow,
 } from './types';
 
-const selectCharacteristics = helpers.selectCharacteristics as unknown as (input: {
-  variantId: string | null;
-  variants: ProductVariants | null;
-  preselect?: boolean;
-}) => VariantSelection;
+/**
+ * Builds the selection a product page starts with.
+ * @param variants The variants.
+ * @param variantId The shown variant.
+ * @param preselect Whether the first available variant is preselected.
+ * @returns The selection.
+ */
+const getInitialSelection = (
+  variants: ProductVariants | null,
+  variantId: string | null,
+  preselect: boolean
+): VariantSelection => {
+  if (!variants || !variants.products.length) {
+    return {};
+  }
+
+  const variant = variantId ? variants.products.find(product => product.id === variantId) : null;
+
+  if (variant) {
+    return orderSelection(variant.characteristics, variants);
+  }
+
+  if (variants.products.length === 1) {
+    return orderSelection(variants.products[0].characteristics, variants);
+  }
+
+  return selectSingleValues(preselect ? preselectFirstAvailable(variants) : {}, variants);
+};
 
 export interface UseVariantSelectionOptions {
   /** Variants of the base product, `null` while they are not loaded. */
@@ -34,7 +57,7 @@ export interface UseVariantSelectionOptions {
   onVariantSelected?: (variantId: string) => void;
   /** Delay in ms before `onVariantSelected` is called. */
   finishTimeout?: number;
-  /** Whether the first variant is preselected, the shop config decides when undefined. */
+  /** Whether the first available variant is preselected. */
   preselect?: boolean;
 }
 
@@ -71,10 +94,10 @@ const useVariantSelection = ({
   onCharacteristicsChange,
   onVariantSelected,
   finishTimeout = 0,
-  preselect,
+  preselect = false,
 }: UseVariantSelectionOptions): UseVariantSelectionResult => {
   const [selection, setSelection] = useState<VariantSelection>(
-    () => selectSingleValues(selectCharacteristics({ variantId, variants, preselect }), variants)
+    () => getInitialSelection(variants, variantId, preselect)
   );
   const [checkRequest, setCheckRequest] = useState(0);
   const initializedRef = useRef(!!variants);
@@ -93,10 +116,7 @@ const useVariantSelection = ({
     }
 
     initializedRef.current = true;
-    const initial = selectSingleValues(
-      selectCharacteristics({ variantId, variants, preselect }),
-      variants
-    );
+    const initial = getInitialSelection(variants, variantId, preselect);
     setSelection(initial);
     callbacksRef.current.onCharacteristicsChange?.(initial);
     setCheckRequest(value => value + 1);

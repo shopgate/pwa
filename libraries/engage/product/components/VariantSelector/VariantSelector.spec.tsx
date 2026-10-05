@@ -22,7 +22,9 @@ jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   hasProductVariants: jest.fn(),
   getBaseProductId: () => 'base',
   getProductVariantsState: jest.fn(() => ({})),
+  getProduct: jest.fn(() => ({ active: true })),
 }));
+jest.mock('@shopgate/engage/a11y/hooks', () => ({ useReduceMotion: () => true }));
 jest.mock('@shopgate/engage/core/helpers', () => ({ isBeta: () => false }));
 jest.mock('@shopgate/engage/components', () => ({
   Portal: ({ children }: { children: React.ReactNode }) => children,
@@ -41,7 +43,7 @@ jest.mock('../../hooks/useVariantSelectorSettings', () => () => ({
   swatchImageZoom: 100,
   swatchProperty: '',
   chipsLayout: 'wrap',
-  preselect: 'inherit',
+  preselect: false,
   soldOut: 'strike',
 }));
 

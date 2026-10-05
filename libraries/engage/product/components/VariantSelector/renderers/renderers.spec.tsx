@@ -6,6 +6,13 @@ import VariantSwatches from './VariantSwatches';
 import VariantInlineDropdown from './VariantInlineDropdown';
 import type { VariantRendererProps, VariantSelectorValue } from '../types';
 
+jest.mock('@shopgate/engage/a11y', () => ({
+  VisuallyHidden: ({ children }: { children: React.ReactNode }) => <span>{children}</span>,
+}));
+jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
+  i18n: { text: (key: string, params?: string[]) => (params ? `${key}:${params.join(',')}` : key) },
+}));
+
 const values: VariantSelectorValue[] = [
   {
     id: 's', label: 'S', selectable: true, selected: true,
@@ -36,9 +43,9 @@ describe('<VariantChips />', () => {
   it('renders the values as radio group with the selected value in the heading', () => {
     render(<VariantChips {...renderProps()} />);
 
-    expect(screen.getByRole('radiogroup', { name: 'Size S' })).toBeInTheDocument();
+    expect(screen.getByRole('radiogroup', { name: 'Size' })).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: 'S' })).toHaveAttribute('aria-checked', 'true');
-    expect(screen.getByRole('radio', { name: 'M' })).toHaveAttribute('data-sold-out', 'true');
+    expect(screen.getByRole('radio', { name: /^M ?, product.available.not$/ })).toHaveAttribute('data-sold-out', 'true');
     expect(screen.getByRole('radio', { name: 'L' })).toHaveAttribute('aria-disabled', 'true');
   });
 
@@ -46,7 +53,7 @@ describe('<VariantChips />', () => {
     const select = jest.fn();
     render(<VariantChips {...renderProps({ select })} />);
 
-    fireEvent.click(screen.getByRole('radio', { name: 'M' }));
+    fireEvent.click(screen.getByRole('radio', { name: /^M ?, product.available.not$/ }));
     fireEvent.click(screen.getByRole('radio', { name: 'L' }));
 
     expect(select).toHaveBeenCalledTimes(1);
@@ -63,7 +70,7 @@ describe('<VariantChips />', () => {
     })}
     />);
 
-    const chip = screen.getByRole('radio', { name: 'XL' });
+    const chip = screen.getByRole('radio', { name: /^XL ?, locations.stock_info.notAvailable$/ });
     expect(chip).toHaveAttribute('data-unavailable', 'true');
 
     fireEvent.click(chip);
@@ -78,10 +85,6 @@ describe('<VariantChips />', () => {
 });
 
 jest.mock('@shopgate/engage/components', () => ({ ArrowDropIcon: () => null }));
-jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
-  i18n: { text: (key: string, params?: string[]) => `${key}:${params?.join(',')}` },
-}));
-
 describe('<VariantInlineDropdown />', () => {
   it('expands the values inline and collapses after a selection', () => {
     const select = jest.fn();
@@ -93,9 +96,9 @@ describe('<VariantInlineDropdown />', () => {
 
     fireEvent.click(field);
     expect(field).toHaveAttribute('aria-expanded', 'true');
-    expect(screen.getByRole('option', { name: 'M' })).toHaveAttribute('data-sold-out', 'true');
+    expect(screen.getByRole('option', { name: /^M ?, product.available.not$/ })).toHaveAttribute('data-sold-out', 'true');
 
-    fireEvent.click(screen.getByRole('option', { name: 'M' }));
+    fireEvent.click(screen.getByRole('option', { name: /^M ?, product.available.not$/ }));
     expect(select).toHaveBeenCalledWith({ id: 'size', value: 'm' });
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });

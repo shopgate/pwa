@@ -39,58 +39,6 @@ export function getSelectedValue(charId, characteristics) {
 }
 
 /**
- * Builds the values of a characteristic with their selectable and selected state.
- * @param {Object} selections The current selections.
- * @param {string} charId The characteristic ID.
- * @param {Array} values The characteristic values.
- * @param {number} charIndex The characteristic index.
- * @param {string|null} selectedValue The selected value ID.
- * @param {boolean} charDisabled Whether the characteristic is disabled.
- * @param {Array} products All variant products.
- * @return {Array}
- */
-export function buildValues(
-  selections,
-  charId,
-  values,
-  charIndex,
-  selectedValue,
-  charDisabled,
-  products
-) {
-  if (charIndex === 0) {
-    return values.map(value => ({
-      ...value,
-      selectable: !charDisabled,
-      selected: selectedValue === value.id,
-    }));
-  }
-
-  const subset = {};
-  Object.keys(selections).forEach((item, index) => {
-    if (index < charIndex) {
-      subset[item] = selections[item];
-    }
-  });
-
-  const matching = products.filter(({ characteristics }) => (
-    isMatch(characteristics, subset)
-  ));
-
-  return values.map((value) => {
-    const selectable = matching.some(({ characteristics }) => (
-      isMatch(characteristics, { [charId]: value.id })
-    ));
-
-    return ({
-      ...value,
-      selectable: charDisabled ? false : selectable,
-      selected: selectedValue === value.id,
-    });
-  });
-}
-
-/**
  * Prepares the new state after a selection has been made.
  * @param {string} id The selection ID
  * @param {string} value The selection value.
@@ -162,10 +110,9 @@ export function prepareState(id, value, selections, characteristics, products) {
  * or pre-select the first available product
  * @param {string} [variantId=null] The selected variant
  * @param {{products: Object[], characteristics: Object[]}} [variants=null] All possible variants.
- * @param {boolean} [preselect] Whether to preselect the first variant, defaults to the shop config.
  * @return {Object}
  */
-export function selectCharacteristics({ variantId, variants = {}, preselect = preselectVariant }) {
+export function selectCharacteristics({ variantId, variants = {} }) {
   if (!variants || !variants.products || !variants.products.length) {
     return {};
   }
@@ -181,7 +128,7 @@ export function selectCharacteristics({ variantId, variants = {}, preselect = pr
   }
 
   // Pre-selection is off
-  if (!preselect) {
+  if (!preselectVariant) {
     return {};
   }
 

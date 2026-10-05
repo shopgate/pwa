@@ -14,10 +14,23 @@ export interface VariantSelectorSettings
  * @param value The configured list.
  * @returns The lower cased labels.
  */
-const parseLabels = (value: string): string[] => (value || '')
+const parseLabels = (value: unknown): string[] => (typeof value === 'string' ? value : '')
   .split(',')
   .map(label => label.trim().toLowerCase())
   .filter(Boolean);
+
+const MIN_ZOOM = 100;
+const MAX_ZOOM = 600;
+
+/**
+ * Limits the image swatch zoom to the supported range.
+ * @param value The configured zoom.
+ * @returns The zoom in percent.
+ */
+const clampZoom = (value: unknown): number => {
+  const zoom = Number(value);
+  return Number.isFinite(zoom) ? Math.min(MAX_ZOOM, Math.max(MIN_ZOOM, zoom)) : MIN_ZOOM;
+};
 
 /**
  * Resolves the variant selector settings with parsed characteristic lists.
@@ -28,6 +41,9 @@ const useVariantSelectorSettings = (): VariantSelectorSettings => {
 
   return useMemo(() => ({
     ...settings,
+    preselect: settings.preselect === true,
+    swatchProperty: typeof settings.swatchProperty === 'string' ? settings.swatchProperty : '',
+    swatchImageZoom: clampZoom(settings.swatchImageZoom),
     swatchCharacteristics: settings.swatchesEnabled
       ? parseLabels(settings.swatchCharacteristics)
       : [],

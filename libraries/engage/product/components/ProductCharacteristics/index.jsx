@@ -7,7 +7,6 @@ import { responsiveCondition } from '@shopgate/engage/styles';
 import connect from './connector';
 import VariantsContext from './context';
 import {
-  buildValues,
   isCharacteristicEnabled,
   getSelectedValue,
   prepareState,
@@ -207,6 +206,53 @@ class ProductCharacteristics extends Component {
   };
 
   /**
+   * @param {Object} selections The selections stored in the state.
+   * @param {string} charId The current characteristic ID.
+   * @param {Array} values The characteristic values.
+   * @param {number} charIndex The characteristic index.
+   * @param {string|null} selectedValue selectedValue
+   * @param {boolean} charDisabled Whether the characteristic for the values is disabled
+   * @return {Array}
+   */
+  buildValues = (selections, charId, values, charIndex, selectedValue, charDisabled) => {
+    // If this is the first characteristic then all values are selectable.
+    if (charIndex === 0) {
+      return values.map(value => ({
+        ...value,
+        selectable: !charDisabled,
+        selected: selectedValue === value.id,
+      }));
+    }
+
+    const { variants } = this.props;
+
+    const subset = {};
+    Object.keys(selections).forEach((item, index) => {
+      if (index < charIndex) {
+        subset[item] = selections[item];
+      }
+    });
+
+    // Filter products that match or partially match the current characteristic selection.
+    const products = variants.products.filter(({ characteristics }) => (
+      isMatch(characteristics, subset)
+    ));
+
+    // Check if any of the values are present inside any of the matching products.
+    return values.map((value) => {
+      const selectable = products.some(({ characteristics }) => (
+        isMatch(characteristics, { [charId]: value.id })
+      ));
+
+      return ({
+        ...value,
+        selectable: charDisabled ? false : selectable,
+        selected: selectedValue === value.id,
+      });
+    });
+  };
+
+  /**
    * Finds the first unselected characteristic.
    * @return {Object|null}
    */
@@ -246,14 +292,13 @@ class ProductCharacteristics extends Component {
         {variants.characteristics.map((char, index) => {
           const disabled = !isCharacteristicEnabled(characteristics, index);
           const selected = getSelectedValue(char.id, characteristics);
-          const values = buildValues(
+          const values = this.buildValues(
             characteristics,
             char.id,
             char.values,
             index,
             selected,
-            disabled,
-            variants.products
+            disabled
           );
 
           return (

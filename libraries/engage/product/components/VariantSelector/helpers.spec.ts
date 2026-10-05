@@ -1,6 +1,7 @@
 import {
   decorateRows,
   isVariantSoldOut,
+  preselectFirstAvailable,
   resolveRendererType,
   sortSizeValues,
 } from './helpers';
@@ -129,6 +130,7 @@ describe('VariantSelector helpers', () => {
       swatchSource: 'variantImage' as const,
       swatchProperty: '',
       swatchImageZoom: 100,
+      swatchCharacteristics: ['color'],
     };
 
     it('marks values whose variants are all sold out', () => {
@@ -146,6 +148,12 @@ describe('VariantSelector helpers', () => {
     it('uses the variant image and falls back to a swatch from the pipeline', () => {
       const [color] = decorateRows(rows, variants, {}, settings);
       expect(color.values[0].swatch).toEqual({ imageUrl: 'red.jpg' });
+      expect(color.values[1].swatch).toEqual({ color: '#00f' });
+    });
+
+    it('keeps only pipeline swatches for characteristics that are not configured', () => {
+      const [color] = decorateRows(rows, variants, {}, { ...settings, swatchCharacteristics: [] });
+      expect(color.values[0].swatch).toBeUndefined();
       expect(color.values[1].swatch).toEqual({ color: '#00f' });
     });
 
@@ -194,6 +202,36 @@ describe('VariantSelector helpers', () => {
       const [color] = decorateRows(rows, variants, {}, { ...settings, soldOut: 'hide' });
 
       expect(labels(color.values)).toEqual(['Blue']);
+    });
+  });
+
+  describe('preselectFirstAvailable()', () => {
+    const variants: ProductVariants = {
+      characteristics: [
+        { id: 'color', label: 'Color', values: [{ id: 'red', label: 'Red' }, { id: 'blue', label: 'Blue' }] },
+        { id: 'size', label: 'Size', values: [{ id: 'l', label: 'L' }, { id: 's', label: 'S' }] },
+      ],
+      products: [
+        { id: 'red-s', characteristics: { color: 'red', size: 's' }, stock: { quantity: 0, ignoreQuantity: false } },
+        { id: 'blue-l', characteristics: { color: 'blue', size: 'l' }, stock: { quantity: 2 } },
+        { id: 'blue-s', characteristics: { color: 'blue', size: 's' }, stock: { quantity: 1 } },
+      ],
+    };
+
+    it('picks the first available combination in sorted size order', () => {
+      expect(preselectFirstAvailable(variants)).toEqual({ color: 'blue', size: 's' });
+    });
+
+    it('falls back to the first combination when everything is sold out', () => {
+      const soldOut = {
+        ...variants,
+        products: variants.products.map(product => ({
+          ...product,
+          stock: { quantity: 0, ignoreQuantity: false },
+        })),
+      };
+
+      expect(preselectFirstAvailable(soldOut)).toEqual({ color: 'red', size: 's' });
     });
   });
 });

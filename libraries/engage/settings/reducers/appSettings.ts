@@ -74,7 +74,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       swatchImageZoom: 100,
       swatchProperty: '',
       chipsLayout: 'wrap',
-      preselect: 'inherit',
+      preselect: false,
       soldOut: 'strike',
     },
     tileActions: {

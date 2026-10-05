@@ -60,7 +60,7 @@ const CharacteristicHeading = ({
           className={cx(classes.root, 'engage__variant-selector__heading')}
           style={transition[state]}
         >
-          <span className={cx(classes.label, 'engage__variant-selector__label')}>{label}</span>
+          <span id={`${id}-label`} className={cx(classes.label, 'engage__variant-selector__label')}>{label}</span>
           {selectedLabel && (
             <span className={cx(classes.value, 'engage__variant-selector__selected-value')}>
               {selectedLabel}

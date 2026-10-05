@@ -3,6 +3,8 @@ import Transition from 'react-transition-group/Transition';
 import { ArrowDropIcon } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import { makeStyles } from '@shopgate/engage/styles';
+import { VisuallyHidden } from '@shopgate/engage/a11y';
+import { getValueStateText } from './valueState';
 import transition from '../../Characteristics/transition';
 import type { VariantRendererProps } from '../types';
 
@@ -30,7 +32,8 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
     outline: 0,
     transition: 'background 250ms ease-in, color 250ms ease-in',
     '&:focus-visible': {
-      background: theme.palette.background.emphasized,
+      outline: `2px solid ${theme.palette.text.primary}`,
+      outlineOffset: -2,
     },
   },
   text: {
@@ -70,6 +73,10 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
     font: 'inherit',
     textAlign: 'left',
     cursor: 'pointer',
+    '&:focus-visible': {
+      outline: `2px solid ${theme.palette.text.primary}`,
+      outlineOffset: -2,
+    },
     '&[aria-selected="true"]': {
       background: theme.palette.background.emphasized,
       fontWeight: theme.typography.fontWeightMedium,
@@ -108,13 +115,30 @@ const VariantInlineDropdown = ({
     setHighlight(highlightProp);
   }, [highlightProp]);
 
+  const collapse = useCallback(() => {
+    setExpanded(false);
+    charRef.current?.focus();
+  }, [charRef]);
+
   const handleSelect = useCallback((valueId: string) => {
     select({ id, value: valueId });
-    setExpanded(false);
-  }, [id, select]);
+    collapse();
+  }, [collapse, id, select]);
+
+  const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
+    if (event.key === 'Escape' && expanded) {
+      event.stopPropagation();
+      collapse();
+    }
+  }, [collapse, expanded]);
 
   return (
-    <div className={cx(classes.root, 'engage__variant-selector__inline-dropdown')} data-type="inlineDropdown">
+    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
+    <div
+      className={cx(classes.root, 'engage__variant-selector__inline-dropdown')}
+      data-type="inlineDropdown"
+      onKeyDown={handleKeyDown}
+    >
       <Transition in={highlight} timeout={500} onEntered={() => setHighlight(false)}>
         {(state: keyof typeof transition) => (
           <button
@@ -122,7 +146,7 @@ const VariantInlineDropdown = ({
             ref={charRef as React.RefObject<HTMLButtonElement>}
             className={cx(classes.field, 'engage__variant-selector__inline-dropdown-field')}
             aria-expanded={expanded}
-            aria-controls={listId}
+            aria-controls={expanded ? listId : undefined}
             onClick={() => setExpanded(current => !current)}
             style={transition[state]}
           >
@@ -157,6 +181,7 @@ const VariantInlineDropdown = ({
               }}
             >
               {value.label}
+              {getValueStateText(value) && <VisuallyHidden>{`, ${getValueStateText(value)}`}</VisuallyHidden>}
             </button>
           ))}
         </div>

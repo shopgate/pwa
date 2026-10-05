@@ -68,7 +68,10 @@ export const getShowEmptyRatingStars = createSelector(
  */
 export const getProductTileActions = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.product.tileActions
+  appSettings => ({
+    ...DEFAULT_APP_SETTINGS.product.tileActions,
+    ...appSettings.product?.tileActions,
+  })
 );
 
 /**
@@ -76,7 +79,10 @@ export const getProductTileActions = createSelector(
  */
 export const getVariantSelectorSettings = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.product.variantSelector
+  appSettings => ({
+    ...DEFAULT_APP_SETTINGS.product.variantSelector,
+    ...appSettings.product?.variantSelector,
+  })
 );
 
 /**

@@ -60,7 +60,7 @@ const VariantChips = ({
       />
       <div
         role="radiogroup"
-        aria-labelledby={headingId}
+        aria-labelledby={`${headingId}-label`}
         className={cx(classes.values, 'engage__variant-selector__values')}
         data-layout={chipsLayout}
       >

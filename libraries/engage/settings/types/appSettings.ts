@@ -134,8 +134,8 @@ export interface ProductVariantSelectorSettings {
   swatchProperty: string;
   /** `wrap` breaks chips into lines, `scroll` keeps them in one swipeable row. */
   chipsLayout: 'wrap' | 'scroll';
-  /** `inherit` keeps the shop setting, `on` and `off` override it. */
-  preselect: 'inherit' | 'on' | 'off';
+  /** Whether the first available variant is preselected. */
+  preselect: boolean;
   /** How values are shown whose variants are all sold out. */
   soldOut: 'strike' | 'hide' | 'none';
 }
