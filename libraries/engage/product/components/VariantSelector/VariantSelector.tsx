@@ -15,6 +15,7 @@ import VariantChips from './renderers/VariantChips';
 import VariantSwatches from './renderers/VariantSwatches';
 import SelectedVariantInfo from './renderers/SelectedVariantInfo';
 import useVariantSelection from './useVariantSelection';
+import usePrefetchVariants from './usePrefetchVariants';
 import { getVariantRenderer } from './registry';
 import { decorateRows, resolveRendererType } from './helpers';
 import type {
@@ -117,6 +118,8 @@ const VariantSelector = ({
     onVariantSelected,
     finishTimeout,
   });
+
+  usePrefetchVariants(variants, selection);
 
   const refs = useMemo(() => {
     const map: Record<string, React.RefObject<HTMLElement>> = {};

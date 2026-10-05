@@ -14,7 +14,9 @@ import type { ProductVariants, VariantRendererProps } from './types';
 
 jest.mock('react-redux', () => ({
   useSelector: (selector: (state: unknown) => unknown) => selector({}),
+  useDispatch: () => jest.fn(),
 }));
+jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProductsById', () => jest.fn());
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProductVariants: jest.fn(),
   hasProductVariants: jest.fn(),
