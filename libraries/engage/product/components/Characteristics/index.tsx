@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-import PropTypes from 'prop-types';
 import { router } from '@shopgate/pwa-common/helpers/router';
 import { Portal } from '@shopgate/engage/components';
 import {
@@ -9,35 +8,45 @@ import {
 } from '@shopgate/engage/product/constants';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { VariantSelector } from '../VariantSelector';
+import type { VariantSelectorProps } from '../VariantSelector';
+
+export interface CharacteristicsProps {
+  /** ID of the base product. */
+  productId?: string | null;
+  /** ID of the currently shown variant. */
+  variantId?: string | null;
+}
+
+interface ProductContextValue {
+  conditioner: VariantSelectorProps['conditioner'];
+  setCharacteristics: VariantSelectorProps['onCharacteristicsChange'];
+  characteristics: VariantSelectorProps['characteristics'];
+}
 
 /**
  * Shows the selected variant on the current product page.
- * @param {string} productId The ID of the variant.
+ * @param productId The ID of the variant.
  */
-const navigate = (productId) => {
+const navigate = (productId: string) => {
   const route = router.getCurrentRoute();
   router.update(route.id, { productId });
 };
 
 /**
  * The Characteristics component.
- * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * @param props The component props.
+ * @returns The variant selection of the product page.
  */
-const Characteristics = ({ productId, variantId }) => {
-  const consumeRenderer = useCallback(({
-    conditioner,
-    setCharacteristics,
-    characteristics,
-  }) => (
+const Characteristics = ({ productId = null, variantId = null }: CharacteristicsProps) => {
+  const consumeRenderer = useCallback((context: ProductContextValue) => (
     <VariantSelector
       productId={productId}
       variantId={variantId}
       onVariantSelected={navigate}
       finishTimeout={200}
-      conditioner={conditioner}
-      characteristics={characteristics}
-      onCharacteristicsChange={setCharacteristics}
+      conditioner={context.conditioner}
+      characteristics={context.characteristics}
+      onCharacteristicsChange={context.setCharacteristics}
     />
   ), [productId, variantId]);
 
@@ -52,16 +61,6 @@ const Characteristics = ({ productId, variantId }) => {
       <Portal name={PRODUCT_VARIANT_SELECT_AFTER} />
     </>
   );
-};
-
-Characteristics.propTypes = {
-  productId: PropTypes.string,
-  variantId: PropTypes.string,
-};
-
-Characteristics.defaultProps = {
-  productId: null,
-  variantId: null,
 };
 
 export default Characteristics;

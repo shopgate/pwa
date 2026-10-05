@@ -29,7 +29,9 @@ export interface VariantProduct {
   id: string;
   characteristics: VariantSelection;
   availability?: { state: string; text: string } | null;
-  stock?: { quantity?: number; ignoreQuantity?: boolean; orderable?: boolean } | null;
+  stock?: { quantity?: number | null; ignoreQuantity?: boolean; orderable?: boolean } | null;
+  featuredImageBaseUrl?: string | null;
+  featuredImageUrl?: string | null;
 }
 
 /** The variants entry of a base product. */
@@ -42,6 +44,8 @@ export interface ProductVariants {
 export interface VariantSelectorValue extends VariantCharacteristicValue {
   selectable: boolean;
   selected: boolean;
+  /** Whether every variant with this value is sold out. */
+  soldOut?: boolean;
 }
 
 /** One characteristic prepared for rendering. */
@@ -72,7 +76,12 @@ export interface VariantRendererProps {
   values: VariantSelectorValue[];
   select: (selection: VariantSelectionChange) => void;
   resetHighlight: () => void;
+  /** Layout of the chips renderer. */
+  chipsLayout?: 'wrap' | 'scroll';
+  /** How sold out values are marked. */
+  soldOutDisplay?: 'strike' | 'hide' | 'none';
 }
 
 /** Display types for characteristics. Extensions can register further types. */
-export type VariantRendererType = 'dropdown' | 'swatches' | (string & NonNullable<unknown>);
+export type VariantRendererType =
+  'dropdown' | 'chips' | 'swatches' | (string & NonNullable<unknown>);

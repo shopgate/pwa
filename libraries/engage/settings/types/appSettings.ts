@@ -96,6 +96,37 @@ export interface ProductRatingSettings {
 }
 
 /**
+ * Display type of a characteristic in the variant selector.
+ */
+export type VariantSelectorType = 'dropdown' | 'chips' | 'swatches';
+
+/**
+ * Where swatch colors and images come from. `property` is filled in by the variants pipeline.
+ */
+export type VariantSwatchSource = 'backend' | 'property' | 'variantImage';
+
+/**
+ * Settings for the variant selector on the product page and in the variant sheet.
+ */
+export interface ProductVariantSelectorSettings {
+  /** Display type of characteristics that are not listed below. */
+  type: VariantSelectorType;
+  /** Comma separated characteristic labels that are shown as swatches. */
+  swatchCharacteristics: string;
+  /** Comma separated characteristic labels that are shown as chips. */
+  chipCharacteristics: string;
+  swatchSource: VariantSwatchSource;
+  /** Product property that holds the swatch color or image when `swatchSource` is `property`. */
+  swatchProperty: string;
+  /** `wrap` breaks chips into lines, `scroll` keeps them in one swipeable row. */
+  chipsLayout: 'wrap' | 'scroll';
+  /** Whether values that are recognized as sizes are sorted from small to large. */
+  sortSizes: boolean;
+  /** How values are shown whose variants are all sold out. */
+  soldOut: 'strike' | 'hide' | 'none';
+}
+
+/**
  * Settings for product presentation across the app.
  */
 export interface ProductSettings {
@@ -106,6 +137,7 @@ export interface ProductSettings {
   card: { productName: ProductNameSettings };
   /** Product grid tiles. */
   tile: { productName: ProductNameSettings };
+  variantSelector: ProductVariantSelectorSettings;
 }
 
 /**

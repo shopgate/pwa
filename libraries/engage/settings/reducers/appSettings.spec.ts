@@ -70,6 +70,16 @@ describe('settings / reducers / appSettings', () => {
         tile: {
           productName: { maxLines: 4 },
         },
+        variantSelector: {
+          type: 'chips',
+          swatchCharacteristics: 'Farbe',
+          chipCharacteristics: 'Größe',
+          swatchSource: 'variantImage',
+          swatchProperty: '',
+          chipsLayout: 'scroll',
+          sortSizes: false,
+          soldOut: 'hide',
+        },
       },
       cards: {
         style: 'border',

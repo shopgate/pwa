@@ -27,7 +27,19 @@ jest.mock('@shopgate/engage/components', () => ({
 }));
 jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
 jest.mock('../Characteristics/Characteristic', () => () => null);
-jest.mock('../Characteristics/Swatch', () => () => null);
+jest.mock('./renderers/VariantChips', () => () => null);
+jest.mock('./renderers/VariantSwatches', () => () => null);
+jest.mock('./renderers/SelectedVariantInfo', () => () => null);
+jest.mock('../../hooks/useVariantSelectorSettings', () => () => ({
+  type: 'dropdown',
+  swatchCharacteristics: [],
+  chipCharacteristics: [],
+  swatchSource: 'backend',
+  swatchProperty: '',
+  chipsLayout: 'wrap',
+  sortSizes: true,
+  soldOut: 'strike',
+}));
 
 const variants: ProductVariants = {
   characteristics: [
@@ -145,6 +157,9 @@ describe('<VariantSelector />', () => {
     });
 
     expect(result).toBe(false);
+    act(() => {
+      jest.runOnlyPendingTimers();
+    });
     expect(screen.getByTestId('row-color')).toHaveAttribute('data-highlight', 'true');
     expect(screen.getByTestId('row-color')).toHaveFocus();
 

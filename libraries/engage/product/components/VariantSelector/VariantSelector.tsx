@@ -5,21 +5,22 @@ import { useSelector } from 'react-redux';
 import { isBeta } from '@shopgate/engage/core/helpers';
 import { Portal } from '@shopgate/engage/components';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
-import { responsiveCondition } from '@shopgate/engage/styles';
 import * as productSelectors from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { PRODUCT_VARIANT_SELECT_CHARACTERISTIC } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import VariantContext from '../ProductCharacteristics/context';
+import useVariantSelectorSettings from '../../hooks/useVariantSelectorSettings';
 import Characteristic from '../Characteristics/Characteristic';
-import Swatch from '../Characteristics/Swatch';
 import VariantSelectorSkeleton from './VariantSelectorSkeleton';
+import VariantChips from './renderers/VariantChips';
+import VariantSwatches from './renderers/VariantSwatches';
+import SelectedVariantInfo from './renderers/SelectedVariantInfo';
 import useVariantSelection from './useVariantSelection';
 import { getVariantRenderer } from './registry';
+import { decorateRows, resolveRendererType } from './helpers';
 import type {
   ProductVariants,
   VariantRendererProps,
-  VariantRendererType,
   VariantSelection,
-  VariantSelectorRow,
 } from './types';
 
 const CONDITIONER_NAME = 'product-variants';
@@ -61,7 +62,8 @@ const announce = broadcastLiveMessage as unknown as (
 
 const DEFAULT_RENDERERS: Record<string, React.ComponentType<VariantRendererProps>> = {
   dropdown: Characteristic as unknown as React.ComponentType<VariantRendererProps>,
-  swatches: Swatch as unknown as React.ComponentType<VariantRendererProps>,
+  chips: VariantChips,
+  swatches: VariantSwatches,
 };
 
 interface Conditioner {
@@ -87,19 +89,6 @@ export interface VariantSelectorProps {
 }
 
 /**
- * Resolves the display type of a characteristic.
- * @param row The characteristic row.
- * @returns The display type.
- */
-const resolveRendererType = (row: VariantSelectorRow): VariantRendererType => {
-  if (row.swatch && isBeta()) {
-    return 'swatches';
-  }
-
-  return 'dropdown';
-};
-
-/**
  * Renders the characteristics of a product and resolves the selected variant.
  * @param props The component props.
  * @returns The variant selector.
@@ -116,6 +105,7 @@ const VariantSelector = ({
   const variants = useSelector((state: unknown) => getProductVariants(state, { productId }));
   const isLoading = useSelector((state: unknown) => getAreVariantsLoading(state, { productId }));
   const [highlight, setHighlight] = useState<string | null>(null);
+  const settings = useVariantSelectorSettings();
 
   const {
     rows, selection, isComplete, select, findFirstUnselected,
@@ -154,13 +144,10 @@ const VariantSelector = ({
         params: { option: element.innerText },
       });
 
-      if (responsiveCondition('>xs', { webOnly: true })) {
-        element.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      } else {
-        element.scrollIntoView({ behavior: 'smooth' });
-      }
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
 
-      setHighlight(firstUnselected.id);
+      setHighlight(null);
+      requestAnimationFrame(() => setHighlight(firstUnselected.id));
     }
 
     return false;
@@ -193,14 +180,28 @@ const VariantSelector = ({
     highlight,
   }), [highlight, selection]);
 
+  const displayRows = useMemo(() => {
+    if (!variants) {
+      return [];
+    }
+
+    const isBetaSwatch = isBeta();
+
+    return decorateRows(rows, variants, selection, settings).map(row => ({
+      row,
+      type: resolveRendererType(row, settings, isBetaSwatch),
+    }));
+  }, [rows, selection, settings, variants]);
+
   if (!variants) {
     return isLoading ? <VariantSelectorSkeleton /> : null;
   }
 
+  const lastType = displayRows[displayRows.length - 1]?.type;
+
   return (
     <VariantContext.Provider value={contextValue}>
-      {rows.map((row) => {
-        const type = resolveRendererType(row);
+      {displayRows.map(({ row, type }) => {
         const Renderer = getVariantRenderer(type)
           ?? DEFAULT_RENDERERS[type]
           ?? DEFAULT_RENDERERS.dropdown;
@@ -226,10 +227,15 @@ const VariantSelector = ({
               values={row.values}
               select={handleSelect}
               resetHighlight={resetHighlight}
+              chipsLayout={settings.chipsLayout}
+              soldOutDisplay={settings.soldOut}
             />
           </Portal>
         );
       })}
+      {isComplete && lastType !== 'dropdown' && (
+        <SelectedVariantInfo productId={productId} selection={selection} />
+      )}
     </VariantContext.Provider>
   );
 };

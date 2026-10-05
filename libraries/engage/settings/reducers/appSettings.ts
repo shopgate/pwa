@@ -65,6 +65,16 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     tile: {
       productName: { maxLines: 3 },
     },
+    variantSelector: {
+      type: 'dropdown',
+      swatchCharacteristics: '',
+      chipCharacteristics: '',
+      swatchSource: 'backend',
+      swatchProperty: '',
+      chipsLayout: 'wrap',
+      sortSizes: true,
+      soldOut: 'strike',
+    },
   },
   cards: {
     style: 'shadow',

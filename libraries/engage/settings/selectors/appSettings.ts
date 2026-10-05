@@ -64,6 +64,14 @@ export const getShowEmptyRatingStars = createSelector(
 );
 
 /**
+ * Selects the variant selector settings.
+ */
+export const getVariantSelectorSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.variantSelector
+);
+
+/**
  * Selects the image settings.
  */
 export const getImageSettings = createSelector(
