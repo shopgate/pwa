@@ -34,10 +34,6 @@ export const initCSSCustomProps = () => {
     setCSSCustomProp('--color-secondary-contrast', getContrastColor(secondary));
   }
 
-  if (hasWebBridge()) {
-    setCSSCustomProp('--page-background-color', '#fff');
-  }
-
   const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).alpha(0.08);
   setCSSCustomProp('--color-side-navigation-active-background', sideNavigationBackground);
 
@@ -81,8 +77,4 @@ export const initCSSCustomPropsFallback = () => {
 
   const sideNavigationBackground = Color(getCSSCustomProp('--color-primary') || colors.primary).fade(0.9);
   setCSSCustomProp('--color-side-navigation-active-background', sideNavigationBackground);
-
-  if (hasWebBridge()) {
-    setCSSCustomProp('--page-background-color', '#fff');
-  }
 };
