@@ -1,37 +1,27 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import { createMockStore } from '@shopgate/pwa-common/store';
+import { render, screen } from '@testing-library/react';
+import Headline from 'Components/Headline';
+import SearchField from '../SearchField';
 import Content from './index';
 
-const store = createMockStore();
-
-jest.mock('../SearchField', () => function SearchField() { return null; });
-jest.mock('../RootCategories', () => function RootCategories() { return null; });
-jest.mock('Components/Headline', () => function Headline() { return null; });
+jest.mock('../SearchField', () => jest.fn(() => <div>SearchField</div>));
+jest.mock('../RootCategories', () => function RootCategories() { return <div>RootCategories</div>; });
+jest.mock('Components/Headline', () => jest.fn(() => null));
 jest.mock('Components/AppBar/presets', () => ({
-  BackBar: () => <div />,
+  BackBar: () => <div>BackBar</div>,
 }));
-
-const mockContext = {
-  context: {
-    i18n: () => ({ __: () => '' }),
-  },
-  childContextTypes: {
-    i18n: PropTypes.func.isRequired,
-  },
-};
 
 describe('<Content />', () => {
   it('should render', () => {
-    const wrapper = mount((
-      <Provider store={store}>
-        <Content pageId="1234" query="foo" />
-      </Provider>), mockContext);
+    render(<Content pageId="1234" query="foo" />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SearchField').props()).toEqual({
+    expect(screen.getByText('BackBar')).toBeInTheDocument();
+    expect(screen.getByText('SearchField')).toBeInTheDocument();
+    expect(screen.getByText('RootCategories')).toBeInTheDocument();
+    expect(Headline.mock.lastCall[0]).toEqual({
+      text: 'titles.browse',
+      tag: 'h1',
+    });
+    expect(SearchField.mock.lastCall[0]).toEqual({
       pageId: '1234',
       query: 'foo',
     });

@@ -1,24 +1,28 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import SearchBar from './index';
 
 describe('<SearchBar />', () => {
-  it('should call handleChange on input', async () => {
+  it('should call handleChange on input', () => {
     const handleChange = jest.fn();
-    const wrapper = await mount(
-      <SearchBar handleChange={handleChange} />
-    );
+    const { container } = render(<SearchBar handleChange={handleChange} />);
 
-    expect(wrapper).toMatchSnapshot();
-    // Update input
-    wrapper.find('input').first().simulate('change', {
-      target:
-        {
-          name: 'search',
-          value: 'asdf',
-        },
+    const input = screen.getByRole('searchbox');
+
+    expect(container.querySelector('[data-test-id="SearchField"]'))
+      .toHaveClass('ui-shared__sheet__search-field');
+    expect(input).toHaveAttribute('name', 'search');
+    expect(input).toHaveValue('');
+    expect(screen.getByText('search.placeholder')).toBeInTheDocument();
+
+    fireEvent.change(input, {
+      target: {
+        name: 'search',
+        value: 'asdf',
+      },
     });
-    // Should call with updated state.
+
     expect(handleChange).toHaveBeenCalledWith('asdf');
+    expect(input).toHaveValue('asdf');
+    expect(screen.queryByText('search.placeholder')).not.toBeInTheDocument();
   });
 });

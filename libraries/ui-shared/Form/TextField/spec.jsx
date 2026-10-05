@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import TextField from './index';
 
 const inputProps = {
@@ -10,111 +9,127 @@ jest.mock('@shopgate/engage/components');
 
 describe('<TextField>', () => {
   it('should render a simple text field', () => {
-    const wrapper = mount(<TextField {...inputProps} />);
+    const { container } = render(<TextField {...inputProps} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input').length).toBe(1);
+    const input = screen.getByRole('textbox');
+
+    expect(container.querySelector('.ui-shared__form__text-field'))
+      .toHaveClass('ui-shared__form-element');
+    expect(container.querySelectorAll('input')).toHaveLength(1);
+    expect(input).toHaveAttribute('name', 'test-input');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveValue('');
+    expect(container.querySelector('.underline')).toBeInTheDocument();
+    expect(container.querySelector('label')).not.toBeInTheDocument();
+    expect(container.querySelector('.placeholder')).not.toBeInTheDocument();
+    expect(container.querySelector('.errorText')).not.toBeInTheDocument();
   });
 
   it('should render the text field as password', () => {
-    const wrapper = mount(<TextField {...inputProps} password />);
+    const { container } = render(<TextField {...inputProps} password />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input[type="password"]').length).toBe(1);
+    expect(container.querySelectorAll('input')).toHaveLength(1);
+    expect(container.querySelector('input')).toHaveAttribute('type', 'password');
   });
 
   it('should render the text field with a default value', () => {
-    const wrapper = mount(<TextField {...inputProps} value="FooBar" />);
+    render(<TextField {...inputProps} value="FooBar" />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input[value="FooBar"]').length).toBe(1);
+    expect(screen.getAllByRole('textbox')).toHaveLength(1);
+    expect(screen.getByRole('textbox')).toHaveValue('FooBar');
   });
 
   it('should trigger the onChange callback', () => {
     const onChangeMock = jest.fn();
 
-    const wrapper = mount(<TextField {...inputProps} onChange={onChangeMock} />);
+    render(<TextField {...inputProps} onChange={onChangeMock} />);
 
-    wrapper.find('input').simulate('change', { target: { value: 'a' } });
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'a' } });
 
     expect(onChangeMock).toHaveBeenCalledTimes(2);
-    expect(wrapper.find('input').props().value).toEqual('a');
+    expect(screen.getByRole('textbox')).toHaveValue('a');
   });
 
   it('should receive the correct value while typing', () => {
-    const wrapper = mount(<TextField {...inputProps} />);
-    const input = wrapper.find('input');
+    render(<TextField {...inputProps} />);
 
-    input.simulate('change', { target: { value: 'foobar' } });
-    expect(wrapper).toMatchSnapshot();
-    expect(input.instance().value).toBe('foobar');
+    const input = screen.getByRole('textbox');
+
+    fireEvent.change(input, { target: { value: 'foobar' } });
+
+    expect(input).toHaveValue('foobar');
   });
 
   it('should sanitize the input', () => {
-    const wrapper = mount(<TextField
+    render(<TextField
       {...inputProps}
       onSanitize={value => value.toUpperCase()}
     />);
 
-    const input = wrapper.find('input');
+    const input = screen.getByRole('textbox');
 
-    input.simulate('change', { target: { value: 'foobar' } });
+    fireEvent.change(input, { target: { value: 'foobar' } });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(input.instance().value).toBe('FOOBAR');
+    expect(input).toHaveValue('FOOBAR');
   });
 
   it('should trigger the validation callback', () => {
     const onValidateMock = jest.fn();
 
-    const wrapper = mount(<TextField {...inputProps} onValidate={onValidateMock} />);
+    render(<TextField {...inputProps} onValidate={onValidateMock} />);
 
-    expect(wrapper).toMatchSnapshot();
     expect(onValidateMock).toHaveBeenCalled();
+    expect(screen.getByRole('textbox')).toHaveValue('');
   });
 
   it('should focus the input', () => {
     const onFocusMock = jest.fn();
 
-    const wrapper = mount(<TextField {...inputProps} onFocusChange={onFocusMock} />);
+    const { container } = render(<TextField {...inputProps} onFocusChange={onFocusMock} />);
 
-    const input = wrapper.find('SimpleInput');
+    const input = screen.getByRole('textbox');
+    const underline = container.querySelector('.underline').firstElementChild;
 
-    expect(wrapper).toMatchSnapshot();
-    expect(input.instance().isFocused).toBe(false);
+    expect(onFocusMock).not.toHaveBeenCalled();
+    expect(underline).toHaveStyle({ transform: 'scale3d(0,1,1)' });
 
-    input.simulate('focus');
+    fireEvent.focus(input);
 
-    expect(input.instance().isFocused).toBe(true);
+    expect(onFocusMock).toHaveBeenLastCalledWith(true);
+    expect(underline.style.transform).toBe('');
 
-    input.simulate('blur');
-    expect(input.instance().isFocused).toBe(false);
+    fireEvent.blur(input);
+
+    expect(onFocusMock).toHaveBeenLastCalledWith(false);
+    expect(underline).toHaveStyle({ transform: 'scale3d(0,1,1)' });
   });
 
   it('should show the error message', () => {
     const errorText = 'This is an error here';
 
-    const wrapper = mount(<TextField {...inputProps} errorText={errorText} />);
+    const { container } = render(<TextField {...inputProps} errorText={errorText} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ErrorText').find('Text').at(0).props().string).toEqual(errorText);
+    expect(container.querySelector('.errorText')).toHaveTextContent(errorText);
+    expect(container.querySelector('.errorText')).toHaveAttribute('id', 'ariaError-test-input');
   });
 
   it('should show the label', () => {
     const label = 'This is the label';
 
-    const wrapper = mount(<TextField {...inputProps} label={label} />);
+    const { container } = render(<TextField {...inputProps} label={label} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Label').find('Text').props().string).toEqual(label);
+    expect(container.querySelector('label')).toHaveTextContent(label);
+    expect(container.querySelector('label')).toHaveAttribute('for', 'test-input');
+    expect(container.querySelector('.placeholder')).toHaveTextContent(label);
   });
 
   it('should show the placeholder text', () => {
     const placeholder = 'This is the placeholder text';
 
-    const wrapper = mount(<TextField {...inputProps} placeholder={placeholder} />);
+    const { container } = render(<TextField {...inputProps} placeholder={placeholder} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Placeholder').find('Text').at(0).props().string).toEqual(placeholder);
+    expect(container.querySelector('.placeholder')).toHaveTextContent(placeholder);
+    expect(container.querySelector('.placeholder')).not.toHaveStyle({ opacity: 0 });
+    expect(container.querySelector('label')).not.toBeInTheDocument();
   });
 });

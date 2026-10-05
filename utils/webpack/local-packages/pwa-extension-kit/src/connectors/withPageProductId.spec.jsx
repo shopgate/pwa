@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import withPageProductId from './withPageProductId';
 
 let mockedProductId;
@@ -34,14 +33,15 @@ describe('connectors/withPageProductId', () => {
   });
 
   // eslint-disable-next-line react/prop-types, require-jsdoc
-  const MockedComponent = props => <div>{props.productId}</div>;
+  const MockedComponent = jest.fn(props => <div>Product: {String(props.productId)}</div>);
 
   it('should render with productId', () => {
     mockedProductId = '31323334';
     const Component = withPageProductId(MockedComponent);
 
-    const component = mount(<Component otherProp={1} />);
-    expect(component.find('MockedComponent').props()).toEqual({
+    render(<Component otherProp={1} />);
+    expect(screen.getByText('Product: 1234')).toBeInTheDocument();
+    expect(MockedComponent.mock.lastCall[0]).toEqual({
       productId: '1234',
       otherProp: 1,
     });
@@ -51,8 +51,9 @@ describe('connectors/withPageProductId', () => {
     mockedProductId = undefined;
     const Component = withPageProductId(MockedComponent);
 
-    const component = mount(<Component otherProp={1} />);
-    expect(component.find('MockedComponent').props()).toEqual({
+    render(<Component otherProp={1} />);
+    expect(screen.getByText('Product: null')).toBeInTheDocument();
+    expect(MockedComponent.mock.lastCall[0]).toEqual({
       productId: null,
       otherProp: 1,
     });
@@ -63,8 +64,9 @@ describe('connectors/withPageProductId', () => {
     mockedProductId = '123';
     const Component = withPageProductId(MockedComponent);
 
-    const component = mount(<Component otherProp={1} />);
-    expect(component.find('MockedComponent').props()).toEqual({
+    render(<Component otherProp={1} />);
+    expect(screen.getByText('Product: false')).toBeInTheDocument();
+    expect(MockedComponent.mock.lastCall[0]).toEqual({
       productId: false,
       otherProp: 1,
     });

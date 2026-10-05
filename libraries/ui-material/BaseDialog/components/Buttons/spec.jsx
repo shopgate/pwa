@@ -1,6 +1,4 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { Button } from '@shopgate/engage/components/v2';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Buttons from './index';
 
 const actions = [
@@ -19,15 +17,32 @@ const actions = [
 ];
 
 describe('<Buttons />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should not render if no actions are passed', () => {
-    const wrapper = shallow(<Buttons />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance()).toEqual(null);
+    const { container } = render(<Buttons />);
+
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should render buttons', () => {
-    const wrapper = shallow(<Buttons actions={actions} />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Button).length).toBe(actions.length);
+    render(<Buttons actions={actions} />);
+
+    expect(screen.getAllByRole('button')).toHaveLength(actions.length);
+    actions.forEach(({ label }) => {
+      expect(screen.getByRole('button', { name: label })).toBeInTheDocument();
+    });
+  });
+
+  it('should invoke the action of the pressed button', () => {
+    render(<Buttons actions={actions} />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'action1' }));
+
+    expect(actions[1].action).toHaveBeenCalledTimes(1);
+    expect(actions[0].action).not.toHaveBeenCalled();
+    expect(actions[2].action).not.toHaveBeenCalled();
   });
 });

@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import withHistoryActions from './withHistoryActions';
 
 const mockedAction = jest.fn();
@@ -16,19 +15,23 @@ jest.mock('react-redux', () => ({
 
 describe('connectors/withHistoryActions', () => {
   // eslint-disable-next-line react/prop-types, require-jsdoc
-  const TestedComponent = props => <div>Other prop: {props.foo}</div>;
+  const TestedComponent = jest.fn(props => <div>Other prop: {props.foo}</div>);
   const ConnectedComponent = withHistoryActions(TestedComponent);
-  let component;
-  let props;
+
+  const renderConnected = () => {
+    render(<ConnectedComponent foo="bar" />);
+    return TestedComponent.mock.calls[0][0];
+  };
 
   beforeEach(() => {
     jest.clearAllMocks();
   });
 
   it('should render component with specified props', () => {
-    component = mount(<ConnectedComponent foo="bar" />);
-    props = component.find('TestedComponent').props();
+    const props = renderConnected();
 
+    expect(screen.getByText('Other prop: bar')).toBeInTheDocument();
+    expect(Object.keys(props).sort()).toEqual(['foo', 'historyPop', 'historyPush', 'historyReplace']);
     expect(typeof props.historyPop).toBe('function');
     expect(typeof props.historyPush).toBe('function');
     expect(typeof props.historyReplace).toBe('function');
@@ -41,6 +44,7 @@ describe('connectors/withHistoryActions', () => {
     actions.forEach((action) => {
       it(`should call ${action}`, () => {
         const pathname = 'PATHNAME';
+        const props = renderConnected();
         if (action === 'historyPop') {
           props[action]();
           expect(mockedAction).toHaveBeenCalledWith(action);
@@ -56,6 +60,7 @@ describe('connectors/withHistoryActions', () => {
         const options = {
           state: {},
         };
+        const props = renderConnected();
         if (action === 'historyPop') {
           props[action]();
           expect(mockedAction).toHaveBeenCalledWith(action);

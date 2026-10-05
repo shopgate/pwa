@@ -1,13 +1,12 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import SelectBox from './index';
 
 /**
  * Mock Icon component.
  * @returns {JSX}
  */
-const MockIconComponent = () => <span id="icon" />;
+const MockIconComponent = () => <span data-testid="icon" />;
 
 /**
  * Mock Item component.
@@ -16,7 +15,7 @@ const MockIconComponent = () => <span id="icon" />;
  * @returns {JSX}
  */
 const MockItemComponent = ({ children }) => (
-  <div>
+  <div data-testid="item">
     {children}
   </div>
 );
@@ -42,17 +41,28 @@ describe('<SelectBox>', () => {
   ];
 
   it('should render the selectbox with given mock components', () => {
-    const wrapper = mount((
+    const { container } = render((
       <SelectBox icon={MockIconComponent} item={MockItemComponent} items={dummyItems} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(MockIconComponent).length).toEqual(1);
-    expect(wrapper.find(MockItemComponent).length).toEqual(3);
+    const button = screen.getByRole('button', { name: 'filter.sort.default' });
+
+    expect(container.firstChild).toHaveClass('common__select-box');
+    expect(button).toHaveAttribute('aria-haspopup', 'true');
+    expect(button).toHaveAttribute('aria-controls', 'filter.sort.default');
+    expect(button).toContainElement(screen.getByTestId('icon'));
+    expect(screen.queryByRole('menu')).not.toBeInTheDocument();
+    expect(screen.getByRole('menu', { hidden: true })).toHaveAttribute('id', 'filter.sort.default');
+    expect(screen.getAllByTestId('item').map(item => item.textContent))
+      .toEqual(['My item #1', 'My item #2', 'My item #3']);
+    expect(screen.queryByRole('menuitem', {
+      hidden: true,
+      current: true,
+    })).not.toBeInTheDocument();
   });
 
   it('should render with a default text', () => {
-    const wrapper = mount((
+    render((
       <SelectBox
         icon={MockIconComponent}
         item={MockItemComponent}
@@ -61,12 +71,14 @@ describe('<SelectBox>', () => {
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('span').at(0).text()).toEqual('Foo');
+    const button = screen.getByRole('button', { name: 'Foo' });
+
+    expect(button).toHaveAttribute('aria-controls', 'Foo');
+    expect(screen.getByRole('menu', { hidden: true })).toHaveAttribute('id', 'Foo');
   });
 
   it('should render with a preselected selection', () => {
-    const wrapper = mount((
+    render((
       <SelectBox
         icon={MockIconComponent}
         item={MockItemComponent}
@@ -76,7 +88,14 @@ describe('<SelectBox>', () => {
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('span').at(0).text()).toEqual('My item #2');
+    const button = screen.getByRole('button', { name: 'My item #2' });
+
+    expect(button).toHaveAttribute('aria-controls', 'My item #2');
+    expect(screen.queryByText('Foo')).not.toBeInTheDocument();
+    expect(screen.getByRole('menu', { hidden: true })).toHaveAttribute('id', 'My item #2');
+    expect(screen.getByRole('menuitem', {
+      hidden: true,
+      current: true,
+    })).toHaveTextContent('My item #2');
   });
 });

@@ -1,10 +1,10 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import CouponsHint from './index';
 
 describe('<CouponsHint />', () => {
   it('should render as expected without any props', () => {
-    const wrapper = mount(<CouponsHint />);
-    expect(wrapper).toMatchSnapshot();
+    render(<CouponsHint />);
+
+    expect(screen.getByText('cart.coupons_not_supported')).toBeInTheDocument();
   });
 });

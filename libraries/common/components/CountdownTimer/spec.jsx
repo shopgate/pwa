@@ -1,19 +1,33 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { act } from 'react-dom/test-utils';
+import { render, act } from '@testing-library/react';
+import I18n from '../I18n';
 import CountdownTimer, { getFormattedTimeString } from './index';
+
+jest.mock('../I18n', () => ({
+  __esModule: true,
+  default: { Text: jest.fn(() => null) },
+}));
 
 describe('<CountdownTimer>', () => {
   jest.useFakeTimers();
 
+  let intervalSpy;
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    intervalSpy = jest.spyOn(global, 'setInterval');
+  });
+
+  afterEach(() => {
+    intervalSpy.mockRestore();
+  });
+
   /**
-   * Creates a new countdown timer element.
+   * Renders a new countdown timer element.
    * @param {number} remainingDays The remaining days.
    * @param {number} remainingHours The remaining hours.
    * @param {number} remainingMinutes The remaining minutes.
    * @param {number} remainingSeconds The remaining seconds.
    * @param {Function} callback The expiration callback.
-   * @return {JSX}
    */
   const createTimerElement = (
     remainingDays,
@@ -28,16 +42,19 @@ describe('<CountdownTimer>', () => {
       + (remainingMinutes * 60)
       + remainingSeconds;
 
-    const wrapper = shallow(<CountdownTimer timeout={timeout} onExpire={callback} />);
+    render(<CountdownTimer timeout={timeout} onExpire={callback} />);
+  };
 
-    let currentTimeOffset = timeout - Math.floor(Date.now() / 1000);
+  /**
+   * @returns {Object} The translation the timer currently shows.
+   */
+  const getRenderedTime = () => {
+    const { params, string } = I18n.Text.mock.lastCall[0];
 
-    wrapper.instance().getRemainingTime = () => {
-      currentTimeOffset -= 1;
-      return currentTimeOffset;
+    return {
+      params,
+      string,
     };
-
-    return wrapper;
   };
 
   /**
@@ -54,9 +71,8 @@ describe('<CountdownTimer>', () => {
     remainingSeconds
   ) => {
     jest.clearAllTimers();
-    const intervalSpy = jest.spyOn(global, 'setInterval');
 
-    const wrapper = createTimerElement(
+    createTimerElement(
       remainingDays,
       remainingHours,
       remainingMinutes,
@@ -76,15 +92,8 @@ describe('<CountdownTimer>', () => {
     act(() => {
       jest.advanceTimersByTime(1000);
     });
-    wrapper.update();
 
-    const { params, string } = wrapper.props();
-    expect({
-      params,
-      string,
-    }).toEqual(expectedTimeFormat);
-
-    intervalSpy.mockRestore();
+    expect(getRenderedTime()).toEqual(expectedTimeFormat);
   };
 
   it('should render the correct time for < 24h', () => performFormatCheck(0, 0, 0, 5));
@@ -96,85 +105,62 @@ describe('<CountdownTimer>', () => {
   it('should not render negative durations', () => {
     jest.clearAllTimers();
 
-    const wrapper = createTimerElement(-1, -2, -3, -5, null);
+    createTimerElement(-1, -2, -3, -5, null);
     const expectedTimeFormat = getFormattedTimeString(0, 0, 0, 0);
+
+    expect(getRenderedTime()).toEqual(expectedTimeFormat);
 
     act(() => {
       jest.advanceTimersByTime(1000);
     });
 
-    const { params, string } = wrapper.props();
-    expect({
-      params,
-      string,
-    }).toEqual(expectedTimeFormat);
+    expect(getRenderedTime()).toEqual(expectedTimeFormat);
   });
 
   it('should stop at 00:00:00 when the timer expires', () => {
-    const wrapper = createTimerElement(0, 0, 0, 1, null);
+    createTimerElement(0, 0, 0, 1, null);
     const expectedTimeFormat = getFormattedTimeString(0, 0, 0, 0);
 
     act(() => {
       jest.advanceTimersByTime(1000);
     });
-    wrapper.update();
-    let { params, string } = wrapper.props();
-    expect({
-      params,
-      string,
-    }).toEqual(expectedTimeFormat);
+    expect(getRenderedTime()).toEqual(expectedTimeFormat);
 
     act(() => {
       jest.advanceTimersByTime(1000);
     });
-    ({ params, string } = wrapper.props());
-    expect({
-      params,
-      string,
-    }).toEqual(expectedTimeFormat);
+    expect(getRenderedTime()).toEqual(expectedTimeFormat);
   });
 
   it('should invoke the callback when the timer expires', () => {
-    let timesCallbackInvoked = 0;
-    /**
-     * The callback method will just increment a counter when invoked.
-     */
-    const callback = () => {
-      timesCallbackInvoked += 1;
-    };
+    const callback = jest.fn();
 
     createTimerElement(0, 0, 0, 2, callback);
 
     act(() => {
       jest.advanceTimersByTime(1000);
     });
-    expect(timesCallbackInvoked).toBe(0);
+    expect(callback).toHaveBeenCalledTimes(0);
 
     act(() => {
       jest.advanceTimersByTime(1000);
     });
-    expect(timesCallbackInvoked).toBe(1);
+    expect(callback).toHaveBeenCalledTimes(1);
 
     act(() => {
       jest.advanceTimersByTime(1000);
     });
-    expect(timesCallbackInvoked).toBe(1);
+    expect(callback).toHaveBeenCalledTimes(1);
   });
 
   it('should not invoke the callback when the timeout is already expired.', () => {
-    let timesCallbackInvoked = 0;
-    /**
-     * The callback method will just increment a counter when invoked.
-     */
-    const callback = () => {
-      timesCallbackInvoked += 1;
-    };
+    const callback = jest.fn();
 
     createTimerElement(0, 0, 0, 0, callback);
 
     act(() => {
       jest.advanceTimersByTime(1000);
     });
-    expect(timesCallbackInvoked).toBe(0);
+    expect(callback).toHaveBeenCalledTimes(0);
   });
 });

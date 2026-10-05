@@ -1,6 +1,6 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom';
 import { Provider, useDispatch, useSelector } from 'react-redux';
 import { createMockStore } from './createMockStore';
 import type { MockAction } from './createMockStore';
@@ -138,23 +138,25 @@ describe('createMockStore()', () => {
     it('should provide the state to a connected component', () => {
       const store = createMockStore<TestState>({ counter: 7 });
 
-      const wrapper = mount(
+      render(
         <Provider store={store}>
           <Counter />
         </Provider>
       );
 
-      expect(wrapper.find('button').text()).toBe('7');
+      expect(screen.getByRole('button')).toHaveTextContent('7');
     });
 
     it('should record actions which a connected component dispatches', () => {
       const store = createMockStore<TestState>({ counter: 0 });
 
-      mount(
+      render(
         <Provider store={store}>
           <Counter />
         </Provider>
-      ).find('button').simulate('click');
+      );
+
+      fireEvent.click(screen.getByRole('button'));
 
       expect(store.getActions()).toEqual([{ type: 'INCREMENT' }]);
     });
@@ -162,15 +164,15 @@ describe('createMockStore()', () => {
     it('should re-render a connected component when the state changes', () => {
       const store = createMockStore<TestState>({ counter: 0 }, reducer);
 
-      const wrapper = mount(
+      render(
         <Provider store={store}>
           <Counter />
         </Provider>
       );
 
-      wrapper.find('button').simulate('click');
+      fireEvent.click(screen.getByRole('button'));
 
-      expect(wrapper.find('button').text()).toBe('1');
+      expect(screen.getByRole('button')).toHaveTextContent('1');
     });
   });
 });

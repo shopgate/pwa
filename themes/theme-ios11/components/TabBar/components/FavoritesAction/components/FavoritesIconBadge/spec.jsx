@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { getFavoritesCount } from '@shopgate/pwa-common-commerce/favorites/selectors';
@@ -19,11 +18,11 @@ jest.mock('../../hooks', () => ({
 
 const mockedStore = configureStore();
 /**
- * Creates component
+ * Renders the connected component
  * @param {boolean} state State that would be used for store.
- * @return {ReactWrapper}
+ * @return {Object}
  */
-const createComponent = state => mount((
+const renderComponent = state => render((
   <Provider store={mockedStore(state)}>
     <ConnectedBadge />
   </Provider>
@@ -32,44 +31,41 @@ const createComponent = state => mount((
 describe('TabBar favorites action', () => {
   it('should render only icon when badge is 0', () => {
     getFavoritesCount.mockReturnValueOnce(0);
-    const component = createComponent(mockedEmptyState);
-    expect(component.isEmptyRender()).toBe(true);
+    const { container } = renderComponent(mockedEmptyState);
+    expect(container).toBeEmptyDOMElement();
   });
   it('should render exact number', () => {
-    const component = createComponent(mockedState);
-    expect(component.html().indexOf('1')).toBeGreaterThan(0);
-    expect(component).toMatchSnapshot();
+    renderComponent(mockedState);
+    expect(screen.getByText('1')).toHaveClass('theme__tab-bar__favorites-icon-badge');
   });
 });
 
 describe('TabBar favorites action - behavior', () => {
   it('should render empty when unconnected count is 0', () => {
-    const component = mount(<FavoritesIconBadge favoritesCount={0} />);
-    expect(component.isEmptyRender()).toBe(true);
+    const { container } = render(<FavoritesIconBadge favoritesCount={0} />);
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should show count when number is changed', () => {
-    const component = mount(<FavoritesIconBadge favoritesCount={99} />);
-    expect(component.text()).toContain('99');
-    expect(component).toMatchSnapshot();
+    render(<FavoritesIconBadge favoritesCount={99} />);
+    expect(screen.getByText('99')).toHaveClass('theme__tab-bar__favorites-icon-badge');
   });
 
   it('should cap display at MAX when number exceeds maximum', () => {
-    const component = mount(<FavoritesIconBadge favoritesCount={9999} />);
-    expect(component.text()).toContain('999+');
-    expect(component).toMatchSnapshot();
+    render(<FavoritesIconBadge favoritesCount={9999} />);
+    expect(screen.getByText('999+')).toHaveClass('theme__tab-bar__favorites-icon-badge');
   });
 
   it('should remain 999+ when count stays above max', () => {
-    const component = mount(<FavoritesIconBadge favoritesCount={5000} />);
-    expect(component.text()).toContain('999+');
-    component.setProps({ favoritesCount: 6000 });
-    expect(component.text()).toContain('999+');
+    const { rerender } = render(<FavoritesIconBadge favoritesCount={5000} />);
+    expect(screen.getByText('999+')).toBeInTheDocument();
+    rerender(<FavoritesIconBadge favoritesCount={6000} />);
+    expect(screen.getByText('999+')).toBeInTheDocument();
   });
 
   it('should show lower count when number goes back to limits', () => {
-    const component = mount(<FavoritesIconBadge favoritesCount={9999} />);
-    component.setProps({ favoritesCount: 100 });
-    expect(component.text()).toContain('100');
+    const { rerender } = render(<FavoritesIconBadge favoritesCount={9999} />);
+    rerender(<FavoritesIconBadge favoritesCount={100} />);
+    expect(screen.getByText('100')).toBeInTheDocument();
   });
 });

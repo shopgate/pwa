@@ -1,5 +1,6 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render, screen, fireEvent, within,
+} from '@testing-library/react';
 import { UnwrappedVariantSelectModal as VariantSelectModal } from './index';
 
 const message = 'This is the message.';
@@ -9,14 +10,17 @@ jest.mock('@shopgate/engage/a11y/components');
 
 describe('<VariantSelectModal />', () => {
   it('should render with minimal props', () => {
-    const wrapper = shallow(<VariantSelectModal
+    render(<VariantSelectModal
       message={message}
       actions={[]}
       navigate={() => {}}
     />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toMatch(message);
+    const dialog = screen.getByRole('alertdialog');
+
+    expect(within(dialog).getByText(message)).toBeInTheDocument();
+    expect(within(dialog).queryByRole('heading')).not.toBeInTheDocument();
+    expect(within(dialog).queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('should render the actions', () => {
@@ -50,14 +54,16 @@ describe('<VariantSelectModal />', () => {
       navigate: mockNavigate,
     };
 
-    const wrapper = shallow(<VariantSelectModal {...mockedProps} />);
-    expect(wrapper).toMatchSnapshot();
+    render(<VariantSelectModal {...mockedProps} />);
 
-    const reordered = wrapper.find('BasicDialog').props().actions;
-    const last = reordered.slice(-1)[0];
-    expect(last.label).toEqual(actions[0].label);
+    const dialog = screen.getByRole('alertdialog');
+    const buttons = within(dialog).getAllByRole('button');
 
-    last.action();
+    expect(within(dialog).getByRole('heading', { name: title })).toBeInTheDocument();
+    expect(within(dialog).getByText(message)).toBeInTheDocument();
+    expect(buttons.map(button => button.textContent)).toEqual(['dismiss', actions[0].label]);
+
+    fireEvent.click(buttons[buttons.length - 1]);
     expect(mockConfirm).toHaveBeenCalledTimes(1);
     expect(mockNavigate).toHaveBeenCalledTimes(1);
   });

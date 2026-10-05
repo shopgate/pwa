@@ -37,12 +37,12 @@ describe('<Tiers />', () => {
   describe('Rendering without data', () => {
     it('should render nothing when price data are not available ({})', () => {
       const wrapper = render(<Tiers price={{}} />);
-      expect(wrapper).toBeEmptyRender();
+      expect(wrapper.container).toBeEmptyDOMElement();
     });
 
     it('should render nothing when price data are not available (null)', () => {
       const wrapper = render(<Tiers price={null} />);
-      expect(wrapper).toBeEmptyRender();
+      expect(wrapper.container).toBeEmptyDOMElement();
     });
 
     it('should render nothing when tier prices are empty ([])', () => {
@@ -52,13 +52,13 @@ describe('<Tiers />', () => {
       };
 
       const wrapper = render(<Tiers price={price} />);
-      expect(wrapper).toBeEmptyRender();
+      expect(wrapper.container).toBeEmptyDOMElement();
     });
 
     it('should render nothing when tier prices are not available (field missing)', () => {
       const price = { currency: 'USD' };
       const wrapper = render(<Tiers price={price} />);
-      expect(wrapper).toBeEmptyRender();
+      expect(wrapper.container).toBeEmptyDOMElement();
     });
   });
 });

@@ -1,10 +1,11 @@
-import React from 'react';
-import { mount } from 'enzyme';
+/* eslint-disable react/prop-types */
+import {
+  render, screen, fireEvent, within,
+} from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { thunk } from 'redux-thunk';
 import { ThemeContext } from '@shopgate/pwa-common/context';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { fetchCategoryOrRootCategories } from '@shopgate/engage/category';
 import { Sheet as MockSheet } from '@shopgate/pwa-ui-shared';
 import { mockedState, categoriesById, emptyRootCategories } from '../../mockData';
@@ -14,9 +15,11 @@ jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
 
 jest.mock('@shopgate/engage/components', () => ({
-  Typography: ({ children }) => children,
+  Typography: ({ children, 'data-test-id': testId }) => (
+    <div data-test-id={testId}>{children}</div>
+  ),
   SheetDrawer: props => <MockSheet {...props} />,
-  SheetList: ({ children }) => children,
+  SheetList: ({ children }) => <div role="listbox">{children}</div>,
 }));
 
 jest.mock('@shopgate/engage/category', () => ({
@@ -24,27 +27,28 @@ jest.mock('@shopgate/engage/category', () => ({
 }));
 
 /**
- * @typedef {import("@types/enzyme").ReactWrapper} ReactWrapper
- */
-
-/**
  * Renders the component.
  * @param {Object} props The component props.
  * @param {Object} [state=mockedState] A mocked Redux state.
- * @return {ReactWrapper} The mounted component.
+ * @return {Object} The render result.
  */
 const renderComponent = (props = {}, state = mockedState) => {
   const store = configureStore([thunk])(state);
 
-  return mount(
+  return render((
     <Provider store={store}>
       <ThemeContext.Provider value={{ }}>
         <Picker {...props} />
       </ThemeContext.Provider>
-    </Provider>,
-    mockRenderOptions
-  );
+    </Provider>
+  ));
 };
+
+const getTrigger = container => container.querySelector('[data-test-id="nested-picker-trigger"]');
+const getLabel = container => container.querySelector('[data-test-id="nested-picker-label"]');
+const getSelection = container => container.querySelector('[data-test-id="nested-picker-selection"]');
+const getOptions = () => within(screen.getByRole('listbox')).getAllByRole('button');
+
 describe('<NestedCategoryFilterPicker />', () => {
   const onSelect = jest.fn();
 
@@ -59,80 +63,92 @@ describe('<NestedCategoryFilterPicker />', () => {
   });
 
   it('should render the picker with no initial category selection', () => {
-    const wrapper = renderComponent(props);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('[data-test-id="nested-picker-label"]').text()).toEqual(props.label);
-    expect(wrapper.find('[data-test-id="nested-picker-selection"]').text()).toEqual('common.please_choose');
-    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(false);
+    const { container } = renderComponent(props);
+
+    expect(getLabel(container)).toHaveTextContent(props.label);
+    expect(getSelection(container)).toHaveTextContent('common.please_choose');
+    expect(getTrigger(container)).toHaveAttribute('aria-disabled', 'false');
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should render the picker without a label', () => {
-    const wrapper = renderComponent({
+    const { container } = renderComponent({
       ...props,
       label: '',
     });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('[data-test-id="nested-picker-label"]').exists()).toBe(false);
-    expect(wrapper.find('[data-test-id="nested-picker-selection"]').text()).toEqual('common.please_choose');
+    expect(getLabel(container)).not.toBeInTheDocument();
+    expect(getSelection(container)).toHaveTextContent('common.please_choose');
   });
 
   it('should handle user interaction as expected', () => {
-    const wrapper = renderComponent(props);
+    const { container } = renderComponent(props);
 
-    wrapper.find(Picker).simulate('click');
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(true);
-    expect(wrapper.find('Drawer Header').prop('title')).toBe(props.label);
+    fireEvent.click(getTrigger(container));
 
-    const subcategoryList = wrapper.find('Drawer SheetItem');
+    const dialog = screen.getByRole('dialog');
+
+    expect(within(dialog).getByRole('heading')).toHaveTextContent(props.label);
+
+    const subcategoryList = getOptions();
     expect(subcategoryList).toHaveLength(2);
-    expect(subcategoryList.children().at(0).text()).toEqual(categoriesById['1-1'].name);
-    expect(subcategoryList.children().at(1).text()).toEqual(categoriesById['1-2'].name);
+    expect(subcategoryList[0]).toHaveTextContent(categoriesById['1-1'].name);
+    expect(subcategoryList[1]).toHaveTextContent(categoriesById['1-2'].name);
 
-    subcategoryList.children().at(1).find('button').simulate('click');
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(false);
+    fireEvent.click(subcategoryList[1]);
+    fireEvent.animationEnd(dialog);
+
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     expect(onSelect).toHaveBeenCalledTimes(1);
     expect(onSelect).toHaveBeenCalledWith(props.categoryId, categoriesById['1-2']);
     expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should not accept user interaction when no categoryId was passed', () => {
-    const wrapper = renderComponent({
+    const { container } = renderComponent({
       ...props,
       categoryId: undefined,
     });
 
-    wrapper.find(Picker).simulate('click');
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('[data-test-id="nested-picker-trigger"]').prop('aria-disabled')).toBe(true);
-    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(false);
+    fireEvent.click(getTrigger(container));
+
+    expect(getTrigger(container)).toHaveAttribute('aria-disabled', 'true');
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should accept user interaction when the categoryId is an empty string', () => {
-    const wrapper = renderComponent({
+    const { container } = renderComponent({
       ...props,
       categoryId: '',
     });
 
-    wrapper.find(Picker).simulate('click');
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Drawer').first().prop('isOpen')).toBe(true);
+    fireEvent.click(getTrigger(container));
+
+    expect(screen.getByRole('dialog')).toBeInTheDocument();
+    expect(getOptions().map(option => option.textContent)).toEqual([
+      categoriesById['1'].name,
+      categoriesById['2'].name,
+    ]);
     expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
   it('should highlight the preselected subcategory within the sheet ', () => {
-    const wrapper = renderComponent({
+    const { container } = renderComponent({
       ...props,
       selectedId: '1-1',
     });
 
-    wrapper.find(Picker).simulate('click');
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Drawer SheetItem').first().prop('selected')).toBe(true);
+    expect(getSelection(container)).toHaveTextContent(categoriesById['1-1'].name);
+
+    fireEvent.click(getTrigger(container));
+
+    const [selected, unselected] = getOptions();
+
+    expect(selected).toHaveTextContent(categoriesById['1-1'].name);
+    expect(selected.className).toContain('buttonSelected');
+    expect(unselected.className).not.toContain('buttonSelected');
     expect(fetchCategoryOrRootCategories).not.toHaveBeenCalled();
   });
 
@@ -163,3 +179,4 @@ describe('<NestedCategoryFilterPicker />', () => {
     expect(fetchCategoryOrRootCategories).toHaveBeenCalledWith(categoryId);
   });
 });
+/* eslint-enable react/prop-types */

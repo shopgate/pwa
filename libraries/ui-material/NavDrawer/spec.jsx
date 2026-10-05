@@ -1,8 +1,7 @@
 /* eslint-disable global-require, extra-rules/no-single-line-objects */
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
-import Transition from 'react-transition-group/Transition';
+import {
+  render, screen, fireEvent, act,
+} from '@testing-library/react';
 
 jest.unmock('@shopgate/pwa-core');
 
@@ -48,20 +47,7 @@ jest.mock('@shopgate/engage/components', () => {
   return { Backdrop };
 });
 
-jest.mock('@shopgate/engage/a11y/components', () => {
-  const mockPropTypes = require('prop-types');
-
-  function ModalStateTracker(props) {
-    return props.children;
-  }
-  ModalStateTracker.propTypes = {
-    children: mockPropTypes.node,
-  };
-  ModalStateTracker.defaultProps = {
-    children: null,
-  };
-  return { ModalStateTracker };
-});
+jest.mock('@shopgate/engage/a11y/components');
 
 jest.mock('./components/Item', () => {
   const mockReact = require('react');
@@ -87,45 +73,46 @@ jest.mock('./components/Item', () => {
 import NavDrawer from './index';
 
 describe('NavDrawer', () => {
-  it('should match the snapshot', () => {
-    const wrapper = shallow(<NavDrawer>Content</NavDrawer>);
+  it('should render its content in a closed drawer', () => {
+    render(<NavDrawer>Content</NavDrawer>);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.queryByRole('navigation')).not.toBeInTheDocument();
+    expect(screen.getByRole('navigation', { hidden: true })).toHaveTextContent('Content');
+    expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument();
   });
 
   it('should open and close with an event', () => {
     const onOpen = jest.fn();
     const onClose = jest.fn();
 
-    const wrapper = mount((
+    render((
       <NavDrawer onOpen={onOpen} onClose={onClose}>
         Content
       </NavDrawer>
     ));
 
     act(() => { NavDrawer.open(); });
-    wrapper.update();
-    expect(wrapper.find(Transition).prop('in')).toEqual(true);
+    expect(screen.getByRole('navigation')).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'Close' })).toBeInTheDocument();
     expect(onOpen).toHaveBeenCalled();
     expect(onClose).not.toHaveBeenCalled();
 
     act(() => { NavDrawer.close(); });
-    wrapper.update();
-    expect(wrapper.find(Transition).prop('in')).toEqual(false);
+    expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument();
     expect(onClose).toHaveBeenCalled();
   });
 
   it('should close when Backdrop is clicked', () => {
-    const wrapper = mount(<NavDrawer>Content</NavDrawer>);
+    const onClose = jest.fn();
+
+    render(<NavDrawer onClose={onClose}>Content</NavDrawer>);
 
     act(() => { NavDrawer.open(); });
-    wrapper.update();
-    expect(wrapper.find(Transition).prop('in')).toEqual(true);
 
-    const backdrop = wrapper.find('[data-test-id="NavDrawerBackdrop"]');
-    act(() => { backdrop.simulate('click'); });
-    wrapper.update();
-    expect(wrapper.find(Transition).prop('in')).toEqual(false);
+    fireEvent.click(screen.getByRole('button', { name: 'Close' }));
+
+    expect(screen.queryByRole('button', { name: 'Close' })).not.toBeInTheDocument();
+    expect(onClose).toHaveBeenCalled();
   });
 });
 /* eslint-enable global-require, extra-rules/no-single-line-objects */

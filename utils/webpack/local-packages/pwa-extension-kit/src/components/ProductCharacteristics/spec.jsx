@@ -1,9 +1,9 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import Conditioner from '@shopgate/pwa-core/classes/Conditioner';
 import ProductCharacteristics from './index';
 
 const mockedConditioner = new Conditioner();
+const mockedSetCharacteristics = jest.fn();
 const mockedMapStateToPropsResult = {
   variants: {
     products: [{
@@ -59,7 +59,7 @@ jest.mock('@shopgate/pwa-common/context', () => ({
               productId="123"
               variantId="123-45"
               conditioner={mockedConditioner}
-              setCharacteristics={jest.fn()}
+              setCharacteristics={mockedSetCharacteristics}
               {...contextProps}
             />
           ),
@@ -75,18 +75,26 @@ jest.mock('@shopgate/pwa-common/context', () => ({
 }));
 
 describe('components/ProductCharacteristics', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render', () => {
-    const component = mount((
-      <ProductCharacteristics render={jest.fn()} />
+    const renderer = jest.fn(({ id, label }) => <div key={id}>{label}</div>);
+
+    const { container } = render((
+      <ProductCharacteristics render={renderer} />
     ));
 
-    expect(component).toMatchSnapshot();
+    expect(container).toHaveTextContent('ColorSize');
+    expect(mockedSetCharacteristics).toHaveBeenCalledTimes(1);
+    expect(mockedSetCharacteristics).toHaveBeenCalledWith({});
   });
 
   it('should call render prop', () => {
     const renderer = jest.fn();
 
-    mount((
+    render((
       <ProductCharacteristics render={renderer} />
     ));
 

@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen, act } from '@testing-library/react';
 import { ThemeResourcesProvider } from '@shopgate/engage/core/providers';
 import Widgets from './index';
 
@@ -11,24 +10,11 @@ jest.mock('@shopgate/pwa-common/context', () => ({
   },
 }));
 
-/**
- * A mock Image component.
- * @returns {JSX}
- */
-const Image = () => <img alt="" />;
-/* eslint-disable react/prop-types */
-/**
- * A mock WidgetGrid component.
- * @param {Array} children Array of children.
- * @returns {JSX}
- */
-const WidgetGrid = ({ children }) => <div className="widget-grid">{children}</div>;
-/* eslint-enable react/prop-types */
+const Image = jest.fn(() => <img alt="Widget" />);
 
 const components = {
   v1: {
     '@shopgate/commerce-widgets/image': Image,
-    '@shopgate/commerce-widgets/widget-grid': WidgetGrid,
   },
 };
 
@@ -36,7 +22,7 @@ const components = {
  * @param {Object[]} widgets Widgets to be rendered.
  * @returns {JSX.Element}
  */
-const createWrapper = widgets => mount((
+const createWrapper = widgets => render((
   <ThemeResourcesProvider widgets={components} components={{}}>
     <Widgets
       widgets={widgets}
@@ -44,7 +30,17 @@ const createWrapper = widgets => mount((
   </ThemeResourcesProvider>
 ));
 
+/**
+ * @param {HTMLElement} container The container of the rendered widgets.
+ * @returns {HTMLElement|null} The widget grid.
+ */
+const getWidgetGrid = container => container.querySelector('.common__widgets__widget-grid');
+
 describe('<Widgets />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render a grid if height is defined', () => {
     const widgets = [{
       col: 0,
@@ -58,9 +54,10 @@ describe('<Widgets />', () => {
       type: '@shopgate/commerce-widgets/image',
     }];
 
-    const wrapper = createWrapper(widgets);
+    const { container } = createWrapper(widgets);
 
-    expect(wrapper.find('WidgetGrid').exists()).toBe(true);
+    expect(getWidgetGrid(container)).toBeInTheDocument();
+    expect(getWidgetGrid(container)).toContainElement(screen.getByRole('img'));
   });
 
   it('should not wrap a widget which is not a grid and has no height', () => {
@@ -75,10 +72,11 @@ describe('<Widgets />', () => {
       type: '@shopgate/commerce-widgets/image',
     }];
 
-    const wrapper = createWrapper(widgets);
+    const { container } = createWrapper(widgets);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('WidgetGrid').exists()).toBe(false);
+    expect(container.innerHTML).toBe('<div class="common__widgets"><img alt="Widget"></div>');
+    expect(Image.mock.lastCall[0]).toEqual(widgets[0]);
+    expect(getWidgetGrid(container)).not.toBeInTheDocument();
   });
 
   it('should render a grid if the widget is of type grid', () => {
@@ -103,10 +101,19 @@ describe('<Widgets />', () => {
       },
     }];
 
-    const wrapper = createWrapper(widgets);
+    const { container } = createWrapper(widgets);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('WidgetGrid').exists()).toBe(true);
+    const grid = getWidgetGrid(container);
+
+    expect(grid).toBeInTheDocument();
+    expect(grid.parentElement).toHaveClass('common__widgets');
+    expect(grid.children).toHaveLength(1);
+    expect(grid.firstChild).toHaveClass('common__widgets__widget');
+    expect(grid.firstChild).toContainElement(screen.getByRole('img'));
+    expect(Image.mock.lastCall[0]).toEqual({
+      ratio: [12, 5],
+      settings: widgets[0].settings.widgets[0].settings,
+    });
   });
 
   it('should render only one widget when the second one is not published and third one is invalid', () => {
@@ -144,23 +151,21 @@ describe('<Widgets />', () => {
       },
     ];
 
-    const wrapper = createWrapper(widgets);
+    const { container } = createWrapper(widgets);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('img').length).toBe(1);
+    expect(container.innerHTML).toBe('<div class="common__widgets"><img alt="Widget"></div>');
+    expect(Image.mock.lastCall[0]).toEqual(widgets[0]);
   });
 
   it('should schedule a re-render when widget is scheduled', () => {
-  // Use a fixed point in time so "next full hour" is deterministic.
-  // Pick a time that's not exactly on the hour.
     const base = new Date('2023-01-01T10:37:00.000Z');
     jest.setSystemTime(base);
 
-    const minutesToNextFullHour = 60 - base.getMinutes(); // 23
-    const msToNextFullHour = minutesToNextFullHour * 60000; // 23 * 60_000
+    const minutesToNextFullHour = 60 - base.getMinutes();
+    const msToNextFullHour = minutesToNextFullHour * 60000;
 
     const scheduledFromMs = (Date.now() + msToNextFullHour) - 1;
-    const scheduledToMs = Date.now() + minutesToNextFullHour + 1000;
+    const scheduledToMs = Date.now() + msToNextFullHour + 1000;
 
     const widgets = [
       {
@@ -181,25 +186,22 @@ describe('<Widgets />', () => {
       },
     ];
 
-    const wrapper = createWrapper(widgets);
-    const instance = wrapper.find('Widgets').instance();
+    const { unmount } = createWrapper(widgets);
     const clearSpy = jest.spyOn(global, 'clearTimeout');
 
-    instance.forceUpdate = jest.fn();
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
 
-    // Before the schedule hits, the image should not render yet.
-    expect(wrapper.find(Image).exists()).toBe(false);
+    act(() => {
+      jest.advanceTimersByTime(msToNextFullHour);
+    });
+    expect(screen.getByRole('img')).toBeInTheDocument();
 
-    // 1) Advance to the next full hour -> first forced update.
-    jest.advanceTimersByTime(msToNextFullHour);
-    expect(instance.forceUpdate).toHaveBeenCalledTimes(1);
+    act(() => {
+      jest.advanceTimersByTime(60 * 60000);
+    });
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
 
-    // 2) The component should schedule the next tick for +60 min.
-    jest.advanceTimersByTime(60 * 60000);
-    expect(instance.forceUpdate).toHaveBeenCalledTimes(2);
-
-    // Unmount triggers cleanup of any pending timeouts.
-    wrapper.unmount();
+    unmount();
     expect(clearSpy).toHaveBeenCalled();
 
     clearSpy.mockRestore();
@@ -207,13 +209,14 @@ describe('<Widgets />', () => {
 
   it('should render only wrapper when widgets array is empty', () => {
     const widgets = [];
-    const wrapper = createWrapper(widgets);
-    expect(wrapper.find('Image').exists()).toBe(false);
+    const { container } = createWrapper(widgets);
+    expect(container.innerHTML).toBe('<div class="common__widgets"></div>');
+    expect(Image).not.toHaveBeenCalled();
   });
 
   it('should render null when no widgets are passed', () => {
-    const wrapper = createWrapper(undefined);
-    expect(wrapper.find('Widgets').html()).toBe(null);
+    const { container } = createWrapper(undefined);
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should check settings of child widgets inside widget-grid', () => {
@@ -254,7 +257,7 @@ describe('<Widgets />', () => {
         },
       },
     ];
-    const wrapper = createWrapper(widgets);
-    expect(wrapper.find('img').length).toBe(1);
+    createWrapper(widgets);
+    expect(screen.getAllByRole('img').length).toBe(1);
   });
 });

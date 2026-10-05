@@ -1,7 +1,6 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
+import {
+  render, screen, fireEvent, act,
+} from '@testing-library/react';
 import PipelineErrorDialog from './index';
 
 jest.mock('@shopgate/engage/a11y/components');
@@ -14,15 +13,23 @@ describe('<PipelineErrorDialog />', () => {
     request: {},
   };
 
-  it('should render with minimal props', () => {
-    const wrapper = mount(<PipelineErrorDialog actions={[]} params={defaultParams} />);
+  afterEach(() => {
+    jest.useRealTimers();
+  });
 
-    expect(wrapper).toMatchSnapshot();
+  it('should render with minimal props', () => {
+    render(<PipelineErrorDialog actions={[]} params={defaultParams} />);
+
+    expect(screen.getByRole('alertdialog')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'modal.title_error' })).toBeInTheDocument();
+    expect(screen.getByText(defaultParams.message)).toBeInTheDocument();
+    expect(screen.queryByText('Pipeline:')).not.toBeInTheDocument();
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('should show a custom message if a message is is provided', () => {
     const message = 'Custom message';
-    const wrapper = mount((
+    render((
       <PipelineErrorDialog
         actions={[]}
         message={message}
@@ -30,35 +37,34 @@ describe('<PipelineErrorDialog />', () => {
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toMatch(message);
+    expect(screen.getByRole('heading', { name: 'modal.title_error' })).toBeInTheDocument();
+    expect(screen.getByText(message)).toBeInTheDocument();
+    expect(screen.queryByText(defaultParams.message)).not.toBeInTheDocument();
   });
 
   it('should switch modes on tap', () => {
-    const wrapper = mount(<PipelineErrorDialog actions={[]} params={defaultParams} />);
+    render(<PipelineErrorDialog actions={[]} params={defaultParams} />);
 
     const numTaps = 10;
 
-    const clickElement = wrapper.find('div[onClick]');
-
     const devMarker = 'Pipeline:';
 
-    // Dev mode should be disabled.
     for (let i = 0; i < numTaps; i += 1) {
-      expect(wrapper.text()).not.toContain(devMarker);
-      clickElement.simulate('click');
+      expect(screen.queryByText(devMarker)).not.toBeInTheDocument();
+      fireEvent.click(screen.getByText(defaultParams.message));
     }
 
-    expect(wrapper.text()).toContain(devMarker);
+    expect(screen.getByText(devMarker)).toBeInTheDocument();
+    expect(screen.getByRole('heading', { name: 'Pipeline Error' })).toBeInTheDocument();
 
     // Dev mode should be enabled until 10 more taps.
     for (let i = 0; i < numTaps - 1; i += 1) {
-      expect(wrapper.text()).toContain(devMarker);
-      clickElement.simulate('click');
+      expect(screen.getByText(devMarker)).toBeInTheDocument();
+      fireEvent.click(screen.getByText(defaultParams.message));
     }
 
-    clickElement.simulate('click');
-    expect(wrapper.text()).not.toContain(devMarker);
+    fireEvent.click(screen.getByText(defaultParams.message));
+    expect(screen.queryByText(devMarker)).not.toBeInTheDocument();
   });
 
   it('should open directly in developer detail mode when params.openWithDetails is set', () => {
@@ -81,16 +87,14 @@ describe('<PipelineErrorDialog />', () => {
   it('should not switch modes if tapped too slow', () => {
     jest.useFakeTimers();
 
-    const wrapper = mount(<PipelineErrorDialog actions={[]} params={defaultParams} />);
+    render(<PipelineErrorDialog actions={[]} params={defaultParams} />);
 
     const numTaps = 10;
     const numTapsUntilTimeout = Math.round(numTaps / 2);
 
-    const clickElement = wrapper.find('div[onClick]');
-
     const devMarker = 'Pipeline:';
 
-    expect(wrapper.text()).not.toContain(devMarker);
+    expect(screen.queryByText(devMarker)).not.toBeInTheDocument();
 
     /**
      * Simulates multiple tap events.
@@ -98,24 +102,23 @@ describe('<PipelineErrorDialog />', () => {
      */
     const tapOnElement = (amount) => {
       if (amount > 0) {
-        clickElement.simulate('click');
+        fireEvent.click(screen.getByText(defaultParams.message));
         tapOnElement(amount - 1);
       }
     };
 
-    // Tap a few times.
     tapOnElement(numTapsUntilTimeout);
 
-    // Trigger a timeout (user was too slow).
-    jest.runAllTimers();
+    act(() => {
+      jest.runAllTimers();
+    });
 
-    // Tap the remaining times.
     tapOnElement(numTaps - numTapsUntilTimeout);
 
-    expect(wrapper.text()).not.toContain(devMarker);
+    expect(screen.queryByText(devMarker)).not.toBeInTheDocument();
 
     tapOnElement(numTapsUntilTimeout);
 
-    expect(wrapper.text()).toContain(devMarker);
+    expect(screen.getByText(devMarker)).toBeInTheDocument();
   });
 });

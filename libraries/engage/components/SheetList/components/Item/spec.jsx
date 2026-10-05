@@ -1,6 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import Glow from '@shopgate/pwa-ui-shared/Glow';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Item from './index';
 
 jest.mock('@shopgate/pwa-common/components/Link', () => {
@@ -8,7 +6,8 @@ jest.mock('@shopgate/pwa-common/components/Link', () => {
    * Mocked LinkComponent.
    * @return {JSX}
    */
-  const Link = () => <div />;
+  // eslint-disable-next-line react/prop-types
+  const Link = ({ href, children }) => <a href={href}>{children}</a>;
   return Link;
 });
 
@@ -16,78 +15,75 @@ describe('<SheetList.Item />', () => {
   const title = 'My Title';
 
   it('should render with a title but no image', () => {
-    const wrapper = mount(<Item title={title} />);
+    render(<Item title={title} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('img').exists()).toBeFalsy();
+    expect(screen.getByText(title)).toBeInTheDocument();
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
   });
 
   it('should render with an image', () => {
     const image = <img src="url/to/image" alt="Alternative text" />;
 
-    const wrapper = mount(<Item title={title} image={image} />);
+    render(<Item title={title} image={image} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('img').exists()).toBeTruthy();
+    expect(screen.getByText(title)).toBeInTheDocument();
+    expect(screen.getByRole('img', { name: 'Alternative text' })).toHaveAttribute('src', 'url/to/image');
   });
 
   it('should render with a right component', () => {
     const rightComponent = <span>I`m a span.</span>;
 
-    const wrapper = mount(<Item
+    render(<Item
       title={title}
       rightComponent={rightComponent}
     />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.contains(<span>I`m a span.</span>)).toEqual(true);
+    expect(screen.getByText(title)).toBeInTheDocument();
+    expect(screen.getByText('I`m a span.')).toBeInTheDocument();
   });
 
-  it('should render without a Glow when selected', () => {
-    const wrapper = mount(<Item title={title} isSelected />);
+  it('should mark the item as selected', () => {
+    const { container } = render(<Item title={title} isSelected />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Glow).exists()).toBeFalsy();
+    expect(screen.getByText(title)).toBeInTheDocument();
+    expect(container.querySelector('.common__grid').className).toContain('selected');
+    expect(container.querySelector('.ui-shared__glow')).not.toBeInTheDocument();
   });
 
   it('should render without a Glow when disabled', () => {
-    const wrapper = mount(<Item title={title} isDisabled />);
+    const { container } = render(<Item title={title} isDisabled />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Glow).exists()).toBeFalsy();
+    expect(screen.getByText(title).parentElement.className).toContain('disabled');
+    expect(container.querySelector('.ui-shared__glow')).not.toBeInTheDocument();
   });
 
   it('should render with a link', () => {
-    const wrapper = mount(<Item title={title} link="url/to/somewhere" />);
+    const { container } = render(<Item title={title} link="url/to/somewhere" />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Link').exists()).toBeTruthy();
+    const link = screen.getByRole('link', { name: title });
+
+    expect(link).toHaveAttribute('href', 'url/to/somewhere');
+    expect(container.querySelector('.ui-shared__glow')).toContainElement(link);
   });
 
   it('should render with an onClick element', () => {
     const spy = jest.fn();
 
-    const clickHandler = () => {
-      /**
-       * The spy can't be assigned directly to the event, since the snapshot gets too big
-       * and the test execution is heavily slowed down.
-       */
-      spy();
-    };
+    const { container } = render(<Item title={title} onClick={spy} />);
 
-    const wrapper = mount(<Item title={title} onClick={clickHandler} />);
+    const option = screen.getByRole('option', { name: title });
 
-    wrapper.simulate('click');
+    fireEvent.click(option);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(option).toHaveAttribute('aria-selected', 'false');
+    expect(option).toContainElement(container.querySelector('.ui-shared__glow'));
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
-  it('should re-render when isDisabled changes (memo allows leftComponent path)', () => {
-    const wrapper = mount(<Item title={title} isDisabled />);
-    expect(wrapper.find('.engage__sheet-list__item').exists()).toBe(true);
-    wrapper.setProps({ isDisabled: false });
-    wrapper.update();
-    expect(wrapper.find('.engage__sheet-list__item').exists()).toBe(true);
+  it('should update the disabled state when isDisabled changes', () => {
+    const { rerender } = render(<Item title={title} isDisabled />);
+    expect(screen.getByText(title).parentElement.className).toContain('disabled');
+    rerender(<Item title={title} isDisabled={false} />);
+    expect(screen.getByText(title).parentElement.className).not.toContain('disabled');
   });
 });

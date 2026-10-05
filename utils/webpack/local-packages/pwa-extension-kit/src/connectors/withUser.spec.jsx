@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import withUser from './withUser';
 
 let mockedMapStateToPropsSpy = jest.fn();
@@ -25,12 +24,22 @@ jest.mock('react-redux', () => ({
   }
 }));
 describe('/connectors/withUser', () => {
-  const TestedComponent = props => <div>Test</div>;
+  const TestedComponent = jest.fn(() => <div>Test</div>);
+  let mapStateToProps;
+
+  beforeAll(() => {
+    const ConnectedComponent = withUser(TestedComponent);
+    render(<ConnectedComponent />).unmount();
+    [[mapStateToProps]] = mockedMapStateToPropsSpy.mock.calls;
+    TestedComponent.mockClear();
+  });
+
   it('should create component and pass external props', () => {
     const ConnectedComponent = withUser(TestedComponent);
-    const component = mount(<ConnectedComponent foo="bar" />);
+    render(<ConnectedComponent foo="bar" />);
 
-    expect(component.find('TestedComponent').props()).toEqual({
+    expect(screen.getByText('Test')).toBeInTheDocument();
+    expect(TestedComponent.mock.lastCall[0]).toEqual({
       user: {
         ...mockedMapStateToPropsResult.user,
       },
@@ -53,7 +62,6 @@ describe('/connectors/withUser', () => {
       },
     };
 
-    const mapStateToProps = mockedMapStateToPropsSpy.mock.calls[0][0];
     expect(mapStateToProps(state).user).toEqual({
       isLoggedIn: true,
       id: 'foo',
@@ -72,7 +80,6 @@ describe('/connectors/withUser', () => {
       },
     };
 
-    const mapStateToProps = mockedMapStateToPropsSpy.mock.calls[0][0];
     expect(mapStateToProps(state).user).toEqual({
       isLoggedIn: false,
       id: null,
@@ -88,7 +95,6 @@ describe('/connectors/withUser', () => {
       user: {},
     };
 
-    const mapStateToProps = mockedMapStateToPropsSpy.mock.calls[0][0];
     expect(mapStateToProps(state).user).toEqual({
       isLoggedIn: false,
       id: null,

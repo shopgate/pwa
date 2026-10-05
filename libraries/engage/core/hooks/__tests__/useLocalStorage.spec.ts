@@ -1,6 +1,5 @@
 import { createElement } from 'react';
-import { act } from 'react-dom/test-utils';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import useLocalStorage from '../useLocalStorage';
 
 const appId = 'shop_10006';
