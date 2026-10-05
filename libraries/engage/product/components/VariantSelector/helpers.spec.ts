@@ -129,6 +129,7 @@ describe('VariantSelector helpers', () => {
       sortSizes: true,
       soldOut: 'strike' as const,
       swatchSource: 'variantImage' as const,
+      swatchProperty: '',
     };
 
     it('marks values whose variants are all sold out', () => {
@@ -143,22 +144,60 @@ describe('VariantSelector helpers', () => {
       expect(size.values.find(value => value.id === 's')?.soldOut).toBe(false);
     });
 
-    it('resolves swatches from the backend before the variant image', () => {
-      const [color] = decorateRows(rows, variants, {}, settings);
+    it('uses the configured swatch source and falls back to the product data', () => {
+      const [imageColor] = decorateRows(rows, variants, {}, settings);
+      expect(imageColor.values[0].swatch).toEqual({ imageUrl: 'red.jpg' });
+      expect(imageColor.values[1].swatch).toEqual({ color: '#00f' });
 
-      expect(color.values[0].swatch).toEqual({ imageUrl: 'red.jpg' });
-      expect(color.values[1].swatch).toEqual({ color: '#00f' });
+      const [backendColor] = decorateRows(rows, variants, {}, { ...settings, swatchSource: 'backend' });
+      expect(backendColor.values[0].swatch).toBeUndefined();
+      expect(backendColor.values[1].swatch).toEqual({ color: '#00f' });
     });
 
-    it('sorts sizes and hides sold out values when configured', () => {
-      const [color, size] = decorateRows(
+    it('reads swatches from a product property', () => {
+      const withProperties: ProductVariants = {
+        ...variants,
+        products: variants.products.map(product => ({
+          ...product,
+          properties: [{ label: 'Hex', value: product.characteristics.color === 'red' ? '#ff0000' : 'https://img/blue.png' }],
+        })),
+      };
+      const [color] = decorateRows(
         rows,
+        withProperties,
+        {},
+        { ...settings, swatchSource: 'property', swatchProperty: 'hex' }
+      );
+
+      expect(color.values[0].swatch).toEqual({ color: '#ff0000' });
+      expect(color.values[1].swatch).toEqual({ imageUrl: 'https://img/blue.png' });
+    });
+
+    it('does not mark sold out values when switched off', () => {
+      const [color] = decorateRows(rows, variants, {}, { ...settings, soldOut: 'none' });
+
+      expect(color.values.some(value => value.soldOut)).toBe(false);
+    });
+
+    it('hides values that are sold out in every combination but keeps the selected one', () => {
+      const selectedRows = rows.map(row => ({
+        ...row,
+        values: row.values.map(value => ({ ...value, selected: value.id === 'red' })),
+      }));
+      const [color, size] = decorateRows(
+        selectedRows,
         variants,
-        { color: 'blue' },
+        { color: 'red' },
         { ...settings, soldOut: 'hide' }
       );
 
-      expect(labels(size.values)).toEqual(['S', 'L']);
+      expect(labels(size.values)).toEqual(['S']);
+      expect(labels(color.values)).toEqual(['Red', 'Blue']);
+    });
+
+    it('hides a sold out value that is not selected', () => {
+      const [color] = decorateRows(rows, variants, {}, { ...settings, soldOut: 'hide' });
+
       expect(labels(color.values)).toEqual(['Blue']);
     });
   });

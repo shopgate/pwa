@@ -40,7 +40,6 @@ const VariantChips = ({
   values,
   select,
   chipsLayout = 'wrap',
-  soldOutDisplay = 'strike',
 }: VariantRendererProps) => {
   const { classes, cx } = useStyles();
   const headingId = `variant-characteristic-${id}`;
@@ -66,12 +65,7 @@ const VariantChips = ({
         data-layout={chipsLayout}
       >
         {values.map(value => (
-          <VariantChip
-            key={value.id}
-            value={value}
-            markSoldOut={soldOutDisplay === 'strike'}
-            onSelect={handleSelect}
-          />
+          <VariantChip key={value.id} value={value} onSelect={handleSelect} />
         ))}
       </div>
     </div>

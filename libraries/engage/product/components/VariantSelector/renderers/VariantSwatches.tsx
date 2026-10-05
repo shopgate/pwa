@@ -31,6 +31,10 @@ const useStyles = makeStyles({ name: 'VariantSwatches' })(theme => ({
       outline: `2px solid ${theme.palette.primary.main}`,
       outlineOffset: 2,
     },
+    '&[data-unavailable]': {
+      opacity: 0.35,
+      borderStyle: 'dashed',
+    },
     '&[data-sold-out]': {
       opacity: 0.5,
       '&::after': {
@@ -60,12 +64,10 @@ const VariantSwatches = ({
   selected,
   values,
   select,
-  soldOutDisplay = 'strike',
 }: VariantRendererProps) => {
   const { classes, cx } = useStyles();
   const headingId = `variant-characteristic-${id}`;
   const selectedLabel = values.find(value => value.id === selected)?.label ?? null;
-  const markSoldOut = soldOutDisplay === 'strike';
 
   const handleSelect = useCallback((valueId: string) => {
     select({ id, value: valueId });
@@ -74,12 +76,7 @@ const VariantSwatches = ({
   const renderSwatch = (value: VariantSelectorValue) => {
     if (!value.swatch?.color && !value.swatch?.imageUrl) {
       return (
-        <VariantChip
-          key={value.id}
-          value={value}
-          markSoldOut={markSoldOut}
-          onSelect={handleSelect}
-        />
+        <VariantChip key={value.id} value={value} onSelect={handleSelect} />
       );
     }
 
@@ -93,7 +90,8 @@ const VariantSwatches = ({
         aria-label={value.label}
         title={value.label}
         className={cx(classes.swatch, 'engage__variant-selector__swatch')}
-        data-sold-out={markSoldOut && value.soldOut ? true : undefined}
+        data-unavailable={value.available === false ? true : undefined}
+        data-sold-out={value.soldOut ? true : undefined}
         data-test-id={value.label}
         style={{
           ...(value.swatch.color && { backgroundColor: value.swatch.color }),

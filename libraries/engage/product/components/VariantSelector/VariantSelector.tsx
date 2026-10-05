@@ -228,7 +228,6 @@ const VariantSelector = ({
               select={handleSelect}
               resetHighlight={resetHighlight}
               chipsLayout={settings.chipsLayout}
-              soldOutDisplay={settings.soldOut}
             />
           </Portal>
         );

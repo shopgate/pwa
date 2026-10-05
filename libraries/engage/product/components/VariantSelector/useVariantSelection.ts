@@ -4,75 +4,19 @@ import {
 import isEqual from 'lodash/isEqual';
 import isMatch from 'lodash/isMatch';
 import * as helpers from '../ProductCharacteristics/helpers';
+import { applySelection, buildRows, orderSelection } from './selection';
 import type {
   ProductVariants,
   VariantCharacteristic,
-  VariantCharacteristicValue,
-  VariantProduct,
   VariantSelection,
   VariantSelectionChange,
   VariantSelectorRow,
-  VariantSelectorValue,
 } from './types';
 
 const selectCharacteristics = helpers.selectCharacteristics as unknown as (input: {
   variantId: string | null;
   variants: ProductVariants | null;
 }) => VariantSelection;
-
-const prepareState = helpers.prepareState as unknown as (
-  id: string,
-  value: string,
-  selections: VariantSelection,
-  characteristics: VariantCharacteristic[],
-  products: VariantProduct[]
-) => VariantSelection;
-
-const buildValues = helpers.buildValues as unknown as (
-  selections: VariantSelection,
-  charId: string,
-  values: VariantCharacteristicValue[],
-  charIndex: number,
-  selectedValue: string | null,
-  charDisabled: boolean,
-  products: VariantProduct[]
-) => VariantSelectorValue[];
-
-const isCharacteristicEnabled = helpers.isCharacteristicEnabled as unknown as (
-  selections: VariantSelection,
-  index: number
-) => boolean;
-
-const getSelectedValue = helpers.getSelectedValue as unknown as (
-  charId: string,
-  selections: VariantSelection
-) => string | null;
-
-/**
- * Orders a selection like the characteristics, since the dependent characteristics are resolved
- * by position. Variants may list their characteristics in a different order.
- * @param selection The selection.
- * @param variants The variants.
- * @returns The ordered selection.
- */
-const orderSelection = (
-  selection: VariantSelection,
-  variants: ProductVariants | null
-): VariantSelection => {
-  if (!variants) {
-    return selection;
-  }
-
-  const ordered: VariantSelection = {};
-
-  variants.characteristics.forEach(({ id }) => {
-    if (selection[id]) {
-      ordered[id] = selection[id];
-    }
-  });
-
-  return ordered;
-};
 
 export interface UseVariantSelectionOptions {
   /** Variants of the base product, `null` while they are not loaded. */
@@ -184,46 +128,17 @@ const useVariantSelection = ({
       return;
     }
 
-    const next = orderSelection(prepareState(
-      id,
-      value,
-      selection,
-      variants.characteristics,
-      variants.products
-    ), variants);
+    const next = applySelection(variants, selection, id, value);
 
-    setSelection({ ...next });
-    callbacksRef.current.onCharacteristicsChange?.({ ...next });
+    setSelection(next);
+    callbacksRef.current.onCharacteristicsChange?.(next);
     setCheckRequest(current => current + 1);
   }, [selection, variants]);
 
-  const rows = useMemo<VariantSelectorRow[]>(() => {
-    if (!variants) {
-      return [];
-    }
-
-    return variants.characteristics.map((char, index) => {
-      const disabled = !isCharacteristicEnabled(selection, index);
-      const selected = getSelectedValue(char.id, selection);
-
-      return {
-        id: char.id,
-        label: char.label,
-        disabled,
-        selected,
-        swatch: !!char.swatch,
-        values: buildValues(
-          selection,
-          char.id,
-          char.values,
-          index,
-          selected,
-          disabled,
-          variants.products
-        ),
-      };
-    });
-  }, [selection, variants]);
+  const rows = useMemo<VariantSelectorRow[]>(
+    () => (variants ? buildRows(variants, selection) : []),
+    [selection, variants]
+  );
 
   const findFirstUnselected = useCallback(() => {
     if (!variants) {

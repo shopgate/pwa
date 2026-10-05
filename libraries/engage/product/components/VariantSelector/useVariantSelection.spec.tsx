@@ -58,22 +58,29 @@ describe('useVariantSelection', () => {
     expect(hook.result.isComplete).toBe(false);
   });
 
-  it('disables dependent characteristics until the previous one is selected', () => {
+  it('keeps every characteristic and value selectable', () => {
     const hook = renderSelection({ variants });
 
-    expect(hook.result.rows[0].disabled).toBe(false);
-    expect(hook.result.rows[1].disabled).toBe(true);
-    expect(hook.result.rows[1].values.every(value => !value.selectable)).toBe(true);
+    expect(hook.result.rows.every(row => !row.disabled)).toBe(true);
+    expect(hook.result.rows.every(row => row.values.every(value => value.selectable))).toBe(true);
   });
 
-  it('marks values that do not exist for the current selection as not selectable', () => {
+  it('marks values without variant for the other selected values as unavailable', () => {
     const hook = renderSelection({ variants });
 
     act(() => hook.result.select({ id: 'color', value: 'blue' }));
 
     const size = hook.result.rows[1];
-    expect(size.values.find(value => value.id === 's')?.selectable).toBe(true);
-    expect(size.values.find(value => value.id === 'm')?.selectable).toBe(false);
+    expect(size.values.find(value => value.id === 's')?.available).toBe(true);
+    expect(size.values.find(value => value.id === 'm')?.available).toBe(false);
+  });
+
+  it('allows to select the second characteristic first', () => {
+    const hook = renderSelection({ variants });
+
+    act(() => hook.result.select({ id: 'size', value: 'm' }));
+
+    expect(hook.result.selection).toEqual({ color: 'red', size: 'm' });
   });
 
   it('calls onVariantSelected after the finish timeout once the selection is complete', () => {
@@ -137,7 +144,7 @@ describe('useVariantSelection', () => {
     expect(hook.result.selection).toEqual({ color: 'blue' });
   });
 
-  it('keeps other values selectable when variants list their characteristics in another order', () => {
+  it('orders the selection like the characteristics', () => {
     const reversed: ProductVariants = {
       ...variants,
       products: variants.products.map(product => ({
@@ -150,12 +157,10 @@ describe('useVariantSelection', () => {
     };
     const hook = renderSelection({ variants: reversed });
 
-    act(() => hook.result.select({ id: 'color', value: 'red' }));
     act(() => hook.result.select({ id: 'size', value: 's' }));
+    act(() => hook.result.select({ id: 'color', value: 'red' }));
 
     expect(Object.keys(hook.result.selection)).toEqual(['color', 'size']);
-    expect(hook.result.rows[0].values.every(value => value.selectable)).toBe(true);
-    expect(hook.result.rows[1].values.find(value => value.id === 'm')?.selectable).toBe(true);
   });
 
   it('returns the first unselected characteristic', () => {

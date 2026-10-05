@@ -21,6 +21,10 @@ const useStyles = makeStyles({ name: 'VariantChip' })(theme => ({
     '&:focus-visible': {
       borderColor: theme.palette.primary.main,
     },
+    '&[data-unavailable]': {
+      borderStyle: 'dashed',
+      color: theme.palette.text.secondary,
+    },
     '&[data-sold-out]': {
       color: theme.palette.text.secondary,
       textDecoration: 'line-through',
@@ -39,8 +43,6 @@ const useStyles = makeStyles({ name: 'VariantChip' })(theme => ({
 
 export interface VariantChipProps {
   value: VariantSelectorValue;
-  /** Whether sold out values are struck through. */
-  markSoldOut: boolean;
   onSelect: (valueId: string) => void;
 }
 
@@ -49,7 +51,7 @@ export interface VariantChipProps {
  * @param props The component props.
  * @returns The chip.
  */
-const VariantChip = ({ value, markSoldOut, onSelect }: VariantChipProps) => {
+const VariantChip = ({ value, onSelect }: VariantChipProps) => {
   const { classes, cx } = useStyles();
 
   return (
@@ -59,7 +61,8 @@ const VariantChip = ({ value, markSoldOut, onSelect }: VariantChipProps) => {
       aria-checked={value.selected}
       aria-disabled={!value.selectable}
       className={cx(classes.root, 'engage__variant-selector__chip')}
-      data-sold-out={markSoldOut && value.soldOut ? true : undefined}
+      data-unavailable={value.available === false ? true : undefined}
+      data-sold-out={value.soldOut ? true : undefined}
       data-test-id={value.label}
       onClick={() => {
         if (value.selectable) {

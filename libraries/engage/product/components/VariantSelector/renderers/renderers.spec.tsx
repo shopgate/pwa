@@ -52,10 +52,21 @@ describe('<VariantChips />', () => {
     expect(select).toHaveBeenCalledWith({ id: 'size', value: 'm' });
   });
 
-  it('does not mark sold out values when disabled in the settings', () => {
-    render(<VariantChips {...renderProps({ soldOutDisplay: 'none' })} />);
+  it('marks values without variant as unavailable but keeps them selectable', () => {
+    const select = jest.fn();
+    render(<VariantChips {...renderProps({
+      select,
+      values: [{
+        id: 'xl', label: 'XL', selectable: true, selected: false, available: false,
+      }],
+    })}
+    />);
 
-    expect(screen.getByRole('radio', { name: 'M' })).not.toHaveAttribute('data-sold-out');
+    const chip = screen.getByRole('radio', { name: 'XL' });
+    expect(chip).toHaveAttribute('data-unavailable', 'true');
+
+    fireEvent.click(chip);
+    expect(select).toHaveBeenCalledWith({ id: 'size', value: 'xl' });
   });
 
   it('exposes the layout', () => {

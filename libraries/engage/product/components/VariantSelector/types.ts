@@ -32,6 +32,7 @@ export interface VariantProduct {
   stock?: { quantity?: number | null; ignoreQuantity?: boolean; orderable?: boolean } | null;
   featuredImageBaseUrl?: string | null;
   featuredImageUrl?: string | null;
+  properties?: { code?: string; label?: string; value?: unknown }[] | null;
 }
 
 /** The variants entry of a base product. */
@@ -44,6 +45,8 @@ export interface ProductVariants {
 export interface VariantSelectorValue extends VariantCharacteristicValue {
   selectable: boolean;
   selected: boolean;
+  /** Whether a variant exists for this value and the other selected values. */
+  available?: boolean;
   /** Whether every variant with this value is sold out. */
   soldOut?: boolean;
 }
@@ -78,8 +81,6 @@ export interface VariantRendererProps {
   resetHighlight: () => void;
   /** Layout of the chips renderer. */
   chipsLayout?: 'wrap' | 'scroll';
-  /** How sold out values are marked. */
-  soldOutDisplay?: 'strike' | 'hide' | 'none';
 }
 
 /** Display types for characteristics. Extensions can register further types. */

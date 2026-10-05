@@ -1,5 +1,5 @@
-import isMatch from 'lodash/isMatch';
 import type { VariantSelectorSettings } from '../../hooks/useVariantSelectorSettings';
+import { findMatchingVariants, getOtherSelections } from './selection';
 import type {
   ProductVariants,
   VariantProduct,
@@ -101,57 +101,94 @@ export const isVariantSoldOut = (product: VariantProduct): boolean => {
 };
 
 /**
- * Returns the variants that match the selection of the characteristics before the given index
- * and the given value.
- * @param variants The variants.
- * @param selection The current selection.
- * @param rowIndex The index of the characteristic.
- * @param valueId The value ID.
- * @returns The matching variants.
+ * Turns a property value into a swatch when it is a CSS color or an image URL.
+ * @param value The property value.
+ * @returns The swatch or undefined.
  */
-const getMatchingVariants = (
-  variants: ProductVariants,
-  selection: VariantSelection,
-  rowIndex: number,
-  valueId: string
-): VariantProduct[] => {
-  const subset: VariantSelection = {};
+const toSwatch = (value: unknown): VariantSwatchData | undefined => {
+  if (typeof value !== 'string' || !value.trim()) {
+    return undefined;
+  }
 
-  variants.characteristics.slice(0, rowIndex).forEach((char) => {
-    if (selection[char.id]) {
-      subset[char.id] = selection[char.id];
-    }
-  });
+  const trimmed = value.trim();
 
-  subset[variants.characteristics[rowIndex].id] = valueId;
+  if (/^(https?:)?\/\//.test(trimmed)) {
+    return { imageUrl: trimmed };
+  }
 
-  return variants.products.filter(product => isMatch(product.characteristics, subset));
+  const isColor = typeof CSS !== 'undefined' && typeof CSS.supports === 'function'
+    ? CSS.supports('color', trimmed)
+    : /^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(trimmed);
+
+  return isColor ? { color: trimmed } : undefined;
 };
 
 /**
- * Resolves the swatch of a value.
+ * Reads a swatch from a product property of the variants.
+ * @param matching The variants with the value.
+ * @param property Label or code of the property.
+ * @returns The swatch or undefined.
+ */
+const getPropertySwatch = (
+  matching: VariantProduct[],
+  property: string
+): VariantSwatchData | undefined => {
+  const name = property.trim().toLowerCase();
+
+  if (!name) {
+    return undefined;
+  }
+
+  for (let i = 0; i < matching.length; i += 1) {
+    const entry = (matching[i].properties || []).find(prop => (
+      prop.label?.toLowerCase() === name || prop.code?.toLowerCase() === name
+    ));
+    const swatch = toSwatch(entry?.value);
+
+    if (swatch) {
+      return swatch;
+    }
+  }
+
+  return undefined;
+};
+
+/**
+ * Reads the featured image of the variants as swatch.
+ * @param matching The variants with the value.
+ * @returns The swatch or undefined.
+ */
+const getImageSwatch = (matching: VariantProduct[]): VariantSwatchData | undefined => {
+  const product = matching.find(entry => entry.featuredImageBaseUrl || entry.featuredImageUrl);
+  const imageUrl = product?.featuredImageBaseUrl || product?.featuredImageUrl;
+
+  return imageUrl ? { imageUrl } : undefined;
+};
+
+/**
+ * Resolves the swatch of a value from the configured source. Falls back to the swatch of the
+ * product data when the source has nothing.
  * @param value The value.
  * @param matching The variants with this value.
- * @param source The configured swatch source.
+ * @param settings The swatch settings.
  * @returns The swatch or undefined.
  */
 const resolveSwatch = (
   value: VariantSelectorValue,
   matching: VariantProduct[],
-  source: VariantSelectorSettings['swatchSource']
+  settings: Pick<VariantSelectorSettings, 'swatchSource' | 'swatchProperty'>
 ): VariantSwatchData | undefined => {
-  if (value.swatch?.color || value.swatch?.imageUrl) {
-    return value.swatch;
+  const backendSwatch = value.swatch?.color || value.swatch?.imageUrl ? value.swatch : undefined;
+
+  if (settings.swatchSource === 'variantImage') {
+    return getImageSwatch(matching) || backendSwatch;
   }
 
-  if (source !== 'variantImage') {
-    return undefined;
+  if (settings.swatchSource === 'property') {
+    return getPropertySwatch(matching, settings.swatchProperty) || backendSwatch;
   }
 
-  const image = matching.find(product => product.featuredImageBaseUrl || product.featuredImageUrl);
-  const imageUrl = image?.featuredImageBaseUrl || image?.featuredImageUrl;
-
-  return imageUrl ? { imageUrl } : undefined;
+  return backendSwatch;
 };
 
 /**
@@ -195,21 +232,26 @@ export const decorateRows = (
   rows: VariantSelectorRow[],
   variants: ProductVariants,
   selection: VariantSelection,
-  settings: Pick<VariantSelectorSettings, 'sortSizes' | 'soldOut' | 'swatchSource'>
-): VariantSelectorRow[] => rows.map((row, rowIndex) => {
+  settings: Pick<VariantSelectorSettings, 'sortSizes' | 'soldOut' | 'swatchSource' | 'swatchProperty'>
+): VariantSelectorRow[] => rows.map((row) => {
+  const others = getOtherSelections(selection, row.id);
   const values = row.values.map((value) => {
-    const matching = getMatchingVariants(variants, selection, rowIndex, value.id);
+    const withValue = findMatchingVariants(variants, { [row.id]: value.id });
+    const matching = findMatchingVariants(variants, { ...others, [row.id]: value.id });
+    const soldOut = matching.length > 0 && matching.every(isVariantSoldOut);
+    const soldOutEverywhere = withValue.length > 0 && withValue.every(isVariantSoldOut);
 
     return {
-      ...value,
-      soldOut: matching.length > 0 && matching.every(isVariantSoldOut),
-      swatch: resolveSwatch(value, matching, settings.swatchSource),
+      value: {
+        ...value,
+        soldOut: settings.soldOut === 'strike' && soldOut,
+        swatch: resolveSwatch(value, withValue, settings),
+      },
+      hidden: settings.soldOut === 'hide' && soldOutEverywhere && !value.selected,
     };
   });
 
-  const visible = settings.soldOut === 'hide'
-    ? values.filter(value => !value.soldOut || value.selected)
-    : values;
+  const visible = values.filter(({ hidden }) => !hidden).map(({ value }) => value);
 
   return {
     ...row,

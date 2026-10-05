@@ -25,6 +25,13 @@ const useStyles = makeStyles()((theme) => {
       ...buttonBase,
       color: theme.palette.action.disabled,
     },
+    buttonUnavailable: {
+      color: theme.palette.text.secondary,
+    },
+    buttonSoldOut: {
+      color: theme.palette.text.secondary,
+      textDecoration: 'line-through',
+    },
     root: {
       padding: '16px 0',
       [responsiveMediaQuery('>xs', { webOnly: true })]: {
@@ -84,6 +91,8 @@ const SheetItem = ({
     className: cx({
       [classes.button]: item.selectable,
       [classes.buttonDisabled]: !item.selectable,
+      [classes.buttonUnavailable]: item.selectable && item.available === false,
+      [classes.buttonSoldOut]: item.selectable && !!item.soldOut,
     }, 'theme__product__characteristic__option'),
     key: item.id,
     ref: forwardedRef,
@@ -94,9 +103,13 @@ const SheetItem = ({
     forwardedRef,
     item.id,
     item.selectable,
+    item.available,
+    item.soldOut,
     onClick,
     classes.button,
     classes.buttonDisabled,
+    classes.buttonUnavailable,
+    classes.buttonSoldOut,
     cx,
   ]);
 
@@ -108,6 +121,8 @@ const SheetItem = ({
       <button
         {...buildProps()}
         data-test-id={item.label}
+        data-unavailable={item.available === false ? true : undefined}
+        data-sold-out={item.soldOut ? true : undefined}
         aria-selected={selected}
         role="option"
         type="button"
