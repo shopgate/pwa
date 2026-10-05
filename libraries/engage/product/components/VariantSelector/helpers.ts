@@ -218,17 +218,13 @@ const resolveSwatch = (
  */
 export const resolveRendererType = (
   row: VariantSelectorRow,
-  settings: Pick<VariantSelectorSettings, 'type' | 'swatchCharacteristics' | 'chipCharacteristics'>,
+  settings: Pick<VariantSelectorSettings, 'type' | 'swatchCharacteristics'>,
   isBetaSwatch: boolean
 ): VariantRendererType => {
   const label = row.label.trim().toLowerCase();
 
   if (settings.swatchCharacteristics.includes(label)) {
     return 'swatches';
-  }
-
-  if (settings.chipCharacteristics.includes(label)) {
-    return 'chips';
   }
 
   if (row.swatch && isBetaSwatch) {

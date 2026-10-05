@@ -80,14 +80,6 @@ export const getProductSliderShowActions = createSelector(
 );
 
 /**
- * Selects whether variant products can be added to the cart from favorites with a variant sheet.
- */
-export const getFavoritesVariantSelectSheet = createSelector(
-  getAppSettingsState,
-  appSettings => appSettings.favorites?.variantSelectSheet !== false
-);
-
-/**
  * Selects the variant selector settings.
  */
 export const getVariantSelectorSettings = createSelector(

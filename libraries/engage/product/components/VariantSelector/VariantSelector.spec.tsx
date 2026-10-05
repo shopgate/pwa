@@ -34,8 +34,8 @@ jest.mock('./renderers/VariantSwatches', () => () => null);
 jest.mock('./renderers/SelectedVariantInfo', () => () => null);
 jest.mock('../../hooks/useVariantSelectorSettings', () => () => ({
   type: 'dropdown',
+  swatchesEnabled: false,
   swatchCharacteristics: [],
-  chipCharacteristics: [],
   swatchSource: 'backend',
   swatchShape: 'round',
   swatchImageZoom: 100,

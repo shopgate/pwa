@@ -68,8 +68,8 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     },
     variantSelector: {
       type: 'dropdown',
-      swatchCharacteristics: '',
-      chipCharacteristics: '',
+      swatchesEnabled: false,
+      swatchCharacteristics: 'Farbe, Color',
       swatchSource: 'backend',
       swatchShape: 'round',
       swatchImageZoom: 100,
@@ -82,9 +82,6 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       position: 'bottomRight',
       addToCart: 'hidden',
     },
-  },
-  favorites: {
-    variantSelectSheet: true,
   },
   cards: {
     style: 'shadow',

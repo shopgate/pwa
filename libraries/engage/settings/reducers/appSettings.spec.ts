@@ -73,8 +73,8 @@ describe('settings / reducers / appSettings', () => {
         },
         variantSelector: {
           type: 'chips',
+          swatchesEnabled: true,
           swatchCharacteristics: 'Farbe',
-          chipCharacteristics: 'Größe',
           swatchSource: 'variantImage',
           swatchShape: 'square',
           swatchImageZoom: 200,
@@ -87,9 +87,6 @@ describe('settings / reducers / appSettings', () => {
           position: 'topRight',
           addToCart: 'button',
         },
-      },
-      favorites: {
-        variantSelectSheet: false,
       },
       cards: {
         style: 'border',

@@ -4,11 +4,9 @@ import { getVariantSelectorSettings } from '@shopgate/engage/settings/selectors/
 import type { ProductVariantSelectorSettings } from '@shopgate/engage/settings/types/appSettings';
 
 export interface VariantSelectorSettings
-  extends Omit<ProductVariantSelectorSettings, 'swatchCharacteristics' | 'chipCharacteristics'> {
-  /** Lower cased labels of characteristics that are shown as swatches. */
+  extends Omit<ProductVariantSelectorSettings, 'swatchCharacteristics'> {
+  /** Lower cased labels of characteristics that are shown as swatches, empty when disabled. */
   swatchCharacteristics: string[];
-  /** Lower cased labels of characteristics that are shown as chips. */
-  chipCharacteristics: string[];
 }
 
 /**
@@ -30,8 +28,9 @@ const useVariantSelectorSettings = (): VariantSelectorSettings => {
 
   return useMemo(() => ({
     ...settings,
-    swatchCharacteristics: parseLabels(settings.swatchCharacteristics),
-    chipCharacteristics: parseLabels(settings.chipCharacteristics),
+    swatchCharacteristics: settings.swatchesEnabled
+      ? parseLabels(settings.swatchCharacteristics)
+      : [],
   }), [settings]);
 };
 

@@ -71,13 +71,12 @@ describe('VariantSelector helpers', () => {
     const settings = {
       type: 'dropdown' as const,
       swatchCharacteristics: ['farbe', 'color'],
-      chipCharacteristics: ['größe'],
     };
 
-    it('uses the characteristic lists before the default type', () => {
+    it('shows the listed characteristics as swatches and the others with the global type', () => {
       expect(resolveRendererType(row('Farbe'), settings, false)).toBe('swatches');
-      expect(resolveRendererType(row(' Größe '), settings, false)).toBe('chips');
-      expect(resolveRendererType(row('Material'), settings, false)).toBe('dropdown');
+      expect(resolveRendererType(row(' Größe '), settings, false)).toBe('dropdown');
+      expect(resolveRendererType(row('Größe'), { ...settings, type: 'chips' }, false)).toBe('chips');
     });
 
     it('keeps beta swatches only in beta mode', () => {

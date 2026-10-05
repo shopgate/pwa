@@ -110,7 +110,7 @@ export interface ProductRatingSettings {
 /**
  * Display type of a characteristic in the variant selector.
  */
-export type VariantSelectorType = 'dropdown' | 'chips' | 'swatches';
+export type VariantSelectorType = 'dropdown' | 'chips';
 
 /**
  * Where swatch colors and images come from. `property` is filled in by the variants pipeline.
@@ -121,12 +121,12 @@ export type VariantSwatchSource = 'backend' | 'property' | 'variantImage';
  * Settings for the variant selector on the product page and in the variant sheet.
  */
 export interface ProductVariantSelectorSettings {
-  /** Display type of characteristics that are not listed below. */
+  /** Display type of all characteristics that are not shown as swatches. */
   type: VariantSelectorType;
+  /** Whether the characteristics listed below are shown as swatches. */
+  swatchesEnabled: boolean;
   /** Comma separated characteristic labels that are shown as swatches. */
   swatchCharacteristics: string;
-  /** Comma separated characteristic labels that are shown as chips. */
-  chipCharacteristics: string;
   swatchSource: VariantSwatchSource;
   /** Shape of swatches. `square` uses the border radius of the theme. */
   swatchShape: 'round' | 'square';
@@ -337,10 +337,6 @@ export interface AppSettings {
     }
   }
   product: ProductSettings;
-  favorites: {
-    /** Whether variant products can be added to the cart with a variant sheet. */
-    variantSelectSheet: boolean;
-  };
   /**
    * Settings for images that are served through the image service.
    */
