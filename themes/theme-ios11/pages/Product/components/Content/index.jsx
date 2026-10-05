@@ -35,6 +35,7 @@ class ProductContent extends PureComponent {
     currency: PropTypes.string,
     fulfillmentMethods: PropTypes.arrayOf(PropTypes.string),
     isVariant: PropTypes.bool,
+    productDataLoaded: PropTypes.bool,
     productId: PropTypes.string,
     productIsFetching: PropTypes.bool,
     variantId: PropTypes.string,
@@ -45,6 +46,7 @@ class ProductContent extends PureComponent {
     currency: null,
     fulfillmentMethods: null,
     isVariant: false,
+    productDataLoaded: false,
     productId: null,
     variantId: null,
     productIsFetching: false,
@@ -66,6 +68,7 @@ class ProductContent extends PureComponent {
       optionsPrices: {},
       productId: props.variantId ? props.baseProductId : props.productId,
       variantId: props.variantId ? props.variantId : null,
+      displayVariantId: props.variantId ? props.variantId : null,
       fulfillmentMethods: props.fulfillmentMethods,
       characteristics: null,
       quantity: 1,
@@ -103,9 +106,12 @@ class ProductContent extends PureComponent {
       variantId = nextProps.productId;
     }
 
-    this.setState({
+    const keepDisplayedVariant = !!variantId && !nextProps.productDataLoaded;
+
+    this.setState(prevState => ({
       productId,
       variantId,
+      displayVariantId: keepDisplayedVariant ? prevState.displayVariantId : variantId,
       currency: nextProps.currency,
       quantity: 1,
       fulfillmentMethods: nextProps.fulfillmentMethods,
@@ -113,7 +119,7 @@ class ProductContent extends PureComponent {
         options: {},
         optionsPrices: {},
       }),
-    });
+    }));
   }
 
   /**
@@ -185,7 +191,7 @@ class ProductContent extends PureComponent {
    */
   render() {
     const id = this.state.variantId || this.state.productId;
-    const { productId, variantId } = this.state;
+    const { productId, variantId, displayVariantId } = this.state;
     const contextValue = this.getMemoizedContextValue();
 
     return (
@@ -211,7 +217,7 @@ class ProductContent extends PureComponent {
             />
           </Section>
           <Section title="product.sections.description">
-            <Description productId={productId} variantId={variantId} />
+            <Description productId={productId} variantId={displayVariantId} />
           </Section>
           {/*
             This feature is currently in BETA testing.
@@ -221,7 +227,7 @@ class ProductContent extends PureComponent {
           <Section title="product.sections.properties">
             <ProductProperties
               productId={productId}
-              variantId={variantId}
+              variantId={displayVariantId}
             />
           </Section>
           {/*

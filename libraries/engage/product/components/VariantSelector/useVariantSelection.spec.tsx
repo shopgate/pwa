@@ -137,6 +137,27 @@ describe('useVariantSelection', () => {
     expect(hook.result.selection).toEqual({ color: 'blue' });
   });
 
+  it('keeps other values selectable when variants list their characteristics in another order', () => {
+    const reversed: ProductVariants = {
+      ...variants,
+      products: variants.products.map(product => ({
+        ...product,
+        characteristics: {
+          size: product.characteristics.size,
+          color: product.characteristics.color,
+        },
+      })),
+    };
+    const hook = renderSelection({ variants: reversed });
+
+    act(() => hook.result.select({ id: 'color', value: 'red' }));
+    act(() => hook.result.select({ id: 'size', value: 's' }));
+
+    expect(Object.keys(hook.result.selection)).toEqual(['color', 'size']);
+    expect(hook.result.rows[0].values.every(value => value.selectable)).toBe(true);
+    expect(hook.result.rows[1].values.find(value => value.id === 'm')?.selectable).toBe(true);
+  });
+
   it('returns the first unselected characteristic', () => {
     const hook = renderSelection({ variants });
 

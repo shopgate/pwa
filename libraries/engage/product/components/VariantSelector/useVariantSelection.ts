@@ -48,6 +48,32 @@ const getSelectedValue = helpers.getSelectedValue as unknown as (
   selections: VariantSelection
 ) => string | null;
 
+/**
+ * Orders a selection like the characteristics, since the dependent characteristics are resolved
+ * by position. Variants may list their characteristics in a different order.
+ * @param selection The selection.
+ * @param variants The variants.
+ * @returns The ordered selection.
+ */
+const orderSelection = (
+  selection: VariantSelection,
+  variants: ProductVariants | null
+): VariantSelection => {
+  if (!variants) {
+    return selection;
+  }
+
+  const ordered: VariantSelection = {};
+
+  variants.characteristics.forEach(({ id }) => {
+    if (selection[id]) {
+      ordered[id] = selection[id];
+    }
+  });
+
+  return ordered;
+};
+
 export interface UseVariantSelectionOptions {
   /** Variants of the base product, `null` while they are not loaded. */
   variants: ProductVariants | null;
@@ -97,7 +123,7 @@ const useVariantSelection = ({
   finishTimeout = 0,
 }: UseVariantSelectionOptions): UseVariantSelectionResult => {
   const [selection, setSelection] = useState<VariantSelection>(
-    () => selectCharacteristics({ variantId, variants })
+    () => orderSelection(selectCharacteristics({ variantId, variants }), variants)
   );
   const [checkRequest, setCheckRequest] = useState(0);
   const initializedRef = useRef(!!variants);
@@ -116,7 +142,7 @@ const useVariantSelection = ({
     }
 
     initializedRef.current = true;
-    const initial = selectCharacteristics({ variantId, variants });
+    const initial = orderSelection(selectCharacteristics({ variantId, variants }), variants);
     setSelection(initial);
     callbacksRef.current.onCharacteristicsChange?.(initial);
     setCheckRequest(value => value + 1);
@@ -124,7 +150,7 @@ const useVariantSelection = ({
 
   useEffect(() => {
     if (characteristics && !isEqual(characteristics, selection)) {
-      setSelection(characteristics);
+      setSelection(orderSelection(characteristics, variants));
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [characteristics]);
@@ -158,13 +184,13 @@ const useVariantSelection = ({
       return;
     }
 
-    const next = prepareState(
+    const next = orderSelection(prepareState(
       id,
       value,
       selection,
       variants.characteristics,
       variants.products
-    );
+    ), variants);
 
     setSelection({ ...next });
     callbacksRef.current.onCharacteristicsChange?.({ ...next });

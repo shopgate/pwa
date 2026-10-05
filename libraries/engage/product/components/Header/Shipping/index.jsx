@@ -8,6 +8,7 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import { makeStyles } from '@shopgate/engage/styles';
+import useStickyValue from '../../../hooks/useStickyValue';
 import Label from './components/Label';
 import connect from './connector';
 
@@ -28,8 +29,9 @@ const useStyles = makeStyles()(theme => ({
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Shipping = ({ shipping }) => {
+const Shipping = ({ shipping: currentShipping }) => {
   const { classes, cx } = useStyles();
+  const shipping = useStickyValue(currentShipping);
 
   return (
     <>

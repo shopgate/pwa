@@ -5,6 +5,7 @@ import {
 } from '@shopgate/engage/components';
 import { PRODUCT_DESCRIPTION } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
+import useStickyValue from '../../hooks/useStickyValue';
 import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
@@ -48,8 +49,9 @@ const useStyles = makeStyles()(theme => ({
  * @param {Function} props.navigate where to navigate on click
  * @returns {JSX.Element}
  */
-function Description({ html, navigate, ...props }) {
+function Description({ html: currentHtml, navigate, ...props }) {
   const { classes, cx } = useStyles();
+  const html = useStickyValue(currentHtml);
 
   return (
     <SurroundPortals

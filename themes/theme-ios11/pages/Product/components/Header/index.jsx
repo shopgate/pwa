@@ -35,12 +35,12 @@ const ProductHeader = () => {
   /**
    * @param {Object} params Params from product context.
    * @param {string} params.productId Product id.
-   * @param {string} [params.variantId] Variant id.
+   * @param {string} [params.displayVariantId] Id of the variant whose data is shown.
    * @param {Object} [params.options] Options.
    * @returns {JSX.Element}
    */
-  const consumeRenderer = ({ productId, variantId, options }) => {
-    const id = variantId || productId;
+  const consumeRenderer = ({ productId, displayVariantId, options }) => {
+    const id = displayVariantId || productId;
 
     return (
       <div className={cx(classes.content, 'theme__product__header')}>

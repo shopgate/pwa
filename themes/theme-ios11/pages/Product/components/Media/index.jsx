@@ -33,7 +33,7 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
 
   return (
     <ProductContext.Consumer>
-      {({ productId, variantId, characteristics }) => (
+      {({ productId, displayVariantId: variantId, characteristics }) => (
         <ProductListTypeProvider type="pdp" subType="mediaSection">
           <ProductListEntryProvider productId={variantId || productId}>
             <SurroundPortals
