@@ -66,6 +66,29 @@ describe('ProductCharacteristics helpers', () => {
     });
   });
 
+  describe('buildValues()', () => {
+    const { buildValues } = require('./index');
+
+    it('should make every value of the first characteristic selectable', () => {
+      const values = buildValues({}, '1', characteristics[0].values, 0, '1', false, products);
+
+      expect(values.map(({ selectable }) => selectable)).toEqual([true, true, true]);
+      expect(values.map(({ selected }) => selected)).toEqual([false, true, false]);
+    });
+
+    it('should only make values selectable that exist for the previous selection', () => {
+      const values = buildValues({ 1: '2' }, '2', characteristics[1].values, 1, null, false, products);
+
+      expect(values.map(({ selectable }) => selectable)).toEqual([false, false, true]);
+    });
+
+    it('should disable all values of a disabled characteristic', () => {
+      const values = buildValues({}, '2', characteristics[1].values, 1, null, true, products);
+
+      expect(values.every(({ selectable }) => !selectable)).toBe(true);
+    });
+  });
+
   describe('prepareState()', () => {
     const { prepareState } = require('./index');
 
