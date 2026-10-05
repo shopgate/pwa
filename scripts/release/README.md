@@ -152,28 +152,28 @@ when npm doesn't accept the login, e.g. because it's older than 12 hours.
 2. For versions that update master, compares `releases/vX` with master and asks before approving
    when master has commits that are missing in the release. Pass `--skip-master-update` for
    releases started with that option, since they leave master unchanged.
-3. Waits for npm's automated review of every package, which can take a few minutes for large
-   packages like `@shopgate/engage`. It asks npm to approve each package without 2FA: npm refuses
-   that with E409 while the review is running, and asks for the 2FA once the package is ready.
-   Since approving always needs 2FA, nothing is published in this step. It checks again every 30
-   seconds for up to 10 minutes per package; only packages that wait get a progress line.
-4. Asks for your one-time password once all reviews are finished, and approves the packages
-   within seconds, dependencies first, so that no package is public before the packages it
-   depends on. With a security key or passkey, leave the password empty: npm then runs on the
-   terminal and asks for the confirmation in the browser itself. If npm still reports a running
-   review or rejects the one-time password, `approve` waits or asks for a new one. Each package
-   gets one progress line; npm's own output is only shown when an approval fails. When the reviews
-   are done, or the approval is done or fails, the terminal rings its bell, and macOS also shows a
-   notification. If it fails, run `approve` again: it continues with the packages that aren't
-   published yet.
-5. Checks that npm shows every approved version as published. A new version can take a moment to
+3. Asks for your one-time password and approves the packages, dependencies first, so that no package
+   is public before the packages it depends on. With a security key or passkey, leave the password
+   empty: npm then runs on the terminal and asks for the confirmation in the browser itself. npm
+   only accepts a package once its automated review is finished, which can take several minutes
+   for large packages like `@shopgate/engage`. Until then, it tries again every 30 seconds for up
+   to 10 minutes. npm only reveals the review status once it accepts the 2FA, and it accepts a
+   one-time password for about a minute, so after a longer wait `approve` asks for a new one.
+   Each package gets one progress line; npm's own output is only shown when an approval fails.
+   When the approval is done, fails or needs a new one-time password, the terminal rings its
+   bell, and macOS also shows a notification. If it still fails, run `approve` again: it
+   continues with the packages that aren't published yet.
+4. Checks that npm shows every approved version as published. A new version can take a moment to
    appear, so it checks again every 10 seconds for up to a minute and fails with the missing
    packages otherwise.
 
+npm's review starts when `prepare` stages the packages. Starting `approve` a few minutes after the
+"staged on npm" message usually saves the waits and the additional one-time passwords.
+
 After this step, the packages are public on npm.
 
-With `--dry-run`, `approve` runs steps 1 and 2, then only simulates steps 3 and 4 with their
-progress lines, without asking for the one-time password or approving anything.
+With `--dry-run`, `approve` runs steps 1 and 2, then only shows the progress lines it would print,
+without asking for the one-time password or approving anything.
 
 ### `finalize` (manual job `release:finalize`)
 

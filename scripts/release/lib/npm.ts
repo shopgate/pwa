@@ -211,15 +211,6 @@ const spawnApprove = (id: string, otp: string, interactive: boolean): Promise<Ap
 export const approveStaged = (id: string, otp: string) => spawnApprove(id, otp, !otp);
 
 /**
- * Asks npm to approve a staged package without any 2FA. Since approving always requires 2FA,
- * nothing gets published; npm's answer only tells whether its automated review is still running
- * (E409) or the package is ready for the approval.
- * @param id The stage ID.
- * @returns The exit status and the error output.
- */
-export const probeApproval = (id: string) => spawnApprove(id, '', false);
-
-/**
  * Whether npm rejected an approval because its automated review of the package isn't done yet.
  * @param stderr The error output of "npm stage approve".
  * @returns Whether the approval can be retried later.

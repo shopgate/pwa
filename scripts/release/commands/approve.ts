@@ -17,7 +17,6 @@ import {
   isOtpRejected,
   isPublished,
   isReviewPending,
-  probeApproval,
 } from '../lib/npm.ts';
 import { updatesMaster } from '../steps/stage.ts';
 import { symbols } from '../lib/symbols.ts';
@@ -206,108 +205,6 @@ export const approveAfterReview = async (
 };
 
 /**
- * Settings of waitForReview, replaceable in tests.
- */
-interface ReviewSettings {
-  /**
-   * Asks npm to approve a staged package without 2FA.
-   */
-  probe?: typeof probeApproval;
-  /**
-   * Milliseconds between the checks while npm's automated review is running.
-   */
-  delay?: number;
-  /**
-   * How often to check while npm's automated review is running.
-   */
-  attempts?: number;
-  /**
-   * Time of the first check, to show how long the package has been waiting.
-   */
-  startedAt?: number;
-}
-
-/**
- * Result of waiting for npm's automated review of a package.
- */
-interface ReviewResult {
-  /**
-   * Whether the package got published, which only happens when npm doesn't require 2FA.
-   */
-  published: boolean;
-  /**
-   * Whether the package had to wait for the review.
-   */
-  waited: boolean;
-}
-
-/**
- * Waits until npm's automated review of a staged package is finished, without a one-time
- * password: npm rejects an approval without 2FA with E409 while the review runs and asks for the
- * 2FA once it's done. Only packages that wait get a progress line.
- * @param staged The staged package version.
- * @param label Prefix of the progress line, e.g. "[3/13]".
- * @param settings Replaceable dependencies and timings.
- * @returns Whether the package got published and whether it waited.
- */
-export const waitForReview = async (
-  staged: StagedVersion,
-  label: string,
-  settings: ReviewSettings = {}
-): Promise<ReviewResult> => {
-  const {
-    probe = probeApproval,
-    delay = 30000,
-    attempts = 20,
-    startedAt = Date.now(),
-  } = settings;
-  const name = `${staged.packageName}@${staged.version}`;
-  const styledName = `${staged.packageName}${color('gray', `@${staged.version}`)}`;
-  const styledLabel = color('gray', label);
-  const waited = settings.startedAt !== undefined;
-  const { status, stderr } = await probe(staged.id);
-
-  if (status === 0) {
-    showResult(`${symbols.ok} ${styledLabel} ${styledName}`);
-    return {
-      published: true,
-      waited,
-    };
-  }
-
-  if (!isReviewPending(stderr)) {
-    if (!isOtpRejected(stderr)) {
-      endProgress();
-      const code = /npm error code (\S+)/.exec(stderr)?.[1] ?? `exit ${status}`;
-      console.warn(`${symbols.warning} ${styledLabel} ${styledName}: ${color('yellow', `couldn't check npm's review (${code}), the approval will show it`)}`);
-    } else if (waited) {
-      showResult(`${symbols.ok} ${styledLabel} ${styledName}: ${color('gray', `review finished after ${formatDuration(Date.now() - startedAt)}`)}`);
-    }
-
-    return {
-      published: false,
-      waited,
-    };
-  }
-
-  if (attempts <= 1) {
-    endProgress();
-    throw new Error(`npm's automated review of ${name} still isn't finished. Nothing was published; run approve again later.`);
-  }
-
-  await waitWithProgress(
-    delay,
-    symbol => `${symbol} ${styledLabel} ${styledName}: ${color('yellow', 'waiting for npm\'s automated review')} (${formatDuration(Date.now() - startedAt)})`,
-    symbols.waiting
-  );
-  return waitForReview(staged, label, {
-    ...settings,
-    attempts: attempts - 1,
-    startedAt,
-  });
-};
-
-/**
  * How long the approval of a package took.
  */
 interface PackageDuration {
@@ -347,10 +244,6 @@ export const summarizeDurations = (durations: PackageDuration[], total: number) 
  */
 interface ApprovalSettings {
   /**
-   * Asks npm to approve a staged package without 2FA.
-   */
-  probe?: typeof probeApproval;
-  /**
    * Runs "npm stage approve".
    */
   approve?: typeof approveStaged;
@@ -359,86 +252,45 @@ interface ApprovalSettings {
    */
   askOtp?: (question: string) => Promise<string>;
   /**
-   * Milliseconds between the checks while npm's automated review is running.
+   * Milliseconds between the attempts while npm's automated review is running.
    */
   delay?: number;
 }
 
 /**
- * Approves staged packages in two phases, so nothing is public before every package passed npm's
- * automated review: first it waits for all reviews without a one-time password, then it asks for
- * the password once and approves all packages in their order within seconds.
+ * Asks for the one-time password and approves the staged packages in their order. npm only
+ * reveals whether its automated review is finished once it accepts the 2FA, so the review waits
+ * happen during the approval.
  * @param pending The staged packages, dependencies first.
- * @param version The version to release.
  * @param settings Replaceable dependencies and timings.
  * @returns The summary of the approval, e.g. "13 packages in 2:14".
  */
 export const approvePackages = async (
   pending: StagedVersion[],
-  version: string,
   settings: ApprovalSettings = {}
 ) => {
-  const {
-    probe = probeApproval,
-    approve = approveStaged,
-    askOtp = ask,
-    delay = 30000,
-  } = settings;
-  const label = (index: number) => `[${index + 1}/${pending.length}]`;
-  const startedAt = Date.now();
-  const durations = new Map(pending.map(staged => [staged.packageName, 0]));
-  const addDuration = (packageName: string, since: number) => {
-    durations.set(packageName, (durations.get(packageName) ?? 0) + Date.now() - since);
-  };
+  const { approve = approveStaged, askOtp = ask, delay = 30000 } = settings;
+  let otp = await askOtp(OTP_QUESTION);
 
-  logStep(`Waiting for npm's automated review of ${pending.length} packages`);
-  const ready: [number, StagedVersion][] = [];
-  let waited = false;
+  logStep(`Approving ${pending.length} packages`);
+  const startedAt = Date.now();
+  const durations: PackageDuration[] = [];
 
   for (const [index, staged] of pending.entries()) {
-    const since = Date.now();
+    const packageStartedAt = Date.now();
     // eslint-disable-next-line no-await-in-loop
-    const review = await waitForReview(staged, label(index), {
-      probe,
+    otp = await approveAfterReview(staged, otp, `[${index + 1}/${pending.length}]`, {
+      approve,
+      askOtp,
       delay,
     });
-    addDuration(staged.packageName, since);
-    waited = waited || review.waited;
-
-    if (!review.published) {
-      ready.push([index, staged]);
-    }
+    durations.push({
+      packageName: staged.packageName,
+      milliseconds: Date.now() - packageStartedAt,
+    });
   }
 
-  console.log(`${symbols.ok} All reviews are finished`);
-
-  if (ready.length > 0) {
-    if (waited) {
-      notify('PWA release', `npm's review of ${version} is finished. Enter the one-time password.`, 'Ping');
-    }
-
-    let otp = await askOtp(OTP_QUESTION);
-
-    logStep(`Approving ${ready.length} packages`);
-    for (const [index, staged] of ready) {
-      const since = Date.now();
-      // eslint-disable-next-line no-await-in-loop
-      otp = await approveAfterReview(staged, otp, label(index), {
-        approve,
-        askOtp,
-        delay,
-      });
-      addDuration(staged.packageName, since);
-    }
-  }
-
-  return summarizeDurations(
-    [...durations].map(([packageName, milliseconds]) => ({
-      packageName,
-      milliseconds,
-    })),
-    Date.now() - startedAt
-  );
+  return summarizeDurations(durations, Date.now() - startedAt);
 };
 
 /**
@@ -449,22 +301,21 @@ export const approvePackages = async (
  */
 export const simulateApproval = async (pending: StagedVersion[], delay = 3000) => {
   console.log(`\nDry run: simulating the approval of ${pending.length} packages, nothing is published`);
-  let probes = 0;
+  let attempts = 0;
 
-  await approvePackages(pending, 'the dry run', {
-    probe: async () => {
-      probes += 1;
-      return {
-        status: 1,
-        stderr: probes === 1
-          ? 'npm error code E409\nnpm error automated review hasn\'t finished (simulated)'
-          : 'npm error code EOTP',
-      };
+  await approvePackages(pending, {
+    approve: async () => {
+      attempts += 1;
+      return attempts === 1
+        ? {
+          status: 1,
+          stderr: 'npm error code E409\nnpm error automated review hasn\'t finished (simulated)',
+        }
+        : {
+          status: 0,
+          stderr: '',
+        };
     },
-    approve: async () => ({
-      status: 0,
-      stderr: '',
-    }),
     askOtp: async () => {
       console.log('Dry run: would ask for the one-time password now');
       return 'dry-run';
@@ -536,7 +387,7 @@ export const approveRelease = async (options: ReleaseOptions, root = ROOT) => {
   let summary: string;
 
   try {
-    summary = await approvePackages(pending, version.version);
+    summary = await approvePackages(pending);
 
     logStep('Checking that the packages are published');
     const unpublished = await waitUntilPublished(
