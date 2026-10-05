@@ -8,9 +8,11 @@ import {
 } from 'node:test';
 import {
   approveAfterReview,
+  approvePackages,
   confirmMasterIsMerged,
   simulateApproval,
   summarizeDurations,
+  waitForReview,
 } from './approve.ts';
 import { isOtpRejected } from '../lib/npm.ts';
 import type { ApproveResult } from '../lib/npm.ts';
@@ -41,6 +43,13 @@ const mockApprove = (...results: ApproveResult[]) => {
     stderr: '',
   });
 };
+
+/**
+ * Collects the lines printed with console.log.
+ * @returns The printed lines.
+ */
+const printedLines = () => (console.log as unknown as ReturnType<typeof mock.fn>).mock.calls
+  .map(call => String(call.arguments[0]));
 
 /**
  * Replaces fetch with a stub for the GitHub compare API.
@@ -127,13 +136,6 @@ describe('approve', () => {
   });
 
   describe('approveAfterReview', () => {
-    /**
-     * Collects the lines printed with console.log.
-     * @returns The printed lines.
-     */
-    const printedLines = () => (console.log as unknown as ReturnType<typeof mock.fn>).mock.calls
-      .map(call => String(call.arguments[0]));
-
     it('approves once and prints one line', async () => {
       const approve = mockApprove({
         status: 0,
@@ -269,6 +271,8 @@ describe('approve', () => {
         .some(symbol => line.startsWith(symbol));
       assert.deepEqual(lines.filter(isStatusLine), [
         `${symbols.waiting} [1/2] @shopgate/engage@7.32.2-alpha.2: waiting for npm's automated review (0:00)`,
+        `${symbols.ok} [1/2] @shopgate/engage@7.32.2-alpha.2: review finished after 0:00`,
+        `${symbols.ok} All reviews are finished`,
         `${symbols.ok} [1/2] @shopgate/engage@7.32.2-alpha.2`,
         `${symbols.ok} [2/2] @shopgate/pwa-common@7.32.2-alpha.2`,
       ]);
@@ -298,6 +302,148 @@ describe('approve', () => {
         packageName: '@shopgate/pwa-core',
         milliseconds: 2000,
       }], 2000), '1 package in 0:02');
+    });
+  });
+
+  describe('waitForReview', () => {
+    it('reports a package as ready without a line when npm asks for the 2FA right away', async () => {
+      const probe = mockApprove({
+        status: 1,
+        stderr: OTP_REJECTED,
+      });
+
+      const result = await waitForReview(staged, '[1/13]', {
+        probe,
+        delay: 0,
+      });
+
+      assert.deepEqual(result, {
+        published: false,
+        waited: false,
+      });
+      assert.deepEqual(probe.mock.calls[0].arguments, ['428275a4']);
+      assert.deepEqual(printedLines(), []);
+    });
+
+    it('waits while npm\'s automated review is running', async () => {
+      const probe = mockApprove(
+        {
+          status: 1,
+          stderr: REVIEW_PENDING,
+        },
+        {
+          status: 1,
+          stderr: OTP_REJECTED,
+        }
+      );
+
+      const result = await waitForReview(staged, '[5/13]', {
+        probe,
+        delay: 0,
+      });
+
+      assert.deepEqual(result, {
+        published: false,
+        waited: true,
+      });
+      assert.equal(probe.mock.callCount(), 2);
+      assert.equal(printedLines().at(-1), `${symbols.ok} [5/13] @shopgate/engage@7.32.2-alpha.2: review finished after 0:00`);
+    });
+
+    it('warns when npm\'s answer says nothing about the review', async () => {
+      const consoleWarn = console.warn as unknown as ReturnType<typeof mock.fn>;
+      const probe = mockApprove({
+        status: 1,
+        stderr: 'npm error code ECONNRESET\nnpm error network aborted',
+      });
+
+      const result = await waitForReview(staged, '[1/13]', {
+        probe,
+        delay: 0,
+      });
+
+      assert.equal(result.published, false);
+      assert.match(String(consoleWarn.mock.calls.at(-1)?.arguments[0]), /\[1\/13\] @shopgate\/engage@7\.32\.2-alpha\.2: couldn't check npm's review \(ECONNRESET\)/);
+    });
+
+    it('gives up without publishing when the review takes longer than the attempts', async () => {
+      const probe = mockApprove(...Array.from({ length: 3 }, () => ({
+        status: 1,
+        stderr: REVIEW_PENDING,
+      })));
+
+      await assert.rejects(
+        waitForReview(staged, '[1/13]', {
+          probe,
+          delay: 0,
+          attempts: 3,
+        }),
+        /still isn't finished\. Nothing was published/
+      );
+    });
+  });
+
+  describe('approvePackages', () => {
+    const second = {
+      ...staged,
+      id: '9f1c2e7a',
+      packageName: '@shopgate/pwa-common',
+    };
+
+    it('approves nothing before all reviews are finished and asks for the password once', async () => {
+      const calls: string[] = [];
+      let reviewPending = true;
+      const probe = mock.fn(async (id: string) => {
+        calls.push(`probe ${id}`);
+        const pending = id === second.id && reviewPending;
+        reviewPending = pending ? false : reviewPending;
+        return {
+          status: 1,
+          stderr: pending ? REVIEW_PENDING : OTP_REJECTED,
+        };
+      });
+      const approve = mock.fn(async (id: string, otp: string) => {
+        calls.push(`approve ${id} ${otp}`);
+        return {
+          status: 0,
+          stderr: '',
+        };
+      });
+      const askOtp = mock.fn(async () => {
+        calls.push('ask');
+        return '123456';
+      });
+
+      await approvePackages([staged, second], '7.32.2-alpha.2', {
+        probe,
+        approve,
+        askOtp,
+        delay: 0,
+      });
+
+      assert.deepEqual(calls, [
+        'probe 428275a4',
+        'probe 9f1c2e7a',
+        'probe 9f1c2e7a',
+        'ask',
+        'approve 428275a4 123456',
+        'approve 9f1c2e7a 123456',
+      ]);
+    });
+
+    it('doesn\'t ask for a password when every package is already published', async () => {
+      const askOtp = mock.fn(async () => '123456');
+
+      await approvePackages([staged], '7.32.2-alpha.2', {
+        probe: mockApprove({
+          status: 0,
+          stderr: '',
+        }),
+        askOtp,
+        delay: 0,
+      });
+
+      assert.equal(askOtp.mock.callCount(), 0);
     });
   });
 });

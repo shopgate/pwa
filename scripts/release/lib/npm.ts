@@ -164,27 +164,29 @@ export interface ApproveResult {
 export const isLoggedIn = () => capture('npm', ['whoami'], { allowFailure: true }).status === 0;
 
 /**
- * Approves (publishes) a staged package. With a one-time password, npm's output is collected
- * instead of shown, so the caller can report the result in one line; sfw --verbose npm then can't ask for a new
- * password itself and fails with EOTP. Without one, npm runs on the terminal and handles the 2FA
- * itself, e.g. the browser confirmation of a security key or passkey.
+ * Runs "npm stage approve" for a staged package.
  * @param id The stage ID.
- * @param otp The npm one-time password. Empty to let npm handle the 2FA on the terminal.
+ * @param otp The npm one-time password, or an empty string to send none.
+ * @param interactive Whether npm runs on the terminal and may ask for the 2FA itself.
  * @returns The exit status and the error output.
  */
-export const approveStaged = (id: string, otp: string): Promise<ApproveResult> => (
+const spawnApprove = (id: string, otp: string, interactive: boolean): Promise<ApproveResult> => (
   new Promise((resolve, reject) => {
+    const env: NodeJS.ProcessEnv = { ...process.env };
+    delete env.npm_config_otp;
+
+    if (otp) {
+      env.npm_config_otp = otp;
+    }
+
     const child = spawn('npm', ['stage', 'approve', id, '--loglevel', 'warn'], {
-      env: {
-        ...process.env,
-        ...(otp ? { npm_config_otp: otp } : {}),
-      },
-      stdio: otp ? ['ignore', 'ignore', 'pipe'] : ['inherit', 'inherit', 'pipe'],
+      env,
+      stdio: interactive ? ['inherit', 'inherit', 'pipe'] : ['ignore', 'ignore', 'pipe'],
     });
     let stderr = '';
 
     child.stderr.on('data', (chunk: Buffer) => {
-      if (!otp) {
+      if (interactive) {
         process.stderr.write(chunk);
       }
       stderr += chunk.toString();
@@ -196,6 +198,26 @@ export const approveStaged = (id: string, otp: string): Promise<ApproveResult> =
     }));
   })
 );
+
+/**
+ * Approves (publishes) a staged package. With a one-time password, npm's output is collected
+ * instead of shown, so the caller can report the result in one line; npm then can't ask for a new
+ * password itself and fails with EOTP. Without one, npm runs on the terminal and handles the 2FA
+ * itself, e.g. the browser confirmation of a security key or passkey.
+ * @param id The stage ID.
+ * @param otp The npm one-time password. Empty to let npm handle the 2FA on the terminal.
+ * @returns The exit status and the error output.
+ */
+export const approveStaged = (id: string, otp: string) => spawnApprove(id, otp, !otp);
+
+/**
+ * Asks npm to approve a staged package without any 2FA. Since approving always requires 2FA,
+ * nothing gets published; npm's answer only tells whether its automated review is still running
+ * (E409) or the package is ready for the approval.
+ * @param id The stage ID.
+ * @returns The exit status and the error output.
+ */
+export const probeApproval = (id: string) => spawnApprove(id, '', false);
 
 /**
  * Whether npm rejected an approval because its automated review of the package isn't done yet.
