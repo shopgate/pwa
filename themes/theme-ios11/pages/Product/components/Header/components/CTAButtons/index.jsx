@@ -13,7 +13,10 @@ import {
 import { appConfig } from '@shopgate/engage';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getProductTileActions } from '@shopgate/engage/settings/selectors/appSettings';
+import {
+  getProductTileActions,
+  getProductTileActionsDirection,
+} from '@shopgate/engage/settings/selectors/appSettings';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig;
@@ -29,8 +32,15 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'flex-end',
     alignItems: 'center',
     [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
+    '&[data-direction="vertical"]': {
+      flexDirection: 'column',
+      gap: theme.spacing(1),
+    },
     '&[data-position="topRight"]': {
       top: theme.spacing(2),
+    },
+    '&[data-position="topRight"][data-direction="vertical"]': {
+      flexDirection: 'column-reverse',
     },
     '&[data-position="bottomRight"]': {
       bottom: theme.spacing(2),
@@ -54,6 +64,7 @@ const CTAButtons = ({
 }) => {
   const { classes, cx } = useStyles();
   const { position } = useSelector(getProductTileActions);
+  const direction = useSelector(getProductTileActionsDirection);
   const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery;
 
   return (
@@ -63,6 +74,7 @@ const CTAButtons = ({
         <div
           className={cx(classes.buttons, 'theme__product__header__cta-buttons')}
           data-position={position}
+          data-direction={direction}
           data-bullets-below={bulletsBelow ? true : undefined}
         >
           <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />

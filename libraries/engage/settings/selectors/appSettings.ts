@@ -75,6 +75,20 @@ export const getProductTileActions = createSelector(
 );
 
 /**
+ * Selects how the action buttons on product tiles line up, with `auto` resolved by their position.
+ */
+export const getProductTileActionsDirection = createSelector(
+  getProductTileActions,
+  ({ position, direction }) => {
+    if (direction === 'horizontal' || direction === 'vertical') {
+      return direction;
+    }
+
+    return position === 'topRight' ? 'vertical' : 'horizontal';
+  }
+);
+
+/**
  * Selects the variant selector settings.
  */
 export const getVariantSelectorSettings = createSelector(

@@ -1,6 +1,7 @@
 import {
   getCanSelectColorScheme,
   getDefaultColorSchemeMode,
+  getProductTileActionsDirection,
   getTypographyFontCssUrls,
   getTypographySettings,
   getWidgetMediaMargins,
@@ -9,6 +10,7 @@ import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
 import type {
   AppearanceSettings,
   AppSettingsState,
+  ProductTileActionsSettings,
   TypographySettings,
   WidgetSettings,
 } from '../types/appSettings';
@@ -18,6 +20,20 @@ const stateWith = (typography: TypographySettings): AppSettingsState => ({
     appSettings: {
       ...DEFAULT_APP_SETTINGS,
       typography,
+    },
+  },
+});
+
+const stateWithTileActions = (
+  tileActions: Partial<ProductTileActionsSettings>
+): AppSettingsState => ({
+  settings: {
+    appSettings: {
+      ...DEFAULT_APP_SETTINGS,
+      product: {
+        ...DEFAULT_APP_SETTINGS.product,
+        tileActions: tileActions as ProductTileActionsSettings,
+      },
     },
   },
 });
@@ -170,6 +186,26 @@ describe('settings/selectors/appSettings', () => {
       }));
 
       expect(urls).toEqual(['h2.css']);
+    });
+  });
+
+  describe('getProductTileActionsDirection()', () => {
+    it('stacks the buttons at the top and lines them up at the bottom by default', () => {
+      expect(getProductTileActionsDirection(stateWithTileActions({ position: 'topRight' })))
+        .toBe('vertical');
+      expect(getProductTileActionsDirection(stateWithTileActions({ position: 'bottomRight' })))
+        .toBe('horizontal');
+    });
+
+    it('uses a configured direction regardless of the position', () => {
+      expect(getProductTileActionsDirection(stateWithTileActions({
+        position: 'topRight',
+        direction: 'horizontal',
+      }))).toBe('horizontal');
+      expect(getProductTileActionsDirection(stateWithTileActions({
+        position: 'bottomRight',
+        direction: 'vertical',
+      }))).toBe('vertical');
     });
   });
 });

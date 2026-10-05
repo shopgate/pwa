@@ -1,7 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getProductTileActions } from '@shopgate/engage/settings/selectors/appSettings';
+import {
+  getProductTileActions,
+  getProductTileActionsDirection,
+} from '@shopgate/engage/settings/selectors/appSettings';
 import ItemFavoritesButton from '../ProductGrid/components/Item/components/ItemFavoritesButton';
 import { ProductCardAddToCart } from '../ProductCardAddToCart';
 
@@ -18,8 +21,14 @@ const useStyles = makeStyles({ name: 'ProductTileActions' })(theme => ({
     display: 'flex',
     gap: 6,
     [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
+    '&[data-direction="vertical"]': {
+      flexDirection: 'column',
+    },
     '&[data-position="topRight"]': {
       top: 8,
+    },
+    '&[data-position="topRight"][data-direction="vertical"]': {
+      flexDirection: 'column-reverse',
     },
     '&[data-position="bottomRight"]': {
       bottom: 8,
@@ -36,11 +45,13 @@ const useStyles = makeStyles({ name: 'ProductTileActions' })(theme => ({
 const ProductTileActions = ({ productId, className }: ProductTileActionsProps) => {
   const { classes, cx } = useStyles();
   const { position, addToCart } = useSelector(getProductTileActions);
+  const direction = useSelector(getProductTileActionsDirection);
 
   return (
     <div
       className={cx(classes.root, 'engage__product-tile-actions', className)}
       data-position={position}
+      data-direction={direction}
     >
       {addToCart === 'actionButton' && <ProductCardAddToCart productId={productId} />}
       <ItemFavoritesButton productId={productId} />
