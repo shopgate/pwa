@@ -53,6 +53,8 @@ const broadcastLiveMessage = broadcast as unknown as (
 
 const ADDED_FEEDBACK_DURATION = 1500;
 
+const COMPACT_BUTTON_WIDTH = 160;
+
 const useStyles = makeStyles({ name: 'ProductCardAddToCart' })(theme => ({
   root: {
     display: 'inline-flex',
@@ -63,9 +65,9 @@ const useStyles = makeStyles({ name: 'ProductCardAddToCart' })(theme => ({
   },
   labelButton: {
     whiteSpace: 'nowrap',
-    paddingLeft: 8,
-    paddingRight: 8,
-    fontSize: theme.typography.body2.fontSize,
+    '&[data-compact]': {
+      '--font-size': `calc(${theme.typography.button.fontSize} * 0.8)`,
+    },
   },
 }));
 
@@ -94,9 +96,26 @@ const ProductCardAddToCart = ({
   const product = useSelector((state: unknown) => getProduct(state, { productId }));
   const [sheetOpen, setSheetOpen] = useState(false);
   const [added, setAdded] = useState(false);
+  const [compact, setCompact] = useState(false);
   const addedTimeout = useRef<ReturnType<typeof setTimeout>>();
+  const rootRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => () => clearTimeout(addedTimeout.current), []);
+
+  useEffect(() => {
+    const element = rootRef.current;
+
+    if (variant !== 'button' || !element || typeof ResizeObserver === 'undefined') {
+      return undefined;
+    }
+
+    const observer = new ResizeObserver(([entry]) => {
+      setCompact(entry.contentRect.width < COMPACT_BUTTON_WIDTH);
+    });
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [variant]);
 
   const hasVariants = !!product?.flags?.hasVariants;
   const hasOptions = !!product?.flags?.hasOptions;
@@ -154,9 +173,9 @@ const ProductCardAddToCart = ({
     return addToCart(product.id);
   }, [addToCart, dispatch, hasOptions, hasVariants, product]);
 
-  const handleSheetAddToCart = useCallback((variant: VariantSheetProduct) => {
+  const handleSheetAddToCart = useCallback((selected: VariantSheetProduct) => {
     setSheetOpen(false);
-    return addToCart(variant.id);
+    return addToCart(selected.id);
   }, [addToCart]);
 
   const closeSheet = useCallback(() => setSheetOpen(false), []);
@@ -165,9 +184,12 @@ const ProductCardAddToCart = ({
     return null;
   }
 
+  const stateIcon = added ? <TickIcon /> : <CartPlusIcon />;
+
   return (
     // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
+      ref={rootRef}
       className={cx(classes.root, 'engage__product-card-add-to-cart', className)}
       data-variant={variant}
       onClick={stop}
@@ -176,14 +198,15 @@ const ProductCardAddToCart = ({
       {variant === 'button' ? (
         <Button
           variant="outlined"
-          color="primary"
+          color="cta"
           size="small"
           fullWidth
           disabled={isDisabled}
           onClick={handleClick}
-          startIcon={added ? <TickIcon /> : <CartPlusIcon />}
+          startIcon={compact ? undefined : stateIcon}
           className={classes.labelButton}
           data-added={added ? 'true' : undefined}
+          data-compact={compact ? 'true' : undefined}
         >
           {i18n.text('product.add_to_cart')}
         </Button>
@@ -197,7 +220,7 @@ const ProductCardAddToCart = ({
           onClick={handleClick}
           data-added={added ? 'true' : undefined}
         >
-          {added ? <TickIcon /> : <CartPlusIcon />}
+          {stateIcon}
         </IconButton>
       )}
       {hasVariants && (

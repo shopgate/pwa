@@ -3,6 +3,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import VariantChips from './VariantChips';
 import VariantSwatches from './VariantSwatches';
+import VariantInlineDropdown from './VariantInlineDropdown';
 import type { VariantRendererProps, VariantSelectorValue } from '../types';
 
 const values: VariantSelectorValue[] = [
@@ -73,6 +74,30 @@ describe('<VariantChips />', () => {
     render(<VariantChips {...renderProps({ chipsLayout: 'scroll' })} />);
 
     expect(screen.getByRole('radiogroup')).toHaveAttribute('data-layout', 'scroll');
+  });
+});
+
+jest.mock('@shopgate/engage/components', () => ({ ArrowDropIcon: () => null }));
+jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
+  i18n: { text: (key: string, params?: string[]) => `${key}:${params?.join(',')}` },
+}));
+
+describe('<VariantInlineDropdown />', () => {
+  it('expands the values inline and collapses after a selection', () => {
+    const select = jest.fn();
+    render(<VariantInlineDropdown {...renderProps({ select, selected: null })} />);
+
+    const field = screen.getByRole('button', { name: /Size/ });
+    expect(field).toHaveTextContent('product.pick_an_attribute:Size');
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
+
+    fireEvent.click(field);
+    expect(field).toHaveAttribute('aria-expanded', 'true');
+    expect(screen.getByRole('option', { name: 'M' })).toHaveAttribute('data-sold-out', 'true');
+
+    fireEvent.click(screen.getByRole('option', { name: 'M' }));
+    expect(select).toHaveBeenCalledWith({ id: 'size', value: 'm' });
+    expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 });
 

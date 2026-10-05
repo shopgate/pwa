@@ -89,4 +89,4 @@ export interface VariantRendererProps {
 
 /** Display types for characteristics. Extensions can register further types. */
 export type VariantRendererType =
-  'dropdown' | 'chips' | 'swatches' | (string & NonNullable<unknown>);
+  'dropdown' | 'inlineDropdown' | 'chips' | 'swatches' | (string & NonNullable<unknown>);

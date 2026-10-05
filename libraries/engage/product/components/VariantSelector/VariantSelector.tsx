@@ -13,6 +13,7 @@ import Characteristic from '../Characteristics/Characteristic';
 import VariantSelectorSkeleton from './VariantSelectorSkeleton';
 import VariantChips from './renderers/VariantChips';
 import VariantSwatches from './renderers/VariantSwatches';
+import VariantInlineDropdown from './renderers/VariantInlineDropdown';
 import SelectedVariantInfo from './renderers/SelectedVariantInfo';
 import useVariantSelection from './useVariantSelection';
 import usePrefetchVariants from './usePrefetchVariants';
@@ -65,6 +66,7 @@ const DEFAULT_RENDERERS: Record<string, React.ComponentType<VariantRendererProps
   dropdown: Characteristic as unknown as React.ComponentType<VariantRendererProps>,
   chips: VariantChips,
   swatches: VariantSwatches,
+  inlineDropdown: VariantInlineDropdown,
 };
 
 interface Conditioner {
@@ -198,7 +200,7 @@ const VariantSelector = ({
 
       return {
         row,
-        type: compact && type === 'dropdown' ? 'chips' : type,
+        type: compact && type === 'dropdown' ? 'inlineDropdown' : type,
       };
     });
   }, [compact, rows, selection, settings, variants]);
