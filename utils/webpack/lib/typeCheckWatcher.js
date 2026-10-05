@@ -1,34 +1,42 @@
-const { spawn } = require('child_process');
+const { spawn, spawnSync } = require('child_process');
+
+const isWindows = process.platform === 'win32';
+const STOP_SIGNALS = ['SIGINT', 'SIGTERM', 'SIGHUP'];
 
 const child = spawn(process.execPath, process.argv.slice(2), {
   stdio: ['ignore', 'inherit', 'inherit'],
-  detached: true,
+  detached: !isWindows,
+  windowsHide: true,
 });
 
 /**
- * Stops the compiler together with every process it started, then exits.
+ * Stops the compiler together with every process it started, then exits without an error.
  */
 function stop() {
   try {
-    process.kill(-child.pid, 'SIGTERM');
+    if (isWindows) {
+      spawnSync('taskkill', ['/pid', String(child.pid), '/T', '/F'], { windowsHide: true });
+    } else {
+      process.kill(-child.pid, 'SIGTERM');
+    }
   } catch (error) {
     child.kill();
   }
 
-  process.exit();
+  process.exit(0);
 }
 
 process.stdin.on('end', stop);
 process.stdin.on('error', stop);
 process.stdin.resume();
-process.on('SIGINT', stop);
-process.on('SIGTERM', stop);
+STOP_SIGNALS.forEach(signal => process.on(signal, stop));
 
 child.on('exit', (code, signal) => {
   if (signal) {
+    process.removeAllListeners(signal);
     process.kill(process.pid, signal);
     return;
   }
 
-  process.exit(code);
+  process.exit(code || 1);
 });

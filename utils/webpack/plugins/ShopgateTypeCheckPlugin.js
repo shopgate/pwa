@@ -193,7 +193,7 @@ class ShopgateTypeCheckPlugin {
     });
 
     child.on('exit', (code, signal) => {
-      if (this.stopping) {
+      if (this.stopping || code === 0) {
         return;
       }
 
