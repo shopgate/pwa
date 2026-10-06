@@ -10,7 +10,9 @@ import {
 import { logStep } from '../lib/exec.ts';
 import { git, gitOutput, remoteBranchExists } from '../lib/git.ts';
 import { createRelease, findRelease } from '../lib/github.ts';
-import { getUnpublished, resolveDistTag, updatesMaster } from '../steps/publish.ts';
+import {
+  getUnpublished, resolveDistTag, updatesMaster, waitUntilInstallable,
+} from '../steps/publish.ts';
 import { pushSubtrees } from '../steps/subtree.ts';
 import { symbols } from '../lib/symbols.ts';
 import type { Theme } from '../config.ts';
@@ -36,7 +38,8 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   }
 
   if (unpublished.length === 0) {
-    console.log(`${symbols.ok} All ${PUBLISHABLE_PACKAGES.length} packages are published`);
+    await waitUntilInstallable(version, root);
+    console.log(`${symbols.ok} All ${PUBLISHABLE_PACKAGES.length} packages are published and installable`);
   }
 
   if (dryRun) {

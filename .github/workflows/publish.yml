@@ -124,7 +124,7 @@ jobs:
 
           if [ "$JOB_STATUS" = "success" ]; then
             title="PWA $VERSION is published on npm"
-            text="Run the manual release:finalize job of the GitLab pipeline now. <$RUN_URL|Workflow run>"
+            text="Next: run the manual release:finalize job in the GitLab pipeline of this release. The messages of the pipeline in this channel contain its link, unless they were muted. <$RUN_URL|Workflow run>"
             color="#d1a34d"
           else
             title="PWA release $VERSION: publishing on npm FAILED"

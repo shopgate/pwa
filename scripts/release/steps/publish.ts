@@ -1,5 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import { setTimeout as delay } from 'node:timers/promises';
 import {
   PUBLISHABLE_PACKAGES,
   ROOT,
@@ -8,8 +9,11 @@ import {
   readJson,
 } from '../config.ts';
 import type { PublishablePackage } from '../config.ts';
+import { mapWithLimit } from '../lib/concurrency.ts';
 import { logStep } from '../lib/exec.ts';
-import { getDistTagVersion, isPublished, publish } from '../lib/npm.ts';
+import {
+  getDistTagVersion, isInstallable, isPublished, publish,
+} from '../lib/npm.ts';
 import { getDistTag, isMasterRelease } from '../lib/version.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
 import type { ReleaseVersion } from '../lib/version.ts';
@@ -136,4 +140,69 @@ export const publishPackages = (
 
   pending.forEach(pkg => assertBuiltVersion(pkg, version, root));
   pending.forEach(pkg => send(getPublishDir(pkg, root), distTag, dryRun));
+};
+
+/**
+ * Settings of waitUntilInstallable. Tests replace the lookup and the waiting.
+ */
+export interface WaitSettings {
+  /**
+   * Checks whether a package version is installable.
+   */
+  check?: typeof isInstallable;
+  /**
+   * Waits for the given number of milliseconds.
+   */
+  sleep?: (duration: number) => Promise<unknown>;
+  /**
+   * How long to wait in total, in milliseconds.
+   */
+  timeout?: number;
+  /**
+   * Pause between two rounds of checks, in milliseconds.
+   */
+  interval?: number;
+}
+
+/**
+ * Waits until all packages of the version can be installed. A new version can take a moment
+ * until the registry hands it out everywhere.
+ * @param version The released version.
+ * @param root The repository root.
+ * @param settings The lookup and the timing.
+ */
+export const waitUntilInstallable = async (
+  version: ReleaseVersion,
+  root = ROOT,
+  settings: WaitSettings = {}
+) => {
+  const {
+    check = isInstallable,
+    sleep = (duration: number) => delay(duration),
+    timeout = 10 * 60 * 1000,
+    interval = 15 * 1000,
+  } = settings;
+  let missing = PUBLISHABLE_PACKAGES.map(pkg => getPackageName(pkg.dir, root));
+  let waited = 0;
+
+  logStep(`Checking that the ${missing.length} packages can be installed`);
+
+  for (;;) {
+    // eslint-disable-next-line no-await-in-loop
+    const states = await mapWithLimit(missing, 6, name => check(name, version.version));
+    missing = missing.filter((name, index) => !states[index]);
+
+    if (missing.length === 0) {
+      return;
+    }
+
+    if (waited >= timeout) {
+      throw new Error(`Not installable after ${Math.round(timeout / 60000)} minutes: ${missing.join(', ')}. Either npm couldn't be reached from here, or it doesn't hand out the versions yet: check https://status.npmjs.org and the package pages on npmjs.com, then run the step again.`);
+    }
+
+    console.log(`Waiting for: ${missing.join(', ')}`);
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(interval);
+    waited += interval;
+  }
 };

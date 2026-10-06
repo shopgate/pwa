@@ -46,6 +46,34 @@ export const isPublishedAsync = async (name: string, version: string) => toPubli
 );
 
 /**
+ * Checks whether a package version can be installed: npm lists it and hands out its tarball.
+ * @param name The package name.
+ * @param version The package version.
+ * @returns Whether the version is installable.
+ */
+export const isInstallable = async (name: string, version: string) => {
+  const { status, stdout } = await captureAsync(
+    'npm',
+    ['view', `${name}@${version}`, 'dist.tarball'],
+    { allowFailure: true }
+  );
+  const tarball = stdout.trim();
+
+  if (status !== 0 || !tarball) {
+    return false;
+  }
+
+  try {
+    return (await fetch(tarball, {
+      method: 'HEAD',
+      signal: AbortSignal.timeout(10000),
+    })).ok;
+  } catch {
+    return false;
+  }
+};
+
+/**
  * Returns the version a dist-tag currently points to.
  * @param name The package name.
  * @param tag The dist-tag, e.g. "latest".

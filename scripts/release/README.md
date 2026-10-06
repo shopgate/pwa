@@ -48,7 +48,8 @@ these variables.
 1. **Check the version** (optional): `npm run release -- check 7.33.0`. The pipeline does the same
    check first, but locally you get the answer before filling in the form.
 2. **Start the pipeline** of `pwa-liveupdate` with the inputs `version` and `branch`. The jobs `release:check`
-   and `release:prepare` run automatically. When they're done, Slack posts "waiting for approval".
+   and `release:prepare` run automatically. When they're done, Slack posts "is prepared" with the link to the
+   workflow run.
 3. **Approve the publishing** on GitHub: open the run of the workflow
    [Publish packages](https://github.com/shopgate/pwa/actions/workflows/publish.yml) for
    `releases/v7.33.0`, choose "Review deployments" and approve the environment `npm-release`. The
@@ -149,7 +150,9 @@ The workflow `.github/workflows/publish.yml` runs for every push to a branch `re
    it installs the dependencies, builds the packages and publishes them with
    `npm run release -- publish`, dependencies first, with the dist-tag `beta`, `latest` or, for
    patches of an older release line, `latest-<major>.<minor>`. Packages that are published
-   already are skipped, so a failed run can be re-run. At the end it posts the result to Slack.
+   already are skipped, so a failed run can be re-run. Afterwards it waits until every package
+   can really be installed, i.e. the registry lists the version and hands out its file, for up
+   to 10 minutes. Only then it posts the result to Slack.
 
 A run only publishes the commit it was started for. When the release branch got another push
 before the approval, the older run refuses to publish: approve the newest run of the branch.
@@ -177,7 +180,9 @@ master; changes to the workflow on other branches can only be tested with a rele
 
 ### `finalize` (manual job `release:finalize`)
 
-1. Aborts when a package is not published yet.
+1. Aborts when a package is not published yet. When all are published, it waits for up to 10
+   minutes until every package can be installed, so the theme uploads that follow don't start
+   too early.
 2. Checks out `releases/vX`.
 3. Only when the version becomes `latest` and `SKIP_MASTER_UPDATE` isn't set:
    1. For each theme, one after another: merges the master of the theme repository into
@@ -246,7 +251,7 @@ After the approval, treat the version as final and release a new one instead of 
 
 **No run of "Publish packages" waits for approval:** its first job failed, e.g. because npm
 couldn't be reached. That job can't post to Slack, since the webhook is a secret of the
-environment. Open the run from the link in the "waiting for approval" message, fix what its log
+environment. Open the run from the link in the "is prepared" message, fix what its log
 reports and re-run it.
 
 **The workflow "Publish packages" failed:** re-run its failed job on GitHub. It skips the packages

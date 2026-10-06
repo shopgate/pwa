@@ -8,7 +8,12 @@ import {
 import { PUBLISHABLE_PACKAGES, getPublishDir } from '../config.ts';
 import { parseVersion } from '../lib/version.ts';
 import {
-  assertBuiltVersion, assertPublishAllowed, getUnpublished, publishPackages, updatesMaster,
+  assertBuiltVersion,
+  assertPublishAllowed,
+  getUnpublished,
+  publishPackages,
+  updatesMaster,
+  waitUntilInstallable,
 } from './publish.ts';
 
 describe('publish', () => {
@@ -163,6 +168,67 @@ describe('publish', () => {
 
     it('allows a dry run everywhere', () => {
       assert.doesNotThrow(() => assertPublishAllowed(true, {}));
+    });
+  });
+
+  describe('waitUntilInstallable', () => {
+    const version = parseVersion('7.33.0');
+
+    it('returns right away when all packages are installable', async () => {
+      let slept = 0;
+
+      await waitUntilInstallable(version, root, {
+        check: async () => true,
+        sleep: async () => {
+          slept += 1;
+        },
+      });
+
+      assert.equal(slept, 0);
+    });
+
+    it('checks only the missing packages again until they are installable', async () => {
+      const calls: Record<string, number> = {};
+      let slept = 0;
+
+      await waitUntilInstallable(version, root, {
+        check: async (name) => {
+          calls[name] = (calls[name] ?? 0) + 1;
+          return name !== '@test/engage' || calls[name] >= 3;
+        },
+        sleep: async () => {
+          slept += 1;
+        },
+      });
+
+      assert.equal(slept, 2);
+      assert.equal(calls['@test/engage'], 3);
+      assert.equal(calls['@test/core'], 1);
+    });
+
+    it('asks for the released version', async () => {
+      const versions = new Set<string>();
+
+      await waitUntilInstallable(version, root, {
+        check: async (name, checkedVersion) => {
+          versions.add(checkedVersion);
+          return true;
+        },
+      });
+
+      assert.deepEqual([...versions], ['7.33.0']);
+    });
+
+    it('fails with the missing packages after the timeout', async () => {
+      await assert.rejects(
+        waitUntilInstallable(version, root, {
+          check: async name => name !== '@test/webpack',
+          sleep: () => Promise.resolve(),
+          timeout: 30000,
+          interval: 15000,
+        }),
+        /Not installable after 1 minutes: @test\/webpack\./
+      );
     });
   });
 

@@ -6,7 +6,9 @@ import { runMain } from './lib/exec.ts';
 import { getOptions } from './lib/options.ts';
 import { prepareRelease } from './commands/prepare.ts';
 import { renderChangelog } from './steps/changelog.ts';
-import { assertPublishAllowed, getUnpublished, publishPackages } from './steps/publish.ts';
+import {
+  assertPublishAllowed, getUnpublished, publishPackages, waitUntilInstallable,
+} from './steps/publish.ts';
 
 /**
  * A command of the release CLI.
@@ -47,10 +49,14 @@ const COMMANDS: Record<string, Command> = {
   publish: {
     usage: '<version>',
     description: 'Publish the built packages on npm (GitHub workflow "Publish packages")',
-    run: (args) => {
+    run: async (args) => {
       const { version, dryRun } = getOptions(args);
       assertPublishAllowed(dryRun);
       publishPackages(version, dryRun);
+
+      if (!dryRun) {
+        await waitUntilInstallable(version);
+      }
     },
   },
   unpublished: {
