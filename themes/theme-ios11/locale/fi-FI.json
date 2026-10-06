@@ -603,7 +603,10 @@
     "verified": "Vahvistettu",
     "verified_info": "Vahvistetuiksi merkityt arvostelut on tarkistanut arvostelupalvelun tarjoaja.",
     "merchant_reply": "Vastaus: {author}",
-    "merchant_reply_default": "Myyjän vastaus"
+    "merchant_reply_default": "Myyjän vastaus",
+    "media_image": "Avaa kuva {index}",
+    "media_video": "Toista video {index}",
+    "media_viewer": "Arvostelun kuvat ja videot"
   },
   "tab_bar": {
     "home": "Koti",

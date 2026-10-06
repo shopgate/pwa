@@ -603,7 +603,10 @@
     "verified": "Επαληθευμένη",
     "verified_info": "Οι κριτικές με την ένδειξη «επαληθευμένη» έχουν ελεγχθεί από τον πάροχο κριτικών.",
     "merchant_reply": "Απάντηση από {author}",
-    "merchant_reply_default": "Απάντηση του καταστήματος"
+    "merchant_reply_default": "Απάντηση του καταστήματος",
+    "media_image": "Άνοιγμα εικόνας {index}",
+    "media_video": "Αναπαραγωγή βίντεο {index}",
+    "media_viewer": "Εικόνες και βίντεο της κριτικής"
   },
   "tab_bar": {
     "home": "Αρχική",

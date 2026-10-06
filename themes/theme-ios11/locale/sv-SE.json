@@ -602,7 +602,10 @@
     "verified": "Verifierad",
     "verified_info": "Recensioner som är markerade som verifierade har kontrollerats av recensionsleverantören.",
     "merchant_reply": "Svar från {author}",
-    "merchant_reply_default": "Svar från säljaren"
+    "merchant_reply_default": "Svar från säljaren",
+    "media_image": "Öppna bild {index}",
+    "media_video": "Spela upp video {index}",
+    "media_viewer": "Bilder och videor i recensionen"
   },
   "tab_bar": {
     "home": "Hem",

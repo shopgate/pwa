@@ -99,6 +99,28 @@ describe('<ReviewCard />', () => {
     expect(container.querySelector('.engage__reviews__review-card')).toBeInTheDocument();
   });
 
+  it('should render attachments only when the review has some', () => {
+    const { container, rerender } = render(<ReviewCard review={{
+      id: 20,
+      rate: 80,
+      media: [{
+        type: 'image',
+        url: 'https://example.com/a.jpg',
+      }],
+    }}
+    />);
+
+    expect(container.querySelector('.engage__reviews__review-media')).toBeInTheDocument();
+
+    rerender(<ReviewCard review={{
+      id: 20,
+      rate: 80,
+    }}
+    />);
+
+    expect(container.querySelector('.engage__reviews__review-media')).not.toBeInTheDocument();
+  });
+
   it('should render the verified badge only for verified reviews', () => {
     const { container, rerender } = render(<ReviewCard review={{
       id: 10,

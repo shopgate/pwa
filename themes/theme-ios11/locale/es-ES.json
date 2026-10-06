@@ -603,7 +603,10 @@
     "verified": "Verificada",
     "verified_info": "Las reseñas marcadas como verificadas han sido comprobadas por el proveedor de reseñas.",
     "merchant_reply": "Respuesta de {author}",
-    "merchant_reply_default": "Respuesta del vendedor"
+    "merchant_reply_default": "Respuesta del vendedor",
+    "media_image": "Abrir imagen {index}",
+    "media_video": "Reproducir vídeo {index}",
+    "media_viewer": "Imágenes y vídeos de la reseña"
   },
   "tab_bar": {
     "home": "Inicio",

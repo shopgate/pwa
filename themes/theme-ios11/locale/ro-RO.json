@@ -603,7 +603,10 @@
     "verified": "Verificată",
     "verified_info": "Recenziile marcate ca verificate au fost controlate de furnizorul de recenzii.",
     "merchant_reply": "Răspuns de la {author}",
-    "merchant_reply_default": "Răspunsul comerciantului"
+    "merchant_reply_default": "Răspunsul comerciantului",
+    "media_image": "Deschide imaginea {index}",
+    "media_video": "Redă videoclipul {index}",
+    "media_viewer": "Imagini și videoclipuri ale recenziei"
   },
   "tab_bar": {
     "home": "Acasă",

@@ -603,7 +603,10 @@
     "verified": "Vérifié",
     "verified_info": "Les avis marqués comme vérifiés ont été contrôlés par le fournisseur d'avis.",
     "merchant_reply": "Réponse de {author}",
-    "merchant_reply_default": "Réponse du vendeur"
+    "merchant_reply_default": "Réponse du vendeur",
+    "media_image": "Ouvrir l’image {index}",
+    "media_video": "Lire la vidéo {index}",
+    "media_viewer": "Images et vidéos de l’avis"
   },
   "tab_bar": {
     "home": "Accueil",

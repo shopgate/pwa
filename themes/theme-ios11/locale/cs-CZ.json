@@ -603,7 +603,10 @@
     "verified": "Ověřená",
     "verified_info": "Recenze označené jako ověřené byly zkontrolovány poskytovatelem recenzí.",
     "merchant_reply": "Odpověď od {author}",
-    "merchant_reply_default": "Odpověď prodejce"
+    "merchant_reply_default": "Odpověď prodejce",
+    "media_image": "Otevřít obrázek {index}",
+    "media_video": "Přehrát video {index}",
+    "media_viewer": "Obrázky a videa k recenzi"
   },
   "tab_bar": {
     "home": "Domů",

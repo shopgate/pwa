@@ -602,7 +602,10 @@
     "verified": "Zweryfikowana",
     "verified_info": "Recenzje oznaczone jako zweryfikowane zostały sprawdzone przez dostawcę recenzji.",
     "merchant_reply": "Odpowiedź od: {author}",
-    "merchant_reply_default": "Odpowiedź sprzedawcy"
+    "merchant_reply_default": "Odpowiedź sprzedawcy",
+    "media_image": "Otwórz zdjęcie {index}",
+    "media_video": "Odtwórz film {index}",
+    "media_viewer": "Zdjęcia i filmy z recenzji"
   },
   "tab_bar": {
     "home": "Strona główna",

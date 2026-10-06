@@ -19,6 +19,14 @@ export interface ReviewCustomField {
 }
 
 /**
+ * An image or video attached to a product review.
+ */
+export interface ReviewMediaItem {
+  type: 'image' | 'video';
+  url: string;
+}
+
+/**
  * A product review as stored in the reviews slice.
  */
 export interface Review {
@@ -34,6 +42,7 @@ export interface Review {
   isVerified?: boolean;
   merchantReply?: ReviewMerchantReply;
   customFields?: ReviewCustomField[];
+  media?: ReviewMediaItem[];
 }
 
 /**

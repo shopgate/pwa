@@ -3,6 +3,7 @@ import { I18n, RatingStars, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import CheckIcon from '@shopgate/pwa-ui-shared/icons/CheckIcon';
 import type { Review } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import ReviewMedia from '../ReviewMedia';
 
 /**
  * Converts a date string into a timestamp.
@@ -118,6 +119,7 @@ const ReviewCard = ({ review, className }: ReviewCardProps) => {
           {text}
         </Typography>
       )}
+      <ReviewMedia media={review.media} />
       {customFields.length > 0 && (
         <Typography
           variant="caption"
