@@ -606,7 +606,12 @@
     "merchant_reply_show": "Afișează răspunsul comerciantului",
     "media_image": "Deschide imaginea {index}",
     "media_video": "Redă videoclipul {index}",
-    "media_viewer": "Imagini și videoclipuri ale recenziei"
+    "media_viewer": "Imagini și videoclipuri ale recenziei",
+    "vote_question": "A fost utilă această recenzie?",
+    "vote_up": "A fost utilă",
+    "vote_down": "Nu a fost utilă",
+    "vote_pending": "Se trimite…",
+    "vote_error": "Trimiterea a eșuat"
   },
   "tab_bar": {
     "home": "Acasă",

@@ -605,7 +605,12 @@
     "merchant_reply_show": "Pokaż odpowiedź sprzedawcy",
     "media_image": "Otwórz zdjęcie {index}",
     "media_video": "Odtwórz film {index}",
-    "media_viewer": "Zdjęcia i filmy z recenzji"
+    "media_viewer": "Zdjęcia i filmy z recenzji",
+    "vote_question": "Czy ta recenzja była pomocna?",
+    "vote_up": "Pomocna",
+    "vote_down": "Niepomocna",
+    "vote_pending": "Wysyłanie…",
+    "vote_error": "Wysyłanie nie powiodło się"
   },
   "tab_bar": {
     "home": "Strona główna",

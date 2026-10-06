@@ -2,6 +2,13 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import ReviewCard from './ReviewCard';
 
+jest.mock('../ReviewVoting', () => ({
+  __esModule: true,
+  default: ({ review }: { review: { id: unknown } }) => (
+    <div data-testid="review-voting" data-review-id={String(review.id)} />
+  ),
+}));
+
 type I18nSpyTarget = Record<'text' | 'number' | 'date', (...args: unknown[]) => unknown>;
 
 const i18nHelpers = i18n as unknown as I18nSpyTarget;
@@ -31,6 +38,16 @@ describe('<ReviewCard />', () => {
     expect(container.querySelector('.engage__reviews__review-card__meta'))
       .toHaveTextContent('Max M. · d');
     expect(dateSpy).toHaveBeenCalledWith(new Date('2026-07-28T10:00:00.000Z').getTime(), 'long');
+  });
+
+  it('should render the voting for the review', () => {
+    render(<ReviewCard review={{
+      id: 30,
+      rate: 80,
+    }}
+    />);
+
+    expect(screen.getByTestId('review-voting')).toHaveAttribute('data-review-id', '30');
   });
 
   it('should omit title and text when they are missing', () => {
@@ -253,5 +270,19 @@ describe('<ReviewCard />', () => {
     />);
 
     expect(container.querySelector('.engage__reviews__review-card__reply')).not.toBeInTheDocument();
+  });
+
+  it('should place the merchant reply before the voting', () => {
+    const { container } = render(<ReviewCard review={{
+      id: 16,
+      rate: 80,
+      merchantReply: { reply: 'Thanks' },
+    }}
+    />);
+
+    const reply = container.querySelector('.engage__reviews__review-card__reply') as Element;
+    const voting = screen.getByTestId('review-voting');
+
+    expect(reply.compareDocumentPosition(voting)).toBe(Node.DOCUMENT_POSITION_FOLLOWING);
   });
 });

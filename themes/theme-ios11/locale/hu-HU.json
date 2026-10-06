@@ -606,7 +606,12 @@
     "merchant_reply_show": "A kereskedő válaszának megjelenítése",
     "media_image": "{index}. kép megnyitása",
     "media_video": "{index}. videó lejátszása",
-    "media_viewer": "A vélemény képei és videói"
+    "media_viewer": "A vélemény képei és videói",
+    "vote_question": "Hasznos volt ez a vélemény?",
+    "vote_up": "Hasznos",
+    "vote_down": "Nem hasznos",
+    "vote_pending": "Küldés…",
+    "vote_error": "A küldés sikertelen"
   },
   "tab_bar": {
     "home": "Kezdőlap",

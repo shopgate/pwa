@@ -606,7 +606,12 @@
     "merchant_reply_show": "Mostra risposta del venditore",
     "media_image": "Apri immagine {index}",
     "media_video": "Riproduci video {index}",
-    "media_viewer": "Immagini e video della recensione"
+    "media_viewer": "Immagini e video della recensione",
+    "vote_question": "Questa recensione è stata utile?",
+    "vote_up": "Utile",
+    "vote_down": "Non utile",
+    "vote_pending": "Invio…",
+    "vote_error": "Invio non riuscito"
   },
   "tab_bar": {
     "home": "Pagina Iniziale",

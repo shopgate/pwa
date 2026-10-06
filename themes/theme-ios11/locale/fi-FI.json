@@ -606,7 +606,12 @@
     "merchant_reply_show": "Näytä myyjän vastaus",
     "media_image": "Avaa kuva {index}",
     "media_video": "Toista video {index}",
-    "media_viewer": "Arvostelun kuvat ja videot"
+    "media_viewer": "Arvostelun kuvat ja videot",
+    "vote_question": "Oliko tämä arvostelu hyödyllinen?",
+    "vote_up": "Hyödyllinen",
+    "vote_down": "Ei hyödyllinen",
+    "vote_pending": "Lähetetään…",
+    "vote_error": "Lähetys epäonnistui"
   },
   "tab_bar": {
     "home": "Koti",

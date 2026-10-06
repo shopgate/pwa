@@ -606,7 +606,12 @@
     "merchant_reply_show": "Show reply from the merchant",
     "media_image": "Open image {index}",
     "media_video": "Play video {index}",
-    "media_viewer": "Review images and videos"
+    "media_viewer": "Review images and videos",
+    "vote_question": "Was this review helpful?",
+    "vote_up": "Helpful",
+    "vote_down": "Not helpful",
+    "vote_pending": "Sending…",
+    "vote_error": "Sending failed"
   },
   "tab_bar": {
     "home": "Home",

@@ -606,7 +606,12 @@
     "merchant_reply_show": "Zobrazit odpověď prodejce",
     "media_image": "Otevřít obrázek {index}",
     "media_video": "Přehrát video {index}",
-    "media_viewer": "Obrázky a videa k recenzi"
+    "media_viewer": "Obrázky a videa k recenzi",
+    "vote_question": "Byla tato recenze užitečná?",
+    "vote_up": "Užitečná",
+    "vote_down": "Neužitečná",
+    "vote_pending": "Odesílání…",
+    "vote_error": "Odeslání se nezdařilo"
   },
   "tab_bar": {
     "home": "Domů",

@@ -606,7 +606,12 @@
     "merchant_reply_show": "Mostrar resposta do vendedor",
     "media_image": "Abrir imagem {index}",
     "media_video": "Reproduzir vídeo {index}",
-    "media_viewer": "Imagens e vídeos do comentário"
+    "media_viewer": "Imagens e vídeos do comentário",
+    "vote_question": "Este comentário foi útil?",
+    "vote_up": "Útil",
+    "vote_down": "Não útil",
+    "vote_pending": "A enviar…",
+    "vote_error": "Falha ao enviar"
   },
   "tab_bar": {
     "home": "Início",

@@ -27,6 +27,16 @@ export interface ReviewMediaItem {
 }
 
 /**
+ * The helpfulness votes of a product review.
+ */
+export interface ReviewRate {
+  up?: number;
+  down?: number;
+}
+
+export type ReviewVote = 'up' | 'down';
+
+/**
  * A product review as stored in the reviews slice.
  */
 export interface Review {
@@ -43,6 +53,8 @@ export interface Review {
   merchantReply?: ReviewMerchantReply;
   customFields?: ReviewCustomField[];
   media?: ReviewMediaItem[];
+  /** Missing counts are unknown, which differs from an explicit zero. */
+  reviewRate?: ReviewRate;
 }
 
 /**
@@ -131,6 +143,19 @@ export interface ReviewsProductProps {
 export interface ReviewsConfig {
   hasReviews?: boolean;
   showWriteReview?: boolean;
+}
+
+/**
+ * The votes the user of this device gave, stored by review id outside the reviews slice so
+ * that an app reset keeps them.
+ */
+export type ReviewVotes = Record<string, ReviewVote>;
+
+/**
+ * Minimal application state shape the review vote selectors read from.
+ */
+export interface ReviewVotesState {
+  reviewVotes?: ReviewVotes;
 }
 
 /**

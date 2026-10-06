@@ -606,7 +606,12 @@
     "merchant_reply_show": "Afficher la réponse du vendeur",
     "media_image": "Ouvrir l’image {index}",
     "media_video": "Lire la vidéo {index}",
-    "media_viewer": "Images et vidéos de l’avis"
+    "media_viewer": "Images et vidéos de l’avis",
+    "vote_question": "Cet avis vous a-t-il été utile ?",
+    "vote_up": "Utile",
+    "vote_down": "Pas utile",
+    "vote_pending": "Envoi…",
+    "vote_error": "Échec de l’envoi"
   },
   "tab_bar": {
     "home": "Accueil",

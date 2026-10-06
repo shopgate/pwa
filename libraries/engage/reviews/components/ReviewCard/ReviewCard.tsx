@@ -4,6 +4,7 @@ import { ButtonBase } from '@shopgate/engage/components/v2';
 import { keyframes, makeStyles } from '@shopgate/engage/styles';
 import type { Review } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import ReviewMedia from '../ReviewMedia';
+import ReviewVoting from '../ReviewVoting';
 
 /**
  * Converts a date string into a timestamp.
@@ -211,6 +212,7 @@ const ReviewCard = ({ review, className }: ReviewCardProps) => {
           )}
         </div>
       )}
+      <ReviewVoting review={review} />
     </div>
   );
 };

@@ -605,7 +605,12 @@
     "merchant_reply_show": "Visa svar från säljaren",
     "media_image": "Öppna bild {index}",
     "media_video": "Spela upp video {index}",
-    "media_viewer": "Bilder och videor i recensionen"
+    "media_viewer": "Bilder och videor i recensionen",
+    "vote_question": "Var den här recensionen till hjälp?",
+    "vote_up": "Till hjälp",
+    "vote_down": "Inte till hjälp",
+    "vote_pending": "Skickar…",
+    "vote_error": "Det gick inte att skicka"
   },
   "tab_bar": {
     "home": "Hem",

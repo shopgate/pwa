@@ -13,6 +13,7 @@ import type {
 
 export * from './reviewSettings';
 export * from './reviewSummary';
+export * from './reviewVotes';
 
 type AuthorState = {
   user: {

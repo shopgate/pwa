@@ -11,6 +11,11 @@ jest.mock('@shopgate/pwa-common/components/SurroundPortals', () => ({
   default: jest.fn(({ children }: { children: ReactNode }) => children),
 }));
 
+jest.mock('../ReviewVoting', () => ({
+  __esModule: true,
+  default: () => null,
+}));
+
 type I18nSpyTarget = Record<'text' | 'number' | 'date', (...args: unknown[]) => unknown>;
 
 const i18nHelpers = i18n as unknown as I18nSpyTarget;

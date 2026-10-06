@@ -28,6 +28,7 @@ import orders from '@shopgate/engage/orders/reducers';
 import a11y from '@shopgate/engage/a11y/reducers';
 import search from '@shopgate/pwa-common-commerce/search/reducers';
 import reviews from '@shopgate/pwa-common-commerce/reviews/reducers';
+import reviewVotes from '@shopgate/pwa-common-commerce/reviews/reducers/reviewVotes';
 import account from '@shopgate/engage/account/reducers';
 import extensions from 'Extensions/reducers';
 import tabBar from 'Components/TabBar/reducer';
@@ -50,6 +51,7 @@ persistedReducers.set([
   'pushOptIn.optInTrigger',
   'tracking.cookieSettings',
   'development.settings',
+  'reviewVotes',
 ]);
 
 configuration.set(RESET_APP_REDUCERS, [
@@ -84,6 +86,7 @@ const reducers = combineReducers({
   orders,
   settings,
   reviews,
+  reviewVotes,
   search,
   ui: combineReducers({
     tabBar,
