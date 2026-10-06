@@ -5,6 +5,10 @@ export const ROOT = path.resolve(import.meta.dirname, '../..');
 
 export const GITHUB_REPO = 'shopgate/pwa';
 
+export const PUBLISH_WORKFLOW = 'publish.yml';
+
+export const PUBLISH_ENVIRONMENT = 'npm-release';
+
 /**
  * A workspace package that is published to npm.
  */
@@ -77,7 +81,7 @@ export const PUBLISHABLE_PACKAGES: PublishablePackage[] = [
  * @param file The file path.
  * @returns The parsed content.
  */
-const readJson = <T>(file: string): T => JSON.parse(fs.readFileSync(file, 'utf8')) as T;
+export const readJson = <T>(file: string): T => JSON.parse(fs.readFileSync(file, 'utf8')) as T;
 
 /**
  * Returns the themes and their repositories from repos.json.

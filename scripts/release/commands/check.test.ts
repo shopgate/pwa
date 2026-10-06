@@ -154,11 +154,11 @@ describe('check', () => {
   });
 
   describe('findTakenPackages', () => {
-    it('lists published and staged packages in the order of the names', async () => {
-      const states: Record<string, 'published' | 'staged' | null> = {
+    it('lists published packages in the order of the names', async () => {
+      const states: Record<string, 'published' | null> = {
         '@shopgate/pwa-core': 'published',
         '@shopgate/pwa-common': null,
-        '@shopgate/engage': 'staged',
+        '@shopgate/engage': 'published',
       };
 
       const taken = await findTakenPackages(
@@ -174,7 +174,7 @@ describe('check', () => {
         },
         {
           location: 'npm @shopgate/engage@7.33.0',
-          detail: 'staged',
+          detail: 'published',
         },
       ]);
     });

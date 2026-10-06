@@ -14,8 +14,8 @@ import {
   getMissingCommits,
 } from '../lib/github.ts';
 import { mapWithLimit } from '../lib/concurrency.ts';
-import { findStagedVersionAsync, getDistTagVersion, isPublishedAsync } from '../lib/npm.ts';
-import { updatesMaster } from '../steps/stage.ts';
+import { getDistTagVersion, isPublishedAsync } from '../lib/npm.ts';
+import { updatesMaster } from '../steps/publish.ts';
 import { symbols } from '../lib/symbols.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
 import {
@@ -35,27 +35,23 @@ export interface TakenLocation {
    */
   location: string;
   /**
-   * State at that location, e.g. "published", "staged", "draft" or "exists".
+   * State at that location, e.g. "published", "draft" or "exists".
    */
   detail: string;
 }
 
 /**
- * Looks up whether a package version is published or staged on npm.
+ * Looks up whether a package version is published on npm.
  * @param name The package name.
  * @param version The package version.
- * @returns "published", "staged" or null when npm doesn't know the version.
+ * @returns "published", or null when npm doesn't know the version.
  */
-const findNpmState = async (name: string, version: string) => {
-  if (await isPublishedAsync(name, version)) {
-    return 'published';
-  }
-
-  return await findStagedVersionAsync(name, version) ? 'staged' : null;
-};
+const findNpmState = async (name: string, version: string) => (
+  await isPublishedAsync(name, version) ? 'published' : null
+);
 
 /**
- * Collects the packages whose version is already published or staged on npm. The lookups run in
+ * Collects the packages whose version is already published on npm. The lookups run in
  * parallel, but at most six at a time to stay far below npm's rate limits.
  * @param names The package names.
  * @param version The version to release.

@@ -1,6 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { GITHUB_REPO, ROOT, getThemes } from '../config.ts';
+import {
+  GITHUB_REPO, ROOT, getThemes, readJson,
+} from '../config.ts';
 import { gitOutput } from '../lib/git.ts';
 import { getIssue } from '../lib/github.ts';
 import type { GithubIssue } from '../lib/github.ts';
@@ -351,7 +353,9 @@ export const renderChangelog = async (version: ReleaseVersion, root = ROOT) => {
     `${previousTag}..HEAD`,
   ], { cwd: root });
 
-  const { changelog: { labels } } = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
+  const { changelog: { labels } } = readJson<{ changelog: { labels: Record<string, string> } }>(
+    path.join(root, 'package.json')
+  );
   const categories = Object.values<string>(labels);
   const minimum = parseVersion(previousTag);
   const commits = assignCategories(await fetchIssues(parseCommits(log)), labels);

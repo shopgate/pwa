@@ -1,5 +1,4 @@
 import { parseArgs } from 'node:util';
-import { approveRelease } from './commands/approve.ts';
 import { buildAll, normalizeAll, purgeAll } from './commands/build.ts';
 import { checkVersion } from './commands/check.ts';
 import { finalizeRelease } from './commands/finalize.ts';
@@ -7,6 +6,9 @@ import { runMain } from './lib/exec.ts';
 import { getOptions } from './lib/options.ts';
 import { prepareRelease } from './commands/prepare.ts';
 import { renderChangelog } from './steps/changelog.ts';
+import {
+  assertPublishAllowed, getUnpublished, publishPackages, waitUntilInstallable,
+} from './steps/publish.ts';
 
 /**
  * A command of the release CLI.
@@ -29,7 +31,7 @@ interface Command {
 const OPTIONS_HELP = [
   ['--branch <name>', 'Source branch of the release', 'BRANCH'],
   ['--resume', 'Continue an interrupted release of the same version in a new pipeline', 'RESUME'],
-  ['--dry-run', 'Local only: no pushes, "npm stage publish --dry-run"', 'DRY_RUN'],
+  ['--dry-run', 'Local only: no pushes, "npm publish --dry-run"', 'DRY_RUN'],
   ['--skip-master-update', 'Don\'t update master, although the version becomes "latest"', 'SKIP_MASTER_UPDATE'],
 ];
 
@@ -41,13 +43,28 @@ const COMMANDS: Record<string, Command> = {
   },
   prepare: {
     usage: '<version>',
-    description: 'Bump, build, changelog, push the release branches and stage on npm',
+    description: 'Bump, build, changelog and push the release branches',
     run: args => prepareRelease(getOptions(args)),
   },
-  approve: {
+  publish: {
     usage: '<version>',
-    description: 'Approve the staged packages with your npm 2FA (developer machine)',
-    run: args => approveRelease(getOptions(args)),
+    description: 'Publish the built packages on npm (GitHub workflow "Publish packages")',
+    run: async (args) => {
+      const { version, dryRun } = getOptions(args);
+      assertPublishAllowed(dryRun);
+      publishPackages(version, dryRun);
+
+      if (!dryRun) {
+        await waitUntilInstallable(version);
+      }
+    },
+  },
+  unpublished: {
+    usage: '<version>',
+    description: 'List the packages of the version that are not published on npm yet',
+    run: (args) => {
+      getUnpublished(getOptions(args).version).forEach(name => console.log(name));
+    },
   },
   finalize: {
     usage: '<version>',

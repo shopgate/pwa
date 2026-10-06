@@ -4,7 +4,6 @@ import {
   addBreadcrumb,
   setTags,
   captureException,
-  captureMessage,
   captureEvent,
   withScope,
 } from '@sentry/browser';
@@ -20,6 +19,7 @@ import {
 } from '@shopgate/pwa-core';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { SOURCE_TRACKING, SOURCE_CONSOLE, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
+import { describeValue } from '@shopgate/pwa-core/helpers/error';
 import { main$ } from '../streams/main';
 import {
   // eslint-disable-next-line import/no-named-default
@@ -32,10 +32,11 @@ import { transformGeneralPipelineError, getDisplayErrorMessage } from './helpers
 import { historyPop } from '../actions/router';
 import showModal from '../actions/modal/showModal';
 import { clientInformationDidUpdate$ } from '../streams/client';
-import { appWillInit$, appWillStart$, appDidStart$ } from '../streams/app';
+import { appWillInit$, appWillStart$ } from '../streams/app';
 import { appError$, pipelineError$ } from '../streams/error';
 import { getRouterStack } from '../selectors/router';
 import { MODAL_PIPELINE_ERROR } from '../constants/ModalTypes';
+import { APP_ERROR } from '../constants/ActionTypes';
 import ToastProvider from '../providers/toast';
 
 // Generic, translated fallback shown when a backend error carries no code we can map to a message.
@@ -295,19 +296,32 @@ export default (subscribe) => {
       merchantCode: appConfig.omniMerchantCode,
     });
 
-    emitter.addListener(SOURCE_TRACKING, (error) => {
-      withScope((scope) => {
-        if (error.context) {
-          scope.setExtra('trackerName', error.context);
-        }
-        captureException(error);
-      });
-    });
     emitter.addListener(SOURCE_CONSOLE, (args) => {
+      const error = args.find(arg => arg instanceof Error);
+      const texts = args.filter(arg => arg !== error).map(describeValue);
+
+      if (!error) {
+        addBreadcrumb({
+          category: 'logger',
+          message: texts.join(' '),
+          level: 'error',
+        });
+        return;
+      }
+
       withScope((scope) => {
         scope.setLevel('error');
-        scope.setExtra('error', args.map(arg => (arg instanceof Error ? arg.message : String(arg))));
-        captureMessage('Console error');
+        scope.setTag('source', SOURCE_CONSOLE);
+        if (texts.length > 0) {
+          scope.setExtra('details', texts);
+        }
+        if (error.source === SOURCE_TRACKING && error.context) {
+          scope.setExtra('trackerName', error.context);
+        }
+        if (error.componentStack) {
+          scope.setExtra('componentStack', error.componentStack);
+        }
+        captureException(error);
       });
     });
   });
@@ -329,19 +343,15 @@ export default (subscribe) => {
     });
   });
 
-  // Add app start event for debugging
-  subscribe(appDidStart$, () => {
-    withScope((scope) => {
-      scope.setLevel('debug');
-      captureMessage('App did start');
-    });
-  });
-
   // Add some stack trace and log to sentry
   subscribe(appError$, ({ action }) => {
+    if (!(action.error instanceof Error)) {
+      return;
+    }
+
     withScope((scope) => {
-      if (action.error.stack) {
-        scope.setExtra('stack', action.error.stack);
+      if (action.error.componentStack) {
+        scope.setExtra('componentStack', action.error.componentStack);
       }
       captureException(action.error);
     });
@@ -352,6 +362,11 @@ export default (subscribe) => {
   subscribe(allErrors$, ({ action }) => {
     const { error = {} } = action;
     const { code } = error;
+
+    if (action.type === APP_ERROR && error instanceof Error) {
+      return;
+    }
+
     withScope((scope) => {
       scope.setTag('error', 'E_USER');
       scope.setTag('errorCode', code);

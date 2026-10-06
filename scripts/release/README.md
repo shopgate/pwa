@@ -1,8 +1,10 @@
 # Release process
 
 This folder contains the scripts for releasing the PWA npm packages and themes. Releases start in
-the GitLab pipeline of `pwa-liveupdate`. Its npm token can only **stage** packages, so a developer
-approves each release with npm 2FA before anything becomes public.
+the GitLab pipeline of `pwa-liveupdate`, which prepares the release branches. The packages are
+published by the GitHub workflow "Publish packages" of this repository, after a developer approved
+the run. npm trusts that workflow directly (trusted publishing), so no npm token, login or 2FA is
+involved.
 
 The scripts are TypeScript and run directly with Node ≥ 24; there is no build step. They run on
 Linux (the GitLab pipeline) and macOS. Windows isn't supported, since they start npm and the build
@@ -18,8 +20,9 @@ npm run release -- <command> [version] [options]
 | Command | Where | What it does |
 |---|---|---|
 | `check <version>` | local, CI | Checks that the version is still free on npm, git and GitHub and that the branch contains master. Read-only |
-| `prepare <version>` | CI | Bumps the versions, builds, writes the changelog, pushes the release branches and stages the packages on npm |
-| `approve <version>` | local | Approves the staged packages with your npm 2FA code |
+| `prepare <version>` | CI | Bumps the versions, builds, writes the changelog and pushes the release branches |
+| `publish <version>` | GitHub workflow | Publishes the built packages on npm, dependencies first. Skips packages that are published. Outside the workflow it only runs with `--dry-run` |
+| `unpublished <version>` | local, GitHub workflow | Lists the packages of the version that aren't published yet. Read-only |
 | `finalize <version>` | CI | Updates master (only when the version becomes `latest`) and creates the GitHub releases |
 | `changelog <version>` | local | Shows the changelog entry of the version without writing any files (`GITHUB_AUTH_TOKEN` avoids the GitHub rate limit) |
 | `build` | local | Builds all packages into `dist` without publishing. `--purge` deletes the `dist` folders, `--normalize-only` removes test files from existing ones |
@@ -29,13 +32,12 @@ npm run release -- <command> [version] [options]
 | `<version>` | `VERSION` | `version` | Version to release |
 | `--branch <name>` | `BRANCH` | `branch` | Branch to release from |
 | `--resume` | `RESUME` | `resume` | Continue an interrupted release of the same version in a new pipeline |
-| `--dry-run` | `DRY_RUN` | `dry_run` | No pushes, packages are only packed (`npm stage publish --dry-run`) |
+| `--dry-run` | `DRY_RUN` | `dry_run` | No pushes, packages are only packed (`npm publish --dry-run`) |
 | `--skip-master-update` | `SKIP_MASTER_UPDATE` | `skip_master_update` | Don't update master, although the version becomes `latest` |
-| – | `MUTE_SLACK` | `mute_slack` | No Slack notifications (pipeline only) |
+| – | `MUTE_SLACK` | `mute_slack` | No Slack notifications of the pipeline. The GitHub workflow still posts its result |
 
-Locally, `check`, `prepare` and `approve` need an npm login (`npm login`) with access to the
-`@shopgate` packages, since they read the staged versions. A login lasts 12 hours, so log in right
-before approving. `GITHUB_AUTH_TOKEN` avoids the GitHub rate limit.
+No command needs an npm login: they only read public data from npm, and the workflow publishes
+without one. `GITHUB_AUTH_TOKEN` avoids the GitHub rate limit.
 
 The version can also be passed via `VERSION`. Command line options take precedence over the
 variables. The pipeline form of `pwa-liveupdate` shows the inputs and passes them to the jobs as
@@ -46,15 +48,15 @@ these variables.
 1. **Check the version** (optional): `npm run release -- check 7.33.0`. The pipeline does the same
    check first, but locally you get the answer before filling in the form.
 2. **Start the pipeline** of `pwa-liveupdate` with the inputs `version` and `branch`. The jobs `release:check`
-   and `release:prepare` run automatically. When they're done, Slack posts "staged on npm".
-3. **Approve the packages** on your machine:
-   ```sh
-   npm run release -- approve 7.33.0
-   ```
-   It lists the staged packages and asks for your npm 2FA code. If the code expires, npm asks for
-   a new one. You can also approve the packages on npmjs.com.
-4. **Run the manual `release:finalize` job** in the pipeline. It fails as long as a package isn't
-   published yet, so it can simply be retried after the approval.
+   and `release:prepare` run automatically. When they're done, Slack posts "is prepared" with the link to the
+   workflow run.
+3. **Approve the publishing** on GitHub: open the run of the workflow
+   [Publish packages](https://github.com/shopgate/pwa/actions/workflows/publish.yml) for
+   `releases/v7.33.0`, choose "Review deployments" and approve the environment `npm-release`. The
+   workflow then builds and publishes the packages, which takes a few minutes. When it's done,
+   Slack posts "published on npm".
+4. **Run the manual `release:finalize` job** in the pipeline when the workflow is done. It fails as
+   long as a package isn't published yet, so it can simply be retried.
 5. After finalize, the themes are uploaded: `release:themes` for every version,
    `release:tablet-themes` automatically for stable versions and as a manual job that can be
    skipped for prereleases.
@@ -70,8 +72,7 @@ keeps master unchanged for a newest stable version. `check` logs which case appl
 A release that updates master must be released from a branch that contains all commits of master.
 Otherwise `check` aborts, because the release would drop these commits and the master merge in
 `finalize` could conflict after the packages are already public. Merge master into the branch and
-start the pipeline again. For other releases, `check` only warns. `approve` compares the release
-branch with master again for releases that update master and asks before approving.
+start the pipeline again. For other releases, `check` only warns.
 
 ### Patching an older release line
 
@@ -88,17 +89,14 @@ new installs keep getting the current release. `check` warns about it. The chang
 lists the pull requests since the previous release of the same line and is only added to the
 `CHANGELOG.md` of the branch.
 
-The branch needs this release CLI. For lines released before it existed, use the legacy process or
-cherry-pick `scripts/release` onto the branch. These branches contain the GitHub workflow
-`.github/workflows/main.yml`, which uploads the themes for the legacy process when the GitHub
-release is published. When you cherry-pick the release CLI, delete the workflow on the branch as
-well, otherwise the themes are uploaded twice.
+The branch needs this release CLI and the workflow `.github/workflows/publish.yml`, since GitHub
+takes the workflow from the release branch. Lines released before they existed can't be released
+with this process.
 
 ## What the steps do
 
-Nothing becomes public before the approval. `prepare` only pushes release branches and stages the
-packages. Master, the tags and the GitHub releases are created in `finalize`, after the packages are
-published.
+Nothing becomes public before the approval. `prepare` only pushes release branches. Master, the
+tags and the GitHub releases are created in `finalize`, after the packages are published.
 
 ### `check` (job `release:check`)
 
@@ -109,8 +107,8 @@ Only reads, changes nothing.
    in the branch and the release updates master, otherwise only warns. Logs whether `finalize`
    updates master.
 3. Warns when the version is not higher than the current version of its npm dist-tag.
-4. Looks for the version in every place a release leaves behind: published or staged versions of
-   all packages on npm, the tag `vX`, the branches `releases/vX` and `vX` and GitHub releases
+4. Looks for the version in every place a release leaves behind: published versions of all
+   packages on npm, the tag `vX`, the branches `releases/vX` and `vX` and GitHub releases
    (including drafts) in pwa and the theme repositories. When something is found, it lists it and
    aborts, unless `releases/vX` contains the "Released X" commit and either this pipeline created
    it (a retried job) or `RESUME=true` is set.
@@ -134,50 +132,57 @@ before the release starts instead of in the tablet job.
    copies it to the themes and commits it as "Created changelog for version 'vX'.".
 7. Pushes `releases/vX` to pwa and, with `git subtree push`, to `releases/vX` of `theme-gmd` and
    `theme-ios11`. Both subtree pushes run at the same time, since each one spends minutes splitting
-   the history.
-8. Stages the packages on npm, dependencies first, with the dist-tag `beta`, `latest` or, for
-   patches of an older release line, `latest-<major>.<minor>`.
+   the history. The push to pwa starts the workflow "Publish packages".
 
-Steps 3, 5 and 6 are skipped when they are already done, and so are packages that are already
-staged or published. With `DRY_RUN=true`, steps 1 to 6 only happen in the CI clone, step 7 is
-skipped and step 8 only packs the packages (`npm stage publish --dry-run`).
+Steps 3, 5 and 6 are skipped when they are already done. The build in step 4 isn't published; it
+makes sure that a broken build fails before anything is pushed. With `DRY_RUN=true`, steps 1 to 6
+only happen in the CI clone, step 7 is skipped and the packages are packed
+(`npm publish --dry-run`).
 
-### `approve` (your machine)
+### Workflow "Publish packages" (GitHub Actions)
 
-Needs your npm login with write access to the `@shopgate` packages and 2FA. It stops right away
-when npm doesn't accept the login, e.g. because it's older than 12 hours.
+The workflow `.github/workflows/publish.yml` runs for every push to a branch `releases/v*`.
 
-1. Looks up the staged version of every package. Aborts when a package is neither staged nor
-   published.
-2. For versions that update master, compares `releases/vX` with master and asks before approving
-   when master has commits that are missing in the release. Pass `--skip-master-update` for
-   releases started with that option, since they leave master unchanged.
-3. Asks for your one-time password and approves the packages, dependencies first, so that no package
-   is public before the packages it depends on. With a security key or passkey, leave the password
-   empty: npm then runs on the terminal and asks for the confirmation in the browser itself. npm
-   only accepts a package once its automated review is finished, which can take several minutes
-   for large packages like `@shopgate/engage`. Until then, it tries again every 30 seconds for up
-   to 10 minutes. npm only reveals the review status once it accepts the 2FA, and it accepts a
-   one-time password for about a minute, so after a longer wait `approve` asks for a new one.
-   Each package gets one progress line; npm's own output is only shown when an approval fails.
-   When the approval is done, fails or needs a new one-time password, the terminal rings its
-   bell, and macOS also shows a notification. If it still fails, run `approve` again: it
-   continues with the packages that aren't published yet.
-4. Checks that npm shows every approved version as published. A new version can take a moment to
-   appear, so it checks again every 10 seconds for up to a minute and fails with the missing
-   packages otherwise.
+1. Job "Check what to publish": reads the version from the branch and stops when all packages of
+   that version are published. That's the case for the push `finalize` makes later, so that push
+   doesn't ask for another approval.
+2. Job "Publish": waits until a reviewer of the environment `npm-release` approves the run. Then
+   it installs the dependencies, builds the packages and publishes them with
+   `npm run release -- publish`, dependencies first, with the dist-tag `beta`, `latest` or, for
+   patches of an older release line, `latest-<major>.<minor>`. Packages that are published
+   already are skipped, so a failed run can be re-run. Afterwards it waits until every package
+   can really be installed, i.e. the registry lists the version and hands out its file, for up
+   to 10 minutes. Only then it posts the result to Slack.
 
-npm's review starts when `prepare` stages the packages. Starting `approve` a few minutes after the
-"staged on npm" message usually saves the waits and the additional one-time passwords.
+A run only publishes the commit it was started for. When the release branch got another push
+before the approval, the older run refuses to publish: approve the newest run of the branch.
 
-After this step, the packages are public on npm.
+After this step, the packages are public on npm, with a provenance statement that names the
+commit and the workflow run.
 
-With `--dry-run`, `approve` runs steps 1 and 2, then only shows the progress lines it would print,
-without asking for the one-time password or approving anything.
+The workflow can also be started by hand ("Run workflow") as a dry run. It then needs no approval,
+builds the packages and packs the unpublished ones without publishing. On a branch whose version
+is published already, it only proves that the install and the build work. GitHub only offers
+"Run workflow" for workflows that exist on the default branch, so this needs `publish.yml` on
+master; changes to the workflow on other branches can only be tested with a release.
+
+#### One-time setup
+
+- **npmjs.com:** every published package needs the workflow as trusted publisher (package
+  settings, "Trusted publisher": organization `shopgate`, repository `pwa`, workflow
+  `publish.yml`, environment `npm-release`). A new package has to be published once by hand
+  before it can get one.
+- **GitHub:** the repository needs the environment `npm-release` with the developers who may
+  approve a release as required reviewers, limited to the branches `releases/v*`. Its secret
+  `SLACK_WEBHOOK_URL` is the Slack webhook of the release messages; without it, the workflow
+  publishes but doesn't post to Slack. The environment `npm-release-dry-run` for dry runs has no
+  reviewers and no secret, and is created on its first run.
 
 ### `finalize` (manual job `release:finalize`)
 
-1. Aborts when a package is not published yet.
+1. Aborts when a package is not published yet. When all are published, it waits for up to 10
+   minutes until every package can be installed, so the theme uploads that follow don't start
+   too early.
 2. Checks out `releases/vX`.
 3. Only when the version becomes `latest` and `SKIP_MASTER_UPDATE` isn't set:
    1. For each theme, one after another: merges the master of the theme repository into
@@ -223,8 +228,8 @@ job that failed halfway doesn't leave anything behind that blocks it:
   master during `finalize`) goes through on the retry, since the job fetches and merges first.
 - A theme master that was already updated in a failed `finalize` gets merged into `releases/vX`
   once more. That adds a merge commit without changes, and the push stays a fast-forward.
-- External causes (SSH key, `GITHUB_AUTH_TOKEN`, npm token, GitHub or npm outages): fix the cause,
-  then retry.
+- External causes (SSH key, `GITHUB_AUTH_TOKEN`, GitHub or npm outages): fix the cause, then
+  retry.
 
 When the pipeline has to be started again for the same version, for example after it was
 cancelled, `check` reports the version as taken. Start the new pipeline with the input `resume` to
@@ -237,13 +242,23 @@ update master, e.g. after someone merged into master by mistake): nothing was cr
 master into `BRANCH`, or revert the unwanted commits on master first and then merge it. Afterwards
 retry the job or start a new pipeline, `RESUME` isn't needed.
 
-**Before the approval**, nothing is public. Failed pushes and failed staging are fixed by retrying
-or resuming.
+**Before the approval**, nothing is public. Failed pushes are fixed by retrying or resuming.
 
-**Aborting a release** before the approval, e.g. after a wrong version: reject the staged packages
-with `npm stage reject` or on npmjs.com, and delete the branch `releases/vX` in pwa, `theme-gmd`
-and `theme-ios11` on GitHub. Otherwise `check` reports the version as taken in later pipelines.
+**Aborting a release** before the approval, e.g. after a wrong version: reject or cancel the
+waiting run of "Publish packages", and delete the branch `releases/vX` in pwa, `theme-gmd` and
+`theme-ios11` on GitHub. Otherwise `check` reports the version as taken in later pipelines.
 After the approval, treat the version as final and release a new one instead of unpublishing it.
+
+**No run of "Publish packages" waits for approval:** its first job failed, e.g. because npm
+couldn't be reached. That job can't post to Slack, since the webhook is a secret of the
+environment. Open the run from the link in the "is prepared" message, fix what its log
+reports and re-run it.
+
+**The workflow "Publish packages" failed:** re-run its failed job on GitHub. It skips the packages
+that are published and continues with the rest. When npm rejects a package with E401, E403 or
+E404, npm doesn't trust the workflow for it: check the trusted publisher of that package on
+npmjs.com. The workflow didn't start at all when the release branch doesn't contain
+`.github/workflows/publish.yml`; that's the case for branches created before it existed.
 
 **After the approval**, the packages are public and `finalize` has to be completed:
 
@@ -285,14 +300,16 @@ node scripts/release/cli.ts prepare 7.33.0-beta.1 --branch <branch> --dry-run
 ```
 
 To test changes in CI, run the pipeline of `pwa-liveupdate` with the input `branch` set to your
-branch (the scripts are taken from it) and `dry_run` enabled.
+branch (the scripts are taken from it) and `dry_run` enabled. A dry run of the pipeline doesn't
+push, so it doesn't start the workflow "Publish packages". The workflow has its own dry run, see
+its section for the restriction.
 
 ## Files
 
 | Path | Content |
 |---|---|
 | `cli.ts` | Entry point and command overview |
-| `commands/` | The commands `check`, `prepare`, `approve`, `finalize` and `build` |
-| `steps/` | Steps of `prepare`: version bump, changelog, npm staging |
+| `commands/` | The commands `check`, `prepare`, `finalize` and `build` |
+| `steps/` | Steps of the commands: version bump, changelog, subtree pushes, npm publishing |
 | `lib/` | Helpers for git, npm, GitHub, options and version parsing |
 | `config.ts` | Published packages and themes |
