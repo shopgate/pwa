@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { ROOT, getThemes } from '../config.ts';
+import { ROOT, getThemes, readJson } from '../config.ts';
 import { run } from '../lib/exec.ts';
 
 /**
@@ -30,13 +30,6 @@ interface PackageJson {
 }
 
 const EXACT_VERSION = /^\d+\.\d+\.\d+(-[0-9A-Za-z.]+)?$/;
-
-/**
- * Reads and parses a JSON file.
- * @param file The file path.
- * @returns The parsed content.
- */
-const readJson = <T>(file: string): T => JSON.parse(fs.readFileSync(file, 'utf8')) as T;
 
 /**
  * Writes JSON with 2-space indentation and a trailing newline.

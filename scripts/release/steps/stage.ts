@@ -5,6 +5,7 @@ import {
   ROOT,
   getPackageName,
   getPublishDir,
+  readJson,
 } from '../config.ts';
 import { logStep } from '../lib/exec.ts';
 import {
@@ -69,7 +70,7 @@ export const stagePackages = (version: ReleaseVersion, dryRun: boolean, root = R
 
     const manifest = path.join(publishDir, 'package.json');
     const builtVersion = fs.existsSync(manifest)
-      ? JSON.parse(fs.readFileSync(manifest, 'utf8')).version
+      ? readJson<{ version: string }>(manifest).version
       : null;
 
     if (builtVersion !== version.version) {
