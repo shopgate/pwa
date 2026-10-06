@@ -42,10 +42,24 @@ const useStyles = makeStyles()((theme, { inset }) => {
     },
     logo: {
       minWidth: 0,
+      flex: '0 1 auto',
       '& img': {
+        display: 'block',
         maxWidth: '100%',
         objectFit: 'contain',
+        objectPosition: 'left center',
       },
+    },
+    logoRight: {
+      '& img': {
+        objectPosition: 'right center',
+      },
+    },
+    innerLogoLeft: {
+      gridTemplateColumns: 'minmax(min-content, 1fr) 0 auto',
+    },
+    innerLogoRight: {
+      gridTemplateColumns: 'auto 0 minmax(min-content, 1fr)',
     },
     logoSide: {
       flexGrow: 0,
@@ -238,7 +252,8 @@ const ConfiguredBar = ({
         className={cx(
           classes.logo,
           position !== 'center' && classes.logoSide,
-          position !== 'center' && modern && classes.logoSideModern
+          position !== 'center' && modern && classes.logoSideModern,
+          position === 'right' && classes.logoRight
         )}
       />
     )
@@ -282,7 +297,13 @@ const ConfiguredBar = ({
         backgroundColor={overlay ? 'transparent' : props.backgroundColor}
         classes={{
           outer,
-          inner: cx(classes.inner, modern && classes.modernInner, parentClasses.inner),
+          inner: cx(
+          classes.inner,
+          modern && classes.modernInner,
+          logo && position === 'left' && classes.innerLogoLeft,
+          logo && position === 'right' && classes.innerLogoRight,
+          parentClasses.inner
+        ),
         }}
         left={(
           <>
