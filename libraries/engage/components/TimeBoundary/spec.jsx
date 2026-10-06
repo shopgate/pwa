@@ -1,6 +1,5 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, act } from '@testing-library/react';
 import { second$ } from '@shopgate/pwa-common/streams/interval';
 import TimeBoundary from './index';
 
@@ -19,13 +18,13 @@ describe('<TimeBoundary>', () => {
   });
 
   afterEach(() => {
-    jest.clearAllMocks();
+    jest.restoreAllMocks();
   });
 
   it('should render valid time span', () => {
     expect.assertions(1);
     // -30sec < wrapper < +30sec
-    mount((
+    render((
       <TimeBoundary start={new Date(nowMs - 30000)} end={new Date(nowMs + 30000)}>
         {children}
       </TimeBoundary>
@@ -40,7 +39,7 @@ describe('<TimeBoundary>', () => {
   it('should not render expired time span', () => {
     expect.assertions(1);
     // -60sec < wrapper < -30sec
-    mount((
+    render((
       <TimeBoundary start={new Date(nowMs - 60000)} end={new Date(nowMs - 30000)}>
         {children}
       </TimeBoundary>
@@ -55,21 +54,22 @@ describe('<TimeBoundary>', () => {
   it('should hide after time span expired', () => {
     expect.assertions(4);
     // -30sec < wrapper < +2sec
-    const wrapper = mount((
+    render((
       <TimeBoundary start={new Date(nowMs - 30000)} end={new Date(nowMs + 2000)}>
         {children}
       </TimeBoundary>
     ));
-    const checkBoundaryMethod = wrapper.instance().checkBoundary;
     expect(subscribeSpy).toHaveBeenCalledTimes(1);
-    expect(subscribeSpy).toHaveBeenCalledWith(checkBoundaryMethod);
+    expect(subscribeSpy).toHaveBeenCalledWith(expect.any(Function));
+    const [[checkBoundary]] = subscribeSpy.mock.calls;
 
     // Simulate time is over
-    jest.spyOn(Date, 'now').mockReturnValue(new Date(nowMs + 3000));
+    jest.spyOn(Date, 'now').mockReturnValue(nowMs + 3000);
     // simulate rxjs emitting
-    checkBoundaryMethod();
+    act(() => {
+      checkBoundary();
+    });
 
-    wrapper.update();
     expect(subscription.unsubscribe).toHaveBeenCalledTimes(1);
 
     expect(children.mock.calls).toEqual([

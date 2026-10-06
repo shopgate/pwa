@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Accordion from './index';
 
 jest.unmock('@shopgate/pwa-ui-shared');
@@ -15,25 +14,28 @@ describe('<Accordion />', () => {
   });
 
   it('should render with renderLabel prop and children', () => {
-    const wrapper = mount((
-      <Accordion renderLabel={() => <div />} testId="Some Thing">
+    render((
+      <Accordion renderLabel={() => <div>Some label</div>} testId="Some Thing">
         Some content.
       </Accordion>
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('AccordionContent').exists()).toBe(true);
+    const toggle = screen.getByRole('button', { name: /Some label/ });
+
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(toggle).toHaveAttribute('aria-controls', 'Some-Thing-content');
+    expect(screen.getByText('Some content.')).toBeInTheDocument();
   });
 
   it('should not render without a renderLabel prop', () => {
-    const wrapper = mount(<Accordion testId="Some Thing" />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance()).toEqual(null);
+    const { container } = render(<Accordion testId="Some Thing" />);
+
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should not render without children', () => {
-    const wrapper = mount(<Accordion renderLabel={() => { }} testId="Some Thing" />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance()).toEqual(null);
+    const { container } = render(<Accordion renderLabel={() => { }} testId="Some Thing" />);
+
+    expect(container).toBeEmptyDOMElement();
   });
 });

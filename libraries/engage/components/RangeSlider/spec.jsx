@@ -1,228 +1,125 @@
-/* eslint-disable function-call-argument-newline */
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import RangeSlider from './index';
-import RangeSliderHandle from './components/Handle';
 import {
-  generateLinearEasingCallback,
-  generateExponentialEasingCallback,
-  getAbsoluteValue,
-  getRelativeValue,
-} from './helper';
+  render, fireEvent, createEvent, act,
+} from '@testing-library/react';
+import RangeSlider from './index';
 
 /**
- * Creates a (fake) touch event.
- * @param {number} pageX the x page offset of the simulated touch event
- * @returns {Object} the new fake event containing only the properties required for testing.
+ * Renders a slider which is 100px wide, so that with a range of 0 to 100 one pixel is one unit.
+ * @param {Object} props The component props.
+ * @returns {Object} The slider element, its handles and the onChange mock.
  */
-const createTouchEvent = (pageX) => {
-  // Simulate a handle of 16px width.
-  const simulatedHandleWidth = 16;
-  const simulatedHandleHalfWidth = simulatedHandleWidth / 2;
-  const touchEvent = {
-    target: {
-      offsetWidth: simulatedHandleWidth,
-      getBoundingClientRect: () => (
-        {
-          // Simulate a touch on the center of the handle.
-          left: pageX - simulatedHandleHalfWidth,
-        }
-      ),
-    },
-    touches: [{
-      pageX,
-    }],
-  };
+const renderSlider = (props) => {
+  const onChange = jest.fn();
+  const { container } = render(<RangeSlider min={0} max={100} onChange={onChange} {...props} />);
+  const slider = container.querySelector('.engage__range-slider');
+  const [lowerHandle, upperHandle] = container.querySelectorAll('.engage__range-slider__handle');
 
-  return touchEvent;
+  jest.spyOn(slider.firstChild, 'getBoundingClientRect').mockReturnValue({
+    width: 100,
+    left: 0,
+  });
+
+  return {
+    slider,
+    lowerHandle,
+    upperHandle,
+    onChange,
+  };
 };
 
 /**
- * Simulates a series of touch events.
- * This function will automatically validate the from/to values of the range slider.
- * An extra testCallback may be provided to perform additional checks.
- *
- * @param {number} pxWidth The simulated width of the DOM element (in px).
- * @param {number} pxOffset The simulated left offset of the DOM element (in px).
- * @param {number} min The absolute minimum value of the slider.
- * @param {number} max The absolute maximum value of the slider.
- * @param {Array} value The initial value(s) of the slider.
- * @param {string} easing The name of the easing function.
- * @param {number} resolutionOrFactor The resolution or factor for the easing function.
- * @param {Array} simulateSteps A set of relative horizontal pixel movements to simulate.
- * @param {Function} testCallback An optional callback for the onChange event of the slider.
+ * Drags a handle to a horizontal position.
+ * @param {HTMLElement} handle The handle to drag.
+ * @param {number} pageX The position where the handle is dropped.
  */
-const simulateInputTest = (
-  pxWidth, pxOffset,
-  min, max,
-  value,
-  easing,
-  resolutionOrFactor,
-  simulateSteps,
-  testCallback
-) => {
-  const config = {
-    totalPixelWidth: pxWidth,
-    leftPixelOffset: pxOffset,
-    min,
-    max,
-    easing,
-    resolution: resolutionOrFactor,
-    factor: resolutionOrFactor,
-    initialValue: value,
-    valuePixelSize: (pxWidth / (max - min)),
-    currentTouchDeltaX: 0,
-  };
+const drag = async (handle, pageX) => {
+  fireEvent.touchStart(handle, { touches: [{ pageX: 0 }] });
 
-  config.currentTouchDeltaX = config.valuePixelSize * value[1];
-
-  const ease = {
-    linear: generateLinearEasingCallback(config.resolution),
-    exponential: generateExponentialEasingCallback(config.factor),
-  }[config.easing];
-
-  const callback = ([from, to]) => {
-    const {
-      currentTouchDeltaX,
-      valuePixelSize,
-    } = config;
-    const relativeValue = getRelativeValue(currentTouchDeltaX / valuePixelSize, min, max);
-    const expected =
-      getAbsoluteValue(
-        ease(relativeValue),
-        config.min, config.max,
-        true
-      );
-
-    expect(expected === from || expected === to).toBe(true);
-
-    if (testCallback) {
-      testCallback(config, from, to);
-    }
-  };
-
-  const wrapper = mount((
-    <RangeSlider
-      min={config.min}
-      max={config.max}
-      value={config.initialValue}
-      easing={easing}
-      resolution={config.resolution}
-      factor={config.factor}
-      onChange={callback}
-    />
-  ));
-
-  expect(wrapper).toMatchSnapshot();
-
-  // Create a simulated touch event.
-  const pageX = config.leftPixelOffset + config.currentTouchDeltaX;
-  const touchEvent = createTouchEvent(pageX);
-  const inst = wrapper.instance();
-
-  inst.handleTouchStart(touchEvent, 1);
-
-  simulateSteps.forEach((deltaX) => {
-    config.currentTouchDeltaX += deltaX;
-    touchEvent.touches[0].pageX = config.leftPixelOffset + config.currentTouchDeltaX;
-
-    Object.defineProperty(inst.domElement, 'offsetLeft', {
-      get: () => config.leftPixelOffset,
-      configurable: true,
-    });
-    Object.defineProperty(inst.domElement, 'offsetWidth', {
-      get: () => config.totalPixelWidth,
-      configurable: true,
-    });
-
-    inst.handleTouchMove(touchEvent);
+  await act(async () => {
+    fireEvent.touchMove(document, { touches: [{ pageX }] });
   });
 
-  inst.handleTouchEnd();
+  fireEvent.touchEnd(document);
 };
 
-describe.skip('<RangeSlider />', () => {
-  /**
-   * Simple attribute tests
-   */
+describe('<RangeSlider />', () => {
+  it('renders two handles', () => {
+    const { container } = render(<RangeSlider />);
 
-  it('renders with boundaries', () => {
-    const wrapper = shallow(<RangeSlider min={0} max={100} />);
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(RangeSliderHandle).length).toBe(2);
+    expect(container.querySelectorAll('.engage__range-slider__handle')).toHaveLength(2);
   });
 
-  it('renders without boundaries', () => {
-    const wrapper = shallow(<RangeSlider />);
+  it('emits the new range when the upper handle is dragged', async () => {
+    const { upperHandle, onChange } = renderSlider({ value: [50, 75] });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(RangeSliderHandle).length).toBe(2);
+    await drag(upperHandle, 90);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith([50, 90]);
   });
 
-  it('renders without a value pair', () => {
-    const wrapper = shallow(<RangeSlider value={[10, 50]} />);
+  it('emits the new range when the lower handle is dragged', async () => {
+    const { lowerHandle, onChange } = renderSlider({ value: [50, 75] });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(RangeSliderHandle).length).toBe(2);
+    await drag(lowerHandle, 20);
+
+    expect(onChange).toHaveBeenCalledWith([20, 75]);
   });
 
-  /**
-   * Callback tests
-   */
-  it('emits onChange if handle was touched (linear)', () => {
-    simulateInputTest(
-      100, 73, // Range slider pixel width and offset.
-      0, 100, // Range slider minimum and maximum value.
-      [50, 75], // Initial value.
-      'linear', // Which easing should be used.
-      0.01, // Resolution.
-      [ // A series of pixel offsets to move the slider handle.
-        +0, +3, -15, +17, -80, +75,
-      ]
-    );
+  it('swaps the handles when one is dragged past the other', async () => {
+    const { upperHandle, onChange } = renderSlider({ value: [50, 75] });
+
+    await drag(upperHandle, 30);
+
+    expect(onChange).toHaveBeenCalledWith([30, 50]);
   });
 
-  it('emits onChange if handle was touched (exponential)', () => {
-    simulateInputTest(
-      78, 12, // Range slider pixel width and offset.
-      0, 1000, // Range slider minimum maximum value.
-      [10, 450], // Initial value.
-      'exponential', // Which easing should be used.
-      0.01, // Resolution.
-      [ // A series of pixel offsets to move the slider handle.
-        +10, +10, +10, +10, +10, +10, +10, +10,
-        -10, -10, -10, -10, -10, -10, -10, -10,
-        +3, -15, +17, -80, +104, -23, -12, +67,
-      ]
-    );
+  it('keeps the range within the boundaries', async () => {
+    const { upperHandle, onChange } = renderSlider({ value: [50, 75] });
+
+    await drag(upperHandle, 150);
+
+    expect(onChange).toHaveBeenCalledWith([50, 100]);
   });
 
-  it('emits onChange if the outer range was touched', () => {
-    const callback = value => expect(value).toEqual([-80, 0]);
-
-    const wrapper = mount((
-      <RangeSlider
-        min={-100}
-        max={100}
-        value={[0, 0]}
-        onChange={callback}
-      />
-    ));
-    // Create a simulated touch event at a page x offset of 20px.
-    const touchEvent = createTouchEvent(20);
-    const inst = wrapper.instance();
-
-    Object.defineProperty(inst.domElement, 'offsetLeft', {
-      get: () => 0,
-      configurable: true,
-    });
-    Object.defineProperty(inst.domElement, 'offsetWidth', {
-      get: () => 200,
-      configurable: true,
+  it('applies the exponential easing', async () => {
+    const { upperHandle, onChange } = renderSlider({
+      value: [0, 100],
+      easing: 'exponential',
+      factor: 2,
     });
 
-    inst.handleRangeTouch(touchEvent);
+    await drag(upperHandle, 50);
+
+    expect(onChange).toHaveBeenCalledWith([0, 25]);
+  });
+
+  it('stops emitting when the handle is released', async () => {
+    const { upperHandle, onChange } = renderSlider({ value: [50, 75] });
+
+    await drag(upperHandle, 90);
+    await act(async () => {
+      fireEvent.touchMove(document, { touches: [{ pageX: 60 }] });
+    });
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('moves the closest handle when the outer range is pressed', async () => {
+    const { slider, onChange } = renderSlider({
+      min: -100,
+      max: 100,
+      value: [0, 0],
+    });
+
+    const mouseDown = createEvent.mouseDown(slider);
+    Object.defineProperty(mouseDown, 'pageX', { value: 10 });
+
+    await act(async () => {
+      fireEvent(slider, mouseDown);
+    });
+
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith([-80, 0]);
   });
 });
-/* eslint-enable function-call-argument-newline */

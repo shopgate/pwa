@@ -1,5 +1,4 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render, fireEvent } from '@testing-library/react';
 import Backdrop from './index';
 
 describe('<Backdrop />', () => {
@@ -10,13 +9,18 @@ describe('<Backdrop />', () => {
   });
 
   it('should render', () => {
-    const wrapper = shallow(<Backdrop isVisible />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<Backdrop isVisible />);
+    const backdrop = container.querySelector('[data-test-id="Backdrop"]');
+
+    expect(backdrop).toBeInTheDocument();
+    expect(backdrop).toHaveClass('common__backdrop');
+    expect(backdrop).toHaveAttribute('aria-hidden', 'true');
+    expect(backdrop).toHaveStyle({ transition: 'opacity 200ms ease-out' });
   });
 
   it('should execute callback when Backdrop is clicked', () => {
-    const wrapper = mount(<Backdrop isVisible onClick={mockOpen} />);
-    wrapper.find('div').simulate('click');
+    const { container } = render(<Backdrop isVisible onClick={mockOpen} />);
+    fireEvent.click(container.querySelector('[data-test-id="Backdrop"]'));
     expect(mockOpen).toBeCalled();
   });
 });

@@ -1,88 +1,64 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Select from './index';
-import SelectItem from './components/Item';
-
-/**
- * Returns whether the given Enzyme wrapper contains at least one node
- * with a class name that ends with the provided suffix.
- *
- * This checks individual class tokens, so it works with elements that
- * have multiple classes.
- *
- * @param {Object} wrapper Enzyme wrapper (mount or shallow result).
- * @param {string} suffix Class name suffix to match, e.g. "-innerShadow".
- * @returns {boolean} True if a matching node exists.
- */
-export function containsClassWithEnding(wrapper, suffix) {
-  if (!wrapper || typeof wrapper.findWhere !== 'function' || !suffix) {
-    return false;
-  }
-
-  return wrapper.findWhere((node) => {
-    const className = node.prop('className');
-
-    if (typeof className !== 'string') {
-      return false;
-    }
-
-    return className
-      .split(/\s+/)
-      .some(cls => cls.endsWith(suffix));
-  }).length > 0;
-}
 
 /**
  * Helper to simulate toggling the open state by touching the handle area.
- * @param {Object} wrapper Enzyme wrapper.
  */
-const toggleOpen = (wrapper) => {
-  wrapper.find('[role="presentation"]').simulate('touchstart');
-  wrapper.update();
+const toggleOpen = () => {
+  fireEvent.touchStart(screen.getByRole('presentation'));
 };
 
+/**
+ * @param {HTMLElement} container The container of the rendered select.
+ * @returns {HTMLElement|null} The element wrapping the select items.
+ */
+const getItemList = container => container.querySelector('[class$="-items"]');
+
 describe('<Select />', () => {
-  jest.useFakeTimers();
-
   it('opens and closes the item list', () => {
-    const wrapper = mount(<Select />);
+    const { container } = render(<Select />);
 
-    expect(wrapper.find(SelectItem).length).toBe(0);
+    expect(getItemList(container)).not.toBeInTheDocument();
 
-    toggleOpen(wrapper);
-    // opened – still 0 items because no items prop
-    expect(containsClassWithEnding(wrapper, '-items')).toBe(true);
+    toggleOpen();
+    expect(getItemList(container)).toBeInTheDocument();
 
-    toggleOpen(wrapper);
-    expect(containsClassWithEnding(wrapper, '-items')).toBe(false);
+    toggleOpen();
+    expect(getItemList(container)).not.toBeInTheDocument();
   });
 
   it('renders without items', () => {
-    const wrapper = mount(<Select />);
+    const { container } = render(<Select />);
 
-    toggleOpen(wrapper);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(SelectItem).length).toBe(0);
+    toggleOpen();
+
+    expect(container.firstChild).toHaveClass('common_select');
+    expect(screen.getByRole('presentation')).toHaveTextContent('Select ...▾');
+    expect(getItemList(container)).toBeEmptyDOMElement();
   });
 
   it('renders with implicit items (closed)', () => {
     const items = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-    const wrapper = mount(<Select items={items} />);
+    const { container } = render(<Select items={items} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(SelectItem).length).toBe(0);
+    expect(container.firstChild).toHaveClass('common_select');
+    expect(screen.getByRole('presentation')).toHaveTextContent('Select ...▾');
+    expect(getItemList(container)).not.toBeInTheDocument();
+    items.forEach((item) => {
+      expect(screen.queryByText(item)).not.toBeInTheDocument();
+    });
   });
 
   it('renders with implicit items (opened)', () => {
     const items = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-    const wrapper = mount(<Select items={items} />);
-    toggleOpen(wrapper);
+    const { container } = render(<Select items={items} />);
+    toggleOpen();
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(SelectItem).length).toBe(items.length);
+    expect(screen.getByRole('presentation')).toHaveTextContent('Select ...▾');
+    expect(Array.from(getItemList(container).children).map(item => item.textContent))
+      .toEqual(items);
   });
 
   it('accepts implicit and explicit items', () => {
@@ -100,55 +76,44 @@ describe('<Select />', () => {
       'f',
     ];
 
-    const wrapper = mount(<Select items={items} />);
+    const { container } = render(<Select items={items} />);
 
-    toggleOpen(wrapper);
+    toggleOpen();
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(SelectItem).length).toBe(items.length);
-
-    let i = 0;
-    wrapper.find(SelectItem).forEach((item) => {
-      let expectedLabel = items[i];
-
-      if (expectedLabel.label) {
-        expectedLabel = expectedLabel.label;
-      }
-      if (expectedLabel.value) {
-        expectedLabel = expectedLabel.value;
-      }
-
-      expect(item.prop('label')).toBe(expectedLabel);
-      i += 1;
-    });
+    expect(screen.getByRole('presentation')).toHaveTextContent('Select ...▾');
+    expect(Array.from(getItemList(container).children).map(item => item.textContent))
+      .toEqual(['a', 'b', 'c', 'd', 'E', 'f']);
   });
 
   it('triggers callback on change', () => {
     const items = ['a', 'b', 'c', 'd', 'e', 'f'];
     const selectionIndex = Math.floor(items.length / 2);
+    const selectedValues = [];
 
     /**
      * Mocked callback for the onSelect event
      * @param {string} value Mocked value
      */
     const callback = (value) => {
-      expect(value).toBe(items[selectionIndex]);
+      selectedValues.push(value);
     };
 
-    const wrapper = mount((
+    const { container } = render((
       <Select
         items={items}
         onChange={callback}
       />
     ));
 
-    toggleOpen(wrapper);
+    toggleOpen();
 
-    expect(wrapper).toMatchSnapshot();
-    const node = wrapper.find(SelectItem).at(selectionIndex);
+    expect(Array.from(getItemList(container).children).map(item => item.textContent))
+      .toEqual(items);
 
-    act(() => {
-      node.prop('onSelect')(node.prop('value'), node.prop('label'));
-    });
+    fireEvent.touchEnd(screen.getByText(items[selectionIndex]));
+
+    expect(selectedValues).toEqual([items[selectionIndex]]);
+    expect(screen.getByRole('presentation')).toHaveTextContent(`${items[selectionIndex]}▾`);
+    expect(getItemList(container)).not.toBeInTheDocument();
   });
 });

@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { i18n } from '@shopgate/engage/core';
 import I18n from '../../index';
 
@@ -20,15 +19,14 @@ describe('<FormatPrice />', () => {
   });
 
   describe('Given the component was mounted to the DOM', () => {
-    let renderedElement;
-    it('should match snapshot', () => {
-      renderedElement = mount((
+    beforeEach(() => {
+      render((
         <I18n.Provider>
           <div>
-            <span className="only-price">
+            <span data-testid="only-price">
               <I18n.Price price={price} currency={currency} />
             </span>
-            <span className="text-with-price">
+            <span data-testid="text-with-price">
               <I18n.Text string="greeting">
                 <I18n.Price forKey="price" price={price} currency={currency} />
               </I18n.Text>
@@ -36,17 +34,12 @@ describe('<FormatPrice />', () => {
           </div>
         </I18n.Provider>
       ));
-      expect(renderedElement).toMatchSnapshot();
     });
 
-    it('should render formatted price', () => {
-      const text = renderedElement.find('.only-price').text();
-      expect(text).toBe(formattedPrice);
-    });
-
-    it('should render within translated text', () => {
-      const text = renderedElement.find('.text-with-price').text();
-      expect(text).toBe(`Hello ${formattedPrice}`);
+    it('should render the formatted price standalone and within translated text', () => {
+      expect(screen.getByTestId('only-price').innerHTML).toBe(formattedPrice);
+      expect(screen.getByTestId('text-with-price').innerHTML)
+        .toBe(`<span>Hello ${formattedPrice}</span>`);
     });
   });
 });

@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Password from './index';
 
 const inputProps = {
@@ -8,31 +7,36 @@ const inputProps = {
 
 describe('<Password>', () => {
   it('should render a password field', () => {
-    const wrapper = mount(<Password {...inputProps} />);
+    const { container } = render(<Password {...inputProps} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input[type="password"]').length).toBe(1);
+    expect(container.querySelector('.ui-shared__form__password')).toBeInTheDocument();
+    expect(container.querySelectorAll('input')).toHaveLength(1);
+    expect(container.querySelector('input')).toHaveAttribute('type', 'password');
+    expect(container.querySelector('input')).toHaveAttribute('name', 'test-input');
+    expect(container.querySelector('input')).toHaveValue('');
+    expect(container.querySelectorAll('.ui-shared__toggle-icon')).toHaveLength(1);
   });
 
   it('should trigger the onChange callback', () => {
     const onChangeMock = jest.fn();
 
-    const wrapper = mount(<Password {...inputProps} onChange={onChangeMock} />);
+    const { container } = render(<Password {...inputProps} onChange={onChangeMock} />);
 
-    wrapper.find('input').simulate('change', { target: { value: 'a' } });
+    fireEvent.change(container.querySelector('input'), { target: { value: 'a' } });
 
     expect(onChangeMock).toHaveBeenCalledTimes(2);
-    expect(wrapper.find('input').props().value).toEqual('a');
+    expect(container.querySelector('input')).toHaveValue('a');
   });
 
   it('should toggle password visibility', () => {
-    const wrapper = mount(<Password {...inputProps} />);
+    const { container } = render(<Password {...inputProps} />);
 
-    const input = wrapper.find('ToggleIcon');
+    expect(container.querySelectorAll('input[type="password"]')).toHaveLength(1);
 
-    expect(wrapper.find('input[type="password"]').length).toBe(1);
+    fireEvent.click(container.querySelector('.ui-shared__toggle-icon'));
 
-    input.simulate('click');
-    expect(wrapper.find('input[type="text"]').length).toBe(1);
+    expect(screen.getAllByRole('textbox')).toHaveLength(1);
+    expect(screen.getByRole('textbox')).toHaveAttribute('type', 'text');
+    expect(container.querySelector('input[type="password"]')).not.toBeInTheDocument();
   });
 });

@@ -1,9 +1,8 @@
-import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { render, screen } from '@testing-library/react';
 import { mockedStateWithAll } from '@shopgate/pwa-common-commerce/reviews/mock';
+import LoadMore from './components/LoadMore';
 import { UnwrappedReviews as Reviews } from './index';
 
 const mockedStore = configureStore();
@@ -12,25 +11,19 @@ jest.mock('@shopgate/engage/reviews/components/Reviews/components/Header', () =>
 jest.mock('Components/AppBar/presets', () => ({
   BackBar: () => '<BackBar />',
 }));
-
-/**
- * Creates component
- * @return {ReactWrapper}
- */
-const createComponent = () => mount(
-  <Provider store={mockedStore(mockedStateWithAll)}>
-    <Reviews id="foo" />
-  </Provider>,
-  mockRenderOptions
-);
+jest.mock('./components/LoadMore', () => jest.fn(() => null));
 
 describe('<Reviews> page', () => {
   it('should not crash', () => {
-    const component = createComponent();
-    expect(component).toMatchSnapshot();
-    expect(component.find('Reviews').exists()).toBe(true);
-    expect(component.find('RatingStars').exists()).toBe(true);
-    expect(component.find('LoadMore').exists()).toBe(true);
-    expect(component.find('List li').length).toEqual(4);
+    render((
+      <Provider store={mockedStore(mockedStateWithAll)}>
+        <Reviews id="foo" />
+      </Provider>
+    ));
+
+    expect(screen.getByText('<BackBar />', { exact: false })).toBeInTheDocument();
+    expect(screen.getAllByRole('img', { name: 'reviews.rating_stars' })).toHaveLength(4);
+    expect(LoadMore.mock.lastCall[0]).toEqual({ productId: 'foo' });
+    expect(screen.getAllByRole('listitem')).toHaveLength(4);
   });
 });

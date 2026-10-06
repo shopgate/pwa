@@ -1,6 +1,5 @@
 import React from 'react';
-import { act } from 'react-dom/test-utils';
-import { render } from '@testing-library/react';
+import { render, act } from '@testing-library/react';
 import { useFormState } from '../useFormState';
 
 jest.mock('lodash', () => ({

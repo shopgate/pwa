@@ -1,23 +1,24 @@
-/* eslint-disable extra-rules/no-single-line-objects */
-import React from 'react';
-import { mount } from 'enzyme';
+/* eslint-disable extra-rules/no-single-line-objects, react/prop-types */
+import {
+  render, screen, fireEvent, within,
+} from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { thunk } from 'redux-thunk';
-import { ThemeContext } from '@shopgate/pwa-common/context';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { ThemeContext, RouteContext } from '@shopgate/pwa-common/context';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { Sheet as MockSheet } from '@shopgate/pwa-ui-shared';
 import { mockedState } from './mockData';
-import Picker from './components/Picker';
 import { UnwrappedNestedCategoryFilter as Widget } from './index';
 
 jest.unmock('@shopgate/pwa-common/context');
 jest.unmock('@shopgate/pwa-ui-shared');
 
 jest.mock('@shopgate/engage/components', () => ({
-  Typography: ({ children }) => children,
+  Typography: ({ children, component: Component = 'div', 'data-test-id': testId }) => (
+    <Component data-test-id={testId}>{children}</Component>
+  ),
   SheetDrawer: props => <MockSheet {...props} />,
   SheetList: jest.requireActual('@shopgate/engage/components/SheetList').default,
   I18n: {
@@ -25,27 +26,36 @@ jest.mock('@shopgate/engage/components', () => ({
   },
 }));
 
-/**
- * @typedef {import("@types/enzyme").ReactWrapper} ReactWrapper
- */
+jest.mock('@shopgate/engage/components/v2', () => ({
+  Button: ({ href, disabled, children }) => (
+    <a href={href} aria-disabled={disabled}>{children}</a>
+  ),
+}));
+
+jest.mock('@virtuous/conductor', () => ({
+  router: {
+    update: jest.fn(),
+  },
+}));
 
 /**
  * Renders the component.
  * @param {Object} props The component props.
  * @param {Object} [state=mockedState] A mocked Redux state.
- * @return {ReactWrapper} The mounted component.
+ * @return {Object} The render result.
  */
 const renderComponent = (props = {}, state = mockedState) => {
   const store = configureStore([thunk])(state);
 
-  return mount(
+  return render((
     <Provider store={store}>
       <ThemeContext.Provider value={{}}>
-        <Widget {...props} />
+        <RouteContext.Provider value={{ id: 'route-id', state: {} }}>
+          <Widget {...props} />
+        </RouteContext.Provider>
       </ThemeContext.Provider>
-    </Provider>,
-    mockRenderOptions
-  );
+    </Provider>
+  ));
 };
 
 const id = 'widget-id';
@@ -64,30 +74,52 @@ const props = {
   settings,
 };
 
+const getPickers = container => Array.from(container.querySelectorAll('[data-test-id="nested-picker-trigger"]'));
+
 /**
- * @param {Object} wrapper The rendered widget.
- * @param {Array} expectedProps A list of expected props for the pickers.
+ * @param {HTMLElement} container The container of the rendered widget.
+ * @param {Array} expectedSelections A list of expected selection texts for the pickers.
  * @param {string} [buttonCategoryId=null] A categoryId for the button link.
  */
-const checkWrapper = (wrapper, expectedProps, buttonCategoryId = null) => {
-  const pickers = wrapper.find('Connect(CategoryPicker)');
+const checkWidget = (container, expectedSelections, buttonCategoryId = null) => {
+  const pickers = getPickers(container);
+
+  expect(pickers).toHaveLength(expectedSelections.length);
   pickers.forEach((picker, index) => {
-    expect(picker.props()).toEqual({
-      ...expectedProps[index],
-      label: settings[`label_${index + 1}`],
-      onSelect: expect.any(Function),
-    });
+    const label = settings[`label_${index + 1}`];
+    const selection = picker.querySelector('[data-test-id="nested-picker-selection"]');
+
+    expect(picker).toHaveTextContent(`${label}${expectedSelections[index]}`);
+    expect(selection).toHaveTextContent(expectedSelections[index]);
   });
 
-  const button = wrapper.find('Button[href]');
-  expect(button.prop('href')).toBe(`${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`);
-  expect(button.prop('disabled')).toBe(!buttonCategoryId);
-  expect(button.text()).toBe('common.show_products');
+  const button = screen.getByRole('link', { name: 'common.show_products' });
+
+  expect(button).toHaveAttribute('href', `${CATEGORY_PATH}/${bin2hex(buttonCategoryId)}`);
+  expect(button).toHaveAttribute('aria-disabled', `${!buttonCategoryId}`);
+};
+
+/**
+ * Opens the sheet of a picker and selects one of its options.
+ * @param {HTMLElement} picker The picker trigger.
+ * @param {number} optionIndex The index of the option to select.
+ * @returns {string[]} The names of the options that were offered.
+ */
+const selectOption = (picker, optionIndex) => {
+  fireEvent.click(picker);
+
+  const dialog = screen.getByRole('dialog');
+  const options = within(within(dialog).getByRole('listbox')).getAllByRole('button');
+  const names = options.map(option => option.textContent);
+
+  fireEvent.click(options[optionIndex]);
+  fireEvent.animationEnd(dialog);
+
+  return names;
 };
 
 describe('<NestedCategoryFilterWidget />', () => {
   it('should render the widget with a persisted state and handle user interaction as expected', () => {
-    expect.assertions(23);
     const persistedState = {
       pickers: [
         { categoryId: '', selectedId: '1' },
@@ -97,47 +129,26 @@ describe('<NestedCategoryFilterWidget />', () => {
       buttonCategoryId: '1-2-1',
     };
 
-    const wrapper = renderComponent({
+    const { container } = renderComponent({
       ...props,
       persistedState,
     });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Headline').prop('text')).toBe(settings.headline);
-    expect(wrapper.find('Headline').isEmptyRender()).toBe(false);
+    expect(screen.getByRole('heading', { name: settings.headline })).toBeInTheDocument();
 
-    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(3);
-    checkWrapper(wrapper, [
-      { categoryId: '', selectedId: '1' },
-      { categoryId: '1', selectedId: '1-2' },
-      { categoryId: '1-2', selectedId: '1-2-1' },
-    ], '1-2-1');
+    checkWidget(container, ['Category 1', 'Category 1-2', 'Category 1-2-1'], '1-2-1');
 
-    wrapper.find(Picker).at(0).simulate('click');
-    wrapper.find(Picker).at(0).find('List button').at(0)
-      .simulate('click');
+    expect(selectOption(getPickers(container)[0], 0)).toEqual(['Category 1', 'Category 2']);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(2);
-    checkWrapper(wrapper, [
-      { categoryId: '', selectedId: '1' },
-      { categoryId: '1', selectedId: null },
-    ]);
+    checkWidget(container, ['Category 1', 'common.please_choose']);
 
-    wrapper.find(Picker).at(1).simulate('click');
-    wrapper.find(Picker).at(1).find('List button').at(0)
-      .simulate('click');
+    expect(selectOption(getPickers(container)[1], 0)).toEqual(['Category 1-1', 'Category 1-2']);
 
-    expect(wrapper).toMatchSnapshot();
-    checkWrapper(wrapper, [
-      { categoryId: '', selectedId: '1' },
-      { categoryId: '1', selectedId: '1-1' },
-    ], '1-1');
+    checkWidget(container, ['Category 1', 'Category 1-1'], '1-1');
   });
 
   it('should render the widget without a headline and persisted state', () => {
-    expect.assertions(14);
-    const wrapper = renderComponent({
+    const { container } = renderComponent({
       ...props,
       settings: {
         ...props.settings,
@@ -146,29 +157,17 @@ describe('<NestedCategoryFilterWidget />', () => {
       },
     });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Headline').prop('text')).toBe('');
-    expect(wrapper.find('Headline').isEmptyRender()).toBe(true);
+    expect(screen.queryByRole('heading')).not.toBeInTheDocument();
 
-    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(1);
-    checkWrapper(wrapper, [
-      { categoryId: '', selectedId: null },
-    ]);
+    checkWidget(container, ['common.please_choose']);
 
-    wrapper.find(Picker).at(0).simulate('click');
-    wrapper.find(Picker).at(0).find('List button').at(1)
-      .simulate('click');
+    expect(selectOption(getPickers(container)[0], 1)).toEqual(['Category 1', 'Category 2']);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(1);
-    checkWrapper(wrapper, [
-      { categoryId: '', selectedId: '2' },
-    ], '2');
+    checkWidget(container, ['Category 2'], '2');
   });
 
   it('should render the widget for a category which is not the root category', () => {
-    expect.assertions(12);
-    const wrapper = renderComponent({
+    const { container } = renderComponent({
       ...props,
       settings: {
         ...props.settings,
@@ -176,22 +175,12 @@ describe('<NestedCategoryFilterWidget />', () => {
       },
     });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(1);
-    checkWrapper(wrapper, [
-      { categoryId: '1', selectedId: null },
-    ]);
+    checkWidget(container, ['common.please_choose']);
 
-    wrapper.find(Picker).at(0).simulate('click');
-    wrapper.find(Picker).at(0).find('List button').at(0)
-      .simulate('click');
+    expect(selectOption(getPickers(container)[0], 0)).toEqual(['Category 1-1', 'Category 1-2']);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Connect(CategoryPicker)')).toHaveLength(1);
-    checkWrapper(wrapper, [
-      { categoryId: '1', selectedId: '1-1' },
-    ], '1-1');
+    checkWidget(container, ['Category 1-1'], '1-1');
   });
 });
 
-/* eslint-enable extra-rules/no-single-line-objects */
+/* eslint-enable extra-rules/no-single-line-objects, react/prop-types */

@@ -1,13 +1,9 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import Title from './components/Title';
-import Content from './components/Content';
-import Buttons from './components/Buttons';
+import { render, screen, within } from '@testing-library/react';
 import BasicDialog from './index';
 
 const props = {
   title: 'Hello World',
-  children: <div>Hello World</div>,
+  children: <div>Dialog content</div>,
   actions: [
     {
       label: 'action0',
@@ -28,19 +24,23 @@ jest.mock('@shopgate/engage/a11y/components');
 
 describe('<BasicDialog />', () => {
   it('should render with minimal props', () => {
-    const wrapper = shallow(<BasicDialog actions={[]} />);
-    expect(wrapper).toMatchSnapshot();
+    render(<BasicDialog actions={[]} />);
+
+    const dialog = screen.getByRole('alertdialog');
+
+    expect(dialog).toHaveAttribute('aria-modal', 'true');
+    expect(within(dialog).queryByRole('heading')).not.toBeInTheDocument();
+    expect(within(dialog).queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('should render as expected', () => {
-    const wrapper = shallow(<BasicDialog {...props} />);
+    render(<BasicDialog {...props} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Title).length).toBe(1);
-    expect(wrapper.find(Title).props().title).toEqual(props.title);
-    expect(wrapper.find(Content).length).toBe(1);
-    expect(wrapper.find(Content).props().content).toEqual(props.children);
-    expect(wrapper.find(Buttons).length).toBe(1);
-    expect(wrapper.find(Buttons).props().actions).toEqual(props.actions);
+    const dialog = screen.getByRole('alertdialog', { name: 'Hello World Dialog content' });
+
+    expect(within(dialog).getByRole('heading', { name: props.title })).toBeInTheDocument();
+    expect(within(dialog).getByText('Dialog content')).toBeInTheDocument();
+    expect(within(dialog).getAllByRole('button').map(button => button.textContent))
+      .toEqual(props.actions.map(({ label }) => label));
   });
 });

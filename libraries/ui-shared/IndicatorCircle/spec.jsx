@@ -1,27 +1,27 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import IndicatorCircle from './index';
 
 describe('<IndicatorCircle />', () => {
   it('should apply the given size', () => {
-    const wrapper = shallow(<IndicatorCircle size={32} />);
+    const { container } = render(<IndicatorCircle size={32} />);
 
-    expect(wrapper).toMatchSnapshot();
+    const svg = container.querySelector('[data-test-id="loadingIndicator"]');
 
-    const svg = wrapper.find('svg');
-
-    expect(svg.props().width).toBe(32);
-    expect(svg.props().height).toBe(32);
+    expect(svg).toHaveClass('ui-shared__indicator-circle');
+    expect(svg).toHaveAttribute('width', '32');
+    expect(svg).toHaveAttribute('height', '32');
+    expect(svg).toHaveAttribute('viewBox', '25 25 50 50');
   });
 
   it('should apply the given color', () => {
-    const wrapper = mount(<IndicatorCircle size={32} color="#fff" strokeWidth={4} />);
+    const { container } = render(<IndicatorCircle size={32} color="#fff" strokeWidth={4} />);
 
-    expect(wrapper).toMatchSnapshot();
+    const circle = container.querySelector('circle');
 
-    const circleHtml = wrapper.find('circle');
-
-    expect(circleHtml.html()).toMatch(/class="[^"]*"/);
-    expect(circleHtml.html()).not.toEqual('');
+    expect(circle).toHaveAttribute('class');
+    expect(circle).toHaveStyle({
+      stroke: '#fff',
+      strokeWidth: 4,
+    });
   });
 });

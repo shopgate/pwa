@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import AccordionContent from './index';
 
 jest.mock('react-spring', () => ({
@@ -9,26 +8,26 @@ jest.mock('react-spring', () => ({
 
 describe('<AccordionContent />', () => {
   it('should render as closed', () => {
-    const wrapper = mount((
+    const { container } = render((
       <AccordionContent id="some-id">
-        <div id="test">Some Child</div>
+        <div>Some Child</div>
       </AccordionContent>
     ));
 
-    expect(wrapper.find('#test').text()).toEqual('Some Child');
-    expect(wrapper.find('div').get(0).props['aria-hidden']).toEqual(true);
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByText('Some Child')).toBeInTheDocument();
+    expect(container.firstChild).toHaveAttribute('id', 'some-id');
+    expect(container.firstChild).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('should render as open', () => {
-    const wrapper = mount((
+    const { container } = render((
       <AccordionContent open id="some-id">
-        <div id="test">Some Child</div>
+        <div>Some Child</div>
       </AccordionContent>
     ));
 
-    expect(wrapper.find('#test').text()).toEqual('Some Child');
-    expect(wrapper.find('div').get(0).props['aria-hidden']).toEqual(false);
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByText('Some Child')).toBeInTheDocument();
+    expect(container.firstChild).toHaveAttribute('id', 'some-id');
+    expect(container.firstChild).toHaveAttribute('aria-hidden', 'false');
   });
 });

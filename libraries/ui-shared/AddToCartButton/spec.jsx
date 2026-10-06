@@ -1,7 +1,6 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import { act } from 'react-dom/test-utils';
-import { render, screen, fireEvent } from '@testing-library/react';
+import {
+  render, screen, fireEvent, act,
+} from '@testing-library/react';
 import AddToCartButton from './index';
 
 /**
@@ -14,7 +13,7 @@ describe('<AddToCartButton />', () => {
   it('should render in loading state and should not be clickable', () => {
     const spy = jest.fn(() => Promise.resolve());
 
-    const wrapper = mount(
+    const { container } = render(
       <AddToCartButton
         onClick={spy}
         isLoading
@@ -23,17 +22,22 @@ describe('<AddToCartButton />', () => {
       />
     );
 
-    // Click shouldn’t fire when loading
-    wrapper.find('button').prop('onClick')();
+    const button = screen.getByRole('button');
 
-    expect(wrapper).toMatchSnapshot();
+    fireEvent.click(button);
+
+    expect(button).toHaveClass('ui-shared__add-to-cart-button');
+    expect(button).toHaveAttribute('data-test-id', 'addToCartButton');
+    expect(button).toHaveAttribute('aria-disabled', 'false');
+    expect(button.className).toContain('buttonReady');
+    expect(container.querySelector('[data-test-id="loadingIndicator"]')).toBeInTheDocument();
     expect(spy).toHaveBeenCalledTimes(0);
   });
 
   it('should render with checkmark icon and should not be clickable the second time', async () => {
     const spy = jest.fn(() => Promise.resolve());
 
-    const wrapper = mount(
+    const { container } = render(
       <AddToCartButton
         onClick={spy}
         isLoading={false}
@@ -42,28 +46,25 @@ describe('<AddToCartButton />', () => {
       />
     );
 
-    // First click triggers async work
     await act(async () => {
-      wrapper.find('button').prop('onClick')();
+      fireEvent.click(screen.getByRole('button'));
       await flushMicrotasks();
     });
-    wrapper.update();
 
-    // Second click should be ignored
     await act(async () => {
-      wrapper.find('button').prop('onClick')();
+      fireEvent.click(screen.getByRole('button'));
       await flushMicrotasks();
     });
-    wrapper.update();
 
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByRole('button').className).toContain('buttonSuccess');
+    expect(container.querySelector('[data-test-id="loadingIndicator"]')).not.toBeInTheDocument();
     expect(spy).toHaveBeenCalledTimes(1);
   });
 
   it('should render with cart icon and should be clickable', async () => {
     const spy = jest.fn(() => Promise.resolve());
 
-    const wrapper = mount(
+    const { container } = render(
       <AddToCartButton
         onClick={spy}
         isLoading={false}
@@ -72,13 +73,15 @@ describe('<AddToCartButton />', () => {
       />
     );
 
+    expect(screen.getByRole('button').className).toContain('buttonReady');
+
     await act(async () => {
-      wrapper.find('button').prop('onClick')();
+      fireEvent.click(screen.getByRole('button'));
       await flushMicrotasks();
     });
-    wrapper.update();
 
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByRole('button').className).toContain('buttonSuccess');
+    expect(container.querySelector('[data-test-id="loadingIndicator"]')).not.toBeInTheDocument();
     expect(spy).toHaveBeenCalledTimes(1);
   });
 

@@ -6,23 +6,14 @@ import { i18n } from '@shopgate/engage/core/helpers/i18n';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const FormatNumber = ({ className, number, fractions }) => {
-  if (!className) {
-    FormatNumber.format({
+const FormatNumber = ({ className, number, fractions }) => (
+  <span className={className}>
+    {FormatNumber.format({
       number,
       fractions,
-    });
-  }
-
-  return (
-    <span className={className}>
-      {FormatNumber.format({
-        number,
-        fractions,
-      })}
-    </span>
-  );
-};
+    })}
+  </span>
+);
 
 FormatNumber.format = (props) => {
   if (!i18n.ready) {

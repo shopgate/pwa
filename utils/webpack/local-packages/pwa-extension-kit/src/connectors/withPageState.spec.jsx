@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import withPageState from './withPageState';
 
 const isLoadingSpy = jest.fn();
@@ -10,7 +9,7 @@ const mockedIsLoading = (...args) => {
 };
 
 // eslint-disable-next-line react/prop-types, require-jsdoc
-const TestingComponent = props => <div>Other prop: {props.foo}</div>;
+const TestingComponent = jest.fn(props => <div>Other prop: {props.foo}</div>);
 
 jest.mock('@shopgate/pwa-common/providers/', () => ({
   LoadingContext: {
@@ -44,9 +43,10 @@ jest.mock('@shopgate/pwa-common/context', () => ({
 describe('connectors/withPageState', () => {
   it('should render with specified props', () => {
     const ConnectedComponent = withPageState(TestingComponent);
-    const component = mount(<ConnectedComponent foo="bar" />);
+    render(<ConnectedComponent foo="bar" />);
     expect(isLoadingSpy).toHaveBeenCalledWith('/foo/bar');
-    expect(component.find('TestingComponent').props()).toEqual({
+    expect(screen.getByText('Other prop: bar')).toBeInTheDocument();
+    expect(TestingComponent.mock.lastCall[0]).toEqual({
       isVisible: true,
       isLoading: true,
       foo: 'bar',
