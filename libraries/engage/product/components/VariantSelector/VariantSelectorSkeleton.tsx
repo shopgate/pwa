@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
 
 const pulse = keyframes({
@@ -12,7 +11,7 @@ const ROWS = 2;
 const useStyles = makeStyles({ name: 'VariantSelectorSkeleton' })(theme => ({
   row: {
     minHeight: 62,
-    margin: '0 16px 12px',
+    margin: theme.spacing(0, 2, 1.5),
     borderRadius: theme.shape.borderRadius,
     background: theme.palette.background.emphasized,
     animation: `${pulse} 1.5s ease-in-out infinite`,

@@ -88,7 +88,7 @@ export interface ProductSliderSettings {
 /**
  * Buttons on product tiles and on the image of the product page.
  */
-export interface ProductTileActionsSettings {
+export interface ProductActionButtonsSettings {
   /** Corner of the image the action buttons are placed in. */
   position: 'topRight' | 'bottomRight';
   /** `actionButton` adds a cart button next to the favorites button, `button` one below the tile. */
@@ -156,7 +156,7 @@ export interface ProductSettings {
   /** Product grid tiles. */
   tile: { productName: ProductNameSettings };
   variantSelector: ProductVariantSelectorSettings;
-  tileActions: ProductTileActionsSettings;
+  actionButtons: ProductActionButtonsSettings;
 }
 
 /**

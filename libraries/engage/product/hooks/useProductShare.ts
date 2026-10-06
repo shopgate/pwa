@@ -2,25 +2,14 @@ import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import shareItem from '@shopgate/pwa-core/commands/shareItem';
 import { hasSGJavaScriptBridge, hasWebBridgeCore } from '@shopgate/pwa-core/helpers';
-import { getProduct as getProductSelector } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { getProductTileActions } from '@shopgate/engage/settings/selectors/appSettings';
-
-interface ShareableProduct {
-  name?: string;
-  productUrl?: string;
-  featuredImageUrl?: string;
-}
+import { getProductActionButtons } from '@shopgate/engage/settings/selectors/appSettings';
+import { getProduct } from '../selectors/catalog';
 
 export interface ProductShareParams {
   title: string;
   imageURL: string;
   deepLink: string;
 }
-
-const getProduct = getProductSelector as unknown as (
-  state: unknown,
-  props: { productId: string | null }
-) => ShareableProduct | null;
 
 const LEGACY_IMAGE_HOST = 'https://img-cdn.shopgate.com';
 const LEGACY_IMAGE_SIZE = '880';
@@ -57,7 +46,7 @@ export const getShareImageUrl = (url?: string): string => {
  */
 const useProductShare = (productId: string | null) => {
   const product = useSelector((state: unknown) => getProduct(state, { productId }));
-  const { showShareButton } = useSelector(getProductTileActions);
+  const { showShareButton } = useSelector(getProductActionButtons);
 
   const params = useMemo<ProductShareParams | null>(() => {
     if (!product?.productUrl) {

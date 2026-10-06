@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, type RefObject } from 'react';
 import Transition from 'react-transition-group/Transition';
 import { makeStyles } from '@shopgate/engage/styles';
 import transition from '../../Characteristics/transition';
@@ -8,9 +8,9 @@ const useStyles = makeStyles({ name: 'VariantCharacteristicHeading' })(theme => 
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'baseline',
-    gap: 6,
-    margin: '0 -8px 8px',
-    padding: '4px 8px',
+    gap: theme.spacing(0.75),
+    margin: theme.spacing(0, -1, 1),
+    padding: theme.spacing(0.5, 1),
     borderRadius: theme.shape.borderRadius,
     outline: 0,
     transition: 'background 250ms ease-in, color 250ms ease-in',
@@ -26,7 +26,7 @@ const useStyles = makeStyles({ name: 'VariantCharacteristicHeading' })(theme => 
 
 export interface CharacteristicHeadingProps {
   /** Ref that is focused when the characteristic still needs a selection. */
-  charRef: React.RefObject<HTMLElement>;
+  charRef: RefObject<HTMLElement>;
   /** ID of the heading, referenced by the value group. */
   id: string;
   label: string;
@@ -37,7 +37,6 @@ export interface CharacteristicHeadingProps {
 
 /**
  * Heading of a characteristic that flashes when a selection is missing.
- * @param props The component props.
  * @returns The heading.
  */
 const CharacteristicHeading = ({
@@ -55,7 +54,7 @@ const CharacteristicHeading = ({
       {(state: keyof typeof transition) => (
         <div
           id={id}
-          ref={charRef as React.RefObject<HTMLDivElement>}
+          ref={charRef as RefObject<HTMLDivElement>}
           tabIndex={-1}
           className={cx(classes.root, 'engage__variant-selector__heading')}
           style={transition[state]}

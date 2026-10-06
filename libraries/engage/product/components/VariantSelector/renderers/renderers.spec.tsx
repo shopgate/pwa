@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import { createRef, type ReactNode } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import VariantChips from './VariantChips';
@@ -7,7 +7,7 @@ import VariantInlineDropdown from './VariantInlineDropdown';
 import type { VariantRendererProps, VariantSelectorValue } from '../types';
 
 jest.mock('@shopgate/engage/a11y', () => ({
-  VisuallyHidden: ({ children }: { children: React.ReactNode }) => <span>{children}</span>,
+  VisuallyHidden: ({ children }: { children: ReactNode }) => <span>{children}</span>,
 }));
 jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
   i18n: { text: (key: string, params?: string[]) => (params ? `${key}:${params.join(',')}` : key) },
@@ -15,13 +15,23 @@ jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
 
 const values: VariantSelectorValue[] = [
   {
-    id: 's', label: 'S', selectable: true, selected: true,
+    id: 's',
+    label: 'S',
+    selectable: true,
+    selected: true,
   },
   {
-    id: 'm', label: 'M', selectable: true, selected: false, soldOut: true,
+    id: 'm',
+    label: 'M',
+    selectable: true,
+    selected: false,
+    soldOut: true,
   },
   {
-    id: 'l', label: 'L', selectable: false, selected: false,
+    id: 'l',
+    label: 'L',
+    selectable: false,
+    selected: false,
   },
 ];
 
@@ -57,7 +67,10 @@ describe('<VariantChips />', () => {
     fireEvent.click(screen.getByRole('radio', { name: 'L' }));
 
     expect(select).toHaveBeenCalledTimes(1);
-    expect(select).toHaveBeenCalledWith({ id: 'size', value: 'm' });
+    expect(select).toHaveBeenCalledWith({
+      id: 'size',
+      value: 'm',
+    });
   });
 
   it('marks values without variant as unavailable but keeps them selectable', () => {
@@ -65,7 +78,11 @@ describe('<VariantChips />', () => {
     render(<VariantChips {...renderProps({
       select,
       values: [{
-        id: 'xl', label: 'XL', selectable: true, selected: false, available: false,
+        id: 'xl',
+        label: 'XL',
+        selectable: true,
+        selected: false,
+        available: false,
       }],
     })}
     />);
@@ -74,7 +91,10 @@ describe('<VariantChips />', () => {
     expect(chip).toHaveAttribute('data-unavailable', 'true');
 
     fireEvent.click(chip);
-    expect(select).toHaveBeenCalledWith({ id: 'size', value: 'xl' });
+    expect(select).toHaveBeenCalledWith({
+      id: 'size',
+      value: 'xl',
+    });
   });
 
   it('has one tab stop and moves the selection with arrow keys', () => {
@@ -83,16 +103,28 @@ describe('<VariantChips />', () => {
       select,
       values: [
         {
-          id: 's', label: 'S', selectable: true, selected: true,
+          id: 's',
+          label: 'S',
+          selectable: true,
+          selected: true,
         },
         {
-          id: 'm', label: 'M', selectable: true, selected: false,
+          id: 'm',
+          label: 'M',
+          selectable: true,
+          selected: false,
         },
         {
-          id: 'l', label: 'L', selectable: false, selected: false,
+          id: 'l',
+          label: 'L',
+          selectable: false,
+          selected: false,
         },
         {
-          id: 'xl', label: 'XL', selectable: true, selected: false,
+          id: 'xl',
+          label: 'XL',
+          selectable: true,
+          selected: false,
         },
       ],
     })}
@@ -104,14 +136,20 @@ describe('<VariantChips />', () => {
     radios[0].focus();
     fireEvent.keyDown(radios[0], { key: 'ArrowRight' });
     expect(radios[1]).toHaveFocus();
-    expect(select).toHaveBeenLastCalledWith({ id: 'size', value: 'm' });
+    expect(select).toHaveBeenLastCalledWith({
+      id: 'size',
+      value: 'm',
+    });
 
     fireEvent.keyDown(radios[1], { key: 'ArrowRight' });
     expect(radios[3]).toHaveFocus();
 
     fireEvent.keyDown(radios[3], { key: 'Home' });
     expect(radios[0]).toHaveFocus();
-    expect(select).toHaveBeenLastCalledWith({ id: 'size', value: 's' });
+    expect(select).toHaveBeenLastCalledWith({
+      id: 'size',
+      value: 's',
+    });
   });
 
   it('exposes the layout', () => {
@@ -125,7 +163,11 @@ jest.mock('@shopgate/engage/components', () => ({ ArrowDropIcon: () => null }));
 describe('<VariantInlineDropdown />', () => {
   it('expands the values inline and collapses after a selection', () => {
     const select = jest.fn();
-    render(<VariantInlineDropdown {...renderProps({ select, selected: null })} />);
+    render(<VariantInlineDropdown {...renderProps({
+      select,
+      selected: null,
+    })}
+    />);
 
     const field = screen.getByRole('button', { name: /Size/ });
     expect(field).toHaveTextContent('common.please_choose');
@@ -136,7 +178,10 @@ describe('<VariantInlineDropdown />', () => {
     expect(screen.getByRole('radio', { name: /^M ?, product.available.not$/ })).toHaveAttribute('data-sold-out', 'true');
 
     fireEvent.click(screen.getByRole('radio', { name: /^M ?, product.available.not$/ }));
-    expect(select).toHaveBeenCalledWith({ id: 'size', value: 'm' });
+    expect(select).toHaveBeenCalledWith({
+      id: 'size',
+      value: 'm',
+    });
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
 });
@@ -144,20 +189,35 @@ describe('<VariantInlineDropdown />', () => {
 describe('<VariantSwatches />', () => {
   const swatchValues: VariantSelectorValue[] = [
     {
-      id: 'red', label: 'Red', selectable: true, selected: false, swatch: { color: '#f00' },
+      id: 'red',
+      label: 'Red',
+      selectable: true,
+      selected: false,
+      swatch: { color: '#f00' },
     },
     {
-      id: 'blue', label: 'Blue', selectable: true, selected: true, swatch: { imageUrl: 'blue.jpg' },
+      id: 'blue',
+      label: 'Blue',
+      selectable: true,
+      selected: true,
+      swatch: { imageUrl: 'blue.jpg' },
     },
     {
-      id: 'misc', label: 'Misc', selectable: true, selected: false,
+      id: 'misc',
+      label: 'Misc',
+      selectable: true,
+      selected: false,
     },
   ];
 
   it('renders colors, images and a chip fallback', () => {
     const select = jest.fn();
     render(<VariantSwatches {...renderProps({
-      id: 'color', label: 'Color', selected: 'blue', values: swatchValues, select,
+      id: 'color',
+      label: 'Color',
+      selected: 'blue',
+      values: swatchValues,
+      select,
     })}
     />);
 
@@ -166,7 +226,10 @@ describe('<VariantSwatches />', () => {
     expect(screen.getByRole('radio', { name: 'Misc' })).toHaveClass('engage__variant-selector__chip');
 
     fireEvent.click(screen.getByRole('radio', { name: 'Red' }));
-    expect(select).toHaveBeenCalledWith({ id: 'color', value: 'red' });
+    expect(select).toHaveBeenCalledWith({
+      id: 'color',
+      value: 'red',
+    });
   });
 
   it('renders square swatches and zooms images', () => {

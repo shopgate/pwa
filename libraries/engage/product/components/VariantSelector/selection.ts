@@ -107,7 +107,10 @@ export const applySelection = (
       return;
     }
 
-    const candidate = { ...next, [id]: selection[id] };
+    const candidate = {
+      ...next,
+      [id]: selection[id],
+    };
 
     if (findMatchingVariants(variants, candidate).length > 0) {
       next = candidate;
@@ -148,7 +151,10 @@ export const buildRows = (
       ...value,
       selectable: true,
       selected: selected === value.id,
-      available: findMatchingVariants(variants, { ...others, [char.id]: value.id }).length > 0,
+      available: findMatchingVariants(variants, {
+        ...others,
+        [char.id]: value.id,
+      }).length > 0,
     })),
   };
 });

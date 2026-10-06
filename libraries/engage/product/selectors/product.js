@@ -175,6 +175,18 @@ export const getProductIsFetching = createSelector(
 );
 
 /**
+ * Selects whether the request of a product finished without product data.
+ */
+export const getProductRequestFailed = createSelector(
+  getProductId,
+  getProducts,
+  (productId, products) => {
+    const entry = products[productId];
+    return !!entry && !entry.isFetching && !entry.productData;
+  }
+);
+
+/**
  * Creates the selector to get a product's properties from the state filtered via
  * positive / negative list.
  * @returns {Function}

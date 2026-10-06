@@ -72,7 +72,11 @@ export const sortSizeValues = <T extends { label: string }>(values: T[]): T[] =>
 
   if (values.length > 1 && letterRanks.every(rank => rank !== null)) {
     return values
-      .map((value, index) => ({ value, rank: letterRanks[index] as number, index }))
+      .map((value, index) => ({
+        value,
+        rank: letterRanks[index] as number,
+        index,
+      }))
       .sort((a, b) => (a.rank - b.rank) || (a.index - b.index))
       .map(({ value }) => value);
   }
@@ -81,7 +85,11 @@ export const sortSizeValues = <T extends { label: string }>(values: T[]): T[] =>
 
   if (values.length > 1 && numericKeys.every(keys => keys !== null)) {
     return values
-      .map((value, index) => ({ value, keys: numericKeys[index] as [number, number], index }))
+      .map((value, index) => ({
+        value,
+        keys: numericKeys[index] as [number, number],
+        index,
+      }))
       .sort((a, b) => (a.keys[0] - b.keys[0]) || (a.keys[1] - b.keys[1]) || (a.index - b.index))
       .map(({ value }) => value);
   }
@@ -177,7 +185,10 @@ const getImageSwatch = (
     );
 
     return {
-      imageUrl: getFullImageSource(product.featuredImageBaseUrl, { width: size, height: size }),
+      imageUrl: getFullImageSource(product.featuredImageBaseUrl, {
+        width: size,
+        height: size,
+      }),
     };
   }
 
@@ -258,7 +269,10 @@ export const decorateRows = (
   const configured = settings.swatchCharacteristics.includes(row.label.trim().toLowerCase());
   const values = row.values.map((value) => {
     const withValue = findMatchingVariants(variants, { [row.id]: value.id });
-    const matching = findMatchingVariants(variants, { ...others, [row.id]: value.id });
+    const matching = findMatchingVariants(variants, {
+      ...others,
+      [row.id]: value.id,
+    });
     const soldOut = matching.length > 0 && matching.every(isVariantSoldOut);
     const soldOutEverywhere = withValue.length > 0 && withValue.every(isVariantSoldOut);
 
@@ -295,10 +309,16 @@ export const preselectFirstAvailable = (variants: ProductVariants): VariantSelec
   const pick = (accept: (product: VariantProduct) => boolean): VariantSelection => (
     variants.characteristics.reduce<VariantSelection>((selection, char) => {
       const value = sortSizeValues(char.values).find(candidate => (
-        findMatchingVariants(variants, { ...selection, [char.id]: candidate.id }).some(accept)
+        findMatchingVariants(variants, {
+          ...selection,
+          [char.id]: candidate.id,
+        }).some(accept)
       ));
 
-      return value ? { ...selection, [char.id]: value.id } : selection;
+      return value ? {
+        ...selection,
+        [char.id]: value.id,
+      } : selection;
     }, {})
   );
 

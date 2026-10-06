@@ -8,7 +8,10 @@ import {
 import type { ProductVariants, VariantSelectorRow } from './types';
 
 const labels = (values: { label: string }[]) => values.map(value => value.label);
-const toValues = (list: string[]) => list.map(label => ({ id: label, label }));
+const toValues = (list: string[]) => list.map(label => ({
+  id: label,
+  label,
+}));
 
 describe('VariantSelector helpers', () => {
   describe('sortSizeValues()', () => {
@@ -44,9 +47,16 @@ describe('VariantSelector helpers', () => {
       expect(isVariantSoldOut({
         id: '1',
         characteristics: {},
-        stock: { quantity: 0, ignoreQuantity: false },
+        stock: {
+          quantity: 0,
+          ignoreQuantity: false,
+        },
       })).toBe(true);
-      expect(isVariantSoldOut({ id: '1', characteristics: {}, stock: { orderable: false } }))
+      expect(isVariantSoldOut({
+        id: '1',
+        characteristics: {},
+        stock: { orderable: false },
+      }))
         .toBe(true);
     });
 
@@ -54,9 +64,16 @@ describe('VariantSelector helpers', () => {
       expect(isVariantSoldOut({
         id: '1',
         characteristics: {},
-        stock: { quantity: 0, ignoreQuantity: true, orderable: true },
+        stock: {
+          quantity: 0,
+          ignoreQuantity: true,
+          orderable: true,
+        },
       })).toBe(false);
-      expect(isVariantSoldOut({ id: '1', characteristics: {} })).toBe(false);
+      expect(isVariantSoldOut({
+        id: '1',
+        characteristics: {},
+      })).toBe(false);
     });
   });
 
@@ -77,7 +94,10 @@ describe('VariantSelector helpers', () => {
     it('shows the listed characteristics as swatches and the others with the global type', () => {
       expect(resolveRendererType(row('Farbe'), settings, false)).toBe('swatches');
       expect(resolveRendererType(row(' Größe '), settings, false)).toBe('dropdown');
-      expect(resolveRendererType(row('Größe'), { ...settings, type: 'chips' }, false)).toBe('chips');
+      expect(resolveRendererType(row('Größe'), {
+        ...settings,
+        type: 'chips',
+      }, false)).toBe('chips');
     });
 
     it('keeps beta swatches only in beta mode', () => {
@@ -92,27 +112,59 @@ describe('VariantSelector helpers', () => {
         {
           id: 'color',
           label: 'Color',
-          values: [{ id: 'red', label: 'Red' }, { id: 'blue', label: 'Blue', swatch: { color: '#00f' } }],
+          values: [{
+            id: 'red',
+            label: 'Red',
+          }, {
+            id: 'blue',
+            label: 'Blue',
+            swatch: { color: '#00f' },
+          }],
         },
         {
           id: 'size',
           label: 'Size',
-          values: [{ id: 'l', label: 'L' }, { id: 's', label: 'S' }],
+          values: [{
+            id: 'l',
+            label: 'L',
+          }, {
+            id: 's',
+            label: 'S',
+          }],
         },
       ],
       products: [
         {
           id: 'red-s',
-          characteristics: { color: 'red', size: 's' },
-          stock: { quantity: 0, ignoreQuantity: false },
+          characteristics: {
+            color: 'red',
+            size: 's',
+          },
+          stock: {
+            quantity: 0,
+            ignoreQuantity: false,
+          },
           featuredImageBaseUrl: 'red.jpg',
         },
         {
           id: 'red-l',
-          characteristics: { color: 'red', size: 'l' },
-          stock: { quantity: 0, ignoreQuantity: false },
+          characteristics: {
+            color: 'red',
+            size: 'l',
+          },
+          stock: {
+            quantity: 0,
+            ignoreQuantity: false,
+          },
         },
-        { id: 'blue-s', characteristics: { color: 'blue', size: 's' }, stock: { quantity: 3 } },
+        {
+          id: 'blue-s',
+          characteristics: {
+            color: 'blue',
+            size: 's',
+          },
+          stock: { quantity: 3 },
+        },
       ],
     };
 
@@ -122,7 +174,11 @@ describe('VariantSelector helpers', () => {
       disabled: false,
       selected: null,
       swatch: false,
-      values: char.values.map(value => ({ ...value, selectable: true, selected: false })),
+      values: char.values.map(value => ({
+        ...value,
+        selectable: true,
+        selected: false,
+      })),
     }));
 
     const settings = {
@@ -152,7 +208,10 @@ describe('VariantSelector helpers', () => {
     });
 
     it('keeps only pipeline swatches for characteristics that are not configured', () => {
-      const [color] = decorateRows(rows, variants, {}, { ...settings, swatchCharacteristics: [] });
+      const [color] = decorateRows(rows, variants, {}, {
+        ...settings,
+        swatchCharacteristics: [],
+      });
       expect(color.values[0].swatch).toBeUndefined();
       expect(color.values[1].swatch).toEqual({ color: '#00f' });
     });
@@ -162,14 +221,21 @@ describe('VariantSelector helpers', () => {
         ...variants,
         products: variants.products.map(product => ({
           ...product,
-          properties: [{ label: 'Hex', value: product.characteristics.color === 'red' ? '#ff0000' : 'https://img/blue.png' }],
+          properties: [{
+            label: 'Hex',
+            value: product.characteristics.color === 'red' ? '#ff0000' : 'https://img/blue.png',
+          }],
         })),
       };
       const [color] = decorateRows(
         rows,
         withProperties,
         {},
-        { ...settings, swatchSource: 'property', swatchProperty: 'hex' }
+        {
+          ...settings,
+          swatchSource: 'property',
+          swatchProperty: 'hex',
+        }
       );
 
       expect(color.values[0].swatch).toEqual({ color: '#ff0000' });
@@ -177,7 +243,10 @@ describe('VariantSelector helpers', () => {
     });
 
     it('does not mark sold out values when switched off', () => {
-      const [color] = decorateRows(rows, variants, {}, { ...settings, soldOut: 'none' });
+      const [color] = decorateRows(rows, variants, {}, {
+        ...settings,
+        soldOut: 'none',
+      });
 
       expect(color.values.some(value => value.soldOut)).toBe(false);
     });
@@ -185,13 +254,19 @@ describe('VariantSelector helpers', () => {
     it('hides values that are sold out in every combination but keeps the selected one', () => {
       const selectedRows = rows.map(row => ({
         ...row,
-        values: row.values.map(value => ({ ...value, selected: value.id === 'red' })),
+        values: row.values.map(value => ({
+          ...value,
+          selected: value.id === 'red',
+        })),
       }));
       const [color, size] = decorateRows(
         selectedRows,
         variants,
         { color: 'red' },
-        { ...settings, soldOut: 'hide' }
+        {
+          ...settings,
+          soldOut: 'hide',
+        }
       );
 
       expect(labels(size.values)).toEqual(['S']);
@@ -199,7 +274,10 @@ describe('VariantSelector helpers', () => {
     });
 
     it('hides a sold out value that is not selected', () => {
-      const [color] = decorateRows(rows, variants, {}, { ...settings, soldOut: 'hide' });
+      const [color] = decorateRows(rows, variants, {}, {
+        ...settings,
+        soldOut: 'hide',
+      });
 
       expect(labels(color.values)).toEqual(['Blue']);
     });
@@ -208,18 +286,65 @@ describe('VariantSelector helpers', () => {
   describe('preselectFirstAvailable()', () => {
     const variants: ProductVariants = {
       characteristics: [
-        { id: 'color', label: 'Color', values: [{ id: 'red', label: 'Red' }, { id: 'blue', label: 'Blue' }] },
-        { id: 'size', label: 'Size', values: [{ id: 'l', label: 'L' }, { id: 's', label: 'S' }] },
+        {
+          id: 'color',
+          label: 'Color',
+          values: [{
+            id: 'red',
+            label: 'Red',
+          }, {
+            id: 'blue',
+            label: 'Blue',
+          }],
+        },
+        {
+          id: 'size',
+          label: 'Size',
+          values: [{
+            id: 'l',
+            label: 'L',
+          }, {
+            id: 's',
+            label: 'S',
+          }],
+        },
       ],
       products: [
-        { id: 'red-s', characteristics: { color: 'red', size: 's' }, stock: { quantity: 0, ignoreQuantity: false } },
-        { id: 'blue-l', characteristics: { color: 'blue', size: 'l' }, stock: { quantity: 2 } },
-        { id: 'blue-s', characteristics: { color: 'blue', size: 's' }, stock: { quantity: 1 } },
+        {
+          id: 'red-s',
+          characteristics: {
+            color: 'red',
+            size: 's',
+          },
+          stock: {
+            quantity: 0,
+            ignoreQuantity: false,
+          },
+        },
+        {
+          id: 'blue-l',
+          characteristics: {
+            color: 'blue',
+            size: 'l',
+          },
+          stock: { quantity: 2 },
+        },
+        {
+          id: 'blue-s',
+          characteristics: {
+            color: 'blue',
+            size: 's',
+          },
+          stock: { quantity: 1 },
+        },
       ],
     };
 
     it('picks the first available combination in sorted size order', () => {
-      expect(preselectFirstAvailable(variants)).toEqual({ color: 'blue', size: 's' });
+      expect(preselectFirstAvailable(variants)).toEqual({
+        color: 'blue',
+        size: 's',
+      });
     });
 
     it('falls back to the first combination when everything is sold out', () => {
@@ -227,11 +352,17 @@ describe('VariantSelector helpers', () => {
         ...variants,
         products: variants.products.map(product => ({
           ...product,
-          stock: { quantity: 0, ignoreQuantity: false },
+          stock: {
+            quantity: 0,
+            ignoreQuantity: false,
+          },
         })),
       };
 
-      expect(preselectFirstAvailable(soldOut)).toEqual({ color: 'red', size: 's' });
+      expect(preselectFirstAvailable(soldOut)).toEqual({
+        color: 'red',
+        size: 's',
+      });
     });
   });
 });

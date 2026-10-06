@@ -209,11 +209,11 @@ export default withStyles(Characteristic, theme => ({
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    gap: 8,
+    gap: theme.spacing(1),
     minHeight: 56,
     outline: 0,
-    padding: '8px 8px 8px 16px',
-    margin: '0 16px 12px',
+    padding: theme.spacing(1, 1, 1, 2),
+    margin: theme.spacing(0, 2, 1.5),
     transition: 'background 250ms ease-in, color 250ms ease-in, border-color 250ms ease-in',
     '&:focus-visible': {
       outline: `2px solid ${theme.palette.text.primary}`,
@@ -233,7 +233,7 @@ export default withStyles(Characteristic, theme => ({
     minWidth: 0,
   },
   label: {
-    marginBottom: 2,
+    marginBottom: theme.spacing(0.25),
     color: 'inherit',
     opacity: 0.7,
   },

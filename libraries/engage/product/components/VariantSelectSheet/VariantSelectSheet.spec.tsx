@@ -1,4 +1,4 @@
-import React from 'react';
+import { type ReactNode } from 'react';
 import {
   act, fireEvent, render, screen,
 } from '@testing-library/react';
@@ -7,11 +7,30 @@ import VariantSelectSheet from './VariantSelectSheet';
 import type { VariantSelectorProps } from '../VariantSelector';
 
 const products: Record<string, unknown> = {
-  base: { id: 'base', name: 'Jacket', price: { currency: 'EUR', unitPrice: 210, msrp: 315 } },
+  base: {
+    id: 'base',
+    name: 'Jacket',
+    price: {
+      currency: 'EUR',
+      unitPrice: 210,
+      msrp: 315,
+    },
+  },
 };
 const variants = {
-  characteristics: [{ id: 'color', label: 'Color', values: [{ id: 'gold', label: 'Gold' }] }],
-  products: [{ id: 'gold-1', characteristics: { color: 'gold' }, stock: { orderable: true } }],
+  characteristics: [{
+    id: 'color',
+    label: 'Color',
+    values: [{
+      id: 'gold',
+      label: 'Gold',
+    }],
+  }],
+  products: [{
+    id: 'gold-1',
+    characteristics: { color: 'gold' },
+    stock: { orderable: true },
+  }],
 };
 
 jest.mock('react-redux', () => ({
@@ -26,13 +45,13 @@ jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProduct', () => je
 jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProductVariants', () => jest.fn());
 jest.mock('@shopgate/engage/core/helpers/i18n', () => ({ i18n: { text: (key: string) => key } }));
 jest.mock('@shopgate/engage/components', () => ({
-  SheetDrawer: ({ isOpen, children }: { isOpen: boolean; children: React.ReactNode }) => (
+  SheetDrawer: ({ isOpen, children }: { isOpen: boolean; children: ReactNode }) => (
     isOpen ? <div>{children}</div> : null
   ),
 }));
 jest.mock('@shopgate/engage/components/v2', () => ({
   Button: ({ children, disabled, onClick }: {
-    children: React.ReactNode;
+    children: ReactNode;
     disabled: boolean;
     onClick: () => void;
   }) => <button type="button" disabled={disabled} onClick={onClick}>{children}</button>,

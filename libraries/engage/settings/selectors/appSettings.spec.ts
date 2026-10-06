@@ -1,8 +1,6 @@
 import {
   getCanSelectColorScheme,
   getDefaultColorSchemeMode,
-  getProductTileActions,
-  getVariantSelectorSettings,
   getTypographyFontCssUrls,
   getTypographySettings,
   getWidgetMediaMargins,
@@ -11,7 +9,6 @@ import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
 import type {
   AppearanceSettings,
   AppSettingsState,
-  ProductTileActionsSettings,
   TypographySettings,
   WidgetSettings,
 } from '../types/appSettings';
@@ -21,20 +18,6 @@ const stateWith = (typography: TypographySettings): AppSettingsState => ({
     appSettings: {
       ...DEFAULT_APP_SETTINGS,
       typography,
-    },
-  },
-});
-
-const stateWithTileActions = (
-  tileActions: Partial<ProductTileActionsSettings>
-): AppSettingsState => ({
-  settings: {
-    appSettings: {
-      ...DEFAULT_APP_SETTINGS,
-      product: {
-        ...DEFAULT_APP_SETTINGS.product,
-        tileActions: tileActions as ProductTileActionsSettings,
-      },
     },
   },
 });
@@ -187,41 +170,6 @@ describe('settings/selectors/appSettings', () => {
       }));
 
       expect(urls).toEqual(['h2.css']);
-    });
-  });
-
-  describe('getProductTileActions()', () => {
-    it('falls back to the default for single values that are null', () => {
-      expect(getProductTileActions(stateWithTileActions({
-        position: null,
-        direction: 'vertical',
-      } as unknown as Partial<ProductTileActionsSettings>))).toEqual({
-        ...DEFAULT_APP_SETTINGS.product.tileActions,
-        direction: 'vertical',
-      });
-    });
-  });
-
-  describe('getVariantSelectorSettings()', () => {
-    it('falls back to the default for single values that are null', () => {
-      const settings = getVariantSelectorSettings({
-        settings: {
-          appSettings: {
-            ...DEFAULT_APP_SETTINGS,
-            product: {
-              ...DEFAULT_APP_SETTINGS.product,
-              variantSelector: {
-                ...DEFAULT_APP_SETTINGS.product.variantSelector,
-                type: null,
-                soldOut: 'hide',
-              },
-            },
-          },
-        },
-      } as unknown as AppSettingsState);
-
-      expect(settings.type).toBe(DEFAULT_APP_SETTINGS.product.variantSelector.type);
-      expect(settings.soldOut).toBe('hide');
     });
   });
 });

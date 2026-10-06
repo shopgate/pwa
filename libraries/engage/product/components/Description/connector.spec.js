@@ -34,9 +34,18 @@ describe('Description connector', () => {
   });
 
   it('stops loading once the request finished, with or without a description', () => {
-    expect(mapStateToProps(stateWith({ isFetching: false, description: '<p>x</p>' }), { productId: 'p1' }))
-      .toEqual(expect.objectContaining({ html: '<p>x</p>', isLoading: false }));
+    expect(mapStateToProps(stateWith({
+      isFetching: false,
+      description: '<p>x</p>',
+    }), { productId: 'p1' }))
+      .toEqual(expect.objectContaining({
+        html: '<p>x</p>',
+        isLoading: false,
+      }));
     expect(mapStateToProps(stateWith({ isFetching: false }), { productId: 'p1' }))
-      .toEqual(expect.objectContaining({ html: null, isLoading: false }));
+      .toEqual(expect.objectContaining({
+        html: null,
+        isLoading: false,
+      }));
   });
 });

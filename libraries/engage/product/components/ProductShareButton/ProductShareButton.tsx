@@ -1,8 +1,8 @@
-import React from 'react';
 import { IconButton } from '@shopgate/engage/components/v2';
 import type { IconButtonSize } from '@shopgate/engage/components/v2';
 import ShareIcon from '@shopgate/pwa-ui-ios/icons/ShareIcon';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
+import { cx } from '@shopgate/engage/styles';
 import useProductShare from '../../hooks/useProductShare';
 
 export interface ProductShareButtonProps {
@@ -15,7 +15,6 @@ export interface ProductShareButtonProps {
 /**
  * Action button that opens the native share sheet for a product. Renders nothing when the share
  * button is switched off or the product has no url to share.
- * @param props The component props.
  * @returns The button.
  */
 const ProductShareButton = ({
@@ -37,7 +36,7 @@ const ProductShareButton = ({
       variant="surface"
       color="secondary"
       size={size}
-      className={['engage__product-share-button', className].filter(Boolean).join(' ')}
+      className={cx('engage__product-share-button', className)}
       onClick={share}
     >
       <ShareIcon />

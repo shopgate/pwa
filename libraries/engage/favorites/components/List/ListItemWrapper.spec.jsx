@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ListItemWrapper from './ListItemWrapper';
@@ -10,14 +9,20 @@ jest.mock('../Item', () => ({ addToCart }) => (
     <button type="button" onClick={() => addToCart(null, { id: 'variant-1' })}>variant</button>
     <button
       type="button"
-      onClick={() => addToCart(null, { id: 'variant-2', fulfillmentMethods: ['ROPIS'] })}
+      onClick={() => addToCart(null, {
+        id: 'variant-2',
+        fulfillmentMethods: ['ROPIS'],
+      })}
     >
       variant with methods
     </button>
   </>
 ));
 
-const product = { id: 'base-1', fulfillmentMethods: ['DIRECT_SHIP'] };
+const product = {
+  id: 'base-1',
+  fulfillmentMethods: ['DIRECT_SHIP'],
+};
 
 /**
  * Renders the wrapper.
@@ -51,14 +56,20 @@ describe('<ListItemWrapper />', () => {
 
     fireEvent.click(screen.getByRole('button', { name: 'variant' }));
     expect(addToCart).toHaveBeenLastCalledWith(
-      { id: 'variant-1', fulfillmentMethods: ['DIRECT_SHIP'] },
+      {
+        id: 'variant-1',
+        fulfillmentMethods: ['DIRECT_SHIP'],
+      },
       2,
       'base-1'
     );
 
     fireEvent.click(screen.getByRole('button', { name: 'variant with methods' }));
     expect(addToCart).toHaveBeenLastCalledWith(
-      { id: 'variant-2', fulfillmentMethods: ['ROPIS'] },
+      {
+        id: 'variant-2',
+        fulfillmentMethods: ['ROPIS'],
+      },
       2,
       'base-1'
     );

@@ -1,4 +1,4 @@
-import React from 'react';
+import { type ReactNode } from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ProductShareButton from './ProductShareButton';
@@ -16,7 +16,7 @@ jest.mock('@shopgate/pwa-ui-ios/icons/ShareIcon', () => () => null);
 jest.mock('@shopgate/engage/core/helpers/i18n', () => ({ i18n: { text: (key: string) => key } }));
 jest.mock('@shopgate/engage/components/v2', () => ({
   IconButton: ({ children, onClick, 'aria-label': label }: {
-    children: React.ReactNode;
+    children: ReactNode;
     onClick: () => void;
     'aria-label': string;
   }) => <button type="button" aria-label={label} onClick={onClick}>{children}</button>,

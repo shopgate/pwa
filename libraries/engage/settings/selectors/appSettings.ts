@@ -1,6 +1,4 @@
 import { createSelector } from 'reselect';
-import isNil from 'lodash/isNil';
-import omitBy from 'lodash/omitBy';
 import { COLOR_SCHEME_SELECTABLE } from '../types/appSettings';
 import type { AppSettingsSlice, AppSettingsState, ColorSchemeMode } from '../types/appSettings';
 import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
@@ -66,14 +64,11 @@ export const getShowEmptyRatingStars = createSelector(
 );
 
 /**
- * Selects the buttons on product tiles and their position.
+ * Selects the action buttons of product tiles and of the product page.
  */
-export const getProductTileActions = createSelector(
+export const getProductActionButtons = createSelector(
   getAppSettingsState,
-  appSettings => ({
-    ...DEFAULT_APP_SETTINGS.product.tileActions,
-    ...omitBy(appSettings.product?.tileActions, isNil),
-  })
+  appSettings => appSettings.product.actionButtons
 );
 
 /**
@@ -81,10 +76,7 @@ export const getProductTileActions = createSelector(
  */
 export const getVariantSelectorSettings = createSelector(
   getAppSettingsState,
-  appSettings => ({
-    ...DEFAULT_APP_SETTINGS.product.variantSelector,
-    ...omitBy(appSettings.product?.variantSelector, isNil),
-  })
+  appSettings => appSettings.product.variantSelector
 );
 
 /**

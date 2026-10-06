@@ -1,5 +1,5 @@
-import React, {
-  useCallback, useEffect, useMemo, useRef, useState,
+import {
+  useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type ReactNode,
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import isMatch from 'lodash/isMatch';
@@ -11,8 +11,8 @@ import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchProduct';
 import fetchProductVariants from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
-import * as productSelectors from '@shopgate/pwa-common-commerce/product/selectors/product';
 import ConditionerClass from '@shopgate/pwa-core/classes/Conditioner';
+import { getProduct, getProductVariants } from '../../selectors/catalog';
 import { ProductContext } from '../context';
 import ProductImage from '../ProductImage';
 import { VariantSelector } from '../VariantSelector';
@@ -39,31 +39,24 @@ export interface VariantSelectSheetProps {
   onAddToCart: (variant: VariantSheetProduct) => unknown;
 }
 
-const SheetDrawer = SheetDrawerComponent as unknown as React.ComponentType<{
+const SheetDrawer = SheetDrawerComponent as unknown as ComponentType<{
   isOpen: boolean;
   onClose: () => void;
   onDidClose?: () => void;
   title?: string;
   contentClassName?: string;
-  children?: React.ReactNode;
+  children?: ReactNode;
 }>;
-
-type ProductSelector<T> = (state: unknown, props: { productId: string | null }) => T;
-
-const getProduct =
-  productSelectors.getProduct as unknown as ProductSelector<VariantSheetProduct | null>;
-const getProductVariants =
-  productSelectors.getProductVariants as unknown as ProductSelector<ProductVariants | null>;
 
 const useStyles = makeStyles({ name: 'VariantSelectSheet' })(theme => ({
   content: {
-    paddingTop: 16,
+    paddingTop: theme.spacing(2),
   },
   header: {
     display: 'flex',
-    gap: 12,
+    gap: theme.spacing(1.5),
     alignItems: 'center',
-    padding: '0 16px 16px',
+    padding: theme.spacing(0, 2, 2),
   },
   image: {
     width: 64,
@@ -73,15 +66,15 @@ const useStyles = makeStyles({ name: 'VariantSelectSheet' })(theme => ({
   },
   name: {
     fontWeight: theme.typography.fontWeightMedium,
-    marginBottom: 4,
+    marginBottom: theme.spacing(0.5),
   },
   prices: {
     display: 'flex',
-    gap: 8,
+    gap: theme.spacing(1),
     alignItems: 'baseline',
   },
   footer: {
-    padding: '8px 16px calc(16px + var(--safe-area-inset-bottom, 0px))',
+    padding: theme.spacing(1, 2, `calc(${theme.spacing(2)}px + var(--safe-area-inset-bottom, 0px))`),
   },
 }));
 
@@ -106,7 +99,6 @@ const findVariant = (
 
 /**
  * Sheet to select a variant and add it to the cart outside of the product page.
- * @param props The component props.
  * @returns The sheet.
  */
 const VariantSelectSheet = ({
@@ -123,9 +115,9 @@ const VariantSelectSheet = ({
   const variants = useSelector((state: unknown) => getProductVariants(state, { productId }));
   const variantFromList = useMemo(() => findVariant(variants, selection), [variants, selection]);
   const variantId = variantFromList?.id ?? null;
-  const variantFromStore = useSelector(
-    (state: unknown) => (variantId ? getProduct(state, { productId: variantId }) : null)
-  );
+  const variantFromStore = useSelector((state: unknown) => (
+    variantId ? getProduct(state, { productId: variantId }) : null
+  )) as VariantSheetProduct | null;
   const variant = variantFromStore || variantFromList;
   const shown = variant || baseProduct;
 

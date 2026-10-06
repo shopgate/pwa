@@ -101,13 +101,20 @@ const useVariantSelection = ({
   );
   const [checkRequest, setCheckRequest] = useState(0);
   const initializedRef = useRef(!!variants);
-  const callbacksRef = useRef({ onCharacteristicsChange, onVariantSelected });
-  callbacksRef.current = { onCharacteristicsChange, onVariantSelected };
+  const callbacksRef = useRef({
+    onCharacteristicsChange,
+    onVariantSelected,
+  });
+  callbacksRef.current = {
+    onCharacteristicsChange,
+    onVariantSelected,
+  };
+
+  const initialSelectionRef = useRef(selection);
 
   useEffect(() => {
-    callbacksRef.current.onCharacteristicsChange?.(selection);
+    callbacksRef.current.onCharacteristicsChange?.(initialSelectionRef.current);
     setCheckRequest(value => value + 1);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -123,34 +130,59 @@ const useVariantSelection = ({
   }, [variants, variantId, preselect]);
 
   useEffect(() => {
-    if (characteristics && !isEqual(characteristics, selection)) {
-      setSelection(orderSelection(characteristics, variants));
+    if (!characteristics) {
+      return;
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [characteristics]);
+
+    setSelection(current => (
+      isEqual(characteristics, current) ? current : orderSelection(characteristics, variants)
+    ));
+  }, [characteristics, variants]);
 
   const isComplete = !!variants && Object.values(selection)
     .filter(Boolean).length === variants.characteristics.length;
 
+  const checkStateRef = useRef({
+    variants,
+    selection,
+    variantId,
+    isComplete,
+    finishTimeout,
+  });
+  checkStateRef.current = {
+    variants,
+    selection,
+    variantId,
+    isComplete,
+    finishTimeout,
+  };
+
   useEffect(() => {
-    if (!checkRequest || !variants || !isComplete) {
+    const {
+      variants: currentVariants,
+      selection: currentSelection,
+      variantId: currentVariantId,
+      isComplete: complete,
+      finishTimeout: timeoutMs,
+    } = checkStateRef.current;
+
+    if (!checkRequest || !currentVariants || !complete) {
       return undefined;
     }
 
-    const match = variants.products.find(product => (
-      isMatch(product.characteristics, selection)
+    const match = currentVariants.products.find(product => (
+      isMatch(product.characteristics, currentSelection)
     ));
 
-    if (!match || match.id === variantId) {
+    if (!match || match.id === currentVariantId) {
       return undefined;
     }
 
     const timeout = setTimeout(() => {
       callbacksRef.current.onVariantSelected?.(match.id);
-    }, finishTimeout);
+    }, timeoutMs);
 
     return () => clearTimeout(timeout);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [checkRequest]);
 
   const select = useCallback(({ id, value }: VariantSelectionChange) => {

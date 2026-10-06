@@ -82,7 +82,7 @@ describe('settings / reducers / appSettings', () => {
           preselect: true,
           soldOut: 'hide',
         },
-        tileActions: {
+        actionButtons: {
           position: 'topRight',
           addToCart: 'button',
           direction: 'vertical',
@@ -179,6 +179,38 @@ describe('settings / reducers / appSettings', () => {
       bottom: 0,
       left: 0,
       right: 0,
+    });
+  });
+
+  it('keeps the product defaults when the branch is cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: null,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product).toEqual(DEFAULT_APP_SETTINGS.product);
+  });
+
+  it('keeps the defaults of single cleared variant selector and action button values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        variantSelector: {
+          type: null,
+          soldOut: 'hide',
+        },
+        actionButtons: {
+          position: null,
+          direction: 'vertical',
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.variantSelector).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.variantSelector,
+      soldOut: 'hide',
+    });
+    expect(state.product.actionButtons).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.actionButtons,
+      direction: 'vertical',
     });
   });
 

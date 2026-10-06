@@ -1,5 +1,5 @@
-import React, {
-  useCallback, useEffect, useRef, useState,
+import {
+  useCallback, useEffect, useRef, useState, type KeyboardEvent, type RefObject,
 } from 'react';
 import Transition from 'react-transition-group/Transition';
 import { ArrowDropIcon } from '@shopgate/engage/components';
@@ -13,7 +13,7 @@ import type { VariantRendererProps } from '../types';
 
 const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
   root: {
-    margin: '0 16px 12px',
+    margin: theme.spacing(0, 2, 1.5),
     border: `1px solid ${theme.components.input.border}`,
     borderRadius: theme.shape.borderRadius,
     background: theme.palette.background.surface,
@@ -22,10 +22,10 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
   field: {
     display: 'flex',
     alignItems: 'center',
-    gap: 8,
+    gap: theme.spacing(1),
     width: '100%',
     minHeight: 56,
-    padding: '8px 8px 8px 16px',
+    padding: theme.spacing(1, 1, 1, 2),
     border: 0,
     background: 'transparent',
     color: theme.palette.text.primary,
@@ -48,7 +48,7 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
   label: {
     fontSize: theme.typography.caption.fontSize,
     opacity: 0.7,
-    marginBottom: 2,
+    marginBottom: theme.spacing(0.25),
   },
   selection: {
     fontWeight: theme.typography.fontWeightMedium,
@@ -69,7 +69,7 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
   option: {
     display: 'block',
     width: '100%',
-    padding: '12px 16px',
+    padding: theme.spacing(1.5, 2),
     border: 0,
     background: 'transparent',
     color: theme.palette.text.primary,
@@ -96,7 +96,6 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
 
 /**
  * Renders a characteristic as a field that expands its values inline, for use inside sheets.
- * @param props The renderer props.
  * @returns The inline dropdown.
  */
 const VariantInlineDropdown = ({
@@ -127,12 +126,18 @@ const VariantInlineDropdown = ({
   }, [charRef]);
 
   const handleSelect = useCallback((valueId: string) => {
-    select({ id, value: valueId });
+    select({
+      id,
+      value: valueId,
+    });
     collapse();
   }, [collapse, id, select]);
 
   const handleArrowSelect = useCallback((valueId: string) => {
-    select({ id, value: valueId });
+    select({
+      id,
+      value: valueId,
+    });
   }, [id, select]);
 
   const { groupRef, onKeyDown, getTabIndex } = useRadioGroupKeys(
@@ -148,7 +153,7 @@ const VariantInlineDropdown = ({
     wasExpanded.current = expanded;
   }, [expanded, groupRef]);
 
-  const handleKeyDown = useCallback((event: React.KeyboardEvent) => {
+  const handleKeyDown = useCallback((event: KeyboardEvent) => {
     if (event.key === 'Escape' && expanded) {
       event.stopPropagation();
       collapse();
@@ -156,21 +161,20 @@ const VariantInlineDropdown = ({
   }, [collapse, expanded]);
 
   return (
-    // eslint-disable-next-line jsx-a11y/no-static-element-interactions
     <div
       className={cx(classes.root, 'engage__variant-selector__inline-dropdown')}
       data-type="inlineDropdown"
-      onKeyDown={handleKeyDown}
     >
       <Transition in={highlight} timeout={500} onEntered={() => setHighlight(false)}>
         {(state: keyof typeof transition) => (
           <button
             type="button"
-            ref={charRef as React.RefObject<HTMLButtonElement>}
+            ref={charRef as RefObject<HTMLButtonElement>}
             className={cx(classes.field, 'engage__variant-selector__inline-dropdown__field')}
             aria-expanded={expanded}
             aria-controls={expanded ? listId : undefined}
             onClick={() => setExpanded(current => !current)}
+            onKeyDown={handleKeyDown}
             style={transition[state]}
           >
             <span className={classes.text}>
@@ -193,7 +197,10 @@ const VariantInlineDropdown = ({
           role="radiogroup"
           aria-labelledby={labelId}
           className={classes.list}
-          onKeyDown={onKeyDown}
+          onKeyDown={(event) => {
+            handleKeyDown(event);
+            onKeyDown(event);
+          }}
         >
           {values.map(value => (
             <button

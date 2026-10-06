@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useContext } from 'react';
 import { router } from '@shopgate/pwa-common/helpers/router';
 import { Portal } from '@shopgate/engage/components';
 import {
@@ -34,29 +34,24 @@ const navigate = (productId: string) => {
 
 /**
  * The Characteristics component.
- * @param props The component props.
  * @returns The variant selection of the product page.
  */
 const Characteristics = ({ productId = null, variantId = null }: CharacteristicsProps) => {
-  const consumeRenderer = useCallback((context: ProductContextValue) => (
-    <VariantSelector
-      productId={productId}
-      variantId={variantId}
-      onVariantSelected={navigate}
-      finishTimeout={200}
-      conditioner={context.conditioner}
-      characteristics={context.characteristics}
-      onCharacteristicsChange={context.setCharacteristics}
-    />
-  ), [productId, variantId]);
+  const context = useContext(ProductContext) as ProductContextValue;
 
   return (
     <>
       <Portal name={PRODUCT_VARIANT_SELECT_BEFORE} />
       <Portal name={PRODUCT_VARIANT_SELECT}>
-        <ProductContext.Consumer>
-          {consumeRenderer}
-        </ProductContext.Consumer>
+        <VariantSelector
+          productId={productId}
+          variantId={variantId}
+          onVariantSelected={navigate}
+          finishTimeout={200}
+          conditioner={context.conditioner}
+          characteristics={context.characteristics}
+          onCharacteristicsChange={context.setCharacteristics}
+        />
       </Portal>
       <Portal name={PRODUCT_VARIANT_SELECT_AFTER} />
     </>

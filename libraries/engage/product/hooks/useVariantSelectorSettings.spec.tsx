@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import useVariantSelectorSettings from './useVariantSelectorSettings';
@@ -30,11 +29,20 @@ const resolve = (settings: Record<string, unknown>) => {
 
 describe('useVariantSelectorSettings()', () => {
   it('parses the swatch characteristics only when swatches are enabled', () => {
-    expect(resolve({ swatchesEnabled: true, swatchCharacteristics: ' Farbe, COLOR ,, ' })
+    expect(resolve({
+      swatchesEnabled: true,
+      swatchCharacteristics: ' Farbe, COLOR ,, ',
+    })
       .swatchCharacteristics).toEqual(['farbe', 'color']);
-    expect(resolve({ swatchesEnabled: false, swatchCharacteristics: 'Farbe' })
+    expect(resolve({
+      swatchesEnabled: false,
+      swatchCharacteristics: 'Farbe',
+    })
       .swatchCharacteristics).toEqual([]);
-    expect(resolve({ swatchesEnabled: true, swatchCharacteristics: 42 })
+    expect(resolve({
+      swatchesEnabled: true,
+      swatchCharacteristics: 42,
+    })
       .swatchCharacteristics).toEqual([]);
   });
 

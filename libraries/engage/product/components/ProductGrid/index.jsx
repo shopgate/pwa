@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { createContext, useContext, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import {
   ViewContext,
@@ -12,6 +12,35 @@ import Layout from './components/Layout';
 import { useProductGridColumns } from './hooks';
 
 export { WIDGET_ID } from './constants';
+
+const GridLayoutContext = createContext({
+  columns: undefined,
+  className: undefined,
+});
+
+/**
+ * Grid layout around the items of the infinite container.
+ * @param {Object} props The component props.
+ * @param {React.ReactNode} props.children The grid items.
+ * @returns {JSX.Element}
+ */
+const InfiniteLayout = ({ children }) => {
+  const { columns, className } = useContext(GridLayoutContext);
+
+  return (
+    <Layout columns={columns} className={className}>
+      {children}
+    </Layout>
+  );
+};
+
+InfiniteLayout.propTypes = {
+  children: PropTypes.node,
+};
+
+InfiniteLayout.defaultProps = {
+  children: null,
+};
 
 /**
  * The Product Grid component.
@@ -50,22 +79,10 @@ const ProductGrid = ({
 
   const columns = useProductGridColumns();
 
-  const wrapper = useMemo(() => {
-    /**
-     * Grid layout around the items of the infinite container.
-     * @param {Object} props The props of the infinite container.
-     * @returns {JSX.Element}
-     */
-    const InfiniteLayout = props => (
-      <Layout
-        columns={columns}
-        className={className}
-        {...props}
-      />
-    );
-
-    return InfiniteLayout;
-  }, [className, columns]);
+  const layout = useMemo(() => ({
+    columns,
+    className,
+  }), [className, columns]);
 
   if (!infiniteLoad) {
     return (
@@ -85,22 +102,24 @@ const ProductGrid = ({
   }
 
   return (
-    <ProductListTypeProvider type="productGrid" subType={scope} meta={meta}>
-      <InfiniteContainer
-        containerRef={getContentRef()}
-        wrapper={wrapper}
-        iterator={Iterator}
-        loader={handleGetProducts}
-        items={products}
-        columns={columns}
-        loadingIndicator={<LoadingIndicator />}
-        totalItems={totalProductCount}
-        initialLimit={ITEMS_PER_LOAD}
-        limit={ITEMS_PER_LOAD}
-        requestHash={requestHash}
-        enablePromiseBasedLoading
-      />
-    </ProductListTypeProvider>
+    <GridLayoutContext.Provider value={layout}>
+      <ProductListTypeProvider type="productGrid" subType={scope} meta={meta}>
+        <InfiniteContainer
+          containerRef={getContentRef()}
+          wrapper={InfiniteLayout}
+          iterator={Iterator}
+          loader={handleGetProducts}
+          items={products}
+          columns={columns}
+          loadingIndicator={<LoadingIndicator />}
+          totalItems={totalProductCount}
+          initialLimit={ITEMS_PER_LOAD}
+          limit={ITEMS_PER_LOAD}
+          requestHash={requestHash}
+          enablePromiseBasedLoading
+        />
+      </ProductListTypeProvider>
+    </GridLayoutContext.Provider>
   );
 };
 

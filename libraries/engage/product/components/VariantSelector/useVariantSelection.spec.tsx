@@ -1,4 +1,3 @@
-import React from 'react';
 import { act, render } from '@testing-library/react';
 import useVariantSelection from './useVariantSelection';
 import type { UseVariantSelectionOptions, UseVariantSelectionResult } from './useVariantSelection';
@@ -9,18 +8,48 @@ const variants: ProductVariants = {
     {
       id: 'color',
       label: 'Color',
-      values: [{ id: 'red', label: 'Red' }, { id: 'blue', label: 'Blue' }],
+      values: [{
+        id: 'red',
+        label: 'Red',
+      }, {
+        id: 'blue',
+        label: 'Blue',
+      }],
     },
     {
       id: 'size',
       label: 'Size',
-      values: [{ id: 's', label: 'S' }, { id: 'm', label: 'M' }],
+      values: [{
+        id: 's',
+        label: 'S',
+      }, {
+        id: 'm',
+        label: 'M',
+      }],
     },
   ],
   products: [
-    { id: 'red-s', characteristics: { color: 'red', size: 's' } },
-    { id: 'red-m', characteristics: { color: 'red', size: 'm' } },
-    { id: 'blue-s', characteristics: { color: 'blue', size: 's' } },
+    {
+      id: 'red-s',
+      characteristics: {
+        color: 'red',
+        size: 's',
+      },
+    },
+    {
+      id: 'red-m',
+      characteristics: {
+        color: 'red',
+        size: 'm',
+      },
+    },
+    {
+      id: 'blue-s',
+      characteristics: {
+        color: 'blue',
+        size: 's',
+      },
+    },
   ],
 };
 
@@ -68,7 +97,10 @@ describe('useVariantSelection', () => {
   it('marks values without variant for the other selected values as unavailable', () => {
     const hook = renderSelection({ variants });
 
-    act(() => hook.result.select({ id: 'color', value: 'blue' }));
+    act(() => hook.result.select({
+      id: 'color',
+      value: 'blue',
+    }));
 
     const size = hook.result.rows[1];
     expect(size.values.find(value => value.id === 's')?.available).toBe(true);
@@ -78,9 +110,15 @@ describe('useVariantSelection', () => {
   it('allows to select the second characteristic first', () => {
     const hook = renderSelection({ variants });
 
-    act(() => hook.result.select({ id: 'size', value: 'm' }));
+    act(() => hook.result.select({
+      id: 'size',
+      value: 'm',
+    }));
 
-    expect(hook.result.selection).toEqual({ color: 'red', size: 'm' });
+    expect(hook.result.selection).toEqual({
+      color: 'red',
+      size: 'm',
+    });
   });
 
   it('calls onVariantSelected after the finish timeout once the selection is complete', () => {
@@ -93,11 +131,20 @@ describe('useVariantSelection', () => {
       finishTimeout: 200,
     });
 
-    act(() => hook.result.select({ id: 'color', value: 'red' }));
-    act(() => hook.result.select({ id: 'size', value: 'm' }));
+    act(() => hook.result.select({
+      id: 'color',
+      value: 'red',
+    }));
+    act(() => hook.result.select({
+      id: 'size',
+      value: 'm',
+    }));
 
     expect(hook.result.isComplete).toBe(true);
-    expect(onCharacteristicsChange).toHaveBeenLastCalledWith({ color: 'red', size: 'm' });
+    expect(onCharacteristicsChange).toHaveBeenLastCalledWith({
+      color: 'red',
+      size: 'm',
+    });
     expect(onVariantSelected).not.toHaveBeenCalled();
 
     act(() => {
@@ -109,25 +156,41 @@ describe('useVariantSelection', () => {
 
   it('selects the characteristics of the given variant', () => {
     const onVariantSelected = jest.fn();
-    const hook = renderSelection({ variants, variantId: 'blue-s', onVariantSelected });
+    const hook = renderSelection({
+      variants,
+      variantId: 'blue-s',
+      onVariantSelected,
+    });
 
     act(() => {
       jest.runAllTimers();
     });
 
-    expect(hook.result.selection).toEqual({ color: 'blue', size: 's' });
+    expect(hook.result.selection).toEqual({
+      color: 'blue',
+      size: 's',
+    });
     expect(onVariantSelected).not.toHaveBeenCalled();
   });
 
   it('preselects a single variant once the variants arrive', () => {
     const single: ProductVariants = {
       characteristics: [variants.characteristics[0]],
-      products: [{ id: 'red-only', characteristics: { color: 'red' } }],
+      products: [{
+        id: 'red-only',
+        characteristics: { color: 'red' },
+      }],
     };
     const onVariantSelected = jest.fn();
-    const hook = renderSelection({ variants: null, onVariantSelected });
+    const hook = renderSelection({
+      variants: null,
+      onVariantSelected,
+    });
 
-    hook.rerender({ variants: single, onVariantSelected });
+    hook.rerender({
+      variants: single,
+      onVariantSelected,
+    });
     act(() => {
       jest.runAllTimers();
     });
@@ -137,13 +200,22 @@ describe('useVariantSelection', () => {
   });
 
   it('preselects the first variant when preselection is switched on', () => {
-    const hook = renderSelection({ variants, preselect: true });
+    const hook = renderSelection({
+      variants,
+      preselect: true,
+    });
 
-    expect(hook.result.selection).toEqual({ color: 'red', size: 's' });
+    expect(hook.result.selection).toEqual({
+      color: 'red',
+      size: 's',
+    });
   });
 
   it('keeps the selection empty when preselection is switched off', () => {
-    const hook = renderSelection({ variants, preselect: false });
+    const hook = renderSelection({
+      variants,
+      preselect: false,
+    });
 
     expect(hook.result.selection).toEqual({});
   });
@@ -151,7 +223,10 @@ describe('useVariantSelection', () => {
   it('syncs a selection that is passed from outside', () => {
     const hook = renderSelection({ variants });
 
-    hook.rerender({ variants, characteristics: { color: 'blue' } });
+    hook.rerender({
+      variants,
+      characteristics: { color: 'blue' },
+    });
 
     expect(hook.result.selection).toEqual({ color: 'blue' });
   });
@@ -169,8 +244,14 @@ describe('useVariantSelection', () => {
     };
     const hook = renderSelection({ variants: reversed });
 
-    act(() => hook.result.select({ id: 'size', value: 's' }));
-    act(() => hook.result.select({ id: 'color', value: 'red' }));
+    act(() => hook.result.select({
+      id: 'size',
+      value: 's',
+    }));
+    act(() => hook.result.select({
+      id: 'color',
+      value: 'red',
+    }));
 
     expect(Object.keys(hook.result.selection)).toEqual(['color', 'size']);
   });
@@ -178,7 +259,10 @@ describe('useVariantSelection', () => {
   it('returns the first unselected characteristic', () => {
     const hook = renderSelection({ variants });
 
-    act(() => hook.result.select({ id: 'color', value: 'red' }));
+    act(() => hook.result.select({
+      id: 'color',
+      value: 'red',
+    }));
 
     expect(hook.result.findFirstUnselected()?.id).toBe('size');
   });

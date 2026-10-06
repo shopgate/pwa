@@ -1,35 +1,34 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import CharacteristicHeading from './CharacteristicHeading';
 import VariantChip from './VariantChip';
 import useRadioGroupKeys from './useRadioGroupKeys';
 import type { VariantRendererProps } from '../types';
 
-const useStyles = makeStyles({ name: 'VariantChips' })({
+const useStyles = makeStyles({ name: 'VariantChips' })(theme => ({
   root: {
-    padding: '0 16px',
-    marginBottom: 16,
+    padding: theme.spacing(0, 2),
+    marginBottom: theme.spacing(2),
   },
   values: {
     display: 'flex',
-    gap: 8,
+    gap: theme.spacing(1),
     flexWrap: 'wrap',
     '&[data-layout="scroll"]': {
       flexWrap: 'nowrap',
       overflowX: 'auto',
-      margin: '0 -16px',
-      padding: '0 16px',
+      margin: theme.spacing(0, -2),
+      padding: theme.spacing(0, 2),
       scrollbarWidth: 'none',
       '&::-webkit-scrollbar': {
         display: 'none',
       },
     },
   },
-});
+}));
 
 /**
  * Renders a characteristic as a group of chips.
- * @param props The renderer props.
  * @returns The chips.
  */
 const VariantChips = ({
@@ -48,7 +47,10 @@ const VariantChips = ({
   const selectedLabel = values.find(value => value.id === selected)?.label ?? null;
 
   const handleSelect = useCallback((valueId: string) => {
-    select({ id, value: valueId });
+    select({
+      id,
+      value: valueId,
+    });
   }, [id, select]);
 
   const { groupRef, onKeyDown, getTabIndex } = useRadioGroupKeys(values, selected, handleSelect);

@@ -1,11 +1,9 @@
-import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import useStickyValue from './useStickyValue';
 
 /**
  * Renders the sticky value.
- * @param props The component props.
  * @returns The value.
  */
 const Value = ({ value, isLoading }: { value: string | null; isLoading: boolean }) => (

@@ -1,5 +1,5 @@
-import React, {
-  createRef, useCallback, useEffect, useMemo, useRef, useState,
+import {
+  createRef, useCallback, useEffect, useMemo, useRef, useState, type ComponentType, type RefObject,
 } from 'react';
 import { useSelector } from 'react-redux';
 import { isBeta } from '@shopgate/engage/core/helpers';
@@ -8,8 +8,14 @@ import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import isMatch from 'lodash/isMatch';
 import uniqueId from 'lodash/uniqueId';
-import * as productSelectors from '@shopgate/pwa-common-commerce/product/selectors/product';
 import { PRODUCT_VARIANT_SELECT_CHARACTERISTIC } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import {
+  getBaseProductId,
+  getProduct,
+  getProductVariants,
+  getProductVariantsState,
+  hasProductVariants,
+} from '../../selectors/catalog';
 import VariantContext from '../ProductCharacteristics/context';
 import useVariantSelectorSettings from '../../hooks/useVariantSelectorSettings';
 import Characteristic from '../Characteristics/Characteristic';
@@ -20,31 +26,14 @@ import VariantInlineDropdown from './renderers/VariantInlineDropdown';
 import SelectedVariantInfo from './renderers/SelectedVariantInfo';
 import useVariantSelection from './useVariantSelection';
 import usePrefetchVariants from './usePrefetchVariants';
-import { getVariantRenderer } from './registry';
 import { decorateRows, resolveRendererType } from './helpers';
 import type {
-  ProductVariants,
   VariantRendererProps,
   VariantSelection,
 } from './types';
 
 const CONDITIONER_NAME = 'product-variants';
 const ANNOUNCE_DELAY = 150;
-
-type ProductSelector<T> = (state: unknown, props: { productId: string | null }) => T;
-
-const getProductVariants =
-  productSelectors.getProductVariants as unknown as ProductSelector<ProductVariants | null>;
-const hasProductVariants =
-  productSelectors.hasProductVariants as unknown as ProductSelector<boolean | null>;
-const getBaseProductId =
-  productSelectors.getBaseProductId as unknown as ProductSelector<string | null>;
-const getProduct =
-  productSelectors.getProduct as unknown as ProductSelector<{ active?: boolean } | null>;
-const getProductVariantsState =
-  productSelectors.getProductVariantsState as unknown as (
-    state: unknown
-  ) => Record<string, { isFetching?: boolean } | undefined>;
 
 /**
  * Whether the variants of a variant product are still expected to arrive.
@@ -71,8 +60,8 @@ const announce = broadcastLiveMessage as unknown as (
   options: { params: Record<string, string> }
 ) => void;
 
-const DEFAULT_RENDERERS: Record<string, React.ComponentType<VariantRendererProps>> = {
-  dropdown: Characteristic as unknown as React.ComponentType<VariantRendererProps>,
+const DEFAULT_RENDERERS: Record<string, ComponentType<VariantRendererProps>> = {
+  dropdown: Characteristic as unknown as ComponentType<VariantRendererProps>,
   chips: VariantChips,
   swatches: VariantSwatches,
   inlineDropdown: VariantInlineDropdown,
@@ -104,7 +93,6 @@ export interface VariantSelectorProps {
 
 /**
  * Renders the characteristics of a product and resolves the selected variant.
- * @param props The component props.
  * @returns The variant selector.
  */
 const VariantSelector = ({
@@ -148,7 +136,7 @@ const VariantSelector = ({
   usePrefetchVariants(variants, selection);
 
   const refs = useMemo(() => {
-    const map: Record<string, React.RefObject<HTMLElement>> = {};
+    const map: Record<string, RefObject<HTMLElement>> = {};
     variants?.characteristics.forEach((char) => {
       map[char.id] = createRef<HTMLElement>();
     });
@@ -178,7 +166,10 @@ const VariantSelector = ({
 
     if (element) {
       element.focus();
-      element.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+      element.scrollIntoView({
+        behavior: reduceMotion ? 'auto' : 'smooth',
+        block: 'center',
+      });
     }
 
     clearTimeout(announceTimeout.current);
@@ -250,9 +241,7 @@ const VariantSelector = ({
   return (
     <VariantContext.Provider value={contextValue}>
       {displayRows.map(({ row, type }) => {
-        const Renderer = getVariantRenderer(type)
-          ?? DEFAULT_RENDERERS[type]
-          ?? DEFAULT_RENDERERS.dropdown;
+        const Renderer = DEFAULT_RENDERERS[type] ?? DEFAULT_RENDERERS.dropdown;
 
         const rendererProps: VariantRendererProps = {
           charRef: refs[row.id],

@@ -1,4 +1,3 @@
-import React from 'react';
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import shareItem from '@shopgate/pwa-core/commands/shareItem';
@@ -15,7 +14,7 @@ jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
 }));
 jest.mock('@shopgate/pwa-core/commands/shareItem', () => jest.fn());
 jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
-  getProductTileActions: () => ({ showShareButton: true }),
+  getProductActionButtons: () => ({ showShareButton: true }),
 }));
 jest.mock('@shopgate/pwa-core/helpers', () => ({
   hasSGJavaScriptBridge: jest.fn(() => true),
@@ -64,16 +63,28 @@ describe('useProductShare()', () => {
 
   it('uses the share sheet of the browser outside of the app', () => {
     const share = jest.fn(() => Promise.resolve());
-    Object.defineProperty(navigator, 'share', { value: share, configurable: true });
+    Object.defineProperty(navigator, 'share', {
+      value: share,
+      configurable: true,
+    });
     (hasSGJavaScriptBridge as jest.Mock).mockReturnValue(false);
-    mockProduct = { name: 'Jacket', productUrl: 'https://shop.example/jacket' };
+    mockProduct = {
+      name: 'Jacket',
+      productUrl: 'https://shop.example/jacket',
+    };
     render(<Share />);
 
     fireEvent.click(screen.getByRole('button', { name: 'share' }));
 
-    expect(share).toHaveBeenCalledWith({ title: 'Jacket', url: 'https://shop.example/jacket' });
+    expect(share).toHaveBeenCalledWith({
+      title: 'Jacket',
+      url: 'https://shop.example/jacket',
+    });
     expect(shareItem).not.toHaveBeenCalled();
-    Object.defineProperty(navigator, 'share', { value: undefined, configurable: true });
+    Object.defineProperty(navigator, 'share', {
+      value: undefined,
+      configurable: true,
+    });
   });
 });
 

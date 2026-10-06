@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import { useCallback } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import CharacteristicHeading from './CharacteristicHeading';
 import useRadioGroupKeys from './useRadioGroupKeys';
@@ -8,14 +8,14 @@ import type { VariantRendererProps, VariantSelectorValue } from '../types';
 
 const useStyles = makeStyles({ name: 'VariantSwatches' })(theme => ({
   root: {
-    padding: '0 16px',
-    marginBottom: 16,
+    padding: theme.spacing(0, 2),
+    marginBottom: theme.spacing(2),
   },
   values: {
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    gap: 12,
+    gap: theme.spacing(1.5),
   },
   swatch: {
     position: 'relative',
@@ -62,7 +62,6 @@ const useStyles = makeStyles({ name: 'VariantSwatches' })(theme => ({
 
 /**
  * Renders a characteristic as color or image swatches. Values without swatch are shown as chips.
- * @param props The renderer props.
  * @returns The swatches.
  */
 const VariantSwatches = ({
@@ -82,7 +81,10 @@ const VariantSwatches = ({
   const selectedLabel = values.find(value => value.id === selected)?.label ?? null;
 
   const handleSelect = useCallback((valueId: string) => {
-    select({ id, value: valueId });
+    select({
+      id,
+      value: valueId,
+    });
   }, [id, select]);
 
   const { groupRef, onKeyDown, getTabIndex } = useRadioGroupKeys(values, selected, handleSelect);

@@ -8,33 +8,88 @@ const variants: ProductVariants = {
     {
       id: 'size',
       label: 'Size',
-      values: [{ id: 's', label: 'S' }, { id: 'l', label: 'L' }],
+      values: [{
+        id: 's',
+        label: 'S',
+      }, {
+        id: 'l',
+        label: 'L',
+      }],
     },
     {
       id: 'color',
       label: 'Color',
-      values: [{ id: 'black', label: 'Black' }, { id: 'blue', label: 'Blue' }, { id: 'gold', label: 'Gold' }],
+      values: [{
+        id: 'black',
+        label: 'Black',
+      }, {
+        id: 'blue',
+        label: 'Blue',
+      }, {
+        id: 'gold',
+        label: 'Gold',
+      }],
     },
   ],
   products: [
-    { id: 's-black', characteristics: { color: 'black', size: 's' } },
-    { id: 's-blue', characteristics: { color: 'blue', size: 's' } },
-    { id: 's-gold', characteristics: { color: 'gold', size: 's' } },
-    { id: 'l-black', characteristics: { color: 'black', size: 'l' } },
-    { id: 'l-gold', characteristics: { color: 'gold', size: 'l' } },
+    {
+      id: 's-black',
+      characteristics: {
+        color: 'black',
+        size: 's',
+      },
+    },
+    {
+      id: 's-blue',
+      characteristics: {
+        color: 'blue',
+        size: 's',
+      },
+    },
+    {
+      id: 's-gold',
+      characteristics: {
+        color: 'gold',
+        size: 's',
+      },
+    },
+    {
+      id: 'l-black',
+      characteristics: {
+        color: 'black',
+        size: 'l',
+      },
+    },
+    {
+      id: 'l-gold',
+      characteristics: {
+        color: 'gold',
+        size: 'l',
+      },
+    },
   ],
 };
 
 describe('VariantSelector selection', () => {
   it('orders a selection like the characteristics', () => {
-    expect(Object.keys(orderSelection({ color: 'black', size: 's' }, variants)))
+    expect(Object.keys(orderSelection({
+      color: 'black',
+      size: 's',
+    }, variants)))
       .toEqual(['size', 'color']);
   });
 
   it('selects characteristics with a single value', () => {
     const single: ProductVariants = {
       characteristics: [
-        { id: 'size', label: 'Size', values: [{ id: 'one', label: 'onesize' }] },
+        {
+          id: 'size',
+          label: 'Size',
+          values: [{
+            id: 'one',
+            label: 'onesize',
+          }],
+        },
         variants.characteristics[1],
       ],
       products: [],
@@ -44,17 +99,29 @@ describe('VariantSelector selection', () => {
   });
 
   it('switches the color of a complete selection', () => {
-    expect(applySelection(variants, { size: 's', color: 'black' }, 'color', 'gold'))
-      .toEqual({ size: 's', color: 'gold' });
+    expect(applySelection(variants, {
+      size: 's',
+      color: 'black',
+    }, 'color', 'gold'))
+      .toEqual({
+        size: 's',
+        color: 'gold',
+      });
   });
 
   it('drops a value that does not fit the new selection', () => {
-    expect(applySelection(variants, { size: 's', color: 'blue' }, 'size', 'l'))
+    expect(applySelection(variants, {
+      size: 's',
+      color: 'blue',
+    }, 'size', 'l'))
       .toEqual({ size: 'l' });
   });
 
   it('completes the selection when only one variant is left', () => {
-    expect(applySelection(variants, {}, 'color', 'blue')).toEqual({ size: 's', color: 'blue' });
+    expect(applySelection(variants, {}, 'color', 'blue')).toEqual({
+      size: 's',
+      color: 'blue',
+    });
   });
 
   it('marks unavailable combinations but keeps them selectable', () => {

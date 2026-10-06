@@ -1,4 +1,4 @@
-import React from 'react';
+import { type ReactNode, type RefObject } from 'react';
 import {
   act, fireEvent, render, screen,
 } from '@testing-library/react';
@@ -9,7 +9,6 @@ import {
   hasProductVariants,
 } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import VariantSelector from './VariantSelector';
-import { registerVariantRenderer } from './registry';
 import type { ProductVariants, VariantRendererProps } from './types';
 
 jest.mock('react-redux', () => ({
@@ -27,10 +26,10 @@ jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
 jest.mock('@shopgate/engage/a11y/hooks', () => ({ useReduceMotion: () => true }));
 jest.mock('@shopgate/engage/core/helpers', () => ({ isBeta: () => false }));
 jest.mock('@shopgate/engage/components', () => ({
-  Portal: ({ children }: { children: React.ReactNode }) => children,
+  Portal: ({ children }: { children: ReactNode }) => children,
 }));
 jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
-jest.mock('../Characteristics/Characteristic', () => () => null);
+jest.mock('../Characteristics/Characteristic', () => (props: VariantRendererProps) => mockRenderer(props));
 jest.mock('./renderers/VariantChips', () => () => null);
 jest.mock('./renderers/VariantSwatches', () => () => null);
 jest.mock('./renderers/SelectedVariantInfo', () => () => null);
@@ -52,20 +51,32 @@ const variants: ProductVariants = {
     {
       id: 'color',
       label: 'Color',
-      values: [{ id: 'red', label: 'Red' }, { id: 'blue', label: 'Blue' }],
+      values: [{
+        id: 'red',
+        label: 'Red',
+      }, {
+        id: 'blue',
+        label: 'Blue',
+      }],
     },
   ],
   products: [
-    { id: 'red-1', characteristics: { color: 'red' } },
-    { id: 'blue-1', characteristics: { color: 'blue' } },
+    {
+      id: 'red-1',
+      characteristics: { color: 'red' },
+    },
+    {
+      id: 'blue-1',
+      characteristics: { color: 'blue' },
+    },
   ],
 };
 
-const TestRenderer = ({
+const mockRenderer = ({
   charRef, id, label, values, select, highlight, selected,
 }: VariantRendererProps) => (
   <div
-    ref={charRef as React.RefObject<HTMLDivElement>}
+    ref={charRef as RefObject<HTMLDivElement>}
     tabIndex={-1}
     data-testid={`row-${id}`}
     data-highlight={highlight ? 'true' : undefined}
@@ -73,7 +84,14 @@ const TestRenderer = ({
   >
     {label}
     {values.map(value => (
-      <button key={value.id} type="button" onClick={() => select({ id, value: value.id })}>
+      <button
+        key={value.id}
+        type="button"
+        onClick={() => select({
+          id,
+          value: value.id,
+        })}
+      >
         {value.label}
       </button>
     ))}
@@ -92,7 +110,6 @@ const mockVariants = (
 
 describe('<VariantSelector />', () => {
   beforeAll(() => {
-    registerVariantRenderer('dropdown', TestRenderer);
     Element.prototype.scrollIntoView = jest.fn();
   });
 
@@ -132,7 +149,7 @@ describe('<VariantSelector />', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  it('renders the characteristics with the registered renderer and selects a variant', () => {
+  it('renders the characteristics and selects a variant', () => {
     mockVariants(variants, true);
     const onVariantSelected = jest.fn();
     render(<VariantSelector productId="base" onVariantSelected={onVariantSelected} />);

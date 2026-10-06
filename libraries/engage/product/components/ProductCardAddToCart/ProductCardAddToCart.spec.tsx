@@ -1,10 +1,9 @@
-import React from 'react';
+import { type ReactNode } from 'react';
 import {
   act, fireEvent, render, screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
-import { historyPush } from '@shopgate/pwa-common/actions/router/historyPush';
 import ProductCardAddToCart from './ProductCardAddToCart';
 
 let mockProduct: unknown = null;
@@ -20,8 +19,10 @@ jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProduct: () => mockProduct,
 }));
 jest.mock('@shopgate/pwa-common-commerce/cart/actions/addProductsToCart', () => jest.fn(() => 'ADD'));
-jest.mock('@shopgate/pwa-common/actions/router/historyPush', () => ({
-  historyPush: jest.fn(() => 'PUSH'),
+const mockPush = jest.fn();
+
+jest.mock('@shopgate/engage/core/hooks/useNavigation', () => ({
+  useNavigation: () => ({ push: mockPush }),
 }));
 jest.mock('@shopgate/pwa-common-commerce/product/helpers', () => ({
   getProductRoute: (id: string) => `/item/${id}`,
@@ -41,7 +42,7 @@ jest.mock('@shopgate/engage/components/v2', () => ({
   }: {
     onClick: (event: unknown) => unknown;
     disabled: boolean;
-    children: React.ReactNode;
+    children: ReactNode;
     'aria-busy'?: boolean;
   }) => (
     <button type="button" disabled={disabled} aria-busy={busy} onClick={onClick}>
@@ -55,7 +56,7 @@ jest.mock('@shopgate/engage/components/v2', () => ({
     onClick: (event: unknown) => unknown;
     disabled: boolean;
     variant: string;
-    children: React.ReactNode;
+    children: ReactNode;
     'aria-busy'?: boolean;
   }) => (
     <button
@@ -87,37 +88,57 @@ describe('<ProductCardAddToCart />', () => {
   });
 
   it('adds a simple product directly', () => {
-    mockProduct = { id: 'simple', flags: {}, stock: { orderable: true } };
+    mockProduct = {
+      id: 'simple',
+      flags: {},
+      stock: { orderable: true },
+    };
     render(<ProductCardAddToCart productId="simple" />);
 
     fireEvent.click(screen.getByRole('button', { name: 'add' }));
 
-    expect(addProductsToCart).toHaveBeenCalledWith([{ productId: 'simple', quantity: 1 }]);
+    expect(addProductsToCart).toHaveBeenCalledWith([{
+      productId: 'simple',
+      quantity: 1,
+    }]);
   });
 
   it('opens the variant sheet for variant products and adds the selected variant', () => {
-    mockProduct = { id: 'base', flags: { hasVariants: true } };
+    mockProduct = {
+      id: 'base',
+      flags: { hasVariants: true },
+    };
     render(<ProductCardAddToCart productId="base" />);
 
     fireEvent.click(screen.getByRole('button', { name: 'add' }));
     expect(addProductsToCart).not.toHaveBeenCalled();
 
     fireEvent.click(screen.getByRole('button', { name: 'sheet' }));
-    expect(addProductsToCart).toHaveBeenCalledWith([{ productId: 'variant-1', quantity: 1 }]);
+    expect(addProductsToCart).toHaveBeenCalledWith([{
+      productId: 'variant-1',
+      quantity: 1,
+    }]);
   });
 
   it('leads to the product page for products with options', () => {
-    mockProduct = { id: 'options', flags: { hasOptions: true } };
+    mockProduct = {
+      id: 'options',
+      flags: { hasOptions: true },
+    };
     render(<ProductCardAddToCart productId="options" />);
 
     fireEvent.click(screen.getByRole('button', { name: 'add' }));
 
-    expect(historyPush).toHaveBeenCalledWith({ pathname: '/item/options' });
+    expect(mockPush).toHaveBeenCalledWith({ pathname: '/item/options' });
     expect(addProductsToCart).not.toHaveBeenCalled();
   });
 
   it('disables the button for products that are not orderable', () => {
-    mockProduct = { id: 'soldout', flags: {}, stock: { orderable: false } };
+    mockProduct = {
+      id: 'soldout',
+      flags: {},
+      stock: { orderable: false },
+    };
     render(<ProductCardAddToCart productId="soldout" />);
 
     expect(screen.getByRole('button', { name: 'add' })).toBeDisabled();
@@ -126,7 +147,11 @@ describe('<ProductCardAddToCart />', () => {
   it('shows the tick only after the product was added', async () => {
     let resolve: (value: unknown) => void = jest.fn();
     mockAddResult = new Promise((done) => { resolve = done; });
-    mockProduct = { id: 'simple', flags: {}, stock: { orderable: true } };
+    mockProduct = {
+      id: 'simple',
+      flags: {},
+      stock: { orderable: true },
+    };
     render(<ProductCardAddToCart productId="simple" variant="button" />);
 
     const button = screen.getByRole('button');
@@ -147,7 +172,11 @@ describe('<ProductCardAddToCart />', () => {
   it('returns to the initial state when adding fails', async () => {
     mockAddResult = Promise.reject(new Error('failed'));
     mockAddResult.catch(jest.fn());
-    mockProduct = { id: 'simple', flags: {}, stock: { orderable: true } };
+    mockProduct = {
+      id: 'simple',
+      flags: {},
+      stock: { orderable: true },
+    };
     render(<ProductCardAddToCart productId="simple" variant="button" />);
 
     const button = screen.getByRole('button');
@@ -161,7 +190,11 @@ describe('<ProductCardAddToCart />', () => {
 
   it('ignores clicks while the product is being added', () => {
     mockAddResult = new Promise(jest.fn());
-    mockProduct = { id: 'simple', flags: {}, stock: { orderable: true } };
+    mockProduct = {
+      id: 'simple',
+      flags: {},
+      stock: { orderable: true },
+    };
     render(<ProductCardAddToCart productId="simple" />);
 
     const button = screen.getByRole('button', { name: /add/ });

@@ -5,14 +5,46 @@ jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProductsById', () 
 
 const variants: ProductVariants = {
   characteristics: [
-    { id: 'size', label: 'Size', values: [] },
-    { id: 'color', label: 'Color', values: [] },
+    {
+      id: 'size',
+      label: 'Size',
+      values: [],
+    },
+    {
+      id: 'color',
+      label: 'Color',
+      values: [],
+    },
   ],
   products: [
-    { id: 's-black', characteristics: { size: 's', color: 'black' } },
-    { id: 's-gold', characteristics: { size: 's', color: 'gold' } },
-    { id: 'm-black', characteristics: { size: 'm', color: 'black' } },
-    { id: 'm-gold', characteristics: { size: 'm', color: 'gold' } },
+    {
+      id: 's-black',
+      characteristics: {
+        size: 's',
+        color: 'black',
+      },
+    },
+    {
+      id: 's-gold',
+      characteristics: {
+        size: 's',
+        color: 'gold',
+      },
+    },
+    {
+      id: 'm-black',
+      characteristics: {
+        size: 'm',
+        color: 'black',
+      },
+    },
+    {
+      id: 'm-gold',
+      characteristics: {
+        size: 'm',
+        color: 'gold',
+      },
+    },
   ],
 };
 
@@ -22,7 +54,10 @@ describe('getNearbyVariantIds()', () => {
   });
 
   it('returns the selected variant first and the variants one selection away', () => {
-    expect(getNearbyVariantIds(variants, { size: 's', color: 'black' }))
+    expect(getNearbyVariantIds(variants, {
+      size: 's',
+      color: 'black',
+    }))
       .toEqual(['s-black', 's-gold', 'm-black']);
   });
 

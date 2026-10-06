@@ -13,11 +13,11 @@ import {
   PRODUCT_CTAS_SHARE,
   PRODUCT_CTAS_SHARE_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
-import { ProductShareButton } from '@shopgate/engage/product/components';
+import { ProductShareButton } from '@shopgate/engage/product/components/ProductShareButton';
 import { appConfig } from '@shopgate/engage';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getProductTileActions } from '@shopgate/engage/settings/selectors/appSettings';
+import { getProductActionButtons } from '@shopgate/engage/settings/selectors/appSettings';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig;
@@ -64,7 +64,7 @@ const CTAButtons = ({
   isFavorite, productId, isProductActive, hasImageGallery,
 }) => {
   const { classes, cx } = useStyles();
-  const { position, direction } = useSelector(getProductTileActions);
+  const { position, direction } = useSelector(getProductActionButtons);
   const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery;
 
   return (

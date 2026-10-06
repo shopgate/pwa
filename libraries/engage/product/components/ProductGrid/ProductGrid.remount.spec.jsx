@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import ProductGrid from './index';
 
@@ -43,7 +42,13 @@ describe('<ProductGrid /> with infinite loading', () => {
     };
     const { rerender } = render(<ProductGrid {...props} products={[{ id: 'a' }, { id: 'b' }]} />);
 
-    rerender(<ProductGrid {...props} products={[{ id: 'a', name: 'loaded' }, { id: 'b' }]} />);
+    rerender(<ProductGrid
+      {...props}
+      products={[{
+        id: 'a',
+        name: 'loaded',
+      }, { id: 'b' }]}
+    />);
 
     expect(mockMounts).toHaveBeenCalledTimes(2);
   });

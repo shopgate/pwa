@@ -89,6 +89,5 @@ export interface VariantRendererProps {
   swatchImageZoom?: number;
 }
 
-/** Display types for characteristics. Extensions can register further types. */
-export type VariantRendererType =
-  'dropdown' | 'inlineDropdown' | 'chips' | 'swatches' | (string & NonNullable<unknown>);
+/** Display types for characteristics. */
+export type VariantRendererType = 'dropdown' | 'inlineDropdown' | 'chips' | 'swatches';

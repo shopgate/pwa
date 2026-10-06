@@ -1,26 +1,26 @@
-import React, { useContext } from 'react';
+import { useContext, type ComponentType } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
 import { ProductContext } from '../../context';
 import ConnectedVariantAvailability from '../../ProductVariants/VariantAvailability';
 import type { VariantSelection } from '../types';
 
-const VariantAvailability = ConnectedVariantAvailability as unknown as React.ComponentType<{
+const VariantAvailability = ConnectedVariantAvailability as unknown as ComponentType<{
   characteristics: VariantSelection;
   productId: string | null;
 }>;
 
-const useStyles = makeStyles({ name: 'SelectedVariantInfo' })({
+const useStyles = makeStyles({ name: 'SelectedVariantInfo' })(theme => ({
   root: {
     display: 'flow-root',
-    padding: '0 16px',
-    marginTop: -8,
-    marginBottom: 16,
+    padding: theme.spacing(0, 2),
+    marginTop: theme.spacing(-1),
+    marginBottom: theme.spacing(2),
     '&:empty': {
       display: 'none',
     },
   },
-});
+}));
 
 export interface SelectedVariantInfoProps {
   /** ID of the base product. */
@@ -31,7 +31,6 @@ export interface SelectedVariantInfoProps {
 
 /**
  * Shows availability and the back in stock button of the selected variant.
- * @param props The component props.
  * @returns The info.
  */
 const SelectedVariantInfo = ({ productId, selection }: SelectedVariantInfoProps) => {

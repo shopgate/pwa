@@ -1,4 +1,3 @@
-import React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { VisuallyHidden } from '@shopgate/engage/a11y';
 import { getValueStateText } from './valueState';
@@ -9,7 +8,7 @@ const useStyles = makeStyles({ name: 'VariantChip' })(theme => ({
     flexShrink: 0,
     minWidth: 48,
     minHeight: 40,
-    padding: '0 14px',
+    padding: theme.spacing(0, 1.75),
     border: `1px solid ${theme.components.input.border}`,
     borderRadius: theme.shape.borderRadius,
     background: theme.palette.background.surface,
@@ -52,7 +51,6 @@ export interface VariantChipProps {
 
 /**
  * A single characteristic value shown as a chip.
- * @param props The component props.
  * @returns The chip.
  */
 const VariantChip = ({ value, onSelect, tabIndex }: VariantChipProps) => {

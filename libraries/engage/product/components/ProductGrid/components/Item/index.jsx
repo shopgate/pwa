@@ -6,7 +6,7 @@ import { Link } from '@shopgate/engage/components';
 import { useProductListType } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useSelector } from 'react-redux';
-import { getProductTileActions } from '@shopgate/engage/settings/selectors/appSettings';
+import { getProductActionButtons } from '@shopgate/engage/settings/selectors/appSettings';
 import { ProductCardAddToCart } from '../../../ProductCardAddToCart';
 import { ProductTileActions } from '../../../ProductTileActions';
 import ItemImage from './components/ItemImage';
@@ -57,7 +57,7 @@ const useStyles = makeStyles()((theme, { display }) => ({
 const Item = ({ product, display }) => {
   const { classes, cx } = useStyles({ display });
   const { meta } = useProductListType();
-  const { addToCart } = useSelector(getProductTileActions);
+  const { addToCart } = useSelector(getProductActionButtons);
 
   return (
     <div className={cx(classes.root, 'theme__product-grid__item')}>

@@ -1,4 +1,4 @@
-import { merge } from 'lodash';
+import { isNil, merge, omitBy } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type { AppSettingsSlice } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
@@ -77,7 +77,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       preselect: false,
       soldOut: 'strike',
     },
-    tileActions: {
+    actionButtons: {
       position: 'bottomRight',
       addToCart: 'hidden',
       direction: 'horizontal',
@@ -129,7 +129,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets,
+      images, typography, appearance, widgets, product,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -152,6 +152,15 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       appearance: appearance === null ? undefined : {
         ...appearance,
         defaultColorSchemeMode: appearance?.defaultColorSchemeMode ?? undefined,
+      },
+      product: product === null ? undefined : {
+        ...product,
+        variantSelector: product?.variantSelector
+          ? omitBy(product.variantSelector, isNil)
+          : undefined,
+        actionButtons: product?.actionButtons
+          ? omitBy(product.actionButtons, isNil)
+          : undefined,
       },
       widgets: widgets === null ? undefined : {
         ...widgets,

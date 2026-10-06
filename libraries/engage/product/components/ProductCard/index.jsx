@@ -28,7 +28,7 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   getProductCardNameMaxLines,
-  getProductTileActions,
+  getProductActionButtons,
 } from '@shopgate/engage/settings/selectors/appSettings';
 import { ProductCardAddToCart } from '../ProductCardAddToCart';
 import { ProductTileActions } from '../ProductTileActions';
@@ -99,7 +99,7 @@ function ProductCard(props) {
   } = props;
   const { meta } = useProductListType();
   const productNameLines = useSelector(getProductCardNameMaxLines);
-  const { addToCart } = useSelector(getProductTileActions);
+  const { addToCart } = useSelector(getProductActionButtons);
 
   const showEmptyRatingStars = useShowEmptyRatingStars();
 
