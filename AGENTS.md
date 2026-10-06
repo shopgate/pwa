@@ -84,6 +84,22 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   props of JavaScript components from their destructured parameters and reports all of them as
   required. Keep the config free of `include` and `paths`, which resolve relative to the package.
   It sets `types`, so `@shopgate/pwa-unit-test` has `@types/jest` as a dependency.
+- **Type check:** `npm run typecheck` checks every library, util and theme with a `tsconfig.json`
+  plus `scripts/release`, and fails on any error. `release prepare` runs it, so a type error
+  stops a release. The release build itself uses `tsc --noCheck`. The gate runs without the
+  `@shopgate/*` fallback of `untyped-modules.d.ts` (excluded in engage's tsconfig, `--types jest`
+  for the themes), so that a wrong import path fails instead of becoming `any`.
+- **Type check in the dev server:** opt-in with `TYPE_CHECK=1 sgconnect frontend start`.
+  `ShopgateTypeCheckPlugin` starts `tsc --watch` for the theme and for each attached extension
+  with a `frontend/tsconfig.json`, using the TypeScript installed there, and prints the errors to
+  the terminal. `TYPE_CHECK=overlay` also sends them to the dev server's error overlay, which is
+  off otherwise. The theme reports every file it reaches, an extension only its own files, so an
+  error in a library shows up once. It runs the binary and parses its plain output instead of
+  using `fork-ts-checker-webpack-plugin`, because TypeScript 7 has no JavaScript API anymore.
+  `theme-ios11` extends `tsconfig.extension.json` as well, since `engage/tsconfig.json` isn't
+  published. A watcher that stops is reported with its last output. Each watcher runs through
+  `lib/typeCheckWatcher.js`, which ends the compiler's process group when the dev server goes away;
+  TypeScript 7 otherwise leaves its native compiler running on Node below 22.15.
 - **Check dependency changes against a standalone theme install**, not only against this
   workspace: peer dependency conflicts that npm resolves here by nesting (e.g. the dev server
   vs. `@pmmmwh/react-refresh-webpack-plugin`) fail with `ERESOLVE` there.

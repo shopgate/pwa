@@ -6,7 +6,7 @@ import { buildAll } from './build.ts';
 import { bumpVersions, updateLockfile } from '../steps/bump.ts';
 import { generateChangelog } from '../steps/changelog.ts';
 import { checkVersion, pipelineLine } from './check.ts';
-import { logStep } from '../lib/exec.ts';
+import { logStep, run } from '../lib/exec.ts';
 import {
   getWorkingTreeChanges,
   git,
@@ -53,6 +53,9 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
   git(['fetch', 'origin']);
   const resumesBranch = remoteBranchExists('origin', releaseBranch);
   git(['checkout', '-B', releaseBranch, `origin/${resumesBranch ? releaseBranch : branch}`]);
+
+  logStep('Checking types');
+  run(process.execPath, [path.join(root, 'scripts', 'typecheck', 'run.mts')], { cwd: root });
 
   if (!hasCommitWithMessage('HEAD', releasedMessage)) {
     logStep(`Bumping versions to ${version.version}`);

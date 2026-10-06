@@ -25,6 +25,14 @@
     "INVALID": "... invalid:",
     "VALID": "... theme configuration is valid"
   },
+  "plugins/ShopgateTypeCheckPlugin": {
+    "CHECKING": "Type checking {name} ...",
+    "ERRORS": "Type errors: {count}",
+    "NO_ERRORS": "No type errors",
+    "NO_TYPESCRIPT": "Type check skipped for {name}: TypeScript is not installed there",
+    "FAILED": "Type check of {name} could not be started: {message}",
+    "STOPPED": "Type check of {name} stopped unexpectedly ({reason}). Restart the frontend to check it again. Its last output:"
+  },
   "webpack.config": {
     "WEBPACK_PROGRESS": "building [{bar}] [{message}] {percent} ({elapsed} seconds)"
   },

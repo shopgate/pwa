@@ -44,6 +44,7 @@
     "test:extension": "node scripts/test-extension/run.mts",
     "cover": "jest --coverage",
     "lint": "eslint --quiet --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json .",
+    "typecheck": "node scripts/typecheck/run.mts",
     "lint:summary": "eslint --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json . -f ./scripts/eslint-summary-formatter.cjs",
     "release": "node scripts/release/cli.ts",
     "release:typecheck": "tsc -p scripts/release",
