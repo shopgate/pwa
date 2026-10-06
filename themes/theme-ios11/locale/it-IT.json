@@ -602,8 +602,8 @@
     "button_retry": "Riprova",
     "verified": "Verificata",
     "verified_info": "Le recensioni contrassegnate come verificate sono state controllate dal fornitore di recensioni.",
-    "merchant_reply": "Risposta di {author}",
-    "merchant_reply_default": "Risposta del venditore",
+    "merchant_reply": "Risposta del venditore",
+    "merchant_reply_show": "Mostra risposta del venditore",
     "media_image": "Apri immagine {index}",
     "media_video": "Riproduci video {index}",
     "media_viewer": "Immagini e video della recensione"

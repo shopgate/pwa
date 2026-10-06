@@ -602,8 +602,8 @@
     "button_retry": "Próbálja újra",
     "verified": "Ellenőrzött",
     "verified_info": "Az ellenőrzöttként jelölt véleményeket a véleménykezelő szolgáltató ellenőrizte.",
-    "merchant_reply": "Válasz: {author}",
-    "merchant_reply_default": "A kereskedő válasza",
+    "merchant_reply": "A kereskedő válasza",
+    "merchant_reply_show": "A kereskedő válaszának megjelenítése",
     "media_image": "{index}. kép megnyitása",
     "media_video": "{index}. videó lejátszása",
     "media_viewer": "A vélemény képei és videói"

@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import ReviewCard from './ReviewCard';
 
@@ -188,8 +188,7 @@ describe('<ReviewCard />', () => {
       .not.toBeInTheDocument();
   });
 
-  it('should render the merchant reply with author and date as plain text', () => {
-    const textSpy = jest.spyOn(i18nHelpers, 'text');
+  it('should keep the merchant reply collapsed until the toggle is activated', () => {
     const dateSpy = jest.spyOn(i18nHelpers, 'date');
 
     const { container } = render(<ReviewCard review={{
@@ -203,22 +202,30 @@ describe('<ReviewCard />', () => {
     }}
     />);
 
-    const reply = container.querySelector('.engage__reviews__review-card__reply');
-    expect(reply).toBeInTheDocument();
-    expect(textSpy).toHaveBeenCalledWith(
-      'reviews.merchant_reply',
-      { author: 'Customer Service' },
-      expect.anything()
-    );
-    expect(dateSpy).toHaveBeenCalledWith(new Date('2026-08-01T10:00:00.000Z').getTime(), 'long');
+    const toggle = screen.getByRole('button', { name: 'reviews.merchant_reply_show' });
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
     expect(container.querySelector('.engage__reviews__review-card__reply-text'))
-      .toHaveTextContent('Thank you <b>very</b> much');
-    expect(reply?.querySelector('b')).not.toBeInTheDocument();
+      .not.toBeInTheDocument();
+
+    fireEvent.click(toggle);
+
+    expect(toggle).toHaveAttribute('aria-expanded', 'true');
+    expect(toggle).toHaveTextContent('reviews.merchant_reply');
+    const replyText = container.querySelector('.engage__reviews__review-card__reply-text');
+    expect(replyText).toHaveTextContent('Thank you <b>very</b> much');
+    expect(replyText?.querySelector('b')).not.toBeInTheDocument();
+    expect(container.querySelector('.engage__reviews__review-card__reply-meta'))
+      .toHaveTextContent('Customer Service · d');
+    expect(dateSpy).toHaveBeenCalledWith(new Date('2026-08-01T10:00:00.000Z').getTime(), 'long');
+
+    fireEvent.click(toggle);
+
+    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    expect(container.querySelector('.engage__reviews__review-card__reply-text'))
+      .not.toBeInTheDocument();
   });
 
-  it('should render a merchant reply without author and date', () => {
-    const dateSpy = jest.spyOn(i18nHelpers, 'date');
-
+  it('should render an opened merchant reply without author and date', () => {
     const { container } = render(<ReviewCard review={{
       id: 14,
       rate: 80,
@@ -226,9 +233,12 @@ describe('<ReviewCard />', () => {
     }}
     />);
 
-    expect(container.querySelector('.engage__reviews__review-card__reply'))
-      .toHaveTextContent('reviews.merchant_reply_default');
-    expect(dateSpy).not.toHaveBeenCalled();
+    fireEvent.click(screen.getByRole('button', { name: 'reviews.merchant_reply_show' }));
+
+    expect(container.querySelector('.engage__reviews__review-card__reply-text'))
+      .toHaveTextContent('Thanks');
+    expect(container.querySelector('.engage__reviews__review-card__reply-meta'))
+      .not.toBeInTheDocument();
   });
 
   it('should not render a merchant reply without reply text', () => {

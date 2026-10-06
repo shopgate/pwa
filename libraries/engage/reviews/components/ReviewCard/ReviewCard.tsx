@@ -1,7 +1,7 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { I18n, RatingStars, Typography } from '@shopgate/engage/components';
-import { makeStyles } from '@shopgate/engage/styles';
-import CheckIcon from '@shopgate/pwa-ui-shared/icons/CheckIcon';
+import { ButtonBase } from '@shopgate/engage/components/v2';
+import { keyframes, makeStyles } from '@shopgate/engage/styles';
 import type { Review } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import ReviewMedia from '../ReviewMedia';
 
@@ -15,6 +15,11 @@ const toTimestamp = (date?: string): number | null => {
   return Number.isFinite(timestamp) ? timestamp : null;
 };
 
+const fadeIn = keyframes({
+  from: { opacity: 0 },
+  to: { opacity: 1 },
+});
+
 const useStyles = makeStyles()(theme => ({
   header: {
     display: 'flex',
@@ -23,15 +28,13 @@ const useStyles = makeStyles()(theme => ({
     gap: theme.spacing(1),
   },
   verified: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    gap: theme.spacing(0.5),
-  },
-  verifiedIcon: {
-    color: theme.palette.success.main,
-    '& path': {
-      stroke: 'currentColor',
-    },
+    padding: '2px 7px',
+    borderRadius: 999,
+    background: theme.palette.primary.main,
+    color: theme.contrastColor(theme.palette.primary.main),
+    fontSize: 11,
+    fontWeight: theme.typography.fontWeightMedium,
+    lineHeight: 1.5,
   },
   title: {
     marginTop: theme.spacing(1),
@@ -56,9 +59,35 @@ const useStyles = makeStyles()(theme => ({
     marginTop: theme.spacing(1),
   },
   reply: {
-    marginTop: theme.spacing(1.5),
+    marginTop: theme.spacing(0.5),
     paddingLeft: theme.spacing(1.5),
     borderLeft: `2px solid ${theme.components.border.light}`,
+  },
+  replyToggle: {
+    justifyContent: 'flex-start',
+    minHeight: 44,
+    padding: 0,
+    color: theme.palette.primary.main,
+    fontSize: 13,
+    fontWeight: theme.typography.fontWeightBold,
+    textAlign: 'left',
+    '&:focus-visible': {
+      outline: `2px solid ${theme.palette.primary.main}`,
+    },
+  },
+  replyContent: {
+    paddingBottom: theme.spacing(0.5),
+    animation: `${fadeIn} 150ms ease-out`,
+    '@media (prefers-reduced-motion: reduce)': {
+      animation: 'none',
+    },
+  },
+  replyText: {
+    whiteSpace: 'pre-line',
+    overflowWrap: 'anywhere',
+  },
+  replyMeta: {
+    marginTop: theme.spacing(0.5),
   },
 }));
 
@@ -75,6 +104,7 @@ export interface ReviewCardProps {
  */
 const ReviewCard = ({ review, className }: ReviewCardProps) => {
   const { classes, cx } = useStyles();
+  const [isReplyOpen, setIsReplyOpen] = useState(false);
   const timestamp = toTimestamp(review.date);
   const title = review.title?.trim();
   const text = review.review?.trim();
@@ -90,15 +120,9 @@ const ReviewCard = ({ review, className }: ReviewCardProps) => {
       <div className={classes.header}>
         <RatingStars value={review.rate} />
         {review.isVerified === true && (
-          <Typography
-            variant="caption"
-            component="span"
-            color="textSecondary"
-            className={cx(classes.verified, 'engage__reviews__review-card__verified')}
-          >
-            <CheckIcon size={14} className={classes.verifiedIcon} />
+          <span className={cx(classes.verified, 'engage__reviews__review-card__verified')}>
             <I18n.Text string="reviews.verified" />
-          </Typography>
+          </span>
         )}
       </div>
       {title && (
@@ -151,20 +175,40 @@ const ReviewCard = ({ review, className }: ReviewCardProps) => {
       )}
       {reply && (
         <div className={cx(classes.reply, 'engage__reviews__review-card__reply')}>
-          <Typography variant="caption" component="div" color="textSecondary">
-            {replyAuthor
-              ? <I18n.Text string="reviews.merchant_reply" params={{ author: replyAuthor }} />
-              : <I18n.Text string="reviews.merchant_reply_default" />}
-            {replyTimestamp !== null && ' · '}
-            {replyTimestamp !== null && <I18n.Date timestamp={replyTimestamp} format="long" />}
-          </Typography>
-          <Typography
-            variant="body2"
-            component="div"
-            className={cx(classes.text, 'engage__reviews__review-card__reply-text')}
+          <ButtonBase
+            className={cx(classes.replyToggle, 'engage__reviews__review-card__reply-toggle')}
+            aria-expanded={isReplyOpen}
+            onClick={() => setIsReplyOpen(isOpen => !isOpen)}
           >
-            {reply}
-          </Typography>
+            <I18n.Text
+              string={isReplyOpen ? 'reviews.merchant_reply' : 'reviews.merchant_reply_show'}
+            />
+          </ButtonBase>
+          {isReplyOpen && (
+            <div className={classes.replyContent}>
+              <Typography
+                variant="body2"
+                component="div"
+                className={cx(classes.replyText, 'engage__reviews__review-card__reply-text')}
+              >
+                {reply}
+              </Typography>
+              {(replyAuthor || replyTimestamp !== null) && (
+                <Typography
+                  variant="caption"
+                  component="div"
+                  color="textSecondary"
+                  className={cx(classes.replyMeta, 'engage__reviews__review-card__reply-meta')}
+                >
+                  {replyAuthor}
+                  {replyAuthor && replyTimestamp !== null && ' · '}
+                  {replyTimestamp !== null && (
+                    <I18n.Date timestamp={replyTimestamp} format="long" />
+                  )}
+                </Typography>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>

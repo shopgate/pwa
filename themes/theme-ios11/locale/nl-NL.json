@@ -602,8 +602,8 @@
     "button_retry": "Opnieuw proberen",
     "verified": "Geverifieerd",
     "verified_info": "Reviews met de markering geverifieerd zijn gecontroleerd door de reviewaanbieder.",
-    "merchant_reply": "Antwoord van {author}",
-    "merchant_reply_default": "Antwoord van de verkoper",
+    "merchant_reply": "Antwoord van de verkoper",
+    "merchant_reply_show": "Antwoord van de verkoper tonen",
     "media_image": "Afbeelding {index} openen",
     "media_video": "Video {index} afspelen",
     "media_viewer": "Afbeeldingen en video’s van de review"

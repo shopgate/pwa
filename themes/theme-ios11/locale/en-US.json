@@ -602,8 +602,8 @@
     "button_retry": "Try again",
     "verified": "Verified",
     "verified_info": "Reviews marked as verified have been checked by the review provider.",
-    "merchant_reply": "Reply from {author}",
-    "merchant_reply_default": "Reply from the merchant",
+    "merchant_reply": "Reply from the merchant",
+    "merchant_reply_show": "Show reply from the merchant",
     "media_image": "Open image {index}",
     "media_video": "Play video {index}",
     "media_viewer": "Review images and videos"

@@ -602,8 +602,8 @@
     "button_retry": "Erneut versuchen",
     "verified": "Verifiziert",
     "verified_info": "Als verifiziert markierte Rezensionen wurden vom Anbieter der Rezensionen geprüft.",
-    "merchant_reply": "Antwort von {author}",
-    "merchant_reply_default": "Antwort des Händlers",
+    "merchant_reply": "Antwort des Händlers",
+    "merchant_reply_show": "Antwort des Händlers anzeigen",
     "media_image": "Bild {index} öffnen",
     "media_video": "Video {index} abspielen",
     "media_viewer": "Bilder und Videos der Rezension"
