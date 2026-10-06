@@ -4,6 +4,7 @@ import '@testing-library/jest-dom';
 import ConfiguredBar from './index';
 
 let mockScroll = {
+  moved: false,
   scrolled: false,
   scrollingDown: false,
 };
@@ -77,6 +78,7 @@ const texts = testId => Array.from(screen.getByTestId(testId).querySelectorAll('
 describe('<ConfiguredBar />', () => {
   beforeEach(() => {
     mockScroll = {
+      moved: false,
       scrolled: false,
       scrollingDown: false,
     };
@@ -157,6 +159,7 @@ describe('<ConfiguredBar />', () => {
 
   it('fills the status bar area while the buttons float over scrolled content', () => {
     mockScroll = {
+      moved: true,
       scrolled: true,
       scrollingDown: false,
     };
@@ -179,6 +182,20 @@ describe('<ConfiguredBar />', () => {
     expect(within(screen.getByTestId('center')).getByText('logo')).toBeInTheDocument();
   });
 
+  it('reveals the bar as soon as content moves below it', () => {
+    mockScroll = {
+      moved: true,
+      scrolled: false,
+      scrollingDown: false,
+    };
+    renderBar({
+      modern: true,
+      overlay: true,
+    });
+
+    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--revealed');
+  });
+
   it('switches from floating buttons to the bar once the page is scrolled', () => {
     const { rerender } = renderBar({
       modern: true,
@@ -187,6 +204,7 @@ describe('<ConfiguredBar />', () => {
     const floatingClass = screen.getByTestId('bar').className;
 
     mockScroll = {
+      moved: true,
       scrolled: true,
       scrollingDown: true,
     };
@@ -200,6 +218,7 @@ describe('<ConfiguredBar />', () => {
 
   it('shows the bar again when scrolling up with scrollAway', () => {
     mockScroll = {
+      moved: true,
       scrolled: true,
       scrollingDown: false,
     };
@@ -215,6 +234,7 @@ describe('<ConfiguredBar />', () => {
 
   it('slides the bar out while scrolling down with scrollAway', () => {
     mockScroll = {
+      moved: true,
       scrolled: true,
       scrollingDown: true,
     };

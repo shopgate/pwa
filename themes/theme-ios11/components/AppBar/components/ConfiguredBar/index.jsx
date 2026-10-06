@@ -215,7 +215,7 @@ const ConfiguredBar = ({
   classes: parentClasses,
   ...props
 }) => {
-  const { scrolled, scrollingDown } = useOverlayScroll(overlay);
+  const { moved, scrollingDown } = useOverlayScroll(overlay);
   const {
     showLogo, logoPosition, buttons, modern: { scrollBehavior },
   } = settings;
@@ -266,7 +266,7 @@ const ConfiguredBar = ({
 
   const floatsOnScroll = scrollBehavior === 'floatingButtons' || scrollBehavior === 'scrollAway';
   const revealsBar = scrollBehavior === 'revealBar' || scrollBehavior === 'scrollAway';
-  const revealed = overlay && revealsBar && scrolled;
+  const revealed = overlay && revealsBar && moved;
   const hidden = overlay && scrollBehavior === 'scrollAway' && scrollingDown;
   const outer = cx(
     parentClasses.outer,
@@ -274,12 +274,12 @@ const ConfiguredBar = ({
     overlay && 'theme__app-bar--overlay',
     revealed && classes.revealed,
     revealed && 'theme__app-bar--revealed',
-    overlay && scrollBehavior === 'floatingButtons' && scrolled && classes.logoHidden,
+    overlay && scrollBehavior === 'floatingButtons' && moved && classes.logoHidden,
     hidden && classes.hidden,
     hidden && 'theme__app-bar--hidden'
   );
 
-  const statusFilled = overlay && floatsOnScroll && scrolled;
+  const statusFilled = overlay && floatsOnScroll && moved;
 
   return (
     <>
@@ -299,12 +299,12 @@ const ConfiguredBar = ({
         classes={{
           outer,
           inner: cx(
-          classes.inner,
-          modern && classes.modernInner,
-          logo && position === 'left' && classes.innerLogoLeft,
-          logo && position === 'right' && classes.innerLogoRight,
-          parentClasses.inner
-        ),
+            classes.inner,
+            modern && classes.modernInner,
+            logo && position === 'left' && classes.innerLogoLeft,
+            logo && position === 'right' && classes.innerLogoRight,
+            parentClasses.inner
+          ),
         }}
         left={(
           <>

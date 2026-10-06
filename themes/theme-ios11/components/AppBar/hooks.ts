@@ -16,11 +16,14 @@ const MIN_DELTA = 10;
  * Scroll state of the current view.
  */
 interface OverlayScrollState {
+  /** Whether any content moved below the top edge. */
+  moved: boolean;
   scrolled: boolean;
   scrollingDown: boolean;
 }
 
 const INITIAL_SCROLL_STATE: OverlayScrollState = {
+  moved: false,
   scrolled: false,
   scrollingDown: false,
 };
@@ -34,7 +37,8 @@ export const useAppBarSettings = () => useSelector(getAppBarSettings);
 /**
  * Tracks the scroll position and direction of the current view.
  * @param enabled Whether to track the scrolling.
- * @returns Whether the view is scrolled past the offset, and whether it scrolls down.
+ * @returns Whether content moved at all, whether it is scrolled past the offset, and whether
+ * it scrolls down.
  */
 export const useOverlayScroll = (enabled: boolean): OverlayScrollState => {
   const { contentRef } = (useContext(ViewContext) || {}) as {
@@ -79,6 +83,7 @@ export const useOverlayScroll = (enabled: boolean): OverlayScrollState => {
       const delta = scrollTop - previous;
 
       setState((current) => {
+        const moved = scrollTop > 0;
         const scrolled = scrollTop > offset;
         let { scrollingDown } = current;
 
@@ -91,11 +96,16 @@ export const useOverlayScroll = (enabled: boolean): OverlayScrollState => {
           scrollingDown = false;
         }
 
-        if (scrolled === current.scrolled && scrollingDown === current.scrollingDown) {
+        if (
+          moved === current.moved
+          && scrolled === current.scrolled
+          && scrollingDown === current.scrollingDown
+        ) {
           return current;
         }
 
         return {
+          moved,
           scrolled,
           scrollingDown,
         };
