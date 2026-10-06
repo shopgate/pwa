@@ -17,12 +17,3 @@ export const getThemeIcon = (name: string): string | null => {
 
   return (CORE_ICONS as Record<string, string>)[name] ?? null;
 };
-
-/**
- * Resolves the markup of an icon by its name.
- * @param name The name of the icon.
- * @returns The svg markup, or null for an unknown icon.
- */
-const useThemeIcon = (name: string): string | null => getThemeIcon(name);
-
-export default useThemeIcon;

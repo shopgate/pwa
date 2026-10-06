@@ -427,7 +427,7 @@
     },
     "history_title": "Nedávná hledání",
     "history_clear": "Smazat historii",
-    "results_count": "Výsledky: {count}",
+    "results_count": "{count, plural, =1 {1 výsledek} other {Výsledky: {count}}}",
     "show_all_results": "Zobrazit všechny výsledky",
     "clear": "Vymazat hledání"
   },

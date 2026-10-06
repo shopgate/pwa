@@ -10,51 +10,102 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/engage/core/constants';
 import { event } from '@shopgate/engage/core/classes';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { UIEvents } from '@shopgate/engage/core/events';
+import { updateStatusBarBackground } from '@shopgate/engage/core/actions';
 import { OPEN_SEARCH } from '@shopgate/engage/navigation';
-import { makeStyles } from '@shopgate/engage/styles';
-import TabBar from 'Components/TabBar';
+import { makeStyles, keyframes, getCSSCustomProp } from '@shopgate/engage/styles';
 import SearchField from '../SearchField';
 import Content from './Content';
-import { animateOpen, animateClose } from './animation';
-import { useSearchHistory } from '../hooks';
-import { submitSearch, submitSearchWithFilters } from '../actions';
+import {
+  animateOpen, animateClose, setOriginHidden,
+} from './animation';
+import {
+  useDebouncedValue, useSearchHistory, useSearchPreview, useSubmitSearch,
+} from '../hooks';
+import { SEARCH_MIN_CHARS } from '../constants';
+
+const loadingSweep = keyframes({
+  '0%': { transform: 'translateX(-100%)' },
+  '100%': { transform: 'translateX(250%)' },
+});
 
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'fixed',
-    inset: 0,
-    zIndex: 1000,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: 3,
     display: 'flex',
     flexDirection: 'column',
     color: theme.palette.text.primary,
   },
   backdrop: {
     position: 'absolute',
-    inset: 0,
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
     zIndex: -1,
     background: theme.palette.background.default,
+  },
+  header: {
+    position: 'relative',
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(1),
+    flexShrink: 0,
+    overflow: 'hidden',
+    padding: theme.spacing(1, 2),
+    paddingTop: `calc(${theme.layout.safeArea.top} + ${theme.spacing(1)}px)`,
+    color: theme.components.appBar.color,
+  },
+  headerBackground: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    zIndex: -1,
+    background: theme.components.appBar.background,
   },
   fieldWrapper: {
     display: 'flex',
     flexGrow: 1,
     minWidth: 0,
   },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: theme.spacing(1),
-    flexShrink: 0,
-    padding: theme.spacing(1, 2),
-    paddingTop: `calc(${theme.layout.safeArea.top} + ${theme.spacing(1)}px)`,
-    borderBottom: `1px solid ${theme.components.separatorLine.borderColor}`,
-  },
   cancel: {
     flexShrink: 0,
     border: 0,
     padding: theme.spacing(1, 0, 1, 1),
     background: 'none',
-    color: theme.palette.secondary.main,
+    color: 'inherit',
     font: 'inherit',
+  },
+  loading: {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    bottom: 0,
+    height: 2,
+    overflow: 'hidden',
+    opacity: 0,
+    transition: theme.transitions.create('opacity', { duration: 150 }),
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      bottom: 0,
+      width: '40%',
+      background: 'currentColor',
+      opacity: 0.5,
+      '@media (prefers-reduced-motion: no-preference)': {
+        animation: `${loadingSweep} 1.1s ease-in-out infinite`,
+      },
+    },
+  },
+  loadingVisible: {
+    opacity: 1,
   },
   body: {
     flexGrow: 1,
@@ -64,29 +115,47 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
+ * Syncs the native status bar with the header of the search, or with the page below it.
+ * @param {Function} dispatch The redux dispatch function.
+ * @param {boolean} isOpen Whether the search is open.
+ */
+const syncStatusBar = (dispatch, isOpen) => {
+  const header = document.getElementById('AppHeader');
+  const background = !isOpen && header?.dataset.overlay === 'true'
+    ? 'transparent'
+    : getCSSCustomProp('--sg-components-appBar-background');
+  dispatch(updateStatusBarBackground(background));
+};
+
+/**
  * The search with history, suggestions and the first results. Opened by every search field and by
  * the header action.
  * @returns {JSX.Element|null}
  */
 const SearchOverlay = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const dispatch = useDispatch();
   const pathname = useSelector(getCurrentPathname);
   const route = useSelector(getCurrentRoute);
   const { history, addTerm, clearHistory } = useSearchHistory();
+  const { submit, submitWithFilters } = useSubmitSearch();
   const [isOpen, setIsOpen] = useState(false);
+  const [openCount, setOpenCount] = useState(0);
   const [query, setQuery] = useState('');
   const [keyboardHeight, setKeyboardHeight] = useState(0);
+  const searchPhrase = useDebouncedValue(query.trim(), openCount);
+  const preview = useSearchPreview(searchPhrase);
   const inputRef = useRef(null);
   const openedOnRef = useRef(null);
   const originRef = useRef(null);
-  const closingRef = useRef(false);
+  const closingRef = useRef(0);
   const elementsRef = useRef({});
 
   const close = useCallback(() => {
+    setOriginHidden(originRef.current, false);
     setIsOpen(false);
     openedOnRef.current = null;
-    closingRef.current = false;
+    closingRef.current = 0;
   }, []);
 
   const closeAnimated = useCallback(() => {
@@ -94,19 +163,27 @@ const SearchOverlay = () => {
       return;
     }
 
-    closingRef.current = true;
+    const generation = Date.now();
+    closingRef.current = generation;
     inputRef.current?.blur();
-    animateClose(elementsRef.current, originRef.current).then(close);
-  }, [close]);
+    syncStatusBar(dispatch, false);
+    animateClose(elementsRef.current, originRef.current).then(() => {
+      if (closingRef.current === generation) {
+        close();
+      }
+    });
+  }, [close, dispatch]);
 
   useEffect(() => {
     /**
-     * @param {Object} payload The query and the position of the field that opened the search.
+     * @param {Object} payload The query and the field that opened the search.
      */
     const handleOpen = (payload) => {
+      setOriginHidden(originRef.current, false);
       originRef.current = payload?.origin || null;
-      closingRef.current = false;
+      closingRef.current = 0;
       setQuery(payload?.query || '');
+      setOpenCount(count => count + 1);
       setIsOpen(true);
     };
 
@@ -132,46 +209,27 @@ const SearchOverlay = () => {
 
   useLayoutEffect(() => {
     if (!isOpen) {
-      return undefined;
+      return;
     }
 
-    openedOnRef.current = pathname;
     inputRef.current?.focus();
-    TabBar.hide();
+    syncStatusBar(dispatch, true);
     animateOpen(elementsRef.current, originRef.current);
-
-    return () => {
-      TabBar.show();
-    };
-    // Focus once per opening, a route change closes the overlay.
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isOpen]);
+  }, [dispatch, isOpen, openCount]);
 
   useEffect(() => {
-    if (isOpen && openedOnRef.current && openedOnRef.current !== pathname) {
+    if (!isOpen) {
+      return;
+    }
+
+    if (!openedOnRef.current) {
+      openedOnRef.current = pathname;
+    } else if (openedOnRef.current !== pathname) {
       close();
     }
   }, [close, isOpen, pathname]);
 
-  useEffect(() => {
-    if (!isOpen) {
-      return undefined;
-    }
-
-    /**
-     * @param {KeyboardEvent} keyEvent The key event.
-     */
-    const handleKeyDown = (keyEvent) => {
-      if (keyEvent.key === 'Escape') {
-        closeAnimated();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [closeAnimated, isOpen]);
+  useEffect(() => () => setOriginHidden(originRef.current, false), []);
 
   const handleSelect = useCallback((term) => {
     const phrase = term.trim();
@@ -182,15 +240,15 @@ const SearchOverlay = () => {
     inputRef.current?.blur();
     addTerm(phrase);
     close();
-    dispatch(submitSearch(phrase));
-  }, [addTerm, close, dispatch]);
+    submit(phrase);
+  }, [addTerm, close, submit]);
 
   const handleFilter = useCallback((phrase) => {
     inputRef.current?.blur();
     addTerm(phrase);
     close();
-    dispatch(submitSearchWithFilters(phrase));
-  }, [addTerm, close, dispatch]);
+    submitWithFilters(phrase);
+  }, [addTerm, close, submitWithFilters]);
 
   const handleClear = useCallback(() => {
     setQuery('');
@@ -201,16 +259,23 @@ const SearchOverlay = () => {
     return null;
   }
 
+  const isLoading = query.trim().length >= SEARCH_MIN_CHARS
+    && (preview.isLoading || searchPhrase !== query.trim());
+
   return ReactDOM.createPortal(
     <div
-      className={classes.root}
+      className={cx(classes.root, 'theme__search-overlay')}
       role="dialog"
       aria-modal="true"
       aria-label={i18n.text('search.label')}
       data-test-id="SearchOverlay"
     >
       <div className={classes.backdrop} ref={(node) => { elementsRef.current.backdrop = node; }} />
-      <div className={classes.header} ref={(node) => { elementsRef.current.header = node; }}>
+      <div className={cx(classes.header, 'theme__search-overlay__header')}>
+        <div
+          className={classes.headerBackground}
+          ref={(node) => { elementsRef.current.headerBackground = node; }}
+        />
         <div className={classes.fieldWrapper} ref={(node) => { elementsRef.current.field = node; }}>
           <SearchField
             inputRef={inputRef}
@@ -218,17 +283,22 @@ const SearchOverlay = () => {
             onChange={setQuery}
             onSubmit={handleSelect}
             onClear={handleClear}
+            onCancel={closeAnimated}
           />
         </div>
         <button
           type="button"
-          className={classes.cancel}
+          className={cx(classes.cancel, 'theme__search-overlay__cancel')}
           onClick={closeAnimated}
           ref={(node) => { elementsRef.current.cancel = node; }}
           data-test-id="search-field-cancel"
         >
           {i18n.text('search.cancel')}
         </button>
+        <div
+          className={cx(classes.loading, isLoading && classes.loadingVisible)}
+          aria-hidden
+        />
       </div>
       <div
         className={classes.body}
@@ -238,6 +308,8 @@ const SearchOverlay = () => {
         <RouteContext.Provider value={route}>
           <Content
             query={query}
+            searchPhrase={searchPhrase}
+            preview={preview}
             history={history}
             onSelect={handleSelect}
             onFilter={handleFilter}

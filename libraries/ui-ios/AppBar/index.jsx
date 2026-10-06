@@ -20,7 +20,7 @@ const useStyles = makeStyles()(theme => ({
   },
   inner: {
     display: 'grid',
-    gridTemplateColumns: '1fr auto 1fr',
+    gridTemplateColumns: 'minmax(max-content, 1fr) minmax(0, auto) minmax(max-content, 1fr)',
     alignItems: 'center',
     position: 'relative',
     zIndex: 1,
@@ -28,7 +28,6 @@ const useStyles = makeStyles()(theme => ({
   side: {
     display: 'flex',
     alignItems: 'center',
-    minWidth: 0,
   },
   left: {
     justifyContent: 'flex-start',
@@ -103,13 +102,13 @@ const AppBar = ({
     >
       <SurroundPortals portalName={APP_BAR_CONTENT}>
         <div className={cx(classes.inner, parentClasses.inner)}>
-          <div className={cx(classes.side, classes.left)}>
+          <div className={cx(classes.side, classes.left, 'ui-ios__app-bar__left')}>
             <Left elements={left} />
           </div>
-          <div className={classes.center}>
+          <div className={cx(classes.center, 'ui-ios__app-bar__center')}>
             <Center elements={center} />
           </div>
-          <div className={cx(classes.side, classes.right)}>
+          <div className={cx(classes.side, classes.right, 'ui-ios__app-bar__right')}>
             <Right elements={right} />
           </div>
         </div>

@@ -427,7 +427,7 @@
     },
     "history_title": "Viimeisimmät haut",
     "history_clear": "Tyhjennä historia",
-    "results_count": "Tulokset: {count}",
+    "results_count": "{count, plural, =1 {1 tulos} other {{count} tulosta}}",
     "show_all_results": "Näytä kaikki tulokset",
     "clear": "Tyhjennä haku"
   },

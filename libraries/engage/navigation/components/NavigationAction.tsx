@@ -3,6 +3,23 @@ import '../actions';
 import { getNavigationAction } from '../registry';
 import type { NavigationActionHook, NavigationActionSettings, ResolvedNavigationAction } from '../types';
 
+const hookIds = new WeakMap<NavigationActionHook, number>();
+let nextHookId = 0;
+
+/**
+ * Gives every action hook a number, so a hook registered later remounts the action.
+ * @param useAction The hook of an action.
+ * @returns The id of the hook.
+ */
+const getHookId = (useAction: NavigationActionHook): number => {
+  if (!hookIds.has(useAction)) {
+    nextHookId += 1;
+    hookIds.set(useAction, nextHookId);
+  }
+
+  return hookIds.get(useAction) as number;
+};
+
 export interface NavigationActionProps {
   settings: NavigationActionSettings;
   /** Renders the resolved action. Only called when the action is available. */
@@ -41,7 +58,11 @@ const NavigationAction = ({ settings, children }: NavigationActionProps) => {
   }
 
   return (
-    <Resolver key={settings.action} useAction={useAction} settings={settings}>
+    <Resolver
+      key={`${settings.action}:${getHookId(useAction)}`}
+      useAction={useAction}
+      settings={settings}
+    >
       {children}
     </Resolver>
   );

@@ -15,6 +15,9 @@ injectGlobal({
     '--tabbar-height': '0px',
     '--app-bar-height': '0px',
   },
+  '#AppContent .engage__view__content__scrollable-content': {
+    paddingTop: 'var(--sg-search-bar-height, 0px)',
+  },
   '#AppHeader[data-overlay="true"]': {
     position: 'absolute',
     left: 0,

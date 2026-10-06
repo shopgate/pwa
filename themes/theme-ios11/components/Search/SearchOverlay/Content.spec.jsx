@@ -3,7 +3,6 @@ import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Content from './Content';
 
-let mockPreview = {};
 let mockSuggestions = [];
 
 jest.mock('@shopgate/engage/core/helpers', () => ({
@@ -12,8 +11,11 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
   },
 }));
 jest.mock('@shopgate/engage/components', () => ({
+  /* eslint-disable react/prop-types */
   SurroundPortals: ({ children }) => children,
-  LoadingIndicator: () => <span>loading</span>,
+  Typography: ({ children }) => <span>{children}</span>,
+  NoResults: ({ searchPhrase }) => <span>{`no results for ${searchPhrase}`}</span>,
+  /* eslint-enable react/prop-types */
 }));
 jest.mock('@shopgate/engage/components/v2', () => ({
   // eslint-disable-next-line react/prop-types
@@ -28,9 +30,14 @@ jest.mock('@shopgate/engage/product/components', () => ({
   ),
 }));
 jest.mock('../hooks', () => ({
-  useSearchPreview: () => mockPreview,
   useSearchSuggestions: () => mockSuggestions,
 }));
+
+const EMPTY = {
+  products: [],
+  totalProductCount: null,
+  isLoading: false,
+};
 
 const handlers = () => ({
   onSelect: jest.fn(),
@@ -41,27 +48,21 @@ const handlers = () => ({
 describe('<SearchOverlay /> content', () => {
   beforeEach(() => {
     mockSuggestions = [];
-    mockPreview = {
-      products: [],
-      totalProductCount: null,
-      isLoading: false,
-      isPending: false,
-    };
   });
 
   it('shows the history while the field is empty', () => {
     const props = handlers();
-    render(<Content query="" history={['Jacket', 'Beanie']} {...props} />);
+    render(<Content query="" searchPhrase="" preview={EMPTY} history={['Jacket', 'Beanie']} {...props} />);
 
     fireEvent.click(screen.getByText('Beanie'));
-    fireEvent.click(screen.getByText('search.history_clear'));
+    fireEvent.click(screen.getByRole('button', { name: 'search.history_clear' }));
 
     expect(props.onSelect).toHaveBeenCalledWith('Beanie');
     expect(props.onClearHistory).toHaveBeenCalled();
   });
 
   it('filters the history below the minimum length', () => {
-    render(<Content query="ja" history={['Jacket', 'Beanie']} {...handlers()} />);
+    render(<Content query="ja" searchPhrase="ja" preview={EMPTY} history={['Jacket', 'Beanie']} {...handlers()} />);
 
     expect(screen.getByText('Jacket')).toBeInTheDocument();
     expect(screen.queryByText('Beanie')).not.toBeInTheDocument();
@@ -70,17 +71,16 @@ describe('<SearchOverlay /> content', () => {
 
   it('shows suggestions, count, filter shortcut and the first products', () => {
     mockSuggestions = ['beanie black'];
-    mockPreview = {
+    const preview = {
       products: [{
         id: 'p1',
         name: 'Crew Beanie',
       }],
       totalProductCount: 17,
       isLoading: false,
-      isPending: false,
     };
     const props = handlers();
-    render(<Content query="bean" history={[]} {...props} />);
+    render(<Content query="bean" searchPhrase="bean" preview={preview} history={[]} {...props} />);
 
     expect(screen.getByText('Crew Beanie')).toBeInTheDocument();
     expect(screen.getByText('search.results_count:{"count":17}')).toBeInTheDocument();
@@ -96,31 +96,30 @@ describe('<SearchOverlay /> content', () => {
     expect(props.onSelect).toHaveBeenCalledWith('bean');
   });
 
-  it('shows a loader instead of an outdated count while the next search loads', () => {
-    mockPreview = {
+  it('dims the previous products while the next search is still typed', () => {
+    const preview = {
       products: [{
         id: 'p1',
         name: 'Crew Beanie',
       }],
       totalProductCount: 17,
-      isLoading: true,
-      isPending: false,
+      isLoading: false,
     };
-    render(<Content query="jack" history={[]} {...handlers()} />);
+    const { container } = render(
+      <Content query="jacke" searchPhrase="jack" preview={preview} history={[]} {...handlers()} />
+    );
 
-    expect(screen.getByText('progress')).toBeInTheDocument();
-    expect(screen.queryByText(/search.results_count/)).not.toBeInTheDocument();
+    expect(container.querySelector('[aria-busy="true"]')).toBeInTheDocument();
   });
 
   it('tells when nothing was found', () => {
-    mockPreview = {
+    const preview = {
       products: [],
       totalProductCount: 0,
       isLoading: false,
-      isPending: false,
     };
-    render(<Content query="xyz" history={[]} {...handlers()} />);
+    render(<Content query="xyz" searchPhrase="xyz" preview={preview} history={[]} {...handlers()} />);
 
-    expect(screen.getByText('search.no_result.body:{"searchPhrase":"xyz"}')).toBeInTheDocument();
+    expect(screen.getByText('no results for xyz')).toBeInTheDocument();
   });
 });

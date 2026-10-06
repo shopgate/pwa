@@ -6,12 +6,17 @@ import htmlToText from '@shopgate/pwa-common/helpers/html/htmlToText';
 
 const useStyles = makeStyles()(theme => ({
   root: {
-    padding: theme.spacing(2, 2, 1),
+    background: theme.components.appBar.background,
+    color: theme.components.appBar.color,
+  },
+  text: {
+    margin: 0,
+    padding: theme.spacing(1.5, 2),
   },
 }));
 
 /**
- * The page title of the modern header style, shown above the content instead of in the bar.
+ * The page title of the modern header style. It continues the header above the content.
  * @param {Object} props The component props.
  * @returns {JSX.Element|null}
  */
@@ -24,13 +29,15 @@ const Headline = ({ title }) => {
   }
 
   return (
-    <Typography
-      variant="h2"
-      component="h1"
-      className={cx(classes.root, 'theme__app-bar__headline')}
-    >
-      {text}
-    </Typography>
+    <div className={cx(classes.root, 'theme__app-bar__headline')}>
+      <Typography
+        variant="h1"
+        component="h1"
+        className={cx(classes.text, 'headline', 'theme__headline')}
+      >
+        {text}
+      </Typography>
+    </div>
   );
 };
 

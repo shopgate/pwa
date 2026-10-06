@@ -8,7 +8,7 @@ import { getScannerRoute } from '@shopgate/pwa-common-commerce/scanner/helpers';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { getCartProductDisplayCount } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import { getFavoritesCount } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getFavoritesCount } from '@shopgate/engage/favorites';
 import { ITEM_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
 import { STORE_FINDER_PATTERN } from '@shopgate/engage/locations/constants/routes';
 import { useRoute, useNavigation } from '@shopgate/engage/core/hooks';
@@ -17,6 +17,11 @@ import useProductShare from '@shopgate/engage/product/hooks/useProductShare';
 import { BROWSE_PATH, OPEN_SEARCH } from '../constants';
 import { registerDefaultNavigationAction } from '../registry';
 import type { NavigationActionHook } from '../types';
+
+const { hasNoScanner, hasFavorites } = (appConfig || {}) as {
+  hasNoScanner?: boolean;
+  hasFavorites?: boolean;
+};
 
 /**
  * Creates a click handler that opens a path. On the page of the path itself it does nothing, so
@@ -60,7 +65,7 @@ const useOpenSearchAction: NavigationActionHook = () => ({
 const useShareAction: NavigationActionHook = () => {
   const route = useRoute() as { pattern?: string; params?: { productId?: string } } | null;
   const productId = route?.pattern === ITEM_PATTERN && route.params?.productId
-    ? hex2bin(route.params.productId)
+    ? hex2bin(route.params.productId) as string
     : null;
   const { canShare, share } = useProductShare(productId);
   return {
@@ -74,7 +79,7 @@ const useShareAction: NavigationActionHook = () => {
 const useScannerAction: NavigationActionHook = () => {
   const supported = useSelector(hasScannerSupport) as boolean;
   return {
-    available: !appConfig.hasNoScanner && supported,
+    available: !hasNoScanner && supported,
     icon: 'barcodeScanner',
     label: 'titles.scanner',
     onClick: usePush(getScannerRoute(SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE)),
@@ -97,11 +102,13 @@ const useCartAction: NavigationActionHook = () => ({
 });
 
 const useFavoritesAction: NavigationActionHook = () => ({
-  available: !!appConfig.hasFavorites,
+  available: !!hasFavorites,
   icon: 'heart',
   label: 'navigation.favorites',
   onClick: usePush(FAVORITES_PATH),
-  badgeCount: useSelector(getFavoritesCount) as number,
+  badgeCount: useSelector((state: unknown) => (
+    getFavoritesCount(state, { useItemQuantity: true }) as number
+  )),
 });
 
 const useCategoryMenuAction: NavigationActionHook = () => ({

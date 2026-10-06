@@ -426,7 +426,7 @@
     },
     "history_title": "Senaste sökningar",
     "history_clear": "Rensa historik",
-    "results_count": "Resultat: {count}",
+    "results_count": "{count, plural, =1 {1 resultat} other {{count} resultat}}",
     "show_all_results": "Visa alla resultat",
     "clear": "Rensa sökning"
   },

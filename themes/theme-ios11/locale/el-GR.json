@@ -427,7 +427,7 @@
     },
     "history_title": "Πρόσφατες αναζητήσεις",
     "history_clear": "Διαγραφή ιστορικού",
-    "results_count": "Αποτελέσματα: {count}",
+    "results_count": "{count, plural, =1 {1 αποτέλεσμα} other {{count} αποτελέσματα}}",
     "show_all_results": "Εμφάνιση όλων των αποτελεσμάτων",
     "clear": "Διαγραφή αναζήτησης"
   },

@@ -43,3 +43,5 @@ export const SEARCH_BAR_PAGE_TYPES = {
   [PAGE_PATTERN]: 'page',
   [FAVORITES_PATH]: 'favorites',
 };
+
+export const HEADLINE_HIDDEN_PATTERNS = [SCANNER_PATH, ITEM_GALLERY_PATTERN];

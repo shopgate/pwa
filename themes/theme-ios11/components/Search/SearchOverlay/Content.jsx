@@ -1,13 +1,55 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { SurroundPortals, LoadingIndicator } from '@shopgate/engage/components';
-import { Button, CircularProgress } from '@shopgate/engage/components/v2';
+import { SurroundPortals, Typography, NoResults } from '@shopgate/engage/components';
+import { Button } from '@shopgate/engage/components/v2';
 import { ProductGrid } from '@shopgate/engage/product/components';
-import { makeStyles } from '@shopgate/engage/styles';
-import { SEARCH_SUGGESTIONS } from '@shopgate/pwa-common-commerce/search/constants/Portals';
-import { useSearchPreview, useSearchSuggestions } from '../hooks';
+import { makeStyles, keyframes } from '@shopgate/engage/styles';
+import {
+  SEARCH_SUGGESTIONS,
+  SEARCH_SUGGESTION_ITEM,
+  SEARCH_SUGGESTION_ITEM_CONTENT,
+} from '@shopgate/engage/search/constants';
+import { useSearchSuggestions } from '../hooks';
 import { SEARCH_MIN_CHARS } from '../constants';
+
+const STAGGER_STEP = 25;
+const STAGGER_ITEMS = 8;
+
+const enter = keyframes({
+  '0%': {
+    opacity: 0,
+    transform: 'translateY(8px)',
+  },
+  '100%': {
+    opacity: 1,
+    transform: 'none',
+  },
+});
+
+const fadeIn = keyframes({
+  '0%': { opacity: 0 },
+  '100%': { opacity: 1 },
+});
+
+/**
+ * @param {string} selector The selector of the animated children.
+ * @returns {Object} Styles that let the first children enter one after another.
+ */
+const staggered = selector => ({
+  '@media (prefers-reduced-motion: no-preference)': {
+    [`& ${selector}`]: {
+      animation: `${enter} 180ms ease-out both`,
+    },
+    ...Object.fromEntries(Array.from({ length: STAGGER_ITEMS }, (_, index) => [
+      `& ${selector}:nth-of-type(${index + 1})`,
+      { animationDelay: `${index * STAGGER_STEP}ms` },
+    ])),
+    [`& ${selector}:nth-of-type(n+${STAGGER_ITEMS + 1})`]: {
+      animationDelay: `${STAGGER_ITEMS * STAGGER_STEP}ms`,
+    },
+  },
+});
 
 const useStyles = makeStyles()(theme => ({
   sectionHeader: {
@@ -15,24 +57,19 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     justifyContent: 'space-between',
     gap: theme.spacing(1),
+    minHeight: 48,
     padding: theme.spacing(1, 2),
   },
-  sectionTitle: {
-    fontWeight: 600,
-  },
-  textButton: {
-    border: 0,
-    padding: 0,
-    background: 'none',
-    color: theme.palette.primary.main,
-    font: 'inherit',
-    textDecoration: 'underline',
+  clearHistory: {
+    color: theme.palette.text.secondary,
   },
   list: {
     listStyle: 'none',
     margin: 0,
     padding: 0,
+    background: theme.palette.background.surface,
   },
+  listEntering: staggered('li'),
   listItem: {
     display: 'block',
     width: '100%',
@@ -41,7 +78,7 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(1.5, 2),
     background: 'none',
     color: 'inherit',
-    font: 'inherit',
+    ...theme.typography.body1,
     textAlign: 'left',
   },
   chips: {
@@ -54,36 +91,31 @@ const useStyles = makeStyles()(theme => ({
       display: 'none',
     },
   },
+  chipsEntering: staggered('.theme__search-overlay__suggestion'),
   chip: {
     flexShrink: 0,
-    border: `1px solid ${theme.components.separatorLine.borderColor}`,
+    border: 0,
     borderRadius: theme.shape.borderRadius,
     padding: theme.spacing(0.75, 1.5),
-    background: 'none',
-    color: 'inherit',
-    font: 'inherit',
+    background: theme.palette.background.emphasized,
+    color: theme.palette.text.primary,
+    ...theme.typography.body2,
     whiteSpace: 'nowrap',
   },
   highlight: {
-    fontWeight: 600,
+    fontWeight: theme.typography.fontWeightBold,
   },
-  loading: {
-    display: 'flex',
-    justifyContent: 'center',
-    padding: theme.spacing(4),
+  count: {
+    '@media (prefers-reduced-motion: no-preference)': {
+      animation: `${fadeIn} 120ms ease-out both`,
+    },
   },
-  empty: {
-    padding: theme.spacing(3, 2),
-    textAlign: 'center',
+  results: {
+    transition: theme.transitions.create('opacity', { duration: 150 }),
   },
+  resultsEntering: staggered('li'),
   stale: {
     opacity: 0.4,
-    transition: 'opacity 150ms ease-in-out',
-  },
-  inlineLoading: {
-    display: 'flex',
-    alignItems: 'center',
-    minHeight: 32,
   },
   showAll: {
     display: 'flex',
@@ -120,7 +152,7 @@ const Highlighted = ({ text, phrase, className }) => {
 const History = ({
   history, query, onSelect, onClear,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const phrase = query.trim().toLowerCase();
   const entries = phrase ? history.filter(entry => entry.toLowerCase().includes(phrase)) : history;
 
@@ -129,18 +161,26 @@ const History = ({
   }
 
   return (
-    <section aria-label={i18n.text('search.history_title')}>
+    <section aria-label={i18n.text('search.history_title')} className="theme__search-overlay__history">
       <div className={classes.sectionHeader}>
-        <span className={classes.sectionTitle}>{i18n.text('search.history_title')}</span>
+        <Typography variant="subtitle2" component="h2">
+          {i18n.text('search.history_title')}
+        </Typography>
         {!phrase && (
-          <button type="button" className={classes.textButton} onClick={onClear}>
+          <Button
+            variant="link"
+            size="small"
+            color="inherit"
+            className={classes.clearHistory}
+            onClick={onClear}
+          >
             {i18n.text('search.history_clear')}
-          </button>
+          </Button>
         )}
       </div>
-      <ul className={classes.list}>
+      <ul className={cx(classes.list, classes.listEntering)}>
         {entries.map(entry => (
-          <li key={entry}>
+          <li key={entry} className="theme__search-overlay__history-item">
             <button type="button" className={classes.listItem} onClick={() => onSelect(entry)}>
               {entry}
             </button>
@@ -156,73 +196,113 @@ const History = ({
  * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const Results = ({ query, onSelect, onFilter }) => {
-  const { classes } = useStyles();
-  const phrase = query.trim();
-  const suggestions = useSearchSuggestions(phrase);
-  const {
-    products, totalProductCount, isLoading, isPending,
-  } = useSearchPreview(phrase);
+const Results = ({
+  searchPhrase, isPending, preview, onSelect, onFilter,
+}) => {
+  const { classes, cx } = useStyles();
+  const suggestions = useSearchSuggestions(searchPhrase);
+  const { products, totalProductCount, isLoading } = preview;
   const hasProducts = products.length > 0;
   const isStale = isLoading || isPending;
+  const enteredRef = useRef(false);
+  const shouldEnter = hasProducts && !enteredRef.current;
+  if (hasProducts) {
+    enteredRef.current = true;
+  }
+
+  /**
+   * @param {Event} event The click event.
+   * @param {string} suggestion The suggestion.
+   * @returns {void}
+   */
+  const handleSuggestionClick = (event, suggestion) => onSelect(suggestion);
 
   return (
-    <>
-      <SurroundPortals portalName={SEARCH_SUGGESTIONS} portalProps={{ searchPhrase: phrase }}>
+    <div className="theme__search-overlay__results">
+      <SurroundPortals
+        portalName={SEARCH_SUGGESTIONS}
+        portalProps={{
+          suggestions,
+          searchPhrase,
+          visible: true,
+          bottomHeight: 0,
+          onClick: handleSuggestionClick,
+        }}
+      >
         {suggestions.length > 0 && (
-          <div className={classes.chips}>
+          <div className={cx(classes.chips, classes.chipsEntering, 'theme__search-overlay__suggestions', 'theme__browse__search-field__suggestion-list')}>
             {suggestions.map(suggestion => (
-              <button
+              <SurroundPortals
                 key={suggestion}
-                type="button"
-                className={classes.chip}
-                onClick={() => onSelect(suggestion)}
+                portalName={SEARCH_SUGGESTION_ITEM}
+                portalProps={{
+                  suggestion,
+                  onClick: handleSuggestionClick,
+                }}
               >
-                <Highlighted text={suggestion} phrase={phrase} className={classes.highlight} />
-              </button>
+                <button
+                  type="button"
+                  className={cx(classes.chip, 'theme__search-overlay__suggestion')}
+                  onClick={event => handleSuggestionClick(event, suggestion)}
+                >
+                  <SurroundPortals
+                    portalName={SEARCH_SUGGESTION_ITEM_CONTENT}
+                    portalProps={{ suggestion }}
+                  >
+                    <Highlighted
+                      text={suggestion}
+                      phrase={searchPhrase}
+                      className={classes.highlight}
+                    />
+                  </SurroundPortals>
+                </button>
+              </SurroundPortals>
             ))}
           </div>
         )}
       </SurroundPortals>
       {totalProductCount !== null && hasProducts && (
         <div className={classes.sectionHeader}>
-          {isStale ? (
-            <span className={classes.inlineLoading}>
-              <CircularProgress size={20} />
-            </span>
-          ) : (
-            <span className={classes.sectionTitle}>
-              {i18n.text('search.results_count', { count: totalProductCount })}
-            </span>
-          )}
-          <Button variant="outlined" size="small" onClick={() => onFilter(phrase)}>
+          <Typography
+            key={totalProductCount}
+            variant="subtitle2"
+            component="p"
+            className={classes.count}
+          >
+            {i18n.text('search.results_count', { count: totalProductCount })}
+          </Typography>
+          <Button variant="outlined" size="small" color="inherit" onClick={() => onFilter(searchPhrase)}>
             {i18n.text('titles.filter')}
           </Button>
         </div>
       )}
-      {!hasProducts && isStale && (
-        <div className={classes.loading}>
-          <LoadingIndicator />
-        </div>
-      )}
       {!hasProducts && !isStale && totalProductCount === 0 && (
-        <div className={classes.empty}>
-          {i18n.text('search.no_result.body', { searchPhrase: phrase })}
-        </div>
+        <NoResults
+          headlineText="search.no_result.heading"
+          bodyText="search.no_result.body"
+          searchPhrase={searchPhrase}
+        />
       )}
       {hasProducts && (
-        <div className={isStale ? classes.stale : ''} aria-busy={isStale}>
+        <div
+          className={cx(
+            classes.results,
+            shouldEnter && classes.resultsEntering,
+            isStale && classes.stale
+          )}
+          aria-busy={isStale}
+        >
           <ProductGrid products={products} infiniteLoad={false} />
           {totalProductCount > products.length && (
             <div className={classes.showAll}>
-              <Button variant="contained" color="cta" onClick={() => onSelect(phrase)}>
+              <Button variant="contained" color="cta" onClick={() => onSelect(searchPhrase)}>
                 {i18n.text('search.show_all_results')}
               </Button>
             </div>
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
@@ -232,7 +312,7 @@ const Results = ({ query, onSelect, onFilter }) => {
  * @returns {JSX.Element}
  */
 const Content = ({
-  query, history, onSelect, onFilter, onClearHistory,
+  query, searchPhrase, preview, history, onSelect, onFilter, onClearHistory,
 }) => {
   if (query.trim().length < SEARCH_MIN_CHARS) {
     return (
@@ -240,8 +320,22 @@ const Content = ({
     );
   }
 
-  return <Results query={query} onSelect={onSelect} onFilter={onFilter} />;
+  return (
+    <Results
+      searchPhrase={searchPhrase}
+      isPending={searchPhrase !== query.trim()}
+      preview={preview}
+      onSelect={onSelect}
+      onFilter={onFilter}
+    />
+  );
 };
+
+const previewShape = PropTypes.shape({
+  isLoading: PropTypes.bool,
+  products: PropTypes.arrayOf(PropTypes.shape()),
+  totalProductCount: PropTypes.number,
+});
 
 Highlighted.propTypes = {
   className: PropTypes.string.isRequired,
@@ -257,9 +351,11 @@ History.propTypes = {
 };
 
 Results.propTypes = {
+  isPending: PropTypes.bool.isRequired,
   onFilter: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
-  query: PropTypes.string.isRequired,
+  preview: previewShape.isRequired,
+  searchPhrase: PropTypes.string.isRequired,
 };
 
 Content.propTypes = {
@@ -267,7 +363,9 @@ Content.propTypes = {
   onClearHistory: PropTypes.func.isRequired,
   onFilter: PropTypes.func.isRequired,
   onSelect: PropTypes.func.isRequired,
+  preview: previewShape.isRequired,
   query: PropTypes.string.isRequired,
+  searchPhrase: PropTypes.string.isRequired,
 };
 
 export default Content;

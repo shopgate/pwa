@@ -10,6 +10,7 @@ import { APP_BAR_BUTTON_SIZE } from '../../constants';
 
 const SLOTS_LEFT = ['left1', 'left2'];
 const SLOTS_RIGHT = ['right1', 'right2'];
+const LOGO_POSITIONS = ['left', 'center', 'right'];
 const TITLE_INSET = 90;
 
 const SUPPORTS_COLOR_MIX = '@supports (background: color-mix(in srgb, red 50%, transparent))';
@@ -30,94 +31,136 @@ const translucent = (color, opacity) => (
   `color-mix(in srgb, ${color} calc(${opacity} * 100%), transparent)`
 );
 
-const useStyles = makeStyles()((theme, { inset }) => ({
-  inner: {
-    '--app-bar-title-inset': `${inset}px`,
-  },
-  overlayInner: {
-    padding: theme.spacing(0, 1.5),
-  },
-  logoSide: {
-    flexGrow: 0,
-    padding: theme.spacing(0, 1),
-    '& img': {
-      margin: 0,
+const useStyles = makeStyles()((theme, { inset }) => {
+  const { appBar } = theme.components;
+  const fade = theme.transitions.create(['opacity', 'transform'], { duration: 200 });
+
+  return {
+    inner: {
+      '--app-bar-title-inset': `${inset}px`,
     },
-  },
-  overlay: {
-    position: 'relative',
-    transition: 'transform 250ms ease-in-out',
-    pointerEvents: 'none',
-    '& [role="button"], & button, & a, & .engage__logo': {
-      pointerEvents: 'auto',
+    modernInner: {
+      padding: theme.spacing(0, 1.5),
     },
-    '&::before': {
-      content: '""',
-      position: 'absolute',
-      inset: 0,
-      background: theme.components.appBar.background,
-      opacity: 0,
-      backdropFilter: glass(theme.components.appBar.overlayBarBlur),
-      WebkitBackdropFilter: glass(theme.components.appBar.overlayBarBlur),
-      transition: 'opacity 200ms ease-in-out',
+    logo: {
+      minWidth: 0,
+      '& img': {
+        maxWidth: '100%',
+        objectFit: 'contain',
+      },
+    },
+    logoSide: {
+      flexGrow: 0,
+      padding: theme.spacing(0, 1),
+      '& img': {
+        margin: 0,
+      },
+    },
+    overlay: {
+      position: 'relative',
+      color: appBar.floatingButtonColor,
+      transition: theme.transitions.create('transform', { duration: 250 }),
       pointerEvents: 'none',
-    },
-  },
-  overlayRevealed: {
-    pointerEvents: 'auto',
-    '&::before': {
-      opacity: theme.components.appBar.overlayBarOpacity,
-    },
-    [SUPPORTS_COLOR_MIX]: {
+      '& [role="button"], & button, & a, & .engage__logo, & .theme__search-bar': {
+        pointerEvents: 'auto',
+      },
       '&::before': {
-        opacity: 1,
-        background: translucent(
-          theme.components.appBar.background,
-          theme.components.appBar.overlayBarOpacity
-        ),
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        right: 0,
+        bottom: 0,
+        left: 0,
+        background: appBar.background,
+        opacity: 0,
+        backdropFilter: glass(appBar.revealedBarBackdropBlur),
+        WebkitBackdropFilter: glass(appBar.revealedBarBackdropBlur),
+        transition: theme.transitions.create('opacity', { duration: 200 }),
+        pointerEvents: 'none',
       },
-    },
-  },
-  overlayHidden: {
-    transform: 'translateY(-100%)',
-  },
-  floating: {
-    '& [role="button"]': {
-      color: `${theme.components.appBar.floatingButtonColor} !important`,
-    },
-    '& [role="button"]::before': {
-      content: '""',
-      position: 'absolute',
-      inset: 4,
-      borderRadius: '50%',
-      background: theme.components.appBar.floatingButtonBackground,
-      opacity: theme.components.appBar.floatingButtonOpacity,
-      backdropFilter: glass(theme.components.appBar.floatingButtonBlur),
-      WebkitBackdropFilter: glass(theme.components.appBar.floatingButtonBlur),
-      zIndex: -1,
-    },
-    [SUPPORTS_COLOR_MIX]: {
+      '&::after': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        right: 0,
+        height: theme.layout.safeArea.top,
+        background: appBar.background,
+        opacity: 0,
+        transition: theme.transitions.create('opacity', { duration: 200 }),
+        pointerEvents: 'none',
+      },
       '& [role="button"]::before': {
-        opacity: 1,
-        background: translucent(
-          theme.components.appBar.floatingButtonBackground,
-          theme.components.appBar.floatingButtonOpacity
-        ),
+        content: '""',
+        position: 'absolute',
+        top: 4,
+        right: 4,
+        bottom: 4,
+        left: 4,
+        borderRadius: '50%',
+        border: '1px solid rgba(0, 0, 0, 0.1)',
+        background: appBar.floatingButtonBackground,
+        opacity: appBar.floatingButtonBackgroundOpacity,
+        backdropFilter: glass(appBar.floatingButtonBackdropBlur),
+        WebkitBackdropFilter: glass(appBar.floatingButtonBackdropBlur),
+        transition: fade,
+        zIndex: -1,
+      },
+      [SUPPORTS_COLOR_MIX]: {
+        '& [role="button"]::before': {
+          opacity: 1,
+          borderColor: translucent(appBar.floatingButtonColor, '0.1'),
+          background: translucent(
+            appBar.floatingButtonBackground,
+            appBar.floatingButtonBackgroundOpacity
+          ),
+        },
+      },
+      '& .engage__logo': {
+        transition: theme.transitions.create('opacity', { duration: 200 }),
+      },
+      '@media (prefers-reduced-motion: reduce)': {
+        '&, &::before, &::after, & [role="button"]::before, & .engage__logo': {
+          transition: 'none',
+        },
       },
     },
-  },
-  logoHidden: {
-    '& .engage__logo': {
-      opacity: 0,
-      pointerEvents: 'none',
+    revealed: {
+      pointerEvents: 'auto',
+      color: appBar.color,
+      '&::before': {
+        opacity: appBar.revealedBarBackgroundOpacity,
+      },
+      '& [role="button"]::before': {
+        opacity: 0,
+        transform: 'scale(0.92)',
+      },
+      [SUPPORTS_COLOR_MIX]: {
+        '&::before': {
+          opacity: 1,
+          background: translucent(appBar.background, appBar.revealedBarBackgroundOpacity),
+        },
+        '& [role="button"]::before': {
+          opacity: 0,
+        },
+      },
     },
-  },
-  logoFade: {
-    '& .engage__logo': {
-      transition: 'opacity 200ms ease-in-out',
+    statusFilled: {
+      '&::after': {
+        opacity: 1,
+      },
     },
-  },
-}));
+    hidden: {
+      transform: `translateY(calc(-100% + ${theme.layout.safeArea.top}))`,
+    },
+    logoHidden: {
+      '& .engage__logo': {
+        opacity: 0,
+        pointerEvents: 'none',
+      },
+    },
+  };
+});
 
 /**
  * Marks the header element while the bar floats over the content.
@@ -173,6 +216,7 @@ const ConfiguredBar = ({
 
   const leftSlots = renderSlots(SLOTS_LEFT);
   const rightSlots = renderSlots(SLOTS_RIGHT);
+  const position = LOGO_POSITIONS.includes(logoPosition) ? logoPosition : 'center';
   let centerElement = center !== undefined ? center : <AppBar.Title title={i18n.text(title || '')} />;
 
   if (isLogoPage) {
@@ -181,27 +225,31 @@ const ConfiguredBar = ({
     centerElement = null;
   }
 
-  const leftCount = (left ? 1 : 0) + leftSlots.length + (logo && logoPosition === 'left' ? 1 : 0);
-  const rightCount = (right ? 1 : 0) + rightSlots.length + (logo && logoPosition === 'right' ? 1 : 0);
+  const leftCount = (left ? 1 : 0) + leftSlots.length + (logo && position === 'left' ? 1 : 0);
+  const rightCount = (right ? 1 : 0) + rightSlots.length + (logo && position === 'right' ? 1 : 0);
   const inset = Math.max(TITLE_INSET, Math.max(leftCount, rightCount) * APP_BAR_BUTTON_SIZE + 2);
   const { classes, cx } = useStyles({ inset });
   const logoElement = logo
-    ? <Logo key="logo" className={logoPosition === 'center' ? '' : classes.logoSide} />
+    ? <Logo key="logo" className={cx(classes.logo, position !== 'center' && classes.logoSide)} />
     : null;
 
-  if (logo && logoPosition === 'center') {
+  if (logo && position === 'center') {
     centerElement = logoElement;
   }
 
+  const floatsOnScroll = scrollBehavior === 'floatingButtons' || scrollBehavior === 'scrollAway';
   const revealed = overlay && scrollBehavior === 'revealBar' && scrolled;
+  const hidden = overlay && scrollBehavior === 'scrollAway' && scrollingDown;
   const outer = cx(
     parentClasses.outer,
     overlay && classes.overlay,
-    revealed && classes.overlayRevealed,
-    overlay && !revealed && classes.floating,
-    overlay && classes.logoFade,
+    overlay && 'theme__app-bar--overlay',
+    revealed && classes.revealed,
+    revealed && 'theme__app-bar--revealed',
+    overlay && floatsOnScroll && scrolled && classes.statusFilled,
     overlay && scrollBehavior === 'floatingButtons' && scrolled && classes.logoHidden,
-    overlay && scrollBehavior === 'scrollAway' && scrollingDown && classes.overlayHidden
+    hidden && classes.hidden,
+    hidden && 'theme__app-bar--hidden'
   );
 
   return (
@@ -210,19 +258,19 @@ const ConfiguredBar = ({
       backgroundColor={overlay ? 'transparent' : props.backgroundColor}
       classes={{
         outer,
-        inner: cx(classes.inner, overlay && classes.overlayInner, parentClasses.inner),
+        inner: cx(classes.inner, modern && classes.modernInner, parentClasses.inner),
       }}
       left={(
         <>
           {left}
           {leftSlots}
-          {logo && logoPosition === 'left' && logoElement}
+          {logo && position === 'left' && logoElement}
         </>
       )}
       center={centerElement}
       right={(
         <>
-          {logo && logoPosition === 'right' && logoElement}
+          {logo && position === 'right' && logoElement}
           {rightSlots}
           {right}
         </>

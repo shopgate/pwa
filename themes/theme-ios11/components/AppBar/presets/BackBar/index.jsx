@@ -17,13 +17,11 @@ import connect from './connector';
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-function BackBar({
-  goBack, goHome, hasPrevRoute, prevTitle, ...props
-}) {
+function BackBar({ goBack, prevTitle, ...props }) {
   const left = <DefaultBar.Icon
     aria-label={prevTitle ? i18n.text('navigation.back', { title: prevTitle }) : i18n.text('common.back')}
     icon={ArrowIcon}
-    onClick={hasPrevRoute ? goBack : goHome}
+    onClick={goBack}
     testId="backButton"
   />;
 
@@ -40,12 +38,9 @@ function BackBar({
 
 BackBar.propTypes = {
   goBack: PropTypes.func.isRequired,
-  goHome: PropTypes.func.isRequired,
-  hasPrevRoute: PropTypes.bool,
   prevTitle: PropTypes.string,
 };
 BackBar.defaultProps = {
-  hasPrevRoute: true,
   prevTitle: null,
 };
 export default withRoute(connect(BackBar), { prop: 'route' });

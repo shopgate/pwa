@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { Fragment, PureComponent, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
@@ -21,11 +21,17 @@ import Headline from '../../components/Headline';
 import SearchBar from '../../../Search/SearchBar';
 import { useAppBarSettings } from '../../hooks';
 import {
-  ACTION_BUTTONS_HIDDEN_PATTERNS, OVERLAY_PATTERNS, SEARCH_BAR_PAGE_TYPES,
+  ACTION_BUTTONS_HIDDEN_PATTERNS,
+  HEADLINE_HIDDEN_PATTERNS,
+  OVERLAY_PATTERNS,
+  SEARCH_BAR_PAGE_TYPES,
 } from '../../constants';
 import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
+
+const NO_CENTER = { center: null };
+const EMPTY_PROPS = {};
 
 /**
  * The AppBarDefault component.
@@ -169,6 +175,7 @@ class AppBarDefault extends PureComponent {
     } = this.props;
 
     const headline = modern && !overlay && barProps.center === undefined
+      && !HEADLINE_HIDDEN_PATTERNS.includes(route.pattern)
       ? <Headline title={i18n.text(barProps.title || '')} />
       : null;
 
@@ -178,7 +185,13 @@ class AppBarDefault extends PureComponent {
 
     const below = (
       <Fragment key="below">
-        {searchBar && <SearchBar query={searchBar.query} hideOnScroll={searchBar.hideOnScroll} />}
+        {searchBar && (
+          <SearchBar
+            query={searchBar.query}
+            hideOnScroll={searchBar.hideOnScroll}
+            overlay={overlay}
+          />
+        )}
         {barProps.below}
         <ProgressBar />
       </Fragment>
@@ -224,13 +237,13 @@ const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
   const searchBarSettings = useSelector(getPersistentSearchBarSettings);
   const searchBarPage = SEARCH_BAR_PAGE_TYPES[pattern];
   const isSearch = pattern === SEARCH_PATTERN;
-  const searchBar = actionButtons && searchBarPage && searchBarSettings[searchBarPage]
-    ? {
-      query: isSearch ? props.route.query?.s || '' : '',
-      hideOnScroll: searchBarSettings.hideOnScroll,
-    }
-    : null;
-  const titleProps = searchBar && isSearch ? { center: null } : {};
+  const showSearchBar = !!(actionButtons && searchBarPage && searchBarSettings[searchBarPage]);
+  const searchQuery = isSearch ? props.route.query?.s || '' : '';
+  const searchBar = useMemo(() => (showSearchBar ? {
+    query: searchQuery,
+    hideOnScroll: searchBarSettings.hideOnScroll,
+  } : null), [searchBarSettings.hideOnScroll, searchQuery, showSearchBar]);
+  const titleProps = searchBar && isSearch ? NO_CENTER : EMPTY_PROPS;
 
   return (
     <ViewContext.Consumer>

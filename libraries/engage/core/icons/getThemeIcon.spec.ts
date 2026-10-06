@@ -1,4 +1,4 @@
-import { getThemeIcon } from './useThemeIcon';
+import { getThemeIcon } from './getThemeIcon';
 import { CORE_ICONS } from './coreIcons';
 
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({

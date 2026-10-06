@@ -31,14 +31,14 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     alignItems: 'center',
     flexShrink: 0,
-    padding: '0 6px 0 10px',
+    padding: theme.spacing(0, 0.75, 0, 1.25),
     fontSize: theme.components.icon.small,
     opacity: 0.6,
   },
   text: {
     flexGrow: 1,
     minWidth: 0,
-    padding: '9px 0',
+    padding: theme.spacing(1.125, 0),
     border: 0,
     outline: 'none',
     background: 'transparent',
@@ -63,7 +63,7 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
     alignSelf: 'stretch',
     minWidth: 36,
-    padding: '0 8px',
+    padding: theme.spacing(0, 1),
     border: 0,
     background: 'transparent',
     color: 'inherit',
@@ -81,7 +81,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const SearchField = ({
-  value, onChange, onSubmit, onClear, inputRef,
+  value, onChange, onSubmit, onClear, onCancel, inputRef,
 }) => {
   const { classes, cx } = useStyles();
 
@@ -93,14 +93,29 @@ const SearchField = ({
     onSubmit(value);
   };
 
+  /**
+   * @param {KeyboardEvent} event The key event.
+   */
+  const handleKeyDown = (event) => {
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      onCancel();
+    }
+  };
+
   return (
-    <form className={classes.field} onSubmit={handleSubmit} action="." role="search">
+    <form
+      className={cx(classes.field, 'theme__search-field')}
+      onSubmit={handleSubmit}
+      action="."
+      role="search"
+    >
       <span className={classes.icon} aria-hidden>
         <MagnifierIcon />
       </span>
       <input
         ref={inputRef}
-        className={classes.text}
+        className={cx(classes.text, 'common__simple-input')}
         type="search"
         enterKeyHint="search"
         autoComplete="off"
@@ -110,6 +125,7 @@ const SearchField = ({
         placeholder={i18n.text('search.label')}
         aria-label={i18n.text('search.label')}
         onChange={event => onChange(event.target.value)}
+        onKeyDown={handleKeyDown}
         data-test-id="searchInput"
       />
       {!!value && (
@@ -129,6 +145,7 @@ const SearchField = ({
 
 SearchField.propTypes = {
   inputRef: PropTypes.shape({ current: PropTypes.instanceOf(Element) }).isRequired,
+  onCancel: PropTypes.func.isRequired,
   onChange: PropTypes.func.isRequired,
   onClear: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
@@ -147,13 +164,12 @@ const SearchTrigger = ({ query, className }) => {
   const { push } = useNavigation();
   const scannerSupported = useSelector(hasScannerSupport);
   const showScanner = !hasNoScanner && showSearchFieldIcon && scannerSupported && !query;
-
   const fieldRef = useRef(null);
 
   const emitOpen = useCallback((value) => {
     UIEvents.emit(OPEN_SEARCH, {
       query: value,
-      origin: fieldRef.current?.getBoundingClientRect() || null,
+      origin: fieldRef.current,
     });
   }, []);
 

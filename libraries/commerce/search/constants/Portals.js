@@ -9,3 +9,4 @@ const SUGGESTION_ITEM_CONTENT = 'suggestion-item-content';
 export const SEARCH_SUGGESTIONS = `${SEARCH}.${SUGGESTIONS}`;
 export const SEARCH_SUGGESTION_ITEM = `${SEARCH}.${SUGGESTION_ITEM}`;
 export const SEARCH_SUGGESTION_ITEM_CONTENT = `${SEARCH}.${SUGGESTION_ITEM_CONTENT}`;
+export const PERSISTENT_SEARCH_BAR_INPUT_WRAPPER = 'persistent-search-bar.input.wrapper';

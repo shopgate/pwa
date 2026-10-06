@@ -155,6 +155,30 @@ describe('<ConfiguredBar />', () => {
     expect(document.getElementById('AppHeader')).toHaveAttribute('data-overlay', 'true');
   });
 
+  it('fills the status bar area while the buttons float over scrolled content', () => {
+    mockScroll = {
+      scrolled: true,
+      scrollingDown: false,
+    };
+    renderBar({
+      modern: true,
+      overlay: true,
+      settings: { modern: { scrollBehavior: 'floatingButtons' } },
+    });
+
+    expect(screen.getByTestId('bar').className).toMatch(/statusFilled/);
+    expect(screen.getByTestId('bar').className).toMatch(/logoHidden/);
+  });
+
+  it('falls back to the centered logo for an unknown position', () => {
+    renderBar({
+      logo: true,
+      settings: { logoPosition: 'start' },
+    });
+
+    expect(within(screen.getByTestId('center')).getByText('logo')).toBeInTheDocument();
+  });
+
   it('switches from floating buttons to the bar once the page is scrolled', () => {
     const { rerender } = renderBar({
       modern: true,
@@ -171,8 +195,7 @@ describe('<ConfiguredBar />', () => {
     );
 
     expect(screen.getByTestId('bar').className).not.toEqual(floatingClass);
-    expect(screen.getByTestId('bar').className).toMatch(/overlayRevealed/);
-    expect(screen.getByTestId('bar').className).not.toMatch(/floating/);
+    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--revealed');
   });
 
   it('slides the bar out while scrolling down with scrollAway', () => {
@@ -186,6 +209,6 @@ describe('<ConfiguredBar />', () => {
       settings: { modern: { scrollBehavior: 'scrollAway' } },
     });
 
-    expect(screen.getByTestId('bar').className).toMatch(/overlayHidden/);
+    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--hidden');
   });
 });

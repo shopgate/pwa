@@ -427,7 +427,7 @@
     },
     "history_title": "Recente zoekopdrachten",
     "history_clear": "Geschiedenis wissen",
-    "results_count": "Resultaten: {count}",
+    "results_count": "{count, plural, =1 {1 resultaat} other {{count} resultaten}}",
     "show_all_results": "Alle resultaten tonen",
     "clear": "Zoekopdracht wissen"
   },

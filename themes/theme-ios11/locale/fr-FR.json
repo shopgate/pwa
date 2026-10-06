@@ -427,7 +427,7 @@
     },
     "history_title": "Recherches récentes",
     "history_clear": "Effacer l'historique",
-    "results_count": "Résultats : {count}",
+    "results_count": "{count, plural, =1 {1 résultat} other {{count} résultats}}",
     "show_all_results": "Afficher tous les résultats",
     "clear": "Effacer la recherche"
   },

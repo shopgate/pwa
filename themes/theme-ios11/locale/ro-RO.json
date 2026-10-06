@@ -427,7 +427,7 @@
     },
     "history_title": "Căutări recente",
     "history_clear": "Șterge istoricul",
-    "results_count": "Rezultate: {count}",
+    "results_count": "{count, plural, =1 {1 rezultat} other {{count} rezultate}}",
     "show_all_results": "Afișează toate rezultatele",
     "clear": "Șterge căutarea"
   },

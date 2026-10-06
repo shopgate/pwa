@@ -26,7 +26,3 @@ export const CORE_ICONS = {
  */
 export type CoreIconName = keyof typeof CORE_ICONS;
 
-/**
- * The icons a merchant can pick for header buttons and tab bar entries, in display order.
- */
-export const SELECTABLE_ICONS = Object.keys(CORE_ICONS) as CoreIconName[];
