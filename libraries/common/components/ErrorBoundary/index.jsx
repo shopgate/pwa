@@ -1,5 +1,6 @@
 import { PureComponent } from 'react';
 import PropTypes from 'prop-types';
+import { toError } from '@shopgate/pwa-core/helpers/error';
 import connector from './connector';
 
 /**
@@ -37,9 +38,7 @@ class ErrorBoundary extends PureComponent {
    * @param {Object} errorInfo The error information.
    */
   componentDidCatch(error, errorInfo) {
-    // eslint-disable-next-line no-param-reassign
-    error.stack = errorInfo.componentStack;
-    this.props.appError(error);
+    this.props.appError(toError(error, { componentStack: errorInfo.componentStack }));
   }
 
   /**

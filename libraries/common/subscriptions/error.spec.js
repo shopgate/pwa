@@ -3,12 +3,17 @@ import {
   addBreadcrumb,
   setTags,
   captureEvent,
+  captureException,
+  captureMessage,
+  withScope,
 } from '@sentry/browser';
 import { router } from '@virtuous/conductor';
 import { emitter } from '@shopgate/pwa-core';
-import { SOURCE_CONSOLE } from '@shopgate/pwa-core/constants/ErrorManager';
+import { SOURCE_CONSOLE, SOURCE_TRACKING } from '@shopgate/pwa-core/constants/ErrorManager';
 import appConfig from '../helpers/config';
-import { appWillInit$ } from '../streams/app';
+import { appWillInit$, appDidStart$ } from '../streams/app';
+import { appError$ } from '../streams/error';
+import { APP_ERROR, PIPELINE_ERROR } from '../constants/ActionTypes';
 import { main$ } from '../streams/main';
 import { clientInformationDidUpdate$ } from '../streams/client';
 import subscription from './error';
@@ -254,7 +259,12 @@ describe('Error subscriptions', () => {
       };
       jest.requireMock('@sentry/browser').withScope.mockImplementationOnce(callback => callback(scope));
       const [, callback] = subscriptions[subscriptions.length - 1];
-      callback({ action: { error: pipelineError } });
+      callback({
+        action: {
+          type: PIPELINE_ERROR,
+          error: pipelineError,
+        },
+      });
 
       expect(captureEvent).toHaveBeenCalledWith({
         message: 'User error EINVALIDCREDENTIALS',
@@ -269,22 +279,168 @@ describe('Error subscriptions', () => {
       ]);
     });
 
+    it('should send the component stack of a crash and keep its stack trace', () => {
+      const scope = {
+        setExtra: jest.fn(),
+      };
+      withScope.mockImplementationOnce(callback => callback(scope));
+      const error = Object.assign(new Error('Render failed'), { componentStack: '\n    in Widget' });
+      const { stack } = error;
+
+      callbackFor(subscriptions.slice().reverse(), appError$)({
+        action: {
+          type: APP_ERROR,
+          error,
+        },
+      });
+
+      expect(scope.setExtra.mock.calls).toEqual([['componentStack', '\n    in Widget']]);
+      expect(captureException).toHaveBeenCalledWith(error);
+      expect(error.stack).toBe(stack);
+    });
+
+    it('should not send an event for the app start', () => {
+      expect(subscriptions.map(([stream]) => stream)).not.toContain(appDidStart$);
+    });
+
+    it('should send a crash as one exception without a user error', () => {
+      const error = new Error('Render failed');
+      const action = {
+        type: APP_ERROR,
+        error,
+      };
+
+      subscriptions
+        .filter(([stream], index) => stream === appError$ || index === subscriptions.length - 1)
+        .forEach(([, callback]) => callback({
+          action,
+          dispatch: jest.fn(),
+        }));
+
+      expect(captureException).toHaveBeenCalledTimes(1);
+      expect(captureException).toHaveBeenCalledWith(error);
+      expect(captureEvent).not.toHaveBeenCalled();
+    });
+
+    it('should send an app error without an exception as one user error', () => {
+      const action = {
+        type: APP_ERROR,
+        error: {
+          code: 'ECUSTOM',
+          message: 'Something failed',
+        },
+      };
+
+      subscriptions
+        .filter(([stream], index) => stream === appError$ || index === subscriptions.length - 1)
+        .forEach(([, callback]) => callback({
+          action,
+          dispatch: jest.fn(),
+        }));
+
+      expect(captureException).not.toHaveBeenCalled();
+      expect(captureEvent).toHaveBeenCalledTimes(1);
+      expect(captureEvent).toHaveBeenCalledWith({
+        message: 'User error ECUSTOM',
+        extra: {
+          code: 'ECUSTOM',
+          pipeline: undefined,
+        },
+      });
+    });
+
     it('should leave window.onerror to Sentry', () => {
       expect(window.onerror).toBeNull();
     });
 
-    it('should send console errors as text', () => {
-      const scope = {
-        setLevel: jest.fn(),
-        setExtra: jest.fn(),
-      };
-      jest.requireMock('@sentry/browser').withScope.mockImplementationOnce(callback => callback(scope));
-      const [, onConsoleError] = emitter.addListener.mock.calls
-        .find(([source]) => source === SOURCE_CONSOLE);
+    describe('console errors', () => {
+      let scope;
+      let onConsoleError;
 
-      onConsoleError(['Request failed', new Error('boom'), { mail: 'jane@example.com' }]);
+      beforeEach(() => {
+        scope = {
+          setLevel: jest.fn(),
+          setTag: jest.fn(),
+          setExtra: jest.fn(),
+        };
+        withScope.mockImplementationOnce(callback => callback(scope));
+        [, onConsoleError] = emitter.addListener.mock.calls
+          .find(([source]) => source === SOURCE_CONSOLE);
+      });
 
-      expect(scope.setExtra).toHaveBeenCalledWith('error', ['Request failed', 'boom', '[object Object]']);
+      it('should send a logged error as exception with the other arguments as text', () => {
+        const error = new Error('boom');
+
+        onConsoleError(['Request failed', error, { mail: 'jane@example.com' }]);
+
+        expect(captureException).toHaveBeenCalledWith(error);
+        expect(scope.setLevel).toHaveBeenCalledWith('error');
+        expect(scope.setTag).toHaveBeenCalledWith('source', SOURCE_CONSOLE);
+        expect(scope.setExtra).toHaveBeenCalledWith('details', ['Request failed', '{keys: mail}']);
+        expect(addBreadcrumb).not.toHaveBeenCalled();
+      });
+
+      it('should not add details when only an error is logged', () => {
+        onConsoleError([new Error('boom')]);
+
+        expect(scope.setExtra).not.toHaveBeenCalled();
+      });
+
+      it('should describe logged objects by their keys and error code without their values', () => {
+        onConsoleError([[
+          {
+            code: 'EINVALID',
+            message: 'jane@example.com is not valid',
+            path: 'mail',
+          },
+          { mail: 'jane@example.com' },
+        ], null, 42]);
+
+        expect(addBreadcrumb).toHaveBeenCalledWith({
+          category: 'logger',
+          message: '[{code: "EINVALID", keys: code, message, path}, {keys: mail}] null 42',
+          level: 'error',
+        });
+      });
+
+      it('should send a tracking error once, with its stack trace and the name of the tracker', () => {
+        const error = Object.assign(new Error('Plugin failed'), {
+          code: 'ETRACKING',
+          source: SOURCE_TRACKING,
+          context: 'facebookPixel',
+        });
+
+        onConsoleError(["'SgTrackingCore': Error in plugin [facebookPixel]", error]);
+
+        expect(captureException).toHaveBeenCalledTimes(1);
+        expect(captureException).toHaveBeenCalledWith(error);
+        expect(scope.setExtra).toHaveBeenCalledWith('trackerName', 'facebookPixel');
+      });
+
+      it('should send the component stack of a logged crash', () => {
+        const error = Object.assign(new Error('Render failed'), { componentStack: '\n    in Widget' });
+
+        onConsoleError([error]);
+
+        expect(captureException).toHaveBeenCalledWith(error);
+        expect(scope.setExtra.mock.calls).toEqual([['componentStack', '\n    in Widget']]);
+      });
+
+      it('should not report the queued copy of a tracking error', () => {
+        expect(emitter.addListener.mock.calls.map(([source]) => source)).toEqual([SOURCE_CONSOLE]);
+      });
+
+      it('should add a logged text as breadcrumb instead of sending an event', () => {
+        onConsoleError(['Unknown form element type:', 'fancy']);
+
+        expect(addBreadcrumb).toHaveBeenCalledWith({
+          category: 'logger',
+          message: 'Unknown form element type: fancy',
+          level: 'error',
+        });
+        expect(captureException).not.toHaveBeenCalled();
+        expect(captureMessage).not.toHaveBeenCalled();
+      });
     });
   });
 
