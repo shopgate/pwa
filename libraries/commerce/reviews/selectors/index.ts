@@ -157,6 +157,47 @@ export const getReviewsFetchingState = createSelector(
 );
 
 /**
+ * Whether the review list of the current base product was not requested yet.
+ * @param state The current application state.
+ * @returns True when no list collection exists.
+ */
+export const isReviewListMissing = createSelector(
+  getCollectionForCurrentBaseProduct,
+  collection => collection === null
+);
+
+/**
+ * Whether the last review list request of the current base product failed.
+ * @param state The current application state.
+ * @returns True when the last request failed, also when earlier pages are still stored.
+ */
+export const hasReviewListError = createSelector(
+  getCollectionForCurrentBaseProduct,
+  collection => !!collection && !collection.isFetching && collection.expires === 0
+);
+
+/**
+ * Whether the review list of the current base product is still loading.
+ * @param state The current application state.
+ * @returns True while a request runs or before the first response, unless the last request failed.
+ */
+export const isReviewListLoading = createSelector(
+  getCollectionForCurrentBaseProduct,
+  hasReviewListError,
+  (collection, hasError) => !!collection?.isFetching || (!collection?.reviews && !hasError)
+);
+
+/**
+ * Retrieves the offset of the last review list request of the current base product.
+ * @param state The current application state.
+ * @returns The offset, or 0 when the list was not requested yet.
+ */
+export const getReviewListRequestOffset = createSelector(
+  getCollectionForCurrentBaseProduct,
+  collection => collection?.requestOffset ?? 0
+);
+
+/**
  * Select the user reviews state.
  * @param state The current application state.
  * @returns The user reviews collection stored as productId => review.

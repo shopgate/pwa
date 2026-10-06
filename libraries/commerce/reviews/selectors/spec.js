@@ -11,6 +11,10 @@ import {
   isProductReviewsExcerptMissing,
   isProductReviewsExcerptLoading,
   hasProductReviewsExcerptError,
+  isReviewListMissing,
+  isReviewListLoading,
+  hasReviewListError,
+  getReviewListRequestOffset,
 } from './index';
 import {
   emptyState,
@@ -249,6 +253,111 @@ describe('Reviews selectors', () => {
         missing: false,
         loading: true,
         error: false,
+      });
+    });
+  });
+
+  describe('review list state', () => {
+    /**
+     * Builds a state with the given list collection for the test product.
+     * @param {Object} [collection] The list collection.
+     * @returns {Object}
+     */
+    const buildState = (collection) => {
+      const state = _.cloneDeep(finalState);
+      if (collection) {
+        state.reviews.reviewsByHash[existingHash] = collection;
+      } else {
+        delete state.reviews.reviewsByHash[existingHash];
+      }
+      return state;
+    };
+
+    /**
+     * @param {Object} state The state.
+     * @returns {Object} The list flags and the last request offset.
+     */
+    const getFlags = state => ({
+      missing: isReviewListMissing(state, propsProductId),
+      loading: isReviewListLoading(state, propsProductId),
+      error: hasReviewListError(state, propsProductId),
+      requestOffset: getReviewListRequestOffset(state, propsProductId),
+    });
+
+    it('should report a list that was not requested yet as missing and loading', () => {
+      expect(getFlags(buildState())).toEqual({
+        missing: true,
+        loading: true,
+        error: false,
+        requestOffset: 0,
+      });
+    });
+
+    it('should report a running first request as loading', () => {
+      expect(getFlags(buildState({
+        isFetching: true,
+        expires: 0,
+        requestOffset: 0,
+      }))).toEqual({
+        missing: false,
+        loading: true,
+        error: false,
+        requestOffset: 0,
+      });
+    });
+
+    it('should report a running load more request as loading', () => {
+      expect(getFlags(buildState({
+        isFetching: true,
+        expires: 0,
+        reviews: [1, 2],
+        requestOffset: 2,
+      }))).toEqual({
+        missing: false,
+        loading: true,
+        error: false,
+        requestOffset: 2,
+      });
+    });
+
+    it('should report received reviews as neither loading nor failed', () => {
+      expect(getFlags(buildState({
+        isFetching: false,
+        expires: Date.now() + 1000,
+        reviews: [],
+        requestOffset: 0,
+      }))).toEqual({
+        missing: false,
+        loading: false,
+        error: false,
+        requestOffset: 0,
+      });
+    });
+
+    it('should report a failed first request as error', () => {
+      expect(getFlags(buildState({
+        isFetching: false,
+        expires: 0,
+        requestOffset: 0,
+      }))).toEqual({
+        missing: false,
+        loading: false,
+        error: true,
+        requestOffset: 0,
+      });
+    });
+
+    it('should report a failed load more request as error with its offset', () => {
+      expect(getFlags(buildState({
+        isFetching: false,
+        expires: 0,
+        reviews: [1, 2],
+        requestOffset: 2,
+      }))).toEqual({
+        missing: false,
+        loading: false,
+        error: true,
+        requestOffset: 2,
       });
     });
   });
