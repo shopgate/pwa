@@ -1,9 +1,0 @@
-{
-    "integrationFolder": "./integration",
-  "fixturesFolder": "./cypress/fixtures",
-  "pluginsFile": "./cypress/plugins",
-  "supportFile": "./cypress/support",
-  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.95 Safari/537.36",
-  "video": false,
-  "chromeWebSecurity": false
-}

@@ -18,7 +18,7 @@ behavior here drifts from the code, update this document in the same PR.
 
 ## Project Overview
 
-Shopgate's ENGAGE PWA — a Lerna + Yarn-workspaces monorepo holding the shared
+Shopgate's ENGAGE PWA — an npm-workspaces monorepo holding the shared
 `@shopgate/*` libraries and the two app themes (`theme-gmd`, `theme-ios11`) that
 power Shopgate's mobile-commerce apps and (via the GMD "web bridge") responsive
 desktop web. Libraries are published to npm; themes and most extensions are
@@ -31,33 +31,87 @@ consumed, not published from here.
 - **Styling (multiple coexist):** write new CSS with `makeStyles` / `useStyles` (`tss-react`). glamor is legacy — do not use it for new styling; prefer `makeStyles`/`useStyles` and migrate glamor away where you touch it.
 - **Human-readable CSS classes:** components also emit stable, unhashed classes alongside the generated
   ones — see below. Do not remove or rename them.
-- **Monorepo:** Lerna 2.9.0 (`npmClient: yarn`, `--no-optional`), Yarn workspaces.
+- **Monorepo:** npm workspaces (npm ≥ 11, Node ≥ 24, `.nvmrc`), lockfile `package-lock.json`. Dependency install scripts need an entry in `allowScripts` in the root `package.json` (`npm approve-scripts <pkg>` / `npm deny-scripts <pkg>`).
 - **Build:** Babel 7 (canonical config is `themes/theme-gmd/babel.config.js`; root `babel.config.js` just extends it), Webpack 5 via `@shopgate/webpack`. Actual dev/build entry is the external **`sgconnect`** (Shopgate Connect) CLI, not a direct webpack script.
 - **Test:** Jest 29 + jsdom, enzyme 3 (`enzyme-adapter-react-17`) and `@testing-library/react` 12 both present.
 - **Targets:** `.browserslistrc` — iOS ≥ 13.4, Chrome ≥ 80.
 
 ## Common Commands
 
-Requires the external `sgconnect` CLI (not installed by `yarn install`).
+Requires the external `sgconnect` CLI (not installed by `npm install`).
 
-- Install / setup: `yarn install`, then `yarn setup` (`sgconnect init && lerna bootstrap`). Full reset: `yarn resetup`.
-- Run locally: `yarn start` (`sgconnect frontend start`); `yarn start-cloud` (backend + frontend). Desktop web bridge: `WEB_BRIDGE=1 sgconnect frontend start -t theme-gmd`.
-- Test: **`yarn test:short` is the default** — use it for routine runs, and scope it to the paths you touched (`yarn test:short <path>`) rather than sweeping the repo. `yarn test` (`RUN_LONG=true jest`) is the full run, reserved for changes that touch `@shopgate/engage/*` exports (see Pitfalls); `yarn test:watch`; `yarn cover`.
-- Lint: `yarn lint` (eslint `.js/.jsx/.ts/.tsx/.json`, ignores `extensions/`); `yarn lint:summary`. A Husky pre-commit hook runs `lint-staged`.
-- Theme git subtrees: `yarn add-remotes` / `yarn remove-remotes`.
-- Release / build: `yarn release` → `make release` (publishes npm + GitHub releases — **verify before use**; `make release-dry-run` to inspect output). `yarn clean` → `make clean`.
+- Install / setup: `npm install`, then `npm run setup` (`sgconnect init && npm install`). Full reset: `npm ci` (alias `npm run clean`): empties `node_modules` in the root and all workspaces and reinstalls exactly from `package-lock.json`.
+- Run locally: `npm start` (`sgconnect frontend start`); `npm run start-cloud` (backend + frontend). Desktop web bridge: `WEB_BRIDGE=1 sgconnect frontend start -t theme-gmd`.
+- Test: **`npm run test:short` is the default** — use it for routine runs, and scope it to the paths you touched (`npm run test:short -- <path>`) rather than sweeping the repo. `npm test` (`RUN_LONG=true jest`) is the full run, reserved for changes that touch `@shopgate/engage/*` exports (see Pitfalls); `npm run test:watch`; `npm run cover`.
+- Lint: `npm run lint` (eslint `.js/.jsx/.ts/.tsx/.json`, ignores `extensions/`); `npm run lint:summary`. A Husky pre-commit hook runs `lint-staged`. Activate it once per clone with `npm run prepare`, since `ignore-scripts=true` in the npm config keeps `npm install` from running it. Git clients like Fork run hooks without the shell profile, so with nvm the hook fails with `npx: command not found`; load nvm in `~/.config/husky/init.sh` (`export NVM_DIR="$HOME/.nvm"`, `. "$NVM_DIR/nvm.sh"`). Husky 9 no longer reads `~/.huskyrc`.
+- Release process (TypeScript in `scripts/release/`, run by Node ≥ 24 without build step; started from the GitLab release pipeline): one CLI, `npm run release` lists all commands and options. Docs: `scripts/release/README.md`. Flow: `check <version>` → `prepare` (bump, build, changelog, push release branches) → GitHub workflow "Publish packages" (`.github/workflows/publish.yml`: a developer approves the run, then `publish <version>` publishes via npm trusted publishing, without token or 2FA) → `finalize` (master update, GitHub releases). `build` builds all packages into `dist` without publishing. Tests: `npm run release:test`, types: `npm run release:typecheck`.
 
 ## Repository Structure
 
-- **Workspaces are only:** `libraries/*`, `themes/*`, `utils/*`, and the single extension `extensions/@shopgate-theme-config/frontend` (`package.json` + `lerna.json`). Everything else under `extensions/`, plus `pipelines/`, `trustedPipelines/`, `scripts/`, is **not** a workspace.
-- **Folder name ≠ package name** in `libraries/*`: e.g. `libraries/engage` → `@shopgate/engage`, `common` → `@shopgate/pwa-common`, `core` → `@shopgate/pwa-core`, `commerce` → `@shopgate/pwa-common-commerce`, `webcheckout` → `@shopgate/pwa-webcheckout-shopify`. The Makefile auto-prefixes `@shopgate/pwa-` except `eslint-config` and `tracking-core`.
+- **Workspaces are only:** `libraries/*`, `themes/*`, `utils/*`, and the single extension `extensions/@shopgate-theme-config/frontend` (`package.json` `workspaces`). Everything else under `extensions/`, plus `pipelines/`, `trustedPipelines/`, `scripts/`, is **not** a workspace.
+- **Folder name ≠ package name** in `libraries/*`: e.g. `libraries/engage` → `@shopgate/engage`, `common` → `@shopgate/pwa-common`, `core` → `@shopgate/pwa-core`, `commerce` → `@shopgate/pwa-common-commerce`, `webcheckout` → `@shopgate/pwa-webcheckout-shopify`.
 - **`libraries/engage`** is the umbrella library themes consume. It has **no `main`/`exports`** — imports like `@shopgate/engage/core` resolve to `libraries/engage/core/index.js` (directory-as-subpath, via workspace symlinks in `node_modules/@shopgate/`). API lives in per-domain `index.js` barrels (`cart/`, `product/`, `checkout/`, `styles/`, …).
 - **App entry point:** `themes/theme-ios11/index.jsx` — imports `initialize` from `@shopgate/engage/core`, builds the store from `pages/reducers` + `pages/subscribers`, renders `<Pages/>` into `#root`.
-- **Themes are git subtrees** (`theme-gmd`, `theme-ios11`, defined in `repos.json`); they may be absent in a fresh checkout. `theme-gmd` is on its way out and must not be changed — see Editing Guidelines.
-- **`utils/*`** are tooling packages: `unit-tests` → `@shopgate/pwa-unit-test` (root `jest.config.js` extends it), `webpack`, `eslint-config`, `e2e`, `benchmark`.
+- **Themes are git subtrees** (`theme-gmd`, `theme-ios11`, repositories in `repos.json`); the code lives here and the release pushes it to the theme repositories. `theme-gmd` is on its way out and must not be changed — see Editing Guidelines.
+- **`utils/*`** are tooling packages: `unit-tests` → `@shopgate/pwa-unit-test` (root `jest.config.js` extends it), `webpack`, `eslint-config`.
 - **`pipelines/` / `trustedPipelines/`** are backend pipeline JSON definitions, not JS.
 - **Naming conventions:** tests `*.spec.js(x)` colocated; `index.js` barrels; colocated `*.types.js`. Existing redux wiring lives in `connector.js` (not `connect.js`) — these are legacy; do not add new `connector.js` files (see Editing Guidelines).
 - **`.sgcloud/`** is local `sgconnect` dev state (gitignored, machine-specific).
+
+## External Development
+
+External developers don't use this monorepo. `sgconnect init` (platform-sdk) creates a project
+with only `.sgcloud`, `extensions`, `pipelines`, `trustedPipelines` and `themes` — no `libraries`,
+`utils` or `scripts`. They check out a theme from its own GitHub repository (the mirror the
+release pushes to) and develop extensions in `extensions/*/frontend`.
+
+- **The published packages and the themes are their build setup.** The theme is the root npm
+  project there; it brings `@shopgate/webpack` (webpack, dev server, build plugins) and the
+  libraries from npm. Their extension code is compiled by the theme's webpack, which aliases
+  shared packages (React, glamor, lodash, `@virtuous`, …) to the theme's single copy.
+- **Extensions depend on a few foundation packages:** `@shopgate/engage` (brings the other
+  libraries, mainly for IDE import resolution), `@shopgate/eslint-config` for linting and
+  `@shopgate/pwa-unit-test` for Jest. Changes to these three reach every extension. Many
+  public Shopgate extensions serve as blueprints; older ones still list individual libraries
+  (`pwa-common`, `pwa-core`, …), the direction is `engage` + the two foundation packages only.
+- **TypeScript in extensions:** an extension's `tsconfig.json` only needs
+  `{ "extends": "@shopgate/engage/tsconfig.extension.json" }`. It's the one tsconfig the release
+  build publishes. Most library files are still JavaScript without declarations; the config loads
+  `@shopgate/engage/untyped-modules.d.ts`, whose `declare module '@shopgate/*'` pattern turns such
+  imports into `any` instead of TS7016, while typed files keep their types. It covers bare package
+  imports (`@shopgate/engage`) as well as subpaths. Own `declare module '@shopgate/...'`
+  workarounds aren't needed. Don't switch to `maxNodeModuleJsDepth`: TypeScript then infers the
+  props of JavaScript components from their destructured parameters and reports all of them as
+  required. Keep the config free of `include` and `paths`, which resolve relative to the package.
+  It sets `types`, so `@shopgate/pwa-unit-test` has `@types/jest` as a dependency.
+- **Check dependency changes against a standalone theme install**, not only against this
+  workspace: peer dependency conflicts that npm resolves here by nesting (e.g. the dev server
+  vs. `@pmmmwh/react-refresh-webpack-plugin`) fail with `ERESOLVE` there.
+- **Extension tests pass here by accident:** Node and Jest fall back to this repo's
+  `node_modules` for anything an extension doesn't install. `npm run test:extension --
+  <extension> [jest options]` runs an extension's tests without that fallback, like an
+  external setup (run `npm install` in its `frontend` folder first).
+- **Node requirements:** the SDK requires Node `^20.19.0 || >=22.12.0`, the themes ≥ 22.15
+  (`engines`, warning only). Raising a requirement affects external developers with the next theme
+  release; mention it in the release notes.
+
+## Deprecated APIs
+
+Kept only so that existing extensions keep working. Don't use them in new code; when you touch an
+extension that uses them, migrate it. `@shopgate/eslint-config` reports both as
+`no-restricted-imports` warnings, so `npm run lint` in an extension lists every occurrence.
+
+- **`@shopgate/pwa-ui-shared/AddToCartButton/style`** (class names of the old button styles; logs a
+  deprecation warning when imported) → render `AddToCartButton` from `@shopgate/engage/components`.
+  For buttons whose click doesn't add to the cart directly (e.g. it opens a picker), pass
+  `successCount` and increase it after each add to play the checkmark. Otherwise style the button
+  in the extension with `makeStyles`.
+- **`glamor`** → `makeStyles` / `useStyles` from `@shopgate/engage/styles`. Nothing in this repo
+  imports glamor anymore; the themes and libraries only keep it as a dependency for extensions.
+
+Larger postponed clean-ups (glamor removal, validate.js replacement, browser targets and Sentry
+upgrade, and others) are listed in [docs/renovations.md](docs/renovations.md). Check it before
+starting related work, and update it when an entry is done.
 
 ## Human-Readable CSS Classes
 
@@ -113,35 +167,35 @@ Do not copy Knowledge Base content into this file. Keep AGENTS.md focused on thi
 ## Testing Notes
 
 - Tests are `*.spec.js(x)` colocated with source. Config: root `jest.config.js` extends `@shopgate/pwa-unit-test/jest.config`.
-- **Prefer `yarn test:short`, scoped to the paths you changed.** A repo-wide run takes minutes and rarely tells you more than the affected suites do. Widen to the whole suite only when the change could reach unrelated packages, and to `yarn test` only for the export-surface reason below.
-- `RUN_LONG=true` (set only by `yarn test`) runs everything; without it, the 18 `libraries/engage/<pkg>/index.spec.js(x)` barrel specs are skipped. `test:short`, `test:watch`, **and CI** (`yarn cover` = `jest --coverage`, no `RUN_LONG`) all skip them — so they run only when someone manually runs `yarn test`. These specs guard the `@shopgate/engage/*` public export surface, so run `yarn test` locally before merging changes that touch exports.
+- **Prefer `npm run test:short`, scoped to the paths you changed.** A repo-wide run takes minutes and rarely tells you more than the affected suites do. Widen to the whole suite only when the change could reach unrelated packages, and to `npm test` only for the export-surface reason below.
+- `RUN_LONG=true` (set only by `npm test`) runs everything; without it, the 18 `libraries/engage/<pkg>/index.spec.js(x)` barrel specs are skipped. `test:short`, `test:watch`, **and CI** (`npm run cover` = `jest --coverage`, no `RUN_LONG`) all skip them — so they run only when someone manually runs `npm test`. These specs guard the `@shopgate/engage/*` public export surface, so run `npm test` locally before merging changes that touch exports.
 - Only the `@shopgate-theme-config` extension is included in tests; all other `extensions/` are excluded.
 - Both enzyme and `@testing-library/react` (RTL) exist; the direction is to migrate from enzyme to RTL. **Write all new tests with RTL, not enzyme.** Keep RTL tests forward-compatible (query via `screen.*`, `getByRole`/`findBy*`, drive with `fireEvent` or wrapped `userEvent`) so they survive the planned RTL 12→16 / React 17→18 upgrade.
 
 ## Deployment / CI Notes
 
-- **GitHub Actions** (`.github/workflows/main.yml`) does **not** run tests — it only triggers GitLab theme pipelines on `release: published`.
+- **GitHub Actions:** none. Branches of older release lines still contain `.github/workflows/main.yml`, which uploads the themes for releases with the legacy process; the new process uploads them in the pwa-liveupdate pipeline (`scripts/release/README.md`).
 
 ## Project-Specific Pitfalls
 
 - **`extensions/` is invisible to lint and (mostly) tests.** Only `@shopgate-theme-config` is tracked/linted/tested; the rest is gitignored local checkout not covered by CI.
-- **The engage `index.spec` barrel checks are unenforced by CI.** `test:short`, `test:watch`, and CI all skip them (only `yarn test` sets `RUN_LONG=true`) — a green CI run does not prove the `@shopgate/engage/*` exports resolve. Run `yarn test` locally before merging export-affecting changes.
-- **`CHANGELOG.md` is generated** by `lerna-changelog` — never hand-edit.
+- **The engage `index.spec` barrel checks are unenforced by CI.** `test:short`, `test:watch`, and CI all skip them (only `npm test` sets `RUN_LONG=true`) — a green CI run does not prove the `@shopgate/engage/*` exports resolve. Run `npm test` locally before merging export-affecting changes.
+- **`CHANGELOG.md` is generated** by the release process (`scripts/release/steps/changelog.ts`) — never hand-edit.
 - **Build code in `utils/webpack` must stay cross-platform** (macOS, Linux, Windows). Compose filesystem paths with `path.join`/`path.resolve`, never by concatenating with `/`. Component paths inside `config/components.json` are a different thing: the SDK always writes them with forward slashes, so they are safe both as path *segments* (`path.join` normalizes them) and for string checks like `component.path.replace('/dist/', '/src/')`. Tests that assert on a composed path must build the expectation with `path.join` too — a hardcoded `/` in an assertion passes on POSIX and fails on Windows. And because Linux is case sensitive, prefer fixed lowercase file names over names derived from a folder or component name.
 - **CMS widget configs are read at build time.** A `config.json` inside a widget folder (see `libraries/engage/page/widgets/README.md`) reaches the app through `DefinePlugin`. It is wired as a `runtimeValue` with the config files as watch dependencies, so editing one is picked up by a running build, while adding a new widget still needs a restart. An invalid config fails the build.
-- **No pinned Node version** — there is no `engines` field or `.nvmrc`; use a Node version compatible with the modern toolchain (jest 29 / eslint 8 / TS 5.9).
-- **Package versions are managed by the release process** — the root `package.json` `version` is (re)written on every release; don't bump it by hand. Treat `lerna.json` as the source of truth for package versions.
+- **Node 24 and npm ≥ 11 are required** (`engines`, `devEngines`, `.nvmrc`). The release scripts rely on Node's built-in type stripping.
+- **Package versions are managed by the release process** — every workspace `package.json` `version` (all identical) and the theme `extension-config.json` versions are rewritten on every release; don't bump them by hand.
 
 ## Editing Guidelines for AI Agents
 
 - Do not hand-edit generated/local files: `CHANGELOG.md`, `dist/`, `coverage/`, `.sgcloud/`, `node_modules/`.
 - `themes/theme-ios11` may be edited here. **Do not change `themes/theme-gmd`** — it is being dropped, so its code is no longer maintained. A fix that would land in gmd either goes into `libraries/*` or is left undone; say so rather than editing it.
-- When adding a library/extension, keep `package.json` `workspaces` and `lerna.json` `packages` in sync, and respect the Makefile's `@shopgate/pwa-` prefixing rule.
+- When adding a library/extension, add it to `package.json` `workspaces`, and to `PUBLISHABLE_PACKAGES` in `scripts/release/config.ts` if it is published to npm.
 - New typed code should use TypeScript (`.ts/.tsx`).
 - Don't import `React` just for JSX — the Babel automatic JSX runtime (React 17) handles it.
 - Prefer `import type { X } from '...'` (keyword before the braces) for type-only imports; use the inline `type` marker only when a line mixes values and types.
 - Do not add new glamor styling — write CSS with `makeStyles` / `useStyles` (`tss-react`) instead.
 - Do not create new `connector.js` files — wire redux in new code with hooks (`useSelector`, `useDispatch`); `connector.js` is legacy.
 - Write new tests with `@testing-library/react`, not enzyme (enzyme→RTL migration in progress).
-- Run tests with `yarn test:short`, narrowed to the paths you touched; keep `yarn test` for export-surface changes.
+- Run tests with `npm run test:short`, narrowed to the paths you touched; keep `npm test` for export-surface changes.
 - Don't rely on `extensions/*` being linted or CI-covered; only `@shopgate-theme-config` is.

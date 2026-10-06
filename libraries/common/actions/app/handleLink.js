@@ -42,7 +42,11 @@ export default function handleLink(payload, allowExternalLinks = false) {
       try {
         ({ pathname } = new URL(link));
       } catch (linkParseError) {
-        logger.error(`Could not parse link ${link}`, linkParseError);
+        // The error is sent to Sentry. Query string, hash and credentials in front of the host can
+        // contain secrets, so they are left out, and so is the error of the browser, which can
+        // contain the whole link.
+        const loggedLink = link.split(/[?#]/)[0].replace(/^([^/]*\/\/)[^/@]*@/, '$1');
+        logger.error(new Error(`Could not parse link ${loggedLink}`));
       }
     } else {
       // Remove the deeplink protocol from the link.

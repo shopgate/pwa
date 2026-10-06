@@ -4,7 +4,11 @@
   "description": "Common library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
-  "repository": "shopgate/pwa",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shopgate/pwa.git",
+    "directory": "libraries/common"
+  },
   "bugs": "https://github.com/shopgate/pwa/issues",
   "homepage": "https://github.com/shopgate/pwa/tree/master/libraries/common",
   "keywords": [
@@ -16,8 +20,7 @@
   ],
   "dependencies": {
     "@redux-devtools/extension": "^3.3.0",
-    "@sentry/browser": "6.0.1",
-    "@shopgate/pwa-benchmark": "7.32.1",
+    "@sentry/browser": "^7.120.4",
     "@virtuous/conductor": "~2.5.0",
     "@virtuous/react-conductor": "~2.5.0",
     "@virtuous/redux-persister": "1.1.0-beta.7",
@@ -28,12 +31,12 @@
     "history": "^4.9.0",
     "intl-messageformat": "^11.2.9",
     "path-match": "^1.2.4",
+    "react-cookie": "^8.1.2",
     "react-dotdotdot": "~1.3.1",
     "react-helmet": "^6.1.0",
     "react-portal": "^3.1.0",
     "react-redux": "^8.1.3",
     "redux": "^5.0.1",
-    "redux-logger": "^3.0.6",
     "redux-thunk": "^3.1.0",
     "reselect": "^4.1.8",
     "rxjs": "~5.5.12",
@@ -41,9 +44,9 @@
   },
   "devDependencies": {
     "@shopgate/pwa-core": "7.32.1",
-    "@types/lodash": "^4.17.24",
+    "@types/lodash": "^4.17.25",
     "@types/react-portal": "^3.0.9",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "prop-types": "~15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"

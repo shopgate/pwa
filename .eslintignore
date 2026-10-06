@@ -4,7 +4,6 @@ coverage
 /pipelines/
 /trustedPipelines/
 /themes/*/extensions/
-/themes/*/e2e/
 /themes/*/public/
 !/extensions/@shopgate-theme-config
 /utils/webpack/local-packages/

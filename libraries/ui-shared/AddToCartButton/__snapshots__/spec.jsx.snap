@@ -8,22 +8,15 @@ exports[`<AddToCartButton /> should render in loading state and should not be cl
   onClick={[MockFunction]}
 >
   <AddToCartButton
-    aria-hidden={false}
-    aria-label={null}
-    buttonSize={40}
-    className={null}
     forwardedRef={null}
-    iconSize={20}
     isDisabled={false}
     isLoading={true}
     isOrderable={true}
     onClick={[MockFunction]}
-    onReset={[Function]}
   >
     <button
       aria-disabled={false}
       aria-hidden={false}
-      aria-label={null}
       className="ui-shared__add-to-cart-button sg-6rg5es-buttonReady"
       data-test-id="addToCartButton"
       onClick={[Function]}
@@ -168,12 +161,7 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
   }
 >
   <AddToCartButton
-    aria-hidden={false}
-    aria-label={null}
-    buttonSize={40}
-    className={null}
     forwardedRef={null}
-    iconSize={20}
     isDisabled={false}
     isLoading={false}
     isOrderable={true}
@@ -192,12 +180,10 @@ exports[`<AddToCartButton /> should render with cart icon and should be clickabl
         ],
       }
     }
-    onReset={[Function]}
   >
     <button
       aria-disabled={false}
       aria-hidden={false}
-      aria-label={null}
       className="ui-shared__add-to-cart-button sg-qq4p6o-buttonSuccess"
       data-test-id="addToCartButton"
       onClick={[Function]}
@@ -311,12 +297,7 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
   }
 >
   <AddToCartButton
-    aria-hidden={false}
-    aria-label={null}
-    buttonSize={40}
-    className={null}
     forwardedRef={null}
-    iconSize={20}
     isDisabled={false}
     isLoading={false}
     isOrderable={true}
@@ -335,12 +316,10 @@ exports[`<AddToCartButton /> should render with checkmark icon and should not be
         ],
       }
     }
-    onReset={[Function]}
   >
     <button
       aria-disabled={false}
       aria-hidden={false}
-      aria-label={null}
       className="ui-shared__add-to-cart-button sg-qq4p6o-buttonSuccess"
       data-test-id="addToCartButton"
       onClick={[Function]}

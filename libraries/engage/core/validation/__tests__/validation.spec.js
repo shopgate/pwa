@@ -46,4 +46,16 @@ describe('engage > core > validation', () => {
     expect(valid).toEqual(true);
     expect(validationErrors).toEqual(undefined);
   });
+
+  it('should reject a crafted email address without catastrophic backtracking', () => {
+    const start = Date.now();
+    const { valid, validationErrors } = validate({
+      firstName: 'Name',
+      email: `name@[192.168.168.1:80${'\\a'.repeat(5000)}`,
+    }, constraints);
+
+    expect(Date.now() - start).toBeLessThan(500);
+    expect(valid).toEqual(false);
+    expect(validationErrors).toEqual({ email: 'validation.email' });
+  });
 });

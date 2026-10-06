@@ -47,7 +47,6 @@ module.exports = {
     '!*/**/.eslintrc.js',
     '!*/**/jest.config.js',
     '!themes/*/extensions/**/*.js',
-    '!themes/*/e2e/**/*.js',
     '!**/dist/**',
   ],
   transform: {
@@ -59,9 +58,9 @@ module.exports = {
   testPathIgnorePatterns: [
     '/node_modules/',
     '/themes/*/extensions/',
-    '/themes/*/e2e/',
     `/extensions/(?!(${testedExtensions.join('|')}))`,
     '/utils/webpack/local-packages',
+    '/scripts/release/',
     '/dist/',
     '.*/dist/.*',
     ...skipPatterns,
@@ -70,7 +69,6 @@ module.exports = {
     // Spread the defaults, since they would be replaced otherwise
     ...jestConfig.transformIgnorePatterns,
     '/themes/*/extensions/',
-    '/themes/*/e2e/',
     '/dist/',
   ],
   moduleNameMapper: {

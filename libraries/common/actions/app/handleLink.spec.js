@@ -94,7 +94,21 @@ describe('handleLink()', () => {
     it('should dispatch historyReset() when the link is invalid URL', () => {
       handleLink({ link: 'http !@@##%$^&^*&* s://example.com/' })(dispatch);
       expect(dispatch).toHaveBeenCalledTimes(1);
-      expect(logger.error.mock.calls[0][0]).toContain('Could not parse link');
+      expect(logger.error.mock.calls[0][0].message).toContain('Could not parse link');
+      expect(historyReset).toHaveBeenCalledTimes(1);
+    });
+
+    it('should log an invalid URL without the credentials in front of its host', () => {
+      handleLink({ link: 'http://jane:secret@exa mple.com/sale?token=abc' })(dispatch);
+      expect(logger.error).toHaveBeenCalledTimes(1);
+      expect(logger.error.mock.calls[0][0].message).toBe('Could not parse link http://exa mple.com/sale');
+    });
+
+    it('should log an invalid URL without its query string and hash', () => {
+      handleLink({ link: 'http://exa mple.com/sale?token=abc#section' })(dispatch);
+      expect(logger.error).toHaveBeenCalledTimes(1);
+      expect(logger.error.mock.calls[0]).toHaveLength(1);
+      expect(logger.error.mock.calls[0][0].message).toBe('Could not parse link http://exa mple.com/sale');
       expect(historyReset).toHaveBeenCalledTimes(1);
     });
   });

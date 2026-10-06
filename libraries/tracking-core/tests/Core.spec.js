@@ -123,6 +123,84 @@ describe('Core', () => {
     });
   });
 
+  it('should log a plugin error once it carries the name of the tracker', () => {
+    jest.useFakeTimers();
+    const error = new Error('Plugin failed');
+    let loggedContext;
+    const consoleError = jest.spyOn(console, 'error').mockImplementation((message, loggedError) => {
+      loggedContext = loggedError.context;
+    });
+
+    SgTrackingCore.register.pageview(() => {
+      throw error;
+    }, { trackerName: 'mock' });
+    SgTrackingCore.track.pageview();
+
+    expect(consoleError).toHaveBeenCalledTimes(1);
+    expect(consoleError).toHaveBeenCalledWith("'SgTrackingCore': Error in plugin [mock]", error);
+    expect(loggedContext).toBe('mock');
+    expect(error.source).toBe('tracking');
+
+    consoleError.mockRestore();
+    jest.useRealTimers();
+  });
+
+  it('should log a plugin that throws a string and still call the next plugin', () => {
+    jest.useFakeTimers();
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const nextPlugin = jest.fn();
+
+    SgTrackingCore.register.pageview(() => {
+      throw 'Plugin failed'; // eslint-disable-line no-throw-literal
+    }, { trackerName: 'mock' });
+    SgTrackingCore.register.pageview(nextPlugin, { trackerName: 'next' });
+    SgTrackingCore.track.pageview();
+
+    const [message, error] = consoleError.mock.calls[0];
+    expect(message).toBe("'SgTrackingCore': Error in plugin [mock]");
+    expect(error).toBeInstanceOf(Error);
+    expect(error.message).toBe('Plugin failed');
+    expect(error.context).toBe('mock');
+    expect(nextPlugin).toHaveBeenCalledTimes(1);
+
+    consoleError.mockRestore();
+    jest.useRealTimers();
+  });
+
+  it('should log a plugin error whose code can not be assigned and still call the next plugin', () => {
+    jest.useFakeTimers();
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const nextPlugin = jest.fn();
+    /**
+     * An error like a DOMException, whose code can't be assigned.
+     */
+    class ReadOnlyCodeError extends Error {
+      /**
+       * @returns {number}
+       */
+      get code() {
+        return 18;
+      }
+    }
+    const thrown = new ReadOnlyCodeError('Not allowed');
+
+    SgTrackingCore.register.pageview(() => {
+      throw thrown;
+    }, { trackerName: 'mock' });
+    SgTrackingCore.register.pageview(nextPlugin, { trackerName: 'next' });
+    SgTrackingCore.track.pageview();
+
+    const [message, error] = consoleError.mock.calls[0];
+    expect(message).toBe("'SgTrackingCore': Error in plugin [mock]");
+    expect(error).toBe(thrown);
+    expect(error.code).toBe('ETRACKING');
+    expect(error.context).toBe('mock');
+    expect(nextPlugin).toHaveBeenCalledTimes(1);
+
+    consoleError.mockRestore();
+    jest.useRealTimers();
+  });
+
   /**
    * Makes sure that core is adding the blacklist to the unified event handler
    */
