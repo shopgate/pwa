@@ -398,6 +398,8 @@ export type AppBarScrollBehavior = 'revealBar' | 'floatingButtons' | 'scrollAway
  */
 export interface AppBarSettings {
   style: AppBarStyle;
+  /** Whether the start page shows the logo in the header. */
+  showLogo: boolean;
   logoPosition: 'left' | 'center' | 'right';
   buttons: Record<AppBarButtonSlot, NavigationActionSettings>;
   modern: {

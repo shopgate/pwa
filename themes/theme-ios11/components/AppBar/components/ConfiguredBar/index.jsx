@@ -108,7 +108,7 @@ const ConfiguredBar = ({
   modern,
   overlay,
   showActions,
-  logo,
+  logo: isLogoPage,
   title,
   left,
   center,
@@ -117,7 +117,10 @@ const ConfiguredBar = ({
   ...props
 }) => {
   const { scrolled, scrollingDown } = useOverlayScroll(overlay);
-  const { logoPosition, buttons, modern: { scrollBehavior } } = settings;
+  const {
+    showLogo, logoPosition, buttons, modern: { scrollBehavior },
+  } = settings;
+  const logo = isLogoPage && showLogo !== false;
 
   useHeaderOverlay(overlay);
 
@@ -133,7 +136,7 @@ const ConfiguredBar = ({
   const rightSlots = renderSlots(SLOTS_RIGHT);
   let centerElement = center !== undefined ? center : <AppBar.Title title={i18n.text(title || '')} />;
 
-  if (logo) {
+  if (isLogoPage) {
     centerElement = null;
   } else if (modern && center === undefined) {
     centerElement = null;

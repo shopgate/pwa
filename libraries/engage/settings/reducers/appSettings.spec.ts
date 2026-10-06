@@ -36,6 +36,7 @@ describe('settings / reducers / appSettings', () => {
       navigation: {
         appBar: {
           style: 'modern',
+          showLogo: false,
           logoPosition: 'left',
           buttons: {
             left1: {
@@ -618,6 +619,7 @@ describe('settings / reducers / appSettings', () => {
       navigation: {
         appBar: {
           style: null,
+          showLogo: null,
           logoPosition: 'right',
           buttons: {
             left1: null,
@@ -644,6 +646,7 @@ describe('settings / reducers / appSettings', () => {
 
     const { appBar, search, tabBar } = state.navigation;
     expect(appBar.style).toBe('classic');
+    expect(appBar.showLogo).toBe(true);
     expect(appBar.logoPosition).toBe('right');
     expect(appBar.buttons.left1).toEqual(DEFAULT_APP_SETTINGS.navigation.appBar.buttons.left1);
     expect(appBar.buttons.right1).toEqual({

@@ -49,6 +49,7 @@ const slot = action => ({
 
 const createSettings = (overrides = {}) => ({
   style: 'classic',
+  showLogo: true,
   logoPosition: 'center',
   modern: { scrollBehavior: 'revealBar' },
   buttons: {
@@ -112,6 +113,17 @@ describe('<ConfiguredBar />', () => {
     });
 
     expect(within(screen.getByTestId(testId)).getByText('logo')).toBeInTheDocument();
+  });
+
+  it('leaves the logo out when it is switched off', () => {
+    renderBar({
+      logo: true,
+      title: 'Home',
+      settings: { showLogo: false },
+    });
+
+    expect(screen.queryByText('logo')).not.toBeInTheDocument();
+    expect(texts('center')).toEqual([]);
   });
 
   it('keeps the title out of the modern bar', () => {

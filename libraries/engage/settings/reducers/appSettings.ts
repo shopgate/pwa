@@ -70,6 +70,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   navigation: {
     appBar: {
       style: 'classic',
+      showLogo: true,
       logoPosition: 'center',
       buttons: {
         left1: {
