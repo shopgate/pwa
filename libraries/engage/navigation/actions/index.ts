@@ -14,8 +14,8 @@ import { STORE_FINDER_PATTERN } from '@shopgate/engage/locations/constants/route
 import { useRoute, useNavigation } from '@shopgate/engage/core/hooks';
 import { UIEvents } from '@shopgate/engage/core/events';
 import useProductShare from '@shopgate/engage/product/hooks/useProductShare';
-import { OPEN_SEARCH } from '../constants';
-import { registerNavigationAction } from '../registry';
+import { BROWSE_PATH, OPEN_SEARCH } from '../constants';
+import { registerDefaultNavigationAction } from '../registry';
 import type { NavigationActionHook } from '../types';
 
 /**
@@ -96,10 +96,18 @@ const useFavoritesAction: NavigationActionHook = () => ({
   badgeCount: useSelector(getFavoritesCount) as number,
 });
 
-registerNavigationAction('link', useLinkAction);
-registerNavigationAction('openSearch', useOpenSearchAction);
-registerNavigationAction('share', useShareAction);
-registerNavigationAction('scanner', useScannerAction);
-registerNavigationAction('storeFinder', useStoreFinderAction);
-registerNavigationAction('cart', useCartAction);
-registerNavigationAction('favorites', useFavoritesAction);
+const useCategoryMenuAction: NavigationActionHook = () => ({
+  available: true,
+  icon: 'burger',
+  label: 'navigation.categories',
+  onClick: usePush(BROWSE_PATH),
+});
+
+registerDefaultNavigationAction('link', useLinkAction);
+registerDefaultNavigationAction('openSearch', useOpenSearchAction);
+registerDefaultNavigationAction('share', useShareAction);
+registerDefaultNavigationAction('scanner', useScannerAction);
+registerDefaultNavigationAction('storeFinder', useStoreFinderAction);
+registerDefaultNavigationAction('cart', useCartAction);
+registerDefaultNavigationAction('favorites', useFavoritesAction);
+registerDefaultNavigationAction('categoryDrawer', useCategoryMenuAction);
