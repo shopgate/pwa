@@ -12,6 +12,24 @@ const SLOTS_LEFT = ['left1', 'left2'];
 const SLOTS_RIGHT = ['right1', 'right2'];
 const TITLE_INSET = 90;
 
+const SUPPORTS_COLOR_MIX = '@supports (background: color-mix(in srgb, red 50%, transparent))';
+
+/**
+ * @param {string} blur The blur radius.
+ * @returns {string} The backdrop filter of a frosted surface.
+ */
+const glass = blur => `blur(${blur}) saturate(180%)`;
+
+/**
+ * Makes only the color translucent, so the backdrop filter of the surface keeps its full effect.
+ * @param {string} color The color.
+ * @param {string} opacity The opacity between 0 and 1.
+ * @returns {string} The translucent color.
+ */
+const translucent = (color, opacity) => (
+  `color-mix(in srgb, ${color} calc(${opacity} * 100%), transparent)`
+);
+
 const useStyles = makeStyles()((theme, { inset }) => ({
   inner: {
     '--app-bar-title-inset': `${inset}px`,
@@ -39,8 +57,8 @@ const useStyles = makeStyles()((theme, { inset }) => ({
       inset: 0,
       background: theme.components.appBar.background,
       opacity: 0,
-      backdropFilter: `blur(${theme.components.appBar.overlayBarBlur})`,
-      WebkitBackdropFilter: `blur(${theme.components.appBar.overlayBarBlur})`,
+      backdropFilter: glass(theme.components.appBar.overlayBarBlur),
+      WebkitBackdropFilter: glass(theme.components.appBar.overlayBarBlur),
       transition: 'opacity 200ms ease-in-out',
       pointerEvents: 'none',
     },
@@ -49,6 +67,15 @@ const useStyles = makeStyles()((theme, { inset }) => ({
     pointerEvents: 'auto',
     '&::before': {
       opacity: theme.components.appBar.overlayBarOpacity,
+    },
+    [SUPPORTS_COLOR_MIX]: {
+      '&::before': {
+        opacity: 1,
+        background: translucent(
+          theme.components.appBar.background,
+          theme.components.appBar.overlayBarOpacity
+        ),
+      },
     },
   },
   overlayHidden: {
@@ -65,9 +92,18 @@ const useStyles = makeStyles()((theme, { inset }) => ({
       borderRadius: '50%',
       background: theme.components.appBar.floatingButtonBackground,
       opacity: theme.components.appBar.floatingButtonOpacity,
-      backdropFilter: `blur(${theme.components.appBar.floatingButtonBlur})`,
-      WebkitBackdropFilter: `blur(${theme.components.appBar.floatingButtonBlur})`,
+      backdropFilter: glass(theme.components.appBar.floatingButtonBlur),
+      WebkitBackdropFilter: glass(theme.components.appBar.floatingButtonBlur),
       zIndex: -1,
+    },
+    [SUPPORTS_COLOR_MIX]: {
+      '& [role="button"]::before': {
+        opacity: 1,
+        background: translucent(
+          theme.components.appBar.floatingButtonBackground,
+          theme.components.appBar.floatingButtonOpacity
+        ),
+      },
     },
   },
   logoHidden: {

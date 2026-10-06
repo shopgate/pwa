@@ -19,15 +19,23 @@ import { registerDefaultNavigationAction } from '../registry';
 import type { NavigationActionHook } from '../types';
 
 /**
- * Creates a click handler that opens a path.
+ * Creates a click handler that opens a path. On the page of the path itself it does nothing, so
+ * the button stays in place without stacking the same page again.
  * @param pathname The path to open.
  * @returns A click handler that opens the path.
  */
 const usePush = (pathname: string) => {
   const { push } = useNavigation();
+  const route = useRoute() as { pathname?: string } | null;
+  const currentPathname = route?.pathname;
+
   return useCallback(() => {
+    if (currentPathname === pathname) {
+      return;
+    }
+
     push({ pathname });
-  }, [push, pathname]);
+  }, [push, pathname, currentPathname]);
 };
 
 const useLinkAction: NavigationActionHook = ({ link }) => {
