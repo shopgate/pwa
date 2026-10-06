@@ -166,7 +166,7 @@ describe('<ConfiguredBar />', () => {
       settings: { modern: { scrollBehavior: 'floatingButtons' } },
     });
 
-    expect(screen.getByTestId('bar').className).toMatch(/statusFilled/);
+    expect(document.querySelector('.theme__app-bar__status-fill').className).toMatch(/statusFilled/);
     expect(screen.getByTestId('bar').className).toMatch(/logoHidden/);
   });
 
@@ -198,6 +198,21 @@ describe('<ConfiguredBar />', () => {
     expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--revealed');
   });
 
+  it('shows the bar again when scrolling up with scrollAway', () => {
+    mockScroll = {
+      scrolled: true,
+      scrollingDown: false,
+    };
+    renderBar({
+      modern: true,
+      overlay: true,
+      settings: { modern: { scrollBehavior: 'scrollAway' } },
+    });
+
+    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--revealed');
+    expect(screen.getByTestId('bar')).not.toHaveClass('theme__app-bar--hidden');
+  });
+
   it('slides the bar out while scrolling down with scrollAway', () => {
     mockScroll = {
       scrolled: true,
@@ -210,5 +225,6 @@ describe('<ConfiguredBar />', () => {
     });
 
     expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--hidden');
+    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--revealed');
   });
 });

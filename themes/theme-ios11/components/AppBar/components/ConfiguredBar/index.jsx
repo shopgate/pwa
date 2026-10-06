@@ -79,18 +79,6 @@ const useStyles = makeStyles()((theme, { inset }) => {
         transition: theme.transitions.create('opacity', { duration: 200 }),
         pointerEvents: 'none',
       },
-      '&::after': {
-        content: '""',
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        right: 0,
-        height: theme.layout.safeArea.top,
-        background: appBar.background,
-        opacity: 0,
-        transition: theme.transitions.create('opacity', { duration: 200 }),
-        pointerEvents: 'none',
-      },
       '& [role="button"]::before': {
         content: '""',
         position: 'absolute',
@@ -121,7 +109,7 @@ const useStyles = makeStyles()((theme, { inset }) => {
         transition: theme.transitions.create('opacity', { duration: 200 }),
       },
       '@media (prefers-reduced-motion: reduce)': {
-        '&, &::before, &::after, & [role="button"]::before, & .engage__logo': {
+        '&, &::before, & [role="button"]::before, & .engage__logo': {
           transition: 'none',
         },
       },
@@ -146,13 +134,26 @@ const useStyles = makeStyles()((theme, { inset }) => {
         },
       },
     },
-    statusFilled: {
-      '&::after': {
-        opacity: 1,
+    statusFill: {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      zIndex: 2,
+      height: theme.layout.safeArea.top,
+      background: appBar.background,
+      opacity: 0,
+      transition: theme.transitions.create('opacity', { duration: 200 }),
+      pointerEvents: 'none',
+      '@media (prefers-reduced-motion: reduce)': {
+        transition: 'none',
       },
     },
+    statusFilled: {
+      opacity: 1,
+    },
     hidden: {
-      transform: `translateY(calc(-100% + ${theme.layout.safeArea.top}))`,
+      transform: 'translateY(-100%)',
     },
     logoHidden: {
       '& .engage__logo': {
@@ -248,7 +249,8 @@ const ConfiguredBar = ({
   }
 
   const floatsOnScroll = scrollBehavior === 'floatingButtons' || scrollBehavior === 'scrollAway';
-  const revealed = overlay && scrollBehavior === 'revealBar' && scrolled;
+  const revealsBar = scrollBehavior === 'revealBar' || scrollBehavior === 'scrollAway';
+  const revealed = overlay && revealsBar && scrolled;
   const hidden = overlay && scrollBehavior === 'scrollAway' && scrollingDown;
   const outer = cx(
     parentClasses.outer,
@@ -256,36 +258,49 @@ const ConfiguredBar = ({
     overlay && 'theme__app-bar--overlay',
     revealed && classes.revealed,
     revealed && 'theme__app-bar--revealed',
-    overlay && floatsOnScroll && scrolled && classes.statusFilled,
     overlay && scrollBehavior === 'floatingButtons' && scrolled && classes.logoHidden,
     hidden && classes.hidden,
     hidden && 'theme__app-bar--hidden'
   );
 
+  const statusFilled = overlay && floatsOnScroll && scrolled;
+
   return (
-    <AppBar
-      {...props}
-      backgroundColor={overlay ? 'transparent' : props.backgroundColor}
-      classes={{
-        outer,
-        inner: cx(classes.inner, modern && classes.modernInner, parentClasses.inner),
-      }}
-      left={(
-        <>
-          {left}
-          {leftSlots}
-          {logo && position === 'left' && logoElement}
-        </>
+    <>
+      {overlay && (
+        <div
+          className={cx(
+            classes.statusFill,
+            statusFilled && classes.statusFilled,
+            'theme__app-bar__status-fill'
+          )}
+          aria-hidden
+        />
       )}
-      center={centerElement}
-      right={(
-        <>
-          {logo && position === 'right' && logoElement}
-          {rightSlots}
-          {right}
-        </>
+      <AppBar
+        {...props}
+        backgroundColor={overlay ? 'transparent' : props.backgroundColor}
+        classes={{
+          outer,
+          inner: cx(classes.inner, modern && classes.modernInner, parentClasses.inner),
+        }}
+        left={(
+          <>
+            {left}
+            {leftSlots}
+            {logo && position === 'left' && logoElement}
+          </>
       )}
-    />
+        center={centerElement}
+        right={(
+          <>
+            {logo && position === 'right' && logoElement}
+            {rightSlots}
+            {right}
+          </>
+      )}
+      />
+    </>
   );
 };
 
