@@ -17,12 +17,17 @@ import { ProductShareButton } from '@shopgate/engage/product/components/ProductS
 import { appConfig } from '@shopgate/engage';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getProductActionButtons } from '@shopgate/engage/settings/selectors/appSettings';
+import {
+  getAppBarSettings,
+  getProductActionButtons,
+} from '@shopgate/engage/settings/selectors/appSettings';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig;
 
 const BULLETS_BELOW_OFFSET = 28;
+const FLOATING_BUTTON_SIZE = 36;
+const HEADER_BUTTON_INSET = 4;
 
 const useStyles = makeStyles()(theme => ({
   buttons: {
@@ -46,6 +51,20 @@ const useStyles = makeStyles()(theme => ({
     '&[data-position="bottomRight"][data-bullets-below]': {
       bottom: theme.spacing(2) + BULLETS_BELOW_OFFSET,
     },
+    '&[data-floating-header="true"][data-position="topRight"]': {
+      top: `calc(var(--app-bar-height, 0px) + ${HEADER_BUTTON_INSET}px)`,
+    },
+    '&[data-floating-header="true"] > button, &[data-floating-header="true"] > * > button': {
+      width: FLOATING_BUTTON_SIZE,
+      height: FLOATING_BUTTON_SIZE,
+      minWidth: FLOATING_BUTTON_SIZE,
+      minHeight: FLOATING_BUTTON_SIZE,
+      outline: '1px solid rgba(0, 0, 0, 0.1)',
+      outlineOffset: -1,
+      '@supports (color: color-mix(in srgb, red 50%, transparent))': {
+        outlineColor: `color-mix(in srgb, ${theme.palette.text.primary} 10%, transparent)`,
+      },
+    },
   },
   favButton: {
     zIndex: 1,
@@ -62,6 +81,7 @@ const CTAButtons = ({
 }) => {
   const { classes, cx } = useStyles();
   const { position, direction } = useSelector(getProductActionButtons);
+  const { style: headerStyle } = useSelector(getAppBarSettings);
   const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery;
 
   const favoritesFirst = position === 'topRight' && direction === 'vertical';
@@ -91,6 +111,7 @@ const CTAButtons = ({
           data-position={position}
           data-direction={direction}
           data-bullets-below={bulletsBelow ? true : undefined}
+          data-floating-header={headerStyle === 'modern' ? true : undefined}
         >
           {favoritesFirst && favorites}
           <Portal name={PRODUCT_CTAS_SHARE_BEFORE} />
