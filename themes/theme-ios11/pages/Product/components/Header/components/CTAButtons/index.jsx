@@ -59,11 +59,6 @@ const useStyles = makeStyles()(theme => ({
       height: FLOATING_BUTTON_SIZE,
       minWidth: FLOATING_BUTTON_SIZE,
       minHeight: FLOATING_BUTTON_SIZE,
-      outline: '1px solid rgba(0, 0, 0, 0.1)',
-      outlineOffset: -1,
-      '@supports (color: color-mix(in srgb, red 50%, transparent))': {
-        outlineColor: `color-mix(in srgb, ${theme.palette.text.primary} 10%, transparent)`,
-      },
     },
   },
   favButton: {
