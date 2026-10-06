@@ -4,6 +4,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
+import { getProductIsFetching } from '@shopgate/engage/product/selectors/product';
 import { getBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
 import {
   getProductReviews,
@@ -71,6 +72,9 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
   const baseProductId: string = useSelector((state: PageState) => (
     getBaseProductId(state, listProps)
   )) || productId;
+  const isProductFetching: boolean = useSelector((state: PageState) => (
+    getProductIsFetching(state, listProps)
+  ));
   const summary = useSelector(
     (state: PageState) => getReviewSummary(state, { productId: baseProductId }),
     shallowEqual
@@ -91,10 +95,10 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
   const hasError = useSelector((state: PageState) => hasReviewListError(state, listProps));
 
   useEffect(() => {
-    if (isMissing) {
+    if (isMissing && !isProductFetching) {
       dispatch(fetchReviews(baseProductId, REVIEW_ITEMS_PER_PAGE));
     }
-  }, [baseProductId, dispatch, isMissing]);
+  }, [baseProductId, dispatch, isMissing, isProductFetching]);
 
   const handleRetry = useCallback(() => {
     dispatch(fetchReviews(baseProductId, REVIEW_ITEMS_PER_PAGE, requestOffset));

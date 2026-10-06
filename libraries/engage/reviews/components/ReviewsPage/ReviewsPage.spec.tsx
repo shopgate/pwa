@@ -13,6 +13,7 @@ import ReviewsPage from './ReviewsPage';
 
 type MockPageState = {
   baseProductId: string | null;
+  productFetching: boolean;
   summary: ReviewSummary | null;
   reviews: Review[];
   totalCount: number | null;
@@ -37,6 +38,12 @@ jest.mock('@shopgate/pwa-common/components/SurroundPortals', () => ({
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   ...jest.requireActual('@shopgate/pwa-common-commerce/product/selectors/product'),
   getBaseProductId: () => mockPage.baseProductId,
+}));
+jest.mock('@shopgate/engage/product/selectors/product', () => ({
+  ...jest.requireActual('@shopgate/engage/product/selectors/product'),
+  getProductIsFetching: (_state: unknown, props: SelectorProps) => (
+    props.productId === 'route' && mockPage.productFetching
+  ),
 }));
 jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
   /**
@@ -109,19 +116,24 @@ Object.defineProperty(config, 'showWriteReview', {
 
 /**
  * Renders the page with a store that records dispatched actions.
- * @returns The render result and the dispatched actions.
+ * @returns The render result, a re-render with the same store and the dispatched actions.
  */
 const renderPage = () => {
   const store = createStore(() => ({}));
   const dispatchSpy = jest.spyOn(store, 'dispatch');
-  const result = render(
+  /**
+   * @returns A new page element, so that a re-render evaluates the selectors again.
+   */
+  const createPage = () => (
     <Provider store={store}>
       <ReviewsPage productId="route" />
     </Provider>
   );
+  const result = render(createPage());
 
   return {
     ...result,
+    rerenderPage: () => result.rerender(createPage()),
     getActions: () => dispatchSpy.mock.calls.map(([action]) => action),
   };
 };
@@ -132,6 +144,7 @@ describe('<ReviewsPage />', () => {
     showWriteReviewGetter.mockReturnValue(true);
     mockPage = {
       baseProductId: 'base',
+      productFetching: false,
       summary: {
         average: 78,
         count: 12,
@@ -292,6 +305,48 @@ describe('<ReviewsPage />', () => {
     expect(getActions()).toEqual([{
       type: 'FETCH_REVIEWS',
       productId: 'base',
+      limit: REVIEW_ITEMS_PER_PAGE,
+      offset: undefined,
+    }]);
+  });
+
+  it('should request a missing list for the base product after the product request', () => {
+    mockPage.baseProductId = null;
+    mockPage.productFetching = true;
+    mockPage.reviews = [];
+    mockPage.totalCount = null;
+    mockPage.missing = true;
+    mockPage.loading = true;
+
+    const { rerenderPage, getActions } = renderPage();
+
+    expect(screen.getByRole('progressbar')).toBeInTheDocument();
+    expect(getActions()).toEqual([]);
+
+    mockPage.baseProductId = 'base';
+    mockPage.productFetching = false;
+    rerenderPage();
+
+    expect(getActions()).toEqual([{
+      type: 'FETCH_REVIEWS',
+      productId: 'base',
+      limit: REVIEW_ITEMS_PER_PAGE,
+      offset: undefined,
+    }]);
+  });
+
+  it('should request a missing list for the route product when the product request failed', () => {
+    mockPage.baseProductId = null;
+    mockPage.reviews = [];
+    mockPage.totalCount = null;
+    mockPage.missing = true;
+    mockPage.loading = true;
+
+    const { getActions } = renderPage();
+
+    expect(getActions()).toEqual([{
+      type: 'FETCH_REVIEWS',
+      productId: 'route',
       limit: REVIEW_ITEMS_PER_PAGE,
       offset: undefined,
     }]);
