@@ -1,6 +1,8 @@
+import { GITHUB_REPO, PUBLISH_ENVIRONMENT, PUBLISH_WORKFLOW } from '../config.ts';
+
 const RETRY = 'Retry the job. Steps that already went through are skipped or report "Everything up-to-date".';
 const SSH_KEY = 'If it keeps failing, check that the SSH key in the CI/CD variable SSH_GITHUB_AUTH of pwa-liveupdate has write access to the repository.';
-const NPM_TOKEN = 'If npm reports E401 or E403, the CI/CD variable NPM_STAGE_TOKEN of pwa-liveupdate is expired or has no access to the package: renew it on npmjs.com ("Read and write", stage only).';
+const NPM_TRUST = `If npm reports E401, E403 or E404 in the "Publish packages" workflow, npm doesn't trust the workflow for that package: check its trusted publisher on npmjs.com (repository ${GITHUB_REPO}, workflow ${PUBLISH_WORKFLOW}, environment ${PUBLISH_ENVIRONMENT}). Packages that are published already are skipped on the next run.`;
 
 /**
  * Explains how to continue after an external command failed.
@@ -32,8 +34,8 @@ export const getCommandHint = (command: string, args: string[]): string | undefi
   }
 
   if (command === 'npm') {
-    if (subcommand === 'stage') {
-      return `${RETRY} ${NPM_TOKEN}`;
+    if (subcommand === 'publish') {
+      return NPM_TRUST;
     }
 
     if (subcommand === 'install') {

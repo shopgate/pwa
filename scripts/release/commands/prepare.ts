@@ -1,5 +1,7 @@
 import path from 'node:path';
-import { ROOT, getThemes } from '../config.ts';
+import {
+  GITHUB_REPO, PUBLISH_WORKFLOW, ROOT, getThemes,
+} from '../config.ts';
 import { buildAll } from './build.ts';
 import { bumpVersions, updateLockfile } from '../steps/bump.ts';
 import { generateChangelog } from '../steps/changelog.ts';
@@ -14,12 +16,13 @@ import {
 } from '../lib/git.ts';
 import { symbols } from '../lib/symbols.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
-import { stagePackages } from '../steps/stage.ts';
+import { publishPackages } from '../steps/publish.ts';
 import { pushSubtrees } from '../steps/subtree.ts';
 
 /**
- * Creates or continues the release branch, bumps and builds the packages, adds the changelog,
- * pushes everything to the release branches and stages the packages on npm.
+ * Creates or continues the release branch, bumps and builds the packages, adds the changelog
+ * and pushes everything to the release branches. The push starts the GitHub workflow that
+ * publishes the packages on npm once it is approved.
  * @param options The release settings.
  * @param root The repository root.
  */
@@ -77,7 +80,7 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
 
   if (dryRun) {
     logStep('Dry run: skipping all pushes');
-    stagePackages(version, true, root);
+    publishPackages(version, true, root);
     console.log(`\nDry run finished. Delete the local branch with: git checkout ${branch} && git branch -D ${releaseBranch}`);
     return;
   }
@@ -87,13 +90,12 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
 
   await pushSubtrees(themes, releaseBranch);
 
-  stagePackages(version, false, root);
-
   console.log([
     '',
-    `${symbols.ok} ${version.version} is prepared and staged on npm.`,
+    `${symbols.ok} ${version.version} is prepared.`,
     'Next steps:',
-    `  1. Approve the staged packages: "npm run release -- approve ${version.version}" or on npmjs.com`,
-    '  2. Run the manual "release:finalize" job of the GitLab pipeline',
+    `  1. Approve the run of the "Publish packages" workflow for ${releaseBranch}: https://github.com/${GITHUB_REPO}/actions/workflows/${PUBLISH_WORKFLOW}?query=${encodeURIComponent(`branch:${releaseBranch}`)}`,
+    '     If the run failed instead of waiting, fix what its log reports and re-run it.',
+    '  2. When it is done, run the manual "release:finalize" job of the GitLab pipeline',
   ].join('\n'));
 };

@@ -24,7 +24,7 @@ export interface ReleaseOptions {
    */
   resume: boolean;
   /**
-   * Work locally only: no pushes and "npm stage publish --dry-run" (DRY_RUN). Defaults to false.
+   * Work locally only: no pushes and "npm publish --dry-run" (DRY_RUN). Defaults to false.
    */
   dryRun: boolean;
 }

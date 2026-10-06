@@ -8,11 +8,9 @@ export const symbols = inCi
     ok: '✔',
     error: '✖',
     warning: '⚠',
-    waiting: '…',
   }
   : {
     ok: '✅',
     error: '❌',
     warning: '⚠️',
-    waiting: '⏳',
   };

@@ -29,8 +29,8 @@ describe('hints', () => {
       });
     });
 
-    it('names the npm token for staging', () => {
-      assert.match(getCommandHint('npm', ['stage', 'publish', 'libraries/engage']) ?? '', /NPM_STAGE_TOKEN/);
+    it('names the trusted publisher for publishing', () => {
+      assert.match(getCommandHint('npm', ['publish', 'libraries/engage/dist']) ?? '', /trusted publisher/);
     });
 
     it('has no hint for local commands', () => {

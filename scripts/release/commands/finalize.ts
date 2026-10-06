@@ -5,14 +5,12 @@ import {
   GITHUB_REPO,
   PUBLISHABLE_PACKAGES,
   ROOT,
-  getPackageName,
   getThemes,
 } from '../config.ts';
 import { logStep } from '../lib/exec.ts';
 import { git, gitOutput, remoteBranchExists } from '../lib/git.ts';
 import { createRelease, findRelease } from '../lib/github.ts';
-import { isPublished } from '../lib/npm.ts';
-import { resolveDistTag, updatesMaster } from '../steps/stage.ts';
+import { getUnpublished, resolveDistTag, updatesMaster } from '../steps/publish.ts';
 import { pushSubtrees } from '../steps/subtree.ts';
 import { symbols } from '../lib/symbols.ts';
 import type { Theme } from '../config.ts';
@@ -31,12 +29,10 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   const masterUpdate = updatesMaster(options, root);
 
   logStep('Checking npm packages');
-  const unpublished = PUBLISHABLE_PACKAGES
-    .map(pkg => getPackageName(pkg.dir, root))
-    .filter(name => !isPublished(name, version.version));
+  const unpublished = getUnpublished(version, root);
 
   if (unpublished.length > 0 && !dryRun) {
-    throw new Error(`Not published yet: ${unpublished.join(', ')}. Approve them with "npm run release -- approve ${version.version}" or on npmjs.com.`);
+    throw new Error(`Not published yet: ${unpublished.join(', ')}. Approve the run of the "Publish packages" workflow for ${releaseBranch} on GitHub and wait until it is done.`);
   }
 
   if (unpublished.length === 0) {

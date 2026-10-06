@@ -5,6 +5,10 @@ export const ROOT = path.resolve(import.meta.dirname, '../..');
 
 export const GITHUB_REPO = 'shopgate/pwa';
 
+export const PUBLISH_WORKFLOW = 'publish.yml';
+
+export const PUBLISH_ENVIRONMENT = 'npm-release';
+
 /**
  * A workspace package that is published to npm.
  */
