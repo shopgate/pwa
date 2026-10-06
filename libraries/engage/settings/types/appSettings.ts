@@ -95,7 +95,7 @@ export interface ProductTileActionsSettings {
   addToCart: 'hidden' | 'actionButton' | 'button';
   /** Whether the action buttons line up side by side or stacked. */
   direction: 'horizontal' | 'vertical';
-  /** Whether the product page shows a share button after the favorites button. */
+  /** Whether the product page shows a share button next to the favorites button. */
   showShareButton: boolean;
 }
 

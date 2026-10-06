@@ -40,6 +40,9 @@ const useStyles = makeStyles()(theme => ({
     '&[data-position="topRight"]': {
       top: theme.spacing(2),
     },
+    '&[data-position="topRight"][data-direction="vertical"]': {
+      flexDirection: 'column-reverse',
+    },
     '&[data-position="bottomRight"]': {
       bottom: theme.spacing(2),
     },
@@ -74,6 +77,11 @@ const CTAButtons = ({
           data-direction={direction}
           data-bullets-below={bulletsBelow ? true : undefined}
         >
+          <Portal name={PRODUCT_CTAS_SHARE_BEFORE} />
+          <Portal name={PRODUCT_CTAS_SHARE}>
+            {isProductActive && <ProductShareButton productId={productId} />}
+          </Portal>
+          <Portal name={PRODUCT_CTAS_SHARE_AFTER} />
           <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
           <Portal name={PRODUCT_CTAS_FAVORITES}>
             { isProductActive && (
@@ -86,11 +94,6 @@ const CTAButtons = ({
             )}
           </Portal>
           <Portal name={PRODUCT_CTAS_FAVORITES_AFTER} />
-          <Portal name={PRODUCT_CTAS_SHARE_BEFORE} />
-          <Portal name={PRODUCT_CTAS_SHARE}>
-            {isProductActive && <ProductShareButton productId={productId} />}
-          </Portal>
-          <Portal name={PRODUCT_CTAS_SHARE_AFTER} />
         </div>
       </Portal>
       <Portal name={PRODUCT_CTAS_AFTER} />
