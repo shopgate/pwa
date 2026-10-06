@@ -98,6 +98,12 @@ describe('handleLink()', () => {
       expect(historyReset).toHaveBeenCalledTimes(1);
     });
 
+    it('should log an invalid URL without the credentials in front of its host', () => {
+      handleLink({ link: 'http://jane:secret@exa mple.com/sale?token=abc' })(dispatch);
+      expect(logger.error).toHaveBeenCalledTimes(1);
+      expect(logger.error.mock.calls[0][0].message).toBe('Could not parse link http://exa mple.com/sale');
+    });
+
     it('should log an invalid URL without its query string and hash', () => {
       handleLink({ link: 'http://exa mple.com/sale?token=abc#section' })(dispatch);
       expect(logger.error).toHaveBeenCalledTimes(1);

@@ -59,6 +59,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
+    "@types/node": "^24.19.1",
     "@types/react": "^17.0.93",
     "baseline-browser-mapping": "^2.10.42",
     "detector": "^2.5.0",

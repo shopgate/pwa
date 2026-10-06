@@ -1,11 +1,18 @@
+const UNDESCRIBABLE = 'a value that could not be described';
+
 /**
- * Describes a value without its content, since it can be personal data.
+ * Describes a value without its content.
  * @param {*} value The value.
- * @returns {string} Primitives and errors as text, objects as their keys and their error code.
+ * @param {Array[]} parents The arrays the value is nested in.
+ * @returns {string} The description.
  */
-export const describeValue = (value) => {
+const describe = (value, parents) => {
   if (Array.isArray(value)) {
-    return `[${value.map(describeValue).join(', ')}]`;
+    if (parents.includes(value)) {
+      return '[circular]';
+    }
+
+    return `[${value.map(entry => describe(entry, [...parents, value])).join(', ')}]`;
   }
 
   if (!value || typeof value !== 'object' || value instanceof Error) {
@@ -15,6 +22,19 @@ export const describeValue = (value) => {
   const code = typeof value.code === 'string' ? `code: "${value.code}", ` : '';
 
   return `{${code}keys: ${Object.keys(value).join(', ')}}`;
+};
+
+/**
+ * Describes a value without its content, since it can be personal data. It never throws.
+ * @param {*} value The value.
+ * @returns {string} Primitives and errors as text, objects as their keys and their error code.
+ */
+export const describeValue = (value) => {
+  try {
+    return describe(value, []);
+  } catch (error) {
+    return UNDESCRIBABLE;
+  }
 };
 
 /**

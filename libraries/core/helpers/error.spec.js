@@ -23,6 +23,37 @@ describe('error helpers', () => {
     });
   });
 
+  describe('describeValue() with values that are hard to describe', () => {
+    it('should mark an array that contains itself', () => {
+      const circular = ['text'];
+      circular.push(circular);
+
+      expect(describeValue(circular)).toBe('[text, [circular]]');
+    });
+
+    it('should describe an array that occurs twice without a cycle', () => {
+      const shared = ['text'];
+
+      expect(describeValue([shared, shared])).toBe('[[text], [text]]');
+    });
+
+    it('should not throw for a value that can not be read', () => {
+      const unreadable = new Proxy({}, {
+        ownKeys() {
+          throw new Error('No access');
+        },
+      });
+      const nameless = Object.assign(new Error('boom'), {
+        toString() {
+          throw new Error('No text');
+        },
+      });
+
+      expect(describeValue(unreadable)).toBe('a value that could not be described');
+      expect(describeValue([nameless])).toBe('a value that could not be described');
+    });
+  });
+
   describe('toError()', () => {
     it('should return an error as it is', () => {
       const error = new Error('boom');
@@ -50,6 +81,17 @@ describe('error helpers', () => {
       const error = toError(thrown, { context: 'test' });
 
       expect(error).toBe(thrown);
+      expect(error.context).toBe('test');
+    });
+
+    it('should turn a thrown array that contains itself into an error', () => {
+      const circular = [];
+      circular.push(circular);
+
+      const error = toError(circular, { context: 'test' });
+
+      expect(error).toBeInstanceOf(Error);
+      expect(error.message).toBe('[[circular]]');
       expect(error.context).toBe('test');
     });
 
