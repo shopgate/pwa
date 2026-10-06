@@ -3,7 +3,7 @@ import React, {
 } from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
 import { Button, CircularProgress, IconButton } from '@shopgate/engage/components/v2';
-import CartPlusIcon from '@shopgate/pwa-ui-shared/icons/CartPlusIcon';
+import CartIcon from '@shopgate/pwa-ui-shared/icons/CartIcon';
 import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
@@ -288,7 +288,7 @@ const ProductCardAddToCart = ({
           aria-disabled={pending || undefined}
           aria-busy={pending || undefined}
           onClick={handleClick}
-          startIcon={compact || added || pending ? undefined : <CartPlusIcon />}
+          startIcon={compact || added || pending ? undefined : <CartIcon />}
           className={classes.labelButton}
           data-compact={compact ? 'true' : undefined}
         >
@@ -323,7 +323,7 @@ const ProductCardAddToCart = ({
               <TickIcon />
             </span>
           )}
-          {!pending && !added && <CartPlusIcon />}
+          {!pending && !added && <CartIcon />}
         </IconButton>
       )}
       {hasVariants && sheetMounted && (

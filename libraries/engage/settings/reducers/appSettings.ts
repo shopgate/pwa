@@ -81,6 +81,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       position: 'bottomRight',
       addToCart: 'hidden',
       direction: 'horizontal',
+      showShareButton: true,
     },
   },
   cards: {

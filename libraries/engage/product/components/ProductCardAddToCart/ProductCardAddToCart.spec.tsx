@@ -69,7 +69,7 @@ jest.mock('@shopgate/engage/components/v2', () => ({
     </button>
   ),
 }));
-jest.mock('@shopgate/pwa-ui-shared/icons/CartPlusIcon', () => () => null);
+jest.mock('@shopgate/pwa-ui-shared/icons/CartIcon', () => () => null);
 jest.mock('@shopgate/pwa-ui-shared/icons/TickIcon', () => () => <span>tick</span>);
 jest.mock('../VariantSelectSheet', () => ({
   VariantSelectSheet: ({ isOpen, onAddToCart }: {

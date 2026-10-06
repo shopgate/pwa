@@ -86,6 +86,7 @@ describe('settings / reducers / appSettings', () => {
           position: 'topRight',
           addToCart: 'button',
           direction: 'vertical',
+          showShareButton: true,
         },
       },
       cards: {

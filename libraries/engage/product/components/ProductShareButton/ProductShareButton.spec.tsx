@@ -1,0 +1,49 @@
+import React from 'react';
+import { fireEvent, render, screen } from '@testing-library/react';
+import '@testing-library/jest-dom';
+import ProductShareButton from './ProductShareButton';
+
+const mockShare = jest.fn();
+let mockCanShare = true;
+let mockEnabled = true;
+
+jest.mock('../../hooks/useProductShare', () => () => ({
+  enabled: mockEnabled,
+  canShare: mockCanShare,
+  share: mockShare,
+}));
+jest.mock('@shopgate/pwa-ui-ios/icons/ShareIcon', () => () => null);
+jest.mock('@shopgate/engage/core/helpers/i18n', () => ({ i18n: { text: (key: string) => key } }));
+jest.mock('@shopgate/engage/components/v2', () => ({
+  IconButton: ({ children, onClick, 'aria-label': label }: {
+    children: React.ReactNode;
+    onClick: () => void;
+    'aria-label': string;
+  }) => <button type="button" aria-label={label} onClick={onClick}>{children}</button>,
+}));
+
+describe('<ProductShareButton />', () => {
+  it('shares the product', () => {
+    mockCanShare = true;
+    render(<ProductShareButton productId="p1" />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'product.share' }));
+
+    expect(mockShare).toHaveBeenCalled();
+  });
+
+  it('renders nothing when switched off', () => {
+    mockEnabled = false;
+    const { container } = render(<ProductShareButton productId="p1" />);
+
+    expect(container).toBeEmptyDOMElement();
+    mockEnabled = true;
+  });
+
+  it('renders nothing when the product cannot be shared', () => {
+    mockCanShare = false;
+    const { container } = render(<ProductShareButton productId="p1" />);
+
+    expect(container).toBeEmptyDOMElement();
+  });
+});

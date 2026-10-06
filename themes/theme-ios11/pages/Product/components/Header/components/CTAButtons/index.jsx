@@ -9,7 +9,11 @@ import {
   PRODUCT_CTAS_FAVORITES,
   PRODUCT_CTAS_FAVORITES_BEFORE,
   PRODUCT_CTAS_FAVORITES_AFTER,
+  PRODUCT_CTAS_SHARE_BEFORE,
+  PRODUCT_CTAS_SHARE,
+  PRODUCT_CTAS_SHARE_AFTER,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { ProductShareButton } from '@shopgate/engage/product/components';
 import { appConfig } from '@shopgate/engage';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -29,15 +33,12 @@ const useStyles = makeStyles()(theme => ({
     justifyContent: 'flex-end',
     alignItems: 'center',
     [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
+    gap: theme.spacing(1),
     '&[data-direction="vertical"]': {
       flexDirection: 'column',
-      gap: theme.spacing(1),
     },
     '&[data-position="topRight"]': {
       top: theme.spacing(2),
-    },
-    '&[data-position="topRight"][data-direction="vertical"]': {
-      flexDirection: 'column-reverse',
     },
     '&[data-position="bottomRight"]': {
       bottom: theme.spacing(2),
@@ -85,6 +86,11 @@ const CTAButtons = ({
             )}
           </Portal>
           <Portal name={PRODUCT_CTAS_FAVORITES_AFTER} />
+          <Portal name={PRODUCT_CTAS_SHARE_BEFORE} />
+          <Portal name={PRODUCT_CTAS_SHARE}>
+            {isProductActive && <ProductShareButton productId={productId} />}
+          </Portal>
+          <Portal name={PRODUCT_CTAS_SHARE_AFTER} />
         </div>
       </Portal>
       <Portal name={PRODUCT_CTAS_AFTER} />
