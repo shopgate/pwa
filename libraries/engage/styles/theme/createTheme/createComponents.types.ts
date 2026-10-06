@@ -343,7 +343,7 @@ export const componentsDefaults = {
       background: '#FFFFFF',
       color: t => t.contrastColor('var(--sg-components-appBar-background)'),
       floatingButtonBackground: 'var(--sg-components-appBar-background)',
-      floatingButtonColor: t => t.contrastColor('var(--sg-components-appBar-floatingButtonBackground)'),
+      floatingButtonColor: 'var(--sg-components-appBar-color)',
       floatingButtonOpacity: '0.85',
       floatingButtonBlur: '8px',
       overlayBarOpacity: '1',
