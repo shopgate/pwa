@@ -578,7 +578,8 @@
     "order_history": "Istoricul comenzilor",
     "profile": "Profil",
     "back": "Înapoi la {title}",
-    "open_menu": "Deschide meniul"
+    "open_menu": "Deschide meniul",
+    "open_link": "Deschide pagina"
   },
   "reviews": {
     "rating": "Evaluare",

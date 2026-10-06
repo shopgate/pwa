@@ -14,6 +14,12 @@ injectGlobal({
     '--tabbar-height': '0px',
     '--app-bar-height': '0px',
   },
+  '#AppHeader[data-overlay="true"]': {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    pointerEvents: 'none',
+  },
 });
 
 const useStyles = makeStyles()({

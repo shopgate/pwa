@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import { historyPop } from '@shopgate/pwa-common/actions/router';
-import { makeGetPrevRoute } from '@shopgate/engage/core';
+import { historyPop, historyReplace } from '@shopgate/pwa-common/actions/router';
+import { makeGetPrevRoute, INDEX_PATH } from '@shopgate/engage/core';
 
 /**
  * Create exclusive component selector.
@@ -11,6 +11,7 @@ function makeMapStateToProps() {
   return (state, { route }) => {
     const prev = getPrevRoute(state, { routeId: route.id });
     return {
+      hasPrevRoute: !!prev,
       prevTitle: prev && prev.state.title ? prev.state.title : null,
     };
   };
@@ -22,6 +23,7 @@ function makeMapStateToProps() {
  */
 const mapDispatchToProps = dispatch => ({
   goBack: () => dispatch(historyPop()),
+  goHome: () => dispatch(historyReplace({ pathname: INDEX_PATH })),
 });
 
 export default connect(makeMapStateToProps, mapDispatchToProps);

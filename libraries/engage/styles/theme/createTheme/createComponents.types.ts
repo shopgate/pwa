@@ -170,6 +170,12 @@ export const componentsSchema = {
     vars: {
       background: '',
       color: '',
+      floatingButtonBackground: '',
+      floatingButtonColor: '',
+      floatingButtonOpacity: '',
+      floatingButtonBlur: '',
+      overlayBarOpacity: '',
+      overlayBarBlur: '',
     },
   },
   badge: {
@@ -336,6 +342,12 @@ export const componentsDefaults = {
     vars: {
       background: '#FFFFFF',
       color: t => t.contrastColor('var(--sg-components-appBar-background)'),
+      floatingButtonBackground: 'var(--sg-components-appBar-background)',
+      floatingButtonColor: t => t.contrastColor('var(--sg-components-appBar-floatingButtonBackground)'),
+      floatingButtonOpacity: '0.85',
+      floatingButtonBlur: '8px',
+      overlayBarOpacity: '1',
+      overlayBarBlur: '0px',
     },
   },
   badge: {

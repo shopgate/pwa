@@ -578,7 +578,8 @@
     "order_history": "Tilaushistoria",
     "profile": "Profiili",
     "back": "Takaisin {title}",
-    "open_menu": "Avaa valikko"
+    "open_menu": "Avaa valikko",
+    "open_link": "Avaa sivu"
   },
   "reviews": {
     "rating": "Arviointi",

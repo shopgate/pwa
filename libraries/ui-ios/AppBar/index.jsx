@@ -19,11 +19,28 @@ const useStyles = makeStyles()(theme => ({
     paddingTop: theme.layout.safeArea.top,
   },
   inner: {
-    display: 'flex',
+    display: 'grid',
+    gridTemplateColumns: '1fr auto 1fr',
     alignItems: 'center',
-    justifyContent: 'space-between',
     position: 'relative',
     zIndex: 1,
+  },
+  side: {
+    display: 'flex',
+    alignItems: 'center',
+    minWidth: 0,
+  },
+  left: {
+    justifyContent: 'flex-start',
+  },
+  center: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 0,
+  },
+  right: {
+    justifyContent: 'flex-end',
   },
 }));
 
@@ -86,9 +103,15 @@ const AppBar = ({
     >
       <SurroundPortals portalName={APP_BAR_CONTENT}>
         <div className={cx(classes.inner, parentClasses.inner)}>
-          <Left elements={left} />
-          <Center elements={center} />
-          <Right elements={right} />
+          <div className={cx(classes.side, classes.left)}>
+            <Left elements={left} />
+          </div>
+          <div className={classes.center}>
+            <Center elements={center} />
+          </div>
+          <div className={cx(classes.side, classes.right)}>
+            <Right elements={right} />
+          </div>
         </div>
       </SurroundPortals>
       <Below elements={below} />

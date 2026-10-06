@@ -34,6 +34,46 @@ describe('settings / reducers / appSettings', () => {
   it('hydrates from a full payload and flags isHydrated', () => {
     const settings: AppSettings = {
       navigation: {
+        appBar: {
+          style: 'modern',
+          logoPosition: 'left',
+          buttons: {
+            left1: {
+              action: 'openSearch',
+              icon: '',
+              link: '',
+            },
+            left2: {
+              action: 'none',
+              icon: '',
+              link: '',
+            },
+            right1: {
+              action: 'link',
+              icon: 'locator',
+              link: '/storefinder',
+            },
+            right2: {
+              action: 'share',
+              icon: '',
+              link: '',
+            },
+          },
+          modern: {
+            scrollBehavior: 'scrollAway',
+          },
+        },
+        search: {
+          persistentBar: {
+            home: true,
+            category: true,
+            search: false,
+            product: false,
+            page: false,
+            favorites: true,
+            hideOnScroll: false,
+          },
+        },
         tabBar: {
           variant: 'floating',
           transition: 'slide',
@@ -136,7 +176,7 @@ describe('settings / reducers / appSettings', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
 
     expect(state.isHydrated).toBe(true);
-    expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
+    expect(state.navigation).toEqual(settings.navigation);
     expect(state.product).toEqual(settings.product);
     expect(state.cart).toEqual(settings.cart);
     expect(state.cards).toEqual(settings.cards);
@@ -571,5 +611,58 @@ describe('settings / reducers / appSettings', () => {
 
     expect(DEFAULT_APP_SETTINGS.navigation.tabBar.variant).toBe('fixed');
     expect(DEFAULT_APP_SETTINGS.isHydrated).toBe(false);
+  });
+
+  it('falls back to the defaults for cleared navigation fields', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: {
+        appBar: {
+          style: null,
+          logoPosition: 'right',
+          buttons: {
+            left1: null,
+            right1: {
+              action: 'cart',
+              icon: null,
+              link: null,
+            },
+          },
+          modern: null,
+        },
+        search: {
+          persistentBar: {
+            home: true,
+            hideOnScroll: null,
+          },
+        },
+        tabBar: {
+          variant: null,
+          fixed: null,
+        },
+      },
+    } as unknown as AppSettings));
+
+    const { appBar, search, tabBar } = state.navigation;
+    expect(appBar.style).toBe('classic');
+    expect(appBar.logoPosition).toBe('right');
+    expect(appBar.buttons.left1).toEqual(DEFAULT_APP_SETTINGS.navigation.appBar.buttons.left1);
+    expect(appBar.buttons.right1).toEqual({
+      action: 'cart',
+      icon: '',
+      link: '',
+    });
+    expect(appBar.modern).toEqual(DEFAULT_APP_SETTINGS.navigation.appBar.modern);
+    expect(search.persistentBar.home).toBe(true);
+    expect(search.persistentBar.hideOnScroll).toBe(true);
+    expect(tabBar.variant).toBe('fixed');
+    expect(tabBar.fixed).toEqual(DEFAULT_APP_SETTINGS.navigation.tabBar.fixed);
+  });
+
+  it('falls back to the default navigation for a cleared branch', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: null,
+    } as unknown as AppSettings));
+
+    expect(state.navigation).toEqual(DEFAULT_APP_SETTINGS.navigation);
   });
 });

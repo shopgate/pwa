@@ -577,7 +577,8 @@
     "order_history": "Historia zamówień",
     "profile": "Profil",
     "back": "Powrót do {title}",
-    "open_menu": "Otwórz menu"
+    "open_menu": "Otwórz menu",
+    "open_link": "Otwórz stronę"
   },
   "reviews": {
     "rating": "Przegląd",

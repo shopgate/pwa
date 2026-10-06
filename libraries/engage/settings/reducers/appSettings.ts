@@ -1,4 +1,6 @@
-import { isPlainObject, merge } from 'lodash';
+import {
+  isNil, isPlainObject, mapValues, merge, omitBy,
+} from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppSettingsSlice,
@@ -66,6 +68,46 @@ const PAYMENT_BAR_OPTIONS: {
 export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   isHydrated: false,
   navigation: {
+    appBar: {
+      style: 'classic',
+      logoPosition: 'center',
+      buttons: {
+        left1: {
+          action: 'none',
+          icon: '',
+          link: '',
+        },
+        left2: {
+          action: 'none',
+          icon: '',
+          link: '',
+        },
+        right1: {
+          action: 'none',
+          icon: '',
+          link: '',
+        },
+        right2: {
+          action: 'none',
+          icon: '',
+          link: '',
+        },
+      },
+      modern: {
+        scrollBehavior: 'revealBar',
+      },
+    },
+    search: {
+      persistentBar: {
+        home: false,
+        category: false,
+        search: true,
+        product: false,
+        page: false,
+        favorites: false,
+        hideOnScroll: true,
+      },
+    },
     tabBar: {
       variant: 'fixed',
       showLabels: true,
@@ -175,7 +217,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product, cart,
+      images, typography, appearance, widgets, product, cart, navigation,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -198,6 +240,28 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       appearance: appearance === null ? undefined : {
         ...appearance,
         defaultColorSchemeMode: appearance?.defaultColorSchemeMode ?? undefined,
+      },
+      navigation: navigation === null ? undefined : {
+        ...navigation,
+        appBar: navigation?.appBar ? {
+          ...omitBy(navigation.appBar, isNil),
+          buttons: navigation.appBar.buttons
+            ? mapValues(omitBy(navigation.appBar.buttons, isNil), entry => omitBy(entry, isNil))
+            : undefined,
+          modern: navigation.appBar.modern
+            ? omitBy(navigation.appBar.modern, isNil)
+            : undefined,
+        } : undefined,
+        search: navigation?.search?.persistentBar ? {
+          persistentBar: omitBy(navigation.search.persistentBar, isNil),
+        } : undefined,
+        tabBar: navigation?.tabBar ? {
+          ...omitBy(navigation.tabBar, isNil),
+          fixed: navigation.tabBar.fixed ? omitBy(navigation.tabBar.fixed, isNil) : undefined,
+          favorites: navigation.tabBar.favorites
+            ? omitBy(navigation.tabBar.favorites, isNil)
+            : undefined,
+        } : undefined,
       },
       product: product === null ? undefined : {
         ...product,

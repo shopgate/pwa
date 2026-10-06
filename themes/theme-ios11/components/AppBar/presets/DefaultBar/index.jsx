@@ -7,13 +7,16 @@ import {
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { AppBar } from '@shopgate/pwa-ui-ios';
 import {
   withRoute, withApp, INDEX_PATH, router,
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { ViewContext } from '@shopgate/engage/components/View';
+import ConfiguredBar from '../../components/ConfiguredBar';
+import Headline from '../../components/Headline';
+import { useAppBarSettings } from '../../hooks';
+import { ACTION_BUTTONS_HIDDEN_PATTERNS, OVERLAY_PATTERNS } from '../../constants';
 import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
@@ -24,18 +27,24 @@ import connect from './connector';
 class AppBarDefault extends PureComponent {
   static propTypes = {
     app: PropTypes.shape().isRequired,
+    appBarSettings: PropTypes.shape().isRequired,
+    modern: PropTypes.bool.isRequired,
+    overlay: PropTypes.bool.isRequired,
     resetStatusBar: PropTypes.func.isRequired,
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
+    showActions: PropTypes.bool.isRequired,
     updateStatusBar: PropTypes.func.isRequired,
     'aria-hidden': PropTypes.bool,
     below: PropTypes.node,
+    center: PropTypes.node,
     title: PropTypes.string,
   };
 
   static defaultProps = {
     'aria-hidden': null,
     below: null,
+    center: undefined,
     title: null,
   };
 
@@ -97,7 +106,7 @@ class AppBarDefault extends PureComponent {
     const engageWillLeave =
       prevProps.app.isVisible === true && this.props.app.isVisible === false;
 
-    if (routeDidEnter || engageDidEnter) {
+    if (routeDidEnter || engageDidEnter || prevProps.overlay !== this.props.overlay) {
       // Sync the colors of the app bar when the route with the bar came visible.
       this.updateStatusBar();
     }
@@ -125,7 +134,7 @@ class AppBarDefault extends PureComponent {
      * from the live custom property rather than passed along as a var() reference.
      */
     this.props.updateStatusBar(
-      getCSSCustomProp('--sg-components-appBar-background'),
+      this.props.overlay ? 'transparent' : getCSSCustomProp('--sg-components-appBar-background'),
       pathname === INDEX_PATH
     );
   }
@@ -134,32 +143,56 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.route.visible || !this.state.target) {
-      return null;
+    const {
+      app,
+      appBarSettings,
+      modern,
+      overlay,
+      resetStatusBar,
+      route,
+      setFocus,
+      showActions,
+      updateStatusBar,
+      ...barProps
+    } = this.props;
+
+    const headline = modern && !overlay && barProps.center === undefined
+      ? <Headline title={i18n.text(barProps.title || '')} />
+      : null;
+
+    if (!route.visible || !this.state.target) {
+      return headline;
     }
 
-    const center = <AppBar.Title title={i18n.text(this.props.title || '')} />;
     const below = (
       <Fragment key="below">
-        {this.props.below}
+        {barProps.below}
         <ProgressBar />
       </Fragment>
     );
 
-    return ReactDOM.createPortal(
+    return (
       <>
-        <Portal name={APP_BAR_DEFAULT_BEFORE} />
-        <Portal name={APP_BAR_DEFAULT}>
-          <AppBar
-            center={center}
-            {...this.props}
-            below={below}
-            aria-hidden={this.props['aria-hidden']}
-          />
-        </Portal>
-        <Portal name={APP_BAR_DEFAULT_AFTER} />
-      </>,
-      this.state.target
+        {headline}
+        {ReactDOM.createPortal(
+          <>
+            <Portal name={APP_BAR_DEFAULT_BEFORE} />
+            <Portal name={APP_BAR_DEFAULT}>
+              <ConfiguredBar
+                {...barProps}
+                settings={appBarSettings}
+                modern={modern}
+                overlay={overlay}
+                showActions={showActions}
+                below={below}
+                aria-hidden={barProps['aria-hidden']}
+              />
+            </Portal>
+            <Portal name={APP_BAR_DEFAULT_AFTER} />
+          </>,
+          this.state.target
+        )}
+      </>
     );
   }
 }
@@ -169,13 +202,37 @@ class AppBarDefault extends PureComponent {
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const AppBarDefaultWithContext = props => (
-  <ViewContext.Consumer>
-    {({ ariaHidden }) => (
-      <AppBarDefault {...props} aria-hidden={ariaHidden} />
-    )}
-  </ViewContext.Consumer>
-);
+const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
+  const appBarSettings = useAppBarSettings();
+  const { pattern } = props.route;
+  const modern = appBarSettings.style === 'modern';
+  const overlay = modern && OVERLAY_PATTERNS.includes(pattern);
+  const showActions = actionButtons && !ACTION_BUTTONS_HIDDEN_PATTERNS.includes(pattern);
+
+  return (
+    <ViewContext.Consumer>
+      {({ ariaHidden }) => (
+        <AppBarDefault
+          {...props}
+          appBarSettings={appBarSettings}
+          modern={modern}
+          overlay={overlay}
+          showActions={showActions}
+          aria-hidden={ariaHidden}
+        />
+      )}
+    </ViewContext.Consumer>
+  );
+};
+
+AppBarDefaultWithContext.propTypes = {
+  route: PropTypes.shape().isRequired,
+  actionButtons: PropTypes.bool,
+};
+
+AppBarDefaultWithContext.defaultProps = {
+  actionButtons: true,
+};
 
 const WrappedComponent = withApp(withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }));
 

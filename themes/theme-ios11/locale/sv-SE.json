@@ -577,7 +577,8 @@
     "order_history": "Beställningshistorik",
     "profile": "Profil",
     "back": "Tillbaka till {title}",
-    "open_menu": "Öppna meny"
+    "open_menu": "Öppna meny",
+    "open_link": "Öppna sida"
   },
   "reviews": {
     "rating": "Betyg",

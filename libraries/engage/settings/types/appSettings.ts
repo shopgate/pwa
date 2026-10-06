@@ -351,8 +351,79 @@ export interface AppearanceSettings {
   defaultColorSchemeMode: DefaultColorSchemeMode;
 }
 
+/**
+ * What a header button does. Extensions can register further actions under their own names.
+ */
+export type NavigationActionType =
+  | 'none'
+  | 'link'
+  | 'openSearch'
+  | 'share'
+  | 'scanner'
+  | 'storeFinder'
+  | 'cart'
+  | 'favorites'
+  | 'categoryDrawer';
+
+/**
+ * A configurable button of the header.
+ */
+export interface NavigationActionSettings {
+  /** The action, or the name an extension registered its action under. */
+  action: NavigationActionType | string;
+  /** Key of a theme icon. Empty uses the icon of the action. */
+  icon: string;
+  /** Target path of the `link` action. */
+  link: string;
+}
+
+/**
+ * The button slots of the header, two on each side.
+ */
+export type AppBarButtonSlot = 'left1' | 'left2' | 'right1' | 'right2';
+
+/**
+ * `classic` keeps the bar on every page, `modern` floats logo and buttons over home and product
+ * page.
+ */
+export type AppBarStyle = 'classic' | 'modern';
+
+/**
+ * How the floating header of the modern style reacts to scrolling.
+ */
+export type AppBarScrollBehavior = 'revealBar' | 'floatingButtons' | 'scrollAway';
+
+/**
+ * Settings for the header.
+ */
+export interface AppBarSettings {
+  style: AppBarStyle;
+  logoPosition: 'left' | 'center' | 'right';
+  buttons: Record<AppBarButtonSlot, NavigationActionSettings>;
+  modern: {
+    scrollBehavior: AppBarScrollBehavior;
+  };
+}
+
+/**
+ * Page types that can show the search bar below the header.
+ */
+export type SearchBarPage = 'home' | 'category' | 'search' | 'product' | 'page' | 'favorites';
+
+/**
+ * Settings for the search bar below the header.
+ */
+export type PersistentSearchBarSettings = Record<SearchBarPage, boolean> & {
+  /** Whether the bar slides out while scrolling down. */
+  hideOnScroll: boolean;
+};
+
 export interface AppSettings {
   navigation: {
+    appBar: AppBarSettings;
+    search: {
+      persistentBar: PersistentSearchBarSettings;
+    };
     tabBar: {
       variant: 'fixed' | 'floating'
       transition: 'fade' | 'slide';
