@@ -599,7 +599,11 @@
     "summary_count": "{count, plural, =1 {# avaliação} other {# avaliações}}",
     "list_count": "{count, plural, =1 {# comentário} other {# comentários}}",
     "list_empty": "Ainda não há comentários",
-    "button_retry": "Tentar novamente"
+    "button_retry": "Tentar novamente",
+    "verified": "Verificado",
+    "verified_info": "Os comentários marcados como verificados foram confirmados pelo fornecedor dos comentários.",
+    "merchant_reply": "Resposta de {author}",
+    "merchant_reply_default": "Resposta do vendedor"
   },
   "tab_bar": {
     "home": "Início",

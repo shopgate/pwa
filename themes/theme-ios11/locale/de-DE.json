@@ -599,7 +599,11 @@
     "summary_count": "{count, plural, =1 {# Bewertung} other {# Bewertungen}}",
     "list_count": "{count, plural, =1 {# Rezension} other {# Rezensionen}}",
     "list_empty": "Noch keine Rezensionen",
-    "button_retry": "Erneut versuchen"
+    "button_retry": "Erneut versuchen",
+    "verified": "Verifiziert",
+    "verified_info": "Als verifiziert markierte Rezensionen wurden vom Anbieter der Rezensionen geprüft.",
+    "merchant_reply": "Antwort von {author}",
+    "merchant_reply_default": "Antwort des Händlers"
   },
   "tab_bar": {
     "home": "Home",

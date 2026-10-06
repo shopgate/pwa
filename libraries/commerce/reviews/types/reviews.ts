@@ -1,6 +1,24 @@
 export type ReviewId = string | number;
 
 /**
+ * A reply of the merchant to a product review.
+ */
+export interface ReviewMerchantReply {
+  author?: string;
+  date?: string;
+  /** Plain text; never rendered as HTML. */
+  reply?: string;
+}
+
+/**
+ * A provider-defined label/value pair attached to a product review.
+ */
+export interface ReviewCustomField {
+  label: string;
+  value: string;
+}
+
+/**
  * A product review as stored in the reviews slice.
  */
 export interface Review {
@@ -12,6 +30,10 @@ export interface Review {
   review?: string;
   /** Only set on reviews that were submitted from the write form. */
   productId?: string;
+  /** A missing value is unknown, which differs from an explicit `false`. */
+  isVerified?: boolean;
+  merchantReply?: ReviewMerchantReply;
+  customFields?: ReviewCustomField[];
 }
 
 /**

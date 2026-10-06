@@ -599,7 +599,11 @@
     "summary_count": "{count, plural, =1 {# note} other {# notes}}",
     "list_count": "{count, plural, =1 {# avis} other {# avis}}",
     "list_empty": "Aucun avis pour le moment",
-    "button_retry": "Réessayer"
+    "button_retry": "Réessayer",
+    "verified": "Vérifié",
+    "verified_info": "Les avis marqués comme vérifiés ont été contrôlés par le fournisseur d'avis.",
+    "merchant_reply": "Réponse de {author}",
+    "merchant_reply_default": "Réponse du vendeur"
   },
   "tab_bar": {
     "home": "Accueil",

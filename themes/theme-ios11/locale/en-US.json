@@ -599,7 +599,11 @@
     "summary_count": "{count, plural, =1 {# rating} other {# ratings}}",
     "list_count": "{count, plural, =1 {# review} other {# reviews}}",
     "list_empty": "No reviews yet",
-    "button_retry": "Try again"
+    "button_retry": "Try again",
+    "verified": "Verified",
+    "verified_info": "Reviews marked as verified have been checked by the review provider.",
+    "merchant_reply": "Reply from {author}",
+    "merchant_reply_default": "Reply from the merchant"
   },
   "tab_bar": {
     "home": "Home",

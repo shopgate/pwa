@@ -599,7 +599,11 @@
     "summary_count": "{count, plural, =1 {# beoordeling} other {# beoordelingen}}",
     "list_count": "{count, plural, =1 {# review} other {# reviews}}",
     "list_empty": "Nog geen reviews",
-    "button_retry": "Opnieuw proberen"
+    "button_retry": "Opnieuw proberen",
+    "verified": "Geverifieerd",
+    "verified_info": "Reviews met de markering geverifieerd zijn gecontroleerd door de reviewaanbieder.",
+    "merchant_reply": "Antwoord van {author}",
+    "merchant_reply_default": "Antwoord van de verkoper"
   },
   "tab_bar": {
     "home": "Home",

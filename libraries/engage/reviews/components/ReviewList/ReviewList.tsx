@@ -20,6 +20,10 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2.25, 0),
     borderBottom: `1px solid ${theme.components.border.light}`,
   },
+  verifiedInfo: {
+    display: 'block',
+    marginTop: theme.spacing(1),
+  },
   state: {
     display: 'flex',
     flexDirection: 'column',
@@ -100,6 +104,15 @@ const ReviewList = ({
             </li>
           ))}
         </ul>
+      )}
+      {reviews.some(review => review.isVerified === true) && (
+        <Typography
+          variant="caption"
+          color="textSecondary"
+          className={cx(classes.verifiedInfo, 'engage__reviews__review-list__verified-info')}
+        >
+          <I18n.Text string="reviews.verified_info" />
+        </Typography>
       )}
       {state === 'loading' && (
         <div className={cx(classes.state, 'engage__reviews__review-list__loading')}>

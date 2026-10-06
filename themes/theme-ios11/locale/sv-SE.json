@@ -598,7 +598,11 @@
     "summary_count": "{count, plural, other {# betyg}}",
     "list_count": "{count, plural, =1 {# recension} other {# recensioner}}",
     "list_empty": "Inga recensioner ännu",
-    "button_retry": "Försök igen"
+    "button_retry": "Försök igen",
+    "verified": "Verifierad",
+    "verified_info": "Recensioner som är markerade som verifierade har kontrollerats av recensionsleverantören.",
+    "merchant_reply": "Svar från {author}",
+    "merchant_reply_default": "Svar från säljaren"
   },
   "tab_bar": {
     "home": "Hem",

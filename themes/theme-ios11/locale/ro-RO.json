@@ -599,7 +599,11 @@
     "summary_count": "{count, plural, one {# evaluare} few {# evaluări} other {# de evaluări}}",
     "list_count": "{count, plural, one {# recenzie} few {# recenzii} other {# de recenzii}}",
     "list_empty": "Încă nu există recenzii",
-    "button_retry": "Încercați din nou"
+    "button_retry": "Încercați din nou",
+    "verified": "Verificată",
+    "verified_info": "Recenziile marcate ca verificate au fost controlate de furnizorul de recenzii.",
+    "merchant_reply": "Răspuns de la {author}",
+    "merchant_reply_default": "Răspunsul comerciantului"
   },
   "tab_bar": {
     "home": "Acasă",

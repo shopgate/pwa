@@ -598,7 +598,11 @@
     "summary_count": "{count, plural, one {# ocena} few {# oceny} many {# ocen} other {# oceny}}",
     "list_count": "{count, plural, one {# recenzja} few {# recenzje} many {# recenzji} other {# recenzji}}",
     "list_empty": "Brak recenzji",
-    "button_retry": "Spróbuj ponownie"
+    "button_retry": "Spróbuj ponownie",
+    "verified": "Zweryfikowana",
+    "verified_info": "Recenzje oznaczone jako zweryfikowane zostały sprawdzone przez dostawcę recenzji.",
+    "merchant_reply": "Odpowiedź od: {author}",
+    "merchant_reply_default": "Odpowiedź sprzedawcy"
   },
   "tab_bar": {
     "home": "Strona główna",

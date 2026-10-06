@@ -154,4 +154,24 @@ describe('<ReviewList />', () => {
     expect(container.querySelector('.engage__reviews__review-list__error')).not.toBeInTheDocument();
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
   });
+
+  it('should explain the verified badge when a review is verified', () => {
+    render(<ReviewList reviews={[{
+      ...reviews[0],
+      isVerified: true,
+    }, reviews[1]]}
+    />);
+
+    expect(screen.getByText('reviews.verified_info')).toBeInTheDocument();
+  });
+
+  it('should not explain the verified badge without verified reviews', () => {
+    render(<ReviewList reviews={[{
+      ...reviews[0],
+      isVerified: false,
+    }, reviews[1]]}
+    />);
+
+    expect(screen.queryByText('reviews.verified_info')).not.toBeInTheDocument();
+  });
 });

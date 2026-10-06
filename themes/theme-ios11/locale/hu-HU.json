@@ -599,7 +599,11 @@
     "summary_count": "{count, plural, other {# értékelés}}",
     "list_count": "{count, plural, other {# vélemény}}",
     "list_empty": "Még nincsenek vélemények",
-    "button_retry": "Próbálja újra"
+    "button_retry": "Próbálja újra",
+    "verified": "Ellenőrzött",
+    "verified_info": "Az ellenőrzöttként jelölt véleményeket a véleménykezelő szolgáltató ellenőrizte.",
+    "merchant_reply": "Válasz: {author}",
+    "merchant_reply_default": "A kereskedő válasza"
   },
   "tab_bar": {
     "home": "Kezdőlap",

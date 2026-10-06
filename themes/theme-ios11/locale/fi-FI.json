@@ -599,7 +599,11 @@
     "summary_count": "{count, plural, =1 {# arvio} other {# arviota}}",
     "list_count": "{count, plural, =1 {# arvostelu} other {# arvostelua}}",
     "list_empty": "Ei vielä arvosteluja",
-    "button_retry": "Yritä uudelleen"
+    "button_retry": "Yritä uudelleen",
+    "verified": "Vahvistettu",
+    "verified_info": "Vahvistetuiksi merkityt arvostelut on tarkistanut arvostelupalvelun tarjoaja.",
+    "merchant_reply": "Vastaus: {author}",
+    "merchant_reply_default": "Myyjän vastaus"
   },
   "tab_bar": {
     "home": "Koti",

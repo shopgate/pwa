@@ -599,7 +599,11 @@
     "summary_count": "{count, plural, =1 {# αξιολόγηση} other {# αξιολογήσεις}}",
     "list_count": "{count, plural, =1 {# κριτική} other {# κριτικές}}",
     "list_empty": "Δεν υπάρχουν ακόμη κριτικές",
-    "button_retry": "Δοκιμάστε ξανά"
+    "button_retry": "Δοκιμάστε ξανά",
+    "verified": "Επαληθευμένη",
+    "verified_info": "Οι κριτικές με την ένδειξη «επαληθευμένη» έχουν ελεγχθεί από τον πάροχο κριτικών.",
+    "merchant_reply": "Απάντηση από {author}",
+    "merchant_reply_default": "Απάντηση του καταστήματος"
   },
   "tab_bar": {
     "home": "Αρχική",
