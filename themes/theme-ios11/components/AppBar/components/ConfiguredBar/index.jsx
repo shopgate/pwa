@@ -24,12 +24,10 @@ const glass = blur => `blur(${blur}) saturate(180%)`;
 /**
  * Makes only the color translucent, so the backdrop filter of the surface keeps its full effect.
  * @param {string} color The color.
- * @param {string} opacity The opacity between 0 and 1.
+ * @param {string} opacity The opacity as percentage.
  * @returns {string} The translucent color.
  */
-const translucent = (color, opacity) => (
-  `color-mix(in srgb, ${color} calc(${opacity} * 100%), transparent)`
-);
+const translucent = (color, opacity) => `color-mix(in srgb, ${color} ${opacity}, transparent)`;
 
 const useStyles = makeStyles()((theme, { inset }) => {
   const { appBar } = theme.components;
@@ -109,7 +107,7 @@ const useStyles = makeStyles()((theme, { inset }) => {
       [SUPPORTS_COLOR_MIX]: {
         '& [role="button"]::before': {
           opacity: 1,
-          borderColor: translucent(appBar.floatingButtonColor, '0.1'),
+          borderColor: translucent(appBar.floatingButtonColor, '10%'),
           background: translucent(
             appBar.floatingButtonBackground,
             appBar.floatingButtonBackgroundOpacity
