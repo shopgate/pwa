@@ -1,17 +1,11 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import { themeConfig } from '@shopgate/engage';
 import Icon from '@shopgate/pwa-common/components/Icon';
 import { AppBar } from '@shopgate/pwa-ui-ios';
 import { i18n, useWidgetSettings } from '@shopgate/engage/core';
-import { NavigationAction, FALLBACK_ICON } from '@shopgate/engage/navigation';
+import { NavigationAction } from '@shopgate/engage/navigation';
+import { getThemeIcon } from '@shopgate/engage/core/icons';
 import CartBadge from '../CartButton/components/CartBadge';
-
-/**
- * @param {string} name Key of the theme icon.
- * @returns {string} The svg markup of the icon.
- */
-const getIconContent = name => themeConfig.icons?.[name];
 
 /**
  * Renders a theme icon by its key.
@@ -19,7 +13,7 @@ const getIconContent = name => themeConfig.icons?.[name];
  * @returns {JSX.Element}
  */
 const ThemeIcon = ({ name }) => (
-  <Icon content={getIconContent(name) || getIconContent(FALLBACK_ICON) || ''} />
+  <Icon content={getThemeIcon(name) || ''} />
 );
 
 ThemeIcon.propTypes = {
@@ -70,7 +64,7 @@ const ActionButton = ({ settings }) => (
     {action => (
       <ResolvedButton
         action={action}
-        iconName={settings.icon && getIconContent(settings.icon) ? settings.icon : action.icon}
+        iconName={settings.icon && getThemeIcon(settings.icon) ? settings.icon : action.icon}
       />
     )}
   </NavigationAction>
