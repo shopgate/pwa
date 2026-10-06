@@ -16,6 +16,9 @@ const useStyles = makeStyles()((theme, { inset }) => ({
   inner: {
     '--app-bar-title-inset': `${inset}px`,
   },
+  overlayInner: {
+    padding: theme.spacing(0, 1.5),
+  },
   logoSide: {
     flexGrow: 0,
     padding: theme.spacing(0, 1),
@@ -171,7 +174,7 @@ const ConfiguredBar = ({
       backgroundColor={overlay ? 'transparent' : props.backgroundColor}
       classes={{
         outer,
-        inner: cx(classes.inner, parentClasses.inner),
+        inner: cx(classes.inner, overlay && classes.overlayInner, parentClasses.inner),
       }}
       left={(
         <>
