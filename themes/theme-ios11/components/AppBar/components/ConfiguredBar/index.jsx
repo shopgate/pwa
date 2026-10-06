@@ -102,6 +102,7 @@ const useStyles = makeStyles()((theme, { inset }) => {
         left: 4,
         borderRadius: '50%',
         border: '1px solid rgba(0, 0, 0, 0.1)',
+        boxShadow: appBar.floatingButtonBoxShadow,
         background: appBar.floatingButtonBackground,
         opacity: appBar.floatingButtonBackgroundOpacity,
         backdropFilter: glass(appBar.floatingButtonBackdropBlur),
