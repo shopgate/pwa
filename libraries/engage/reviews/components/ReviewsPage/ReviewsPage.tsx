@@ -11,6 +11,7 @@ import {
   getReviewsFetchingState,
   getReviewsTotalCount,
   getReviewSummary,
+  hasMoreReviews,
   hasReviewListError,
   isReviewListLoading,
   isReviewListMissing,
@@ -98,6 +99,7 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
   const hasError = useSelector((state: ReviewsProductState) => (
     hasReviewListError(state, listProps)
   ));
+  const hasMore = useSelector((state: ReviewsProductState) => hasMoreReviews(state, listProps));
 
   useEffect(() => {
     if (isMissing && !isProductFetching) {
@@ -113,10 +115,7 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
     dispatch(fetchReviews(baseProductId, REVIEW_ITEMS_PER_PAGE, reviews.length));
   }, [baseProductId, dispatch, reviews.length]);
 
-  const canLoadMore = !hasError
-    && reviews.length > 0
-    && typeof totalCount === 'number'
-    && reviews.length < totalCount;
+  const canLoadMore = !hasError && hasMore;
 
   return (
     <SurroundPortals portalName={PRODUCT_REVIEWS_ALL} portalProps={{ productId }}>

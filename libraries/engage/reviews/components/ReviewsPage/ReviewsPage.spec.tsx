@@ -17,6 +17,7 @@ type MockPageState = {
   summary: ReviewSummary | null;
   reviews: Review[];
   totalCount: number | null;
+  hasMore: boolean;
   requestOffset: number;
   missing: boolean;
   loading: boolean;
@@ -62,6 +63,7 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
     ),
     getProductReviews: mockListSelector<Review[]>(() => mockPage.reviews, []),
     getReviewsTotalCount: mockListSelector<number | null>(() => mockPage.totalCount, null),
+    hasMoreReviews: mockListSelector(() => mockPage.hasMore, false),
     getReviewListRequestOffset: mockListSelector(() => mockPage.requestOffset, 0),
     getReviewsFetchingState: mockListSelector(() => mockPage.fetching, false),
     isReviewListMissing: mockListSelector(() => mockPage.missing, false),
@@ -148,6 +150,7 @@ describe('<ReviewsPage />', () => {
       },
       reviews,
       totalCount: 2,
+      hasMore: false,
       requestOffset: 0,
       missing: false,
       loading: false,
@@ -221,6 +224,7 @@ describe('<ReviewsPage />', () => {
 
   it('should load the next page with the number of loaded reviews as offset', () => {
     mockPage.totalCount = 12;
+    mockPage.hasMore = true;
 
     const { getActions } = renderPage();
 
@@ -234,8 +238,18 @@ describe('<ReviewsPage />', () => {
     }]);
   });
 
-  it('should not offer load more without a total count', () => {
+  it('should offer load more without a total count when a further page exists', () => {
     mockPage.totalCount = null;
+    mockPage.hasMore = true;
+
+    renderPage();
+
+    expect(screen.getByRole('button', { name: 'common.load_more' })).toBeInTheDocument();
+  });
+
+  it('should not offer load more without a further page', () => {
+    mockPage.totalCount = 12;
+    mockPage.hasMore = false;
 
     renderPage();
 
@@ -262,6 +276,7 @@ describe('<ReviewsPage />', () => {
 
   it('should keep the reviews and retry the failed request with its offset', () => {
     mockPage.totalCount = 12;
+    mockPage.hasMore = true;
     mockPage.requestOffset = 2;
     mockPage.error = true;
 
@@ -281,6 +296,7 @@ describe('<ReviewsPage />', () => {
 
   it('should retry a failed refresh from the first page', () => {
     mockPage.totalCount = 12;
+    mockPage.hasMore = true;
     mockPage.requestOffset = 0;
     mockPage.error = true;
 
@@ -357,6 +373,7 @@ describe('<ReviewsPage />', () => {
 
   it('should keep the portal contract with the list as second direct child', () => {
     mockPage.totalCount = 12;
+    mockPage.hasMore = true;
 
     renderPage();
 

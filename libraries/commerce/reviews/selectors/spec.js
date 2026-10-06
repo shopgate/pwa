@@ -15,6 +15,7 @@ import {
   isReviewListLoading,
   hasReviewListError,
   getReviewListRequestOffset,
+  hasMoreReviews,
 } from './index';
 import {
   emptyState,
@@ -359,6 +360,69 @@ describe('Reviews selectors', () => {
         error: true,
         requestOffset: 2,
       });
+    });
+  });
+
+  describe('hasMoreReviews', () => {
+    /**
+     * @param {Object} [collection] The list collection.
+     * @param {string} [paginationType] The pagination type from the review settings.
+     * @returns {Object}
+     */
+    const buildState = (collection, paginationType) => {
+      const state = _.cloneDeep(finalState);
+      if (collection) {
+        state.reviews.reviewsByHash[existingHash] = collection;
+      } else {
+        delete state.reviews.reviewsByHash[existingHash];
+      }
+      state.reviews.reviewSettings = paginationType ? { paginationType } : {};
+      return state;
+    };
+
+    it('should be false without a list or without loaded reviews', () => {
+      expect(hasMoreReviews(buildState(), propsProductId)).toBe(false);
+      expect(hasMoreReviews(buildState({
+        reviews: [],
+        totalReviewCount: 5,
+        after: 'next',
+      }, 'cursor'), propsProductId)).toBe(false);
+    });
+
+    it('should compare the loaded reviews with the total count with offset pagination', () => {
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: 5,
+      }, 'offset'), propsProductId)).toBe(true);
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: 2,
+      }, 'offset'), propsProductId)).toBe(false);
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: null,
+        after: 'next',
+      }, 'offset'), propsProductId)).toBe(false);
+    });
+
+    it('should behave like offset pagination while the pagination type is unknown', () => {
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: 5,
+      }), propsProductId)).toBe(true);
+    });
+
+    it('should depend on the stored cursor with cursor pagination', () => {
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: null,
+        after: 'next',
+      }, 'cursor'), propsProductId)).toBe(true);
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: 5,
+        after: null,
+      }, 'cursor'), propsProductId)).toBe(false);
     });
   });
 });

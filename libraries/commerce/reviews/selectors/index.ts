@@ -11,6 +11,8 @@ import type {
   ReviewsState,
 } from '../types/reviews';
 
+import { isReviewCursorPagination } from './reviewSettings';
+
 export * from './reviewSettings';
 export * from './reviewSummary';
 export * from './reviewVotes';
@@ -145,6 +147,30 @@ export const getCurrentReviewCount = createSelector(
     }
 
     return collection.reviews.length;
+  }
+);
+
+/**
+ * Whether the review list of the current base product has a further page.
+ * @param state The current application state.
+ * @returns True when the provider returned a cursor for the next page or, with offset
+ * pagination, fewer reviews are loaded than the list contains.
+ */
+export const hasMoreReviews = createSelector(
+  getCollectionForCurrentBaseProduct,
+  getCurrentReviewCount,
+  getReviewsTotalCount,
+  isReviewCursorPagination,
+  (collection, count, totalCount, isCursor) => {
+    if (!count) {
+      return false;
+    }
+
+    if (isCursor) {
+      return !!collection?.after;
+    }
+
+    return typeof totalCount === 'number' && count < totalCount;
   }
 );
 

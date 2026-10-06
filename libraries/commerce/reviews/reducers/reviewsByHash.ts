@@ -70,6 +70,7 @@ const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
           totalReviewCount: typeof action.totalReviewCount === 'number'
             ? action.totalReviewCount
             : null,
+          after: action.after || null,
           isFetching: false,
           expires: Date.now() + REVIEWS_LIFETIME,
         },

@@ -1,3 +1,5 @@
+import type { ReviewSettingsSliceState } from './reviewSettings';
+
 export type ReviewId = string | number;
 
 /**
@@ -79,6 +81,8 @@ export interface ReviewsCollection {
   requestId?: number;
   requestOffset?: number;
   requestSort?: string;
+  /** Cursor for the next page; null when the provider returned none. */
+  after?: string | null;
 }
 
 /**
@@ -115,6 +119,7 @@ export interface ReviewsSliceState {
   reviewsByHash: ReviewsByHash;
   reviewsByProductId: ReviewsByProductId;
   userReviewsByProductId: UserReviewsByProductId;
+  reviewSettings?: ReviewSettingsSliceState;
 }
 
 /**
@@ -164,4 +169,8 @@ export interface ReviewVotesState {
 export interface ProductReviewsResponse {
   reviews: Review[];
   totalReviewCount?: number | null;
+  /** Only sent by providers with cursor pagination; no `after` means the last page. */
+  cursors?: {
+    after?: string | null;
+  };
 }
