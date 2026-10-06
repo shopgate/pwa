@@ -49,10 +49,13 @@ const useStyles = makeStyles()((theme, { inset }) => {
     },
     logoSide: {
       flexGrow: 0,
-      padding: theme.spacing(0, 1),
+      padding: theme.spacing(0, 1.25),
       '& img': {
         margin: 0,
       },
+    },
+    logoSideModern: {
+      padding: theme.spacing(0, 0.5),
     },
     overlay: {
       position: 'relative',
@@ -228,7 +231,16 @@ const ConfiguredBar = ({
   const inset = Math.max(TITLE_INSET, Math.max(leftCount, rightCount) * APP_BAR_BUTTON_SIZE + 2);
   const { classes, cx } = useStyles({ inset });
   const logoElement = logo
-    ? <Logo key="logo" className={cx(classes.logo, position !== 'center' && classes.logoSide)} />
+    ? (
+      <Logo
+        key="logo"
+        className={cx(
+          classes.logo,
+          position !== 'center' && classes.logoSide,
+          position !== 'center' && modern && classes.logoSideModern
+        )}
+      />
+    )
     : null;
 
   if (logo && position === 'center') {
