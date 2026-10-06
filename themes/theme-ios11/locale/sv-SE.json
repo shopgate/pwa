@@ -423,7 +423,12 @@
     "no_result": {
       "heading": "Hoppsan!",
       "body": "Din sökning efter \"{searchPhrase}\" gav inget resultat."
-    }
+    },
+    "history_title": "Senaste sökningar",
+    "history_clear": "Rensa historik",
+    "results_count": "Resultat: {count}",
+    "show_all_results": "Visa alla resultat",
+    "clear": "Rensa sökning"
   },
   "shipping": {
     "unknown": "plus frakt",

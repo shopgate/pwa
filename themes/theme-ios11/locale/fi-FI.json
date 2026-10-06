@@ -424,7 +424,12 @@
     "no_result": {
       "heading": "Hups!",
       "body": "Hakusi \"{searchPhrase}\" ei tuottanut tuloksia."
-    }
+    },
+    "history_title": "Viimeisimmät haut",
+    "history_clear": "Tyhjennä historia",
+    "results_count": "Tulokset: {count}",
+    "show_all_results": "Näytä kaikki tulokset",
+    "clear": "Tyhjennä haku"
   },
   "shipping": {
     "unknown": "plus toimituskulut",

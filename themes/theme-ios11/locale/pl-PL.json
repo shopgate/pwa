@@ -423,7 +423,12 @@
     "no_result": {
       "heading": "Ups!",
       "body": "Twoje wyszukiwanie dla frazy \"{searchPhrase}\" nie przyniosło żadnych rezultatów."
-    }
+    },
+    "history_title": "Ostatnie wyszukiwania",
+    "history_clear": "Wyczyść historię",
+    "results_count": "Wyniki: {count}",
+    "show_all_results": "Pokaż wszystkie wyniki",
+    "clear": "Wyczyść wyszukiwanie"
   },
   "shipping": {
     "unknown": "plus wysyłka",

@@ -13,10 +13,16 @@ import {
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { ViewContext } from '@shopgate/engage/components/View';
+import { useSelector } from 'react-redux';
+import { getPersistentSearchBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
+import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import ConfiguredBar from '../../components/ConfiguredBar';
 import Headline from '../../components/Headline';
+import SearchBar from '../../../Search/SearchBar';
 import { useAppBarSettings } from '../../hooks';
-import { ACTION_BUTTONS_HIDDEN_PATTERNS, OVERLAY_PATTERNS } from '../../constants';
+import {
+  ACTION_BUTTONS_HIDDEN_PATTERNS, OVERLAY_PATTERNS, SEARCH_BAR_PAGE_TYPES,
+} from '../../constants';
 import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
@@ -38,6 +44,10 @@ class AppBarDefault extends PureComponent {
     'aria-hidden': PropTypes.bool,
     below: PropTypes.node,
     center: PropTypes.node,
+    searchBar: PropTypes.shape({
+      hideOnScroll: PropTypes.bool,
+      query: PropTypes.string,
+    }),
     title: PropTypes.string,
   };
 
@@ -45,6 +55,7 @@ class AppBarDefault extends PureComponent {
     'aria-hidden': null,
     below: null,
     center: undefined,
+    searchBar: null,
     title: null,
   };
 
@@ -150,6 +161,7 @@ class AppBarDefault extends PureComponent {
       overlay,
       resetStatusBar,
       route,
+      searchBar,
       setFocus,
       showActions,
       updateStatusBar,
@@ -166,6 +178,7 @@ class AppBarDefault extends PureComponent {
 
     const below = (
       <Fragment key="below">
+        {searchBar && <SearchBar query={searchBar.query} hideOnScroll={searchBar.hideOnScroll} />}
         {barProps.below}
         <ProgressBar />
       </Fragment>
@@ -208,12 +221,24 @@ const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
   const modern = appBarSettings.style === 'modern';
   const overlay = modern && OVERLAY_PATTERNS.includes(pattern);
   const showActions = actionButtons && !ACTION_BUTTONS_HIDDEN_PATTERNS.includes(pattern);
+  const searchBarSettings = useSelector(getPersistentSearchBarSettings);
+  const searchBarPage = SEARCH_BAR_PAGE_TYPES[pattern];
+  const isSearch = pattern === SEARCH_PATTERN;
+  const searchBar = actionButtons && searchBarPage && searchBarSettings[searchBarPage]
+    ? {
+      query: isSearch ? props.route.query?.s || '' : '',
+      hideOnScroll: searchBarSettings.hideOnScroll,
+    }
+    : null;
+  const titleProps = searchBar && isSearch ? { center: null } : {};
 
   return (
     <ViewContext.Consumer>
       {({ ariaHidden }) => (
         <AppBarDefault
           {...props}
+          {...titleProps}
+          searchBar={searchBar}
           appBarSettings={appBarSettings}
           modern={modern}
           overlay={overlay}

@@ -20,8 +20,8 @@ const INITIAL_SCROLL_STATE = {
 export const useAppBarSettings = () => useSelector(getAppBarSettings);
 
 /**
- * Tracks the scroll position of the current view for the floating header.
- * @param {boolean} enabled Whether the header floats over the content.
+ * Tracks the scroll position and direction of the current view.
+ * @param {boolean} enabled Whether to track the scrolling.
  * @returns {{ scrolled: boolean, scrollingDown: boolean }}
  */
 export const useOverlayScroll = (enabled) => {

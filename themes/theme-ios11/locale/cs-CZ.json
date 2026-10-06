@@ -424,7 +424,12 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Vaše hledání \"{searchPhrase}\" nevrátilo žádné výsledky."
-    }
+    },
+    "history_title": "Nedávná hledání",
+    "history_clear": "Smazat historii",
+    "results_count": "Výsledky: {count}",
+    "show_all_results": "Zobrazit všechny výsledky",
+    "clear": "Vymazat hledání"
   },
   "shipping": {
     "unknown": "plus Poštovné",

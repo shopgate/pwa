@@ -424,7 +424,12 @@
     "no_result": {
       "heading": "Ups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
-    }
+    },
+    "history_title": "Zuletzt gesucht",
+    "history_clear": "Verlauf löschen",
+    "results_count": "Ergebnisse: {count}",
+    "show_all_results": "Alle Ergebnisse anzeigen",
+    "clear": "Suche löschen"
   },
   "shipping": {
     "unknown": "zzgl. Versand",

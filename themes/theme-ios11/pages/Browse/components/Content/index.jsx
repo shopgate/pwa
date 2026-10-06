@@ -1,34 +1,36 @@
-import React, { Fragment } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { i18n } from '@shopgate/engage/core/helpers';
+import { makeStyles } from '@shopgate/engage/styles';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
-import SearchField from '../SearchField';
+import { SearchTrigger } from 'Components/Search/SearchField';
 import RootCategories from '../RootCategories';
+
+const useStyles = makeStyles()(theme => ({
+  search: {
+    display: 'flex',
+    padding: theme.spacing(0, 2),
+    marginBottom: 4,
+  },
+}));
 
 /**
  * The BrowseContent component.
- * @param {Object} params The component params.
- * @param {string} params.pageId The id of the page.
- * @param {string} params.query The last query.
  * @returns {JSX.Element}
  */
-const BrowseContent = ({ pageId, query }) => (
-  <>
-    <BackBar />
-    <Headline text={i18n.text('titles.browse')} tag="h1" />
-    <SearchField pageId={pageId} query={query} />
-    <RootCategories />
-  </>
-);
+const BrowseContent = () => {
+  const { classes, cx } = useStyles();
 
-BrowseContent.propTypes = {
-  pageId: PropTypes.string.isRequired,
-  query: PropTypes.string,
-};
-
-BrowseContent.defaultProps = {
-  query: '',
+  return (
+    <>
+      <BackBar />
+      <Headline text={i18n.text('titles.browse')} tag="h1" />
+      <div className={cx(classes.search, 'theme__browse__search-field')}>
+        <SearchTrigger />
+      </div>
+      <RootCategories />
+    </>
+  );
 };
 
 export default BrowseContent;

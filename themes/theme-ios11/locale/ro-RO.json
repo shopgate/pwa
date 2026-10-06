@@ -424,7 +424,12 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Căutarea dvs. pentru \"{searchPhrase}\" nu a dat niciun rezultat."
-    }
+    },
+    "history_title": "Căutări recente",
+    "history_clear": "Șterge istoricul",
+    "results_count": "Rezultate: {count}",
+    "show_all_results": "Afișează toate rezultatele",
+    "clear": "Șterge căutarea"
   },
   "shipping": {
     "unknown": "plus transport maritim",
