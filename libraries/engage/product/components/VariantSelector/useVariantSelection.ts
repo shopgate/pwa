@@ -129,11 +129,14 @@ const useVariantSelection = ({
     setCheckRequest(value => value + 1);
   }, [variants, variantId, preselect]);
 
+  const syncedCharacteristicsRef = useRef(characteristics);
+
   useEffect(() => {
-    if (!characteristics) {
+    if (!characteristics || characteristics === syncedCharacteristicsRef.current) {
       return;
     }
 
+    syncedCharacteristicsRef.current = characteristics;
     setSelection(current => (
       isEqual(characteristics, current) ? current : orderSelection(characteristics, variants)
     ));

@@ -266,4 +266,40 @@ describe('useVariantSelection', () => {
 
     expect(hook.result.findFirstUnselected()?.id).toBe('size');
   });
+
+  it('selects the only variant once the variants arrive while the context still holds no selection', () => {
+    const single: ProductVariants = {
+      characteristics: variants.characteristics.map(characteristic => ({
+        ...characteristic,
+        values: [characteristic.values[0]],
+      })),
+      products: [variants.products[0]],
+    };
+    const onVariantSelected = jest.fn();
+    const contextSelection = {};
+    const hook = renderSelection({
+      variants: null,
+      characteristics: contextSelection,
+      onVariantSelected,
+      finishTimeout: 200,
+    });
+
+    hook.rerender({
+      variants: single,
+      characteristics: contextSelection,
+      onVariantSelected,
+      finishTimeout: 200,
+    });
+
+    expect(hook.result.selection).toEqual({
+      color: 'red',
+      size: 's',
+    });
+
+    act(() => {
+      jest.advanceTimersByTime(200);
+    });
+
+    expect(onVariantSelected).toHaveBeenCalledWith('red-s');
+  });
 });
