@@ -35,3 +35,9 @@ export const PAGINATION_TYPE_CURSOR = 'cursor';
  * @type {number}
  */
 export const REVIEW_PREVIEW_COUNT = 2;
+
+/**
+ * Number of reviews loaded per request on the full review page.
+ * @type {number}
+ */
+export const REVIEW_ITEMS_PER_PAGE = 10;

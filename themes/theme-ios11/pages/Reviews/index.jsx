@@ -3,19 +3,21 @@ import PropTypes from 'prop-types';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import { hex2bin } from '@shopgate/pwa-common/helpers/data';
 import { View } from '@shopgate/engage/components';
-import ReviewsContent from './components/Content';
+import { ReviewsPage } from '@shopgate/engage/reviews';
+import { BackBar } from 'Components/AppBar/presets';
 
 /**
- * The product detail page (PDP).
+ * The product reviews page.
  * @return {JSX}
  */
 const Reviews = ({ id }) => (
   <View aria-hidden={false}>
-    {/*
-    variantId needs to be != undefined here.
-    otherwise getCollectionForCurrentBaseProduct will not work
-    */}
-    {id && <ReviewsContent productId={id} variantId={null} />}
+    {id && (
+      <>
+        <BackBar title="titles.reviews" right={null} />
+        <ReviewsPage productId={id} />
+      </>
+    )}
   </View>
 );
 
