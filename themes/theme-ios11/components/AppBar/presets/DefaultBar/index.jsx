@@ -17,7 +17,7 @@ import { useSelector } from 'react-redux';
 import { getPersistentSearchBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
 import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import ConfiguredBar from '../../components/ConfiguredBar';
-import Headline from '../../components/Headline';
+import AppBarHeadline from '../../components/AppBarHeadline';
 import SearchBar from '../../../Search/SearchBar';
 import { useAppBarSettings } from '../../hooks';
 import {
@@ -176,12 +176,17 @@ class AppBarDefault extends PureComponent {
 
     const headline = modern && !overlay && barProps.center === undefined
       && !HEADLINE_HIDDEN_PATTERNS.includes(route.pattern)
-      ? <Headline title={i18n.text(barProps.title || '')} />
+      ? <AppBarHeadline title={i18n.text(barProps.title || '')} focus={setFocus && route.visible} />
       : null;
 
     if (!route.visible || !this.state.target) {
       return headline;
     }
+
+    const portalProps = {
+      modern,
+      overlay,
+    };
 
     const below = (
       <Fragment key="below">
@@ -202,8 +207,8 @@ class AppBarDefault extends PureComponent {
         {headline}
         {ReactDOM.createPortal(
           <>
-            <Portal name={APP_BAR_DEFAULT_BEFORE} />
-            <Portal name={APP_BAR_DEFAULT}>
+            <Portal name={APP_BAR_DEFAULT_BEFORE} props={portalProps} />
+            <Portal name={APP_BAR_DEFAULT} props={portalProps}>
               <ConfiguredBar
                 {...barProps}
                 settings={appBarSettings}
@@ -214,7 +219,7 @@ class AppBarDefault extends PureComponent {
                 aria-hidden={barProps['aria-hidden']}
               />
             </Portal>
-            <Portal name={APP_BAR_DEFAULT_AFTER} />
+            <Portal name={APP_BAR_DEFAULT_AFTER} props={portalProps} />
           </>,
           this.state.target
         )}

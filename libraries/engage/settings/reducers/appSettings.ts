@@ -3,6 +3,8 @@ import {
 } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
+  AppBarButtonSlot,
+  AppBarSettings,
   AppSettingsSlice,
   CartPaymentBarSettings,
   ProductActionButtonsSettings,
@@ -59,6 +61,19 @@ const PAYMENT_BAR_OPTIONS: {
   [K in keyof CartPaymentBarSettings]?: readonly CartPaymentBarSettings[K][]
 } = {
   variant: ['fixed', 'floating'],
+};
+
+const APP_BAR_OPTIONS: {
+  [K in keyof AppBarSettings]?: readonly AppBarSettings[K][]
+} = {
+  style: ['classic', 'modern'],
+  logoPosition: ['left', 'center', 'right'],
+};
+
+const APP_BAR_MODERN_OPTIONS: {
+  [K in keyof AppBarSettings['modern']]?: readonly AppBarSettings['modern'][K][]
+} = {
+  scrollBehavior: ['revealBar', 'floatingButtons', 'scrollAway'],
 };
 
 /**
@@ -206,6 +221,8 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   },
 };
 
+const DEFAULT_APP_BAR = DEFAULT_APP_SETTINGS.navigation.appBar;
+
 /**
  * Stores the app settings.
  * @param state The current state.
@@ -242,20 +259,32 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
         ...appearance,
         defaultColorSchemeMode: appearance?.defaultColorSchemeMode ?? undefined,
       },
-      navigation: navigation === null ? undefined : {
+      navigation: !isPlainObject(navigation) ? undefined : {
         ...navigation,
-        appBar: navigation?.appBar ? {
-          ...omitBy(navigation.appBar, isNil),
-          buttons: navigation.appBar.buttons
-            ? mapValues(omitBy(navigation.appBar.buttons, isNil), entry => omitBy(entry, isNil))
-            : undefined,
-          modern: navigation.appBar.modern
-            ? omitBy(navigation.appBar.modern, isNil)
-            : undefined,
-        } : undefined,
-        search: navigation?.search?.persistentBar ? {
-          persistentBar: omitBy(navigation.search.persistentBar, isNil),
-        } : undefined,
+        appBar: !isPlainObject(navigation?.appBar) ? undefined : {
+          ...pickValidSettings(navigation?.appBar, {
+            style: DEFAULT_APP_BAR.style,
+            showLogo: DEFAULT_APP_BAR.showLogo,
+            logoPosition: DEFAULT_APP_BAR.logoPosition,
+          }, APP_BAR_OPTIONS),
+          buttons: !isPlainObject(navigation?.appBar?.buttons)
+            ? undefined
+            : mapValues(DEFAULT_APP_BAR.buttons, (defaults, slot) => pickValidSettings(
+              navigation?.appBar?.buttons?.[slot as AppBarButtonSlot],
+              defaults
+            )),
+          modern: pickValidSettings(
+            navigation?.appBar?.modern,
+            DEFAULT_APP_BAR.modern,
+            APP_BAR_MODERN_OPTIONS
+          ),
+        },
+        search: !isPlainObject(navigation?.search) ? undefined : {
+          persistentBar: pickValidSettings(
+            navigation?.search?.persistentBar,
+            DEFAULT_APP_SETTINGS.navigation.search.persistentBar
+          ),
+        },
         tabBar: navigation?.tabBar ? {
           ...omitBy(navigation.tabBar, isNil),
           fixed: navigation.tabBar.fixed ? omitBy(navigation.tabBar.fixed, isNil) : undefined,

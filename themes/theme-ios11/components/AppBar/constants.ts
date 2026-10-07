@@ -32,6 +32,11 @@ export const ACTION_BUTTONS_HIDDEN_PATTERNS = [
 ];
 
 export const APP_BAR_BUTTON_SIZE = 44;
+export const FLOATING_BUTTON_INSET = 4;
+export const FLOATING_BUTTON_SIZE = APP_BAR_BUTTON_SIZE - (2 * FLOATING_BUTTON_INSET);
+export const SEARCH_BAR_HEIGHT_VAR = '--sg-search-bar-height';
+export const SEARCH_BAR_OFFSET_VAR = '--sg-search-bar-offset';
+export const SEARCH_BAR_FLOATING_HEIGHT_VAR = '--sg-search-bar-floating-height';
 
 export const SEARCH_BAR_PAGE_TYPES = {
   [INDEX_PATH]: 'home',

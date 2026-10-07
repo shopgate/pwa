@@ -428,7 +428,8 @@
     "history_clear": "Wyczyść historię",
     "results_count": "{count, plural, =1 {1 wynik} other {Wyniki: {count}}}",
     "show_all_results": "Pokaż wszystkie wyniki",
-    "clear": "Wyczyść wyszukiwanie"
+    "clear": "Wyczyść wyszukiwanie",
+    "new_search": "Nowe wyszukiwanie"
   },
   "shipping": {
     "unknown": "plus wysyłka",

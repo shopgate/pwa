@@ -46,6 +46,19 @@ const run = (
 };
 
 /**
+ * Drops the transitions of the overlay, so a transition that already finished cannot cover the
+ * next one.
+ * @param elements The elements of the overlay.
+ */
+export const cancelAnimations = (elements: OverlayElements) => {
+  Object.values(elements).forEach((element) => {
+    if (element && typeof element.getAnimations === 'function') {
+      element.getAnimations().forEach((animation: Animation) => animation.cancel());
+    }
+  });
+};
+
+/**
  * Keyframes that move the overlay field from the field that opened it.
  * @param field The field of the overlay.
  * @param origin The field that opened the overlay.

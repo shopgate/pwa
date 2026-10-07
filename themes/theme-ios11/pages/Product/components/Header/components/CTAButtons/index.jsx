@@ -21,13 +21,16 @@ import {
   getAppBarSettings,
   getProductActionButtons,
 } from '@shopgate/engage/settings/selectors/appSettings';
+import {
+  FLOATING_BUTTON_INSET,
+  FLOATING_BUTTON_SIZE,
+  SEARCH_BAR_FLOATING_HEIGHT_VAR,
+} from '../../../../../../components/AppBar/constants';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig;
 
 const BULLETS_BELOW_OFFSET = 28;
-const FLOATING_BUTTON_SIZE = 36;
-const HEADER_BUTTON_INSET = 4;
 
 const useStyles = makeStyles()(theme => ({
   buttons: {
@@ -51,10 +54,10 @@ const useStyles = makeStyles()(theme => ({
     '&[data-position="bottomRight"][data-bullets-below]': {
       bottom: theme.spacing(2) + BULLETS_BELOW_OFFSET,
     },
-    '&[data-floating-header="true"][data-position="topRight"]': {
-      top: `calc(var(--app-bar-height, 0px) + ${HEADER_BUTTON_INSET}px)`,
+    '&[data-floating-header][data-position="topRight"]': {
+      top: `calc(var(--app-bar-height, 0px) + var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px) + ${FLOATING_BUTTON_INSET}px)`,
     },
-    '&[data-floating-header="true"] > button, &[data-floating-header="true"] > * > button': {
+    '&[data-floating-header] > button, &[data-floating-header] > * > button': {
       width: FLOATING_BUTTON_SIZE,
       height: FLOATING_BUTTON_SIZE,
       minWidth: FLOATING_BUTTON_SIZE,

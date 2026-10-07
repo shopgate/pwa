@@ -1,7 +1,10 @@
-import React, { useRef } from 'react';
-import PropTypes from 'prop-types';
+import { useEffect, useRef } from 'react';
+import type { ComponentType, MouseEvent } from 'react';
+import { broadcastLiveMessage as broadcast } from '@shopgate/engage/a11y';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { SurroundPortals, Typography, NoResults } from '@shopgate/engage/components';
+import {
+  SurroundPortals, Typography, NoResults as UntypedNoResults,
+} from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { ProductGrid } from '@shopgate/engage/product/components';
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
@@ -9,9 +12,20 @@ import {
   SEARCH_SUGGESTIONS,
   SEARCH_SUGGESTION_ITEM,
   SEARCH_SUGGESTION_ITEM_CONTENT,
+  SEARCH_OVERLAY_HISTORY,
+  SEARCH_OVERLAY_NO_RESULTS,
+  SEARCH_OVERLAY_RESULTS,
 } from '@shopgate/engage/search/constants';
 import { useSearchSuggestions } from '../hooks';
+import type { SearchPreview } from '../hooks';
 import { SEARCH_MIN_CHARS } from '../constants';
+
+const broadcastLiveMessage = broadcast as unknown as (
+  message: string,
+  options: { params: Record<string, number | string> }
+) => void;
+
+const NoResults = UntypedNoResults as unknown as ComponentType<Record<string, unknown>>;
 
 const STAGGER_STEP = 25;
 const STAGGER_ITEMS = 8;
@@ -33,10 +47,11 @@ const fadeIn = keyframes({
 });
 
 /**
- * @param {string} selector The selector of the animated children.
- * @returns {Object} Styles that let the first children enter one after another.
+ * Staggers an entrance.
+ * @param selector The selector of the animated children.
+ * @returns Styles that let the first children enter one after another.
  */
-const staggered = selector => ({
+const staggered = (selector: string) => ({
   '@media (prefers-reduced-motion: no-preference)': {
     [`& ${selector}`]: {
       animation: `${enter} 180ms ease-out both`,
@@ -80,6 +95,9 @@ const useStyles = makeStyles()(theme => ({
     color: 'inherit',
     ...theme.typography.body1,
     textAlign: 'left',
+    overflow: 'hidden',
+    textOverflow: 'ellipsis',
+    whiteSpace: 'nowrap',
   },
   chips: {
     display: 'flex',
@@ -124,15 +142,25 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
+interface HighlightedProps {
+  text: string;
+  phrase: string;
+  className: string;
+}
+
 /**
  * Highlights the typed part of a suggestion.
- * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * @param props The component props.
+ * @param props.text The suggestion.
+ * @param props.phrase The typed phrase.
+ * @param props.className The class of the highlighted part.
+ * @returns The suggestion.
  */
-const Highlighted = ({ text, phrase, className }) => {
+const Highlighted = ({ text, phrase, className }: HighlightedProps) => {
   const index = text.toLowerCase().indexOf(phrase.toLowerCase());
   if (!phrase || index === -1) {
-    return text;
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    return <>{text}</>;
   }
 
   return (
@@ -144,14 +172,25 @@ const Highlighted = ({ text, phrase, className }) => {
   );
 };
 
+interface HistoryProps {
+  history: string[];
+  query: string;
+  onSelect: (term: string) => void;
+  onClear: () => void;
+}
+
 /**
  * The recent searches.
- * @param {Object} props The component props.
- * @returns {JSX.Element|null}
+ * @param props The component props.
+ * @param props.history The search terms.
+ * @param props.query The typed text, which filters the terms.
+ * @param props.onSelect Runs a term.
+ * @param props.onClear Clears the history.
+ * @returns The list, or nothing without matching entries.
  */
 const History = ({
   history, query, onSelect, onClear,
-}) => {
+}: HistoryProps) => {
   const { classes, cx } = useStyles();
   const phrase = query.trim().toLowerCase();
   const entries = phrase ? history.filter(entry => entry.toLowerCase().includes(phrase)) : history;
@@ -161,44 +200,71 @@ const History = ({
   }
 
   return (
-    <section aria-label={i18n.text('search.history_title')} className="theme__search-overlay__history">
-      <div className={classes.sectionHeader}>
-        <Typography variant="subtitle2" component="h2">
-          {i18n.text('search.history_title')}
-        </Typography>
-        {!phrase && (
-          <Button
-            variant="link"
-            size="small"
-            color="inherit"
-            className={classes.clearHistory}
-            onClick={onClear}
-          >
-            {i18n.text('search.history_clear')}
-          </Button>
-        )}
-      </div>
-      <ul className={cx(classes.list, classes.listEntering)}>
-        {entries.map(entry => (
-          <li key={entry} className="theme__search-overlay__history-item">
-            <button type="button" className={classes.listItem} onClick={() => onSelect(entry)}>
-              {entry}
-            </button>
-          </li>
-        ))}
-      </ul>
-    </section>
+    <SurroundPortals
+      portalName={SEARCH_OVERLAY_HISTORY}
+      portalProps={{
+        entries,
+        query,
+        onSelect,
+        onClear,
+      }}
+    >
+      <section aria-label={i18n.text('search.history_title')} className="theme__search-overlay__history">
+        <div className={cx(classes.sectionHeader, 'theme__search-overlay__section-header')}>
+          <Typography variant="subtitle2" component="h2">
+            {i18n.text('search.history_title')}
+          </Typography>
+          {!phrase && (
+            <Button
+              variant="link"
+              size="small"
+              color="inherit"
+              className={classes.clearHistory}
+              onClick={onClear}
+            >
+              {i18n.text('search.history_clear')}
+            </Button>
+          )}
+        </div>
+        <ul className={cx(classes.list, classes.listEntering)}>
+          {entries.map(entry => (
+            <li key={entry} className="theme__search-overlay__history-item">
+              <button
+                type="button"
+                className={classes.listItem}
+                onClick={() => onSelect(entry)}
+              >
+                {entry}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </SurroundPortals>
   );
 };
 
+interface ResultsProps {
+  searchPhrase: string;
+  isPending: boolean;
+  preview: SearchPreview;
+  onSelect: (term: string) => void;
+  onFilter: (term: string) => void;
+}
+
 /**
  * Suggestions, result count, filter shortcut and the first products of a search.
- * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * @param props The component props.
+ * @param props.searchPhrase The debounced search phrase.
+ * @param props.isPending Whether the typed text is ahead of the search phrase.
+ * @param props.preview The first products.
+ * @param props.onSelect Runs a search.
+ * @param props.onFilter Runs a search and opens its filters.
+ * @returns The results.
  */
 const Results = ({
   searchPhrase, isPending, preview, onSelect, onFilter,
-}) => {
+}: ResultsProps) => {
   const { classes, cx } = useStyles();
   const suggestions = useSearchSuggestions(searchPhrase);
   const { products, totalProductCount, isLoading } = preview;
@@ -210,12 +276,27 @@ const Results = ({
     enteredRef.current = true;
   }
 
+  const settledCount = isStale ? null : totalProductCount;
+
+  useEffect(() => {
+    if (settledCount === null) {
+      return;
+    }
+
+    broadcastLiveMessage(settledCount === 0 ? 'search.no_result.body' : 'search.results_count', {
+      params: {
+        count: settledCount,
+        searchPhrase,
+      },
+    });
+  }, [searchPhrase, settledCount]);
+
   /**
-   * @param {Event} event The click event.
-   * @param {string} suggestion The suggestion.
-   * @returns {void}
+   * @param _ The click event.
+   * @param suggestion The suggestion.
+   * @returns Nothing.
    */
-  const handleSuggestionClick = (event, suggestion) => onSelect(suggestion);
+  const handleSuggestionClick = (_: MouseEvent | null, suggestion: string) => onSelect(suggestion);
 
   return (
     <div className="theme__search-overlay__results">
@@ -262,58 +343,94 @@ const Results = ({
         )}
       </SurroundPortals>
       {totalProductCount !== null && hasProducts && (
-        <div className={classes.sectionHeader}>
+        <div className={cx(classes.sectionHeader, 'theme__search-overlay__section-header')}>
           <Typography
             key={totalProductCount}
             variant="subtitle2"
             component="p"
-            className={classes.count}
+            className={cx(classes.count, 'theme__search-overlay__result-count')}
           >
             {i18n.text('search.results_count', { count: totalProductCount })}
           </Typography>
-          <Button variant="outlined" size="small" color="inherit" onClick={() => onFilter(searchPhrase)}>
+          <Button
+            variant="outlined"
+            size="small"
+            color="inherit"
+            className="theme__search-overlay__filter"
+            onClick={() => onFilter(searchPhrase)}
+          >
             {i18n.text('titles.filter')}
           </Button>
         </div>
       )}
       {!hasProducts && !isStale && totalProductCount === 0 && (
-        <NoResults
-          headlineText="search.no_result.heading"
-          bodyText="search.no_result.body"
-          searchPhrase={searchPhrase}
-        />
+        <SurroundPortals portalName={SEARCH_OVERLAY_NO_RESULTS} portalProps={{ searchPhrase }}>
+          <NoResults
+            headlineText="search.no_result.heading"
+            bodyText="search.no_result.body"
+            searchPhrase={searchPhrase}
+          />
+        </SurroundPortals>
       )}
       {hasProducts && (
-        <div
-          className={cx(
-            classes.results,
-            shouldEnter && classes.resultsEntering,
-            isStale && classes.stale
-          )}
-          aria-busy={isStale}
+        <SurroundPortals
+          portalName={SEARCH_OVERLAY_RESULTS}
+          portalProps={{
+            searchPhrase,
+            products,
+            totalProductCount,
+            onShowAll: () => onSelect(searchPhrase),
+          }}
         >
-          <ProductGrid products={products} infiniteLoad={false} />
-          {totalProductCount > products.length && (
-            <div className={classes.showAll}>
-              <Button variant="contained" color="cta" onClick={() => onSelect(searchPhrase)}>
-                {i18n.text('search.show_all_results')}
-              </Button>
-            </div>
-          )}
-        </div>
+          <div
+            className={cx(
+              classes.results,
+              shouldEnter && classes.resultsEntering,
+              isStale && classes.stale,
+              'theme__search-overlay__preview'
+            )}
+            aria-busy={isStale}
+          >
+            <ProductGrid products={products} infiniteLoad={false} />
+            {(totalProductCount ?? 0) > products.length && (
+              <div className={cx(classes.showAll, 'theme__search-overlay__show-all')}>
+                <Button variant="contained" color="cta" onClick={() => onSelect(searchPhrase)}>
+                  {i18n.text('search.show_all_results')}
+                </Button>
+              </div>
+            )}
+          </div>
+        </SurroundPortals>
       )}
     </div>
   );
 };
 
+interface Props {
+  query: string;
+  searchPhrase: string;
+  preview: SearchPreview;
+  history: string[];
+  onSelect: (term: string) => void;
+  onFilter: (term: string) => void;
+  onClearHistory: () => void;
+}
+
 /**
  * The content of the search overlay.
- * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * @param props The component props.
+ * @param props.query The typed text.
+ * @param props.searchPhrase The debounced search phrase.
+ * @param props.preview The first products.
+ * @param props.history The search terms.
+ * @param props.onSelect Runs a search.
+ * @param props.onFilter Runs a search and opens its filters.
+ * @param props.onClearHistory Clears the history.
+ * @returns The history, or the results from three characters on.
  */
 const Content = ({
   query, searchPhrase, preview, history, onSelect, onFilter, onClearHistory,
-}) => {
+}: Props) => {
   if (query.trim().length < SEARCH_MIN_CHARS) {
     return (
       <History history={history} query={query} onSelect={onSelect} onClear={onClearHistory} />
@@ -329,43 +446,6 @@ const Content = ({
       onFilter={onFilter}
     />
   );
-};
-
-const previewShape = PropTypes.shape({
-  isLoading: PropTypes.bool,
-  products: PropTypes.arrayOf(PropTypes.shape()),
-  totalProductCount: PropTypes.number,
-});
-
-Highlighted.propTypes = {
-  className: PropTypes.string.isRequired,
-  phrase: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-};
-
-History.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onClear: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  query: PropTypes.string.isRequired,
-};
-
-Results.propTypes = {
-  isPending: PropTypes.bool.isRequired,
-  onFilter: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  preview: previewShape.isRequired,
-  searchPhrase: PropTypes.string.isRequired,
-};
-
-Content.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.string).isRequired,
-  onClearHistory: PropTypes.func.isRequired,
-  onFilter: PropTypes.func.isRequired,
-  onSelect: PropTypes.func.isRequired,
-  preview: previewShape.isRequired,
-  query: PropTypes.string.isRequired,
-  searchPhrase: PropTypes.string.isRequired,
 };
 
 export default Content;

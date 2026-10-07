@@ -32,6 +32,15 @@ interface PreviewState extends PreviewResult {
   isLoading: boolean;
 }
 
+/**
+ * The first products of a search.
+ */
+export interface SearchPreview {
+  products: Array<Record<string, unknown> & { id: string }>;
+  totalProductCount: number | null;
+  isLoading: boolean;
+}
+
 interface ProductLike {
   id?: string;
 }
@@ -117,6 +126,29 @@ const fetchSearchPreview = (searchPhrase: string) => (
 };
 
 /**
+ * Cleans up stored search terms.
+ * @param stored The stored value.
+ * @returns Up to ten different terms, newest first.
+ */
+const toHistory = (stored: unknown): string[] => {
+  if (!Array.isArray(stored)) {
+    return EMPTY_HISTORY;
+  }
+
+  const seen = new Set<string>();
+
+  return stored.filter((entry): entry is string => {
+    const key = typeof entry === 'string' ? entry.trim().toLowerCase() : '';
+    if (!key || seen.has(key)) {
+      return false;
+    }
+
+    seen.add(key);
+    return true;
+  }).slice(0, SEARCH_HISTORY_MAX);
+};
+
+/**
  * The search terms the visitor submitted, newest first.
  * @returns The history with functions to add a term and to clear it.
  */
@@ -125,9 +157,7 @@ export const useSearchHistory = () => {
     initialValue: EMPTY_HISTORY,
   });
 
-  const history = useMemo(() => (
-    Array.isArray(stored) ? stored.filter(entry => typeof entry === 'string') : EMPTY_HISTORY
-  ), [stored]);
+  const history = useMemo(() => toHistory(stored), [stored]);
 
   const addTerm = useCallback((term: string) => {
     const value = term.trim();
@@ -135,13 +165,7 @@ export const useSearchHistory = () => {
       return;
     }
 
-    setStored((previous) => {
-      const list = Array.isArray(previous)
-        ? previous.filter(entry => typeof entry === 'string')
-        : [];
-      const rest = list.filter(entry => entry.toLowerCase() !== value.toLowerCase());
-      return [value, ...rest].slice(0, SEARCH_HISTORY_MAX);
-    });
+    setStored(previous => toHistory([value, ...(Array.isArray(previous) ? previous : [])]));
   }, [setStored]);
 
   const clearHistory = useCallback(() => {
@@ -216,7 +240,7 @@ export const useSearchSuggestions = (searchPhrase: string): string[] => {
  * @param searchPhrase The debounced search phrase.
  * @returns Products, total count and loading state of the preview.
  */
-export const useSearchPreview = (searchPhrase: string) => {
+export const useSearchPreview = (searchPhrase: string): SearchPreview => {
   const dispatch = useDispatch();
   const [preview, setPreview] = useState<PreviewState>(EMPTY_PREVIEW);
 
@@ -283,7 +307,7 @@ export const useSearchPreview = (searchPhrase: string) => {
     .filter(Boolean), shallowEqual);
 
   return {
-    products: products as Array<Record<string, unknown> & { id: string }>,
+    products: products as SearchPreview['products'],
     totalProductCount: preview.totalProductCount,
     isLoading: preview.isLoading,
   };

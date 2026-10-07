@@ -1,6 +1,7 @@
-import React, {
+import {
   useCallback, useEffect, useLayoutEffect, useRef, useState,
 } from 'react';
+import type { KeyboardEvent } from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentPathname, getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
@@ -11,13 +12,16 @@ import { event } from '@shopgate/engage/core/classes';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { updateStatusBarBackground } from '@shopgate/engage/core/actions';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { OPEN_SEARCH } from '@shopgate/engage/navigation';
+import { SEARCH_OVERLAY, SEARCH_OVERLAY_HEADER } from '@shopgate/engage/search/constants';
 import { makeStyles, keyframes, getCSSCustomProp } from '@shopgate/engage/styles';
 import SearchField from '../SearchField';
 import Content from './Content';
 import {
-  animateOpen, animateClose, setOriginHidden,
+  animateOpen, animateClose, cancelAnimations, setOriginHidden,
 } from './animation';
+import type { OverlayElements } from './animation';
 import {
   useDebouncedValue, useSearchHistory, useSearchPreview, useSubmitSearch,
 } from '../hooks';
@@ -109,33 +113,50 @@ const useStyles = makeStyles()(theme => ({
   },
   body: {
     flexGrow: 1,
+    overflowX: 'hidden',
     overflowY: 'auto',
     WebkitOverflowScrolling: 'touch',
   },
 }));
 
+type Dispatch = ReturnType<typeof useDispatch>;
+
+interface OpenPayload {
+  query?: string;
+  /** The field that opened the search. The overlay grows out of it. */
+  origin?: HTMLElement | null;
+}
+
 /**
  * Syncs the native status bar with the header of the search, or with the page below it.
- * @param {Function} dispatch The redux dispatch function.
- * @param {boolean} isOpen Whether the search is open.
+ * @param dispatch The redux dispatch function.
+ * @param isOpen Whether the search is open.
  */
-const syncStatusBar = (dispatch, isOpen) => {
+const syncStatusBar = (dispatch: Dispatch, isOpen: boolean) => {
   const header = document.getElementById('AppHeader');
-  const background = !isOpen && header?.dataset.overlay === 'true'
+  const background = !isOpen && header && 'overlay' in header.dataset
     ? 'transparent'
     : getCSSCustomProp('--sg-components-appBar-background');
-  dispatch(updateStatusBarBackground(background));
+  dispatch(updateStatusBarBackground(background) as never);
+};
+
+/**
+ * Takes the app below the search out of reach of keyboard and screen readers.
+ * @param inert Whether the app is out of reach.
+ */
+const setAppInert = (inert: boolean) => {
+  document.getElementById('root')?.toggleAttribute('inert', inert);
 };
 
 /**
  * The search with history, suggestions and the first results. Opened by every search field and by
  * the header action.
- * @returns {JSX.Element|null}
+ * @returns The search, or nothing while it is closed.
  */
 const SearchOverlay = () => {
   const { classes, cx } = useStyles();
   const dispatch = useDispatch();
-  const pathname = useSelector(getCurrentPathname);
+  const pathname = useSelector(getCurrentPathname) as string;
   const route = useSelector(getCurrentRoute);
   const { history, addTerm, clearHistory } = useSearchHistory();
   const { submit, submitWithFilters } = useSubmitSearch();
@@ -145,17 +166,24 @@ const SearchOverlay = () => {
   const [keyboardHeight, setKeyboardHeight] = useState(0);
   const searchPhrase = useDebouncedValue(query.trim(), openCount);
   const preview = useSearchPreview(searchPhrase);
-  const inputRef = useRef(null);
-  const openedOnRef = useRef(null);
-  const originRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
+  const openedOnRef = useRef<string | null>(null);
+  const originRef = useRef<HTMLElement | null>(null);
+  const returnFocusRef = useRef<HTMLElement | null>(null);
   const closingRef = useRef(0);
-  const elementsRef = useRef({});
+  const elementsRef = useRef<OverlayElements>({});
 
-  const close = useCallback(() => {
+  const close = useCallback((returnFocus = true) => {
     setOriginHidden(originRef.current, false);
+    setAppInert(false);
     setIsOpen(false);
     openedOnRef.current = null;
     closingRef.current = 0;
+
+    if (returnFocus && returnFocusRef.current?.isConnected) {
+      returnFocusRef.current.focus();
+    }
+    returnFocusRef.current = null;
   }, []);
 
   const closeAnimated = useCallback(() => {
@@ -176,11 +204,17 @@ const SearchOverlay = () => {
 
   useEffect(() => {
     /**
-     * @param {Object} payload The query and the field that opened the search.
+     * @param payload The query and the field that opened the search.
      */
-    const handleOpen = (payload) => {
+    const handleOpen = (payload?: OpenPayload) => {
+      const active = document.activeElement as HTMLElement | null;
+      cancelAnimations(elementsRef.current);
       setOriginHidden(originRef.current, false);
       originRef.current = payload?.origin || null;
+      returnFocusRef.current = returnFocusRef.current
+        || (active && active !== document.body ? active : null)
+        || originRef.current?.querySelector('button')
+        || null;
       closingRef.current = 0;
       setQuery(payload?.query || '');
       setOpenCount(count => count + 1);
@@ -196,11 +230,11 @@ const SearchOverlay = () => {
   useEffect(() => {
     registerEvents([EVENT_KEYBOARD_WILL_CHANGE]);
     /**
-     * @param {Object} payload The keyboard event payload.
-     * @param {number} payload.overlap Height of the keyboard over the content.
-     * @returns {void}
+     * @param payload The keyboard event payload.
+     * @param payload.overlap Height of the keyboard over the content.
+     * @returns Nothing.
      */
-    const handleKeyboardChange = ({ overlap }) => setKeyboardHeight(overlap);
+    const handleKeyboardChange = ({ overlap }: { overlap: number }) => setKeyboardHeight(overlap);
     event.addCallback(EVENT_KEYBOARD_WILL_CHANGE, handleKeyboardChange);
     return () => {
       event.removeCallback(EVENT_KEYBOARD_WILL_CHANGE, handleKeyboardChange);
@@ -212,6 +246,7 @@ const SearchOverlay = () => {
       return;
     }
 
+    setAppInert(true);
     inputRef.current?.focus();
     syncStatusBar(dispatch, true);
     animateOpen(elementsRef.current, originRef.current);
@@ -225,13 +260,16 @@ const SearchOverlay = () => {
     if (!openedOnRef.current) {
       openedOnRef.current = pathname;
     } else if (openedOnRef.current !== pathname) {
-      close();
+      close(false);
     }
   }, [close, isOpen, pathname]);
 
-  useEffect(() => () => setOriginHidden(originRef.current, false), []);
+  useEffect(() => () => {
+    setOriginHidden(originRef.current, false);
+    setAppInert(false);
+  }, []);
 
-  const handleSelect = useCallback((term) => {
+  const handleSelect = useCallback((term: string) => {
     const phrase = term.trim();
     if (!phrase) {
       return;
@@ -239,14 +277,14 @@ const SearchOverlay = () => {
 
     inputRef.current?.blur();
     addTerm(phrase);
-    close();
+    close(false);
     submit(phrase);
   }, [addTerm, close, submit]);
 
-  const handleFilter = useCallback((phrase) => {
+  const handleFilter = useCallback((phrase: string) => {
     inputRef.current?.blur();
     addTerm(phrase);
-    close();
+    close(false);
     submitWithFilters(phrase);
   }, [addTerm, close, submitWithFilters]);
 
@@ -254,6 +292,13 @@ const SearchOverlay = () => {
     setQuery('');
     inputRef.current?.focus();
   }, []);
+
+  const handleKeyDown = useCallback((keyEvent: KeyboardEvent) => {
+    if (keyEvent.key === 'Escape') {
+      keyEvent.preventDefault();
+      closeAnimated();
+    }
+  }, [closeAnimated]);
 
   if (!isOpen) {
     return null;
@@ -263,61 +308,85 @@ const SearchOverlay = () => {
     && (preview.isLoading || searchPhrase !== query.trim());
 
   return ReactDOM.createPortal(
-    <div
-      className={cx(classes.root, 'theme__search-overlay')}
-      role="dialog"
-      aria-modal="true"
-      aria-label={i18n.text('search.label')}
-      data-test-id="SearchOverlay"
-    >
-      <div className={classes.backdrop} ref={(node) => { elementsRef.current.backdrop = node; }} />
-      <div className={cx(classes.header, 'theme__search-overlay__header')}>
+    <SurroundPortals portalName={SEARCH_OVERLAY} portalProps={{ query }}>
+      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
+      <div
+        className={cx(classes.root, 'theme__search-overlay')}
+        role="dialog"
+        aria-modal="true"
+        aria-label={i18n.text('search.label')}
+        onKeyDown={handleKeyDown}
+        data-loading={isLoading ? true : undefined}
+        data-test-id="SearchOverlay"
+      >
         <div
-          className={classes.headerBackground}
-          ref={(node) => { elementsRef.current.headerBackground = node; }}
+          className={cx(classes.backdrop, 'theme__search-overlay__backdrop')}
+          ref={(node) => { elementsRef.current.backdrop = node; }}
         />
-        <div className={classes.fieldWrapper} ref={(node) => { elementsRef.current.field = node; }}>
-          <SearchField
-            inputRef={inputRef}
-            value={query}
-            onChange={setQuery}
-            onSubmit={handleSelect}
-            onClear={handleClear}
-            onCancel={closeAnimated}
+        <div className={cx(classes.header, 'theme__search-overlay__header')}>
+          <div
+            className={classes.headerBackground}
+            ref={(node) => { elementsRef.current.headerBackground = node; }}
+          />
+          <SurroundPortals
+            portalName={SEARCH_OVERLAY_HEADER}
+            portalProps={{
+              query,
+              onChange: setQuery,
+              onSubmit: handleSelect,
+              onCancel: closeAnimated,
+            }}
+          >
+            <div
+              className={classes.fieldWrapper}
+              ref={(node) => { elementsRef.current.field = node; }}
+            >
+              <SearchField
+                inputRef={inputRef}
+                value={query}
+                onChange={setQuery}
+                onSubmit={handleSelect}
+                onClear={handleClear}
+              />
+            </div>
+            <button
+              type="button"
+              className={cx(classes.cancel, 'theme__search-overlay__cancel')}
+              onClick={closeAnimated}
+              ref={(node) => { elementsRef.current.cancel = node; }}
+              data-test-id="search-field-cancel"
+            >
+              {i18n.text('search.cancel')}
+            </button>
+          </SurroundPortals>
+          <div
+            className={cx(
+              classes.loading,
+              isLoading && classes.loadingVisible,
+              'theme__search-overlay__loading'
+            )}
+            aria-hidden
           />
         </div>
-        <button
-          type="button"
-          className={cx(classes.cancel, 'theme__search-overlay__cancel')}
-          onClick={closeAnimated}
-          ref={(node) => { elementsRef.current.cancel = node; }}
-          data-test-id="search-field-cancel"
-        >
-          {i18n.text('search.cancel')}
-        </button>
         <div
-          className={cx(classes.loading, isLoading && classes.loadingVisible)}
-          aria-hidden
-        />
+          className={cx(classes.body, 'theme__search-overlay__body')}
+          style={{ paddingBottom: keyboardHeight }}
+          ref={(node) => { elementsRef.current.body = node; }}
+        >
+          <RouteContext.Provider value={route}>
+            <Content
+              query={query}
+              searchPhrase={searchPhrase}
+              preview={preview}
+              history={history}
+              onSelect={handleSelect}
+              onFilter={handleFilter}
+              onClearHistory={clearHistory}
+            />
+          </RouteContext.Provider>
+        </div>
       </div>
-      <div
-        className={classes.body}
-        style={{ paddingBottom: keyboardHeight }}
-        ref={(node) => { elementsRef.current.body = node; }}
-      >
-        <RouteContext.Provider value={route}>
-          <Content
-            query={query}
-            searchPhrase={searchPhrase}
-            preview={preview}
-            history={history}
-            onSelect={handleSelect}
-            onFilter={handleFilter}
-            onClearHistory={clearHistory}
-          />
-        </RouteContext.Provider>
-      </div>
-    </div>,
+    </SurroundPortals>,
     document.body
   );
 };

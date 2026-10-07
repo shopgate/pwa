@@ -164,6 +164,24 @@ export const APP_BAR_CART_BUTTON = `${APP_BAR}.${CART_BUTTON}`;
 export const APP_BAR_CART_BUTTON_BEFORE = `${APP_BAR}.${CART_BUTTON}.${BEFORE}`;
 export const APP_BAR_CART_BUTTON_AFTER = `${APP_BAR}.${CART_BUTTON}.${AFTER}`;
 
+export const APP_BAR_LOGO = `${APP_BAR}.logo`;
+export const APP_BAR_LOGO_BEFORE = `${APP_BAR_LOGO}.${BEFORE}`;
+export const APP_BAR_LOGO_AFTER = `${APP_BAR_LOGO}.${AFTER}`;
+
+export const APP_BAR_ACTIONS_LEFT = `${APP_BAR}.actions.${LEFT}`;
+export const APP_BAR_ACTIONS_LEFT_BEFORE = `${APP_BAR_ACTIONS_LEFT}.${BEFORE}`;
+export const APP_BAR_ACTIONS_LEFT_AFTER = `${APP_BAR_ACTIONS_LEFT}.${AFTER}`;
+
+export const APP_BAR_ACTIONS_RIGHT = `${APP_BAR}.actions.${RIGHT}`;
+export const APP_BAR_ACTIONS_RIGHT_BEFORE = `${APP_BAR_ACTIONS_RIGHT}.${BEFORE}`;
+export const APP_BAR_ACTIONS_RIGHT_AFTER = `${APP_BAR_ACTIONS_RIGHT}.${AFTER}`;
+
+export const APP_BAR_ACTION = `${APP_BAR}.action`;
+
+export const APP_BAR_HEADLINE = `${APP_BAR}.headline`;
+export const APP_BAR_HEADLINE_BEFORE = `${APP_BAR_HEADLINE}.${BEFORE}`;
+export const APP_BAR_HEADLINE_AFTER = `${APP_BAR_HEADLINE}.${AFTER}`;
+
 export const APP_BAR_CONTENT = `${APP_BAR}.${CONTENT}`;
 export const APP_BAR_CONTENT_BEFORE = `${APP_BAR_CONTENT}.${BEFORE}`;
 export const APP_BAR_CONTENT_AFTER = `${APP_BAR_CONTENT}.${AFTER}`;

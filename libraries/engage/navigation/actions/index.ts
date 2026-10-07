@@ -43,8 +43,20 @@ const usePush = (pathname: string) => {
   }, [push, pathname, currentPathname]);
 };
 
+const EXTERNAL_LINK = /^([a-z][a-z0-9+.-]*:|\/\/)/i;
+
+/**
+ * Turns the configured target into a path the router can open.
+ * @param link The configured target.
+ * @returns The path, with a leading slash for app pages.
+ */
+const toPathname = (link: unknown): string => {
+  const value = typeof link === 'string' ? link.trim() : '';
+  return !value || value.startsWith('/') || EXTERNAL_LINK.test(value) ? value : `/${value}`;
+};
+
 const useLinkAction: NavigationActionHook = ({ link }) => {
-  const pathname = (link || '').trim();
+  const pathname = toPathname(link);
   return {
     available: !!pathname,
     icon: 'browse',

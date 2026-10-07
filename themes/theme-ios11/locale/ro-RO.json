@@ -429,7 +429,8 @@
     "history_clear": "Șterge istoricul",
     "results_count": "{count, plural, =1 {1 rezultat} other {{count} rezultate}}",
     "show_all_results": "Afișează toate rezultatele",
-    "clear": "Șterge căutarea"
+    "clear": "Șterge căutarea",
+    "new_search": "Căutare nouă"
   },
   "shipping": {
     "unknown": "plus transport maritim",

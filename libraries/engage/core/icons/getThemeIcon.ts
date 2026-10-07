@@ -8,12 +8,12 @@ import { CORE_ICONS } from './coreIcons';
  * @returns The svg markup, or null for an unknown icon.
  */
 export const getThemeIcon = (name: string): string | null => {
-  const icons = (themeConfig as { icons?: Record<string, string> })?.icons;
-  const shopIcon = icons?.[name];
+  const icons = (themeConfig as { icons?: Record<string, unknown> })?.icons ?? {};
+  const source = [icons, CORE_ICONS as Record<string, unknown>].find(candidate => (
+    Object.prototype.hasOwnProperty.call(candidate, name)
+    && typeof candidate[name] === 'string'
+    && candidate[name]
+  ));
 
-  if (shopIcon) {
-    return shopIcon;
-  }
-
-  return (CORE_ICONS as Record<string, string>)[name] ?? null;
+  return source ? source[name] as string : null;
 };

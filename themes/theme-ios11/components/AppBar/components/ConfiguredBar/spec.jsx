@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, within } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import ConfiguredBar from './index';
@@ -12,12 +11,18 @@ let mockScroll = {
 jest.mock('@shopgate/pwa-ui-ios', () => {
   /* eslint-disable react/prop-types */
   const AppBar = ({
-    left, center, right, backgroundColor, classes,
+    left, center, right, classes, inert, below, leftEnd, rightStart, ...props
   }) => (
-    <section data-testid="bar" data-background={backgroundColor} className={classes.outer}>
-      <div data-testid="left">{left}</div>
+    <section data-testid="bar" data-inert={inert ? true : undefined} {...props}>
+      <div data-testid="left">
+        {left}
+        {leftEnd}
+      </div>
       <div data-testid="center">{center}</div>
-      <div data-testid="right">{right}</div>
+      <div data-testid="right">
+        {rightStart}
+        {right}
+      </div>
     </section>
   );
   AppBar.Title = ({ title }) => <span>{`title:${title}`}</span>;
@@ -26,6 +31,7 @@ jest.mock('@shopgate/pwa-ui-ios', () => {
 });
 jest.mock('@shopgate/engage/components', () => ({
   Logo: () => <span>logo</span>,
+  SurroundPortals: ({ children }) => children,
 }));
 jest.mock('@shopgate/engage/core/helpers', () => ({
   i18n: { text: input => input },
@@ -37,6 +43,7 @@ jest.mock('../ActionButton', () => {
 });
 jest.mock('../../constants', () => ({
   APP_BAR_BUTTON_SIZE: 44,
+  FLOATING_BUTTON_INSET: 4,
 }));
 jest.mock('../../hooks', () => ({
   useOverlayScroll: () => mockScroll,
@@ -146,15 +153,27 @@ describe('<ConfiguredBar />', () => {
     expect(texts('center')).toEqual(['custom']);
   });
 
-  it('floats transparently over the content and marks the header', () => {
+  it('floats over the content and marks the header', () => {
     renderBar({
       modern: true,
       overlay: true,
       logo: true,
     });
 
-    expect(screen.getByTestId('bar')).toHaveAttribute('data-background', 'transparent');
-    expect(document.getElementById('AppHeader')).toHaveAttribute('data-overlay', 'true');
+    expect(screen.getByTestId('bar')).toHaveAttribute('data-overlay');
+    expect(screen.getByTestId('bar')).toHaveAttribute('data-style', 'modern');
+    expect(screen.getByTestId('bar')).toHaveAttribute('data-logo-position', 'center');
+    expect(document.getElementById('AppHeader')).toHaveAttribute('data-overlay');
+  });
+
+  it('removes the mark of the header when the bar no longer floats', () => {
+    const { unmount } = renderBar({
+      modern: true,
+      overlay: true,
+    });
+    unmount();
+
+    expect(document.getElementById('AppHeader')).not.toHaveAttribute('data-overlay');
   });
 
   it('fills the status bar area while the buttons float over scrolled content', () => {
@@ -169,20 +188,18 @@ describe('<ConfiguredBar />', () => {
       settings: { modern: { scrollBehavior: 'floatingButtons' } },
     });
 
-    expect(document.querySelector('.theme__app-bar__status-fill').className).toMatch(/statusFilled/);
-    expect(screen.getByTestId('bar').className).toMatch(/logoHidden/);
-  });
-
-  it('falls back to the centered logo for an unknown position', () => {
-    renderBar({
-      logo: true,
-      settings: { logoPosition: 'start' },
-    });
-
-    expect(within(screen.getByTestId('center')).getByText('logo')).toBeInTheDocument();
+    expect(document.querySelector('.theme__app-bar__status-fill')).toHaveAttribute('data-filled');
+    expect(screen.getByTestId('bar')).toHaveAttribute('data-logo-hidden');
+    expect(screen.getByTestId('bar')).not.toHaveAttribute('data-revealed');
   });
 
   it('reveals the bar as soon as content moves below it', () => {
+    renderBar({
+      modern: true,
+      overlay: true,
+    });
+    expect(screen.getByTestId('bar')).not.toHaveAttribute('data-revealed');
+
     mockScroll = {
       moved: true,
       scrolled: false,
@@ -193,27 +210,7 @@ describe('<ConfiguredBar />', () => {
       overlay: true,
     });
 
-    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--revealed');
-  });
-
-  it('switches from floating buttons to the bar once the page is scrolled', () => {
-    const { rerender } = renderBar({
-      modern: true,
-      overlay: true,
-    });
-    const floatingClass = screen.getByTestId('bar').className;
-
-    mockScroll = {
-      moved: true,
-      scrolled: true,
-      scrollingDown: true,
-    };
-    rerender(
-      <ConfiguredBar settings={createSettings()} modern overlay showActions />
-    );
-
-    expect(screen.getByTestId('bar').className).not.toEqual(floatingClass);
-    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--revealed');
+    expect(screen.getAllByTestId('bar')[1]).toHaveAttribute('data-revealed');
   });
 
   it('shows the bar again when scrolling up with scrollAway', () => {
@@ -228,11 +225,13 @@ describe('<ConfiguredBar />', () => {
       settings: { modern: { scrollBehavior: 'scrollAway' } },
     });
 
-    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--revealed');
-    expect(screen.getByTestId('bar')).not.toHaveClass('theme__app-bar--hidden');
+    expect(screen.getByTestId('bar')).toHaveAttribute('data-revealed');
+    expect(screen.getByTestId('bar')).not.toHaveAttribute('data-hidden');
+    expect(screen.getByTestId('bar')).not.toHaveAttribute('data-inert');
+    expect(document.querySelector('.theme__app-bar__status-fill')).not.toHaveAttribute('data-filled');
   });
 
-  it('slides the bar out while scrolling down with scrollAway', () => {
+  it('slides the bar out of reach while scrolling down with scrollAway', () => {
     mockScroll = {
       moved: true,
       scrolled: true,
@@ -244,7 +243,9 @@ describe('<ConfiguredBar />', () => {
       settings: { modern: { scrollBehavior: 'scrollAway' } },
     });
 
-    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--hidden');
-    expect(screen.getByTestId('bar')).toHaveClass('theme__app-bar--revealed');
+    expect(screen.getByTestId('bar')).toHaveAttribute('data-hidden');
+    expect(screen.getByTestId('bar')).toHaveAttribute('data-inert');
+    expect(screen.getByTestId('bar')).toHaveAttribute('aria-hidden', 'true');
+    expect(document.querySelector('.theme__app-bar__status-fill')).toHaveAttribute('data-filled');
   });
 });

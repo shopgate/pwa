@@ -429,7 +429,8 @@
     "history_clear": "Smazat historii",
     "results_count": "{count, plural, =1 {1 výsledek} other {Výsledky: {count}}}",
     "show_all_results": "Zobrazit všechny výsledky",
-    "clear": "Vymazat hledání"
+    "clear": "Vymazat hledání",
+    "new_search": "Nové hledání"
   },
   "shipping": {
     "unknown": "plus Poštovné",

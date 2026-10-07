@@ -170,8 +170,6 @@ export const componentsSchema = {
     vars: {
       background: '',
       color: '',
-      floatingButtonBackground: '',
-      floatingButtonColor: '',
       floatingButtonBackgroundOpacity: '',
       floatingButtonBackdropBlur: '',
       floatingButtonBoxShadow: '',
@@ -343,8 +341,6 @@ export const componentsDefaults = {
     vars: {
       background: '#FFFFFF',
       color: t => t.contrastColor('var(--sg-components-appBar-background)'),
-      floatingButtonBackground: 'var(--sg-components-appBar-background)',
-      floatingButtonColor: 'var(--sg-components-appBar-color)',
       floatingButtonBackgroundOpacity: '85%',
       floatingButtonBackdropBlur: '8px',
       floatingButtonBoxShadow: 'none',

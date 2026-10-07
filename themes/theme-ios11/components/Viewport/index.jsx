@@ -7,7 +7,7 @@ import { LiveMessenger } from '@shopgate/engage/a11y';
 import { applyScrollContainer, hasWebBridge } from '@shopgate/engage/core/helpers';
 import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import TabBar from 'Components/TabBar';
-import SearchOverlay from 'Components/Search/SearchOverlay';
+import SearchOverlay from '../Search/SearchOverlay';
 
 injectGlobal({
   html: {
@@ -15,10 +15,10 @@ injectGlobal({
     '--tabbar-height': '0px',
     '--app-bar-height': '0px',
   },
-  '#AppContent .engage__view__content__scrollable-content': {
+  ':where(#AppContent) .engage__view__content__scrollable-content': {
     paddingTop: 'var(--sg-search-bar-height, 0px)',
   },
-  '#AppHeader[data-overlay="true"]': {
+  '#AppHeader[data-overlay]': {
     position: 'absolute',
     left: 0,
     right: 0,

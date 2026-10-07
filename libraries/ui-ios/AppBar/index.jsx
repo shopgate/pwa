@@ -4,6 +4,11 @@ import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { makeStyles, setCSSCustomProp } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { APP_BAR_CONTENT } from '@shopgate/engage/core/constants';
+import { Portal } from '@shopgate/pwa-common/components';
+import {
+  APP_BAR_CENTER_BEFORE,
+  APP_BAR_CENTER_AFTER,
+} from '@shopgate/pwa-common/constants/Portals';
 import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
@@ -17,6 +22,8 @@ const useStyles = makeStyles()(theme => ({
     boxSizing: 'content-box',
     minHeight: 44,
     paddingTop: theme.layout.safeArea.top,
+    background: theme.components.appBar.background,
+    color: theme.components.appBar.color,
   },
   inner: {
     display: 'grid',
@@ -64,17 +71,21 @@ const AppBar = ({
   below,
   center,
   left,
+  leftEnd,
   right,
+  rightStart,
   classes: parentClasses,
   'aria-hidden': ariaHidden,
   backgroundColor,
   textColor,
+  inert,
+  ...props
 }) => {
   const { classes, cx } = useStyles();
   const contentRef = useRef(null);
   const style = useMemo(() => ({
-    background: backgroundColor,
-    color: textColor,
+    ...(backgroundColor ? { '--sg-components-appBar-background': backgroundColor } : {}),
+    ...(textColor ? { '--sg-components-appBar-color': textColor } : {}),
   }), [backgroundColor, textColor]);
 
   const observer = useMemo(() => new MutationObserver(() => {
@@ -91,6 +102,9 @@ const AppBar = ({
   }, [contentRef, observer]);
 
   const sectionClasses = cx(classes.outer, parentClasses.outer, 'ui-ios__app-bar');
+  const dataAttributes = useMemo(() => Object.fromEntries(
+    Object.entries(props).filter(([name]) => name.startsWith('data-'))
+  ), [props]);
 
   return (
     <section
@@ -98,17 +112,23 @@ const AppBar = ({
       data-test-id="Navigator"
       style={style}
       aria-hidden={ariaHidden}
+      inert={inert ? '' : undefined}
       ref={contentRef}
+      {...dataAttributes}
     >
       <SurroundPortals portalName={APP_BAR_CONTENT}>
-        <div className={cx(classes.inner, parentClasses.inner)}>
+        <div className={cx(classes.inner, 'ui-ios__app-bar__inner', parentClasses.inner)}>
           <div className={cx(classes.side, classes.left, 'ui-ios__app-bar__left')}>
             <Left elements={left} />
+            {leftEnd}
+            <Portal name={APP_BAR_CENTER_BEFORE} />
           </div>
           <div className={cx(classes.center, 'ui-ios__app-bar__center')}>
             <Center elements={center} />
           </div>
           <div className={cx(classes.side, classes.right, 'ui-ios__app-bar__right')}>
+            <Portal name={APP_BAR_CENTER_AFTER} />
+            {rightStart}
             <Right elements={right} />
           </div>
         </div>
@@ -127,23 +147,29 @@ AppBar.propTypes = {
     inner: PropTypes.string,
     outer: PropTypes.string,
   }),
+  inert: PropTypes.bool,
   left: PropTypes.node,
+  leftEnd: PropTypes.node,
   right: PropTypes.node,
+  rightStart: PropTypes.node,
   textColor: PropTypes.string,
 };
 
 AppBar.defaultProps = {
   'aria-hidden': null,
-  backgroundColor: 'var(--sg-components-appBar-background)',
+  backgroundColor: undefined,
   below: null,
   center: null,
   classes: {
     inner: '',
     outer: '',
   },
+  inert: false,
   left: null,
+  leftEnd: null,
   right: null,
-  textColor: 'var(--sg-components-appBar-color)',
+  rightStart: null,
+  textColor: undefined,
 };
 
 AppBar.Field = Field;

@@ -661,6 +661,60 @@ describe('settings / reducers / appSettings', () => {
     expect(tabBar.fixed).toEqual(DEFAULT_APP_SETTINGS.navigation.tabBar.fixed);
   });
 
+  it('falls back to the defaults for invalid navigation values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: {
+        appBar: {
+          style: 'MODERN',
+          showLogo: 'false',
+          logoPosition: 'top',
+          buttons: {
+            left1: 'cart',
+            left3: { action: 'cart' },
+            right1: {
+              action: 'link',
+              icon: 5,
+              link: 42,
+            },
+          },
+          modern: { scrollBehavior: 'foo' },
+        },
+        search: {
+          persistentBar: {
+            home: 'false',
+            hideOnScroll: 'false',
+          },
+        },
+      },
+    } as unknown as AppSettings));
+
+    const { appBar, search } = state.navigation;
+    expect(appBar.style).toBe('classic');
+    expect(appBar.showLogo).toBe(true);
+    expect(appBar.logoPosition).toBe('center');
+    expect(appBar.buttons).toEqual({
+      ...DEFAULT_APP_SETTINGS.navigation.appBar.buttons,
+      right1: {
+        action: 'link',
+        icon: '',
+        link: '',
+      },
+    });
+    expect(appBar.modern.scrollBehavior).toBe('revealBar');
+    expect(search.persistentBar).toEqual(DEFAULT_APP_SETTINGS.navigation.search.persistentBar);
+  });
+
+  it.each([['a string', 'modern'], ['an array', []]])(
+    'falls back to the default navigation for %s',
+    (_, navigation) => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        navigation,
+      } as unknown as AppSettings));
+
+      expect(state.navigation).toEqual(DEFAULT_APP_SETTINGS.navigation);
+    }
+  );
+
   it('falls back to the default navigation for a cleared branch', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
       navigation: null,

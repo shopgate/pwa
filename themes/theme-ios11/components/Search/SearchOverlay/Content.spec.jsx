@@ -1,6 +1,6 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import Content from './Content';
 
 let mockSuggestions = [];
@@ -9,6 +9,9 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
   i18n: {
     text: (key, params) => (params ? `${key}:${JSON.stringify(params)}` : key),
   },
+}));
+jest.mock('@shopgate/engage/a11y', () => ({
+  broadcastLiveMessage: jest.fn(),
 }));
 jest.mock('@shopgate/engage/components', () => ({
   /* eslint-disable react/prop-types */
@@ -46,6 +49,10 @@ const handlers = () => ({
 });
 
 describe('<SearchOverlay /> content', () => {
+  beforeEach(() => {
+    broadcastLiveMessage.mockClear();
+  });
+
   beforeEach(() => {
     mockSuggestions = [];
   });
@@ -121,5 +128,46 @@ describe('<SearchOverlay /> content', () => {
     render(<Content query="xyz" searchPhrase="xyz" preview={preview} history={[]} {...handlers()} />);
 
     expect(screen.getByText('no results for xyz')).toBeInTheDocument();
+    expect(broadcastLiveMessage).toHaveBeenLastCalledWith('search.no_result.body', {
+      params: {
+        count: 0,
+        searchPhrase: 'xyz',
+      },
+    });
+  });
+
+  it('announces the number of results once the search settled', () => {
+    const preview = {
+      products: [{
+        id: '1',
+        name: 'Jacket',
+      }],
+      totalProductCount: 17,
+      isLoading: true,
+    };
+    const { rerender } = render(
+      <Content query="jack" searchPhrase="jack" preview={preview} history={[]} {...handlers()} />
+    );
+    expect(broadcastLiveMessage).not.toHaveBeenCalled();
+
+    rerender(
+      <Content
+        query="jack"
+        searchPhrase="jack"
+        preview={{
+          ...preview,
+          isLoading: false,
+        }}
+        history={[]}
+        {...handlers()}
+      />
+    );
+
+    expect(broadcastLiveMessage).toHaveBeenCalledWith('search.results_count', {
+      params: {
+        count: 17,
+        searchPhrase: 'jack',
+      },
+    });
   });
 });

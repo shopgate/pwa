@@ -23,4 +23,8 @@ describe('getThemeIcon', () => {
   it('returns null for unknown icons', () => {
     expect(getThemeIcon('nothing')).toBeNull();
   });
+
+  it.each(['constructor', 'toString', '__proto__'])('ignores the object member %s', (name) => {
+    expect(getThemeIcon(name)).toBeNull();
+  });
 });

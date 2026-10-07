@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, act } from '@testing-library/react';
 import { useDebouncedValue, useSearchHistory, useSubmitSearch } from './hooks';
 
@@ -6,6 +5,7 @@ const mockPush = jest.fn();
 const mockReplace = jest.fn();
 let mockRoute = { pattern: '/browse' };
 let mockRouteListener = null;
+let mockStored;
 
 jest.mock('react-redux', () => ({
   useDispatch: () => jest.fn(),
@@ -15,7 +15,7 @@ jest.mock('react-redux', () => ({
 jest.mock('@shopgate/engage/core/hooks', () => {
   const { useState } = jest.requireActual('react');
   return {
-    useLocalStorage: (key, { initialValue }) => useState(initialValue),
+    useLocalStorage: (key, { initialValue }) => useState(mockStored ?? initialValue),
     useNavigation: () => ({
       push: mockPush,
       replace: mockReplace,
@@ -81,6 +81,10 @@ const renderHook = (useHook, props) => {
 };
 
 describe('useSearchHistory', () => {
+  afterEach(() => {
+    mockStored = undefined;
+  });
+
   it('adds terms newest first and moves repeated terms to the top', () => {
     const { result } = renderHook(() => useSearchHistory());
 
@@ -109,6 +113,14 @@ describe('useSearchHistory', () => {
     expect(result.current.history).toHaveLength(10);
     expect(result.current.history[0]).toBe('term 12');
     expect(result.current.history[9]).toBe('term 3');
+  });
+
+  it('cleans up stored terms that are no text, repeated or too many', () => {
+    mockStored = ['Jacket', 'jacket ', 5, null, '', ...Array.from({ length: 20 }, (_, index) => `term ${index}`)];
+    const { result } = renderHook(useSearchHistory);
+
+    expect(result.current.history).toHaveLength(10);
+    expect(result.current.history.slice(0, 2)).toEqual(['Jacket', 'term 0']);
   });
 
   it('clears the history', () => {
