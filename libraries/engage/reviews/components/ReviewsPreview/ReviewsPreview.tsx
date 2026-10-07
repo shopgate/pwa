@@ -9,11 +9,15 @@ import {
   getProductReviewsExcerpt,
   getReviewSummary,
   hasProductReviewsExcerptError,
+  hasReviewFeature,
   isProductReviewsExcerptLoading,
   isProductReviewsExcerptMissing,
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import fetchProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchProductReviews';
-import { REVIEW_PREVIEW_COUNT } from '@shopgate/pwa-common-commerce/reviews/constants';
+import {
+  REVIEW_FEATURE_RATING_SUMMARY,
+  REVIEW_PREVIEW_COUNT,
+} from '@shopgate/pwa-common-commerce/reviews/constants';
 import type {
   Review,
   ReviewsConfig,
@@ -79,6 +83,9 @@ const ReviewsPreview = ({ productId }: ReviewsPreviewProps) => {
   const hasError = useSelector((state: ReviewsProductState) => (
     hasProductReviewsExcerptError(state, { productId: baseProductId })
   ));
+  const expectsSummary = useSelector((state: ReviewsProductState) => (
+    hasReviewFeature(state, REVIEW_FEATURE_RATING_SUMMARY)
+  ));
 
   const isVisible = !!hasReviews && productActive;
 
@@ -104,7 +111,7 @@ const ReviewsPreview = ({ productId }: ReviewsPreviewProps) => {
           data-test-id="reviewSection"
         >
           <div id="reviewsExcerpt" className="engage__reviews__reviews-excerpt">
-            <ReviewsSummary summary={summary} />
+            <ReviewsSummary summary={summary} isLoading={expectsSummary && isLoading} />
           </div>
           <ReviewList
             reviews={reviews}

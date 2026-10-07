@@ -19,6 +19,7 @@ type MockPageState = {
   baseProductId: string | null;
   productFetching: boolean;
   summary: ReviewSummary | null;
+  expectsSummary: boolean;
   reviews: Review[];
   totalCount: number | null;
   hasMore: boolean;
@@ -67,6 +68,9 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
 
   return {
     ...jest.requireActual('@shopgate/pwa-common-commerce/reviews/selectors'),
+    hasReviewFeature: (_state: unknown, feature: string) => (
+      feature === 'ratingSummary' && mockPage.expectsSummary
+    ),
     getReviewSummary: (_state: unknown, props: SelectorProps) => (
       props.productId === (mockPage.baseProductId || 'route') ? mockPage.summary : null
     ),
@@ -211,6 +215,7 @@ describe('<ReviewsPage />', () => {
         average: 78,
         count: 12,
       },
+      expectsSummary: false,
       reviews,
       totalCount: 2,
       hasMore: false,
@@ -278,6 +283,31 @@ describe('<ReviewsPage />', () => {
 
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
     expect(screen.queryByText('reviews.list_empty')).not.toBeInTheDocument();
+  });
+
+  it('should show the summary placeholder while a provider summary is loading', () => {
+    mockPage.summary = null;
+    mockPage.reviews = [];
+    mockPage.totalCount = null;
+    mockPage.loading = true;
+    mockPage.expectsSummary = true;
+
+    const { container } = renderPage();
+
+    expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+      .toBeInTheDocument();
+  });
+
+  it('should not show the summary placeholder without a provider summary', () => {
+    mockPage.summary = null;
+    mockPage.reviews = [];
+    mockPage.totalCount = null;
+    mockPage.loading = true;
+
+    const { container } = renderPage();
+
+    expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+      .not.toBeInTheDocument();
   });
 
   it('should show the empty state without reviews', () => {

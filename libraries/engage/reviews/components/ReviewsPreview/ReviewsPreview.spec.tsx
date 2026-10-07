@@ -15,6 +15,7 @@ type MockPreviewState = {
   baseProductId: string;
   active: boolean;
   summary: ReviewSummary | null;
+  expectsSummary: boolean;
   reviews: Review[] | null;
   missing: boolean;
   loading: boolean;
@@ -46,6 +47,9 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
 
   return {
     ...jest.requireActual('@shopgate/pwa-common-commerce/reviews/selectors'),
+    hasReviewFeature: (_state: unknown, feature: string) => (
+      feature === 'ratingSummary' && mockPreview.expectsSummary
+    ),
     getReviewSummary: mockBaseSelector(() => mockPreview.summary, null),
     getProductReviewsExcerpt: mockBaseSelector(() => mockPreview.reviews, null),
     isProductReviewsExcerptMissing: mockBaseSelector(() => mockPreview.missing, false),
@@ -136,6 +140,7 @@ describe('<ReviewsPreview />', () => {
         average: 78,
         count: 12,
       },
+      expectsSummary: false,
       reviews,
       missing: false,
       loading: false,
@@ -211,6 +216,29 @@ describe('<ReviewsPreview />', () => {
     renderPreview();
 
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
+  });
+
+  it('should show the summary placeholder while a provider summary is loading', () => {
+    mockPreview.summary = null;
+    mockPreview.reviews = null;
+    mockPreview.loading = true;
+    mockPreview.expectsSummary = true;
+
+    const { container } = renderPreview();
+
+    expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+      .toBeInTheDocument();
+  });
+
+  it('should not show the summary placeholder without a provider summary', () => {
+    mockPreview.summary = null;
+    mockPreview.reviews = null;
+    mockPreview.loading = true;
+
+    const { container } = renderPreview();
+
+    expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+      .not.toBeInTheDocument();
   });
 
   it('should show the error state and retry the preview request', () => {

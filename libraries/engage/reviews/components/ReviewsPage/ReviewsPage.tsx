@@ -16,13 +16,17 @@ import {
   getReviewsTotalCount,
   getReviewSummary,
   hasMoreReviews,
+  hasReviewFeature,
   hasReviewListError,
   isReviewListLoading,
   isReviewListMissing,
   isReviewListQueryChanged,
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
-import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
+import {
+  REVIEW_FEATURE_RATING_SUMMARY,
+  REVIEW_ITEMS_PER_PAGE,
+} from '@shopgate/pwa-common-commerce/reviews/constants';
 import { PRODUCT_REVIEWS_ALL } from '@shopgate/pwa-common-commerce/reviews/constants/Portals';
 import {
   areReviewFiltersEqual,
@@ -123,6 +127,9 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
   ));
   const sortOptions = useSelector(getReviewSortOptions, shallowEqual);
   const filterOptions = useSelector(getReviewFilterOptions, shallowEqual);
+  const expectsSummary = useSelector((state: PageState) => (
+    hasReviewFeature(state, REVIEW_FEATURE_RATING_SUMMARY)
+  ));
 
   useEffect(() => {
     if (isMissing && !isProductFetching) {
@@ -177,7 +184,7 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
   return (
     <SurroundPortals portalName={PRODUCT_REVIEWS_ALL} portalProps={{ productId }}>
       <div className={cx(classes.summary, 'engage__reviews__reviews-excerpt')}>
-        <ReviewsSummary summary={summary} />
+        <ReviewsSummary summary={summary} isLoading={expectsSummary && isLoading} />
         {!isMissing && (
           <ReviewsToolbar
             sort={sort}

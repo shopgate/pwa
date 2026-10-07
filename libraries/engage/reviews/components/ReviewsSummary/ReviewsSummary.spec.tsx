@@ -100,4 +100,148 @@ describe('<ReviewsSummary />', () => {
     expect(numberSpy).toHaveBeenCalledWith(0, 1);
     expect(container.querySelector('.engage__reviews__reviews-summary__count')).toBeInTheDocument();
   });
+
+  describe('distribution', () => {
+    const summary = {
+      average: 69,
+      count: 35,
+      distribution: {
+        5: 10,
+        4: 10,
+        3: 5,
+        2: 5,
+        1: 5,
+      },
+    };
+
+    /**
+     * @param container The rendered container.
+     * @returns Stars, bar width and row text of every distribution row.
+     */
+    const getRows = (container: HTMLElement) => Array.from(
+      container.querySelectorAll<HTMLElement>('.engage__reviews__reviews-summary__distribution-row')
+    ).map(row => ({
+      stars: row.dataset.stars,
+      width: row.querySelector<HTMLElement>(
+        '.engage__reviews__reviews-summary__distribution-fill'
+      )?.style.width,
+      text: row.textContent,
+    }));
+
+    it('should not render rows without a distribution', () => {
+      const { container } = render(<ReviewsSummary summary={{
+        average: 69,
+        count: 35,
+      }}
+      />);
+
+      expect(container.querySelector('.engage__reviews__reviews-summary__distribution'))
+        .not.toBeInTheDocument();
+    });
+
+    it('should render five rows from five to one star with the share of each count', () => {
+      const { container } = render(<ReviewsSummary summary={summary} />);
+
+      expect(getRows(container)).toEqual([
+        {
+          stars: '5',
+          width: `${(10 / 35) * 100}%`,
+          text: 'reviews.filter_rate_510',
+        },
+        {
+          stars: '4',
+          width: `${(10 / 35) * 100}%`,
+          text: 'reviews.filter_rate_410',
+        },
+        {
+          stars: '3',
+          width: `${(5 / 35) * 100}%`,
+          text: 'reviews.filter_rate_35',
+        },
+        {
+          stars: '2',
+          width: `${(5 / 35) * 100}%`,
+          text: 'reviews.filter_rate_25',
+        },
+        {
+          stars: '1',
+          width: `${(5 / 35) * 100}%`,
+          text: 'reviews.filter_rate_15',
+        },
+      ]);
+    });
+
+    it('should take the share from the sum of the five counts, not from the rating count', () => {
+      const { container } = render(<ReviewsSummary summary={{
+        average: 100,
+        count: 40,
+        distribution: {
+          5: 3,
+          4: 1,
+          3: 0,
+          2: 0,
+          1: 0,
+        },
+      }}
+      />);
+
+      expect(getRows(container).map(row => row.width)).toEqual(['75%', '25%', '0%', '0%', '0%']);
+    });
+
+    it('should render empty bars when every count is zero', () => {
+      const { container } = render(<ReviewsSummary summary={{
+        average: 80,
+        count: 4,
+        distribution: {
+          5: 0,
+          4: 0,
+          3: 0,
+          2: 0,
+          1: 0,
+        },
+      }}
+      />);
+
+      expect(getRows(container).map(row => row.width)).toEqual(['0%', '0%', '0%', '0%', '0%']);
+    });
+  });
+
+  describe('placeholder', () => {
+    it('should show a placeholder while a summary is expected and none is there', () => {
+      const { container } = render(<ReviewsSummary summary={null} isLoading />);
+
+      expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+        .toBeInTheDocument();
+      expect(container.querySelector('.engage__reviews__reviews-summary')).not.toBeInTheDocument();
+    });
+
+    it('should show the summary instead of the placeholder once it is there', () => {
+      const { container } = render(<ReviewsSummary
+        summary={{
+          average: 78,
+          count: 12,
+        }}
+        isLoading
+      />);
+
+      expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+        .not.toBeInTheDocument();
+      expect(container.querySelector('.engage__reviews__reviews-summary')).toBeInTheDocument();
+    });
+
+    it('should not show the placeholder again after the first response', () => {
+      const { container, rerender } = render(<ReviewsSummary summary={null} isLoading />);
+
+      rerender(<ReviewsSummary summary={null} />);
+      rerender(<ReviewsSummary summary={null} isLoading />);
+
+      expect(container).toBeEmptyDOMElement();
+    });
+
+    it('should render nothing without a summary when none is expected', () => {
+      const { container } = render(<ReviewsSummary summary={null} />);
+
+      expect(container).toBeEmptyDOMElement();
+    });
+  });
 });
