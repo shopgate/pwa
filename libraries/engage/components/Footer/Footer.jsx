@@ -8,7 +8,7 @@ import {
   handleSafeAreaInsets,
   updateFooterHeight,
 } from './helpers';
-import { APP_FOOTER_ID, DATA_IGNORED } from './constants';
+import { APP_FOOTER_ID, APP_FOOTER_BARS_ID, DATA_IGNORED } from './constants';
 
 const useStyles = makeStyles()(() => ({
   footer: {
@@ -77,6 +77,7 @@ const Footer = ({ children }) => {
 
   return (
     <div className={cx(classes.footer, 'engage__footer')}>
+      <div id={APP_FOOTER_BARS_ID} />
       <div id={APP_FOOTER_ID} ref={footerRef}>
         {children}
       </div>

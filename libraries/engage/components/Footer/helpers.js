@@ -228,8 +228,9 @@ export const updateFooterHeight = (height) => {
   // measurement via JavaScript more complex and error-prone.
   //
   // To simplify everything, we include the --tabbar-height CSS custom property to the calculation
-  // of the --footer-height value.
-  const footerHeight = `max(${height}px, var(--tabbar-height, 0px))`;
+  // of the --footer-height value. Bars that sit on top of the TabBar are positioned absolutely and
+  // publish their height the same way via --footer-bar-height.
+  const footerHeight = `max(${height}px, var(--tabbar-height, 0px), var(--footer-bar-height, 0px))`;
 
   if (style.getPropertyValue('--footer-height') !== footerHeight) {
     style.setProperty('--footer-height', footerHeight);
