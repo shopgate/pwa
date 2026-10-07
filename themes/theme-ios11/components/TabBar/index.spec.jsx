@@ -4,12 +4,14 @@ import {
 } from '@testing-library/react';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import { useElementSize } from '@shopgate/engage/core/hooks';
+import { UIEvents } from '@shopgate/engage/core/events';
 import {
   TAB_HOME,
   TAB_BROWSE,
   TAB_CART,
   TAB_MORE,
   TAB_FAVORITES,
+  HIDE_TAB_BAR,
 } from './constants';
 import { useTabBarSettings, useTabBarScrollObserver } from './hooks';
 import TabBar from './index';
@@ -108,12 +110,33 @@ describe('<TabBar />', () => {
     expect(setCSSCustomProp).toHaveBeenLastCalledWith('--tabbar-height', '0px');
   });
 
-  it('should not render while the keyboard is open', () => {
+  it('should be hidden while the keyboard is open', () => {
     mockKeyboardOpen = true;
 
-    const { container } = render(<TabBar {...props} />);
+    render(<TabBar {...props} />);
 
-    expect(container).toBeEmptyDOMElement();
+    expect(getTabList()).not.toBeVisible();
+  });
+
+  it('should not hide on scroll in the cart', () => {
+    render(<TabBar {...props} activeTab={TAB_CART} path="/cart" />);
+
+    expect(useTabBarScrollObserver).toHaveBeenCalledWith(false);
+  });
+
+  it('should show a scrolled out tab bar again after a route change', () => {
+    useTabBarSettings.mockReturnValue({
+      hideOnScroll: true,
+      transition: 'slide',
+    });
+    const { container, rerender } = render(<TabBar {...props} path="/item/1" />);
+    const tabBar = container.querySelector('.theme__tab-bar__container');
+
+    act(() => { UIEvents.emit(HIDE_TAB_BAR, { scroll: true }); });
+    expect(tabBar).toHaveClass('transition-hidden');
+
+    rerender(<TabBar {...props} path="/cart" />);
+    expect(tabBar).toHaveClass('transition-visible');
   });
 
   it.each([TAB_HOME, TAB_BROWSE, TAB_CART, TAB_MORE, TAB_FAVORITES])('should highlight the active tab "%s"', (activeTab) => {
@@ -171,15 +194,16 @@ describe('<TabBar />', () => {
 
   it('should apply the variant of the settings', () => {
     const { container, rerender } = render(<TabBar {...props} />);
+    const tabBar = container.querySelector('.theme__tab-bar__container');
 
-    expect(container.firstChild).toHaveClass('variant-fixed', 'variant-docked');
-    expect(container.firstChild).not.toHaveClass('variant-floating');
+    expect(tabBar).toHaveClass('variant-fixed', 'variant-docked');
+    expect(tabBar).not.toHaveClass('variant-floating');
 
     useTabBarSettings.mockReturnValue({ variant: 'floating' });
     rerender(<TabBar {...props} path="/other" />);
 
-    expect(container.firstChild).toHaveClass('variant-floating');
-    expect(container.firstChild).not.toHaveClass('variant-fixed', 'variant-docked');
+    expect(tabBar).toHaveClass('variant-floating');
+    expect(tabBar).not.toHaveClass('variant-fixed', 'variant-docked');
   });
 });
 /* eslint-enable react/prop-types */

@@ -4,12 +4,14 @@ import {
   DISABLE_TAB_BAR,
   SHOW_TAB_BAR,
   HIDE_TAB_BAR,
+  SET_TAB_LAST_ROUTE,
 } from './constants';
 
 describe('TabBar reducer', () => {
   const initialState = {
     enabled: true,
     visible: true,
+    lastRoutes: {},
   };
 
   it('should prepare a default state as expected', () => {
@@ -57,6 +59,26 @@ describe('TabBar reducer', () => {
       expect(result).toEqual({
         ...initialState,
         visible: false,
+      });
+    });
+  });
+
+  describe('SET_TAB_LAST_ROUTE', () => {
+    it('should store the route per tab', () => {
+      const first = reducer(initialState, {
+        type: SET_TAB_LAST_ROUTE,
+        tab: 'browse',
+        route: { pathname: '/item/1' },
+      });
+      const second = reducer(first, {
+        type: SET_TAB_LAST_ROUTE,
+        tab: 'cart',
+        route: { pathname: '/cart' },
+      });
+
+      expect(second.lastRoutes).toEqual({
+        browse: { pathname: '/item/1' },
+        cart: { pathname: '/cart' },
       });
     });
   });

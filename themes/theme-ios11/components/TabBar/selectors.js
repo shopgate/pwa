@@ -1,21 +1,7 @@
 import { createSelector } from 'reselect';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { BROWSE_PATH } from 'Pages/Browse/constants';
-import { MORE_PATH } from 'Pages/More/constants';
 import { getIsCookieConsentHandled } from '@shopgate/engage/tracking/selectors/cookieConsent';
-import {
-  TAB_HOME,
-  TAB_BROWSE,
-  TAB_CART,
-  TAB_FAVORITES,
-  TAB_MORE,
-  TAB_NONE,
-} from './constants';
+import getTabForPathname from './helpers/getTabForPathname';
 
 /**
  * Returns a tabBar state.
@@ -31,29 +17,16 @@ const getTabBarState = state => state.ui.tabBar;
  */
 export const getActiveTab = createSelector(
   getCurrentPathname,
-  (pathname) => {
-    if (!pathname) {
-      return TAB_NONE;
-    }
-
-    switch (true) {
-      case pathname === INDEX_PATH:
-        return TAB_HOME;
-      case (pathname === BROWSE_PATH
-        || pathname.startsWith(SEARCH_PATH)
-        || pathname.startsWith(CATEGORY_PATH)):
-        return TAB_BROWSE;
-      case pathname === CART_PATH:
-        return TAB_CART;
-      case pathname === MORE_PATH:
-        return TAB_MORE;
-      case pathname === FAVORITES_PATH:
-        return TAB_FAVORITES;
-      default:
-        return TAB_NONE;
-    }
-  }
+  getTabForPathname
 );
+
+/**
+ * Returns the last route that was shown within a tab.
+ * @param {Object} state The application state.
+ * @param {string} tab The tab.
+ * @returns {Object|null}
+ */
+export const getTabLastRoute = (state, tab) => getTabBarState(state).lastRoutes[tab] ?? null;
 
 /**
  * Checks if the tab bar is currently enabled.
