@@ -305,7 +305,7 @@ describe('Reviews actions: fetchReviews', () => {
     it('should send the media filter only when it is set and record it with the request', async () => {
       const dispatch = jest.fn();
 
-      await fetchReviews('foo', 10, 0, 'rateDesc', true)(dispatch, createGetState());
+      await fetchReviews('foo', 10, 0, 'rateDesc', { filterMedia: true })(dispatch, createGetState());
 
       expect(input).toEqual({
         productId: 'foo',
@@ -316,14 +316,14 @@ describe('Reviews actions: fetchReviews', () => {
       expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
         type: REQUEST_REVIEWS,
         sort: 'rateDesc',
-        filterMedia: true,
+        filters: { filterMedia: true },
       }));
       expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
         type: RECEIVE_REVIEWS,
-        filterMedia: true,
+        filters: { filterMedia: true },
       }));
 
-      await fetchReviews('foo', 10, 0, 'rateDesc', false)(dispatch, createGetState());
+      await fetchReviews('foo', 10, 0, 'rateDesc', { filterMedia: false })(dispatch, createGetState());
 
       expect(input).not.toHaveProperty('filterMedia');
     });
@@ -331,7 +331,7 @@ describe('Reviews actions: fetchReviews', () => {
     it('should send a request whose media filter differs from the one in flight', async () => {
       const dispatch = jest.fn();
 
-      await fetchReviews('foo', 10, 0, 'dateDesc', true)(dispatch, createGetState({
+      await fetchReviews('foo', 10, 0, 'dateDesc', { filterMedia: true })(dispatch, createGetState({
         isFetching: true,
         requestOffset: 0,
         requestSort: 'dateDesc',
@@ -345,7 +345,7 @@ describe('Reviews actions: fetchReviews', () => {
         isFetching: true,
         requestOffset: 0,
         requestSort: 'dateDesc',
-        requestFilterMedia: true,
+        requestFilters: { filterMedia: true },
       }));
 
       expect(input).toEqual({
@@ -358,11 +358,11 @@ describe('Reviews actions: fetchReviews', () => {
     it('should skip an identical filtered request that is still in flight', async () => {
       const dispatch = jest.fn();
 
-      const result = await fetchReviews('foo', 10, 0, 'dateDesc', true)(dispatch, createGetState({
+      const result = await fetchReviews('foo', 10, 0, 'dateDesc', { filterMedia: true })(dispatch, createGetState({
         isFetching: true,
         requestOffset: 0,
         requestSort: 'dateDesc',
-        requestFilterMedia: true,
+        requestFilters: { filterMedia: true },
       }));
 
       expect(result).toBeNull();
@@ -370,7 +370,7 @@ describe('Reviews actions: fetchReviews', () => {
     });
 
     it('should request the first page when the stored cursor belongs to another filter', async () => {
-      await fetchReviews('foo', 10, 20, 'dateDesc', true)(jest.fn(), createGetState({
+      await fetchReviews('foo', 10, 20, 'dateDesc', { filterMedia: true })(jest.fn(), createGetState({
         after: 'stored',
         sort: 'dateDesc',
       }, 'cursor'));
@@ -384,10 +384,10 @@ describe('Reviews actions: fetchReviews', () => {
     });
 
     it('should continue a filtered list with its cursor', async () => {
-      await fetchReviews('foo', 10, 20, 'dateDesc', true)(jest.fn(), createGetState({
+      await fetchReviews('foo', 10, 20, 'dateDesc', { filterMedia: true })(jest.fn(), createGetState({
         after: 'stored',
         sort: 'dateDesc',
-        filterMedia: true,
+        filters: { filterMedia: true },
       }, 'cursor'));
 
       expect(input).toEqual({
@@ -397,6 +397,70 @@ describe('Reviews actions: fetchReviews', () => {
         after: 'stored',
         filterMedia: true,
       });
+    });
+
+    it('should send every active filter and leave out inactive and unknown ones', async () => {
+      const dispatch = jest.fn();
+
+      await fetchReviews('foo', 10, 0, 'dateDesc', {
+        filterMedia: true,
+        filterVerified: true,
+        filterUnknown: true,
+      })(dispatch, createGetState());
+
+      expect(input).toEqual({
+        productId: 'foo',
+        limit: 10,
+        sort: 'dateDesc',
+        filterMedia: true,
+        filterVerified: true,
+      });
+      expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
+        type: REQUEST_REVIEWS,
+        filters: {
+          filterMedia: true,
+          filterVerified: true,
+        },
+      }));
+    });
+
+    it('should send a request whose filters differ from the ones in flight', async () => {
+      await fetchReviews('foo', 10, 0, 'dateDesc', { filterVerified: true })(
+        jest.fn(),
+        createGetState({
+          isFetching: true,
+          requestOffset: 0,
+          requestSort: 'dateDesc',
+          requestFilters: { filterMedia: true },
+        })
+      );
+
+      expect(input).toEqual(expect.objectContaining({ filterVerified: true }));
+      expect(input).not.toHaveProperty('filterMedia');
+    });
+
+    it('should continue with the cursor only when all filters match the stored list', async () => {
+      const stored = {
+        after: 'stored',
+        sort: 'dateDesc',
+        filters: {
+          filterMedia: true,
+          filterVerified: true,
+        },
+      };
+
+      await fetchReviews('foo', 10, 20, 'dateDesc', {
+        filterMedia: true,
+        filterVerified: true,
+      })(jest.fn(), createGetState(stored, 'cursor'));
+      expect(input).toEqual(expect.objectContaining({ after: 'stored' }));
+
+      await fetchReviews('foo', 10, 20, 'dateDesc', { filterMedia: true })(
+        jest.fn(),
+        createGetState(stored, 'cursor')
+      );
+      expect(input).not.toHaveProperty('after');
+      expect(input).not.toHaveProperty('filterVerified');
     });
 
     it('should pass the returned cursor on with the received reviews', async () => {

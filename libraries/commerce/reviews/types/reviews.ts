@@ -60,6 +60,22 @@ export interface Review {
 }
 
 /**
+ * The active filters of a review list by request parameter; inactive filters are left out.
+ */
+export interface ReviewListFilters {
+  filterMedia?: true;
+  filterVerified?: true;
+}
+
+/**
+ * A list filter the provider supports: its request parameter and the label of its control.
+ */
+export interface ReviewFilterOption {
+  param: keyof ReviewListFilters;
+  label: string;
+}
+
+/**
  * Request bookkeeping that ties a review list response to the request that caused it.
  */
 export interface ReviewsRequestMeta {
@@ -67,8 +83,8 @@ export interface ReviewsRequestMeta {
   offset?: number;
   /** Opaque sort value; extensions may pass their own format. */
   sort?: string;
-  /** Only set when the list is restricted to reviews with media. */
-  filterMedia?: boolean;
+  /** The active list filters; missing when the list is unfiltered. */
+  filters?: ReviewListFilters;
 }
 
 /**
@@ -83,9 +99,9 @@ export interface ReviewsCollection {
   requestId?: number;
   requestOffset?: number;
   requestSort?: string;
-  requestFilterMedia?: boolean;
-  /** Whether the stored reviews were loaded with the media filter. */
-  filterMedia?: boolean;
+  requestFilters?: ReviewListFilters;
+  /** The filters the stored reviews were loaded with. */
+  filters?: ReviewListFilters;
   /** Cursor for the next page; null when the provider returned none. */
   after?: string | null;
 }

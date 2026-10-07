@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
-import { PAGINATION_TYPE_CURSOR, REVIEW_SORT_OPTIONS } from '../constants';
+import { PAGINATION_TYPE_CURSOR, REVIEW_FILTERS, REVIEW_SORT_OPTIONS } from '../constants';
+import type { ReviewFilterOption } from '../types/reviews';
 import type {
   ReviewPaginationType,
   ReviewSettingsSliceState,
@@ -44,6 +45,21 @@ export const getReviewSortOptions = createSelector(
   (settings): string[] => (Array.isArray(settings.sortOptions)
     ? settings.sortOptions.filter(option => REVIEW_SORT_OPTIONS.includes(option))
     : [])
+);
+
+/**
+ * Selects the list filters the provider supports, in the order the PWA defines them.
+ */
+export const getReviewFilterOptions = createSelector(
+  getReviewFeatures,
+  (features): ReviewFilterOption[] => (REVIEW_FILTERS as (ReviewFilterOption & {
+    feature: string;
+  })[])
+    .filter(filter => features.includes(filter.feature))
+    .map(({ param, label }) => ({
+      param,
+      label,
+    }))
 );
 
 export const isFetchingReviewSettings = createSelector(

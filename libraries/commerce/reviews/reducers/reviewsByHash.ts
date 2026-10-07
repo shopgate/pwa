@@ -9,6 +9,7 @@ import {
 import type { RequestReviewsAction } from '../action-creators/requestReviews';
 import type { ReceiveReviewsAction } from '../action-creators/receiveReviews';
 import type { ErrorReviewsAction } from '../action-creators/errorReviews';
+import { areReviewFiltersEqual } from '../helpers/filters';
 import type { ReviewsByHash } from '../types/reviews';
 
 type ReviewsByHashAction = RequestReviewsAction | ReceiveReviewsAction | ErrorReviewsAction;
@@ -37,7 +38,7 @@ const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
           requestId: action.requestId,
           requestOffset: action.offset,
           requestSort: action.sort,
-          requestFilterMedia: action.filterMedia,
+          requestFilters: action.filters,
         },
       };
     case RECEIVE_REVIEWS: {
@@ -51,7 +52,7 @@ const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
       const isFirstPage = action.offset === 0;
 
       const isSameQuery = collection.sort === action.sort
-        && !!collection.filterMedia === !!action.filterMedia;
+        && areReviewFiltersEqual(collection.filters, action.filters);
 
       if (!isFirstPage && !isSameQuery) {
         return {
@@ -72,7 +73,7 @@ const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
             ? uniq(nextReviewIds)
             : uniq([...(collection.reviews || []), ...nextReviewIds]),
           sort: action.sort,
-          filterMedia: action.filterMedia,
+          filters: action.filters,
           totalReviewCount: typeof action.totalReviewCount === 'number'
             ? action.totalReviewCount
             : null,

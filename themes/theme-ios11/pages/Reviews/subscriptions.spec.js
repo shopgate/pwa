@@ -5,7 +5,7 @@ import { getBaseProductId, getProduct } from '@shopgate/engage/product/selectors
 import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
 import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
 import {
-  getReviewListFilterMedia,
+  getReviewListFilters,
   getReviewListSort,
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import { reviewsWillEnter$ } from '@shopgate/pwa-common-commerce/reviews/streams';
@@ -18,7 +18,7 @@ jest.mock('@shopgate/engage/product/selectors/product', () => ({
   getProduct: jest.fn(),
 }));
 jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => ({
-  getReviewListFilterMedia: jest.fn(),
+  getReviewListFilters: jest.fn(),
   getReviewListSort: jest.fn(),
 }));
 
@@ -39,7 +39,7 @@ describe('Reviews subscriptions', () => {
     getBaseProductId.mockReturnValue('base');
     getProduct.mockReturnValue({ id: 'variant' });
     getReviewListSort.mockReturnValue('rateDesc');
-    getReviewListFilterMedia.mockReturnValue(true);
+    getReviewListFilters.mockReturnValue({ filterMedia: true });
   });
 
   it('should subscribe to the reviews route', () => {
@@ -88,8 +88,14 @@ describe('Reviews subscriptions', () => {
       variantId: null,
     };
     expect(getReviewListSort).toHaveBeenCalledWith(state, listProps);
-    expect(getReviewListFilterMedia).toHaveBeenCalledWith(state, listProps);
-    expect(fetchReviews).toHaveBeenCalledWith('base', REVIEW_ITEMS_PER_PAGE, 0, 'rateDesc', true);
+    expect(getReviewListFilters).toHaveBeenCalledWith(state, listProps);
+    expect(fetchReviews).toHaveBeenCalledWith(
+      'base',
+      REVIEW_ITEMS_PER_PAGE,
+      0,
+      'rateDesc',
+      { filterMedia: true }
+    );
   });
 
   it('should not read the selected sort and filter on a new entry', () => {

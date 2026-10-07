@@ -618,6 +618,7 @@
     "sort_rateDesc": "Paras arvosana",
     "sort_rateAsc": "Heikoin arvosana",
     "filter_media": "Sisältää mediaa",
+    "filter_verified": "Vain vahvistetut",
     "list_empty_filtered": "Yksikään arvostelu ei vastaa valintaa."
   },
   "tab_bar": {

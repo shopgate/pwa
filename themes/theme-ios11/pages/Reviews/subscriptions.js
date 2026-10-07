@@ -5,7 +5,7 @@ import { getBaseProductId, getProduct } from '@shopgate/engage/product/selectors
 import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
 import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
 import {
-  getReviewListFilterMedia,
+  getReviewListFilters,
   getReviewListSort,
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import { reviewsWillEnter$ } from '@shopgate/pwa-common-commerce/reviews/streams';
@@ -41,7 +41,7 @@ export default function reviews(subscribe) {
       REVIEW_ITEMS_PER_PAGE,
       0,
       getReviewListSort(state, listProps),
-      getReviewListFilterMedia(state, listProps)
+      getReviewListFilters(state, listProps)
     ));
   });
 }

@@ -7,7 +7,11 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
 import { PRODUCT_REVIEWS_ALL } from '@shopgate/pwa-common-commerce/reviews/constants/Portals';
-import type { Review } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import type {
+  Review,
+  ReviewFilterOption,
+  ReviewListFilters,
+} from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import type { ReviewSummary } from '@shopgate/pwa-common-commerce/reviews/types/reviewSummary';
 import ReviewsPage from './ReviewsPage';
 
@@ -19,10 +23,10 @@ type MockPageState = {
   totalCount: number | null;
   hasMore: boolean;
   sort: string;
-  filterMedia: boolean;
+  filters: ReviewListFilters;
   queryChanged: boolean;
   sortOptions: string[];
-  mediaFilterAvailable: boolean;
+  filterOptions: ReviewFilterOption[];
   requestOffset: number;
   missing: boolean;
   loading: boolean;
@@ -70,12 +74,10 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
     getReviewsTotalCount: mockListSelector<number | null>(() => mockPage.totalCount, null),
     hasMoreReviews: mockListSelector(() => mockPage.hasMore, false),
     getReviewListSort: mockListSelector(() => mockPage.sort, 'dateDesc'),
-    getReviewListFilterMedia: mockListSelector(() => mockPage.filterMedia, false),
+    getReviewListFilters: mockListSelector<ReviewListFilters>(() => mockPage.filters, {}),
     isReviewListQueryChanged: mockListSelector(() => mockPage.queryChanged, false),
     getReviewSortOptions: () => mockPage.sortOptions,
-    hasReviewFeature: (_state: unknown, feature: string) => (
-      feature === 'mediaFilter' && mockPage.mediaFilterAvailable
-    ),
+    getReviewFilterOptions: () => mockPage.filterOptions,
     getReviewListRequestOffset: mockListSelector(() => mockPage.requestOffset, 0),
     getReviewsFetchingState: mockListSelector(() => mockPage.fetching, false),
     isReviewListMissing: mockListSelector(() => mockPage.missing, false),
@@ -90,15 +92,15 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/actions/fetchReviews', () => ({
     limit: number,
     offset?: number,
     sort?: string,
-    filterMedia?: boolean
+    filters?: ReviewListFilters
   ) => ({
     type: 'FETCH_REVIEWS',
     productId,
     limit,
     offset,
-    ...((sort && sort !== 'dateDesc') || filterMedia ? {
+    ...((sort && sort !== 'dateDesc') || (filters && Object.keys(filters).length > 0) ? {
       sort,
-      filterMedia,
+      filters,
     } : {}),
   }),
 }));
@@ -107,25 +109,33 @@ jest.mock('../ReviewsToolbar', () => ({
   default: ({
     sort,
     sortOptions,
-    filterMedia,
-    isMediaFilterAvailable,
+    filters,
+    filterOptions,
     onSortChange,
-    onFilterMediaChange,
+    onFilterChange,
   }: {
     sort: string;
     sortOptions: string[];
-    filterMedia: boolean;
-    isMediaFilterAvailable: boolean;
+    filters: ReviewListFilters;
+    filterOptions: ReviewFilterOption[];
     onSortChange: (sort: string) => void;
-    onFilterMediaChange: (filterMedia: boolean) => void;
-  }) => (sortOptions.length < 2 && !isMediaFilterAvailable ? null : (
+    onFilterChange: (param: keyof ReviewListFilters, isActive: boolean) => void;
+  }) => (sortOptions.length < 2 && filterOptions.length === 0 ? null : (
     <div
       className="engage__reviews__reviews-toolbar"
       data-sort={sort}
-      data-filter-media={filterMedia}
+      data-filters={Object.keys(filters).join(',')}
     >
       <button type="button" onClick={() => onSortChange('rateDesc')}>sort by rating</button>
-      <button type="button" onClick={() => onFilterMediaChange(!filterMedia)}>toggle media</button>
+      <button type="button" onClick={() => onFilterChange('filterMedia', !filters.filterMedia)}>
+        toggle media
+      </button>
+      <button
+        type="button"
+        onClick={() => onFilterChange('filterVerified', !filters.filterVerified)}
+      >
+        toggle verified
+      </button>
     </div>
   )),
 }));
@@ -201,10 +211,10 @@ describe('<ReviewsPage />', () => {
       totalCount: 2,
       hasMore: false,
       sort: 'dateDesc',
-      filterMedia: false,
+      filters: {},
       queryChanged: false,
       sortOptions: [],
-      mediaFilterAvailable: false,
+      filterOptions: [],
       requestOffset: 0,
       missing: false,
       loading: false,
@@ -459,14 +469,17 @@ describe('<ReviewsPage />', () => {
   describe('sorting and filtering', () => {
     beforeEach(() => {
       mockPage.sortOptions = ['dateDesc', 'rateDesc'];
-      mockPage.mediaFilterAvailable = true;
+      mockPage.filterOptions = [{
+        param: 'filterMedia',
+        label: 'reviews.filter_media',
+      }];
       mockPage.totalCount = 12;
       mockPage.hasMore = true;
     });
 
     it('should not render the toolbar when the provider supports neither', () => {
       mockPage.sortOptions = [];
-      mockPage.mediaFilterAvailable = false;
+      mockPage.filterOptions = [];
 
       const { container } = renderPage();
 
@@ -491,7 +504,7 @@ describe('<ReviewsPage />', () => {
     });
 
     it('should request the first page with the selected sort and the current filter', () => {
-      mockPage.filterMedia = true;
+      mockPage.filters = { filterMedia: true };
 
       const { getActions } = renderPage();
 
@@ -503,7 +516,7 @@ describe('<ReviewsPage />', () => {
         limit: REVIEW_ITEMS_PER_PAGE,
         offset: 0,
         sort: 'rateDesc',
-        filterMedia: true,
+        filters: { filterMedia: true },
       }]);
     });
 
@@ -530,13 +543,53 @@ describe('<ReviewsPage />', () => {
         limit: REVIEW_ITEMS_PER_PAGE,
         offset: 0,
         sort: 'rateDesc',
+        filters: { filterMedia: true },
+      }]);
+    });
+
+    it('should add a filter to the active ones', () => {
+      mockPage.filters = { filterMedia: true };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'toggle verified' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'dateDesc',
+        filters: {
+          filterMedia: true,
+          filterVerified: true,
+        },
+      }]);
+    });
+
+    it('should remove only the toggled filter', () => {
+      mockPage.filters = {
         filterMedia: true,
+        filterVerified: true,
+      };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'toggle media' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'dateDesc',
+        filters: { filterVerified: true },
       }]);
     });
 
     it('should load more and retry with the current sort and filter', () => {
       mockPage.sort = 'rateDesc';
-      mockPage.filterMedia = true;
+      mockPage.filters = { filterMedia: true };
 
       const { getActions, rerenderPage } = renderPage();
 
@@ -548,7 +601,7 @@ describe('<ReviewsPage />', () => {
         limit: REVIEW_ITEMS_PER_PAGE,
         offset: 2,
         sort: 'rateDesc',
-        filterMedia: true,
+        filters: { filterMedia: true },
       });
 
       mockPage.error = true;
@@ -562,7 +615,7 @@ describe('<ReviewsPage />', () => {
         limit: REVIEW_ITEMS_PER_PAGE,
         offset: 2,
         sort: 'rateDesc',
-        filterMedia: true,
+        filters: { filterMedia: true },
       });
     });
 
@@ -595,12 +648,12 @@ describe('<ReviewsPage />', () => {
         limit: REVIEW_ITEMS_PER_PAGE,
         offset: 0,
         sort: 'rateDesc',
-        filterMedia: false,
+        filters: {},
       }]);
     });
 
     it('should show the filtered empty text when the filter matches no review', () => {
-      mockPage.filterMedia = true;
+      mockPage.filters = { filterMedia: true };
       mockPage.reviews = [];
       mockPage.totalCount = 0;
       mockPage.hasMore = false;
@@ -609,7 +662,7 @@ describe('<ReviewsPage />', () => {
 
       expect(screen.getByText('reviews.list_empty_filtered')).toBeInTheDocument();
       expect(container.querySelector('.engage__reviews__reviews-toolbar'))
-        .toHaveAttribute('data-filter-media', 'true');
+        .toHaveAttribute('data-filters', 'filterMedia');
     });
   });
 });

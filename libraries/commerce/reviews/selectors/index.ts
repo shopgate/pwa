@@ -7,11 +7,13 @@ import * as pipelines from '../constants/Pipelines';
 import type {
   Review,
   ReviewId,
+  ReviewListFilters,
   ReviewsProductProps,
   ReviewsProductState,
   ReviewsState,
 } from '../types/reviews';
 
+import { areReviewFiltersEqual } from '../helpers/filters';
 import { isReviewCursorPagination } from './reviewSettings';
 
 export * from './reviewSettings';
@@ -29,6 +31,8 @@ type AuthorState = {
     } | null;
   };
 };
+
+const NO_FILTERS: ReviewListFilters = {};
 
 const getBaseProductId = getBaseProductIdSelector as (
   state: ReviewsProductState,
@@ -162,14 +166,13 @@ export const getReviewListSort = createSelector(
 );
 
 /**
- * Whether the last review list request of the current base product asked for reviews with
- * media only.
+ * Retrieves the filters of the last review list request of the current base product.
  * @param state The current application state.
- * @returns True when the media filter was requested.
+ * @returns The active filters; empty when the list is unfiltered or was not requested yet.
  */
-export const getReviewListFilterMedia = createSelector(
+export const getReviewListFilters = createSelector(
   getCollectionForCurrentBaseProduct,
-  collection => !!collection?.requestFilterMedia
+  collection => collection?.requestFilters ?? NO_FILTERS
 );
 
 /**
@@ -184,7 +187,7 @@ export const isReviewListQueryChanged = createSelector(
     && collection.requestOffset === 0
     && (
       collection.requestSort !== collection.sort
-      || !!collection.requestFilterMedia !== !!collection.filterMedia
+      || !areReviewFiltersEqual(collection.requestFilters, collection.filters)
     )
 );
 

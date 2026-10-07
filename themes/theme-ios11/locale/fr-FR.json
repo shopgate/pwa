@@ -618,6 +618,7 @@
     "sort_rateDesc": "Meilleures notes",
     "sort_rateAsc": "Moins bonnes notes",
     "filter_media": "Avec médias",
+    "filter_verified": "Vérifiés uniquement",
     "list_empty_filtered": "Aucun avis ne correspond à cette sélection."
   },
   "tab_bar": {

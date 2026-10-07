@@ -618,6 +618,7 @@
     "sort_rateDesc": "Hoogste beoordeling",
     "sort_rateAsc": "Laagste beoordeling",
     "filter_media": "Met media",
+    "filter_verified": "Alleen geverifieerd",
     "list_empty_filtered": "Geen reviews komen overeen met deze selectie."
   },
   "tab_bar": {

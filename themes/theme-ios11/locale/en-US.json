@@ -618,6 +618,7 @@
     "sort_rateDesc": "Highest rating",
     "sort_rateAsc": "Lowest rating",
     "filter_media": "With media",
+    "filter_verified": "Verified only",
     "list_empty_filtered": "No reviews match this selection."
   },
   "tab_bar": {

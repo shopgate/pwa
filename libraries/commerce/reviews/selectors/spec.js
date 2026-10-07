@@ -17,7 +17,7 @@ import {
   getReviewListRequestOffset,
   hasMoreReviews,
   getReviewListSort,
-  getReviewListFilterMedia,
+  getReviewListFilters,
   isReviewListQueryChanged,
 } from './index';
 import {
@@ -446,18 +446,18 @@ describe('Reviews selectors', () => {
 
     /**
      * @param {Object} state The state.
-     * @returns {Object} The requested sort and filter and whether the query changed.
+     * @returns {Object} The requested sort and filters and whether the query changed.
      */
     const getQuery = state => ({
       sort: getReviewListSort(state, propsProductId),
-      filterMedia: getReviewListFilterMedia(state, propsProductId),
+      filters: getReviewListFilters(state, propsProductId),
       changed: isReviewListQueryChanged(state, propsProductId),
     });
 
     it('should use the defaults for a list that was not requested yet', () => {
       expect(getQuery(buildState())).toEqual({
         sort: 'dateDesc',
-        filterMedia: false,
+        filters: {},
         changed: false,
       });
     });
@@ -466,15 +466,15 @@ describe('Reviews selectors', () => {
       const loaded = {
         reviews: [1, 2],
         sort: 'rateDesc',
-        filterMedia: true,
+        filters: { filterMedia: true },
         requestSort: 'rateDesc',
-        requestFilterMedia: true,
+        requestFilters: { filterMedia: true },
         requestOffset: 0,
       };
 
       expect(getQuery(buildState(loaded))).toEqual({
         sort: 'rateDesc',
-        filterMedia: true,
+        filters: { filterMedia: true },
         changed: false,
       });
       expect(getQuery(buildState({
@@ -499,7 +499,7 @@ describe('Reviews selectors', () => {
 
       expect(getQuery(buildState(changing))).toEqual({
         sort: 'rateDesc',
-        filterMedia: false,
+        filters: {},
         changed: true,
       });
       expect(getQuery(buildState({
@@ -514,13 +514,25 @@ describe('Reviews selectors', () => {
         reviews: [1, 2],
         sort: 'dateDesc',
         requestSort: 'dateDesc',
-        requestFilterMedia: true,
+        requestFilters: { filterMedia: true },
         requestOffset: 0,
       }))).toEqual({
         sort: 'dateDesc',
-        filterMedia: true,
+        filters: { filterMedia: true },
         changed: true,
       });
+
+      expect(getQuery(buildState({
+        reviews: [1, 2],
+        sort: 'dateDesc',
+        filters: { filterMedia: true },
+        requestSort: 'dateDesc',
+        requestFilters: {
+          filterMedia: true,
+          filterVerified: true,
+        },
+        requestOffset: 0,
+      })).changed).toBe(true);
     });
   });
 });

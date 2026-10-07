@@ -7,9 +7,11 @@ import { SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS } from '../constants/Pipelines';
 import requestProductReviewsList from '../action-creators/requestReviews';
 import receiveProductReviewsList from '../action-creators/receiveReviews';
 import errorProductReviewsList from '../action-creators/errorReviews';
+import { areReviewFiltersEqual, getActiveReviewFilters } from '../helpers/filters';
 import { isReviewCursorPagination } from '../selectors/reviewSettings';
 import type {
   ProductReviewsResponse,
+  ReviewListFilters,
   ReviewsSliceState,
 } from '../types/reviews';
 
@@ -27,7 +29,7 @@ let lastRequestId = 0;
  * "next page": the stored cursor is sent instead. Without a stored cursor for the requested
  * sort and filter the first page is requested.
  * @param sort Sorting, passed through to the pipeline unchanged.
- * @param filterMedia Whether only reviews with media are requested.
+ * @param filters Filter flags by request parameter; only active filters are sent.
  * @returns The dispatched action. It resolves with `null` when an identical request
  * is still in flight.
  */
@@ -36,7 +38,7 @@ function fetchReviews(
   limit: number = REVIEW_PREVIEW_COUNT,
   offset = 0,
   sort: string = SORT_DATE_DESC,
-  filterMedia = false
+  filters: Partial<Record<keyof ReviewListFilters, boolean>> = {}
 ) {
   return (dispatch: Dispatch, getState: () => FetchReviewsState) => {
     const hash = generateResultHash({
@@ -44,13 +46,14 @@ function fetchReviews(
       productId,
     }, false);
 
+    const activeFilters = getActiveReviewFilters(filters);
     const state = getState();
     const collection = state.reviews.reviewsByHash[hash];
     const isCursor = isReviewCursorPagination(state);
     const canContinue = isCursor
       && offset > 0
       && collection?.sort === sort
-      && !!collection.filterMedia === filterMedia;
+      && areReviewFiltersEqual(collection.filters, activeFilters);
     const after = (canContinue && collection.after) || null;
     const requestOffset = isCursor && !after ? 0 : offset;
 
@@ -58,7 +61,7 @@ function fetchReviews(
       collection?.isFetching
       && collection.requestOffset === requestOffset
       && collection.requestSort === sort
-      && !!collection.requestFilterMedia === filterMedia
+      && areReviewFiltersEqual(collection.requestFilters, activeFilters)
     ) {
       return Promise.resolve(null);
     }
@@ -68,7 +71,7 @@ function fetchReviews(
       requestId: lastRequestId,
       offset: requestOffset,
       sort,
-      ...(filterMedia && { filterMedia }),
+      ...(activeFilters && { filters: activeFilters }),
     };
 
     dispatch(requestProductReviewsList(hash, meta));
@@ -79,7 +82,7 @@ function fetchReviews(
         limit,
         sort,
         ...(after ? { after } : requestOffset > 0 && { offset: requestOffset }),
-        ...(filterMedia && { filterMedia }),
+        ...activeFilters,
       })
       .dispatch();
 

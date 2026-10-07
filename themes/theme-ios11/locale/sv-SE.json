@@ -617,6 +617,7 @@
     "sort_rateDesc": "Högsta betyg",
     "sort_rateAsc": "Lägsta betyg",
     "filter_media": "Med media",
+    "filter_verified": "Endast verifierade",
     "list_empty_filtered": "Inga recensioner matchar det här urvalet."
   },
   "tab_bar": {

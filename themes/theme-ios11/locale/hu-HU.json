@@ -618,6 +618,7 @@
     "sort_rateDesc": "Legjobb értékelés",
     "sort_rateAsc": "Legrosszabb értékelés",
     "filter_media": "Médiával",
+    "filter_verified": "Csak ellenőrzött",
     "list_empty_filtered": "Egy vélemény sem felel meg a kiválasztásnak."
   },
   "tab_bar": {

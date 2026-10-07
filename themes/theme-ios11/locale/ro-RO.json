@@ -618,6 +618,7 @@
     "sort_rateDesc": "Cea mai bună evaluare",
     "sort_rateAsc": "Cea mai slabă evaluare",
     "filter_media": "Cu conținut media",
+    "filter_verified": "Doar verificate",
     "list_empty_filtered": "Nicio recenzie nu corespunde acestei selecții."
   },
   "tab_bar": {

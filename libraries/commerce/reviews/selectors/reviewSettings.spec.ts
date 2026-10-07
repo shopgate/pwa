@@ -8,6 +8,7 @@ import {
   isReviewCursorPagination,
   hasReviewFeature,
   getReviewSortOptions,
+  getReviewFilterOptions,
 } from './reviewSettings';
 
 /**
@@ -108,6 +109,28 @@ describe('Reviews selectors: reviewSettings', () => {
       expect(getReviewSortOptions(buildState({
         sortOptions: 'dateDesc' as unknown as string[],
       }))).toEqual([]);
+    });
+  });
+
+  describe('getReviewFilterOptions', () => {
+    it('should return the filters the provider reports in the order of the PWA', () => {
+      expect(getReviewFilterOptions(buildState({
+        features: ['verifiedFilter', 'reviewRate', 'mediaFilter'],
+      }))).toEqual([
+        {
+          param: 'filterMedia',
+          label: 'reviews.filter_media',
+        },
+        {
+          param: 'filterVerified',
+          label: 'reviews.filter_verified',
+        },
+      ]);
+    });
+
+    it('should return no filters without matching capabilities', () => {
+      expect(getReviewFilterOptions(buildState({ features: ['reviewRate'] }))).toEqual([]);
+      expect(getReviewFilterOptions(buildState({}))).toEqual([]);
     });
   });
 });

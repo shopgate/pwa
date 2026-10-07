@@ -7,10 +7,19 @@ import type { ReviewsToolbarProps } from './ReviewsToolbar';
 const defaultProps: ReviewsToolbarProps = {
   sort: 'dateDesc',
   sortOptions: ['dateDesc', 'rateDesc', 'rateAsc'],
-  filterMedia: false,
-  isMediaFilterAvailable: true,
+  filters: {},
+  filterOptions: [
+    {
+      param: 'filterMedia',
+      label: 'reviews.filter_media',
+    },
+    {
+      param: 'filterVerified',
+      label: 'reviews.filter_verified',
+    },
+  ],
   onSortChange: jest.fn(),
-  onFilterMediaChange: jest.fn(),
+  onFilterChange: jest.fn(),
 };
 
 /**
@@ -19,12 +28,12 @@ const defaultProps: ReviewsToolbarProps = {
  */
 const renderToolbar = (props: Partial<ReviewsToolbarProps> = {}) => {
   const onSortChange = jest.fn();
-  const onFilterMediaChange = jest.fn();
+  const onFilterChange = jest.fn();
   const result = render(
     <ReviewsToolbar
       {...defaultProps}
       onSortChange={onSortChange}
-      onFilterMediaChange={onFilterMediaChange}
+      onFilterChange={onFilterChange}
       {...props}
     />
   );
@@ -32,7 +41,7 @@ const renderToolbar = (props: Partial<ReviewsToolbarProps> = {}) => {
   return {
     ...result,
     onSortChange,
-    onFilterMediaChange,
+    onFilterChange,
   };
 };
 
@@ -50,10 +59,10 @@ describe('<ReviewsToolbar />', () => {
     jest.useRealTimers();
   });
 
-  it('should render nothing without sort options and media filter', () => {
+  it('should render nothing without sort options and filters', () => {
     const { container } = renderToolbar({
       sortOptions: ['dateDesc'],
-      isMediaFilterAvailable: false,
+      filterOptions: [],
     });
 
     expect(container).toBeEmptyDOMElement();
@@ -70,7 +79,7 @@ describe('<ReviewsToolbar />', () => {
     ]);
   });
 
-  it('should hide the sort select with fewer than two options and keep the filter', () => {
+  it('should hide the sort select with fewer than two options and keep the filters', () => {
     renderToolbar({ sortOptions: ['dateDesc'] });
 
     expect(screen.queryByRole('menuitem', { hidden: true })).not.toBeInTheDocument();
@@ -112,7 +121,13 @@ describe('<ReviewsToolbar />', () => {
       hidden: true,
       name: 'reviews.sort_rateAsc',
     }));
-    rerender(<ReviewsToolbar {...defaultProps} filterMedia onSortChange={latestHandler} />);
+    rerender(
+      <ReviewsToolbar
+        {...defaultProps}
+        filters={{ filterMedia: true }}
+        onSortChange={latestHandler}
+      />
+    );
     act(() => {
       jest.runAllTimers();
     });
@@ -128,27 +143,26 @@ describe('<ReviewsToolbar />', () => {
     expect(getSortButton()).toHaveTextContent('reviews.sort_dateDesc');
   });
 
-  it('should hide the media filter when the provider does not support it', () => {
-    renderToolbar({ isMediaFilterAvailable: false });
+  it('should offer only the filters the provider supports', () => {
+    renderToolbar({ filterOptions: [defaultProps.filterOptions[1]] });
 
     expect(screen.queryByRole('button', { name: 'reviews.filter_media' })).not.toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'reviews.filter_verified' })).toBeInTheDocument();
     expect(getSortButton()).toBeInTheDocument();
   });
 
-  it('should toggle the media filter', () => {
-    const { onFilterMediaChange, rerender } = renderToolbar();
-    const chip = screen.getByRole('button', { name: 'reviews.filter_media' });
+  it('should mark the active filters and report a toggled filter with its new state', () => {
+    const { onFilterChange } = renderToolbar({ filters: { filterVerified: true } });
+    const media = screen.getByRole('button', { name: 'reviews.filter_media' });
+    const verified = screen.getByRole('button', { name: 'reviews.filter_verified' });
 
-    expect(chip).toHaveAttribute('aria-pressed', 'false');
-    fireEvent.click(chip);
-    expect(onFilterMediaChange).toHaveBeenCalledWith(true);
+    expect(media).toHaveAttribute('aria-pressed', 'false');
+    expect(verified).toHaveAttribute('aria-pressed', 'true');
 
-    rerender(
-      <ReviewsToolbar {...defaultProps} filterMedia onFilterMediaChange={onFilterMediaChange} />
-    );
+    fireEvent.click(media);
+    expect(onFilterChange).toHaveBeenLastCalledWith('filterMedia', true);
 
-    expect(chip).toHaveAttribute('aria-pressed', 'true');
-    fireEvent.click(chip);
-    expect(onFilterMediaChange).toHaveBeenLastCalledWith(false);
+    fireEvent.click(verified);
+    expect(onFilterChange).toHaveBeenLastCalledWith('filterVerified', false);
   });
 });

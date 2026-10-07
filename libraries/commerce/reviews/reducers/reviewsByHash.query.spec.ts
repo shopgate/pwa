@@ -6,7 +6,7 @@ const firstMeta = {
   requestId: 1,
   offset: 0,
   sort: 'dateDesc',
-  filterMedia: true,
+  filters: { filterMedia: true as const },
 };
 
 /**
@@ -25,9 +25,9 @@ describe('Reviews reducers: reviewsByHash query', () => {
   it('should record the requested media filter and the filter of the received list', () => {
     const requested = reviewsByHash({}, requestReviews('hash', firstMeta));
 
-    expect(requested.hash.requestFilterMedia).toBe(true);
-    expect(requested.hash.filterMedia).toBeUndefined();
-    expect(receiveFilteredFirstPage().hash.filterMedia).toBe(true);
+    expect(requested.hash.requestFilters).toEqual({ filterMedia: true });
+    expect(requested.hash.filters).toBeUndefined();
+    expect(receiveFilteredFirstPage().hash.filters).toEqual({ filterMedia: true });
   });
 
   it('should clear the filter of the list when an unfiltered first page is received', () => {
@@ -38,15 +38,15 @@ describe('Reviews reducers: reviewsByHash query', () => {
     };
 
     const requested = reviewsByHash(receiveFilteredFirstPage(), requestReviews('hash', meta));
-    expect(requested.hash.requestFilterMedia).toBeUndefined();
-    expect(requested.hash.filterMedia).toBe(true);
+    expect(requested.hash.requestFilters).toBeUndefined();
+    expect(requested.hash.filters).toEqual({ filterMedia: true });
 
     const received = reviewsByHash(requested, receiveReviews('hash', 'foo', [{
       id: 2,
       rate: 60,
     }], 30, meta));
 
-    expect(received.hash.filterMedia).toBeUndefined();
+    expect(received.hash.filters).toBeUndefined();
     expect(received.hash.reviews).toEqual([2]);
   });
 
@@ -55,7 +55,7 @@ describe('Reviews reducers: reviewsByHash query', () => {
       requestId: 2,
       offset: 1,
       sort: 'dateDesc',
-      filterMedia: true,
+      filters: { filterMedia: true as const },
     };
 
     const requested = reviewsByHash(receiveFilteredFirstPage(), requestReviews('hash', meta));
@@ -82,5 +82,25 @@ describe('Reviews reducers: reviewsByHash query', () => {
 
     expect(received.hash.reviews).toEqual([1]);
     expect(received.hash.isFetching).toBe(false);
+  });
+
+  it('should not append a later page when one of several filters differs', () => {
+    const meta = {
+      requestId: 2,
+      offset: 1,
+      sort: 'dateDesc',
+      filters: {
+        filterMedia: true as const,
+        filterVerified: true as const,
+      },
+    };
+
+    const requested = reviewsByHash(receiveFilteredFirstPage(), requestReviews('hash', meta));
+    const received = reviewsByHash(requested, receiveReviews('hash', 'foo', [{
+      id: 2,
+      rate: 60,
+    }], 3, meta));
+
+    expect(received.hash.reviews).toEqual([1]);
   });
 });

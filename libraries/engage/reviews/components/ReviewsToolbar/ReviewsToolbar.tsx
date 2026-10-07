@@ -4,6 +4,10 @@ import { ArrowDropIcon, I18n, SelectBox } from '@shopgate/engage/components';
 import { ButtonBase } from '@shopgate/engage/components/v2';
 import SortItem from '@shopgate/engage/product/components/FilterBar/components/Content/components/Sort/components/Item';
 import { makeStyles } from '@shopgate/engage/styles';
+import type {
+  ReviewFilterOption,
+  ReviewListFilters,
+} from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 
 type SortSelectProps = {
   items: { label: string; value: string }[];
@@ -21,8 +25,9 @@ const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
     display: 'flex',
+    flexWrap: 'wrap',
     alignItems: 'center',
-    gap: theme.spacing(1),
+    columnGap: theme.spacing(1),
     marginTop: theme.spacing(2),
     borderTop: `1px solid ${theme.components.border.light}`,
   },
@@ -59,7 +64,7 @@ const useStyles = makeStyles()(theme => ({
   },
   dropdown: {
     position: 'absolute',
-    top: '100%',
+    top: theme.components.filterBar.height,
     left: 0,
     zIndex: 2,
     width: '100%',
@@ -83,9 +88,14 @@ const useStyles = makeStyles()(theme => ({
   selectItemSelected: {
     fontWeight: theme.typography.fontWeightMedium,
   },
+  filters: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    columnGap: theme.spacing(1),
+    marginLeft: 'auto',
+  },
   filter: {
     flexShrink: 0,
-    marginLeft: 'auto',
     minHeight: 44,
     '&:focus-visible': {
       outline: `2px solid ${theme.palette.primary.main}`,
@@ -111,28 +121,28 @@ export interface ReviewsToolbarProps {
   sort: string;
   /** The sort values the provider supports; the select needs at least two. */
   sortOptions: string[];
-  /** Whether the list is restricted to reviews with media. */
-  filterMedia: boolean;
-  /** Whether the provider supports the media filter. */
-  isMediaFilterAvailable: boolean;
+  /** The active filters of the displayed review list. */
+  filters: ReviewListFilters;
+  /** The filters the provider supports. */
+  filterOptions: ReviewFilterOption[];
   /** Called with the selected sort. */
   onSortChange: (sort: string) => void;
-  /** Called with the new state of the media filter. */
-  onFilterMediaChange: (filterMedia: boolean) => void;
+  /** Called with a filter and its new state. */
+  onFilterChange: (param: keyof ReviewListFilters, isActive: boolean) => void;
 }
 
 /**
- * Displays the sort select and the media filter of the review list. The sort select is the
+ * Displays the sort select and the filters of the review list. The sort select is the
  * one of the product filter bar. Renders nothing when the provider supports neither.
  * @returns The rendered component.
  */
 const ReviewsToolbar = ({
   sort,
   sortOptions,
-  filterMedia,
-  isMediaFilterAvailable,
+  filters,
+  filterOptions,
   onSortChange,
-  onFilterMediaChange,
+  onFilterChange,
 }: ReviewsToolbarProps) => {
   const { classes, cx } = useStyles();
   const hasSort = sortOptions.length >= 2;
@@ -151,7 +161,7 @@ const ReviewsToolbar = ({
     onSortChangeRef.current(nextSort);
   }, []);
 
-  if (!hasSort && !isMediaFilterAvailable) {
+  if (!hasSort && filterOptions.length === 0) {
     return null;
   }
 
@@ -176,16 +186,22 @@ const ReviewsToolbar = ({
           }}
         />
       )}
-      {isMediaFilterAvailable && (
-        <ButtonBase
-          className={cx(classes.filter, 'engage__reviews__reviews-toolbar__filter-media')}
-          aria-pressed={filterMedia}
-          onClick={() => onFilterMediaChange(!filterMedia)}
-        >
-          <span className={cx(classes.pill, { [classes.pressed]: filterMedia })}>
-            <I18n.Text string="reviews.filter_media" />
-          </span>
-        </ButtonBase>
+      {filterOptions.length > 0 && (
+        <div className={cx(classes.filters, 'engage__reviews__reviews-toolbar__filters')}>
+          {filterOptions.map(({ param, label }) => (
+            <ButtonBase
+              key={param}
+              className={cx(classes.filter, 'engage__reviews__reviews-toolbar__filter')}
+              data-filter={param}
+              aria-pressed={!!filters[param]}
+              onClick={() => onFilterChange(param, !filters[param])}
+            >
+              <span className={cx(classes.pill, { [classes.pressed]: !!filters[param] })}>
+                <I18n.Text string={label} />
+              </span>
+            </ButtonBase>
+          ))}
+        </div>
       )}
     </div>
   );

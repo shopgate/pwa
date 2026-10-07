@@ -618,6 +618,7 @@
     "sort_rateDesc": "Valutazione più alta",
     "sort_rateAsc": "Valutazione più bassa",
     "filter_media": "Con media",
+    "filter_verified": "Solo verificate",
     "list_empty_filtered": "Nessuna recensione corrisponde a questa selezione."
   },
   "tab_bar": {

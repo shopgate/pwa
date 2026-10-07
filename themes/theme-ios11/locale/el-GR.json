@@ -618,6 +618,7 @@
     "sort_rateDesc": "Καλύτερη βαθμολογία",
     "sort_rateAsc": "Χειρότερη βαθμολογία",
     "filter_media": "Με πολυμέσα",
+    "filter_verified": "Μόνο επαληθευμένες",
     "list_empty_filtered": "Καμία κριτική δεν ταιριάζει με αυτή την επιλογή."
   },
   "tab_bar": {

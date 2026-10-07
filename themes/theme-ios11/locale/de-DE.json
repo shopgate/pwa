@@ -618,6 +618,7 @@
     "sort_rateDesc": "Beste Bewertung",
     "sort_rateAsc": "Schlechteste Bewertung",
     "filter_media": "Mit Medien",
+    "filter_verified": "Nur verifiziert",
     "list_empty_filtered": "Keine Rezensionen passen zu dieser Auswahl."
   },
   "tab_bar": {

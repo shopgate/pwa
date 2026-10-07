@@ -618,6 +618,7 @@
     "sort_rateDesc": "Nejlepší hodnocení",
     "sort_rateAsc": "Nejhorší hodnocení",
     "filter_media": "S médii",
+    "filter_verified": "Jen ověřené",
     "list_empty_filtered": "Této volbě neodpovídají žádné recenze."
   },
   "tab_bar": {

@@ -617,6 +617,7 @@
     "sort_rateDesc": "Najwyższa ocena",
     "sort_rateAsc": "Najniższa ocena",
     "filter_media": "Z multimediami",
+    "filter_verified": "Tylko zweryfikowane",
     "list_empty_filtered": "Żadna recenzja nie pasuje do tego wyboru."
   },
   "tab_bar": {

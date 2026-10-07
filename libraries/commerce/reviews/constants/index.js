@@ -27,7 +27,22 @@ export const RECEIVE_REVIEW_RATE = 'RECEIVE_REVIEW_RATE';
 export const REVIEW_FEATURE_RATE = 'reviewRate';
 
 // REVIEW LIST QUERY
-export const REVIEW_FEATURE_MEDIA_FILTER = 'mediaFilter';
+/**
+ * The list filters the PWA knows: the capability a provider reports in its settings, the
+ * request parameter that activates the filter, and the label of its control.
+ */
+export const REVIEW_FILTERS = [
+  {
+    feature: 'mediaFilter',
+    param: 'filterMedia',
+    label: 'reviews.filter_media',
+  },
+  {
+    feature: 'verifiedFilter',
+    param: 'filterVerified',
+    label: 'reviews.filter_verified',
+  },
+];
 export const REVIEW_SORT_OPTIONS = ['relevance', 'dateDesc', 'dateAsc', 'rateDesc', 'rateAsc'];
 
 // PRODUCT REVIEW SETTINGS

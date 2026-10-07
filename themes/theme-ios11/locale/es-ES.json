@@ -618,6 +618,7 @@
     "sort_rateDesc": "Mejor valoración",
     "sort_rateAsc": "Peor valoración",
     "filter_media": "Con fotos o vídeos",
+    "filter_verified": "Solo verificadas",
     "list_empty_filtered": "Ninguna reseña coincide con esta selección."
   },
   "tab_bar": {
