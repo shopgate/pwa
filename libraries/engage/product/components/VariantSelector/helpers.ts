@@ -23,7 +23,7 @@ const NUMERIC_SIZE = /^W?(\d+(?:[.,]\d+)?)(?:\s*[/-]\s*L?(\d+(?:[.,]\d+)?))?$/;
  * @returns The rank or null when the label is no letter size.
  */
 const getLetterSizeRank = (label: string): number | null => {
-  const match = label.trim().toUpperCase().match(LETTER_SIZE);
+  const match = String(label ?? '').trim().toUpperCase().match(LETTER_SIZE);
 
   if (!match) {
     return null;
@@ -50,7 +50,7 @@ const getLetterSizeRank = (label: string): number | null => {
  * @returns The keys or null when the label is no numeric size.
  */
 const getNumericSizeKeys = (label: string): [number, number] | null => {
-  const match = label.trim().toUpperCase().match(NUMERIC_SIZE);
+  const match = String(label ?? '').trim().toUpperCase().match(NUMERIC_SIZE);
 
   if (!match) {
     return null;
@@ -113,6 +113,20 @@ export const isVariantSoldOut = (product: VariantProduct): boolean => {
     || (stock.ignoreQuantity === false && typeof stock.quantity === 'number' && stock.quantity <= 0);
 };
 
+const IMAGE_URL = /^(https?:)?\/\/[^\s"\\]+$/i;
+const HEX_COLOR = /^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i;
+
+/**
+ * Whether a value is a CSS color.
+ * @param value The value.
+ * @returns Whether the value is a color.
+ */
+const isColor = (value: string): boolean => (
+  typeof CSS !== 'undefined' && typeof CSS.supports === 'function'
+    ? CSS.supports('color', value)
+    : HEX_COLOR.test(value)
+);
+
 /**
  * Turns a property value into a swatch when it is a CSS color or an image URL.
  * @param value The property value.
@@ -125,15 +139,27 @@ const toSwatch = (value: unknown): VariantSwatchData | undefined => {
 
   const trimmed = value.trim();
 
-  if (/^(https?:)?\/\//i.test(trimmed)) {
+  if (IMAGE_URL.test(trimmed)) {
     return { imageUrl: trimmed };
   }
 
-  const isColor = typeof CSS !== 'undefined' && typeof CSS.supports === 'function'
-    ? CSS.supports('color', trimmed)
-    : /^#([0-9a-f]{3}|[0-9a-f]{6}|[0-9a-f]{8})$/i.test(trimmed);
+  return isColor(trimmed) ? { color: trimmed } : undefined;
+};
 
-  return isColor ? { color: trimmed } : undefined;
+/**
+ * Keeps the color or image of a swatch from the variants pipeline when it can be rendered.
+ * @param swatch The swatch of a value.
+ * @returns The swatch or undefined.
+ */
+const toPipelineSwatch = (swatch?: VariantSwatchData): VariantSwatchData | undefined => {
+  const color = typeof swatch?.color === 'string' ? swatch.color.trim() : '';
+  const imageUrl = typeof swatch?.imageUrl === 'string' ? swatch.imageUrl.trim() : '';
+
+  if (imageUrl && IMAGE_URL.test(imageUrl)) {
+    return { imageUrl };
+  }
+
+  return color && isColor(color) ? { color } : undefined;
 };
 
 /**
@@ -210,7 +236,7 @@ const resolveSwatch = (
   settings: Pick<VariantSelectorSettings, 'swatchSource' | 'swatchProperty' | 'swatchImageZoom'>,
   configured: boolean
 ): VariantSwatchData | undefined => {
-  const pipelineSwatch = value.swatch?.color || value.swatch?.imageUrl ? value.swatch : undefined;
+  const pipelineSwatch = toPipelineSwatch(value.swatch);
 
   if (!configured) {
     return pipelineSwatch;
@@ -290,7 +316,10 @@ export const decorateRows = (
 
   return {
     ...row,
-    values: sortSizeValues(visible),
+    values: sortSizeValues(visible.length > 0 ? visible : values.map(({ value }) => ({
+      ...value,
+      soldOut: true,
+    }))),
   };
 });
 

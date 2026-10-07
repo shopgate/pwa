@@ -13,6 +13,7 @@ const useStyles = makeStyles({ name: 'ProductTileActions' })(theme => ({
   root: {
     position: 'absolute',
     right: theme.spacing(1),
+    margin: 'var(--product-tile-actions-inset, 0)',
     zIndex: 1,
     display: 'flex',
     gap: theme.spacing(0.75),
@@ -22,9 +23,6 @@ const useStyles = makeStyles({ name: 'ProductTileActions' })(theme => ({
     },
     '&[data-position="topRight"]': {
       top: theme.spacing(1),
-    },
-    '&[data-position="topRight"][data-direction="vertical"]': {
-      flexDirection: 'column-reverse',
     },
     '&[data-position="bottomRight"]': {
       bottom: theme.spacing(1),
@@ -40,6 +38,7 @@ const useStyles = makeStyles({ name: 'ProductTileActions' })(theme => ({
 const ProductTileActions = ({ productId, className }: ProductTileActionsProps) => {
   const { classes, cx } = useStyles();
   const { position, addToCart, direction } = useSelector(getProductActionButtons);
+  const favoritesFirst = position === 'topRight' && direction === 'vertical';
 
   return (
     <div
@@ -47,8 +46,9 @@ const ProductTileActions = ({ productId, className }: ProductTileActionsProps) =
       data-position={position}
       data-direction={direction}
     >
+      {favoritesFirst && <ItemFavoritesButton productId={productId} />}
       {addToCart === 'actionButton' && <ProductCardAddToCart productId={productId} />}
-      <ItemFavoritesButton productId={productId} />
+      {!favoritesFirst && <ItemFavoritesButton productId={productId} />}
     </div>
   );
 };

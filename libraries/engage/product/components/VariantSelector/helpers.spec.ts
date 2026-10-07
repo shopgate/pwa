@@ -281,6 +281,47 @@ describe('VariantSelector helpers', () => {
 
       expect(labels(color.values)).toEqual(['Blue']);
     });
+
+    it('strikes the values instead of hiding them when every variant is sold out', () => {
+      const soldOut = {
+        ...variants,
+        products: variants.products.map(product => ({
+          ...product,
+          stock: { orderable: false },
+        })),
+      };
+      const [color] = decorateRows(rows, soldOut, {}, {
+        ...settings,
+        soldOut: 'hide',
+      });
+
+      expect(labels(color.values)).toEqual(['Red', 'Blue']);
+      expect(color.values.every(value => value.soldOut)).toBe(true);
+    });
+
+    it('drops pipeline swatches that can not be rendered', () => {
+      const withSwatches = rows.map(row => ({
+        ...row,
+        values: row.values.map((value, index) => ({
+          ...value,
+          swatch: index === 0 ? { imageUrl: 'data:image/png;base64,AAAA' } : { imageUrl: 'https://img/a"b.png' },
+        })),
+      }));
+      const [color] = decorateRows(withSwatches, variants, {}, {
+        ...settings,
+        swatchCharacteristics: [],
+      });
+
+      expect(color.values.map(value => value.swatch)).toEqual([undefined, undefined]);
+    });
+  });
+
+  describe('sortSizeValues() with malformed labels', () => {
+    it('keeps the order of values without a text label', () => {
+      const values = [{ label: null }, { label: 38 }] as unknown as { label: string }[];
+
+      expect(sortSizeValues(values)).toEqual(values);
+    });
   });
 
   describe('preselectFirstAvailable()', () => {

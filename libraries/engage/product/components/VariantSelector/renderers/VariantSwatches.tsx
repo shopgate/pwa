@@ -52,7 +52,12 @@ const useStyles = makeStyles({ name: 'VariantSwatches' })(theme => ({
     },
     '&:focus-visible': {
       outline: `2px solid ${theme.palette.text.primary}`,
+      outlineOffset: 4,
+    },
+    '&[aria-checked="true"]:focus-visible': {
+      outline: `2px solid ${theme.palette.primary.main}`,
       outlineOffset: 2,
+      boxShadow: `0 0 0 5px ${theme.palette.background.surface}, 0 0 0 7px ${theme.palette.text.primary}`,
     },
     '&[aria-disabled="true"]': {
       cursor: 'default',

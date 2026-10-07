@@ -45,6 +45,7 @@ const useStyles = makeStyles()(theme => ({
   image: {
     position: 'relative',
     padding: theme.components.productCard.imagePadding,
+    '--product-tile-actions-inset': theme.components.productCard.imagePadding,
   },
   imageLink: {
     display: 'block',

@@ -243,6 +243,8 @@
     "item_added_unit": "{count} {unit} přidáno",
     "adding_item": "{count, plural, =1 {Přidává se jeden produkt} other {Přidává se {count} produktů}}",
     "pick_option_first": "Nejprve vyberte možnost. {option}",
+    "variant_unavailable": "V této kombinaci není k dispozici",
+    "variant_sold_out": "Vyprodáno",
     "fill_out_required_input_first": "Nejprve vyplňte všechna povinná pole.",
     "add_to_cart": "Přidat do košíku",
     "go_to_cart": "Nákupní košík",

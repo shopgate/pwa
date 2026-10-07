@@ -47,7 +47,7 @@ const usePrefetchVariants = (
   variants: ProductVariants | null,
   selection: VariantSelection
 ): void => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch() as unknown as (action: unknown) => unknown;
 
   useEffect(() => {
     if (!variants) {
@@ -61,7 +61,7 @@ const usePrefetchVariants = (
     }
 
     const timeout = setTimeout(() => {
-      dispatch(fetchProductsById({ productIds }) as never);
+      dispatch(fetchProductsById({ productIds }));
     }, PREFETCH_DELAY);
 
     return () => clearTimeout(timeout);

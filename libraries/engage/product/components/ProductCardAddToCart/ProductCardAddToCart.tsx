@@ -71,14 +71,14 @@ const useStyles = makeStyles({ name: 'ProductCardAddToCart' })(theme => ({
   },
   labelButton: {
     position: 'relative',
-    whiteSpace: 'nowrap',
+    minHeight: theme.spacing(4),
+    lineHeight: 1.2,
+    textAlign: 'center',
+    overflowWrap: 'anywhere',
     '&[data-compact]': {
       '--font-size': `calc(${theme.typography.button.fontSize} * 0.8)`,
       paddingLeft: theme.spacing(0.5),
       paddingRight: theme.spacing(0.5),
-      whiteSpace: 'normal',
-      lineHeight: 1.2,
-      textAlign: 'center',
     },
   },
   content: {
@@ -127,7 +127,7 @@ const ProductCardAddToCart = ({
   variant = 'icon',
 }: ProductCardAddToCartProps) => {
   const { classes, cx } = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch() as unknown as (action: unknown) => unknown;
   const { push } = useNavigation();
   const store = useStore();
   const product = useSelector((state: unknown) => getProduct(state, { productId }));
@@ -193,7 +193,7 @@ const ProductCardAddToCart = ({
           },
         },
       }),
-    }]) as never) as Promise<{ messages?: { type?: string }[] } | undefined>;
+    }])) as Promise<{ messages?: { type?: string }[] } | undefined>;
 
     Promise.resolve(request)
       .then((result) => {
@@ -260,6 +260,8 @@ const ProductCardAddToCart = ({
 
   const added = addState === 'added';
   const pending = addState === 'pending';
+  const label = i18n.text('product.add_to_cart');
+  const ariaLabel = product.name ? `${label}: ${product.name}` : label;
 
   return (
     <div
@@ -274,6 +276,7 @@ const ProductCardAddToCart = ({
           color="cta"
           size="small"
           fullWidth
+          aria-label={ariaLabel}
           disabled={isDisabled}
           aria-disabled={pending || undefined}
           aria-busy={pending || undefined}
@@ -283,7 +286,7 @@ const ProductCardAddToCart = ({
           data-compact={compact ? 'true' : undefined}
         >
           <span className={classes.content} data-hidden={added || pending ? 'true' : undefined}>
-            {i18n.text('product.add_to_cart')}
+            {label}
           </span>
           {pending && (
             <span className={classes.overlay} aria-hidden>
@@ -298,7 +301,7 @@ const ProductCardAddToCart = ({
         </Button>
       ) : (
         <IconButton
-          aria-label={i18n.text('product.add_to_cart')}
+          aria-label={ariaLabel}
           variant="surface"
           color="secondary"
           size="small"

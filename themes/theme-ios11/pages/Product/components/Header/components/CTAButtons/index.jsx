@@ -40,14 +40,11 @@ const useStyles = makeStyles()(theme => ({
     '&[data-position="topRight"]': {
       top: theme.spacing(2),
     },
-    '&[data-position="topRight"][data-direction="vertical"]': {
-      flexDirection: 'column-reverse',
-    },
     '&[data-position="bottomRight"]': {
       bottom: theme.spacing(2),
     },
     '&[data-position="bottomRight"][data-bullets-below]': {
-      bottom: `calc(${theme.spacing(2)}px + ${BULLETS_BELOW_OFFSET}px)`,
+      bottom: theme.spacing(2) + BULLETS_BELOW_OFFSET,
     },
   },
   favButton: {
@@ -67,6 +64,24 @@ const CTAButtons = ({
   const { position, direction } = useSelector(getProductActionButtons);
   const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery;
 
+  const favoritesFirst = position === 'topRight' && direction === 'vertical';
+  const favorites = (
+    <>
+      <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
+      <Portal name={PRODUCT_CTAS_FAVORITES}>
+        {isProductActive && (
+          <FavoritesButton
+            className={classes.favButton}
+            size="medium"
+            active={isFavorite}
+            productId={productId}
+          />
+        )}
+      </Portal>
+      <Portal name={PRODUCT_CTAS_FAVORITES_AFTER} />
+    </>
+  );
+
   return (
     <>
       <Portal name={PRODUCT_CTAS_BEFORE} />
@@ -77,23 +92,13 @@ const CTAButtons = ({
           data-direction={direction}
           data-bullets-below={bulletsBelow ? true : undefined}
         >
+          {favoritesFirst && favorites}
           <Portal name={PRODUCT_CTAS_SHARE_BEFORE} />
           <Portal name={PRODUCT_CTAS_SHARE}>
             {isProductActive && <ProductShareButton productId={productId} />}
           </Portal>
           <Portal name={PRODUCT_CTAS_SHARE_AFTER} />
-          <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
-          <Portal name={PRODUCT_CTAS_FAVORITES}>
-            { isProductActive && (
-              <FavoritesButton
-                className={classes.favButton}
-                size="medium"
-                active={isFavorite}
-                productId={productId}
-              />
-            )}
-          </Portal>
-          <Portal name={PRODUCT_CTAS_FAVORITES_AFTER} />
+          {!favoritesFirst && favorites}
         </div>
       </Portal>
       <Portal name={PRODUCT_CTAS_AFTER} />

@@ -13,14 +13,16 @@ const useStyles = makeStyles({ name: 'VariantCharacteristicHeading' })(theme => 
     padding: theme.spacing(0.5, 1),
     borderRadius: theme.shape.borderRadius,
     outline: 0,
-    transition: 'background 250ms ease-in, color 250ms ease-in',
+    transition: theme.transitions.create(['background', 'color'], {
+      duration: theme.transitions.duration.short,
+      easing: theme.transitions.easing.easeIn,
+    }),
   },
   label: {
     fontWeight: theme.typography.fontWeightMedium,
   },
   value: {
-    color: 'inherit',
-    opacity: 0.7,
+    color: theme.palette.text.secondary,
   },
 }));
 

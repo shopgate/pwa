@@ -55,7 +55,7 @@ describe('<VariantChips />', () => {
 
     expect(screen.getByRole('radiogroup', { name: 'Size' })).toBeInTheDocument();
     expect(screen.getByRole('radio', { name: 'S' })).toHaveAttribute('aria-checked', 'true');
-    expect(screen.getByRole('radio', { name: /^M ?, product.available.not$/ })).toHaveAttribute('data-sold-out', 'true');
+    expect(screen.getByRole('radio', { name: /^M ?, product.variant_sold_out$/ })).toHaveAttribute('data-sold-out', 'true');
     expect(screen.getByRole('radio', { name: 'L' })).toHaveAttribute('aria-disabled', 'true');
   });
 
@@ -63,7 +63,7 @@ describe('<VariantChips />', () => {
     const select = jest.fn();
     render(<VariantChips {...renderProps({ select })} />);
 
-    fireEvent.click(screen.getByRole('radio', { name: /^M ?, product.available.not$/ }));
+    fireEvent.click(screen.getByRole('radio', { name: /^M ?, product.variant_sold_out$/ }));
     fireEvent.click(screen.getByRole('radio', { name: 'L' }));
 
     expect(select).toHaveBeenCalledTimes(1);
@@ -87,7 +87,7 @@ describe('<VariantChips />', () => {
     })}
     />);
 
-    const chip = screen.getByRole('radio', { name: /^XL ?, locations.stock_info.notAvailable$/ });
+    const chip = screen.getByRole('radio', { name: /^XL ?, product.variant_unavailable$/ });
     expect(chip).toHaveAttribute('data-unavailable', 'true');
 
     fireEvent.click(chip);
@@ -175,9 +175,9 @@ describe('<VariantInlineDropdown />', () => {
 
     fireEvent.click(field);
     expect(field).toHaveAttribute('aria-expanded', 'true');
-    expect(screen.getByRole('radio', { name: /^M ?, product.available.not$/ })).toHaveAttribute('data-sold-out', 'true');
+    expect(screen.getByRole('radio', { name: /^M ?, product.variant_sold_out$/ })).toHaveAttribute('data-sold-out', 'true');
 
-    fireEvent.click(screen.getByRole('radio', { name: /^M ?, product.available.not$/ }));
+    fireEvent.click(screen.getByRole('radio', { name: /^M ?, product.variant_sold_out$/ }));
     expect(select).toHaveBeenCalledWith({
       id: 'size',
       value: 'm',

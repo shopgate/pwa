@@ -32,7 +32,7 @@ describe('<ProductTileActions />', () => {
 
   it('adds the cart action button before the favorites button', () => {
     mockActionButtons = {
-      position: 'topRight',
+      position: 'bottomRight',
       direction: 'vertical',
       addToCart: 'actionButton',
     };
@@ -40,6 +40,18 @@ describe('<ProductTileActions />', () => {
 
     expect(screen.getAllByRole('button').map(button => button.textContent))
       .toEqual(['cart', 'favorite']);
+  });
+
+  it('keeps the favorites button in the corner when the buttons are stacked at the top', () => {
+    mockActionButtons = {
+      position: 'topRight',
+      direction: 'vertical',
+      addToCart: 'actionButton',
+    };
+    render(<ProductTileActions productId="p1" />);
+
+    expect(screen.getAllByRole('button').map(button => button.textContent))
+      .toEqual(['favorite', 'cart']);
   });
 
   it('leaves the button below the tile to the tile', () => {

@@ -33,7 +33,10 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
     textAlign: 'left',
     cursor: 'pointer',
     outline: 0,
-    transition: 'background 250ms ease-in, color 250ms ease-in',
+    transition: theme.transitions.create(['background', 'color'], {
+      duration: theme.transitions.duration.short,
+      easing: theme.transitions.easing.easeIn,
+    }),
     '&:focus-visible': {
       outline: `2px solid ${theme.palette.text.primary}`,
       outlineOffset: -2,
@@ -47,7 +50,7 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
   },
   label: {
     fontSize: theme.typography.caption.fontSize,
-    opacity: 0.7,
+    color: theme.palette.text.secondary,
     marginBottom: theme.spacing(0.25),
   },
   selection: {
@@ -56,7 +59,9 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
   arrow: {
     display: 'flex',
     fontSize: theme.components.icon.small,
-    transition: 'transform 200ms ease-in-out',
+    transition: theme.transitions.create('transform', {
+      duration: theme.transitions.duration.shorter,
+    }),
     '&[data-expanded]': {
       transform: 'rotate(180deg)',
     },

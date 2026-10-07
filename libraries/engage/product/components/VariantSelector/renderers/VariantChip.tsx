@@ -7,6 +7,7 @@ const useStyles = makeStyles({ name: 'VariantChip' })(theme => ({
   root: {
     flexShrink: 0,
     minWidth: 48,
+    maxWidth: '100%',
     minHeight: 40,
     padding: theme.spacing(0, 1.75),
     border: `1px solid ${theme.components.input.border}`,
@@ -16,15 +17,20 @@ const useStyles = makeStyles({ name: 'VariantChip' })(theme => ({
     font: 'inherit',
     fontSize: theme.typography.body2.fontSize,
     lineHeight: 1.2,
+    overflowWrap: 'anywhere',
     cursor: 'pointer',
     outline: 0,
-    transition: 'background 150ms ease-in, color 150ms ease-in, border-color 150ms ease-in',
+    transition: theme.transitions.create(['background', 'color', 'border-color'], {
+      duration: theme.transitions.duration.shortest,
+      easing: theme.transitions.easing.easeIn,
+    }),
     '&:focus-visible': {
       outline: `2px solid ${theme.palette.text.primary}`,
       outlineOffset: 2,
     },
     '&[data-unavailable]': {
       borderStyle: 'dashed',
+      borderColor: theme.palette.text.secondary,
       color: theme.palette.text.secondary,
     },
     '&[data-sold-out]': {

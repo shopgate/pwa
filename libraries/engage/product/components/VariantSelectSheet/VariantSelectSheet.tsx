@@ -74,7 +74,8 @@ const useStyles = makeStyles({ name: 'VariantSelectSheet' })(theme => ({
     alignItems: 'baseline',
   },
   footer: {
-    padding: theme.spacing(1, 2, `calc(${theme.spacing(2)}px + var(--safe-area-inset-bottom, 0px))`),
+    padding: theme.spacing(1, 2, 0),
+    paddingBottom: `calc(${theme.spacing(2)}px + ${theme.layout.safeArea.bottom})`,
   },
 }));
 
@@ -108,7 +109,7 @@ const VariantSelectSheet = ({
   onAddToCart,
 }: VariantSelectSheetProps) => {
   const { classes, cx } = useStyles();
-  const dispatch = useDispatch();
+  const dispatch = useDispatch() as unknown as (action: unknown) => unknown;
   const [selection, setSelection] = useState<VariantSelection>({});
 
   const baseProduct = useSelector((state: unknown) => getProduct(state, { productId }));
@@ -146,8 +147,8 @@ const VariantSelectSheet = ({
       return;
     }
 
-    dispatch(fetchProduct(productId) as never);
-    dispatch(fetchProductVariants(productId) as never);
+    dispatch(fetchProduct(productId));
+    dispatch(fetchProductVariants(productId));
   }, [dispatch, isOpen, productId]);
 
   const isOrderable = !!variant && variant.stock?.orderable !== false;

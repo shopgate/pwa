@@ -8,11 +8,11 @@ import type { VariantSelectorValue } from '../types';
  */
 export const getValueStateText = (value: VariantSelectorValue): string => {
   if (value.available === false) {
-    return i18n.text('locations.stock_info.notAvailable');
+    return i18n.text('product.variant_unavailable');
   }
 
   if (value.soldOut) {
-    return i18n.text('product.available.not');
+    return i18n.text('product.variant_sold_out');
   }
 
   return '';

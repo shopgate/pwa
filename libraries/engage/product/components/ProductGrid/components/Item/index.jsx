@@ -30,6 +30,7 @@ const useStyles = makeStyles()((theme, { display }) => ({
   },
   imageWrapper: {
     position: 'relative',
+    '--product-tile-actions-inset': theme.components.tiles.imagePadding,
   },
   addToCartButton: {
     marginTop: 'auto',

@@ -143,12 +143,13 @@ export const buildRows = (
 
   return {
     id: char.id,
-    label: char.label,
+    label: String(char.label ?? ''),
     disabled: false,
     selected,
     swatch: !!char.swatch,
-    values: char.values.map(value => ({
+    values: (char.values || []).map(value => ({
       ...value,
+      label: String(value.label ?? ''),
       selectable: true,
       selected: selected === value.id,
       available: findMatchingVariants(variants, {

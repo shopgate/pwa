@@ -125,14 +125,14 @@ describe('<VariantSelector />', () => {
     mockVariants(null, true);
     render(<VariantSelector productId="base" />);
 
-    expect(screen.getByTestId('variant-selector-skeleton')).toHaveAttribute('aria-busy', 'true');
+    expect(screen.getByRole('status')).toHaveAttribute('aria-busy', 'true');
   });
 
   it('keeps the skeleton while the variants request is running', () => {
     mockVariants(null, true, { isFetching: true });
     render(<VariantSelector productId="base" />);
 
-    expect(screen.getByTestId('variant-selector-skeleton')).toBeInTheDocument();
+    expect(screen.getByRole('status')).toBeInTheDocument();
   });
 
   it('renders nothing when the variants request failed', () => {
