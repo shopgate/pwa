@@ -9,7 +9,7 @@ import {
 } from '../config.ts';
 import { logStep } from '../lib/exec.ts';
 import { git, gitOutput, remoteBranchExists } from '../lib/git.ts';
-import { createRelease, findRelease } from '../lib/github.ts';
+import { createRelease, createTag, findRelease } from '../lib/github.ts';
 import {
   getPublishRunsUrl, getUnpublished, resolveDistTag, updatesMaster, waitUntilInstallable,
   waitUntilPublished,
@@ -21,8 +21,8 @@ import type { ReleaseOptions } from '../lib/options.ts';
 
 /**
  * Finishes an approved release: updates master (versions that become "latest") and
- * creates the GitHub releases. As long as a package is not published on npm, it fails, or
- * waits for it with WAIT_FOR_PUBLISH.
+ * creates the GitHub releases. Pre-releases only get a tag. As long as a package is not
+ * published on npm, it fails, or waits for it with WAIT_FOR_PUBLISH.
  * @param options The release settings.
  * @param root The repository root.
  */
@@ -53,7 +53,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
       console.log(`Dry run: not published yet: ${unpublished.join(', ')}`);
     }
 
-    console.log(`Dry run: would ${masterUpdate ? 'update master and ' : ''}create the GitHub releases.`);
+    console.log(`Dry run: would ${masterUpdate ? 'update master and ' : ''}create the ${version.stable ? 'GitHub releases' : 'tags'}.`);
     return;
   }
 
@@ -82,12 +82,27 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
     git(['push', 'origin', `${releaseBranch}:master`]);
   }
 
+  const repos = [...themes.map(theme => theme.githubRepo), GITHUB_REPO];
+
+  if (!version.stable) {
+    for (const repo of repos) {
+      logStep(`Creating tag ${version.name} in ${repo}`);
+
+      // eslint-disable-next-line no-await-in-loop
+      const created = await createTag(repo, version.name, releaseBranch);
+      console.log(created ? `${symbols.ok} Tagged ${releaseBranch}` : 'Tag already exists, skipping');
+    }
+
+    console.log(`\n${symbols.ok} ${version.version} is released. Pre-releases get no GitHub release, only the tag.`);
+    return;
+  }
+
   const target = masterUpdate ? 'master' : releaseBranch;
   const latest = resolveDistTag(version, root) === 'latest';
   const body = extractReleaseNotes(fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8'), version.baseName, version.name)
     || 'No notable changes in this release.';
 
-  for (const repo of [...themes.map(theme => theme.githubRepo), GITHUB_REPO]) {
+  for (const repo of repos) {
     logStep(`Creating GitHub release ${version.name} in ${repo}`);
 
     // eslint-disable-next-line no-await-in-loop
@@ -100,7 +115,6 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
       const release = await createRelease(repo, {
         tag: version.name,
         target,
-        prerelease: !version.stable,
         body,
         latest,
       });

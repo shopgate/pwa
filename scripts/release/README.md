@@ -23,7 +23,7 @@ npm run release -- <command> [version] [options]
 | `prepare <version>` | CI | Bumps the versions, builds, writes the changelog and pushes the release branches |
 | `publish <version>` | GitHub workflow | Publishes the built packages on npm, dependencies first. Skips packages that are published. Outside the workflow it only runs with `--dry-run` |
 | `unpublished <version>` | local, GitHub workflow | Lists the packages of the version that aren't published yet. Read-only |
-| `finalize <version>` | CI | Updates master (only when the version becomes `latest`) and creates the GitHub releases |
+| `finalize <version>` | CI | Updates master (only when the version becomes `latest`) and creates the GitHub releases. Pre-releases only get a tag |
 | `changelog <version>` | local | Shows the changelog entry of the version without writing any files (`GITHUB_AUTH_TOKEN` avoids the GitHub rate limit) |
 | `build` | local | Builds all packages into `dist` without publishing. `--purge` deletes the `dist` folders, `--normalize-only` removes test files from existing ones |
 
@@ -199,11 +199,14 @@ master; changes to the workflow on other branches can only be tested with a rele
       `releases/vX` (`git subtree pull`). Then pushes the result to both theme masters at the same
       time (`git subtree push`).
    2. Merges master of pwa into `releases/vX` and pushes it to `releases/vX`, `vX` and master.
-4. Creates the GitHub release `vX` in pwa and both theme repositories. The target is master when master
-   was updated, otherwise `releases/vX`. The release notes are the changelog entry of the
-   version plus a compare link to the previous stable version, or "No notable changes in this
-   release." without an entry. Pre-releases are marked as such, and patches of an older release
-   line are not marked as latest. Publishing a release creates its tag.
+4. Stable versions: creates the GitHub release `vX` in pwa and both theme repositories. The target
+   is master when master was updated, otherwise `releases/vX`. The release notes are the changelog
+   entry of the version plus a compare link to the previous stable version, or "No notable
+   changes in this release." without an entry. Patches of an older release line are not marked as
+   latest. Publishing a release creates its tag.
+5. Pre-releases (alpha, beta, rc): creates only the tag `vX` at the head of `releases/vX` in pwa
+   and both theme repositories, and no GitHub release, so new pre-releases don't appear on the
+   release pages. Their changes are in the `CHANGELOG.md` of the release branch.
 
 With `DRY_RUN=true`, it only lists the packages that are not published and stops, without
 waiting.
@@ -301,7 +304,7 @@ failed theme. Retrying `finalize` completes them.
 ### Theme upload
 
 A failed `release:themes` or `release:tablet-themes` job only affects its theme: retry that job in
-the pipeline. The packages and the GitHub releases are already done at that point.
+the pipeline. The packages and the GitHub releases or tags are already done at that point.
 
 Releases with the legacy process upload the regular themes through the GitHub workflow "Trigger
 GitLab Pipelines on Release" of their branch, which starts one pipeline per theme in the GitLab

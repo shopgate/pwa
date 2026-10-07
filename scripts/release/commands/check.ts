@@ -238,7 +238,7 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
   const { version, resume } = options;
 
   if (process.env.CI === 'true' && !getGithubToken()) {
-    throw new Error('GITHUB_AUTH_TOKEN is not set. It is needed to create the GitHub releases in finalize. Add it to the CI/CD variables of pwa-liveupdate, then retry the job.');
+    throw new Error('GITHUB_AUTH_TOKEN is not set. It is needed to create the GitHub releases or tags in finalize. Add it to the CI/CD variables of pwa-liveupdate, then retry the job.');
   }
 
   const masterUpdate = updatesMaster(options, root);

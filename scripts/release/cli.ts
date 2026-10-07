@@ -69,7 +69,7 @@ const COMMANDS: Record<string, Command> = {
   },
   finalize: {
     usage: '<version>',
-    description: 'Update master (stable releases) and create the GitHub releases',
+    description: 'Update master and create the GitHub releases (stable versions) or the tags (pre-releases)',
     run: args => finalizeRelease(getOptions(args)),
   },
   changelog: {
