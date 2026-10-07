@@ -1,3 +1,9 @@
+const path = require('path');
+const rulesDirPlugin = require('eslint-plugin-rulesdir');
+const configImportPattern = require('../rules/helpers/configImportPattern');
+
+rulesDirPlugin.RULES_DIR = path.join(__dirname, '..', 'rules');
+
 module.exports = {
   extends: [
     'plugin:eslint-comments/recommended',
@@ -5,6 +11,7 @@ module.exports = {
   plugins: [
     'extra-rules',
     'json',
+    'rulesdir',
     'tss-unused-classes',
   ],
   rules: {
@@ -17,6 +24,12 @@ module.exports = {
     'eslint-comments/no-unused-disable': 'error',
     'eslint-comments/no-unused-enable': 'error',
     'tss-unused-classes/unused-classes': 'warn',
+    'import/no-unresolved': ['error', {
+      commonjs: true,
+      caseSensitive: true,
+      ignore: [configImportPattern],
+    }],
+    'rulesdir/missing-extension-config': 'warn',
     'no-restricted-imports': ['warn', {
       paths: [
         {
@@ -25,7 +38,7 @@ module.exports = {
         },
         {
           name: 'glamor',
-          message: 'glamor is deprecated and will be removed. Write styles with makeStyles from @shopgate/engage/styles.',
+          message: 'glamor is deprecated and will be removed. Write styles with makeStyles and global styles with injectGlobal, both from @shopgate/engage/styles. The shop must be deployed with PWA 7.32.0 or later.',
         },
       ],
     }],
