@@ -1,34 +1,31 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import List from './index';
-
-console.error = jest.fn();
 
 describe('<List />', () => {
   const children = [
-    <List.Item key="0" />,
-    <List.Item key="1" />,
-    <List.Item key="2" />,
+    <List.Item key="0">Item 0</List.Item>,
+    <List.Item key="1">Item 1</List.Item>,
+    <List.Item key="2">Item 2</List.Item>,
   ];
 
-  beforeEach(() => {
-    jest.clearAllMocks();
+  afterEach(() => {
+    jest.restoreAllMocks();
   });
 
   it('renders with children', () => {
     const numChildren = children.length;
-    const wrapper = shallow(<List>{children}</List>);
+    render(<List>{children}</List>);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(List.Item).length).toBe(numChildren);
-    expect(console.error).not.toHaveBeenCalled();
+    expect(screen.getByRole('list')).toHaveClass('common_list');
+    expect(screen.getAllByRole('listitem')).toHaveLength(numChildren);
   });
 
   it('renders without children', () => {
-    const wrapper = shallow(<List />);
+    jest.spyOn(console, 'error').mockImplementation(() => {});
+    render(<List />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(List.Item).length).toBe(0);
-    expect(console.error).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole('list')).toHaveClass('common_list');
+    expect(screen.getByRole('list')).toBeEmptyDOMElement();
+    expect(screen.queryByRole('listitem')).not.toBeInTheDocument();
   });
 });

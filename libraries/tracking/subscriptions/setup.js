@@ -1,6 +1,6 @@
 import get from 'lodash/get';
 import {
-  logGroup,
+  logger,
   getWebStorageEntry,
   useBrowserConnector,
   errorManager,
@@ -8,6 +8,7 @@ import {
   CODE_TRACKING,
   defaultClientInformation,
 } from '@shopgate/pwa-core';
+import { toError } from '@shopgate/pwa-core/helpers/error';
 import { registerEvents } from '@shopgate/engage/core/commands';
 import { appWillStart$ } from '@shopgate/engage/core/streams';
 import { event } from '@shopgate/engage/core/classes';
@@ -94,14 +95,14 @@ export default function setup(subscribe) {
           pluginInit(clientInformation);
         }
       });
-    } catch (error) {
-      logGroup('Tracking %c: Could not setup plugins', {
-        error,
-      }, '#ED0422');
+    } catch (thrown) {
+      const error = toError(thrown, {
+        code: CODE_TRACKING,
+        source: SOURCE_TRACKING,
+        context: 'trackingPlugins',
+      });
 
-      error.code = CODE_TRACKING;
-      error.source = SOURCE_TRACKING;
-      error.context = 'trackingPlugins';
+      logger.error('Tracking: Could not setup plugins', error);
       errorManager.queue(error);
     }
 

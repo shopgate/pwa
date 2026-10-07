@@ -55,9 +55,11 @@ const NestedCategoryFilter = ({ id, settings, persistedState }) => {
   stateRef.current = state;
 
   useEffect(() => () => {
-    router.update(route.id, {
-      [id]: stateRef.current,
-    });
+    if (route?.id) {
+      router.update(route.id, {
+        [id]: stateRef.current,
+      });
+    }
   }, [id, route?.id]);
 
   const handleSelection = useCallback((categoryId, subcategory) => {

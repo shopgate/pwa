@@ -1,8 +1,4 @@
-import {
-  withScope,
-  captureMessage,
-  Severity as SentrySeverity,
-} from '@sentry/browser';
+import { withScope, captureMessage } from '@sentry/browser';
 import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
 import {
   getReferrerOrigin,
@@ -100,7 +96,7 @@ export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void>
 
     timeout = setTimeout(() => {
       withScope((scope) => {
-        scope.setLevel(SentrySeverity.Warning);
+        scope.setLevel('warning');
         scope.setExtra('timeout', REQUEST_TIMEOUT);
         captureMessage('Waiting for the initial frontend settings took too long');
       });

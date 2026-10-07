@@ -1,31 +1,72 @@
-import React from 'react';
-import { shallow, ReactWrapper } from 'enzyme';
+import { render, screen, within } from '@testing-library/react';
 import { MODAL_PIPELINE_ERROR } from '@shopgate/pwa-common/constants/ModalTypes';
 import { MODAL_VARIANT_SELECT } from './constants';
+import BasicDialog from './components/BasicDialog';
+import TextMessageDialog from './components/TextMessageDialog';
+import PipelineErrorDialog from './components/PipelineErrorDialog';
+import VariantSelectModal from './components/VariantSelectModal';
 import Dialog from './index';
 
-jest.mock('./components/VariantSelectModal', () => {
-  /**
-   * VariantSelectModal mock.
-   * @return {JSX}
-   */
-  const VariantSelectModal = () => <div />;
-  return VariantSelectModal;
-});
+jest.mock('@shopgate/engage/a11y/hooks', () => ({
+  useTrackModalState: jest.fn(),
+}));
+jest.mock('./components/BasicDialog', () => Object.assign(jest.fn(), {
+  propTypes: { title: () => null },
+}));
+jest.mock('./components/TextMessageDialog', () => jest.fn());
+jest.mock('./components/HtmlContentDialog', () => jest.fn());
+jest.mock('./components/PipelineErrorDialog', () => jest.fn());
+jest.mock('./components/VariantSelectModal', () => jest.fn());
 
 jest.mock('@shopgate/engage/components');
 
 describe('<Dialog />', () => {
+  let portals;
+
+  beforeAll(() => {
+    portals = document.createElement('div');
+    portals.id = 'portals';
+    document.body.appendChild(portals);
+  });
+
+  afterAll(() => {
+    portals.remove();
+  });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    BasicDialog.mockImplementation(({ title }) => <div>{title}</div>);
+    TextMessageDialog.mockImplementation(() => 'TextMessageDialog');
+    PipelineErrorDialog.mockImplementation(() => 'PipelineErrorDialog');
+    VariantSelectModal.mockImplementation(() => 'VariantSelectModal');
+  });
+
   it('should render without props', () => {
-    const wrapper = shallow(<Dialog modal={{ message: 'msg' }} />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextMessageDialog').length).toBe(1);
+    render(<Dialog modal={{ message: 'msg' }} />);
+
+    const modal = screen.getByRole('alertdialog');
+
+    expect(modal).toHaveClass('ui-shared__dialog-modal');
+    expect(modal.querySelector('.common__backdrop')).toBeInTheDocument();
+    expect(within(modal).getByText('TextMessageDialog')).toBeInTheDocument();
+    expect(TextMessageDialog).toHaveBeenCalledTimes(1);
+    expect(TextMessageDialog.mock.lastCall[0]).toEqual(expect.objectContaining({
+      actions: [],
+      message: 'msg',
+    }));
+    expect(BasicDialog).not.toHaveBeenCalled();
   });
 
   it('should render BasicDialog when no message given', () => {
-    const wrapper = shallow(<Dialog modal={{ message: null }} />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('BasicDialog').length).toBe(1);
+    render(<Dialog modal={{ message: null }} />);
+
+    expect(screen.getByRole('alertdialog')).toHaveClass('ui-shared__dialog-modal');
+    expect(BasicDialog).toHaveBeenCalledTimes(1);
+    expect(BasicDialog.mock.lastCall[0]).toEqual(expect.objectContaining({
+      actions: [],
+      message: undefined,
+    }));
+    expect(TextMessageDialog).not.toHaveBeenCalled();
   });
 
   it('should render a special dialog', () => {
@@ -36,17 +77,21 @@ describe('<Dialog />', () => {
       request: {},
     };
 
-    const wrapper = shallow(<Dialog
+    render(<Dialog
       modal={{
         type: MODAL_PIPELINE_ERROR,
         params,
       }}
     />);
 
-    expect(wrapper).toMatchSnapshot();
-
-    expect(wrapper.find('DefaultDialog').length).toBe(0);
-    expect(wrapper.find('PipelineErrorDialog').length).toBe(1);
+    expect(within(screen.getByRole('alertdialog')).getByText('PipelineErrorDialog')).toBeInTheDocument();
+    expect(BasicDialog).not.toHaveBeenCalled();
+    expect(TextMessageDialog).not.toHaveBeenCalled();
+    expect(PipelineErrorDialog).toHaveBeenCalledTimes(1);
+    expect(PipelineErrorDialog.mock.lastCall[0]).toEqual(expect.objectContaining({
+      actions: [],
+      params,
+    }));
   });
 
   it('should render variant select dialog', () => {
@@ -54,7 +99,7 @@ describe('<Dialog />', () => {
       productId: 'product_1',
     };
 
-    const wrapper = shallow(<Dialog
+    render(<Dialog
       modal={{
         message: 'Test',
         type: MODAL_VARIANT_SELECT,
@@ -62,10 +107,15 @@ describe('<Dialog />', () => {
       }}
     />);
 
-    expect(wrapper).toMatchSnapshot();
-
-    expect(wrapper.find('DefaultDialog').length).toBe(0);
-    expect(wrapper.find('VariantSelectModal').length).toBe(1);
+    expect(within(screen.getByRole('alertdialog')).getByText('VariantSelectModal')).toBeInTheDocument();
+    expect(BasicDialog).not.toHaveBeenCalled();
+    expect(TextMessageDialog).not.toHaveBeenCalled();
+    expect(VariantSelectModal).toHaveBeenCalledTimes(1);
+    expect(VariantSelectModal.mock.lastCall[0]).toEqual(expect.objectContaining({
+      actions: [],
+      message: 'Test',
+      params,
+    }));
   });
 
   it('should convert title into translatable element', () => {
@@ -75,10 +125,16 @@ describe('<Dialog />', () => {
     };
 
     // eslint-disable-next-line extra-rules/no-single-line-objects
-    const wrapper = shallow(<Dialog modal={{ title, titleParams }} />);
-    const i18n = new ReactWrapper(wrapper.find('BasicDialog').prop('title'));
+    render(<Dialog modal={{ title, titleParams }} />);
 
-    expect(i18n.prop('string')).toEqual(title);
-    expect(i18n.prop('params')).toEqual(titleParams);
+    expect(BasicDialog.mock.lastCall[0]).toEqual(expect.objectContaining({
+      title: expect.objectContaining({
+        props: expect.objectContaining({
+          string: title,
+          params: titleParams,
+        }),
+      }),
+    }));
+    expect(screen.getByText(title)).toBeInTheDocument();
   });
 });

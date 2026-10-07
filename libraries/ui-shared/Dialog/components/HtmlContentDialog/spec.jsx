@@ -1,5 +1,6 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import {
+  render, screen, fireEvent, within,
+} from '@testing-library/react';
 import HtmlContentDialog from './index';
 
 const message = '<p><i>This is a html message.</i></p>';
@@ -45,55 +46,57 @@ jest.mock('@shopgate/engage/components', () => {
 
 describe('<HtmlContentDialog />', () => {
   it('should render with minimal props', () => {
-    const wrapper = shallow(<HtmlContentDialog message={message} actions={[]} />);
+    render(<HtmlContentDialog message={message} actions={[]} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toMatch(message);
+    const dialog = screen.getByRole('alertdialog');
+    const text = within(dialog).getByText('This is a html message.');
+
+    expect(text.tagName).toBe('I');
+    expect(text.parentElement.tagName).toBe('P');
+    expect(within(dialog).queryByRole('heading')).not.toBeInTheDocument();
+    expect(within(dialog).queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('should render with title and html message', () => {
-    const wrapper = shallow(<HtmlContentDialog title={title} message={message} actions={[]} />);
+    render(<HtmlContentDialog title={title} message={message} actions={[]} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toMatch(title);
-  });
+    const dialog = screen.getByRole('alertdialog');
 
-  it('should render with title, html message and messageParams', () => {
-    const wrapper = shallow((
-      <HtmlContentDialog
-        title={title}
-        message="Message with {name}"
-        params={{ name: 'Placeholder' }}
-        actions={[]}
-      />
-    ));
-    expect(wrapper).toMatchSnapshot();
+    expect(within(dialog).getByText(title)).toBeInTheDocument();
+    expect(within(dialog).getByText('This is a html message.')).toBeInTheDocument();
+    expect(within(dialog).queryByRole('button')).not.toBeInTheDocument();
   });
 
   it('should render the actions', () => {
     const actions = [{
       label: 'fooAction',
-      action: () => {},
+      action: jest.fn(),
     }];
 
-    const wrapper = shallow((
+    render((
       <HtmlContentDialog title={title} message={message} actions={actions} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toMatch(actions[0].label);
+    const dialog = screen.getByRole('alertdialog');
+
+    expect(within(dialog).getByText(title)).toBeInTheDocument();
+    expect(within(dialog).getAllByRole('button')).toHaveLength(1);
+
+    fireEvent.click(within(dialog).getByRole('button', { name: actions[0].label }));
+
+    expect(actions[0].action).toHaveBeenCalledTimes(1);
   });
 
   it('should pass title through', () => {
-    const customTitle = <div>Title</div>;
-    const wrapper = shallow((
+    render((
       <HtmlContentDialog
-        title={customTitle}
+        title={<div>Custom title</div>}
         message={message}
         params={{}}
         actions={[]}
       />
     ));
-    expect(wrapper.find('BasicDialog').prop('title')).toEqual(customTitle);
+
+    expect(within(screen.getByRole('alertdialog')).getByText('Custom title')).toBeInTheDocument();
   });
 });

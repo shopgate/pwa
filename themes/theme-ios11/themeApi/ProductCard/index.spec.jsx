@@ -1,18 +1,26 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { ProductCard as EngageProductCard } from '@shopgate/engage/product/components';
+import Card from '@shopgate/engage/components/Card';
 import { mockProductId, mockProduct } from './mock';
-import ProductCard, { ProductCardUnwrapped } from './index';
+import ProductCard from './index';
 
 jest.unmock('@shopgate/pwa-core');
 jest.mock('@shopgate/engage/core');
 jest.mock('@shopgate/engage/product/components', () => ({
-  ProductCard: () => null,
+  ProductCard: jest.fn(() => null),
 }));
+jest.mock('@shopgate/engage/components/Card', () => {
+  const ActualCard = jest.requireActual('@shopgate/engage/components/Card').default;
+
+  return {
+    __esModule: true,
+    default: jest.fn(props => <ActualCard {...props} />),
+  };
+});
 
 /**
  * Creates a state for a mocked store.
@@ -33,45 +41,52 @@ export const createMockState = (product = mockProduct) => ({
 /**
  * @param {Object} props  Component props.
  * @param {Object} state Redux state.
- * @returns {JSX}
+ * @returns {Object}
  */
 const renderComponent = (props = {}, state = createMockState()) => {
   const store = configureStore()(state);
-  return mount(
+  return render((
     <Provider store={store}>
       <ProductCard {...props} />
-    </Provider>,
-    mockRenderOptions
-  );
+    </Provider>
+  ));
 };
 
 describe('<ProductCard />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should not render when no product could be found', () => {
-    const wrapper = renderComponent();
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(ProductCardUnwrapped).isEmptyRender()).toBe(true);
+    const { container } = renderComponent();
+
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should render as expected', () => {
-    const wrapper = renderComponent({ productId: mockProductId });
-    expect(wrapper).toMatchSnapshot();
+    const { container } = renderComponent({ productId: mockProductId });
 
-    const renderWrapper = wrapper.find('ProductCard ProductCard');
-    expect(renderWrapper.prop('url')).toBe(`${ITEM_PATH}/${bin2hex(mockProductId)}`);
-    expect(renderWrapper.prop('product')).toBe(mockProduct);
+    const card = container.querySelector(`[data-test-id="Product: ${mockProduct.name}"]`);
+
+    expect(card.tagName).toBe('SECTION');
+    expect(card).toHaveClass('theme__product-card');
+    expect(EngageProductCard.mock.lastCall[0]).toEqual(expect.objectContaining({
+      url: `${ITEM_PATH}/${bin2hex(mockProductId)}`,
+      product: mockProduct,
+    }));
   });
 
   it('should suppress the card shadow for legacy shadow={false} callers', () => {
-    // The card draws its own elevation from the merchant configuration, so the legacy prop is
-    // honoured by pinning the Card to elevation 0 — the one entry of the scale with no shadow.
-    const withShadow = renderComponent({ productId: mockProductId });
-    expect(withShadow.find('Card').prop('elevation')).toBeUndefined();
+    renderComponent({ productId: mockProductId });
+    expect(Card.mock.calls[0][0].elevation).toBeUndefined();
 
-    const withoutShadow = renderComponent({
+    Card.mockClear();
+
+    renderComponent({
       productId: mockProductId,
       shadow: false,
     });
-    expect(withoutShadow.find('Card').prop('elevation')).toBe(0);
+    expect(Card.mock.calls[0][0].elevation).toBe(0);
   });
 
   it('should render with a custom render prop', () => {
@@ -80,15 +95,16 @@ describe('<ProductCard />', () => {
     /**
      * @returns {JSX}
      */
-    const render = () => (
+    const renderProp = () => (
       <div>{text}</div>
     );
 
-    const wrapper = renderComponent({
+    const { container } = renderComponent({
       productId: mockProductId,
-      render,
+      render: renderProp,
     });
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.text()).toBe(text);
+
+    expect(screen.getByText(text)).toBeInTheDocument();
+    expect(container.textContent).toBe(text);
   });
 });

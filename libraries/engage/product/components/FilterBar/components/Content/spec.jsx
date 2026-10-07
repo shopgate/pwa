@@ -1,180 +1,245 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import TestUtils from 'react-dom/test-utils';
-import { mount, shallow } from 'enzyme';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { FILTER_TYPE_MULTISELECT } from '@shopgate/pwa-common-commerce/filter/constants';
-import GridIcon from '@shopgate/pwa-ui-shared/icons/GridIcon';
-import ListIcon from '@shopgate/pwa-ui-shared/icons/ListIcon';
-// eslint-disable-next-line import/named
-import { UnwrappedContent as FilterBarContent } from './index';
+/* eslint-disable react/prop-types */
+import {
+  render, screen, fireEvent, within, act,
+} from '@testing-library/react';
+import { router } from '@virtuous/conductor';
+import { updateFilters } from '@shopgate/pwa-common-commerce/filter/action-creators';
+import {
+  FILTER_TYPE_MULTISELECT,
+  FILTER_TYPE_RANGE,
+} from '@shopgate/pwa-common-commerce/filter/constants';
+import { useRoute } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core/helpers';
+import { ViewContext } from '@shopgate/engage/components/View';
+import FilterBarContext from '../../FilterBarProvider.context';
+import FilterBarContent from './index';
 
-const activeFilters = {
-  Size: {
+const mockDispatch = jest.fn();
+
+jest.mock('react-redux', () => ({
+  useDispatch: () => mockDispatch,
+}));
+jest.mock('@virtuous/conductor', () => ({
+  router: {
+    update: jest.fn(),
+  },
+}));
+jest.mock('@shopgate/engage/core', () => ({
+  useRoute: jest.fn(),
+}));
+jest.mock('@shopgate/engage/filter', () => ({
+  ...jest.requireActual('@shopgate/pwa-common-commerce/filter/constants'),
+  translateFilterLabel: (id, label) => label,
+}));
+jest.mock('@shopgate/engage/components', () => ({
+  Badge: ({ count }) => (count ? <span>{count}</span> : null),
+  CrossIcon: () => null,
+  FilterIcon: () => null,
+  I18n: {
+    Text: ({ string }) => string,
+  },
+  Typography: ({ children }) => <span>{children}</span>,
+}));
+jest.mock('@shopgate/engage/components/View', () => {
+  const { createContext } = jest.requireActual('react');
+
+  return { ViewContext: createContext({}) };
+});
+jest.mock('./components/Sort', () => () => null);
+
+const routeId = 'route-id';
+
+const filters = {
+  size: {
+    id: 'size',
     label: 'Size',
-    source: 'attributes',
     type: FILTER_TYPE_MULTISELECT,
-    values: ['31'],
+    value: [
+      {
+        id: '31',
+        label: 'Small',
+      },
+      {
+        id: '32',
+        label: 'Medium',
+      },
+    ],
+  },
+  color: {
+    id: 'color',
+    label: 'Color',
+    type: FILTER_TYPE_MULTISELECT,
+    value: [
+      {
+        id: 'red',
+        label: 'Red',
+      },
+    ],
   },
 };
 
-describe.skip('<FilterBarContent />', () => {
-  it('should execute handleToggleViewMode callback when left button is clicked', () => {
-    const spy = jest.fn();
+const priceFilter = {
+  display_amount: {
+    id: 'display_amount',
+    label: 'Price',
+    type: FILTER_TYPE_RANGE,
+    value: [1000, 2000],
+  },
+};
 
-    const wrapper = mount(
-      <FilterBarContent
-        handleToggleViewMode={spy}
-        handleSortChange={() => {}}
-        handleOpenFiltersView={() => {}}
-        getFilters={() => {}}
-        componentUpdated={() => {}}
-      />,
-      mockRenderOptions
-    );
+describe('<FilterBarContent />', () => {
+  const openFilters = jest.fn();
+  const scrollTop = jest.fn();
 
-    const button = wrapper.find('button').first();
-    const node = ReactDOM.findDOMNode(button.node); // eslint-disable-line react/no-find-dom-node
-    TestUtils.Simulate.click(node);
-    expect(spy).toHaveBeenCalledTimes(1);
+  /**
+   * @param {Object} routeFilters The active filters of the route.
+   * @param {Object} props The component props.
+   * @returns {Object} The render result.
+   */
+  const renderComponent = (routeFilters, props = {}) => {
+    useRoute.mockReturnValue({
+      id: routeId,
+      state: { filters: routeFilters },
+    });
+
+    return render((
+      <ViewContext.Provider value={{ scrollTop }}>
+        <FilterBarContext.Provider value={{ openFilters }}>
+          <FilterBarContent {...props} />
+        </FilterBarContext.Provider>
+      </ViewContext.Provider>
+    ));
+  };
+
+  /**
+   * @param {string} label The chip label.
+   * @returns {HTMLElement} The chip which shows the label.
+   */
+  const getChip = label => screen.getByText(label).parentElement;
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    jest.useFakeTimers();
   });
 
-  it('should execute handleOpenFiltersView callback when right button is clicked', () => {
-    const spy = jest.fn();
-
-    const wrapper = mount(
-      <FilterBarContent
-        handleToggleViewMode={() => {}}
-        handleSortChange={() => {}}
-        handleOpenFiltersView={spy}
-        getFilters={() => {}}
-        componentUpdated={() => {}}
-      />,
-      mockRenderOptions
-    );
-
-    const button = wrapper.find('button').last();
-    const node = ReactDOM.findDOMNode(button.node); // eslint-disable-line react/no-find-dom-node
-    TestUtils.Simulate.click(node);
-    expect(spy).toHaveBeenCalledTimes(1);
+  afterEach(() => {
+    jest.restoreAllMocks();
+    jest.useRealTimers();
   });
 
-  it('should render in grid view mode', () => {
-    const wrapper = mount(
-      <FilterBarContent
-        handleToggleViewMode={() => {}}
-        handleSortChange={() => {}}
-        handleOpenFiltersView={() => {}}
-        getFilters={() => {}}
-        componentUpdated={() => {}}
-      />,
-      mockRenderOptions
-    );
+  it('should open the filters when the filter button is clicked', () => {
+    renderComponent(null);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(GridIcon).length).toEqual(0);
-    expect(wrapper.find(ListIcon).length).toEqual(1);
+    fireEvent.click(screen.getByRole('button', { name: 'titles.filter' }));
+
+    expect(openFilters).toHaveBeenCalledTimes(1);
   });
 
-  it('should render in list view mode', () => {
-    const wrapper = mount(
-      <FilterBarContent
-        handleToggleViewMode={() => {}}
-        handleSortChange={() => {}}
-        handleOpenFiltersView={() => {}}
-        getFilters={() => {}}
-        componentUpdated={() => {}}
-      />,
-      mockRenderOptions
-    );
+  it('should show the count of the active filters at the filter button', () => {
+    renderComponent(filters, { filterCount: 2 });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(GridIcon).length).toEqual(1);
-    expect(wrapper.find(ListIcon).length).toEqual(0);
+    expect(screen.getByRole('button', { name: 'titles.filter' })).toHaveTextContent('2');
   });
 
-  describe('should call getFilters', () => {
-    let getFiltersSpy = null;
-    let filterBarWrapper = null;
-    let filterBarInstance = null;
+  it('should not render chips without active filters', () => {
+    const onChipCountUpdate = jest.fn();
 
-    beforeEach(() => {
-      getFiltersSpy = jest.fn();
-      filterBarWrapper = shallow(
-        <FilterBarContent
-          handleToggleViewMode={() => {}}
-          handleSortChange={() => {}}
-          getFilters={getFiltersSpy}
-          componentUpdated={() => {}}
-        />,
-        mockRenderOptions
-      );
-      filterBarInstance = filterBarWrapper.instance();
-    });
+    renderComponent(null, { onChipCountUpdate });
 
-    it('should call getFilters at componentDidMount', () => {
-      filterBarInstance.componentDidMount();
-
-      expect(getFiltersSpy).toHaveBeenCalledTimes(1);
-    });
-
-    it('should call getFilters at props.activeFilter changes', () => {
-      filterBarWrapper.setProps({ activeFilters });
-
-      expect(getFiltersSpy).toHaveBeenCalledTimes(1);
-    });
+    expect(screen.getAllByRole('button')).toHaveLength(1);
+    expect(onChipCountUpdate).toHaveBeenCalledWith(0);
   });
 
-  describe('Given activeFilters are handled correctly', () => {
-    let filterBarWrapper = null;
+  it('should render a chip for every active filter value', () => {
+    const onChipCountUpdate = jest.fn();
 
-    beforeEach(() => {
-      filterBarWrapper = mount(
-        <FilterBarContent
-          handleToggleViewMode={() => {}}
-          handleSortChange={() => {}}
-          getFilters={() => {}}
-          activeFilters={activeFilters}
-          componentUpdated={() => {}}
-        />,
-        mockRenderOptions
-      );
+    renderComponent(filters, { onChipCountUpdate });
+
+    expect(screen.getByText('Size: Small')).toBeInTheDocument();
+    expect(screen.getByText('Size: Medium')).toBeInTheDocument();
+    expect(screen.getByText('Color: Red')).toBeInTheDocument();
+    expect(onChipCountUpdate).toHaveBeenCalledWith(3);
+  });
+
+  it('should render a chip for a price range', () => {
+    jest.spyOn(i18n, 'price').mockImplementation(value => String(value));
+
+    renderComponent(priceFilter);
+
+    expect(screen.getByText('10 - 20')).toBeInTheDocument();
+  });
+
+  it('should open the filters when a chip is clicked', () => {
+    renderComponent(filters);
+
+    fireEvent.click(screen.getByText('Color: Red'));
+
+    expect(openFilters).toHaveBeenCalledTimes(1);
+  });
+
+  it('should remove a filter when its only value is removed', () => {
+    renderComponent(filters);
+
+    fireEvent.click(within(getChip('Color: Red')).getByRole('button', { name: 'filter.remove' }));
+
+    const expected = { size: filters.size };
+
+    expect(router.update).toHaveBeenCalledWith(routeId, { filters: expected });
+    expect(mockDispatch).toHaveBeenCalledWith(updateFilters(expected));
+    expect(scrollTop).toHaveBeenCalledTimes(1);
+  });
+
+  it('should only remove the value when a filter has further values', () => {
+    renderComponent(filters);
+
+    fireEvent.click(within(getChip('Size: Small')).getByRole('button', { name: 'filter.remove' }));
+
+    expect(router.update).not.toHaveBeenCalled();
+
+    act(() => {
+      jest.runOnlyPendingTimers();
     });
 
-    it('should render active filters', () => {
-      expect(filterBarWrapper).toMatchSnapshot();
+    const expected = {
+      ...filters,
+      size: {
+        ...filters.size,
+        value: [filters.size.value[1]],
+      },
+    };
+
+    expect(router.update).toHaveBeenCalledWith(routeId, { filters: expected });
+    expect(mockDispatch).toHaveBeenCalledWith(updateFilters(expected));
+    expect(scrollTop).toHaveBeenCalledTimes(1);
+  });
+
+  it('should reset the filters when the last one is removed', () => {
+    renderComponent({ color: filters.color });
+
+    fireEvent.click(screen.getByRole('button', { name: 'filter.remove' }));
+
+    expect(router.update).toHaveBeenCalledWith(routeId, { filters: null });
+    expect(mockDispatch).toHaveBeenCalledWith(updateFilters(null));
+    expect(scrollTop).toHaveBeenCalledTimes(1);
+  });
+
+  it('should offer to clear all filters when there are more than three chips', () => {
+    renderComponent({
+      ...filters,
+      ...priceFilter,
     });
 
-    it('should open active filters', () => {
-      const spy = jest.fn();
-      filterBarWrapper.setProps({ handleOpenFiltersView: spy });
+    fireEvent.click(screen.getByRole('button', { name: 'filter.clear_all' }));
 
-      // Trigger a click on a active filter
-      filterBarWrapper
-        .find('Chip').at(0)
-        .find('button').at(1)
-        .simulate('click');
+    expect(router.update).toHaveBeenCalledWith(routeId, { filters: null });
+    expect(mockDispatch).toHaveBeenCalledWith(updateFilters(null));
+    expect(scrollTop).toHaveBeenCalledTimes(1);
+  });
 
-      expect(spy).toHaveBeenCalledTimes(1);
-    });
+  it('should not offer to clear all filters for up to three chips', () => {
+    renderComponent(filters);
 
-    it('should remove active filter', () => {
-      const removeFilterSpy = jest.fn();
-      const commmitFilterSpy = jest.fn();
-
-      filterBarWrapper.setProps({
-        removeTemporaryFilter: removeFilterSpy,
-        commitTemporaryFilters: commmitFilterSpy,
-      });
-
-      // Trigger a click on the "X"
-      filterBarWrapper
-        .find('Chip').at(0)
-        .find('button').at(0)
-        .simulate('click');
-
-      expect(removeFilterSpy).toHaveBeenCalledWith(Object.keys(activeFilters)[0], 0);
-      expect(commmitFilterSpy).toHaveBeenCalledTimes(1);
-    });
+    expect(screen.queryByRole('button', { name: 'filter.clear_all' })).not.toBeInTheDocument();
   });
 });
+/* eslint-enable react/prop-types */

@@ -1,11 +1,13 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Empty from './index';
 
 describe('<CartEmpty />', () => {
   it('should render', () => {
-    const wrapper = shallow(<Empty />);
+    const { container } = render(<Empty />);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container.querySelector('[data-test-id="emptyCartPlaceHolderString"]'))
+      .toHaveTextContent('cart.empty');
+    expect(container.querySelector('.empty-cart__image svg')).toBeInTheDocument();
+    expect(container.querySelector('.empty-cart__image img')).not.toBeInTheDocument();
   });
 });

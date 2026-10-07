@@ -1,30 +1,17 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import Grid from '../../../Grid';
+import { render, screen } from '@testing-library/react';
 import Widget from './index';
 
-jest.mock('react', () => {
-  const actual = jest.requireActual('react');
-  return {
-    ...actual,
-    memo: c => c,
-    Suspense: function Suspense({ children }) { return children; },
-  };
-});
-
-/**
- * A dummy component.
- * @returns {JSX}
- */
-const MyComponent = () => (
-  <div />
-);
+const MyComponent = jest.fn(() => <div>My widget</div>);
 
 const widgets = {
   '@shopgate/commerce-widgets/image': MyComponent,
 };
 
 describe('<Widget />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render an image widget', () => {
     const config = {
       type: '@shopgate/commerce-widgets/image',
@@ -34,15 +21,18 @@ describe('<Widget />', () => {
       height: 6,
     };
 
-    const wrapper = mount((
+    const { container } = render((
       <Widget config={config} component={widgets[config.type]} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Grid.Item).exists()).toBe(true);
+    expect(container.childNodes).toHaveLength(1);
+    expect(container.firstChild.tagName).toBe('DIV');
+    expect(container.firstChild).toHaveClass('common__widgets__widget');
+    expect(container.firstChild).toContainElement(screen.getByText('My widget'));
+    expect(MyComponent.mock.lastCall[0]).toEqual(expect.objectContaining({ ratio: [12, 6] }));
   });
 
-  it('should render an image widget with offset', () => {
+  it('should pass the ratio of the config to the widget', () => {
     const config = {
       type: '@shopgate/commerce-widgets/image',
       col: 1,
@@ -51,28 +41,31 @@ describe('<Widget />', () => {
       height: 6,
     };
 
-    const wrapper = mount((
-      <Widget config={config} component={widgets[config.type]} cellSize={100} />
+    const { container } = render((
+      <Widget config={config} component={widgets[config.type]} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Grid.Item).exists()).toBe(true);
+    expect(container.childNodes).toHaveLength(1);
+    expect(container.firstChild.tagName).toBe('DIV');
+    expect(container.firstChild).toHaveClass('common__widgets__widget');
+    expect(container.firstChild).toContainElement(screen.getByText('My widget'));
+    expect(MyComponent.mock.lastCall[0]).toEqual(expect.objectContaining({ ratio: [6, 6] }));
   });
 
   it('should not render when the `type` prop is invalid', () => {
     const config = {
-      type: 'some_widget', // Invalid
+      type: 'some_widget',
       col: 1,
       row: 1,
       width: 12,
       height: 6,
     };
 
-    const wrapper = mount((
+    const { container } = render((
       <Widget config={config} component={widgets[config.type]} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Grid.Item).exists()).toBe(false);
+    expect(container).toBeEmptyDOMElement();
+    expect(MyComponent).not.toHaveBeenCalled();
   });
 });

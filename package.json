@@ -8,6 +8,16 @@
     "themes/*",
     "utils/*"
   ],
+  "engines": {
+    "node": ">=24"
+  },
+  "devEngines": {
+    "packageManager": {
+      "name": "npm",
+      "version": ">=11",
+      "onFail": "error"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/shopgate/pwa.git"
@@ -26,50 +36,43 @@
   },
   "scripts": {
     "start": "sgconnect frontend start",
-    "setup": "sgconnect init && lerna bootstrap",
-    "add-remotes": "node ./scripts/add-remotes.js",
-    "remove-remotes": "node ./scripts/remove-remotes.js",
-    "clean": "make clean",
+    "setup": "sgconnect init && npm install",
+    "clean": "npm ci",
     "test": "RUN_LONG=true jest",
     "test:short": "jest",
     "test:watch": "jest --watch",
+    "test:extension": "node scripts/test-extension/run.mts",
     "cover": "jest --coverage",
     "lint": "eslint --quiet --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json .",
-    "lint:summary": "eslint --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json . -f summary",
-    "release": "make release",
-    "e2e:gmd": "make e2e-gmd",
-    "e2e:ios11": "make e2e-ios11",
-    "e2e:checkout": "make e2e-checkout",
+    "typecheck": "node scripts/typecheck/run.mts",
+    "lint:summary": "eslint --ignore-pattern extensions --ext .js --ext .jsx --ext .ts --ext .tsx --ext .json . -f ./scripts/eslint-summary-formatter.cjs",
+    "release": "node scripts/release/cli.ts",
+    "release:typecheck": "tsc -p scripts/release",
+    "release:test": "node --test 'scripts/release/**/*.test.ts'",
     "start-cloud": "sgconnect backend start & sgconnect frontend start",
     "lint-staged": "lint-staged",
-    "resetup": "npx lerna clean --yes && rm -rf node_modules && yarn install && npx lerna bootstrap"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
+    "resetup": "npm ci",
+    "prepare": "husky"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json}": "eslint"
+    "*.{js,jsx,ts,tsx,json}": "eslint",
+    "scripts/release/**/*.ts": "bash -c 'node_modules/.bin/tsc -p scripts/release'"
   },
   "devDependencies": {
     "@types/jest": "^29.5.14",
+    "@types/node": "^24.19.1",
     "@types/react": "^17.0.93",
     "baseline-browser-mapping": "^2.10.42",
     "detector": "^2.5.0",
     "eslint": "^8.57.1",
-    "eslint-formatter-summary": "^1.1.0",
+    "eslint-formatter-summary": "^2.0.2",
     "eslint-import-resolver-babel-module": "^5.3.2",
-    "husky": "^1.0.0-rc.13",
+    "husky": "^9.1.7",
     "jest": "^29.7.0",
-    "lerna": "^2.9.0",
-    "lerna-changelog": "^0.8.2",
-    "lint-staged": "^12.5.0",
+    "lint-staged": "^17.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
-    "rxjs": "~5.5.12",
-    "uver": "^1.1.0",
-    "yargs": "^11.0.0"
+    "rxjs": "~5.5.12"
   },
   "dependencies": {
     "@babel/cli": "^7.29.7",
@@ -81,15 +84,19 @@
     "@sigmacomputing/babel-plugin-lodash": "3.3.5",
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
-    "compare-versions": "^3.4.0",
     "typescript": "^5.9.3"
   },
   "overrides": {
     "enzyme": {
-      "cheerio": "1.0.0-rc.3"
+      "cheerio": "1.0.0-rc.10"
+    },
+    "glamor": {
+      "fbjs": "^3.0.5"
     }
   },
-  "resolutions": {
-    "cheerio": "1.0.0-rc.3"
+  "allowScripts": {
+    "core-js": false,
+    "core-js-pure": false,
+    "fsevents": false
   }
 }

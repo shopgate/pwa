@@ -6,7 +6,6 @@ jest.mock('@sentry/browser', () => ({
     setExtra: jest.fn(),
   }),
   captureMessage: jest.fn(),
-  Severity: { Warning: 'warning', Error: 'error' },
 }));
 
 const A = 'https://cdn.example/a.css';

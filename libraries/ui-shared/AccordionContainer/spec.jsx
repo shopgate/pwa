@@ -1,38 +1,49 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import AccordionContainer from './index';
 
-/**
- * @returns {JSX}
- */
-const Child = () => <div />;
+const Child = jest.fn(({ open, handleOpen, handleClose }) => (
+  <div>
+    <span>{open ? 'opened' : 'closed'}</span>
+    <button type="button" onClick={handleOpen}>open</button>
+    <button type="button" onClick={handleClose}>close</button>
+  </div>
+));
 
 describe('<AccordionContainer />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render children with props', () => {
-    const wrapper = shallow((
+    render((
       <AccordionContainer>
         {props => <Child {...props} />}
       </AccordionContainer>
     ));
 
-    const props = wrapper.find('Child').props();
-
-    expect(wrapper).toMatchSnapshot();
-    expect(props.open).toEqual(false);
-    expect(typeof props.handleOpen).toEqual('function');
-    expect(typeof props.handleClose).toEqual('function');
+    expect(Child).toHaveBeenCalledTimes(1);
+    expect(Child.mock.lastCall[0]).toEqual({
+      open: false,
+      handleOpen: expect.any(Function),
+      handleClose: expect.any(Function),
+    });
+    expect(screen.getByText('closed')).toBeInTheDocument();
   });
 
   it('should update children props when state changes', () => {
-    const wrapper = shallow((
+    render((
       <AccordionContainer>
         {props => <Child {...props} />}
       </AccordionContainer>
     ));
 
-    wrapper.setState({ open: true });
+    fireEvent.click(screen.getByRole('button', { name: 'open' }));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Child').props().open).toEqual(true);
+    expect(Child.mock.lastCall[0]).toEqual(expect.objectContaining({ open: true }));
+    expect(screen.getByText('opened')).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole('button', { name: 'close' }));
+
+    expect(screen.getByText('closed')).toBeInTheDocument();
   });
 });

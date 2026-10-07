@@ -31,6 +31,6 @@ describe('<ItemPrice />', () => {
 
   it('should not render with display props set', () => {
     const wrapper = render(<ItemPrice {...props} display={display} />);
-    expect(wrapper).toBeEmptyRender();
+    expect(wrapper.container).toBeEmptyDOMElement();
   });
 });

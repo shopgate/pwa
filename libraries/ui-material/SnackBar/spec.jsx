@@ -1,6 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import {
+  render, screen, fireEvent, act,
+} from '@testing-library/react';
 import SnackBar from './index';
 
 // Use the real long-press hook (the barrel would otherwise drag in appEvents/pwa-core).

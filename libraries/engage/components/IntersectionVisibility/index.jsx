@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import PropTypes from 'prop-types';
-import 'intersection-observer';
 
 /**
  * The IntersectionVisibility component.

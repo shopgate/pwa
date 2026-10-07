@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import Item from '../Item';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   divider: {
     height: 1,
     width: 'calc(100% + 32px)',
-    backgroundColor: 'rgb(234, 234, 234)',
+    backgroundColor: theme.components.separatorLine.borderColor,
     marginLeft: -16,
     marginRight: -16,
     marginBottom: 16,
   },
-});
+}));
 
 /**
  * Wrapper around the Item component to simplify item rendering based on the two different "items"

@@ -1,8 +1,8 @@
-import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import {
+  render, screen, fireEvent, waitFor,
+} from '@testing-library/react';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import FavoritesButton from './index';
 import {
@@ -18,117 +18,120 @@ jest.mock('@shopgate/pwa-common/helpers/config');
 jest.mock('@shopgate/pwa-common-commerce/favorites/selectors/index', () => ({
   isFetching: () => false,
 }));
-
-beforeEach(() => {
-  jest.resetModules();
-});
+jest.mock('../icons/HeartIcon', () => () => 'heart-icon');
+jest.mock('../icons/HeartOutlineIcon', () => () => 'heart-outline-icon');
 
 describe('<FavoritesButton />', () => {
-  let component = null;
-
   /**
-   * Creates component with provided store state.
+   * Renders the component with the provided store state.
    * @param {Object} mockedState Mocked stage.
    * @param {Object} props Additional props.
-   * @return {ReactWrapper}
+   * @return {Object}
    */
   const createComponent = (mockedState, props = { active: false }) => {
     const store = mockedStore(mockedState);
     store.dispatch = dispatcher;
 
-    return mount(
+    return render((
       <Provider store={store}>
         <FavoritesButton
           {...props}
         />
-      </Provider>,
-      mockRenderOptions
-    );
+      </Provider>
+    ));
   };
   beforeEach(() => {
     dispatcher.mockReset();
   });
 
+  afterEach(() => {
+    jest.restoreAllMocks();
+  });
+
   it('should only render when no favorites set', () => {
-    component = createComponent(mockedStateEmpty);
-    expect(component).toMatchSnapshot();
+    createComponent(mockedStateEmpty);
 
-    expect(component.find('Heart').exists()).toBe(false);
-    expect(component.find('HeartOutline').exists()).toBe(true);
+    const button = screen.getByRole('button', { name: 'favorites.add' });
 
-    component.find('button').simulate('click');
+    expect(button).toHaveClass('ui-shared__favorites-button');
+    expect(button).toHaveAttribute('data-test-id', 'favoriteButton');
+    expect(button).toHaveTextContent('heart-outline-icon');
+
+    fireEvent.click(button);
+
+    expect(dispatcher).not.toHaveBeenCalled();
   });
 
   it('should render when favorites set', () => {
-    component = createComponent(mockedStateOnList, { active: true });
-    expect(component).toMatchSnapshot();
+    createComponent(mockedStateOnList, { active: true });
 
-    expect(component.find('Heart').exists()).toBe(true);
-    expect(component.find('HeartOutline').exists()).toBe(false);
+    const button = screen.getByRole('button', { name: 'favorites.remove' });
+
+    expect(button).toHaveClass('ui-shared__favorites-button');
+    expect(button).toHaveAttribute('data-test-id', 'favoriteButton');
+    expect(button).toHaveTextContent('heart-icon');
   });
 
   it('should add to favorites on click', () => {
-    component = createComponent(mockedStateNotOnList, {
+    createComponent(mockedStateNotOnList, {
       productId: '1',
       active: false,
     });
-    expect(component.find('Heart').exists()).toBe(false);
-    expect(component.find('HeartOutline').exists()).toBe(true);
 
-    component.find('button').simulate('click');
-    component.update();
+    const button = screen.getByRole('button', { name: 'favorites.add' });
+
+    expect(button).toHaveTextContent('heart-outline-icon');
+
+    fireEvent.click(button);
     expect(dispatcher).toHaveBeenCalled();
   });
 
-  it('should remove from favorites on click', (done) => {
-    component = createComponent(mockedStateOnList, {
+  it('should remove from favorites on click', async () => {
+    createComponent(mockedStateOnList, {
       productId: '1',
       active: true,
     });
-    expect(component.find('Heart').exists()).toBe(true);
-    expect(component.find('HeartOutline').exists()).toBe(false);
 
-    component.find('button').simulate('click');
-    component.update();
-    setTimeout(() => {
+    const button = screen.getByRole('button', { name: 'favorites.remove' });
+
+    expect(button).toHaveTextContent('heart-icon');
+
+    fireEvent.click(button);
+
+    await waitFor(() => {
       expect(dispatcher).toHaveBeenCalled();
-      done();
-    }, 0);
+    });
   });
 
-  it('should only react on first click', (done) => {
-    component = createComponent(mockedStateOnList, {
+  it('should only react on first click', () => {
+    createComponent(mockedStateOnList, {
       once: true,
       productId: '1',
       active: false,
     });
-    component.find('button').simulate('click');
-    component.update();
-    component.find('button').simulate('click');
-    component.update();
-    setTimeout(() => {
-      expect(dispatcher.mock.calls.length).toBe(1);
-      done();
-    }, 1);
+
+    fireEvent.click(screen.getByRole('button'));
+    fireEvent.click(screen.getByRole('button'));
+
+    expect(dispatcher).toHaveBeenCalledTimes(1);
   });
-  it('should only react on both clicks', (done) => {
-    component = createComponent(mockedStateOnList, {
+
+  it('should only react on both clicks', () => {
+    createComponent(mockedStateOnList, {
       productId: '1',
       active: false,
     });
-    component.find('button').simulate('click');
-    component.update();
-    component.find('button').simulate('click');
-    component.update();
-    setTimeout(() => {
-      expect(dispatcher.mock.calls.length).toBe(2);
-      done();
-    }, 1);
+
+    fireEvent.click(screen.getByRole('button'));
+    fireEvent.click(screen.getByRole('button'));
+
+    expect(dispatcher).toHaveBeenCalledTimes(2);
   });
 
   it('should render null when feature flag is off', () => {
     jest.spyOn(appConfig, 'hasFavorites', 'get').mockReturnValue(false);
-    component = createComponent(mockedStateOnList);
-    expect(component.isEmptyRender()).toBe(true);
+    const { container } = createComponent(mockedStateOnList);
+
+    expect(container).toBeEmptyDOMElement();
   });
 });

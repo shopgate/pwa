@@ -32,7 +32,7 @@ const Title = ({ title }) => {
 };
 
 Title.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.node,
 };
 
 Title.defaultProps = {

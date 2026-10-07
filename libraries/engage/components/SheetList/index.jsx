@@ -13,7 +13,7 @@ const useStyles = makeStyles()(theme => ({
   },
   itemNotLast: {
     '&:not(:last-child)': {
-      boxShadow: `0 1px 0 0 ${theme.components.border.light}`,
+      boxShadow: `0 1px 0 0 ${theme.components.separatorLine.borderColor}`,
       marginBottom: 1,
     },
   },

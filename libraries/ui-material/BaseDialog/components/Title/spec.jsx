@@ -1,17 +1,21 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Title from './index';
 
 describe('<Title />', () => {
   it('should not render without a title', () => {
-    const wrapper = shallow(<Title />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.instance()).toEqual(null);
+    const { container } = render(<Title />);
+
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should render with a title', () => {
-    const wrapper = shallow(<Title title="Some test title" />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('[id="basicDialogTitle"]').length).toBe(1);
+    render(<Title title="Some test title" />);
+
+    const heading = screen.getByRole('heading', {
+      name: 'Some test title',
+      level: 2,
+    });
+
+    expect(heading).toHaveAttribute('id', 'basicDialogTitle');
   });
 });

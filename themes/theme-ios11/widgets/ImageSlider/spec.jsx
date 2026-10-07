@@ -1,24 +1,25 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+/* eslint-disable react/prop-types */
+import { render, screen } from '@testing-library/react';
+import { Swiper } from '@shopgate/engage/components';
 import ImageSliderWidget from './index';
 
-jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/components', () => {
+  // eslint-disable-next-line no-shadow
+  const Swiper = jest.fn(({ children }) => children);
+  Swiper.Item = jest.fn(({ children }) => children);
 
-const mockedStore = configureStore();
+  return {
+    Swiper,
+    Link: ({ href, children }) => <a href={href}>{children}</a>,
+  };
+});
+
 /**
- * Creates component
+ * Renders the component
  * @param {Object} props Component props.
- * @return {ReactWrapper}
+ * @return {Object}
  */
-const createComponent = (props = {}) => mount(
-  <Provider store={mockedStore({})}>
-    <ImageSliderWidget {...props} />
-  </Provider>,
-  mockRenderOptions
-);
+const renderComponent = (props = {}) => render(<ImageSliderWidget {...props} />);
 
 describe('<ImageSliderWidget />', () => {
   const testImage = {
@@ -39,6 +40,10 @@ describe('<ImageSliderWidget />', () => {
     images: [],
   };
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render the slider with the correct number of images', () => {
     const settings = {
       ...testSettings,
@@ -48,13 +53,14 @@ describe('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = createComponent({ settings });
+    const { container } = renderComponent({ settings });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SwiperItem').length).toBe(settings.images.length);
-
-    const images = wrapper.find('img');
-    expect(images.length).toBe(settings.images.length);
+    expect(Swiper.mock.lastCall[0]).toEqual(expect.objectContaining({
+      indicators: true,
+      loop: false,
+    }));
+    expect(Swiper.mock.lastCall[0].autoplay).toBeUndefined();
+    expect(container.querySelectorAll('img')).toHaveLength(settings.images.length);
   });
 
   it('should map the correct image settings to the components', () => {
@@ -67,15 +73,15 @@ describe('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = createComponent({ settings });
+    const { container } = renderComponent({ settings });
 
-    expect(wrapper).toMatchSnapshot();
-    const images = wrapper.find('SwiperItem img');
+    const images = container.querySelectorAll('img');
+
+    expect(images).toHaveLength(settings.images.length);
     images.forEach((image, index) => {
-      const imageProps = image.props();
       const imageSettings = settings.images[index];
 
-      expect(imageProps.src).toBe(imageSettings.image);
+      expect(image).toHaveAttribute('src', imageSettings.image);
     });
   });
 
@@ -87,11 +93,13 @@ describe('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = createComponent({ settings });
+    const { container } = renderComponent({ settings });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SwiperItem').length).toBe(0);
-    expect(wrapper.find('img').length).toBe(1);
+    expect(Swiper).not.toHaveBeenCalled();
+    expect(Swiper.Item).not.toHaveBeenCalled();
+    expect(container.querySelectorAll('img')).toHaveLength(1);
+    expect(screen.getByRole('link')).toHaveAttribute('href', testImage.link);
+    expect(screen.getByRole('link')).toContainElement(container.querySelector('img'));
   });
 
   it('should render the images unlinked if no link is set', () => {
@@ -105,11 +113,12 @@ describe('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = createComponent({ settings });
+    const { container } = renderComponent({ settings });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Link').length).toBe(0);
-    expect(wrapper.find('img').length).toBe(1);
+    expect(screen.queryByRole('link', { hidden: true })).not.toBeInTheDocument();
+    expect(container.querySelectorAll('img')).toHaveLength(1);
+    expect(container.querySelector('img')).toHaveAttribute('src', testImage.image);
+    expect(container.firstChild).toHaveAttribute('aria-hidden', 'true');
   });
 
   it('should render the images with links', () => {
@@ -125,9 +134,14 @@ describe('<ImageSliderWidget />', () => {
       ],
     };
 
-    const wrapper = createComponent({ settings });
+    const { container } = renderComponent({ settings });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Link').length).toBe(settings.images.length - 1);
+    const links = screen.getAllByRole('link');
+
+    expect(links).toHaveLength(settings.images.length - 1);
+    expect(links[0]).toHaveAttribute('href', testImage2.link);
+    expect(links[0]).toContainElement(container.querySelector(`img[src="${testImage2.image}"]`));
+    expect(Swiper.Item.mock.calls[0][0]).toMatchObject({ 'aria-hidden': true });
   });
 });
+/* eslint-enable react/prop-types */

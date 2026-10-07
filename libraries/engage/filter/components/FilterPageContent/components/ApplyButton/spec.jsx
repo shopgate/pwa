@@ -1,10 +1,8 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { SurroundPortals } from '@shopgate/engage/components';
 import ApplyButton from './index';
 
 const clickMock = jest.fn();
-
-jest.mock('@shopgate/engage/components');
 
 jest.mock('@shopgate/engage/core', () => ({
   withWidgetSettings: function withWidgetSettings(Comp) {
@@ -12,28 +10,59 @@ jest.mock('@shopgate/engage/core', () => ({
   },
 }));
 jest.mock('@shopgate/engage/components', () => ({
-  SurroundPortals: ({ children }) => children,
+  SurroundPortals: jest.fn(({ children }) => children),
   I18n: {
-    Text: () => 'I18n.Text',
+    Text: ({ string }) => string,
   },
-  Button: () => 'Button',
 }));
 
 describe('Filter: <ApplyButton />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render as activated', () => {
-    const wrapper = shallow(<ApplyButton onClick={() => { }} />).dive();
-    expect(wrapper).toMatchSnapshot();
+    const onClick = () => { };
+    render(<ApplyButton onClick={onClick} />);
+
+    const button = screen.getByRole('button', { name: 'filter.view_results' });
+
+    expect(button).toBeEnabled();
+    expect(button).toHaveAttribute('data-variant', 'contained');
+    expect(button).toHaveAttribute('data-color', 'primary');
+    expect(button).toHaveAttribute('data-size', 'small');
+    expect(button).toHaveAttribute('data-full-width', 'true');
+    expect(button).toHaveAttribute('data-test-id', 'applyFilterButton');
+    expect(SurroundPortals.mock.lastCall[0]).toEqual(expect.objectContaining({
+      portalName: 'filter.apply-button',
+      portalProps: {
+        disabled: false,
+        onClick,
+        widgetSettings: {},
+      },
+    }));
   });
 
   it('should render as deactivated', () => {
-    const wrapper = shallow(<ApplyButton disabled onClick={() => { }} />).dive();
-    expect(wrapper).toMatchSnapshot();
+    const onClick = () => { };
+    render(<ApplyButton disabled onClick={onClick} />);
+
+    expect(screen.getByRole('button', { name: 'filter.view_results' })).toBeDisabled();
+    expect(SurroundPortals.mock.lastCall[0]).toEqual(expect.objectContaining({
+      portalName: 'filter.apply-button',
+      portalProps: {
+        disabled: true,
+        onClick,
+        widgetSettings: {},
+      },
+    }));
   });
 
   it('should handle clicks', () => {
-    const wrapper = shallow(<ApplyButton onClick={clickMock} />).dive();
-    expect(wrapper).toMatchSnapshot();
-    wrapper.find('Button').simulate('click');
-    expect(clickMock).toHaveBeenCalled();
+    render(<ApplyButton onClick={clickMock} />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'filter.view_results' }));
+
+    expect(clickMock).toHaveBeenCalledTimes(1);
   });
 });

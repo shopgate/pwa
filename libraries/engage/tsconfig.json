@@ -5,15 +5,22 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
-    "types": ["jest"],
+    "types": ["jest", "node"],
 
     "strict": true,
     "isolatedModules": true,
     "esModuleInterop": true,
+    "skipLibCheck": true,
 
     "allowJs": true,
     "checkJs": false,
     "noEmit": true
-  }
+  },
+  "exclude": [
+    "${configDir}/dist",
+    "${configDir}/node_modules",
+    "${configDir}/coverage",
+    "${configDir}/untyped-modules.d.ts"
+  ]
 }
 

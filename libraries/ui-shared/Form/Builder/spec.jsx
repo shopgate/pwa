@@ -1,13 +1,13 @@
 /* eslint-disable extra-rules/no-single-line-objects */
-import React from 'react';
-import { mount } from 'enzyme';
+import { createRef } from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import FormBuilder from '.';
 
 jest.mock('@shopgate/engage/components');
 
 describe('<FormBuilder />', () => {
   it('should render empty form', () => {
-    const wrapper = mount((
+    const { container } = render((
       <FormBuilder
         config={{
           fields: {
@@ -18,11 +18,15 @@ describe('<FormBuilder />', () => {
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
+    const form = container.querySelector('form');
+
+    expect(form).toHaveClass('ui-shared__form');
+    expect(form.children).toHaveLength(1);
+    expect(form.firstElementChild).toBeEmptyDOMElement();
   });
 
   it('should render two text fields', () => {
-    const wrapper = mount((
+    const { container } = render((
       <FormBuilder
         config={{
           fields: {
@@ -43,12 +47,19 @@ describe('<FormBuilder />', () => {
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(2);
+    const inputs = screen.getAllByRole('textbox');
+
+    expect(inputs).toHaveLength(2);
+    expect(inputs[0]).toHaveAttribute('name', 'foo.firstName');
+    expect(inputs[0]).toHaveValue('');
+    expect(inputs[1]).toHaveAttribute('name', 'foo.lastName');
+    expect(inputs[1]).toHaveValue('');
+    expect(Array.from(container.querySelectorAll('label')).map(label => label.textContent))
+      .toEqual(['foo', 'bar']);
   });
 
   it('should not render invisible field', () => {
-    const wrapper = mount((
+    const { container } = render((
       <FormBuilder
         config={{
           fields: {
@@ -64,12 +75,12 @@ describe('<FormBuilder />', () => {
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(0);
+    expect(screen.queryByRole('textbox')).not.toBeInTheDocument();
+    expect(container.querySelector('form').firstElementChild).toBeEmptyDOMElement();
   });
 
   it('should hide element if setVisibilty rule applies', () => {
-    const wrapper = mount((
+    const { container } = render((
       <FormBuilder
         config={{
           fields: {
@@ -97,20 +108,18 @@ describe('<FormBuilder />', () => {
       />
     ));
 
-    // Both should be visible at the beginning.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(2);
+    expect(screen.getAllByRole('textbox').map(input => input.name)).toEqual(['foo.foo', 'foo.bar']);
+    expect(container.querySelectorAll('label')).toHaveLength(2);
 
-    // Simulate user input to the text field.
-    wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
+    fireEvent.change(screen.getAllByRole('textbox')[0], { target: { value: 'abc' } });
 
-    // Second field should be hidden now.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(1);
+    expect(screen.getAllByRole('textbox').map(input => input.name)).toEqual(['foo.foo']);
+    expect(screen.getByRole('textbox')).toHaveValue('abc');
+    expect(container.querySelectorAll('label')).toHaveLength(1);
   });
 
   it('should reset value when rule applies', () => {
-    const wrapper = mount((
+    const { container } = render((
       <FormBuilder
         config={{
           fields: {
@@ -144,26 +153,21 @@ describe('<FormBuilder />', () => {
       />
     ));
 
-    // Default values should be in the inputs.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(2);
-    expect(wrapper.find('input').at(0).props().value).toEqual('default');
-    expect(wrapper.find('input').at(1).props().value).toEqual('default');
+    expect(screen.getAllByRole('textbox')).toHaveLength(2);
+    expect(screen.getAllByRole('textbox')[0]).toHaveValue('default');
+    expect(screen.getAllByRole('textbox')[1]).toHaveValue('default');
+    expect(container.querySelectorAll('label.floating')).toHaveLength(2);
 
-    // Simulate text input to trigger rule.
-    wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
-    wrapper.update();
+    fireEvent.change(screen.getAllByRole('textbox')[0], { target: { value: 'abc' } });
 
-    // Second field should be hidden now.
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TextField').length).toEqual(2);
-    expect(wrapper.find('input').at(0).props().value).toEqual('abc');
-    expect(wrapper.find('input').at(1).props().value).toEqual('cheat');
+    expect(screen.getAllByRole('textbox')).toHaveLength(2);
+    expect(screen.getAllByRole('textbox')[0]).toHaveValue('abc');
+    expect(screen.getAllByRole('textbox')[1]).toHaveValue('cheat');
   });
 
   it('should call onChange callback when input is changed', () => {
     const handleUpdate = jest.fn();
-    const wrapper = mount((
+    const { container } = render((
       <FormBuilder
         config={{
           fields: {
@@ -181,23 +185,23 @@ describe('<FormBuilder />', () => {
       />
     ));
 
-    // Should call with initial state.
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByRole('textbox')).toHaveAttribute('name', 'foo.foo');
+    expect(screen.getByRole('textbox')).toHaveValue('default');
+    expect(container.querySelector('label')).toHaveTextContent('foo');
     expect(handleUpdate).toHaveBeenCalledWith({ foo: 'default' }, false);
     handleUpdate.mockClear();
 
-    // Update input
-    wrapper.find('input').first().simulate('change', { target: { value: 'abc' } });
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'abc' } });
 
-    // Should call with updated state.
     expect(handleUpdate).toHaveBeenCalledWith({ foo: 'abc' }, false);
+    expect(screen.getByRole('textbox')).toHaveValue('abc');
   });
 
   describe('FormBuilder::elementChangeHandler', () => {
     it('should take the updated state from action listener', () => {
       const handleUpdate = jest.fn();
-      const ref = React.createRef();
-      mount((
+      const ref = createRef();
+      render((
         <FormBuilder
           ref={ref}
           validationErrors={[]}
@@ -227,20 +231,21 @@ describe('<FormBuilder />', () => {
         },
       });
 
-      // Trigger update
-      ref.current.elementChangeHandler('foo', 'bar');
+      handleUpdate.mockClear();
 
-      // Test
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'typed' } });
+
+      expect(handleUpdate).toHaveBeenCalledTimes(1);
       expect(handleUpdate).toHaveBeenCalledWith({
         foo: 'bar',
       }, false);
+      expect(screen.getByRole('textbox')).toHaveValue('bar');
     });
 
     it('should consider backend validations', () => {
-      // Create mocked Form builder.
       const handleUpdate = jest.fn();
-      const ref = React.createRef();
-      mount((
+      const ref = createRef();
+      render((
         <FormBuilder
           ref={ref}
           validationErrors={[{}]}
@@ -269,10 +274,11 @@ describe('<FormBuilder />', () => {
         },
       });
 
-      // Trigger update
-      ref.current.elementChangeHandler('foo', 'bar');
+      handleUpdate.mockClear();
 
-      // Test
+      fireEvent.change(screen.getByRole('textbox'), { target: { value: 'typed' } });
+
+      expect(handleUpdate).toHaveBeenCalledTimes(1);
       expect(handleUpdate).toHaveBeenCalledWith({
         foo: 'bar',
       }, true);
@@ -294,11 +300,11 @@ describe('<FormBuilder />', () => {
     });
     it('should sort elements', () => {
       const fields = [{ ...field1, sortOrder: 2 }, { ...field2, sortOrder: 1 }];
-      expect(fields.sort(builder.elementSortFunc)).toEqual(fields.reverse());
+      expect(fields.sort(builder.elementSortFunc).map(field => field.id)).toEqual(['foo2', 'foo']);
     });
     it('should keep sortOrder', () => {
       const fields = [{ ...field2, sortOrder: 1 }, { ...field1, sortOrder: 2 }];
-      expect(fields.sort(builder.elementSortFunc)).toEqual([...fields]);
+      expect(fields.sort(builder.elementSortFunc).map(field => field.id)).toEqual(['foo2', 'foo']);
     });
   });
 });

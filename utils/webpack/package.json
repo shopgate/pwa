@@ -1,35 +1,40 @@
 {
   "name": "@shopgate/webpack",
-  "version": "7.31.9",
+  "version": "7.32.1",
   "description": "The webpack configuration for Shopgate's Engage.",
   "main": "webpack.config.js",
   "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shopgate/pwa.git",
+    "directory": "utils/webpack"
+  },
   "dependencies": {
-    "@pmmmwh/react-refresh-webpack-plugin": "0.5.17",
+    "@pmmmwh/react-refresh-webpack-plugin": "0.6.3",
     "ajv": "^8.17.1",
-    "babel-loader": "^9.2.1",
+    "babel-loader": "^10.1.1",
     "chalk": "^4.1.2",
     "color": "^4.2.3",
-    "compression-webpack-plugin": "^10.0.0",
-    "css-loader": "^6.11.0",
-    "css-minimizer-webpack-plugin": "^5.0.1",
-    "html-webpack-plugin": "^5.6.6",
+    "compression-webpack-plugin": "^12.0.0",
+    "css-loader": "^7.1.5",
+    "css-minimizer-webpack-plugin": "^8.0.0",
+    "html-webpack-plugin": "^5.6.8",
     "import-fresh": "^3.3.1",
     "intl": "1.2.5",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "mini-css-extract-plugin": "^2.9.4",
     "progress-bar-webpack-plugin": "^2.1.0",
-    "react-refresh": "^0.18.0",
-    "style-loader": "3.3.4",
+    "react-refresh": "^0.19.0",
+    "style-loader": "4.0.0",
     "terser-webpack-plugin": "^5.6.1",
-    "webpack": "^5.108.4",
-    "webpack-bundle-analyzer": "^4.10.2",
-    "webpack-cli": "^5.1.4",
-    "workbox-webpack-plugin": "6.5.4"
+    "webpack": "^5.111.1",
+    "webpack-bundle-analyzer": "^5.4.0",
+    "webpack-cli": "^7.2.3",
+    "workbox-webpack-plugin": "7.4.1"
   },
   "devDependencies": {
-    "@types/lodash": "^4.17.24",
+    "@types/lodash": "^4.17.25",
     "rxjs": "~5.5.12",
-    "webpack-dev-server": "4.15.2"
+    "webpack-dev-server": "6.0.0"
   }
 }

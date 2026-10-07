@@ -1,111 +1,128 @@
-import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Input from './index';
 
 describe('<Input />', () => {
   it('should render a simple input field', () => {
-    const wrapper = mount(<Input />);
+    render(<Input />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input').length).toBe(1);
+    const input = screen.getByRole('textbox');
+
+    expect(input.tagName).toBe('INPUT');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveClass('simpleInput', 'common__simple-input');
+    expect(input).toHaveAttribute('autocomplete', 'off');
+    expect(input).toHaveAttribute('autocorrect', 'off');
+    expect(input).toHaveValue('');
+    expect(input).toBeEnabled();
+    expect(input).not.toBeRequired();
   });
 
   it('should render the input as password', () => {
-    const wrapper = mount(<Input password />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input[type="password"]').length).toBe(1);
+    const { container } = render(<Input password />);
+
+    const input = container.querySelector('input');
+
+    expect(input).toHaveAttribute('type', 'password');
+    expect(input).toHaveValue('');
   });
 
   it('should render the input with a default value', () => {
-    const wrapper = mount(<Input value="FooBar" />);
+    render(<Input value="FooBar" />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input[value="FooBar"]').length).toBe(1);
+    expect(screen.getByRole('textbox')).toHaveValue('FooBar');
   });
 
   it('should trigger the onChange callback', () => {
     const onChangeMock = jest.fn();
 
-    const wrapper = mount(<Input onChange={onChangeMock} />);
+    render(<Input onChange={onChangeMock} />);
 
-    wrapper.find('input').simulate('change', { target: { value: 'a' } });
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'a' } });
 
     expect(onChangeMock).toHaveBeenCalledTimes(2);
-    expect(wrapper.find('input').props().value).toEqual('a');
+    expect(onChangeMock.mock.lastCall[0]).toEqual('a');
+    expect(screen.getByRole('textbox')).toHaveValue('a');
   });
 
   it('should receive the correct value while typing', () => {
-    const wrapper = mount(<Input />);
+    render(<Input />);
 
-    const input = wrapper.find('input');
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'foobar' } });
 
-    input.simulate('change', { target: { value: 'foobar' } });
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SimpleInput').instance().value).toBe('foobar');
+    expect(screen.getByRole('textbox')).toHaveValue('foobar');
   });
 
   it('should sanitize the input', () => {
-    const wrapper = mount(<Input onSanitize={value => value.toUpperCase()} />);
+    render(<Input onSanitize={value => value.toUpperCase()} />);
 
-    const input = wrapper.find('input');
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'foobar' } });
 
-    input.simulate('change', { target: { value: 'foobar' } });
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SimpleInput').instance().value).toBe('FOOBAR');
+    expect(screen.getByRole('textbox')).toHaveValue('FOOBAR');
   });
 
   it('should validate the input', () => {
-    const wrapper = mount(<Input onValidate={() => false} />);
+    const onValidate = jest.fn(() => false);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SimpleInput').instance().isValid).toBe(false);
+    render(<Input onValidate={onValidate} />);
+
+    expect(screen.getByRole('textbox')).toHaveValue('');
+    expect(onValidate).toHaveBeenCalledTimes(1);
+    expect(onValidate).toHaveBeenLastCalledWith('', true);
+
+    fireEvent.blur(screen.getByRole('textbox'));
+
+    expect(onValidate).toHaveBeenCalledTimes(2);
+    expect(onValidate).toHaveBeenLastCalledWith('', false);
   });
 
   it('should focus the input', () => {
     const onFocusMock = jest.fn();
 
-    const wrapper = mount(<Input onFocusChange={onFocusMock} />);
+    render(<Input onFocusChange={onFocusMock} />);
 
-    const input = wrapper.find('input');
+    const input = screen.getByRole('textbox');
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SimpleInput').instance().isFocused).toBe(false);
+    expect(onFocusMock).not.toHaveBeenCalled();
 
-    input.simulate('focus');
+    fireEvent.focus(input);
 
-    expect(wrapper.find('SimpleInput').instance().isFocused).toBe(true);
+    expect(onFocusMock).toHaveBeenCalledTimes(1);
+    expect(onFocusMock.mock.lastCall[0]).toEqual(true);
 
-    input.simulate('blur');
-    expect(wrapper.find('SimpleInput').instance().isFocused).toBe(false);
+    fireEvent.blur(input);
+
+    expect(onFocusMock).toHaveBeenCalledTimes(2);
+    expect(onFocusMock.mock.lastCall[0]).toEqual(false);
   });
 
   it('should change the value on user input', () => {
-    const wrapper = mount(<Input value="My initial value" />);
+    render(<Input value="My initial value" />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('SimpleInput').instance().value).toBe('My initial value');
+    expect(screen.getByRole('textbox')).toHaveValue('My initial value');
 
-    const input = wrapper.find('input');
-    input.simulate('change', { target: { value: 'foobar' } });
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'foobar' } });
 
-    expect(wrapper.find('SimpleInput').instance().value).toBe('foobar');
+    expect(screen.getByRole('textbox')).toHaveValue('foobar');
   });
 
   it('should render a multiline input with empty content and react on change', () => {
     const multiLineValue = `dfsdsdf
     sdfdsff
     dsf`;
-    const wrapper = mount(<Input value="" multiLine />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('MultiLineInput').instance().value).toEqual('');
-    wrapper.setProps({ value: multiLineValue });
-    expect(wrapper.find('textarea').getDOMNode().innerHTML).toEqual(multiLineValue);
+    const { rerender } = render(<Input value="" multiLine />);
+
+    const textarea = screen.getByRole('textbox');
+
+    expect(textarea.tagName).toBe('TEXTAREA');
+    expect(textarea).toHaveClass('multiLineInput', 'common__multi-line-input');
+    expect(textarea).toHaveValue('');
+    rerender(<Input value={multiLineValue} multiLine />);
+    expect(screen.getByRole('textbox')).toHaveValue(multiLineValue);
+    expect(screen.getByRole('textbox').innerHTML).toEqual(multiLineValue);
   });
 
   it('should render additional html attributes', () => {
-    const wrapper = shallow((
+    const { container } = render((
       <Input
         type="date"
         attributes={{
@@ -113,9 +130,14 @@ describe('<Input />', () => {
           max: '2010-01-01',
         }}
       />
-    )).dive();
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.prop('min')).toEqual('1970-01-01');
-    expect(wrapper.prop('max')).toEqual('2010-01-01');
+    ));
+
+    const input = container.querySelector('input');
+
+    expect(input).toHaveAttribute('type', 'date');
+    expect(input).toHaveAttribute('min', '1970-01-01');
+    expect(input).toHaveAttribute('max', '2010-01-01');
+    expect(input).toHaveClass('simpleInput', 'common__simple-input');
+    expect(input).toHaveValue('');
   });
 });

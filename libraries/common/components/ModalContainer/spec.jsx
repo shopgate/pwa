@@ -1,6 +1,7 @@
-/* eslint-disable no-unused-vars, jsx-a11y/control-has-associated-label */
-import React from 'react';
-import { mount } from 'enzyme';
+/* eslint-disable no-unused-vars */
+import {
+  render, screen, fireEvent, act,
+} from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { configureStore } from '../../store';
 import modalReducer from '../../reducers/modal';
@@ -10,10 +11,6 @@ import ModalContainer from './index';
 // const store = configureStore({ modal: modalReducer });
 // Replacement for commented out configureStore()
 const store = {};
-
-jest.mock('redux-logger', () => ({
-  createLogger: () => () => next => action => next(action),
-}));
 
 global.requestAnimationFrame = fn => fn();
 
@@ -28,26 +25,26 @@ const MockModal = ({
   onDismiss, // eslint-disable-line react/prop-types
 }) => (
   <div className="modal">
-    <button className="confirmBtn" onClick={onConfirm} type="button" />
-    <button className="dismissBtn" onClick={onDismiss} type="button" />
+    <button className="confirmBtn" onClick={onConfirm} type="button">confirm</button>
+    <button className="dismissBtn" onClick={onDismiss} type="button">dismiss</button>
   </div>
 );
 
 describe.skip('<ModalContainer />', () => {
-  let renderedElement;
+  let container;
   const { dispatch, getState } = store;
 
   /**
    * The rendered component.
    */
   const renderComponent = () => {
-    renderedElement = mount((
+    ({ container } = render((
       <Provider store={store}>
         <div id="container">
           <ModalContainer component={MockModal} />
         </div>
       </Provider>
-    ));
+    )));
   };
 
   beforeEach(() => {
@@ -57,24 +54,25 @@ describe.skip('<ModalContainer />', () => {
   });
 
   describe('Given the component was mounted to the DOM', () => {
-    it('should match snapshot', () => {
-      expect(renderedElement).toMatchSnapshot();
+    it('should render nothing without a modal', () => {
+      expect(container.firstChild).toHaveAttribute('id', 'container');
+      expect(container.firstChild).toBeEmptyDOMElement();
     });
 
     it('should show no modal', () => {
-      expect(renderedElement.find('.modal').length).toBe(0);
+      expect(container.querySelectorAll('.modal').length).toBe(0);
     });
 
     describe('Given a modal gets dispatched', () => {
       let modalPromise;
 
       beforeEach(() => {
-        modalPromise = dispatch(showModal({
-          title: 'Title',
-          message: 'Message',
-        }));
-
-        renderedElement.update();
+        act(() => {
+          modalPromise = dispatch(showModal({
+            title: 'Title',
+            message: 'Message',
+          }));
+        });
       });
 
       it('should contain a modal item in the state', () => {
@@ -82,18 +80,16 @@ describe.skip('<ModalContainer />', () => {
       });
 
       it('should show the modal', () => {
-        expect(renderedElement.find('.modal').length).toBe(1);
+        expect(container.querySelectorAll('.modal').length).toBe(1);
       });
 
       describe('Given the modal gets confirmed', () => {
         beforeEach(() => {
-          renderedElement.find('.confirmBtn').simulate('click');
+          fireEvent.click(screen.getByRole('button', { name: 'confirm' }));
         });
 
-        it('should resolve the promise as confirmed', () => {
-          modalPromise.then(confirmed => (
-            expect(confirmed).toBe(true)
-          ));
+        it('should resolve the promise as confirmed', async () => {
+          await expect(modalPromise).resolves.toBe(true);
         });
 
         it('should contain no modal item in the state', () => {
@@ -101,23 +97,21 @@ describe.skip('<ModalContainer />', () => {
         });
 
         it('should not show the modal anymore', () => {
-          expect(renderedElement.find('.modal').length).toBe(0);
+          expect(container.querySelectorAll('.modal').length).toBe(0);
         });
       });
 
       describe('Given the modal gets dismissed', () => {
         beforeEach(() => {
-          renderedElement.find('.dismissBtn').simulate('click');
+          fireEvent.click(screen.getByRole('button', { name: 'dismiss' }));
         });
 
-        it('should resolve the promise as dismissed', () => {
-          modalPromise.then(confirmed => (
-            expect(confirmed).toBe(false)
-          ));
+        it('should resolve the promise as dismissed', async () => {
+          await expect(modalPromise).resolves.toBe(false);
         });
       });
     });
   });
 });
 
-/* eslint-enable no-unused-vars, jsx-a11y/control-has-associated-label */
+/* eslint-enable no-unused-vars */

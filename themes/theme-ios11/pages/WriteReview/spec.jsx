@@ -1,34 +1,28 @@
-import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { render } from '@testing-library/react';
+import { BackBar } from 'Components/AppBar/presets';
 // eslint-disable-next-line import/named
 import { mockedState } from './mock';
+import ReviewForm from './components/ReviewForm';
+import { UnwrappedWriteReview } from './index';
 
 jest.mock('@shopgate/engage/components');
-jest.mock('./components/ReviewForm', () => () => '');
+jest.mock('Components/AppBar/presets', () => ({
+  BackBar: jest.fn(() => null),
+}));
+jest.mock('./components/ReviewForm', () => jest.fn(() => null));
 const mockedStore = configureStore();
-/**
- * Creates component
- * @return {ReactWrapper}
- */
-const createComponent = () => {
-  /* eslint-disable global-require */
-  const { UnwrappedWriteReview } = require('./index');
-  /* eslint-enable global-require */
-  return mount(
-    <Provider store={mockedStore(mockedState)}>
-      <UnwrappedWriteReview productId="foo" />
-    </Provider>,
-    mockRenderOptions
-  );
-};
 
-describe.skip('<WriteReview> page', () => {
+describe('<WriteReview> page', () => {
   it('should not crash', () => {
-    const component = createComponent();
-    expect(component).toMatchSnapshot();
-    expect(component.find('WriteReview').exists()).toBe(true);
+    render((
+      <Provider store={mockedStore(mockedState)}>
+        <UnwrappedWriteReview productId="foo" visible />
+      </Provider>
+    ));
+
+    expect(BackBar.mock.lastCall[0]).toEqual(expect.objectContaining({ title: 'titles.reviews' }));
+    expect(ReviewForm.mock.lastCall[0]).toEqual({ productId: 'foo' });
   });
 });

@@ -1,5 +1,5 @@
-import React from 'react';
-import { mount } from 'enzyme';
+/* eslint-disable react/prop-types */
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { getMenuById } from '@shopgate/pwa-common/selectors/menu';
@@ -10,7 +10,12 @@ const store = createMockStore();
 jest.mock('@shopgate/engage/back-in-stock/selectors', () => ({
   getIsBackInStockEnabled: jest.fn(() => false),
 }));
-jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/components', () => ({
+  I18n: { Text: ({ string }) => string },
+  Link: ({ children, href, role }) => <a href={href} role={role}>{children}</a>,
+  SurroundPortals: ({ children }) => children,
+  Typography: ({ children, component: Component }) => <Component>{children}</Component>,
+}));
 
 let mockedQuicklinks;
 jest.mock('@shopgate/pwa-common/selectors/menu', () => ({
@@ -29,31 +34,33 @@ describe('<Quicklinks />', () => {
 
   it('should render quicklinks', () => {
     const quicklinks = getMenuById();
-    const wrapper = mount((
+    render((
       <Provider store={store}>
         <Quicklinks />
       </Provider>));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Quicklinks').isEmptyRender()).toBe(false);
-    expect(wrapper.find('Headline').text()).toBe('navigation.more_menu');
+    expect(screen.getByRole('heading', {
+      level: 2,
+      name: 'navigation.more_menu',
+    })).toBeInTheDocument();
 
-    const links = wrapper.find('Link');
+    const links = screen.getAllByRole('button');
+
+    expect(links).toHaveLength(quicklinks.length);
     quicklinks.forEach((entry, index) => {
-      const link = links.at(index);
-      expect(link.find('Text').prop('string')).toBe(entry.label);
-      expect(link.prop('href')).toBe(entry.url);
+      expect(links[index]).toHaveTextContent(entry.label);
+      expect(links[index]).toHaveAttribute('href', entry.url);
     });
   });
 
   it('should not render when no quicklinks are there', () => {
     mockedQuicklinks = [];
-    const wrapper = mount((
+    const { container } = render((
       <Provider store={store}>
         <Quicklinks />
       </Provider>));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Quicklinks').isEmptyRender()).toBe(true);
+    expect(container).toBeEmptyDOMElement();
   });
 });
+/* eslint-enable react/prop-types */

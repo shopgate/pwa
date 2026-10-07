@@ -1,13 +1,9 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import { mockThemeConfig } from '@shopgate/pwa-common/helpers/config/mock';
-import { BROWSE_PATH } from 'Pages/Browse/constants';
-import { MORE_PATH } from 'Pages/More/constants';
+/* eslint-disable react/prop-types */
+import {
+  render, screen, act,
+} from '@testing-library/react';
+import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
+import { useElementSize } from '@shopgate/engage/core/hooks';
 import {
   TAB_HOME,
   TAB_BROWSE,
@@ -15,104 +11,175 @@ import {
   TAB_MORE,
   TAB_FAVORITES,
 } from './constants';
-import {
-  mockedStateDefault,
-  // eslint-disable-next-line import/named
-  mockedStateRoute,
-} from './mock';
+import { useTabBarSettings, useTabBarScrollObserver } from './hooks';
+import TabBar from './index';
 
-const mockedStore = configureStore();
-const activePathsToTabs = {
-  [INDEX_PATH]: TAB_HOME,
-  [BROWSE_PATH]: TAB_BROWSE,
-  [MORE_PATH]: TAB_MORE,
-  [FAVORITES_PATH]: TAB_FAVORITES,
-};
+let mockKeyboardOpen = false;
 
-const allTabs = {
-  ...activePathsToTabs,
-  ...{
-    [CART_PATH]: TAB_CART,
-  },
-};
-
-beforeEach(() => {
-  jest.resetModules();
-});
-
-/**
- * Creates a connected component
- * @param {Object} mockedState state
- * @return {*}
- */
-const createComponent = (mockedState) => {
-  /* eslint-disable global-require */
-  const TabBarConnected = require('./index').default;
-  const store = mockedStore(mockedState);
-  /* eslint-enable global-require */
-
-  return mount(<Provider store={store}><TabBarConnected /></Provider>);
-};
-
-// const mockOpen = jest.fn();
-
-jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  hasFavorites: true,
-  themeConfig: mockThemeConfig,
+jest.mock('@shopgate/engage/components', () => ({
+  KeyboardConsumer: ({ children }) => children({ open: mockKeyboardOpen }),
+  SurroundPortals: ({ children }) => children,
 }));
+jest.mock('@shopgate/engage/core/hooks', () => ({
+  useElementSize: jest.fn(),
+}));
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  isAndroidOs: false,
+}));
+jest.mock('@shopgate/engage/styles/helpers', () => ({
+  setCSSCustomProp: jest.fn(),
+}));
+jest.mock('./connector', () => Component => Component);
+jest.mock('./hooks', () => ({
+  useTabBarSettings: jest.fn(),
+  useTabBarScrollObserver: jest.fn(),
+}));
+jest.mock('./tabs', () => [
+  {
+    type: 'home',
+    label: 'tab_bar.home',
+  },
+  {
+    type: 'browse',
+    label: 'tab_bar.browse',
+  },
+  {
+    type: 'cart',
+    label: 'tab_bar.cart',
+  },
+  {
+    type: 'favorites',
+    label: 'tab_bar.favorites',
+  },
+  {
+    type: 'more',
+    label: 'tab_bar.more',
+  },
+]);
+jest.mock('./helpers/getTabActionComponentForType', () => {
+  const Action = ({ label, isHighlighted, path }) => (
+    <button type="button" role="tab" aria-selected={isHighlighted} data-path={path}>
+      {label}
+    </button>
+  );
 
-describe.skip('<TabBar />', () => {
+  return {
+    __esModule: true,
+    default: () => Action,
+    tabs: {},
+  };
+});
+
+const allTabs = [TAB_HOME, TAB_BROWSE, TAB_CART, TAB_FAVORITES, TAB_MORE];
+
+const props = {
+  path: '/',
+  modalCount: 0,
+};
+
+describe('<TabBar />', () => {
+  /**
+   * @returns {HTMLElement} The tab list, no matter if it's hidden.
+   */
+  const getTabList = () => screen.getByRole('tablist', { hidden: true });
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    mockKeyboardOpen = false;
+    useTabBarSettings.mockReturnValue({});
+    useElementSize.mockReturnValue({ height: 49 });
+  });
+
   it('should render when visible', () => {
-    const wrapper = createComponent(mockedStateDefault);
+    render(<TabBar {...props} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TabBarAction').length).toBe(Object.keys(allTabs).length);
+    expect(screen.getByRole('tablist')).toBeVisible();
+    expect(screen.getAllByRole('tab').map(tab => tab.textContent))
+      .toEqual(allTabs.map(type => `tab_bar.${type}`));
+    expect(useTabBarScrollObserver).toHaveBeenCalledWith(true);
+    expect(setCSSCustomProp).toHaveBeenLastCalledWith('--tabbar-height', '49px');
   });
 
-  it('should not render when invisible', () => {
-    const invisibleState = mockedStateRoute(CART_PATH, true, false);
-    const wrapper = createComponent(invisibleState);
+  it('should not be visible when invisible', () => {
+    render(<TabBar {...props} isVisible={false} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('TabBarAction').length).toBe(0);
+    expect(getTabList()).not.toBeVisible();
+    expect(useTabBarScrollObserver).toHaveBeenCalledWith(false);
+    expect(setCSSCustomProp).toHaveBeenLastCalledWith('--tabbar-height', '0px');
   });
 
-  it('should highlight the active tab', () => {
-    Object.keys(activePathsToTabs).forEach((path) => {
-      const state = mockedStateRoute(path);
-      const wrapper = createComponent(state);
-      expect(wrapper.find('TabBarAction[isHighlighted=true]').length).toBe(1);
-      expect(wrapper.find('TabBarAction[isHighlighted=true]').props().type).toEqual(activePathsToTabs[path]);
+  it('should not render while the keyboard is open', () => {
+    mockKeyboardOpen = true;
+
+    const { container } = render(<TabBar {...props} />);
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
+  it.each([TAB_HOME, TAB_BROWSE, TAB_CART, TAB_MORE, TAB_FAVORITES])('should highlight the active tab "%s"', (activeTab) => {
+    render(<TabBar {...props} activeTab={activeTab} />);
+
+    expect(screen.getAllByRole('tab', { selected: true })).toHaveLength(1);
+    expect(screen.getByRole('tab', { selected: true })).toHaveTextContent(`tab_bar.${activeTab}`);
+  });
+
+  it('should not highlight a tab without an active tab', () => {
+    render(<TabBar {...props} />);
+
+    expect(screen.queryByRole('tab', { selected: true })).not.toBeInTheDocument();
+  });
+
+  it('should pass the current path to the tab actions', () => {
+    render(<TabBar {...props} path="/cart" />);
+
+    screen.getAllByRole('tab').forEach((tab) => {
+      expect(tab).toHaveAttribute('data-path', '/cart');
     });
   });
 
-  describe.skip('custom props', () => {
-    it('should pass custom props to the tab action', () => {
-      const customProp = 'my custom prop';
-      /**
-       * Selector mock
-       * @return {{
-       * getVisibleTabs: function(): *[],
-       * getActiveTab: function(): string,
-       * isTabBarVisible: function(): boolean
-       * }}
-       */
-      const mockedSelector = () => ({
-        getVisibleTabs: () => (
-          [{
-            type: 'foo',
-            label: 'bar',
-            customProp,
-          }]
-        ),
-        getActiveTab: () => '/',
-        isTabBarVisible: () => false,
-      });
-      jest.mock('./selectors.js', () => mockedSelector);
-      const wrapper = createComponent(mockedStateDefault);
+  it('should be hidden from assistive technology while a modal is open', () => {
+    const { rerender } = render(<TabBar {...props} modalCount={1} />);
 
-      expect(wrapper).toMatchSnapshot();
-      expect(wrapper.find(`TabBarAction[customProp="${customProp}"]`).length).toBe(1);
-    });
+    expect(getTabList()).toHaveAttribute('aria-hidden', 'true');
+
+    rerender(<TabBar {...props} modalCount={0} />);
+
+    expect(getTabList()).toHaveAttribute('aria-hidden', 'false');
+  });
+
+  it('should hide and show via the static methods', () => {
+    render(<TabBar {...props} />);
+
+    act(() => { TabBar.hide(); });
+    expect(getTabList()).not.toBeVisible();
+    expect(setCSSCustomProp).toHaveBeenLastCalledWith('--tabbar-height', '0px');
+
+    act(() => { TabBar.show(); });
+    expect(getTabList()).toBeVisible();
+    expect(setCSSCustomProp).toHaveBeenLastCalledWith('--tabbar-height', '49px');
+  });
+
+  it('should only show a disabled tab bar when forced', () => {
+    render(<TabBar {...props} isEnabled={false} isVisible={false} />);
+
+    act(() => { TabBar.show(); });
+    expect(getTabList()).not.toBeVisible();
+
+    act(() => { TabBar.show(true); });
+    expect(getTabList()).toBeVisible();
+  });
+
+  it('should apply the variant of the settings', () => {
+    const { container, rerender } = render(<TabBar {...props} />);
+
+    expect(container.firstChild).toHaveClass('variant-fixed', 'variant-docked');
+    expect(container.firstChild).not.toHaveClass('variant-floating');
+
+    useTabBarSettings.mockReturnValue({ variant: 'floating' });
+    rerender(<TabBar {...props} path="/other" />);
+
+    expect(container.firstChild).toHaveClass('variant-floating');
+    expect(container.firstChild).not.toHaveClass('variant-fixed', 'variant-docked');
   });
 });
+/* eslint-enable react/prop-types */

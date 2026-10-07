@@ -41,7 +41,7 @@ describe('<Tier />', () => {
     it('should render nothing when tier from is less then 1', () => {
       const tier = { from: 1 };
       const wrapper = render(<Tier tier={tier} price={{}} />);
-      expect(wrapper).toBeEmptyRender();
+      expect(wrapper.container).toBeEmptyDOMElement();
     });
   });
 });

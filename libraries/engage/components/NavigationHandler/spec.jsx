@@ -1,8 +1,14 @@
-import React from 'react';
 import { Provider } from 'react-redux';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { UIEvents } from '@shopgate/pwa-core';
+import {
+  ACTION_PUSH,
+  ACTION_POP,
+  ACTION_REPLACE,
+  ACTION_RESET,
+} from '@virtuous/conductor';
 import { createMockStore } from '@shopgate/pwa-common/store';
+import { navigate } from '@shopgate/pwa-common/action-creators/router';
 import NavigationHandler from './index';
 import {
   NAVIGATION_PUSH,
@@ -31,9 +37,17 @@ jest.mock('@shopgate/pwa-core', () => {
   };
 });
 
+const navigationEvents = [
+  NAVIGATION_PUSH,
+  NAVIGATION_POP,
+  NAVIGATION_REPLACE,
+  NAVIGATION_RESET,
+];
+
 describe('<NavigationHandler />', () => {
-  const store = createMockStore();
-  const wrapper = mount((
+  let store;
+
+  const renderHandler = () => render((
     <Provider store={store}>
       <NavigationHandler>
         <div>Some content</div>
@@ -41,58 +55,67 @@ describe('<NavigationHandler />', () => {
     </Provider>
   ));
 
+  beforeEach(() => {
+    jest.clearAllMocks();
+    // eslint-disable-next-line default-param-last
+    store = createMockStore((state = [], action) => [...state, action]);
+  });
+
   it('should render as expected', () => {
-    expect(wrapper).toMatchSnapshot();
+    renderHandler();
+    expect(screen.getByText('Some content')).toBeInTheDocument();
   });
 
-  it('should trigger the push() callbacks on navigation.push event', async () => {
-    await push({ pathname: '/test' });
-    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_PUSH, { pathname: '/test' });
-    UIEvents.emit.mockClear();
+  it('should trigger the push() callbacks on navigation.push event', () => {
+    renderHandler();
+    push({ pathname: '/test' });
+    expect(store.getState()).toContainEqual(navigate({
+      pathname: '/test',
+      action: ACTION_PUSH,
+    }));
   });
 
-  it('should trigger the pop() callbacks on navigation.pop event', async () => {
-    await pop();
-    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_POP, undefined);
-    UIEvents.emit.mockClear();
+  it('should trigger the pop() callbacks on navigation.pop event', () => {
+    renderHandler();
+    pop();
+    expect(store.getState()).toContainEqual(navigate({ action: ACTION_POP }));
   });
 
-  it('should forward pop() params so that multiple routes can be popped', async () => {
-    await pop({ steps: 2 });
-    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_POP, { steps: 2 });
-    UIEvents.emit.mockClear();
+  it('should forward pop() params so that multiple routes can be popped', () => {
+    renderHandler();
+    pop({ steps: 2 });
+    expect(store.getState()).toContainEqual(navigate({
+      steps: 2,
+      action: ACTION_POP,
+    }));
   });
 
-  it('should trigger the replace() callbacks on navigation.replace event', async () => {
-    await replace({ pathname: '/test' });
-    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_REPLACE, { pathname: '/test' });
-    UIEvents.emit.mockClear();
+  it('should trigger the replace() callbacks on navigation.replace event', () => {
+    renderHandler();
+    replace({ pathname: '/test' });
+    expect(store.getState()).toContainEqual(navigate(expect.objectContaining({
+      pathname: '/test',
+      action: ACTION_REPLACE,
+    })));
   });
 
-  it('should trigger the reset() callbacks on navigation.reset event', async () => {
-    await reset();
-    expect(UIEvents.emit).toBeCalledWith(NAVIGATION_RESET);
-    UIEvents.emit.mockClear();
+  it('should trigger the reset() callbacks on navigation.reset event', () => {
+    renderHandler();
+    reset();
+    expect(store.getState()).toContainEqual(navigate({ action: ACTION_RESET }));
   });
 
   it('should register the navigation event listener', () => {
-    const props = wrapper.find('NavigationHandler').props();
-    expect(UIEvents.addListener.mock.calls.length).toBe(4);
-    expect(UIEvents.addListener.mock.calls[0][0]).toEqual(NAVIGATION_PUSH, props.push);
-    expect(UIEvents.addListener.mock.calls[1][0]).toEqual(NAVIGATION_POP, props.pop);
-    expect(UIEvents.addListener.mock.calls[2][0]).toEqual(NAVIGATION_REPLACE, props.replace);
-    expect(UIEvents.addListener.mock.calls[3][0]).toEqual(NAVIGATION_RESET, props.reset);
-    UIEvents.addListener.mockClear();
+    renderHandler();
+    navigationEvents.forEach((event) => {
+      expect(UIEvents.addListener).toHaveBeenCalledWith(event, expect.any(Function));
+    });
   });
 
   it('should unregister the navigation event listener when the component unmounts', () => {
-    const props = wrapper.find('NavigationHandler').props();
-    wrapper.unmount();
-    expect(UIEvents.removeListener.mock.calls.length).toBe(4);
-    expect(UIEvents.removeListener.mock.calls[0][0]).toEqual(NAVIGATION_PUSH, props.push);
-    expect(UIEvents.removeListener.mock.calls[1][0]).toEqual(NAVIGATION_POP, props.pop);
-    expect(UIEvents.removeListener.mock.calls[2][0]).toEqual(NAVIGATION_REPLACE, props.replace);
-    expect(UIEvents.removeListener.mock.calls[3][0]).toEqual(NAVIGATION_RESET, props.reset);
-    UIEvents.removeListener.mockClear();
+    const { unmount } = renderHandler();
+    expect(UIEvents.removeListener).not.toHaveBeenCalled();
+    unmount();
+    expect(UIEvents.removeListener.mock.calls).toEqual(UIEvents.addListener.mock.calls);
   });
 });

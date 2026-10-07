@@ -8,7 +8,7 @@ const useStyles = makeStyles()(theme => ({
     '&:first-of-type': {
       boxShadow: '0 0 0 0',
     },
-    boxShadow: `0 -1px 0 0 ${theme.components.border.light}`,
+    boxShadow: `0 -1px 0 0 ${theme.components.separatorLine.borderColor}`,
     padding: '12px 0',
     'button&': {
       outline: 0,

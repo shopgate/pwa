@@ -1,16 +1,25 @@
 import range from 'lodash/range';
-import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { RouteContext } from '../../context';
 import { ITEMS_PER_LOAD } from '../../constants/DisplayOptions';
 import InfiniteContainer from './index';
 
-global.console.error = jest.fn();
+jest.mock('lodash/throttle', () => fn => fn);
+jest.mock('@virtuous/conductor', () => ({
+  router: {
+    update: jest.fn(),
+  },
+}));
 
-const context = { state: {} };
+const context = {
+  id: 'route-id',
+  state: {},
+};
 
 describe('<InfiniteContainer />', () => {
-  let renderedElement;
-  let renderedInstance;
+  let renderResult;
+  let currentProps;
+  let scrollContainer;
   let mockLoader;
   let MockIterator;
   let mockItems;
@@ -21,12 +30,26 @@ describe('<InfiniteContainer />', () => {
   }));
 
   /**
+   * @param {Object} props The component props.
+   * @returns {JSX.Element}
+   */
+  const createElement = props => (
+    <RouteContext.Provider value={context}>
+      <InfiniteContainer {...props} />
+    </RouteContext.Provider>
+  );
+
+  /**
    * The view component
    * @param {Object} props The component props.
    */
   const renderComponent = (props) => {
-    renderedElement = shallow(<InfiniteContainer {...props} />, { context });
-    renderedInstance = renderedElement.instance();
+    currentProps = {
+      containerRef: { current: scrollContainer },
+      loadingIndicator: <div>Loading</div>,
+      ...props,
+    };
+    renderResult = render(createElement(currentProps));
   };
 
   /**
@@ -36,18 +59,42 @@ describe('<InfiniteContainer />', () => {
   const receiveItemsByProp = (amount) => {
     mockItems = mockData.slice(0, amount);
 
-    const nextProps = {
-      ...renderedInstance.props,
+    currentProps = {
+      ...currentProps,
       items: mockItems,
       totalItems: mockData.length,
     };
 
-    renderedElement.setProps(nextProps);
+    renderResult.rerender(createElement(currentProps));
+  };
+
+  /**
+   * Scrolls the scroll container.
+   * @param {number} scrollTop The new scroll position.
+   */
+  const scrollTo = (scrollTop) => {
+    Object.defineProperties(scrollContainer, {
+      scrollTop: {
+        configurable: true,
+        value: scrollTop,
+      },
+      scrollHeight: {
+        configurable: true,
+        value: 1000,
+      },
+      clientHeight: {
+        configurable: true,
+        value: 100,
+      },
+    });
+
+    fireEvent.scroll(scrollContainer);
   };
 
   beforeEach(() => {
     mockLoader = jest.fn();
-    MockIterator = data => <li key={data.id}>{data.title}</li>;
+    MockIterator = jest.fn(data => <li key={data.id}>{data.title}</li>);
+    scrollContainer = document.createElement('div');
   });
 
   describe('Given the component was mounted to the DOM', () => {
@@ -58,18 +105,16 @@ describe('<InfiniteContainer />', () => {
         iterator: MockIterator,
         totalItems: null,
       });
-
-      renderedInstance.componentDidMount();
     });
 
-    it('should match snapshot', () => {
-      expect(renderedElement).toMatchSnapshot();
+    it('should render an empty container with a loading indicator', () => {
+      expect(renderResult.container.innerHTML)
+        .toBe('<div class="common__infinite-container"><div><div></div></div><div>Loading</div></div>');
     });
 
     it('should call the loader function', () => {
-      const [offset] = renderedInstance.state.offset;
-
-      expect(mockLoader).toBeCalledWith(offset);
+      expect(mockLoader).toHaveBeenCalledTimes(1);
+      expect(mockLoader).toBeCalledWith(0);
     });
 
     describe('Given the loader requested new items', () => {
@@ -80,7 +125,7 @@ describe('<InfiniteContainer />', () => {
       });
 
       it('should render the loaded items', () => {
-        expect(renderedElement.find(MockIterator)).toHaveLength(mockItemsLength);
+        expect(screen.getAllByRole('listitem')).toHaveLength(mockItemsLength);
       });
     });
 
@@ -88,33 +133,18 @@ describe('<InfiniteContainer />', () => {
       const mockItemsLength = 11;
 
       beforeEach(() => {
-        // Receive items from initial mounting before proceeding...
         receiveItemsByProp(mockItemsLength);
 
-        // Reset any previous calls (e.g. from componentDidMount())
-        mockLoader.mock.calls = [];
-        renderedInstance.componentDidUpdate();
+        mockLoader.mockClear();
       });
 
       it('should call the loader function if scrolled to the bottom', () => {
-        renderedInstance.domScrollContainer = {
-          scrollTop: 900,
-          scrollHeight: 1000,
-          clientHeight: 100,
-        };
-
-        renderedInstance.handleLoading();
+        scrollTo(900);
         expect(mockLoader).toBeCalled();
       });
 
       it('should not call the loader function if the scroll position did not change', () => {
-        renderedInstance.domScrollContainer = {
-          scrollTop: 0,
-          scrollHeight: 1000,
-          clientHeight: 100,
-        };
-
-        renderedInstance.handleLoading();
+        scrollTo(0);
         expect(mockLoader.mock.calls.length).toBe(0);
       });
     });
@@ -127,29 +157,33 @@ describe('<InfiniteContainer />', () => {
       });
 
       it('should expect no more items to be received', () => {
-        expect(renderedInstance.needsToReceiveItems()).toBe(false);
+        mockLoader.mockClear();
+        scrollTo(900);
+        expect(mockLoader).not.toHaveBeenCalled();
       });
 
-      it('should keep state.awaitingItems as true if not all items are rendered', () => {
-        expect(renderedInstance.allItemsAreRendered()).toBe(false);
-        expect(renderedInstance.state.awaitingItems).toBe(true);
-        expect(renderedElement.find(MockIterator).length).toBeLessThan(mockItemsLength);
+      it('should keep showing the loading indicator if not all items are rendered', () => {
+        expect(screen.getByText('Loading')).toBeInTheDocument();
+        expect(screen.getAllByRole('listitem').length).toBeLessThan(mockItemsLength);
       });
 
-      it('should set state.awaitingItems to false if all items are rendered', () => {
-        renderedElement.setState({
-          offset: [0, mockItemsLength],
-        });
-        renderedInstance.handleLoading();
+      it('should remove the loading indicator if all items are rendered', () => {
+        scrollTo(900);
+        scrollTo(900);
+        expect(screen.getAllByRole('listitem').length).toBe(mockItemsLength);
+        expect(screen.getByText('Loading')).toBeInTheDocument();
 
-        expect(renderedInstance.allItemsAreRendered()).toBe(true);
-        expect(renderedInstance.state.awaitingItems).toBe(false);
-        expect(renderedElement.find(MockIterator).length).toBe(mockItemsLength);
+        scrollTo(900);
+
+        expect(screen.queryByText('Loading')).not.toBeInTheDocument();
+        expect(screen.getAllByRole('listitem').length).toBe(mockItemsLength);
       });
     });
   });
 
   describe('Given that the initialLimit is used in the correct ways', () => {
+    const { initialLimit, limit } = InfiniteContainer.defaultProps;
+
     describe('Given that the initialLimit is used', () => {
       it('should render with the initialLimit', () => {
         renderComponent({
@@ -159,19 +193,11 @@ describe('<InfiniteContainer />', () => {
           totalItems: mockData.length,
         });
 
-        // Check if the iniLimit was used
-        expect(renderedElement.find(MockIterator).length).toBe(renderedInstance.props.initialLimit);
+        expect(screen.getAllByRole('listitem').length).toBe(initialLimit);
 
-        // Reset the limit from props.initialLimit back to props.limit
-        renderedInstance.componentDidMount();
-        renderedInstance.handleLoading();
+        scrollTo(900);
 
-        // Re-render with the new limit
-        renderedElement.update();
-
-        // Check if the correct limit was used for the second render
-        const newLimit = renderedInstance.props.initialLimit + renderedInstance.props.limit;
-        expect(renderedElement.find(MockIterator).length).toBe(newLimit);
+        expect(screen.getAllByRole('listitem').length).toBe(initialLimit + limit);
       });
     });
 
@@ -184,45 +210,44 @@ describe('<InfiniteContainer />', () => {
           totalItems: null,
         });
 
-        renderedInstance.componentDidMount();
         receiveItemsByProp(ITEMS_PER_LOAD);
 
-        // Check if the iniLimit wasn't used
-        expect(renderedElement).toMatchSnapshot();
-        expect(renderedElement.find(MockIterator).length).toBe(renderedInstance.props.limit);
+        const items = screen.getAllByRole('listitem');
+
+        expect(items.length).toBe(limit);
+        expect(items.map(item => item.textContent))
+          .toEqual(mockData.slice(0, ITEMS_PER_LOAD).map(({ title }) => title));
+        expect(MockIterator.mock.calls[0][0]).toEqual({
+          ...mockData[0],
+          columns: 2,
+        });
+        expect(renderResult.container.firstChild).toHaveClass('common__infinite-container');
       });
     });
   });
 
   describe('Given that the requestHash changes', () => {
     it('should reset the component', () => {
-      const props = {
+      renderComponent({
         items: mockData,
         loader: mockLoader,
         iterator: MockIterator,
         totalItems: mockData.length,
         requestHash: 'default',
-      };
-
-      const wrapper = mount(<InfiniteContainer {...props} />);
-      const instance = wrapper.instance();
-      instance.componentDidMount();
-      instance.domScrollContainer = document.createElement('div');
-
-      wrapper.setState({
-        awaitingItems: false,
-        offset: [10, 10],
       });
 
-      wrapper.setProps({
+      range(5).forEach(() => scrollTo(900));
+
+      expect(screen.getAllByRole('listitem')).toHaveLength(mockData.length);
+      expect(screen.queryByText('Loading')).not.toBeInTheDocument();
+
+      renderResult.rerender(createElement({
+        ...currentProps,
         requestHash: 'price_desc',
-      });
+      }));
 
-      expect(wrapper.state()).toEqual({
-        offset: [0, 32],
-        awaitingItems: true,
-        itemCount: 0,
-      });
+      expect(screen.getAllByRole('listitem')).toHaveLength(ITEMS_PER_LOAD);
+      expect(screen.getByText('Loading')).toBeInTheDocument();
     });
   });
 });

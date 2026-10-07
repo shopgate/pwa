@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/triple-slash-reference
+/// <reference path="./conductor.d.ts" />
 import { UIEvents } from '@shopgate/pwa-core';
 import { router } from '@virtuous/conductor';
 

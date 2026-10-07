@@ -1,0 +1,139 @@
+name: Publish packages
+
+on:
+  push:
+    branches:
+      - 'releases/v*'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Only build and pack the packages without publishing them
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+concurrency:
+  group: publish-${{ github.ref }}
+
+env:
+  DRY_RUN: ${{ github.event_name == 'workflow_dispatch' && inputs.dry_run }}
+
+jobs:
+  check:
+    name: Check what to publish
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      pending: ${{ steps.pending.outputs.pending }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+
+      - name: Read the version
+        id: version
+        run: |
+          version="$(node -p "require('./libraries/engage/package.json').version")"
+
+          if [ "$DRY_RUN" != "true" ] && [ "$GITHUB_REF_NAME" != "releases/v$version" ]; then
+            echo "::error::$GITHUB_REF_NAME contains version $version. Packages are only published from releases/v$version; start a dry run for other branches."
+            exit 1
+          fi
+
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+
+      - name: Find unpublished packages
+        id: pending
+        env:
+          VERSION: ${{ steps.version.outputs.version }}
+        run: |
+          unpublished="$(node scripts/release/cli.ts unpublished "$VERSION")"
+
+          if [ "$DRY_RUN" = "true" ]; then
+            echo "Dry run: the packages are built, and the unpublished ones are packed."
+            echo "pending=true" >> "$GITHUB_OUTPUT"
+          elif [ -n "$unpublished" ]; then
+            echo "Not published yet:"
+            echo "$unpublished"
+            echo "pending=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "All packages of $VERSION are published."
+            echo "pending=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  publish:
+    name: Publish ${{ needs.check.outputs.version }}
+    needs: check
+    if: needs.check.outputs.pending == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    environment: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && 'npm-release-dry-run' || 'npm-release' }}
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      VERSION: ${{ needs.check.outputs.version }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version-file: .nvmrc
+          package-manager-cache: false
+          registry-url: https://registry.npmjs.org
+
+      - name: Check that the run belongs to the head of the branch
+        if: env.DRY_RUN != 'true'
+        run: |
+          head="$(git ls-remote origin "refs/heads/$GITHUB_REF_NAME" | cut -f1)"
+
+          if [ "$head" != "$GITHUB_SHA" ]; then
+            echo "::error::$GITHUB_REF_NAME moved to ${head:-nothing} after this run was started for $GITHUB_SHA. Approve the newest run of the branch instead."
+            exit 1
+          fi
+
+      - name: Show the versions
+        run: echo "node $(node --version), npm $(npm --version)"
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts --no-audit --no-fund --force
+
+      - name: Build the packages
+        run: node scripts/release/cli.ts build
+
+      - name: Publish the packages
+        run: node scripts/release/cli.ts publish "$VERSION"
+
+      - name: Notify Slack
+        if: ${{ !cancelled() && env.DRY_RUN != 'true' }}
+        env:
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          JOB_STATUS: ${{ job.status }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          if [ -z "$SLACK_WEBHOOK_URL" ]; then
+            echo "The environment has no SLACK_WEBHOOK_URL secret, no Slack notification is sent."
+            exit 0
+          fi
+
+          if [ "$JOB_STATUS" = "success" ]; then
+            title="PWA $VERSION is published on npm"
+            text="The release:finalize job in the GitLab pipeline of this release waited for this and continues by itself. If it failed in the meantime, retry it. The messages of the pipeline in this channel contain its link, unless they were muted. <$RUN_URL|Workflow run>"
+            color="#d1a34d"
+          else
+            title="PWA release $VERSION: publishing on npm FAILED"
+            text="Check the <$RUN_URL|workflow run>. When the cause is fixed, re-run its failed job: packages that are published already are skipped. The release:finalize job in the GitLab pipeline waits for the packages for up to 30 minutes. If it failed in the meantime, retry it when the packages are published."
+            color="#c20d13"
+          fi
+
+          payload="$(jq -n --arg title "$title" --arg text "$text" --arg color "$color" \
+            '{ attachments: [{ title: $title, text: $text, color: $color }] }')"
+
+          curl -sS --fail --max-time 10 -X POST -H 'Content-type: application/json' --data "$payload" "$SLACK_WEBHOOK_URL" \
+            || echo "::warning::The Slack notification could not be sent."

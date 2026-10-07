@@ -7,6 +7,8 @@ const useStyles = makeStyles()(theme => ({
   title: {
     textAlign: 'center',
     fontWeight: theme.typography.fontWeightBold,
+    color: theme.palette.common.black,
+    paddingBottom: theme.spacing(1),
   },
 }));
 
@@ -31,7 +33,7 @@ const Title = ({ title }) => {
 };
 
 Title.propTypes = {
-  title: PropTypes.string,
+  title: PropTypes.node,
 };
 
 Title.defaultProps = {
