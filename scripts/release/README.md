@@ -161,7 +161,8 @@ The workflow `.github/workflows/publish.yml` runs for every push to a branch `re
    patches of an older release line, `latest-<major>.<minor>`. Packages that are published
    already are skipped, so a failed run can be re-run. Afterwards it waits until every package
    can really be installed, i.e. the registry lists the version and hands out its file, for up
-   to 10 minutes. Only then it posts the result to Slack.
+   to 25 minutes: npm can take a quarter of an hour to list a new version. Only then it posts
+   the result to Slack.
 
 A run only publishes the commit it was started for. When the release branch got another push
 before the approval, the older run refuses to publish: approve the newest run of the branch.

@@ -56,7 +56,7 @@ const COMMANDS: Record<string, Command> = {
       publishPackages(version, dryRun);
 
       if (!dryRun) {
-        await waitUntilInstallable(version);
+        await waitUntilInstallable(version, undefined, { timeout: 25 * 60 * 1000 });
       }
     },
   },

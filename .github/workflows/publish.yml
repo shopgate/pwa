@@ -72,7 +72,7 @@ jobs:
     needs: check
     if: needs.check.outputs.pending == 'true'
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 45
     environment: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run) && 'npm-release-dry-run' || 'npm-release' }}
     permissions:
       contents: read
