@@ -50,7 +50,7 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     gap: 6,
     padding: '5px 11px',
-    border: `1px solid ${theme.components.border.light}`,
+    border: `1px solid ${theme.components.border.medium}`,
     borderRadius: 999,
   },
   blocked: {
