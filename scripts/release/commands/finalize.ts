@@ -8,7 +8,9 @@ import {
   getThemes,
 } from '../config.ts';
 import { logStep } from '../lib/exec.ts';
-import { git, gitOutput, remoteBranchExists } from '../lib/git.ts';
+import {
+  git, gitOutput, remoteBranchExists, remoteTagExists,
+} from '../lib/git.ts';
 import {
   createRelease, createTag, findRelease, getMissingCommits,
 } from '../lib/github.ts';
@@ -16,6 +18,7 @@ import {
   getPublishRunsUrl, getUnpublished, resolveDistTag, updatesMaster, waitUntilInstallable,
   waitUntilPublished,
 } from '../steps/publish.ts';
+import { removeReleaseBranches } from '../steps/cleanup.ts';
 import { pushSubtrees } from '../steps/subtree.ts';
 import { symbols } from '../lib/symbols.ts';
 import type { Theme } from '../config.ts';
@@ -23,8 +26,9 @@ import type { ReleaseOptions } from '../lib/options.ts';
 
 /**
  * Finishes an approved release: updates master (versions that become "latest") and
- * creates the GitHub releases. Pre-releases only get a tag. As long as a package is not
- * published on npm, it fails, or waits for it with WAIT_FOR_PUBLISH.
+ * creates the GitHub releases. Pre-releases only get a tag. Afterwards the release branches
+ * are removed. As long as a package is not published on npm, it fails, or waits for it with
+ * WAIT_FOR_PUBLISH.
  * @param options The release settings.
  * @param root The repository root.
  */
@@ -33,6 +37,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   const releaseBranch = `releases/${version.name}`;
   const themes = getThemes(root);
   const masterUpdate = updatesMaster(options, root);
+  const remotes = [...themes.map(theme => theme.gitUrl), 'origin'];
 
   if (waitForPublish && !dryRun) {
     await waitUntilPublished(version, root);
@@ -60,7 +65,13 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   }
 
   if (!remoteBranchExists('origin', releaseBranch)) {
-    throw new Error(`${releaseBranch} doesn't exist on origin. Run the prepare step first.`);
+    if (!remoteTagExists('origin', version.name)) {
+      throw new Error(`${releaseBranch} doesn't exist on origin. Run the prepare step first.`);
+    }
+
+    removeReleaseBranches(remotes, releaseBranch, version.name);
+    console.log(`\n${symbols.ok} ${version.version} is released already: the tag ${version.name} exists and ${releaseBranch} is removed.`);
+    return;
   }
 
   logStep(`Checking out ${releaseBranch}`);
@@ -93,7 +104,6 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
     logStep(`Updating master of ${GITHUB_REPO}`);
     git(['merge', '--no-edit', 'origin/master']);
     git(['push', 'origin', releaseBranch]);
-    git(['push', 'origin', `${releaseBranch}:refs/heads/${version.name}`]);
     git(['push', 'origin', `${releaseBranch}:master`]);
   }
 
@@ -108,11 +118,11 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
       console.log(created ? `${symbols.ok} Tagged ${releaseBranch}` : 'Tag already exists, skipping');
     }
 
+    removeReleaseBranches(remotes, releaseBranch, version.name);
     console.log(`\n${symbols.ok} ${version.version} is released. Pre-releases get no GitHub release, only the tag.`);
     return;
   }
 
-  const target = masterUpdate ? 'master' : releaseBranch;
   const latest = resolveDistTag(version, root) === 'latest';
   const body = extractReleaseNotes(fs.readFileSync(path.join(root, 'CHANGELOG.md'), 'utf8'), version.baseName, version.name)
     || 'No notable changes in this release.';
@@ -129,7 +139,7 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
       // eslint-disable-next-line no-await-in-loop
       const release = await createRelease(repo, {
         tag: version.name,
-        target,
+        target: masterUpdate && repo !== GITHUB_REPO ? 'master' : releaseBranch,
         body,
         latest,
       });
@@ -137,5 +147,6 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
     }
   }
 
+  removeReleaseBranches(remotes, releaseBranch, version.name);
   console.log(`\n${symbols.ok} ${version.version} is released.`);
 };

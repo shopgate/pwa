@@ -201,15 +201,22 @@ master; changes to the workflow on other branches can only be tested with a rele
       theme repository. Only otherwise, it merges that master into `releases/vX`
       (`git subtree pull`). Then pushes the result to both theme masters at the same time
       (`git subtree push`).
-   2. Merges master of pwa into `releases/vX` and pushes it to `releases/vX`, `vX` and master.
+   2. Merges master of pwa into `releases/vX` and pushes it to `releases/vX` and master.
 4. Stable versions: creates the GitHub release `vX` in pwa and both theme repositories. The target
-   is master when master was updated, otherwise `releases/vX`. The release notes are the changelog
+   in pwa is `releases/vX`, which holds exactly the commit that was pushed to master, so a merge
+   into master in the meantime can't end up in the tag. In the theme repositories it is master
+   when master was updated, otherwise `releases/vX`. The release notes are the changelog
    entry of the version plus a compare link to the previous stable version, or "No notable
    changes in this release." without an entry. Patches of an older release line are not marked as
    latest. Publishing a release creates its tag.
 5. Pre-releases (alpha, beta, rc): creates only the tag `vX` at the head of `releases/vX` in pwa
    and both theme repositories, and no GitHub release, so new pre-releases don't appear on the
-   release pages. Their changes are in the `CHANGELOG.md` of the release branch.
+   release pages. Their changes are in the `CHANGELOG.md` of the tagged commit.
+6. Removes `releases/vX` in both theme repositories and in pwa, in that order. From here on the
+   version is referenced by its tag `vX`. A branch is only removed where that tag exists. A
+   deletion that fails is only reported, since the release is complete: delete that branch by
+   hand. When the job is retried after this step, it finds the tag without the branch and
+   reports that the version is released already.
 
 With `DRY_RUN=true`, it only lists the packages that are not published and stops, without
 waiting.
@@ -228,10 +235,11 @@ The pipeline of `pwa-liveupdate` starts the job right after `release:prepare` an
 
 ### `release:themes` and `release:tablet-themes`
 
-Both run one job per theme after `finalize`. Each job checks out `releases/vX` and uploads the
-theme with `sgconnect`. A failed upload, including a failed processing of the theme on the
-platform, fails the job, which can be retried on its own. With `DRY_RUN=true`, they check out
-`BRANCH` instead, since `releases/vX` isn't pushed, and skip the upload.
+Both run one job per theme after `finalize`. Each job checks out the tag `vX`, since
+`finalize` has removed the release branch, and uploads the theme with `sgconnect`. A failed
+upload, including a failed processing of the theme on the platform, fails the job, which can be
+retried on its own. With `DRY_RUN=true`, they check out `BRANCH` instead, since nothing is
+tagged, and skip the upload.
 
 - `release:themes` uploads the themes under their own IDs for every version.
 - `release:tablet-themes` renames the themes to `*-tablet` before the upload. It runs
@@ -263,8 +271,12 @@ job that failed halfway doesn't leave anything behind that blocks it:
 When the pipeline has to be started again for the same version, for example after it was
 cancelled, `check` reports the version as taken. Start the new pipeline with the input `resume` to
 continue. Resuming is only allowed when the release branch contains the "Released X" commit of
-this version, so a typo in the version can't continue someone else's release. A resumed release continues on `releases/vX`, so later changes to `BRANCH` are
-not part of it.
+this version, so a typo in the version can't continue someone else's release. A resumed release
+continues on `releases/vX`, so later changes to `BRANCH` are not part of it.
+
+A version whose `finalize` went through can't be resumed: its release branch is removed, and
+`check` reports it as released. That's intended, since nothing is left to do but the theme
+uploads, and those are retried in the pipeline of the release.
 
 **`check` stops because master has commits that are missing in `BRANCH`** (only for releases that
 update master, e.g. after someone merged into master by mistake): nothing was created yet. Merge
@@ -307,7 +319,13 @@ failed theme. Retrying `finalize` completes them.
 ### Theme upload
 
 A failed `release:themes` or `release:tablet-themes` job only affects its theme: retry that job in
-the pipeline. The packages and the GitHub releases or tags are already done at that point.
+the pipeline of the release. The packages and the GitHub releases or tags are already done at
+that point, and the job takes the theme from the tag, so it doesn't need the release branch. A
+new pipeline with `resume` can't be used for it.
+
+Re-running a publish job of the workflow "Publish packages" after `finalize` fails with "moved
+to nothing", since the release branch is gone. Nothing is missing in that case: all packages are
+published, otherwise `finalize` wouldn't have run.
 
 Releases with the legacy process upload the regular themes through the GitHub workflow "Trigger
 GitLab Pipelines on Release" of their branch, which starts one pipeline per theme in the GitLab

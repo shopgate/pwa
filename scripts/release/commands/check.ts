@@ -229,6 +229,20 @@ export const getContinuation = (
 };
 
 /**
+ * Tells whether the version is completely released: pwa has its tag and no release branch.
+ * finalize removes the branch at its end, and versions of the legacy process never had one left.
+ * @param taken The places where the version exists.
+ * @param version The version to release.
+ * @returns Whether the release is complete.
+ */
+export const isReleased = (taken: TakenLocation[], version: ReleaseVersion) => {
+  const locations = taken.map(({ location }) => location);
+
+  return locations.includes(`${GITHUB_REPO} tag ${version.name}`)
+    && !locations.includes(`${GITHUB_REPO} branch releases/${version.name}`);
+};
+
+/**
  * Fails when the version is already (partially) released, unless the release branch proves that
  * it's an interrupted run of this release: either a job retried in the same pipeline or RESUME.
  * @param options The release settings.
@@ -271,6 +285,10 @@ export const checkVersion = async (options: ReleaseOptions, root = ROOT) => {
   if (continuation === 'resume') {
     console.log(`${symbols.ok} Resuming the interrupted release of ${version.version}`);
     return;
+  }
+
+  if (isReleased(taken, version)) {
+    throw new Error(`${version.version} is released already: its tag exists and there is no releases/${version.name}, so there is nothing to ${resume ? 'resume' : 'release'}. Failed theme uploads are retried in the pipeline of that release: its theme jobs take the themes from the tag.`);
   }
 
   if (resume) {
