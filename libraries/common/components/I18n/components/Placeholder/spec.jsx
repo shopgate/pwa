@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { i18n } from '@shopgate/engage/core';
 import I18n from '../../index';
 
@@ -17,9 +16,8 @@ describe('<Placeholder />', () => {
   });
 
   describe('Given the component was mounted to the DOM', () => {
-    let renderedElement;
-    it('should render', () => {
-      renderedElement = mount((
+    beforeEach(() => {
+      render((
         <I18n.Provider>
           <I18n.Text string="greeting">
             <I18n.Placeholder forKey="world">
@@ -29,12 +27,17 @@ describe('<Placeholder />', () => {
           </I18n.Text>
         </I18n.Provider>
       ));
-      expect(renderedElement).toMatchSnapshot();
+    });
+
+    it('should render', () => {
+      expect(screen.getByText('Hello', { exact: false }).outerHTML)
+        .toBe('<span>Hello <strong>WORLD</strong>/</span>');
     });
 
     it('should render with a placeholder text', () => {
-      const text = renderedElement.find('strong').text();
-      expect(text).toBe('WORLD');
+      const placeholder = screen.getByText('WORLD');
+
+      expect(placeholder.tagName).toBe('STRONG');
     });
   });
 });

@@ -1,22 +1,27 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Checkbox from './index';
 
 /**
  * Checked Icon
  * @returns {JSX}
  */
-const Checked = () => <div />;
+const Checked = () => <div>checked icon</div>;
 
 /**
  * Unchecked Icon
  * @returns {JSX}
  */
-const Unchecked = () => <div />;
+const Unchecked = () => <div>unchecked icon</div>;
+
+/**
+ * @returns {string[]} The text of each child node of the checkbox.
+ */
+const getCheckboxContent = () => Array.from(screen.getByRole('checkbox').childNodes)
+  .map(node => node.textContent);
 
 describe('<Checkbox />', () => {
   it('should render the checkbox with the label before the icon', () => {
-    const wrapper = shallow((
+    render((
       <Checkbox
         label={<span>Test Label Deluxe</span>}
         labelPosition="left"
@@ -26,19 +31,16 @@ describe('<Checkbox />', () => {
       />
     ));
 
-    const expected = (
-      <div>
-        <span>Test Label Deluxe</span>
-        <Unchecked />
-      </div>
-    );
+    const checkbox = screen.getByRole('checkbox');
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.matchesElement(expected)).toBeTruthy();
+    expect(checkbox).toHaveAttribute('aria-checked', 'false');
+    expect(checkbox).toHaveAttribute('tabindex', '0');
+    expect(checkbox).toHaveClass('checkbox', 'common__checkbox');
+    expect(getCheckboxContent()).toEqual(['Test Label Deluxe', 'unchecked icon']);
   });
 
   it('should render the checkbox with the label after the icon', () => {
-    const wrapper = shallow((
+    render((
       <Checkbox
         label={<span>Test Label Deluxe</span>}
         labelPosition="right"
@@ -48,19 +50,16 @@ describe('<Checkbox />', () => {
       />
     ));
 
-    const expected = (
-      <div>
-        <Unchecked />
-        <span>Test Label Deluxe</span>
-      </div>
-    );
+    const checkbox = screen.getByRole('checkbox');
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.matchesElement(expected)).toBeTruthy();
+    expect(checkbox).toHaveAttribute('aria-checked', 'false');
+    expect(checkbox).toHaveAttribute('tabindex', '0');
+    expect(checkbox).toHaveClass('checkbox', 'common__checkbox');
+    expect(getCheckboxContent()).toEqual(['unchecked icon', 'Test Label Deluxe']);
   });
 
   it('should render the unchecked icon if "checked" is false', () => {
-    const wrapper = shallow((
+    render((
       <Checkbox
         checked={false}
         label="Test Label Deluxe"
@@ -69,13 +68,12 @@ describe('<Checkbox />', () => {
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Checked).length).toBe(0);
-    expect(wrapper.find(Unchecked).length).toBe(1);
+    expect(screen.getByRole('checkbox')).toHaveAttribute('aria-checked', 'false');
+    expect(getCheckboxContent()).toEqual(['Test Label Deluxe', 'unchecked icon']);
   });
 
-  it('should render the unchecked icon if "checked" is false', () => {
-    const wrapper = shallow((
+  it('should render the checked icon if "checked" is true', () => {
+    render((
       <Checkbox
         checked
         label="Test Label Deluxe"
@@ -84,15 +82,14 @@ describe('<Checkbox />', () => {
       />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Checked).length).toBe(1);
-    expect(wrapper.find(Unchecked).length).toBe(0);
+    expect(screen.getByRole('checkbox')).toHaveAttribute('aria-checked', 'true');
+    expect(getCheckboxContent()).toEqual(['Test Label Deluxe', 'checked icon']);
   });
 
   it('should call the callback with the inverted value', () => {
     const spy = jest.fn();
 
-    const wrapper = shallow((
+    render((
       <Checkbox
         label="Test Label Deluxe"
         checkedIcon={<Checked />}
@@ -102,12 +99,12 @@ describe('<Checkbox />', () => {
       />
     ));
 
-    wrapper.simulate('click');
+    fireEvent.click(screen.getByRole('checkbox'));
     expect(spy).toHaveBeenCalledWith(true);
   });
 
   it('should render an <input> element if a name prop is provided', () => {
-    const wrapper = shallow((
+    const { container } = render((
       <Checkbox
         label="Test Label Deluxe"
         checkedIcon={<Checked />}
@@ -117,14 +114,14 @@ describe('<Checkbox />', () => {
       />
     ));
 
-    const input = wrapper.find('input');
-    expect(input.length).toBe(1);
-    expect(input.prop('name')).toEqual('myCheckbox');
-    expect(input.prop('value')).toEqual(0);
+    const inputs = container.querySelectorAll('input');
+    expect(inputs).toHaveLength(1);
+    expect(inputs[0]).toHaveAttribute('name', 'myCheckbox');
+    expect(inputs[0]).toHaveValue('0');
   });
 
   it('should work as an uncontrolled input', () => {
-    const wrapper = shallow((
+    render((
       <Checkbox
         label="Test Label Deluxe"
         checkedIcon={<Checked />}
@@ -133,7 +130,13 @@ describe('<Checkbox />', () => {
       />
     ));
 
-    wrapper.simulate('click');
-    expect(wrapper.state('checked')).toBe(true);
+    expect(screen.getByText('unchecked icon')).toBeInTheDocument();
+    expect(screen.getByRole('checkbox')).not.toBeChecked();
+
+    fireEvent.click(screen.getByRole('checkbox'));
+
+    expect(screen.getByText('checked icon')).toBeInTheDocument();
+    expect(screen.queryByText('unchecked icon')).not.toBeInTheDocument();
+    expect(screen.getByRole('checkbox')).toBeChecked();
   });
 });

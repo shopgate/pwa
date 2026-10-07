@@ -61,13 +61,11 @@ export const prepareCheckout = ({
   }
 
   // Put logging info to sentry.
-  Sentry.configureScope((scope) => {
-    scope.setTag('checkout_order_id', order.id);
-    scope.addBreadcrumb({
-      category: 'checkout',
-      message: `Initialize checkout with order id ${order.id}`,
-      level: 'info',
-    });
+  Sentry.setTag('checkout_order_id', order.id);
+  Sentry.addBreadcrumb({
+    category: 'checkout',
+    message: `Initialize checkout with order id ${order.id}`,
+    level: 'info',
   });
 
   const paymentMethods = getPaymentMethods(getState());

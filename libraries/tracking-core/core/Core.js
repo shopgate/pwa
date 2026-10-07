@@ -1,4 +1,5 @@
 import { logger } from '@shopgate/pwa-core/helpers';
+import { toError } from '@shopgate/pwa-core/helpers/error';
 import errorManager from '@shopgate/pwa-core/classes/ErrorManager';
 import { SOURCE_TRACKING, CODE_TRACKING } from '@shopgate/pwa-core/constants/ErrorManager';
 import { optOut, isOptOut } from '../helpers/optOut';
@@ -231,13 +232,14 @@ class Core {
       }
       try {
         entry.callback.apply(this, params);
-      } catch (err) {
+      } catch (thrown) {
+        const err = toError(thrown, {
+          code: CODE_TRACKING,
+          source: SOURCE_TRACKING,
+          context: entry.trackerName,
+        });
+
         logger.error(`'SgTrackingCore': Error in plugin [${entry.trackerName}]`, err);
-
-        err.code = CODE_TRACKING;
-        err.source = SOURCE_TRACKING;
-        err.context = entry.trackerName;
-
         errorManager.queue(err);
       }
     });

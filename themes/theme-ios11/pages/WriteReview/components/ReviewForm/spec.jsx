@@ -1,9 +1,7 @@
-import React from 'react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { getCurrentRoute } from '@shopgate/pwa-common/helpers/router';
 import {
   mockProductId,
@@ -13,6 +11,7 @@ import {
   mockedStateWithUserReviewLoading,
   mockedStateWithoutProductData,
 } from '../../mock';
+import ReviewForm from './index';
 
 const mockedStore = configureStore();
 
@@ -23,26 +22,33 @@ jest.mock('@shopgate/pwa-common/helpers/router', () => ({
 jest.mock('@shopgate/engage/components');
 
 /**
- * Creates component with provided store state.
+ * Renders the component with provided store state.
  * @param {Object} mockedState Mocked stage.
  * @param {Function} dispatchSpy Dispatch spy
- * @return {ReactWrapper}
+ * @return {Object}
  */
-const createComponent = (mockedState, dispatchSpy = jest.fn()) => {
-  /* eslint-disable global-require */
-  const ReviewForm = require('./index').default;
+const renderComponent = (mockedState, dispatchSpy = jest.fn()) => {
   const store = mockedStore(mockedState);
   store.dispatch = dispatchSpy;
-  /* eslint-enable global-require */
-  return mount(
+
+  return render((
     <Provider store={store}>
       <LoadingProvider>
         <ReviewForm submit={() => { }} productId={mockProductId} />
       </LoadingProvider>
-    </Provider>,
-    mockRenderOptions
-  );
+    </Provider>
+  ));
 };
+
+const getAuthor = () => screen.getByLabelText('reviews.review_form_author');
+const getTitle = () => screen.getByLabelText('reviews.review_form_title');
+const getReview = () => screen.getByLabelText('reviews.review_form_text');
+const getRatingButtons = () => screen.getAllByRole('button', {
+  name: 'reviews.press_to_rate_with_x_stars',
+});
+const getRatedStars = container => container
+  .querySelector('.ui-shared__rating-stars')
+  .getAttribute('data-test-id');
 
 describe('<ReviewForm />', () => {
   beforeEach(() => {
@@ -52,110 +58,114 @@ describe('<ReviewForm />', () => {
   });
 
   it('should render form correctly', () => {
-    const comp = createComponent(mockedStateWithoutReview);
-    expect(comp).toMatchSnapshot();
-    expect(comp.find('RatingScale').length).toEqual(1);
+    const { container } = renderComponent(mockedStateWithoutReview);
 
-    const fields = comp.findWhere(c => c.length && c.name() === 'TextField');
-    expect(fields.length).toEqual(3);
+    expect(container.querySelector('[data-test-id="reviewForm"] form')).toBeInTheDocument();
+    expect(screen.getByText('reviews.review_form_rate')).toBeInTheDocument();
+    expect(getRatingButtons()).toHaveLength(5);
+    expect(getRatedStars(container)).toBe('ratedStars: 0');
+    expect(screen.getAllByRole('textbox')).toHaveLength(3);
+    expect(getAuthor()).toHaveValue('');
+    expect(getTitle()).toHaveValue('');
+    expect(getReview()).toHaveValue('');
+    expect(screen.getByRole('button', { name: 'common.cancel' })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: 'common.submit' })).toHaveAttribute('type', 'submit');
   });
 
   it('should render empty', () => {
-    const compEmpty = createComponent(mockedStateWithoutProductData);
-    expect(compEmpty).toMatchSnapshot();
-    expect(compEmpty.exists()).toEqual(true);
+    const { container } = renderComponent(mockedStateWithoutProductData);
+
+    expect(container.querySelector('[data-test-id="reviewForm"] form')).toBeInTheDocument();
+    expect(getRatedStars(container)).toBe('ratedStars: 0');
+    expect(getAuthor()).toHaveValue('');
+    expect(getTitle()).toHaveValue('');
+    expect(getReview()).toHaveValue('');
   });
 
   it('should render loading indicator', () => {
-    const compLoading = createComponent(mockedStateWithUserReviewLoading);
-    expect(compLoading).toMatchSnapshot();
-    expect(compLoading.find('LoadingIndicator').length).toEqual(1);
+    const { container } = renderComponent(mockedStateWithUserReviewLoading);
+
+    expect(container.querySelectorAll('[data-test-id="loadingIndicator"]')).toHaveLength(1);
+    expect(container.querySelector('form')).not.toBeInTheDocument();
   });
 
   it('should validate form on submit', () => {
-    const comp = createComponent(mockedStateWithoutReview);
-    comp.find('form').simulate('submit');
-    comp.update();
-    expect(comp).toMatchSnapshot();
+    const dispatchSpy = jest.fn();
+    const { container } = renderComponent(mockedStateWithoutReview, dispatchSpy);
 
-    const errors = comp.find('ReviewForm').instance().state.validationErrors;
-    const author = comp.findWhere(c => (
-      c.length && c.name() === 'TextField' && c.prop('name') === 'author'
-    ));
+    fireEvent.submit(container.querySelector('form'));
 
-    expect(comp.find('RatingScale').prop('value')).toEqual(0);
-    expect(comp.find('RatingScale').prop('errorText')).toBeDefined();
-    expect(errors.rate).toBeDefined();
+    expect(getRatedStars(container)).toBe('ratedStars: 0');
+    expect(screen.getByText('reviews.review_form_rate_error')).toBeInTheDocument();
 
-    expect(author.prop('value')).toBeFalsy();
-    expect(author.prop('errorText')).toBeDefined();
+    expect(getAuthor()).toHaveValue('');
+    expect(getAuthor()).toBeInvalid();
+    expect(getAuthor()).toHaveAccessibleDescription('reviews.review_form_error_author_empty');
+    expect(dispatchSpy).not.toHaveBeenCalled();
   });
 
   it('should set form data', () => {
-    const comp = createComponent(mockedStateWithReview);
+    const { container } = renderComponent(mockedStateWithReview);
     const id = mockedStateWithReview.reviews.userReviewsByProductId.foo.review;
     const review = mockedStateWithReview.reviews.reviewsById[id];
-    const form = comp.find('form');
 
-    expect(comp).toMatchSnapshot();
-    expect(form.exists()).toEqual(true);
-    expect(form.find('RatingScale').prop('value')).toEqual(review.rate);
-    expect(form.find('TextField').at(0).prop('value')).toEqual(review.author);
-    expect(form.find('TextField').at(1).prop('value')).toEqual(review.title);
-    expect(form.find('TextField').at(2).prop('value')).toEqual(review.review);
+    expect(container.querySelector('form')).toBeInTheDocument();
+    expect(getRatedStars(container)).toBe(`ratedStars: ${review.rate / 20}`);
+    expect(getAuthor()).toHaveValue(review.author);
+    expect(getTitle()).toHaveValue(review.title);
+    expect(getReview()).toHaveValue(review.review);
   });
 
   it('should validate fields on change', () => {
-    const comp = createComponent(mockedStateWithInvalidReview);
-    expect(comp).toMatchSnapshot();
+    const { container } = renderComponent(mockedStateWithInvalidReview);
 
-    comp.find('form').simulate('submit');
-    comp.update();
-    expect(comp).toMatchSnapshot();
+    expect(getReview()).toBeValid();
 
-    // Check validation with to long review
-    const errors1 = comp.find('ReviewForm').instance().state.validationErrors;
-    const review = comp.findWhere(c => (
-      c.length && c.name() === 'TextField' && c.prop('name') === 'review'
-    ));
-    expect(errors1.review).toBeDefined();
+    fireEvent.submit(container.querySelector('form'));
 
-    // Check validation with changed, shorter review
-    review.find('textarea').simulate('change', { target: { value: 'Lorem ipsum dolor sit amet' } });
-    comp.update();
-    expect(comp).toMatchSnapshot();
+    expect(getReview()).toBeInvalid();
+    expect(getReview()).toHaveAccessibleDescription('reviews.review_form_error_length');
 
-    const errors2 = comp.find('ReviewForm').instance().state.validationErrors;
-    expect(errors2.review).toBeFalsy();
+    fireEvent.change(getReview(), { target: { value: 'Lorem ipsum dolor sit amet' } });
+
+    expect(getReview()).toHaveValue('Lorem ipsum dolor sit amet');
+    expect(getReview()).toBeValid();
+    expect(getReview()).not.toHaveAccessibleDescription();
 
     const longAuthor = new Array(256).fill('a').join('');
-    comp.find('input[name="author"]').simulate('change', {
+    fireEvent.change(getAuthor(), {
       target: {
         value: longAuthor,
       },
     });
-    const errors3 = comp.find('ReviewForm').instance().state.validationErrors;
-    expect(errors3.author).toBeTruthy();
-    comp.find('input[name="author"]').simulate('change', {
+
+    expect(getAuthor()).toBeInvalid();
+    expect(getAuthor()).toHaveAccessibleDescription('reviews.review_form_error_length');
+
+    fireEvent.change(getAuthor(), {
       target: {
         value: 'Author',
       },
     });
 
-    const errors4 = comp.find('ReviewForm').instance().state.validationErrors;
-    expect(errors4.author).toBeFalsy();
+    expect(getAuthor()).toBeValid();
+    expect(getAuthor()).not.toHaveAccessibleDescription();
 
-    comp.find('RatingScale').find('[role="button"]').first().simulate('click');
-    expect(comp.find('ReviewForm').instance().state.rate).toBe(20);
+    fireEvent.click(getRatingButtons()[0]);
+
+    expect(getRatedStars(container)).toBe('ratedStars: 1');
   });
 
   it('should submit with valid review', () => {
-    const comp = createComponent(mockedStateWithReview);
-    expect(comp).toMatchSnapshot();
+    const dispatchSpy = jest.fn();
+    const { container } = renderComponent(mockedStateWithReview, dispatchSpy);
 
-    comp.find('form').simulate('submit');
-    comp.update();
-    const errors = comp.find('ReviewForm').instance().state.validationErrors;
-    expect(Object.keys(errors).length).toBe(0);
+    fireEvent.submit(container.querySelector('form'));
+
+    expect(screen.queryByText('reviews.review_form_rate_error')).not.toBeInTheDocument();
+    expect(getAuthor()).toBeValid();
+    expect(getTitle()).toBeValid();
+    expect(getReview()).toBeValid();
+    expect(dispatchSpy).toHaveBeenCalledTimes(1);
   });
 });

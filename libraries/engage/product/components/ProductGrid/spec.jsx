@@ -1,8 +1,6 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
+import { InfiniteContainer } from '@shopgate/engage/components';
 import ProductGrid from '.';
-
-global.console.error = jest.fn();
 
 jest.mock('@shopgate/engage/core', () => ({
   hasWebBridge: jest.fn(() => false),
@@ -15,8 +13,12 @@ jest.mock('@shopgate/engage/components', () => {
   const { ViewContext } = jest.requireActual('@shopgate/engage/components/View/context');
   return {
     ViewContext,
-    InfiniteContainer: () => null,
-    Grid: () => null,
+    InfiniteContainer: jest.fn(() => null),
+    LoadingIndicator: () => null,
+    // eslint-disable-next-line react/prop-types
+    Grid: ({ children, className, 'data-test-id': testId }) => (
+      <div className={className} data-test-id={testId}>{children}</div>
+    ),
   };
 });
 
@@ -31,23 +33,35 @@ jest.mock('@shopgate/engage/product', () => ({
 }));
 
 describe('<ProductGrid />', () => {
+  beforeEach(() => {
+    InfiniteContainer.mockClear();
+  });
+
   it('should render with the InfiniteContainer', () => {
-    const wrapper = mount((
+    render((
       <ProductGrid products={[]} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('InfiniteContainer').exists()).toBe(true);
-    expect(wrapper.find('Layout').exists()).toBe(false);
+    expect(InfiniteContainer.mock.lastCall[0]).toEqual(expect.objectContaining({
+      columns: 2,
+      items: [],
+      initialLimit: 32,
+      limit: 32,
+      totalItems: null,
+      requestHash: null,
+      enablePromiseBasedLoading: true,
+      iterator: expect.any(Function),
+      loader: expect.any(Function),
+      wrapper: expect.any(Function),
+    }));
   });
 
   it('should render the original layout', () => {
-    const wrapper = mount((
+    const { container } = render((
       <ProductGrid infiniteLoad={false} products={[]} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('InfiniteContainer').exists()).toBe(false);
-    expect(wrapper.find('Layout').exists()).toBe(true);
+    expect(InfiniteContainer).not.toHaveBeenCalled();
+    expect(container.querySelector('[data-test-id="productGrid"]')).toHaveClass('theme__product-grid');
   });
 });

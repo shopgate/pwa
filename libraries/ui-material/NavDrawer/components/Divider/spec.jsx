@@ -1,10 +1,11 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Divider from './index';
 
 describe('<NavDrawerDivider />', () => {
-  it('should match the snapshot', () => {
-    const wrapper = mount(<Divider />);
-    expect(wrapper).toMatchSnapshot();
+  it('should render a separator which is hidden from assistive technology', () => {
+    render(<Divider />);
+
+    expect(screen.queryByRole('separator')).not.toBeInTheDocument();
+    expect(screen.getByRole('separator', { hidden: true })).toHaveAttribute('aria-hidden', 'true');
   });
 });

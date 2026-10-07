@@ -1,9 +1,8 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import WithProductContext from './withProductContext';
 
 // eslint-disable-next-line react/prop-types, require-jsdoc
-const TestingComponent = props => <div>Other prop: {props.foo}</div>;
+const TestingComponent = jest.fn(props => <div>Other prop: {props.foo}</div>);
 
 jest.mock('@shopgate/pwa-common/context', () => ({
   // eslint-disable-next-line react/prop-types
@@ -40,9 +39,10 @@ jest.mock('@shopgate/pwa-common/context', () => ({
 describe('connectors/withProductContext', () => {
   it('should render with specified props', () => {
     const ConnectedComponent = WithProductContext(TestingComponent);
-    const component = mount(<ConnectedComponent foo="bar" />);
+    render(<ConnectedComponent foo="bar" />);
 
-    expect(component.find('TestingComponent').props()).toEqual({
+    expect(screen.getByText('Other prop: bar')).toBeInTheDocument();
+    expect(TestingComponent.mock.lastCall[0]).toEqual({
       foo: 'bar',
       productContext: {
         options: {},

@@ -8,9 +8,7 @@
 
 <div align="center">
 
-[![Coverage Status](https://coveralls.io/repos/github/shopgate/pwa/badge.svg?branch=v6.X)](https://coveralls.io/github/shopgate/pwa?branch=v6.X)
 [![GitHub (pre-)release](https://img.shields.io/github/release/shopgate/pwa/all.svg)](https://github.com/shopgate/pwa/releases)
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lernajs.io/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 </div>
@@ -30,6 +28,21 @@ WEB_BRIDGE=1 sgconnect frontend start
 or
 ```shell
 WEB_BRIDGE=1 sgconnect frontend start -t theme-gmd
+```
+
+## Type checking during development
+The development server transpiles TypeScript without checking the types. To see type errors while developing, start the frontend with the `TYPE_CHECK` environment parameter.
+
+```shell
+TYPE_CHECK=1 sgconnect frontend start
+```
+
+The theme and every attached extension with a `frontend/tsconfig.json` are then checked on each change, with the TypeScript version that is installed there. The errors are printed to the terminal and don't stop the build.
+
+To also see the errors in the browser, use the value `overlay`. An error then covers the app until it is fixed or the overlay is closed.
+
+```shell
+TYPE_CHECK=overlay sgconnect frontend start
 ```
 
 ## About Shopgate

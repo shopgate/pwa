@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { i18n } from '@shopgate/engage/core';
 import I18n from '../../index';
 
@@ -20,30 +19,29 @@ describe('<FormatTime />', () => {
   });
 
   describe('Given the component was mounted to the DOM', () => {
-    // TODO: Handle snapshot test.
-    const renderedElement = mount((
-      <I18n.Provider>
-        <div>
-          <span className="only-time">
-            <I18n.Time timestamp={timestamp} format={format} />
-          </span>
-          <span className="text-with-time">
-            <I18n.Text string="greeting">
-              <I18n.Time forKey="time" timestamp={timestamp} format={format} />
-            </I18n.Text>
-          </span>
-        </div>
-      </I18n.Provider>
-    ));
+    beforeEach(() => {
+      render((
+        <I18n.Provider>
+          <div>
+            <span data-testid="only-time">
+              <I18n.Time timestamp={timestamp} format={format} />
+            </span>
+            <span data-testid="text-with-time">
+              <I18n.Text string="greeting">
+                <I18n.Time forKey="time" timestamp={timestamp} format={format} />
+              </I18n.Text>
+            </span>
+          </div>
+        </I18n.Provider>
+      ));
+    });
 
     it('should render formatted time', () => {
-      const text = renderedElement.find('.only-time').text();
-      expect(text).toBe(formattedTime);
+      expect(screen.getByTestId('only-time').textContent).toBe(formattedTime);
     });
 
     it('should render within translated text', () => {
-      const text = renderedElement.find('.text-with-time').text();
-      expect(text).toBe(`Hello ${formattedTime}`);
+      expect(screen.getByTestId('text-with-time').textContent).toBe(`Hello ${formattedTime}`);
     });
   });
 });

@@ -5,10 +5,6 @@ import {
 import { configureStore } from '../store';
 import { userDidLogin$, userDidUpdate$ } from './user';
 
-jest.mock('redux-logger', () => ({
-  createLogger: () => () => next => action => next(action),
-}));
-
 /**
  * A mocked dummy reducer to satisfy the store creation.
  * @param {Object} state The current redux state.

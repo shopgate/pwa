@@ -1,8 +1,5 @@
-import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Drawer from './index';
-
-jest.mock('@shopgate/engage/a11y/components');
 
 describe('<Drawer />', () => {
   const onOpen = jest.fn();
@@ -15,61 +12,65 @@ describe('<Drawer />', () => {
   });
 
   it('should render', () => {
-    const wrapper = shallow(<Drawer />);
+    const { container } = render(<Drawer />);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should execute callback when drawer is opened', () => {
-    const wrapper = mount(<Drawer onOpen={onOpen} />);
-    wrapper.setProps({
-      isOpen: true,
-    });
+    const { rerender } = render(<Drawer onOpen={onOpen} />);
+    rerender(<Drawer onOpen={onOpen} isOpen />);
 
     expect(onOpen).toBeCalled();
   });
 
   it('should execute callback when drawer is closed', () => {
-    const wrapper = mount(<Drawer isOpen onClose={onClose} />);
-    wrapper.setProps({
-      isOpen: false,
-    });
+    const { rerender } = render(<Drawer isOpen onClose={onClose} />);
+    rerender(<Drawer isOpen={false} onClose={onClose} />);
 
     expect(onClose).toBeCalled();
   });
 
   it('should add custom classes', () => {
-    const wrapper = mount(<Drawer className="custom-class-name" isOpen />);
+    render(<Drawer className="custom-class-name" isOpen />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.hasClass('custom-class-name')).toEqual(true);
+    const dialog = screen.getByRole('dialog');
+
+    expect(dialog).toHaveClass('custom-class-name', 'common__drawer');
+    expect(dialog).toHaveAttribute('aria-modal', 'true');
+    expect(dialog).toHaveAttribute('tabindex', '-1');
+    expect(dialog).toBeEmptyDOMElement();
   });
 
   it('should execute callback when drawer open animation did end', () => {
-    const wrapper = mount(<Drawer className="custom-class-name" isOpen={false} onOpen={onOpen} onDidOpen={onDidOpen} />);
-    expect(wrapper).toMatchSnapshot();
-    wrapper.setProps({
-      isOpen: true,
-    });
-    wrapper.update();
+    const props = {
+      className: 'custom-class-name',
+      onOpen,
+      onDidOpen,
+    };
+    const { container, rerender } = render(<Drawer {...props} isOpen={false} />);
+    expect(container).toBeEmptyDOMElement();
+    rerender(<Drawer {...props} isOpen />);
 
     expect(onOpen).toBeCalled();
     expect(onDidOpen).not.toBeCalled();
-    wrapper.find('[role="dialog"]').simulate('animationEnd');
+    fireEvent.animationEnd(screen.getByRole('dialog'));
     expect(onDidOpen).toBeCalled();
   });
 
   it('should execute callback when drawer close animation did end', () => {
-    const wrapper = mount(<Drawer className="custom-class-name" isOpen onClose={onClose} onDidClose={onDidClose} />);
-    expect(wrapper).toMatchSnapshot();
-    wrapper.setProps({
-      isOpen: false,
-    });
-    wrapper.update();
+    const props = {
+      className: 'custom-class-name',
+      onClose,
+      onDidClose,
+    };
+    const { rerender } = render(<Drawer {...props} isOpen />);
+    expect(screen.getByRole('dialog')).toHaveClass('custom-class-name', 'common__drawer');
+    rerender(<Drawer {...props} isOpen={false} />);
 
     expect(onClose).toBeCalled();
     expect(onDidClose).not.toBeCalled();
-    wrapper.find('[role="dialog"]').simulate('animationEnd');
+    fireEvent.animationEnd(screen.getByRole('dialog'));
     expect(onDidClose).toBeCalled();
   });
 });

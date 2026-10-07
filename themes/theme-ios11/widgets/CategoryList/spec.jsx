@@ -1,11 +1,20 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { SheetList } from '@shopgate/engage/components';
 import { Unwrapped as CategoryListWidget } from './index';
 
 jest.mock('@shopgate/engage/components');
 
 describe('<CategoryListWidget />', () => {
+  let itemSpy;
+
+  beforeEach(() => {
+    itemSpy = jest.spyOn(SheetList, 'Item');
+  });
+
+  afterEach(() => {
+    itemSpy.mockRestore();
+  });
+
   it('should not render the CategoryListWidget', () => {
     const props = {
       fetchCategory: () => {},
@@ -17,10 +26,10 @@ describe('<CategoryListWidget />', () => {
       },
     };
 
-    const wrapper = mount(<CategoryListWidget {...props} />);
+    const { container } = render(<CategoryListWidget {...props} />);
 
-    expect(wrapper.find(SheetList.Item).length).toBe(0);
-    expect(wrapper).toMatchSnapshot();
+    expect(itemSpy).not.toHaveBeenCalled();
+    expect(container).toBeEmptyDOMElement();
   });
 
   it('should render the CategoryListWidget', () => {
@@ -45,9 +54,23 @@ describe('<CategoryListWidget />', () => {
       },
     };
 
-    const wrapper = mount(<CategoryListWidget {...props} />);
+    render(<CategoryListWidget {...props} />);
 
-    expect(wrapper.find(SheetList.Item).length).toBe(2);
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.getByRole('heading', {
+      level: 2,
+      name: 'Yay Categories',
+    })).toBeInTheDocument();
+    expect(itemSpy.mock.calls[0][0]).toEqual({
+      image: null,
+      link: '/category/31',
+      title: 'Headline',
+      testId: 'Headline',
+    });
+    expect(itemSpy.mock.calls[1][0]).toEqual({
+      image: null,
+      link: '/category/32',
+      title: 'Headline',
+      testId: 'Headline',
+    });
   });
 });

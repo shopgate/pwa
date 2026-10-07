@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import RadioItem from './components/Item';
 import RadioGroup from '.';
 
@@ -11,83 +10,98 @@ jest.mock('@shopgate/engage/components');
 
 describe('<RadioGroup />', () => {
   it('should render empty group', () => {
-    const wrapper = mount(<RadioGroup {...defProps} />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<RadioGroup {...defProps} />);
+
+    const group = container.querySelector('.ui-shared__form__radio-group');
+
+    expect(group).toHaveClass('radioGroup');
+    expect(group).not.toHaveClass('disabled');
+    expect(group.querySelector('.radioGroup')).toBeEmptyDOMElement();
+    expect(group.querySelector('.underline')).not.toBeInTheDocument();
+    expect(screen.queryByRole('radio')).not.toBeInTheDocument();
   });
 
   it('should render column group with items', () => {
-    const wrapper = mount((
-      <RadioGroup {...defProps}>
+    const onChange = jest.fn();
+
+    const { container } = render((
+      <RadioGroup {...defProps} onChange={onChange}>
         <RadioItem name="foo" label="foo" />
       </RadioGroup>
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(RadioItem).length).toEqual(1);
-    expect(typeof wrapper.find(RadioItem).prop('onChange')).toEqual('function');
+    const radio = screen.getByRole('radio', { name: 'foo' });
+
+    expect(screen.getAllByRole('radio')).toEqual([radio]);
+    expect(radio).not.toBeChecked();
+    expect(container.querySelector('.ui-shared__form__radio-group .radioGroup'))
+      .toHaveStyle({ flexDirection: 'column' });
+
+    fireEvent.click(radio);
+
+    expect(onChange).toHaveBeenCalledTimes(1);
   });
 
   it('should render rows group with items', () => {
-    const wrapper = mount((
-      <RadioGroup {...defProps} direction="rows">
+    const { container } = render((
+      <RadioGroup {...defProps} direction="row">
         <RadioItem name="foo" label="foo" />
       </RadioGroup>
     ));
-    expect(wrapper).toMatchSnapshot();
+
+    expect(screen.getAllByRole('radio')).toHaveLength(1);
+    expect(screen.getByRole('radio', { name: 'foo' })).not.toBeChecked();
+    expect(container.querySelector('.ui-shared__form__radio-group .radioGroup'))
+      .toHaveStyle({ flexDirection: 'row' });
   });
 
   it('should use default value', () => {
-    const wrapper = mount((
+    render((
       <RadioGroup {...defProps} value="foo">
         <RadioItem name="foo" label="foo" />
       </RadioGroup>
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(RadioItem).length).toEqual(1);
-    expect(wrapper.find(RadioItem).prop('checked')).toEqual(true);
+    expect(screen.getAllByRole('radio')).toHaveLength(1);
+    expect(screen.getByRole('radio', { name: 'foo' })).toBeChecked();
   });
 
   it('should have on value at a time', () => {
-    const wrapper = mount((
+    render((
       <RadioGroup {...defProps}>
         <RadioItem name="foo" label="foo" />
         <RadioItem name="bar" label="bar" />
       </RadioGroup>
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(RadioItem).length).toEqual(2);
+    expect(screen.getAllByRole('radio')).toHaveLength(2);
 
-    const radio1 = wrapper.find(RadioItem).at(0).find('input');
-    const radio2 = wrapper.find(RadioItem).at(1).find('input');
+    const radio1 = screen.getByRole('radio', { name: 'foo' });
+    const radio2 = screen.getByRole('radio', { name: 'bar' });
 
-    // First element value
-    radio1.simulate('change');
-    wrapper.update();
-    expect(wrapper.find(RadioItem).at(0).prop('checked')).toEqual(true);
-    expect(wrapper.find(RadioItem).at(1).prop('checked')).toEqual(false);
+    expect(radio1).not.toBeChecked();
+    expect(radio2).not.toBeChecked();
 
-    // Second element value
-    radio2.simulate('change');
-    wrapper.update();
-    expect(wrapper.find(RadioItem).at(0).prop('checked')).toEqual(false);
-    expect(wrapper.find(RadioItem).at(1).prop('checked')).toEqual(true);
+    fireEvent.click(radio1);
+    expect(radio1).toBeChecked();
+    expect(radio2).not.toBeChecked();
+
+    fireEvent.click(radio2);
+    expect(radio1).not.toBeChecked();
+    expect(radio2).toBeChecked();
   });
 
   it('should call onChange callback', () => {
     const onChange = jest.fn();
-    const wrapper = mount((
+    render((
       <RadioGroup {...defProps} onChange={onChange}>
         <RadioItem name="foo" label="foo" />
       </RadioGroup>
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(RadioItem).length).toEqual(1);
+    expect(screen.getAllByRole('radio')).toHaveLength(1);
 
-    const radio = wrapper.find(RadioItem).at(0).find('input');
-    radio.simulate('change');
+    fireEvent.click(screen.getByRole('radio', { name: 'foo' }));
 
     expect(onChange).toHaveBeenCalledWith('foo');
   });

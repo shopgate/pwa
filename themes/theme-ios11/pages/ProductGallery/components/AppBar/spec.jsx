@@ -1,23 +1,16 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import DefaultBar from 'Components/AppBar/presets/DefaultBar';
-import AppBarIcon from '@shopgate/pwa-ui-ios/AppBar/components/Icon';
+import { DefaultBar } from 'Components/AppBar/presets';
+import { ArrowIcon } from '@shopgate/pwa-ui-shared';
 import AppBar from './index';
 
-jest.mock('Components/AppBar/presets/DefaultBar', () => {
-  // eslint-disable-next-line no-shadow
-  const DefaultBar = () => null;
-  return DefaultBar;
-});
-jest.mock('@shopgate/pwa-ui-shared', () => {
-  const ArrowIcon = () => null;
-  return {
-    ArrowIcon,
-  };
-});
+jest.mock('Components/AppBar/presets', () => ({
+  DefaultBar: jest.fn(({ left }) => left),
+}));
+jest.mock('@shopgate/pwa-ui-shared', () => ({
+  ArrowIcon: jest.fn(() => null),
+}));
 
 jest.mock('@shopgate/engage/components');
 
@@ -27,16 +20,18 @@ describe('<ProductGallery.Appbar> page', () => {
   it('should render a default app bar', () => {
     const store = mockedStore();
 
-    const wrapper = mount((
+    render((
       <Provider store={store}>
         <AppBar />
-      </Provider>), mockRenderOptions);
+      </Provider>
+    ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(DefaultBar).length).toEqual(1);
+    expect(DefaultBar.mock.lastCall[0]).toEqual(expect.objectContaining({
+      backgroundColor: 'rgba(0, 0, 0, 0)',
+      textColor: 'var(--sg-palette-common-white)',
+    }));
 
-    const AppBarLeft = mount(wrapper.find(DefaultBar).prop('left'));
-    expect(AppBarLeft.find(AppBarIcon).length).toEqual(1);
-    expect(AppBarLeft.find(AppBarIcon).prop('shadow')).toEqual(true);
+    expect(screen.getAllByRole('button')).toHaveLength(1);
+    expect(ArrowIcon.mock.lastCall[0]).toEqual({ shadow: true });
   });
 });

@@ -1,9 +1,13 @@
-import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import { PickerUtilize as Picker } from '@shopgate/engage/components';
 import Options from './index';
 
-jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/components', () => ({
+  PickerUtilize: jest.fn(() => 'PickerUtilize'),
+  I18n: {
+    Text: () => null,
+  },
+}));
 jest.mock('@shopgate/engage/product/components', () => ({
   PriceDifference: () => null,
 }));
@@ -19,9 +23,7 @@ jest.mock('@shopgate/engage/product/contexts', () => {
 });
 
 // Mock the redux connect() method instead of providing a fake store.
-jest.mock('./connector', () => (obj) => {
-  const newObj = obj;
-
+jest.mock('./connector', () => (Component) => {
   const mockOptions = [{
     id: 'test-id',
     type: 'select',
@@ -40,12 +42,7 @@ jest.mock('./connector', () => (obj) => {
     ],
   }];
 
-  newObj.defaultProps = {
-    options: mockOptions,
-    currentOptions: {},
-  };
-
-  return newObj;
+  return props => <Component options={mockOptions} currentOptions={{}} {...props} />;
 });
 
 describe('<Options />', () => {
@@ -67,16 +64,24 @@ describe('<Options />', () => {
     ],
   }];
 
-  describe('Given the component was mounted to the DOM', () => {
-    it('should match snapshot', () => {
-      const wrapper = shallow(<Options currentOptions={{}} />).dive();
-      expect(wrapper).toMatchSnapshot();
-    });
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
 
-    it('should render correct number of options', () => {
-      const wrapper = mount(<Options options={mockOptions} />);
-      const picker = wrapper.find(Picker);
-      expect(picker.length).toBe(mockOptions.length);
+  describe('Given the component was mounted to the DOM', () => {
+    it('should render a picker for the select option', () => {
+      const { container } = render(<Options currentOptions={{}} />);
+
+      const options = container.querySelector('[data-test-id="optionsPicker"]');
+
+      expect(options).toHaveClass('engage__product__options');
+      expect(options.querySelector('[data-test-id="label"]')).toHaveTextContent('PickerUtilize');
+      expect(Picker.mock.lastCall[0]).toEqual(expect.objectContaining({
+        label: 'label',
+        value: null,
+        items: mockOptions[0].items.map(item => expect.objectContaining(item)),
+        onChange: expect.any(Function),
+      }));
     });
   });
 });

@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { i18n } from '@shopgate/engage/core';
 import I18n from '../../index';
 import FormatNumber from './index';
@@ -9,16 +8,20 @@ jest.unmock('@shopgate/engage/core/helpers/i18n');
 describe('<FormatNumber>', () => {
   describe('i18n not ready', () => {
     it('should return same number and className when i18n is not ready', () => {
-      const component = mount(<FormatNumber number={1} fractions={2} className="some-class" />);
-      expect(component.html().includes('some-class')).toBe(true);
-      expect(component.text().includes('1')).toBe(true);
-      expect(component).toMatchSnapshot();
+      render(<FormatNumber number={1} fractions={2} className="some-class" />);
+
+      const number = screen.getByText('1');
+
+      expect(number.tagName).toBe('SPAN');
+      expect(number).toHaveClass('some-class', { exact: true });
     });
   });
   describe('i18n ready', () => {
-    i18n.init({
-      locales: {},
-      lang: 'en-US',
+    beforeAll(() => {
+      i18n.init({
+        locales: {},
+        lang: 'en-US',
+      });
     });
 
     const pairs = [
@@ -29,12 +32,12 @@ describe('<FormatNumber>', () => {
     ];
 
     /**
-     * Makes a component.
+     * Renders a component.
      * @param {number} number Number
      * @param {number} fractions Decimal points.
      * @returns {Object}
      */
-    const makeComponent = (number, fractions) => (mount((
+    const makeComponent = (number, fractions) => (render((
       <I18n.Provider>
         <div>
           <FormatNumber number={number} fractions={fractions} />
@@ -44,9 +47,8 @@ describe('<FormatNumber>', () => {
 
     pairs.forEach(([input, expexted, fractions]) => {
       it(`should format ${input} into ${expexted}`, () => {
-        const component = makeComponent(input, fractions);
-        expect(component.text().includes(`${expexted}`)).toBe(true);
-        expect(component).toMatchSnapshot();
+        const { container } = makeComponent(input, fractions);
+        expect(container.innerHTML).toBe(`<div><span>${expexted}</span></div>`);
       });
     });
   });

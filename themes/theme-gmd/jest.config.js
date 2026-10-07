@@ -21,6 +21,5 @@ module.exports = {
   ],
   coveragePathIgnorePatterns: [
     '/extensions/',
-    '/e2e/',
   ],
 };

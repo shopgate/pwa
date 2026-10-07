@@ -1,7 +1,4 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
-import Drawer from '@shopgate/pwa-common/components/Drawer';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { render, screen, fireEvent } from '@testing-library/react';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
 import Sheet, { SHEET_EVENTS } from './index';
 
@@ -14,93 +11,112 @@ jest.mock('@shopgate/pwa-core/emitters/ui', () => ({
 jest.mock('@shopgate/engage/a11y/components');
 
 describe('<Sheet />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render closed without content', () => {
-    const wrapper = shallow(<Sheet />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<Sheet />);
+
+    expect(container.querySelector('section')).toHaveClass('ui-shared__sheet');
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    expect(container.querySelector('.common__backdrop')).not.toBeInTheDocument();
   });
 
   it('should render opened without content', () => {
-    const wrapper = shallow(<Sheet isOpen />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<Sheet isOpen />);
+
+    const dialog = screen.getByRole('dialog');
+
+    expect(container.querySelector('section.ui-shared__sheet')).toContainElement(dialog);
+    expect(dialog).toHaveStyle({ animationDuration: '300ms' });
+    expect(dialog.className).toContain('drawerAnimIn');
+    expect(dialog).toHaveTextContent('');
+    expect(screen.queryByRole('heading')).not.toBeInTheDocument();
+    expect(container.querySelector('.ui-shared__progress-bar')).toBeInTheDocument();
+    expect(container.querySelector('.common__backdrop')).toHaveStyle({ opacity: 0.2 });
   });
 
   it('should render with content and title', () => {
-    const wrapper = shallow((
+    render((
       <Sheet isOpen title="Test-Title">
         <div>Test</div>
       </Sheet>
     ));
-    expect(wrapper).toMatchSnapshot();
+
+    const dialog = screen.getByRole('dialog');
+
+    expect(dialog).toContainElement(screen.getByRole('heading', { name: 'Test-Title' }));
+    expect(dialog).toContainElement(screen.getByRole('button', { name: 'common.close' }));
+    expect(dialog).toContainElement(screen.getByText('Test'));
+    expect(screen.queryByRole('searchbox')).not.toBeInTheDocument();
   });
 
   it('should call onDidOpen callback when the Sheet was opened', () => {
     const onOpen = jest.fn();
     const onDidOpen = jest.fn();
 
-    const wrapper = mount(
-      (
-        <Sheet isOpen={false} onOpen={onOpen} onDidOpen={onDidOpen}>
-          <div>Test</div>
-        </Sheet>
-      ), mockRenderOptions
-    );
+    const { rerender } = render((
+      <Sheet isOpen={false} onOpen={onOpen} onDidOpen={onDidOpen}>
+        <div>Test</div>
+      </Sheet>
+    ));
 
     expect(onOpen).not.toHaveBeenCalled();
     expect(onDidOpen).not.toHaveBeenCalled();
 
-    wrapper.setProps({ isOpen: true });
-    wrapper.update();
+    rerender((
+      <Sheet isOpen onOpen={onOpen} onDidOpen={onDidOpen}>
+        <div>Test</div>
+      </Sheet>
+    ));
+
     expect(onOpen).toHaveBeenCalled();
-    wrapper.find(Drawer).simulate('animationEnd');
+    fireEvent.animationEnd(screen.getByRole('dialog'));
     expect(onDidOpen).toHaveBeenCalled();
-    expect(UIEvents.emit).nthCalledWith(1, SHEET_EVENTS.OPEN);
+    expect(UIEvents.emit).toHaveBeenCalledWith(SHEET_EVENTS.OPEN);
   });
 
   it('should trigger onClose callback and close the Sheet', () => {
     const onCloseSpy = jest.fn();
 
-    const wrapper = mount(
-      (
-        <Sheet isOpen title="Test-Title" onClose={onCloseSpy}>
-          <div>Test</div>
-        </Sheet>
-      ), mockRenderOptions
-    );
+    render((
+      <Sheet isOpen title="Test-Title" onClose={onCloseSpy}>
+        <div>Test</div>
+      </Sheet>
+    ));
 
-    // Trigger a click on the close button of the Sheet.
-    wrapper.find('button').first().simulate('click');
+    fireEvent.click(screen.getByRole('button', { name: 'common.close' }));
 
-    return new Promise((resolve) => {
-      // Wait until the drawer is closed and has updated it's state.
-      setTimeout(() => {
-        resolve();
-      }, wrapper.find(Drawer).prop('animation').duration);
-    }).then(() => {
-      // Check if onClose callback was called.
-      expect(onCloseSpy).toHaveBeenCalled();
+    expect(onCloseSpy).toHaveBeenCalled();
+    expect(screen.getByRole('dialog').className).toContain('drawerAnimOut');
+    expect(screen.getByRole('dialog').className).not.toContain('drawerAnimIn');
 
-      // Check if the Drawer component was closed.
-      expect(wrapper.find(Drawer).prop('isOpen')).not.toBeTruthy();
+    fireEvent.animationEnd(screen.getByRole('dialog'));
 
-      expect(wrapper).toMatchSnapshot();
-
-      wrapper.find(Drawer).simulate('animationEnd');
-      expect(UIEvents.emit).lastCalledWith(SHEET_EVENTS.CLOSE);
-    });
+    expect(UIEvents.emit).lastCalledWith(SHEET_EVENTS.CLOSE);
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
   });
 
   it('should open', () => {
-    const wrapper = mount(
-      (
-        <Sheet isOpen={false} title="Test-Title">
-          <div>Test</div>
-        </Sheet>
-      ), mockRenderOptions
-    );
+    const { rerender } = render((
+      <Sheet isOpen={false} title="Test-Title">
+        <div>Test</div>
+      </Sheet>
+    ));
 
-    wrapper.setProps({ isOpen: true });
-    wrapper.update();
-    expect(wrapper.find(Drawer).prop('isOpen')).toBeTruthy();
-    expect(wrapper).toMatchSnapshot();
+    expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+
+    rerender((
+      <Sheet isOpen title="Test-Title">
+        <div>Test</div>
+      </Sheet>
+    ));
+
+    const dialog = screen.getByRole('dialog');
+
+    expect(dialog.className).toContain('drawerAnimIn');
+    expect(dialog).toContainElement(screen.getByRole('heading', { name: 'Test-Title' }));
+    expect(dialog).toContainElement(screen.getByText('Test'));
   });
 });

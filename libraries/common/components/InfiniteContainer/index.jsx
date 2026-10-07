@@ -142,9 +142,10 @@ class InfiniteContainer extends Component {
     }
 
     if (nextProps.items.length >= this.state.itemCount) {
+      finalize();
       this.setState({
         itemCount: nextProps.items.length,
-      }, finalize());
+      });
     } else {
       this.resetComponent(() => {
         finalize();
@@ -183,9 +184,11 @@ class InfiniteContainer extends Component {
    * When the component will unmount it unbinds all previously bound event listeners.
    */
   componentWillUnmount() {
-    router.update(this.context.id, {
-      offset: this.state.offset[0],
-    }, false);
+    if (this.context?.id) {
+      router.update(this.context.id, {
+        offset: this.state.offset[0],
+      }, false);
+    }
     this.unbindEvents();
   }
 

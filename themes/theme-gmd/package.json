@@ -1,6 +1,10 @@
 {
   "name": "@shopgate/theme-gmd",
   "version": "7.32.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.15.0"
+  },
   "description": "Google Material Design theme for the Shopgate Connect PWA.",
   "repository": "shopgate/theme-gmd",
   "bugs": "https://github.com/shopgate/theme-gmd/issues",
@@ -11,9 +15,6 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "cover": "jest --coverage",
-    "e2e": "cypress open -P ./e2e",
-    "e2e:checkout": "cypress open -P ./e2e/extensions/checkout",
-    "e2e:user": "cypress open -P ./e2e/extensions/user",
     "postinstall": "npx rimraf ../../.cache-loader"
   },
   "dependencies": {
@@ -42,10 +43,10 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "classnames": "2.5.1",
-    "core-js": "^3.48.0",
+    "core-js": "^3.50.0",
     "css-spring": "git+https://github.com/shopgate/css-spring.git#master",
     "glamor": "^2.20.40",
-    "lodash": "^4.17.23",
+    "lodash": "^4.18.1",
     "prop-types": "~15.8.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -58,20 +59,22 @@
     "reselect": "^4.1.8",
     "smoothscroll-polyfill": "^0.4.4",
     "typescript": "^5.9.3",
-    "webpack": "^5.108.4",
-    "webpack-cli": "^5.1.4"
+    "webpack": "^5.111.1",
+    "webpack-cli": "^7.2.3"
   },
   "devDependencies": {
     "@shopgate/eslint-config": "7.32.1",
-    "@shopgate/pwa-e2e-test": "7.32.1",
     "@shopgate/pwa-unit-test": "7.32.1",
-    "@types/lodash": "^4.17.24",
+    "@types/lodash": "^4.17.25",
     "@types/react": "^17.0.93",
     "eslint": "^8.57.1",
     "eslint-import-resolver-babel-module": "^5.3.2",
-    "husky": "^1.0.0-rc.13",
     "jest": "^29.7.0",
-    "lint-staged": "^12.5.0",
-    "webpack-dev-server": "4.15.2"
+    "webpack-dev-server": "6.0.0"
+  },
+  "overrides": {
+    "glamor": {
+      "fbjs": "^3.0.5"
+    }
   }
 }

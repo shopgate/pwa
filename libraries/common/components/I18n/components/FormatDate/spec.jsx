@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import { i18n } from '@shopgate/engage/core';
 import I18n from '../../index';
 
@@ -20,15 +19,14 @@ describe('<FormatDate />', () => {
   });
 
   describe('Given the component was mounted to the DOM', () => {
-    let renderedElement;
-    it('should match snapshot', () => {
-      renderedElement = mount((
+    beforeEach(() => {
+      render((
         <I18n.Provider>
           <div>
-            <span className="only-date">
+            <span data-testid="only-date">
               <I18n.Date timestamp={timestamp} format={format} />
             </span>
-            <span className="text-with-date">
+            <span data-testid="text-with-date">
               <I18n.Text string="greeting">
                 <I18n.Date forKey="date" timestamp={timestamp} format={format} />
               </I18n.Text>
@@ -36,17 +34,12 @@ describe('<FormatDate />', () => {
           </div>
         </I18n.Provider>
       ));
-      expect(renderedElement).toMatchSnapshot();
     });
 
-    it('should render formatted date', () => {
-      const text = renderedElement.find('.only-date').text();
-      expect(text).toBe(formattedDate);
-    });
-
-    it('should render within translated text', () => {
-      const text = renderedElement.find('.text-with-date').text();
-      expect(text).toBe(`Hello ${formattedDate}`);
+    it('should render the formatted date standalone and within translated text', () => {
+      expect(screen.getByTestId('only-date').innerHTML).toBe(formattedDate);
+      expect(screen.getByTestId('text-with-date').innerHTML)
+        .toBe(`<span>Hello ${formattedDate}</span>`);
     });
   });
 });

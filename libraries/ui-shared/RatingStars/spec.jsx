@@ -1,100 +1,105 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import StarIcon from '../icons/StarIcon';
-import StarHalfIcon from '../icons/StarHalfIcon';
+import { useState } from 'react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import RatingStars from './index';
+
+jest.mock('../icons/StarIcon', () => () => <i data-testid="star" />);
+jest.mock('../icons/StarHalfIcon', () => () => <i data-testid="half-star" />);
 
 const numEmptyStars = 5;
 
 describe('<RatingStars />', () => {
   it('renders with value of 50', () => {
-    const wrapper = shallow(
-      <RatingStars value={50} />,
-      mockRenderOptions
-    );
+    const { container } = render(<RatingStars value={50} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(StarIcon).length).toBe(numEmptyStars + 2);
-    expect(wrapper.find(StarHalfIcon).length).toBe(1);
+    expect(screen.getByRole('img', { name: 'reviews.rating_stars' }))
+      .toHaveAttribute('data-test-id', 'ratedStars: 2.5');
+    expect(screen.getAllByTestId('star')).toHaveLength(numEmptyStars + 2);
+    expect(screen.getAllByTestId('half-star')).toHaveLength(1);
+    expect(container.querySelectorAll('.rating-stars-empty [data-testid="star"]'))
+      .toHaveLength(numEmptyStars);
+    expect(container.querySelectorAll('.rating-stars-filled > [aria-hidden="true"]'))
+      .toHaveLength(2);
   });
 
   it('renders with value of 0', () => {
-    const wrapper = shallow(
-      <RatingStars value={0} />,
-      mockRenderOptions
-    );
+    const { container } = render(<RatingStars value={0} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(StarIcon).length).toBe(numEmptyStars);
-    expect(wrapper.find(StarHalfIcon).length).toBe(0);
+    expect(screen.getByRole('img', { name: 'reviews.rating_stars' }))
+      .toHaveAttribute('data-test-id', 'ratedStars: 0');
+    expect(screen.getAllByTestId('star')).toHaveLength(numEmptyStars);
+    expect(screen.queryByTestId('half-star')).not.toBeInTheDocument();
+    expect(container.querySelectorAll('.rating-stars-filled > [aria-hidden="true"]'))
+      .toHaveLength(5);
   });
 
   it('renders with value of 100', () => {
-    const wrapper = shallow(
-      <RatingStars value={100} />,
-      mockRenderOptions
-    );
+    const { container } = render(<RatingStars value={100} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(StarIcon).length).toBe(numEmptyStars + 5);
-    expect(wrapper.find(StarHalfIcon).length).toBe(0);
+    expect(screen.getByRole('img', { name: 'reviews.rating_stars' }))
+      .toHaveAttribute('data-test-id', 'ratedStars: 5');
+    expect(screen.getAllByTestId('star')).toHaveLength(numEmptyStars + 5);
+    expect(screen.queryByTestId('half-star')).not.toBeInTheDocument();
+    expect(container.querySelectorAll('.rating-stars-filled > [aria-hidden="true"]'))
+      .toHaveLength(0);
   });
 
   it('should change rating on click', () => {
-    const wrapper = shallow(
-      <RatingStars value={100} isSelectable />,
-      mockRenderOptions
-    );
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(StarIcon).length).toBe(10);
-    wrapper.setProps({ value: 20 });
-    expect(wrapper.find(StarIcon).length).toBe(6);
-    wrapper.setProps({ value: 70 });
-    expect(wrapper.find(StarIcon).length).toBe(8);
-    expect(wrapper.find(StarHalfIcon).length).toBe(1);
-    expect(wrapper).toMatchSnapshot();
+    const { rerender } = render(<RatingStars value={100} isSelectable />);
+
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: 'reviews.press_to_rate_with_x_stars' }))
+      .toHaveLength(numEmptyStars);
+    expect(screen.getAllByTestId('star')).toHaveLength(10);
+
+    rerender(<RatingStars value={20} isSelectable />);
+    expect(screen.getAllByTestId('star')).toHaveLength(6);
+
+    rerender(<RatingStars value={70} isSelectable />);
+    expect(screen.getAllByTestId('star')).toHaveLength(8);
+    expect(screen.getAllByTestId('half-star')).toHaveLength(1);
+    expect(screen.getAllByRole('button', { name: 'reviews.press_to_rate_with_x_stars' }))
+      .toHaveLength(numEmptyStars);
   });
 
   it('should call onSelection with the clicked rating in selectable mode', () => {
     const selections = [];
-    const wrapper = shallow(
-      <RatingStars
-        value={20}
-        isSelectable
-        onSelection={(e) => {
-          selections.push(e.target.value);
-          wrapper.setProps({ value: e.target.value });
-        }}
-      />,
-      mockRenderOptions
-    );
 
-    // Only the empty-star layer is interactive: one button per position, always five.
-    // The decorative filled overlay is pointer-transparent and carries no buttons.
-    expect(wrapper.find('[role="button"]').length).toBe(numEmptyStars);
+    const SelectableRatingStars = () => {
+      const [value, setValue] = useState(20);
 
-    // Regression: at a low rating the higher positions used to be covered by the
-    // filled layer's invisible placeholders, which swallowed the click. Clicking the
-    // 5th star must still raise the rating to the full 5 stars.
-    wrapper.find('[role="button"]').at(4).simulate('click', { target: {} });
+      return (
+        <RatingStars
+          value={value}
+          isSelectable
+          onSelection={(e) => {
+            selections.push(e.target.value);
+            setValue(e.target.value);
+          }}
+        />
+      );
+    };
+
+    render(<SelectableRatingStars />);
+
+    expect(screen.getAllByRole('button')).toHaveLength(numEmptyStars);
+
+    fireEvent.click(screen.getAllByRole('button')[4]);
     expect(selections).toEqual([100]);
+    expect(screen.getAllByTestId('star')).toHaveLength(numEmptyStars + 5);
 
-    // The interactive layer is unaffected by the rating; clicking the 1st star lowers it.
-    expect(wrapper.find('[role="button"]').length).toBe(numEmptyStars);
-    wrapper.find('[role="button"]').at(0).simulate('click', { target: {} });
+    expect(screen.getAllByRole('button')).toHaveLength(numEmptyStars);
+    fireEvent.click(screen.getAllByRole('button')[0]);
     expect(selections).toEqual([100, 20]);
+    expect(screen.getAllByTestId('star')).toHaveLength(numEmptyStars + 1);
   });
 
   it('should NOT call onSelection callback when component is NOT selectable', () => {
     const spy = jest.fn();
-    const wrapper = shallow(
-      <RatingStars value={100} onSelection={spy} />,
-      mockRenderOptions
-    );
+    render(<RatingStars value={100} onSelection={spy} />);
 
-    wrapper.find(StarIcon).at(5).parent('div').simulate('click');
-    expect(wrapper.find('[role="button"]').length).toBe(0);
-    expect(spy.mock.calls.length).toBe(0);
+    fireEvent.click(screen.getAllByTestId('star')[5].parentElement);
+    fireEvent.click(screen.getAllByTestId('star')[0].parentElement);
+    expect(screen.queryByRole('button')).not.toBeInTheDocument();
+    expect(spy).not.toHaveBeenCalled();
   });
 });

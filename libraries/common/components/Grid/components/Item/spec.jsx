@@ -1,24 +1,24 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import GridItem from './index';
 
 describe('<GridItem />', () => {
   it('should render without any further props', () => {
-    const wrapper = shallow(<GridItem />);
-    expect(wrapper).toMatchSnapshot();
+    const { container } = render(<GridItem />);
+
+    expect(container.firstChild.tagName).toBe('LI');
+    expect(container.firstChild).toBeEmptyDOMElement();
   });
 
   it('should be able to render a custom tag', () => {
-    const wrapper = shallow(<GridItem component="section" />);
+    const { container } = render(<GridItem component="section" />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.type()).toEqual('section');
+    expect(container.firstChild.tagName).toBe('SECTION');
   });
 
   it('should add custom classes on demand', () => {
-    const wrapper = shallow(<GridItem className="custom-class-name" />);
+    const { container } = render(<GridItem className="custom-class-name" />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.hasClass('custom-class-name')).toEqual(true);
+    expect(container.firstChild.tagName).toBe('LI');
+    expect(container.firstChild).toHaveClass('custom-class-name');
   });
 });

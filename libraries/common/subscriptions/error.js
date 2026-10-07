@@ -2,13 +2,12 @@ import { isAvailable } from '@shopgate/native-modules';
 import {
   init,
   addBreadcrumb,
-  configureScope,
+  setTags,
   captureException,
-  captureMessage,
   captureEvent,
   withScope,
-  Severity as SentrySeverity,
 } from '@sentry/browser';
+import { router } from '@virtuous/conductor';
 import {
   EBIGAPI,
   emitter,
@@ -20,6 +19,7 @@ import {
 } from '@shopgate/pwa-core';
 import { hasWebBridge } from '@shopgate/engage/core';
 import { SOURCE_TRACKING, SOURCE_CONSOLE, Severity } from '@shopgate/pwa-core/constants/ErrorManager';
+import { describeValue } from '@shopgate/pwa-core/helpers/error';
 import { main$ } from '../streams/main';
 import {
   // eslint-disable-next-line import/no-named-default
@@ -31,23 +31,47 @@ import { env } from '../helpers/environment';
 import { transformGeneralPipelineError, getDisplayErrorMessage } from './helpers/pipeline';
 import { historyPop } from '../actions/router';
 import showModal from '../actions/modal/showModal';
-import { getUserData } from '../selectors/user';
-import { userDidUpdate$ } from '../streams/user';
 import { clientInformationDidUpdate$ } from '../streams/client';
-import { appWillInit$, appWillStart$, appDidStart$ } from '../streams/app';
+import { appWillInit$, appWillStart$ } from '../streams/app';
 import { appError$, pipelineError$ } from '../streams/error';
 import { getRouterStack } from '../selectors/router';
 import { MODAL_PIPELINE_ERROR } from '../constants/ModalTypes';
+import { APP_ERROR } from '../constants/ActionTypes';
 import ToastProvider from '../providers/toast';
 
 // Generic, translated fallback shown when a backend error carries no code we can map to a message.
 const GENERIC_ERROR_MESSAGE = 'modal.body_error';
 
 /**
+ * @param {*} error The rejection reason or exception.
+ * @returns {boolean} Whether the error was created by the PipelineManager.
+ */
+const isPipelineError = error => !!error
+  && typeof error.code === 'string'
+  && typeof error.handled === 'boolean';
+
+/**
  * App errors subscriptions.
  * @param {Function} subscribe The subscribe function.
  */
 export default (subscribe) => {
+  subscribe(appWillInit$, () => {
+    window.addEventListener('unhandledrejection', (event) => {
+      const { reason } = event;
+      if (!isPipelineError(reason)) {
+        return;
+      }
+      event.preventDefault();
+      if (env === 'development') {
+        const hint = reason.handled
+          ? 'The default error handling already handled it'
+          : 'The request excluded it from the default error handling (blacklisted or suppressed), so the action is expected to handle it';
+        // eslint-disable-next-line no-console
+        console.info(`Pipeline error not handled by the caller: ${reason.code} (${reason.message}). ${hint}; add .catch() if the caller needs to react.`);
+      }
+    });
+  });
+
   /** Set general error transformations */
   subscribe(appWillStart$, () => {
     errorManager.setMessage({
@@ -171,12 +195,12 @@ export default (subscribe) => {
   }
 
   const severityMap = {
-    [Severity.Fatal]: SentrySeverity.Fatal,
-    [Severity.Error]: SentrySeverity.Error,
-    [Severity.Critical]: SentrySeverity.Critical,
-    [Severity.Warning]: SentrySeverity.Warning,
-    [Severity.Info]: SentrySeverity.Info,
-    [Severity.Debug]: SentrySeverity.Debug,
+    [Severity.Fatal]: 'fatal',
+    [Severity.Error]: 'error',
+    [Severity.Critical]: 'fatal',
+    [Severity.Warning]: 'warning',
+    [Severity.Info]: 'info',
+    [Severity.Debug]: 'debug',
   };
 
   const ignoredDefaultBreadcrumbs = [
@@ -186,8 +210,26 @@ export default (subscribe) => {
     'ui.click',
   ];
 
-  let trackedSeverities = Object.getOwnPropertySymbols(severityMap).map(s => severityMap[s]);
-  const minSeverityIndex = trackedSeverities.indexOf(level);
+  /**
+   * @param {string} url An absolute or relative URL of the app.
+   * @returns {string} The URL with its route path replaced by the route pattern, e.g.
+   * `/orders/:orderId`, and without query string and hash.
+   */
+  const redactUrl = (url) => {
+    if (typeof url !== 'string') {
+      return url;
+    }
+
+    const [path] = url.split(/[?#]/);
+    const [, base, routePath] = /^(.*?index\.html)(.*)$/.exec(path)
+      || /^([a-z][a-z\d+.-]*:\/\/[^/]+)(.*)$/i.exec(path)
+      || [null, '', path];
+
+    return `${base}${router.findPattern(routePath || '/') || '/(unknown route)'}`;
+  };
+
+  let trackedSeverities = Object.values(severityMap);
+  const minSeverityIndex = Object.keys(severityMap).indexOf(level);
   if (minSeverityIndex > -1) {
     trackedSeverities = trackedSeverities.slice(0, minSeverityIndex + 1);
   }
@@ -200,56 +242,86 @@ export default (subscribe) => {
       release: pckVersion,
       attachStacktrace: true,
       sampleRate,
+      ignoreErrors: [/play\(\) failed because the user didn't interact/],
       beforeBreadcrumb(breadcrumb) {
         if (ignoredDefaultBreadcrumbs.includes(breadcrumb.category)) {
           return null;
         }
+        if (breadcrumb.category === 'navigation' && breadcrumb.data) {
+          return {
+            ...breadcrumb,
+            data: {
+              from: redactUrl(breadcrumb.data.from),
+              to: redactUrl(breadcrumb.data.to),
+            },
+          };
+        }
         return breadcrumb;
       },
-      beforeSend(event) {
+      beforeSend(event, hint) {
         if (event.level && !trackedSeverities.includes(event.level)) {
           return null;
         }
-        // eslint-disable-next-line no-param-reassign
-        event.extra = {
-          ...event.extra || {},
-          routerStack: getRouterStack(getState()).slice(-5),
+        if (isPipelineError(hint?.originalException)) {
+          return null;
+        }
+        return {
+          ...event,
+          request: event.request && {
+            ...event.request,
+            url: redactUrl(event.request.url),
+            headers: event.request.headers && {
+              ...event.request.headers,
+              Referer: redactUrl(event.request.headers.Referer),
+            },
+          },
+          extra: {
+            ...event.extra || {},
+            routerStack: getRouterStack(getState())
+              .slice(-5)
+              .map(({ pattern }) => ({ pattern })),
+          },
         };
-
-        return event;
       },
     });
 
-    configureScope((scope) => {
-      scope.setTag('marketId', appConfig.marketId);
-      scope.setTag('appId', appConfig.appId);
-      scope.setTag('pwaVersion', pckVersion);
-      scope.setTag('theme', themeName);
-      scope.setTag('language', appConfig.language);
-      scope.setTag('isWebsite', hasWebBridge());
-      scope.setTag('isReactNativeApp', isAvailable());
-      scope.setTag('merchantCode', appConfig.omniMerchantCode);
+    setTags({
+      marketId: appConfig.marketId,
+      appId: appConfig.appId,
+      pwaVersion: pckVersion,
+      theme: themeName,
+      language: appConfig.language,
+      isWebsite: hasWebBridge(),
+      isReactNativeApp: isAvailable(),
+      merchantCode: appConfig.omniMerchantCode,
     });
 
-    if (window) {
-      window.onerror = (message, source, lineno, colno, error) => {
-        captureException(error);
-      };
-    }
+    emitter.addListener(SOURCE_CONSOLE, (args) => {
+      const error = args.find(arg => arg instanceof Error);
+      const texts = args.filter(arg => arg !== error).map(describeValue);
 
-    emitter.addListener(SOURCE_TRACKING, (error) => {
+      if (!error) {
+        addBreadcrumb({
+          category: 'logger',
+          message: texts.join(' '),
+          level: 'error',
+        });
+        return;
+      }
+
       withScope((scope) => {
-        if (error.context) {
+        scope.setLevel('error');
+        scope.setTag('source', SOURCE_CONSOLE);
+        if (texts.length > 0) {
+          scope.setExtra('details', texts);
+        }
+        if (error.source === SOURCE_TRACKING && error.context) {
           scope.setExtra('trackerName', error.context);
         }
+        if (error.componentStack) {
+          scope.setExtra('componentStack', error.componentStack);
+        }
         captureException(error);
-      });
-    });
-    emitter.addListener(SOURCE_CONSOLE, (args) => {
-      withScope((scope) => {
-        scope.setLevel(SentrySeverity.Error);
-        scope.setExtra('error', args);
-        captureMessage('Console error');
       });
     });
   });
@@ -258,41 +330,28 @@ export default (subscribe) => {
     addBreadcrumb({
       category: 'redux',
       message: `[Redux] ${action.type}`,
-      level: SentrySeverity.Info,
-      data: { ...action },
-    });
-  });
-
-  subscribe(userDidUpdate$, ({ getState }) => {
-    const { id: userId } = getUserData(getState());
-    configureScope((scope) => {
-      scope.setTag('userId', userId);
+      level: 'info',
     });
   });
 
   // Add client lib versions
   subscribe(clientInformationDidUpdate$, ({ action }) => {
-    const { appVersion, libVersion, deviceId } = action.data;
-    configureScope((scope) => {
-      scope.setTag('appVersion', appVersion);
-      scope.setTag('libVersion', libVersion);
-      scope.setTag('deviceId', deviceId);
-    });
-  });
-
-  // Add app start event for debugging
-  subscribe(appDidStart$, () => {
-    withScope((scope) => {
-      scope.setLevel(SentrySeverity.Debug);
-      captureMessage('App did start');
+    const { appVersion, libVersion } = action.data;
+    setTags({
+      appVersion,
+      libVersion,
     });
   });
 
   // Add some stack trace and log to sentry
   subscribe(appError$, ({ action }) => {
+    if (!(action.error instanceof Error)) {
+      return;
+    }
+
     withScope((scope) => {
-      if (action.error.stack) {
-        scope.setExtra('stack', action.error.stack);
+      if (action.error.componentStack) {
+        scope.setExtra('componentStack', action.error.componentStack);
       }
       captureException(action.error);
     });
@@ -302,20 +361,21 @@ export default (subscribe) => {
   // Log all error messages which are presented to the user
   subscribe(allErrors$, ({ action }) => {
     const { error = {} } = action;
-    const {
-      code,
-      message,
-      meta: {
-        message: metaMessage,
-      } = {},
-    } = error;
+    const { code } = error;
+
+    if (action.type === APP_ERROR && error instanceof Error) {
+      return;
+    }
+
     withScope((scope) => {
       scope.setTag('error', 'E_USER');
       scope.setTag('errorCode', code);
-      scope.setTag('errorMessage', message);
       captureEvent({
-        message: metaMessage || message,
-        extra: error,
+        message: code ? `User error ${code}` : 'User error',
+        extra: {
+          code,
+          pipeline: error.context,
+        },
       });
     });
   });
