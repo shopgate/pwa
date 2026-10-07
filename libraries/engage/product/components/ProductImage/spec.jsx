@@ -1,25 +1,23 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Image from '@shopgate/pwa-common/components/Image';
-import PlaceholderIcon from '@shopgate/pwa-ui-shared/icons/PlaceholderIcon';
+import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import ProductImagePlaceholder from './ProductImagePlaceholder';
 import ProductImage from './index';
 import { useProductImageShadow } from './hooks';
 
 jest.unmock('@shopgate/pwa-core');
-jest.mock('../../../core/hocs/withWidgetSettings');
 jest.mock('@shopgate/pwa-common/helpers/config');
-// Shallow renders have no store; the component only reads the shop wide placeholder from it.
 jest.mock('react-redux', () => ({
   ...jest.requireActual('react-redux'),
   useSelector: () => null,
 }));
-jest.mock('@shopgate/engage/components', () => ({
-  Image: () => null,
-}));
+jest.mock('@shopgate/pwa-common/components/Image', () => jest.fn(({ src, placeholder }) => (
+  src ? <img src={src} alt="" /> : placeholder
+)));
+jest.mock('@shopgate/pwa-common/components/SurroundPortals', () => jest.fn(({ children }) => children));
+jest.mock('./ProductImagePlaceholder', () => jest.fn(() => null));
 
-// These are shallow renders, so there is no Provider for the hook to read the store from. The
-// mock returns what the resolver produces before the app settings are hydrated: the built-in
+// The mock returns what the resolver produces before the app settings are hydrated: the built-in
 // resolutions, and no ratio, so the Image derives it from the largest resolution as before.
 jest.mock('./hooks', () => ({
   useProductImageShadow: jest.fn(() => false),
@@ -28,103 +26,158 @@ jest.mock('./hooks', () => ({
 jest.mock('@shopgate/engage/settings/hooks', () => ({
   useProductImageSettings: () => ({
     pdp: {
-      resolutions: [{ width: 440, height: 440 }, { width: 1024, height: 1024 }],
+      resolutions: [
+        {
+          width: 440,
+          height: 440,
+        },
+        {
+          width: 1024,
+          height: 1024,
+        },
+      ],
       ratio: null,
     },
     gallery: {
-      resolutions: [{ width: 1024, height: 1024 }, { width: 2048, height: 2048 }],
+      resolutions: [
+        {
+          width: 1024,
+          height: 1024,
+        },
+        {
+          width: 2048,
+          height: 2048,
+        },
+      ],
       ratio: null,
     },
     list: {
-      resolutions: [{ width: 440, height: 440 }],
+      resolutions: [
+        {
+          width: 440,
+          height: 440,
+        },
+      ],
       ratio: null,
     },
   }),
-  // Mocking the barrel replaces every export, and the Image component pulls this one from it.
-  useImageServiceSettings: () => ({
-    quality: 75,
-    fillColor: 'FFFFFF',
-    fillTransparent: true,
-  }),
 }));
 
-/**
- * Reads the placeholder element the component hands to the Image. Image decides when to render it,
- * so the placeholder is a prop here rather than part of this component's tree.
- * @param {Object} wrapper The rendered ProductImage.
- * @returns {JSX.Element} The placeholder element.
- */
-const getPlaceholder = wrapper => wrapper.find(Image).prop('placeholder');
+const src = 'http://placehold.it/300x300';
+const listResolutions = [{
+  width: 440,
+  height: 440,
+}];
 
-/**
- * Renders down to the component's own output, past the wrapper that supplies the shop wide
- * placeholder and past the portals.
- * @param {JSX.Element} element The element to render.
- * @returns {Object} The rendered component.
- */
-const renderProductImage = element => shallow(element).dive().dive();
+const expectImageProps = imageProps => expect(Image.mock.lastCall[0]).toMatchObject({
+  resolutions: listResolutions,
+  ratio: null,
+  backgroundColor: 'var(--sg-palette-common-white)',
+  'aria-hidden': true,
+  ...imageProps,
+});
+
+const expectPortalProps = portalProps => expect(SurroundPortals.mock.lastCall[0]).toEqual(
+  expect.objectContaining({
+    portalName: 'component.product-image',
+    portalProps,
+  })
+);
 
 describe('<ProductImage />', () => {
-  it('should render a placeholder if no src prop is provided', () => {
-    const wrapper = renderProductImage(<ProductImage />);
+  beforeEach(() => {
+    jest.clearAllMocks();
+    useProductImageShadow.mockReturnValue(false);
+  });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(shallow(getPlaceholder(wrapper)).find(PlaceholderIcon).length).toBe(1);
+  it('should render a placeholder if no src prop is provided', () => {
+    const { container } = render(<ProductImage />);
+
+    const root = container.querySelector('.engage__product__product-image');
+    const placeholder = root.querySelector('[data-test-id="placeHolder"]');
+
+    expect(root.className).toContain('rounded');
+    expect(placeholder).toHaveAttribute('aria-hidden', 'true');
+    expect(placeholder.querySelectorAll('svg')).toHaveLength(1);
+    expect(ProductImagePlaceholder).not.toHaveBeenCalled();
+    expectImageProps({
+      className: '',
+      placeholderSrc: null,
+    });
+    expectPortalProps(undefined);
   });
 
   it('should render the image without a placeholder', () => {
-    const wrapper = renderProductImage(<ProductImage src="http://placehold.it/300x300" />);
+    const { container } = render(<ProductImage src={src} />);
 
-    expect(wrapper.find(Image).length).toBe(1);
-    expect(wrapper.find(PlaceholderIcon).length).toBe(0);
-    expect(wrapper).toMatchSnapshot();
+    const root = container.querySelector('.engage__product__product-image');
+
+    expect(root.querySelectorAll('img')).toHaveLength(1);
+    expect(root.querySelector('img')).toHaveAttribute('src', src);
+    expect(root.querySelector('svg')).not.toBeInTheDocument();
+    expectImageProps({
+      className: '',
+      placeholderSrc: null,
+      src,
+    });
+    expectPortalProps({
+      src,
+      resolutions: listResolutions,
+      ratio: null,
+    });
   });
 
   // Most callers are untyped .jsx, and extensions are not type checked at all.
   it('should fall back to the default context for an unknown one', () => {
-    const wrapper = renderProductImage(
-      <ProductImage src="http://placehold.it/300x300" context="somethingElse" />
-    );
+    render(<ProductImage src={src} context="somethingElse" />);
 
-    expect(wrapper.find(Image).prop('resolutions')).toEqual([{
-      width: 440,
-      height: 440,
-    }]);
+    expect(Image.mock.lastCall[0]).toMatchObject({ resolutions: listResolutions });
   });
 
   describe('inner shadow', () => {
     it('should not apply it to the placeholder when the hook says no', () => {
-      useProductImageShadow.mockReturnValue(false);
-      const wrapper = renderProductImage(<ProductImage placeholderSrc="http://placehold.it/300x300" />);
+      render(<ProductImage placeholderSrc={src} />);
 
-      expect(getPlaceholder(wrapper).type).toBe(ProductImagePlaceholder);
-      expect(getPlaceholder(wrapper).props.showInnerShadow).toBe(false);
-      expect(wrapper).toMatchSnapshot();
-    });
-
-    it('should not apply it to the image when the hook says no', () => {
-      useProductImageShadow.mockReturnValue(false);
-      const wrapper = renderProductImage(<ProductImage src="http://placehold.it/300x300" />);
-
-      expect(wrapper.find(Image).prop('className')).not.toContain('innerShadow');
-      expect(wrapper).toMatchSnapshot();
+      expect(ProductImagePlaceholder.mock.lastCall[0]).toEqual({
+        src,
+        showInnerShadow: false,
+        noBackground: false,
+      });
+      expectImageProps({
+        className: '',
+        placeholderSrc: src,
+      });
+      expectPortalProps(undefined);
     });
 
     it('should apply it to the placeholder when the hook says yes', () => {
       useProductImageShadow.mockReturnValue(true);
-      const wrapper = renderProductImage(<ProductImage placeholderSrc="http://placehold.it/300x300" />);
+      render(<ProductImage placeholderSrc={src} />);
 
-      expect(getPlaceholder(wrapper).type).toBe(ProductImagePlaceholder);
-      expect(getPlaceholder(wrapper).props.showInnerShadow).toBe(true);
-      expect(wrapper).toMatchSnapshot();
+      expect(ProductImagePlaceholder.mock.lastCall[0]).toEqual({
+        src,
+        showInnerShadow: true,
+        noBackground: false,
+      });
+      expectImageProps({
+        className: expect.stringContaining('innerShadow'),
+        placeholderSrc: src,
+      });
     });
 
     it('should apply it to the image when the hook says yes', () => {
       useProductImageShadow.mockReturnValue(true);
-      const wrapper = renderProductImage(<ProductImage src="http://placehold.it/300x300" />);
+      render(<ProductImage src={src} />);
 
-      expect(wrapper.find(Image).prop('className')).toContain('innerShadow');
-      expect(wrapper).toMatchSnapshot();
+      expectImageProps({
+        className: expect.stringContaining('innerShadow'),
+        src,
+      });
+      expectPortalProps({
+        src,
+        resolutions: listResolutions,
+        ratio: null,
+      });
     });
   });
 });

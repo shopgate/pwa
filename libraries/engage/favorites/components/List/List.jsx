@@ -165,6 +165,7 @@ const FavoriteList = ({
         addToCart={addToCart}
         onLoadMore={handleLoadMore}
         showLoadMoreButton={showLoadMoreButton}
+        isAccordion={hasMultipleFavoritesListsSupport}
       />
     </ConditionalWrapper>
   );

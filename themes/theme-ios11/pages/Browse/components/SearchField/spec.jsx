@@ -1,5 +1,6 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import {
+  render, screen, fireEvent, act,
+} from '@testing-library/react';
 import SuggestionList from './components/SuggestionList';
 import SearchField from './index';
 
@@ -23,7 +24,7 @@ jest.mock('@shopgate/engage/components', () => {
     BarcodeScannerIcon: () => null,
   };
 });
-jest.mock('./components/SuggestionList', () => () => null);
+jest.mock('./components/SuggestionList', () => jest.fn(() => null));
 jest.mock('./connector', () => cmp => cmp);
 
 describe('pages / Browse / components / SearchField', () => {
@@ -31,7 +32,7 @@ describe('pages / Browse / components / SearchField', () => {
   let openScanner;
   let fetchSuggestions;
 
-  const createWrapper = props => mount((
+  const renderComponent = props => render((
     <SearchField
       pageId="1234"
       query="foo"
@@ -43,6 +44,10 @@ describe('pages / Browse / components / SearchField', () => {
     />
   ));
 
+  const getCancelButton = () => document.querySelector('[data-test-id="search-field-cancel"]');
+
+  const getScannerButton = () => document.querySelector('[data-test-id="search-field-scanner"]');
+
   beforeEach(() => {
     jest.clearAllMocks();
     submitSearch = jest.fn();
@@ -50,60 +55,70 @@ describe('pages / Browse / components / SearchField', () => {
     openScanner = jest.fn();
   });
 
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   describe('Check search field', () => {
     it('should render with initial search query', () => {
-      const wrapper = createWrapper();
-      expect(wrapper).toMatchSnapshot();
-      expect(wrapper.find('input').prop('value')).toEqual('foo');
-      // Reset button should be initially hidden
-      expect(wrapper.find('[data-test-id="search-field-cancel"]').prop('aria-hidden')).toBe(true);
+      renderComponent();
+
+      expect(screen.getByRole('searchbox')).toHaveValue('foo');
+      expect(getCancelButton()).toHaveAttribute('aria-hidden', 'true');
+      expect(SuggestionList.mock.lastCall[0]).toEqual(expect.objectContaining({
+        visible: false,
+        searchPhrase: 'foo',
+      }));
     });
 
     it('should show suggestions when focused', () => {
-      const wrapper = createWrapper();
-
-      // Suggestion should not be visible when blurred.
       jest.useFakeTimers();
-      wrapper.find('input').simulate('focus');
-      jest.runAllTimers();
-      wrapper.update();
+      renderComponent({ showScannerIcon: true });
 
-      // Should be rendered now with current query.
-      expect(wrapper).toMatchSnapshot();
+      expect(getScannerButton()).toBeInTheDocument();
 
-      expect(wrapper.find(SuggestionList).prop('searchPhrase')).toEqual('foo');
-      expect(wrapper.find('[data-test-id="search-field-scanner"]').exists()).toBe(false);
-      // Reset button should be visible
-      expect(wrapper.find('[data-test-id="search-field-cancel"]').prop('aria-hidden')).toBe(false);
+      fireEvent.focus(screen.getByRole('searchbox'));
+      act(() => {
+        jest.runAllTimers();
+      });
+
+      expect(SuggestionList.mock.lastCall[0]).toEqual(expect.objectContaining({
+        visible: true,
+        searchPhrase: 'foo',
+      }));
+      expect(getScannerButton()).not.toBeInTheDocument();
+      expect(getCancelButton()).toHaveAttribute('aria-hidden', 'false');
     });
 
     it('should submit search', () => {
       jest.useFakeTimers();
-      const wrapper = createWrapper({ submitSearch });
+      const { container } = renderComponent();
 
-      // Change search and submit.
-      wrapper.find('input').simulate('change', { target: { value: 'foo bar' } });
-      wrapper.find('form').simulate('submit');
-      jest.runAllTimers();
-      wrapper.update();
+      fireEvent.change(screen.getByRole('searchbox'), { target: { value: 'foo bar' } });
+      fireEvent.submit(container.querySelector('form'));
+      act(() => {
+        jest.runAllTimers();
+      });
 
       expect(submitSearch).toHaveBeenCalledWith('foo bar');
-      jest.useRealTimers();
     });
   });
 
   describe('Check scanner icon and action', () => {
     it('should not render when the scanner is not supported', () => {
-      const wrapper = createWrapper();
-      expect(wrapper.find('[data-test-id="search-field-scanner"]').exists()).toBe(false);
+      renderComponent();
+
+      expect(getScannerButton()).not.toBeInTheDocument();
     });
 
     it('should open the scanner', () => {
-      const wrapper = createWrapper({
+      renderComponent({
         showScannerIcon: true,
       });
-      expect(wrapper.find('[data-test-id="search-field-scanner"]').exists()).toBe(true);
-      wrapper.find('[data-test-id="search-field-scanner"]').simulate('click');
+
+      expect(getScannerButton()).toHaveAttribute('aria-label', 'titles.scanner');
+      fireEvent.click(getScannerButton());
+
       expect(openScanner).toHaveBeenCalledTimes(1);
     });
   });

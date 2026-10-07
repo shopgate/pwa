@@ -1,5 +1,4 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import TextField from './index';
 
 const inputProps = {
@@ -8,111 +7,133 @@ const inputProps = {
 
 describe('<TextField />', () => {
   it('should render a simple text field', () => {
-    const wrapper = mount(<TextField {...inputProps} />);
+    const { container } = render(<TextField {...inputProps} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input').length).toBe(1);
+    const input = screen.getByRole('textbox');
+
+    expect(container.querySelector('.ui-shared__text-field')).toHaveClass('textField');
+    expect(container.querySelector('.ui-shared__text-field')).not.toHaveClass('disabled');
+    expect(container.querySelectorAll('input')).toHaveLength(1);
+    expect(input).toHaveAttribute('id', 'test-input');
+    expect(input).toHaveAttribute('name', 'test-input');
+    expect(input).toHaveAttribute('type', 'text');
+    expect(input).toHaveAttribute('aria-invalid', 'false');
+    expect(input).not.toHaveAttribute('aria-describedby');
+    expect(input).toHaveValue('');
+    expect(input).toBeEnabled();
+    expect(container.querySelector('label')).toHaveAttribute('for', 'test-input');
+    expect(container.querySelector('label')).not.toHaveClass('floating');
+    expect(container.querySelector('.errorText')).toHaveTextContent('');
   });
 
   it('should render the text field as password', () => {
-    const wrapper = mount(<TextField {...inputProps} password />);
+    const { container } = render(<TextField {...inputProps} password />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input[type="password"]').length).toBe(1);
+    expect(container.querySelectorAll('input')).toHaveLength(1);
+    expect(container.querySelector('input')).toHaveAttribute('type', 'password');
+    expect(container.querySelector('input')).toHaveAttribute('name', 'test-input');
   });
 
   it('should render the text field with a default value', () => {
-    const wrapper = mount(<TextField {...inputProps} value="FooBar" />);
+    const { container } = render(<TextField {...inputProps} value="FooBar" />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('input[value="FooBar"]').length).toBe(1);
+    expect(screen.getAllByRole('textbox')).toHaveLength(1);
+    expect(screen.getByRole('textbox')).toHaveValue('FooBar');
+    expect(container.querySelector('label')).toHaveClass('floating');
   });
 
   it('should trigger the onChange callback', () => {
     const onChangeMock = jest.fn();
 
-    const wrapper = mount(<TextField {...inputProps} onChange={onChangeMock} />);
+    render(<TextField {...inputProps} onChange={onChangeMock} />);
 
-    wrapper.find('input').simulate('change', { target: { value: 'a' } });
+    fireEvent.change(screen.getByRole('textbox'), { target: { value: 'a' } });
 
     expect(onChangeMock).toHaveBeenCalledTimes(2);
-    expect(wrapper.find('input').props().value).toEqual('a');
+    expect(onChangeMock.mock.lastCall[0]).toEqual('a');
+    expect(screen.getByRole('textbox')).toHaveValue('a');
   });
 
   it('should receive the correct value while typing', () => {
-    const wrapper = mount(<TextField {...inputProps} />);
-    const input = wrapper.find('input');
+    render(<TextField {...inputProps} />);
 
-    input.simulate('change', { target: { value: 'foobar' } });
-    expect(wrapper).toMatchSnapshot();
-    expect(input.instance().value).toBe('foobar');
+    const input = screen.getByRole('textbox');
+
+    fireEvent.change(input, { target: { value: 'foobar' } });
+
+    expect(input).toHaveValue('foobar');
   });
 
   it('should sanitize the input', () => {
-    const wrapper = mount(<TextField {...inputProps} onSanitize={value => value.toUpperCase()} />);
+    render(<TextField {...inputProps} onSanitize={value => value.toUpperCase()} />);
 
-    const input = wrapper.find('input');
+    const input = screen.getByRole('textbox');
 
-    input.simulate('change', { target: { value: 'foobar' } });
+    fireEvent.change(input, { target: { value: 'foobar' } });
 
-    expect(wrapper).toMatchSnapshot();
-    expect(input.instance().value).toBe('FOOBAR');
+    expect(input).toHaveValue('FOOBAR');
   });
 
   it('should trigger the validation callback', () => {
     const onValidateMock = jest.fn();
 
-    const wrapper = mount(<TextField {...inputProps} onValidate={onValidateMock} />);
+    render(<TextField {...inputProps} onValidate={onValidateMock} />);
 
-    expect(wrapper).toMatchSnapshot();
     expect(onValidateMock).toHaveBeenCalled();
+    expect(screen.getByRole('textbox')).toHaveValue('');
   });
 
   it('should focus the input', () => {
     const onFocusMock = jest.fn();
 
-    const wrapper = mount(<TextField {...inputProps} onFocusChange={onFocusMock} />);
+    const { container } = render(<TextField {...inputProps} onFocusChange={onFocusMock} />);
 
-    const input = wrapper.find('input');
+    const input = screen.getByRole('textbox');
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container.querySelector('label')).not.toHaveClass('floating');
     expect(onFocusMock).toHaveBeenCalledTimes(0);
 
-    input.simulate('focus');
+    fireEvent.focus(input);
 
     expect(onFocusMock).toHaveBeenCalledTimes(1);
     expect(onFocusMock).toHaveBeenCalledWith(true);
+    expect(container.querySelector('label')).toHaveClass('floating');
 
-    input.simulate('blur');
+    fireEvent.blur(input);
     expect(onFocusMock).toHaveBeenCalledTimes(2);
     expect(onFocusMock).toHaveBeenCalledWith(false);
+    expect(container.querySelector('label')).not.toHaveClass('floating');
   });
 
   it('should show the error message', () => {
     const errorText = 'This is an error here';
 
-    const wrapper = mount(<TextField {...inputProps} errorText={errorText} />);
+    const { container } = render(<TextField {...inputProps} errorText={errorText} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Translate').at(2).props().string).toEqual(errorText);
+    const error = container.querySelector('.errorText');
+
+    expect(error).toContainElement(screen.getByText(errorText));
+    expect(error).toHaveAttribute('id', 'ariaError-test-input');
+    expect(error).toHaveAttribute('aria-live', 'assertive');
+    expect(screen.getByRole('textbox')).toHaveAttribute('aria-invalid', 'true');
+    expect(screen.getByRole('textbox')).toHaveAttribute('aria-describedby', 'ariaError-test-input');
   });
 
   it('should show the label', () => {
     const label = 'This is the label';
 
-    const wrapper = mount(<TextField {...inputProps} label={label} />);
+    render(<TextField {...inputProps} label={label} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Label').find('Translate').props().string).toEqual(label);
+    expect(screen.getByLabelText(label)).toBe(screen.getByRole('textbox'));
+    expect(screen.getByText(label).closest('label')).toHaveClass('label');
   });
 
   it('should show the hint text', () => {
     const hintText = 'This is the hint text';
 
-    const wrapper = mount(<TextField {...inputProps} hintText={hintText} />);
+    const { container } = render(<TextField {...inputProps} hintText={hintText} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Hint').find('Translate').at(0).props().string).toEqual(hintText);
+    expect(container.querySelector('.hint')).toContainElement(screen.getByText(hintText));
   });
 
   it('should replace the error text with custom validation error', () => {
@@ -122,17 +143,11 @@ describe('<TextField />', () => {
      */
     const onValidate = () => 'Custom validation error';
 
-    const wrapper = mount(<TextField {...inputProps} onValidate={onValidate} />);
+    const { container } = render(<TextField {...inputProps} onValidate={onValidate} />);
 
-    wrapper.find('input').simulate('blur');
-    expect(wrapper).toMatchSnapshot();
-    // Expect at least one element containing the validation error text.
-    expect(wrapper.findWhere((node) => {
-      try {
-        return node.text() === onValidate();
-      } catch (e) {
-        return false;
-      }
-    }).length).toBeGreaterThan(0);
+    fireEvent.blur(screen.getByRole('textbox'));
+
+    expect(container.querySelector('.errorText')).toContainElement(screen.getByText(onValidate()));
+    expect(screen.getByRole('textbox')).toHaveAttribute('aria-describedby', 'ariaError-test-input');
   });
 });

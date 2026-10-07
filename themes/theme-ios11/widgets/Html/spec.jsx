@@ -1,18 +1,17 @@
-import React from 'react';
 import { Provider } from 'react-redux';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import configureStore from 'redux-mock-store';
-import Html, { UnwrappedHtml } from './index';
+import Html from './index';
 
 const mockedStore = configureStore();
 
 /**
  * @param {Object} settings The widget settings
- * @returns {JSX}
+ * @returns {Object}
  */
-const createComponent = (settings) => {
+const renderComponent = (settings) => {
   const store = mockedStore({});
-  return mount((
+  return render((
     <Provider store={store}>
       <Html settings={settings} />
     </Provider>
@@ -27,16 +26,15 @@ const defaultSettings = {
 };
 
 describe('<HtmlWidget />', () => {
-  beforeEach(() => {
-    jest.clearAllMocks();
-  });
-
   it('should render the widget', () => {
-    const wrapper = createComponent(defaultSettings);
-    expect(wrapper).toMatchSnapshot();
-    const outer = wrapper.find(UnwrappedHtml).childAt(0);
-    expect(outer.prop('data-test-default-padding')).toBeUndefined();
-    expect(outer.prop('style')).toEqual({});
+    const { container } = renderComponent(defaultSettings);
+    const outer = container.firstChild;
+
+    expect(screen.getByRole('heading', {
+      level: 1,
+      name: 'Hello World!',
+    })).toBeInTheDocument();
+    expect(outer).not.toHaveAttribute('style');
   });
 
   it('should render the widget with a padding', () => {
@@ -45,9 +43,13 @@ describe('<HtmlWidget />', () => {
       defaultPadding: true,
     };
 
-    const wrapper = createComponent(settings);
-    expect(wrapper).toMatchSnapshot();
-    const outer = wrapper.find(UnwrappedHtml).childAt(0);
-    expect(outer.prop('style')).toEqual({ padding: 16 });
+    const { container } = renderComponent(settings);
+    const outer = container.firstChild;
+
+    expect(screen.getByRole('heading', {
+      level: 1,
+      name: 'Hello World!',
+    })).toBeInTheDocument();
+    expect(outer).toHaveStyle({ padding: '16px' });
   });
 });

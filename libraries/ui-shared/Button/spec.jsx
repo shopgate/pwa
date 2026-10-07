@@ -1,32 +1,36 @@
-import trim from 'lodash/trim';
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Button from './index';
 
 describe('<Button />', () => {
   it('should render as a regular button if type is omitted', () => {
-    const wrapper = shallow(<Button>Press me</Button>);
+    render(<Button>Press me</Button>);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.render().text()).toEqual('Press me');
+    const button = screen.getByRole('button', { name: 'Press me' });
+
+    expect(button).toHaveTextContent('Press me');
+    expect(button).toHaveClass('ui-shared__button');
+    expect(button).toBeEnabled();
+    expect(button).toHaveAttribute('data-test-id', 'Button');
   });
 
-  it('should render as a regular button if type is explicitly defined', () => {
-    const wrapper = shallow(<Button type="regular">Press me</Button>);
+  it('should style the regular, primary and secondary button differently', () => {
+    render((
+      <>
+        <Button type="regular">Regular</Button>
+        <Button type="primary">Primary</Button>
+        <Button type="secondary">Secondary</Button>
+      </>
+    ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(trim(wrapper.prop('className'))).toMatch(/^ui-shared__button\s+/);
-  });
+    const regular = screen.getByRole('button', { name: 'Regular' });
+    const primary = screen.getByRole('button', { name: 'Primary' });
+    const secondary = screen.getByRole('button', { name: 'Secondary' });
 
-  it('should render as a primary button', () => {
-    const wrapper = shallow(<Button type="primary">Press me</Button>);
-    expect(trim(wrapper.prop('className'))).toMatch(/^ui-shared__button\s+/);
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should render as a secondary button', () => {
-    const wrapper = shallow(<Button type="secondary">Press me</Button>);
-    expect(trim(wrapper.prop('className'))).toMatch(/^ui-shared__button\s+/);
-    expect(wrapper).toMatchSnapshot();
+    expect(regular).toHaveClass('ui-shared__button');
+    expect(primary).toHaveClass('ui-shared__button');
+    expect(secondary).toHaveClass('ui-shared__button');
+    expect(regular.className).not.toBe(primary.className);
+    expect(regular.className).not.toBe(secondary.className);
+    expect(primary.className).not.toBe(secondary.className);
   });
 });

@@ -1,23 +1,28 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Chip from '.';
 
 describe('<Chip />', () => {
   it('should render a tag', () => {
-    const wrapper = mount(<Chip id="some-id">text</Chip>);
+    const { container } = render(<Chip id="some-id">text</Chip>);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('button').length).toEqual(2);
-    expect(wrapper.find('button').at(1).text()).toEqual('text');
+    const buttons = screen.getAllByRole('button');
+
+    expect(container.querySelector('[data-test-id="some-id"]')).toHaveClass('ui-shared__chip');
+    expect(buttons).toHaveLength(2);
+    expect(buttons[0]).toHaveAttribute('data-test-id', 'removeFilter');
+    expect(buttons[1]).toHaveTextContent('text');
   });
 });
 
 describe('<Chip />', () => {
   it('should render a without removable icon', () => {
-    const wrapper = mount(<Chip id="some-id" removable={false}>text</Chip>);
+    const { container } = render(<Chip id="some-id" removable={false}>text</Chip>);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('button').length).toEqual(1);
-    expect(wrapper.find('button').at(0).text()).toEqual('text');
+    const buttons = screen.getAllByRole('button');
+
+    expect(container.querySelector('[data-test-id="some-id"]')).toHaveClass('ui-shared__chip');
+    expect(buttons).toHaveLength(1);
+    expect(buttons[0]).toHaveTextContent('text');
+    expect(container.querySelector('[data-test-id="removeFilter"]')).not.toBeInTheDocument();
   });
 });

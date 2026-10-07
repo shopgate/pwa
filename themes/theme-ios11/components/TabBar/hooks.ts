@@ -15,9 +15,9 @@ const { variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 /**
  * The effective TabBar settings, resolved from either the legacy widget
  * settings or the new app settings. Mirrors the app-settings tab bar shape
- * exactly, so {@link AppSettings} stays the single source of truth.
+ * except `favorites`, which is resolved by `useShowFavoritesCounter`.
  */
-type TabBarSettings = AppSettings['navigation']['tabBar'];
+type TabBarSettings = Omit<AppSettings['navigation']['tabBar'], 'favorites'>;
 
 /**
  * Resolves the effective TabBar settings by combining the legacy widget

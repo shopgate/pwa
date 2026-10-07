@@ -1,6 +1,7 @@
 import React, { PureComponent, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { logger } from '@shopgate/pwa-core/helpers';
+import { toError } from '@shopgate/pwa-core/helpers/error';
 import Loading from '../Loading';
 import portalCollection from '../../helpers/portals/portalCollection';
 import { componentsConfig } from '../../helpers/config';
@@ -41,7 +42,7 @@ class Portal extends PureComponent {
    */
   componentDidCatch(error, info) {
     this.setState({ hasError: true });
-    logger.error(error, info);
+    logger.error(toError(error, { componentStack: info.componentStack }));
   }
 
   /**

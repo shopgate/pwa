@@ -1,11 +1,11 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import { ProductGrid, ProductList } from '@shopgate/engage/product/components';
 import { UnwrappedProductsWidget as ProductsWidget } from './ProductsWidget';
 
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/product/components', () => ({
-  ProductGrid: function ProductGrid() { return null; },
-  ProductList: function ProductList() { return null; },
+  ProductGrid: jest.fn(() => null),
+  ProductList: jest.fn(() => null),
 }));
 
 describe('<ProductsWidget />', () => {
@@ -30,18 +30,20 @@ describe('<ProductsWidget />', () => {
   });
 
   it('should render the grid only when products are received', () => {
-    const wrapper = shallow(<ProductsWidget {...props} />);
+    const { container, rerender } = render(<ProductsWidget {...props} />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ProductGrid').length).toBe(0);
+    expect(container).toBeEmptyDOMElement();
+    expect(ProductGrid).not.toHaveBeenCalled();
 
-    // Now give it a product...
-    wrapper.setProps({
+    rerender(<ProductsWidget {...props} products={[{}]} totalProductCount={1} />);
+
+    expect(container).not.toBeEmptyDOMElement();
+    expect(ProductGrid.mock.lastCall[0]).toEqual(expect.objectContaining({
+      infiniteLoad: false,
       products: [{}],
-      totalProductCount: 1,
-    });
-
-    expect(wrapper.find('ProductGrid').length).toBe(1);
+      scope: 'widgets',
+    }));
+    expect(ProductList).not.toHaveBeenCalled();
     expect(getProducts).toHaveBeenCalledTimes(1);
     expect(getProducts).toHaveBeenCalledWith(
       props.settings.queryType,
@@ -55,20 +57,34 @@ describe('<ProductsWidget />', () => {
   });
 
   it('should render the products in the list view', () => {
-    const wrapper = shallow(<ProductsWidget {...props} />);
+    const { container, rerender } = render(<ProductsWidget {...props} />);
 
-    // Change the layout to a list.
-    wrapper.setProps({
-      products: [{}],
-      settings: {
-        headline: '',
-        layout: 'list',
+    rerender((
+      <ProductsWidget
+        {...props}
+        products={[{}]}
+        settings={{
+          headline: '',
+          layout: 'list',
+        }}
+        totalProductCount={1}
+      />
+    ));
+
+    expect(container.firstChild).toHaveClass('listView');
+    expect(container.querySelector('[data-test-id="Headline"]')).not.toBeInTheDocument();
+    expect(ProductList.mock.lastCall[0]).toEqual({
+      flags: {
+        manufacturer: false,
+        name: true,
+        price: undefined,
+        reviews: undefined,
       },
-      totalProductCount: 1,
+      infiniteLoad: false,
+      products: [{}],
+      scope: 'widgets',
     });
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('ProductList').length).toBe(1);
+    expect(ProductGrid).not.toHaveBeenCalled();
     expect(getProducts).toHaveBeenCalledTimes(1);
     expect(getProducts).toHaveBeenCalledWith(
       props.settings.queryType,

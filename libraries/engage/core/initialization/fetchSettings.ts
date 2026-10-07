@@ -1,8 +1,4 @@
-import {
-  withScope,
-  captureMessage,
-  Severity as SentrySeverity,
-} from '@sentry/browser';
+import { withScope, captureMessage } from '@sentry/browser';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import {
   receiveShopSettings,
@@ -116,7 +112,7 @@ const loadJsonpSettings = (params: LoadJsonpSettingsParams): Promise<void> =>
     // clearTimeout would no-op and this timer would still fire a false timeout warning.
     timeout = setTimeout(() => {
       withScope((scope) => {
-        scope.setLevel(SentrySeverity.Warning);
+        scope.setLevel('warning');
         scope.setExtra('settingsUrl', url);
         scope.setExtra('timeout', REQUEST_TIMEOUT);
         captureMessage(`Fetching settings took too long: ${id}`);
@@ -136,7 +132,7 @@ const loadJsonpSettings = (params: LoadJsonpSettingsParams): Promise<void> =>
 
     injectScript(id, url, (error) => {
       withScope((scope) => {
-        scope.setLevel(SentrySeverity.Error);
+        scope.setLevel('error');
         scope.setExtra('settingsUrl', url);
         captureMessage(`Fetching settings failed: ${id}`);
       });

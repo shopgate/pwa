@@ -1,11 +1,11 @@
 /** @jest-environment jsdom */
 
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { embeddedMedia } from '@shopgate/pwa-common/collections';
+import EmbeddedMedia from '../EmbeddedMedia';
 import HtmlSanitizer from './index';
 
-jest.mock('../EmbeddedMedia', () => ({ children }) => children);
+jest.mock('../EmbeddedMedia', () => jest.fn(({ children }) => children));
 jest.mock('./connector', () => Cmp => Cmp);
 
 /**
@@ -13,11 +13,18 @@ jest.mock('./connector', () => Cmp => Cmp);
  * @param {Object} props Component props.
  * @returns {JSX.Element}
  */
-const createWrapper = (html, props = {}) => mount((
+const createElement = (html, props = {}) => (
   <HtmlSanitizer navigate={() => {}} {...props}>
     {html}
   </HtmlSanitizer>
-));
+);
+
+/**
+ * @param {string} html HTML markup.
+ * @param {Object} props Component props.
+ * @returns {Object}
+ */
+const createWrapper = (html, props = {}) => render(createElement(html, props));
 
 describe('<HtmlSanitizer />', () => {
   let embeddedMediaAddSpy;
@@ -39,26 +46,29 @@ describe('<HtmlSanitizer />', () => {
      */
     const html = '&lt;h1&gt;Hello World!&lt;/h1&gt;';
 
-    const wrapper = createWrapper(html, { decode: true });
+    const { container } = createWrapper(html, { decode: true });
 
-    // Test result of dangerouslySetInnerHTML.
-    expect(wrapper.html()).toEqual('<div class="common__html-sanitizer"><h1>Hello World!</h1></div>');
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(container.innerHTML).toEqual('<div class="common__html-sanitizer"><h1>Hello World!</h1></div>');
+    expect(screen.getByRole('heading', {
+      level: 1,
+      name: 'Hello World!',
+    })).toBeInTheDocument();
   });
 
   it('should add and remove handlers for embedded media', () => {
-    const wrapper = createWrapper('<div></div>', { decode: true });
-    const ref = wrapper.instance().htmlContainer.current;
+    const { container, rerender, unmount } = createWrapper('<div></div>', { decode: true });
+    const ref = container.firstChild;
+    expect(ref).toHaveClass('common__html-sanitizer');
     expect(embeddedMediaAddSpy).toHaveBeenCalledTimes(1);
     expect(embeddedMediaAddSpy).toHaveBeenCalledWith(ref);
     expect(embeddedMediaRemoveSpy).toHaveBeenCalledTimes(0);
 
-    wrapper.setProps({ children: '<span></span>' });
+    rerender(createElement('<span></span>', { decode: true }));
     expect(embeddedMediaAddSpy).toHaveBeenCalledTimes(2);
     expect(embeddedMediaAddSpy).toHaveBeenCalledWith(ref);
     expect(embeddedMediaRemoveSpy).toHaveBeenCalledTimes(0);
 
-    wrapper.unmount();
+    unmount();
     expect(embeddedMediaAddSpy).toHaveBeenCalledTimes(2);
     expect(embeddedMediaRemoveSpy).toHaveBeenCalledTimes(1);
     expect(embeddedMediaRemoveSpy).toHaveBeenCalledWith(ref);
@@ -74,11 +84,14 @@ describe('<HtmlSanitizer />', () => {
       </div>
     `;
 
-    const wrapper = createWrapper(html);
+    const { container } = createWrapper(html);
 
-    expect(wrapper.html()).not.toContain('<img');
-    expect(wrapper.html()).toContain('<style>');
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(container.innerHTML).not.toContain('<img');
+    expect(container.innerHTML).toContain('<style>');
+    expect(container.firstChild).toHaveClass('common__html-sanitizer');
+    expect(screen.getByRole('link')).toHaveAttribute('href', 'foo');
+    expect(screen.getByRole('link').childElementCount).toBe(0);
+    expect(screen.queryByRole('img')).not.toBeInTheDocument();
   });
 
   it('should move style blocks out of the content', () => {
@@ -91,8 +104,8 @@ describe('<HtmlSanitizer />', () => {
       </div>
     `;
 
-    const wrapper = createWrapper(html, { processStyles: true });
-    expect(wrapper.html()).not.toContain('<style>');
+    const { container } = createWrapper(html, { processStyles: true });
+    expect(container.innerHTML).not.toContain('<style>');
   });
 
   it('does not strip out images with absolute paths', () => {
@@ -104,10 +117,13 @@ describe('<HtmlSanitizer />', () => {
       </div>
     `;
 
-    const wrapper = createWrapper(html);
+    const { container } = createWrapper(html);
 
-    expect(wrapper.html()).toContain('<img');
-    expect(wrapper.render()).toMatchSnapshot();
+    expect(container.innerHTML).toContain('<img');
+    expect(container.firstChild).toHaveClass('common__html-sanitizer');
+    expect(screen.getByRole('link')).toHaveAttribute('href', 'foo');
+    expect(screen.getByRole('link')).toContainElement(screen.getByRole('img'));
+    expect(screen.getByRole('img')).toHaveAttribute('src', 'http://google.de/bar.jpg');
   });
 
   it('strips out the script tags', () => {
@@ -121,11 +137,15 @@ describe('<HtmlSanitizer />', () => {
      */
     const html = '&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js&quot;&gt;&lt;/script&gt; &lt;script type=&quot;text/javascript&quot;&gt;var x = 42;&lt;/script&gt; &lt;p&gt;Foo Bar&lt;/p&gt; &lt;script&gt;var y = 23;&lt;/script&gt;';
 
-    const wrapper = createWrapper(html, { decode: true });
+    const { container } = createWrapper(html, { decode: true });
 
-    // Test result of dangerouslySetInnerHTML.
-    expect(wrapper.html()).toEqual('<div class="common__html-sanitizer">  <p>Foo Bar</p> </div>');
-    expect(wrapper).toMatchSnapshot();
+    expect(container.innerHTML).toEqual('<div class="common__html-sanitizer">  <p>Foo Bar</p> </div>');
+    expect(EmbeddedMedia.mock.lastCall[0]).toEqual(expect.objectContaining({
+      cookieConsentSettings: {
+        comfortCookiesAccepted: false,
+        statisticsCookiesAccepted: false,
+      },
+    }));
   });
 
   describe('Link handling', () => {
@@ -136,68 +156,26 @@ describe('<HtmlSanitizer />', () => {
     });
 
     it('follows a link from a plain <a>', () => {
-      // Create a real container element in the current document
-      const attachNode = document.createElement('div');
-      document.body.appendChild(attachNode);
-
       const html = '&lt;a id=&quot;link&quot; href=&quot;#follow-me-and-everything-is-alright&quot;&gt;Plain Link&lt;/a&gt;';
-      const wrapper = mount(
-        (
-          <HtmlSanitizer
-            decode
-            settings={{ handleClick: mockedHandleClick }}
-            navigate={() => {}}
-          >
-            {html}
-          </HtmlSanitizer>
-        ), {
-          attachTo: attachNode,
-        }
-      );
+      createWrapper(html, {
+        decode: true,
+        settings: { handleClick: mockedHandleClick },
+      });
 
-      const aTag = attachNode.getElementsByTagName('a')[0];
-      aTag.closest = () => aTag;
-
-      const event = {
-        target: aTag,
-        preventDefault: () => {},
-      };
-      wrapper.instance().handleClick(event);
+      fireEvent.click(screen.getByRole('link', { name: 'Plain Link' }));
 
       expect(mockedHandleClick).toHaveBeenCalledTimes(1);
       expect(mockedHandleClick).toHaveBeenCalledWith('#follow-me-and-everything-is-alright', '');
-      wrapper.unmount();
-      attachNode.remove();
     });
 
     it('follows a link from a <a> with other HTML inside', () => {
-      const attachNode = document.createElement('div');
-      document.body.appendChild(attachNode);
-
       const html = '&lt;a id=&quot;link&quot; target=&quot;_blank&quot; href=&quot;#I-ll-be-the-one-to-tuck-you-in-at-night&quot;&gt;&lt;span&gt;Span Link&lt;/span&gt;&lt;/a&gt;';
-      const wrapper = mount(
-        (
-          <HtmlSanitizer
-            decode
-            settings={{ handleClick: mockedHandleClick }}
-            navigate={() => {}}
-          >
-            {html}
-          </HtmlSanitizer>
-        ), {
-          attachTo: attachNode,
-        }
-      );
+      createWrapper(html, {
+        decode: true,
+        settings: { handleClick: mockedHandleClick },
+      });
 
-      const aTag = attachNode.getElementsByTagName('a')[0];
-      const spanTag = attachNode.getElementsByTagName('span')[0];
-      spanTag.closest = () => aTag;
-
-      const event = {
-        target: spanTag,
-        preventDefault: () => {},
-      };
-      wrapper.instance().handleClick(event);
+      fireEvent.click(screen.getByText('Span Link'));
 
       expect(mockedHandleClick).toHaveBeenCalledTimes(1);
       expect(mockedHandleClick).toHaveBeenCalledWith('#I-ll-be-the-one-to-tuck-you-in-at-night', '_blank');

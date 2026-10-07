@@ -1,5 +1,7 @@
-import React from 'react';
-import { shallow, mount } from 'enzyme';
+/* eslint-disable react/prop-types */
+import { render, screen } from '@testing-library/react';
+import { Swiper } from '@shopgate/engage/components';
+import { ProductCard } from '@shopgate/engage/product/components';
 import {
   PRODUCT_SLIDER_WIDGET_LIMIT,
   UnwrappedProductSlider as ProductSlider,
@@ -14,27 +16,22 @@ jest.mock('@shopgate/engage/product/hooks', () => ({
 }));
 
 jest.mock('@shopgate/engage/components', () => {
-  function Swiper({ children }) { return children; }
+  // eslint-disable-next-line no-shadow
+  const Swiper = jest.fn(({ children }) => children);
   Swiper.Item = function SwiperItem({ children }) { return children; };
   return {
     Swiper,
-    Card: ({ children }) => children,
+    Card: ({ children }) => <article>{children}</article>,
   };
 });
 jest.mock('@shopgate/engage/product/providers', () => ({
   ProductListTypeProvider: ({ children }) => children,
   ProductListEntryProvider: ({ children }) => children,
 }));
-jest.mock('@shopgate/engage/product/components', () => {
-  const {
-    default: ProductSliderOriginal,
-  } = jest.requireActual('@shopgate/engage/product/components/ProductSlider');
-
-  return {
-    ProductCard: ({ children }) => children,
-    ProductSlider: ProductSliderOriginal,
-  };
-});
+jest.mock('@shopgate/engage/product/components', () => ({
+  ProductCard: jest.fn(() => null),
+}));
+jest.mock('Components/Headline', () => ({ text }) => <h2>{text}</h2>);
 
 describe('<ProductSlider />', () => {
   /**
@@ -92,7 +89,7 @@ describe('<ProductSlider />', () => {
     }
 
     products.push({
-      id: '1234',
+      id: `${1234 + products.length}`,
       name: 'First product',
       featuredImageUrl: 'http://placekitten.com/300/300',
       featuredImageBaseUrl: 'http://placekitten.com',
@@ -124,14 +121,14 @@ describe('<ProductSlider />', () => {
   it('should call the products callback on mount', () => {
     const getProducts = jest.fn();
     const settings = getSettings();
-    const wrapper = mount(<ProductSlider
+    const { container } = render(<ProductSlider
       id={sliderId}
       settings={settings}
       getProducts={getProducts}
       products={[]}
     />);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toBeEmptyDOMElement();
     expect(getProducts).toHaveBeenCalledTimes(1);
     expect(getProducts).toHaveBeenCalledWith(
       settings.queryType,
@@ -144,65 +141,66 @@ describe('<ProductSlider />', () => {
     );
   });
 
-  it('should not render the widget without any data', () => {
-    const wrapper = shallow(<ProductSlider
-      id={sliderId}
-      settings={getSettings()}
-      getProducts={getProductsMock}
-      products={createProducts(0)}
-    />);
-
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Card').length).toBe(0);
-  });
-
   it('should render the widget with data', () => {
     const products = createProducts();
 
-    const wrapper = shallow(<ProductSlider
+    render(<ProductSlider
       id={sliderId}
       settings={getSettings()}
       getProducts={getProductsMock}
       products={products}
     />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Card').length).toBe(products.length);
+    expect(screen.getAllByRole('article')).toHaveLength(products.length);
+    expect(Swiper.mock.lastCall[0]).toEqual(expect.objectContaining({
+      loop: false,
+      indicators: false,
+      controls: false,
+      freeMode: true,
+      slidesPerView: 2.3,
+    }));
+    expect(Swiper.mock.lastCall[0].autoplay).toBeUndefined();
+    expect(ProductCard.mock.calls[0][0]).toEqual({
+      product: products[0],
+      hideName: false,
+      hidePrice: false,
+      hideRating: false,
+    });
   });
 
   it('should not render an empty headline', () => {
-    const wrapper = shallow(<ProductSlider
+    render(<ProductSlider
       id={sliderId}
       settings={getSettings(false)}
       getProducts={getProductsMock}
       products={createProducts()}
     />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Headline').length).toBe(0);
+    expect(screen.getAllByRole('article')).toHaveLength(5);
+    expect(screen.queryByRole('heading')).not.toBeInTheDocument();
   });
 
   it('should render the headline', () => {
-    const wrapper = shallow(<ProductSlider
+    render(<ProductSlider
       id={sliderId}
       settings={getSettings(true)}
       getProducts={getProductsMock}
       products={createProducts()}
     />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Headline').length).toBe(1);
+    expect(screen.getAllByRole('heading')).toHaveLength(1);
+    expect(screen.getByRole('heading', { name: 'Lorem ipsum' })).toBeInTheDocument();
   });
 
   it('should limit output to a maximum of 30 products', () => {
-    const wrapper = shallow(<ProductSlider
+    render(<ProductSlider
       id={sliderId}
       settings={getSettings(true)}
       getProducts={getProductsMock}
       products={createProducts(40)}
     />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Card').length).toBe(30);
+    expect(screen.getAllByRole('article')).toHaveLength(30);
   });
 });
+/* eslint-enable react/prop-types */

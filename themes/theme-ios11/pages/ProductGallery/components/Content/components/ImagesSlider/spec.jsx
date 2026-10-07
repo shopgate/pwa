@@ -1,9 +1,9 @@
-import React from 'react';
-import { mount } from 'enzyme';
+/* eslint-disable react/prop-types */
+import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { useWidgetSettings } from '@shopgate/engage/core';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { Swiper } from '@shopgate/engage/components';
 import {
   getProductImages,
   getCurrentBaseProduct,
@@ -38,10 +38,12 @@ jest.mock('@shopgate/engage/core', () => ({
 }));
 
 jest.mock('@shopgate/engage/components', () => {
-  const Swiper = jest.requireActual('@shopgate/pwa-common/components/Swiper/__mocks__').default;
+  // eslint-disable-next-line no-shadow
+  const Swiper = jest.fn(({ children }) => children);
+  Swiper.Item = ({ children }) => children;
 
   return {
-    Image: () => 'Image',
+    Image: ({ src }) => <img src={src} alt="" />,
     Swiper,
     SurroundPortals: ({ children }) => children,
   };
@@ -56,6 +58,7 @@ const mockedStore = configureStore();
 
 describe('<ProductGallery.Content> page', () => {
   beforeEach(() => {
+    Swiper.mockClear();
     getProductImages.mockReturnValue([
       'foo', 'bar',
     ]);
@@ -65,38 +68,38 @@ describe('<ProductGallery.Content> page', () => {
   it('should render Swiper with images', () => {
     const store = mockedStore();
 
-    const wrapper = mount(
+    const { container } = render((
       <Provider store={store}>
         <Content initialSlide={0} />
-      </Provider>,
-      mockRenderOptions
-    );
+      </Provider>
+    ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Swiper').length).toEqual(1);
-    expect(wrapper.find('Image').length).toEqual(2);
-    expect(wrapper
-      .find('Image')
-      .at(0)
-      .prop('src')).toEqual('foo');
-    expect(wrapper
-      .find('Image')
-      .at(1)
-      .prop('src')).toEqual('bar');
+    expect(Swiper.mock.lastCall[0]).toEqual(expect.objectContaining({
+      initialSlide: 0,
+      indicators: true,
+      loop: true,
+      disabled: false,
+      zoom: expect.objectContaining({
+        enabled: true,
+        maxRatio: 4,
+      }),
+    }));
+
+    const images = Array.from(container.querySelectorAll('.swiper-zoom-container img'));
+
+    expect(images.map(image => image.getAttribute('src'))).toEqual(['foo', 'bar']);
   });
 
   it('should pass initialSlide prop', () => {
     const store = mockedStore();
 
-    const wrapper = mount(
+    render((
       <Provider store={store}>
         <Content initialSlide={3} />
-      </Provider>,
-      mockRenderOptions
-    );
+      </Provider>
+    ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Swiper').prop('initialSlide')).toEqual(3);
+    expect(Swiper.mock.lastCall[0]).toEqual(expect.objectContaining({ initialSlide: 3 }));
   });
 
   it('should use zoom from widget settings', () => {
@@ -108,13 +111,15 @@ describe('<ProductGallery.Content> page', () => {
 
     const store = mockedStore();
 
-    const wrapper = mount(
+    render((
       <Provider store={store}>
         <Content initialSlide={0} />
-      </Provider>,
-      mockRenderOptions
-    );
+      </Provider>
+    ));
 
-    expect(wrapper.find('Swiper').prop('zoom')).toHaveProperty('maxRatio', 5);
+    expect(Swiper.mock.lastCall[0]).toEqual(expect.objectContaining({
+      zoom: expect.objectContaining({ maxRatio: 5 }),
+    }));
   });
 });
+/* eslint-enable react/prop-types */

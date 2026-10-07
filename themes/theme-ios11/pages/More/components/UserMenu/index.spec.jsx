@@ -1,14 +1,24 @@
-import React from 'react';
-import { mount } from 'enzyme';
+/* eslint-disable react/prop-types */
+import { render, screen, fireEvent } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { isUserLoginDisabled } from '@shopgate/pwa-common/selectors/user';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { ORDERS_PATH, WISH_LIST_PATH, PROFILE_PATH } from '@shopgate/engage/account/constants';
 import UserMenu from './index';
 
-jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/components', () => {
+  const Grid = ({ children }) => children;
+  Grid.Item = ({ children }) => children;
+
+  return {
+    Grid,
+    I18n: { Text: ({ string }) => string },
+    Link: ({ children, href, role }) => <a href={href} role={role}>{children}</a>,
+    SurroundPortals: ({ children }) => children,
+    Typography: ({ children, component: Component }) => <Component>{children}</Component>,
+  };
+});
 jest.mock('@shopgate/engage/a11y/components');
 
 jest.mock('@shopgate/pwa-common/selectors/user', () => ({
@@ -24,61 +34,69 @@ const store = createMockStore();
 describe('<UserMenu />', () => {
   it('should render as expected when the user is logged in', () => {
     const logoutHandler = jest.fn();
-    const wrapper = mount((
+    const { container } = render((
       <Provider store={store}>
         <UserMenu isLoggedIn logout={logoutHandler} />
-      </Provider>), mockRenderOptions);
+      </Provider>));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('LoggedIn').exists()).toBe(true);
-    expect(wrapper.find('MoreMenuItem').last().text()).toBe('navigation.logout');
-    wrapper.find('MoreMenuItem').last().simulate('click');
+    expect(screen.getByRole('heading', {
+      level: 2,
+      name: 'navigation.your_account',
+    })).toBeInTheDocument();
+
+    const items = screen.getAllByRole('button');
+
+    expect(items).toHaveLength(1);
+    expect(items[0]).toHaveTextContent('navigation.logout');
+    fireEvent.click(items[0]);
     expect(logoutHandler).toHaveBeenCalledTimes(1);
 
-    expect(wrapper.exists({ href: PROFILE_PATH })).toBe(false);
-    expect(wrapper.exists({ href: WISH_LIST_PATH })).toBe(false);
-    expect(wrapper.exists({ href: ORDERS_PATH })).toBe(false);
+    expect(container.querySelector(`[href="${PROFILE_PATH}"]`)).not.toBeInTheDocument();
+    expect(container.querySelector(`[href="${WISH_LIST_PATH}"]`)).not.toBeInTheDocument();
+    expect(container.querySelector(`[href="${ORDERS_PATH}"]`)).not.toBeInTheDocument();
   });
 
   it('should render as expected when the user is logged out and the buttons are enabled', () => {
-    const wrapper = mount((
+    render((
       <Provider store={store}>
         <UserMenu isLoggedIn={false} logout={() => {}} />
-      </Provider>), mockRenderOptions);
+      </Provider>));
 
-    expect(wrapper).toMatchSnapshot();
-    const buttons = wrapper.find('Button');
-    expect(buttons.find('Text').at(0).prop('string')).toBe('login.button');
-    expect(buttons.at(0).prop('disabled')).toBe(false);
-    expect(buttons.find('Text').at(1).prop('string')).toBe('login.signup');
-    expect(buttons.at(1).prop('disabled')).toBe(false);
+    const buttons = screen.getAllByRole('button');
+
+    expect(buttons).toHaveLength(2);
+    expect(buttons[0]).toHaveTextContent('login.button');
+    expect(buttons[0]).toBeEnabled();
+    expect(buttons[1]).toHaveTextContent('login.signup');
+    expect(buttons[1]).toBeEnabled();
   });
 
   it('should render as expected when the user is logged out and the buttons are disabled', () => {
     isUserLoginDisabled.mockReturnValueOnce(true);
 
-    const wrapper = mount((
+    render((
       <Provider store={store}>
         <UserMenu isLoggedIn={false} logout={() => { }} />
-      </Provider>), mockRenderOptions);
+      </Provider>));
 
-    expect(wrapper).toMatchSnapshot();
-    const buttons = wrapper.find('Button');
-    expect(buttons.at(0).prop('disabled')).toBe(true);
-    expect(buttons.at(1).prop('disabled')).toBe(true);
+    const buttons = screen.getAllByRole('button');
+
+    expect(buttons).toHaveLength(2);
+    expect(buttons[0]).toBeDisabled();
+    expect(buttons[1]).toBeDisabled();
   });
 
   it('should render additional links when logged in and new services are enabled', () => {
     hasNewServices.mockReturnValueOnce(true);
 
-    const wrapper = mount((
+    const { container } = render((
       <Provider store={store}>
         <UserMenu isLoggedIn logout={() => {}} />
-      </Provider>), mockRenderOptions);
+      </Provider>));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.exists({ href: PROFILE_PATH })).toBe(true);
-    expect(wrapper.exists({ href: WISH_LIST_PATH })).toBe(true);
-    expect(wrapper.exists({ href: ORDERS_PATH })).toBe(true);
+    expect(container.querySelector(`[href="${PROFILE_PATH}"]`)).toBeInTheDocument();
+    expect(container.querySelector(`[href="${WISH_LIST_PATH}"]`)).toBeInTheDocument();
+    expect(container.querySelector(`[href="${ORDERS_PATH}"]`)).toBeInTheDocument();
   });
 });
+/* eslint-enable react/prop-types */

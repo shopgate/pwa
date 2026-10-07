@@ -1,50 +1,47 @@
-import trim from 'lodash/trim';
-import React from 'react';
-import { mount } from 'enzyme';
-import BaseButton from '@shopgate/pwa-common/components/Button';
-import Ripple from '../Ripple';
+import { render, screen, within } from '@testing-library/react';
 import RippleButton from './index';
 
 describe('<RippleButton />', () => {
   it('should render as a regular ripple button effect if type is omitted', () => {
-    const wrapper = mount(<RippleButton>Press me</RippleButton>);
+    const { container } = render(<RippleButton>Press me</RippleButton>);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Ripple).text()).toEqual('Press me');
+    const button = screen.getByRole('button', { name: 'Press me' });
+
+    expect(button).toBeEnabled();
+    expect(button).toHaveAttribute('data-test-id', 'Button');
+    expect(container.querySelector('[data-test-id="Ripple"]')).toHaveTextContent('Press me');
   });
 
-  it('should render as a regular ripple button if type is explicitly defined', () => {
-    const wrapper = mount(<RippleButton type="regular">Press me</RippleButton>);
+  it('should style the regular, primary and secondary ripple button differently', () => {
+    render((
+      <>
+        <RippleButton type="regular">Regular</RippleButton>
+        <RippleButton type="primary">Primary</RippleButton>
+        <RippleButton type="secondary">Secondary</RippleButton>
+      </>
+    ));
 
-    const base = wrapper.find(BaseButton);
-    expect(base.exists()).toBe(true);
-    expect(trim(base.props().className)).toMatch(/^ui-shared__button /);
-    expect(trim(base.props().className)).toContain('ui-shared__ripple-button');
-    expect(wrapper.find(Ripple).render().text()).toEqual('Press me');
-    expect(wrapper).toMatchSnapshot();
-  });
+    const regular = screen.getByRole('button', { name: 'Regular' });
+    const primary = screen.getByRole('button', { name: 'Primary' });
+    const secondary = screen.getByRole('button', { name: 'Secondary' });
 
-  it('should render as a primary ripple button', () => {
-    const wrapper = mount(<RippleButton type="primary">Press me</RippleButton>);
-    const base = wrapper.find(BaseButton);
-    expect(trim(base.props().className)).toMatch(/^ui-shared__button /);
-    expect(trim(base.props().className)).toContain('ui-shared__ripple-button');
-    expect(wrapper.find(Ripple).render().text()).toEqual('Press me');
-    expect(wrapper).toMatchSnapshot();
-  });
-
-  it('should render as a secondary ripple button', () => {
-    const wrapper = mount(<RippleButton type="secondary">Press me</RippleButton>);
-    const base = wrapper.find(BaseButton);
-    expect(trim(base.props().className)).toMatch(/^ui-shared__button /);
-    expect(trim(base.props().className)).toContain('ui-shared__ripple-button');
-    expect(wrapper.find(Ripple).render().text()).toEqual('Press me');
-    expect(wrapper).toMatchSnapshot();
+    expect(regular).toHaveClass('ui-shared__button', 'ui-shared__ripple-button');
+    expect(primary).toHaveClass('ui-shared__button', 'ui-shared__ripple-button');
+    expect(secondary).toHaveClass('ui-shared__button', 'ui-shared__ripple-button');
+    expect(regular.querySelector('[data-test-id="Ripple"]')).toHaveTextContent('Regular');
+    expect(regular.className).not.toBe(primary.className);
+    expect(regular.className).not.toBe(secondary.className);
+    expect(primary.className).not.toBe(secondary.className);
   });
 
   it('should render as a disabled ripple button', () => {
-    const wrapper = mount(<RippleButton disabled>Press me</RippleButton>);
-    expect(wrapper.find(BaseButton).props().disabled).toBe(true);
-    expect(wrapper).toMatchSnapshot();
+    render(<RippleButton disabled>Press me</RippleButton>);
+
+    const button = screen.getByRole('button', { name: 'Press me' });
+
+    expect(button).toBeDisabled();
+    expect(button).toHaveClass('ui-shared__button', 'ui-shared__ripple-button');
+    expect(within(button).getByText('Press me')).toBeInTheDocument();
+    expect(button.querySelector('[data-test-id="Ripple"]')).not.toBeInTheDocument();
   });
 });

@@ -1,8 +1,9 @@
-import React from 'react';
-import { mount } from 'enzyme';
+/* eslint-disable react/prop-types */
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { hasCategoryChildren } from '@shopgate/engage/category/selectors';
+import { CategoryList } from '@shopgate/engage/category/components';
 import reducers from 'Pages/reducers';
 import CategoryListContent from './index';
 
@@ -13,34 +14,44 @@ jest.mock('@shopgate/pwa-common-commerce/category/selectors', () => ({
   hasCategoryChildren: jest.fn().mockReturnValue(false),
 }));
 jest.mock('@shopgate/engage/a11y', () => ({
-  Section: ({ children }) => children,
+  Section: ({ children, title }) => <section aria-label={title}>{children}</section>,
 }));
 
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/category/components', () => ({
-  CategoryList: () => null,
+  CategoryList: jest.fn(() => null),
 }));
 
 describe('<CategoryListContent />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render', () => {
-    const wrapper = mount((
+    const { container } = render((
       <Provider store={store}>
         <CategoryListContent categoryId="1234" />
       </Provider>
     ));
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('CategoryList')).toHaveLength(0);
+
+    expect(container).toBeEmptyDOMElement();
+    expect(CategoryList).not.toHaveBeenCalled();
   });
 
   it('should render with CategoryList', () => {
     hasCategoryChildren.mockReturnValueOnce(true);
-    const wrapper = mount((
+    render((
       <Provider store={store}>
         <CategoryListContent categoryId="1234" />
       </Provider>
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('CategoryList')).toHaveLength(1);
+    expect(screen.getByRole('region', { name: 'category.sections.categories' })).toBeInTheDocument();
+    expect(CategoryList.mock.lastCall[0]).toEqual(expect.objectContaining({
+      categories: null,
+      parentCategory: null,
+      prerender: 0,
+    }));
   });
 });
+/* eslint-enable react/prop-types */

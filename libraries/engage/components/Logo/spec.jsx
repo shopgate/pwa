@@ -1,14 +1,15 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import Logo from './index';
 
 jest.mock('./connector', () => Component => Component);
 
 describe('<Logo />', () => {
   it('should render an image', () => {
-    const wrapper = shallow(<Logo />);
+    const { container } = render(<Logo />);
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('img').exists()).toBe(true);
+    const image = screen.getByRole('img', { name: 'Shopgate Connect' });
+
+    expect(image).toHaveAttribute('src', 'https://example.com/logo');
+    expect(container.querySelector('.engage__logo')).toContainElement(image);
   });
 });

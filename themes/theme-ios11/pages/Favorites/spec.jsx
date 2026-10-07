@@ -1,91 +1,96 @@
-import React from 'react';
+/* eslint-disable react/prop-types */
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
-import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
-import { themeConfig as mockedConfig } from '@shopgate/pwa-common/helpers/config/mock';
+import { createStore } from 'redux';
 import {
-  mockedState,
-  mockedEmptyState,
-  mockedNotReadyState,
-  mockedNextProps,
-} from './mock';
+  getFavoritesCount,
+  isInitialLoading,
+  getHasMultipleFavoritesListsSupport,
+} from '@shopgate/pwa-common-commerce/favorites/selectors';
 import Favorites from './index';
 import { FAVORITES_SHOW_TOAST_DELAY } from './constants';
 
-const mockedStore = configureStore([]);
-jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/pwa-common-commerce/favorites/selectors', () => ({
+  getFavoritesCount: jest.fn(),
+  isInitialLoading: jest.fn(),
+  getHasMultipleFavoritesListsSupport: jest.fn(),
+}));
+jest.mock('@shopgate/engage/components', () => ({
+  View: ({ children }) => children,
+}));
+jest.mock('@shopgate/pwa-ui-shared/LoadingIndicator', () => () => <div>LoadingIndicator</div>);
+jest.mock('Components/AppBar/presets', () => ({
+  BackBar: ({ title }) => <h1>{title}</h1>,
+}));
+jest.mock('./components/EmptyFavorites', () => () => <div>EmptyFavorites</div>);
+jest.mock('./components/FavoritesList', () => () => <div>FavoritesList</div>);
 
-jest.mock('@shopgate/pwa-common/helpers/config', () => {
-  const originalConfig = jest.requireActual('@shopgate/pwa-common/helpers/config');
-  return ({
-    ...originalConfig,
-    get hasFavorites() { return true; },
-    themeConfig: mockedConfig,
-    language: 'en-us',
-  });
-});
+const state = {};
 
 /**
- * Creates component
- * @param {boolean} state State that would be used for store.
- * @return {ReactWrapper}
+ * @returns {Object} The render result.
  */
-const createComponent = state => mount(
-  <Provider store={mockedStore(state)}>
+const renderComponent = () => render((
+  <Provider store={createStore(() => state)}>
     <Favorites />
-  </Provider>,
-  mockRenderOptions
-);
+  </Provider>
+));
 
-describe.skip('<Favorites> page', () => {
+describe('<Favorites> page', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+    getFavoritesCount.mockReturnValue(0);
+    isInitialLoading.mockReturnValue(false);
+    getHasMultipleFavoritesListsSupport.mockReturnValue(false);
+  });
+
   describe('Initial page', () => {
     it('should render an initial page with loading indicator', () => {
-      const component = createComponent(mockedNotReadyState);
-      expect(component).toMatchSnapshot();
-      expect(component.find('LoadingIndicator').exists()).toBe(true);
-      expect(component.find('EmptyFavorites').exists()).toBe(false);
-      expect(component.find('FavoritesList').exists()).toBe(false);
+      isInitialLoading.mockReturnValue(true);
+      getFavoritesCount.mockReturnValue(1);
+
+      renderComponent();
+
+      expect(screen.getByRole('heading', { name: 'titles.favorites' })).toBeInTheDocument();
+      expect(screen.getByText('LoadingIndicator')).toBeInTheDocument();
+      expect(screen.queryByText('EmptyFavorites')).not.toBeInTheDocument();
+      expect(screen.queryByText('FavoritesList')).not.toBeInTheDocument();
+      expect(isInitialLoading).toHaveBeenCalledWith(state);
     });
   });
 
   describe('Empty page', () => {
-    let component;
     it('should render an empty page', () => {
-      component = createComponent(mockedEmptyState);
-      expect(component).toMatchSnapshot();
-      expect(component.find('EmptyFavorites').exists()).toBe(true);
-      expect(component.find('FavoritesList').exists()).toBe(false);
+      renderComponent();
+
+      expect(screen.getByRole('heading', { name: 'titles.favorites' })).toBeInTheDocument();
+      expect(screen.getByText('EmptyFavorites')).toBeInTheDocument();
+      expect(screen.queryByText('LoadingIndicator')).not.toBeInTheDocument();
+      expect(screen.queryByText('FavoritesList')).not.toBeInTheDocument();
     });
   });
 
   describe('Page with items', () => {
     it('should render a page with products', () => {
-      const component = createComponent(mockedState);
-      expect(component.find('LoadingIndicator').exists()).toBe(false);
-      expect(component.find('EmptyFavorites').exists()).toBe(false);
-      expect(component.find('FavoritesList').exists()).toBe(true);
+      getFavoritesCount.mockReturnValue(1);
+
+      renderComponent();
+
+      expect(screen.getByRole('heading', { name: 'titles.favorites' })).toBeInTheDocument();
+      expect(screen.getByText('FavoritesList')).toBeInTheDocument();
+      expect(screen.queryByText('LoadingIndicator')).not.toBeInTheDocument();
+      expect(screen.queryByText('EmptyFavorites')).not.toBeInTheDocument();
+      expect(getFavoritesCount).toHaveBeenCalledWith(state);
     });
 
-    it.skip('should only update when the list changed', () => {
-      const component = createComponent(mockedState);
+    it('should render the lists without products when multiple lists are supported', () => {
+      getHasMultipleFavoritesListsSupport.mockReturnValue(true);
 
-      const result1 = component.find('FavoritesList').instance().shouldComponentUpdate(mockedNextProps);
-      expect(result1).toBe(true);
+      renderComponent();
 
-      component.find('FavoritesList').instance().props = mockedNextProps;
-      component.update();
-
-      const result2 = component.find('FavoritesList').instance().shouldComponentUpdate(mockedNextProps);
-      expect(result2).toBe(false);
-    });
-
-    it('should hide when favItemButton is clicked', () => {
-      const component = createComponent(mockedState);
-      expect(component.find('FavoritesButton').at(0).instance().state.active).toBe(true);
-      component.find('FavoritesButton').at(0).instance().props.onRippleComplete(false);
-      component.update();
-      expect(component.find('FavoritesButton').at(0).instance().state.active).toBe(false);
+      expect(screen.getByText('FavoritesList')).toBeInTheDocument();
+      expect(screen.queryByText('EmptyFavorites')).not.toBeInTheDocument();
+      expect(getHasMultipleFavoritesListsSupport).toHaveBeenCalledWith(state);
     });
   });
 
@@ -95,3 +100,4 @@ describe.skip('<Favorites> page', () => {
     });
   });
 });
+/* eslint-enable react/prop-types */

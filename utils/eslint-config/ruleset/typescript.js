@@ -3,6 +3,9 @@ module.exports = {
     {
       files: ['**/*.ts', '**/*.tsx'],
       parser: '@typescript-eslint/parser',
+      parserOptions: {
+        warnOnUnsupportedTypeScriptVersion: false,
+      },
       plugins: ['@typescript-eslint', 'jsdoc'],
       extends: [
         'plugin:@typescript-eslint/recommended',

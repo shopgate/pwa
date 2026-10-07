@@ -95,7 +95,7 @@ const Select = ({
     if (selected && selected.value === nextSelected.value) {
       return;
     }
-    if (onChange instanceof Function) {
+    if (typeof onChange === 'function') {
       onChange(nextSelected.value);
     }
   }, [onChange, selected]);

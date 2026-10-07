@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from '@shopgate/engage/styles';
 import { createDefaultThemeOptions } from '@shopgate/engage/styles/theme/createDefaultThemeOptions';
 import Button from '../Button';
 import ButtonGroup from './ButtonGroup';
+import type { ButtonGroupProps } from './ButtonGroup';
 
 // The global test setup mocks useTheme with a theme that only styles the light scheme, which makes
 // `theme.applyStyles('dark', ...)` a no-op. The real theme is required to see the dark scheme rule.
@@ -30,7 +31,7 @@ const store = createStore(() => ({
  * @param color The color the group is rendered with.
  * @returns The matching declarations, each prefixed with the scheme it belongs to.
  */
-const dividerDeclarations = (color?: string) => {
+const dividerDeclarations = (color?: ButtonGroupProps['color']) => {
   render(
     <Provider store={store}>
       <ThemeProvider theme={theme}>

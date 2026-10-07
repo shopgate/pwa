@@ -1,21 +1,27 @@
-import React from 'react';
-import { mount } from 'enzyme';
-import CheckedIcon from '../icons/RadioCheckedIcon';
-import UncheckedIcon from '../icons/RadioUncheckedIcon';
+import { render, screen } from '@testing-library/react';
 import RadioButton from './index';
+
+jest.mock('../icons/RadioCheckedIcon', () => () => 'checked-icon');
+jest.mock('../icons/RadioUncheckedIcon', () => () => 'unchecked-icon');
 
 describe('RadioButton', () => {
   it('should render selected RadioButton', () => {
-    const wrapper = mount(<RadioButton checked />);
-    expect(wrapper.find(CheckedIcon).exists()).toBe(true);
-    expect(wrapper.find(UncheckedIcon).exists()).toBe(false);
-    expect(wrapper).toMatchSnapshot();
+    render(<RadioButton checked />);
+
+    const radio = screen.getByRole('checkbox');
+
+    expect(radio).toBeChecked();
+    expect(radio).toHaveTextContent('checked-icon');
+    expect(screen.queryByText('unchecked-icon')).not.toBeInTheDocument();
   });
 
   it('should render unselected RadioButton', () => {
-    const wrapper = mount(<RadioButton />);
-    expect(wrapper.find(CheckedIcon).exists()).toBe(false);
-    expect(wrapper.find(UncheckedIcon).exists()).toBe(true);
-    expect(wrapper).toMatchSnapshot();
+    render(<RadioButton />);
+
+    const radio = screen.getByRole('checkbox');
+
+    expect(radio).not.toHaveAttribute('aria-checked', 'true');
+    expect(radio).toHaveTextContent('unchecked-icon');
+    expect(screen.queryByText('checked-icon')).not.toBeInTheDocument();
   });
 });

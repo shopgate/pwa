@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import {
   push, pop, replace, reset, update,
 } from '../../router/helpers';
+import * as hooks from '../../hooks/useNavigation';
 import { withNavigation } from '../withNavigation';
 
 const navigationProps = {
@@ -46,5 +47,46 @@ describe('engage > core > hocs > withNavigation', () => {
         ...navigationProps,
       },
     });
+  });
+
+  it('should inject the functions provided by the useNavigation hook', () => {
+    const navigation = {
+      push: jest.fn(),
+      pop: jest.fn(),
+      replace: jest.fn(),
+      reset: jest.fn(),
+      update: jest.fn(),
+    };
+    const spy = jest.spyOn(hooks, 'useNavigation').mockReturnValue(navigation);
+    const ComposedComponent = withNavigation(mockWrappedComponent);
+    render(<ComposedComponent />);
+
+    expect(mockWrappedComponent.mock.calls[0][0]).toEqual({
+      historyPush: navigation.push,
+      historyPop: navigation.pop,
+      historyReplace: navigation.replace,
+      historyReset: navigation.reset,
+      historyUpdate: navigation.update,
+    });
+
+    spy.mockRestore();
+  });
+
+  it('should let props of the parent component take precedence', () => {
+    const customPush = jest.fn();
+    const ComposedComponent = withNavigation(mockWrappedComponent);
+    render(<ComposedComponent historyPush={customPush} />);
+
+    expect(mockWrappedComponent.mock.calls[0][0].historyPush).toBe(customPush);
+    expect(mockWrappedComponent.mock.calls[0][0].historyPop).toBe(pop);
+  });
+
+  it('should set a descriptive displayName', () => {
+    /**
+     * @returns {null}
+     */
+    const LegacyComponent = () => null;
+
+    expect(withNavigation(LegacyComponent).displayName).toBe('WithNavigation(LegacyComponent)');
   });
 });

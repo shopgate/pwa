@@ -1,27 +1,17 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import WidgetGrid from './index';
 
-jest.mock('react', () => {
-  const actual = jest.requireActual('react');
-  return {
-    ...actual,
-    memo: c => c,
-    Suspense: function Suspense({ children }) { return children; },
-  };
-});
-
-/**
- * A mock Image component.
- * @returns {JSX}
- */
-const Image = () => <div />;
+const Image = jest.fn(() => <div>Image widget</div>);
 
 const components = {
   '@shopgate/commerce-widgets/image': Image,
 };
 
 describe('<WidgetGrid />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render with a config', () => {
     const config = [{
       col: 0,
@@ -35,20 +25,29 @@ describe('<WidgetGrid />', () => {
       type: '@shopgate/commerce-widgets/image',
     }];
 
-    const wrapper = mount((
+    const { container } = render((
       <WidgetGrid config={config} components={components} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Image).length).toEqual(1);
+    const grid = container.firstChild;
+
+    expect(container.childNodes).toHaveLength(1);
+    expect(grid).toHaveClass('common__widgets__widget-grid');
+    expect(grid.children).toHaveLength(1);
+    expect(grid.firstChild).toHaveClass('common__widgets__widget');
+    expect(grid.firstChild).toContainElement(screen.getByText('Image widget'));
+    expect(Image.mock.lastCall[0]).toEqual({
+      ratio: [12, 3],
+      settings: config[0].settings,
+    });
   });
 
   it('should not render without a `config` prop', () => {
-    const wrapper = mount((
+    const { container } = render((
       <WidgetGrid components={components} />
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find(Image).length).toEqual(0);
+    expect(container).toBeEmptyDOMElement();
+    expect(Image).not.toHaveBeenCalled();
   });
 });

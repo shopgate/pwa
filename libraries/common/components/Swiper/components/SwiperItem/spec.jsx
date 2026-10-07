@@ -1,37 +1,26 @@
-import React from 'react';
-import { shallow } from 'enzyme';
-import { CLASS_PREFIX } from '@shopgate/engage/styles/tss';
+import { render } from '@testing-library/react';
 import SwiperItem from '.';
 
-jest.mock('react', () => ({
-  ...jest.requireActual('react'),
-  useLayoutEffect: jest.requireActual('react').useEffect,
-}));
-
 describe('<SwiperItem />', () => {
-  it('should not render without children', () => {
-    const wrapper = shallow((
+  it('should render its children in a slide', () => {
+    const { container } = render((
       <SwiperItem>
-        <div />
+        <div>Slide content</div>
       </SwiperItem>
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toMatch(
-      new RegExp(`^<div class="swiper-slide ${CLASS_PREFIX}-[^"]+" data-test-id="Slider"><div></div></div>$`)
-    );
+    expect(container.firstChild).toHaveClass('swiper-slide');
+    expect(container.firstChild).toHaveAttribute('data-test-id', 'Slider');
+    expect(container.firstChild).toHaveTextContent('Slide content');
   });
 
   it('should add custom className', () => {
-    const wrapper = shallow((
+    const { container } = render((
       <SwiperItem className="test">
         <div />
       </SwiperItem>
     ));
 
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.html()).toMatch(
-      new RegExp(`^<div class="swiper-slide ${CLASS_PREFIX}-[^"]+ test" data-test-id="Slider"><div></div></div>$`)
-    );
+    expect(container.firstChild).toHaveClass('swiper-slide', 'test');
   });
 });

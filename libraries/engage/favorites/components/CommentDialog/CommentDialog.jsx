@@ -48,6 +48,11 @@ const useStyles = makeStyles()(theme => ({
   },
   characterCount: {
     marginTop: -16,
+    // Right now we don't have a special styling for dialogs in dark mode. To get a better contrast
+    // we use the secondary text color from the light theme for better contrast in dark mode.
+    ...theme.applyStyles('dark', {
+      color: theme.colorSchemes.light.palette.text.secondary,
+    }),
   },
 }));
 

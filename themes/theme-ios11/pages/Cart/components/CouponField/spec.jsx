@@ -1,28 +1,35 @@
-import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
+import Layout from './components/Layout';
 import { UnwrappedCouponField as CouponField } from './index';
 
 jest.mock('@shopgate/engage/cart', () => ({
   CART_INPUT_AUTO_SCROLL_DELAY: 'CART_INPUT_AUTO_SCROLL_DELAY',
 }));
-jest.mock('./components/Layout', () => function Layout({ children }) { return children; });
+jest.mock('./components/Layout', () => jest.fn(() => null));
+
+const defaultLayoutProps = {
+  error: '',
+  iconStyle: { opacity: 0 },
+  isButtonDisabled: true,
+  isLoading: false,
+  value: '',
+};
 
 describe('<CouponField />', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('should render as expected without any props', () => {
-    const wrapper = shallow(<CouponField visible />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Layout').length).toBe(1);
+    render(<CouponField visible />);
+
+    expect(Layout.mock.lastCall[0]).toEqual(expect.objectContaining(defaultLayoutProps));
   });
 
-  it('should render a message when the cart supports coupons', () => {
-    const wrapper = shallow(<CouponField visible isSupported />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Layout').length).toBe(1);
-  });
+  it('should not render when the cart does not support coupons', () => {
+    const { container } = render(<CouponField visible isSupported={false} />);
 
-  it('should render a message when the cart does not support coupons', () => {
-    const wrapper = shallow(<CouponField visible isSupported={false} />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('Layout').length).toBe(0);
+    expect(container).toBeEmptyDOMElement();
+    expect(Layout).not.toHaveBeenCalled();
   });
 });

@@ -1,9 +1,8 @@
-import React from 'react';
-import { mount } from 'enzyme';
+import { render, screen } from '@testing-library/react';
 import withThemeComponents from './withThemeComponents';
 
 // eslint-disable-next-line react/prop-types, require-jsdoc
-const TestingComponent = props => <div>Other prop: {props.foo}</div>;
+const TestingComponent = jest.fn(props => <div>Other prop: {props.foo}</div>);
 
 jest.mock('@shopgate/pwa-common/context', () => ({
   // eslint-disable-next-line react/prop-types
@@ -29,11 +28,16 @@ jest.mock('@shopgate/pwa-common/context', () => ({
 describe('connectors/withThemeComponents', () => {
   it('should render with specified props', () => {
     const ConnectedComponent = withThemeComponents(TestingComponent);
-    const component = mount(<ConnectedComponent foo="bar" />);
+    render(<ConnectedComponent foo="bar" />);
 
-    expect(component.find('TestingComponent').prop('contexts')).toBeUndefined();
+    expect(screen.getByText('Other prop: bar')).toBeInTheDocument();
 
-    expect(Object.keys(component.find('TestingComponent').props())).toMatchObject([
+    const [[props]] = TestingComponent.mock.calls;
+
+    expect(props.contexts).toBeUndefined();
+    expect(props.foo).toBe('bar');
+
+    expect(Object.keys(props)).toMatchObject([
       'AppBar',
       'Drawer',
       'View',

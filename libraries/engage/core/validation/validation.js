@@ -1,5 +1,5 @@
 import moment from 'moment';
-import validateJs from 'validate.js';
+import validateJs from './vendor/validate.cjs';
 
 validateJs.options = {
   format: 'detailed',

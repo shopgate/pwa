@@ -1,5 +1,5 @@
 {
-  "version": "7.31.9",
+  "version": "7.32.1",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -178,15 +178,6 @@
         "service": "shop",
         "path": "/v1/%(shopId)s",
         "key": "currencyId"
-      }
-    },
-    "benchmark": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": false,
-      "params": {
-        "type": "json",
-        "label": "Enable / disable frontend benchmarking tools"
       }
     },
     "sentry": {

@@ -1,5 +1,17 @@
 # Changelog
 
+## [v7.32.1](https://github.com/shopgate/pwa/compare/v7.32.0...v7.32.1) (2026-09-29)
+
+#### :bug: Bug Fix
+* [#1505](https://github.com/shopgate/pwa/pull/1505) Use theme separator color and fix iOS dialog readability in dark mode ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.32.0](https://github.com/shopgate/pwa/compare/v7.31.9...v7.32.0) (2026-09-25)
+
+#### :rocket: Enhancement
+* [#1469](https://github.com/shopgate/pwa/pull/1469) Theme feature: migrate components to theme ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v7.31.9](https://github.com/shopgate/pwa/compare/v7.31.8...v7.31.9) (2026-09-18)
 
 #### :bug: Bug Fix
