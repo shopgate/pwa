@@ -1,7 +1,8 @@
 import {
-  useCallback, useEffect, useRef, useState, type MouseEvent,
+  useCallback, useEffect, useMemo, useRef, useState, type MouseEvent,
 } from 'react';
 import { useDispatch, useSelector, useStore } from 'react-redux';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { Button, CircularProgress, IconButton } from '@shopgate/engage/components/v2';
 import CartIcon from '@shopgate/pwa-ui-shared/icons/CartIcon';
 import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
@@ -11,6 +12,7 @@ import { keyframes, makeStyles } from '@shopgate/engage/styles';
 import { useNavigation } from '@shopgate/engage/core/hooks/useNavigation';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
+import { PRODUCT_ITEM_ADD_TO_CART } from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import * as locationSelectors from '@shopgate/engage/locations/selectors';
 import { DIRECT_SHIP } from '@shopgate/engage/locations/constants';
 import { broadcastLiveMessage as broadcast } from '@shopgate/engage/a11y';
@@ -253,6 +255,10 @@ const ProductCardAddToCart = ({
   }, [addState, addToCart]);
 
   const closeSheet = useCallback(() => setSheetOpen(false), []);
+  const portalProps = useMemo(() => ({
+    productId,
+    variant,
+  }), [productId, variant]);
 
   if (!product) {
     return null;
@@ -270,55 +276,66 @@ const ProductCardAddToCart = ({
       data-variant={variant}
       data-state={addState}
     >
-      {variant === 'button' ? (
-        <Button
-          variant={added ? 'contained' : 'outlined'}
-          color="cta"
-          size="small"
-          fullWidth
-          aria-label={ariaLabel}
-          disabled={isDisabled}
-          aria-disabled={pending || undefined}
-          aria-busy={pending || undefined}
-          onClick={handleClick}
-          startIcon={compact || added || pending ? undefined : <CartIcon />}
-          className={classes.labelButton}
-          data-compact={compact ? 'true' : undefined}
-        >
-          <span className={classes.content} data-hidden={added || pending ? 'true' : undefined}>
-            {label}
-          </span>
-          {pending && (
-            <span className={classes.overlay} aria-hidden>
-              <CircularProgress color="inherit" size={16} />
+      <SurroundPortals portalName={PRODUCT_ITEM_ADD_TO_CART} portalProps={portalProps}>
+        {variant === 'button' ? (
+          <Button
+            variant={added ? 'contained' : 'outlined'}
+            color="cta"
+            size="small"
+            fullWidth
+            aria-label={ariaLabel}
+            disabled={isDisabled}
+            aria-disabled={pending || undefined}
+            aria-busy={pending || undefined}
+            onClick={handleClick}
+            startIcon={compact || added || pending ? undefined : <CartIcon />}
+            className={cx(classes.labelButton, 'engage__product-card-add-to-cart__button')}
+            data-compact={compact ? 'true' : undefined}
+          >
+            <span
+              className={cx(classes.content, 'engage__product-card-add-to-cart__label')}
+              data-hidden={added || pending ? 'true' : undefined}
+            >
+              {label}
             </span>
-          )}
-          {added && (
-            <span className={classes.tick} aria-hidden>
-              <TickIcon />
-            </span>
-          )}
-        </Button>
-      ) : (
-        <IconButton
-          aria-label={ariaLabel}
-          variant="surface"
-          color="secondary"
-          size="small"
-          disabled={isDisabled}
-          aria-disabled={pending || undefined}
-          aria-busy={pending || undefined}
-          onClick={handleClick}
-        >
-          {pending && <CircularProgress color="inherit" size={16} />}
-          {added && (
-            <span className={classes.iconTick}>
-              <TickIcon />
-            </span>
-          )}
-          {!pending && !added && <CartIcon />}
-        </IconButton>
-      )}
+            {pending && (
+              <span
+                className={cx(classes.overlay, 'engage__product-card-add-to-cart__progress')}
+                aria-hidden
+              >
+                <CircularProgress color="inherit" size={16} />
+              </span>
+            )}
+            {added && (
+              <span
+                className={cx(classes.tick, 'engage__product-card-add-to-cart__tick')}
+                aria-hidden
+              >
+                <TickIcon />
+              </span>
+            )}
+          </Button>
+        ) : (
+          <IconButton
+            aria-label={ariaLabel}
+            variant="surface"
+            color="secondary"
+            size="small"
+            disabled={isDisabled}
+            aria-disabled={pending || undefined}
+            aria-busy={pending || undefined}
+            onClick={handleClick}
+          >
+            {pending && <CircularProgress color="inherit" size={16} />}
+            {added && (
+              <span className={cx(classes.iconTick, 'engage__product-card-add-to-cart__tick')}>
+                <TickIcon />
+              </span>
+            )}
+            {!pending && !added && <CartIcon />}
+          </IconButton>
+        )}
+      </SurroundPortals>
       {hasVariants && sheetMounted && (
         <VariantSelectSheet
           productId={product.id}

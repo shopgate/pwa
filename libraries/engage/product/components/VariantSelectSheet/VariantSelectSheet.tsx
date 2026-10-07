@@ -3,7 +3,7 @@ import {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import isMatch from 'lodash/isMatch';
-import { SheetDrawer as SheetDrawerComponent } from '@shopgate/engage/components';
+import { SheetDrawer as SheetDrawerComponent, SurroundPortals } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -12,6 +12,7 @@ import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchProduct';
 import fetchProductVariants from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
 import ConditionerClass from '@shopgate/pwa-core/classes/Conditioner';
+import { PRODUCT_VARIANT_SELECT_SHEET } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { getProduct, getProductVariants } from '../../selectors/catalog';
 import { ProductContext } from '../context';
 import ProductImage from '../ProductImage';
@@ -186,6 +187,12 @@ const VariantSelectSheet = ({
     isFetching: false,
   }), [conditioner, productId, selection, variantId]);
 
+  const portalProps = useMemo(() => ({
+    productId,
+    variantId,
+    selection,
+  }), [productId, selection, variantId]);
+
   const price = variantFromStore?.price || variantFromList?.price || baseProduct?.price;
   const strikePrice = price && Math.max(price.unitPriceStriked || 0, price.msrp || 0);
 
@@ -197,52 +204,54 @@ const VariantSelectSheet = ({
       title={i18n.text('product.add_to_cart')}
       contentClassName={cx(classes.content, 'engage__variant-select-sheet')}
     >
-      <div className={cx(classes.header, 'engage__variant-select-sheet__header')}>
-        <div className={classes.image}>
-          <ProductImage
-            src={shown?.featuredImageBaseUrl || shown?.featuredImageUrl || null}
-            context="list"
-            alt={baseProduct?.name || ''}
-          />
-        </div>
-        <div>
-          <div className={cx(classes.name, 'engage__variant-select-sheet__name')}>
-            {baseProduct?.name}
+      <SurroundPortals portalName={PRODUCT_VARIANT_SELECT_SHEET} portalProps={portalProps}>
+        <div className={cx(classes.header, 'engage__variant-select-sheet__header')}>
+          <div className={cx(classes.image, 'engage__variant-select-sheet__image')}>
+            <ProductImage
+              src={shown?.featuredImageBaseUrl || shown?.featuredImageUrl || null}
+              context="list"
+              alt={baseProduct?.name || ''}
+            />
           </div>
-          {price && (
-            <div className={cx(classes.prices, 'engage__variant-select-sheet__price')}>
-              <Price
-                currency={price.currency}
-                unitPrice={price.unitPrice}
-                discounted={!!strikePrice && strikePrice > price.unitPrice}
-              />
-              {!!strikePrice && strikePrice > price.unitPrice && (
-                <PriceStriked currency={price.currency} value={strikePrice} />
-              )}
+          <div>
+            <div className={cx(classes.name, 'engage__variant-select-sheet__name')}>
+              {baseProduct?.name}
             </div>
-          )}
+            {price && (
+              <div className={cx(classes.prices, 'engage__variant-select-sheet__price')}>
+                <Price
+                  currency={price.currency}
+                  unitPrice={price.unitPrice}
+                  discounted={!!strikePrice && strikePrice > price.unitPrice}
+                />
+                {!!strikePrice && strikePrice > price.unitPrice && (
+                  <PriceStriked currency={price.currency} value={strikePrice} />
+                )}
+              </div>
+            )}
+          </div>
         </div>
-      </div>
-      <ProductContext.Provider value={contextValue}>
-        <VariantSelector
-          key={productId}
-          productId={productId}
-          variantId={variantId}
-          onCharacteristicsChange={setSelection}
-          conditioner={conditioner}
-          compact
-        />
-      </ProductContext.Provider>
-      <div className={cx(classes.footer, 'engage__variant-select-sheet__footer')}>
-        <Button
-          color="cta"
-          fullWidth
-          disabled={!variants || (!!variant && !isOrderable)}
-          onClick={handleAddToCart}
-        >
-          {i18n.text('product.add_to_cart')}
-        </Button>
-      </div>
+        <ProductContext.Provider value={contextValue}>
+          <VariantSelector
+            key={productId}
+            productId={productId}
+            variantId={variantId}
+            onCharacteristicsChange={setSelection}
+            conditioner={conditioner}
+            compact
+          />
+        </ProductContext.Provider>
+        <div className={cx(classes.footer, 'engage__variant-select-sheet__footer')}>
+          <Button
+            color="cta"
+            fullWidth
+            disabled={!variants || (!!variant && !isOrderable)}
+            onClick={handleAddToCart}
+          >
+            {i18n.text('product.add_to_cart')}
+          </Button>
+        </div>
+      </SurroundPortals>
     </SheetDrawer>
   );
 };

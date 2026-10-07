@@ -35,6 +35,11 @@ jest.mock('@shopgate/engage/locations/selectors', () => ({
 }));
 jest.mock('@shopgate/engage/locations/constants', () => ({ DIRECT_SHIP: 'directShip' }));
 jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
+jest.mock('@shopgate/engage/components', () => ({
+  SurroundPortals: ({ portalName, children }: { portalName: string; children: ReactNode }) => (
+    <div data-portal={portalName}>{children}</div>
+  ),
+}));
 jest.mock('@shopgate/engage/components/v2', () => ({
   CircularProgress: () => <span>loading</span>,
   IconButton: ({
@@ -94,6 +99,9 @@ describe('<ProductCardAddToCart />', () => {
       stock: { orderable: true },
     };
     render(<ProductCardAddToCart productId="simple" />);
+
+    expect(screen.getByRole('button', { name: 'add' }).closest('[data-portal]'))
+      .toHaveAttribute('data-portal', 'product-item.add-to-cart');
 
     fireEvent.click(screen.getByRole('button', { name: 'add' }));
 

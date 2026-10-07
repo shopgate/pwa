@@ -56,7 +56,7 @@ const VariantSelectorSkeleton = () => {
     >
       {Array.from({ length: ROWS }, (_, row) => (inline ? [
         <div key={`heading-${row}`} className={cx(classes.block, classes.heading)} />,
-        <div key={`values-${row}`} className={classes.values}>
+        <div key={`values-${row}`} className={cx(classes.values, 'engage__variant-selector__skeleton-row')}>
           {Array.from({ length: VALUES }, (__, value) => (
             <span key={value} className={cx(classes.block, classes.value)} />
           ))}

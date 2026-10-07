@@ -48,6 +48,9 @@ jest.mock('@shopgate/engage/components', () => ({
   SheetDrawer: ({ isOpen, children }: { isOpen: boolean; children: ReactNode }) => (
     isOpen ? <div>{children}</div> : null
   ),
+  SurroundPortals: ({ portalName, children }: { portalName: string; children: ReactNode }) => (
+    <div data-portal={portalName}>{children}</div>
+  ),
 }));
 jest.mock('@shopgate/engage/components/v2', () => ({
   Button: ({ children, disabled, onClick }: {
@@ -94,6 +97,8 @@ describe('<VariantSelectSheet />', () => {
     render(<VariantSelectSheet productId="base" isOpen onClose={jest.fn()} onAddToCart={onAddToCart} />);
 
     expect(screen.getByText('Jacket')).toBeInTheDocument();
+    expect(screen.getByText('Jacket').closest('[data-portal]'))
+      .toHaveAttribute('data-portal', 'product.variant-select-sheet');
     expect(screen.getByText('striked 315')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: 'select gold' })).toHaveAttribute('data-compact', 'true');
 

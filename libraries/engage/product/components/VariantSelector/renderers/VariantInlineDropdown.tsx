@@ -182,13 +182,17 @@ const VariantInlineDropdown = ({
             onKeyDown={handleKeyDown}
             style={transition[state]}
           >
-            <span className={classes.text}>
+            <span className={cx(classes.text, 'engage__variant-selector__inline-dropdown__text')}>
               <span id={labelId} className={cx(classes.label, 'engage__variant-selector__label')}>{label}</span>
               <span className={cx(classes.selection, 'engage__variant-selector__selected-value')}>
                 {selectedLabel || i18n.text('common.please_choose')}
               </span>
             </span>
-            <span className={classes.arrow} data-expanded={expanded ? true : undefined} aria-hidden>
+            <span
+              className={cx(classes.arrow, 'engage__variant-selector__inline-dropdown__arrow')}
+              data-expanded={expanded ? true : undefined}
+              aria-hidden
+            >
               <ArrowDropIcon />
             </span>
           </button>
@@ -201,7 +205,7 @@ const VariantInlineDropdown = ({
           ref={groupRef}
           role="radiogroup"
           aria-labelledby={labelId}
-          className={classes.list}
+          className={cx(classes.list, 'engage__variant-selector__inline-dropdown__list')}
           onKeyDown={(event) => {
             handleKeyDown(event);
             onKeyDown(event);
