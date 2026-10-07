@@ -1,4 +1,5 @@
 import type { ReviewSettingsSliceState } from './reviewSettings';
+import type { ReviewSummary } from './reviewSummary';
 
 export type ReviewId = string | number;
 
@@ -151,6 +152,8 @@ export interface ReviewsSliceState {
   reviewsByProductId: ReviewsByProductId;
   userReviewsByProductId: UserReviewsByProductId;
   reviewSettings?: ReviewSettingsSliceState;
+  /** Provider summaries by the product id the reviews were requested for. */
+  reviewSummariesByProductId?: Record<string, ReviewSummary>;
 }
 
 /**
@@ -200,6 +203,8 @@ export interface ReviewVotesState {
 export interface ProductReviewsResponse {
   reviews: Review[];
   totalReviewCount?: number | null;
+  /** Unfiltered rating summary of the product; providers send it with a first page. */
+  summary?: unknown;
   /** Only sent by providers with cursor pagination; no `after` means the last page. */
   cursors?: {
     after?: string | null;

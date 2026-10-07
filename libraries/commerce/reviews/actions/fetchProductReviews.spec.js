@@ -56,6 +56,27 @@ describe('Reviews actions: fetchProductReviews', () => {
     });
   });
 
+  it('should pass the returned summary on with the received reviews', async () => {
+    const summary = {
+      average: 69,
+      count: 35,
+    };
+    mockedResolver = (mockInstance, resolve) => resolve({
+      reviews: [],
+      totalReviewCount: 35,
+      summary,
+    });
+    const dispatch = jest.fn();
+
+    await fetchProductReviews('foo', 2)(dispatch, getState);
+
+    expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
+      type: RECEIVE_PRODUCT_REVIEWS,
+      productId: 'foo',
+      summary,
+    }));
+  });
+
   it('should skip the request while cached preview reviews are still valid', async () => {
     const dispatch = jest.fn();
 

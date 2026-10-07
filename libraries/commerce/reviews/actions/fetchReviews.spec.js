@@ -499,6 +499,27 @@ describe('Reviews actions: fetchReviews', () => {
       expect(input).toEqual(expect.objectContaining({ filterRate: 4 }));
     });
 
+    it('should pass the returned summary on with the received reviews', async () => {
+      const summary = {
+        average: 69,
+        count: 35,
+      };
+      mockedResolver = (mockInstance, resolve) => resolve({
+        reviews: [],
+        totalReviewCount: 35,
+        summary,
+      });
+      const dispatch = jest.fn();
+
+      await fetchReviews('foo', 10, 0)(dispatch, createGetState());
+
+      expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
+        type: RECEIVE_REVIEWS,
+        productId: 'foo',
+        summary,
+      }));
+    });
+
     it('should pass the returned cursor on with the received reviews', async () => {
       const dispatch = jest.fn();
 

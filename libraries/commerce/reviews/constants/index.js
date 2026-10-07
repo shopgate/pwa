@@ -26,6 +26,9 @@ export const RESET_SUBMIT_REVIEW = 'RESET_SUBMIT_REVIEW';
 export const RECEIVE_REVIEW_RATE = 'RECEIVE_REVIEW_RATE';
 export const REVIEW_FEATURE_RATE = 'reviewRate';
 
+// REVIEW SUMMARY
+export const REVIEW_FEATURE_RATING_SUMMARY = 'ratingSummary';
+
 // REVIEW LIST QUERY
 /**
  * The list filters the PWA knows: the capability a provider reports in its settings, the

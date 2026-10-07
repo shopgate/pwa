@@ -87,14 +87,20 @@ function fetchReviews(
       .dispatch();
 
     request
-      .then(({ reviews, totalReviewCount, cursors }: ProductReviewsResponse) => {
+      .then(({
+        reviews,
+        totalReviewCount,
+        cursors,
+        summary,
+      }: ProductReviewsResponse) => {
         dispatch(receiveProductReviewsList(
           hash,
           productId,
           reviews,
           totalReviewCount,
           meta,
-          cursors?.after
+          cursors?.after,
+          summary
         ));
       })
       .catch(() => {
