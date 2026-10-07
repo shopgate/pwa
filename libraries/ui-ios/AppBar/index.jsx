@@ -4,11 +4,6 @@ import { getAbsoluteHeight } from '@shopgate/pwa-common/helpers/dom';
 import { makeStyles, setCSSCustomProp } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { APP_BAR_CONTENT } from '@shopgate/engage/core/constants';
-import { Portal } from '@shopgate/pwa-common/components';
-import {
-  APP_BAR_CENTER_BEFORE,
-  APP_BAR_CENTER_AFTER,
-} from '@shopgate/pwa-common/constants/Portals';
 import Field from './components/Field';
 import Icon from './components/Icon';
 import Title from './components/Title';
@@ -126,13 +121,11 @@ const AppBar = ({
           <div className={cx(classes.side, classes.left, 'ui-ios__app-bar__left')}>
             <Left elements={left} />
             {leftEnd}
-            <Portal name={APP_BAR_CENTER_BEFORE} />
           </div>
           <div className={cx(classes.center, 'ui-ios__app-bar__center')}>
             <Center elements={center} />
           </div>
           <div className={cx(classes.side, classes.right, 'ui-ios__app-bar__right')}>
-            <Portal name={APP_BAR_CENTER_AFTER} />
             {rightStart}
             <Right elements={right} />
           </div>
