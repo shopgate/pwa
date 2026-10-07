@@ -11,7 +11,8 @@ import { logStep } from '../lib/exec.ts';
 import { git, gitOutput, remoteBranchExists } from '../lib/git.ts';
 import { createRelease, findRelease } from '../lib/github.ts';
 import {
-  getUnpublished, resolveDistTag, updatesMaster, waitUntilInstallable,
+  getPublishRunsUrl, getUnpublished, resolveDistTag, updatesMaster, waitUntilInstallable,
+  waitUntilPublished,
 } from '../steps/publish.ts';
 import { pushSubtrees } from '../steps/subtree.ts';
 import { symbols } from '../lib/symbols.ts';
@@ -20,21 +21,26 @@ import type { ReleaseOptions } from '../lib/options.ts';
 
 /**
  * Finishes an approved release: updates master (versions that become "latest") and
- * creates the GitHub releases. Fails as long as a package is not published on npm.
+ * creates the GitHub releases. As long as a package is not published on npm, it fails, or
+ * waits for it with WAIT_FOR_PUBLISH.
  * @param options The release settings.
  * @param root The repository root.
  */
 export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
-  const { version, dryRun } = options;
+  const { version, dryRun, waitForPublish } = options;
   const releaseBranch = `releases/${version.name}`;
   const themes = getThemes(root);
   const masterUpdate = updatesMaster(options, root);
+
+  if (waitForPublish && !dryRun) {
+    await waitUntilPublished(version, root);
+  }
 
   logStep('Checking npm packages');
   const unpublished = getUnpublished(version, root);
 
   if (unpublished.length > 0 && !dryRun) {
-    throw new Error(`Not published yet: ${unpublished.join(', ')}. Approve the run of the "Publish packages" workflow for ${releaseBranch} on GitHub and wait until it is done.`);
+    throw new Error(`Not published yet: ${unpublished.join(', ')}. Nothing was changed so far. Open the run of the "Publish packages" workflow for ${releaseBranch}: ${getPublishRunsUrl(version)}. If it waits for an approval, approve it. If it failed, fix what its log reports and re-run it. When it is done, retry this job.`);
   }
 
   if (unpublished.length === 0) {

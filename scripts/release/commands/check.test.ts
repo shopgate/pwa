@@ -32,6 +32,7 @@ const createOptions = (
   skipMasterUpdate: false,
   resume: false,
   dryRun: false,
+  waitForPublish: false,
   ...overrides,
 });
 

@@ -34,6 +34,7 @@ npm run release -- <command> [version] [options]
 | `--resume` | `RESUME` | `resume` | Continue an interrupted release of the same version in a new pipeline |
 | `--dry-run` | `DRY_RUN` | `dry_run` | No pushes, packages are only packed (`npm publish --dry-run`) |
 | `--skip-master-update` | `SKIP_MASTER_UPDATE` | `skip_master_update` | Don't update master, although the version becomes `latest` |
+| `--wait-for-publish` | `WAIT_FOR_PUBLISH` | `auto_finalize` | `finalize` waits until the packages are published instead of failing |
 | – | `MUTE_SLACK` | `mute_slack` | No Slack notifications of the pipeline. The GitHub workflow still posts its result |
 
 No command needs an npm login: they only read public data from npm, and the workflow publishes
@@ -55,8 +56,11 @@ these variables.
    `releases/v7.33.0`, choose "Review deployments" and approve the environment `npm-release`. The
    workflow then builds and publishes the packages, which takes a few minutes. When it's done,
    Slack posts "published on npm".
-4. **Run the manual `release:finalize` job** in the pipeline when the workflow is done. It fails as
-   long as a package isn't published yet, so it can simply be retried.
+4. **`release:finalize`** continues in the pipeline, in one of two ways:
+   - Started by hand when the workflow is done. It fails as long as a package isn't published
+     yet, so it can simply be retried.
+   - With the pipeline input `auto_finalize`, it starts right after `release:prepare` and waits
+     until the workflow has published the packages.
 5. After finalize, the themes are uploaded: `release:themes` for every version,
    `release:tablet-themes` automatically for stable versions and as a manual job that can be
    skipped for prereleases.
@@ -92,6 +96,10 @@ lists the pull requests since the previous release of the same line and is only 
 The branch needs this release CLI and the workflow `.github/workflows/publish.yml`, since GitHub
 takes the workflow from the release branch. Lines released before they existed can't be released
 with this process.
+
+`finalize` runs the CLI of the release branch as well. A branch whose CLI doesn't know
+`WAIT_FOR_PUBLISH` yet ignores the pipeline input `auto_finalize`: the job starts right after
+`release:prepare` and fails with "Not published yet". Retry it when the packages are published.
 
 ## What the steps do
 
@@ -180,11 +188,12 @@ master; changes to the workflow on other branches can only be tested with a rele
   publishes but doesn't post to Slack. The environment `npm-release-dry-run` for dry runs has no
   reviewers and no secret, and is created on its first run.
 
-### `finalize` (manual job `release:finalize`)
+### `finalize` (job `release:finalize`)
 
-1. Aborts when a package is not published yet. When all are published, it waits for up to 10
-   minutes until every package can be installed, so the theme uploads that follow don't start
-   too early.
+1. Aborts when a package is not published yet. With `WAIT_FOR_PUBLISH=true`, it waits for them
+   instead, for up to 30 minutes, and fails after that without having changed anything. When all
+   are published, it waits for up to 10 minutes until every package can be installed, so the
+   theme uploads that follow don't start too early.
 2. Checks out `releases/vX`.
 3. Only when the version becomes `latest` and `SKIP_MASTER_UPDATE` isn't set:
    1. For each theme, one after another: merges the master of the theme repository into
@@ -197,7 +206,20 @@ master; changes to the workflow on other branches can only be tested with a rele
    release." without an entry. Pre-releases are marked as such, and patches of an older release
    line are not marked as latest. Publishing a release creates its tag.
 
-With `DRY_RUN=true`, it only lists the packages that are not published and stops.
+With `DRY_RUN=true`, it only lists the packages that are not published and stops, without
+waiting.
+
+The job is manual by default. The pipeline input `auto_finalize` of `pwa-liveupdate` starts it
+right after `release:prepare` and sets `WAIT_FOR_PUBLISH`. While it waits:
+
+- It only looks at npm, not at the workflow. When the run of "Publish packages" fails or is
+  rejected, the job keeps waiting until its limit. The workflow posts its failure to Slack;
+  re-running it in time lets the job continue.
+- It holds the resource group `pwa-release`, so `release:prepare` and `release:finalize` of other
+  release pipelines wait for it. Cancel the waiting job before aborting a release or resuming it
+  in a new pipeline.
+- The 30 minutes, the 10 minutes for the installable check and the rest of the job have to fit
+  into the job timeout of the GitLab project (1 hour).
 
 ### `release:themes` and `release:tablet-themes`
 
@@ -250,6 +272,10 @@ retry the job or start a new pipeline, `RESUME` isn't needed.
 waiting run of "Publish packages", and delete the branch `releases/vX` in pwa, `theme-gmd` and
 `theme-ios11` on GitHub. Otherwise `check` reports the version as taken in later pipelines.
 After the approval, treat the version as final and release a new one instead of unpublishing it.
+
+**With the pipeline input `auto_finalize`,** cancel the waiting `release:finalize` job before
+aborting a release, and before resuming it in a new pipeline: while it waits, it blocks the
+release jobs of other pipelines.
 
 **No run of "Publish packages" waits for approval:** its first job failed, e.g. because npm
 couldn't be reached. That job can't post to Slack, since the webhook is a secret of the
