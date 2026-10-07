@@ -1,6 +1,10 @@
-import { isNil, merge, omitBy } from 'lodash';
+import { merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
-import type { AppSettingsSlice } from '../types/appSettings';
+import type {
+  AppSettingsSlice,
+  ProductActionButtonsSettings,
+  ProductVariantSelectorSettings,
+} from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
 import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
 import {
@@ -11,6 +15,7 @@ import {
 } from '../constants/imageSettings';
 // Deliberately not exported from the "helpers" barrel - they normalize values on their way into
 // the slice, which is nothing a consumer of the settings needs.
+import { pickValidSettings } from '../helpers/pickValidSettings';
 import { toImageQuality } from '../helpers/toImageQuality';
 import { toThumborColor } from '../helpers/toThumborColor';
 
@@ -21,6 +26,24 @@ const isReceiveAppSettingsAction = (
 ): action is ReceiveAppSettingsAction => (
   action.type === RECEIVE_APP_SETTINGS && 'settings' in action
 );
+
+const VARIANT_SELECTOR_OPTIONS: {
+  [K in keyof ProductVariantSelectorSettings]?: readonly ProductVariantSelectorSettings[K][]
+} = {
+  type: ['dropdown', 'chips'],
+  swatchSource: ['variantImage', 'property'],
+  swatchShape: ['round', 'square'],
+  chipsLayout: ['wrap', 'scroll'],
+  soldOut: ['strike', 'hide', 'none'],
+};
+
+const ACTION_BUTTON_OPTIONS: {
+  [K in keyof ProductActionButtonsSettings]?: readonly ProductActionButtonsSettings[K][]
+} = {
+  position: ['topRight', 'bottomRight'],
+  addToCart: ['hidden', 'actionButton', 'button'],
+  direction: ['horizontal', 'vertical'],
+};
 
 /**
  * The built-in default app settings. Used as the reducer's initial state and as
@@ -155,12 +178,16 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       },
       product: product === null ? undefined : {
         ...product,
-        variantSelector: product?.variantSelector
-          ? omitBy(product.variantSelector, isNil)
-          : undefined,
-        actionButtons: product?.actionButtons
-          ? omitBy(product.actionButtons, isNil)
-          : undefined,
+        variantSelector: pickValidSettings(
+          product?.variantSelector,
+          DEFAULT_APP_SETTINGS.product.variantSelector,
+          VARIANT_SELECTOR_OPTIONS
+        ),
+        actionButtons: pickValidSettings(
+          product?.actionButtons,
+          DEFAULT_APP_SETTINGS.product.actionButtons,
+          ACTION_BUTTON_OPTIONS
+        ),
       },
       widgets: widgets === null ? undefined : {
         ...widgets,

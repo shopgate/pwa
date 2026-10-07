@@ -14,7 +14,7 @@ export interface VariantSelectorSettings
  * @param value The configured list.
  * @returns The lower cased labels.
  */
-const parseLabels = (value: unknown): string[] => (typeof value === 'string' ? value : '')
+const parseLabels = (value: string): string[] => value
   .split(',')
   .map(label => label.trim().toLowerCase())
   .filter(Boolean);
@@ -41,8 +41,6 @@ const useVariantSelectorSettings = (): VariantSelectorSettings => {
 
   return useMemo(() => ({
     ...settings,
-    preselect: settings.preselect === true,
-    swatchProperty: typeof settings.swatchProperty === 'string' ? settings.swatchProperty : '',
     swatchImageZoom: clampZoom(settings.swatchImageZoom),
     swatchCharacteristics: settings.swatchesEnabled
       ? parseLabels(settings.swatchCharacteristics)

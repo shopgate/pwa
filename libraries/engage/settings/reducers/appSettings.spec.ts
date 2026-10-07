@@ -214,6 +214,39 @@ describe('settings / reducers / appSettings', () => {
     });
   });
 
+  it('keeps the defaults of invalid variant selector and action button values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        variantSelector: {
+          type: 'constructor',
+          swatchesEnabled: 'false',
+          swatchImageZoom: '200',
+          soldOut: 'hide',
+        },
+        actionButtons: {
+          position: 'topLeft',
+          direction: 'diagonal',
+          addToCart: ['button'],
+          showShareButton: 0,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.variantSelector).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.variantSelector,
+      soldOut: 'hide',
+    });
+    expect(state.product.actionButtons).toEqual(DEFAULT_APP_SETTINGS.product.actionButtons);
+  });
+
+  it.each(['chips', ['chips'], 5])('ignores the variant selector branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { variantSelector: branch },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.variantSelector).toEqual(DEFAULT_APP_SETTINGS.product.variantSelector);
+  });
+
   it('keeps the widget defaults when only the media margins are cleared', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
       widgets: { mediaMargins: null },

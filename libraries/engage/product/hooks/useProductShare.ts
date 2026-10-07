@@ -79,7 +79,7 @@ const useProductShare = (productId: string | null) => {
   }, [params]);
 
   return {
-    enabled: showShareButton !== false,
+    enabled: showShareButton,
     canShare: !!params,
     share,
   };

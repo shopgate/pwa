@@ -39,11 +39,6 @@ describe('useVariantSelectorSettings()', () => {
       swatchCharacteristics: 'Farbe',
     })
       .swatchCharacteristics).toEqual([]);
-    expect(resolve({
-      swatchesEnabled: true,
-      swatchCharacteristics: 42,
-    })
-      .swatchCharacteristics).toEqual([]);
   });
 
   it('limits the image zoom and guards malformed values', () => {
@@ -51,11 +46,5 @@ describe('useVariantSelectorSettings()', () => {
     expect(resolve({ swatchImageZoom: 900 }).swatchImageZoom).toBe(600);
     expect(resolve({ swatchImageZoom: 'abc' }).swatchImageZoom).toBe(100);
     expect(resolve({ swatchImageZoom: 250 }).swatchImageZoom).toBe(250);
-    expect(resolve({ swatchProperty: 5 }).swatchProperty).toBe('');
-  });
-
-  it('only enables preselection for a real true', () => {
-    expect(resolve({ preselect: true }).preselect).toBe(true);
-    expect(resolve({ preselect: 'true' }).preselect).toBe(false);
   });
 });
