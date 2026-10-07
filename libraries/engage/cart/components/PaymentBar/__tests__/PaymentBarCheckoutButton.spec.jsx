@@ -13,6 +13,8 @@ jest.mock('@shopgate/engage/components', () => ({
   SurroundPortals: mockFactories().createSurroundPortalsMock(),
   I18n: {
     Text: props => mockText(props),
+    // eslint-disable-next-line react/prop-types
+    Price: ({ price, currency }) => <span data-testid="price">{`${price} ${currency}`}</span>,
   },
 }));
 
@@ -61,5 +63,35 @@ describe('<PaymentBarCheckoutButton />', () => {
     const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable />);
 
     expect(getByRole('button')).toHaveAttribute('data-color', 'cta');
+  });
+
+  it('should show the grand total when asked to', () => {
+    const { getByTestId } = render(
+      <CartContext.Provider value={{
+        isLoading: false,
+        currency: 'EUR',
+        config: {},
+      }}
+      >
+        <PaymentBarCheckoutButton isOrderable grandTotal={89.9} showTotal />
+      </CartContext.Provider>
+    );
+
+    expect(getByTestId('price')).toHaveTextContent('89.9 EUR');
+  });
+
+  it('should leave the grand total out when the cart hides totals', () => {
+    const { queryByTestId } = render(
+      <CartContext.Provider value={{
+        isLoading: false,
+        currency: 'EUR',
+        config: { hideTotal: true },
+      }}
+      >
+        <PaymentBarCheckoutButton isOrderable grandTotal={89.9} showTotal />
+      </CartContext.Provider>
+    );
+
+    expect(queryByTestId('price')).not.toBeInTheDocument();
   });
 });

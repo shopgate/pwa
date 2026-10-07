@@ -2,20 +2,10 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isIOSTheme } from '@shopgate/engage/core';
-import Grid from '@shopgate/pwa-common/components/Grid';
 import { SurroundPortals } from '@shopgate/engage/components';
-import {
-  CART_PAYMENT_BAR,
-  CART_PAYMENT_BAR_TOTALS,
-} from '@shopgate/pwa-common-commerce/cart/constants/Portals';
-import PaymentBarShippingCost from './PaymentBarShippingCost';
-import PaymentBarDiscounts from './PaymentBarDiscounts';
-import PaymentBarTax from './PaymentBarTax';
-import PaymentBarSubTotal from './PaymentBarSubTotal';
-import PaymentBarGrandTotal from './PaymentBarGrandTotal';
+import { CART_PAYMENT_BAR } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
+import PaymentBarTotals from './PaymentBarTotals';
 import PaymentBarCheckoutButton from './PaymentBarCheckoutButton';
-import PaymentBarPromotionCoupons from './PaymentBarPromotionCoupons';
-import PaymentBarAppliedPromotions from './PaymentBarAppliedPromotions';
 
 const useStyles = makeStyles()(theme => ({
   wrapper: {
@@ -24,13 +14,6 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     zIndex: 2,
     paddingBottom: theme.layout.safeArea.bottom,
-  },
-  container: {
-    padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
-    paddingBottom: 0,
-    flexWrap: 'wrap',
-    flexDirection: 'column',
-    minWidth: 'auto',
   },
   checkoutButton: {
     display: 'flex',
@@ -44,31 +27,34 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     zIndex: 2,
   },
+  embeddedButtonContainer: {
+    background: 'transparent',
+  },
 }));
 
 /**
  * The PaymentBarContent component.
+ * @param {Object} props The component props.
+ * @param {boolean} props.showSeparator Whether the total lines show separators.
+ * @param {boolean} props.embedded Whether a surrounding footer bar provides background, shadow
+ * and the bottom inset.
+ * @param {boolean} props.checkoutOnly Whether only the checkout button is rendered, with the grand
+ * total in its label.
  * @returns {JSX}
  */
-function PaymentBarContent({ showSeparator }) {
+function PaymentBarContent({ showSeparator, embedded, checkoutOnly }) {
   const { classes, cx } = useStyles();
   return (
-    <div className={cx(classes.wrapper, 'theme__cart__payment-bar')}>
+    <div className={cx({ [classes.wrapper]: !embedded }, 'theme__cart__payment-bar')}>
       <SurroundPortals portalName={CART_PAYMENT_BAR}>
-        <Grid className={classes.container}>
-          <SurroundPortals portalName={CART_PAYMENT_BAR_TOTALS}>
-            <PaymentBarSubTotal showSeparator={showSeparator} />
-            <PaymentBarAppliedPromotions showSeparator={showSeparator} />
-            <PaymentBarPromotionCoupons showSeparator={showSeparator} />
-            <PaymentBarDiscounts showSeparator={showSeparator} />
-            <PaymentBarShippingCost showSeparator={showSeparator} />
-            <PaymentBarTax showSeparator={showSeparator} />
-            <PaymentBarGrandTotal showSeparator={showSeparator} />
-          </SurroundPortals>
-        </Grid>
-        <div className={classes.checkoutButtonContainer}>
+        {!checkoutOnly && <PaymentBarTotals showSeparator={showSeparator} />}
+        <div
+          className={cx(classes.checkoutButtonContainer, {
+            [classes.embeddedButtonContainer]: embedded,
+          })}
+        >
           <div className={classes.checkoutButton}>
-            <PaymentBarCheckoutButton />
+            <PaymentBarCheckoutButton showTotal={checkoutOnly} />
           </div>
         </div>
       </SurroundPortals>
@@ -77,10 +63,14 @@ function PaymentBarContent({ showSeparator }) {
 }
 
 PaymentBarContent.propTypes = {
+  checkoutOnly: PropTypes.bool,
+  embedded: PropTypes.bool,
   showSeparator: PropTypes.bool,
 };
 
 PaymentBarContent.defaultProps = {
+  checkoutOnly: false,
+  embedded: false,
   showSeparator: true,
 };
 
