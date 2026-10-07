@@ -611,7 +611,14 @@
     "vote_up": "Nuttig",
     "vote_down": "Niet nuttig",
     "vote_pending": "Verzenden…",
-    "vote_error": "Verzenden mislukt"
+    "vote_error": "Verzenden mislukt",
+    "sort_relevance": "Relevantie",
+    "sort_dateDesc": "Nieuwste eerst",
+    "sort_dateAsc": "Oudste eerst",
+    "sort_rateDesc": "Hoogste beoordeling",
+    "sort_rateAsc": "Laagste beoordeling",
+    "filter_media": "Met media",
+    "list_empty_filtered": "Geen reviews komen overeen met deze selectie."
   },
   "tab_bar": {
     "home": "Home",

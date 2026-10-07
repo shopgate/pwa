@@ -611,7 +611,14 @@
     "vote_up": "A fost utilă",
     "vote_down": "Nu a fost utilă",
     "vote_pending": "Se trimite…",
-    "vote_error": "Trimiterea a eșuat"
+    "vote_error": "Trimiterea a eșuat",
+    "sort_relevance": "Relevanță",
+    "sort_dateDesc": "Cele mai noi",
+    "sort_dateAsc": "Cele mai vechi",
+    "sort_rateDesc": "Cea mai bună evaluare",
+    "sort_rateAsc": "Cea mai slabă evaluare",
+    "filter_media": "Cu conținut media",
+    "list_empty_filtered": "Nicio recenzie nu corespunde acestei selecții."
   },
   "tab_bar": {
     "home": "Acasă",

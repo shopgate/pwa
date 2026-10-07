@@ -611,7 +611,14 @@
     "vote_up": "Hilfreich",
     "vote_down": "Nicht hilfreich",
     "vote_pending": "Wird gesendet …",
-    "vote_error": "Senden fehlgeschlagen"
+    "vote_error": "Senden fehlgeschlagen",
+    "sort_relevance": "Relevanz",
+    "sort_dateDesc": "Neueste zuerst",
+    "sort_dateAsc": "Älteste zuerst",
+    "sort_rateDesc": "Beste Bewertung",
+    "sort_rateAsc": "Schlechteste Bewertung",
+    "filter_media": "Mit Medien",
+    "list_empty_filtered": "Keine Rezensionen passen zu dieser Auswahl."
   },
   "tab_bar": {
     "home": "Home",

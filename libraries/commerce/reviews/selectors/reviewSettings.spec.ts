@@ -7,6 +7,7 @@ import {
   isFetchingReviewSettings,
   isReviewCursorPagination,
   hasReviewFeature,
+  getReviewSortOptions,
 } from './reviewSettings';
 
 /**
@@ -92,6 +93,21 @@ describe('Reviews selectors: reviewSettings', () => {
     it('should reflect the fetching flag', () => {
       expect(isFetchingReviewSettings(buildState({ isFetching: true }))).toBe(true);
       expect(isFetchingReviewSettings(buildState({ isFetching: false }))).toBe(false);
+    });
+  });
+
+  describe('getReviewSortOptions', () => {
+    it('should keep the contract values in the order of the provider', () => {
+      expect(getReviewSortOptions(buildState({
+        sortOptions: ['rateDesc', 'helpfulDesc', 'dateDesc'],
+      }))).toEqual(['rateDesc', 'dateDesc']);
+    });
+
+    it('should return no options when the provider reports none or an invalid value', () => {
+      expect(getReviewSortOptions(buildState({}))).toEqual([]);
+      expect(getReviewSortOptions(buildState({
+        sortOptions: 'dateDesc' as unknown as string[],
+      }))).toEqual([]);
     });
   });
 });

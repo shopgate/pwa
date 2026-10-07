@@ -611,7 +611,14 @@
     "vote_up": "Útil",
     "vote_down": "Não útil",
     "vote_pending": "A enviar…",
-    "vote_error": "Falha ao enviar"
+    "vote_error": "Falha ao enviar",
+    "sort_relevance": "Relevância",
+    "sort_dateDesc": "Mais recentes primeiro",
+    "sort_dateAsc": "Mais antigos primeiro",
+    "sort_rateDesc": "Melhor classificação",
+    "sort_rateAsc": "Pior classificação",
+    "filter_media": "Com multimédia",
+    "list_empty_filtered": "Nenhum comentário corresponde a esta seleção."
   },
   "tab_bar": {
     "home": "Início",

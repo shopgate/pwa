@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { SORT_DATE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { getBaseProductId as getBaseProductIdSelector } from '@shopgate/engage/product/selectors/product';
@@ -148,6 +149,43 @@ export const getCurrentReviewCount = createSelector(
 
     return collection.reviews.length;
   }
+);
+
+/**
+ * Retrieves the sort of the last review list request of the current base product.
+ * @param state The current application state.
+ * @returns The sort, or the default sort when the list was not requested yet.
+ */
+export const getReviewListSort = createSelector(
+  getCollectionForCurrentBaseProduct,
+  collection => collection?.requestSort ?? SORT_DATE_DESC
+);
+
+/**
+ * Whether the last review list request of the current base product asked for reviews with
+ * media only.
+ * @param state The current application state.
+ * @returns True when the media filter was requested.
+ */
+export const getReviewListFilterMedia = createSelector(
+  getCollectionForCurrentBaseProduct,
+  collection => !!collection?.requestFilterMedia
+);
+
+/**
+ * Whether the last request asked for the first page of another sort or filter than the stored
+ * reviews were loaded with. The stored reviews then do not belong to the requested list.
+ * @param state The current application state.
+ * @returns True from the request until its reviews were received, also after it failed.
+ */
+export const isReviewListQueryChanged = createSelector(
+  getCollectionForCurrentBaseProduct,
+  collection => !!collection
+    && collection.requestOffset === 0
+    && (
+      collection.requestSort !== collection.sort
+      || !!collection.requestFilterMedia !== !!collection.filterMedia
+    )
 );
 
 /**

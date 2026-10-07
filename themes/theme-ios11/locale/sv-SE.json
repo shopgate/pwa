@@ -610,7 +610,14 @@
     "vote_up": "Till hjälp",
     "vote_down": "Inte till hjälp",
     "vote_pending": "Skickar…",
-    "vote_error": "Det gick inte att skicka"
+    "vote_error": "Det gick inte att skicka",
+    "sort_relevance": "Relevans",
+    "sort_dateDesc": "Nyaste först",
+    "sort_dateAsc": "Äldsta först",
+    "sort_rateDesc": "Högsta betyg",
+    "sort_rateAsc": "Lägsta betyg",
+    "filter_media": "Med media",
+    "list_empty_filtered": "Inga recensioner matchar det här urvalet."
   },
   "tab_bar": {
     "home": "Hem",

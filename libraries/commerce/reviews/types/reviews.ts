@@ -67,6 +67,8 @@ export interface ReviewsRequestMeta {
   offset?: number;
   /** Opaque sort value; extensions may pass their own format. */
   sort?: string;
+  /** Only set when the list is restricted to reviews with media. */
+  filterMedia?: boolean;
 }
 
 /**
@@ -81,6 +83,9 @@ export interface ReviewsCollection {
   requestId?: number;
   requestOffset?: number;
   requestSort?: string;
+  requestFilterMedia?: boolean;
+  /** Whether the stored reviews were loaded with the media filter. */
+  filterMedia?: boolean;
   /** Cursor for the next page; null when the provider returned none. */
   after?: string | null;
 }

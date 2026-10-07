@@ -610,7 +610,14 @@
     "vote_up": "Pomocna",
     "vote_down": "Niepomocna",
     "vote_pending": "Wysyłanie…",
-    "vote_error": "Wysyłanie nie powiodło się"
+    "vote_error": "Wysyłanie nie powiodło się",
+    "sort_relevance": "Trafność",
+    "sort_dateDesc": "Najnowsze",
+    "sort_dateAsc": "Najstarsze",
+    "sort_rateDesc": "Najwyższa ocena",
+    "sort_rateAsc": "Najniższa ocena",
+    "filter_media": "Z multimediami",
+    "list_empty_filtered": "Żadna recenzja nie pasuje do tego wyboru."
   },
   "tab_bar": {
     "home": "Strona główna",

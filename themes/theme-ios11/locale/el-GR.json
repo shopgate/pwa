@@ -611,7 +611,14 @@
     "vote_up": "Χρήσιμη",
     "vote_down": "Μη χρήσιμη",
     "vote_pending": "Αποστολή…",
-    "vote_error": "Η αποστολή απέτυχε"
+    "vote_error": "Η αποστολή απέτυχε",
+    "sort_relevance": "Συνάφεια",
+    "sort_dateDesc": "Νεότερες πρώτα",
+    "sort_dateAsc": "Παλαιότερες πρώτα",
+    "sort_rateDesc": "Καλύτερη βαθμολογία",
+    "sort_rateAsc": "Χειρότερη βαθμολογία",
+    "filter_media": "Με πολυμέσα",
+    "list_empty_filtered": "Καμία κριτική δεν ταιριάζει με αυτή την επιλογή."
   },
   "tab_bar": {
     "home": "Αρχική",

@@ -16,7 +16,8 @@ type ReviewsByHashAction = RequestReviewsAction | ReceiveReviewsAction | ErrorRe
 /**
  * Stores a collection of products by the related hash of the request parameters.
  * Responses are only applied when they belong to the latest request of a collection.
- * A first page replaces the collection, later pages are only appended for the same sort.
+ * A first page replaces the collection, later pages are only appended for the same sort and
+ * filter.
  * @param state The current state.
  * @param action The current redux action.
  * @returns The new state.
@@ -36,6 +37,7 @@ const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
           requestId: action.requestId,
           requestOffset: action.offset,
           requestSort: action.sort,
+          requestFilterMedia: action.filterMedia,
         },
       };
     case RECEIVE_REVIEWS: {
@@ -48,7 +50,10 @@ const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
       const nextReviewIds = (action.reviews || []).map(review => review.id);
       const isFirstPage = action.offset === 0;
 
-      if (!isFirstPage && collection.sort !== action.sort) {
+      const isSameQuery = collection.sort === action.sort
+        && !!collection.filterMedia === !!action.filterMedia;
+
+      if (!isFirstPage && !isSameQuery) {
         return {
           ...state,
           [action.hash]: {
@@ -67,6 +72,7 @@ const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
             ? uniq(nextReviewIds)
             : uniq([...(collection.reviews || []), ...nextReviewIds]),
           sort: action.sort,
+          filterMedia: action.filterMedia,
           totalReviewCount: typeof action.totalReviewCount === 'number'
             ? action.totalReviewCount
             : null,

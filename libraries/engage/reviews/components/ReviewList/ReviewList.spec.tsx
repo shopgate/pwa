@@ -179,4 +179,11 @@ describe('<ReviewList />', () => {
 
     expect(screen.queryByText('reviews.verified_info')).not.toBeInTheDocument();
   });
+
+  it('should use the filtered empty text when a filter restricts the list', () => {
+    render(<ReviewList reviews={[]} isFiltered />);
+
+    expect(screen.getByText('reviews.list_empty_filtered')).toBeInTheDocument();
+    expect(screen.queryByText('reviews.list_empty')).not.toBeInTheDocument();
+  });
 });

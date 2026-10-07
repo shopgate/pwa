@@ -611,7 +611,14 @@
     "vote_up": "Útil",
     "vote_down": "No útil",
     "vote_pending": "Enviando…",
-    "vote_error": "Error al enviar"
+    "vote_error": "Error al enviar",
+    "sort_relevance": "Relevancia",
+    "sort_dateDesc": "Más recientes primero",
+    "sort_dateAsc": "Más antiguas primero",
+    "sort_rateDesc": "Mejor valoración",
+    "sort_rateAsc": "Peor valoración",
+    "filter_media": "Con fotos o vídeos",
+    "list_empty_filtered": "Ninguna reseña coincide con esta selección."
   },
   "tab_bar": {
     "home": "Inicio",

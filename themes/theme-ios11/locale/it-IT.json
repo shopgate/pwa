@@ -611,7 +611,14 @@
     "vote_up": "Utile",
     "vote_down": "Non utile",
     "vote_pending": "Invio…",
-    "vote_error": "Invio non riuscito"
+    "vote_error": "Invio non riuscito",
+    "sort_relevance": "Rilevanza",
+    "sort_dateDesc": "Più recenti",
+    "sort_dateAsc": "Meno recenti",
+    "sort_rateDesc": "Valutazione più alta",
+    "sort_rateAsc": "Valutazione più bassa",
+    "filter_media": "Con media",
+    "list_empty_filtered": "Nessuna recensione corrisponde a questa selezione."
   },
   "tab_bar": {
     "home": "Pagina Iniziale",

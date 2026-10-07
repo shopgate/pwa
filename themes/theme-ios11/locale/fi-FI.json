@@ -611,7 +611,14 @@
     "vote_up": "Hyödyllinen",
     "vote_down": "Ei hyödyllinen",
     "vote_pending": "Lähetetään…",
-    "vote_error": "Lähetys epäonnistui"
+    "vote_error": "Lähetys epäonnistui",
+    "sort_relevance": "Osuvuus",
+    "sort_dateDesc": "Uusimmat ensin",
+    "sort_dateAsc": "Vanhimmat ensin",
+    "sort_rateDesc": "Paras arvosana",
+    "sort_rateAsc": "Heikoin arvosana",
+    "filter_media": "Sisältää mediaa",
+    "list_empty_filtered": "Yksikään arvostelu ei vastaa valintaa."
   },
   "tab_bar": {
     "home": "Koti",

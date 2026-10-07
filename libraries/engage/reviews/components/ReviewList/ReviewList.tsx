@@ -47,6 +47,8 @@ export interface ReviewListProps {
   onRetry?: () => void;
   /** Number of reviews in the list result; differs from the summary rating count. */
   totalCount?: number | null;
+  /** Whether a filter restricts the list; changes the text of the empty state. */
+  isFiltered?: boolean;
   /** Additional CSS classes. */
   className?: string;
 }
@@ -61,6 +63,7 @@ const ReviewList = ({
   hasError = false,
   onRetry,
   totalCount,
+  isFiltered = false,
   className,
 }: ReviewListProps) => {
   const { classes, cx } = useStyles();
@@ -125,7 +128,7 @@ const ReviewList = ({
           color="textSecondary"
           className={cx(classes.state, 'engage__reviews__review-list__empty')}
         >
-          <I18n.Text string="reviews.list_empty" />
+          <I18n.Text string={isFiltered ? 'reviews.list_empty_filtered' : 'reviews.list_empty'} />
         </Typography>
       )}
       {showError && (

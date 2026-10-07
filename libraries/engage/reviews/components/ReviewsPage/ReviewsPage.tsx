@@ -7,17 +7,25 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { getBaseProductId, getProductIsFetching } from '@shopgate/engage/product/selectors/product';
 import {
   getProductReviews,
+  getReviewListFilterMedia,
   getReviewListRequestOffset,
+  getReviewListSort,
   getReviewsFetchingState,
+  getReviewSortOptions,
   getReviewsTotalCount,
   getReviewSummary,
   hasMoreReviews,
+  hasReviewFeature,
   hasReviewListError,
   isReviewListLoading,
   isReviewListMissing,
+  isReviewListQueryChanged,
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
-import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
+import {
+  REVIEW_FEATURE_MEDIA_FILTER,
+  REVIEW_ITEMS_PER_PAGE,
+} from '@shopgate/pwa-common-commerce/reviews/constants';
 import { PRODUCT_REVIEWS_ALL } from '@shopgate/pwa-common-commerce/reviews/constants/Portals';
 import type {
   Review,
@@ -26,8 +34,11 @@ import type {
 } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import ReviewsSummary from '../ReviewsSummary';
 import ReviewList from '../ReviewList';
+import ReviewsToolbar from '../ReviewsToolbar';
 import WriteReviewLink from '../Reviews/components/Header/components/WriteReviewLink';
 import ReviewsInfo from '../Reviews/components/ReviewsInfo';
+
+const EMPTY_REVIEWS: Review[] = [];
 
 const useStyles = makeStyles()(theme => ({
   summary: {
@@ -100,6 +111,17 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
     hasReviewListError(state, listProps)
   ));
   const hasMore = useSelector((state: ReviewsProductState) => hasMoreReviews(state, listProps));
+  const sort = useSelector((state: ReviewsProductState) => getReviewListSort(state, listProps));
+  const filterMedia = useSelector((state: ReviewsProductState) => (
+    getReviewListFilterMedia(state, listProps)
+  ));
+  const isQueryChanged = useSelector((state: ReviewsProductState) => (
+    isReviewListQueryChanged(state, listProps)
+  ));
+  const sortOptions = useSelector(getReviewSortOptions, shallowEqual);
+  const isMediaFilterAvailable = useSelector((state: ReviewsProductState) => (
+    hasReviewFeature(state, REVIEW_FEATURE_MEDIA_FILTER)
+  ));
 
   useEffect(() => {
     if (isMissing && !isProductFetching) {
@@ -107,28 +129,63 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
     }
   }, [baseProductId, dispatch, isMissing, isProductFetching]);
 
+  const requestReviews = useCallback((
+    offset: number,
+    nextSort: string,
+    nextFilterMedia: boolean
+  ) => {
+    dispatch(fetchReviews(
+      baseProductId,
+      REVIEW_ITEMS_PER_PAGE,
+      offset,
+      nextSort,
+      nextFilterMedia
+    ));
+  }, [baseProductId, dispatch]);
+
   const handleRetry = useCallback(() => {
-    dispatch(fetchReviews(baseProductId, REVIEW_ITEMS_PER_PAGE, requestOffset));
-  }, [baseProductId, dispatch, requestOffset]);
+    requestReviews(requestOffset, sort, filterMedia);
+  }, [filterMedia, requestOffset, requestReviews, sort]);
 
   const handleLoadMore = useCallback(() => {
-    dispatch(fetchReviews(baseProductId, REVIEW_ITEMS_PER_PAGE, reviews.length));
-  }, [baseProductId, dispatch, reviews.length]);
+    requestReviews(reviews.length, sort, filterMedia);
+  }, [filterMedia, requestReviews, reviews.length, sort]);
 
-  const canLoadMore = !hasError && hasMore;
+  const handleSortChange = useCallback((nextSort: string) => {
+    if (nextSort !== sort) {
+      requestReviews(0, nextSort, filterMedia);
+    }
+  }, [filterMedia, requestReviews, sort]);
+
+  const handleFilterMediaChange = useCallback((nextFilterMedia: boolean) => {
+    requestReviews(0, sort, nextFilterMedia);
+  }, [requestReviews, sort]);
+
+  const canLoadMore = !hasError && hasMore && !isQueryChanged;
 
   return (
     <SurroundPortals portalName={PRODUCT_REVIEWS_ALL} portalProps={{ productId }}>
       <div className={cx(classes.summary, 'engage__reviews__reviews-excerpt')}>
         <ReviewsSummary summary={summary} />
+        {!isMissing && (
+          <ReviewsToolbar
+            sort={sort}
+            sortOptions={sortOptions}
+            filterMedia={filterMedia}
+            isMediaFilterAvailable={isMediaFilterAvailable}
+            onSortChange={handleSortChange}
+            onFilterMediaChange={handleFilterMediaChange}
+          />
+        )}
       </div>
       <ReviewList
         className={classes.list}
-        reviews={reviews}
+        reviews={isQueryChanged ? EMPTY_REVIEWS : reviews}
         isLoading={isLoading}
         hasError={hasError}
         onRetry={handleRetry}
-        totalCount={totalCount}
+        totalCount={isQueryChanged ? null : totalCount}
+        isFiltered={filterMedia}
       />
       {canLoadMore && (
         <div className={cx(classes.loadMore, 'engage__reviews__reviews-page__load-more')}>

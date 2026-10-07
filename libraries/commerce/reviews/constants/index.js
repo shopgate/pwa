@@ -26,6 +26,10 @@ export const RESET_SUBMIT_REVIEW = 'RESET_SUBMIT_REVIEW';
 export const RECEIVE_REVIEW_RATE = 'RECEIVE_REVIEW_RATE';
 export const REVIEW_FEATURE_RATE = 'reviewRate';
 
+// REVIEW LIST QUERY
+export const REVIEW_FEATURE_MEDIA_FILTER = 'mediaFilter';
+export const REVIEW_SORT_OPTIONS = ['relevance', 'dateDesc', 'dateAsc', 'rateDesc', 'rateAsc'];
+
 // PRODUCT REVIEW SETTINGS
 export const REVIEW_SETTINGS_LIFETIME = 60 * 60 * 1000;
 export const REQUEST_PRODUCT_REVIEW_SETTINGS = 'REQUEST_PRODUCT_REVIEW_SETTINGS';

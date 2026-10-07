@@ -611,7 +611,14 @@
     "vote_up": "Užitečná",
     "vote_down": "Neužitečná",
     "vote_pending": "Odesílání…",
-    "vote_error": "Odeslání se nezdařilo"
+    "vote_error": "Odeslání se nezdařilo",
+    "sort_relevance": "Relevance",
+    "sort_dateDesc": "Nejnovější",
+    "sort_dateAsc": "Nejstarší",
+    "sort_rateDesc": "Nejlepší hodnocení",
+    "sort_rateAsc": "Nejhorší hodnocení",
+    "filter_media": "S médii",
+    "list_empty_filtered": "Této volbě neodpovídají žádné recenze."
   },
   "tab_bar": {
     "home": "Domů",

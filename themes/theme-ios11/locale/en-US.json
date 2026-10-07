@@ -611,7 +611,14 @@
     "vote_up": "Helpful",
     "vote_down": "Not helpful",
     "vote_pending": "Sending…",
-    "vote_error": "Sending failed"
+    "vote_error": "Sending failed",
+    "sort_relevance": "Relevance",
+    "sort_dateDesc": "Newest first",
+    "sort_dateAsc": "Oldest first",
+    "sort_rateDesc": "Highest rating",
+    "sort_rateAsc": "Lowest rating",
+    "filter_media": "With media",
+    "list_empty_filtered": "No reviews match this selection."
   },
   "tab_bar": {
     "home": "Home",
