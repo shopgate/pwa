@@ -34,7 +34,7 @@ npm run release -- <command> [version] [options]
 | `--resume` | `RESUME` | `resume` | Continue an interrupted release of the same version in a new pipeline |
 | `--dry-run` | `DRY_RUN` | `dry_run` | No pushes, packages are only packed (`npm publish --dry-run`) |
 | `--skip-master-update` | `SKIP_MASTER_UPDATE` | `skip_master_update` | Don't update master, although the version becomes `latest` |
-| `--wait-for-publish` | `WAIT_FOR_PUBLISH` | `auto_finalize` | `finalize` waits until the packages are published instead of failing |
+| `--wait-for-publish` | `WAIT_FOR_PUBLISH` | – (always set by the pipeline) | `finalize` waits until the packages are published instead of failing |
 | – | `MUTE_SLACK` | `mute_slack` | No Slack notifications of the pipeline. The GitHub workflow still posts its result |
 
 No command needs an npm login: they only read public data from npm, and the workflow publishes
@@ -56,11 +56,10 @@ these variables.
    `releases/v7.33.0`, choose "Review deployments" and approve the environment `npm-release`. The
    workflow then builds and publishes the packages, which takes a few minutes. When it's done,
    Slack posts "published on npm".
-4. **`release:finalize`** continues in the pipeline, in one of two ways:
-   - Started by hand when the workflow is done. It fails as long as a package isn't published
-     yet, so it can simply be retried.
-   - With the pipeline input `auto_finalize`, it starts right after `release:prepare` and waits
-     until the workflow has published the packages.
+4. **`release:finalize`** continues in the pipeline by itself: it starts right after
+   `release:prepare` and waits for up to 30 minutes until the workflow has published the
+   packages. When that isn't enough, it fails without having changed anything and can simply be
+   retried.
 5. After finalize, the themes are uploaded: `release:themes` for every version,
    `release:tablet-themes` automatically for stable versions and as a manual job that can be
    skipped for prereleases.
@@ -98,8 +97,8 @@ takes the workflow from the release branch. Lines released before they existed c
 with this process.
 
 `finalize` runs the CLI of the release branch as well. A branch whose CLI doesn't know
-`WAIT_FOR_PUBLISH` yet ignores the pipeline input `auto_finalize`: the job starts right after
-`release:prepare` and fails with "Not published yet". Retry it when the packages are published.
+`WAIT_FOR_PUBLISH` yet doesn't wait: the job starts right after `release:prepare` and fails with
+"Not published yet". Retry it when the packages are published.
 
 ## What the steps do
 
@@ -209,8 +208,8 @@ master; changes to the workflow on other branches can only be tested with a rele
 With `DRY_RUN=true`, it only lists the packages that are not published and stops, without
 waiting.
 
-The job is manual by default. The pipeline input `auto_finalize` of `pwa-liveupdate` starts it
-right after `release:prepare` and sets `WAIT_FOR_PUBLISH`. While it waits:
+The pipeline of `pwa-liveupdate` starts the job right after `release:prepare` and sets
+`WAIT_FOR_PUBLISH`. While it waits:
 
 - It only looks at npm, not at the workflow. When the run of "Publish packages" fails or is
   rejected, the job keeps waiting until its limit. The workflow posts its failure to Slack;
@@ -273,9 +272,8 @@ waiting run of "Publish packages", and delete the branch `releases/vX` in pwa, `
 `theme-ios11` on GitHub. Otherwise `check` reports the version as taken in later pipelines.
 After the approval, treat the version as final and release a new one instead of unpublishing it.
 
-**With the pipeline input `auto_finalize`,** cancel the waiting `release:finalize` job before
-aborting a release, and before resuming it in a new pipeline: while it waits, it blocks the
-release jobs of other pipelines.
+**Cancel a waiting `release:finalize` job** before aborting a release, and before resuming it in
+a new pipeline: while it waits, it blocks the release jobs of other pipelines.
 
 **No run of "Publish packages" waits for approval:** its first job failed, e.g. because npm
 couldn't be reached. That job can't post to Slack, since the webhook is a secret of the

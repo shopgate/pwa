@@ -97,6 +97,6 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
     'Next steps:',
     `  1. Approve the run of the "Publish packages" workflow for ${releaseBranch}: ${getPublishRunsUrl(version)}`,
     '     If the run failed instead of waiting, fix what its log reports and re-run it.',
-    '  2. When it is done, the "release:finalize" job of the GitLab pipeline continues: run it, unless it was started with the pipeline and is already waiting',
+    '  2. When it is done, the "release:finalize" job of the GitLab pipeline continues by itself. It waits for up to 30 minutes; if it failed in the meantime, retry it',
   ].join('\n'));
 };
