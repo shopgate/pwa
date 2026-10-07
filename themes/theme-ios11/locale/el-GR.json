@@ -619,6 +619,12 @@
     "sort_rateAsc": "Χειρότερη βαθμολογία",
     "filter_media": "Με πολυμέσα",
     "filter_verified": "Μόνο επαληθευμένες",
+    "filter_rate_all": "Όλα τα αστέρια",
+    "filter_rate_5": "5 αστέρια",
+    "filter_rate_4": "4 αστέρια",
+    "filter_rate_3": "3 αστέρια",
+    "filter_rate_2": "2 αστέρια",
+    "filter_rate_1": "1 αστέρι",
     "list_empty_filtered": "Καμία κριτική δεν ταιριάζει με αυτή την επιλογή."
   },
   "tab_bar": {

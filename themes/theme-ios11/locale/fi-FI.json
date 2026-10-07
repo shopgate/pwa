@@ -619,6 +619,12 @@
     "sort_rateAsc": "Heikoin arvosana",
     "filter_media": "Sisältää mediaa",
     "filter_verified": "Vain vahvistetut",
+    "filter_rate_all": "Kaikki tähdet",
+    "filter_rate_5": "5 tähteä",
+    "filter_rate_4": "4 tähteä",
+    "filter_rate_3": "3 tähteä",
+    "filter_rate_2": "2 tähteä",
+    "filter_rate_1": "1 tähti",
     "list_empty_filtered": "Yksikään arvostelu ei vastaa valintaa."
   },
   "tab_bar": {

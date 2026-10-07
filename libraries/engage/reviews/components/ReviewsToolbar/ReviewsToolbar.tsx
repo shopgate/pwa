@@ -21,6 +21,11 @@ type SortSelectProps = {
 
 const SortSelect = SelectBox as unknown as ComponentType<SortSelectProps>;
 
+const RATE_ITEMS = ['0', '5', '4', '3', '2', '1'].map(value => ({
+  label: value === '0' ? 'reviews.filter_rate_all' : `reviews.filter_rate_${value}`,
+  value,
+}));
+
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'relative',
@@ -31,15 +36,24 @@ const useStyles = makeStyles()(theme => ({
     marginTop: theme.spacing(2),
     borderTop: `1px solid ${theme.components.border.light}`,
   },
-  selectBox: {
+  selects: {
+    display: 'flex',
     flexGrow: 2,
     minWidth: 0,
+  },
+  selectBox: {
+    minWidth: 0,
+  },
+  rateSelectBox: {
+    flexShrink: 0,
+    marginLeft: theme.spacing(2),
   },
   button: {
     display: 'flex',
     alignItems: 'center',
     maxWidth: '100%',
     height: theme.components.filterBar.height,
+    padding: 0,
     color: 'inherit',
     outline: 0,
     whiteSpace: 'nowrap',
@@ -92,7 +106,6 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     columnGap: theme.spacing(1),
-    marginLeft: 'auto',
   },
   filter: {
     flexShrink: 0,
@@ -127,13 +140,13 @@ export interface ReviewsToolbarProps {
   filterOptions: ReviewFilterOption[];
   /** Called with the selected sort. */
   onSortChange: (sort: string) => void;
-  /** Called with a filter and its new state. */
-  onFilterChange: (param: keyof ReviewListFilters, isActive: boolean) => void;
+  /** Called with a filter and its new value; a falsy value removes the filter. */
+  onFilterChange: (param: keyof ReviewListFilters, value?: boolean | number) => void;
 }
 
 /**
- * Displays the sort select and the filters of the review list. The sort select is the
- * one of the product filter bar. Renders nothing when the provider supports neither.
+ * Displays the sort select and the filters of the review list. The selects are those of
+ * the product filter bar. Renders nothing when the provider supports neither.
  * @returns The rendered component.
  */
 const ReviewsToolbar = ({
@@ -154,41 +167,73 @@ const ReviewsToolbar = ({
     }))
   ), [sort, sortOptions]);
 
-  const onSortChangeRef = useRef(onSortChange);
-  onSortChangeRef.current = onSortChange;
+  const handlers = useRef({
+    onSortChange,
+    onFilterChange,
+  });
+  handlers.current = {
+    onSortChange,
+    onFilterChange,
+  };
 
   const handleSortChange = useCallback((nextSort: string) => {
-    onSortChangeRef.current(nextSort);
+    handlers.current.onSortChange(nextSort);
   }, []);
+
+  const handleRateChange = useCallback((value: string) => {
+    handlers.current.onFilterChange('filterRate', Number(value) || undefined);
+  }, []);
+
+  const hasRateFilter = filterOptions.some(option => option.type === 'rate');
+  const toggles = filterOptions.filter(option => option.type === 'toggle');
 
   if (!hasSort && filterOptions.length === 0) {
     return null;
   }
 
+  const selectClassNames = {
+    button: classes.button,
+    selection: classes.selection,
+    icon: classes.icon,
+    iconOpen: classes.iconOpen,
+    dropdown: classes.dropdown,
+    selectItem: classes.selectItem,
+    selectItemSelected: classes.selectItemSelected,
+  };
+
   return (
     <div className={cx(classes.root, 'engage__reviews__reviews-toolbar')}>
-      {hasSort && (
-        <SortSelect
-          items={items}
-          initialValue={sort}
-          handleSelectionUpdate={handleSortChange}
-          icon={ArrowDropIcon}
-          item={SortItem}
-          className={cx(classes.selectBox, 'engage__reviews__reviews-toolbar__sort')}
-          classNames={{
-            button: classes.button,
-            selection: classes.selection,
-            icon: classes.icon,
-            iconOpen: classes.iconOpen,
-            dropdown: classes.dropdown,
-            selectItem: classes.selectItem,
-            selectItemSelected: classes.selectItemSelected,
-          }}
-        />
+      {(hasSort || hasRateFilter) && (
+        <div className={cx(classes.selects, 'engage__reviews__reviews-toolbar__selects')}>
+          {hasSort && (
+            <SortSelect
+              items={items}
+              initialValue={sort}
+              handleSelectionUpdate={handleSortChange}
+              icon={ArrowDropIcon}
+              item={SortItem}
+              className={cx(classes.selectBox, 'engage__reviews__reviews-toolbar__sort')}
+              classNames={selectClassNames}
+            />
+          )}
+          {hasRateFilter && (
+            <SortSelect
+              items={RATE_ITEMS}
+              initialValue={String(filters.filterRate ?? 0)}
+              handleSelectionUpdate={handleRateChange}
+              icon={ArrowDropIcon}
+              item={SortItem}
+              className={cx(classes.selectBox, {
+                [classes.rateSelectBox]: hasSort,
+              }, 'engage__reviews__reviews-toolbar__filter-rate')}
+              classNames={selectClassNames}
+            />
+          )}
+        </div>
       )}
-      {filterOptions.length > 0 && (
+      {toggles.length > 0 && (
         <div className={cx(classes.filters, 'engage__reviews__reviews-toolbar__filters')}>
-          {filterOptions.map(({ param, label }) => (
+          {toggles.map(({ param, label }) => (
             <ButtonBase
               key={param}
               className={cx(classes.filter, 'engage__reviews__reviews-toolbar__filter')}

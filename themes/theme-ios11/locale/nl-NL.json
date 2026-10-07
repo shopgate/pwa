@@ -619,6 +619,12 @@
     "sort_rateAsc": "Laagste beoordeling",
     "filter_media": "Met media",
     "filter_verified": "Alleen geverifieerd",
+    "filter_rate_all": "Alle sterren",
+    "filter_rate_5": "5 sterren",
+    "filter_rate_4": "4 sterren",
+    "filter_rate_3": "3 sterren",
+    "filter_rate_2": "2 sterren",
+    "filter_rate_1": "1 ster",
     "list_empty_filtered": "Geen reviews komen overeen met deze selectie."
   },
   "tab_bar": {

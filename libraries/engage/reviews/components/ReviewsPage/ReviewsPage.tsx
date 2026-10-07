@@ -24,6 +24,10 @@ import {
 import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
 import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
 import { PRODUCT_REVIEWS_ALL } from '@shopgate/pwa-common-commerce/reviews/constants/Portals';
+import {
+  areReviewFiltersEqual,
+  getActiveReviewFilters,
+} from '@shopgate/pwa-common-commerce/reviews/helpers/filters';
 import type {
   Review,
   ReviewListFilters,
@@ -154,16 +158,18 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
     }
   }, [filters, requestReviews, sort]);
 
-  const handleFilterChange = useCallback((param: keyof ReviewListFilters, isActive: boolean) => {
-    const nextFilters = { ...filters };
+  const handleFilterChange = useCallback((
+    param: keyof ReviewListFilters,
+    value?: boolean | number
+  ) => {
+    const nextFilters = getActiveReviewFilters({
+      ...filters,
+      [param]: value,
+    }) ?? {};
 
-    if (isActive) {
-      nextFilters[param] = true;
-    } else {
-      delete nextFilters[param];
+    if (!areReviewFiltersEqual(filters, nextFilters)) {
+      requestReviews(0, sort, nextFilters);
     }
-
-    requestReviews(0, sort, nextFilters);
   }, [filters, requestReviews, sort]);
 
   const canLoadMore = !hasError && hasMore && !isQueryChanged;

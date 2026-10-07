@@ -619,6 +619,12 @@
     "sort_rateAsc": "Schlechteste Bewertung",
     "filter_media": "Mit Medien",
     "filter_verified": "Nur verifiziert",
+    "filter_rate_all": "Alle Sterne",
+    "filter_rate_5": "5 Sterne",
+    "filter_rate_4": "4 Sterne",
+    "filter_rate_3": "3 Sterne",
+    "filter_rate_2": "2 Sterne",
+    "filter_rate_1": "1 Stern",
     "list_empty_filtered": "Keine Rezensionen passen zu dieser Auswahl."
   },
   "tab_bar": {

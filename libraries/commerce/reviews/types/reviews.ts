@@ -65,13 +65,23 @@ export interface Review {
 export interface ReviewListFilters {
   filterMedia?: true;
   filterVerified?: true;
+  /** Number of stars from 1 to 5. */
+  filterRate?: number;
 }
+
+/**
+ * Filter values as callers pass them; they are reduced to `ReviewListFilters` before use.
+ */
+export type ReviewListFilterInput = Partial<
+  Record<keyof ReviewListFilters, boolean | number | null>
+>;
 
 /**
  * A list filter the provider supports: its request parameter and the label of its control.
  */
 export interface ReviewFilterOption {
   param: keyof ReviewListFilters;
+  type: 'toggle' | 'rate';
   label: string;
 }
 

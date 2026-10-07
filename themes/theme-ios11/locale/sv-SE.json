@@ -618,6 +618,12 @@
     "sort_rateAsc": "Lägsta betyg",
     "filter_media": "Med media",
     "filter_verified": "Endast verifierade",
+    "filter_rate_all": "Alla stjärnor",
+    "filter_rate_5": "5 stjärnor",
+    "filter_rate_4": "4 stjärnor",
+    "filter_rate_3": "3 stjärnor",
+    "filter_rate_2": "2 stjärnor",
+    "filter_rate_1": "1 stjärna",
     "list_empty_filtered": "Inga recensioner matchar det här urvalet."
   },
   "tab_bar": {

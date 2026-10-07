@@ -11,7 +11,7 @@ import { areReviewFiltersEqual, getActiveReviewFilters } from '../helpers/filter
 import { isReviewCursorPagination } from '../selectors/reviewSettings';
 import type {
   ProductReviewsResponse,
-  ReviewListFilters,
+  ReviewListFilterInput,
   ReviewsSliceState,
 } from '../types/reviews';
 
@@ -29,7 +29,7 @@ let lastRequestId = 0;
  * "next page": the stored cursor is sent instead. Without a stored cursor for the requested
  * sort and filter the first page is requested.
  * @param sort Sorting, passed through to the pipeline unchanged.
- * @param filters Filter flags by request parameter; only active filters are sent.
+ * @param filters Filter values by request parameter; only active filters are sent.
  * @returns The dispatched action. It resolves with `null` when an identical request
  * is still in flight.
  */
@@ -38,7 +38,7 @@ function fetchReviews(
   limit: number = REVIEW_PREVIEW_COUNT,
   offset = 0,
   sort: string = SORT_DATE_DESC,
-  filters: Partial<Record<keyof ReviewListFilters, boolean>> = {}
+  filters: ReviewListFilterInput = {}
 ) {
   return (dispatch: Dispatch, getState: () => FetchReviewsState) => {
     const hash = generateResultHash({

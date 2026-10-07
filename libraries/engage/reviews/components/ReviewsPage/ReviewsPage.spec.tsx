@@ -119,7 +119,7 @@ jest.mock('../ReviewsToolbar', () => ({
     filters: ReviewListFilters;
     filterOptions: ReviewFilterOption[];
     onSortChange: (sort: string) => void;
-    onFilterChange: (param: keyof ReviewListFilters, isActive: boolean) => void;
+    onFilterChange: (param: keyof ReviewListFilters, value?: boolean | number) => void;
   }) => (sortOptions.length < 2 && filterOptions.length === 0 ? null : (
     <div
       className="engage__reviews__reviews-toolbar"
@@ -135,6 +135,10 @@ jest.mock('../ReviewsToolbar', () => ({
         onClick={() => onFilterChange('filterVerified', !filters.filterVerified)}
       >
         toggle verified
+      </button>
+      <button type="button" onClick={() => onFilterChange('filterRate', 5)}>five stars</button>
+      <button type="button" onClick={() => onFilterChange('filterRate', undefined)}>
+        all stars
       </button>
     </div>
   )),
@@ -471,6 +475,7 @@ describe('<ReviewsPage />', () => {
       mockPage.sortOptions = ['dateDesc', 'rateDesc'];
       mockPage.filterOptions = [{
         param: 'filterMedia',
+        type: 'toggle',
         label: 'reviews.filter_media',
       }];
       mockPage.totalCount = 12;
@@ -585,6 +590,56 @@ describe('<ReviewsPage />', () => {
         sort: 'dateDesc',
         filters: { filterVerified: true },
       }]);
+    });
+
+    it('should set the star filter next to the active filters', () => {
+      mockPage.filters = { filterMedia: true };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'five stars' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'dateDesc',
+        filters: {
+          filterMedia: true,
+          filterRate: 5,
+        },
+      }]);
+    });
+
+    it('should remove the star filter and keep the other filters', () => {
+      mockPage.filters = {
+        filterMedia: true,
+        filterRate: 5,
+      };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'all stars' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'dateDesc',
+        filters: { filterMedia: true },
+      }]);
+    });
+
+    it('should not request the list again when a filter keeps its value', () => {
+      mockPage.filters = { filterRate: 5 };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'five stars' }));
+
+      expect(getActions()).toEqual([]);
     });
 
     it('should load more and retry with the current sort and filter', () => {

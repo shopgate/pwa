@@ -11,10 +11,12 @@ const defaultProps: ReviewsToolbarProps = {
   filterOptions: [
     {
       param: 'filterMedia',
+      type: 'toggle',
       label: 'reviews.filter_media',
     },
     {
       param: 'filterVerified',
+      type: 'toggle',
       label: 'reviews.filter_verified',
     },
   ],
@@ -49,6 +51,17 @@ const renderToolbar = (props: Partial<ReviewsToolbarProps> = {}) => {
  * @returns The button that shows the current sort and opens the options.
  */
 const getSortButton = () => screen.getByRole('button', { name: /reviews\.sort_/ });
+
+const rateOption: ReviewsToolbarProps['filterOptions'][number] = {
+  param: 'filterRate',
+  type: 'rate',
+  label: 'reviews.filter_rate_all',
+};
+
+/**
+ * @returns The button that shows the selected number of stars and opens the options.
+ */
+const getRateButton = () => screen.getByRole('button', { name: /reviews\.filter_rate_/ });
 
 describe('<ReviewsToolbar />', () => {
   beforeEach(() => {
@@ -164,5 +177,74 @@ describe('<ReviewsToolbar />', () => {
 
     fireEvent.click(verified);
     expect(onFilterChange).toHaveBeenLastCalledWith('filterVerified', false);
+  });
+
+  describe('star filter', () => {
+    it('should not render the star select when the provider does not support it', () => {
+      renderToolbar();
+
+      expect(screen.queryByRole('button', { name: /reviews\.filter_rate_/ })).not.toBeInTheDocument();
+    });
+
+    it('should show all stars by default and offer five to one star', () => {
+      const { container } = renderToolbar({ filterOptions: [rateOption] });
+
+      expect(getRateButton()).toHaveTextContent('reviews.filter_rate_all');
+      expect(Array.from(container.querySelectorAll(
+        '.engage__reviews__reviews-toolbar__filter-rate [role="menuitem"]'
+      )).map(item => item.textContent)).toEqual([
+        'reviews.filter_rate_all',
+        'reviews.filter_rate_5',
+        'reviews.filter_rate_4',
+        'reviews.filter_rate_3',
+        'reviews.filter_rate_2',
+        'reviews.filter_rate_1',
+      ]);
+      expect(screen.queryByRole('button', { name: 'reviews.filter_media' })).not.toBeInTheDocument();
+    });
+
+    it('should render the star select next to the toggle filters', () => {
+      renderToolbar({ filterOptions: [...defaultProps.filterOptions, rateOption] });
+
+      expect(getRateButton()).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'reviews.filter_media' })).toBeInTheDocument();
+      expect(screen.getByRole('button', { name: 'reviews.filter_verified' })).toBeInTheDocument();
+    });
+
+    it('should show the active number of stars', () => {
+      renderToolbar({
+        filterOptions: [rateOption],
+        filters: { filterRate: 4 },
+      });
+
+      expect(getRateButton()).toHaveTextContent('reviews.filter_rate_4');
+    });
+
+    it('should report the selected number of stars and the removal of the filter', () => {
+      const { onFilterChange } = renderToolbar({
+        filterOptions: [rateOption],
+        filters: { filterRate: 4 },
+      });
+
+      fireEvent.click(getRateButton());
+      fireEvent.click(screen.getByRole('menuitem', {
+        hidden: true,
+        name: 'reviews.filter_rate_2',
+      }));
+      act(() => {
+        jest.runAllTimers();
+      });
+      expect(onFilterChange).toHaveBeenLastCalledWith('filterRate', 2);
+
+      fireEvent.click(getRateButton());
+      fireEvent.click(screen.getByRole('menuitem', {
+        hidden: true,
+        name: 'reviews.filter_rate_all',
+      }));
+      act(() => {
+        jest.runAllTimers();
+      });
+      expect(onFilterChange).toHaveBeenLastCalledWith('filterRate', undefined);
+    });
   });
 });

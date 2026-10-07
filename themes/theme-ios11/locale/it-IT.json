@@ -619,6 +619,12 @@
     "sort_rateAsc": "Valutazione più bassa",
     "filter_media": "Con media",
     "filter_verified": "Solo verificate",
+    "filter_rate_all": "Tutte le stelle",
+    "filter_rate_5": "5 stelle",
+    "filter_rate_4": "4 stelle",
+    "filter_rate_3": "3 stelle",
+    "filter_rate_2": "2 stelle",
+    "filter_rate_1": "1 stella",
     "list_empty_filtered": "Nessuna recensione corrisponde a questa selezione."
   },
   "tab_bar": {

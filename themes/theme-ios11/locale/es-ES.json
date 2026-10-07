@@ -619,6 +619,12 @@
     "sort_rateAsc": "Peor valoración",
     "filter_media": "Con fotos o vídeos",
     "filter_verified": "Solo verificadas",
+    "filter_rate_all": "Todas las estrellas",
+    "filter_rate_5": "5 estrellas",
+    "filter_rate_4": "4 estrellas",
+    "filter_rate_3": "3 estrellas",
+    "filter_rate_2": "2 estrellas",
+    "filter_rate_1": "1 estrella",
     "list_empty_filtered": "Ninguna reseña coincide con esta selección."
   },
   "tab_bar": {

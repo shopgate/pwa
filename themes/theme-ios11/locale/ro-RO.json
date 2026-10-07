@@ -619,6 +619,12 @@
     "sort_rateAsc": "Cea mai slabă evaluare",
     "filter_media": "Cu conținut media",
     "filter_verified": "Doar verificate",
+    "filter_rate_all": "Toate stelele",
+    "filter_rate_5": "5 stele",
+    "filter_rate_4": "4 stele",
+    "filter_rate_3": "3 stele",
+    "filter_rate_2": "2 stele",
+    "filter_rate_1": "1 stea",
     "list_empty_filtered": "Nicio recenzie nu corespunde acestei selecții."
   },
   "tab_bar": {

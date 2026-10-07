@@ -619,6 +619,12 @@
     "sort_rateAsc": "Moins bonnes notes",
     "filter_media": "Avec médias",
     "filter_verified": "Vérifiés uniquement",
+    "filter_rate_all": "Toutes les étoiles",
+    "filter_rate_5": "5 étoiles",
+    "filter_rate_4": "4 étoiles",
+    "filter_rate_3": "3 étoiles",
+    "filter_rate_2": "2 étoiles",
+    "filter_rate_1": "1 étoile",
     "list_empty_filtered": "Aucun avis ne correspond à cette sélection."
   },
   "tab_bar": {

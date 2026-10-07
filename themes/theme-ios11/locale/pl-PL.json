@@ -618,6 +618,12 @@
     "sort_rateAsc": "Najniższa ocena",
     "filter_media": "Z multimediami",
     "filter_verified": "Tylko zweryfikowane",
+    "filter_rate_all": "Wszystkie gwiazdki",
+    "filter_rate_5": "5 gwiazdek",
+    "filter_rate_4": "4 gwiazdki",
+    "filter_rate_3": "3 gwiazdki",
+    "filter_rate_2": "2 gwiazdki",
+    "filter_rate_1": "1 gwiazdka",
     "list_empty_filtered": "Żadna recenzja nie pasuje do tego wyboru."
   },
   "tab_bar": {

@@ -463,6 +463,42 @@ describe('Reviews actions: fetchReviews', () => {
       expect(input).not.toHaveProperty('filterVerified');
     });
 
+    it('should send the number of stars of the rate filter and tell different values apart', async () => {
+      const dispatch = jest.fn();
+
+      await fetchReviews('foo', 10, 0, 'dateDesc', { filterRate: 4 })(dispatch, createGetState({
+        isFetching: true,
+        requestOffset: 0,
+        requestSort: 'dateDesc',
+        requestFilters: { filterRate: 5 },
+      }));
+
+      expect(input).toEqual({
+        productId: 'foo',
+        limit: 10,
+        sort: 'dateDesc',
+        filterRate: 4,
+      });
+      expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
+        type: REQUEST_REVIEWS,
+        filters: { filterRate: 4 },
+      }));
+    });
+
+    it('should not continue a list of another number of stars with its cursor', async () => {
+      await fetchReviews('foo', 10, 20, 'dateDesc', { filterRate: 4 })(
+        jest.fn(),
+        createGetState({
+          after: 'stored',
+          sort: 'dateDesc',
+          filters: { filterRate: 5 },
+        }, 'cursor')
+      );
+
+      expect(input).not.toHaveProperty('after');
+      expect(input).toEqual(expect.objectContaining({ filterRate: 4 }));
+    });
+
     it('should pass the returned cursor on with the received reviews', async () => {
       const dispatch = jest.fn();
 

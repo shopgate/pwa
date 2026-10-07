@@ -119,13 +119,20 @@ describe('Reviews selectors: reviewSettings', () => {
       }))).toEqual([
         {
           param: 'filterMedia',
+          type: 'toggle',
           label: 'reviews.filter_media',
         },
         {
           param: 'filterVerified',
+          type: 'toggle',
           label: 'reviews.filter_verified',
         },
       ]);
+      expect(getReviewFilterOptions(buildState({ features: ['rateFilter'] }))).toEqual([{
+        param: 'filterRate',
+        type: 'rate',
+        label: 'reviews.filter_rate_all',
+      }]);
     });
 
     it('should return no filters without matching capabilities', () => {

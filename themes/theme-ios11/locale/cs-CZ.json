@@ -619,6 +619,12 @@
     "sort_rateAsc": "Nejhorší hodnocení",
     "filter_media": "S médii",
     "filter_verified": "Jen ověřené",
+    "filter_rate_all": "Všechny hvězdičky",
+    "filter_rate_5": "5 hvězdiček",
+    "filter_rate_4": "4 hvězdičky",
+    "filter_rate_3": "3 hvězdičky",
+    "filter_rate_2": "2 hvězdičky",
+    "filter_rate_1": "1 hvězdička",
     "list_empty_filtered": "Této volbě neodpovídají žádné recenze."
   },
   "tab_bar": {

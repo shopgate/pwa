@@ -29,18 +29,27 @@ export const REVIEW_FEATURE_RATE = 'reviewRate';
 // REVIEW LIST QUERY
 /**
  * The list filters the PWA knows: the capability a provider reports in its settings, the
- * request parameter that activates the filter, and the label of its control.
+ * request parameter that activates the filter, the kind of its control and the label.
+ * A toggle is sent as `true`, the rate filter as the number of stars from 1 to 5.
  */
 export const REVIEW_FILTERS = [
   {
     feature: 'mediaFilter',
     param: 'filterMedia',
+    type: 'toggle',
     label: 'reviews.filter_media',
   },
   {
     feature: 'verifiedFilter',
     param: 'filterVerified',
+    type: 'toggle',
     label: 'reviews.filter_verified',
+  },
+  {
+    feature: 'rateFilter',
+    param: 'filterRate',
+    type: 'rate',
+    label: 'reviews.filter_rate_all',
   },
 ];
 export const REVIEW_SORT_OPTIONS = ['relevance', 'dateDesc', 'dateAsc', 'rateDesc', 'rateAsc'];

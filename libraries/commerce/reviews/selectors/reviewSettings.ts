@@ -56,8 +56,9 @@ export const getReviewFilterOptions = createSelector(
     feature: string;
   })[])
     .filter(filter => features.includes(filter.feature))
-    .map(({ param, label }) => ({
+    .map(({ param, type, label }) => ({
       param,
+      type,
       label,
     }))
 );
