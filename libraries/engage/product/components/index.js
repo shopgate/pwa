@@ -29,5 +29,6 @@ export * from './RelationsSlider';
 export * from './Swatch';
 export * from './Swatches';
 export * from './UnitQuantityPicker';
+export { QuantityStepper } from './QuantityStepper';
 export { default as FilterBar } from './FilterBar';
 export { default as ProductFilters } from './ProductFilters';

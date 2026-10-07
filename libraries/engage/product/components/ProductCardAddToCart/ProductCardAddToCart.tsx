@@ -5,10 +5,9 @@ import { useDispatch, useSelector, useStore } from 'react-redux';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { Button, CircularProgress, IconButton } from '@shopgate/engage/components/v2';
 import CartIcon from '@shopgate/pwa-ui-shared/icons/CartIcon';
-import TickIcon from '@shopgate/pwa-ui-shared/icons/TickIcon';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
-import { keyframes, makeStyles } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { useNavigation } from '@shopgate/engage/core/hooks/useNavigation';
 import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
@@ -17,6 +16,8 @@ import * as locationSelectors from '@shopgate/engage/locations/selectors';
 import { DIRECT_SHIP } from '@shopgate/engage/locations/constants';
 import { broadcastLiveMessage as broadcast } from '@shopgate/engage/a11y';
 import { getProduct } from '../../selectors/catalog';
+import { useAddToCartFeedback } from '../../hooks/useAddToCartFeedback';
+import { AddedTick } from '../AddedTick';
 import { VariantSelectSheet } from '../VariantSelectSheet';
 import type { VariantSheetProduct } from '../VariantSelectSheet';
 
@@ -26,8 +27,6 @@ export interface ProductCardAddToCartProps {
   /** `icon` renders an action button, `button` a full width button with label. */
   variant?: 'icon' | 'button';
 }
-
-type AddState = 'idle' | 'pending' | 'added';
 
 const getPreferredFulfillmentMethod = (
   locationSelectors.getPreferredFulfillmentMethod
@@ -43,23 +42,6 @@ const broadcastLiveMessage = broadcast as unknown as (
   message: string,
   options: { params: Record<string, number> }
 ) => void;
-
-const tickIn = keyframes({
-  '0%': {
-    transform: 'scale(0.3)',
-    opacity: 0,
-  },
-  '60%': {
-    transform: 'scale(1.15)',
-    opacity: 1,
-  },
-  '100%': {
-    transform: 'scale(1)',
-    opacity: 1,
-  },
-});
-
-const ADDED_FEEDBACK_DURATION = 1500;
 
 const COMPACT_BUTTON_WIDTH = 160;
 
@@ -104,17 +86,6 @@ const useStyles = makeStyles({ name: 'ProductCardAddToCart' })(theme => ({
     alignItems: 'center',
     justifyContent: 'center',
     fontSize: '1.25em',
-    animation: `${tickIn} 400ms ${theme.transitions.easing.easeOut}`,
-    '@media (prefers-reduced-motion: reduce)': {
-      animation: 'none',
-    },
-  },
-  iconTick: {
-    display: 'flex',
-    animation: `${tickIn} 400ms ${theme.transitions.easing.easeOut}`,
-    '@media (prefers-reduced-motion: reduce)': {
-      animation: 'none',
-    },
   },
 }));
 
@@ -135,16 +106,9 @@ const ProductCardAddToCart = ({
   const product = useSelector((state: unknown) => getProduct(state, { productId }));
   const [sheetOpen, setSheetOpen] = useState(false);
   const [sheetMounted, setSheetMounted] = useState(false);
-  const [addState, setAddState] = useState<AddState>('idle');
+  const { state: addState, track } = useAddToCartFeedback();
   const [compact, setCompact] = useState(false);
-  const addedTimeout = useRef<ReturnType<typeof setTimeout>>();
   const rootRef = useRef<HTMLDivElement>(null);
-  const mounted = useRef(true);
-
-  useEffect(() => () => {
-    mounted.current = false;
-    clearTimeout(addedTimeout.current);
-  }, []);
 
   useEffect(() => {
     const element = rootRef.current;
@@ -180,9 +144,6 @@ const ProductCardAddToCart = ({
 
     broadcastLiveMessage('product.adding_item', { params: { count: 1 } });
 
-    clearTimeout(addedTimeout.current);
-    setAddState('pending');
-
     const request = dispatch(addProductsToCart([{
       productId: id,
       quantity: 1,
@@ -197,31 +158,12 @@ const ProductCardAddToCart = ({
       }),
     }])) as Promise<{ messages?: { type?: string }[] } | undefined>;
 
-    Promise.resolve(request)
-      .then((result) => {
-        const failed = result?.messages?.some(message => message.type === 'error');
-
-        if (!mounted.current) {
-          return;
-        }
-
-        if (failed) {
-          setAddState('idle');
-          return;
-        }
-
-        broadcastLiveMessage('product.item_added', { params: { count: 1 } });
-        setAddState('added');
-        addedTimeout.current = setTimeout(() => setAddState('idle'), ADDED_FEEDBACK_DURATION);
-      })
-      .catch(() => {
-        if (mounted.current) {
-          setAddState('idle');
-        }
-      });
+    track(request, () => {
+      broadcastLiveMessage('product.item_added', { params: { count: 1 } });
+    });
 
     return request;
-  }, [dispatch, push, store]);
+  }, [dispatch, push, store, track]);
 
   const handleClick = useCallback((event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -307,12 +249,9 @@ const ProductCardAddToCart = ({
               </span>
             )}
             {added && (
-              <span
+              <AddedTick
                 className={cx(classes.tick, 'engage__product-card-add-to-cart__tick')}
-                aria-hidden
-              >
-                <TickIcon />
-              </span>
+              />
             )}
           </Button>
         ) : (
@@ -328,9 +267,7 @@ const ProductCardAddToCart = ({
           >
             {pending && <CircularProgress color="inherit" size={16} />}
             {added && (
-              <span className={cx(classes.iconTick, 'engage__product-card-add-to-cart__tick')}>
-                <TickIcon />
-              </span>
+              <AddedTick className="engage__product-card-add-to-cart__tick" />
             )}
             {!pending && !added && <CartIcon />}
           </IconButton>

@@ -1,49 +1,35 @@
 import React, {
   useCallback, useContext, useEffect, useRef, useState,
 } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { RouteContext } from '@shopgate/pwa-common/context';
 import UIEvents from '@shopgate/pwa-core/emitters/ui';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { FooterBar, SurroundPortals } from '@shopgate/engage/components';
 import {
   PRODUCT_ADD_TO_CART_BAR,
+  PRODUCT_ADD_TO_CART_BAR_QUANTITY_PICKER,
 } from '@shopgate/engage/product/constants';
+import { QuantityStepper } from '@shopgate/engage/product/components';
+import { getProductStock } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getProductAddToCartBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
 import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { makeStyles } from '@shopgate/engage/styles';
+import { useAddToCartFeedback } from '@shopgate/engage/product/hooks/useAddToCartFeedback';
+import { useFooterBarLayout } from '../../../../components/TabBar/hooks';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
-import AddMoreButton from './components/AddMoreButton';
-import CartItemsCount from './components/CartItemsCount';
 import connect from './connector';
 
-const barHeight = 46;
+const MAX_QUANTITY = 99;
 
 const useStyles = makeStyles()(theme => ({
-  container: {
-    background: theme.palette.background.surface,
-    boxShadow: '0 -4px 5px -2px rgba(0, 0, 0, 0.1)',
-    position: 'relative',
-    zIndex: 2,
-    overflow: 'hidden',
-    paddingBottom: theme.layout.safeArea.bottom,
-  },
-  innerContainer: {
-    padding: theme.spacing(1),
-  },
   base: {
-    display: 'grid',
-    minHeight: barHeight,
-    position: 'relative',
-  },
-  statusBar: {
-    gridArea: '1 / 1',
-    alignItems: 'center',
     display: 'flex',
-    maxWidth: '60%',
-    padding: theme.spacing(0, 1),
+    gap: theme.spacing(1),
+    padding: theme.spacing(1),
   },
 }));
 
@@ -68,15 +54,25 @@ const AddToCartBar = (props) => {
     userLocation,
     userMethod,
   } = props;
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const productCtx = useContext(ProductContext);
-  const target = useRef(typeof document !== 'undefined' ? document.getElementById('AppFooter') : null);
-  const innerRef = useRef(null);
-  const moreButtonRef = useRef(null);
+  const busy = useRef(false);
+  const { state: addState, track } = useAddToCartFeedback();
+  const {
+    variant: configuredVariant,
+    quantityPicker,
+  } = useSelector(getProductAddToCartBarSettings);
+  const layout = useFooterBarLayout(configuredVariant);
+  const stock = useSelector(state => getProductStock(state, { productId }));
+  const minQuantity = stock?.minOrderQuantity > 0 ? stock.minOrderQuantity : 1;
+  const maxQuantity = stock?.maxOrderQuantity > 0
+    ? Math.min(stock.maxOrderQuantity, MAX_QUANTITY)
+    : MAX_QUANTITY;
 
   const [clicked, setClicked] = useState(false);
   const [barVisible, setBarVisible] = useState(true);
   const [added, setAdded] = useState(0);
+  const [quantity, setQuantity] = useState(minQuantity);
 
   const handleShow = useCallback(() => setBarVisible(true), []);
   const handleHide = useCallback(() => setBarVisible(false), []);
@@ -103,24 +99,49 @@ const AddToCartBar = (props) => {
     };
   }, [handleShow, handleHide, handleIncrement, handleDecrement, handleReset]);
 
+  useEffect(() => {
+    setQuantity(minQuantity);
+  }, [minQuantity, productId]);
+
+  const { quantity: contextQuantity, setQuantity: setContextQuantity } = productCtx;
+
+  useEffect(() => {
+    if (quantityPicker && contextQuantity !== quantity) {
+      setContextQuantity(quantity);
+    }
+  }, [contextQuantity, quantity, quantityPicker, setContextQuantity]);
+
+  const hadQuantityPicker = useRef(quantityPicker);
+
+  useEffect(() => {
+    if (hadQuantityPicker.current && !quantityPicker) {
+      setContextQuantity(1);
+    }
+    hadQuantityPicker.current = quantityPicker;
+  }, [quantityPicker, setContextQuantity]);
+
   const resetClicked = useCallback(() => setClicked(false), []);
 
   const handleAddToCart = useCallback(() => {
-    if (clicked || loading || disabled) {
+    if (busy.current || clicked || loading || disabled || addState !== 'idle') {
       return;
     }
 
+    busy.current = true;
+
     conditioner.check().then((fulfilled) => {
       if (!fulfilled) {
+        busy.current = false;
         return;
       }
 
       setClicked(true);
 
+      const addQuantity = quantityPicker ? quantity : productCtx.quantity;
       const addToCartData = {
         productId,
         options,
-        quantity: productCtx.quantity,
+        quantity: addQuantity,
       };
 
       if (
@@ -137,80 +158,89 @@ const AddToCartBar = (props) => {
         };
       }
 
-      addToCart(addToCartData);
-
-      broadcastLiveMessage('product.adding_item', {
-        params: { count: productCtx.quantity },
+      track(addToCart(addToCartData), () => {
+        broadcastLiveMessage('product.item_added', {
+          params: { count: addQuantity },
+        });
+      }).then(() => {
+        busy.current = false;
       });
 
-      if (moreButtonRef.current) {
-        moreButtonRef.current.focus();
-      }
+      broadcastLiveMessage('product.adding_item', {
+        params: { count: addQuantity },
+      });
 
       setTimeout(resetClicked, 250);
     });
   }, [
-    clicked, loading, disabled, conditioner, productId, options, productCtx,
-    userLocation, userMethod, isRopeFulfillmentMethodAllowed, addToCart, resetClicked,
+    clicked, loading, disabled, addState, conditioner, quantityPicker, quantity, productCtx,
+    productId, options, userLocation, userMethod, isRopeFulfillmentMethodAllowed, addToCart,
+    resetClicked, track,
   ]);
 
-  if (barVisible === false || !routeVisible || !target.current) {
+  if (barVisible === false || !routeVisible) {
     return null;
   }
 
-  return ReactDOM.createPortal(
+  return (
     (
-      <SurroundPortals
-        portalName={PRODUCT_ADD_TO_CART_BAR}
-        portalProps={{
-          ...restProps,
-          conditioner,
-          options,
-          productId,
-          addToCart,
-          disabled,
-          isRopeFulfillmentMethodAllowed,
-          loading,
-          userLocation,
-          userMethod,
-          clicked,
-          added,
-          handleAddToCart,
-          resetClicked,
-          visible: barVisible,
-        }}
-      >
-        <Section title="product.sections.purchase" className="theme__product__add-to-cart-bar">
-          <div className={classes.container}>
-            <div className={classes.innerContainer} ref={innerRef}>
-              <div className={classes.base}>
-                <div className={classes.statusBar}>
-                  <CartItemsCount
-                    productId={productId}
-                    itemCount={added}
-                  />
-                  <AddMoreButton
-                    handleAddToCart={handleAddToCart}
-                    disabled={disabled}
-                    loading={loading}
-                    onReset={resetClicked}
-                    visible={added > 0}
-                    ref={moreButtonRef}
-                  />
-                </div>
-                <AddToCartButton
+      <FooterBar variant={layout.variant} gap={layout.gap}>
+        <SurroundPortals
+          portalName={PRODUCT_ADD_TO_CART_BAR}
+          portalProps={{
+            ...restProps,
+            conditioner,
+            options,
+            productId,
+            addToCart,
+            disabled,
+            isRopeFulfillmentMethodAllowed,
+            loading,
+            userLocation,
+            userMethod,
+            clicked,
+            added,
+            handleAddToCart,
+            resetClicked,
+            visible: barVisible,
+            quantity,
+            setQuantity,
+          }}
+        >
+          <Section
+            title="product.sections.purchase"
+            className={cx(classes.base, 'theme__product__add-to-cart-bar')}
+            data-variant={layout.variant}
+          >
+            {quantityPicker && (
+              <SurroundPortals
+                portalName={PRODUCT_ADD_TO_CART_BAR_QUANTITY_PICKER}
+                portalProps={{
+                  productId,
+                  quantity,
+                  setQuantity,
+                  minQuantity,
+                  maxQuantity,
+                }}
+              >
+                <QuantityStepper
+                  value={quantity}
+                  onChange={setQuantity}
+                  min={minQuantity}
+                  max={maxQuantity}
                   disabled={disabled}
-                  itemCount={added}
-                  handleAddToCart={handleAddToCart}
-                  onReset={resetClicked}
                 />
-              </div>
-            </div>
-          </div>
-        </Section>
-      </SurroundPortals>
-    ),
-    target.current
+              </SurroundPortals>
+            )}
+            <AddToCartButton
+              disabled={disabled && addState === 'idle'}
+              state={addState}
+              onClick={handleAddToCart}
+            />
+          </Section>
+        </SurroundPortals>
+      </FooterBar>
+    )
   );
 };
 
