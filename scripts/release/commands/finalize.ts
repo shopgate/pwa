@@ -9,7 +9,9 @@ import {
 } from '../config.ts';
 import { logStep } from '../lib/exec.ts';
 import { git, gitOutput, remoteBranchExists } from '../lib/git.ts';
-import { createRelease, createTag, findRelease } from '../lib/github.ts';
+import {
+  createRelease, createTag, findRelease, getMissingCommits,
+} from '../lib/github.ts';
 import {
   getPublishRunsUrl, getUnpublished, resolveDistTag, updatesMaster, waitUntilInstallable,
   waitUntilPublished,
@@ -66,13 +68,26 @@ export const finalizeRelease = async (options: ReleaseOptions, root = ROOT) => {
   git(['checkout', '-B', releaseBranch, `origin/${releaseBranch}`]);
 
   if (masterUpdate) {
-    const mergedCommits = new Map(themes.map((theme): [Theme, string] => {
-      logStep(`Merging master of ${theme.githubRepo} into ${releaseBranch}`);
-      git(['subtree', 'pull', '-q', `--prefix=${theme.dir}`, theme.gitUrl, 'master', '-m', `Merge ${theme.name} master into ${releaseBranch}`], {
-        env: { GIT_MERGE_AUTOEDIT: 'no' },
-      });
-      return [theme, gitOutput(['rev-parse', 'HEAD'])];
-    }));
+    const mergedCommits = new Map<Theme, string>();
+
+    for (const theme of themes) {
+      logStep(`Checking master of ${theme.githubRepo}`);
+
+      // eslint-disable-next-line no-await-in-loop
+      const missing = await getMissingCommits(theme.githubRepo, releaseBranch, 'master');
+
+      if (missing?.total === 0) {
+        console.log(`${symbols.ok} ${releaseBranch} of ${theme.githubRepo} contains its master, nothing to merge`);
+      } else {
+        logStep(`Merging master of ${theme.githubRepo} into ${releaseBranch}`);
+        git(['subtree', 'pull', '-q', `--prefix=${theme.dir}`, theme.gitUrl, 'master', '-m', `Merge ${theme.name} master into ${releaseBranch}`], {
+          env: { GIT_MERGE_AUTOEDIT: 'no' },
+        });
+      }
+
+      mergedCommits.set(theme, gitOutput(['rev-parse', 'HEAD']));
+    }
+
     await pushSubtrees(themes, 'master', theme => mergedCommits.get(theme) ?? 'HEAD');
 
     logStep(`Updating master of ${GITHUB_REPO}`);

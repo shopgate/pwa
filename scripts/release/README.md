@@ -195,9 +195,11 @@ master; changes to the workflow on other branches can only be tested with a rele
    theme uploads that follow don't start too early.
 2. Checks out `releases/vX`.
 3. Only when the version becomes `latest` and `SKIP_MASTER_UPDATE` isn't set:
-   1. For each theme, one after another: merges the master of the theme repository into
-      `releases/vX` (`git subtree pull`). Then pushes the result to both theme masters at the same
-      time (`git subtree push`).
+   1. For each theme, one after another: checks whether `releases/vX` of the theme repository
+      already contains its master, which is the case unless someone committed directly in the
+      theme repository. Only otherwise, it merges that master into `releases/vX`
+      (`git subtree pull`). Then pushes the result to both theme masters at the same time
+      (`git subtree push`).
    2. Merges master of pwa into `releases/vX` and pushes it to `releases/vX`, `vX` and master.
 4. Stable versions: creates the GitHub release `vX` in pwa and both theme repositories. The target
    is master when master was updated, otherwise `releases/vX`. The release notes are the changelog
@@ -252,8 +254,8 @@ job that failed halfway doesn't leave anything behind that blocks it:
   same commits again, so a theme branch that was already pushed doesn't reject the retry.
 - A push that was rejected because the target moved in the meantime (e.g. someone merged into
   master during `finalize`) goes through on the retry, since the job fetches and merges first.
-- A theme master that was already updated in a failed `finalize` gets merged into `releases/vX`
-  once more. That adds a merge commit without changes, and the push stays a fast-forward.
+- A theme master that was already updated in a failed `finalize` is found to be part of
+  `releases/vX` on the retry, so nothing is merged and the push reports "Everything up-to-date".
 - External causes (SSH key, `GITHUB_AUTH_TOKEN`, GitHub or npm outages): fix the cause, then
   retry.
 
