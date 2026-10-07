@@ -47,7 +47,7 @@ const translucent = (color: string, opacity: string) => (
   `color-mix(in srgb, ${color} ${opacity}, transparent)`
 );
 
-const useStyles = makeStyles<{ inset: number }>()((theme, { inset }) => {
+const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset, side }) => {
   const { appBar } = theme.components;
   const fade = theme.transitions.create(['opacity', 'transform'], { duration: 200 });
   const revealedGlass = {
@@ -82,6 +82,12 @@ const useStyles = makeStyles<{ inset: number }>()((theme, { inset }) => {
       '& img': {
         objectPosition: 'right center',
       },
+    },
+    innerLogoCenter: {
+      gridTemplateColumns: `minmax(${side}px, 1fr) minmax(0, auto) minmax(${side}px, 1fr)`,
+    },
+    logoCenter: {
+      padding: theme.spacing(0, 1.25),
     },
     innerLogoLeft: {
       gridTemplateColumns: 'minmax(min-content, 1fr) 0 auto',
@@ -165,10 +171,6 @@ const useStyles = makeStyles<{ inset: number }>()((theme, { inset }) => {
         opacity: 0,
         transform: 'scale(0.92)',
       },
-      '& .theme__search-bar': {
-        background: appBar.background,
-        ...revealedGlass,
-      },
       [SUPPORTS_COLOR_MIX]: {
         '&::before': {
           opacity: 1,
@@ -177,6 +179,14 @@ const useStyles = makeStyles<{ inset: number }>()((theme, { inset }) => {
         [CIRCLE]: {
           opacity: 0,
         },
+      },
+    },
+    moved: {
+      '& .theme__search-bar': {
+        background: appBar.background,
+        ...revealedGlass,
+      },
+      [SUPPORTS_COLOR_MIX]: {
         '& .theme__search-bar': {
           background: translucent(appBar.background, appBar.revealedBarBackgroundOpacity),
         },
@@ -310,7 +320,10 @@ const ConfiguredBar = ({
   const rightCount = (right ? 1 : 0) + rightSlots.length
     + (logo && logoPosition === 'right' ? 1 : 0);
   const inset = Math.max(TITLE_INSET, Math.max(leftCount, rightCount) * APP_BAR_BUTTON_SIZE + 2);
-  const { classes, cx } = useStyles({ inset });
+  const { classes, cx } = useStyles({
+    inset,
+    side: Math.max(leftCount, rightCount) * APP_BAR_BUTTON_SIZE,
+  });
 
   const floatsOnScroll = scrollBehavior === 'floatingButtons' || scrollBehavior === 'scrollAway';
   const revealsBar = scrollBehavior === 'revealBar' || scrollBehavior === 'scrollAway';
@@ -338,6 +351,7 @@ const ConfiguredBar = ({
         className={cx(
           classes.logo,
           'theme__app-bar__logo',
+          !sideLogo && classes.logoCenter,
           sideLogo && classes.logoSide,
           sideLogo && modern && classes.logoSideModern,
           logoPosition === 'right' && classes.logoRight
@@ -380,6 +394,7 @@ const ConfiguredBar = ({
         classes={{
           outer: cx(
             overlay && classes.overlay,
+            overlay && moved && classes.moved,
             revealed && classes.revealed,
             logoHidden && classes.logoHidden,
             hidden && classes.hidden,
@@ -388,6 +403,7 @@ const ConfiguredBar = ({
           inner: cx(
             classes.inner,
             modern && classes.modernInner,
+            logo && logoPosition === 'center' && classes.innerLogoCenter,
             logo && logoPosition === 'left' && classes.innerLogoLeft,
             logo && logoPosition === 'right' && classes.innerLogoRight,
             parentClasses.inner

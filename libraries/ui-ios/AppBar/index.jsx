@@ -31,6 +31,7 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     position: 'relative',
     zIndex: 1,
+    minHeight: 44,
   },
   side: {
     display: 'flex',
@@ -100,6 +101,10 @@ const AppBar = ({
       observer.disconnect();
     };
   }, [contentRef, observer]);
+
+  useLayoutEffect(() => {
+    updateAppBarHeight(contentRef);
+  });
 
   const sectionClasses = cx(classes.outer, parentClasses.outer, 'ui-ios__app-bar');
   const dataAttributes = useMemo(() => Object.fromEntries(
