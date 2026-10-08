@@ -208,7 +208,9 @@ describe('Reviews reducers', () => {
       state = receive(request(state, next), next, moreMockedReviews);
 
       expect(state.reviewsByHash[hash].reviews).toEqual(mockedReviews.map(review => review.id));
+      expect(state.reviewsByHash[hash].sort).toBe('dateDesc');
       expect(state.reviewsByHash[hash].isFetching).toBe(false);
+      expect(state.reviewsByHash[hash].expires).toBeGreaterThan(0);
     });
 
     it('should accept an opaque sort string set by an extension', () => {
@@ -244,6 +246,7 @@ describe('Reviews reducers', () => {
 
       expect(state.reviewsByHash[hash].reviews).toBeUndefined();
       expect(state.reviewsByHash[hash].isFetching).toBe(false);
+      expect(state.reviewsByHash[hash].expires).toBe(0);
     });
 
     it('should ignore an error for a collection removed by an app reset', () => {

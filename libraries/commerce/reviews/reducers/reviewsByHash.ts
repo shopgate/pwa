@@ -54,6 +54,7 @@ const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
           [action.hash]: {
             ...collection,
             isFetching: false,
+            expires: collection.reviews ? Date.now() + REVIEWS_LIFETIME : 0,
           },
         };
       }
