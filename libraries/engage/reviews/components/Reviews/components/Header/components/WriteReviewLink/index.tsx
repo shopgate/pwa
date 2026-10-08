@@ -1,16 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { Button } from '@shopgate/engage/components/v2';
 
+export interface WriteReviewLinkProps {
+  /** The id of the product to review. */
+  productId: string;
+  /** Renders the button over the full width. */
+  fullWidth?: boolean;
+}
+
 /**
  * Link to add a review.
- * @returns {JSX.Element}
+ * @returns The rendered component.
  */
-const WriteReviewLink = ({ productId, fullWidth }) => (
+const WriteReviewLink = ({ productId, fullWidth = false }: WriteReviewLinkProps) => (
   <div
     data-test-id="writeReview"
     className="engage__reviews__write-review-link"
@@ -27,14 +32,5 @@ const WriteReviewLink = ({ productId, fullWidth }) => (
     </Button>
   </div>
 );
-
-WriteReviewLink.propTypes = {
-  productId: PropTypes.string.isRequired,
-  fullWidth: PropTypes.bool,
-};
-
-WriteReviewLink.defaultProps = {
-  fullWidth: false,
-};
 
 export default WriteReviewLink;

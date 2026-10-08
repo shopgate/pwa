@@ -1,16 +1,17 @@
+import type { ReactNode } from 'react';
 import { render, screen } from '@testing-library/react';
 import { UnwrappedReviews as Reviews } from './index';
 
 jest.mock('@shopgate/engage/components', () => ({
-  View: ({ children }) => children,
+  View: ({ children }: { children: ReactNode }) => children,
 }));
 jest.mock('@shopgate/engage/reviews', () => ({
-  // eslint-disable-next-line react/prop-types
-  ReviewsPage: ({ productId }) => <div data-testid="reviews-page" data-product-id={productId} />,
+  ReviewsPage: ({ productId }: { productId: string }) => (
+    <div data-testid="reviews-page" data-product-id={productId} />
+  ),
 }));
 jest.mock('Components/AppBar/presets', () => ({
-  // eslint-disable-next-line react/prop-types
-  BackBar: ({ title }) => <div data-testid="back-bar" data-title={title} />,
+  BackBar: ({ title }: { title: string }) => <div data-testid="back-bar" data-title={title} />,
 }));
 
 describe('<Reviews> page', () => {

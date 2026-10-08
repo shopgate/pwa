@@ -25,11 +25,6 @@ import WriteReviewLink from '../Reviews/components/Header/components/WriteReview
 import AllReviewsLink from '../Reviews/components/AllReviewsLink';
 import ReviewsInfo from '../Reviews/components/ReviewsInfo';
 
-const AllReviewsLinkWithProduct = AllReviewsLink as unknown as (props: {
-  productId: string;
-  fullWidth?: boolean;
-}) => JSX.Element | null;
-
 const EMPTY_REVIEWS: Review[] = [];
 
 const useStyles = makeStyles()(theme => ({
@@ -118,7 +113,7 @@ const ReviewsPreview = ({ productId }: ReviewsPreviewProps) => {
             onRetry={handleRetry}
           />
           <div className="engage__reviews__reviews-preview__actions">
-            <AllReviewsLinkWithProduct productId={baseProductId} fullWidth />
+            <AllReviewsLink productId={baseProductId} fullWidth />
             {showWriteReview && (
               <div className={cx(classes.writeReview, 'engage__reviews__reviews-preview__write-review')}>
                 <WriteReviewLink productId={baseProductId} fullWidth />

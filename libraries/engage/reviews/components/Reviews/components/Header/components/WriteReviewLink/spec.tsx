@@ -1,4 +1,3 @@
-import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import WriteReviewLink from './index';
 
@@ -8,17 +7,15 @@ jest.mock('@shopgate/engage/core/hooks/useNavigation', () => ({
   useNavigation: () => ({ push: mockPush, replace: jest.fn() }),
 }));
 
-/* eslint-disable react/prop-types */
-
 jest.mock('@shopgate/engage/components', () => ({
   I18n: {
-    Text: ({ string }) => <span>{string}</span>,
+    Text: ({ string }: { string: string }) => <span>{string}</span>,
   },
 }));
 
 /**
  * Creates component.
- * @return {void}
+ * @returns The render result.
  */
 const createComponent = () => render(<WriteReviewLink productId="foo" />);
 
@@ -64,5 +61,3 @@ describe('<WriteReviewLink>', () => {
     expect(screen.getByRole('button')).toHaveAttribute('data-full-width');
   });
 });
-
-/* eslint-enable react/prop-types */

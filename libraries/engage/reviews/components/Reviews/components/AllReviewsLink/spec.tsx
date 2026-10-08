@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import AllReviewsLink from './index';
 
-jest.mock('./connector', () => component => component);
+jest.mock('./connector', () => (component: unknown) => component);
 
 describe('<AllReviewsLink />', () => {
   it('should render nothing up to the preview count', () => {

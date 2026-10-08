@@ -1,5 +1,3 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { I18n } from '@shopgate/engage/components';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
@@ -20,14 +18,27 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
+export interface AllReviewsLinkProps {
+  /** The number of reviews of the product; nothing renders up to the preview count. */
+  count?: number;
+  /** Renders an outlined button over the full width instead of a text button. */
+  fullWidth?: boolean;
+  /** The id of the product whose review page the link opens. */
+  productId?: string | null;
+}
+
 /**
- * @param {Object} props The component props.
- * @returns {JSX}
+ * Link to the review page of a product.
+ * @returns The rendered component.
  */
-const AllReviewsLink = (props) => {
+const AllReviewsLink = ({
+  count = 0,
+  fullWidth = false,
+  productId = null,
+}: AllReviewsLinkProps) => {
   const { classes, cx } = useStyles();
 
-  if (!props.productId || props.count <= REVIEW_PREVIEW_COUNT) {
+  if (!productId || count <= REVIEW_PREVIEW_COUNT) {
     return null;
   }
 
@@ -35,34 +46,22 @@ const AllReviewsLink = (props) => {
     <div
       className={cx(
         classes.container,
-        { [classes.fullWidth]: props.fullWidth },
+        { [classes.fullWidth]: fullWidth },
         'engage__reviews__all-reviews-link'
       )}
       data-test-id="showAllReviewsButton"
-      data-full-width={props.fullWidth || undefined}
+      data-full-width={fullWidth || undefined}
     >
       <Button
-        variant={props.fullWidth ? 'outlined' : 'text'}
+        variant={fullWidth ? 'outlined' : 'text'}
         color="primary"
-        fullWidth={props.fullWidth}
-        href={`${ITEM_PATH}/${bin2hex(props.productId)}/reviews`}
+        fullWidth={fullWidth}
+        href={`${ITEM_PATH}/${bin2hex(productId)}/reviews`}
       >
-        <I18n.Text string="reviews.button_all" params={props} />
+        <I18n.Text string="reviews.button_all" params={{ count }} />
       </Button>
     </div>
   );
-};
-
-AllReviewsLink.propTypes = {
-  count: PropTypes.number,
-  fullWidth: PropTypes.bool,
-  productId: PropTypes.string,
-};
-
-AllReviewsLink.defaultProps = {
-  count: 0,
-  fullWidth: false,
-  productId: null,
 };
 
 export default connect(AllReviewsLink);
