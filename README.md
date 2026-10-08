@@ -45,6 +45,22 @@ To also see the errors in the browser, use the value `overlay`. An error then co
 TYPE_CHECK=overlay sgconnect frontend start
 ```
 
+## Pre-commit hook
+A Husky pre-commit hook lints the staged files with `lint-staged`. Activate it once per clone in the repository root:
+
+```shell
+npm run prepare
+```
+
+This step is needed since `ignore-scripts=true` in the npm config keeps `npm install` from running it.
+
+Git clients like Fork run hooks without the shell profile. With nvm, the hook then fails with `npx: command not found`. To fix it, load nvm in `~/.config/husky/init.sh`:
+
+```shell
+export NVM_DIR="$HOME/.nvm"
+. "$NVM_DIR/nvm.sh"
+```
+
 ## About Shopgate
 
 Shopgate is the leading mobile commerce platform.

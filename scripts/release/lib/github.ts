@@ -70,10 +70,6 @@ export interface CreateReleaseOptions {
    */
   target: string;
   /**
-   * Mark the release as pre-release on GitHub.
-   */
-  prerelease: boolean;
-  /**
    * Release notes in markdown.
    */
   body: string;
@@ -232,7 +228,6 @@ export const createRelease = async (repo: string, options: CreateReleaseOptions)
     target_commitish: options.target,
     name: options.tag,
     body: options.body,
-    prerelease: options.prerelease,
     ...(options.latest ? {} : { make_latest: 'false' }),
   });
 
@@ -241,4 +236,36 @@ export const createRelease = async (repo: string, options: CreateReleaseOptions)
   }
 
   return release;
+};
+
+/**
+ * Creates a tag at the head of a branch. Does nothing when the tag exists already.
+ * @param repo GitHub "owner/repo".
+ * @param tag The tag name, e.g. "v7.33.0-beta.1".
+ * @param branch The branch whose head gets tagged.
+ * @returns Whether the tag was created.
+ */
+export const createTag = async (repo: string, tag: string, branch: string) => {
+  const existing = await request<unknown>('GET', `/repos/${repo}/git/ref/tags/${encodeURIComponent(tag)}`);
+
+  if (existing) {
+    return false;
+  }
+
+  const head = await request<{ object: { sha: string } }>('GET', `/repos/${repo}/git/ref/heads/${encodeURIComponent(branch)}`);
+
+  if (!head) {
+    throw new Error(`Can't create the tag ${tag} in ${repo}: the branch ${branch} wasn't found there. Check that the prepare step pushed it, then retry the job.`);
+  }
+
+  const created = await request<unknown>('POST', `/repos/${repo}/git/refs`, {
+    ref: `refs/tags/${tag}`,
+    sha: head.object.sha,
+  });
+
+  if (!created) {
+    throw new Error(`Can't create the tag ${tag} in ${repo}: the repository wasn't found or the token has no access to it. Give GITHUB_AUTH_TOKEN write access to ${repo} (contents), then retry the job.`);
+  }
+
+  return true;
 };
