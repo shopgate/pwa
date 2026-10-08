@@ -35,7 +35,7 @@ describe('settings / reducers / appSettings', () => {
     const settings: AppSettings = {
       navigation: {
         appBar: {
-          style: 'modern',
+          variant: 'floating',
           showLogo: false,
           logoPosition: 'left',
           buttons: {
@@ -60,7 +60,7 @@ describe('settings / reducers / appSettings', () => {
               link: '',
             },
           },
-          modern: {
+          floating: {
             scrollBehavior: 'scrollAway',
           },
         },
@@ -620,7 +620,7 @@ describe('settings / reducers / appSettings', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
       navigation: {
         appBar: {
-          style: null,
+          variant: null,
           showLogo: null,
           logoPosition: 'right',
           buttons: {
@@ -631,7 +631,7 @@ describe('settings / reducers / appSettings', () => {
               link: null,
             },
           },
-          modern: null,
+          floating: null,
         },
         tabBar: {
           variant: null,
@@ -648,7 +648,7 @@ describe('settings / reducers / appSettings', () => {
 
     const { appBar, tabBar } = state.navigation;
     const { search } = state;
-    expect(appBar.style).toBe('classic');
+    expect(appBar.variant).toBe('fixed');
     expect(appBar.showLogo).toBe(true);
     expect(appBar.logoPosition).toBe('right');
     expect(appBar.buttons.left1).toEqual(DEFAULT_APP_SETTINGS.navigation.appBar.buttons.left1);
@@ -657,7 +657,7 @@ describe('settings / reducers / appSettings', () => {
       icon: '',
       link: '',
     });
-    expect(appBar.modern).toEqual(DEFAULT_APP_SETTINGS.navigation.appBar.modern);
+    expect(appBar.floating).toEqual(DEFAULT_APP_SETTINGS.navigation.appBar.floating);
     expect(search.persistentBar.home).toBe(true);
     expect(search.persistentBar.hideOnScroll).toBe(true);
     expect(tabBar.variant).toBe('fixed');
@@ -668,7 +668,7 @@ describe('settings / reducers / appSettings', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
       navigation: {
         appBar: {
-          style: 'MODERN',
+          variant: 'FLOATING',
           showLogo: 'false',
           logoPosition: 'top',
           buttons: {
@@ -680,7 +680,7 @@ describe('settings / reducers / appSettings', () => {
               link: 42,
             },
           },
-          modern: { scrollBehavior: 'foo' },
+          floating: { scrollBehavior: 'foo' },
         },
       },
       search: {
@@ -694,7 +694,7 @@ describe('settings / reducers / appSettings', () => {
 
     const { appBar } = state.navigation;
     const { search } = state;
-    expect(appBar.style).toBe('classic');
+    expect(appBar.variant).toBe('fixed');
     expect(appBar.showLogo).toBe(true);
     expect(appBar.logoPosition).toBe('center');
     expect(appBar.buttons).toEqual({
@@ -705,11 +705,11 @@ describe('settings / reducers / appSettings', () => {
         link: '',
       },
     });
-    expect(appBar.modern.scrollBehavior).toBe('revealBar');
+    expect(appBar.floating.scrollBehavior).toBe('revealBar');
     expect(search).toEqual(DEFAULT_APP_SETTINGS.search);
   });
 
-  it.each([['a string', 'modern'], ['an array', []]])(
+  it.each([['a string', 'floating'], ['an array', []]])(
     'falls back to the default navigation for %s',
     (_, navigation) => {
       const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({

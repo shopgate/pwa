@@ -66,7 +66,7 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
         },
       },
     },
-    modernInner: {
+    floatingInner: {
       padding: theme.spacing(0, 1.5),
     },
     logo: {
@@ -103,7 +103,7 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
         margin: 0,
       },
     },
-    logoSideModern: {
+    logoSideFloating: {
       padding: theme.spacing(0, 0.5),
     },
     overlay: {
@@ -226,7 +226,7 @@ const useHeaderOverlay = (overlay: boolean) => {
 
 interface Props {
   settings: AppBarSettings;
-  modern: boolean;
+  floating: boolean;
   overlay: boolean;
   showActions: boolean;
   /** Whether the page shows the logo. */
@@ -247,10 +247,10 @@ interface Props {
 }
 
 /**
- * The header with the configured buttons, logo position and modern style applied.
+ * The header with the configured buttons, logo position and variant applied.
  * @param props The component props.
  * @param props.settings The header settings.
- * @param props.modern Whether the modern style is active.
+ * @param props.floating Whether the header floats on home and product page.
  * @param props.overlay Whether the header floats over the content.
  * @param props.showActions Whether the page shows the configured buttons.
  * @param props.logo Whether the page shows the logo.
@@ -262,7 +262,7 @@ interface Props {
  */
 const ConfiguredBar = ({
   settings,
-  modern,
+  floating,
   overlay,
   showActions,
   logo: isLogoPage = false,
@@ -274,7 +274,7 @@ const ConfiguredBar = ({
 }: Props) => {
   const { moved, scrollingDown } = useOverlayScroll(overlay);
   const {
-    showLogo, logoPosition, buttons, modern: { scrollBehavior },
+    showLogo, logoPosition, buttons, floating: { scrollBehavior },
   } = settings;
   const logo = isLogoPage && showLogo;
 
@@ -309,9 +309,9 @@ const ConfiguredBar = ({
   const logoHidden = overlay && scrollBehavior === 'floatingButtons' && moved;
 
   const portalProps = useMemo(() => ({
-    modern,
+    floating,
     overlay,
-  }), [modern, overlay]);
+  }), [floating, overlay]);
 
   const logoElement = logo ? (
     <SurroundPortals
@@ -319,7 +319,7 @@ const ConfiguredBar = ({
       portalName={APP_BAR_LOGO}
       portalProps={{
         position: logoPosition,
-        modern,
+        floating,
         overlay,
       }}
     >
@@ -329,7 +329,7 @@ const ConfiguredBar = ({
           'theme__app-bar__logo',
           !sideLogo && classes.logoCenter,
           sideLogo && classes.logoSide,
-          sideLogo && modern && classes.logoSideModern,
+          sideLogo && floating && classes.logoSideFloating,
           logoPosition === 'right' && classes.logoRight
         )}
       />
@@ -349,7 +349,7 @@ const ConfiguredBar = ({
       {...props}
       aria-hidden={hidden ? true : props['aria-hidden']}
       inert={hidden}
-      data-style={modern ? 'modern' : 'classic'}
+      data-variant={floating ? 'floating' : 'fixed'}
       data-logo-position={logo ? logoPosition : undefined}
       data-overlay={overlay ? true : undefined}
       data-revealed={revealed ? true : undefined}
@@ -366,7 +366,7 @@ const ConfiguredBar = ({
         ),
         inner: cx(
           classes.inner,
-          modern && classes.modernInner,
+          floating && classes.floatingInner,
           logo && logoPosition === 'center' && classes.innerLogoCenter,
           logo && logoPosition === 'left' && classes.innerLogoLeft,
           logo && logoPosition === 'right' && classes.innerLogoRight,

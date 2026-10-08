@@ -383,13 +383,13 @@ export interface NavigationActionSettings {
 export type AppBarButtonSlot = 'left1' | 'left2' | 'right1' | 'right2';
 
 /**
- * `classic` keeps the bar on every page, `modern` floats logo and buttons over home and product
- * page.
+ * `fixed` keeps the bar on every page, `floating` lets logo and buttons float over home and
+ * product page.
  */
-export type AppBarStyle = 'classic' | 'modern';
+export type AppBarVariant = 'fixed' | 'floating';
 
 /**
- * How the floating header of the modern style reacts to scrolling.
+ * How the floating header reacts to scrolling.
  */
 export type AppBarScrollBehavior = 'revealBar' | 'floatingButtons' | 'scrollAway';
 
@@ -397,12 +397,12 @@ export type AppBarScrollBehavior = 'revealBar' | 'floatingButtons' | 'scrollAway
  * Settings for the header.
  */
 export interface AppBarSettings {
-  style: AppBarStyle;
+  variant: AppBarVariant;
   /** Whether the start page shows the logo in the header. */
   showLogo: boolean;
   logoPosition: 'left' | 'center' | 'right';
   buttons: Record<AppBarButtonSlot, NavigationActionSettings>;
-  modern: {
+  floating: {
     scrollBehavior: AppBarScrollBehavior;
   };
 }

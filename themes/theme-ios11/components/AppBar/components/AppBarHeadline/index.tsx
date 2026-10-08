@@ -23,7 +23,7 @@ interface Props {
 }
 
 /**
- * The page title of the modern header style. It continues the header above the content.
+ * The page title. It continues the header above the content.
  * @param props The component props.
  * @param props.title The title.
  * @param props.focus Whether the headline takes the focus when it appears.

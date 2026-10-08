@@ -41,7 +41,7 @@ class AppBarDefault extends PureComponent {
   static propTypes = {
     app: PropTypes.shape().isRequired,
     appBarSettings: PropTypes.shape().isRequired,
-    modern: PropTypes.bool.isRequired,
+    floating: PropTypes.bool.isRequired,
     overlay: PropTypes.bool.isRequired,
     resetStatusBar: PropTypes.func.isRequired,
     route: PropTypes.shape().isRequired,
@@ -164,7 +164,7 @@ class AppBarDefault extends PureComponent {
     const {
       app,
       appBarSettings,
-      modern,
+      floating,
       overlay,
       resetStatusBar,
       route,
@@ -185,7 +185,7 @@ class AppBarDefault extends PureComponent {
     }
 
     const portalProps = {
-      modern,
+      floating,
       overlay,
     };
 
@@ -213,7 +213,7 @@ class AppBarDefault extends PureComponent {
               <ConfiguredBar
                 {...barProps}
                 settings={appBarSettings}
-                modern={modern}
+                floating={floating}
                 overlay={overlay}
                 showActions={showActions}
                 below={below}
@@ -237,8 +237,8 @@ class AppBarDefault extends PureComponent {
 const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
   const appBarSettings = useAppBarSettings();
   const { pattern } = props.route;
-  const modern = appBarSettings.style === 'modern';
-  const overlay = modern && OVERLAY_PATTERNS.includes(pattern);
+  const floating = appBarSettings.variant === 'floating';
+  const overlay = floating && OVERLAY_PATTERNS.includes(pattern);
   const showActions = actionButtons && !ACTION_BUTTONS_HIDDEN_PATTERNS.includes(pattern);
   const searchBarSettings = useSelector(getPersistentSearchBarSettings);
   const searchBarPage = SEARCH_BAR_PAGE_TYPES[pattern];
@@ -259,7 +259,7 @@ const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
           {...titleProps}
           searchBar={searchBar}
           appBarSettings={appBarSettings}
-          modern={modern}
+          floating={floating}
           overlay={overlay}
           showActions={showActions}
           aria-hidden={ariaHidden}

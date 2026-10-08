@@ -53,10 +53,10 @@ const slot = action => ({
 });
 
 const createSettings = (overrides = {}) => ({
-  style: 'classic',
+  variant: 'fixed',
   showLogo: true,
   logoPosition: 'center',
-  modern: { scrollBehavior: 'revealBar' },
+  floating: { scrollBehavior: 'revealBar' },
   buttons: {
     left1: slot('openSearch'),
     left2: slot('none'),
@@ -69,7 +69,7 @@ const createSettings = (overrides = {}) => ({
 const renderBar = ({ settings, ...props } = {}) => render(
   <ConfiguredBar
     settings={createSettings(settings)}
-    modern={false}
+    floating={false}
     overlay={false}
     showActions
     {...props}
@@ -132,9 +132,9 @@ describe('<ConfiguredBar />', () => {
     expect(texts('center')).toEqual([]);
   });
 
-  it.each([false, true])('keeps the title out of the bar (modern: %s)', (modern) => {
+  it.each([false, true])('keeps the title out of the bar (floating: %s)', (floating) => {
     renderBar({
-      modern,
+      floating,
       title: 'Jackets',
     });
 
@@ -143,7 +143,7 @@ describe('<ConfiguredBar />', () => {
 
   it('keeps an explicit center of a page in the bar', () => {
     renderBar({
-      modern: true,
+      floating: true,
       center: <span>custom</span>,
     });
 
@@ -152,20 +152,20 @@ describe('<ConfiguredBar />', () => {
 
   it('floats over the content and marks the header', () => {
     renderBar({
-      modern: true,
+      floating: true,
       overlay: true,
       logo: true,
     });
 
     expect(screen.getByTestId('bar')).toHaveAttribute('data-overlay');
-    expect(screen.getByTestId('bar')).toHaveAttribute('data-style', 'modern');
+    expect(screen.getByTestId('bar')).toHaveAttribute('data-variant', 'floating');
     expect(screen.getByTestId('bar')).toHaveAttribute('data-logo-position', 'center');
     expect(document.getElementById('AppHeader')).toHaveAttribute('data-overlay');
   });
 
   it('removes the mark of the header when the bar no longer floats', () => {
     const { unmount } = renderBar({
-      modern: true,
+      floating: true,
       overlay: true,
     });
     unmount();
@@ -180,9 +180,9 @@ describe('<ConfiguredBar />', () => {
       scrollingDown: false,
     };
     renderBar({
-      modern: true,
+      floating: true,
       overlay: true,
-      settings: { modern: { scrollBehavior: 'floatingButtons' } },
+      settings: { floating: { scrollBehavior: 'floatingButtons' } },
     });
 
     expect(screen.getByTestId('bar')).toHaveAttribute('data-logo-hidden');
@@ -191,7 +191,7 @@ describe('<ConfiguredBar />', () => {
 
   it('reveals the bar as soon as content moves below it', () => {
     renderBar({
-      modern: true,
+      floating: true,
       overlay: true,
     });
     expect(screen.getByTestId('bar')).not.toHaveAttribute('data-revealed');
@@ -202,7 +202,7 @@ describe('<ConfiguredBar />', () => {
       scrollingDown: false,
     };
     renderBar({
-      modern: true,
+      floating: true,
       overlay: true,
     });
 
@@ -216,9 +216,9 @@ describe('<ConfiguredBar />', () => {
       scrollingDown: false,
     };
     renderBar({
-      modern: true,
+      floating: true,
       overlay: true,
-      settings: { modern: { scrollBehavior: 'scrollAway' } },
+      settings: { floating: { scrollBehavior: 'scrollAway' } },
     });
 
     expect(screen.getByTestId('bar')).not.toHaveAttribute('data-revealed');
@@ -233,9 +233,9 @@ describe('<ConfiguredBar />', () => {
       scrollingDown: true,
     };
     renderBar({
-      modern: true,
+      floating: true,
       overlay: true,
-      settings: { modern: { scrollBehavior: 'scrollAway' } },
+      settings: { floating: { scrollBehavior: 'scrollAway' } },
     });
 
     expect(screen.getByTestId('bar')).toHaveAttribute('data-hidden');

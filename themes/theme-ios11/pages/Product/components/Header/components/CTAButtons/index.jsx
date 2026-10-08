@@ -73,7 +73,7 @@ const CTAButtons = ({
 }) => {
   const { classes, cx } = useStyles();
   const { position, direction } = useSelector(getProductActionButtons);
-  const { style: headerStyle } = useSelector(getAppBarSettings);
+  const { variant: headerVariant } = useSelector(getAppBarSettings);
   const hasGallery = useStickyValue(hasImageGallery, hasImageGallery === null);
   const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && !!hasGallery;
 
@@ -98,7 +98,7 @@ const CTAButtons = ({
         data-position={position}
         data-direction={direction}
         data-bullets-below={bulletsBelow ? true : undefined}
-        data-floating-header={headerStyle === 'modern' ? true : undefined}
+        data-floating-header={headerVariant === 'floating' ? true : undefined}
       >
         {favoritesFirst && favorites}
         <SurroundPortals portalName={PRODUCT_CTAS_SHARE}>

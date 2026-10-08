@@ -66,12 +66,12 @@ const PAYMENT_BAR_OPTIONS: {
 const APP_BAR_OPTIONS: {
   [K in keyof AppBarSettings]?: readonly AppBarSettings[K][]
 } = {
-  style: ['classic', 'modern'],
+  variant: ['fixed', 'floating'],
   logoPosition: ['left', 'center', 'right'],
 };
 
 const APP_BAR_MODERN_OPTIONS: {
-  [K in keyof AppBarSettings['modern']]?: readonly AppBarSettings['modern'][K][]
+  [K in keyof AppBarSettings['floating']]?: readonly AppBarSettings['floating'][K][]
 } = {
   scrollBehavior: ['revealBar', 'floatingButtons', 'scrollAway'],
 };
@@ -84,7 +84,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   isHydrated: false,
   navigation: {
     appBar: {
-      style: 'classic',
+      variant: 'fixed',
       showLogo: true,
       logoPosition: 'center',
       buttons: {
@@ -109,7 +109,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
           link: '',
         },
       },
-      modern: {
+      floating: {
         scrollBehavior: 'revealBar',
       },
     },
@@ -264,7 +264,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
         ...navigation,
         appBar: !isPlainObject(navigation?.appBar) ? undefined : {
           ...pickValidSettings(navigation?.appBar, {
-            style: DEFAULT_APP_BAR.style,
+            variant: DEFAULT_APP_BAR.variant,
             showLogo: DEFAULT_APP_BAR.showLogo,
             logoPosition: DEFAULT_APP_BAR.logoPosition,
           }, APP_BAR_OPTIONS),
@@ -274,9 +274,9 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
               navigation?.appBar?.buttons?.[slot as AppBarButtonSlot],
               defaults
             )),
-          modern: pickValidSettings(
-            navigation?.appBar?.modern,
-            DEFAULT_APP_BAR.modern,
+          floating: pickValidSettings(
+            navigation?.appBar?.floating,
+            DEFAULT_APP_BAR.floating,
             APP_BAR_MODERN_OPTIONS
           ),
         },
