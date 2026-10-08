@@ -78,6 +78,15 @@ describe('<QuantityStepper />', () => {
     expect(onChangeSpy).toHaveBeenLastCalledWith(20);
   });
 
+  it('does not accept a zero', () => {
+    render(<Harness initial={2} />);
+
+    fireEvent.focus(input());
+    fireEvent.change(input(), { target: { value: '0' } });
+    expect(input().value).toBe('2');
+    expect(onChangeSpy).not.toHaveBeenCalled();
+  });
+
   it('ignores more digits than the maximum has', () => {
     render(<Harness />);
 

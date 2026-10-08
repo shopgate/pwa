@@ -25,7 +25,7 @@ const useStyles = makeStyles({ name: 'AddedTick' })(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    animation: `${tickIn} 400ms ${theme.transitions.easing.easeOut}`,
+    animation: `${tickIn} ${theme.transitions.duration.complex}ms ${theme.transitions.easing.easeOut}`,
     '@media (prefers-reduced-motion: reduce)': {
       animation: 'none',
     },

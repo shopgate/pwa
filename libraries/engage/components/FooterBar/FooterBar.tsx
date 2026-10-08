@@ -8,6 +8,7 @@ import KeyboardConsumer from '@shopgate/pwa-common/components/KeyboardConsumer';
 import { useElementSize } from '@shopgate/engage/core/hooks';
 import { getModalCount } from '@shopgate/engage/a11y/selectors';
 import { makeStyles } from '@shopgate/engage/styles';
+import type { Theme } from '@shopgate/engage/styles';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import type { FooterBarVariant } from '@shopgate/engage/settings/types/appSettings';
 import { APP_FOOTER_BARS_ID } from '../Footer/constants';
@@ -20,8 +21,6 @@ export interface FooterBarProps {
   children: ReactNode;
 }
 
-const FLOATING_MIN_OFFSET = '16px';
-const SAFE_AREA_BOTTOM = 'var(--safe-area-inset-bottom)';
 const TAB_BAR_HEIGHT = 'var(--tabbar-height, 0px)';
 
 const heights = new Map<object, string>();
@@ -36,13 +35,16 @@ const syncHeights = () => {
 
 /**
  * Builds the distance between the bottom of the screen and the bar surface.
+ * @param theme The theme.
  * @param variant The bar variant.
  * @param gap The gap above a visible tab bar.
  * @returns The CSS offset between the bottom of the screen and the bar surface.
  */
-const getBottomOffset = (variant: FooterBarVariant, gap: number) => (variant === 'floating'
-  ? `max(calc(${TAB_BAR_HEIGHT} + ${gap}px), ${FLOATING_MIN_OFFSET}, ${SAFE_AREA_BOTTOM})`
-  : `max(${TAB_BAR_HEIGHT}, ${SAFE_AREA_BOTTOM})`);
+const getBottomOffset = (theme: Theme, variant: FooterBarVariant, gap: number) => (
+  variant === 'floating'
+    ? `max(calc(${TAB_BAR_HEIGHT} + ${gap}px), ${theme.spacing(2)}px, ${theme.layout.safeArea.bottom})`
+    : `max(${TAB_BAR_HEIGHT}, ${theme.layout.safeArea.bottom})`
+);
 
 const useStyles = makeStyles({ name: 'FooterBar' })(theme => ({
   root: {
@@ -50,9 +52,11 @@ const useStyles = makeStyles({ name: 'FooterBar' })(theme => ({
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: 2,
+    zIndex: theme.zIndex.footerBar,
     pointerEvents: 'none',
-    transition: 'padding-bottom 0.2s ease-in-out, bottom 0.2s ease-in-out',
+    transition: theme.transitions.create(['padding-bottom', 'bottom'], {
+      duration: theme.transitions.duration.shorter,
+    }),
     '@media (prefers-reduced-motion: reduce)': {
       transition: 'none',
     },
@@ -70,13 +74,15 @@ const useStyles = makeStyles({ name: 'FooterBar' })(theme => ({
   surface: {
     pointerEvents: 'auto',
     background: theme.palette.background.surface,
-    transition: 'padding-bottom 0.2s ease-in-out',
+    transition: theme.transitions.create('padding-bottom', {
+      duration: theme.transitions.duration.shorter,
+    }),
     '@media (prefers-reduced-motion: reduce)': {
       transition: 'none',
     },
     '[data-variant="fixed"] > &': {
-      boxShadow: '0 -4px 5px -2px rgba(0, 0, 0, 0.1)',
-      paddingBottom: `max(0px, calc(${SAFE_AREA_BOTTOM} - ${TAB_BAR_HEIGHT}))`,
+      boxShadow: `0 -4px 5px -2px rgb(from ${theme.palette.shadow} r g b / 0.1)`,
+      paddingBottom: `max(0px, calc(${theme.layout.safeArea.bottom} - ${TAB_BAR_HEIGHT}))`,
       maxHeight: '50vh',
       overflowY: 'auto',
     },
@@ -97,11 +103,11 @@ const useStyles = makeStyles({ name: 'FooterBar' })(theme => ({
 const FooterBar = ({
   variant, gap = 8, className, children,
 }: FooterBarProps) => {
-  const { classes, cx } = useStyles();
+  const { classes, cx, theme } = useStyles();
   const contentRef = useRef<HTMLDivElement>(null);
   const keyRef = useRef({});
   const { height } = useElementSize(contentRef);
-  const offset = getBottomOffset(variant, gap);
+  const offset = getBottomOffset(theme, variant, gap);
   const hasOpenModal = useSelector(getModalCount) > 0;
   const [hasFocus, setHasFocus] = useState(false);
   const handleFocus = useCallback(() => setHasFocus(true), []);

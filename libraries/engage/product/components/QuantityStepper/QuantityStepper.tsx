@@ -34,8 +34,16 @@ const clampQuantity = (value: number, min: number, max: number) => (
   Math.min(Math.max(value, min), max)
 );
 
+const DIGITS = '0123456789';
+
+/**
+ * Checks whether a text only consists of digits.
+ * @param text The text to check.
+ * @returns Whether the text is empty or made of digits only.
+ */
+const isDigits = (text: string) => Array.from(text).every(char => DIGITS.includes(char));
+
 const TOUCH_TARGET = 44;
-const DISABLED_OPACITY = 0.35;
 
 const useStyles = makeStyles({ name: 'QuantityStepper' })(theme => ({
   root: {
@@ -59,7 +67,7 @@ const useStyles = makeStyles({ name: 'QuantityStepper' })(theme => ({
     lineHeight: 1,
     color: 'inherit',
     '&:disabled, &[aria-disabled="true"]': {
-      opacity: DISABLED_OPACITY,
+      color: theme.palette.action.disabled,
     },
     '&:focus-visible': {
       outline: `2px solid ${theme.palette.text.primary}`,
@@ -85,7 +93,7 @@ const useStyles = makeStyles({ name: 'QuantityStepper' })(theme => ({
       margin: 0,
     },
     '&:disabled': {
-      opacity: DISABLED_OPACITY,
+      color: theme.palette.action.disabled,
     },
     '&:focus-visible': {
       outline: `2px solid ${theme.palette.text.primary}`,
@@ -148,7 +156,7 @@ const QuantityStepper = ({
   const handleInput = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const raw = event.target.value;
 
-    if (!/^\d*$/.test(raw) || raw.length > maxDigits) {
+    if (!isDigits(raw) || raw.length > maxDigits) {
       return;
     }
 
@@ -158,6 +166,11 @@ const QuantityStepper = ({
     }
 
     const next = Math.min(parseInt(raw, 10), max);
+
+    if (next === 0 && min > 0) {
+      return;
+    }
+
     setInput(String(next));
 
     if (next >= min) {

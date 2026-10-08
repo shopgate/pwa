@@ -246,6 +246,7 @@
     "variant_sold_out": "Épuisé",
     "fill_out_required_input_first": "Remplissez d'abord les entrées requises.",
     "add_to_cart": "Ajouter au panier",
+    "go_to_cart": "Aller au panier",
     "no_more_found": "L'article: \"{name}\" n'est plus disponible.",
     "quantity": "Quantité",
     "decrease_quantity": "Diminuer la quantité",

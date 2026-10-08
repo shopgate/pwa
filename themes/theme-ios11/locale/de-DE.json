@@ -246,6 +246,7 @@
     "variant_sold_out": "Ausverkauft",
     "fill_out_required_input_first": "Füllen Sie zuerst alle Pflichtfelder aus.",
     "add_to_cart": "In den Warenkorb",
+    "go_to_cart": "Warenkorb",
     "no_more_found": "Der Artikel: \"{name}\" ist zurzeit nicht lieferbar.",
     "quantity": "Menge",
     "decrease_quantity": "Menge reduzieren",

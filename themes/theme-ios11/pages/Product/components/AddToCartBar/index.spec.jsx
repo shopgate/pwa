@@ -1,3 +1,4 @@
+import { useMemo, useState } from 'react';
 import {
   act, fireEvent, render, screen,
 } from '@testing-library/react';
@@ -68,21 +69,31 @@ jest.mock('./components/AddToCartButton', () => ({ state, onClick, disabled }) =
  */
 const renderBar = (props, context = {}) => {
   const setQuantity = jest.fn();
-  const utils = render((
-    <ProductContext.Provider value={{
-      quantity: 1,
-      setQuantity,
+
+  const Provider = () => {
+    const [quantity, setContextQuantity] = useState(context.quantity ?? 1);
+    const value = useMemo(() => ({
       ...context,
-    }}
-    >
-      <AddToCartBar
-        productId="p1"
-        options={{}}
-        conditioner={{ check: () => Promise.resolve(true) }}
-        {...props}
-      />
-    </ProductContext.Provider>
-  ));
+      quantity,
+      setQuantity: (next) => {
+        setQuantity(next);
+        setContextQuantity(next);
+      },
+    }), [quantity]);
+
+    return (
+      <ProductContext.Provider value={value}>
+        <AddToCartBar
+          productId="p1"
+          options={{}}
+          conditioner={{ check: () => Promise.resolve(true) }}
+          {...props}
+        />
+      </ProductContext.Provider>
+    );
+  };
+
+  const utils = render(<Provider />);
 
   return {
     ...utils,
@@ -184,6 +195,27 @@ describe('<AddToCartBar />', () => {
 
     expect(addToCart).not.toHaveBeenCalled();
     expect(screen.getByText('add')).toHaveAttribute('data-state', 'idle');
+  });
+
+  it('accepts the next tap after the selection check failed with an error', async () => {
+    const addToCart = jest.fn(() => Promise.resolve({}));
+    const check = jest.fn()
+      .mockRejectedValueOnce(new Error('check failed'))
+      .mockResolvedValue(true);
+    renderBar({
+      addToCart,
+      conditioner: { check },
+    });
+
+    await act(async () => {
+      fireEvent.click(screen.getByText('add'));
+    });
+    expect(addToCart).not.toHaveBeenCalled();
+
+    await act(async () => {
+      fireEvent.click(screen.getByText('add'));
+    });
+    expect(addToCart).toHaveBeenCalledTimes(1);
   });
 
   it('floats when the layout says so', () => {

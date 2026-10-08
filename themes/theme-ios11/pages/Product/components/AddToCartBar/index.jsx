@@ -72,7 +72,6 @@ const AddToCartBar = (props) => {
   const [clicked, setClicked] = useState(false);
   const [barVisible, setBarVisible] = useState(true);
   const [added, setAdded] = useState(0);
-  const [quantity, setQuantity] = useState(minQuantity);
 
   const handleShow = useCallback(() => setBarVisible(true), []);
   const handleHide = useCallback(() => setBarVisible(false), []);
@@ -99,26 +98,25 @@ const AddToCartBar = (props) => {
     };
   }, [handleShow, handleHide, handleIncrement, handleDecrement, handleReset]);
 
-  useEffect(() => {
-    setQuantity(minQuantity);
-  }, [minQuantity, productId]);
-
-  const { quantity: contextQuantity, setQuantity: setContextQuantity } = productCtx;
+  const { quantity: contextQuantity, setQuantity } = productCtx;
+  const quantity = quantityPicker
+    ? Math.min(Math.max(contextQuantity, minQuantity), maxQuantity)
+    : contextQuantity;
 
   useEffect(() => {
     if (quantityPicker && contextQuantity !== quantity) {
-      setContextQuantity(quantity);
+      setQuantity(quantity);
     }
-  }, [contextQuantity, quantity, quantityPicker, setContextQuantity]);
+  }, [contextQuantity, quantity, quantityPicker, setQuantity]);
 
   const hadQuantityPicker = useRef(quantityPicker);
 
   useEffect(() => {
     if (hadQuantityPicker.current && !quantityPicker) {
-      setContextQuantity(1);
+      setQuantity(1);
     }
     hadQuantityPicker.current = quantityPicker;
-  }, [quantityPicker, setContextQuantity]);
+  }, [quantityPicker, setQuantity]);
 
   const resetClicked = useCallback(() => setClicked(false), []);
 
@@ -129,19 +127,22 @@ const AddToCartBar = (props) => {
 
     busy.current = true;
 
+    const release = () => {
+      busy.current = false;
+    };
+
     conditioner.check().then((fulfilled) => {
       if (!fulfilled) {
-        busy.current = false;
-        return;
+        release();
+        return undefined;
       }
 
       setClicked(true);
 
-      const addQuantity = quantityPicker ? quantity : productCtx.quantity;
       const addToCartData = {
         productId,
         options,
-        quantity: addQuantity,
+        quantity,
       };
 
       if (
@@ -158,22 +159,20 @@ const AddToCartBar = (props) => {
         };
       }
 
-      track(addToCart(addToCartData), () => {
-        broadcastLiveMessage('product.item_added', {
-          params: { count: addQuantity },
-        });
-      }).then(() => {
-        busy.current = false;
-      });
-
       broadcastLiveMessage('product.adding_item', {
-        params: { count: addQuantity },
+        params: { count: quantity },
       });
 
       setTimeout(resetClicked, 250);
-    });
+
+      return track(addToCart(addToCartData), () => {
+        broadcastLiveMessage('product.item_added', {
+          params: { count: quantity },
+        });
+      });
+    }).then(release, release);
   }, [
-    clicked, loading, disabled, addState, conditioner, quantityPicker, quantity, productCtx,
+    clicked, loading, disabled, addState, conditioner, quantity,
     productId, options, userLocation, userMethod, isRopeFulfillmentMethodAllowed, addToCart,
     resetClicked, track,
   ]);

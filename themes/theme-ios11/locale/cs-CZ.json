@@ -246,6 +246,7 @@
     "variant_sold_out": "Vyprodáno",
     "fill_out_required_input_first": "Nejprve vyplňte všechna povinná pole.",
     "add_to_cart": "Přidat do košíku",
+    "go_to_cart": "Nákupní košík",
     "no_more_found": "Článek: \"{name}\" není momentálně skladem.",
     "quantity": "Množství",
     "decrease_quantity": "Snížit množství",

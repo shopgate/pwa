@@ -10,11 +10,9 @@ const useStyles = makeStyles()({
     flex: 1,
     minWidth: 0,
     minHeight: 46,
-    whiteSpace: 'nowrap',
   },
   label: {
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
+    textWrap: 'balance',
     '&[data-hidden]': {
       opacity: 0,
     },
