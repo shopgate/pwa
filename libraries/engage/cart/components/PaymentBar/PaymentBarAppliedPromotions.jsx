@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
-import { i18n, isIOSTheme } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
 import PaymentBarPromotionalText from './PaymentBarPromotionalText';
@@ -9,7 +9,7 @@ import connect from './PaymentBarAppliedPromotions.connector';
 
 const useStyles = makeStyles()({
   spacer: {
-    width: isIOSTheme() ? 27 : 32,
+    width: 27,
     order: 1,
     flexShrink: 0,
   },

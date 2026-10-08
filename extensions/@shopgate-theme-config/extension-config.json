@@ -37,24 +37,6 @@
         "required": true
       }
     },
-    "themeGmd": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": {
-        "settings": {},
-        "typography": {},
-        "colors": {},
-        "variables": {},
-        "shadows": {},
-        "assets": {},
-        "pages": []
-      },
-      "params": {
-        "type": "json",
-        "label": "GMD Theme Config",
-        "required": true
-      }
-    },
     "mocks": {
       "type": "admin",
       "destination": "backend",

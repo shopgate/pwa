@@ -19,10 +19,16 @@ behavior here drifts from the code, update this document in the same PR.
 ## Project Overview
 
 Shopgate's ENGAGE PWA — an npm-workspaces monorepo holding the shared
-`@shopgate/*` libraries and the two app themes (`theme-gmd`, `theme-ios11`) that
-power Shopgate's mobile-commerce apps and (via the GMD "web bridge") responsive
-desktop web. Libraries are published to npm; themes and most extensions are
-consumed, not published from here.
+`@shopgate/*` libraries and the app theme (`theme-ios11`) that powers Shopgate's
+mobile-commerce apps. Libraries are published to npm; the theme and most
+extensions are consumed, not published from here.
+
+The **"web bridge"** lets the same code run in a plain browser instead of the
+native app WebView: a shim supplies a fake `SGJavascriptBridge` and pipeline
+requests become AJAX calls through a proxy. `hasWebBridge()` gates it — real
+`<a>` tags, browser history, native page scroll, no push opt-in or cookie
+consent. The responsive *desktop* layout on top of it was a `theme-gmd` feature
+and went with that theme.
 
 ## Tech Stack
 
@@ -32,7 +38,7 @@ consumed, not published from here.
 - **Human-readable CSS classes:** components also emit stable, unhashed classes alongside the generated
   ones — see below. Do not remove or rename them.
 - **Monorepo:** npm workspaces (npm ≥ 11, Node ≥ 24, `.nvmrc`), lockfile `package-lock.json`. Dependency install scripts need an entry in `allowScripts` in the root `package.json` (`npm approve-scripts <pkg>` / `npm deny-scripts <pkg>`).
-- **Build:** Babel 7 (canonical config is `themes/theme-gmd/babel.config.js`; root `babel.config.js` just extends it), Webpack 5 via `@shopgate/webpack`. Actual dev/build entry is the external **`sgconnect`** (Shopgate Connect) CLI, not a direct webpack script.
+- **Build:** Babel 7 (canonical config is `themes/theme-ios11/babel.config.js`; root `babel.config.js` just extends it), Webpack 5 via `@shopgate/webpack`. Actual dev/build entry is the external **`sgconnect`** (Shopgate Connect) CLI, not a direct webpack script.
 - **Test:** Jest 29 + jsdom, enzyme 3 (`enzyme-adapter-react-17`) and `@testing-library/react` 12 both present.
 - **Targets:** `.browserslistrc` — iOS ≥ 13.4, Chrome ≥ 80.
 
@@ -41,7 +47,7 @@ consumed, not published from here.
 Requires the external `sgconnect` CLI (not installed by `npm install`).
 
 - Install / setup: `npm install`, then `npm run setup` (`sgconnect init && npm install`). Full reset: `npm ci` (alias `npm run clean`): empties `node_modules` in the root and all workspaces and reinstalls exactly from `package-lock.json`.
-- Run locally: `npm start` (`sgconnect frontend start`); `npm run start-cloud` (backend + frontend). Desktop web bridge: `WEB_BRIDGE=1 sgconnect frontend start -t theme-gmd`.
+- Run locally: `npm start` (`sgconnect frontend start`); `npm run start-cloud` (backend + frontend). Web bridge: `WEB_BRIDGE=1 sgconnect frontend start`.
 - Test: **`npm run test:short` is the default** — use it for routine runs, and scope it to the paths you touched (`npm run test:short -- <path>`) rather than sweeping the repo. `npm test` (`RUN_LONG=true jest`) is the full run, reserved for changes that touch `@shopgate/engage/*` exports (see Pitfalls); `npm run test:watch`; `npm run cover`.
 - Lint: `npm run lint` (eslint `.js/.jsx/.ts/.tsx/.json`, ignores `extensions/`); `npm run lint:summary`. A Husky pre-commit hook runs `lint-staged`. Activate it once per clone with `npm run prepare`, since `ignore-scripts=true` in the npm config keeps `npm install` from running it. Git clients like Fork run hooks without the shell profile, so with nvm the hook fails with `npx: command not found`; load nvm in `~/.config/husky/init.sh` (`export NVM_DIR="$HOME/.nvm"`, `. "$NVM_DIR/nvm.sh"`). Husky 9 no longer reads `~/.huskyrc`.
 - Release process (TypeScript in `scripts/release/`, run by Node ≥ 24 without build step; started from the GitLab release pipeline): one CLI, `npm run release` lists all commands and options. Docs: `scripts/release/README.md`. Flow: `check <version>` → `prepare` (bump, build, changelog, push release branches) → GitHub workflow "Publish packages" (`.github/workflows/publish.yml`: a developer approves the run, then `publish <version>` publishes via npm trusted publishing, without token or 2FA) → `finalize` (master update, GitHub releases; pre-releases only get a tag; removes the release branches). `build` builds all packages into `dist` without publishing. Tests: `npm run release:test`, types: `npm run release:typecheck`.
@@ -52,7 +58,7 @@ Requires the external `sgconnect` CLI (not installed by `npm install`).
 - **Folder name ≠ package name** in `libraries/*`: e.g. `libraries/engage` → `@shopgate/engage`, `common` → `@shopgate/pwa-common`, `core` → `@shopgate/pwa-core`, `commerce` → `@shopgate/pwa-common-commerce`, `webcheckout` → `@shopgate/pwa-webcheckout-shopify`.
 - **`libraries/engage`** is the umbrella library themes consume. It has **no `main`/`exports`** — imports like `@shopgate/engage/core` resolve to `libraries/engage/core/index.js` (directory-as-subpath, via workspace symlinks in `node_modules/@shopgate/`). API lives in per-domain `index.js` barrels (`cart/`, `product/`, `checkout/`, `styles/`, …).
 - **App entry point:** `themes/theme-ios11/index.jsx` — imports `initialize` from `@shopgate/engage/core`, builds the store from `pages/reducers` + `pages/subscribers`, renders `<Pages/>` into `#root`.
-- **Themes are git subtrees** (`theme-gmd`, `theme-ios11`, repositories in `repos.json`); the code lives here and the release pushes it to the theme repositories. `theme-gmd` is on its way out and must not be changed — see Editing Guidelines.
+- **The theme is a git subtree** (`theme-ios11`, repository in `repos.json`); the code lives here and the release pushes it to the theme repository.
 - **`utils/*`** are tooling packages: `unit-tests` → `@shopgate/pwa-unit-test` (root `jest.config.js` extends it), `webpack`, `eslint-config`.
 - **`pipelines/` / `trustedPipelines/`** are backend pipeline JSON definitions, not JS.
 - **Naming conventions:** tests `*.spec.js(x)` colocated; `index.js` barrels; colocated `*.types.js`. Existing redux wiring lives in `connector.js` (not `connect.js`) — these are legacy; do not add new `connector.js` files (see Editing Guidelines).
@@ -159,10 +165,9 @@ emit **stable, unhashed classes** that merchant CSS can target. There are ~200 o
   `theme.components.x.y` emits `var(--sg-components-x-y)`, which resolves on the element itself — so
   any ancestor that redeclares the var restyles everything below it. `components/v2/IconButton`
   draws `components.iconButton.boxShadow`, a token left unseeded so that only a declaration reaches
-  it — the component itself falls back to `none`. The gmd product header declares it on the cta row
-  carrying `theme__product__header__cta-buttons`, the ios11 one on the whole header section
-  (`theme__product__header`), which is what also elevates the buttons extensions render into the
-  surrounding cta portals. Merchant CSS overrides either element (equal specificity, `theme.css`
+  it — the component itself falls back to `none`. The product header declares it on the whole header
+  section (`theme__product__header`), which is what also elevates the buttons extensions render into
+  the surrounding cta portals. Merchant CSS overrides that element (equal specificity, `theme.css`
   later in the cascade). Resolving the token to a literal on a container instead would break this:
   custom properties substitute at computed-value time, so a `--a: var(--b)` on an ancestor freezes
   against that ancestor's `--b` and a later override of `--b` no longer reaches it.
@@ -205,7 +210,7 @@ Do not copy Knowledge Base content into this file. Keep AGENTS.md focused on thi
 ## Editing Guidelines for AI Agents
 
 - Do not hand-edit generated/local files: `CHANGELOG.md`, `dist/`, `coverage/`, `.sgcloud/`, `node_modules/`.
-- `themes/theme-ios11` may be edited here. **Do not change `themes/theme-gmd`** — it is being dropped, so its code is no longer maintained. A fix that would land in gmd either goes into `libraries/*` or is left undone; say so rather than editing it.
+- `themes/theme-ios11` may be edited here.
 - When adding a library/extension, add it to `package.json` `workspaces`, and to `PUBLISHABLE_PACKAGES` in `scripts/release/config.ts` if it is published to npm.
 - New typed code should use TypeScript (`.ts/.tsx`).
 - Don't import `React` just for JSX — the Babel automatic JSX runtime (React 17) handles it.

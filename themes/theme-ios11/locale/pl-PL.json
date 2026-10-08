@@ -576,7 +576,12 @@
     "order_history": "Historia zamówień",
     "profile": "Profil",
     "back": "Powrót do {title}",
-    "open_menu": "Otwórz menu"
+    "open_menu": "Otwórz menu",
+    "scanner": "Skaner",
+    "menuSubHeader": {
+      "more": "Więcej",
+      "about": "O nas"
+    }
   },
   "reviews": {
     "rating": "Przegląd",

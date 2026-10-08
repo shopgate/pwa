@@ -577,7 +577,12 @@
     "order_history": "Historie objednávek",
     "profile": "Profil",
     "back": "Zpět na {title}",
-    "open_menu": "Otevřít menu"
+    "open_menu": "Otevřít menu",
+    "scanner": "Skener",
+    "menuSubHeader": {
+      "more": "Více",
+      "about": "O nás"
+    }
   },
   "reviews": {
     "rating": "Hodnocení",

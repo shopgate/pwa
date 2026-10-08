@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { isIOSTheme } from '@shopgate/engage/core';
 import {
   CART_PAYMENT_BAR_TOTALS_SHIPPING,
   getShippingLine,
@@ -13,7 +12,7 @@ import connect from './PaymentBarShippingCost.connector';
 
 const useStyles = makeStyles()({
   spacer: {
-    width: isIOSTheme() ? 27 : 32,
+    width: 27,
     order: 1,
     flexShrink: 0,
   },

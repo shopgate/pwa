@@ -55,12 +55,8 @@ if (canResolve('@shopgate/pwa-common/collections/media-providers/style')) {
   }));
 }
 
-// The themes are not installed for consumers like extensions. They can't be mocked virtually,
+// The theme is not installed for consumers like extensions. It can't be mocked virtually,
 // since a virtual mock is only applied to imports which use this exact module path.
-if (canResolve('@shopgate/theme-gmd/extensions/reducers')) {
-  jest.mock('@shopgate/theme-gmd/extensions/reducers', () => null);
-}
-
 if (canResolve('@shopgate/theme-ios11/extensions/reducers')) {
   jest.mock('@shopgate/theme-ios11/extensions/reducers', () => null);
 }
