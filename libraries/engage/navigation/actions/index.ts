@@ -43,16 +43,28 @@ const usePush = (pathname: string) => {
   }, [push, pathname, currentPathname]);
 };
 
-const EXTERNAL_LINK = /^([a-z][a-z0-9+.-]*:|\/\/)/i;
+const EXTERNAL_LINK = /^[a-z][a-z0-9+.-]*:/i;
+const PROTOCOL_RELATIVE_LINK = /^[/\\]{2,}/;
 
 /**
  * Turns the configured target into a path the router can open.
  * @param link The configured target.
- * @returns The path, with a leading slash for app pages.
+ * @returns An external address, or the path of an app page with a leading slash and without
+ * fragment.
  */
-const toPathname = (link: unknown): string => {
+export const toPathname = (link: unknown): string => {
   const value = typeof link === 'string' ? link.trim() : '';
-  return !value || value.startsWith('/') || EXTERNAL_LINK.test(value) ? value : `/${value}`;
+
+  if (!value || EXTERNAL_LINK.test(value)) {
+    return value;
+  }
+
+  if (PROTOCOL_RELATIVE_LINK.test(value)) {
+    return `https://${value.replace(PROTOCOL_RELATIVE_LINK, '')}`;
+  }
+
+  const [path] = value.split('#');
+  return path.startsWith('/') ? path : `/${path}`;
 };
 
 const useLinkAction: NavigationActionHook = ({ link }) => {

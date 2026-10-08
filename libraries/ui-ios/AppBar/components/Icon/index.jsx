@@ -16,6 +16,11 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     width: 44,
     zIndex: 1,
+    '&:focus-visible': {
+      outline: '2px solid currentColor',
+      outlineOffset: -6,
+      borderRadius: '50%',
+    },
   },
 }));
 

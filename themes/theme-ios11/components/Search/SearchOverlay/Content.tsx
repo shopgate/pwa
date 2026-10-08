@@ -1,6 +1,5 @@
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import type { ComponentType, MouseEvent } from 'react';
-import { broadcastLiveMessage as broadcast } from '@shopgate/engage/a11y';
 import { i18n } from '@shopgate/engage/core/helpers';
 import {
   SurroundPortals, Typography, NoResults as UntypedNoResults,
@@ -19,11 +18,6 @@ import {
 import { useSearchSuggestions } from '../hooks';
 import type { SearchPreview } from '../hooks';
 import { SEARCH_MIN_CHARS } from '../constants';
-
-const broadcastLiveMessage = broadcast as unknown as (
-  message: string,
-  options: { params: Record<string, number | string> }
-) => void;
 
 const NoResults = UntypedNoResults as unknown as ComponentType<Record<string, unknown>>;
 
@@ -277,19 +271,13 @@ const Results = ({
   }
 
   const settledCount = isStale ? null : totalProductCount;
+  let announcement = '';
 
-  useEffect(() => {
-    if (settledCount === null) {
-      return;
-    }
-
-    broadcastLiveMessage(settledCount === 0 ? 'search.no_result.body' : 'search.results_count', {
-      params: {
-        count: settledCount,
-        searchPhrase,
-      },
-    });
-  }, [searchPhrase, settledCount]);
+  if (settledCount === 0) {
+    announcement = i18n.text('search.no_result.body', { searchPhrase });
+  } else if (settledCount !== null) {
+    announcement = i18n.text('search.results_count', { count: settledCount });
+  }
 
   /**
    * @param _ The click event.
@@ -300,6 +288,9 @@ const Results = ({
 
   return (
     <div className="theme__search-overlay__results">
+      <Typography variant="srOnly" component="p" role="status" aria-live="polite">
+        {announcement}
+      </Typography>
       <SurroundPortals
         portalName={SEARCH_SUGGESTIONS}
         portalProps={{

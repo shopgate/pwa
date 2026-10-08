@@ -45,7 +45,7 @@ export const useFieldStyles = makeStyles()(theme => ({
     },
   },
   placeholder: {
-    opacity: 0.6,
+    opacity: 0.75,
   },
   iconButton: {
     display: 'flex',

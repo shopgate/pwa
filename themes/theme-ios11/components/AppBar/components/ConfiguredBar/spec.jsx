@@ -44,6 +44,7 @@ jest.mock('../ActionButton', () => {
 jest.mock('../../constants', () => ({
   APP_BAR_BUTTON_SIZE: 44,
   FLOATING_BUTTON_INSET: 4,
+  SEARCH_BAR_FLOATING_HEIGHT_VAR: '--sg-search-bar-floating-height',
 }));
 jest.mock('../../hooks', () => ({
   useOverlayScroll: () => mockScroll,

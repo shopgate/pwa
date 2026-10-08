@@ -93,7 +93,10 @@ const AppBar = ({
 
   useLayoutEffect(() => {
     updateAppBarHeight(contentRef);
-    observer.observe(contentRef.current, { childList: true });
+    observer.observe(contentRef.current, {
+      childList: true,
+      box: 'border-box',
+    });
 
     return () => {
       observer.disconnect();

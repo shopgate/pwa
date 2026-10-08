@@ -15,7 +15,11 @@ import type {
 } from '@shopgate/engage/settings/types/appSettings';
 import ActionButton from '../ActionButton';
 import { useOverlayScroll } from '../../hooks';
-import { APP_BAR_BUTTON_SIZE, FLOATING_BUTTON_INSET } from '../../constants';
+import {
+  APP_BAR_BUTTON_SIZE,
+  FLOATING_BUTTON_INSET,
+  SEARCH_BAR_FLOATING_HEIGHT_VAR,
+} from '../../constants';
 
 const AppBar = UntypedAppBar as unknown as ComponentType<Record<string, unknown>> & {
   Title: ComponentType<{ title: string }>;
@@ -123,6 +127,7 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
         right: 0,
         bottom: 0,
         left: 0,
+        zIndex: -1,
         background: appBar.background,
         opacity: 0,
         ...revealedGlass,
@@ -217,7 +222,7 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
       zIndex: 2,
     },
     hidden: {
-      transform: 'translateY(-100%)',
+      transform: `translateY(calc(-100% - var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px)))`,
     },
     logoHidden: {
       '& .engage__logo': {

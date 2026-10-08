@@ -1,7 +1,6 @@
 import {
   useCallback, useEffect, useLayoutEffect, useRef, useState,
 } from 'react';
-import type { KeyboardEvent } from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getCurrentPathname, getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
@@ -103,13 +102,15 @@ const useStyles = makeStyles()(theme => ({
       width: '40%',
       background: 'currentColor',
       opacity: 0.5,
-      '@media (prefers-reduced-motion: no-preference)': {
-        animation: `${loadingSweep} 1.1s ease-in-out infinite`,
-      },
     },
   },
   loadingVisible: {
     opacity: 1,
+    '@media (prefers-reduced-motion: no-preference)': {
+      '&::before': {
+        animation: `${loadingSweep} 1.1s ease-in-out infinite`,
+      },
+    },
   },
   body: {
     flexGrow: 1,
@@ -293,12 +294,31 @@ const SearchOverlay = () => {
     inputRef.current?.focus();
   }, []);
 
-  const handleKeyDown = useCallback((keyEvent: KeyboardEvent) => {
-    if (keyEvent.key === 'Escape') {
-      keyEvent.preventDefault();
-      closeAnimated();
+  useEffect(() => {
+    if (!isOpen) {
+      return undefined;
     }
-  }, [closeAnimated]);
+
+    /**
+     * @param keyEvent The key event.
+     */
+    const handleKeyDown = (keyEvent: KeyboardEvent) => {
+      if (keyEvent.key === 'Escape') {
+        keyEvent.preventDefault();
+        closeAnimated();
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [closeAnimated, isOpen]);
+
+  const handleClearHistory = useCallback(() => {
+    clearHistory();
+    inputRef.current?.focus();
+  }, [clearHistory]);
 
   if (!isOpen) {
     return null;
@@ -309,13 +329,11 @@ const SearchOverlay = () => {
 
   return ReactDOM.createPortal(
     <SurroundPortals portalName={SEARCH_OVERLAY} portalProps={{ query }}>
-      {/* eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions */}
       <div
         className={cx(classes.root, 'theme__search-overlay')}
         role="dialog"
         aria-modal="true"
         aria-label={i18n.text('search.label')}
-        onKeyDown={handleKeyDown}
         data-loading={isLoading ? true : undefined}
         data-test-id="SearchOverlay"
       >
@@ -381,7 +399,7 @@ const SearchOverlay = () => {
               history={history}
               onSelect={handleSelect}
               onFilter={handleFilter}
-              onClearHistory={clearHistory}
+              onClearHistory={handleClearHistory}
             />
           </RouteContext.Provider>
         </div>

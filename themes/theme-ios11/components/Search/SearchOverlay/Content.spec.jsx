@@ -1,6 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import Content from './Content';
 
 let mockSuggestions = [];
@@ -10,13 +9,10 @@ jest.mock('@shopgate/engage/core/helpers', () => ({
     text: (key, params) => (params ? `${key}:${JSON.stringify(params)}` : key),
   },
 }));
-jest.mock('@shopgate/engage/a11y', () => ({
-  broadcastLiveMessage: jest.fn(),
-}));
 jest.mock('@shopgate/engage/components', () => ({
   /* eslint-disable react/prop-types */
   SurroundPortals: ({ children }) => children,
-  Typography: ({ children }) => <span>{children}</span>,
+  Typography: ({ children, role }) => <span role={role}>{children}</span>,
   NoResults: ({ searchPhrase }) => <span>{`no results for ${searchPhrase}`}</span>,
   /* eslint-enable react/prop-types */
 }));
@@ -49,10 +45,6 @@ const handlers = () => ({
 });
 
 describe('<SearchOverlay /> content', () => {
-  beforeEach(() => {
-    broadcastLiveMessage.mockClear();
-  });
-
   beforeEach(() => {
     mockSuggestions = [];
   });
@@ -90,7 +82,7 @@ describe('<SearchOverlay /> content', () => {
     render(<Content query="bean" searchPhrase="bean" preview={preview} history={[]} {...props} />);
 
     expect(screen.getByText('Crew Beanie')).toBeInTheDocument();
-    expect(screen.getByText('search.results_count:{"count":17}')).toBeInTheDocument();
+    expect(screen.getAllByText('search.results_count:{"count":17}')).toHaveLength(2);
 
     const chip = screen.getByText('bean');
     expect(chip.parentElement).toHaveTextContent('beanie black');
@@ -128,12 +120,7 @@ describe('<SearchOverlay /> content', () => {
     render(<Content query="xyz" searchPhrase="xyz" preview={preview} history={[]} {...handlers()} />);
 
     expect(screen.getByText('no results for xyz')).toBeInTheDocument();
-    expect(broadcastLiveMessage).toHaveBeenLastCalledWith('search.no_result.body', {
-      params: {
-        count: 0,
-        searchPhrase: 'xyz',
-      },
-    });
+    expect(screen.getByRole('status')).toHaveTextContent('search.no_result.body:{"searchPhrase":"xyz"}');
   });
 
   it('announces the number of results once the search settled', () => {
@@ -148,7 +135,7 @@ describe('<SearchOverlay /> content', () => {
     const { rerender } = render(
       <Content query="jack" searchPhrase="jack" preview={preview} history={[]} {...handlers()} />
     );
-    expect(broadcastLiveMessage).not.toHaveBeenCalled();
+    expect(screen.getByRole('status')).toBeEmptyDOMElement();
 
     rerender(
       <Content
@@ -163,11 +150,6 @@ describe('<SearchOverlay /> content', () => {
       />
     );
 
-    expect(broadcastLiveMessage).toHaveBeenCalledWith('search.results_count', {
-      params: {
-        count: 17,
-        searchPhrase: 'jack',
-      },
-    });
+    expect(screen.getByRole('status')).toHaveTextContent('search.results_count:{"count":17}');
   });
 });
