@@ -13,7 +13,9 @@ describe('<ReviewsSummary />', () => {
 
   it('should render the average, the stars and the rating count', () => {
     const numberSpy = jest.spyOn(i18nHelpers, 'number');
-    const textSpy = jest.spyOn(i18nHelpers, 'text');
+    jest.spyOn(i18nHelpers, 'text').mockImplementation((key, params) => (
+      `${key}:${(params as { count?: number })?.count}`
+    ));
 
     const { container } = render(<ReviewsSummary summary={{
       average: 78,
@@ -24,8 +26,8 @@ describe('<ReviewsSummary />', () => {
     expect(container.querySelector('.engage__reviews__reviews-summary')).toBeInTheDocument();
     expect(numberSpy).toHaveBeenCalledWith(3.9, 1);
     expect(container.querySelector('.ui-shared__rating-stars')).toBeInTheDocument();
-    expect(container.querySelector('.engage__reviews__rating-count')).toBeInTheDocument();
-    expect(textSpy).toHaveBeenCalledWith('reviews.summary_count', { count: 12 }, expect.anything());
+    expect(container.querySelector('.engage__reviews__rating-count'))
+      .toHaveTextContent(/^reviews\.summary_count:12$/);
   });
 
   it('should hide only the count when it is not available', () => {

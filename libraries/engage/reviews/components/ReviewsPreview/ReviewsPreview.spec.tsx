@@ -172,10 +172,8 @@ describe('<ReviewsPreview />', () => {
     const { container } = renderPreview();
 
     expect(container.querySelector('[data-test-id="reviewSection"]')).not.toBeInTheDocument();
-    expect(SurroundPortals).toHaveBeenCalledWith(
-      expect.objectContaining({ portalName: PRODUCT_REVIEWS }),
-      expect.anything()
-    );
+    expect(jest.mocked(SurroundPortals).mock.calls.map(([props]) => props.portalName))
+      .toContain(PRODUCT_REVIEWS);
   });
 
   it('should render nothing when the base product is not active', () => {

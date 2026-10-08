@@ -76,12 +76,14 @@ describe('<ReviewList />', () => {
   });
 
   it('should label the list result count', () => {
-    const textSpy = jest.spyOn(i18nHelpers, 'text');
+    jest.spyOn(i18nHelpers, 'text').mockImplementation((key, params) => (
+      `${key}:${(params as { count?: number })?.count}`
+    ));
 
     const { container } = render(<ReviewList reviews={reviews} totalCount={7} />);
 
-    expect(container.querySelector('.engage__reviews__review-list__count')).toBeInTheDocument();
-    expect(textSpy).toHaveBeenCalledWith('reviews.list_count', { count: 7 }, expect.anything());
+    expect(container.querySelector('.engage__reviews__review-list__count'))
+      .toHaveTextContent(/^reviews\.list_count:7$/);
   });
 
   it('should not render the result count without a positive count', () => {
