@@ -49,7 +49,7 @@ const AppBarHeadline = ({ title = '', focus = false }: Props) => {
       <div className={cx(classes.root, 'theme__app-bar__headline')}>
         <Typography
           ref={ref}
-          variant="h1"
+          variant="h2"
           component="h1"
           tabIndex={-1}
           className={cx(classes.text, 'headline', 'theme__headline')}
