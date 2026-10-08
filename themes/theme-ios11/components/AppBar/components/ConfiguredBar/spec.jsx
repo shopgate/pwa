@@ -25,16 +25,12 @@ jest.mock('@shopgate/pwa-ui-ios', () => {
       </div>
     </section>
   );
-  AppBar.Title = ({ title }) => <span>{`title:${title}`}</span>;
   /* eslint-enable react/prop-types */
   return { AppBar };
 });
 jest.mock('@shopgate/engage/components', () => ({
   Logo: () => <span>logo</span>,
   SurroundPortals: ({ children }) => children,
-}));
-jest.mock('@shopgate/engage/core/helpers', () => ({
-  i18n: { text: input => input },
 }));
 jest.mock('../ActionButton', () => {
   // eslint-disable-next-line react/prop-types
@@ -102,7 +98,7 @@ describe('<ConfiguredBar />', () => {
 
     expect(texts('left')).toEqual(['back', 'action:openSearch']);
     expect(texts('right')).toEqual(['action:share', 'action:favorites', 'cart']);
-    expect(texts('center')).toEqual(['title:Jackets']);
+    expect(texts('center')).toEqual([]);
   });
 
   it('leaves the configured buttons out where the page hides them', () => {
@@ -136,16 +132,16 @@ describe('<ConfiguredBar />', () => {
     expect(texts('center')).toEqual([]);
   });
 
-  it('keeps the title out of the modern bar', () => {
+  it.each([false, true])('keeps the title out of the bar (modern: %s)', (modern) => {
     renderBar({
-      modern: true,
+      modern,
       title: 'Jackets',
     });
 
     expect(texts('center')).toEqual([]);
   });
 
-  it('keeps an explicit center of a page in the modern bar', () => {
+  it('keeps an explicit center of a page in the bar', () => {
     renderBar({
       modern: true,
       center: <span>custom</span>,
@@ -232,7 +228,7 @@ describe('<ConfiguredBar />', () => {
     expect(document.querySelector('.theme__app-bar__status-fill')).not.toHaveAttribute('data-filled');
   });
 
-  it('slides the bar out of reach while scrolling down with scrollAway', () => {
+  it('slides the bar out of reach and lets content show below the status bar with scrollAway', () => {
     mockScroll = {
       moved: true,
       scrolled: true,
@@ -247,6 +243,6 @@ describe('<ConfiguredBar />', () => {
     expect(screen.getByTestId('bar')).toHaveAttribute('data-hidden');
     expect(screen.getByTestId('bar')).toHaveAttribute('data-inert');
     expect(screen.getByTestId('bar')).toHaveAttribute('aria-hidden', 'true');
-    expect(document.querySelector('.theme__app-bar__status-fill')).toHaveAttribute('data-filled');
+    expect(document.querySelector('.theme__app-bar__status-fill')).not.toHaveAttribute('data-filled');
   });
 });

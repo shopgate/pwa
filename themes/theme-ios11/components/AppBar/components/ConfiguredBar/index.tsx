@@ -3,7 +3,6 @@ import type { ComponentType, ReactNode } from 'react';
 import { AppBar as UntypedAppBar } from '@shopgate/pwa-ui-ios';
 import { Logo, SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { i18n } from '@shopgate/engage/core/helpers';
 import {
   APP_BAR_ACTIONS_LEFT,
   APP_BAR_ACTIONS_RIGHT,
@@ -21,9 +20,7 @@ import {
   SEARCH_BAR_FLOATING_HEIGHT_VAR,
 } from '../../constants';
 
-const AppBar = UntypedAppBar as unknown as ComponentType<Record<string, unknown>> & {
-  Title: ComponentType<{ title: string }>;
-};
+const AppBar = UntypedAppBar as unknown as ComponentType<Record<string, unknown>>;
 
 const SLOTS_LEFT: AppBarButtonSlot[] = ['left1', 'left2'];
 const SLOTS_RIGHT: AppBarButtonSlot[] = ['right1', 'right2'];
@@ -218,9 +215,6 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
     statusFilled: {
       opacity: 1,
     },
-    statusFillAbove: {
-      zIndex: 2,
-    },
     hidden: {
       transform: `translateY(calc(-100% - var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px)))`,
     },
@@ -256,8 +250,9 @@ interface Props {
   modern: boolean;
   overlay: boolean;
   showActions: boolean;
-  /** Whether the page shows the logo instead of a title. */
+  /** Whether the page shows the logo. */
   logo?: boolean;
+  /** The page title. It is shown as headline in the content, not in the bar. */
   title?: string | null;
   left?: ReactNode;
   center?: ReactNode;
@@ -279,8 +274,7 @@ interface Props {
  * @param props.modern Whether the modern style is active.
  * @param props.overlay Whether the header floats over the content.
  * @param props.showActions Whether the page shows the configured buttons.
- * @param props.logo Whether the page shows the logo instead of a title.
- * @param props.title The page title.
+ * @param props.logo Whether the page shows the logo.
  * @param props.left Elements of the page for the left side.
  * @param props.center An element of the page for the center.
  * @param props.right Elements of the page for the right side.
@@ -293,7 +287,6 @@ const ConfiguredBar = ({
   overlay,
   showActions,
   logo: isLogoPage = false,
-  title = null,
   left = null,
   center,
   right = null,
@@ -320,7 +313,7 @@ const ConfiguredBar = ({
 
   const leftSlots = renderSlots(SLOTS_LEFT);
   const rightSlots = renderSlots(SLOTS_RIGHT);
-  const hasTitle = !isLogoPage && (center !== undefined || !modern);
+
   const sideLogo = logo && logoPosition !== 'center';
 
   const leftCount = (left ? 1 : 0) + leftSlots.length + (logo && logoPosition === 'left' ? 1 : 0);
@@ -332,12 +325,11 @@ const ConfiguredBar = ({
     side: Math.max(leftCount, rightCount) * APP_BAR_BUTTON_SIZE,
   });
 
-  const floatsOnScroll = scrollBehavior === 'floatingButtons' || scrollBehavior === 'scrollAway';
   const revealsBar = scrollBehavior === 'revealBar' || scrollBehavior === 'scrollAway';
   const hidden = overlay && scrollBehavior === 'scrollAway' && scrollingDown;
   const revealed = overlay && revealsBar && moved;
   const logoHidden = overlay && scrollBehavior === 'floatingButtons' && moved;
-  const statusFilled = overlay && floatsOnScroll && moved && (hidden || !revealed);
+  const statusFilled = overlay && scrollBehavior === 'floatingButtons' && moved;
 
   const portalProps = useMemo(() => ({
     modern,
@@ -371,8 +363,8 @@ const ConfiguredBar = ({
 
   if (logo && logoPosition === 'center') {
     centerElement = logoElement;
-  } else if (hasTitle) {
-    centerElement = center !== undefined ? center : <AppBar.Title title={i18n.text(title || '')} />;
+  } else if (!isLogoPage && center !== undefined) {
+    centerElement = center;
   }
 
   return (
@@ -382,7 +374,6 @@ const ConfiguredBar = ({
           className={cx(
             classes.statusFill,
             statusFilled && classes.statusFilled,
-            hidden && classes.statusFillAbove,
             'theme__app-bar__status-fill'
           )}
           data-filled={statusFilled ? true : undefined}

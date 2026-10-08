@@ -175,7 +175,7 @@ class AppBarDefault extends PureComponent {
       ...barProps
     } = this.props;
 
-    const headline = modern && !overlay && barProps.center === undefined
+    const headline = !overlay && !barProps.logo && barProps.center === undefined
       && !HEADLINE_HIDDEN_PATTERNS.includes(route.pattern)
       ? <AppBarHeadline title={i18n.text(barProps.title || '')} focus={setFocus && route.visible} />
       : null;
