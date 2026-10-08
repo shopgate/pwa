@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     width: 44,
     zIndex: 1,
-    '&:focus-visible': {
+    '&:focus-visible:not([data-silent-focus])': {
       outline: '2px solid currentColor',
       outlineOffset: -6,
       borderRadius: '50%',

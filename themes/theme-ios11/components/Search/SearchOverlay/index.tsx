@@ -25,6 +25,7 @@ import {
   useDebouncedValue, useSearchHistory, useSearchPreview, useSubmitSearch,
 } from '../hooks';
 import { SEARCH_MIN_CHARS } from '../constants';
+import { focusElement } from '../../../helpers/focus';
 
 const loadingSweep = keyframes({
   '0%': { transform: 'translateX(-100%)' },
@@ -182,7 +183,7 @@ const SearchOverlay = () => {
     closingRef.current = 0;
 
     if (returnFocus && returnFocusRef.current?.isConnected) {
-      returnFocusRef.current.focus();
+      focusElement(returnFocusRef.current);
     }
     returnFocusRef.current = null;
   }, []);

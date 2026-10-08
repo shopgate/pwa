@@ -13,7 +13,7 @@ export const useFieldStyles = makeStyles()(theme => ({
     borderRadius: theme.shape.borderRadius,
     background: theme.components.input.background,
     color: theme.components.input.text,
-    '&:has(> button:focus-visible)': {
+    '&:has(> button:focus-visible:not([data-silent-focus]))': {
       outline: `2px solid ${theme.palette.primary.main}`,
       outlineOffset: 1,
     },
@@ -61,7 +61,7 @@ export const useFieldStyles = makeStyles()(theme => ({
     color: 'inherit',
     fontSize: theme.components.icon.medium,
     outline: 0,
-    '&:focus-visible': {
+    '&:focus-visible:not([data-silent-focus])': {
       outline: `2px solid ${theme.palette.primary.main}`,
       outlineOffset: -2,
     },

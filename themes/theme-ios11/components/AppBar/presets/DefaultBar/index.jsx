@@ -20,6 +20,7 @@ import ConfiguredBar from '../../components/ConfiguredBar';
 import AppBarHeadline from '../../components/AppBarHeadline';
 import SearchBar from '../../../Search/SearchBar';
 import { useAppBarSettings } from '../../hooks';
+import { focusElement } from '../../../../helpers/focus';
 import {
   ACTION_BUTTONS_HIDDEN_PATTERNS,
   HEADLINE_HIDDEN_PATTERNS,
@@ -91,7 +92,7 @@ class AppBarDefault extends PureComponent {
       const focusable = target.querySelector('.theme__app-bar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
 
       if (focusable) {
-        focusable.focus();
+        focusElement(focusable);
       }
     }
 
