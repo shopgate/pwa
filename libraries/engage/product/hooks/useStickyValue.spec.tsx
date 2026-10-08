@@ -6,8 +6,12 @@ import useStickyValue from './useStickyValue';
  * Renders the sticky value.
  * @returns The value.
  */
-const Value = ({ value, isLoading }: { value: string | null; isLoading: boolean }) => (
-  <span>{useStickyValue(value, isLoading) ?? 'empty'}</span>
+const Value = ({ value, isLoading, scope }: {
+  value: string | null;
+  isLoading: boolean;
+  scope?: string;
+}) => (
+  <span>{useStickyValue(value, isLoading, scope) ?? 'empty'}</span>
 );
 
 describe('useStickyValue()', () => {
@@ -26,6 +30,14 @@ describe('useStickyValue()', () => {
 
     rerender(<Value value={null} isLoading />);
     rerender(<Value value={null} isLoading={false} />);
+
+    expect(screen.getByText('empty')).toBeInTheDocument();
+  });
+
+  it('drops the last value when the scope changes', () => {
+    const { rerender } = render(<Value value="first" isLoading={false} scope="a" />);
+
+    rerender(<Value value={null} isLoading scope="b" />);
 
     expect(screen.getByText('empty')).toBeInTheDocument();
   });

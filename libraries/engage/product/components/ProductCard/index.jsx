@@ -168,6 +168,7 @@ function ProductCard(props) {
           {...linkProps}
           className={cx(classes.details, classes.detailsLink, 'engage__product-card__information')}
           tabIndex={0}
+          aria-label={hideName ? product.name : undefined}
         >
             {showRatings && <RatingStars value={product.rating.average} />}
           {/*

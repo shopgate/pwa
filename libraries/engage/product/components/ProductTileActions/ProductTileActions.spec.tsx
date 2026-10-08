@@ -7,7 +7,7 @@ let mockActionButtons: Record<string, unknown> = {};
 jest.mock('react-redux', () => ({
   useSelector: () => mockActionButtons,
 }));
-jest.mock('../ProductGrid/components/Item/components/ItemFavoritesButton', () => () => (
+jest.mock('../ItemFavoritesButton', () => () => (
   <button type="button">favorite</button>
 ));
 jest.mock('../ProductCardAddToCart', () => ({
