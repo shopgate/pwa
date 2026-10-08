@@ -582,7 +582,7 @@
   "reviews": {
     "rating": "Rating",
     "no_reviews": "Be the first to rate this product:",
-    "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
+    "review_count": "({count} {count, plural, =1 {Rating} other {Ratings}})",
     "button_add": "Write a Review",
     "button_all": "All {count} reviews",
     "author": "by {author}",

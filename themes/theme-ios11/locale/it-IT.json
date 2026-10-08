@@ -582,7 +582,7 @@
   "reviews": {
     "rating": "valutazione",
     "no_reviews": "Vota prima degli altri questo prodotto:",
-    "review_count": "({count} {count, plural, =1 {Recensione} other {Recensioni}})",
+    "review_count": "({count} {count, plural, =1 {Valutazione} other {Valutazioni}})",
     "button_add": "Scrivi una recensione",
     "button_all": "Tutte le {count} recensioni",
     "author": "da {author}",
