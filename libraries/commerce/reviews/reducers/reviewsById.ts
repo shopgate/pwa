@@ -4,9 +4,11 @@ import {
   RECEIVE_REVIEWS,
   RECEIVE_USER_REVIEW,
   RECEIVE_SUBMIT_REVIEW,
+  RECEIVE_REVIEW_VOTE,
 } from '../constants';
 import type { ReceiveProductReviewsAction } from '../action-creators/receiveProductReviews';
 import type { ReceiveReviewsAction } from '../action-creators/receiveReviews';
+import type { ReceiveReviewVoteAction } from '../action-creators/receiveReviewVote';
 import type { Review, ReviewsById } from '../types/reviews';
 
 type ReceiveSingleReviewAction = {
@@ -17,6 +19,7 @@ type ReceiveSingleReviewAction = {
 type ReviewsByIdAction =
   | ReceiveProductReviewsAction
   | ReceiveReviewsAction
+  | ReceiveReviewVoteAction
   | ReceiveSingleReviewAction;
 
 /**
@@ -48,6 +51,21 @@ const reviewsById: Reducer<ReviewsById, ReviewsByIdAction> = (
         ...state,
         [action.review.id]: action.review as Review,
       };
+    case RECEIVE_REVIEW_VOTE: {
+      const review = state[action.reviewId];
+
+      if (!review) {
+        return state;
+      }
+
+      return {
+        ...state,
+        [action.reviewId]: {
+          ...review,
+          reviewVotes: action.reviewVotes,
+        },
+      };
+    }
     default:
       return state;
   }

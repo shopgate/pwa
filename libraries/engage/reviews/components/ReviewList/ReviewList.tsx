@@ -20,6 +20,10 @@ const useStyles = makeStyles()(theme => ({
     padding: theme.spacing(2.25, 0),
     borderBottom: `1px solid ${theme.components.border.light}`,
   },
+  verifiedInfo: {
+    display: 'block',
+    marginTop: theme.spacing(1),
+  },
   state: {
     display: 'flex',
     flexDirection: 'column',
@@ -43,6 +47,8 @@ export interface ReviewListProps {
   onRetry?: () => void;
   /** Number of reviews in the list result; differs from the summary rating count. */
   totalCount?: number | null;
+  /** Whether a filter restricts the list; changes the text of the empty state. */
+  isFiltered?: boolean;
   /** Additional CSS classes. */
   className?: string;
 }
@@ -57,6 +63,7 @@ const ReviewList = ({
   hasError = false,
   onRetry,
   totalCount,
+  isFiltered = false,
   className,
 }: ReviewListProps) => {
   const { classes, cx } = useStyles();
@@ -101,6 +108,15 @@ const ReviewList = ({
           ))}
         </ul>
       )}
+      {reviews.some(review => review.isVerified === true) && (
+        <Typography
+          variant="caption"
+          color="textSecondary"
+          className={cx(classes.verifiedInfo, 'engage__reviews__review-list__verified-info')}
+        >
+          <I18n.Text string="reviews.verified_info" />
+        </Typography>
+      )}
       {state === 'loading' && (
         <div className={cx(classes.state, 'engage__reviews__review-list__loading')}>
           <CircularProgress />
@@ -112,7 +128,7 @@ const ReviewList = ({
           color="textSecondary"
           className={cx(classes.state, 'engage__reviews__review-list__empty')}
         >
-          <I18n.Text string="reviews.list_empty" />
+          <I18n.Text string={isFiltered ? 'reviews.list_empty_filtered' : 'reviews.list_empty'} />
         </Typography>
       )}
       {showError && (

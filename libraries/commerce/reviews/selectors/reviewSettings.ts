@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
-import { PAGINATION_TYPE_CURSOR } from '../constants';
+import { PAGINATION_TYPE_CURSOR, REVIEW_FILTERS, REVIEW_SORT_OPTIONS } from '../constants';
+import type { ReviewFilterOption } from '../types/reviews';
 import type {
   ReviewPaginationType,
   ReviewSettingsSliceState,
@@ -33,6 +34,26 @@ export const getReviewPaginationType = createSelector(
 export const getReviewCustomFields = createSelector(
   getReviewSettingsState,
   settings => settings.customFields ?? []
+);
+
+/**
+ * Selects the sort values the provider supports, limited to the values of the pipeline contract
+ * and kept in the provider's order.
+ */
+export const getReviewSortOptions = createSelector(
+  getReviewSettingsState,
+  (settings): string[] => (Array.isArray(settings.sortOptions)
+    ? settings.sortOptions.filter(option => REVIEW_SORT_OPTIONS.includes(option))
+    : [])
+);
+
+/**
+ * Selects the list filters the provider supports, in the order the PWA defines them.
+ */
+export const getReviewFilterOptions = createSelector(
+  getReviewFeatures,
+  (features): ReviewFilterOption[] => (REVIEW_FILTERS as ReviewFilterOption[])
+    .filter(filter => features.includes(filter.param))
 );
 
 export const isFetchingReviewSettings = createSelector(

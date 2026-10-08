@@ -22,6 +22,38 @@ export const RECEIVE_SUBMIT_REVIEW = 'RECEIVE_SUBMIT_REVIEW';
 export const ERROR_SUBMIT_REVIEW = 'ERROR_SUBMIT_REVIEW';
 export const RESET_SUBMIT_REVIEW = 'RESET_SUBMIT_REVIEW';
 
+// REVIEW VOTES
+export const RECEIVE_REVIEW_VOTE = 'RECEIVE_REVIEW_VOTE';
+export const REVIEW_FEATURE_VOTES = 'reviewVotes';
+
+// REVIEW SUMMARY
+export const REVIEW_FEATURE_RATING_SUMMARY = 'ratingSummary';
+
+// REVIEW LIST QUERY
+/**
+ * The list filters the PWA knows: the request parameter that activates the filter, which a
+ * provider also reports as capability in its settings, the kind of its control and the label.
+ * A toggle is sent as `true`, the rate filter as the number of stars from 1 to 5.
+ */
+export const REVIEW_FILTERS = [
+  {
+    param: 'filterMedia',
+    type: 'toggle',
+    label: 'reviews.filter_media',
+  },
+  {
+    param: 'filterVerified',
+    type: 'toggle',
+    label: 'reviews.filter_verified',
+  },
+  {
+    param: 'filterRate',
+    type: 'rate',
+    label: 'reviews.filter_rate_all',
+  },
+];
+export const REVIEW_SORT_OPTIONS = ['relevance', 'dateDesc', 'dateAsc', 'rateDesc', 'rateAsc'];
+
 // PRODUCT REVIEW SETTINGS
 export const REVIEW_SETTINGS_LIFETIME = 60 * 60 * 1000;
 export const REQUEST_PRODUCT_REVIEW_SETTINGS = 'REQUEST_PRODUCT_REVIEW_SETTINGS';

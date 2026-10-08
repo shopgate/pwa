@@ -10,6 +10,8 @@ export interface ReviewSettings {
   paginationType: ReviewPaginationType;
   /** Provider custom-field definitions; not consumed for display in the first delivery. */
   customFields: unknown[];
+  /** Sort values the provider supports for the review list; unknown values are ignored. */
+  sortOptions?: string[];
 }
 
 /**

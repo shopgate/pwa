@@ -4,17 +4,21 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { render, screen, fireEvent } from '@testing-library/react';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { PRODUCT_REVIEWS } from '@shopgate/engage/product/constants';
 import { REVIEW_PREVIEW_COUNT } from '@shopgate/pwa-common-commerce/reviews/constants';
 import type { Review } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import type { ReviewSummary } from '@shopgate/pwa-common-commerce/reviews/types/reviewSummary';
 import ReviewsPreview from './ReviewsPreview';
+import type { ReviewsPreviewProps } from './ReviewsPreview';
 
 type MockPreviewState = {
   baseProductId: string;
   active: boolean;
   summary: ReviewSummary | null;
+  expectsSummary: boolean;
+  hasRateFilter: boolean;
   reviews: Review[] | null;
   missing: boolean;
   loading: boolean;
@@ -46,6 +50,14 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
 
   return {
     ...jest.requireActual('@shopgate/pwa-common-commerce/reviews/selectors'),
+    hasReviewFeature: (_state: unknown, feature: string) => (
+      feature === 'ratingSummary' && mockPreview.expectsSummary
+    ),
+    getReviewFilterOptions: () => (mockPreview.hasRateFilter ? [{
+      param: 'filterRate',
+      type: 'rate',
+      label: 'reviews.filter_rate_all',
+    }] : []),
     getReviewSummary: mockBaseSelector(() => mockPreview.summary, null),
     getProductReviewsExcerpt: mockBaseSelector(() => mockPreview.reviews, null),
     isProductReviewsExcerptMissing: mockBaseSelector(() => mockPreview.missing, false),
@@ -53,6 +65,12 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
     hasProductReviewsExcerptError: mockBaseSelector(() => mockPreview.error, false),
   };
 });
+jest.mock('@shopgate/pwa-common/actions/router', () => ({
+  historyPush: (params: unknown) => ({
+    type: 'HISTORY_PUSH',
+    params,
+  }),
+}));
 jest.mock('@shopgate/pwa-common-commerce/reviews/actions/fetchProductReviews', () => ({
   __esModule: true,
   default: (productId: string, limit: number) => ({
@@ -109,12 +127,12 @@ Object.defineProperty(config, 'showWriteReview', {
  * Renders the preview with a store that records dispatched actions.
  * @returns The render result and the dispatched actions.
  */
-const renderPreview = () => {
+const renderPreview = (props: Partial<ReviewsPreviewProps> = {}) => {
   const store = createStore(() => ({}));
   const dispatchSpy = jest.spyOn(store, 'dispatch');
   const result = render(
     <Provider store={store}>
-      <ReviewsPreview productId="variant" />
+      <ReviewsPreview productId="variant" {...props} />
     </Provider>
   );
 
@@ -136,6 +154,8 @@ describe('<ReviewsPreview />', () => {
         average: 78,
         count: 12,
       },
+      expectsSummary: false,
+      hasRateFilter: false,
       reviews,
       missing: false,
       loading: false,
@@ -211,6 +231,74 @@ describe('<ReviewsPreview />', () => {
     renderPreview();
 
     expect(screen.getByRole('progressbar')).toBeInTheDocument();
+  });
+
+  it('should show the summary placeholder while a provider summary is loading', () => {
+    mockPreview.summary = null;
+    mockPreview.reviews = null;
+    mockPreview.loading = true;
+    mockPreview.expectsSummary = true;
+
+    const { container } = renderPreview();
+
+    expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+      .toBeInTheDocument();
+  });
+
+  it('should not show the summary placeholder without a provider summary', () => {
+    mockPreview.summary = null;
+    mockPreview.reviews = null;
+    mockPreview.loading = true;
+
+    const { container } = renderPreview();
+
+    expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+      .not.toBeInTheDocument();
+  });
+
+  describe('distribution rows', () => {
+    beforeEach(() => {
+      mockPreview.summary = {
+        average: 69,
+        count: 35,
+        distribution: {
+          5: 10,
+          4: 9,
+          3: 7,
+          2: 5,
+          1: 4,
+        },
+      };
+    });
+
+    it('should open the review page of the base product with the star filter of a row', () => {
+      mockPreview.hasRateFilter = true;
+
+      const { container, getActions } = renderPreview();
+      const row = container.querySelector('[data-stars="4"] button') as HTMLElement;
+
+      expect(row).toHaveAccessibleName('reviews.distribution_open');
+      expect(row).not.toHaveAttribute('aria-pressed');
+
+      fireEvent.click(row);
+
+      expect(getActions()).toEqual([{
+        type: 'HISTORY_PUSH',
+        params: {
+          pathname: `/item/${bin2hex('base')}/reviews`,
+          state: { filterRate: 4 },
+        },
+      }]);
+    });
+
+    it('should not render row buttons when the provider has no star filter', () => {
+      const { container } = renderPreview();
+
+      expect(screen.queryByRole('button', { name: 'reviews.distribution_open' }))
+        .not.toBeInTheDocument();
+      expect(container.querySelectorAll('.engage__reviews__reviews-summary__distribution-row'))
+        .toHaveLength(5);
+    });
   });
 
   it('should show the error state and retry the preview request', () => {
@@ -295,5 +383,70 @@ describe('<ReviewsPreview />', () => {
 
     const list = sectionChildren[1];
     expect(isValidElement(list) && (list.props as { reviews: Review[] }).reviews).toBe(reviews);
+  });
+
+  describe('without the portal', () => {
+    /**
+     * Collects the names of the portals rendered so far.
+     * @returns The portal names.
+     */
+    const getPortalNames = () => jest.mocked(SurroundPortals).mock.calls
+      .map(([props]) => props.portalName);
+
+    it('should render the review section outside of the review portal', () => {
+      const { container } = renderPreview({ disablePortal: true });
+
+      const section = container.querySelector('[data-test-id="reviewSection"]');
+      expect(section).toBeInTheDocument();
+      expect(section?.querySelector('#reviewsExcerpt')).toBeInTheDocument();
+      expect(screen.getByTestId('all-reviews-link')).toHaveAttribute('data-product-id', 'base');
+      expect(screen.getByTestId('write-review-link')).toHaveAttribute('data-product-id', 'base');
+      expect(getPortalNames()).not.toContain(PRODUCT_REVIEWS);
+    });
+
+    it('should render nothing when reviews are disabled', () => {
+      hasReviewsGetter.mockReturnValue(false);
+
+      const { container } = renderPreview({ disablePortal: true });
+
+      expect(container).toBeEmptyDOMElement();
+    });
+
+    it('should render nothing when the base product is not active', () => {
+      mockPreview.active = false;
+
+      const { container } = renderPreview({ disablePortal: true });
+
+      expect(container).toBeEmptyDOMElement();
+    });
+
+    it('should request the preview when it was not requested yet', () => {
+      mockPreview.missing = true;
+
+      const { getActions } = renderPreview({ disablePortal: true });
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_PRODUCT_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_PREVIEW_COUNT,
+      }]);
+    });
+
+    it('should mark the section when the gutters are disabled', () => {
+      const { container } = renderPreview({
+        disablePortal: true,
+        disableGutters: true,
+      });
+
+      expect(container.querySelector('[data-test-id="reviewSection"]'))
+        .toHaveAttribute('data-disable-gutters', 'true');
+    });
+  });
+
+  it('should keep the gutters by default', () => {
+    const { container } = renderPreview();
+
+    expect(container.querySelector('[data-test-id="reviewSection"]'))
+      .not.toHaveAttribute('data-disable-gutters');
   });
 });

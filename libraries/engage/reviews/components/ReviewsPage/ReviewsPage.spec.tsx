@@ -7,7 +7,11 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
 import { PRODUCT_REVIEWS_ALL } from '@shopgate/pwa-common-commerce/reviews/constants/Portals';
-import type { Review } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import type {
+  Review,
+  ReviewFilterOption,
+  ReviewListFilters,
+} from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import type { ReviewSummary } from '@shopgate/pwa-common-commerce/reviews/types/reviewSummary';
 import ReviewsPage from './ReviewsPage';
 
@@ -15,8 +19,15 @@ type MockPageState = {
   baseProductId: string | null;
   productFetching: boolean;
   summary: ReviewSummary | null;
+  expectsSummary: boolean;
   reviews: Review[];
   totalCount: number | null;
+  hasMore: boolean;
+  sort: string;
+  filters: ReviewListFilters;
+  queryChanged: boolean;
+  sortOptions: string[];
+  filterOptions: ReviewFilterOption[];
   requestOffset: number;
   missing: boolean;
   loading: boolean;
@@ -57,11 +68,20 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
 
   return {
     ...jest.requireActual('@shopgate/pwa-common-commerce/reviews/selectors'),
+    hasReviewFeature: (_state: unknown, feature: string) => (
+      feature === 'ratingSummary' && mockPage.expectsSummary
+    ),
     getReviewSummary: (_state: unknown, props: SelectorProps) => (
       props.productId === (mockPage.baseProductId || 'route') ? mockPage.summary : null
     ),
     getProductReviews: mockListSelector<Review[]>(() => mockPage.reviews, []),
     getReviewsTotalCount: mockListSelector<number | null>(() => mockPage.totalCount, null),
+    hasMoreReviews: mockListSelector(() => mockPage.hasMore, false),
+    getReviewListSort: mockListSelector(() => mockPage.sort, 'dateDesc'),
+    getReviewListFilters: mockListSelector<ReviewListFilters>(() => mockPage.filters, {}),
+    isReviewListQueryChanged: mockListSelector(() => mockPage.queryChanged, false),
+    getReviewSortOptions: () => mockPage.sortOptions,
+    getReviewFilterOptions: () => mockPage.filterOptions,
     getReviewListRequestOffset: mockListSelector(() => mockPage.requestOffset, 0),
     getReviewsFetchingState: mockListSelector(() => mockPage.fetching, false),
     isReviewListMissing: mockListSelector(() => mockPage.missing, false),
@@ -71,12 +91,61 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
 });
 jest.mock('@shopgate/pwa-common-commerce/reviews/actions/fetchReviews', () => ({
   __esModule: true,
-  default: (productId: string, limit: number, offset?: number) => ({
+  default: (
+    productId: string,
+    limit: number,
+    offset?: number,
+    sort?: string,
+    filters?: ReviewListFilters
+  ) => ({
     type: 'FETCH_REVIEWS',
     productId,
     limit,
     offset,
+    ...((sort && sort !== 'dateDesc') || (filters && Object.keys(filters).length > 0) ? {
+      sort,
+      filters,
+    } : {}),
   }),
+}));
+jest.mock('../ReviewsToolbar', () => ({
+  __esModule: true,
+  default: ({
+    sort,
+    sortOptions,
+    filters,
+    filterOptions,
+    onSortChange,
+    onFilterChange,
+  }: {
+    sort: string;
+    sortOptions: string[];
+    filters: ReviewListFilters;
+    filterOptions: ReviewFilterOption[];
+    onSortChange: (sort: string) => void;
+    onFilterChange: (param: keyof ReviewListFilters, value?: boolean | number) => void;
+  }) => (sortOptions.length < 2 && filterOptions.length === 0 ? null : (
+    <div
+      className="engage__reviews__reviews-toolbar"
+      data-sort={sort}
+      data-filters={Object.keys(filters).join(',')}
+    >
+      <button type="button" onClick={() => onSortChange('rateDesc')}>sort by rating</button>
+      <button type="button" onClick={() => onFilterChange('filterMedia', !filters.filterMedia)}>
+        toggle media
+      </button>
+      <button
+        type="button"
+        onClick={() => onFilterChange('filterVerified', !filters.filterVerified)}
+      >
+        toggle verified
+      </button>
+      <button type="button" onClick={() => onFilterChange('filterRate', 5)}>five stars</button>
+      <button type="button" onClick={() => onFilterChange('filterRate', undefined)}>
+        all stars
+      </button>
+    </div>
+  )),
 }));
 jest.mock('../Reviews/components/Header/components/WriteReviewLink', () => ({
   __esModule: true,
@@ -146,8 +215,15 @@ describe('<ReviewsPage />', () => {
         average: 78,
         count: 12,
       },
+      expectsSummary: false,
       reviews,
       totalCount: 2,
+      hasMore: false,
+      sort: 'dateDesc',
+      filters: {},
+      queryChanged: false,
+      sortOptions: [],
+      filterOptions: [],
       requestOffset: 0,
       missing: false,
       loading: false,
@@ -209,6 +285,31 @@ describe('<ReviewsPage />', () => {
     expect(screen.queryByText('reviews.list_empty')).not.toBeInTheDocument();
   });
 
+  it('should show the summary placeholder while a provider summary is loading', () => {
+    mockPage.summary = null;
+    mockPage.reviews = [];
+    mockPage.totalCount = null;
+    mockPage.loading = true;
+    mockPage.expectsSummary = true;
+
+    const { container } = renderPage();
+
+    expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+      .toBeInTheDocument();
+  });
+
+  it('should not show the summary placeholder without a provider summary', () => {
+    mockPage.summary = null;
+    mockPage.reviews = [];
+    mockPage.totalCount = null;
+    mockPage.loading = true;
+
+    const { container } = renderPage();
+
+    expect(container.querySelector('.engage__reviews__reviews-summary__placeholder'))
+      .not.toBeInTheDocument();
+  });
+
   it('should show the empty state without reviews', () => {
     mockPage.reviews = [];
     mockPage.totalCount = 0;
@@ -221,6 +322,7 @@ describe('<ReviewsPage />', () => {
 
   it('should load the next page with the number of loaded reviews as offset', () => {
     mockPage.totalCount = 12;
+    mockPage.hasMore = true;
 
     const { getActions } = renderPage();
 
@@ -234,8 +336,18 @@ describe('<ReviewsPage />', () => {
     }]);
   });
 
-  it('should not offer load more without a total count', () => {
+  it('should offer load more without a total count when a further page exists', () => {
     mockPage.totalCount = null;
+    mockPage.hasMore = true;
+
+    renderPage();
+
+    expect(screen.getByRole('button', { name: 'common.load_more' })).toBeInTheDocument();
+  });
+
+  it('should not offer load more without a further page', () => {
+    mockPage.totalCount = 12;
+    mockPage.hasMore = false;
 
     renderPage();
 
@@ -262,6 +374,7 @@ describe('<ReviewsPage />', () => {
 
   it('should keep the reviews and retry the failed request with its offset', () => {
     mockPage.totalCount = 12;
+    mockPage.hasMore = true;
     mockPage.requestOffset = 2;
     mockPage.error = true;
 
@@ -281,6 +394,7 @@ describe('<ReviewsPage />', () => {
 
   it('should retry a failed refresh from the first page', () => {
     mockPage.totalCount = 12;
+    mockPage.hasMore = true;
     mockPage.requestOffset = 0;
     mockPage.error = true;
 
@@ -357,6 +471,7 @@ describe('<ReviewsPage />', () => {
 
   it('should keep the portal contract with the list as second direct child', () => {
     mockPage.totalCount = 12;
+    mockPage.hasMore = true;
 
     renderPage();
 
@@ -383,5 +498,377 @@ describe('<ReviewsPage />', () => {
     const list = Children.toArray(portalCall?.[0].children)[1];
 
     expect(isValidElement(list) && (list.props as { reviews: Review[] }).reviews).toEqual([]);
+  });
+
+  describe('sorting and filtering', () => {
+    beforeEach(() => {
+      mockPage.sortOptions = ['dateDesc', 'rateDesc'];
+      mockPage.filterOptions = [{
+        param: 'filterMedia',
+        type: 'toggle',
+        label: 'reviews.filter_media',
+      }];
+      mockPage.totalCount = 12;
+      mockPage.hasMore = true;
+    });
+
+    it('should not render the toolbar when the provider supports neither', () => {
+      mockPage.sortOptions = [];
+      mockPage.filterOptions = [];
+
+      const { container } = renderPage();
+
+      expect(container.querySelector('.engage__reviews__reviews-toolbar')).not.toBeInTheDocument();
+    });
+
+    it('should not render the toolbar before the list was requested', () => {
+      mockPage.missing = true;
+      mockPage.loading = true;
+      mockPage.reviews = [];
+
+      const { container } = renderPage();
+
+      expect(container.querySelector('.engage__reviews__reviews-toolbar')).not.toBeInTheDocument();
+    });
+
+    it('should render the toolbar inside the excerpt block', () => {
+      const { container } = renderPage();
+
+      expect(container.querySelector('.engage__reviews__reviews-excerpt'))
+        .toContainElement(container.querySelector('.engage__reviews__reviews-toolbar') as HTMLElement);
+    });
+
+    it('should request the first page with the selected sort and the current filter', () => {
+      mockPage.filters = { filterMedia: true };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'sort by rating' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'rateDesc',
+        filters: { filterMedia: true },
+      }]);
+    });
+
+    it('should not request the list again when the current sort is selected', () => {
+      mockPage.sort = 'rateDesc';
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'sort by rating' }));
+
+      expect(getActions()).toEqual([]);
+    });
+
+    it('should request the first page with the toggled media filter and the current sort', () => {
+      mockPage.sort = 'rateDesc';
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'toggle media' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'rateDesc',
+        filters: { filterMedia: true },
+      }]);
+    });
+
+    it('should add a filter to the active ones', () => {
+      mockPage.filters = { filterMedia: true };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'toggle verified' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'dateDesc',
+        filters: {
+          filterMedia: true,
+          filterVerified: true,
+        },
+      }]);
+    });
+
+    it('should remove only the toggled filter', () => {
+      mockPage.filters = {
+        filterMedia: true,
+        filterVerified: true,
+      };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'toggle media' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'dateDesc',
+        filters: { filterVerified: true },
+      }]);
+    });
+
+    it('should set the star filter next to the active filters', () => {
+      mockPage.filters = { filterMedia: true };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'five stars' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'dateDesc',
+        filters: {
+          filterMedia: true,
+          filterRate: 5,
+        },
+      }]);
+    });
+
+    it('should remove the star filter and keep the other filters', () => {
+      mockPage.filters = {
+        filterMedia: true,
+        filterRate: 5,
+      };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'all stars' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'dateDesc',
+        filters: { filterMedia: true },
+      }]);
+    });
+
+    describe('distribution rows', () => {
+      beforeEach(() => {
+        mockPage.summary = {
+          average: 69,
+          count: 35,
+          distribution: {
+            5: 10,
+            4: 10,
+            3: 5,
+            2: 5,
+            1: 5,
+          },
+        };
+        mockPage.filterOptions = [{
+          param: 'filterRate',
+          type: 'rate',
+          label: 'reviews.filter_rate_all',
+        }];
+      });
+
+      /**
+       * @param container The rendered container.
+       * @returns The buttons of the distribution rows, from 5 stars to 1 star.
+       */
+      const getRowButtons = (container: HTMLElement) => Array.from(
+        container.querySelectorAll<HTMLElement>(
+          '.engage__reviews__reviews-summary__distribution-button'
+        )
+      );
+
+      it('should set the star filter next to the active filters', () => {
+        mockPage.filters = { filterMedia: true };
+
+        const { container, getActions } = renderPage();
+
+        fireEvent.click(getRowButtons(container)[1]);
+
+        expect(getActions()).toEqual([{
+          type: 'FETCH_REVIEWS',
+          productId: 'base',
+          limit: REVIEW_ITEMS_PER_PAGE,
+          offset: 0,
+          sort: 'dateDesc',
+          filters: {
+            filterMedia: true,
+            filterRate: 4,
+          },
+        }]);
+      });
+
+      it('should mark the row of the active star filter and remove the filter with it', () => {
+        mockPage.filters = {
+          filterMedia: true,
+          filterRate: 4,
+        };
+
+        const { container, getActions } = renderPage();
+        const buttons = getRowButtons(container);
+
+        expect(buttons.map(button => button.getAttribute('aria-pressed'))).toEqual([
+          'false', 'true', 'false', 'false', 'false',
+        ]);
+
+        fireEvent.click(buttons[1]);
+
+        expect(getActions()).toEqual([{
+          type: 'FETCH_REVIEWS',
+          productId: 'base',
+          limit: REVIEW_ITEMS_PER_PAGE,
+          offset: 0,
+          sort: 'dateDesc',
+          filters: { filterMedia: true },
+        }]);
+      });
+
+      it('should mark no row without a star filter', () => {
+        const { container } = renderPage();
+
+        expect(getRowButtons(container).map(button => button.getAttribute('aria-pressed')))
+          .toEqual(['false', 'false', 'false', 'false', 'false']);
+      });
+
+      it('should replace the active star filter with another row', () => {
+        mockPage.filters = { filterRate: 4 };
+
+        const { container, getActions } = renderPage();
+
+        fireEvent.click(getRowButtons(container)[3]);
+
+        expect(getActions()).toEqual([{
+          type: 'FETCH_REVIEWS',
+          productId: 'base',
+          limit: REVIEW_ITEMS_PER_PAGE,
+          offset: 0,
+          sort: 'dateDesc',
+          filters: { filterRate: 2 },
+        }]);
+      });
+
+      it('should not render buttons before the list was requested', () => {
+        mockPage.missing = true;
+        mockPage.loading = true;
+
+        const { container } = renderPage();
+
+        expect(getRowButtons(container)).toHaveLength(0);
+        expect(container.querySelectorAll('.engage__reviews__reviews-summary__distribution-row'))
+          .toHaveLength(5);
+      });
+
+      it('should not render buttons when the provider has no star filter', () => {
+        mockPage.filterOptions = [];
+
+        const { container } = renderPage();
+
+        expect(getRowButtons(container)).toHaveLength(0);
+        expect(container.querySelectorAll('.engage__reviews__reviews-summary__distribution-row'))
+          .toHaveLength(5);
+      });
+    });
+
+    it('should not request the list again when a filter keeps its value', () => {
+      mockPage.filters = { filterRate: 5 };
+
+      const { getActions } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'five stars' }));
+
+      expect(getActions()).toEqual([]);
+    });
+
+    it('should load more and retry with the current sort and filter', () => {
+      mockPage.sort = 'rateDesc';
+      mockPage.filters = { filterMedia: true };
+
+      const { getActions, rerenderPage } = renderPage();
+
+      fireEvent.click(screen.getByRole('button', { name: 'common.load_more' }));
+
+      expect(getActions()[0]).toEqual({
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 2,
+        sort: 'rateDesc',
+        filters: { filterMedia: true },
+      });
+
+      mockPage.error = true;
+      mockPage.requestOffset = 2;
+      rerenderPage();
+      fireEvent.click(screen.getByRole('button', { name: 'reviews.button_retry' }));
+
+      expect(getActions()[1]).toEqual({
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 2,
+        sort: 'rateDesc',
+        filters: { filterMedia: true },
+      });
+    });
+
+    it('should hide the stored reviews and load more while another query is requested', () => {
+      mockPage.queryChanged = true;
+      mockPage.loading = true;
+
+      renderPage();
+
+      expect(screen.queryAllByRole('listitem')).toHaveLength(0);
+      expect(screen.getByRole('progressbar')).toBeInTheDocument();
+      expect(screen.queryByText('reviews.list_count')).not.toBeInTheDocument();
+      expect(screen.queryByRole('button', { name: 'common.load_more' })).not.toBeInTheDocument();
+    });
+
+    it('should show only the error when the request for another query failed', () => {
+      mockPage.queryChanged = true;
+      mockPage.error = true;
+      mockPage.requestOffset = 0;
+      mockPage.sort = 'rateDesc';
+
+      const { getActions } = renderPage();
+
+      expect(screen.queryAllByRole('listitem')).toHaveLength(0);
+      fireEvent.click(screen.getByRole('button', { name: 'reviews.button_retry' }));
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_ITEMS_PER_PAGE,
+        offset: 0,
+        sort: 'rateDesc',
+        filters: {},
+      }]);
+    });
+
+    it('should show the filtered empty text when the filter matches no review', () => {
+      mockPage.filters = { filterMedia: true };
+      mockPage.reviews = [];
+      mockPage.totalCount = 0;
+      mockPage.hasMore = false;
+
+      const { container } = renderPage();
+
+      expect(screen.getByText('reviews.list_empty_filtered')).toBeInTheDocument();
+      expect(container.querySelector('.engage__reviews__reviews-toolbar'))
+        .toHaveAttribute('data-filters', 'filterMedia');
+    });
   });
 });

@@ -8,6 +8,8 @@ import type { Review, ReviewsRequestMeta } from '../types/reviews';
  * @param reviews The received review data.
  * @param totalReviewCount The total number of reviews for a product.
  * @param meta Request metadata.
+ * @param after The cursor for the next page as returned by the pipeline.
+ * @param summary The rating summary as returned by the pipeline.
  * @returns The RECEIVE_PRODUCT_REVIEWS action.
  */
 const receiveReviews = (
@@ -15,7 +17,9 @@ const receiveReviews = (
   productId: string,
   reviews: Review[],
   totalReviewCount?: number | null,
-  meta: ReviewsRequestMeta = {}
+  meta: ReviewsRequestMeta = {},
+  after?: string | null,
+  summary?: unknown
 ) => ({
   ...meta,
   type: RECEIVE_REVIEWS as typeof RECEIVE_REVIEWS,
@@ -23,6 +27,8 @@ const receiveReviews = (
   productId,
   reviews,
   totalReviewCount,
+  after,
+  summary,
 });
 
 export type ReceiveReviewsAction = ReturnType<typeof receiveReviews>;

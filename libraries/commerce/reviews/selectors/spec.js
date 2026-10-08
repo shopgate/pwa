@@ -10,11 +10,16 @@ import {
   getDefaultAuthorName,
   isProductReviewsExcerptMissing,
   isProductReviewsExcerptLoading,
+  isProductReviewsExcerptPending,
   hasProductReviewsExcerptError,
   isReviewListMissing,
   isReviewListLoading,
   hasReviewListError,
   getReviewListRequestOffset,
+  hasMoreReviews,
+  getReviewListSort,
+  getReviewListFilters,
+  isReviewListQueryChanged,
 } from './index';
 import {
   emptyState,
@@ -200,6 +205,31 @@ describe('Reviews selectors', () => {
       });
     });
 
+    it('should report only a running first request as pending', () => {
+      expect(isProductReviewsExcerptPending(buildState(), propsProductId)).toBe(false);
+      expect(isProductReviewsExcerptPending(buildState({
+        isFetching: true,
+        requestId: 1,
+      }), propsProductId)).toBe(true);
+      expect(isProductReviewsExcerptPending(buildState({
+        isFetching: true,
+        requestId: 2,
+        reviews: [1, 2],
+      }), propsProductId)).toBe(false);
+      expect(isProductReviewsExcerptPending(buildState({
+        isFetching: true,
+        requestId: 2,
+        reviews: [],
+      }), propsProductId)).toBe(false);
+      expect(isProductReviewsExcerptPending(buildState({
+        isFetching: false,
+        requestId: 1,
+        expires: 0,
+      }), propsProductId)).toBe(false);
+      expect(isProductReviewsExcerptPending(buildState({ expires: 0 }), propsProductId))
+        .toBe(false);
+    });
+
     it('should report a running request as loading', () => {
       expect(getFlags(buildState({
         isFetching: true,
@@ -359,6 +389,176 @@ describe('Reviews selectors', () => {
         error: true,
         requestOffset: 2,
       });
+    });
+  });
+
+  describe('hasMoreReviews', () => {
+    /**
+     * @param {Object} [collection] The list collection.
+     * @param {string} [paginationType] The pagination type from the review settings.
+     * @returns {Object}
+     */
+    const buildState = (collection, paginationType) => {
+      const state = _.cloneDeep(finalState);
+      if (collection) {
+        state.reviews.reviewsByHash[existingHash] = collection;
+      } else {
+        delete state.reviews.reviewsByHash[existingHash];
+      }
+      state.reviews.reviewSettings = paginationType ? { paginationType } : {};
+      return state;
+    };
+
+    it('should be false without a list or without loaded reviews', () => {
+      expect(hasMoreReviews(buildState(), propsProductId)).toBe(false);
+      expect(hasMoreReviews(buildState({
+        reviews: [],
+        totalReviewCount: 5,
+        after: 'next',
+      }, 'cursor'), propsProductId)).toBe(false);
+    });
+
+    it('should compare the loaded reviews with the total count with offset pagination', () => {
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: 5,
+      }, 'offset'), propsProductId)).toBe(true);
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: 2,
+      }, 'offset'), propsProductId)).toBe(false);
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: null,
+        after: 'next',
+      }, 'offset'), propsProductId)).toBe(false);
+    });
+
+    it('should behave like offset pagination while the pagination type is unknown', () => {
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: 5,
+      }), propsProductId)).toBe(true);
+    });
+
+    it('should depend on the stored cursor with cursor pagination', () => {
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: null,
+        after: 'next',
+      }, 'cursor'), propsProductId)).toBe(true);
+      expect(hasMoreReviews(buildState({
+        reviews: [1, 2],
+        totalReviewCount: 5,
+        after: null,
+      }, 'cursor'), propsProductId)).toBe(false);
+    });
+  });
+
+  describe('review list query', () => {
+    /**
+     * @param {Object} [collection] The list collection.
+     * @returns {Object}
+     */
+    const buildState = (collection) => {
+      const state = _.cloneDeep(finalState);
+      if (collection) {
+        state.reviews.reviewsByHash[existingHash] = collection;
+      } else {
+        delete state.reviews.reviewsByHash[existingHash];
+      }
+      return state;
+    };
+
+    /**
+     * @param {Object} state The state.
+     * @returns {Object} The requested sort and filters and whether the query changed.
+     */
+    const getQuery = state => ({
+      sort: getReviewListSort(state, propsProductId),
+      filters: getReviewListFilters(state, propsProductId),
+      changed: isReviewListQueryChanged(state, propsProductId),
+    });
+
+    it('should use the defaults for a list that was not requested yet', () => {
+      expect(getQuery(buildState())).toEqual({
+        sort: 'dateDesc',
+        filters: {},
+        changed: false,
+      });
+    });
+
+    it('should not report a change for a loaded list, a refresh or a later page', () => {
+      const loaded = {
+        reviews: [1, 2],
+        sort: 'rateDesc',
+        filters: { filterMedia: true },
+        requestSort: 'rateDesc',
+        requestFilters: { filterMedia: true },
+        requestOffset: 0,
+      };
+
+      expect(getQuery(buildState(loaded))).toEqual({
+        sort: 'rateDesc',
+        filters: { filterMedia: true },
+        changed: false,
+      });
+      expect(getQuery(buildState({
+        ...loaded,
+        isFetching: true,
+      })).changed).toBe(false);
+      expect(getQuery(buildState({
+        ...loaded,
+        isFetching: true,
+        requestOffset: 2,
+      })).changed).toBe(false);
+    });
+
+    it('should report a change while the first page of another sort is requested and after it failed', () => {
+      const changing = {
+        reviews: [1, 2],
+        sort: 'dateDesc',
+        requestSort: 'rateDesc',
+        requestOffset: 0,
+        isFetching: true,
+      };
+
+      expect(getQuery(buildState(changing))).toEqual({
+        sort: 'rateDesc',
+        filters: {},
+        changed: true,
+      });
+      expect(getQuery(buildState({
+        ...changing,
+        isFetching: false,
+        expires: 0,
+      })).changed).toBe(true);
+    });
+
+    it('should report a change when only the media filter differs', () => {
+      expect(getQuery(buildState({
+        reviews: [1, 2],
+        sort: 'dateDesc',
+        requestSort: 'dateDesc',
+        requestFilters: { filterMedia: true },
+        requestOffset: 0,
+      }))).toEqual({
+        sort: 'dateDesc',
+        filters: { filterMedia: true },
+        changed: true,
+      });
+
+      expect(getQuery(buildState({
+        reviews: [1, 2],
+        sort: 'dateDesc',
+        filters: { filterMedia: true },
+        requestSort: 'dateDesc',
+        requestFilters: {
+          filterMedia: true,
+          filterVerified: true,
+        },
+        requestOffset: 0,
+      })).changed).toBe(true);
     });
   });
 });

@@ -1,4 +1,5 @@
 import { createSelector } from 'reselect';
+import { SORT_DATE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { getBaseProductId as getBaseProductIdSelector } from '@shopgate/engage/product/selectors/product';
@@ -6,13 +7,18 @@ import * as pipelines from '../constants/Pipelines';
 import type {
   Review,
   ReviewId,
+  ReviewListFilters,
   ReviewsProductProps,
   ReviewsProductState,
   ReviewsState,
 } from '../types/reviews';
 
+import { areReviewFiltersEqual } from '../helpers/filters';
+import { isReviewCursorPagination } from './reviewSettings';
+
 export * from './reviewSettings';
 export * from './reviewSummary';
+export * from './ownReviewVotes';
 
 type AuthorState = {
   user: {
@@ -25,6 +31,8 @@ type AuthorState = {
     } | null;
   };
 };
+
+const NO_FILTERS: ReviewListFilters = {};
 
 const getBaseProductId = getBaseProductIdSelector as (
   state: ReviewsProductState,
@@ -144,6 +152,66 @@ export const getCurrentReviewCount = createSelector(
     }
 
     return collection.reviews.length;
+  }
+);
+
+/**
+ * Retrieves the sort of the last review list request of the current base product.
+ * @param state The current application state.
+ * @returns The sort, or the default sort when the list was not requested yet.
+ */
+export const getReviewListSort = createSelector(
+  getCollectionForCurrentBaseProduct,
+  collection => collection?.requestSort ?? SORT_DATE_DESC
+);
+
+/**
+ * Retrieves the filters of the last review list request of the current base product.
+ * @param state The current application state.
+ * @returns The active filters; empty when the list is unfiltered or was not requested yet.
+ */
+export const getReviewListFilters = createSelector(
+  getCollectionForCurrentBaseProduct,
+  collection => collection?.requestFilters ?? NO_FILTERS
+);
+
+/**
+ * Whether the last request asked for the first page of another sort or filter than the stored
+ * reviews were loaded with. The stored reviews then do not belong to the requested list.
+ * @param state The current application state.
+ * @returns True from the request until its reviews were received, also after it failed.
+ */
+export const isReviewListQueryChanged = createSelector(
+  getCollectionForCurrentBaseProduct,
+  collection => !!collection
+    && collection.requestOffset === 0
+    && (
+      collection.requestSort !== collection.sort
+      || !areReviewFiltersEqual(collection.requestFilters, collection.filters)
+    )
+);
+
+/**
+ * Whether the review list of the current base product has a further page.
+ * @param state The current application state.
+ * @returns True when the provider returned a cursor for the next page or, with offset
+ * pagination, fewer reviews are loaded than the list contains.
+ */
+export const hasMoreReviews = createSelector(
+  getCollectionForCurrentBaseProduct,
+  getCurrentReviewCount,
+  getReviewsTotalCount,
+  isReviewCursorPagination,
+  (collection, count, totalCount, isCursor) => {
+    if (!count) {
+      return false;
+    }
+
+    if (isCursor) {
+      return !!collection?.after;
+    }
+
+    return typeof totalCount === 'number' && count < totalCount;
   }
 );
 
@@ -336,4 +404,14 @@ export const isProductReviewsExcerptLoading = createSelector(
   getProductReviewsExcerptCollection,
   hasProductReviewsExcerptError,
   (collection, hasError) => !!collection?.isFetching || (!collection?.reviews && !hasError)
+);
+
+/**
+ * Whether the review preview of the current base product is requested without stored reviews.
+ * @param state The current application state.
+ * @returns True while a request runs and no response was stored yet; false for a refresh.
+ */
+export const isProductReviewsExcerptPending = createSelector(
+  getProductReviewsExcerptCollection,
+  collection => !!collection?.isFetching && !collection.reviews
 );

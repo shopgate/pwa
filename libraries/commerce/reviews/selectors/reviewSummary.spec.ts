@@ -195,4 +195,71 @@ describe('Reviews selectors: reviewSummary', () => {
     expect(getReviewSummary(state, { productId: 'foo' })?.count).toBe(5);
     expect(getProductReviewCount(state, { productId: 'foo' })).toBe(3);
   });
+
+  describe('provider summary', () => {
+    const providerSummary = {
+      average: 69,
+      count: 35,
+      distribution: {
+        5: 10,
+        4: 10,
+        3: 5,
+        2: 5,
+        1: 5,
+      },
+    };
+
+    /**
+     * @param reviews The reviews slice.
+     * @returns A state with a product that has a native rating, plus the given reviews slice.
+     */
+    const buildProviderState = (reviews: Record<string, unknown>) => ({
+      ...buildState({
+        foo: buildProduct('foo', {
+          average: 80,
+          count: 5,
+        }),
+      }),
+      reviews,
+    });
+
+    it('should prefer the summary the review provider delivered for the product', () => {
+      const state = buildProviderState({ reviewSummariesByProductId: { foo: providerSummary } });
+
+      expect(getReviewSummary(state, { productId: 'foo' })).toBe(providerSummary);
+    });
+
+    it('should use the product data when the provider delivered no summary for the product', () => {
+      const state = buildProviderState({ reviewSummariesByProductId: { bar: providerSummary } });
+
+      expect(getReviewSummary(state, { productId: 'foo' })).toEqual({
+        average: 80,
+        count: 5,
+      });
+    });
+
+    it('should not use the product data when the provider reports that it delivers summaries', () => {
+      const state = buildProviderState({
+        reviewSettings: { features: ['ratingSummary'] },
+        reviewSummariesByProductId: {},
+      });
+
+      expect(getReviewSummary(state, { productId: 'foo' })).toBeNull();
+    });
+
+    it('should return null without a product id', () => {
+      const state = buildProviderState({ reviewSummariesByProductId: { foo: providerSummary } });
+
+      expect(getReviewSummary(state)).toBeNull();
+    });
+
+    it('should use a delivered summary also when the provider reports the capability', () => {
+      const state = buildProviderState({
+        reviewSettings: { features: ['ratingSummary'] },
+        reviewSummariesByProductId: { foo: providerSummary },
+      });
+
+      expect(getReviewSummary(state, { productId: 'foo' })).toBe(providerSummary);
+    });
+  });
 });
