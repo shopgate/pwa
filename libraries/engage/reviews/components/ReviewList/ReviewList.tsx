@@ -12,15 +12,13 @@ const useStyles = makeStyles()(theme => ({
   },
   list: {
     listStyle: 'none',
-    margin: 0,
+    margin: theme.spacing(2, 0, 0),
     padding: 0,
+    borderTop: `1px solid ${theme.components.border.light}`,
   },
   item: {
     padding: theme.spacing(2.25, 0),
     borderBottom: `1px solid ${theme.components.border.light}`,
-    '&:last-child': {
-      borderBottom: 0,
-    },
   },
   state: {
     display: 'flex',

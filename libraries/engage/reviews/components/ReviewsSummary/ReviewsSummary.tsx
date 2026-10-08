@@ -6,12 +6,18 @@ import type { ReviewSummary } from '@shopgate/pwa-common-commerce/reviews/types/
 const useStyles = makeStyles()(theme => ({
   root: {
     display: 'flex',
-    alignItems: 'baseline',
+    alignItems: 'center',
     flexWrap: 'wrap',
     gap: theme.spacing(1.25),
   },
   average: {
     lineHeight: 1,
+  },
+  rating: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    gap: theme.spacing(0.5),
   },
 }));
 
@@ -42,17 +48,19 @@ const ReviewsSummary = ({ summary, className }: ReviewsSummaryProps) => {
       >
         <I18n.Number number={summary.average / RATING_SCALE_DIVISOR} fractions={1} />
       </Typography>
-      <RatingStars value={summary.average} />
-      {!!summary.count && (
-        <Typography
-          variant="caption"
-          component="span"
-          color="textSecondary"
-          className="engage__reviews__reviews-summary__count engage__reviews__rating-count"
-        >
-          <I18n.Text string="reviews.summary_count" params={{ count: summary.count }} />
-        </Typography>
-      )}
+      <div className={cx(classes.rating, 'engage__reviews__reviews-summary__rating')}>
+        <RatingStars value={summary.average} />
+        {!!summary.count && (
+          <Typography
+            variant="caption"
+            component="span"
+            color="textSecondary"
+            className="engage__reviews__reviews-summary__count engage__reviews__rating-count"
+          >
+            <I18n.Text string="reviews.summary_count" params={{ count: summary.count }} />
+          </Typography>
+        )}
+      </div>
     </div>
   );
 };
