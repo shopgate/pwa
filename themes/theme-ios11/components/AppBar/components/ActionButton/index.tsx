@@ -24,8 +24,10 @@ const BADGE_MAX = 99;
 const useStyles = makeStyles()(theme => ({
   badge: {
     position: 'absolute',
-    top: theme.spacing(0.75),
-    right: theme.spacing(0.5),
+    top: theme.spacing(0.25),
+    right: 0,
+    transform: 'scale(0.875)',
+    transformOrigin: 'top right',
   },
 }));
 
