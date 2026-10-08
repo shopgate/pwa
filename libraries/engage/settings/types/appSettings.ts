@@ -420,12 +420,18 @@ export type PersistentSearchBarSettings = Record<SearchBarPage, boolean> & {
   hideOnScroll: boolean;
 };
 
+/**
+ * Settings for the search.
+ */
+export interface SearchSettings {
+  persistentBar: PersistentSearchBarSettings;
+  /** Whether the search field offers the scanner, in apps that support it. */
+  showScannerIcon: boolean;
+}
+
 export interface AppSettings {
   navigation: {
     appBar: AppBarSettings;
-    search: {
-      persistentBar: PersistentSearchBarSettings;
-    };
     tabBar: {
       variant: 'fixed' | 'floating'
       transition: 'fade' | 'slide';
@@ -443,6 +449,7 @@ export interface AppSettings {
     }
   }
   product: ProductSettings;
+  search: SearchSettings;
   cart: CartSettings;
   /**
    * Settings for images that are served through the image service.

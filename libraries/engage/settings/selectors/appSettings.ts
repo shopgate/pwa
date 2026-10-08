@@ -44,7 +44,15 @@ export const getAppBarSettings = createSelector(
  */
 export const getPersistentSearchBarSettings = createSelector(
   getAppSettingsState,
-  appSettings => appSettings.navigation.search.persistentBar
+  appSettings => appSettings.search.persistentBar
+);
+
+/**
+ * Selects whether the search field offers the scanner.
+ */
+export const getShowSearchScannerIcon = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.search.showScannerIcon
 );
 
 /**

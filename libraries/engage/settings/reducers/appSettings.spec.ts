@@ -64,17 +64,6 @@ describe('settings / reducers / appSettings', () => {
             scrollBehavior: 'scrollAway',
           },
         },
-        search: {
-          persistentBar: {
-            home: true,
-            category: true,
-            search: false,
-            product: false,
-            page: false,
-            favorites: true,
-            hideOnScroll: false,
-          },
-        },
         tabBar: {
           variant: 'floating',
           transition: 'slide',
@@ -87,6 +76,18 @@ describe('settings / reducers / appSettings', () => {
             showCounter: false,
           },
         },
+      },
+      search: {
+        persistentBar: {
+          home: true,
+          category: true,
+          search: false,
+          product: false,
+          page: false,
+          favorites: true,
+          hideOnScroll: false,
+        },
+        showScannerIcon: false,
       },
       product: {
         grid: {
@@ -178,6 +179,7 @@ describe('settings / reducers / appSettings', () => {
 
     expect(state.isHydrated).toBe(true);
     expect(state.navigation).toEqual(settings.navigation);
+    expect(state.search).toEqual(settings.search);
     expect(state.product).toEqual(settings.product);
     expect(state.cart).toEqual(settings.cart);
     expect(state.cards).toEqual(settings.cards);
@@ -631,20 +633,21 @@ describe('settings / reducers / appSettings', () => {
           },
           modern: null,
         },
-        search: {
-          persistentBar: {
-            home: true,
-            hideOnScroll: null,
-          },
-        },
         tabBar: {
           variant: null,
           fixed: null,
         },
       },
+      search: {
+        persistentBar: {
+          home: true,
+          hideOnScroll: null,
+        },
+      },
     } as unknown as AppSettings));
 
-    const { appBar, search, tabBar } = state.navigation;
+    const { appBar, tabBar } = state.navigation;
+    const { search } = state;
     expect(appBar.style).toBe('classic');
     expect(appBar.showLogo).toBe(true);
     expect(appBar.logoPosition).toBe('right');
@@ -679,16 +682,18 @@ describe('settings / reducers / appSettings', () => {
           },
           modern: { scrollBehavior: 'foo' },
         },
-        search: {
-          persistentBar: {
-            home: 'false',
-            hideOnScroll: 'false',
-          },
+      },
+      search: {
+        persistentBar: {
+          home: 'false',
+          hideOnScroll: 'false',
         },
+        showScannerIcon: 'no',
       },
     } as unknown as AppSettings));
 
-    const { appBar, search } = state.navigation;
+    const { appBar } = state.navigation;
+    const { search } = state;
     expect(appBar.style).toBe('classic');
     expect(appBar.showLogo).toBe(true);
     expect(appBar.logoPosition).toBe('center');
@@ -701,7 +706,7 @@ describe('settings / reducers / appSettings', () => {
       },
     });
     expect(appBar.modern.scrollBehavior).toBe('revealBar');
-    expect(search.persistentBar).toEqual(DEFAULT_APP_SETTINGS.navigation.search.persistentBar);
+    expect(search).toEqual(DEFAULT_APP_SETTINGS.search);
   });
 
   it.each([['a string', 'modern'], ['an array', []]])(

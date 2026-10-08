@@ -1,5 +1,6 @@
 import { useCallback, useRef } from 'react';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { useSelector } from 'react-redux';
+import { getShowSearchScannerIcon } from '@shopgate/engage/settings/selectors/appSettings';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { UIEvents } from '@shopgate/engage/core/events';
 import {
@@ -9,10 +10,6 @@ import { SCANNER_ICON } from '@shopgate/engage/scanner/constants';
 import { NavigationAction, OPEN_SEARCH } from '@shopgate/engage/navigation';
 import type { NavigationActionSettings } from '@shopgate/engage/navigation';
 import { useFieldStyles } from '../styles';
-
-const { scanner: { showSearchFieldIcon = false } = {} } = (appConfig || {}) as {
-  scanner?: { showSearchFieldIcon?: boolean };
-};
 
 const SCANNER_ACTION: NavigationActionSettings = {
   action: 'scanner',
@@ -35,6 +32,7 @@ interface Props {
  */
 const SearchTrigger = ({ query = '', className }: Props) => {
   const { classes, cx } = useFieldStyles();
+  const showScannerIcon = useSelector(getShowSearchScannerIcon);
   const fieldRef = useRef<HTMLDivElement>(null);
   const label = i18n.text('search.label');
 
@@ -79,7 +77,7 @@ const SearchTrigger = ({ query = '', className }: Props) => {
           <CrossIcon />
         </button>
       )}
-      {showSearchFieldIcon && !query && (
+      {showScannerIcon && !query && (
         <NavigationAction settings={SCANNER_ACTION}>
           {scanner => (
             <SurroundPortals portalName={SCANNER_ICON}>

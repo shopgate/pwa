@@ -113,17 +113,6 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
         scrollBehavior: 'revealBar',
       },
     },
-    search: {
-      persistentBar: {
-        home: false,
-        category: false,
-        search: true,
-        product: false,
-        page: false,
-        favorites: false,
-        hideOnScroll: true,
-      },
-    },
     tabBar: {
       variant: 'fixed',
       showLabels: true,
@@ -183,6 +172,18 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       quantityPicker: false,
     },
   },
+  search: {
+    persistentBar: {
+      home: false,
+      category: false,
+      search: true,
+      product: false,
+      page: false,
+      favorites: false,
+      hideOnScroll: true,
+    },
+    showScannerIcon: true,
+  },
   cart: {
     paymentBar: {
       variant: 'fixed',
@@ -235,7 +236,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product, cart, navigation,
+      images, typography, appearance, widgets, product, cart, navigation, search,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -279,12 +280,6 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
             APP_BAR_MODERN_OPTIONS
           ),
         },
-        search: !isPlainObject(navigation?.search) ? undefined : {
-          persistentBar: pickValidSettings(
-            navigation?.search?.persistentBar,
-            DEFAULT_APP_SETTINGS.navigation.search.persistentBar
-          ),
-        },
         tabBar: navigation?.tabBar ? {
           ...omitBy(navigation.tabBar, isNil),
           fixed: navigation.tabBar.fixed ? omitBy(navigation.tabBar.fixed, isNil) : undefined,
@@ -309,6 +304,15 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           product?.addToCartBar,
           DEFAULT_APP_SETTINGS.product.addToCartBar,
           ADD_TO_CART_BAR_OPTIONS
+        ),
+      },
+      search: !isPlainObject(search) ? undefined : {
+        ...pickValidSettings(search, {
+          showScannerIcon: DEFAULT_APP_SETTINGS.search.showScannerIcon,
+        }),
+        persistentBar: pickValidSettings(
+          search?.persistentBar,
+          DEFAULT_APP_SETTINGS.search.persistentBar
         ),
       },
       cart: !isPlainObject(cart) ? undefined : {
