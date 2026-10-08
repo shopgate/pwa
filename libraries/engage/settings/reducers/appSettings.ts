@@ -180,7 +180,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       product: false,
       page: false,
       favorites: false,
-      hideOnScroll: true,
+      hideOnScroll: false,
     },
     showScannerIcon: true,
   },
