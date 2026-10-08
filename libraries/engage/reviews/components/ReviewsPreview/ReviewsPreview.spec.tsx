@@ -11,6 +11,7 @@ import { REVIEW_PREVIEW_COUNT } from '@shopgate/pwa-common-commerce/reviews/cons
 import type { Review } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import type { ReviewSummary } from '@shopgate/pwa-common-commerce/reviews/types/reviewSummary';
 import ReviewsPreview from './ReviewsPreview';
+import type { ReviewsPreviewProps } from './ReviewsPreview';
 
 type MockPreviewState = {
   baseProductId: string;
@@ -126,12 +127,12 @@ Object.defineProperty(config, 'showWriteReview', {
  * Renders the preview with a store that records dispatched actions.
  * @returns The render result and the dispatched actions.
  */
-const renderPreview = () => {
+const renderPreview = (props: Partial<ReviewsPreviewProps> = {}) => {
   const store = createStore(() => ({}));
   const dispatchSpy = jest.spyOn(store, 'dispatch');
   const result = render(
     <Provider store={store}>
-      <ReviewsPreview productId="variant" />
+      <ReviewsPreview productId="variant" {...props} />
     </Provider>
   );
 
@@ -382,5 +383,70 @@ describe('<ReviewsPreview />', () => {
 
     const list = sectionChildren[1];
     expect(isValidElement(list) && (list.props as { reviews: Review[] }).reviews).toBe(reviews);
+  });
+
+  describe('without the portal', () => {
+    /**
+     * Collects the names of the portals rendered so far.
+     * @returns The portal names.
+     */
+    const getPortalNames = () => jest.mocked(SurroundPortals).mock.calls
+      .map(([props]) => props.portalName);
+
+    it('should render the review section outside of the review portal', () => {
+      const { container } = renderPreview({ disablePortal: true });
+
+      const section = container.querySelector('[data-test-id="reviewSection"]');
+      expect(section).toBeInTheDocument();
+      expect(section?.querySelector('#reviewsExcerpt')).toBeInTheDocument();
+      expect(screen.getByTestId('all-reviews-link')).toHaveAttribute('data-product-id', 'base');
+      expect(screen.getByTestId('write-review-link')).toHaveAttribute('data-product-id', 'base');
+      expect(getPortalNames()).not.toContain(PRODUCT_REVIEWS);
+    });
+
+    it('should render nothing when reviews are disabled', () => {
+      hasReviewsGetter.mockReturnValue(false);
+
+      const { container } = renderPreview({ disablePortal: true });
+
+      expect(container).toBeEmptyDOMElement();
+    });
+
+    it('should render nothing when the base product is not active', () => {
+      mockPreview.active = false;
+
+      const { container } = renderPreview({ disablePortal: true });
+
+      expect(container).toBeEmptyDOMElement();
+    });
+
+    it('should request the preview when it was not requested yet', () => {
+      mockPreview.missing = true;
+
+      const { getActions } = renderPreview({ disablePortal: true });
+
+      expect(getActions()).toEqual([{
+        type: 'FETCH_PRODUCT_REVIEWS',
+        productId: 'base',
+        limit: REVIEW_PREVIEW_COUNT,
+      }]);
+    });
+
+    it('should mark the section when the gutters are disabled', () => {
+      const { container } = renderPreview({
+        disablePortal: true,
+        disableGutters: true,
+      });
+
+      expect(container.querySelector('[data-test-id="reviewSection"]'))
+        .toHaveAttribute('data-disable-gutters', 'true');
+    });
+  });
+
+  it('should keep the gutters by default', () => {
+    const { container } = renderPreview();
+
+    expect(container.querySelector('[data-test-id="reviewSection"]'))
+      .not.toHaveAttribute('data-disable-gutters');
   });
 });

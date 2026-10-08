@@ -38,6 +38,8 @@ const EMPTY_REVIEWS: Review[] = [];
 const useStyles = makeStyles()(theme => ({
   container: {
     marginBottom: theme.spacing(1),
+  },
+  gutters: {
     padding: theme.spacing(0, 2),
   },
   writeReview: {
@@ -51,13 +53,24 @@ const useStyles = makeStyles()(theme => ({
 export interface ReviewsPreviewProps {
   /** The id of the product whose reviews are previewed; variants resolve to their base product. */
   productId: string;
+  /**
+   * Renders the section without the review portal.
+   * It carries the id "reviewsExcerpt", so render only one per page.
+   */
+  disablePortal?: boolean;
+  /** Removes the horizontal inset of the section, for placements that bring their own. */
+  disableGutters?: boolean;
 }
 
 /**
  * Displays the review summary and the review preview of a product on the product page.
  * @returns The rendered component.
  */
-const ReviewsPreview = ({ productId }: ReviewsPreviewProps) => {
+const ReviewsPreview = ({
+  productId,
+  disablePortal = false,
+  disableGutters = false,
+}: ReviewsPreviewProps) => {
   const { classes, cx } = useStyles();
   const dispatch = useDispatch() as unknown as (action: unknown) => void;
   const isBaseProductActive = useMemo(() => makeIsBaseProductActive(), []);
@@ -113,43 +126,56 @@ const ReviewsPreview = ({ productId }: ReviewsPreviewProps) => {
     }));
   }, [baseProductId, dispatch]);
 
+  const section = isVisible && (
+    <div
+      className={cx(
+        classes.container,
+        { [classes.gutters]: !disableGutters },
+        'engage__reviews__reviews',
+        'engage__reviews__reviews-preview'
+      )}
+      data-test-id="reviewSection"
+      data-disable-gutters={disableGutters || undefined}
+    >
+      <div id="reviewsExcerpt" className="engage__reviews__reviews-excerpt">
+        <ReviewsSummary
+          summary={summary}
+          isLoading={expectsSummary && isLoading}
+          onRateSelect={hasRateFilter ? handleRateSelect : undefined}
+        />
+      </div>
+      <ReviewList
+        reviews={reviews}
+        isLoading={isLoading}
+        hasError={hasError}
+        onRetry={handleRetry}
+      />
+      <div className="engage__reviews__reviews-preview__actions">
+        <AllReviewsLink productId={baseProductId} fullWidth />
+        {showWriteReview && (
+          <div className={cx(classes.writeReview, 'engage__reviews__reviews-preview__write-review')}>
+            <WriteReviewLink productId={baseProductId} fullWidth />
+          </div>
+        )}
+      </div>
+      <div
+        className={cx(
+          { [classes.info]: !disableGutters },
+          'engage__reviews__reviews-preview__info'
+        )}
+      >
+        <ReviewsInfo />
+      </div>
+    </div>
+  );
+
+  if (disablePortal) {
+    return section || null;
+  }
+
   return (
     <SurroundPortals portalName={PRODUCT_REVIEWS} portalProps={{ productId }}>
-      {isVisible && (
-        <div
-          className={cx(
-            classes.container,
-            'engage__reviews__reviews',
-            'engage__reviews__reviews-preview'
-          )}
-          data-test-id="reviewSection"
-        >
-          <div id="reviewsExcerpt" className="engage__reviews__reviews-excerpt">
-            <ReviewsSummary
-              summary={summary}
-              isLoading={expectsSummary && isLoading}
-              onRateSelect={hasRateFilter ? handleRateSelect : undefined}
-            />
-          </div>
-          <ReviewList
-            reviews={reviews}
-            isLoading={isLoading}
-            hasError={hasError}
-            onRetry={handleRetry}
-          />
-          <div className="engage__reviews__reviews-preview__actions">
-            <AllReviewsLink productId={baseProductId} fullWidth />
-            {showWriteReview && (
-              <div className={cx(classes.writeReview, 'engage__reviews__reviews-preview__write-review')}>
-                <WriteReviewLink productId={baseProductId} fullWidth />
-              </div>
-            )}
-          </div>
-          <div className={cx(classes.info, 'engage__reviews__reviews-preview__info')}>
-            <ReviewsInfo />
-          </div>
-        </div>
-      )}
+      {section}
     </SurroundPortals>
   );
 };
