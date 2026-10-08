@@ -194,27 +194,6 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
         },
       },
     },
-    statusFill: {
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      height: theme.layout.safeArea.top,
-      background: appBar.background,
-      opacity: 0,
-      ...revealedGlass,
-      transition: theme.transitions.create('opacity', { duration: 200 }),
-      pointerEvents: 'none',
-      '@media (prefers-reduced-motion: reduce)': {
-        transition: 'none',
-      },
-      [SUPPORTS_COLOR_MIX]: {
-        background: translucent(appBar.background, appBar.revealedBarBackgroundOpacity),
-      },
-    },
-    statusFilled: {
-      opacity: 1,
-    },
     hidden: {
       transform: `translateY(calc(-100% - var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px)))`,
     },
@@ -329,7 +308,6 @@ const ConfiguredBar = ({
   const hidden = overlay && scrollBehavior === 'scrollAway' && scrollingDown;
   const revealed = overlay && revealsBar && moved;
   const logoHidden = overlay && scrollBehavior === 'floatingButtons' && moved;
-  const statusFilled = overlay && scrollBehavior === 'floatingButtons' && moved;
 
   const portalProps = useMemo(() => ({
     modern,
@@ -368,67 +346,54 @@ const ConfiguredBar = ({
   }
 
   return (
-    <>
-      {overlay && (
-        <div
-          className={cx(
-            classes.statusFill,
-            statusFilled && classes.statusFilled,
-            'theme__app-bar__status-fill'
-          )}
-          data-filled={statusFilled ? true : undefined}
-          aria-hidden
-        />
-      )}
-      <AppBar
-        {...props}
-        aria-hidden={hidden ? true : props['aria-hidden']}
-        inert={hidden}
-        data-style={modern ? 'modern' : 'classic'}
-        data-logo-position={logo ? logoPosition : undefined}
-        data-overlay={overlay ? true : undefined}
-        data-revealed={revealed ? true : undefined}
-        data-hidden={hidden ? true : undefined}
-        data-logo-hidden={logoHidden ? true : undefined}
-        classes={{
-          outer: cx(
-            overlay && classes.overlay,
-            overlay && moved && classes.moved,
-            revealed && classes.revealed,
-            logoHidden && classes.logoHidden,
-            hidden && classes.hidden,
-            parentClasses.outer
-          ),
-          inner: cx(
-            classes.inner,
-            modern && classes.modernInner,
-            logo && logoPosition === 'center' && classes.innerLogoCenter,
-            logo && logoPosition === 'left' && classes.innerLogoLeft,
-            logo && logoPosition === 'right' && classes.innerLogoRight,
-            parentClasses.inner
-          ),
-        }}
-        left={left}
-        leftEnd={(
-          <>
-            <SurroundPortals portalName={APP_BAR_ACTIONS_LEFT} portalProps={portalProps}>
-              {leftSlots}
-            </SurroundPortals>
-            {logoPosition === 'left' && logoElement}
-          </>
+    <AppBar
+      {...props}
+      aria-hidden={hidden ? true : props['aria-hidden']}
+      inert={hidden}
+      data-style={modern ? 'modern' : 'classic'}
+      data-logo-position={logo ? logoPosition : undefined}
+      data-overlay={overlay ? true : undefined}
+      data-revealed={revealed ? true : undefined}
+      data-hidden={hidden ? true : undefined}
+      data-logo-hidden={logoHidden ? true : undefined}
+      classes={{
+        outer: cx(
+          overlay && classes.overlay,
+          overlay && moved && classes.moved,
+          revealed && classes.revealed,
+          logoHidden && classes.logoHidden,
+          hidden && classes.hidden,
+          parentClasses.outer
+        ),
+        inner: cx(
+          classes.inner,
+          modern && classes.modernInner,
+          logo && logoPosition === 'center' && classes.innerLogoCenter,
+          logo && logoPosition === 'left' && classes.innerLogoLeft,
+          logo && logoPosition === 'right' && classes.innerLogoRight,
+          parentClasses.inner
+        ),
+      }}
+      left={left}
+      leftEnd={(
+        <>
+          <SurroundPortals portalName={APP_BAR_ACTIONS_LEFT} portalProps={portalProps}>
+            {leftSlots}
+          </SurroundPortals>
+          {logoPosition === 'left' && logoElement}
+        </>
         )}
-        center={centerElement}
-        rightStart={(
-          <>
-            {logoPosition === 'right' && logoElement}
-            <SurroundPortals portalName={APP_BAR_ACTIONS_RIGHT} portalProps={portalProps}>
-              {rightSlots}
-            </SurroundPortals>
-          </>
+      center={centerElement}
+      rightStart={(
+        <>
+          {logoPosition === 'right' && logoElement}
+          <SurroundPortals portalName={APP_BAR_ACTIONS_RIGHT} portalProps={portalProps}>
+            {rightSlots}
+          </SurroundPortals>
+        </>
         )}
-        right={right}
-      />
-    </>
+      right={right}
+    />
   );
 };
 

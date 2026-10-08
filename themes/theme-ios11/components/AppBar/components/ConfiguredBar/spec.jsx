@@ -173,7 +173,7 @@ describe('<ConfiguredBar />', () => {
     expect(document.getElementById('AppHeader')).not.toHaveAttribute('data-overlay');
   });
 
-  it('fills the status bar area while the buttons float over scrolled content', () => {
+  it('hides the logo while the buttons float over scrolled content', () => {
     mockScroll = {
       moved: true,
       scrolled: true,
@@ -185,7 +185,6 @@ describe('<ConfiguredBar />', () => {
       settings: { modern: { scrollBehavior: 'floatingButtons' } },
     });
 
-    expect(document.querySelector('.theme__app-bar__status-fill')).toHaveAttribute('data-filled');
     expect(screen.getByTestId('bar')).toHaveAttribute('data-logo-hidden');
     expect(screen.getByTestId('bar')).not.toHaveAttribute('data-revealed');
   });
@@ -225,10 +224,9 @@ describe('<ConfiguredBar />', () => {
     expect(screen.getByTestId('bar')).toHaveAttribute('data-revealed');
     expect(screen.getByTestId('bar')).not.toHaveAttribute('data-hidden');
     expect(screen.getByTestId('bar')).not.toHaveAttribute('data-inert');
-    expect(document.querySelector('.theme__app-bar__status-fill')).not.toHaveAttribute('data-filled');
   });
 
-  it('slides the bar out of reach and lets content show below the status bar with scrollAway', () => {
+  it('slides the bar out of reach while scrolling down with scrollAway', () => {
     mockScroll = {
       moved: true,
       scrolled: true,
@@ -243,6 +241,5 @@ describe('<ConfiguredBar />', () => {
     expect(screen.getByTestId('bar')).toHaveAttribute('data-hidden');
     expect(screen.getByTestId('bar')).toHaveAttribute('data-inert');
     expect(screen.getByTestId('bar')).toHaveAttribute('aria-hidden', 'true');
-    expect(document.querySelector('.theme__app-bar__status-fill')).not.toHaveAttribute('data-filled');
   });
 });
