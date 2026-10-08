@@ -1,7 +1,10 @@
+const NAVIGATION_KEYS = ['Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'];
 let keyboardUsed = false;
 
+// Typing into a field is no keyboard navigation: on a phone the on-screen keyboard sends key
+// events too.
 document.addEventListener('keydown', (event) => {
-  if (!event.metaKey && !event.ctrlKey && !event.altKey) {
+  if (NAVIGATION_KEYS.includes(event.key)) {
     keyboardUsed = true;
   }
 }, true);
