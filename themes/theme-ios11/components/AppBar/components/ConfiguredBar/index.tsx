@@ -183,7 +183,7 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
         },
       },
     },
-    moved: {
+    searchBarRevealed: {
       '& .theme__search-bar': {
         background: appBar.background,
         ...revealedGlass,
@@ -304,9 +304,8 @@ const ConfiguredBar = ({
     side: Math.max(leftCount, rightCount) * APP_BAR_BUTTON_SIZE,
   });
 
-  const revealsBar = scrollBehavior === 'revealBar' || scrollBehavior === 'scrollAway';
   const hidden = overlay && scrollBehavior === 'scrollAway' && scrollingDown;
-  const revealed = overlay && revealsBar && moved;
+  const revealed = overlay && scrollBehavior === 'revealBar' && moved;
   const logoHidden = overlay && scrollBehavior === 'floatingButtons' && moved;
 
   const portalProps = useMemo(() => ({
@@ -359,7 +358,7 @@ const ConfiguredBar = ({
       classes={{
         outer: cx(
           overlay && classes.overlay,
-          overlay && moved && classes.moved,
+          revealed && classes.searchBarRevealed,
           revealed && classes.revealed,
           logoHidden && classes.logoHidden,
           hidden && classes.hidden,

@@ -209,7 +209,7 @@ describe('<ConfiguredBar />', () => {
     expect(screen.getAllByTestId('bar')[1]).toHaveAttribute('data-revealed');
   });
 
-  it('shows the bar again when scrolling up with scrollAway', () => {
+  it('returns as floating header when scrolling up with scrollAway', () => {
     mockScroll = {
       moved: true,
       scrolled: true,
@@ -221,7 +221,7 @@ describe('<ConfiguredBar />', () => {
       settings: { modern: { scrollBehavior: 'scrollAway' } },
     });
 
-    expect(screen.getByTestId('bar')).toHaveAttribute('data-revealed');
+    expect(screen.getByTestId('bar')).not.toHaveAttribute('data-revealed');
     expect(screen.getByTestId('bar')).not.toHaveAttribute('data-hidden');
     expect(screen.getByTestId('bar')).not.toHaveAttribute('data-inert');
   });
