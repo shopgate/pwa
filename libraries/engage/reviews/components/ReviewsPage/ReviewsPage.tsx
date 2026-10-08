@@ -179,12 +179,20 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
     }
   }, [filters, requestReviews, sort]);
 
+  const hasRateFilter = filterOptions.some(option => option.type === 'rate');
   const canLoadMore = !hasError && hasMore && !isQueryChanged;
 
   return (
     <SurroundPortals portalName={PRODUCT_REVIEWS_ALL} portalProps={{ productId }}>
       <div className={cx(classes.summary, 'engage__reviews__reviews-excerpt')}>
-        <ReviewsSummary summary={summary} isLoading={expectsSummary && isLoading} />
+        <ReviewsSummary
+          summary={summary}
+          isLoading={expectsSummary && isLoading}
+          selectedRate={filters.filterRate}
+          onRateSelect={hasRateFilter && !isMissing
+            ? (rate?: number) => handleFilterChange('filterRate', rate)
+            : undefined}
+        />
         {!isMissing && (
           <ReviewsToolbar
             sort={sort}

@@ -2,6 +2,8 @@ import { useRef } from 'react';
 import {
   I18n, PlaceholderLabel, RatingStars, Typography,
 } from '@shopgate/engage/components';
+import { ButtonBase } from '@shopgate/engage/components/v2';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { RATING_SCALE_DIVISOR } from '@shopgate/pwa-ui-shared/RatingStars/constants';
 import type { ReviewSummary } from '@shopgate/pwa-common-commerce/reviews/types/reviewSummary';
@@ -40,6 +42,17 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     minHeight: 28,
   },
+  button: {
+    width: '100%',
+    textAlign: 'left',
+    '&:focus-visible': {
+      outline: `2px solid ${theme.palette.primary.main}`,
+    },
+  },
+  selected: {
+    color: theme.palette.text.primary,
+    fontWeight: theme.typography.fontWeightBold,
+  },
   label: {
     flex: '0 0 6em',
     whiteSpace: 'nowrap',
@@ -70,6 +83,10 @@ export interface ReviewsSummaryProps {
   summary: ReviewSummary | null;
   /** Whether a summary is still expected; shows a placeholder until the first response. */
   isLoading?: boolean;
+  /** The number of stars the review list is filtered by. */
+  selectedRate?: number;
+  /** Makes the rows buttons; called with the stars of a row, or nothing for the selected row. */
+  onRateSelect?: (rate?: number) => void;
   /** Additional CSS classes. */
   className?: string;
 }
@@ -79,7 +96,13 @@ export interface ReviewsSummaryProps {
  * per number of stars when the summary has a distribution.
  * @returns The rendered component.
  */
-const ReviewsSummary = ({ summary, isLoading = false, className }: ReviewsSummaryProps) => {
+const ReviewsSummary = ({
+  summary,
+  isLoading = false,
+  selectedRate,
+  onRateSelect,
+  className,
+}: ReviewsSummaryProps) => {
   const { classes, cx } = useStyles();
   const wasLoaded = useRef(false);
 
@@ -124,31 +147,59 @@ const ReviewsSummary = ({ summary, isLoading = false, className }: ReviewsSummar
       </div>
       {distribution && (
         <ul className={cx(classes.distribution, 'engage__reviews__reviews-summary__distribution')}>
-          {STARS.map(stars => (
-            <li
-              key={stars}
-              className={cx(classes.row, 'engage__reviews__reviews-summary__distribution-row')}
-              data-stars={stars}
-            >
-              <Typography variant="caption" component="span" className={classes.label}>
-                <I18n.Text string={`reviews.filter_rate_${stars}`} />
-              </Typography>
-              <span className={classes.bar} aria-hidden="true">
-                <span
-                  className={cx(classes.fill, 'engage__reviews__reviews-summary__distribution-fill')}
-                  style={{ width: `${total > 0 ? (distribution[stars] / total) * 100 : 0}%` }}
-                />
-              </span>
-              <Typography
-                variant="caption"
-                component="span"
-                color="textSecondary"
-                className={classes.count}
+          {STARS.map((stars) => {
+            const isSelected = !!onRateSelect && selectedRate === Number(stars);
+            const row = (
+              <>
+                <Typography
+                  variant="caption"
+                  component="span"
+                  className={cx(classes.label, { [classes.selected]: isSelected })}
+                >
+                  <I18n.Text string={`reviews.filter_rate_${stars}`} />
+                </Typography>
+                <span className={classes.bar} aria-hidden="true">
+                  <span
+                    className={cx(classes.fill, 'engage__reviews__reviews-summary__distribution-fill')}
+                    style={{ width: `${total > 0 ? (distribution[stars] / total) * 100 : 0}%` }}
+                  />
+                </span>
+                <Typography
+                  variant="caption"
+                  component="span"
+                  color="textSecondary"
+                  className={cx(classes.count, { [classes.selected]: isSelected })}
+                >
+                  {distribution[stars]}
+                </Typography>
+              </>
+            );
+
+            return (
+              <li
+                key={stars}
+                className={cx({
+                  [classes.row]: !onRateSelect,
+                }, 'engage__reviews__reviews-summary__distribution-row')}
+                data-stars={stars}
               >
-                {distribution[stars]}
-              </Typography>
-            </li>
-          ))}
+                {onRateSelect ? (
+                  <ButtonBase
+                    className={cx(
+                      classes.row,
+                      classes.button,
+                      'engage__reviews__reviews-summary__distribution-button'
+                    )}
+                    aria-label={`${i18n.text(`reviews.filter_rate_${stars}`)}, ${i18n.text('reviews.summary_count', { count: distribution[stars] })}`}
+                    aria-pressed={isSelected}
+                    onClick={() => onRateSelect(isSelected ? undefined : Number(stars))}
+                  >
+                    {row}
+                  </ButtonBase>
+                ) : row}
+              </li>
+            );
+          })}
         </ul>
       )}
     </div>

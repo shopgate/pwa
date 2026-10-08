@@ -662,6 +662,120 @@ describe('<ReviewsPage />', () => {
       }]);
     });
 
+    describe('distribution rows', () => {
+      beforeEach(() => {
+        mockPage.summary = {
+          average: 69,
+          count: 35,
+          distribution: {
+            5: 10,
+            4: 10,
+            3: 5,
+            2: 5,
+            1: 5,
+          },
+        };
+        mockPage.filterOptions = [{
+          param: 'filterRate',
+          type: 'rate',
+          label: 'reviews.filter_rate_all',
+        }];
+      });
+
+      /**
+       * @param container The rendered container.
+       * @returns The buttons of the distribution rows, from 5 stars to 1 star.
+       */
+      const getRowButtons = (container: HTMLElement) => Array.from(
+        container.querySelectorAll<HTMLElement>(
+          '.engage__reviews__reviews-summary__distribution-button'
+        )
+      );
+
+      it('should set the star filter next to the active filters', () => {
+        mockPage.filters = { filterMedia: true };
+
+        const { container, getActions } = renderPage();
+
+        fireEvent.click(getRowButtons(container)[1]);
+
+        expect(getActions()).toEqual([{
+          type: 'FETCH_REVIEWS',
+          productId: 'base',
+          limit: REVIEW_ITEMS_PER_PAGE,
+          offset: 0,
+          sort: 'dateDesc',
+          filters: {
+            filterMedia: true,
+            filterRate: 4,
+          },
+        }]);
+      });
+
+      it('should mark the row of the active star filter and remove the filter with it', () => {
+        mockPage.filters = {
+          filterMedia: true,
+          filterRate: 4,
+        };
+
+        const { container, getActions } = renderPage();
+        const buttons = getRowButtons(container);
+
+        expect(buttons.map(button => button.getAttribute('aria-pressed'))).toEqual([
+          'false', 'true', 'false', 'false', 'false',
+        ]);
+
+        fireEvent.click(buttons[1]);
+
+        expect(getActions()).toEqual([{
+          type: 'FETCH_REVIEWS',
+          productId: 'base',
+          limit: REVIEW_ITEMS_PER_PAGE,
+          offset: 0,
+          sort: 'dateDesc',
+          filters: { filterMedia: true },
+        }]);
+      });
+
+      it('should replace the active star filter with another row', () => {
+        mockPage.filters = { filterRate: 4 };
+
+        const { container, getActions } = renderPage();
+
+        fireEvent.click(getRowButtons(container)[3]);
+
+        expect(getActions()).toEqual([{
+          type: 'FETCH_REVIEWS',
+          productId: 'base',
+          limit: REVIEW_ITEMS_PER_PAGE,
+          offset: 0,
+          sort: 'dateDesc',
+          filters: { filterRate: 2 },
+        }]);
+      });
+
+      it('should not render buttons before the list was requested', () => {
+        mockPage.missing = true;
+        mockPage.loading = true;
+
+        const { container } = renderPage();
+
+        expect(getRowButtons(container)).toHaveLength(0);
+        expect(container.querySelectorAll('.engage__reviews__reviews-summary__distribution-row'))
+          .toHaveLength(5);
+      });
+
+      it('should not render buttons when the provider has no star filter', () => {
+        mockPage.filterOptions = [];
+
+        const { container } = renderPage();
+
+        expect(getRowButtons(container)).toHaveLength(0);
+        expect(container.querySelectorAll('.engage__reviews__reviews-summary__distribution-row'))
+          .toHaveLength(5);
+      });
+    });
+
     it('should not request the list again when a filter keeps its value', () => {
       mockPage.filters = { filterRate: 5 };
 

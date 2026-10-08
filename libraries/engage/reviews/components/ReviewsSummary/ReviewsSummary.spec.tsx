@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import ReviewsSummary from './ReviewsSummary';
 
@@ -203,6 +203,75 @@ describe('<ReviewsSummary />', () => {
       />);
 
       expect(getRows(container).map(row => row.width)).toEqual(['0%', '0%', '0%', '0%', '0%']);
+    });
+  });
+
+  describe('rate selection', () => {
+    const summary = {
+      average: 69,
+      count: 35,
+      distribution: {
+        5: 10,
+        4: 9,
+        3: 7,
+        2: 5,
+        1: 4,
+      },
+    };
+
+    it('should not render buttons without a select handler', () => {
+      render(<ReviewsSummary summary={summary} selectedRate={4} />);
+
+      expect(screen.queryByRole('button')).not.toBeInTheDocument();
+    });
+
+    it('should render a named button per row and mark the selected one', () => {
+      const textSpy = jest.spyOn(i18nHelpers, 'text');
+      const { container } = render(
+        <ReviewsSummary summary={summary} selectedRate={4} onRateSelect={jest.fn()} />
+      );
+
+      const buttons = screen.getAllByRole('button');
+
+      expect(textSpy.mock.calls.filter(call => (
+        call[0] === 'reviews.summary_count' && call.length === 2
+      )).map(call => call[1])).toEqual([
+        { count: 10 }, { count: 9 }, { count: 7 }, { count: 5 }, { count: 4 },
+      ]);
+      expect(Array.from(
+        container.querySelectorAll<HTMLElement>(
+          '.engage__reviews__reviews-summary__distribution-row'
+        )
+      ).map(row => row.dataset.stars)).toEqual(['5', '4', '3', '2', '1']);
+
+      expect(buttons.map(button => button.getAttribute('aria-label'))).toEqual([
+        'reviews.filter_rate_5, reviews.summary_count',
+        'reviews.filter_rate_4, reviews.summary_count',
+        'reviews.filter_rate_3, reviews.summary_count',
+        'reviews.filter_rate_2, reviews.summary_count',
+        'reviews.filter_rate_1, reviews.summary_count',
+      ]);
+      expect(buttons.map(button => button.getAttribute('aria-pressed'))).toEqual([
+        'false', 'true', 'false', 'false', 'false',
+      ]);
+    });
+
+    it('should select the stars of a row', () => {
+      const onRateSelect = jest.fn();
+      render(<ReviewsSummary summary={summary} selectedRate={4} onRateSelect={onRateSelect} />);
+
+      fireEvent.click(screen.getAllByRole('button')[4]);
+
+      expect(onRateSelect).toHaveBeenCalledWith(1);
+    });
+
+    it('should clear the selection with the selected row', () => {
+      const onRateSelect = jest.fn();
+      render(<ReviewsSummary summary={summary} selectedRate={4} onRateSelect={onRateSelect} />);
+
+      fireEvent.click(screen.getAllByRole('button')[1]);
+
+      expect(onRateSelect).toHaveBeenCalledWith(undefined);
     });
   });
 
