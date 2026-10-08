@@ -84,9 +84,12 @@ const AppBar = ({
     ...(textColor ? { '--sg-components-appBar-color': textColor } : {}),
   }), [backgroundColor, textColor]);
 
-  const observer = useMemo(() => new MutationObserver(() => {
-    updateAppBarHeight(contentRef);
-  }), [contentRef]);
+  const observer = useMemo(() => {
+    const Observer = typeof ResizeObserver === 'function' ? ResizeObserver : MutationObserver;
+    return new Observer(() => {
+      updateAppBarHeight(contentRef);
+    });
+  }, [contentRef]);
 
   useLayoutEffect(() => {
     updateAppBarHeight(contentRef);

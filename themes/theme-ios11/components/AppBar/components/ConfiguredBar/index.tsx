@@ -197,7 +197,6 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
       top: 0,
       left: 0,
       right: 0,
-      zIndex: 2,
       height: theme.layout.safeArea.top,
       background: appBar.background,
       opacity: 0,
@@ -213,6 +212,9 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
     },
     statusFilled: {
       opacity: 1,
+    },
+    statusFillAbove: {
+      zIndex: 2,
     },
     hidden: {
       transform: 'translateY(-100%)',
@@ -375,6 +377,7 @@ const ConfiguredBar = ({
           className={cx(
             classes.statusFill,
             statusFilled && classes.statusFilled,
+            hidden && classes.statusFillAbove,
             'theme__app-bar__status-fill'
           )}
           data-filled={statusFilled ? true : undefined}
