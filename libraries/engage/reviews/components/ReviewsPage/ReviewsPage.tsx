@@ -127,7 +127,7 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
   ));
   const sortOptions = useSelector(getReviewSortOptions, shallowEqual);
   const filterOptions = useSelector(getReviewFilterOptions, shallowEqual);
-  const expectsSummary = useSelector((state: PageState) => (
+  const expectsSummary = useSelector((state: ReviewsProductState) => (
     hasReviewFeature(state, REVIEW_FEATURE_RATING_SUMMARY)
   ));
 
