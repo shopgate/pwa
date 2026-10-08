@@ -1,4 +1,5 @@
-import { appWillStart$ } from '@shopgate/pwa-common/streams';
+import appConfig from '@shopgate/pwa-common/helpers/config';
+import { appWillStart$ } from '@shopgate/engage/core/streams';
 import fetchProductReviews from '../actions/fetchProductReviews';
 import fetchProductReviewSettings from '../actions/fetchProductReviewSettings';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
@@ -9,9 +10,10 @@ jest.mock('../actions/fetchProductReviews', () => jest.fn().mockReturnValue('fet
 jest.mock('../actions/fetchProductReviewSettings', () => jest.fn().mockReturnValue('fetchProductReviewSettings'));
 
 let mockedHasReviews = true;
-jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasReviews() { return mockedHasReviews; },
-}));
+Object.defineProperty(appConfig, 'hasReviews', {
+  get: () => mockedHasReviews,
+  configurable: true,
+});
 
 describe('Reviews subscriptions', () => {
   const subscribe = jest.fn();

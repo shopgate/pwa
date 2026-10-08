@@ -1,8 +1,8 @@
 import { createSelector } from 'reselect';
 import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
+import { getBaseProductId as getBaseProductIdSelector } from '@shopgate/engage/product/selectors/product';
 import * as pipelines from '../constants/Pipelines';
-import { getBaseProductId as getBaseProductIdSelector } from '../../product/selectors/product';
 import type { Review, ReviewId, ReviewsState } from '../types/reviews';
 
 export * from './reviewSettings';

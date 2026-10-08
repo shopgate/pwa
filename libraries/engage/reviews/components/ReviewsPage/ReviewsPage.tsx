@@ -4,8 +4,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getProductIsFetching } from '@shopgate/engage/product/selectors/product';
-import { getBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getBaseProductId, getProductIsFetching } from '@shopgate/engage/product/selectors/product';
 import {
   getProductReviews,
   getReviewListRequestOffset,

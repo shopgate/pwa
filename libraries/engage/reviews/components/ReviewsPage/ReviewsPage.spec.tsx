@@ -35,12 +35,9 @@ jest.mock('@shopgate/pwa-common/components/SurroundPortals', () => ({
   __esModule: true,
   default: jest.fn(({ children }: { children: ReactNode }) => children),
 }));
-jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
-  ...jest.requireActual('@shopgate/pwa-common-commerce/product/selectors/product'),
-  getBaseProductId: () => mockPage.baseProductId,
-}));
 jest.mock('@shopgate/engage/product/selectors/product', () => ({
   ...jest.requireActual('@shopgate/engage/product/selectors/product'),
+  getBaseProductId: () => mockPage.baseProductId,
   getProductIsFetching: (_state: unknown, props: SelectorProps) => (
     props.productId === 'route' && mockPage.productFetching
   ),

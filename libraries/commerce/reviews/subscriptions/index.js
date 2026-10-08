@@ -1,5 +1,5 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
-import { appWillStart$ } from '@shopgate/pwa-common/streams';
+import { appWillStart$ } from '@shopgate/engage/core/streams';
 import fetchProductReviews from '../actions/fetchProductReviews';
 import fetchProductReviewSettings from '../actions/fetchProductReviewSettings';
 import { REVIEW_PREVIEW_COUNT } from '../constants';

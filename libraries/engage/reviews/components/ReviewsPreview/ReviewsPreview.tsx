@@ -4,8 +4,7 @@ import appConfig from '@shopgate/pwa-common/helpers/config';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PRODUCT_REVIEWS } from '@shopgate/engage/product/constants';
-import { makeIsBaseProductActive } from '@shopgate/engage/product/selectors/product';
-import { getBaseProductId } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getBaseProductId, makeIsBaseProductActive } from '@shopgate/engage/product/selectors/product';
 import {
   getProductReviewsExcerpt,
   getReviewSummary,
