@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -9,6 +9,7 @@ import {
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import { makeStyles } from '@shopgate/engage/styles';
 import useStickyValue from '../../../hooks/useStickyValue';
+import { ProductContext } from '../../context';
 import Label from './components/Label';
 import connect from './connector';
 
@@ -31,7 +32,8 @@ const useStyles = makeStyles()(theme => ({
  */
 const Shipping = ({ shipping: currentShipping, isLoading }) => {
   const { classes, cx } = useStyles();
-  const shipping = useStickyValue(currentShipping, isLoading);
+  const { productId } = useContext(ProductContext) || {};
+  const shipping = useStickyValue(currentShipping, isLoading, productId);
 
   return (
     <>

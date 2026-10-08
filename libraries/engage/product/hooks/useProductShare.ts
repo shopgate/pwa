@@ -1,7 +1,7 @@
 import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import shareItem from '@shopgate/pwa-core/commands/shareItem';
-import { hasSGJavaScriptBridge, hasWebBridgeCore } from '@shopgate/pwa-core/helpers';
+import { shareItem } from '@shopgate/engage/core/commands';
+import { hasSGJavaScriptBridge, hasWebBridgeCore } from '@shopgate/engage/core/helpers';
 import { getProductActionButtons } from '@shopgate/engage/settings/selectors/appSettings';
 import { getProduct } from '../selectors/catalog';
 

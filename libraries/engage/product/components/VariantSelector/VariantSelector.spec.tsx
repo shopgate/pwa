@@ -26,7 +26,7 @@ jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
 jest.mock('@shopgate/engage/a11y/hooks', () => ({ useReduceMotion: () => true }));
 jest.mock('@shopgate/engage/core/helpers', () => ({ isBeta: () => false }));
 jest.mock('@shopgate/engage/components', () => ({
-  Portal: ({ children }: { children: ReactNode }) => children,
+  SurroundPortals: ({ children }: { children: ReactNode }) => children,
 }));
 jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
 jest.mock('../Characteristics/Characteristic', () => (props: VariantRendererProps) => mockRenderer(props));

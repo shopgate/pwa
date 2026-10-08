@@ -12,8 +12,8 @@ jest.mock('../../hooks/useProductShare', () => () => ({
   canShare: mockCanShare,
   share: mockShare,
 }));
-jest.mock('@shopgate/pwa-ui-ios/icons/ShareIcon', () => () => null);
-jest.mock('@shopgate/engage/core/helpers/i18n', () => ({ i18n: { text: (key: string) => key } }));
+jest.mock('@shopgate/engage/components', () => ({ ShareIconIOS: () => null }));
+jest.mock('@shopgate/engage/core/helpers', () => ({ i18n: { text: (key: string) => key } }));
 jest.mock('@shopgate/engage/components/v2', () => ({
   IconButton: ({ children, onClick, 'aria-label': label }: {
     children: ReactNode;

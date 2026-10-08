@@ -84,7 +84,10 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
                   </SurroundPortals>
                 </div>
               </SurroundPortals>
-              <CTAButtons productId={selectedVariantId || productId} />
+              <CTAButtons
+                productId={selectedVariantId || productId}
+                displayedProductId={variantId || productId}
+              />
             </div>
           </ProductListEntryProvider>
         </ProductListTypeProvider>

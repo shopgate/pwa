@@ -1,19 +1,13 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import FavoritesButton from '@shopgate/pwa-ui-shared/FavoritesButton';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { FavoritesButton, SurroundPortals } from '@shopgate/engage/components';
 import {
   PRODUCT_CTAS,
-  PRODUCT_CTAS_AFTER,
-  PRODUCT_CTAS_BEFORE,
   PRODUCT_CTAS_FAVORITES,
-  PRODUCT_CTAS_FAVORITES_BEFORE,
-  PRODUCT_CTAS_FAVORITES_AFTER,
-  PRODUCT_CTAS_SHARE_BEFORE,
   PRODUCT_CTAS_SHARE,
-  PRODUCT_CTAS_SHARE_AFTER,
-} from '@shopgate/pwa-common-commerce/product/constants/Portals';
+} from '@shopgate/engage/product/constants';
 import { ProductShareButton } from '@shopgate/engage/product/components/ProductShareButton';
+import { useStickyValue } from '@shopgate/engage/product/hooks';
 import { appConfig } from '@shopgate/engage';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -62,47 +56,38 @@ const CTAButtons = ({
 }) => {
   const { classes, cx } = useStyles();
   const { position, direction } = useSelector(getProductActionButtons);
-  const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && hasImageGallery;
+  const hasGallery = useStickyValue(hasImageGallery, hasImageGallery === null);
+  const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && !!hasGallery;
 
   const favoritesFirst = position === 'topRight' && direction === 'vertical';
   const favorites = (
-    <>
-      <Portal name={PRODUCT_CTAS_FAVORITES_BEFORE} />
-      <Portal name={PRODUCT_CTAS_FAVORITES}>
-        {isProductActive && (
-          <FavoritesButton
-            className={classes.favButton}
-            size="medium"
-            active={isFavorite}
-            productId={productId}
-          />
-        )}
-      </Portal>
-      <Portal name={PRODUCT_CTAS_FAVORITES_AFTER} />
-    </>
+    <SurroundPortals portalName={PRODUCT_CTAS_FAVORITES}>
+      {isProductActive && (
+        <FavoritesButton
+          className={classes.favButton}
+          size="medium"
+          active={isFavorite}
+          productId={productId}
+        />
+      )}
+    </SurroundPortals>
   );
 
   return (
-    <>
-      <Portal name={PRODUCT_CTAS_BEFORE} />
-      <Portal name={PRODUCT_CTAS}>
-        <div
-          className={cx(classes.buttons, 'theme__product__header__cta-buttons')}
-          data-position={position}
-          data-direction={direction}
-          data-bullets-below={bulletsBelow ? true : undefined}
-        >
-          {favoritesFirst && favorites}
-          <Portal name={PRODUCT_CTAS_SHARE_BEFORE} />
-          <Portal name={PRODUCT_CTAS_SHARE}>
-            {isProductActive && <ProductShareButton productId={productId} />}
-          </Portal>
-          <Portal name={PRODUCT_CTAS_SHARE_AFTER} />
-          {!favoritesFirst && favorites}
-        </div>
-      </Portal>
-      <Portal name={PRODUCT_CTAS_AFTER} />
-    </>
+    <SurroundPortals portalName={PRODUCT_CTAS}>
+      <div
+        className={cx(classes.buttons, 'theme__product__header__cta-buttons')}
+        data-position={position}
+        data-direction={direction}
+        data-bullets-below={bulletsBelow ? true : undefined}
+      >
+        {favoritesFirst && favorites}
+        <SurroundPortals portalName={PRODUCT_CTAS_SHARE}>
+          {isProductActive && <ProductShareButton productId={productId} />}
+        </SurroundPortals>
+        {!favoritesFirst && favorites}
+      </div>
+    </SurroundPortals>
   );
 };
 
@@ -116,7 +101,7 @@ CTAButtons.propTypes = {
 CTAButtons.defaultProps = {
   isProductActive: true,
   productId: null,
-  hasImageGallery: false,
+  hasImageGallery: null,
 };
 
 export default connect(memo(CTAButtons));

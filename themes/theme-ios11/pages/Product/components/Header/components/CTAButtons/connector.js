@@ -13,7 +13,9 @@ const makeMapStateToProps = () => {
   const isProductActive = makeIsProductActive(true);
 
   return (state, props) => {
-    const productImages = getProductImages(state, props);
+    const productImages = getProductImages(state, {
+      productId: props.displayedProductId || props.productId,
+    });
     const isActive = isProductActive(state, props) !== false;
     const loadWishlistOnAppStartEnabled = getLoadWishlistOnAppStartEnabled(state);
     const isOnWishlist = isCurrentProductOnFavoriteList(state, props);
@@ -21,7 +23,9 @@ const makeMapStateToProps = () => {
     return ({
       isFavorite: !loadWishlistOnAppStartEnabled ? false : isOnWishlist,
       isProductActive: isActive,
-      hasImageGallery: Array.isArray(productImages) && productImages.length > 1,
+      // Null while the images are loading, so the buttons keep their position like the slider
+      // keeps its images.
+      hasImageGallery: Array.isArray(productImages) ? productImages.length > 1 : null,
     });
   };
 };

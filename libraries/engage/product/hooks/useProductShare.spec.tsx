@@ -1,7 +1,7 @@
 import { fireEvent, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import shareItem from '@shopgate/pwa-core/commands/shareItem';
-import { hasSGJavaScriptBridge, hasWebBridgeCore } from '@shopgate/pwa-core/helpers';
+import { shareItem } from '@shopgate/engage/core/commands';
+import { hasSGJavaScriptBridge, hasWebBridgeCore } from '@shopgate/engage/core/helpers';
 import useProductShare, { getShareImageUrl } from './useProductShare';
 
 let mockProduct: unknown = null;
@@ -12,11 +12,11 @@ jest.mock('react-redux', () => ({
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProduct: () => mockProduct,
 }));
-jest.mock('@shopgate/pwa-core/commands/shareItem', () => jest.fn());
+jest.mock('@shopgate/engage/core/commands', () => ({ shareItem: jest.fn() }));
 jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
   getProductActionButtons: () => ({ showShareButton: true }),
 }));
-jest.mock('@shopgate/pwa-core/helpers', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
   hasSGJavaScriptBridge: jest.fn(() => true),
   hasWebBridgeCore: jest.fn(() => false),
 }));

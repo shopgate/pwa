@@ -3,16 +3,16 @@ import {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import isMatch from 'lodash/isMatch';
-import { SheetDrawer as SheetDrawerComponent, SurroundPortals } from '@shopgate/engage/components';
+import {
+  Price, PriceStriked, SheetDrawer as SheetDrawerComponent, SurroundPortals,
+} from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import { makeStyles } from '@shopgate/engage/styles';
-import Price from '@shopgate/pwa-ui-shared/Price';
-import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchProduct';
 import fetchProductVariants from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
-import ConditionerClass from '@shopgate/pwa-core/classes/Conditioner';
-import { PRODUCT_VARIANT_SELECT_SHEET } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { Conditioner as ConditionerClass } from '@shopgate/engage/core/classes';
+import { PRODUCT_VARIANT_SELECT_SHEET } from '@shopgate/engage/product/constants';
 import { getProduct, getProductVariants } from '../../selectors/catalog';
 import { ProductContext } from '../context';
 import ProductImage from '../ProductImage';

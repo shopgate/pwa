@@ -36,6 +36,8 @@ jest.mock('@shopgate/engage/locations/selectors', () => ({
 jest.mock('@shopgate/engage/locations/constants', () => ({ DIRECT_SHIP: 'directShip' }));
 jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
 jest.mock('@shopgate/engage/components', () => ({
+  CartIcon: () => null,
+  TickIcon: () => <span>tick</span>,
   SurroundPortals: ({ portalName, children }: { portalName: string; children: ReactNode }) => (
     <div data-portal={portalName}>{children}</div>
   ),
@@ -75,8 +77,6 @@ jest.mock('@shopgate/engage/components/v2', () => ({
     </button>
   ),
 }));
-jest.mock('@shopgate/pwa-ui-shared/icons/CartIcon', () => () => null);
-jest.mock('@shopgate/pwa-ui-shared/icons/TickIcon', () => () => <span>tick</span>);
 jest.mock('../VariantSelectSheet', () => ({
   VariantSelectSheet: ({ isOpen, onAddToCart }: {
     isOpen: boolean;
