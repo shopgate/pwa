@@ -18,17 +18,15 @@ import {
 import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
 import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
 import { PRODUCT_REVIEWS_ALL } from '@shopgate/pwa-common-commerce/reviews/constants/Portals';
-import type { Review, ReviewsState } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import type {
+  Review,
+  ReviewsConfig,
+  ReviewsProductState,
+} from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import ReviewsSummary from '../ReviewsSummary';
 import ReviewList from '../ReviewList';
 import WriteReviewLink from '../Reviews/components/Header/components/WriteReviewLink';
 import ReviewsInfo from '../Reviews/components/ReviewsInfo';
-
-type PageState = ReviewsState & { product: unknown };
-
-type ReviewsConfig = {
-  showWriteReview?: boolean;
-};
 
 const useStyles = makeStyles()(theme => ({
   summary: {
@@ -68,30 +66,38 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
     variantId: null,
   }), [productId]);
 
-  const baseProductId: string = useSelector((state: PageState) => (
+  const baseProductId: string = useSelector((state: ReviewsProductState) => (
     getBaseProductId(state, listProps)
   )) || productId;
-  const isProductFetching: boolean = useSelector((state: PageState) => (
+  const isProductFetching: boolean = useSelector((state: ReviewsProductState) => (
     getProductIsFetching(state, listProps)
   ));
   const summary = useSelector(
-    (state: PageState) => getReviewSummary(state, { productId: baseProductId }),
+    (state: ReviewsProductState) => getReviewSummary(state, { productId: baseProductId }),
     shallowEqual
   );
   const reviews: Review[] = useSelector(
-    (state: PageState) => getProductReviews(state, listProps),
+    (state: ReviewsProductState) => getProductReviews(state, listProps),
     shallowEqual
   );
-  const totalCount = useSelector((state: PageState) => getReviewsTotalCount(state, listProps));
-  const requestOffset = useSelector((state: PageState) => (
+  const totalCount = useSelector((state: ReviewsProductState) => (
+    getReviewsTotalCount(state, listProps)
+  ));
+  const requestOffset = useSelector((state: ReviewsProductState) => (
     getReviewListRequestOffset(state, listProps)
   ));
-  const isMissing = useSelector((state: PageState) => isReviewListMissing(state, listProps));
-  const isLoading = useSelector((state: PageState) => isReviewListLoading(state, listProps));
-  const isFetching = !!useSelector((state: PageState) => (
+  const isMissing = useSelector((state: ReviewsProductState) => (
+    isReviewListMissing(state, listProps)
+  ));
+  const isLoading = useSelector((state: ReviewsProductState) => (
+    isReviewListLoading(state, listProps)
+  ));
+  const isFetching = !!useSelector((state: ReviewsProductState) => (
     getReviewsFetchingState(state, listProps)
   ));
-  const hasError = useSelector((state: PageState) => hasReviewListError(state, listProps));
+  const hasError = useSelector((state: ReviewsProductState) => (
+    hasReviewListError(state, listProps)
+  ));
 
   useEffect(() => {
     if (isMissing && !isProductFetching) {

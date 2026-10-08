@@ -1,20 +1,21 @@
-import type { Reducer, UnknownAction } from 'redux';
+import type { Reducer } from 'redux';
 import {
   REQUEST_PRODUCT_REVIEW_SETTINGS,
   RECEIVE_PRODUCT_REVIEW_SETTINGS,
   ERROR_PRODUCT_REVIEW_SETTINGS,
   REVIEW_SETTINGS_LIFETIME,
 } from '../constants';
-import type { ReceiveProductReviewSettingsAction } from '../action-creators/reviewSettings';
+import type {
+  RequestProductReviewSettingsAction,
+  ReceiveProductReviewSettingsAction,
+  ErrorProductReviewSettingsAction,
+} from '../action-creators/reviewSettings';
 import type { ReviewSettingsSliceState } from '../types/reviewSettings';
 
-type ReviewSettingsAction = ReceiveProductReviewSettingsAction | UnknownAction;
-
-const isReceiveProductReviewSettingsAction = (
-  action: ReviewSettingsAction
-): action is ReceiveProductReviewSettingsAction => (
-  action.type === RECEIVE_PRODUCT_REVIEW_SETTINGS && 'settings' in action
-);
+type ReviewSettingsAction =
+  | RequestProductReviewSettingsAction
+  | ReceiveProductReviewSettingsAction
+  | ErrorProductReviewSettingsAction;
 
 /**
  * Stores the product review settings with request bookkeeping.
@@ -24,23 +25,21 @@ const isReceiveProductReviewSettingsAction = (
  */
 const reviewSettings: Reducer<ReviewSettingsSliceState, ReviewSettingsAction> = (
   state = {},
-  action = { type: '' }
+  action = {} as ReviewSettingsAction
 ) => {
-  if (isReceiveProductReviewSettingsAction(action)) {
-    return {
-      ...state,
-      ...action.settings,
-      isFetching: false,
-      expires: Date.now() + REVIEW_SETTINGS_LIFETIME,
-    };
-  }
-
   switch (action.type) {
     case REQUEST_PRODUCT_REVIEW_SETTINGS:
       return {
         ...state,
         isFetching: true,
         expires: 0,
+      };
+    case RECEIVE_PRODUCT_REVIEW_SETTINGS:
+      return {
+        ...state,
+        ...action.settings,
+        isFetching: false,
+        expires: Date.now() + REVIEW_SETTINGS_LIFETIME,
       };
     case ERROR_PRODUCT_REVIEW_SETTINGS:
       return {

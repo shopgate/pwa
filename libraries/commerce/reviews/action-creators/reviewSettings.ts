@@ -10,7 +10,7 @@ import type { ReviewSettings } from '../types/reviewSettings';
  * @returns The dispatched action.
  */
 export const requestProductReviewSettings = () => ({
-  type: REQUEST_PRODUCT_REVIEW_SETTINGS,
+  type: REQUEST_PRODUCT_REVIEW_SETTINGS as typeof REQUEST_PRODUCT_REVIEW_SETTINGS,
 });
 
 /**
@@ -19,7 +19,7 @@ export const requestProductReviewSettings = () => ({
  * @returns The dispatched action.
  */
 export const receiveProductReviewSettings = (settings: ReviewSettings) => ({
-  type: RECEIVE_PRODUCT_REVIEW_SETTINGS,
+  type: RECEIVE_PRODUCT_REVIEW_SETTINGS as typeof RECEIVE_PRODUCT_REVIEW_SETTINGS,
   settings,
 });
 
@@ -29,7 +29,7 @@ export const receiveProductReviewSettings = (settings: ReviewSettings) => ({
  * @returns The dispatched action.
  */
 export const errorProductReviewSettings = (error: unknown) => ({
-  type: ERROR_PRODUCT_REVIEW_SETTINGS,
+  type: ERROR_PRODUCT_REVIEW_SETTINGS as typeof ERROR_PRODUCT_REVIEW_SETTINGS,
   error,
 });
 

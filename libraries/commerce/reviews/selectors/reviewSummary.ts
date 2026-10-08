@@ -1,11 +1,7 @@
 import { createSelector } from 'reselect';
 import { getProductRating as getProductRatingSelector } from '../../product/selectors/product';
+import type { ReviewsProductProps } from '../types/reviews';
 import type { ReviewSummary } from '../types/reviewSummary';
-
-type ProductProps = {
-  productId?: string | null;
-  variantId?: string | null;
-};
 
 type ProductRating = {
   average?: unknown;
@@ -14,7 +10,7 @@ type ProductRating = {
 
 const getProductRating = getProductRatingSelector as (
   state: { product: unknown },
-  props?: ProductProps
+  props?: ReviewsProductProps
 ) => ProductRating | null | undefined;
 
 /**

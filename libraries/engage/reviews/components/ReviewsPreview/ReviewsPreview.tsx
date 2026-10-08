@@ -14,19 +14,16 @@ import {
 } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import fetchProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchProductReviews';
 import { REVIEW_PREVIEW_COUNT } from '@shopgate/pwa-common-commerce/reviews/constants';
-import type { Review, ReviewsState } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import type {
+  Review,
+  ReviewsConfig,
+  ReviewsProductState,
+} from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import ReviewsSummary from '../ReviewsSummary';
 import ReviewList from '../ReviewList';
 import WriteReviewLink from '../Reviews/components/Header/components/WriteReviewLink';
 import AllReviewsLink from '../Reviews/components/AllReviewsLink';
 import ReviewsInfo from '../Reviews/components/ReviewsInfo';
-
-type PreviewState = ReviewsState & { product: unknown };
-
-type ReviewsConfig = {
-  hasReviews?: boolean;
-  showWriteReview?: boolean;
-};
 
 const AllReviewsLinkWithProduct = AllReviewsLink as unknown as (props: {
   productId: string;
@@ -64,27 +61,27 @@ const ReviewsPreview = ({ productId }: ReviewsPreviewProps) => {
 
   const { hasReviews, showWriteReview } = appConfig as ReviewsConfig;
 
-  const baseProductId: string = useSelector((state: PreviewState) => (
+  const baseProductId: string = useSelector((state: ReviewsProductState) => (
     getBaseProductId(state, { productId })
   )) || productId;
-  const productActive: boolean = useSelector((state: PreviewState) => (
+  const productActive: boolean = useSelector((state: ReviewsProductState) => (
     isBaseProductActive(state, { productId })
   ));
   const summary = useSelector(
-    (state: PreviewState) => getReviewSummary(state, { productId: baseProductId }),
+    (state: ReviewsProductState) => getReviewSummary(state, { productId: baseProductId }),
     shallowEqual
   );
   const reviews: Review[] = useSelector(
-    (state: PreviewState) => getProductReviewsExcerpt(state, { productId: baseProductId }),
+    (state: ReviewsProductState) => getProductReviewsExcerpt(state, { productId: baseProductId }),
     shallowEqual
   ) || EMPTY_REVIEWS;
-  const isMissing = useSelector((state: PreviewState) => (
+  const isMissing = useSelector((state: ReviewsProductState) => (
     isProductReviewsExcerptMissing(state, { productId: baseProductId })
   ));
-  const isLoading = useSelector((state: PreviewState) => (
+  const isLoading = useSelector((state: ReviewsProductState) => (
     isProductReviewsExcerptLoading(state, { productId: baseProductId })
   ));
-  const hasError = useSelector((state: PreviewState) => (
+  const hasError = useSelector((state: ReviewsProductState) => (
     hasProductReviewsExcerptError(state, { productId: baseProductId })
   ));
 

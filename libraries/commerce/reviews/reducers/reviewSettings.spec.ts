@@ -1,13 +1,13 @@
 import {
   REQUEST_PRODUCT_REVIEW_SETTINGS,
   RECEIVE_PRODUCT_REVIEW_SETTINGS,
-  ERROR_PRODUCT_REVIEW_SETTINGS,
 } from '../constants';
+import { errorProductReviewSettings } from '../action-creators/reviewSettings';
 import reviewSettings from './reviewSettings';
 
 describe('Reviews reducers: reviewSettings', () => {
   it('should return an empty slice as initial state', () => {
-    expect(reviewSettings(undefined, { type: '@@INIT' })).toEqual({});
+    expect(reviewSettings(undefined, { type: '@@INIT' } as never)).toEqual({});
   });
 
   it('should flag fetching and reset expiry on request', () => {
@@ -47,7 +47,7 @@ describe('Reviews reducers: reviewSettings', () => {
       reviewSettings({
         isFetching: true,
         expires: 0,
-      }, { type: ERROR_PRODUCT_REVIEW_SETTINGS })
+      }, errorProductReviewSettings(new Error('failed')))
     ).toEqual({
       isFetching: false,
       expires: 0,
@@ -57,6 +57,6 @@ describe('Reviews reducers: reviewSettings', () => {
   it('should ignore unrelated actions', () => {
     const state = { paginationType: 'offset' as const };
 
-    expect(reviewSettings(state, { type: 'SOMETHING_ELSE' })).toBe(state);
+    expect(reviewSettings(state, { type: 'SOMETHING_ELSE' } as never)).toBe(state);
   });
 });

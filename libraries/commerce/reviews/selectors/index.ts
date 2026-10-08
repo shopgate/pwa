@@ -3,15 +3,16 @@ import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import { isUserLoggedIn } from '@shopgate/pwa-common/selectors/user';
 import { getBaseProductId as getBaseProductIdSelector } from '@shopgate/engage/product/selectors/product';
 import * as pipelines from '../constants/Pipelines';
-import type { Review, ReviewId, ReviewsState } from '../types/reviews';
+import type {
+  Review,
+  ReviewId,
+  ReviewsProductProps,
+  ReviewsProductState,
+  ReviewsState,
+} from '../types/reviews';
 
 export * from './reviewSettings';
 export * from './reviewSummary';
-
-type ProductProps = {
-  productId?: string | null;
-  variantId?: string | null;
-};
 
 type AuthorState = {
   user: {
@@ -26,8 +27,8 @@ type AuthorState = {
 };
 
 const getBaseProductId = getBaseProductIdSelector as (
-  state: ReviewsState & { product: unknown },
-  props?: ProductProps
+  state: ReviewsProductState,
+  props?: ReviewsProductProps
 ) => string | null;
 
 /**
@@ -213,7 +214,7 @@ const getUserReviewsByProductId = createSelector(
 export const getUserReviewForProduct = createSelector(
   getUserReviewsByProductId,
   getReviews,
-  (state: ReviewsState, props: ProductProps = {}) => props.productId,
+  (state: ReviewsState, props: ReviewsProductProps = {}) => props.productId,
   (userReviews, allReviews, productId): Partial<Review> => {
     const userReview = userReviews && userReviews[productId as string];
 

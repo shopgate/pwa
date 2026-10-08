@@ -82,6 +82,27 @@ export interface ReviewsState {
 }
 
 /**
+ * Application state shape for review selectors that also resolve the base product.
+ */
+export type ReviewsProductState = ReviewsState & { product: unknown };
+
+/**
+ * Selector props that identify a product and optionally one of its variants.
+ */
+export interface ReviewsProductProps {
+  productId?: string | null;
+  variantId?: string | null;
+}
+
+/**
+ * The review switches of the app config.
+ */
+export interface ReviewsConfig {
+  hasReviews?: boolean;
+  showWriteReview?: boolean;
+}
+
+/**
  * The pipeline response of shopgate.catalog.getProductReviews.v1.
  */
 export interface ProductReviewsResponse {
