@@ -625,6 +625,7 @@
     "filter_rate_3": "3 stars",
     "filter_rate_2": "2 stars",
     "filter_rate_1": "1 star",
+    "distribution_open": "{label}: show reviews",
     "list_empty_filtered": "No reviews match this selection."
   },
   "tab_bar": {

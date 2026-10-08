@@ -624,6 +624,7 @@
     "filter_rate_3": "3 gwiazdki",
     "filter_rate_2": "2 gwiazdki",
     "filter_rate_1": "1 gwiazdka",
+    "distribution_open": "{label}: pokaż recenzje",
     "list_empty_filtered": "Żadna recenzja nie pasuje do tego wyboru."
   },
   "tab_bar": {

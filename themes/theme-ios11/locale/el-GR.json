@@ -625,6 +625,7 @@
     "filter_rate_3": "3 αστέρια",
     "filter_rate_2": "2 αστέρια",
     "filter_rate_1": "1 αστέρι",
+    "distribution_open": "{label}: εμφάνιση κριτικών",
     "list_empty_filtered": "Καμία κριτική δεν ταιριάζει με αυτή την επιλογή."
   },
   "tab_bar": {

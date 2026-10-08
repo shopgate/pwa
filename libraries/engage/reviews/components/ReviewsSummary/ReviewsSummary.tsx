@@ -83,9 +83,12 @@ export interface ReviewsSummaryProps {
   summary: ReviewSummary | null;
   /** Whether a summary is still expected; shows a placeholder until the first response. */
   isLoading?: boolean;
-  /** The number of stars the review list is filtered by. */
-  selectedRate?: number;
-  /** Makes the rows buttons; called with the stars of a row, or nothing for the selected row. */
+  /** The stars the list is filtered by, null for none; without it the rows open the list. */
+  selectedRate?: number | null;
+  /**
+   * Makes the rows buttons, without `selectedRate` only rows with ratings. Called with the
+   * stars of a row, or nothing for the selected row.
+   */
   onRateSelect?: (rate?: number) => void;
   /** Additional CSS classes. */
   className?: string;
@@ -148,7 +151,10 @@ const ReviewsSummary = ({
       {distribution && (
         <ul className={cx(classes.distribution, 'engage__reviews__reviews-summary__distribution')}>
           {STARS.map((stars) => {
-            const isSelected = !!onRateSelect && selectedRate === Number(stars);
+            const isToggle = selectedRate !== undefined;
+            const isButton = !!onRateSelect && (isToggle || distribution[stars] > 0);
+            const isSelected = isButton && selectedRate === Number(stars);
+            const label = `${i18n.text(`reviews.filter_rate_${stars}`)}, ${i18n.text('reviews.summary_count', { count: distribution[stars] })}`;
             const row = (
               <>
                 <Typography
@@ -179,20 +185,20 @@ const ReviewsSummary = ({
               <li
                 key={stars}
                 className={cx({
-                  [classes.row]: !onRateSelect,
+                  [classes.row]: !isButton,
                 }, 'engage__reviews__reviews-summary__distribution-row')}
                 data-stars={stars}
               >
-                {onRateSelect ? (
+                {isButton ? (
                   <ButtonBase
                     className={cx(
                       classes.row,
                       classes.button,
                       'engage__reviews__reviews-summary__distribution-button'
                     )}
-                    aria-label={`${i18n.text(`reviews.filter_rate_${stars}`)}, ${i18n.text('reviews.summary_count', { count: distribution[stars] })}`}
-                    aria-pressed={isSelected}
-                    onClick={() => onRateSelect(isSelected ? undefined : Number(stars))}
+                    aria-label={isToggle ? label : i18n.text('reviews.distribution_open', { label })}
+                    aria-pressed={isToggle ? isSelected : undefined}
+                    onClick={() => onRateSelect?.(isSelected ? undefined : Number(stars))}
                   >
                     {row}
                   </ButtonBase>

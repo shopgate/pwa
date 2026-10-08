@@ -624,6 +624,7 @@
     "filter_rate_3": "3 stjärnor",
     "filter_rate_2": "2 stjärnor",
     "filter_rate_1": "1 stjärna",
+    "distribution_open": "{label}: visa recensioner",
     "list_empty_filtered": "Inga recensioner matchar det här urvalet."
   },
   "tab_bar": {

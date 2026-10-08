@@ -625,6 +625,7 @@
     "filter_rate_3": "3 csillag",
     "filter_rate_2": "2 csillag",
     "filter_rate_1": "1 csillag",
+    "distribution_open": "{label}: vélemények megjelenítése",
     "list_empty_filtered": "Egy vélemény sem felel meg a kiválasztásnak."
   },
   "tab_bar": {

@@ -1,12 +1,16 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
+import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { historyPush } from '@shopgate/pwa-common/actions/router';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { PRODUCT_REVIEWS } from '@shopgate/engage/product/constants';
 import { getBaseProductId, makeIsBaseProductActive } from '@shopgate/engage/product/selectors/product';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import {
   getProductReviewsExcerpt,
+  getReviewFilterOptions,
   getReviewSummary,
   hasProductReviewsExcerptError,
   hasReviewFeature,
@@ -86,6 +90,9 @@ const ReviewsPreview = ({ productId }: ReviewsPreviewProps) => {
   const expectsSummary = useSelector((state: ReviewsProductState) => (
     hasReviewFeature(state, REVIEW_FEATURE_RATING_SUMMARY)
   ));
+  const hasRateFilter = useSelector((state: ReviewsProductState) => (
+    getReviewFilterOptions(state).some(option => option.type === 'rate')
+  ));
 
   const isVisible = !!hasReviews && productActive;
 
@@ -97,6 +104,13 @@ const ReviewsPreview = ({ productId }: ReviewsPreviewProps) => {
 
   const handleRetry = useCallback(() => {
     dispatch(fetchProductReviews(baseProductId, REVIEW_PREVIEW_COUNT));
+  }, [baseProductId, dispatch]);
+
+  const handleRateSelect = useCallback((rate?: number) => {
+    dispatch(historyPush({
+      pathname: `${ITEM_PATH}/${bin2hex(baseProductId)}/reviews`,
+      state: { filterRate: rate },
+    }));
   }, [baseProductId, dispatch]);
 
   return (
@@ -111,7 +125,11 @@ const ReviewsPreview = ({ productId }: ReviewsPreviewProps) => {
           data-test-id="reviewSection"
         >
           <div id="reviewsExcerpt" className="engage__reviews__reviews-excerpt">
-            <ReviewsSummary summary={summary} isLoading={expectsSummary && isLoading} />
+            <ReviewsSummary
+              summary={summary}
+              isLoading={expectsSummary && isLoading}
+              onRateSelect={hasRateFilter ? handleRateSelect : undefined}
+            />
           </div>
           <ReviewList
             reviews={reviews}

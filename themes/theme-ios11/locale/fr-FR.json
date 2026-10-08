@@ -625,6 +625,7 @@
     "filter_rate_3": "3 étoiles",
     "filter_rate_2": "2 étoiles",
     "filter_rate_1": "1 étoile",
+    "distribution_open": "{label} : afficher les avis",
     "list_empty_filtered": "Aucun avis ne correspond à cette sélection."
   },
   "tab_bar": {

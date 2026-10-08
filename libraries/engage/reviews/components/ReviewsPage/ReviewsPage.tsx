@@ -188,7 +188,7 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
         <ReviewsSummary
           summary={summary}
           isLoading={expectsSummary && isLoading}
-          selectedRate={filters.filterRate}
+          selectedRate={filters.filterRate ?? null}
           onRateSelect={hasRateFilter && !isMissing
             ? (rate?: number) => handleFilterChange('filterRate', rate)
             : undefined}

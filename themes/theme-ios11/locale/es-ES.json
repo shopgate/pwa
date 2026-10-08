@@ -625,6 +625,7 @@
     "filter_rate_3": "3 estrellas",
     "filter_rate_2": "2 estrellas",
     "filter_rate_1": "1 estrella",
+    "distribution_open": "{label}: mostrar reseñas",
     "list_empty_filtered": "Ninguna reseña coincide con esta selección."
   },
   "tab_bar": {

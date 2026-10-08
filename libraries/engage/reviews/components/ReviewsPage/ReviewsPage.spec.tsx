@@ -737,6 +737,13 @@ describe('<ReviewsPage />', () => {
         }]);
       });
 
+      it('should mark no row without a star filter', () => {
+        const { container } = renderPage();
+
+        expect(getRowButtons(container).map(button => button.getAttribute('aria-pressed')))
+          .toEqual(['false', 'false', 'false', 'false', 'false']);
+      });
+
       it('should replace the active star filter with another row', () => {
         mockPage.filters = { filterRate: 4 };
 

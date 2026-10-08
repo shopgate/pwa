@@ -625,6 +625,7 @@
     "filter_rate_3": "3 tähteä",
     "filter_rate_2": "2 tähteä",
     "filter_rate_1": "1 tähti",
+    "distribution_open": "{label}: näytä arvostelut",
     "list_empty_filtered": "Yksikään arvostelu ei vastaa valintaa."
   },
   "tab_bar": {

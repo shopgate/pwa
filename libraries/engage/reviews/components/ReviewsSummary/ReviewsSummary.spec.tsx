@@ -256,6 +256,63 @@ describe('<ReviewsSummary />', () => {
       ]);
     });
 
+    it('should render buttons that open the list without a selected rate', () => {
+      const textSpy = jest.spyOn(i18nHelpers, 'text');
+      render(<ReviewsSummary summary={summary} onRateSelect={jest.fn()} />);
+
+      const buttons = screen.getAllByRole('button');
+
+      expect(buttons).toHaveLength(5);
+      buttons.forEach((button) => {
+        expect(button).not.toHaveAttribute('aria-pressed');
+        expect(button).toHaveAttribute('aria-label', 'reviews.distribution_open');
+      });
+      expect(textSpy).toHaveBeenCalledWith('reviews.distribution_open', {
+        label: 'reviews.filter_rate_5, reviews.summary_count',
+      });
+    });
+
+    it('should render rows without ratings as plain rows when the rows open the list', () => {
+      const onRateSelect = jest.fn();
+      const { container } = render(<ReviewsSummary
+        summary={{
+          ...summary,
+          distribution: {
+            ...summary.distribution,
+            2: 0,
+          },
+        }}
+        onRateSelect={onRateSelect}
+      />);
+
+      expect(screen.getAllByRole('button')).toHaveLength(4);
+      expect(container.querySelector('[data-stars="2"] button')).not.toBeInTheDocument();
+      expect(container.querySelector('[data-stars="2"]')).toHaveTextContent('reviews.filter_rate_20');
+    });
+
+    it('should keep rows without ratings as buttons when the rows are toggles', () => {
+      render(<ReviewsSummary
+        summary={{
+          ...summary,
+          distribution: {
+            ...summary.distribution,
+            2: 0,
+          },
+        }}
+        selectedRate={null}
+        onRateSelect={jest.fn()}
+      />);
+
+      expect(screen.getAllByRole('button')).toHaveLength(5);
+    });
+
+    it('should mark no row without a star filter', () => {
+      render(<ReviewsSummary summary={summary} selectedRate={null} onRateSelect={jest.fn()} />);
+
+      expect(screen.getAllByRole('button').map(button => button.getAttribute('aria-pressed')))
+        .toEqual(['false', 'false', 'false', 'false', 'false']);
+    });
+
     it('should select the stars of a row', () => {
       const onRateSelect = jest.fn();
       render(<ReviewsSummary summary={summary} selectedRate={4} onRateSelect={onRateSelect} />);

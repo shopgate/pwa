@@ -625,6 +625,7 @@
     "filter_rate_3": "3 stele",
     "filter_rate_2": "2 stele",
     "filter_rate_1": "1 stea",
+    "distribution_open": "{label}: afișează recenziile",
     "list_empty_filtered": "Nicio recenzie nu corespunde acestei selecții."
   },
   "tab_bar": {

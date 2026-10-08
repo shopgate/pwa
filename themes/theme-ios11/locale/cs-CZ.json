@@ -625,6 +625,7 @@
     "filter_rate_3": "3 hvězdičky",
     "filter_rate_2": "2 hvězdičky",
     "filter_rate_1": "1 hvězdička",
+    "distribution_open": "{label}: zobrazit recenze",
     "list_empty_filtered": "Této volbě neodpovídají žádné recenze."
   },
   "tab_bar": {

@@ -625,6 +625,7 @@
     "filter_rate_3": "3 sterren",
     "filter_rate_2": "2 sterren",
     "filter_rate_1": "1 ster",
+    "distribution_open": "{label}: reviews tonen",
     "list_empty_filtered": "Geen reviews komen overeen met deze selectie."
   },
   "tab_bar": {

@@ -625,6 +625,7 @@
     "filter_rate_3": "3 estrelas",
     "filter_rate_2": "2 estrelas",
     "filter_rate_1": "1 estrela",
+    "distribution_open": "{label}: mostrar comentários",
     "list_empty_filtered": "Nenhum comentário corresponde a esta seleção."
   },
   "tab_bar": {
