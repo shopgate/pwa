@@ -5,7 +5,7 @@ import { thunk } from 'redux-thunk';
 import { render, screen, fireEvent } from '@testing-library/react';
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
 import reviewsById from '@shopgate/pwa-common-commerce/reviews/reducers/reviewsById';
-import reviewVotes from '@shopgate/pwa-common-commerce/reviews/reducers/reviewVotes';
+import ownReviewVotes from '@shopgate/pwa-common-commerce/reviews/reducers/ownReviewVotes';
 import { getReviews } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import ReviewVoting from './ReviewVoting';
 
@@ -38,9 +38,9 @@ describe('<ReviewVoting /> with the review data layer', () => {
     const rootReducer = combineReducers({
       reviews: combineReducers({
         reviewsById,
-        reviewSettings: () => ({ features: ['reviewRate'] }),
+        reviewSettings: () => ({ features: ['reviewVotes'] }),
       }),
-      reviewVotes,
+      ownReviewVotes,
     }) as unknown as Reducer;
 
     const store = createStore(
@@ -51,7 +51,7 @@ describe('<ReviewVoting /> with the review data layer', () => {
             12: {
               id: 12,
               rate: 80,
-              reviewRate: {
+              reviewVotes: {
                 up: 3,
                 down: 1,
               },
@@ -74,6 +74,6 @@ describe('<ReviewVoting /> with the review data layer', () => {
     expect(voted).toHaveAttribute('aria-pressed', 'true');
     expect(screen.getByRole('button', { name: 'reviews.vote_down: 1' }))
       .toHaveAttribute('aria-disabled', 'true');
-    expect(store.getState().reviewVotes).toEqual({ 12: 'up' });
+    expect(store.getState().ownReviewVotes).toEqual({ 12: 'up' });
   });
 });

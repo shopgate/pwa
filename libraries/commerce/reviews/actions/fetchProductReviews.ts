@@ -54,8 +54,8 @@ function fetchProductReviews(
       .dispatch();
 
     request
-      .then(({ reviews, totalReviewCount, summary }: ProductReviewsResponse) => {
-        dispatch(receiveProductReviews(productId, reviews, totalReviewCount, meta, summary));
+      .then(({ reviews, totalReviewCount, ratingSummary }: ProductReviewsResponse) => {
+        dispatch(receiveProductReviews(productId, reviews, totalReviewCount, meta, ratingSummary));
       })
       .catch(() => {
         dispatch(errorProductReviews(productId, meta));

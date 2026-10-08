@@ -19,7 +19,7 @@ describe('Reviews reducers: reviewSettings', () => {
 
   it('should store the settings and set an expiry on receive', () => {
     const settings = {
-      features: ['reviewRate'],
+      features: ['reviewVotes'],
       paginationType: 'offset' as const,
       customFields: [],
     };
@@ -35,7 +35,7 @@ describe('Reviews reducers: reviewSettings', () => {
       }
     );
 
-    expect(state.features).toEqual(['reviewRate']);
+    expect(state.features).toEqual(['reviewVotes']);
     expect(state.paginationType).toBe('offset');
     expect(state.customFields).toEqual([]);
     expect(state.isFetching).toBe(false);

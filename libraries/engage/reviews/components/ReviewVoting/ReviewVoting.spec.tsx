@@ -3,24 +3,24 @@ import { createStore } from 'redux';
 import {
   render, screen, fireEvent, waitFor,
 } from '@testing-library/react';
-import type { Review, ReviewVotes } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import type { Review, OwnReviewVotes } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import ReviewVoting from './ReviewVoting';
 
 let mockSubmitResult: Promise<unknown>;
 
-jest.mock('@shopgate/pwa-common-commerce/reviews/actions/submitReviewRate', () => ({
+jest.mock('@shopgate/pwa-common-commerce/reviews/actions/submitReviewVote', () => ({
   __esModule: true,
-  default: jest.fn((reviewId: unknown, rate: unknown) => ({
-    type: 'SUBMIT_REVIEW_RATE',
+  default: jest.fn((reviewId: unknown, vote: unknown) => ({
+    type: 'SUBMIT_REVIEW_VOTE',
     reviewId,
-    rate,
+    vote,
   })),
 }));
 
 const review: Review = {
   id: 12,
   rate: 80,
-  reviewRate: {
+  reviewVotes: {
     up: 3,
     down: 0,
   },
@@ -28,7 +28,7 @@ const review: Review = {
 
 type RenderOptions = {
   features?: string[];
-  reviewVotes?: ReviewVotes;
+  ownReviewVotes?: OwnReviewVotes;
   review?: Review;
 };
 
@@ -38,13 +38,13 @@ type RenderOptions = {
  * @returns The render result and the dispatched actions.
  */
 const renderVoting = ({
-  features = ['reviewRate'],
-  reviewVotes = {},
+  features = ['reviewVotes'],
+  ownReviewVotes = {},
   review: renderedReview = review,
 }: RenderOptions = {}) => {
   const store = createStore(() => ({
     reviews: { reviewSettings: { features } },
-    reviewVotes,
+    ownReviewVotes,
   }));
   const dispatchSpy = jest.spyOn(store, 'dispatch').mockImplementation((() => mockSubmitResult) as never);
   const result = render(
@@ -109,9 +109,9 @@ describe('<ReviewVoting />', () => {
     fireEvent.click(up);
 
     expect(getActions()).toEqual([{
-      type: 'SUBMIT_REVIEW_RATE',
+      type: 'SUBMIT_REVIEW_VOTE',
       reviewId: 12,
-      rate: 'down',
+      vote: 'down',
     }]);
     expect(up).toHaveAttribute('aria-disabled', 'true');
     expect(down).toHaveAttribute('aria-disabled', 'true');
@@ -141,7 +141,7 @@ describe('<ReviewVoting />', () => {
   });
 
   it('should mark the own vote and block further votes', () => {
-    const { getActions } = renderVoting({ reviewVotes: { 12: 'up' } });
+    const { getActions } = renderVoting({ ownReviewVotes: { 12: 'up' } });
     const up = screen.getByRole('button', { name: 'reviews.vote_up: 3' });
     const down = screen.getByRole('button', { name: 'reviews.vote_down: 0' });
 

@@ -52,15 +52,8 @@ export const getReviewSortOptions = createSelector(
  */
 export const getReviewFilterOptions = createSelector(
   getReviewFeatures,
-  (features): ReviewFilterOption[] => (REVIEW_FILTERS as (ReviewFilterOption & {
-    feature: string;
-  })[])
-    .filter(filter => features.includes(filter.feature))
-    .map(({ param, type, label }) => ({
-      param,
-      type,
-      label,
-    }))
+  (features): ReviewFilterOption[] => (REVIEW_FILTERS as ReviewFilterOption[])
+    .filter(filter => features.includes(filter.param))
 );
 
 export const isFetchingReviewSettings = createSelector(

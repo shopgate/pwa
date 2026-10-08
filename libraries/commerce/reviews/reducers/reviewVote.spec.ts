@@ -1,15 +1,15 @@
-import receiveReviewRate from '../action-creators/receiveReviewRate';
+import receiveReviewVote from '../action-creators/receiveReviewVote';
 import reviewsById from './reviewsById';
-import reviewVotes from './reviewVotes';
+import ownReviewVotes from './ownReviewVotes';
 
-describe('Reviews reducers: review rate', () => {
-  describe('reviewVotes', () => {
+describe('Reviews reducers: review vote', () => {
+  describe('ownReviewVotes', () => {
     it('should start empty', () => {
-      expect(reviewVotes(undefined, { type: '@@init' })).toEqual({});
+      expect(ownReviewVotes(undefined, { type: '@@init' })).toEqual({});
     });
 
     it('should store the vote by review id and keep other votes', () => {
-      const state = reviewVotes({ a: 'down' }, receiveReviewRate(12, 'up', {
+      const state = ownReviewVotes({ a: 'down' }, receiveReviewVote(12, 'up', {
         up: 1,
         down: 0,
       }));
@@ -23,7 +23,7 @@ describe('Reviews reducers: review rate', () => {
     it('should ignore other actions', () => {
       const state = { a: 'down' as const };
 
-      expect(reviewVotes(state, { type: 'RESET_APP' })).toBe(state);
+      expect(ownReviewVotes(state, { type: 'RESET_APP' })).toBe(state);
     });
   });
 
@@ -34,12 +34,12 @@ describe('Reviews reducers: review rate', () => {
           id: 12,
           rate: 80,
           title: 'Great',
-          reviewRate: {
+          reviewVotes: {
             up: 1,
             down: 0,
           },
         },
-      }, receiveReviewRate(12, 'up', {
+      }, receiveReviewVote(12, 'up', {
         up: 2,
         down: 0,
       }));
@@ -48,7 +48,7 @@ describe('Reviews reducers: review rate', () => {
         id: 12,
         rate: 80,
         title: 'Great',
-        reviewRate: {
+        reviewVotes: {
           up: 2,
           down: 0,
         },
@@ -58,7 +58,7 @@ describe('Reviews reducers: review rate', () => {
     it('should not create an entry for an unknown review', () => {
       const state = {};
 
-      expect(reviewsById(state, receiveReviewRate('x', 'down', {
+      expect(reviewsById(state, receiveReviewVote('x', 'down', {
         up: 0,
         down: 1,
       }))).toBe(state);

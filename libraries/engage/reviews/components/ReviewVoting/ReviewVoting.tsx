@@ -4,17 +4,17 @@ import { I18n, Typography } from '@shopgate/engage/components';
 import { ButtonBase } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import submitReviewRate from '@shopgate/pwa-common-commerce/reviews/actions/submitReviewRate';
-import { REVIEW_FEATURE_RATE } from '@shopgate/pwa-common-commerce/reviews/constants';
-import { getReviewVote, hasReviewFeature } from '@shopgate/pwa-common-commerce/reviews/selectors';
+import submitReviewVote from '@shopgate/pwa-common-commerce/reviews/actions/submitReviewVote';
+import { REVIEW_FEATURE_VOTES } from '@shopgate/pwa-common-commerce/reviews/constants';
+import { getOwnReviewVote, hasReviewFeature } from '@shopgate/pwa-common-commerce/reviews/selectors';
 import type {
   Review,
   ReviewVote,
-  ReviewVotesState,
+  OwnReviewVotesState,
 } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import type { ReviewSettingsState } from '@shopgate/pwa-common-commerce/reviews/types/reviewSettings';
 
-type VotingState = ReviewSettingsState & ReviewVotesState;
+type VotingState = ReviewSettingsState & OwnReviewVotesState;
 
 const ICON_PATHS: Record<ReviewVote, string> = {
   up: 'M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z',
@@ -26,7 +26,7 @@ const LABELS: Record<ReviewVote, string> = {
   down: 'reviews.vote_down',
 };
 
-const RATES: ReviewVote[] = ['up', 'down'];
+const VOTES: ReviewVote[] = ['up', 'down'];
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -71,7 +71,7 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 export interface ReviewVotingProps {
-  /** The review to vote on; its `reviewRate` supplies the displayed counts. */
+  /** The review to vote on; its `reviewVotes` supplies the displayed counts. */
   review: Review;
 }
 
@@ -84,9 +84,9 @@ const ReviewVoting = ({ review }: ReviewVotingProps) => {
   const { classes, cx } = useStyles();
   const dispatch = useDispatch() as unknown as (action: unknown) => unknown;
   const isSupported = useSelector((state: VotingState) => (
-    hasReviewFeature(state, REVIEW_FEATURE_RATE)
+    hasReviewFeature(state, REVIEW_FEATURE_VOTES)
   ));
-  const vote = useSelector((state: VotingState) => getReviewVote(state, review.id));
+  const vote = useSelector((state: VotingState) => getOwnReviewVote(state, review.id));
   const [isPending, setIsPending] = useState(false);
   const [hasError, setHasError] = useState(false);
   const isMounted = useRef(true);
@@ -102,9 +102,9 @@ const ReviewVoting = ({ review }: ReviewVotingProps) => {
   const isBlocked = !!vote || isPending;
 
   /**
-   * @param rate The vote of the user.
+   * @param value The vote of the user.
    */
-  const handleVote = (rate: ReviewVote) => {
+  const handleVote = (value: ReviewVote) => {
     if (isBlocked) {
       return;
     }
@@ -112,7 +112,7 @@ const ReviewVoting = ({ review }: ReviewVotingProps) => {
     setIsPending(true);
     setHasError(false);
 
-    Promise.resolve(dispatch(submitReviewRate(review.id, rate)))
+    Promise.resolve(dispatch(submitReviewVote(review.id, value)))
       .then(() => false, () => true)
       .then((failed) => {
         if (isMounted.current) {
@@ -131,27 +131,27 @@ const ReviewVoting = ({ review }: ReviewVotingProps) => {
       >
         <I18n.Text string="reviews.vote_question" />
       </Typography>
-      {RATES.map((rate) => {
-        const count = review.reviewRate?.[rate];
+      {VOTES.map((option) => {
+        const count = review.reviewVotes?.[option];
         const hasCount = typeof count === 'number';
-        const label = i18n.text(LABELS[rate]);
+        const label = i18n.text(LABELS[option]);
 
         return (
           <ButtonBase
-            key={rate}
+            key={option}
             className={cx(classes.button, {
               [classes.blocked]: isBlocked,
-              [classes.selected]: vote === rate,
-            }, `engage__reviews__review-voting__${rate}`)}
+              [classes.selected]: vote === option,
+            }, `engage__reviews__review-voting__${option}`)}
             aria-label={hasCount ? `${label}: ${count}` : label}
-            aria-pressed={vote === rate}
+            aria-pressed={vote === option}
             aria-disabled={isBlocked}
             disableRipple={isBlocked}
-            onClick={() => handleVote(rate)}
+            onClick={() => handleVote(option)}
           >
             <span className={classes.pill}>
               <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
-                <path d={ICON_PATHS[rate]} />
+                <path d={ICON_PATHS[option]} />
               </svg>
               {hasCount && count}
             </span>

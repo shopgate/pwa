@@ -22,34 +22,31 @@ export const RECEIVE_SUBMIT_REVIEW = 'RECEIVE_SUBMIT_REVIEW';
 export const ERROR_SUBMIT_REVIEW = 'ERROR_SUBMIT_REVIEW';
 export const RESET_SUBMIT_REVIEW = 'RESET_SUBMIT_REVIEW';
 
-// REVIEW RATE
-export const RECEIVE_REVIEW_RATE = 'RECEIVE_REVIEW_RATE';
-export const REVIEW_FEATURE_RATE = 'reviewRate';
+// REVIEW VOTES
+export const RECEIVE_REVIEW_VOTE = 'RECEIVE_REVIEW_VOTE';
+export const REVIEW_FEATURE_VOTES = 'reviewVotes';
 
 // REVIEW SUMMARY
 export const REVIEW_FEATURE_RATING_SUMMARY = 'ratingSummary';
 
 // REVIEW LIST QUERY
 /**
- * The list filters the PWA knows: the capability a provider reports in its settings, the
- * request parameter that activates the filter, the kind of its control and the label.
+ * The list filters the PWA knows: the request parameter that activates the filter, which a
+ * provider also reports as capability in its settings, the kind of its control and the label.
  * A toggle is sent as `true`, the rate filter as the number of stars from 1 to 5.
  */
 export const REVIEW_FILTERS = [
   {
-    feature: 'mediaFilter',
     param: 'filterMedia',
     type: 'toggle',
     label: 'reviews.filter_media',
   },
   {
-    feature: 'verifiedFilter',
     param: 'filterVerified',
     type: 'toggle',
     label: 'reviews.filter_verified',
   },
   {
-    feature: 'rateFilter',
     param: 'filterRate',
     type: 'rate',
     label: 'reviews.filter_rate_all',

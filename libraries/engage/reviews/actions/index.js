@@ -4,4 +4,4 @@ export { default as fetchProductReviewSettings } from '@shopgate/pwa-common-comm
 export { default as fetchUserReview } from '@shopgate/pwa-common-commerce/reviews/actions/fetchUserReview';
 export { default as flushUserReview } from '@shopgate/pwa-common-commerce/reviews/actions/flushUserReview';
 export { default as submitReview } from '@shopgate/pwa-common-commerce/reviews/actions/submitReview';
-export { default as submitReviewRate } from '@shopgate/pwa-common-commerce/reviews/actions/submitReviewRate';
+export { default as submitReviewVote } from '@shopgate/pwa-common-commerce/reviews/actions/submitReviewVote';

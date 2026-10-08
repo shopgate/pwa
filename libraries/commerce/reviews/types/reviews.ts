@@ -32,7 +32,7 @@ export interface ReviewMediaItem {
 /**
  * The helpfulness votes of a product review.
  */
-export interface ReviewRate {
+export interface ReviewVoteCounts {
   up?: number;
   down?: number;
 }
@@ -57,7 +57,7 @@ export interface Review {
   customFields?: ReviewCustomField[];
   media?: ReviewMediaItem[];
   /** Missing counts are unknown, which differs from an explicit zero. */
-  reviewRate?: ReviewRate;
+  reviewVotes?: ReviewVoteCounts;
 }
 
 /**
@@ -188,13 +188,13 @@ export interface ReviewsConfig {
  * The votes the user of this device gave, stored by review id outside the reviews slice so
  * that an app reset keeps them.
  */
-export type ReviewVotes = Record<string, ReviewVote>;
+export type OwnReviewVotes = Record<string, ReviewVote>;
 
 /**
  * Minimal application state shape the review vote selectors read from.
  */
-export interface ReviewVotesState {
-  reviewVotes?: ReviewVotes;
+export interface OwnReviewVotesState {
+  ownReviewVotes?: OwnReviewVotes;
 }
 
 /**
@@ -204,7 +204,7 @@ export interface ProductReviewsResponse {
   reviews: Review[];
   totalReviewCount?: number | null;
   /** Unfiltered rating summary of the product; providers send it with a first page. */
-  summary?: unknown;
+  ratingSummary?: unknown;
   /** Only sent by providers with cursor pagination; no `after` means the last page. */
   cursors?: {
     after?: string | null;

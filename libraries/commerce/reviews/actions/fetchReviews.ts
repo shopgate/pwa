@@ -91,7 +91,7 @@ function fetchReviews(
         reviews,
         totalReviewCount,
         cursors,
-        summary,
+        ratingSummary,
       }: ProductReviewsResponse) => {
         dispatch(receiveProductReviewsList(
           hash,
@@ -100,7 +100,7 @@ function fetchReviews(
           totalReviewCount,
           meta,
           cursors?.after,
-          summary
+          ratingSummary
         ));
       })
       .catch(() => {

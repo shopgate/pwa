@@ -507,7 +507,7 @@ describe('Reviews actions: fetchReviews', () => {
       mockedResolver = (mockInstance, resolve) => resolve({
         reviews: [],
         totalReviewCount: 35,
-        summary,
+        ratingSummary: summary,
       });
       const dispatch = jest.fn();
 

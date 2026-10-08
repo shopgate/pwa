@@ -1,7 +1,7 @@
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
-import { RECEIVE_REVIEW_RATE } from '../constants';
-import { SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW_RATE } from '../constants/Pipelines';
-import submitReviewRate from './submitReviewRate';
+import { RECEIVE_REVIEW_VOTE } from '../constants';
+import { SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW_VOTE } from '../constants/Pipelines';
+import submitReviewVote from './submitReviewVote';
 
 type MockedRequest = {
   name: string;
@@ -26,16 +26,16 @@ jest.mock(
 );
 
 /**
- * @param reviewVotes The votes the user already gave.
+ * @param ownReviewVotes The votes the user already gave.
  * @returns A getState function with one stored review.
  */
-const createGetState = (reviewVotes = {}) => () => ({
+const createGetState = (ownReviewVotes = {}) => () => ({
   reviews: {
     reviewsById: {
       12: {
         id: 12,
         rate: 80,
-        reviewRate: {
+        reviewVotes: {
           up: 3,
           down: 1,
         },
@@ -45,10 +45,10 @@ const createGetState = (reviewVotes = {}) => () => ({
     reviewsByProductId: {},
     userReviewsByProductId: {},
   },
-  reviewVotes,
+  ownReviewVotes,
 });
 
-const submit = submitReviewRate as unknown as (reviewId: number, rate: 'up' | 'down') => (
+const submit = submitReviewVote as unknown as (reviewId: number, vote: 'up' | 'down') => (
   dispatch: jest.Mock,
   getState: ReturnType<typeof createGetState>
 ) => Promise<unknown>;
@@ -59,7 +59,7 @@ const submit = submitReviewRate as unknown as (reviewId: number, rate: 'up' | 'd
  */
 const flush = () => new Promise(resolve => setTimeout(resolve, 0));
 
-describe('Reviews actions: submitReviewRate', () => {
+describe('Reviews actions: submitReviewVote', () => {
   let request: MockedRequest | undefined;
 
   beforeEach(() => {
@@ -79,16 +79,16 @@ describe('Reviews actions: submitReviewRate', () => {
     await submit(12, 'up')(dispatch, createGetState());
     await flush();
 
-    expect(request?.name).toBe(SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW_RATE);
+    expect(request?.name).toBe(SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW_VOTE);
     expect(request?.input).toEqual({
       reviewId: 12,
-      rate: 'up',
+      vote: 'up',
     });
     expect(dispatch).toHaveBeenCalledWith({
-      type: RECEIVE_REVIEW_RATE,
+      type: RECEIVE_REVIEW_VOTE,
       reviewId: 12,
-      rate: 'up',
-      reviewRate: {
+      vote: 'up',
+      reviewVotes: {
         up: 4,
         down: 1,
       },
@@ -103,7 +103,7 @@ describe('Reviews actions: submitReviewRate', () => {
     await flush();
 
     expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
-      reviewRate: {
+      reviewVotes: {
         up: 3,
         down: 2,
       },
@@ -144,7 +144,7 @@ describe('Reviews actions: submitReviewRate', () => {
     expect(dispatch).toHaveBeenCalledTimes(1);
     expect(dispatch).toHaveBeenCalledWith(expect.objectContaining({
       reviewId: 12,
-      rate: 'up',
+      vote: 'up',
     }));
   });
 

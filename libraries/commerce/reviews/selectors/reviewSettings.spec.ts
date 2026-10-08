@@ -67,12 +67,12 @@ describe('Reviews selectors: reviewSettings', () => {
   describe('features', () => {
     it('should only report features the provider advertises', () => {
       const state = buildState({
-        features: ['reviewRate', 'somethingUnknown'],
+        features: ['reviewVotes', 'somethingUnknown'],
         paginationType: 'offset',
         customFields: [],
       });
 
-      expect(hasReviewFeature(state, 'reviewRate')).toBe(true);
+      expect(hasReviewFeature(state, 'reviewVotes')).toBe(true);
       expect(hasReviewFeature(state, 'somethingUnknown')).toBe(true);
       expect(hasReviewFeature(state, 'notAdvertised')).toBe(false);
     });
@@ -115,7 +115,7 @@ describe('Reviews selectors: reviewSettings', () => {
   describe('getReviewFilterOptions', () => {
     it('should return the filters the provider reports in the order of the PWA', () => {
       expect(getReviewFilterOptions(buildState({
-        features: ['verifiedFilter', 'reviewRate', 'mediaFilter'],
+        features: ['filterVerified', 'reviewVotes', 'filterMedia'],
       }))).toEqual([
         {
           param: 'filterMedia',
@@ -128,7 +128,7 @@ describe('Reviews selectors: reviewSettings', () => {
           label: 'reviews.filter_verified',
         },
       ]);
-      expect(getReviewFilterOptions(buildState({ features: ['rateFilter'] }))).toEqual([{
+      expect(getReviewFilterOptions(buildState({ features: ['filterRate'] }))).toEqual([{
         param: 'filterRate',
         type: 'rate',
         label: 'reviews.filter_rate_all',
@@ -136,7 +136,7 @@ describe('Reviews selectors: reviewSettings', () => {
     });
 
     it('should return no filters without matching capabilities', () => {
-      expect(getReviewFilterOptions(buildState({ features: ['reviewRate'] }))).toEqual([]);
+      expect(getReviewFilterOptions(buildState({ features: ['reviewVotes'] }))).toEqual([]);
       expect(getReviewFilterOptions(buildState({}))).toEqual([]);
     });
   });

@@ -18,7 +18,7 @@ import { isReviewCursorPagination } from './reviewSettings';
 
 export * from './reviewSettings';
 export * from './reviewSummary';
-export * from './reviewVotes';
+export * from './ownReviewVotes';
 
 type AuthorState = {
   user: {

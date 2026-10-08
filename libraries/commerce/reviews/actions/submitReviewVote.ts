@@ -2,60 +2,60 @@ import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
 import { ERROR_HANDLE_SUPPRESS } from '@shopgate/pwa-core/constants/ErrorHandleTypes';
 import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import type { Dispatch } from 'redux';
-import { SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW_RATE } from '../constants/Pipelines';
-import receiveReviewRate from '../action-creators/receiveReviewRate';
-import { getReviews, getReviewVote } from '../selectors';
+import { SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW_VOTE } from '../constants/Pipelines';
+import receiveReviewVote from '../action-creators/receiveReviewVote';
+import { getReviews, getOwnReviewVote } from '../selectors';
 import type {
   ReviewId,
-  ReviewRate,
+  ReviewVoteCounts,
   ReviewsState,
   ReviewVote,
-  ReviewVotesState,
+  OwnReviewVotesState,
 } from '../types/reviews';
 
-type SubmitReviewRateState = ReviewsState & ReviewVotesState;
+type SubmitReviewVoteState = ReviewsState & OwnReviewVotesState;
 
 const pendingReviewIds = new Set<string>();
 
 /**
  * Submits a helpfulness vote for a review.
  * @param reviewId The ID of the review.
- * @param rate The vote of the user.
+ * @param vote The vote of the user.
  * @returns The dispatched action. It resolves with `null` when the user already voted on the
  * review or a vote for it is still in flight.
  */
-function submitReviewRate(reviewId: ReviewId, rate: ReviewVote) {
-  return (dispatch: Dispatch, getState: () => SubmitReviewRateState) => {
+function submitReviewVote(reviewId: ReviewId, vote: ReviewVote) {
+  return (dispatch: Dispatch, getState: () => SubmitReviewVoteState) => {
     const key = String(reviewId);
 
-    if (pendingReviewIds.has(key) || getReviewVote(getState(), reviewId)) {
+    if (pendingReviewIds.has(key) || getOwnReviewVote(getState(), reviewId)) {
       return Promise.resolve(null);
     }
 
     pendingReviewIds.add(key);
 
-    const request = new PipelineRequest(SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW_RATE)
+    const request = new PipelineRequest(SHOPGATE_CATALOG_ADD_PRODUCT_REVIEW_VOTE)
       .setInput({
         reviewId,
-        rate,
+        vote,
       })
       .setRetries(0)
       .setHandleErrors(ERROR_HANDLE_SUPPRESS)
       .dispatch();
 
     request
-      .then((result?: ReviewRate) => {
+      .then((result?: ReviewVoteCounts) => {
         pendingReviewIds.delete(key);
 
-        const current = getReviews(getState())[key]?.reviewRate;
+        const current = getReviews(getState())[key]?.reviewVotes;
         const hasCounts = typeof result?.up === 'number' && typeof result?.down === 'number';
 
-        dispatch(receiveReviewRate(reviewId, rate, hasCounts ? {
+        dispatch(receiveReviewVote(reviewId, vote, hasCounts ? {
           up: result.up,
           down: result.down,
         } : {
           ...current,
-          [rate]: (current?.[rate] ?? 0) + 1,
+          [vote]: (current?.[vote] ?? 0) + 1,
         }));
       })
       .catch(() => {
@@ -67,4 +67,4 @@ function submitReviewRate(reviewId: ReviewId, rate: ReviewVote) {
 }
 
 /** @mixes {MutableFunction} */
-export default mutable(submitReviewRate);
+export default mutable(submitReviewVote);
