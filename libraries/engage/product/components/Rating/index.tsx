@@ -1,5 +1,4 @@
-import React, { memo } from 'react';
-import PropTypes from 'prop-types';
+import { memo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import appConfig from '@shopgate/pwa-common/helpers/config';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
@@ -17,6 +16,13 @@ import { PRODUCT_RATING } from '@shopgate/engage/product/constants';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
 import { useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
+import type {
+  ReviewsConfig,
+  ReviewsProductState,
+} from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import type { ReviewSettingsState } from '@shopgate/pwa-common-commerce/reviews/types/reviewSettings';
+
+type RatingState = ReviewsProductState & ReviewSettingsState;
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -42,38 +48,49 @@ const scrollToRating = () => {
     typeof reviewsExcerpt !== 'object' ||
     !reviewsExcerpt ||
     !reviewsExcerpt.offsetTop ||
-    !reviewsExcerpt.closest ||
-    !reviewsExcerpt.closest('article')
+    !reviewsExcerpt.closest
   ) {
     return;
   }
 
-  reviewsExcerpt
-    .closest('article')
-    .scroll(0, reviewsExcerpt.offsetTop - 30);
+  const article = reviewsExcerpt.closest('article');
+
+  if (!article) {
+    return;
+  }
+
+  article.scroll(0, reviewsExcerpt.offsetTop - 30);
 };
+
+interface RatingProps {
+  /** The id of the product whose rating is shown. */
+  productId?: string | null;
+}
 
 /**
  * The Rating component.
- * @param {Object} props The component props.
- * @return {JSX.Element}
+ * @returns The rendered component.
  */
-const Rating = ({ productId }) => {
+const Rating = ({ productId = null }: RatingProps) => {
   const { classes, cx } = useStyles();
-  const summary = useSelector(state => getReviewSummary(state, { productId }), shallowEqual);
-  const isSummaryPending = useSelector(state => (
+  const summary = useSelector(
+    (state: RatingState) => getReviewSummary(state, { productId }),
+    shallowEqual
+  );
+  const isSummaryPending = useSelector((state: RatingState) => (
     hasReviewFeature(state, REVIEW_FEATURE_RATING_SUMMARY)
     && isProductReviewsExcerptPending(state, { productId })
   ));
   const showEmptyRatingStars = useShowEmptyRatingStars();
 
-  const showRatings = appConfig.hasReviews
+  const { hasReviews } = appConfig as ReviewsConfig;
+  const showRatings = hasReviews
     && ((summary?.average ?? 0) > 0 || (showEmptyRatingStars && Boolean(summary)));
-  const showPlaceholder = appConfig.hasReviews && !summary && isSummaryPending;
+  const showPlaceholder = hasReviews && !summary && isSummaryPending;
 
   return (
     <SurroundPortals portalName={PRODUCT_RATING}>
-      {showRatings &&
+      {showRatings && summary &&
       <div
         className={classes.container}
         onClick={scrollToRating}
@@ -91,14 +108,6 @@ const Rating = ({ productId }) => {
       )}
     </SurroundPortals>
   );
-};
-
-Rating.propTypes = {
-  productId: PropTypes.string,
-};
-
-Rating.defaultProps = {
-  productId: null,
 };
 
 export default memo(Rating);
