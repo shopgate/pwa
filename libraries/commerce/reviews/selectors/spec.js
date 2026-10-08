@@ -10,6 +10,7 @@ import {
   getDefaultAuthorName,
   isProductReviewsExcerptMissing,
   isProductReviewsExcerptLoading,
+  isProductReviewsExcerptPending,
   hasProductReviewsExcerptError,
   isReviewListMissing,
   isReviewListLoading,
@@ -202,6 +203,31 @@ describe('Reviews selectors', () => {
         loading: true,
         error: false,
       });
+    });
+
+    it('should report only a running first request as pending', () => {
+      expect(isProductReviewsExcerptPending(buildState(), propsProductId)).toBe(false);
+      expect(isProductReviewsExcerptPending(buildState({
+        isFetching: true,
+        requestId: 1,
+      }), propsProductId)).toBe(true);
+      expect(isProductReviewsExcerptPending(buildState({
+        isFetching: true,
+        requestId: 2,
+        reviews: [1, 2],
+      }), propsProductId)).toBe(false);
+      expect(isProductReviewsExcerptPending(buildState({
+        isFetching: true,
+        requestId: 2,
+        reviews: [],
+      }), propsProductId)).toBe(false);
+      expect(isProductReviewsExcerptPending(buildState({
+        isFetching: false,
+        requestId: 1,
+        expires: 0,
+      }), propsProductId)).toBe(false);
+      expect(isProductReviewsExcerptPending(buildState({ expires: 0 }), propsProductId))
+        .toBe(false);
     });
 
     it('should report a running request as loading', () => {

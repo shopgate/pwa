@@ -405,3 +405,13 @@ export const isProductReviewsExcerptLoading = createSelector(
   hasProductReviewsExcerptError,
   (collection, hasError) => !!collection?.isFetching || (!collection?.reviews && !hasError)
 );
+
+/**
+ * Whether the review preview of the current base product is requested without stored reviews.
+ * @param state The current application state.
+ * @returns True while a request runs and no response was stored yet; false for a refresh.
+ */
+export const isProductReviewsExcerptPending = createSelector(
+  getProductReviewsExcerptCollection,
+  collection => !!collection?.isFetching && !collection.reviews
+);
