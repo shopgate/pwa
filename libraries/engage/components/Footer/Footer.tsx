@@ -1,5 +1,5 @@
-import React, { useRef, useEffect, useCallback } from 'react';
-import PropTypes from 'prop-types';
+import { useRef, useEffect, useCallback } from 'react';
+import type { ReactNode } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { getAbsoluteHeight, applyScrollContainer } from '@shopgate/engage/core/helpers';
@@ -9,6 +9,10 @@ import {
   updateFooterHeight,
 } from './helpers';
 import { APP_FOOTER_ID, APP_FOOTER_BARS_ID, DATA_IGNORED } from './constants';
+
+export interface FooterProps {
+  children?: ReactNode;
+}
 
 const useStyles = makeStyles()(() => ({
   footer: {
@@ -21,20 +25,19 @@ const useStyles = makeStyles()(() => ({
 
 /**
  * The footer component.
- * @param {Object} props The component props.
- * @returns {JSX.Element}
+ * @returns The footer.
  */
-const Footer = ({ children }) => {
+const Footer = ({ children = null }: FooterProps) => {
   const { classes, cx } = useStyles();
-  const footerRef = useRef(null);
+  const footerRef = useRef<HTMLDivElement>(null);
 
   const performFooterUpdate = useCallback(() => {
     handleSafeAreaInsets(footerRef.current);
-    updateFooterHeight(getAbsoluteHeight(footerRef.current));
+    updateFooterHeight(getAbsoluteHeight(footerRef.current as HTMLDivElement));
   }, []);
 
   const handleShow = useCallback(() => {
-    updateFooterHeight(getAbsoluteHeight(footerRef.current));
+    updateFooterHeight(getAbsoluteHeight(footerRef.current as HTMLDivElement));
   }, []);
 
   const handleHide = useCallback(() => {
@@ -56,14 +59,14 @@ const Footer = ({ children }) => {
 
     const observer = new MutationObserver((mutations) => {
       const update = mutations
-        .filter(mutation => mutation.target.getAttribute(DATA_IGNORED) !== 'true').length > 0;
+        .filter(mutation => (mutation.target as Element).getAttribute(DATA_IGNORED) !== 'true').length > 0;
 
       if (update) {
         performFooterUpdate();
       }
     });
 
-    observer.observe(footerRef.current, {
+    observer.observe(footerRef.current as HTMLDivElement, {
       childList: true,
       subtree: true,
       attributes: true,
@@ -83,14 +86,6 @@ const Footer = ({ children }) => {
       </div>
     </div>
   );
-};
-
-Footer.propTypes = {
-  children: PropTypes.node,
-};
-
-Footer.defaultProps = {
-  children: null,
 };
 
 export default Footer;

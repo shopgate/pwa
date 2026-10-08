@@ -1,16 +1,32 @@
-import PropTypes from 'prop-types';
+import type { ComponentType, ReactNode } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isIOSTheme } from '@shopgate/engage/core';
-import Grid from '@shopgate/pwa-common/components/Grid';
+import UntypedGrid from '@shopgate/pwa-common/components/Grid';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { CART_PAYMENT_BAR_TOTALS } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import PaymentBarShippingCost from './PaymentBarShippingCost';
-import PaymentBarDiscounts from './PaymentBarDiscounts';
-import PaymentBarTax from './PaymentBarTax';
-import PaymentBarSubTotal from './PaymentBarSubTotal';
-import PaymentBarGrandTotal from './PaymentBarGrandTotal';
-import PaymentBarPromotionCoupons from './PaymentBarPromotionCoupons';
-import PaymentBarAppliedPromotions from './PaymentBarAppliedPromotions';
+import UntypedDiscounts from './PaymentBarDiscounts';
+import UntypedTax from './PaymentBarTax';
+import UntypedSubTotal from './PaymentBarSubTotal';
+import UntypedGrandTotal from './PaymentBarGrandTotal';
+import UntypedPromotionCoupons from './PaymentBarPromotionCoupons';
+import UntypedAppliedPromotions from './PaymentBarAppliedPromotions';
+
+export interface PaymentBarTotalsProps {
+  /** Whether the lines show separators. */
+  showSeparator?: boolean;
+  className?: string | null;
+}
+
+type TotalLine = ComponentType<{ showSeparator?: boolean }>;
+
+const Grid = UntypedGrid as unknown as ComponentType<{ className?: string; children?: ReactNode }>;
+const PaymentBarSubTotal = UntypedSubTotal as unknown as TotalLine;
+const PaymentBarAppliedPromotions = UntypedAppliedPromotions as unknown as TotalLine;
+const PaymentBarPromotionCoupons = UntypedPromotionCoupons as unknown as TotalLine;
+const PaymentBarDiscounts = UntypedDiscounts as unknown as TotalLine;
+const PaymentBarTax = UntypedTax as unknown as TotalLine;
+const PaymentBarGrandTotal = UntypedGrandTotal as unknown as TotalLine;
 
 const useStyles = makeStyles()(theme => ({
   container: {
@@ -24,12 +40,9 @@ const useStyles = makeStyles()(theme => ({
 
 /**
  * The totals of the cart: sub total, promotions, discounts, shipping, tax and grand total.
- * @param {Object} props The component props.
- * @param {boolean} props.showSeparator Whether the lines show separators.
- * @param {string} props.className An additional class name.
- * @returns {JSX.Element}
+ * @returns The totals.
  */
-function PaymentBarTotals({ showSeparator, className }) {
+function PaymentBarTotals({ showSeparator = true, className = null }: PaymentBarTotalsProps) {
   const { classes, cx } = useStyles();
 
   return (
@@ -46,15 +59,5 @@ function PaymentBarTotals({ showSeparator, className }) {
     </Grid>
   );
 }
-
-PaymentBarTotals.propTypes = {
-  className: PropTypes.string,
-  showSeparator: PropTypes.bool,
-};
-
-PaymentBarTotals.defaultProps = {
-  className: null,
-  showSeparator: true,
-};
 
 export default PaymentBarTotals;

@@ -4,14 +4,17 @@ import {
 } from '@shopgate/engage/core/helpers';
 import { DATA_IGNORED } from './constants';
 
+/** A stylesheet rule; only style rules carry a selector. */
+type StyleRuleCandidate = CSSRule & { selectorText?: string };
+
 /**
  * Determines if an element is visually present in the DOM.
  * Checks for display, visibility, opacity, and transform-based hiding.
  *
- * @param {HTMLElement} el The element to evaluate.
- * @returns {boolean} True if the element is visually visible; false otherwise.
+ * @param el The element to evaluate.
+ * @returns True if the element is visually visible; false otherwise.
  */
-export const isElementVisible = (el) => {
+export const isElementVisible = (el: Element | null) => {
   if (!el || !(el instanceof HTMLElement)) return false;
 
   const style = window.getComputedStyle(el);
@@ -40,24 +43,24 @@ export const isElementVisible = (el) => {
  * explicitly set via CSS (ignores transparent, inherited, or unset values), and returns
  * that background color.
  *
- * @param {HTMLElement} container The parent element to search within. Must be an actual DOM node.
- * @returns {string|null} The detected background color (e.g., "rgb(255, 0, 0)")
+ * @param container The parent element to search within. Must be an actual DOM node.
+ * @returns The detected background color (e.g., "rgb(255, 0, 0)")
  */
-export const getElementBackgroundColor = (container) => {
+export const getElementBackgroundColor = (container: Element | null) => {
   if (!container) {
     return null;
   }
 
-  let widestElement = null;
+  let widestElement = null as HTMLElement | null;
   let maxWidth = -Infinity;
 
   /**
    * Recursively traverses the DOM tree starting from the given node,
    * tracking the widest element that has a background color explicitly set via CSS.
    *
-   * @param {HTMLElement} node The DOM node to begin traversal from.
+   * @param node The DOM node to begin traversal from.
    */
-  function walk(node) {
+  function walk(node: Element) {
     if (!(node instanceof HTMLElement)) return;
 
     const style = window.getComputedStyle(node);
@@ -93,11 +96,11 @@ export const getElementBackgroundColor = (container) => {
 /**
  * Checks if any of the provided class names reference the custom property in any loaded stylesheet.
  *
- * @param {string[]} classList Array of class names to check.
- * @param {string} customProp The custom property to search for in the stylesheets.
- * @returns {boolean} True if any class rule uses the custom property.
+ * @param classList Array of class names to check.
+ * @param customProp The custom property to search for in the stylesheets.
+ * @returns True if any class rule uses the custom property.
  */
-const classNamesUseCustomProp = (classList, customProp) => {
+const classNamesUseCustomProp = (classList: string[], customProp: string) => {
   const allRules = Array.from(document.styleSheets)
     .filter((sheet) => {
       try {
@@ -106,7 +109,7 @@ const classNamesUseCustomProp = (classList, customProp) => {
         return false; // Skip cross-origin or restricted stylesheets
       }
     })
-    .flatMap(sheet => Array.from(sheet.cssRules || []));
+    .flatMap(sheet => Array.from<StyleRuleCandidate>(sheet.cssRules || []));
 
   for (const rule of allRules) {
     // eslint-disable-next-line no-continue
@@ -125,11 +128,11 @@ const classNamesUseCustomProp = (classList, customProp) => {
 /**
  * Checks if a single element uses the custom property via inline styles or class-based rules.
  *
- * @param {HTMLElement} el The element to check.
- * @param {string} customProp The CSS custom property to search for.
- * @returns {boolean} True if the element uses the custom property.
+ * @param el The element to check.
+ * @param customProp The CSS custom property to search for.
+ * @returns True if the element uses the custom property.
  */
-const elementUsesCustomProp = (el, customProp) => {
+const elementUsesCustomProp = (el: Element, customProp: string) => {
   if (!(el instanceof Element)) return false;
 
   const styleAttr = el.getAttribute?.('style');
@@ -145,17 +148,17 @@ const elementUsesCustomProp = (el, customProp) => {
 /**
  * Checks if an element or any of its descendants use the custom property.
  *
- * @param {HTMLElement} el The root element to inspect.
- * @param {string} customProp The CSS custom property to look for.
- * @returns {boolean} True if the element or any descendant uses the custom property.
+ * @param el The root element to inspect.
+ * @param customProp The CSS custom property to look for.
+ * @returns True if the element or any descendant uses the custom property.
  */
-const elementOrDescendantsUseCustomProp = (el, customProp) => {
+const elementOrDescendantsUseCustomProp = (el: Element, customProp: string) => {
   // Check if the element itself uses the custom property
   if (elementUsesCustomProp(el, customProp)) return true;
 
   const descendants = el.querySelectorAll('*');
 
-  for (const node of descendants) {
+  for (const node of Array.from(descendants)) {
     // eslint-disable-next-line no-continue
     if (!(node instanceof Element)) continue;
     if (elementUsesCustomProp(node, customProp)) return true;
@@ -168,23 +171,25 @@ const elementOrDescendantsUseCustomProp = (el, customProp) => {
  * Returns footer entries that do NOT have safe area insets applied,
  * either on themselves or in any of their descendants.
  *
- * @param {HTMLElement[]} footerElements The footer elements to check.
- * @returns {HTMLElement[]} An array of direct children that do not use safe area insets.
+ * @param footerElements The footer elements to check.
+ * @returns An array of direct children that do not use safe area insets.
  */
-const getFooterEntriesWithoutSafeAreaInsets = footerElements => footerElements.filter(
-  child => !elementOrDescendantsUseCustomProp(child, '--safe-area-inset-bottom')
+const getFooterEntriesWithoutSafeAreaInsets = (footerElements: HTMLElement[]) => (
+  footerElements.filter(
+    child => !elementOrDescendantsUseCustomProp(child, '--safe-area-inset-bottom')
+  )
 );
 
 /**
  * Searches for footer elements that do not have safe area insets applied, and adds a fallback.
- * @param {HTMLElement} footerEl The footer element whose children are to be checked.
+ * @param footerEl The footer element whose children are to be checked.
  */
-export const handleSafeAreaInsets = (footerEl) => {
+export const handleSafeAreaInsets = (footerEl: HTMLElement | null) => {
   if (!footerEl || !(footerEl instanceof HTMLElement)) {
     return;
   }
 
-  const directChildren = Array.from(footerEl.children);
+  const directChildren = Array.from(footerEl.children) as HTMLElement[];
 
   // Filter out elements that where already handled before
   const childrenToInspect = directChildren
@@ -220,9 +225,9 @@ const { style } = document.documentElement;
 
 /**
  * Update the footer height custom property
- * @param {number} height height
+ * @param height height
  */
-export const updateFooterHeight = (height) => {
+export const updateFooterHeight = (height: number) => {
   // The TabBar is positioned with `position: fixed`, so it doesn’t contribute to the measured
   // height of the Footer. Additionally, it’s sometimes animated in/out, which makes dynamic
   // measurement via JavaScript more complex and error-prone.

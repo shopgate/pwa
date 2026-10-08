@@ -1,11 +1,18 @@
-import * as React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { CART_PAYMENT_BAR } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import PaymentBarTotals from './PaymentBarTotals';
 import PaymentBarCheckoutButton from './PaymentBarCheckoutButton';
+
+export interface PaymentBarContentProps {
+  /** Whether the total lines show separators. */
+  showSeparator?: boolean;
+  /** Whether a surrounding footer bar provides background, shadow and the bottom inset. */
+  embedded?: boolean;
+  /** Whether only the checkout button is rendered, with the grand total in its label. */
+  checkoutOnly?: boolean;
+}
 
 const useStyles = makeStyles()(theme => ({
   wrapper: {
@@ -34,15 +41,11 @@ const useStyles = makeStyles()(theme => ({
 
 /**
  * The PaymentBarContent component.
- * @param {Object} props The component props.
- * @param {boolean} props.showSeparator Whether the total lines show separators.
- * @param {boolean} props.embedded Whether a surrounding footer bar provides background, shadow
- * and the bottom inset.
- * @param {boolean} props.checkoutOnly Whether only the checkout button is rendered, with the grand
- * total in its label.
- * @returns {JSX}
+ * @returns The payment bar content.
  */
-function PaymentBarContent({ showSeparator, embedded, checkoutOnly }) {
+function PaymentBarContent({
+  showSeparator = true, embedded = false, checkoutOnly = false,
+}: PaymentBarContentProps) {
   const { classes, cx } = useStyles();
   return (
     <div className={cx({ [classes.wrapper]: !embedded }, 'theme__cart__payment-bar')}>
@@ -61,17 +64,5 @@ function PaymentBarContent({ showSeparator, embedded, checkoutOnly }) {
     </div>
   );
 }
-
-PaymentBarContent.propTypes = {
-  checkoutOnly: PropTypes.bool,
-  embedded: PropTypes.bool,
-  showSeparator: PropTypes.bool,
-};
-
-PaymentBarContent.defaultProps = {
-  checkoutOnly: false,
-  embedded: false,
-  showSeparator: true,
-};
 
 export default PaymentBarContent;

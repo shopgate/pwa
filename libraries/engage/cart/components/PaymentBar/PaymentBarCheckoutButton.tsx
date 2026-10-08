@@ -1,22 +1,37 @@
-import React, { useContext, useMemo } from 'react';
+import { useContext, useMemo } from 'react';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { Button } from '@shopgate/engage/components/v2';
 import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import PropTypes from 'prop-types';
 import { CartContext } from '../../cart.context';
 import connect from './PaymentBarCheckoutButton.connector';
 
+export interface PaymentBarCheckoutButtonProps {
+  /** Whether the cart is orderable. */
+  isOrderable?: boolean;
+  /** The grand total of the cart. */
+  grandTotal?: number | null;
+  /** Whether the label carries the grand total. */
+  showTotal?: boolean;
+}
+
+/** The part of the cart context the button reads; `hideTotal` is an untyped config property. */
+interface CheckoutButtonCartContext {
+  isLoading: boolean;
+  currency: string;
+  config?: { hideTotal?: boolean };
+}
+
 /**
  * Renders the cart payment bar checkout button.
- * @param {Object} props The component props.
- * @param {boolean} props.isOrderable Whether the cart is orderable.
- * @param {number} props.grandTotal The grand total of the cart.
- * @param {boolean} props.showTotal Whether the label carries the grand total.
- * @return {JSX.Element}
+ * @returns The checkout button.
  */
-const PaymentBarCheckoutButton = ({ isOrderable, grandTotal, showTotal }) => {
-  const { isLoading, currency, config: { hideTotal } = {} } = useContext(CartContext);
+const PaymentBarCheckoutButton = ({
+  isOrderable = true, grandTotal = null, showTotal = false,
+}: PaymentBarCheckoutButtonProps) => {
+  const {
+    isLoading, currency, config: { hideTotal } = {},
+  } = useContext(CartContext) as CheckoutButtonCartContext;
   const isActive = useMemo(() => (isOrderable && !isLoading), [isLoading, isOrderable]);
   const withTotal = showTotal && !hideTotal && !!currency && typeof grandTotal === 'number';
 
@@ -33,18 +48,6 @@ const PaymentBarCheckoutButton = ({ isOrderable, grandTotal, showTotal }) => {
       </Button>
     </SurroundPortals>
   );
-};
-
-PaymentBarCheckoutButton.propTypes = {
-  grandTotal: PropTypes.number,
-  isOrderable: PropTypes.bool,
-  showTotal: PropTypes.bool,
-};
-
-PaymentBarCheckoutButton.defaultProps = {
-  grandTotal: null,
-  isOrderable: true,
-  showTotal: false,
 };
 
 export default connect(PaymentBarCheckoutButton);
