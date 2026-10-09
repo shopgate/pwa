@@ -424,7 +424,13 @@
     "no_result": {
       "heading": "Hoppá!",
       "body": "A \"{searchPhrase}\" keresése nem adott eredményt."
-    }
+    },
+    "history_title": "Legutóbbi keresések",
+    "history_clear": "Előzmények törlése",
+    "results_count": "{count, plural, =1 {1 találat} other {{count} találat}}",
+    "show_all_results": "Összes találat megjelenítése",
+    "clear": "Keresés törlése",
+    "new_search": "Új keresés"
   },
   "shipping": {
     "unknown": "plusz szállítás",
@@ -578,7 +584,8 @@
     "order_history": "Rendelési előzmények",
     "profile": "Profil",
     "back": "Vissza a {title}",
-    "open_menu": "Menü megnyitása"
+    "open_menu": "Menü megnyitása",
+    "open_link": "Oldal megnyitása"
   },
   "reviews": {
     "rating": "Értékelés",

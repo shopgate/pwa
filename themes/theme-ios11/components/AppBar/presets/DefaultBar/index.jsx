@@ -1,4 +1,4 @@
-import React, { Fragment, PureComponent } from 'react';
+import React, { Fragment, PureComponent, useMemo } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
@@ -7,16 +7,32 @@ import {
   APP_BAR_DEFAULT,
   APP_BAR_DEFAULT_AFTER,
 } from '@shopgate/pwa-common/constants/Portals';
-import { AppBar } from '@shopgate/pwa-ui-ios';
 import {
   withRoute, withApp, INDEX_PATH, router,
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { ViewContext } from '@shopgate/engage/components/View';
+import { useSelector } from 'react-redux';
+import { getPersistentSearchBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
+import { SEARCH_PATTERN } from '@shopgate/engage/search/constants';
+import ConfiguredBar from '../../components/ConfiguredBar';
+import AppBarHeadline from '../../components/AppBarHeadline';
+import SearchBar from '../../../Search/SearchBar';
+import { useAppBarSettings } from '../../hooks';
+import { focusElement } from '../../../../helpers/focus';
+import {
+  ACTION_BUTTONS_HIDDEN_PATTERNS,
+  HEADLINE_HIDDEN_PATTERNS,
+  OVERLAY_PATTERNS,
+  SEARCH_BAR_PAGE_TYPES,
+} from '../../constants';
 import AppBarIcon from './components/Icon';
 import ProgressBar from './components/ProgressBar';
 import connect from './connector';
+
+const NO_CENTER = { center: null };
+const EMPTY_PROPS = {};
 
 /**
  * The AppBarDefault component.
@@ -24,18 +40,29 @@ import connect from './connector';
 class AppBarDefault extends PureComponent {
   static propTypes = {
     app: PropTypes.shape().isRequired,
+    appBarSettings: PropTypes.shape().isRequired,
+    floating: PropTypes.bool.isRequired,
+    overlay: PropTypes.bool.isRequired,
     resetStatusBar: PropTypes.func.isRequired,
     route: PropTypes.shape().isRequired,
     setFocus: PropTypes.bool.isRequired,
+    showActions: PropTypes.bool.isRequired,
     updateStatusBar: PropTypes.func.isRequired,
     'aria-hidden': PropTypes.bool,
     below: PropTypes.node,
+    center: PropTypes.node,
+    searchBar: PropTypes.shape({
+      hideOnScroll: PropTypes.bool,
+      query: PropTypes.string,
+    }),
     title: PropTypes.string,
   };
 
   static defaultProps = {
     'aria-hidden': null,
     below: null,
+    center: undefined,
+    searchBar: null,
     title: null,
   };
 
@@ -65,7 +92,7 @@ class AppBarDefault extends PureComponent {
       const focusable = target.querySelector('.theme__app-bar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
 
       if (focusable) {
-        focusable.focus();
+        focusElement(focusable);
       }
     }
 
@@ -97,7 +124,7 @@ class AppBarDefault extends PureComponent {
     const engageWillLeave =
       prevProps.app.isVisible === true && this.props.app.isVisible === false;
 
-    if (routeDidEnter || engageDidEnter) {
+    if (routeDidEnter || engageDidEnter || prevProps.overlay !== this.props.overlay) {
       // Sync the colors of the app bar when the route with the bar came visible.
       this.updateStatusBar();
     }
@@ -125,7 +152,7 @@ class AppBarDefault extends PureComponent {
      * from the live custom property rather than passed along as a var() reference.
      */
     this.props.updateStatusBar(
-      getCSSCustomProp('--sg-components-appBar-background'),
+      this.props.overlay ? 'transparent' : getCSSCustomProp('--sg-components-appBar-background'),
       pathname === INDEX_PATH
     );
   }
@@ -134,32 +161,70 @@ class AppBarDefault extends PureComponent {
    * @returns {JSX}
    */
   render() {
-    if (!this.props.route.visible || !this.state.target) {
-      return null;
+    const {
+      app,
+      appBarSettings,
+      floating,
+      overlay,
+      resetStatusBar,
+      route,
+      searchBar,
+      setFocus,
+      showActions,
+      updateStatusBar,
+      ...barProps
+    } = this.props;
+
+    const headline = !overlay && !barProps.logo && barProps.center === undefined
+      && !HEADLINE_HIDDEN_PATTERNS.includes(route.pattern)
+      ? <AppBarHeadline title={i18n.text(barProps.title || '')} focus={setFocus && route.visible} />
+      : null;
+
+    if (!route.visible || !this.state.target) {
+      return headline;
     }
 
-    const center = <AppBar.Title title={i18n.text(this.props.title || '')} />;
+    const portalProps = {
+      floating,
+      overlay,
+    };
+
     const below = (
       <Fragment key="below">
-        {this.props.below}
+        {searchBar && (
+          <SearchBar
+            query={searchBar.query}
+            hideOnScroll={searchBar.hideOnScroll}
+            overlay={overlay}
+          />
+        )}
+        {barProps.below}
         <ProgressBar />
       </Fragment>
     );
 
-    return ReactDOM.createPortal(
+    return (
       <>
-        <Portal name={APP_BAR_DEFAULT_BEFORE} />
-        <Portal name={APP_BAR_DEFAULT}>
-          <AppBar
-            center={center}
-            {...this.props}
-            below={below}
-            aria-hidden={this.props['aria-hidden']}
-          />
-        </Portal>
-        <Portal name={APP_BAR_DEFAULT_AFTER} />
-      </>,
-      this.state.target
+        {headline}
+        {ReactDOM.createPortal(
+          <>
+            <Portal name={APP_BAR_DEFAULT_BEFORE} props={portalProps} />
+            <Portal name={APP_BAR_DEFAULT} props={portalProps}>
+              <ConfiguredBar
+                {...barProps}
+                settings={appBarSettings}
+                floating={floating}
+                overlay={overlay}
+                showActions={showActions}
+                below={below}
+                aria-hidden={barProps['aria-hidden']}
+              />
+            </Portal>
+            <Portal name={APP_BAR_DEFAULT_AFTER} props={portalProps} />
+          </>,
+          this.state.target
+        )}
+      </>
     );
   }
 }
@@ -169,13 +234,49 @@ class AppBarDefault extends PureComponent {
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const AppBarDefaultWithContext = props => (
-  <ViewContext.Consumer>
-    {({ ariaHidden }) => (
-      <AppBarDefault {...props} aria-hidden={ariaHidden} />
-    )}
-  </ViewContext.Consumer>
-);
+const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
+  const appBarSettings = useAppBarSettings();
+  const { pattern } = props.route;
+  const floating = appBarSettings.variant === 'floating';
+  const overlay = floating && OVERLAY_PATTERNS.includes(pattern);
+  const showActions = actionButtons && !ACTION_BUTTONS_HIDDEN_PATTERNS.includes(pattern);
+  const searchBarSettings = useSelector(getPersistentSearchBarSettings);
+  const searchBarPage = SEARCH_BAR_PAGE_TYPES[pattern];
+  const isSearch = pattern === SEARCH_PATTERN;
+  const showSearchBar = !!(actionButtons && searchBarPage && searchBarSettings[searchBarPage]);
+  const searchQuery = isSearch ? props.route.query?.s || '' : '';
+  const searchBar = useMemo(() => (showSearchBar ? {
+    query: searchQuery,
+    hideOnScroll: searchBarSettings.hideOnScroll,
+  } : null), [searchBarSettings.hideOnScroll, searchQuery, showSearchBar]);
+  const titleProps = searchBar && isSearch ? NO_CENTER : EMPTY_PROPS;
+
+  return (
+    <ViewContext.Consumer>
+      {({ ariaHidden }) => (
+        <AppBarDefault
+          {...props}
+          {...titleProps}
+          searchBar={searchBar}
+          appBarSettings={appBarSettings}
+          floating={floating}
+          overlay={overlay}
+          showActions={showActions}
+          aria-hidden={ariaHidden}
+        />
+      )}
+    </ViewContext.Consumer>
+  );
+};
+
+AppBarDefaultWithContext.propTypes = {
+  route: PropTypes.shape().isRequired,
+  actionButtons: PropTypes.bool,
+};
+
+AppBarDefaultWithContext.defaultProps = {
+  actionButtons: true,
+};
 
 const WrappedComponent = withApp(withRoute(connect(AppBarDefaultWithContext), { prop: 'route' }));
 

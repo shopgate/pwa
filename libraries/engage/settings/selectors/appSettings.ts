@@ -32,6 +32,30 @@ export const getTabBarSettings = createSelector(
 );
 
 /**
+ * Selects the header settings.
+ */
+export const getAppBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.navigation.appBar
+);
+
+/**
+ * Selects the page types that show the search bar below the header.
+ */
+export const getPersistentSearchBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.search.persistentBar
+);
+
+/**
+ * Selects whether the search field offers the scanner.
+ */
+export const getShowSearchScannerIcon = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.search.showScannerIcon
+);
+
+/**
  * Selects the ProductGrid columns setting (keyed by breakpoint).
  */
 export const getProductGridColumns = createSelector(

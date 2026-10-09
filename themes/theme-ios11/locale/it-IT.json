@@ -424,7 +424,13 @@
     "no_result": {
       "heading": "Ops!",
       "body": "La tua ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
-    }
+    },
+    "history_title": "Ricerche recenti",
+    "history_clear": "Cancella cronologia",
+    "results_count": "{count, plural, =1 {1 risultato} other {{count} risultati}}",
+    "show_all_results": "Mostra tutti i risultati",
+    "clear": "Cancella ricerca",
+    "new_search": "Nuova ricerca"
   },
   "shipping": {
     "unknown": "più spedizione",
@@ -578,7 +584,8 @@
     "order_history": "Storico ordini",
     "profile": "Profilo",
     "back": "Indietro alla {title}",
-    "open_menu": "Apra il menu"
+    "open_menu": "Apra il menu",
+    "open_link": "Apri pagina"
   },
   "reviews": {
     "rating": "valutazione",

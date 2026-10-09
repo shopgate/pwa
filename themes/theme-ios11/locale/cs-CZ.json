@@ -424,7 +424,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Vaše hledání \"{searchPhrase}\" nevrátilo žádné výsledky."
-    }
+    },
+    "history_title": "Nedávná hledání",
+    "history_clear": "Smazat historii",
+    "results_count": "{count, plural, =1 {1 výsledek} other {Výsledky: {count}}}",
+    "show_all_results": "Zobrazit všechny výsledky",
+    "clear": "Vymazat hledání",
+    "new_search": "Nové hledání"
   },
   "shipping": {
     "unknown": "plus Poštovné",
@@ -578,7 +584,8 @@
     "order_history": "Historie objednávek",
     "profile": "Profil",
     "back": "Zpět na {title}",
-    "open_menu": "Otevřít menu"
+    "open_menu": "Otevřít menu",
+    "open_link": "Otevřít stránku"
   },
   "reviews": {
     "rating": "Hodnocení",

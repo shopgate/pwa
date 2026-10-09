@@ -12,7 +12,7 @@ const { variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 
 const useStyles = makeStyles()(() => ({
   filters: {
-    ...(applyScrollContainer() ? { top: 0 } : { top: 44 }),
+    ...(applyScrollContainer() ? { top: 'var(--sg-search-bar-offset, 0px)' } : { top: 44 }),
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       top: 64,
       marginBottom: 16,

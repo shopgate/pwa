@@ -423,7 +423,13 @@
     "no_result": {
       "heading": "Hoppsan!",
       "body": "Din sökning efter \"{searchPhrase}\" gav inget resultat."
-    }
+    },
+    "history_title": "Senaste sökningar",
+    "history_clear": "Rensa historik",
+    "results_count": "{count, plural, =1 {1 resultat} other {{count} resultat}}",
+    "show_all_results": "Visa alla resultat",
+    "clear": "Rensa sökning",
+    "new_search": "Ny sökning"
   },
   "shipping": {
     "unknown": "plus frakt",
@@ -577,7 +583,8 @@
     "order_history": "Beställningshistorik",
     "profile": "Profil",
     "back": "Tillbaka till {title}",
-    "open_menu": "Öppna meny"
+    "open_menu": "Öppna meny",
+    "open_link": "Öppna sida"
   },
   "reviews": {
     "rating": "Betyg",

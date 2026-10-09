@@ -17,13 +17,32 @@ const useStyles = makeStyles()(theme => ({
     boxSizing: 'content-box',
     minHeight: 44,
     paddingTop: theme.layout.safeArea.top,
+    background: theme.components.appBar.background,
+    color: theme.components.appBar.color,
   },
   inner: {
-    display: 'flex',
+    display: 'grid',
+    gridTemplateColumns: 'minmax(max-content, 1fr) minmax(0, auto) minmax(max-content, 1fr)',
     alignItems: 'center',
-    justifyContent: 'space-between',
     position: 'relative',
     zIndex: 1,
+    minHeight: 44,
+  },
+  side: {
+    display: 'flex',
+    alignItems: 'center',
+  },
+  left: {
+    justifyContent: 'flex-start',
+  },
+  center: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    minWidth: 0,
+  },
+  right: {
+    justifyContent: 'flex-end',
   },
 }));
 
@@ -48,33 +67,50 @@ const AppBar = ({
   below,
   center,
   left,
+  leftEnd,
   right,
+  rightStart,
   classes: parentClasses,
   'aria-hidden': ariaHidden,
   backgroundColor,
   textColor,
+  inert,
+  ...props
 }) => {
   const { classes, cx } = useStyles();
   const contentRef = useRef(null);
   const style = useMemo(() => ({
-    background: backgroundColor,
-    color: textColor,
+    ...(backgroundColor ? { '--sg-components-appBar-background': backgroundColor } : {}),
+    ...(textColor ? { '--sg-components-appBar-color': textColor } : {}),
   }), [backgroundColor, textColor]);
 
-  const observer = useMemo(() => new MutationObserver(() => {
-    updateAppBarHeight(contentRef);
-  }), [contentRef]);
+  const observer = useMemo(() => {
+    const Observer = typeof ResizeObserver === 'function' ? ResizeObserver : MutationObserver;
+    return new Observer(() => {
+      updateAppBarHeight(contentRef);
+    });
+  }, [contentRef]);
 
   useLayoutEffect(() => {
     updateAppBarHeight(contentRef);
-    observer.observe(contentRef.current, { childList: true });
+    observer.observe(contentRef.current, {
+      childList: true,
+      box: 'border-box',
+    });
 
     return () => {
       observer.disconnect();
     };
   }, [contentRef, observer]);
 
+  useLayoutEffect(() => {
+    updateAppBarHeight(contentRef);
+  });
+
   const sectionClasses = cx(classes.outer, parentClasses.outer, 'ui-ios__app-bar');
+  const dataAttributes = useMemo(() => Object.fromEntries(
+    Object.entries(props).filter(([name]) => name.startsWith('data-'))
+  ), [props]);
 
   return (
     <section
@@ -82,13 +118,23 @@ const AppBar = ({
       data-test-id="Navigator"
       style={style}
       aria-hidden={ariaHidden}
+      inert={inert ? '' : undefined}
       ref={contentRef}
+      {...dataAttributes}
     >
       <SurroundPortals portalName={APP_BAR_CONTENT}>
-        <div className={cx(classes.inner, parentClasses.inner)}>
-          <Left elements={left} />
-          <Center elements={center} />
-          <Right elements={right} />
+        <div className={cx(classes.inner, 'ui-ios__app-bar__inner', parentClasses.inner)}>
+          <div className={cx(classes.side, classes.left, 'ui-ios__app-bar__left')}>
+            <Left elements={left} />
+            {leftEnd}
+          </div>
+          <div className={cx(classes.center, 'ui-ios__app-bar__center')}>
+            <Center elements={center} />
+          </div>
+          <div className={cx(classes.side, classes.right, 'ui-ios__app-bar__right')}>
+            {rightStart}
+            <Right elements={right} />
+          </div>
         </div>
       </SurroundPortals>
       <Below elements={below} />
@@ -105,23 +151,29 @@ AppBar.propTypes = {
     inner: PropTypes.string,
     outer: PropTypes.string,
   }),
+  inert: PropTypes.bool,
   left: PropTypes.node,
+  leftEnd: PropTypes.node,
   right: PropTypes.node,
+  rightStart: PropTypes.node,
   textColor: PropTypes.string,
 };
 
 AppBar.defaultProps = {
   'aria-hidden': null,
-  backgroundColor: 'var(--sg-components-appBar-background)',
+  backgroundColor: undefined,
   below: null,
   center: null,
   classes: {
     inner: '',
     outer: '',
   },
+  inert: false,
   left: null,
+  leftEnd: null,
   right: null,
-  textColor: 'var(--sg-components-appBar-color)',
+  rightStart: null,
+  textColor: undefined,
 };
 
 AppBar.Field = Field;

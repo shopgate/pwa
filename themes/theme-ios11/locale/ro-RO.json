@@ -424,7 +424,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Căutarea dvs. pentru \"{searchPhrase}\" nu a dat niciun rezultat."
-    }
+    },
+    "history_title": "Căutări recente",
+    "history_clear": "Șterge istoricul",
+    "results_count": "{count, plural, =1 {1 rezultat} other {{count} rezultate}}",
+    "show_all_results": "Afișează toate rezultatele",
+    "clear": "Șterge căutarea",
+    "new_search": "Căutare nouă"
   },
   "shipping": {
     "unknown": "plus transport maritim",
@@ -578,7 +584,8 @@
     "order_history": "Istoricul comenzilor",
     "profile": "Profil",
     "back": "Înapoi la {title}",
-    "open_menu": "Deschide meniul"
+    "open_menu": "Deschide meniul",
+    "open_link": "Deschide pagina"
   },
   "reviews": {
     "rating": "Evaluare",

@@ -8,9 +8,9 @@ const useStyles = makeStyles()({
   root: {
     flexGrow: 1,
     lineHeight: '44px',
-    left: 90,
+    left: 'var(--app-bar-title-inset, 90px)',
     position: 'absolute',
-    right: 90,
+    right: 'var(--app-bar-title-inset, 90px)',
     top: 0,
   },
 });
