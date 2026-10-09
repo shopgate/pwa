@@ -1,7 +1,7 @@
 import { getThemeIcon } from './getThemeIcon';
 import { CORE_ICONS } from './coreIcons';
 
-jest.mock('@shopgate/pwa-common/helpers/config', () => ({
+jest.mock('@shopgate/engage', () => ({
   themeConfig: {
     icons: {
       cart: '<path d="shop-cart"/>',

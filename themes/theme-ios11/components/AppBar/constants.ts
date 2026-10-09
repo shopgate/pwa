@@ -2,17 +2,17 @@ import { INDEX_PATH } from '@shopgate/engage/core/constants';
 import {
   LOGIN_PATH, CHECKOUT_PATH, REGISTER_PATH, PAGE_PATTERN,
 } from '@shopgate/pwa-common/constants/RoutePaths';
-import { ITEM_PATTERN, ITEM_GALLERY_PATTERN } from '@shopgate/pwa-common-commerce/product/constants';
+import { ITEM_PATTERN, ITEM_GALLERY_PATTERN } from '@shopgate/engage/product/constants';
 import {
   CATEGORY_FILTER_PATTERN,
   CATEGORY_ALL_FILTER_PATTERN,
   CATEGORY_PATTERN,
   CATEGORY_ALL_PATTERN,
   ROOT_CATEGORY_PATTERN,
-} from '@shopgate/pwa-common-commerce/category/constants';
-import { SEARCH_FILTER_PATTERN, SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
-import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
+} from '@shopgate/engage/category/constants';
+import { SEARCH_FILTER_PATTERN, SEARCH_PATTERN } from '@shopgate/engage/search/constants';
+import { FAVORITES_PATH } from '@shopgate/engage/favorites';
+import { SCANNER_PATH } from '@shopgate/engage/scanner/constants';
 import { checkoutRoutes } from '@shopgate/engage/checkout';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 

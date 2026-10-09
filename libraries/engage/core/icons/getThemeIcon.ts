@@ -1,4 +1,4 @@
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import { themeConfig } from '@shopgate/engage';
 import { CORE_ICONS } from './coreIcons';
 
 /**

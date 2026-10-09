@@ -8,7 +8,7 @@ let mockScroll = {
   scrollingDown: false,
 };
 
-jest.mock('@shopgate/pwa-ui-ios', () => {
+jest.mock('@shopgate/engage/components', () => {
   /* eslint-disable react/prop-types */
   const AppBar = ({
     left, center, right, classes, inert, below, leftEnd, rightStart, ...props
@@ -26,12 +26,12 @@ jest.mock('@shopgate/pwa-ui-ios', () => {
     </section>
   );
   /* eslint-enable react/prop-types */
-  return { AppBar };
+  return {
+    AppBarIOS: AppBar,
+    Logo: () => <span>logo</span>,
+    SurroundPortals: ({ children }) => children,
+  };
 });
-jest.mock('@shopgate/engage/components', () => ({
-  Logo: () => <span>logo</span>,
-  SurroundPortals: ({ children }) => children,
-}));
 jest.mock('../ActionButton', () => {
   // eslint-disable-next-line react/prop-types
   const ActionButton = ({ settings }) => <span>{`action:${settings.action}`}</span>;

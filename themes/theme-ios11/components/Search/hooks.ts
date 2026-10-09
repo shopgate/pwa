@@ -4,16 +4,16 @@ import {
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash/debounce';
 import { useLocalStorage, useNavigation } from '@shopgate/engage/core/hooks';
-import { buildFetchSearchResultsParams } from '@shopgate/engage/product';
+import {
+  buildFetchSearchResultsParams,
+  getProductById,
+  getProductsResult,
+} from '@shopgate/engage/product';
 import { SEARCH_PATH, SEARCH_PATTERN } from '@shopgate/engage/search/constants';
 import { fetchSearchResults, fetchSearchSuggestions } from '@shopgate/engage/search/actions';
 import { getSuggestions } from '@shopgate/engage/search/selectors';
-import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
-import {
-  getProductById,
-  getProductsResult,
-} from '@shopgate/pwa-common-commerce/product/selectors/product';
+import { getCurrentRoute } from '@shopgate/engage/core/selectors';
+import { routeDidEnter$ } from '@shopgate/engage/core/streams';
 import {
   SEARCH_DEBOUNCE,
   SEARCH_HISTORY_MAX,

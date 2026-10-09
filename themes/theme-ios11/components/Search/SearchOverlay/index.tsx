@@ -3,8 +3,8 @@ import {
 } from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCurrentPathname, getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
-import { RouteContext } from '@shopgate/pwa-common/context';
+import { getCurrentPathname, getCurrentRoute } from '@shopgate/engage/core/selectors';
+import { RouteContext } from '@shopgate/engage/core/contexts';
 import { registerEvents } from '@shopgate/engage/core/commands';
 import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/engage/core/constants';
 import { event } from '@shopgate/engage/core/classes';

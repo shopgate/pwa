@@ -1,8 +1,8 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { SurroundPortals, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import htmlToText from '@shopgate/pwa-common/helpers/html/htmlToText';
-import { APP_BAR_HEADLINE } from '@shopgate/pwa-common/constants/Portals';
+import { htmlToText } from '@shopgate/engage/core/helpers';
+import { APP_BAR_HEADLINE } from '@shopgate/engage/core/constants';
 
 const useStyles = makeStyles()(theme => ({
   root: {

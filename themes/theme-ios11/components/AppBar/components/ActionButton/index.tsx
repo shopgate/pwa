@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import {
   Icon, AppBarIOS as AppBar, Badge, SurroundPortals,
 } from '@shopgate/engage/components';
-import { APP_BAR_ACTION, APP_BAR_CART_BUTTON } from '@shopgate/pwa-common/constants/Portals';
+import { APP_BAR_ACTION, APP_BAR_CART_BUTTON } from '@shopgate/engage/core/constants';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { NavigationAction } from '@shopgate/engage/navigation';
 import type { ResolvedNavigationAction } from '@shopgate/engage/navigation';

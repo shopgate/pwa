@@ -1,13 +1,12 @@
 import { useLayoutEffect, useMemo } from 'react';
 import type { ComponentType, ReactNode } from 'react';
-import { AppBar as UntypedAppBar } from '@shopgate/pwa-ui-ios';
-import { Logo, SurroundPortals } from '@shopgate/engage/components';
+import { AppBarIOS as UntypedAppBar, Logo, SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   APP_BAR_ACTIONS_LEFT,
   APP_BAR_ACTIONS_RIGHT,
   APP_BAR_LOGO,
-} from '@shopgate/pwa-common/constants/Portals';
+} from '@shopgate/engage/core/constants';
 import type {
   AppBarButtonSlot,
   AppBarSettings,

@@ -24,6 +24,8 @@ jest.mock('@shopgate/engage/core/hooks', () => {
 });
 jest.mock('@shopgate/engage/product', () => ({
   buildFetchSearchResultsParams: () => ({}),
+  getProductById: jest.fn(),
+  getProductsResult: jest.fn(),
 }));
 jest.mock('@shopgate/engage/search/constants', () => ({
   SEARCH_PATH: '/search',
@@ -36,10 +38,10 @@ jest.mock('@shopgate/engage/search/actions', () => ({
 jest.mock('@shopgate/engage/search/selectors', () => ({
   getSuggestions: jest.fn(),
 }));
-jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+jest.mock('@shopgate/engage/core/selectors', () => ({
   getCurrentRoute: () => mockRoute,
 }));
-jest.mock('@shopgate/pwa-common/streams/router', () => ({
+jest.mock('@shopgate/engage/core/streams', () => ({
   routeDidEnter$: {
     subscribe: (listener) => {
       mockRouteListener = listener;
@@ -50,10 +52,6 @@ jest.mock('@shopgate/pwa-common/streams/router', () => ({
       };
     },
   },
-}));
-jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
-  getProductById: jest.fn(),
-  getProductsResult: jest.fn(),
 }));
 
 /**

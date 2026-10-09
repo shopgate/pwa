@@ -15,7 +15,7 @@ import { getCSSCustomProp } from '@shopgate/engage/styles';
 import { ViewContext } from '@shopgate/engage/components/View';
 import { useSelector } from 'react-redux';
 import { getPersistentSearchBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
-import { SEARCH_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
+import { SEARCH_PATTERN } from '@shopgate/engage/search/constants';
 import ConfiguredBar from '../../components/ConfiguredBar';
 import AppBarHeadline from '../../components/AppBarHeadline';
 import SearchBar from '../../../Search/SearchBar';
