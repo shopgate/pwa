@@ -171,10 +171,14 @@ emit **stable, unhashed classes** that merchant CSS can target. There are ~200 o
   any ancestor that redeclares the var restyles everything below it. `components/v2/IconButton`
   draws `components.iconButton.boxShadow`, a token left unseeded so that only a declaration reaches
   it — the component itself falls back to `none`. The gmd product header declares it on the cta row
-  carrying `theme__product__header__cta-buttons`, the ios11 one on the whole header section
-  (`theme__product__header`), which is what also elevates the buttons extensions render into the
-  surrounding cta portals. Merchant CSS overrides either element (equal specificity, `theme.css`
-  later in the cascade). Resolving the token to a literal on a container instead would break this:
+  carrying `theme__product__header__cta-buttons`. ios11 renders that row over the product image and
+  declares it on the row and on the wrapper around the media section, which is what also elevates the
+  buttons extensions render into the surrounding cta portals, and on the header section
+  (`theme__product__header`) for buttons extensions render there. Product tiles declare it on
+  `engage__product-tile-actions`. On ios11 and the tiles the value is
+  `components.actionButton.boxShadow` (flat by default), the admin shadow setting of the action
+  buttons. Merchant CSS overrides either element (equal specificity, `theme.css` later in the
+  cascade). Resolving the token to a literal on a container instead would break this:
   custom properties substitute at computed-value time, so a `--a: var(--b)` on an ancestor freezes
   against that ancestor's `--b` and a later override of `--b` no longer reaches it.
 - **Cascade:** `<meta>` anchors in `utils/webpack/templates/default.ejs` fix the layer order as

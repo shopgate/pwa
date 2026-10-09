@@ -86,6 +86,20 @@ export interface ProductSliderSettings {
 }
 
 /**
+ * Buttons on product tiles and on the image of the product page.
+ */
+export interface ProductActionButtonsSettings {
+  /** Corner of the image the action buttons are placed in. */
+  position: 'topRight' | 'bottomRight';
+  /** `actionButton` adds a cart button next to the favorites button, `button` one below the tile. */
+  addToCart: 'hidden' | 'actionButton' | 'button';
+  /** Whether the action buttons line up side by side or stacked. */
+  direction: 'horizontal' | 'vertical';
+  /** Whether the product page shows a share button next to the favorites button. */
+  showShareButton: boolean;
+}
+
+/**
  * Settings for the product rating stars.
  */
 export interface ProductRatingSettings {
@@ -93,6 +107,41 @@ export interface ProductRatingSettings {
    * Whether rating stars are also rendered for products that have no rating yet.
    */
   showEmptyStars: boolean;
+}
+
+/**
+ * Display type of a characteristic in the variant selector.
+ */
+export type VariantSelectorType = 'dropdown' | 'chips';
+
+/**
+ * Where swatch colors and images come from: the image of the variant or a property of it.
+ */
+export type VariantSwatchSource = 'variantImage' | 'property';
+
+/**
+ * Settings for the variant selector on the product page and in the variant sheet.
+ */
+export interface ProductVariantSelectorSettings {
+  /** Display type of all characteristics that are not shown as swatches. */
+  type: VariantSelectorType;
+  /** Whether the characteristics listed below are shown as swatches. */
+  swatchesEnabled: boolean;
+  /** Comma separated characteristic labels that are shown as swatches. */
+  swatchCharacteristics: string;
+  swatchSource: VariantSwatchSource;
+  /** Shape of swatches. `square` uses the border radius of the theme. */
+  swatchShape: 'round' | 'square';
+  /** Zoom of image swatches in percent, 100 shows the whole image. */
+  swatchImageZoom: number;
+  /** Product property that holds the swatch color or image when `swatchSource` is `property`. */
+  swatchProperty: string;
+  /** `wrap` breaks chips into lines, `scroll` keeps them in one swipeable row. */
+  chipsLayout: 'wrap' | 'scroll';
+  /** Whether the first available variant is preselected. */
+  preselect: boolean;
+  /** How values are shown whose variants are all sold out. */
+  soldOut: 'strike' | 'hide' | 'none';
 }
 
 /**
@@ -106,6 +155,8 @@ export interface ProductSettings {
   card: { productName: ProductNameSettings };
   /** Product grid tiles. */
   tile: { productName: ProductNameSettings };
+  variantSelector: ProductVariantSelectorSettings;
+  actionButtons: ProductActionButtonsSettings;
 }
 
 /**

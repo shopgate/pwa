@@ -243,6 +243,8 @@
     "item_added_unit": "{count} {unit} tillagd",
     "adding_item": "{count, plural, =1 {En produkt läggs till} other {{count} produkter läggs till}}",
     "pick_option_first": "Välj ett alternativ först. {option}",
+    "variant_unavailable": "Inte tillgänglig i den här kombinationen",
+    "variant_sold_out": "Slutsåld",
     "fill_out_required_input_first": "Fyll i alla obligatoriska fält först.",
     "add_to_cart": "Lägg till i korgen",
     "go_to_cart": "Varukorg",

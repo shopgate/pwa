@@ -143,6 +143,11 @@ export const componentsSchema = {
       boxShadow: '',
     },
   },
+  actionButton: {
+    vars: {
+      boxShadow: '',
+    },
+  },
   input: {
     vars: {
       background: '',
@@ -288,6 +293,11 @@ export const componentsDefaults = {
     vars: {
       background: t => t.palette.background.surface,
       borderRadius: t => t.shape.borderRadius,
+    },
+  },
+  actionButton: {
+    vars: {
+      boxShadow: 'none',
     },
   },
   border: {

@@ -243,6 +243,8 @@
     "item_added_unit": "{count} {unit} hinzugefügt",
     "adding_item": "{count, plural, =1 {Ein Produkt wird hinzugefügt} other {{count} Produkte werden hinzugefügt}}",
     "pick_option_first": "Wählen Sie zuerst eine Option. {option}",
+    "variant_unavailable": "In dieser Kombination nicht verfügbar",
+    "variant_sold_out": "Ausverkauft",
     "fill_out_required_input_first": "Füllen Sie zuerst alle Pflichtfelder aus.",
     "add_to_cart": "In den Warenkorb",
     "go_to_cart": "Warenkorb",

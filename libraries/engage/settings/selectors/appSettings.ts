@@ -64,6 +64,22 @@ export const getShowEmptyRatingStars = createSelector(
 );
 
 /**
+ * Selects the action buttons of product tiles and of the product page.
+ */
+export const getProductActionButtons = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.actionButtons
+);
+
+/**
+ * Selects the variant selector settings.
+ */
+export const getVariantSelectorSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.variantSelector
+);
+
+/**
  * Selects the image settings.
  */
 export const getImageSettings = createSelector(

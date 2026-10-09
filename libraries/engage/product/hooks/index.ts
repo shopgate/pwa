@@ -2,4 +2,8 @@ export { useLoadProductImage } from './useLoadProductImage';
 export { default as useProductListEntry } from './useProductListEntry';
 export { default as useProductListType } from './useProductListType';
 export { default as useShowEmptyRatingStars } from './useShowEmptyRatingStars';
+export { default as useProductShare } from './useProductShare';
+export { default as useStickyValue } from './useStickyValue';
+export { default as useVariantSelectorSettings } from './useVariantSelectorSettings';
+export type { VariantSelectorSettings } from './useVariantSelectorSettings';
 export { useSlidesPerView } from '../components/ProductSlider/hooks';

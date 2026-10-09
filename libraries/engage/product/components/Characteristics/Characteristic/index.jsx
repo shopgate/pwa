@@ -1,7 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
-import { ResponsiveContainer, ArrowDropIcon, Typography } from '@shopgate/engage/components';
+import { ArrowDropIcon, Typography } from '@shopgate/engage/components';
 import { withStyles, cx } from '@shopgate/engage/styles';
 import Sheet from './components/Sheet';
 import transition from '../transition';
@@ -20,6 +20,7 @@ class Characteristic extends PureComponent {
       buttonDisabled: PropTypes.string,
       label: PropTypes.string,
       selection: PropTypes.string,
+      text: PropTypes.string,
       arrow: PropTypes.string,
     }).isRequired,
     disabled: PropTypes.bool.isRequired,
@@ -85,6 +86,15 @@ class Characteristic extends PureComponent {
   };
 
   /**
+   * @param {Object} event The keyboard event.
+   */
+  handleButtonKeyDown = (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      this.handleButtonClick(event);
+    }
+  };
+
+  /**
    * @param {string} valueId The ID of the selected value.
    */
   handleItemSelection = (valueId) => {
@@ -121,8 +131,7 @@ class Characteristic extends PureComponent {
     const {
       disabled, selected, charRef, label, classes,
     } = this.props;
-    const translatedLabel = __('product.pick_an_attribute', [label]);
-    const buttonLabel = this.getButtonLabel(translatedLabel);
+    const buttonLabel = this.getButtonLabel(__('common.please_choose'));
     const cmpClasses = cx(
       classes.button,
       { [classes.buttonDisabled]: disabled },
@@ -137,23 +146,23 @@ class Characteristic extends PureComponent {
         tabIndex={0}
         className={cmpClasses}
         onClick={this.handleButtonClick}
-        onKeyDown={() => { }}
+        onKeyDown={this.handleButtonKeyDown}
         ref={charRef}
         style={transition[state]}
         data-test-id={label}
       >
-        {selected && <Typography variant="caption" component="div" className={`${classes.label} theme__product__characteristic__label`}>{label}</Typography>}
-        <div
-          className={`${classes.selection} theme__product__characteristic__selection`}
-          {...selected && { 'data-selected': true }}
-        >
-          {buttonLabel}
-        </div>
-        <ResponsiveContainer breakpoint=">xs" webOnly>
-          <div className={classes.arrow}>
-            <ArrowDropIcon />
+        <div className={`${classes.text} theme__product__characteristic__text`}>
+          <Typography variant="caption" component="div" className={`${classes.label} theme__product__characteristic__label`}>{label}</Typography>
+          <div
+            className={`${classes.selection} theme__product__characteristic__selection`}
+            {...selected && { 'data-selected': true }}
+          >
+            {buttonLabel}
           </div>
-        </ResponsiveContainer>
+        </div>
+        <div className={`${classes.arrow} theme__product__characteristic__arrow`} aria-hidden>
+          <ArrowDropIcon />
+        </div>
       </div>
     );
   };
@@ -192,33 +201,49 @@ class Characteristic extends PureComponent {
 
 export default withStyles(Characteristic, theme => ({
   button: {
-    background: theme.palette.background.emphasized,
+    background: theme.palette.background.surface,
     color: theme.palette.text.primary,
+    border: `1px solid ${theme.components.input.border}`,
+    borderRadius: theme.shape.borderRadius,
     position: 'relative',
     cursor: 'pointer',
     display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
+    alignItems: 'center',
+    gap: theme.spacing(1),
     minHeight: 56,
     outline: 0,
-    padding: '12px 16px',
-    marginBottom: 8,
-    transition: 'background 250ms ease-in, color 250ms ease-in',
+    padding: theme.spacing(1, 1, 1, 2),
+    margin: theme.spacing(0, 2, 1.5),
+    transition: 'background 250ms ease-in, color 250ms ease-in, border-color 250ms ease-in',
+    '&:focus-visible': {
+      outline: `2px solid ${theme.palette.text.primary}`,
+      outlineOffset: 2,
+    },
   },
   buttonDisabled: {
     color: `${theme.palette.grey.medium} !important`,
+    borderColor: theme.components.border.light,
+    cursor: 'default',
+  },
+  text: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    flex: 1,
+    minWidth: 0,
   },
   label: {
-    marginTop: -2,
-    marginBottom: 4,
+    marginBottom: theme.spacing(0.25),
+    color: 'inherit',
+    opacity: 0.7,
   },
   selection: {
     fontWeight: theme.typography.fontWeightMedium,
-    lineHeight: 1.125,
+    lineHeight: 1.25,
   },
   arrow: {
-    position: 'absolute',
-    right: 32,
+    display: 'flex',
+    flexShrink: 0,
     fontSize: theme.components.icon.small,
   },
 }));

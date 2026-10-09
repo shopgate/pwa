@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core/hocs';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
+import { VisuallyHidden } from '@shopgate/engage/a11y/components';
+import { getValueStateText } from '../../../../VariantSelector/renderers/valueState';
 
 const useStyles = makeStyles()((theme) => {
   const buttonBase = {
@@ -24,6 +26,13 @@ const useStyles = makeStyles()((theme) => {
     buttonDisabled: {
       ...buttonBase,
       color: theme.palette.action.disabled,
+    },
+    buttonUnavailable: {
+      color: theme.palette.text.secondary,
+    },
+    buttonSoldOut: {
+      color: theme.palette.text.secondary,
+      textDecoration: 'line-through',
     },
     root: {
       padding: '16px 0',
@@ -84,6 +93,8 @@ const SheetItem = ({
     className: cx({
       [classes.button]: item.selectable,
       [classes.buttonDisabled]: !item.selectable,
+      [classes.buttonUnavailable]: item.selectable && item.available === false,
+      [classes.buttonSoldOut]: item.selectable && !!item.soldOut,
     }, 'theme__product__characteristic__option'),
     key: item.id,
     ref: forwardedRef,
@@ -94,9 +105,13 @@ const SheetItem = ({
     forwardedRef,
     item.id,
     item.selectable,
+    item.available,
+    item.soldOut,
     onClick,
     classes.button,
     classes.buttonDisabled,
+    classes.buttonUnavailable,
+    classes.buttonSoldOut,
     cx,
   ]);
 
@@ -108,6 +123,8 @@ const SheetItem = ({
       <button
         {...buildProps()}
         data-test-id={item.label}
+        data-unavailable={item.available === false ? true : undefined}
+        data-sold-out={item.soldOut ? true : undefined}
         aria-selected={selected}
         role="option"
         type="button"
@@ -115,6 +132,7 @@ const SheetItem = ({
         <div className={classes.mainRow}>
           <div>
             {item.label}
+            {getValueStateText(item) && <VisuallyHidden>{`, ${getValueStateText(item)}`}</VisuallyHidden>}
           </div>
           <div className={classes.mainRowRight}>
             {item.selectable && <Right />}

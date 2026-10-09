@@ -146,14 +146,14 @@ const FavoriteLists = ({
     }, 10);
   }, [activeProductId, addToCart, fetchLocations, userSearch]);
 
-  const handleAddToCart = useCallback((listId, product, quantity = 1) => {
+  const handleAddToCart = useCallback((listId, product, quantity = 1, listItemId = product.id) => {
     // Create promise to inform add to cart button when ready.
     const promise = new Promise((resolve, reject) => {
       promiseRef.current = {
         resolve: () => {
           // Remove item from wishlist after adding to cart.
           if (wishlistMode !== WISHLIST_MODE_PERSIST_ON_ADD) {
-            removeItem(listId, product.id);
+            removeItem(listId, listItemId);
           }
           resolve();
         },
@@ -179,7 +179,7 @@ const FavoriteLists = ({
     // Get fulfillment method that is both active for location and product.
     let activeFulfillmentMethod = preferredFulfillmentMethod || fulfillmentMethod;
     const availableFulfillmentMethods = shopFulfillmentMethods?.filter(
-      s => product.fulfillmentMethods.indexOf(s) !== -1
+      s => (product.fulfillmentMethods || []).indexOf(s) !== -1
     ) || [];
     if (activeLocation && !activeFulfillmentMethod && availableFulfillmentMethods.length === 1) {
       [activeFulfillmentMethod] = availableFulfillmentMethods;
@@ -295,7 +295,9 @@ const FavoriteLists = ({
             rename={openRenameModal}
             remove={() => removeList(list.id)}
             removeItem={productId => removeItem(list.id, productId)}
-            addToCart={(product, quantity) => handleAddToCart(list.id, product, quantity)}
+            addToCart={(product, quantity, listItemId) => (
+              handleAddToCart(list.id, product, quantity, listItemId)
+            )}
             hasMultipleFavoritesListsSupport={hasMultipleFavoritesListsSupport}
           />
         </SurroundPortals>
