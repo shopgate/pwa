@@ -127,6 +127,9 @@ const AddToCartBar = (props) => {
 
     busy.current = true;
 
+    /**
+     * Allows the next add to cart attempt.
+     */
     const release = () => {
       busy.current = false;
     };
