@@ -17,12 +17,17 @@ import {
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
+import CTAButtons from '../Header/components/CTAButtons';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
+  wrapper: {
+    position: 'relative',
+    [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
+  },
   root: {
     position: 'relative',
   },
-});
+}));
 
 /**
  * The product media component.
@@ -33,47 +38,57 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
 
   return (
     <ProductContext.Consumer>
-      {({ productId, variantId, characteristics }) => (
+      {({
+        productId, variantId: selectedVariantId, displayVariantId: variantId, characteristics,
+      }) => (
         <ProductListTypeProvider type="pdp" subType="mediaSection">
           <ProductListEntryProvider productId={variantId || productId}>
-            <SurroundPortals
-              portalName={PORTAL_PRODUCT_MEDIA_SECTION}
-              portalProps={{
-                productId,
-                variantId,
-              }}
-            >
-              <div className={classes.root}>
-                <ProductDiscountBadge productId={productId} />
+            <div className={classes.wrapper}>
+              <SurroundPortals
+                portalName={PORTAL_PRODUCT_MEDIA_SECTION}
+                portalProps={{
+                  productId,
+                  variantId: selectedVariantId,
+                  displayVariantId: variantId,
+                }}
+              >
+                <div className={classes.root}>
+                  <ProductDiscountBadge productId={productId} />
 
-                <SurroundPortals
-                  portalName={PORTAL_PRODUCT_IMAGE_SLIDER}
-                  portalProps={{
-                    productId,
-                    variantId,
-                  }}
-                >
-                  {/* MediaSlider feature is currently in BETA testing.
-                It should only be used for approved BETA Client Projects */}
-                  {isBeta() ? (
-                    <ProductMediaSlider
-                      productId={productId}
-                      variantId={variantId}
-                      characteristics={characteristics}
-                      aria-hidden={ariaHidden}
-                      className={className}
-                    />
-                  ) : (
-                    <ProductImageSlider
-                      productId={productId}
-                      variantId={variantId}
-                      aria-hidden={ariaHidden}
-                      className={className}
-                    />
-                  )}
-                </SurroundPortals>
-              </div>
-            </SurroundPortals>
+                  <SurroundPortals
+                    portalName={PORTAL_PRODUCT_IMAGE_SLIDER}
+                    portalProps={{
+                      productId,
+                      variantId: selectedVariantId,
+                      displayVariantId: variantId,
+                    }}
+                  >
+                    {/* MediaSlider feature is currently in BETA testing.
+                  It should only be used for approved BETA Client Projects */}
+                    {isBeta() ? (
+                      <ProductMediaSlider
+                        productId={productId}
+                        variantId={variantId}
+                        characteristics={characteristics}
+                        aria-hidden={ariaHidden}
+                        className={className}
+                      />
+                    ) : (
+                      <ProductImageSlider
+                        productId={productId}
+                        variantId={variantId}
+                        aria-hidden={ariaHidden}
+                        className={className}
+                      />
+                    )}
+                  </SurroundPortals>
+                </div>
+              </SurroundPortals>
+              <CTAButtons
+                productId={selectedVariantId || productId}
+                displayedProductId={variantId || productId}
+              />
+            </div>
           </ProductListEntryProvider>
         </ProductListTypeProvider>
       )}

@@ -1,6 +1,10 @@
 import { merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
-import type { AppSettingsSlice } from '../types/appSettings';
+import type {
+  AppSettingsSlice,
+  ProductActionButtonsSettings,
+  ProductVariantSelectorSettings,
+} from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
 import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
 import {
@@ -11,6 +15,7 @@ import {
 } from '../constants/imageSettings';
 // Deliberately not exported from the "helpers" barrel - they normalize values on their way into
 // the slice, which is nothing a consumer of the settings needs.
+import { pickValidSettings } from '../helpers/pickValidSettings';
 import { toImageQuality } from '../helpers/toImageQuality';
 import { toThumborColor } from '../helpers/toThumborColor';
 
@@ -21,6 +26,24 @@ const isReceiveAppSettingsAction = (
 ): action is ReceiveAppSettingsAction => (
   action.type === RECEIVE_APP_SETTINGS && 'settings' in action
 );
+
+const VARIANT_SELECTOR_OPTIONS: {
+  [K in keyof ProductVariantSelectorSettings]?: readonly ProductVariantSelectorSettings[K][]
+} = {
+  type: ['dropdown', 'chips'],
+  swatchSource: ['variantImage', 'property'],
+  swatchShape: ['round', 'square'],
+  chipsLayout: ['wrap', 'scroll'],
+  soldOut: ['strike', 'hide', 'none'],
+};
+
+const ACTION_BUTTON_OPTIONS: {
+  [K in keyof ProductActionButtonsSettings]?: readonly ProductActionButtonsSettings[K][]
+} = {
+  position: ['topRight', 'bottomRight'],
+  addToCart: ['hidden', 'actionButton', 'button'],
+  direction: ['horizontal', 'vertical'],
+};
 
 /**
  * The built-in default app settings. Used as the reducer's initial state and as
@@ -64,6 +87,24 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     },
     tile: {
       productName: { maxLines: 3 },
+    },
+    variantSelector: {
+      type: 'dropdown',
+      swatchesEnabled: false,
+      swatchCharacteristics: 'Farbe, Color',
+      swatchSource: 'variantImage',
+      swatchShape: 'round',
+      swatchImageZoom: 100,
+      swatchProperty: '',
+      chipsLayout: 'wrap',
+      preselect: false,
+      soldOut: 'strike',
+    },
+    actionButtons: {
+      position: 'bottomRight',
+      addToCart: 'hidden',
+      direction: 'horizontal',
+      showShareButton: true,
     },
   },
   cards: {
@@ -111,7 +152,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets,
+      images, typography, appearance, widgets, product,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -134,6 +175,19 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       appearance: appearance === null ? undefined : {
         ...appearance,
         defaultColorSchemeMode: appearance?.defaultColorSchemeMode ?? undefined,
+      },
+      product: product === null ? undefined : {
+        ...product,
+        variantSelector: pickValidSettings(
+          product?.variantSelector,
+          DEFAULT_APP_SETTINGS.product.variantSelector,
+          VARIANT_SELECTOR_OPTIONS
+        ),
+        actionButtons: pickValidSettings(
+          product?.actionButtons,
+          DEFAULT_APP_SETTINGS.product.actionButtons,
+          ACTION_BUTTON_OPTIONS
+        ),
       },
       widgets: widgets === null ? undefined : {
         ...widgets,

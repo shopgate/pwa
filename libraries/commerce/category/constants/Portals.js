@@ -10,6 +10,7 @@ const IMAGE = 'image';
 const PRICE = 'price';
 const DISCOUNT = 'discount';
 const FAVORITES_BUTTON = 'favorites-button';
+const ADD_TO_CART = 'add-to-cart';
 const NAME = 'name';
 const MANUFACTURER = 'manufacturer';
 const AVAILABILITY = 'availability';
@@ -45,6 +46,10 @@ export const PRODUCT_ITEM_DISCOUNT_AFTER = `${PRODUCT}-${ITEM}.${DISCOUNT}.${AFT
 export const PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE = `${PRODUCT}-${ITEM}.${FAVORITES_BUTTON}.${BEFORE}`;
 export const PRODUCT_ITEM_FAVORITES_BUTTON = `${PRODUCT}-${ITEM}.${FAVORITES_BUTTON}`;
 export const PRODUCT_ITEM_FAVORITES_BUTTON_AFTER = `${PRODUCT}-${ITEM}.${FAVORITES_BUTTON}.${AFTER}`;
+
+export const PRODUCT_ITEM_ADD_TO_CART_BEFORE = `${PRODUCT}-${ITEM}.${ADD_TO_CART}.${BEFORE}`;
+export const PRODUCT_ITEM_ADD_TO_CART = `${PRODUCT}-${ITEM}.${ADD_TO_CART}`;
+export const PRODUCT_ITEM_ADD_TO_CART_AFTER = `${PRODUCT}-${ITEM}.${ADD_TO_CART}.${AFTER}`;
 
 export const PRODUCT_ITEM_NAME_BEFORE = `${PRODUCT}-${ITEM}.${NAME}.${BEFORE}`;
 export const PRODUCT_ITEM_NAME = `${PRODUCT}-${ITEM}.${NAME}`;

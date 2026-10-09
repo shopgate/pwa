@@ -9,11 +9,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()({
   root: {
-    position: 'absolute',
-    top: 0,
-    right: 16,
-    left: 'auto',
-    transform: 'translate3d(0, -50%, 0)',
+    display: 'inline-flex',
   },
 });
 
