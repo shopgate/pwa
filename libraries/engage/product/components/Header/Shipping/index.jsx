@@ -8,7 +8,7 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import { makeStyles } from '@shopgate/engage/styles';
-import useStickyValue from '../../../hooks/useStickyValue';
+import { useStickyValue } from '@shopgate/engage/product/hooks';
 import { ProductContext } from '../../context';
 import Label from './components/Label';
 import connect from './connector';

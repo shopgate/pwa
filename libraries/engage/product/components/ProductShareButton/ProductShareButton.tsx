@@ -3,7 +3,7 @@ import type { IconButtonSize } from '@shopgate/engage/components/v2';
 import { ShareIconIOS } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { cx } from '@shopgate/engage/styles';
-import useProductShare from '../../hooks/useProductShare';
+import { useProductShare } from '@shopgate/engage/product/hooks';
 
 export interface ProductShareButtonProps {
   productId: string | null;

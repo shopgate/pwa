@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core/hocs';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
-import { VisuallyHidden } from '@shopgate/engage/a11y';
+import { VisuallyHidden } from '@shopgate/engage/a11y/components';
 import { getValueStateText } from '../../../../VariantSelector/renderers/valueState';
 
 const useStyles = makeStyles()((theme) => {

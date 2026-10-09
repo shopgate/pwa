@@ -1,5 +1,5 @@
 import { makeStyles } from '@shopgate/engage/styles';
-import { VisuallyHidden } from '@shopgate/engage/a11y';
+import { VisuallyHidden } from '@shopgate/engage/a11y/components';
 import { getValueStateText } from './valueState';
 import type { VariantSelectorValue } from '../types';
 
