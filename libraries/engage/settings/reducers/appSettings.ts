@@ -107,6 +107,10 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       showShareButton: true,
     },
   },
+  category: {
+    showImages: false,
+    showAllProducts: false,
+  },
   cards: {
     style: 'shadow',
     shadow: { size: 'medium' },
@@ -152,7 +156,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product,
+      images, typography, appearance, widgets, product, category,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -189,6 +193,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           ACTION_BUTTON_OPTIONS
         ),
       },
+      category: pickValidSettings(category, DEFAULT_APP_SETTINGS.category),
       widgets: widgets === null ? undefined : {
         ...widgets,
         // Sides are mapped one by one, because the admin clears a single margin with a null just

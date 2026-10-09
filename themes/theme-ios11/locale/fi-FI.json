@@ -414,6 +414,10 @@
     "showAllProducts": {
       "label": "Näytä kaikki tuotteet"
     },
+    "drawer": {
+      "show_all": "Näytä kaikki",
+      "retry": "Yritä uudelleen"
+    },
     "errors": {
       "404": "Kategoriaa ei löytynyt"
     }

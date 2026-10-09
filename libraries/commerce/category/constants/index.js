@@ -5,6 +5,11 @@ export const CATEGORY_FILTER_PATTERN = `${CATEGORY_PATH}/:categoryId/filter`;
 export const CATEGORY_ALL_PATTERN = `${CATEGORY_PATH}/:categoryId/all`;
 export const CATEGORY_ALL_FILTER_PATTERN = `${CATEGORY_PATH}/:categoryId/all/filter`;
 
+/**
+ * UI event that opens the category drawer. The payload may name the category to start at.
+ */
+export const OPEN_CATEGORY_DRAWER = 'navigation.openCategoryDrawer';
+
 export const CATEGORY_LIFETIME = 3600000; // 1 hour in milliseconds
 
 export const REQUEST_ROOT_CATEGORIES = 'REQUEST_ROOT_CATEGORIES';

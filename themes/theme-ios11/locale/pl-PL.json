@@ -413,6 +413,10 @@
     "showAllProducts": {
       "label": "Pokaż wszystkie produkty"
     },
+    "drawer": {
+      "show_all": "Pokaż wszystko",
+      "retry": "Spróbuj ponownie"
+    },
     "errors": {
       "404": "Kategorii nie znaleziono"
     }

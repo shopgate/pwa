@@ -7,6 +7,7 @@ import { LiveMessenger } from '@shopgate/engage/a11y';
 import { applyScrollContainer, hasWebBridge } from '@shopgate/engage/core/helpers';
 import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import TabBar from 'Components/TabBar';
+import CategoryDrawer from '../CategoryDrawer';
 
 injectGlobal({
   html: {
@@ -68,6 +69,7 @@ const Viewport = (props) => {
       <Footer>
         <TabBar />
       </Footer>
+      <CategoryDrawer />
     </main>
   );
 };

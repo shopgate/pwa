@@ -72,6 +72,14 @@ export const getProductActionButtons = createSelector(
 );
 
 /**
+ * Selects the category settings.
+ */
+export const getCategorySettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.category
+);
+
+/**
  * Selects the variant selector settings.
  */
 export const getVariantSelectorSettings = createSelector(

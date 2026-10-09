@@ -89,6 +89,10 @@ describe('settings / reducers / appSettings', () => {
           showShareButton: true,
         },
       },
+      category: {
+        showImages: true,
+        showAllProducts: true,
+      },
       cards: {
         style: 'border',
         shadow: { size: 'low' },
@@ -245,6 +249,23 @@ describe('settings / reducers / appSettings', () => {
     } as unknown as AppSettingsPayload));
 
     expect(state.product.variantSelector).toEqual(DEFAULT_APP_SETTINGS.product.variantSelector);
+  });
+
+  it('falls back to the defaults for cleared or invalid category settings', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        showImages: 'yes',
+        showAllProducts: null,
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+
+    const cleared = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: null,
+    } as unknown as AppSettingsPayload));
+
+    expect(cleared.category).toEqual(DEFAULT_APP_SETTINGS.category);
   });
 
   it('keeps the widget defaults when only the media margins are cleared', () => {

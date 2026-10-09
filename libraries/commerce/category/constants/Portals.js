@@ -2,6 +2,7 @@
 const CATEGORY = 'category';
 const PRODUCT = 'product';
 const NAV_MENU = 'nav-menu';
+const CATEGORY_DRAWER_NAME = 'category-drawer';
 
 // CONTENTS
 const LIST = 'list';
@@ -72,3 +73,7 @@ export const PRODUCT_ITEM_AVAILABILITY_AFTER = `${PRODUCT}-${ITEM}.${AVAILABILIT
 export const NAV_MENU_CATEGORIES_BEFORE = `${NAV_MENU}.${CATEGORIES}.${BEFORE}`;
 export const NAV_MENU_CATEGORIES = `${NAV_MENU}.${CATEGORIES}`;
 export const NAV_MENU_CATEGORIES_AFTER = `${NAV_MENU}.${CATEGORIES}.${AFTER}`;
+
+export const CATEGORY_DRAWER = CATEGORY_DRAWER_NAME;
+export const CATEGORY_DRAWER_HEADER = `${CATEGORY_DRAWER_NAME}.header`;
+export const CATEGORY_DRAWER_ITEM = `${CATEGORY_DRAWER_NAME}.${ITEM}`;

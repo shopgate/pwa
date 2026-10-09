@@ -160,6 +160,16 @@ export interface ProductSettings {
 }
 
 /**
+ * Settings for category navigation.
+ */
+export interface CategorySettings {
+  /** Whether category entries show the category image. */
+  showImages: boolean;
+  /** Whether a category starts with an entry that shows all of its products. */
+  showAllProducts: boolean;
+}
+
+/**
  * The visual style of the card surface.
  */
 export type CardStyle = 'shadow' | 'border' | 'flat';
@@ -339,6 +349,7 @@ export interface AppSettings {
     }
   }
   product: ProductSettings;
+  category: CategorySettings;
   /**
    * Settings for images that are served through the image service.
    */
