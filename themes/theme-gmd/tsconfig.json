@@ -5,7 +5,47 @@
       "Components/*": ["./components/*"],
       "Config/*": ["./config/*"],
       "Extensions/*": ["./extensions/*"],
-      "Pages/*": ["./pages/*"]
+      "Pages/*": ["./pages/*"],
+      "@shopgate/engage/*": [
+        "./node_modules/@shopgate/engage/*",
+        "../../node_modules/@shopgate/engage/*"
+      ],
+      "@shopgate/pwa-common/*": [
+        "./node_modules/@shopgate/pwa-common/*",
+        "../../node_modules/@shopgate/pwa-common/*"
+      ],
+      "@shopgate/pwa-common-commerce/*": [
+        "./node_modules/@shopgate/pwa-common-commerce/*",
+        "../../node_modules/@shopgate/pwa-common-commerce/*"
+      ],
+      "@shopgate/pwa-core/*": [
+        "./node_modules/@shopgate/pwa-core/*",
+        "../../node_modules/@shopgate/pwa-core/*"
+      ],
+      "@shopgate/pwa-tracking/*": [
+        "./node_modules/@shopgate/pwa-tracking/*",
+        "../../node_modules/@shopgate/pwa-tracking/*"
+      ],
+      "@shopgate/pwa-ui-ios/*": [
+        "./node_modules/@shopgate/pwa-ui-ios/*",
+        "../../node_modules/@shopgate/pwa-ui-ios/*"
+      ],
+      "@shopgate/pwa-ui-material/*": [
+        "./node_modules/@shopgate/pwa-ui-material/*",
+        "../../node_modules/@shopgate/pwa-ui-material/*"
+      ],
+      "@shopgate/pwa-ui-shared/*": [
+        "./node_modules/@shopgate/pwa-ui-shared/*",
+        "../../node_modules/@shopgate/pwa-ui-shared/*"
+      ],
+      "@shopgate/pwa-webcheckout-shopify/*": [
+        "./node_modules/@shopgate/pwa-webcheckout-shopify/*",
+        "../../node_modules/@shopgate/pwa-webcheckout-shopify/*"
+      ],
+      "@shopgate/tracking-core/*": [
+        "./node_modules/@shopgate/tracking-core/*",
+        "../../node_modules/@shopgate/tracking-core/*"
+      ]
     }
   }
 }

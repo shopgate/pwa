@@ -6,6 +6,18 @@
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "types": ["jest", "node"],
+    "paths": {
+      "@shopgate/engage/*": ["./*"],
+      "@shopgate/pwa-common/*": ["../common/*"],
+      "@shopgate/pwa-common-commerce/*": ["../commerce/*"],
+      "@shopgate/pwa-core/*": ["../core/*"],
+      "@shopgate/pwa-tracking/*": ["../tracking/*"],
+      "@shopgate/pwa-ui-ios/*": ["../ui-ios/*"],
+      "@shopgate/pwa-ui-material/*": ["../ui-material/*"],
+      "@shopgate/pwa-ui-shared/*": ["../ui-shared/*"],
+      "@shopgate/pwa-webcheckout-shopify/*": ["../webcheckout/*"],
+      "@shopgate/tracking-core/*": ["../tracking-core/*"]
+    },
 
     "strict": true,
     "isolatedModules": true,
