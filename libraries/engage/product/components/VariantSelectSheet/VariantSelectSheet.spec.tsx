@@ -43,8 +43,10 @@ jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
 }));
 jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProduct', () => jest.fn());
 jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProductVariants', () => jest.fn());
-jest.mock('@shopgate/engage/core/helpers/i18n', () => ({ i18n: { text: (key: string) => key } }));
+jest.mock('@shopgate/engage/core/helpers', () => ({ i18n: { text: (key: string) => key } }));
 jest.mock('@shopgate/engage/components', () => ({
+  Price: ({ unitPrice }: { unitPrice: number }) => <span>{`price ${unitPrice}`}</span>,
+  PriceStriked: ({ value }: { value: number }) => <span>{`striked ${value}`}</span>,
   SheetDrawer: ({ isOpen, children }: { isOpen: boolean; children: ReactNode }) => (
     isOpen ? <div>{children}</div> : null
   ),
@@ -59,12 +61,6 @@ jest.mock('@shopgate/engage/components/v2', () => ({
     onClick: () => void;
   }) => <button type="button" disabled={disabled} onClick={onClick}>{children}</button>,
 }));
-jest.mock('@shopgate/pwa-ui-shared/Price', () => ({ unitPrice }: { unitPrice: number }) => (
-  <span>{`price ${unitPrice}`}</span>
-));
-jest.mock('@shopgate/pwa-ui-shared/PriceStriked', () => ({ value }: { value: number }) => (
-  <span>{`striked ${value}`}</span>
-));
 jest.mock('../ProductImage', () => () => null);
 let mockSelected = false;
 
@@ -105,10 +101,12 @@ describe('<VariantSelectSheet />', () => {
     const addButton = screen.getByRole('button', { name: 'product.add_to_cart' });
     expect(addButton).toBeEnabled();
 
+    const warn = jest.spyOn(console, 'warn').mockImplementation(() => undefined);
     await act(async () => {
       fireEvent.click(addButton);
     });
     expect(onAddToCart).not.toHaveBeenCalled();
+    warn.mockRestore();
 
     fireEvent.click(screen.getByRole('button', { name: 'select gold' }));
     await act(async () => {

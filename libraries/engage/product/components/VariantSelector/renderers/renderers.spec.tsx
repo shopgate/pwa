@@ -6,10 +6,10 @@ import VariantSwatches from './VariantSwatches';
 import VariantInlineDropdown from './VariantInlineDropdown';
 import type { VariantRendererProps, VariantSelectorValue } from '../types';
 
-jest.mock('@shopgate/engage/a11y', () => ({
+jest.mock('@shopgate/engage/a11y/components', () => ({
   VisuallyHidden: ({ children }: { children: ReactNode }) => <span>{children}</span>,
 }));
-jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
   i18n: { text: (key: string, params?: string[]) => (params ? `${key}:${params.join(',')}` : key) },
 }));
 

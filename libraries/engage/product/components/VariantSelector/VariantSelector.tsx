@@ -3,12 +3,13 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import { isBeta } from '@shopgate/engage/core/helpers';
-import { Portal } from '@shopgate/engage/components';
-import { broadcastLiveMessage } from '@shopgate/engage/a11y';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { broadcastLiveMessage } from '@shopgate/engage/a11y/helpers';
 import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 import isMatch from 'lodash/isMatch';
 import uniqueId from 'lodash/uniqueId';
-import { PRODUCT_VARIANT_SELECT_CHARACTERISTIC } from '@shopgate/pwa-common-commerce/product/constants/Portals';
+import { PRODUCT_VARIANT_SELECT_CHARACTERISTIC } from '@shopgate/engage/product/constants';
+import { useVariantSelectorSettings } from '@shopgate/engage/product/hooks';
 import {
   getBaseProductId,
   getProduct,
@@ -17,7 +18,6 @@ import {
   hasProductVariants,
 } from '../../selectors/catalog';
 import VariantContext from '../ProductCharacteristics/context';
-import useVariantSelectorSettings from '../../hooks/useVariantSelectorSettings';
 import Characteristic from '../Characteristics/Characteristic';
 import VariantSelectorSkeleton from './VariantSelectorSkeleton';
 import VariantChips from './renderers/VariantChips';
@@ -261,17 +261,17 @@ const VariantSelector = ({
         };
 
         return (
-          <Portal
+          <SurroundPortals
             key={row.id}
-            name={PRODUCT_VARIANT_SELECT_CHARACTERISTIC}
-            props={{
+            portalName={PRODUCT_VARIANT_SELECT_CHARACTERISTIC}
+            portalProps={{
               ...rendererProps,
               characteristic: row,
               type,
             }}
           >
             <Renderer {...rendererProps} />
-          </Portal>
+          </SurroundPortals>
         );
       })}
       {isComplete && lastType !== 'dropdown' && (

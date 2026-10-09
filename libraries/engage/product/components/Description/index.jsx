@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   SurroundPortals, PlaceholderParagraph, HtmlSanitizer, I18n, Typography,
 } from '@shopgate/engage/components';
 import { PRODUCT_DESCRIPTION } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
-import useStickyValue from '../../hooks/useStickyValue';
+import { useStickyValue } from '@shopgate/engage/product/hooks';
+import { ProductContext } from '../context';
 import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
@@ -54,7 +55,8 @@ function Description({
   html: currentHtml, isLoading, navigate, ...props
 }) {
   const { classes, cx } = useStyles();
-  const html = useStickyValue(currentHtml, isLoading);
+  const { productId } = useContext(ProductContext) || {};
+  const html = useStickyValue(currentHtml, isLoading, productId);
 
   return (
     <SurroundPortals

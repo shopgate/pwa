@@ -8,8 +8,10 @@ jest.mock('@shopgate/engage/product/components/AddedTick', () => ({
 }));
 jest.mock('@shopgate/engage/components/v2', () => ({
   CircularProgress: () => <span>spinner</span>,
-  // eslint-disable-next-line react/prop-types
-  Button: ({ children, testId, ...props }) => (
+  Button: ({
+    // eslint-disable-next-line react/prop-types
+    children, testId, fullWidth, ...props
+  }) => (
     <button type="button" data-test-id={testId} {...props}>{children}</button>
   ),
 }));

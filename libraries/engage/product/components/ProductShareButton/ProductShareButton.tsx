@@ -1,9 +1,9 @@
 import { IconButton } from '@shopgate/engage/components/v2';
 import type { IconButtonSize } from '@shopgate/engage/components/v2';
-import ShareIcon from '@shopgate/pwa-ui-ios/icons/ShareIcon';
-import { i18n } from '@shopgate/engage/core/helpers/i18n';
+import { ShareIconIOS } from '@shopgate/engage/components';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { cx } from '@shopgate/engage/styles';
-import useProductShare from '../../hooks/useProductShare';
+import { useProductShare } from '@shopgate/engage/product/hooks';
 
 export interface ProductShareButtonProps {
   productId: string | null;
@@ -39,7 +39,7 @@ const ProductShareButton = ({
       className={cx('engage__product-share-button', className)}
       onClick={share}
     >
-      <ShareIcon />
+      <ShareIconIOS />
     </IconButton>
   );
 };

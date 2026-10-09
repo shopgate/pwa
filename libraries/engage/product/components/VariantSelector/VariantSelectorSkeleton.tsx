@@ -1,5 +1,5 @@
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
-import useVariantSelectorSettings from '../../hooks/useVariantSelectorSettings';
+import { useVariantSelectorSettings } from '@shopgate/engage/product/hooks';
 
 const pulse = keyframes({
   '0%': { opacity: 1 },

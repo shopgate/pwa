@@ -26,24 +26,27 @@ jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
 jest.mock('@shopgate/engage/a11y/hooks', () => ({ useReduceMotion: () => true }));
 jest.mock('@shopgate/engage/core/helpers', () => ({ isBeta: () => false }));
 jest.mock('@shopgate/engage/components', () => ({
-  Portal: ({ children }: { children: ReactNode }) => children,
+  SurroundPortals: ({ children }: { children: ReactNode }) => children,
 }));
-jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
+jest.mock('@shopgate/engage/a11y/helpers', () => ({ broadcastLiveMessage: jest.fn() }));
+jest.mock('@shopgate/engage/a11y/components', () => ({ VisuallyHidden: () => null }));
 jest.mock('../Characteristics/Characteristic', () => (props: VariantRendererProps) => mockRenderer(props));
 jest.mock('./renderers/VariantChips', () => () => null);
 jest.mock('./renderers/VariantSwatches', () => () => null);
 jest.mock('./renderers/SelectedVariantInfo', () => () => null);
-jest.mock('../../hooks/useVariantSelectorSettings', () => () => ({
-  type: 'dropdown',
-  swatchesEnabled: false,
-  swatchCharacteristics: [],
-  swatchSource: 'variantImage',
-  swatchShape: 'round',
-  swatchImageZoom: 100,
-  swatchProperty: '',
-  chipsLayout: 'wrap',
-  preselect: false,
-  soldOut: 'strike',
+jest.mock('@shopgate/engage/product/hooks', () => ({
+  useVariantSelectorSettings: () => ({
+    type: 'dropdown',
+    swatchesEnabled: false,
+    swatchCharacteristics: [],
+    swatchSource: 'variantImage',
+    swatchShape: 'round',
+    swatchImageZoom: 100,
+    swatchProperty: '',
+    chipsLayout: 'wrap',
+    preselect: false,
+    soldOut: 'strike',
+  }),
 }));
 
 const variants: ProductVariants = {

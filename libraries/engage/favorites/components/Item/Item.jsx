@@ -43,7 +43,7 @@ import {
   FAVORITES_AVAILABILITY_TEXT,
 } from '@shopgate/engage/favorites';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
-import { VariantSelectSheet } from '@shopgate/engage/product/components/VariantSelectSheet';
+import { VariantSelectSheet } from '@shopgate/engage/product/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';

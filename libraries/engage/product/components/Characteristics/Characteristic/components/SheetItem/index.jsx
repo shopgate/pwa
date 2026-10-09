@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { withForwardedRef } from '@shopgate/engage/core/hocs';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
+import { VisuallyHidden } from '@shopgate/engage/a11y/components';
+import { getValueStateText } from '../../../../VariantSelector/renderers/valueState';
 
 const useStyles = makeStyles()((theme) => {
   const buttonBase = {
@@ -130,6 +132,7 @@ const SheetItem = ({
         <div className={classes.mainRow}>
           <div>
             {item.label}
+            {getValueStateText(item) && <VisuallyHidden>{`, ${getValueStateText(item)}`}</VisuallyHidden>}
           </div>
           <div className={classes.mainRowRight}>
             {item.selectable && <Right />}

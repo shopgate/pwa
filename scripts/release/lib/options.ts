@@ -27,6 +27,11 @@ export interface ReleaseOptions {
    * Work locally only: no pushes and "npm publish --dry-run" (DRY_RUN). Defaults to false.
    */
   dryRun: boolean;
+  /**
+   * Let finalize wait until the packages are published instead of failing (WAIT_FOR_PUBLISH).
+   * Defaults to false.
+   */
+  waitForPublish: boolean;
 }
 
 /**
@@ -63,6 +68,7 @@ export const getOptions = (argv = process.argv.slice(2)): ReleaseOptions => {
       'skip-master-update': { type: 'boolean' },
       resume: { type: 'boolean' },
       'dry-run': { type: 'boolean' },
+      'wait-for-publish': { type: 'boolean' },
     },
     allowNegative: true,
   });
@@ -79,5 +85,6 @@ export const getOptions = (argv = process.argv.slice(2)): ReleaseOptions => {
     skipMasterUpdate: values['skip-master-update'] ?? envFlag('SKIP_MASTER_UPDATE', false),
     resume: values.resume ?? envFlag('RESUME', false),
     dryRun: values['dry-run'] ?? envFlag('DRY_RUN', false),
+    waitForPublish: values['wait-for-publish'] ?? envFlag('WAIT_FOR_PUBLISH', false),
   };
 };

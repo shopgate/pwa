@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getProductActionButtons } from '@shopgate/engage/settings/selectors/appSettings';
-import ItemFavoritesButton from '../ProductGrid/components/Item/components/ItemFavoritesButton';
+import ItemFavoritesButton from '../ItemFavoritesButton';
 import { ProductCardAddToCart } from '../ProductCardAddToCart';
 
 export interface ProductTileActionsProps {

@@ -1,4 +1,4 @@
-import { i18n } from '@shopgate/engage/core/helpers/i18n';
+import { i18n } from '@shopgate/engage/core/helpers';
 import type { VariantSelectorValue } from '../types';
 
 /**

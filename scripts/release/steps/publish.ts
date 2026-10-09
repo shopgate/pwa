@@ -2,7 +2,9 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { setTimeout as delay } from 'node:timers/promises';
 import {
+  GITHUB_REPO,
   PUBLISHABLE_PACKAGES,
+  PUBLISH_WORKFLOW,
   ROOT,
   getPackageName,
   getPublishDir,
@@ -140,6 +142,106 @@ export const publishPackages = (
 
   pending.forEach(pkg => assertBuiltVersion(pkg, version, root));
   pending.forEach(pkg => send(getPublishDir(pkg, root), distTag, dryRun));
+};
+
+/**
+ * Returns the address of the "Publish packages" workflow runs of a release branch.
+ * @param version The version to release.
+ * @returns The address.
+ */
+export const getPublishRunsUrl = (version: ReleaseVersion) => (
+  `https://github.com/${GITHUB_REPO}/actions/workflows/${PUBLISH_WORKFLOW}?query=${encodeURIComponent(`branch:releases/${version.name}`)}`
+);
+
+/**
+ * Settings of waitUntilPublished. Tests replace the lookup and the waiting.
+ */
+export interface PublishWaitSettings {
+  /**
+   * Returns the names of the packages that are not published yet.
+   */
+  lookup?: () => string[];
+  /**
+   * Waits for the given number of milliseconds.
+   */
+  sleep?: (duration: number) => Promise<unknown>;
+  /**
+   * How long to wait in total, in milliseconds.
+   */
+  timeout?: number;
+  /**
+   * Pause between two lookups, in milliseconds.
+   */
+  interval?: number;
+  /**
+   * Returns the current time in milliseconds.
+   */
+  now?: () => number;
+  /**
+   * After how many milliseconds an unchanged state is logged again.
+   */
+  reminder?: number;
+}
+
+/**
+ * Waits until all packages of the version are published on npm, which the GitHub workflow does
+ * after the release branch was pushed. A lookup that fails counts as not published yet.
+ * @param version The version to release.
+ * @param root The repository root.
+ * @param settings The lookup and the timing.
+ */
+export const waitUntilPublished = async (
+  version: ReleaseVersion,
+  root = ROOT,
+  settings: PublishWaitSettings = {}
+) => {
+  const {
+    lookup = () => getUnpublished(version, root),
+    sleep = (duration: number) => delay(duration),
+    timeout = 30 * 60 * 1000,
+    interval = 30 * 1000,
+    now = Date.now,
+    reminder = 5 * 60 * 1000,
+  } = settings;
+  const start = now();
+  let state = '';
+  let logged = start;
+
+  logStep(`Waiting until the ${PUBLISHABLE_PACKAGES.length} packages are published`);
+
+  for (;;) {
+    let missing: string[] | null = null;
+    let message: string;
+
+    try {
+      missing = lookup();
+      message = `Waiting for: ${missing.join(', ')}`;
+    } catch (error) {
+      message = `npm couldn't be asked, trying again: ${String(error).split('\n')[0]}`;
+    }
+
+    if (missing?.length === 0) {
+      return;
+    }
+
+    const waited = now() - start;
+
+    if (waited >= timeout) {
+      throw new Error(`Not published after ${Math.round(timeout / 60000)} minutes${missing ? `: ${missing.join(', ')}` : ''}. Nothing was changed so far. Open the run of the "Publish packages" workflow for releases/${version.name}: ${getPublishRunsUrl(version)}. If it waits for an approval, approve it. If it failed, fix what its log reports and re-run it. If it is still running, let it finish. Then retry this job.`);
+    }
+
+    if (message !== state) {
+      console.log(message);
+      state = message;
+      logged = now();
+    } else if (now() - logged >= reminder) {
+      console.log(`Still waiting after ${Math.round(waited / 60000)} minutes`);
+      logged = now();
+    }
+
+    // eslint-disable-next-line no-await-in-loop
+    await sleep(interval);
+  }
 };
 
 /**
