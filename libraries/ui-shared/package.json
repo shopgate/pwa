@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-ui-shared",
-  "version": "7.33.0",
+  "version": "7.33.1",
   "description": "Shopgate's shared UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
@@ -10,13 +10,13 @@
     "directory": "libraries/ui-shared"
   },
   "dependencies": {
-    "@shopgate/pwa-ui-ios": "7.33.0",
-    "@shopgate/pwa-ui-material": "7.33.0",
+    "@shopgate/pwa-ui-ios": "7.33.1",
+    "@shopgate/pwa-ui-material": "7.33.1",
     "css-spring": "git+https://github.com/shopgate/css-spring.git#master"
   },
   "devDependencies": {
-    "@shopgate/pwa-common": "7.33.0",
-    "@shopgate/pwa-common-commerce": "7.33.0",
+    "@shopgate/pwa-common": "7.33.1",
+    "@shopgate/pwa-common-commerce": "7.33.1",
     "classnames": "2.5.1",
     "react": "^17.0.2"
   },

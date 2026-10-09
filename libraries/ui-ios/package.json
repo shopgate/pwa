@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-ui-ios",
-  "version": "7.33.0",
+  "version": "7.33.1",
   "description": "Shopgate's iOS UI components.",
   "main": "index.js",
   "license": "Apache-2.0",
@@ -10,7 +10,7 @@
     "directory": "libraries/ui-ios"
   },
   "devDependencies": {
-    "@shopgate/pwa-common": "7.33.0",
+    "@shopgate/pwa-common": "7.33.1",
     "react": "^17.0.2"
   },
   "peerDependencies": {
