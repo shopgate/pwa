@@ -3,7 +3,7 @@ import {
   act, fireEvent, render, screen,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addProductsToCart';
+import { addProductsToCart } from '@shopgate/engage/cart';
 import ProductCardAddToCart from './ProductCardAddToCart';
 
 let mockProduct: unknown = null;
@@ -18,23 +18,25 @@ jest.mock('react-redux', () => ({
 jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProduct: () => mockProduct,
 }));
-jest.mock('@shopgate/pwa-common-commerce/cart/actions/addProductsToCart', () => jest.fn(() => 'ADD'));
+jest.mock('@shopgate/engage/cart', () => ({ addProductsToCart: jest.fn(() => 'ADD') }));
 const mockPush = jest.fn();
 
-jest.mock('@shopgate/engage/core/hooks/useNavigation', () => ({
+jest.mock('@shopgate/engage/core/hooks', () => ({
   useNavigation: () => ({ push: mockPush }),
 }));
-jest.mock('@shopgate/pwa-common-commerce/product/helpers', () => ({
+jest.mock('@shopgate/engage/product/helpers', () => ({
   getProductRoute: (id: string) => `/item/${id}`,
 }));
-jest.mock('@shopgate/engage/core/helpers', () => ({ hasNewServices: () => false }));
-jest.mock('@shopgate/engage/core/helpers/i18n', () => ({ i18n: { text: (key: string) => key } }));
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  hasNewServices: () => false,
+  i18n: { text: (key: string) => key },
+}));
 jest.mock('@shopgate/engage/locations/selectors', () => ({
   getPreferredFulfillmentMethod: () => null,
   getPreferredLocation: () => null,
 }));
 jest.mock('@shopgate/engage/locations/constants', () => ({ DIRECT_SHIP: 'directShip' }));
-jest.mock('@shopgate/engage/a11y', () => ({ broadcastLiveMessage: jest.fn() }));
+jest.mock('@shopgate/engage/a11y/helpers', () => ({ broadcastLiveMessage: jest.fn() }));
 jest.mock('@shopgate/engage/components', () => ({
   CartIcon: () => null,
   TickIcon: () => <span>tick</span>,
@@ -92,7 +94,7 @@ describe('<ProductCardAddToCart />', () => {
     mockAddResult = Promise.resolve({});
   });
 
-  it('adds a simple product directly', () => {
+  it('adds a simple product directly', async () => {
     mockProduct = {
       id: 'simple',
       flags: {},
@@ -103,7 +105,9 @@ describe('<ProductCardAddToCart />', () => {
     expect(screen.getByRole('button', { name: 'add' }).closest('[data-portal]'))
       .toHaveAttribute('data-portal', 'product-item.add-to-cart');
 
-    fireEvent.click(screen.getByRole('button', { name: 'add' }));
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'add' }));
+    });
 
     expect(addProductsToCart).toHaveBeenCalledWith([{
       productId: 'simple',
@@ -111,7 +115,7 @@ describe('<ProductCardAddToCart />', () => {
     }]);
   });
 
-  it('opens the variant sheet for variant products and adds the selected variant', () => {
+  it('opens the variant sheet for variant products and adds the selected variant', async () => {
     mockProduct = {
       id: 'base',
       flags: { hasVariants: true },
@@ -121,7 +125,9 @@ describe('<ProductCardAddToCart />', () => {
     fireEvent.click(screen.getByRole('button', { name: 'add' }));
     expect(addProductsToCart).not.toHaveBeenCalled();
 
-    fireEvent.click(screen.getByRole('button', { name: 'sheet' }));
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'sheet' }));
+    });
     expect(addProductsToCart).toHaveBeenCalledWith([{
       productId: 'variant-1',
       quantity: 1,

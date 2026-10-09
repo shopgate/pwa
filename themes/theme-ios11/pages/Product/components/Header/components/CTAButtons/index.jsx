@@ -6,7 +6,7 @@ import {
   PRODUCT_CTAS_FAVORITES,
   PRODUCT_CTAS_SHARE,
 } from '@shopgate/engage/product/constants';
-import { ProductShareButton } from '@shopgate/engage/product/components/ProductShareButton';
+import { ProductShareButton } from '@shopgate/engage/product/components';
 import { useStickyValue } from '@shopgate/engage/product/hooks';
 import { appConfig } from '@shopgate/engage';
 import { useSelector } from 'react-redux';

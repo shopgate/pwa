@@ -3,9 +3,9 @@ import {
 } from 'react';
 import Transition from 'react-transition-group/Transition';
 import { ArrowDropIcon } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core/helpers/i18n';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import { VisuallyHidden } from '@shopgate/engage/a11y';
+import { VisuallyHidden } from '@shopgate/engage/a11y/components';
 import { getValueStateText } from './valueState';
 import useRadioGroupKeys from './useRadioGroupKeys';
 import transition from '../../Characteristics/transition';

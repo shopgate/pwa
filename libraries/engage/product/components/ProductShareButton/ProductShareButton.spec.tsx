@@ -7,10 +7,12 @@ const mockShare = jest.fn();
 let mockCanShare = true;
 let mockEnabled = true;
 
-jest.mock('../../hooks/useProductShare', () => () => ({
-  enabled: mockEnabled,
-  canShare: mockCanShare,
-  share: mockShare,
+jest.mock('@shopgate/engage/product/hooks', () => ({
+  useProductShare: () => ({
+    enabled: mockEnabled,
+    canShare: mockCanShare,
+    share: mockShare,
+  }),
 }));
 jest.mock('@shopgate/engage/components', () => ({ ShareIconIOS: () => null }));
 jest.mock('@shopgate/engage/core/helpers', () => ({ i18n: { text: (key: string) => key } }));

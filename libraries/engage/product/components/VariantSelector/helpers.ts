@@ -1,5 +1,5 @@
-import { getFullImageSource } from '@shopgate/engage/core/helpers/getFullImageSource';
-import type { VariantSelectorSettings } from '../../hooks/useVariantSelectorSettings';
+import { getFullImageSource } from '@shopgate/engage/core/helpers';
+import type { VariantSelectorSettings } from '@shopgate/engage/product/hooks';
 import { findMatchingVariants, getOtherSelections } from './selection';
 import type {
   ProductVariants,

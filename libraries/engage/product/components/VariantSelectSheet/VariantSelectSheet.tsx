@@ -7,7 +7,7 @@ import {
   Price, PriceStriked, SheetDrawer as SheetDrawerComponent, SurroundPortals,
 } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
-import { i18n } from '@shopgate/engage/core/helpers/i18n';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchProduct';
 import fetchProductVariants from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
