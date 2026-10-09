@@ -32,6 +32,7 @@ export * from './RelationsSlider';
 export * from './Swatch';
 export * from './Swatches';
 export * from './UnitQuantityPicker';
+export { QuantityStepper } from './QuantityStepper';
 export { VariantSelector, VariantSelectorSkeleton } from './VariantSelector';
 export { VariantSelectSheet } from './VariantSelectSheet';
 export { default as FilterBar } from './FilterBar';

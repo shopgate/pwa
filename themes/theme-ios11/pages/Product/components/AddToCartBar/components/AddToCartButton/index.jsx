@@ -1,81 +1,75 @@
-import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import { I18n } from '@shopgate/engage/components';
-import { Button } from '@shopgate/engage/components/v2';
+import { Button, CircularProgress } from '@shopgate/engage/components/v2';
+import { AddedTick } from '@shopgate/engage/product/components/AddedTick';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import connect from './connector';
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()({
   button: {
-    gridArea: '1 / 1',
-    justifySelf: 'end',
-    transition: theme.transitions.create(['width', 'background-color']),
-    padding: theme.spacing(1, 1),
+    position: 'relative',
+    flex: 1,
+    minWidth: 0,
+    minHeight: 46,
   },
-}));
+  label: {
+    textWrap: 'balance',
+    '&[data-hidden]': {
+      opacity: 0,
+    },
+  },
+  overlay: {
+    position: 'absolute',
+    inset: 0,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  tick: {
+    fontSize: '1.5em',
+  },
+});
 
 /**
- * Add to cart button component.
- * @param {Object} props Props.
+ * The add to cart button of the add to cart bar. While the product is added it shows a spinner,
+ * after success a tick, then its label again.
+ * @param {Object} props The component props.
  * @returns {JSX.Element}
  */
-const AddToCartButton = ({
-  disabled,
-  handleAddToCart,
-  itemCount,
-  openCart,
-  onReset,
-}) => {
+const AddToCartButton = ({ disabled, state, onClick }) => {
   const { classes, cx } = useStyles();
-  const [opened, setOpened] = useState(!!itemCount);
-
-  useEffect(() => {
-    setOpened(!!itemCount);
-  }, [itemCount]);
-
-  const handleClick = useCallback(() => {
-    if (!itemCount) {
-      handleAddToCart();
-      setTimeout(() => {
-        onReset();
-      }, 0);
-      return;
-    }
-
-    setOpened(true);
-    openCart();
-  }, [itemCount, handleAddToCart, onReset, openCart]);
-
-  const style = opened ? { width: '40%' } : null;
-  const ariaLabel = i18n.text(!itemCount ? 'product.add_to_cart' : 'product.go_to_cart');
+  const pending = state === 'pending';
+  const added = state === 'added';
 
   return (
     <Button
       color="cta"
       fullWidth
       className={cx(classes.button, 'theme__product__add-to-cart-bar__add-to-cart-button')}
-      style={style}
-      onClick={handleClick}
+      onClick={onClick}
       disabled={disabled}
+      aria-busy={pending || undefined}
+      data-state={state}
       testId="addToCartBarButton"
-      aria-label={ariaLabel}
     >
-      <I18n.Text string={!itemCount ? 'product.add_to_cart' : 'product.go_to_cart'} />
+      <span className={classes.label} data-hidden={pending || added ? 'true' : undefined}>
+        {i18n.text('product.add_to_cart')}
+      </span>
+      {pending && (
+        <span className={classes.overlay} aria-hidden>
+          <CircularProgress color="inherit" size={20} />
+        </span>
+      )}
+      {added && (
+        <AddedTick className={cx(classes.overlay, classes.tick)} />
+      )}
     </Button>
   );
 };
 
 AddToCartButton.propTypes = {
   disabled: PropTypes.bool.isRequired,
-  handleAddToCart: PropTypes.func.isRequired,
-  itemCount: PropTypes.number.isRequired,
-  openCart: PropTypes.func.isRequired,
-  onReset: PropTypes.func,
+  onClick: PropTypes.func.isRequired,
+  state: PropTypes.oneOf(['idle', 'pending', 'added']).isRequired,
 };
 
-AddToCartButton.defaultProps = {
-  onReset: () => { },
-};
-
-export default connect(AddToCartButton);
+export default AddToCartButton;

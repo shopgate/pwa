@@ -3,6 +3,7 @@ import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
+import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { BROWSE_PATH } from 'Pages/Browse/constants';
 import { MORE_PATH } from 'Pages/More/constants';
 import {
@@ -56,7 +57,13 @@ describe('TabBar selectors', () => {
     });
 
     it('should return TAB_BROWSE', () => {
-      const paths = [BROWSE_PATH, SEARCH_PATH, CATEGORY_PATH];
+      const paths = [
+        BROWSE_PATH,
+        SEARCH_PATH,
+        CATEGORY_PATH,
+        `${ITEM_PATH}/123`,
+        `${ITEM_PATH}/123/reviews`,
+      ];
 
       paths.forEach((pathname) => {
         const result = getActiveTab(getMockedRouterState(pathname));

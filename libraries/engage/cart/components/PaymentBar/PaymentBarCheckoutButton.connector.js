@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getOrderableStatus } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getGrandTotal, getOrderableStatus } from '@shopgate/pwa-common-commerce/cart/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,6 +8,7 @@ import { getOrderableStatus } from '@shopgate/pwa-common-commerce/cart/selectors
  */
 const mapStateToProps = state => ({
   isOrderable: getOrderableStatus(state),
+  grandTotal: getGrandTotal(state),
 });
 
 export default connect(mapStateToProps);

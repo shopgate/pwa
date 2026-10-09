@@ -13,6 +13,7 @@ import {
   TAB_BAR,
   SHOW_TAB_BAR,
   HIDE_TAB_BAR,
+  TAB_CART,
 } from './constants';
 import connect from './connector';
 import { useTabBarScrollObserver, useTabBarSettings } from './hooks';
@@ -21,6 +22,9 @@ import visibleTabs from './tabs';
 const useStyles = makeStyles()(theme => ({
   hidden: {
     display: 'none !important',
+  },
+  keyboardWrapper: {
+    display: 'contents',
   },
   tabBarContainerBase: {
     display: 'flex',
@@ -120,14 +124,15 @@ const TabBar = ({
   modalCount,
 }) => {
   const { classes, cx } = useStyles();
-  useTabBarScrollObserver(isVisibleProp);
-
   const {
     transition = 'fade',
     variant = 'fixed',
-    hideOnScroll = false,
+    hideOnScroll: hideOnScrollSetting = false,
     fixed: { borderEnabled = true } = {},
   } = useTabBarSettings();
+  const hideOnScroll = hideOnScrollSetting && activeTab !== TAB_CART;
+
+  useTabBarScrollObserver(isVisibleProp && activeTab !== TAB_CART);
 
   const [ariaHidden, setAriaHidden] = useState(modalCount > 0);
   const [isScrolledOut, setIsScrolledOut] = useState(false);
@@ -151,6 +156,10 @@ const TabBar = ({
   useEffect(() => {
     setTransitionVisibility(isVisible);
   }, [isVisible]);
+
+  useEffect(() => {
+    setIsScrolledOut(false);
+  }, [hideOnScroll, path]);
 
   // Effect to update the CSS custom property for tab bar height
   useEffect(() => {
@@ -290,24 +299,31 @@ const TabBar = ({
 
   return (
     <KeyboardConsumer>
-      {({ open }) => !open && (
-        <SurroundPortals portalName={TAB_BAR} portalProps={portalProps}>
-          <div
-            className={tabBarClasses.container}
-            aria-hidden={ariaHidden}
-            onTransitionEnd={handleTransitionEnd}
-            ref={tabBarRef}
-          >
+      {({ open }) => (
+        <div
+          className={cx(classes.keyboardWrapper, 'theme__tab-bar__wrapper', {
+            [classes.hidden]: open,
+          })}
+          data-has-safe-area-inset="true"
+        >
+          <SurroundPortals portalName={TAB_BAR} portalProps={portalProps}>
             <div
-              className={tabBarClasses.component}
-              data-test-id="tabBar"
-              role="tablist"
+              className={tabBarClasses.container}
               aria-hidden={ariaHidden}
+              onTransitionEnd={handleTransitionEnd}
+              ref={tabBarRef}
             >
-              {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+              <div
+                className={tabBarClasses.component}
+                data-test-id="tabBar"
+                role="tablist"
+                aria-hidden={ariaHidden}
+              >
+                {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+              </div>
             </div>
-          </div>
-        </SurroundPortals>
+          </SurroundPortals>
+        </div>
       )}
     </KeyboardConsumer>
   );

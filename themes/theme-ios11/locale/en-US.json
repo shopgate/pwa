@@ -240,7 +240,6 @@
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "tax_disclaimer_aria": "VAT included, plus shipping costs if applicable",
     "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
-    "item_added_unit": "{count} {unit} added",
     "adding_item": "{count, plural, =1 {Adding one item} other {Adding {count} items}}",
     "pick_option_first": "Pick an option first. {option}",
     "variant_unavailable": "Not available in this combination",

@@ -240,7 +240,6 @@
     "tax_disclaimer": "* Inclusief BTW, eventueel vermeerderd met verzendkosten",
     "tax_disclaimer_aria": "Inclusief BTW, eventueel vermeerderd met verzendkosten",
     "item_added": "{count, plural, =0 {# geen producten toegevoegd} =1 {{count} product toegevoegd} other {{count} producten toegevoegd}}",
-    "item_added_unit": "{count} {unit} toegevoegd",
     "adding_item": "{count, plural, =1 {Er wordt één product toegevoegd} other {Er worden {count} producten toegevoegd}}",
     "pick_option_first": "Kies eerst een optie. {option}",
     "variant_unavailable": "Niet beschikbaar in deze combinatie",

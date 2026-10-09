@@ -240,7 +240,6 @@
     "tax_disclaimer": "* IVA incluido, eventualmente más gastos de envío",
     "tax_disclaimer_aria": "IVA incluido, eventualmente más gastos de envío",
     "item_added": "{count, plural, =0 {# no se agregaron artículos} =1 {{count} artículo agregado} other {{count} artículos agregados}}",
-    "item_added_unit": "{count} {unit} añadido",
     "adding_item": "{count, plural, =1 {Se está añadiendo un producto} other {Se están añadiendo {count} productos}}",
     "pick_option_first": "Seleccionar primero una opción. {option}",
     "variant_unavailable": "No disponible en esta combinación",

@@ -1,6 +1,7 @@
 // We need to centralize the zIndex definitions as they work
 // like global values in the browser.
 const zIndex = {
+  footerBar: 2,
   tabBar: 10,
   drawer: 1200,
   snackbar: 1400,

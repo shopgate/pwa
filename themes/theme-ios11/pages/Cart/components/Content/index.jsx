@@ -2,6 +2,7 @@ import React, {
   useMemo, useCallback, useEffect, useRef,
 } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import { LoadingContext } from '@shopgate/pwa-common/providers/';
 import {
   getCartConfig,
@@ -10,6 +11,7 @@ import {
   CART_ITEM_LIST,
   CART_COUPON_FIELD,
   PaymentBar,
+  PaymentBarTotals,
   CartContext,
   FLAG_MULTI_LINE_RESERVE,
   CartItemGroup,
@@ -22,16 +24,23 @@ import { BackBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
 import { ProductListTypeProvider } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
+import { getCartPaymentBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
+import { useFooterBarLayout } from '../../../../components/TabBar/hooks';
 import CouponField from '../CouponField';
 import Empty from '../Empty';
 import Footer from '../Footer';
 import connect from './connector';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   cardList: {
     marginTop: 4,
   },
-});
+  totals: {
+    marginTop: 4,
+    paddingBottom: theme.spacing(1),
+    background: theme.palette.background.surface,
+  },
+}));
 
 const config = getCartConfig();
 
@@ -48,6 +57,8 @@ function CartContent(props) {
   const [isPaymentBarVisible, setIsPaymentBarVisible] = React.useState(true);
   const { isLoading: getIsLoading } = React.useContext(LoadingContext);
   const isMountedRef = useRef(true);
+  const { variant: configuredVariant } = useSelector(getCartPaymentBarSettings);
+  const paymentBarLayout = useFooterBarLayout(configuredVariant);
 
   useEffect(() => {
     isMountedRef.current = true;
@@ -130,7 +141,14 @@ function CartContent(props) {
                   )}
                 </SurroundPortals>
               </ProductListTypeProvider>
-              <PaymentBar visible={isPaymentBarVisible} />
+              {paymentBarLayout.variant === 'floating' && (
+                <PaymentBarTotals className={classes.totals} showSeparator={false} />
+              )}
+              <PaymentBar
+                visible={isPaymentBarVisible}
+                variant={paymentBarLayout.variant}
+                gap={paymentBarLayout.gap}
+              />
             </>
           )}
           <Footer />
