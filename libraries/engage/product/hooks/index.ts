@@ -7,3 +7,5 @@ export { default as useStickyValue } from './useStickyValue';
 export { default as useVariantSelectorSettings } from './useVariantSelectorSettings';
 export type { VariantSelectorSettings } from './useVariantSelectorSettings';
 export { useSlidesPerView } from '../components/ProductSlider/hooks';
+export { useProductImageShadow } from '../components/ProductImage/hooks';
+export { default as useFilterBarSettings } from './useFilterBarSettings';

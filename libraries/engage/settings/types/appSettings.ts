@@ -145,6 +145,19 @@ export interface ProductVariantSelectorSettings {
 }
 
 /**
+ * Settings for the category and filter bar above product lists: subcategory chips, sort and
+ * filter.
+ */
+export interface ProductFilterBarSettings {
+  /** Whether categories with products show their subcategories as chips in the bar. */
+  showSubcategoryChips: boolean;
+  /** Whether categories that still have subcategories show sort and filter above their products. */
+  showOnParentCategories: boolean;
+  /** Whether the bar slides out while scrolling down. */
+  hideOnScroll: boolean;
+}
+
+/**
  * Settings for product presentation across the app.
  */
 export interface ProductSettings {
@@ -157,6 +170,30 @@ export interface ProductSettings {
   tile: { productName: ProductNameSettings };
   variantSelector: ProductVariantSelectorSettings;
   actionButtons: ProductActionButtonsSettings;
+  filterBar: ProductFilterBarSettings;
+}
+
+/**
+ * How subcategories are presented, unless the category and filter bar shows them as chips.
+ */
+export type CategoryLayout = 'list' | 'grid';
+
+/**
+ * Settings for category navigation on the browse page and on category pages.
+ */
+export interface CategorySettings {
+  layout: CategoryLayout;
+  grid: {
+    /** Number of category columns, keyed by screen size. */
+    columns: PerScreenSize;
+  };
+  /** Whether the list and the chips show category images. The grid always shows them. */
+  showImages: boolean;
+  /**
+   * Whether list, grid and chips start with an entry that shows all products of the category.
+   * Only supported by some integrations.
+   */
+  showAllProducts: boolean;
 }
 
 /**
@@ -274,6 +311,12 @@ export interface ImageSettings {
    * Aspect ratios for the product image contexts.
    */
   product: ProductImageSettings;
+  /**
+   * Category images in the category grid.
+   */
+  category: {
+    ratio: AspectRatio;
+  };
 }
 
 /**
@@ -339,6 +382,7 @@ export interface AppSettings {
     }
   }
   product: ProductSettings;
+  category: CategorySettings;
   /**
    * Settings for images that are served through the image service.
    */

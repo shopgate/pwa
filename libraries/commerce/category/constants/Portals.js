@@ -27,6 +27,13 @@ export const CATEGORY_LIST_AFTER = `${CATEGORY}.${LIST}.${AFTER}`;
 
 export const CATEGORY_ITEM = `${CATEGORY}.${ITEM}`;
 
+export const CATEGORY_SHOW_ALL_PRODUCTS = `${CATEGORY}.show-all-products`;
+export const CATEGORY_GRID_ITEM = `${CATEGORY}.grid.${ITEM}`;
+export const CATEGORY_GRID_SHOW_ALL_PRODUCTS = `${CATEGORY}.grid.show-all-products`;
+export const CATEGORY_CHIPS = `${CATEGORY}.chips`;
+export const CATEGORY_CHIPS_ITEM = `${CATEGORY}.chips.${ITEM}`;
+export const CATEGORY_CHIPS_SHOW_ALL_PRODUCTS = `${CATEGORY}.chips.show-all-products`;
+
 export const PRODUCT_LIST = `${PRODUCT}.${LIST}`;
 export const PRODUCT_LIST_BEFORE = `${PRODUCT}.${LIST}.${BEFORE}`;
 export const PRODUCT_LIST_AFTER = `${PRODUCT}.${LIST}.${AFTER}`;

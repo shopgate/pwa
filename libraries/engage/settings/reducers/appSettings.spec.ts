@@ -88,6 +88,22 @@ describe('settings / reducers / appSettings', () => {
           direction: 'vertical',
           showShareButton: true,
         },
+        filterBar: {
+          showSubcategoryChips: true,
+          showOnParentCategories: true,
+          hideOnScroll: false,
+        },
+      },
+      category: {
+        layout: 'grid',
+        grid: {
+          columns: {
+            small: 3,
+            large: 6,
+          },
+        },
+        showImages: true,
+        showAllProducts: true,
       },
       cards: {
         style: 'border',
@@ -110,6 +126,12 @@ describe('settings / reducers / appSettings', () => {
           },
           showInnerShadow: false,
         },
+        category: {
+          ratio: {
+            width: 4,
+            height: 5,
+          },
+        },
       },
       appearance: {
         defaultColorSchemeMode: 'dark',
@@ -129,6 +151,7 @@ describe('settings / reducers / appSettings', () => {
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
     expect(state.product).toEqual(settings.product);
+    expect(state.category).toEqual(settings.category);
     expect(state.cards).toEqual(settings.cards);
     expect(state.appearance).toEqual(settings.appearance);
     expect(state.widgets).toEqual(settings.widgets);
@@ -247,6 +270,68 @@ describe('settings / reducers / appSettings', () => {
     expect(state.product.variantSelector).toEqual(DEFAULT_APP_SETTINGS.product.variantSelector);
   });
 
+  it('keeps the defaults of cleared and invalid filter bar values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        filterBar: {
+          showSubcategoryChips: 'yes',
+          showOnParentCategories: true,
+          hideOnScroll: null,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.filterBar).toEqual({
+      showSubcategoryChips: false,
+      showOnParentCategories: true,
+      hideOnScroll: true,
+    });
+  });
+
+  it('keeps the category defaults when the branch is cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: null,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+  });
+
+  it('keeps the defaults of cleared and invalid category values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        layout: 'chips',
+        showImages: true,
+        showAllProducts: 1,
+        grid: {
+          columns: {
+            small: null,
+            large: 5,
+          },
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual({
+      layout: 'list',
+      showImages: true,
+      showAllProducts: false,
+      grid: {
+        columns: {
+          small: 2,
+          large: 5,
+        },
+      },
+    });
+  });
+
+  it.each(['grid', ['grid'], 3])('ignores the category branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: branch,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+  });
+
   it('keeps the widget defaults when only the media margins are cleared', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
       widgets: { mediaMargins: null },
@@ -353,6 +438,24 @@ describe('settings / reducers / appSettings', () => {
   });
 
   describe('images', () => {
+    it('keeps the default of a cleared or invalid category image ratio side', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        images: {
+          category: {
+            ratio: {
+              width: 3,
+              height: null,
+            },
+          },
+        },
+      } as unknown as AppSettingsPayload));
+
+      expect(state.images.category.ratio).toEqual({
+        width: 3,
+        height: 1,
+      });
+    });
+
     it('deep merges a partial images payload', () => {
       const partial = {
         images: {

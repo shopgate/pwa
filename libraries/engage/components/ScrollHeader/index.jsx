@@ -2,12 +2,13 @@ import React, { useState, forwardRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useScrollDirectionChange, useRoute } from '@shopgate/engage/core/hooks';
+import { useReduceMotion } from '@shopgate/engage/a11y/hooks';
 
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'sticky',
     left: 0,
-    backgroundColor: theme.palette.common.white,
+    backgroundColor: theme.palette.background.surface,
     [responsiveMediaQuery('<=xs', { appAlways: true })]: {
       boxShadow: 'rgba(0, 0, 0, 0.118) 0px 1px 6px, rgba(0, 0, 0, 0.118) 0px 1px 4px',
     },
@@ -62,6 +63,7 @@ function ScrollHeaderBase({
   classes: classesProp = {},
 }, ref) {
   const { classes, cx } = useStyles();
+  const reduceMotion = useReduceMotion();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
 
   // The `viewScroll$` stream is shared across all mounted views. Cached routes (e.g. a product
@@ -84,20 +86,24 @@ function ScrollHeaderBase({
     },
   });
 
+  const isHidden = hideOnScroll && shouldHideHeader;
+
   useEffect(() => {
     if (typeof onChange !== 'function') {
       return;
     }
 
-    onChange(!shouldHideHeader);
-  }, [onChange, shouldHideHeader]);
+    onChange(!isHidden);
+  }, [onChange, isHidden]);
 
   return (
     <div
       ref={ref}
-      className={cx(classes.root, classes.transition, className, {
-        [cx(classes.scrolledIn, classesProp?.scrolledIn)]: !shouldHideHeader,
-        [cx(classes.scrolledOut, classesProp?.scrolledOut)]: shouldHideHeader,
+      onFocus={() => setShouldHideHeader(false)}
+      className={cx(classes.root, className, {
+        [classes.transition]: !reduceMotion,
+        [cx(classes.scrolledIn, classesProp?.scrolledIn)]: !isHidden,
+        [cx(classes.scrolledOut, classesProp?.scrolledOut)]: isHidden,
       })}
     >
       {children}
