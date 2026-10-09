@@ -6,7 +6,7 @@ jest.mock('@shopgate/engage/a11y', () => ({
   Section: ({ children }) => children,
 }));
 jest.mock('@shopgate/engage/reviews', () => ({
-  Reviews: () => null,
+  ReviewsPreview: () => null,
 }));
 jest.mock('@shopgate/engage/product/components', () => ({
   ProductProperties: () => null,

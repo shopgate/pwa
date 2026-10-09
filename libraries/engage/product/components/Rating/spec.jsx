@@ -40,6 +40,89 @@ describe('Rating (product header)', () => {
     });
   });
 
+  describe('Provider summary', () => {
+    /**
+     * @param {Object} reviews Overrides for the reviews slice.
+     * @returns {Object} A state of a provider that delivers rating summaries.
+     */
+    const getProviderState = reviews => ({
+      ...mockedStateWithTwoReviews,
+      reviews: {
+        ...mockedStateWithTwoReviews.reviews,
+        reviewSettings: { features: ['ratingSummary'] },
+        ...reviews,
+      },
+    });
+
+    it('should render the provider summary instead of the product rating', () => {
+      const { container } = getComponent({
+        ...mockedStateWithoutReview,
+        reviews: {
+          ...mockedStateWithoutReview.reviews,
+          reviewSettings: { features: ['ratingSummary'] },
+          reviewSummariesByProductId: {
+            foo: {
+              average: 80,
+              count: 7,
+            },
+          },
+        },
+      });
+
+      expect(container.querySelector('.engage__reviews__rating-count')).toBeInTheDocument();
+      expect(container.querySelector('.engage__product__rating__placeholder'))
+        .not.toBeInTheDocument();
+    });
+
+    it('should render nothing when the provider delivered no summary', () => {
+      const { container } = getComponent(getProviderState());
+
+      expect(container.firstChild).toBeNull();
+    });
+
+    it('should render a placeholder while the first preview response is pending', () => {
+      const { container } = getComponent(getProviderState({
+        reviewsByProductId: {
+          foo: {
+            isFetching: true,
+            expires: 0,
+            requestId: 1,
+          },
+        },
+      }));
+
+      expect(container.querySelector('.engage__product__rating__placeholder'))
+        .toBeInTheDocument();
+      expect(container.querySelector('[role="presentation"]')).not.toBeInTheDocument();
+    });
+
+    it('should render no placeholder before the preview was requested', () => {
+      const { container } = getComponent(getProviderState({ reviewsByProductId: {} }));
+
+      expect(container.firstChild).toBeNull();
+    });
+
+    it('should render no placeholder without a provider summary capability', () => {
+      const { container } = getComponent({
+        ...mockedStateWithoutReview,
+        product: { productsById: { foo: { productData: { id: 'foo' } } } },
+        reviews: {
+          ...mockedStateWithoutReview.reviews,
+          reviewsByProductId: {
+            foo: {
+              isFetching: true,
+              expires: 0,
+              requestId: 1,
+            },
+          },
+        },
+      });
+
+      expect(container.querySelector('.engage__product__rating__placeholder'))
+        .not.toBeInTheDocument();
+    });
+  });
+
   describe('Scroll on click', () => {
     it('should scroll to reviews when clicked', () => {
       const scrollSpy = jest.fn();
