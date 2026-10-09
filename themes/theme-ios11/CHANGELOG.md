@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.33.1](https://github.com/shopgate/pwa/compare/v7.33.0...v7.33.1) (2026-10-09)
+
+#### :bug: Bug Fix
+* [#1522](https://github.com/shopgate/pwa/pull/1522) Bring back the import path proposals for the @shopgate packages ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.33.0](https://github.com/shopgate/pwa/compare/v7.32.1...v7.33.0) (2026-10-07)
 
 #### :house: Internal
