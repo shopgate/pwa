@@ -1,4 +1,5 @@
 export { useLoadProductImage } from './useLoadProductImage';
+export { default as useProductGallerySettings } from './useProductGallerySettings';
 export { default as useProductListEntry } from './useProductListEntry';
 export { default as useProductListEntryProduct } from './useProductListEntryProduct';
 export { default as useProductListType } from './useProductListType';

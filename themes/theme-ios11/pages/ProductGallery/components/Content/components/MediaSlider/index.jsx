@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { Swiper, Image } from '@shopgate/engage/components';
-import { appConfig } from '@shopgate/engage';
+import { useProductGallerySettings } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import connect from './connector';
-
-const { pdpImageSliderPaginationType } = appConfig || {};
 
 const fullSize = {
   position: 'relative',
@@ -58,6 +56,7 @@ const useStyles = makeStyles()(theme => ({
 const ProductGalleryMedia = ({ initialSlide, media }) => {
   const { classes } = useStyles();
   const { gallery } = useProductImageSettings();
+  const { pagination } = useProductGallerySettings();
   const settings = useWidgetSettings('@shopgate/engage/product/Gallery');
 
   if (!Array.isArray(media) || media.length === 0) {
@@ -72,7 +71,8 @@ const ProductGalleryMedia = ({ initialSlide, media }) => {
   return (
     <div className={classes.container}>
       <Swiper
-        paginationType={pdpImageSliderPaginationType === 'bulletsBelow' ? 'bullets' : pdpImageSliderPaginationType}
+        key={pagination}
+        paginationType={pagination === 'bulletsBelow' ? 'bullets' : pagination}
         classNames={sliderClassNames}
         className={classes.slider}
         initialSlide={initialSlide}

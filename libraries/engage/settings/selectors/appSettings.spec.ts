@@ -1,6 +1,7 @@
 import {
   getCanSelectColorScheme,
   getDefaultColorSchemeMode,
+  getProductGallerySettings,
   getShowManufacturerOnProductPage,
   getTypographyFontCssUrls,
   getTypographySettings,
@@ -10,6 +11,7 @@ import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
 import type {
   AppearanceSettings,
   AppSettingsState,
+  ProductGallerySettings,
   ProductManufacturerSettings,
   TypographySettings,
   WidgetSettings,
@@ -54,6 +56,18 @@ const stateWithManufacturer = (manufacturer: ProductManufacturerSettings): AppSe
   },
 });
 
+const stateWithGallery = (gallery: ProductGallerySettings): AppSettingsState => ({
+  settings: {
+    appSettings: {
+      ...DEFAULT_APP_SETTINGS,
+      product: {
+        ...DEFAULT_APP_SETTINGS.product,
+        gallery,
+      },
+    },
+  },
+});
+
 describe('settings/selectors/appSettings', () => {
   describe('getShowManufacturerOnProductPage', () => {
     it('returns the configured setting', () => {
@@ -64,6 +78,18 @@ describe('settings/selectors/appSettings', () => {
 
     it('shows the manufacturer when the slice is missing', () => {
       expect(getShowManufacturerOnProductPage({} as AppSettingsState)).toBe(true);
+    });
+  });
+
+  describe('getProductGallerySettings', () => {
+    it('returns the configured setting', () => {
+      expect(getProductGallerySettings(stateWithGallery({
+        pagination: 'fraction',
+      }))).toEqual({ pagination: 'fraction' });
+    });
+
+    it('uses bullets when the slice is missing', () => {
+      expect(getProductGallerySettings({} as AppSettingsState)).toEqual({ pagination: 'bullets' });
     });
   });
 

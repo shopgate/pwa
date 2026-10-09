@@ -280,6 +280,12 @@ export const componentsSchema = {
       borderRadius: '',
     },
   },
+  productMedia: {
+    vars: {
+      margin: '',
+      borderRadius: '',
+    },
+  },
 } as const;
 
 /**
@@ -443,6 +449,12 @@ export const componentsDefaults = {
   productImage: {
     vars: {
       borderRadius: 'var(--sg-shape-borderRadius)',
+    },
+  },
+  productMedia: {
+    vars: {
+      margin: 0,
+      borderRadius: 0,
     },
   },
 } satisfies ComponentsDefaults;

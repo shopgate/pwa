@@ -7,14 +7,11 @@ import {
   PRODUCT_CTAS_SHARE,
 } from '@shopgate/engage/product/constants';
 import { ProductShareButton } from '@shopgate/engage/product/components';
-import { useStickyValue } from '@shopgate/engage/product/hooks';
-import { appConfig } from '@shopgate/engage';
+import { useProductGallerySettings, useStickyValue } from '@shopgate/engage/product/hooks';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getProductActionButtons } from '@shopgate/engage/settings/selectors/appSettings';
 import connect from './connector';
-
-const { pdpImageSliderPaginationType } = appConfig;
 
 const BULLETS_BELOW_OFFSET = 28;
 
@@ -57,7 +54,8 @@ const CTAButtons = ({
   const { classes, cx } = useStyles();
   const { position, direction } = useSelector(getProductActionButtons);
   const hasGallery = useStickyValue(hasImageGallery, hasImageGallery === null);
-  const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && !!hasGallery;
+  const { pagination } = useProductGallerySettings();
+  const bulletsBelow = pagination === 'bulletsBelow' && !!hasGallery;
 
   const favoritesFirst = position === 'topRight' && direction === 'vertical';
   const favorites = (

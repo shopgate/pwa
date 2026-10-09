@@ -4,12 +4,10 @@ import { useWidgetSettings } from '@shopgate/engage/core';
 import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { Image, SurroundPortals, Swiper } from '@shopgate/engage/components';
 import { PRODUCT_GALLERY_IMAGES } from '@shopgate/engage/product';
-import { appConfig } from '@shopgate/engage';
+import { useProductGallerySettings } from '@shopgate/engage/product/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import connect from './connector';
-
-const { pdpImageSliderPaginationType } = appConfig || {};
 
 const fullSize = {
   position: 'relative',
@@ -59,6 +57,7 @@ const useStyles = makeStyles()(theme => ({
 const ProductGalleryImages = ({ initialSlide, images }) => {
   const { classes } = useStyles();
   const { gallery } = useProductImageSettings();
+  const { pagination } = useProductGallerySettings();
   const { zoom = {} } = useWidgetSettings('@shopgate/engage/product/Gallery') || {};
 
   const sliderClassNames = {
@@ -73,7 +72,8 @@ const ProductGalleryImages = ({ initialSlide, images }) => {
   return (
     <div className={classes.container}>
       <Swiper
-        paginationType={pdpImageSliderPaginationType === 'bulletsBelow' ? 'bullets' : pdpImageSliderPaginationType}
+        key={pagination}
+        paginationType={pagination === 'bulletsBelow' ? 'bullets' : pagination}
         classNames={sliderClassNames}
         className={classes.slider}
         initialSlide={initialSlide}
