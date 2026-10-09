@@ -1,6 +1,6 @@
 {
   "name": "@shopgate/pwa-common",
-  "version": "7.33.0",
+  "version": "7.33.1-beta.1",
   "description": "Common library for the Shopgate Connect PWA.",
   "license": "Apache-2.0",
   "author": "Shopgate <support@shopgate.com>",
@@ -43,7 +43,7 @@
     "swiper": "12.2.0"
   },
   "devDependencies": {
-    "@shopgate/pwa-core": "7.33.0",
+    "@shopgate/pwa-core": "7.33.1-beta.1",
     "@types/lodash": "^4.17.25",
     "@types/react-portal": "^3.0.9",
     "lodash": "^4.18.1",
