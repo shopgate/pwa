@@ -2,6 +2,7 @@ import { merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppSettingsSlice,
+  CategorySettings,
   ProductActionButtonsSettings,
   ProductVariantSelectorSettings,
 } from '../types/appSettings';
@@ -35,6 +36,12 @@ const VARIANT_SELECTOR_OPTIONS: {
   swatchShape: ['round', 'square'],
   chipsLayout: ['wrap', 'scroll'],
   soldOut: ['strike', 'hide', 'none'],
+};
+
+const CATEGORY_OPTIONS: {
+  [K in keyof CategorySettings]?: readonly CategorySettings[K][]
+} = {
+  layout: ['list', 'grid'],
 };
 
 const ACTION_BUTTON_OPTIONS: {
@@ -109,6 +116,22 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       direction: 'horizontal',
       showShareButton: true,
     },
+    filterBar: {
+      showSubcategoryChips: false,
+      showOnParentCategories: false,
+      hideOnScroll: true,
+    },
+  },
+  category: {
+    layout: 'list',
+    grid: {
+      columns: {
+        small: 2,
+        large: 4,
+      },
+    },
+    showImages: false,
+    showAllProducts: false,
   },
   cards: {
     style: 'shadow',
@@ -140,6 +163,12 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
       showInnerShadow: DEFAULT_SHOW_INNER_SHADOW,
     },
+    category: {
+      ratio: {
+        width: 1,
+        height: 1,
+      },
+    },
   },
 };
 
@@ -155,7 +184,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product,
+      images, typography, appearance, widgets, product, category,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -170,6 +199,12 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       images: images === null ? undefined : {
         ...images,
         product: images?.product ?? undefined,
+        category: {
+          ratio: pickValidSettings(
+            images?.category?.ratio,
+            DEFAULT_APP_SETTINGS.images.category.ratio
+          ),
+        },
       },
       typography: typography === null ? undefined : {
         ...typography,
@@ -195,6 +230,19 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           product?.manufacturer,
           DEFAULT_APP_SETTINGS.product.manufacturer
         ),
+        filterBar: pickValidSettings(
+          product?.filterBar,
+          DEFAULT_APP_SETTINGS.product.filterBar
+        ),
+      },
+      category: category === null ? undefined : {
+        ...pickValidSettings(category, DEFAULT_APP_SETTINGS.category, CATEGORY_OPTIONS),
+        grid: {
+          columns: pickValidSettings(
+            category?.grid?.columns,
+            DEFAULT_APP_SETTINGS.category.grid.columns
+          ),
+        },
       },
       widgets: widgets === null ? undefined : {
         ...widgets,

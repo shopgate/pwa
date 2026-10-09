@@ -6,13 +6,10 @@ import {
   CATEGORY_LIST_AFTER,
   CATEGORY_LIST_BEFORE,
 } from '@shopgate/pwa-common-commerce/category/constants/Portals';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import { Section } from '@shopgate/engage/a11y';
 import { CategoryList } from '@shopgate/engage/category/components';
 import connect from './connector';
-
-const showAllProducts = appConfig.categoriesShowAllProducts;
 
 /**
  * The category list content.
@@ -25,6 +22,10 @@ class CategoryListContent extends PureComponent {
     category: PropTypes.shape(),
     childrenCount: PropTypes.number,
     hasChildren: PropTypes.bool,
+    layout: PropTypes.oneOf(['list', 'grid']),
+    showAllProducts: PropTypes.bool,
+    showImages: PropTypes.bool,
+    showList: PropTypes.bool,
   };
 
   static defaultProps = {
@@ -33,6 +34,10 @@ class CategoryListContent extends PureComponent {
     categoriesFetching: false,
     childrenCount: 6,
     hasChildren: false,
+    layout: 'list',
+    showAllProducts: false,
+    showImages: false,
+    showList: true,
   };
 
   /**
@@ -41,11 +46,13 @@ class CategoryListContent extends PureComponent {
   render() {
     const {
       hasChildren, category, categories, categoryId, childrenCount, categoriesFetching,
+      layout, showImages, showAllProducts, showList,
     } = this.props;
 
     return (
       <>
         <Portal name={CATEGORY_LIST_BEFORE} props={{ categoryId }} />
+        {showList && (
         <Portal name={CATEGORY_LIST} props={{ categoryId }}>
           {hasChildren && (
             <Section title="category.sections.categories">
@@ -55,10 +62,13 @@ class CategoryListContent extends PureComponent {
                 // "show all products" feature is only supported by the "old" services
                 showAllProducts={!hasNewServices() && showAllProducts}
                 parentCategory={category}
+                layout={layout}
+                showLeftSideImages={layout === 'list' && showImages}
               />
             </Section>
           )}
         </Portal>
+        )}
         <Portal name={CATEGORY_LIST_AFTER} props={{ categoryId }} />
       </>
     );

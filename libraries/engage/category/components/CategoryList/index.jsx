@@ -10,6 +10,7 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { getShowAllProductsFilters } from '@shopgate/engage/category';
 import { SheetList, TextLink } from '@shopgate/engage/components';
 import CategoryImage from '../CategoryImage';
+import CategoryGrid from '../CategoryGrid';
 
 const useStyles = makeStyles()(theme => ({
   sheet: {
@@ -22,6 +23,11 @@ const useStyles = makeStyles()(theme => ({
     width: '30px',
     marginRight: 8,
   },
+  imageFallback: {
+    width: '100%',
+    height: '100%',
+    background: theme.palette.background.emphasized,
+  },
 }));
 
 /**
@@ -33,6 +39,7 @@ const useStyles = makeStyles()(theme => ({
  * @param {boolean} props.showAllProducts Whether to show all products
  * @param {boolean} props.showImages Whether to show category images
  * @param {boolean} props.showLeftSideImages Whether to show category images on the left side
+ * @param {string} props.layout Whether the categories are shown as a list or as a grid
  * @returns {JSX.Element}
  */
 const CategoryList = ({
@@ -42,8 +49,20 @@ const CategoryList = ({
   showAllProducts,
   showImages,
   showLeftSideImages,
+  layout,
 }) => {
   const { classes, cx } = useStyles();
+
+  if (layout === 'grid') {
+    return (
+      <CategoryGrid
+        categories={categories}
+        prerender={prerender}
+        parentCategory={parentCategory}
+        showAllProducts={showAllProducts}
+      />
+    );
+  }
   if (!categories || !categories.length) {
     if (prerender === 0) {
       return null;
@@ -103,7 +122,13 @@ const CategoryList = ({
             }
             leftComponent={
               showLeftSideImages
-                ? <CategoryImage className={classes.image} src={category.imageUrl} />
+                ? (
+                  <CategoryImage
+                    className={classes.image}
+                    src={category.imageUrl}
+                    fallback={<div className={classes.imageFallback} />}
+                  />
+                )
                 : null
             }
             linkComponent={TextLink}
@@ -116,6 +141,7 @@ const CategoryList = ({
 
 CategoryList.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape()),
+  layout: PropTypes.oneOf(['list', 'grid']),
   parentCategory: PropTypes.shape(),
   prerender: PropTypes.number,
   showAllProducts: PropTypes.bool,
@@ -125,6 +151,7 @@ CategoryList.propTypes = {
 
 CategoryList.defaultProps = {
   categories: null,
+  layout: 'list',
   parentCategory: null,
   prerender: 0,
   showAllProducts: false,

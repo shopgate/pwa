@@ -23,7 +23,13 @@ describe('<Content />', () => {
       </Provider>
     ));
 
-    expect(CategoryListContent.mock.lastCall[0]).toEqual({ categoryId: '1234' });
+    expect(CategoryListContent.mock.lastCall[0]).toEqual({
+      categoryId: '1234',
+      layout: 'list',
+      showImages: false,
+      showAllProducts: expect.any(Boolean),
+      showList: true,
+    });
     expect(ProductsContent.mock.lastCall[0]).toEqual({
       categoryId: '1234',
       hasProducts: false,
