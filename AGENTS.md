@@ -82,7 +82,15 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   imports (`@shopgate/engage`) as well as subpaths. Own `declare module '@shopgate/...'`
   workarounds aren't needed. Don't switch to `maxNodeModuleJsDepth`: TypeScript then infers the
   props of JavaScript components from their destructured parameters and reports all of them as
-  required. Keep the config free of `include` and `paths`, which resolve relative to the package.
+  required. Keep the config free of `include`, which resolves relative to the package. Its `paths`
+  map the `@shopgate/*` libraries to their folders next to the engage package, only so that the IDE
+  proposes their sub-folders in import paths (`moduleResolution: bundler` otherwise reads them from
+  `exports`, which the libraries don't have). Each entry lists the installed folder name and the
+  monorepo one (`../pwa-common/*`, `../common/*`); don't add other `paths` there. A config that
+  sets its own `paths` replaces them. That's why both themes repeat the mappings next to their
+  aliases, with the folder of a standalone theme and the one of the monorepo
+  (`./node_modules/@shopgate/...`, `../../node_modules/@shopgate/...`). `libraries/engage/tsconfig.json`
+  has the same mappings for the libraries.
   It sets `types`, so `@shopgate/pwa-unit-test` has `@types/jest` as a dependency.
 - **Type check:** `npm run typecheck` checks every library, util and theme with a `tsconfig.json`
   plus `scripts/release`, and fails on any error. `release prepare` runs it, so a type error
