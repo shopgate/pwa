@@ -74,6 +74,9 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   `@shopgate/pwa-unit-test` for Jest. Changes to these three reach every extension. Many
   public Shopgate extensions serve as blueprints; older ones still list individual libraries
   (`pwa-common`, `pwa-core`, …), the direction is `engage` + the two foundation packages only.
+- **Cleaning up an existing extension** (its `package.json`, lockfile, lint, test and editor
+  config) follows `docs/extension-housekeeping.md`. Read it before changing that setup in an
+  extension; it lists what to declare, what to remove and how to verify the result.
 - **TypeScript in extensions:** an extension's `tsconfig.json` only needs
   `{ "extends": "@shopgate/engage/tsconfig.extension.json" }`. It's the one tsconfig the release
   build publishes. Most library files are still JavaScript without declarations; the config loads
