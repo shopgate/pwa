@@ -145,6 +145,19 @@ export interface ProductVariantSelectorSettings {
 }
 
 /**
+ * How the image gallery of the product page shows the position of the visible image. `bulletsBelow`
+ * places the bullets under the image instead of on top of it.
+ */
+export type ProductGalleryPagination = 'bullets' | 'bulletsBelow' | 'fraction' | 'progressbar';
+
+/**
+ * Settings for the image gallery of the product page.
+ */
+export interface ProductGallerySettings {
+  pagination: ProductGalleryPagination;
+}
+
+/**
  * Settings for product presentation across the app.
  */
 export interface ProductSettings {
@@ -157,6 +170,7 @@ export interface ProductSettings {
   tile: { productName: ProductNameSettings };
   variantSelector: ProductVariantSelectorSettings;
   actionButtons: ProductActionButtonsSettings;
+  gallery: ProductGallerySettings;
 }
 
 /**

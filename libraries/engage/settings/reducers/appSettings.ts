@@ -3,10 +3,11 @@ import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppSettingsSlice,
   ProductActionButtonsSettings,
+  ProductGallerySettings,
   ProductVariantSelectorSettings,
 } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
-import { RECEIVE_APP_SETTINGS } from '../constants/appSettings';
+import { PRODUCT_GALLERY_PAGINATIONS, RECEIVE_APP_SETTINGS } from '../constants/appSettings';
 import {
   DEFAULT_IMAGE_FILL_COLOR,
   DEFAULT_IMAGE_FILL_TRANSPARENT,
@@ -43,6 +44,12 @@ const ACTION_BUTTON_OPTIONS: {
   position: ['topRight', 'bottomRight'],
   addToCart: ['hidden', 'actionButton', 'button'],
   direction: ['horizontal', 'vertical'],
+};
+
+const GALLERY_OPTIONS: {
+  [K in keyof ProductGallerySettings]?: readonly ProductGallerySettings[K][]
+} = {
+  pagination: PRODUCT_GALLERY_PAGINATIONS,
 };
 
 /**
@@ -105,6 +112,9 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       addToCart: 'hidden',
       direction: 'horizontal',
       showShareButton: true,
+    },
+    gallery: {
+      pagination: 'bullets',
     },
   },
   cards: {
@@ -187,6 +197,11 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           product?.actionButtons,
           DEFAULT_APP_SETTINGS.product.actionButtons,
           ACTION_BUTTON_OPTIONS
+        ),
+        gallery: pickValidSettings(
+          product?.gallery,
+          DEFAULT_APP_SETTINGS.product.gallery,
+          GALLERY_OPTIONS
         ),
       },
       widgets: widgets === null ? undefined : {
