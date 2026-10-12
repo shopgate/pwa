@@ -33,7 +33,12 @@ export function StoreHeader() {
 
   return (
     <div
-      className={cx(classes.storeHeader, { [classes.disabled]: !isAvailable })}
+      className={cx(
+        classes.storeHeader,
+        { [classes.disabled]: !isAvailable },
+        'engage__locations__store-list__store__header'
+      )}
+      data-unavailable={isAvailable ? undefined : ''}
     >
       <Grid>
         <Grid.Item grow={1}>
