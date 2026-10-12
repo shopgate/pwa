@@ -1,6 +1,4 @@
 import { connect } from 'react-redux';
-// Imported from the selector file instead of '@shopgate/engage/product': the index of the product
-// module loads components that use this HOC, so it was undefined when this folder was loaded first.
 import { getProduct } from '../selectors/product';
 
 /**
