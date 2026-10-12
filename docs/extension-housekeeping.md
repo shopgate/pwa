@@ -56,7 +56,8 @@ An extension with tests:
 ```
 
 An extension without tests, which is the more common case, has only the `lint` script and no
-`jest` entry. Everything else stays the same.
+`jest` entry. An extension without React code also leaves out `react` and `react-dom`, see
+[Dependencies](#dependencies). Everything else stays the same.
 
 This is the base. Other packages are added only when the code imports them: `prop-types` for
 components that declare prop types, `react-redux` and `reselect` only when the extension accesses
@@ -166,6 +167,14 @@ package goes depends on who provides it when the app runs:
   its own, but as soon as another package with a React peer dependency is declared, such as
   `react-redux`, the install fails without them, because npm then picks a newer React for that
   package.
+  - Leave both out when the frontend has no React code at all. That means: no JSX and no import
+    from `react` or a React library such as `@testing-library/react`, in the code as well as in
+    the specs, and no declared package with a React peer dependency.
+    - The three `@shopgate` packages don't count as such a package. Every extension has them, and
+      `@shopgate/pwa-unit-test` brings React 17 on its own.
+    - An extension that only registers subscriptions or reducers is such a case, also when it has
+      tests for them.
+    - Add both as soon as one of the conditions applies.
 - **Legacy packages go when nothing imports them anymore.** The theme still provides them, so
   code that uses them keeps working. The cleanup makes one replacement itself, the import of
   `isIOSTheme`. Every other import is reported, and the package stays under `devDependencies`
