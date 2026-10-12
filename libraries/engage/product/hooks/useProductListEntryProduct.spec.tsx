@@ -3,7 +3,9 @@ import { useSelector } from 'react-redux';
 import { render } from '@testing-library/react';
 import ProductListEntryProvider from '../providers/ProductListEntry';
 import { getProduct } from '../selectors/product';
-import useProductListEntryProduct from './useProductListEntryProduct';
+import useProductListEntryProduct, {
+  type ProductListEntryWithProduct,
+} from './useProductListEntryProduct';
 
 jest.mock('react-redux', () => ({ useSelector: jest.fn() }));
 jest.mock('../selectors/product', () => ({
@@ -30,16 +32,16 @@ const products: Record<string, TestProduct> = {
 };
 
 /**
- * Renders a component that reads the product of the product list entry.
+ * Renders a component that reads the product list entry and its product.
  * @param product A product to pass to the hook.
  * @param wrap Wraps the reading component, e.g. with a provider.
  * @returns The value returned by the hook.
  */
-const readProduct = (
+const readEntry = (
   product?: TestProduct,
   wrap: (children: ReactElement) => ReactElement = children => children
-): TestProduct | null => {
-  let value: TestProduct | null = null;
+): ProductListEntryWithProduct<TestProduct> => {
+  let value = {} as ProductListEntryWithProduct<TestProduct>;
 
   const Reader = () => {
     value = useProductListEntryProduct<TestProduct>(product);
@@ -68,10 +70,17 @@ describe('engage > product > hooks > useProductListEntryProduct', () => {
     mockedGetProduct.mockImplementation((_, { productId }) => products[productId] || null);
   });
 
-  it('should return the product of the product list entry', () => {
-    expect(readProduct(undefined, withEntry)).toEqual({
-      id: 'p1',
-      name: 'Product p1',
+  it('should return the product list entry and its product', () => {
+    expect(readEntry(undefined, withEntry)).toEqual({
+      product: {
+        id: 'p1',
+        name: 'Product p1',
+      },
+      productListEntry: {
+        productId: 'p1',
+        productListType: null,
+        productListSubType: null,
+      },
     });
     expect(mockedGetProduct).toHaveBeenCalledWith(state, { productId: 'p1' });
   });
@@ -82,18 +91,25 @@ describe('engage > product > hooks > useProductListEntryProduct', () => {
       name: 'From props',
     };
 
-    expect(readProduct(product, withEntry)).toBe(product);
+    expect(readEntry(product, withEntry).product).toBe(product);
     expect(mockedGetProduct).not.toHaveBeenCalled();
   });
 
   it('should ignore a passed product of another entry', () => {
-    expect(readProduct({ id: 'p2' }, withEntry)).toEqual({
+    expect(readEntry({ id: 'p2' }, withEntry).product).toEqual({
       id: 'p1',
       name: 'Product p1',
     });
   });
 
-  it('should return null outside of a product list entry', () => {
-    expect(readProduct({ id: 'p2' })).toBeNull();
+  it('should return no product and an empty entry outside of a product list entry', () => {
+    expect(readEntry({ id: 'p2' })).toEqual({
+      product: null,
+      productListEntry: {
+        productId: null,
+        productListType: null,
+        productListSubType: null,
+      },
+    });
   });
 });
