@@ -89,11 +89,16 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   map the `@shopgate/*` libraries to their folders next to the engage package, only so that the IDE
   proposes their sub-folders in import paths (`moduleResolution: bundler` otherwise reads them from
   `exports`, which the libraries don't have). Each entry lists the installed folder name and the
-  monorepo one (`../pwa-common/*`, `../common/*`); don't add other `paths` there. A config that
+  monorepo one (`../pwa-common/*`, `../common/*`); don't add other `paths` there. A package with
+  an index file at its root also has an entry for the bare import (`@shopgate/engage`,
+  `@shopgate/pwa-core`, `@shopgate/pwa-ui-*`). Without it the bare import is resolved through
+  `node_modules`, and inside the monorepo the editor then shows TS7016 as a hint. A config that
   sets its own `paths` replaces them. That's why both themes repeat the mappings next to their
   aliases, with the folder of a standalone theme and the one of the monorepo
-  (`./node_modules/@shopgate/...`, `../../node_modules/@shopgate/...`). `libraries/engage/tsconfig.json`
-  has the same mappings for the libraries.
+  (`./node_modules/@shopgate/...`, `../../node_modules/@shopgate/...`). Their engage entries list
+  `../../libraries/engage` first, for the same reason: a mapping that passes through `node_modules`
+  doesn't remove the hint. `libraries/engage/tsconfig.json` has the same mappings for the
+  libraries.
   It sets `types`, so `@shopgate/pwa-unit-test` has `@types/jest` as a dependency.
 - **Type check:** `npm run typecheck` checks every library, util and theme with a `tsconfig.json`
   plus `scripts/release`, and fails on any error. `release prepare` runs it, so a type error

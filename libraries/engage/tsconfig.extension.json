@@ -7,13 +7,18 @@
     "jsx": "react-jsx",
     "types": ["@shopgate/engage/untyped-modules", "jest", "node"],
     "paths": {
+      "@shopgate/engage": ["./index.js"],
       "@shopgate/engage/*": ["./*"],
       "@shopgate/pwa-common/*": ["../pwa-common/*", "../common/*"],
       "@shopgate/pwa-common-commerce/*": ["../pwa-common-commerce/*", "../commerce/*"],
+      "@shopgate/pwa-core": ["../pwa-core/index.js", "../core/index.js"],
       "@shopgate/pwa-core/*": ["../pwa-core/*", "../core/*"],
       "@shopgate/pwa-tracking/*": ["../pwa-tracking/*", "../tracking/*"],
+      "@shopgate/pwa-ui-ios": ["../pwa-ui-ios/index.js", "../ui-ios/index.js"],
       "@shopgate/pwa-ui-ios/*": ["../pwa-ui-ios/*", "../ui-ios/*"],
+      "@shopgate/pwa-ui-material": ["../pwa-ui-material/index.js", "../ui-material/index.js"],
       "@shopgate/pwa-ui-material/*": ["../pwa-ui-material/*", "../ui-material/*"],
+      "@shopgate/pwa-ui-shared": ["../pwa-ui-shared/index.js", "../ui-shared/index.js"],
       "@shopgate/pwa-ui-shared/*": ["../pwa-ui-shared/*", "../ui-shared/*"],
       "@shopgate/pwa-webcheckout-shopify/*": ["../pwa-webcheckout-shopify/*", "../webcheckout/*"],
       "@shopgate/tracking-core/*": ["../tracking-core/*"]
