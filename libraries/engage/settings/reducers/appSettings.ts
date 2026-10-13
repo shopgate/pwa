@@ -1,8 +1,10 @@
-import { merge } from 'lodash';
+import { isPlainObject, merge } from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppSettingsSlice,
+  CartPaymentBarSettings,
   ProductActionButtonsSettings,
+  ProductAddToCartBarSettings,
   ProductVariantSelectorSettings,
 } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
@@ -43,6 +45,18 @@ const ACTION_BUTTON_OPTIONS: {
   position: ['topRight', 'bottomRight'],
   addToCart: ['hidden', 'actionButton', 'button'],
   direction: ['horizontal', 'vertical'],
+};
+
+const ADD_TO_CART_BAR_OPTIONS: {
+  [K in keyof ProductAddToCartBarSettings]?: readonly ProductAddToCartBarSettings[K][]
+} = {
+  variant: ['fixed', 'floating'],
+};
+
+const PAYMENT_BAR_OPTIONS: {
+  [K in keyof CartPaymentBarSettings]?: readonly CartPaymentBarSettings[K][]
+} = {
+  variant: ['fixed', 'floating'],
 };
 
 /**
@@ -106,6 +120,15 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       direction: 'horizontal',
       showShareButton: true,
     },
+    addToCartBar: {
+      variant: 'fixed',
+      quantityPicker: false,
+    },
+  },
+  cart: {
+    paymentBar: {
+      variant: 'fixed',
+    },
   },
   cards: {
     style: 'shadow',
@@ -152,7 +175,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product,
+      images, typography, appearance, widgets, product, cart,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -187,6 +210,19 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           product?.actionButtons,
           DEFAULT_APP_SETTINGS.product.actionButtons,
           ACTION_BUTTON_OPTIONS
+        ),
+        addToCartBar: pickValidSettings(
+          product?.addToCartBar,
+          DEFAULT_APP_SETTINGS.product.addToCartBar,
+          ADD_TO_CART_BAR_OPTIONS
+        ),
+      },
+      cart: !isPlainObject(cart) ? undefined : {
+        ...cart,
+        paymentBar: pickValidSettings(
+          cart?.paymentBar,
+          DEFAULT_APP_SETTINGS.cart.paymentBar,
+          PAYMENT_BAR_OPTIONS
         ),
       },
       widgets: widgets === null ? undefined : {

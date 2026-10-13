@@ -100,6 +100,36 @@ export interface ProductActionButtonsSettings {
 }
 
 /**
+ * Whether a bar at the bottom of a page spans the full width or floats as a pill. A floating tab
+ * bar makes it float regardless.
+ */
+export type FooterBarVariant = 'fixed' | 'floating';
+
+/**
+ * Settings for the add to cart bar of the product page.
+ */
+export interface ProductAddToCartBarSettings {
+  variant: FooterBarVariant;
+  /** Whether a quantity stepper sits next to the add to cart button. */
+  quantityPicker: boolean;
+}
+
+/**
+ * Settings for the payment bar of the cart.
+ */
+export interface CartPaymentBarSettings {
+  /** `floating` moves the totals into the page and leaves only the checkout button below. */
+  variant: FooterBarVariant;
+}
+
+/**
+ * Settings for the cart page.
+ */
+export interface CartSettings {
+  paymentBar: CartPaymentBarSettings;
+}
+
+/**
  * Settings for the product rating stars.
  */
 export interface ProductRatingSettings {
@@ -157,6 +187,7 @@ export interface ProductSettings {
   tile: { productName: ProductNameSettings };
   variantSelector: ProductVariantSelectorSettings;
   actionButtons: ProductActionButtonsSettings;
+  addToCartBar: ProductAddToCartBarSettings;
 }
 
 /**
@@ -339,6 +370,7 @@ export interface AppSettings {
     }
   }
   product: ProductSettings;
+  cart: CartSettings;
   /**
    * Settings for images that are served through the image service.
    */

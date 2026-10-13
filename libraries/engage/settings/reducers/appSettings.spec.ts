@@ -88,6 +88,15 @@ describe('settings / reducers / appSettings', () => {
           direction: 'vertical',
           showShareButton: true,
         },
+        addToCartBar: {
+          variant: 'floating',
+          quantityPicker: true,
+        },
+      },
+      cart: {
+        paymentBar: {
+          variant: 'floating',
+        },
       },
       cards: {
         style: 'border',
@@ -129,6 +138,7 @@ describe('settings / reducers / appSettings', () => {
     expect(state.isHydrated).toBe(true);
     expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
     expect(state.product).toEqual(settings.product);
+    expect(state.cart).toEqual(settings.cart);
     expect(state.cards).toEqual(settings.cards);
     expect(state.appearance).toEqual(settings.appearance);
     expect(state.widgets).toEqual(settings.widgets);
@@ -245,6 +255,33 @@ describe('settings / reducers / appSettings', () => {
     } as unknown as AppSettingsPayload));
 
     expect(state.product.variantSelector).toEqual(DEFAULT_APP_SETTINGS.product.variantSelector);
+  });
+
+  it('falls back to the defaults for cleared or invalid bar settings', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        addToCartBar: {
+          variant: 'docked',
+          quantityPicker: 'yes',
+        },
+      },
+      cart: {
+        paymentBar: { variant: null },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.addToCartBar).toEqual(DEFAULT_APP_SETTINGS.product.addToCartBar);
+    expect(state.cart).toEqual(DEFAULT_APP_SETTINGS.cart);
+  });
+
+  it('keeps the bar defaults when a branch is not an object', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { addToCartBar: 'floating' },
+      cart: 'floating',
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.addToCartBar).toEqual(DEFAULT_APP_SETTINGS.product.addToCartBar);
+    expect(state.cart).toEqual(DEFAULT_APP_SETTINGS.cart);
   });
 
   it('keeps the widget defaults when only the media margins are cleared', () => {

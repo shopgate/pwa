@@ -1,4 +1,5 @@
 export interface ZIndex {
+  footerBar: number;
   tabBar: number;
   drawer: number;
   snackbar: number;

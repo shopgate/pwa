@@ -72,6 +72,22 @@ export const getProductActionButtons = createSelector(
 );
 
 /**
+ * Selects the add to cart bar settings of the product page.
+ */
+export const getProductAddToCartBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.addToCartBar
+);
+
+/**
+ * Selects the payment bar settings of the cart.
+ */
+export const getCartPaymentBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.cart.paymentBar
+);
+
+/**
  * Selects the variant selector settings.
  */
 export const getVariantSelectorSettings = createSelector(

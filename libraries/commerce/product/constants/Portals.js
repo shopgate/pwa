@@ -36,6 +36,7 @@ const MAP_PRICE = 'map-price';
 const ORDER_QUANTITY = 'order-quantity';
 const EFFECTIVITY_DATES = 'effectivity-dates';
 const UNIT_QUANTITY_PICKER = 'unit-quantity-picker';
+const QUANTITY_PICKER = 'quantity-picker';
 const TIERS = 'tiers';
 const ADD_TO_CART_BAR = 'add-to-cart-bar';
 const DISCOUNT = 'discount';
@@ -198,6 +199,9 @@ export const PRODUCT_TAX_DISCLAIMER_AFTER = `${PRODUCT}.${TAX_DISCLAIMER}.${AFTE
 export const PRODUCT_ADD_TO_CART_BAR_BEFORE = `${PRODUCT}.${ADD_TO_CART_BAR}.${BEFORE}`;
 export const PRODUCT_ADD_TO_CART_BAR = `${PRODUCT}.${ADD_TO_CART_BAR}`;
 export const PRODUCT_ADD_TO_CART_BAR_AFTER = `${PRODUCT}.${ADD_TO_CART_BAR}.${AFTER}`;
+export const PRODUCT_ADD_TO_CART_BAR_QUANTITY_PICKER_BEFORE = `${PRODUCT}.${ADD_TO_CART_BAR}.${QUANTITY_PICKER}.${BEFORE}`;
+export const PRODUCT_ADD_TO_CART_BAR_QUANTITY_PICKER = `${PRODUCT}.${ADD_TO_CART_BAR}.${QUANTITY_PICKER}`;
+export const PRODUCT_ADD_TO_CART_BAR_QUANTITY_PICKER_AFTER = `${PRODUCT}.${ADD_TO_CART_BAR}.${QUANTITY_PICKER}.${AFTER}`;
 
 // MAP PRICE
 export const PRODUCT_MAP_PRICE_BEFORE = `${PRODUCT}.${MAP_PRICE}.${BEFORE}`;
