@@ -1,15 +1,26 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { useContext, useMemo } from 'react';
+import { useSelector } from 'react-redux';
+import { SurroundPortals, CartTotalLine } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isIOSTheme } from '@shopgate/engage/core';
 import {
   CART_PAYMENT_BAR_TOTALS_SHIPPING,
   getShippingLine,
 } from '@shopgate/pwa-common-commerce/cart';
-import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
+import { getShippingCost } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { CartContext } from '../../cart.context';
-import connect from './PaymentBarShippingCost.connector';
+
+export interface PaymentBarShippingCostProps {
+  /** With `null` the separator follows the shipping amount. */
+  showSeparator?: boolean | null;
+  className?: string | null;
+}
+
+interface ShippingLine {
+  label: string;
+  amount?: number;
+  hint?: string;
+}
 
 const useStyles = makeStyles()({
   spacer: {
@@ -21,20 +32,19 @@ const useStyles = makeStyles()({
 
 /**
  * The PaymentBarShippingCost component.
- * @param {Object} props The component props.
- * @param {Object|null} props.shippingCost The shipping cost details.
- * @param {boolean} [props.showSeparator=true] Whether to show a separator.
- * @param {string|null} [props.className=null] Additional class names.
- * @returns {JSX.Element|null} The rendered component.
+ * @returns The rendered component.
  */
-const PaymentBarShippingCost = ({ shippingCost, showSeparator, className }) => {
+const PaymentBarShippingCost = ({
+  showSeparator = true, className = null,
+}: PaymentBarShippingCostProps) => {
   const { classes } = useStyles();
+  const shippingCost = useSelector(getShippingCost);
   const {
     currency, isLoading, isUserLoggedIn, config, hasPromotionCoupons,
-  } = React.useContext(CartContext);
+  } = useContext(CartContext);
 
-  const shippingLine = React.useMemo(() => (
-    getShippingLine(config, isUserLoggedIn, shippingCost)
+  const shippingLine = useMemo(() => (
+    getShippingLine(config, isUserLoggedIn, shippingCost) as ShippingLine | null
   ), [config, isUserLoggedIn, shippingCost]);
 
   return (
@@ -59,19 +69,4 @@ const PaymentBarShippingCost = ({ shippingCost, showSeparator, className }) => {
   );
 };
 
-PaymentBarShippingCost.propTypes = {
-  className: PropTypes.string,
-  shippingCost: PropTypes.shape({
-    label: PropTypes.string,
-    amount: PropTypes.number,
-  }),
-  showSeparator: PropTypes.bool,
-};
-
-PaymentBarShippingCost.defaultProps = {
-  className: null,
-  showSeparator: true,
-  shippingCost: null,
-};
-
-export default connect(PaymentBarShippingCost);
+export default PaymentBarShippingCost;

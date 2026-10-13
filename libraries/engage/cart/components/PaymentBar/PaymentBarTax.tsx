@@ -1,15 +1,25 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { SurroundPortals, CartTotalLine } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isIOSTheme } from '@shopgate/engage/core';
 import {
   CART_PAYMENT_BAR_TOTALS_TAX,
   getTaxLine,
 } from '@shopgate/pwa-common-commerce/cart';
-import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
+import { getTax } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { CartContext } from '../../cart.context';
-import connect from './PaymentBarTax.connector';
+
+export interface PaymentBarTaxProps {
+  showSeparator?: boolean;
+  className?: string | null;
+}
+
+interface TaxLine {
+  label?: string;
+  amount: number | string;
+  hint?: string;
+}
 
 const useStyles = makeStyles()({
   spacer: {
@@ -21,23 +31,20 @@ const useStyles = makeStyles()({
 
 /**
  * The Tax component.
- * @param {Object} props The component props.
- * @param {Object} [props.taxData] The tax data.
- * @param {boolean} [props.showSeparator=true] Whether to show a separator.
- * @param {string|null} [props.className=null] The class name for styling.
- * @returns {JSX.Element|null} The rendered component or null.
+ * @returns The rendered component or null.
  */
-const PaymentBarTax = ({ taxData, showSeparator, className }) => {
+const PaymentBarTax = ({ showSeparator = true, className = null }: PaymentBarTaxProps) => {
   const { classes } = useStyles();
+  const taxData = useSelector(getTax);
   const {
     currency, isLoading, config, hasPromotionCoupons,
-  } = React.useContext(CartContext);
+  } = useContext(CartContext);
 
   if (!taxData) {
     return null;
   }
 
-  const taxLine = getTaxLine(config, taxData);
+  const taxLine = getTaxLine(config, taxData) as TaxLine | null;
 
   if (!taxLine) {
     return null;
@@ -57,19 +64,4 @@ const PaymentBarTax = ({ taxData, showSeparator, className }) => {
   );
 };
 
-PaymentBarTax.propTypes = {
-  className: PropTypes.string,
-  showSeparator: PropTypes.bool,
-  taxData: PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    amount: PropTypes.number.isRequired,
-  }),
-};
-
-PaymentBarTax.defaultProps = {
-  taxData: null,
-  className: null,
-  showSeparator: true,
-};
-
-export default connect(PaymentBarTax);
+export default PaymentBarTax;

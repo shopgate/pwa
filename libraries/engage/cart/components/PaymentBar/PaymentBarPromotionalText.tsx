@@ -1,15 +1,15 @@
-import React, { useCallback, useContext } from 'react';
-import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { nl2br, showModal as showModalAction, isIOSTheme } from '@shopgate/engage/core';
-import { InfoIcon, Typography } from '@shopgate/engage/components';
+import { useCallback, useContext } from 'react';
+import { useDispatch } from 'react-redux';
+import { nl2br, showModal, isIOSTheme } from '@shopgate/engage/core';
+import { InfoIcon, Typography, CartTotalLine } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
-import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
 import { CartContext } from '../../cart.context';
 
-const mapDispatchToProps = {
-  showModal: showModalAction,
-};
+export interface PaymentBarPromotionalTextProps {
+  text?: string | null;
+  /** Whether an info icon opens the text in a modal instead of showing it inline. */
+  renderIcon?: boolean;
+}
 
 const useStyles = makeStyles()(theme => ({
   textWrapper: {
@@ -49,20 +49,23 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
- * @param {Object} props The component props
- * @returns {JSX}
+ * The promotional text of a promotion, inline or behind an info icon.
+ * @returns The text, the icon or null.
  */
-const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
+const PaymentBarPromotionalText = ({
+  text = null, renderIcon = true,
+}: PaymentBarPromotionalTextProps) => {
   const { classes, cx } = useStyles();
+  const dispatch = useDispatch() as unknown as (action: unknown) => unknown;
   const { isLoading } = useContext(CartContext);
   const showText = useCallback(() => {
-    showModal({
+    dispatch(showModal({
       message: text,
       title: null,
       confirm: null,
       dismiss: 'modal.ok',
-    });
-  }, [showModal, text]);
+    }));
+  }, [dispatch, text]);
 
   if (!text) {
     return null;
@@ -102,15 +105,4 @@ const PaymentBarPromotionalText = ({ text, showModal, renderIcon }) => {
   );
 };
 
-PaymentBarPromotionalText.propTypes = {
-  showModal: PropTypes.func.isRequired,
-  renderIcon: PropTypes.bool,
-  text: PropTypes.string,
-};
-
-PaymentBarPromotionalText.defaultProps = {
-  text: null,
-  renderIcon: true,
-};
-
-export default connect(null, mapDispatchToProps)(PaymentBarPromotionalText);
+export default PaymentBarPromotionalText;

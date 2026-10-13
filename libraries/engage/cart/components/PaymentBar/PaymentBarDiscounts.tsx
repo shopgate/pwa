@@ -1,12 +1,21 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { useContext } from 'react';
+import { useSelector } from 'react-redux';
+import { SurroundPortals, CartTotalLine } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isIOSTheme } from '@shopgate/engage/core';
 import { CART_PAYMENT_BAR_TOTALS_DISCOUNTS } from '@shopgate/pwa-common-commerce/cart';
-import CartTotalLine from '@shopgate/pwa-ui-shared/CartTotalLine';
+import { getDiscounts } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { CartContext } from '../../cart.context';
-import connect from './PaymentBarDiscounts.connector';
+
+export interface PaymentBarDiscountsProps {
+  showSeparator?: boolean;
+  className?: string | null;
+}
+
+interface Discount {
+  label: string;
+  amount: number;
+}
 
 const useStyles = makeStyles()({
   spacer: {
@@ -18,15 +27,12 @@ const useStyles = makeStyles()({
 
 /**
  * The Discounts component.
- * @param {Object} props The component props.
- * @param {Array} [props.discounts=null] An array of discount objects.
- * @param {boolean} [props.showSeparator=true] Whether to show a separator.
- * @param {string|null} [props.className=null] The class name for styling.
- * @returns {JSX.Element|null} The rendered component or null.
+ * @returns The rendered component or null.
  */
-function PaymentBarDiscounts({ discounts, showSeparator, className }) {
+function PaymentBarDiscounts({ showSeparator = true, className = null }: PaymentBarDiscountsProps) {
   const { classes } = useStyles();
-  const { currency, isLoading, hasPromotionCoupons } = React.useContext(CartContext);
+  const discounts: Discount[] | null = useSelector(getDiscounts);
+  const { currency, isLoading, hasPromotionCoupons } = useContext(CartContext);
 
   if (!discounts) {
     return null;
@@ -56,21 +62,4 @@ function PaymentBarDiscounts({ discounts, showSeparator, className }) {
   );
 }
 
-PaymentBarDiscounts.propTypes = {
-  className: PropTypes.string,
-  discounts: PropTypes.arrayOf(
-    PropTypes.shape({
-      label: PropTypes.string.isRequired,
-      amount: PropTypes.number.isRequired,
-    })
-  ),
-  showSeparator: PropTypes.bool,
-};
-
-PaymentBarDiscounts.defaultProps = {
-  discounts: null,
-  className: null,
-  showSeparator: true,
-};
-
-export default connect(PaymentBarDiscounts);
+export default PaymentBarDiscounts;
