@@ -1,5 +1,11 @@
 # Changelog
 
+## [v7.33.2](https://github.com/shopgate/pwa/compare/v7.33.1...v7.33.2) (2026-10-13)
+
+#### :rocket: Enhancement
+* [#1526](https://github.com/shopgate/pwa/pull/1526) Product list entry hook, fixes for import cycles and remounts, filter page classes ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.33.1](https://github.com/shopgate/pwa/compare/v7.33.0...v7.33.1) (2026-10-09)
 
 #### :bug: Bug Fix
