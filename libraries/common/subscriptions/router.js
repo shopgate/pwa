@@ -337,7 +337,7 @@ export default function routerSubscriptions(subscribe) {
   const redirectUser$ = userDidLogin$.delay(100);
 
   subscribe(redirectUser$, ({ action, dispatch }) => {
-    if (appConfig.webCheckoutShopify === null) {
+    if (appConfig.webCheckoutShopify === null && action.redirect !== false) {
       dispatch(historyRedirect(action.redirect));
     }
   });

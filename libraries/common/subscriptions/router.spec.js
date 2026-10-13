@@ -894,6 +894,18 @@ describe('Router subscriptions', () => {
       callback(createCallbackPayload({ redirect }));
       expect(dispatch).not.toHaveBeenCalled();
     });
+
+    it('should not redirect when the login action turns the redirect off', () => {
+      callback(createCallbackPayload({ redirect: false }));
+      expect(dispatch).not.toHaveBeenCalled();
+      expect(historyRedirect).not.toHaveBeenCalled();
+    });
+
+    it('should redirect when the login action has no redirect', () => {
+      callback(createCallbackPayload({}));
+      expect(dispatch).toHaveBeenCalledTimes(1);
+      expect(historyRedirect).toHaveBeenCalledWith(undefined);
+    });
   });
 
   describe('appWillStart$', () => {

@@ -33,7 +33,8 @@ export const requestLogin = (user, password, strategy = DEFAULT_LOGIN_STRATEGY) 
 
 /**
  * Creates the dispatched RECEIVE_LOGIN action object.
- * @param {string} redirect The location to redirect to.
+ * @param {Object|boolean} [redirect] The redirect params. When set to `false` the user stays on
+ * the current page.
  * @param {string} strategy The login strategy.
  * @param {number} [sessionLifetimeInSeconds] The session lifetime in seconds
  * @returns {Object} The dispatched action object.
@@ -41,7 +42,7 @@ export const requestLogin = (user, password, strategy = DEFAULT_LOGIN_STRATEGY) 
 export const successLogin = (
   redirect,
   strategy = DEFAULT_LOGIN_STRATEGY,
-  sessionLifetimeInSeconds
+  sessionLifetimeInSeconds = undefined
 ) => ({
   type: SUCCESS_LOGIN,
   redirect,

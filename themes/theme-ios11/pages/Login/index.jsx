@@ -9,7 +9,7 @@ import {
   CHECKOUT_PATH,
 } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
-  View, I18n, Link, Portal, TextField,
+  View, I18n, Link, Portal, SurroundPortals, TextField,
   PersonIcon, LockIcon, VisibilityIcon, VisibilityOffIcon, Typography,
 } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
@@ -26,6 +26,7 @@ import {
   PAGE_LOGIN_FORM_BEFORE,
   PAGE_LOGIN_FORM,
   PAGE_LOGIN_FORM_AFTER,
+  PAGE_LOGIN_FORM_SUBMIT,
 } from '@shopgate/pwa-common/constants/Portals';
 import { CloseBar } from 'Components/AppBar/presets';
 import connect from './connector';
@@ -278,16 +279,18 @@ const Login = ({
               <Typography variant="caption" align="right" component="div" className={classes.forgotWrapper}>
                 <ForgotPassword />
               </Typography>
-              <div className={classes.buttonWrapper} data-test-id="LoginButton">
-                <Button
-                  type="submit"
-                  color="primary"
-                  fullWidth
-                  disabled={isLoading || isDisabled}
-                >
-                  <I18n.Text string="login.button" />
-                </Button>
-              </div>
+              <SurroundPortals portalName={PAGE_LOGIN_FORM_SUBMIT}>
+                <div className={classes.buttonWrapper} data-test-id="LoginButton">
+                  <Button
+                    type="submit"
+                    color="primary"
+                    fullWidth
+                    disabled={isLoading || isDisabled}
+                  >
+                    <I18n.Text string="login.button" />
+                  </Button>
+                </div>
+              </SurroundPortals>
             </form>
           </Portal>
           <Portal name={PAGE_LOGIN_FORM_AFTER} />
