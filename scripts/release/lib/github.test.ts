@@ -6,7 +6,9 @@ import {
   it,
   mock,
 } from 'node:test';
-import { createRelease, getGithubToken, getMissingCommits } from './github.ts';
+import {
+  createRelease, createTag, getGithubToken, getMissingCommits,
+} from './github.ts';
 
 const ENV_NAMES = ['GITHUB_AUTH_TOKEN', 'GITHUB_AUTH'];
 
@@ -115,7 +117,6 @@ describe('github', () => {
         createRelease('shopgate/pwa', {
           tag: 'v7.33.0',
           target: 'master',
-          prerelease: false,
           body: '',
           latest: true,
         }),
@@ -129,7 +130,6 @@ describe('github', () => {
     const options = {
       tag: 'v7.33.0',
       target: 'master',
-      prerelease: false,
       body: '',
       latest: true,
     };
@@ -169,6 +169,66 @@ describe('github', () => {
       mockFetch(404);
 
       await assert.rejects(createRelease('shopgate/pwa', options), /Can't create the GitHub release v7.33.0 in shopgate\/pwa/);
+    });
+  });
+
+  describe('createTag', () => {
+    /**
+     * Replaces fetch with a stub that answers the requests one after another.
+     * @param responses Status and JSON body per request.
+     * @returns The fetch mock.
+     */
+    const mockFetchSequence = (responses: Array<[number, unknown?]>) => {
+      let index = 0;
+
+      return mock.method(globalThis, 'fetch', async () => {
+        const [status, body = {}] = responses[index];
+        index += 1;
+        return new Response(JSON.stringify(body), { status });
+      });
+    };
+
+    it('tags the head of the branch', async () => {
+      const fetchMock = mockFetchSequence([
+        [404],
+        [200, { object: { sha: 'abc123' } }],
+        [201, { ref: 'refs/tags/v7.33.0-beta.1' }],
+      ]);
+
+      assert.equal(await createTag('shopgate/pwa', 'v7.33.0-beta.1', 'releases/v7.33.0-beta.1'), true);
+
+      const [, branchCall, createCall] = fetchMock.mock.calls;
+      assert.equal(branchCall.arguments[0], 'https://api.github.com/repos/shopgate/pwa/git/ref/heads/releases%2Fv7.33.0-beta.1');
+      assert.equal(createCall.arguments[0], 'https://api.github.com/repos/shopgate/pwa/git/refs');
+      assert.deepEqual(JSON.parse(String((createCall.arguments[1] as RequestInit).body)), {
+        ref: 'refs/tags/v7.33.0-beta.1',
+        sha: 'abc123',
+      });
+    });
+
+    it('does nothing when the tag exists already', async () => {
+      const fetchMock = mockFetchSequence([[200, { ref: 'refs/tags/v7.33.0-beta.1' }]]);
+
+      assert.equal(await createTag('shopgate/pwa', 'v7.33.0-beta.1', 'releases/v7.33.0-beta.1'), false);
+      assert.equal(fetchMock.mock.callCount(), 1);
+    });
+
+    it('throws when the branch is not found', async () => {
+      mockFetchSequence([[404], [404]]);
+
+      await assert.rejects(
+        createTag('shopgate/theme-gmd', 'v7.33.0-beta.1', 'releases/v7.33.0-beta.1'),
+        /Can't create the tag v7.33.0-beta.1 in shopgate\/theme-gmd: the branch releases\/v7.33.0-beta.1 wasn't found/
+      );
+    });
+
+    it('throws when the token has no access', async () => {
+      mockFetchSequence([[404], [200, { object: { sha: 'abc123' } }], [404]]);
+
+      await assert.rejects(
+        createTag('shopgate/pwa', 'v7.33.0-beta.1', 'releases/v7.33.0-beta.1'),
+        /the repository wasn't found or the token has no access/
+      );
     });
   });
 });

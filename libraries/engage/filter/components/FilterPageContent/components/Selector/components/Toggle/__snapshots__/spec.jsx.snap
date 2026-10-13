@@ -3,10 +3,10 @@
 exports[`<Toggle /> should render with selected 1`] = `
 <DocumentFragment>
   <div
-    class="sg-mx2uls-toggle"
+    class="sg-mx2uls-toggle engage__filter-page__selector__toggle"
   >
     <span
-      class="sg-1h1yc6m-label filter-selector-toggle-label"
+      class="sg-1h1yc6m-label filter-selector-toggle-label engage__filter-page__selector__label"
     >
       somelabel
     </span>
@@ -18,10 +18,10 @@ exports[`<Toggle /> should render with selected 1`] = `
 exports[`<Toggle /> should render with selected as open 1`] = `
 <DocumentFragment>
   <div
-    class="sg-mx2uls-toggle"
+    class="sg-mx2uls-toggle engage__filter-page__selector__toggle"
   >
     <span
-      class="sg-1h1yc6m-label filter-selector-toggle-label"
+      class="sg-1h1yc6m-label filter-selector-toggle-label engage__filter-page__selector__label"
     >
       somelabel
     </span>
@@ -33,10 +33,10 @@ exports[`<Toggle /> should render with selected as open 1`] = `
 exports[`<Toggle /> should render without selected 1`] = `
 <DocumentFragment>
   <div
-    class="sg-mx2uls-toggle"
+    class="sg-mx2uls-toggle engage__filter-page__selector__toggle"
   >
     <span
-      class="sg-1h1yc6m-label filter-selector-toggle-label"
+      class="sg-1h1yc6m-label filter-selector-toggle-label engage__filter-page__selector__label"
     >
       somelabel
     </span>
@@ -47,10 +47,10 @@ exports[`<Toggle /> should render without selected 1`] = `
 exports[`<Toggle /> should render without selected as open 1`] = `
 <DocumentFragment>
   <div
-    class="sg-mx2uls-toggle"
+    class="sg-mx2uls-toggle engage__filter-page__selector__toggle"
   >
     <span
-      class="sg-1h1yc6m-label filter-selector-toggle-label"
+      class="sg-1h1yc6m-label filter-selector-toggle-label engage__filter-page__selector__label"
     >
       somelabel
     </span>

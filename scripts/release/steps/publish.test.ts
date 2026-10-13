@@ -14,6 +14,7 @@ import {
   publishPackages,
   updatesMaster,
   waitUntilInstallable,
+  waitUntilPublished,
 } from './publish.ts';
 
 describe('publish', () => {
@@ -168,6 +169,104 @@ describe('publish', () => {
 
     it('allows a dry run everywhere', () => {
       assert.doesNotThrow(() => assertPublishAllowed(true, {}));
+    });
+  });
+
+  describe('waitUntilPublished', () => {
+    const version = parseVersion('7.33.0');
+
+    it('returns right away when all packages are published', async () => {
+      let slept = 0;
+
+      await waitUntilPublished(version, root, {
+        lookup: () => [],
+        sleep: async () => {
+          slept += 1;
+        },
+      });
+
+      assert.equal(slept, 0);
+    });
+
+    it('looks again until all packages are published', async () => {
+      const states = [['@test/core', '@test/engage'], ['@test/engage'], []];
+      let slept = 0;
+
+      await waitUntilPublished(version, root, {
+        lookup: () => states[slept],
+        sleep: async () => {
+          slept += 1;
+        },
+      });
+
+      assert.equal(slept, 2);
+    });
+
+    it('keeps waiting when npm can\'t be asked', async () => {
+      let lookups = 0;
+
+      await waitUntilPublished(version, root, {
+        lookup: () => {
+          lookups += 1;
+
+          if (lookups === 1) {
+            throw new Error('npm view failed');
+          }
+
+          return [];
+        },
+        sleep: () => Promise.resolve(),
+      });
+
+      assert.equal(lookups, 2);
+    });
+
+    it('fails with the missing packages after the timeout', async () => {
+      let time = 0;
+      let slept = 0;
+
+      await assert.rejects(
+        waitUntilPublished(version, root, {
+          lookup: () => {
+            time += 20000;
+            return ['@test/webpack'];
+          },
+          sleep: async (duration) => {
+            time += duration;
+            slept += 1;
+          },
+          now: () => time,
+          timeout: 60000,
+          interval: 30000,
+        }),
+        /Not published after 1 minutes: @test\/webpack\. Nothing was changed so far\. Open the run of the "Publish packages" workflow for releases\/v7\.33\.0: https:\/\/github\.com\/shopgate\/pwa\/actions\/workflows\/publish\.yml\?query=branch%3Areleases%2Fv7\.33\.0\. .* Then retry this job\./
+      );
+
+      assert.equal(slept, 1);
+    });
+
+    it('reports that it still waits while nothing changes', async (t) => {
+      const log = t.mock.method(console, 'log', () => undefined);
+      let time = 0;
+
+      await assert.rejects(waitUntilPublished(version, root, {
+        lookup: () => ['@test/webpack'],
+        sleep: async (duration) => {
+          time += duration;
+        },
+        now: () => time,
+        timeout: 11 * 60000,
+        interval: 30000,
+        reminder: 5 * 60000,
+      }));
+
+      const lines = log.mock.calls.map(call => String(call.arguments[0]));
+
+      assert.deepEqual(lines.filter(line => !line.includes('==>')).filter(Boolean), [
+        'Waiting for: @test/webpack',
+        'Still waiting after 5 minutes',
+        'Still waiting after 10 minutes',
+      ]);
     });
   });
 

@@ -28,9 +28,9 @@ const PickerButton = ({ value, label, openList }) => {
 
   return (
     <button className={cx(classes.button, 'engage__picker__button')} onClick={openList} type="button">
-      <span className={classes.label}>{label}</span>
+      <span className={cx(classes.label, 'engage__picker__label')}>{label}</span>
       {value !== null && (
-        <span className={classes.value}>{value}</span>
+        <span className={cx(classes.value, 'engage__picker__value')}>{value}</span>
       )}
     </button>
   );

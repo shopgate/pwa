@@ -11,6 +11,7 @@ import {
   checkVersion,
   findTakenPackages,
   getContinuation,
+  isReleased,
 } from './check.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
 import { parseVersion } from '../lib/version.ts';
@@ -32,6 +33,7 @@ const createOptions = (
   skipMasterUpdate: false,
   resume: false,
   dryRun: false,
+  waitForPublish: false,
   ...overrides,
 });
 
@@ -150,6 +152,29 @@ describe('check', () => {
     it('supports release commits without pipeline', () => {
       assert.equal(getContinuation(['Released 7.33.0'], version, false, '123'), null);
       assert.equal(getContinuation(['Released 7.33.0'], version, true, '123'), 'resume');
+    });
+  });
+
+  describe('isReleased', () => {
+    const version = parseVersion('7.33.0');
+    const taken = (...locations: string[]) => locations.map(location => ({
+      location,
+      detail: 'exists',
+    }));
+    const tag = 'shopgate/pwa tag v7.33.0';
+    const branch = 'shopgate/pwa branch releases/v7.33.0';
+
+    it('is true with the tag and without the release branch', () => {
+      assert.equal(isReleased(taken(tag, 'npm @shopgate/engage@7.33.0'), version), true);
+    });
+
+    it('is false while the release branch exists', () => {
+      assert.equal(isReleased(taken(tag, branch), version), false);
+    });
+
+    it('is false without the tag', () => {
+      assert.equal(isReleased(taken(branch), version), false);
+      assert.equal(isReleased(taken('shopgate/theme-gmd tag v7.33.0'), version), false);
     });
   });
 

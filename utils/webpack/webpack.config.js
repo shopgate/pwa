@@ -87,6 +87,7 @@ const config = {
       react: resolveForAliasPackage('react'),
       'react-dom': resolveForAliasPackage('react-dom'),
       'react-redux': resolveForAliasPackage('react-redux'),
+      redux: resolveForAliasPackage('redux'),
       reselect: resolveForAliasPackage('reselect'),
       glamor: resolveForAliasPackage('glamor'),
       intl: resolveForAliasPackage('intl'),

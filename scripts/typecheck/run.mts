@@ -21,7 +21,7 @@ const failed = projects.filter((project) => {
     project,
     '--noEmit',
     '--pretty',
-    ...(project.startsWith('themes') ? ['--types', 'jest'] : []),
+    ...(project.startsWith('themes') ? ['--types', 'jest,node'] : []),
   ], {
     cwd: root,
     stdio: 'inherit',

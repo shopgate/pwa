@@ -1,7 +1,5 @@
 import path from 'node:path';
-import {
-  GITHUB_REPO, PUBLISH_WORKFLOW, ROOT, getThemes,
-} from '../config.ts';
+import { ROOT, getThemes } from '../config.ts';
 import { buildAll } from './build.ts';
 import { bumpVersions, updateLockfile } from '../steps/bump.ts';
 import { generateChangelog } from '../steps/changelog.ts';
@@ -16,7 +14,7 @@ import {
 } from '../lib/git.ts';
 import { symbols } from '../lib/symbols.ts';
 import type { ReleaseOptions } from '../lib/options.ts';
-import { publishPackages } from '../steps/publish.ts';
+import { getPublishRunsUrl, publishPackages } from '../steps/publish.ts';
 import { pushSubtrees } from '../steps/subtree.ts';
 
 /**
@@ -97,8 +95,8 @@ export const prepareRelease = async (options: ReleaseOptions, root = ROOT) => {
     '',
     `${symbols.ok} ${version.version} is prepared.`,
     'Next steps:',
-    `  1. Approve the run of the "Publish packages" workflow for ${releaseBranch}: https://github.com/${GITHUB_REPO}/actions/workflows/${PUBLISH_WORKFLOW}?query=${encodeURIComponent(`branch:${releaseBranch}`)}`,
+    `  1. Approve the run of the "Publish packages" workflow for ${releaseBranch}: ${getPublishRunsUrl(version)}`,
     '     If the run failed instead of waiting, fix what its log reports and re-run it.',
-    '  2. When it is done, run the manual "release:finalize" job of the GitLab pipeline',
+    '  2. When it is done, the "release:finalize" job of the GitLab pipeline continues by itself. It waits for up to 30 minutes; if it failed in the meantime, retry it',
   ].join('\n'));
 };

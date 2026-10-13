@@ -1,5 +1,19 @@
 # Changelog
 
+## [v7.33.1](https://github.com/shopgate/pwa/compare/v7.33.0...v7.33.1) (2026-10-09)
+
+#### :bug: Bug Fix
+* [#1522](https://github.com/shopgate/pwa/pull/1522) Bring back the import path proposals for the @shopgate packages ([@fkloes](https://github.com/fkloes))
+
+
+## [v7.33.0](https://github.com/shopgate/pwa/compare/v7.32.1...v7.33.0) (2026-10-07)
+
+#### :house: Internal
+* [#1514](https://github.com/shopgate/pwa/pull/1514) Optional type check for development and a release gate ([@fkloes](https://github.com/fkloes))
+* [#1513](https://github.com/shopgate/pwa/pull/1513) Convert remaining enzyme tests to RTL ([@AylinUenal](https://github.com/AylinUenal))
+* [#1510](https://github.com/shopgate/pwa/pull/1510) npm releases through GitHub Actions and npm workspaces ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.32.1](https://github.com/shopgate/pwa/compare/v7.32.0...v7.32.1) (2026-09-29)
 
 #### :bug: Bug Fix

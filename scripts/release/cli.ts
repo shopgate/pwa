@@ -33,6 +33,7 @@ const OPTIONS_HELP = [
   ['--resume', 'Continue an interrupted release of the same version in a new pipeline', 'RESUME'],
   ['--dry-run', 'Local only: no pushes, "npm publish --dry-run"', 'DRY_RUN'],
   ['--skip-master-update', 'Don\'t update master, although the version becomes "latest"', 'SKIP_MASTER_UPDATE'],
+  ['--wait-for-publish', 'finalize waits until the packages are published instead of failing', 'WAIT_FOR_PUBLISH'],
 ];
 
 const COMMANDS: Record<string, Command> = {
@@ -55,7 +56,7 @@ const COMMANDS: Record<string, Command> = {
       publishPackages(version, dryRun);
 
       if (!dryRun) {
-        await waitUntilInstallable(version);
+        await waitUntilInstallable(version, undefined, { timeout: 25 * 60 * 1000 });
       }
     },
   },
@@ -68,7 +69,7 @@ const COMMANDS: Record<string, Command> = {
   },
   finalize: {
     usage: '<version>',
-    description: 'Update master (stable releases) and create the GitHub releases',
+    description: 'Update master and create the GitHub releases (stable versions) or the tags (pre-releases)',
     run: args => finalizeRelease(getOptions(args)),
   },
   changelog: {

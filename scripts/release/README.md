@@ -23,7 +23,7 @@ npm run release -- <command> [version] [options]
 | `prepare <version>` | CI | Bumps the versions, builds, writes the changelog and pushes the release branches |
 | `publish <version>` | GitHub workflow | Publishes the built packages on npm, dependencies first. Skips packages that are published. Outside the workflow it only runs with `--dry-run` |
 | `unpublished <version>` | local, GitHub workflow | Lists the packages of the version that aren't published yet. Read-only |
-| `finalize <version>` | CI | Updates master (only when the version becomes `latest`) and creates the GitHub releases |
+| `finalize <version>` | CI | Updates master (only when the version becomes `latest`) and creates the GitHub releases. Pre-releases only get a tag |
 | `changelog <version>` | local | Shows the changelog entry of the version without writing any files (`GITHUB_AUTH_TOKEN` avoids the GitHub rate limit) |
 | `build` | local | Builds all packages into `dist` without publishing. `--purge` deletes the `dist` folders, `--normalize-only` removes test files from existing ones |
 
@@ -34,6 +34,7 @@ npm run release -- <command> [version] [options]
 | `--resume` | `RESUME` | `resume` | Continue an interrupted release of the same version in a new pipeline |
 | `--dry-run` | `DRY_RUN` | `dry_run` | No pushes, packages are only packed (`npm publish --dry-run`) |
 | `--skip-master-update` | `SKIP_MASTER_UPDATE` | `skip_master_update` | Don't update master, although the version becomes `latest` |
+| `--wait-for-publish` | `WAIT_FOR_PUBLISH` | – (always set by the pipeline) | `finalize` waits until the packages are published instead of failing |
 | – | `MUTE_SLACK` | `mute_slack` | No Slack notifications of the pipeline. The GitHub workflow still posts its result |
 
 No command needs an npm login: they only read public data from npm, and the workflow publishes
@@ -55,8 +56,10 @@ these variables.
    `releases/v7.33.0`, choose "Review deployments" and approve the environment `npm-release`. The
    workflow then builds and publishes the packages, which takes a few minutes. When it's done,
    Slack posts "published on npm".
-4. **Run the manual `release:finalize` job** in the pipeline when the workflow is done. It fails as
-   long as a package isn't published yet, so it can simply be retried.
+4. **`release:finalize`** continues in the pipeline by itself: it starts right after
+   `release:prepare` and waits for up to 30 minutes until the workflow has published the
+   packages. When that isn't enough, it fails without having changed anything and can simply be
+   retried.
 5. After finalize, the themes are uploaded: `release:themes` for every version,
    `release:tablet-themes` automatically for stable versions and as a manual job that can be
    skipped for prereleases.
@@ -92,6 +95,10 @@ lists the pull requests since the previous release of the same line and is only 
 The branch needs this release CLI and the workflow `.github/workflows/publish.yml`, since GitHub
 takes the workflow from the release branch. Lines released before they existed can't be released
 with this process.
+
+`finalize` runs the CLI of the release branch as well. A branch whose CLI doesn't know
+`WAIT_FOR_PUBLISH` yet doesn't wait: the job starts right after `release:prepare` and fails with
+"Not published yet". Retry it when the packages are published.
 
 ## What the steps do
 
@@ -154,7 +161,8 @@ The workflow `.github/workflows/publish.yml` runs for every push to a branch `re
    patches of an older release line, `latest-<major>.<minor>`. Packages that are published
    already are skipped, so a failed run can be re-run. Afterwards it waits until every package
    can really be installed, i.e. the registry lists the version and hands out its file, for up
-   to 10 minutes. Only then it posts the result to Slack.
+   to 25 minutes: npm can take a quarter of an hour to list a new version. Only then it posts
+   the result to Slack.
 
 A run only publishes the commit it was started for. When the release branch got another push
 before the approval, the older run refuses to publish: approve the newest run of the branch.
@@ -180,31 +188,58 @@ master; changes to the workflow on other branches can only be tested with a rele
   publishes but doesn't post to Slack. The environment `npm-release-dry-run` for dry runs has no
   reviewers and no secret, and is created on its first run.
 
-### `finalize` (manual job `release:finalize`)
+### `finalize` (job `release:finalize`)
 
-1. Aborts when a package is not published yet. When all are published, it waits for up to 10
-   minutes until every package can be installed, so the theme uploads that follow don't start
-   too early.
+1. Aborts when a package is not published yet. With `WAIT_FOR_PUBLISH=true`, it waits for them
+   instead, for up to 30 minutes, and fails after that without having changed anything. When all
+   are published, it waits for up to 10 minutes until every package can be installed, so the
+   theme uploads that follow don't start too early.
 2. Checks out `releases/vX`.
 3. Only when the version becomes `latest` and `SKIP_MASTER_UPDATE` isn't set:
-   1. For each theme, one after another: merges the master of the theme repository into
-      `releases/vX` (`git subtree pull`). Then pushes the result to both theme masters at the same
-      time (`git subtree push`).
-   2. Merges master of pwa into `releases/vX` and pushes it to `releases/vX`, `vX` and master.
-4. Creates the GitHub release `vX` in pwa and both theme repositories. The target is master when master
-   was updated, otherwise `releases/vX`. The release notes are the changelog entry of the
-   version plus a compare link to the previous stable version, or "No notable changes in this
-   release." without an entry. Pre-releases are marked as such, and patches of an older release
-   line are not marked as latest. Publishing a release creates its tag.
+   1. For each theme, one after another: checks whether `releases/vX` of the theme repository
+      already contains its master, which is the case unless someone committed directly in the
+      theme repository. Only otherwise, it merges that master into `releases/vX`
+      (`git subtree pull`). Then pushes the result to both theme masters at the same time
+      (`git subtree push`).
+   2. Merges master of pwa into `releases/vX` and pushes it to `releases/vX` and master.
+4. Stable versions: creates the GitHub release `vX` in pwa and both theme repositories. The target
+   in pwa is `releases/vX`, which holds exactly the commit that was pushed to master, so a merge
+   into master in the meantime can't end up in the tag. In the theme repositories it is master
+   when master was updated, otherwise `releases/vX`. The release notes are the changelog
+   entry of the version plus a compare link to the previous stable version, or "No notable
+   changes in this release." without an entry. Patches of an older release line are not marked as
+   latest. Publishing a release creates its tag.
+5. Pre-releases (alpha, beta, rc): creates only the tag `vX` at the head of `releases/vX` in pwa
+   and both theme repositories, and no GitHub release, so new pre-releases don't appear on the
+   release pages. Their changes are in the `CHANGELOG.md` of the tagged commit.
+6. Removes `releases/vX` in both theme repositories and in pwa, in that order. From here on the
+   version is referenced by its tag `vX`. A branch is only removed where that tag exists. A
+   deletion that fails is only reported, since the release is complete: delete that branch by
+   hand. When the job is retried after this step, it finds the tag without the branch and
+   reports that the version is released already.
 
-With `DRY_RUN=true`, it only lists the packages that are not published and stops.
+With `DRY_RUN=true`, it only lists the packages that are not published and stops, without
+waiting.
+
+The pipeline of `pwa-liveupdate` starts the job right after `release:prepare` and sets
+`WAIT_FOR_PUBLISH`. While it waits:
+
+- It only looks at npm, not at the workflow. When the run of "Publish packages" fails or is
+  rejected, the job keeps waiting until its limit. The workflow posts its failure to Slack;
+  re-running it in time lets the job continue.
+- It holds the resource group `pwa-release`, so `release:prepare` and `release:finalize` of other
+  release pipelines wait for it. Cancel the waiting job before aborting a release or resuming it
+  in a new pipeline.
+- The 30 minutes, the 10 minutes for the installable check and the rest of the job have to fit
+  into the job timeout of the GitLab project (1 hour).
 
 ### `release:themes` and `release:tablet-themes`
 
-Both run one job per theme after `finalize`. Each job checks out `releases/vX` and uploads the
-theme with `sgconnect`. A failed upload, including a failed processing of the theme on the
-platform, fails the job, which can be retried on its own. With `DRY_RUN=true`, they check out
-`BRANCH` instead, since `releases/vX` isn't pushed, and skip the upload.
+Both run one job per theme after `finalize`. Each job checks out the tag `vX`, since
+`finalize` has removed the release branch, and uploads the theme with `sgconnect`. A failed
+upload, including a failed processing of the theme on the platform, fails the job, which can be
+retried on its own. With `DRY_RUN=true`, they check out `BRANCH` instead, since nothing is
+tagged, and skip the upload.
 
 - `release:themes` uploads the themes under their own IDs for every version.
 - `release:tablet-themes` renames the themes to `*-tablet` before the upload. It runs
@@ -228,16 +263,20 @@ job that failed halfway doesn't leave anything behind that blocks it:
   same commits again, so a theme branch that was already pushed doesn't reject the retry.
 - A push that was rejected because the target moved in the meantime (e.g. someone merged into
   master during `finalize`) goes through on the retry, since the job fetches and merges first.
-- A theme master that was already updated in a failed `finalize` gets merged into `releases/vX`
-  once more. That adds a merge commit without changes, and the push stays a fast-forward.
+- A theme master that was already updated in a failed `finalize` is found to be part of
+  `releases/vX` on the retry, so nothing is merged and the push reports "Everything up-to-date".
 - External causes (SSH key, `GITHUB_AUTH_TOKEN`, GitHub or npm outages): fix the cause, then
   retry.
 
 When the pipeline has to be started again for the same version, for example after it was
 cancelled, `check` reports the version as taken. Start the new pipeline with the input `resume` to
 continue. Resuming is only allowed when the release branch contains the "Released X" commit of
-this version, so a typo in the version can't continue someone else's release. A resumed release continues on `releases/vX`, so later changes to `BRANCH` are
-not part of it.
+this version, so a typo in the version can't continue someone else's release. A resumed release
+continues on `releases/vX`, so later changes to `BRANCH` are not part of it.
+
+A version whose `finalize` went through can't be resumed: its release branch is removed, and
+`check` reports it as released. That's intended, since nothing is left to do but the theme
+uploads, and those are retried in the pipeline of the release.
 
 **`check` stops because master has commits that are missing in `BRANCH`** (only for releases that
 update master, e.g. after someone merged into master by mistake): nothing was created yet. Merge
@@ -250,6 +289,9 @@ retry the job or start a new pipeline, `RESUME` isn't needed.
 waiting run of "Publish packages", and delete the branch `releases/vX` in pwa, `theme-gmd` and
 `theme-ios11` on GitHub. Otherwise `check` reports the version as taken in later pipelines.
 After the approval, treat the version as final and release a new one instead of unpublishing it.
+
+**Cancel a waiting `release:finalize` job** before aborting a release, and before resuming it in
+a new pipeline: while it waits, it blocks the release jobs of other pipelines.
 
 **No run of "Publish packages" waits for approval:** its first job failed, e.g. because npm
 couldn't be reached. That job can't post to Slack, since the webhook is a secret of the
@@ -277,7 +319,13 @@ failed theme. Retrying `finalize` completes them.
 ### Theme upload
 
 A failed `release:themes` or `release:tablet-themes` job only affects its theme: retry that job in
-the pipeline. The packages and the GitHub releases are already done at that point.
+the pipeline of the release. The packages and the GitHub releases or tags are already done at
+that point, and the job takes the theme from the tag, so it doesn't need the release branch. A
+new pipeline with `resume` can't be used for it.
+
+Re-running a publish job of the workflow "Publish packages" after `finalize` fails with "moved
+to nothing", since the release branch is gone. Nothing is missing in that case: all packages are
+published, otherwise `finalize` wouldn't have run.
 
 Releases with the legacy process upload the regular themes through the GitHub workflow "Trigger
 GitLab Pipelines on Release" of their branch, which starts one pipeline per theme in the GitLab

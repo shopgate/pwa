@@ -67,22 +67,22 @@ const Switch = ({
   a11yFallbackText,
   children,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const switchId = useMemo(() => id || Math.random(), [id]);
 
   return (
-    <div className={classes.container}>
+    <div className={cx(classes.container, 'engage__switch')}>
       <input
         type="checkbox"
         disabled={disabled}
         checked={checked}
         onChange={onChange}
-        className={classes.input}
+        className={cx(classes.input, 'engage__switch__input')}
         id={switchId}
       />
 
       {children && (
-        <label htmlFor={switchId}>
+        <label htmlFor={switchId} className="engage__switch__label">
           <span aria-hidden={!!a11yFallbackText}>
             {children}
           </span>

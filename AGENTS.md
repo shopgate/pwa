@@ -50,7 +50,7 @@ Requires the external `sgconnect` CLI (not installed by `npm install`).
 - Run locally: `npm start` (`sgconnect frontend start`); `npm run start-cloud` (backend + frontend). Web bridge: `WEB_BRIDGE=1 sgconnect frontend start`.
 - Test: **`npm run test:short` is the default** — use it for routine runs, and scope it to the paths you touched (`npm run test:short -- <path>`) rather than sweeping the repo. `npm test` (`RUN_LONG=true jest`) is the full run, reserved for changes that touch `@shopgate/engage/*` exports (see Pitfalls); `npm run test:watch`; `npm run cover`.
 - Lint: `npm run lint` (eslint `.js/.jsx/.ts/.tsx/.json`, ignores `extensions/`); `npm run lint:summary`. A Husky pre-commit hook runs `lint-staged`. Activate it once per clone with `npm run prepare`, since `ignore-scripts=true` in the npm config keeps `npm install` from running it. Git clients like Fork run hooks without the shell profile, so with nvm the hook fails with `npx: command not found`; load nvm in `~/.config/husky/init.sh` (`export NVM_DIR="$HOME/.nvm"`, `. "$NVM_DIR/nvm.sh"`). Husky 9 no longer reads `~/.huskyrc`.
-- Release process (TypeScript in `scripts/release/`, run by Node ≥ 24 without build step; started from the GitLab release pipeline): one CLI, `npm run release` lists all commands and options. Docs: `scripts/release/README.md`. Flow: `check <version>` → `prepare` (bump, build, changelog, push release branches) → GitHub workflow "Publish packages" (`.github/workflows/publish.yml`: a developer approves the run, then `publish <version>` publishes via npm trusted publishing, without token or 2FA) → `finalize` (master update, GitHub releases). `build` builds all packages into `dist` without publishing. Tests: `npm run release:test`, types: `npm run release:typecheck`.
+- Release process (TypeScript in `scripts/release/`, run by Node ≥ 24 without build step; started from the GitLab release pipeline): one CLI, `npm run release` lists all commands and options. Docs: `scripts/release/README.md`. Flow: `check <version>` → `prepare` (bump, build, changelog, push release branches) → GitHub workflow "Publish packages" (`.github/workflows/publish.yml`: a developer approves the run, then `publish <version>` publishes via npm trusted publishing, without token or 2FA) → `finalize` (master update, GitHub releases; pre-releases only get a tag; removes the release branches). `build` builds all packages into `dist` without publishing. Tests: `npm run release:test`, types: `npm run release:typecheck`.
 
 ## Repository Structure
 
@@ -80,6 +80,9 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   `@shopgate/pwa-unit-test` for Jest. Changes to these three reach every extension. Many
   public Shopgate extensions serve as blueprints; older ones still list individual libraries
   (`pwa-common`, `pwa-core`, …), the direction is `engage` + the two foundation packages only.
+- **Cleaning up an existing extension** (its `package.json`, lockfile, lint, test and editor
+  config) follows `docs/extension-housekeeping.md`. Read it before changing that setup in an
+  extension; it lists what to declare, what to remove and how to verify the result.
 - **TypeScript in extensions:** an extension's `tsconfig.json` only needs
   `{ "extends": "@shopgate/engage/tsconfig.extension.json" }`. It's the one tsconfig the release
   build publishes. Most library files are still JavaScript without declarations; the config loads
@@ -88,7 +91,20 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   imports (`@shopgate/engage`) as well as subpaths. Own `declare module '@shopgate/...'`
   workarounds aren't needed. Don't switch to `maxNodeModuleJsDepth`: TypeScript then infers the
   props of JavaScript components from their destructured parameters and reports all of them as
-  required. Keep the config free of `include` and `paths`, which resolve relative to the package.
+  required. Keep the config free of `include`, which resolves relative to the package. Its `paths`
+  map the `@shopgate/*` libraries to their folders next to the engage package, only so that the IDE
+  proposes their sub-folders in import paths (`moduleResolution: bundler` otherwise reads them from
+  `exports`, which the libraries don't have). Each entry lists the installed folder name and the
+  monorepo one (`../pwa-common/*`, `../common/*`); don't add other `paths` there. A package with
+  an index file at its root also has an entry for the bare import (`@shopgate/engage`,
+  `@shopgate/pwa-core`, `@shopgate/pwa-ui-*`). Without it the bare import is resolved through
+  `node_modules`, and inside the monorepo the editor then shows TS7016 as a hint. A config that
+  sets its own `paths` replaces them. That's why both themes repeat the mappings next to their
+  aliases, with the folder of a standalone theme and the one of the monorepo
+  (`./node_modules/@shopgate/...`, `../../node_modules/@shopgate/...`). Their engage entries list
+  `../../libraries/engage` first, for the same reason: a mapping that passes through `node_modules`
+  doesn't remove the hint. `libraries/engage/tsconfig.json` has the same mappings for the
+  libraries.
   It sets `types`, so `@shopgate/pwa-unit-test` has `@types/jest` as a dependency.
 - **Type check:** `npm run typecheck` checks every library, util and theme with a `tsconfig.json`
   plus `scripts/release`, and fails on any error. `release prepare` runs it, so a type error

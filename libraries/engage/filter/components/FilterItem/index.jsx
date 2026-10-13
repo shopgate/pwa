@@ -26,10 +26,10 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX}
  */
 const FilterItem = ({ children }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   return (
-    <div className={classes.item}>
+    <div className={cx(classes.item, 'engage__filter-item')}>
       {children}
     </div>
   );

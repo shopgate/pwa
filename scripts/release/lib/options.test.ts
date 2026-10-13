@@ -7,7 +7,7 @@ import {
 } from 'node:test';
 import { getOptions } from './options.ts';
 
-const ENV_NAMES = ['VERSION', 'BRANCH', 'SKIP_MASTER_UPDATE', 'RESUME', 'DRY_RUN'];
+const ENV_NAMES = ['VERSION', 'BRANCH', 'SKIP_MASTER_UPDATE', 'RESUME', 'DRY_RUN', 'WAIT_FOR_PUBLISH'];
 
 describe('getOptions', () => {
   let savedEnv: Record<string, string | undefined>;
@@ -37,6 +37,7 @@ describe('getOptions', () => {
     assert.equal(options.skipMasterUpdate, false);
     assert.equal(options.resume, false);
     assert.equal(options.dryRun, false);
+    assert.equal(options.waitForPublish, false);
   });
 
   it('reads the GitLab form variables', () => {
@@ -46,6 +47,7 @@ describe('getOptions', () => {
       SKIP_MASTER_UPDATE: 'true',
       RESUME: 'true',
       DRY_RUN: 'true',
+      WAIT_FOR_PUBLISH: 'true',
     });
 
     const options = getOptions([]);
@@ -55,6 +57,7 @@ describe('getOptions', () => {
     assert.equal(options.skipMasterUpdate, true);
     assert.equal(options.resume, true);
     assert.equal(options.dryRun, true);
+    assert.equal(options.waitForPublish, true);
   });
 
   it('prefers command line arguments over variables', () => {
