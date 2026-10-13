@@ -1,12 +1,18 @@
 {
-  "extends": "@shopgate/engage/tsconfig.json",
+  "extends": "@shopgate/engage/tsconfig.extension.json",
   "compilerOptions": {
     "paths": {
       "Components/*": ["./components/*"],
       "Config/*": ["./config/*"],
       "Extensions/*": ["./extensions/*"],
       "Pages/*": ["./pages/*"],
+      "@shopgate/engage": [
+        "../../libraries/engage/index.js",
+        "./node_modules/@shopgate/engage/index.js",
+        "../../node_modules/@shopgate/engage/index.js"
+      ],
       "@shopgate/engage/*": [
+        "../../libraries/engage/*",
         "./node_modules/@shopgate/engage/*",
         "../../node_modules/@shopgate/engage/*"
       ],
