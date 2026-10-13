@@ -12,12 +12,12 @@ exports[`<Picker /> Given the component was mounted to the DOM should match snap
     type="button"
   >
     <span
-      class="sg-1o59evv-label"
+      class="sg-1o59evv-label engage__picker__label"
     >
       Pick ...
     </span>
     <span
-      class="sg-1pn4p3w-value"
+      class="sg-1pn4p3w-value engage__picker__value"
     />
   </button>
 </div>

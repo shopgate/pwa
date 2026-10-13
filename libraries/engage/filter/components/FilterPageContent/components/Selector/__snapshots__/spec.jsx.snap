@@ -6,6 +6,7 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
     class="sg-9f2nkn-content"
   >
     <div
+      class="engage__filter-page__selector__value"
       data-test-id="foo"
     >
       <div
@@ -18,6 +19,7 @@ exports[`Filter: <Selector /> should render with minimum props 1`] = `
       </div>
     </div>
     <div
+      class="engage__filter-page__selector__value"
       data-test-id="bar"
     >
       <div

@@ -39,16 +39,21 @@ export interface SelectedProps {
  * @returns The rendered component.
  */
 const Selected = ({ values }: SelectedProps) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   if (values.length === 0) {
     return null;
   }
 
   return (
-    <div className={classes.chips}>
+    <div className={cx(classes.chips, 'engage__filter-page__selector__selected')}>
       {values.map(({ id, label }) => (
-        <span key={id} className={classes.chip}>{label}</span>
+        <span
+          key={id}
+          className={cx(classes.chip, 'engage__filter-page__selector__selected-value')}
+        >
+          {label}
+        </span>
       ))}
     </div>
   );
