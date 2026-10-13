@@ -1,6 +1,6 @@
 import fs from 'node:fs';
+import { createRequire } from 'node:module';
 import path from 'node:path';
-import { parseSync } from '@babel/core';
 
 /**
  * A package as it gets published.
@@ -54,6 +54,20 @@ const COMMONJS_EXPORTS = /\b(?:module\.exports|exports\.[A-Za-z_$][\w$]*\s*=|Obj
 const STAR_EXPORT = /^([ \t]*)export \* from (["'])([^"']+)\2;?[ \t]*$/gm;
 const NAMED_EXPORTS = /^[ \t]*export (?:type )?\{([^}]*)\}/gm;
 const DECLARED_EXPORT = /^[ \t]*export (?:declare )?(?:abstract )?(?:const|let|var|function|class|type|interface|enum|namespace) ([A-Za-z_$][\w$]*)/gm;
+
+/**
+ * The parser of Babel, reduced to how it is called here.
+ */
+type ParseSync = (code: string, options: Record<string, unknown>) => {
+  program: { body: ModuleNode[] };
+} | null;
+
+/**
+ * Loads the parser of Babel. It is loaded when it is first needed and not with an import
+ * statement, since parts of the release tooling run before the dependencies are installed.
+ * @returns The parser.
+ */
+const loadParser = (): ParseSync => createRequire(import.meta.url)('@babel/core').parseSync;
 
 /**
  * Finds the file of a module.
@@ -149,12 +163,12 @@ export const getExportNames = (
 
   visited.add(file);
 
-  const ast = parseSync(fs.readFileSync(file, 'utf8'), {
+  const ast = loadParser()(fs.readFileSync(file, 'utf8'), {
     configFile: false,
     babelrc: false,
     sourceType: 'module',
     filename: file,
-  }) as unknown as { program: { body: ModuleNode[] } } | null;
+  });
 
   const names = (ast?.program.body ?? []).flatMap((node) => {
     if (node.type === 'ExportAllDeclaration') {
