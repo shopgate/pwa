@@ -1,11 +1,11 @@
 {
   "name": "@shopgate/theme-config",
-  "version": "7.33.1",
+  "version": "7.33.2-alpha.3",
   "private": true,
   "description": "Provides the theme configurations for Catalog 2.0",
   "license": "Apache-2.0",
   "devDependencies": {
-    "@shopgate/pwa-common": "7.33.1",
+    "@shopgate/pwa-common": "7.33.2-alpha.3",
     "@types/lodash": "^4.17.24",
     "lodash": "^4.17.23"
   }
