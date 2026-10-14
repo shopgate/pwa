@@ -1,5 +1,4 @@
 import type { ReactElement } from 'react';
-import '../actions';
 import { getNavigationAction } from '../registry';
 import type { NavigationActionHook, NavigationActionSettings, ResolvedNavigationAction } from '../types';
 

@@ -1,35 +1,33 @@
-import {
-  getNavigationAction,
-  registerDefaultNavigationAction,
-  registerNavigationAction,
-} from './registry';
+import { getNavigationAction, registerNavigationAction } from './registry';
+import { CORE_NAVIGATION_ACTIONS } from './actions';
 import type { NavigationActionHook } from './types';
 
-const createAction = (label: string): NavigationActionHook => () => ({
+jest.mock('./actions', () => ({
+  CORE_NAVIGATION_ACTIONS: {
+    cart: jest.fn(),
+    favorites: jest.fn(),
+  },
+}));
+
+const extension: NavigationActionHook = () => ({
   available: true,
-  icon: 'burger',
-  label,
+  icon: 'heart',
+  label: 'extension',
   onClick: jest.fn(),
 });
 
 describe('navigation action registry', () => {
-  it('uses the core action while no extension provides one', () => {
-    const core = createAction('core');
-    registerDefaultNavigationAction('menuA', core);
-
-    expect(getNavigationAction('menuA')).toBe(core);
+  it('uses the core action while no extension replaces it', () => {
+    expect(getNavigationAction('cart')).toBe(CORE_NAVIGATION_ACTIONS.cart);
   });
 
-  it('lets an extension replace the core action, even when it registers first', () => {
-    const extension = createAction('extension');
-    const core = createAction('core');
-    registerNavigationAction('menuB', extension);
-    registerDefaultNavigationAction('menuB', core);
+  it('lets an extension replace the core action', () => {
+    registerNavigationAction('favorites', extension);
 
-    expect(getNavigationAction('menuB')).toBe(extension);
+    expect(getNavigationAction('favorites')).toBe(extension);
   });
 
-  it('knows no action nobody registered', () => {
-    expect(getNavigationAction('unknown')).toBeUndefined();
+  it('knows no action without an implementation', () => {
+    expect(getNavigationAction('share')).toBeUndefined();
   });
 });

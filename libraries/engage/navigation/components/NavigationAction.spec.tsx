@@ -5,7 +5,7 @@ import NavigationAction from './NavigationAction';
 import { registerNavigationAction } from '../registry';
 import type { NavigationActionSettings, ResolvedNavigationAction } from '../types';
 
-jest.mock('../actions', () => ({}));
+jest.mock('../actions', () => ({ CORE_NAVIGATION_ACTIONS: {} }));
 
 const onClick = jest.fn();
 

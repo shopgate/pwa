@@ -13,7 +13,6 @@ import { useRoute, useNavigation } from '@shopgate/engage/core/hooks';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { useProductShare } from '@shopgate/engage/product/hooks';
 import { BROWSE_PATH, OPEN_SEARCH } from '../constants';
-import { registerDefaultNavigationAction } from '../registry';
 import type { NavigationActionHook } from '../types';
 
 const { hasNoScanner, hasFavorites } = (appConfig || {}) as {
@@ -22,23 +21,13 @@ const { hasNoScanner, hasFavorites } = (appConfig || {}) as {
 };
 
 /**
- * Creates a click handler that opens a path. On the page of the path itself it does nothing, so
- * the button stays in place without stacking the same page again.
+ * Creates a click handler that opens a path.
  * @param pathname The path to open.
  * @returns A click handler that opens the path.
  */
 const usePush = (pathname: string) => {
   const { push } = useNavigation();
-  const route = useRoute() as { pathname?: string } | null;
-  const currentPathname = route?.pathname;
-
-  return useCallback(() => {
-    if (currentPathname === pathname) {
-      return;
-    }
-
-    push({ pathname });
-  }, [push, pathname, currentPathname]);
+  return useCallback(() => push({ pathname }), [push, pathname]);
 };
 
 const EXTERNAL_LINK = /^[a-z][a-z0-9+.-]*:/i;
@@ -140,11 +129,13 @@ const useCategoryMenuAction: NavigationActionHook = () => ({
   onClick: usePush(BROWSE_PATH),
 });
 
-registerDefaultNavigationAction('link', useLinkAction);
-registerDefaultNavigationAction('openSearch', useOpenSearchAction);
-registerDefaultNavigationAction('share', useShareAction);
-registerDefaultNavigationAction('scanner', useScannerAction);
-registerDefaultNavigationAction('storeFinder', useStoreFinderAction);
-registerDefaultNavigationAction('cart', useCartAction);
-registerDefaultNavigationAction('favorites', useFavoritesAction);
-registerDefaultNavigationAction('categoryDrawer', useCategoryMenuAction);
+export const CORE_NAVIGATION_ACTIONS: Partial<Record<string, NavigationActionHook>> = {
+  link: useLinkAction,
+  openSearch: useOpenSearchAction,
+  share: useShareAction,
+  scanner: useScannerAction,
+  storeFinder: useStoreFinderAction,
+  cart: useCartAction,
+  favorites: useFavoritesAction,
+  categoryDrawer: useCategoryMenuAction,
+};

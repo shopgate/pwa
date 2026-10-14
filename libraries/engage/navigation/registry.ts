@@ -1,10 +1,11 @@
+import { CORE_NAVIGATION_ACTIONS } from './actions';
 import type { NavigationActionHook } from './types';
 
 const actions = new Map<string, NavigationActionHook>();
-const defaults = new Map<string, NavigationActionHook>();
 
 /**
- * Registers an action that header buttons and tab bar entries can run.
+ * Registers an action that header buttons and tab bar entries can run. An action registered under
+ * the name of a core action replaces it.
  * @param name The name the action is configured with.
  * @param useAction Hook that resolves the action for the current page.
  */
@@ -13,19 +14,9 @@ export const registerNavigationAction = (name: string, useAction: NavigationActi
 };
 
 /**
- * Registers the core implementation of an action. An action registered through
- * {@link registerNavigationAction} replaces it, regardless of the order of registration.
- * @param name The name the action is configured with.
- * @param useAction Hook that resolves the action for the current page.
- */
-export const registerDefaultNavigationAction = (name: string, useAction: NavigationActionHook) => {
-  defaults.set(name, useAction);
-};
-
-/**
- * Looks up a registered action.
+ * Looks up an action. A registered action wins over the core action of the same name.
  * @param name The configured name of the action.
- * @returns The hook of the action, if one is registered.
+ * @returns The hook of the action, if there is one.
  */
 export const getNavigationAction = (name: string): NavigationActionHook | undefined =>
-  actions.get(name) ?? defaults.get(name);
+  actions.get(name) ?? CORE_NAVIGATION_ACTIONS[name];
