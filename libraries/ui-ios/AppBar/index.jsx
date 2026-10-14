@@ -108,9 +108,9 @@ const AppBar = ({
   });
 
   const sectionClasses = cx(classes.outer, parentClasses.outer, 'ui-ios__app-bar');
-  const dataAttributes = useMemo(() => Object.fromEntries(
+  const dataAttributes = Object.fromEntries(
     Object.entries(props).filter(([name]) => name.startsWith('data-'))
-  ), [props]);
+  );
 
   return (
     <section

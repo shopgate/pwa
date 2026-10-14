@@ -51,6 +51,7 @@ class AppBarDefault extends PureComponent {
     'aria-hidden': PropTypes.bool,
     below: PropTypes.node,
     center: PropTypes.node,
+    logo: PropTypes.bool,
     searchBar: PropTypes.shape({
       hideOnScroll: PropTypes.bool,
       query: PropTypes.string,
@@ -62,6 +63,7 @@ class AppBarDefault extends PureComponent {
     'aria-hidden': null,
     below: null,
     center: undefined,
+    logo: false,
     searchBar: null,
     title: null,
   };
@@ -87,7 +89,7 @@ class AppBarDefault extends PureComponent {
       this.setState({ target: target || null });
     }
 
-    if (this.props.setFocus && target) {
+    if (this.props.setFocus && target && !this.hasHeadline()) {
     // Set the focus to the app bar title or else to the first focusable element for screen readers.
       const focusable = target.querySelector('.theme__app-bar__title') || target.querySelector('button:not([aria-hidden="true"]), [tabindex]:not([tabindex="-1"])');
 
@@ -140,6 +142,17 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
+   * @returns {boolean} Whether the page title is shown as headline in the content.
+   */
+  hasHeadline() {
+    const {
+      overlay, logo, center, route, title,
+    } = this.props;
+    return !!title && !overlay && !logo && center === undefined
+      && !HEADLINE_HIDDEN_PATTERNS.includes(route.pattern);
+  }
+
+  /**
    * Updates the status bar styling.
    */
   updateStatusBar() {
@@ -175,8 +188,7 @@ class AppBarDefault extends PureComponent {
       ...barProps
     } = this.props;
 
-    const headline = !overlay && !barProps.logo && barProps.center === undefined
-      && !HEADLINE_HIDDEN_PATTERNS.includes(route.pattern)
+    const headline = this.hasHeadline()
       ? <AppBarHeadline title={i18n.text(barProps.title || '')} focus={setFocus && route.visible} />
       : null;
 
