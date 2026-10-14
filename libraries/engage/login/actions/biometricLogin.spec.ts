@@ -1,5 +1,6 @@
 import { Keychain } from '@shopgate/native-modules';
 import { SUCCESS_LOGIN } from '@shopgate/pwa-common/constants/ActionTypes';
+import LoadingProvider from '@shopgate/pwa-common/providers/loading';
 import { getRecaptchaToken } from '../../core/helpers/recaptcha';
 import biometricLogin from './biometricLogin';
 
@@ -7,6 +8,13 @@ jest.mock('@shopgate/native-modules', () => ({
   Keychain: {
     login: jest.fn(),
   },
+}));
+jest.mock('@shopgate/pwa-common/providers/loading', () => ({
+  setLoading: jest.fn(),
+  unsetLoading: jest.fn(),
+}));
+jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+  getCurrentPathname: jest.fn(() => '/more'),
 }));
 jest.mock('../../core/helpers/recaptcha', () => ({
   getRecaptchaToken: jest.fn(),
@@ -81,5 +89,27 @@ describe('biometricLogin()', () => {
       message: 'Invalid credentials',
     });
     expect(dispatch).not.toHaveBeenCalled();
+  });
+
+  it('should show the loading state of the current page while the login runs', async () => {
+    login.mockImplementationOnce(() => {
+      expect(LoadingProvider.setLoading).toHaveBeenCalledWith('/more');
+      expect(LoadingProvider.unsetLoading).not.toHaveBeenCalled();
+
+      return Promise.resolve({ pipelineResponse: { success: true } });
+    });
+
+    await biometricLogin()(dispatch, getState);
+
+    expect(LoadingProvider.setLoading).toHaveBeenCalledTimes(1);
+    expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith('/more');
+  });
+
+  it('should end the loading state when the login fails', async () => {
+    login.mockRejectedValueOnce({ code: 'BIOMETRIC_CANCELED' });
+
+    await biometricLogin()(dispatch, getState);
+
+    expect(LoadingProvider.unsetLoading).toHaveBeenCalledWith('/more');
   });
 });

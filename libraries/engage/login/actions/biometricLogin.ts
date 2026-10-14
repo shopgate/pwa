@@ -1,5 +1,7 @@
 import { successLogin } from '@shopgate/pwa-common/action-creators/user';
 import { DEFAULT_LOGIN_STRATEGY } from '@shopgate/pwa-common/constants/user';
+import LoadingProvider from '@shopgate/pwa-common/providers/loading';
+import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import { getRecaptchaToken } from '../../core/helpers/recaptcha';
 import type { AppThunk } from '../../core/types';
 import { keychain, toBiometricLoginError } from '../helpers/biometricLogin';
@@ -32,7 +34,8 @@ interface LoginPipelineResponse {
 /**
  * Logs the user in with the credentials from the keychain of the app. The app shows the biometric
  * prompt and sends the login request itself, so the credentials don't reach the web layer.
- * The user stays on the current page after a successful login.
+ * The user stays on the current page after a successful login. The current page shows its loading
+ * state while the action runs.
  * @param params The action params.
  * @param params.prompt The texts for the system prompt.
  * @returns A redux thunk that resolves with the result. It carries the error code of the app or
@@ -40,10 +43,13 @@ interface LoginPipelineResponse {
  */
 const biometricLogin = (
   { prompt }: BiometricLoginParams = {}
-): AppThunk<Promise<BiometricLoginResult>> => async (dispatch) => {
-  const recaptchaToken = await getRecaptchaToken('login');
+): AppThunk<Promise<BiometricLoginResult>> => async (dispatch, getState) => {
+  const pathname: string = getCurrentPathname(getState());
+
+  LoadingProvider.setLoading(pathname);
 
   try {
+    const recaptchaToken = await getRecaptchaToken('login');
     const response = await keychain.login(recaptchaToken, prompt);
     const {
       success,
@@ -59,6 +65,8 @@ const biometricLogin = (
     return { success: true };
   } catch (error) {
     return toBiometricLoginError(error);
+  } finally {
+    LoadingProvider.unsetLoading(pathname);
   }
 };
 
