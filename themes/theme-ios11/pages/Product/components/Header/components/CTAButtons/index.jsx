@@ -19,7 +19,7 @@ import {
   FLOATING_BUTTON_INSET,
   FLOATING_BUTTON_SIZE,
   SEARCH_BAR_FLOATING_HEIGHT_VAR,
-} from '../../../../../../components/AppBar/constants';
+} from 'Components/AppBar/constants';
 import connect from './connector';
 
 const { pdpImageSliderPaginationType } = appConfig;

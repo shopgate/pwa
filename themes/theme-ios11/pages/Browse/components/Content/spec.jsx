@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import Headline from 'Components/Headline';
 import Content from './index';
 
-jest.mock('../../../../components/Search/SearchTrigger', () => function SearchTrigger() { return <div>SearchTrigger</div>; });
+jest.mock('Components/Search/SearchTrigger', () => function SearchTrigger() { return <div>SearchTrigger</div>; });
 jest.mock('../RootCategories', () => function RootCategories() { return <div>RootCategories</div>; });
 jest.mock('Components/Headline', () => jest.fn(() => null));
 jest.mock('Components/AppBar/presets', () => ({

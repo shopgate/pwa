@@ -2,7 +2,7 @@ import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
-import SearchTrigger from '../../../../components/Search/SearchTrigger';
+import SearchTrigger from 'Components/Search/SearchTrigger';
 import RootCategories from '../RootCategories';
 
 const useStyles = makeStyles()(theme => ({
