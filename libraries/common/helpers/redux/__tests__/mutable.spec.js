@@ -163,6 +163,38 @@ describe('Mutable', () => {
     expect(res).toEqual('!!!111');
   });
 
+  it('should keep all steps for later calls after a step stopped', () => {
+    const mutated = mutable(original);
+    const use1 = jest.fn(data => (data === 'stop' ? stop() : next(data)));
+    const use2 = jest.fn(data => next(data * 2));
+    mutated.useBefore(use1);
+    mutated.useBefore(use2);
+
+    mutated('stop');
+    const res = mutated(100);
+
+    expect(use1).toBeCalledTimes(2);
+    expect(use2).toBeCalledTimes(1);
+    expect(original).toBeCalledTimes(1);
+    expect(res).toEqual(200);
+  });
+
+  it('should keep all steps for later calls after a step skipped the rest', () => {
+    const mutated = mutable(original);
+    const use1 = jest.fn(data => (data === 'skip' ? skipRest(50) : next(data)));
+    const use2 = jest.fn(data => next(data * 2));
+    mutated.useBefore(use1);
+    mutated.useBefore(use2);
+
+    mutated('skip');
+    const res = mutated(100);
+
+    expect(use1).toBeCalledTimes(2);
+    expect(use2).toBeCalledTimes(1);
+    expect(original).toHaveBeenLastCalledWith(200);
+    expect(res).toEqual(200);
+  });
+
   it('should always provide access to the original and the current replacement function', () => {
     const mutated = mutable(original);
 
