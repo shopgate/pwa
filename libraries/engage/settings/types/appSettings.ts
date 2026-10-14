@@ -351,8 +351,87 @@ export interface AppearanceSettings {
   defaultColorSchemeMode: DefaultColorSchemeMode;
 }
 
+/**
+ * What a header button does. Extensions can register further actions under their own names.
+ */
+export type NavigationActionType =
+  | 'none'
+  | 'link'
+  | 'openSearch'
+  | 'share'
+  | 'scanner'
+  | 'storeFinder'
+  | 'cart'
+  | 'favorites'
+  | 'categoryDrawer';
+
+/**
+ * A configurable button of the header.
+ */
+export interface NavigationActionSettings {
+  /** The action, or the name an extension registered its action under. */
+  action: NavigationActionType | string;
+  /** Key of a theme icon. Empty uses the icon of the action. */
+  icon: string;
+  /** Target path of the `link` action. */
+  link: string;
+}
+
+/**
+ * The button slots of the header, two on each side.
+ */
+export type AppBarButtonSlot = 'left1' | 'left2' | 'right1' | 'right2';
+
+/**
+ * `fixed` keeps the bar on every page, `floating` lets logo and buttons float over home and
+ * product page.
+ */
+export type AppBarVariant = 'fixed' | 'floating';
+
+/**
+ * How the floating header reacts to scrolling.
+ */
+export type AppBarScrollBehavior = 'revealBar' | 'floatingButtons' | 'scrollAway';
+
+/**
+ * Settings for the header.
+ */
+export interface AppBarSettings {
+  variant: AppBarVariant;
+  /** Whether the start page shows the logo in the header. */
+  showLogo: boolean;
+  logoPosition: 'left' | 'center' | 'right';
+  buttons: Record<AppBarButtonSlot, NavigationActionSettings>;
+  floating: {
+    scrollBehavior: AppBarScrollBehavior;
+  };
+}
+
+/**
+ * Page types that can show the search bar below the header.
+ */
+export type SearchBarPage = 'home' | 'category' | 'search' | 'product' | 'page' | 'favorites';
+
+/**
+ * Settings for the search bar below the header.
+ */
+export type PersistentSearchBarSettings = Record<SearchBarPage, boolean> & {
+  /** Whether the bar slides out while scrolling down. */
+  hideOnScroll: boolean;
+};
+
+/**
+ * Settings for the search.
+ */
+export interface SearchSettings {
+  persistentBar: PersistentSearchBarSettings;
+  /** Whether the search field offers the scanner, in apps that support it. */
+  showScannerIcon: boolean;
+}
+
 export interface AppSettings {
   navigation: {
+    appBar: AppBarSettings;
     tabBar: {
       variant: 'fixed' | 'floating'
       transition: 'fade' | 'slide';
@@ -370,6 +449,7 @@ export interface AppSettings {
     }
   }
   product: ProductSettings;
+  search: SearchSettings;
   cart: CartSettings;
   /**
    * Settings for images that are served through the image service.
