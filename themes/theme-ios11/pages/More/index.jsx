@@ -8,6 +8,7 @@ import {
 import { ClientInformation } from '@shopgate/engage/development/components';
 import { View } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
 import Quicklinks from './components/Quicklinks';
@@ -20,12 +21,27 @@ const headline = {
   margin: '24px 20px 16px',
 };
 
+const useStyles = makeStyles()({
+  headline: {
+    transition: 'opacity 0.3s ease-out',
+    '@media (prefers-reduced-motion: reduce)': {
+      transition: 'none',
+    },
+  },
+  headlinePending: {
+    opacity: 0,
+    transition: 'none',
+  },
+});
+
 /**
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */
 const More = (props) => {
   const { isLoggedIn, user } = props;
+  const { classes, cx } = useStyles();
+  const isUserPending = isLoggedIn && !user;
 
   const welcomeMessage = useMemo(() => {
     if (isLoggedIn && user) {
@@ -37,7 +53,12 @@ const More = (props) => {
   return (
     <View aria-hidden={false}>
       <BackBar right={null} />
-      <Headline style={headline} tag="h1" text={welcomeMessage} />
+      <div
+        className={cx(classes.headline, { [classes.headlinePending]: isUserPending })}
+        aria-hidden={isUserPending}
+      >
+        <Headline style={headline} tag="h1" text={welcomeMessage} />
+      </div>
       {!isLoggedIn && <UserMenu {...props} />}
       <Portal name={NAV_MENU_CONTENT_BEFORE} props={portalProps} />
       {isLoggedIn && <UserMenu {...props} />}
