@@ -24,8 +24,9 @@ jest.mock('@shopgate/engage/core/hooks', () => {
 });
 jest.mock('@shopgate/engage/product', () => ({
   buildFetchSearchResultsParams: () => ({}),
+}));
+jest.mock('@shopgate/engage/product/selectors/product', () => ({
   getProductById: jest.fn(),
-  getProductsResult: jest.fn(),
 }));
 jest.mock('@shopgate/engage/search/constants', () => ({
   SEARCH_PATH: '/search',

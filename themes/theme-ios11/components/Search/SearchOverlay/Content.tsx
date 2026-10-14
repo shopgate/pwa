@@ -282,9 +282,14 @@ const Results = ({
   /**
    * @param _ The click event.
    * @param suggestion The suggestion.
+   * @param fallback The phrase to search when no suggestion is passed.
    * @returns Nothing.
    */
-  const handleSuggestionClick = (_: MouseEvent | null, suggestion: string) => onSelect(suggestion);
+  const handleSuggestionClick = (
+    _: MouseEvent | null,
+    suggestion?: unknown,
+    fallback = searchPhrase
+  ) => onSelect(typeof suggestion === 'string' && suggestion ? suggestion : fallback);
 
   return (
     <div className="theme__search-overlay__results">
@@ -309,7 +314,9 @@ const Results = ({
                 portalName={SEARCH_SUGGESTION_ITEM}
                 portalProps={{
                   suggestion,
-                  onClick: handleSuggestionClick,
+                  onClick: (event: MouseEvent | null, value?: unknown) => (
+                    handleSuggestionClick(event, value, suggestion)
+                  ),
                 }}
               >
                 <button

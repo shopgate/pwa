@@ -4,11 +4,8 @@ import {
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash/debounce';
 import { useLocalStorage, useNavigation } from '@shopgate/engage/core/hooks';
-import {
-  buildFetchSearchResultsParams,
-  getProductById,
-  getProductsResult,
-} from '@shopgate/engage/product';
+import { buildFetchSearchResultsParams } from '@shopgate/engage/product';
+import { getProductById } from '@shopgate/engage/product/selectors/product';
 import { SEARCH_PATH, SEARCH_PATTERN } from '@shopgate/engage/search/constants';
 import { fetchSearchResults, fetchSearchSuggestions } from '@shopgate/engage/search/actions';
 import { getSuggestions } from '@shopgate/engage/search/selectors';
@@ -58,7 +55,6 @@ interface Route {
 }
 
 type Dispatch = (action: unknown) => unknown;
-type GetState = () => unknown;
 
 const EMPTY_HISTORY: string[] = [];
 const EMPTY_SUGGESTIONS: string[] = [];
@@ -89,26 +85,15 @@ const toPreviewResult = (result?: ProductsResult | null): PreviewResult | null =
 
 /**
  * Requests the first products of a search. Products the store already holds for the search are
- * used right away.
+ * used without a request.
  * @param searchPhrase The search phrase.
  * @returns A redux thunk that resolves with the preview, or with null while the same request
  * is still running.
  */
 const fetchSearchPreview = (searchPhrase: string) => (
-  dispatch: Dispatch,
-  getState: GetState
-): Promise<PreviewResult | null> => {
-  const { params } = buildFetchSearchResultsParams() || {};
-  const known = toPreviewResult(getProductsResult(getState(), {
-    searchPhrase,
-    params,
-  }) as ProductsResult);
-
-  if (known) {
-    return Promise.resolve(known);
-  }
-
-  return Promise.resolve(dispatch(fetchSearchResults({
+  dispatch: Dispatch
+): Promise<PreviewResult | null> => (
+  Promise.resolve(dispatch(fetchSearchResults({
     ...buildFetchSearchResultsParams(),
     searchPhrase,
     limit: SEARCH_PREVIEW_LIMIT,
@@ -122,8 +107,8 @@ const fetchSearchPreview = (searchPhrase: string) => (
       productIds: [],
       totalProductCount: 0,
     };
-  });
-};
+  })
+);
 
 /**
  * Cleans up stored search terms.

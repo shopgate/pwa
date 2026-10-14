@@ -167,7 +167,7 @@ const SearchOverlay = () => {
   const [query, setQuery] = useState('');
   const [keyboardHeight, setKeyboardHeight] = useState(0);
   const searchPhrase = useDebouncedValue(query.trim(), openCount);
-  const preview = useSearchPreview(searchPhrase);
+  const preview = useSearchPreview(isOpen ? searchPhrase : '');
   const inputRef = useRef<HTMLInputElement>(null);
   const openedOnRef = useRef<string | null>(null);
   const originRef = useRef<HTMLElement | null>(null);
