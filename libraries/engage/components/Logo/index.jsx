@@ -14,7 +14,6 @@ const useStyles = makeStyles()(theme => ({
   image: {
     margin: '0 auto',
     maxHeight: theme.components.navigator.height,
-    maxWidth: `calc(var(--page-content-width) - (${theme.components.navigator.height} * 3) - ${theme.spacing(4)}px)`,
     overflow: 'hidden',
     textOverflow: 'ellipsis',
     whiteSpace: 'nowrap',

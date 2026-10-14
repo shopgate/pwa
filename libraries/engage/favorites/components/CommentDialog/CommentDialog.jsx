@@ -16,10 +16,7 @@ import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import {
   closeFavoritesCommentDialog,
 } from '@shopgate/pwa-common-commerce/favorites/action-creators';
-import { themeName } from '@shopgate/pwa-common/helpers/config';
 import { updateFavorite } from '@shopgate/pwa-common-commerce/favorites/actions/toggleFavorites';
-
-const isIos = themeName.includes('ios');
 
 /**
  * @param {Object} state State.
@@ -144,11 +141,7 @@ const CommentDialog = ({
       <div className={classes.root}>
         <TextField
           name="name"
-          {...isIos ? {
-            placeholder: i18n.text('favorites.comment_modal.label'),
-          } : {
-            label: i18n.text('favorites.comment_modal.label'),
-          }}
+          placeholder={i18n.text('favorites.comment_modal.label')}
           onChange={handleChange}
           value={value}
           className={classes.input}

@@ -1,7 +1,6 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { isIOSTheme } from '@shopgate/engage/core';
 import Grid from '@shopgate/pwa-common/components/Grid';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -26,7 +25,7 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: theme.layout.safeArea.bottom,
   },
   container: {
-    padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
+    padding: theme.spacing(1),
     paddingBottom: 0,
     flexWrap: 'wrap',
     flexDirection: 'column',
@@ -40,7 +39,7 @@ const useStyles = makeStyles()(theme => ({
   checkoutButtonContainer: {
     background: theme.palette.background.surface,
     alignItems: 'center',
-    padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
+    padding: theme.spacing(1),
     position: 'relative',
     zIndex: 2,
   },

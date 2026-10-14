@@ -577,7 +577,12 @@
     "order_history": "Ιστορικό παραγγελιών",
     "profile": "Προφίλ",
     "back": "Επιστροφή στο {title}",
-    "open_menu": "Άνοιγμα μενού"
+    "open_menu": "Άνοιγμα μενού",
+    "scanner": "Σαρωτής",
+    "menuSubHeader": {
+      "more": "Περισσότερα",
+      "about": "Σχετικά με εμάς"
+    }
   },
   "reviews": {
     "rating": "Αξιολόγηση",
