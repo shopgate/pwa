@@ -17,6 +17,7 @@ const getToken = getRecaptchaToken as jest.Mock;
 
 describe('biometricLogin()', () => {
   const dispatch = jest.fn();
+  const getState = () => ({ extensions: {} });
   const prompt = { title: 'Sign in' };
 
   beforeEach(() => {
@@ -32,7 +33,8 @@ describe('biometricLogin()', () => {
       },
     });
 
-    await expect(biometricLogin({ prompt })(dispatch)).resolves.toEqual({ success: true });
+    await expect(biometricLogin({ prompt })(dispatch, getState))
+      .resolves.toEqual({ success: true });
 
     expect(getToken).toHaveBeenCalledWith('login');
     expect(login).toHaveBeenCalledWith('token', prompt);
@@ -49,21 +51,21 @@ describe('biometricLogin()', () => {
     getToken.mockResolvedValueOnce(undefined);
     login.mockResolvedValueOnce({ pipelineResponse: { success: true } });
 
-    await expect(biometricLogin()(dispatch)).resolves.toEqual({ success: true });
+    await expect(biometricLogin()(dispatch, getState)).resolves.toEqual({ success: true });
     expect(login).toHaveBeenCalledWith(undefined, undefined);
   });
 
   it('should not dispatch when the pipeline response is not successful', async () => {
     login.mockResolvedValueOnce({ pipelineResponse: { success: false } });
 
-    await expect(biometricLogin()(dispatch)).resolves.toEqual({ success: false });
+    await expect(biometricLogin()(dispatch, getState)).resolves.toEqual({ success: false });
     expect(dispatch).not.toHaveBeenCalled();
   });
 
   it('should not dispatch when the app does not answer with a response', async () => {
     login.mockResolvedValueOnce(undefined);
 
-    await expect(biometricLogin()(dispatch)).resolves.toEqual({ success: false });
+    await expect(biometricLogin()(dispatch, getState)).resolves.toEqual({ success: false });
     expect(dispatch).not.toHaveBeenCalled();
   });
 
@@ -73,7 +75,7 @@ describe('biometricLogin()', () => {
       message: 'Invalid credentials',
     });
 
-    await expect(biometricLogin()(dispatch)).resolves.toEqual({
+    await expect(biometricLogin()(dispatch, getState)).resolves.toEqual({
       success: false,
       code: 'EINVALIDCREDENTIALS',
       message: 'Invalid credentials',

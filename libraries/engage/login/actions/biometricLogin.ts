@@ -1,6 +1,7 @@
 import { successLogin } from '@shopgate/pwa-common/action-creators/user';
 import { DEFAULT_LOGIN_STRATEGY } from '@shopgate/pwa-common/constants/user';
 import { getRecaptchaToken } from '../../core/helpers/recaptcha';
+import type { AppThunk } from '../../core/types';
 import { keychain, toBiometricLoginError } from '../helpers/biometricLogin';
 import type { BiometricLoginPrompt, BiometricLoginResult } from '../helpers/biometricLogin';
 
@@ -37,9 +38,9 @@ interface LoginPipelineResponse {
  * @returns A redux thunk that resolves with the result. It carries the error code of the app or
  * the login pipeline when the login failed.
  */
-const biometricLogin = ({ prompt }: BiometricLoginParams = {}) => async (
-  dispatch: (action: unknown) => unknown
-): Promise<BiometricLoginResult> => {
+const biometricLogin = (
+  { prompt }: BiometricLoginParams = {}
+): AppThunk<Promise<BiometricLoginResult>> => async (dispatch) => {
   const recaptchaToken = await getRecaptchaToken('login');
 
   try {
