@@ -21,6 +21,7 @@ function Button<C extends React.ElementType = 'button'>(
     loading = false,
     loadingPosition = 'center',
     loadingIndicator: loadingIndicatorProp,
+    keepColorsWhileLoading = false,
     size = 'medium',
     dense = false,
     disabled = false,
@@ -39,6 +40,7 @@ function Button<C extends React.ElementType = 'button'>(
     variant,
     loadingPosition,
     loading,
+    keepColorsWhileLoading,
     fullWidth,
   }, { props: { classes: classesProp } });
 
@@ -95,6 +97,7 @@ function Button<C extends React.ElementType = 'button'>(
         [classes.denseLarge]: dense && size === 'large',
         [classes.link]: variant === 'link',
         [classes.disabled]: disabled || loading,
+        [classes.keepColorsWhileLoading]: loading && keepColorsWhileLoading,
         [classes.fullWidth]: fullWidth,
         [classes.enableElevation]: enableElevation,
       }, staticClassNames, className)}
@@ -107,6 +110,7 @@ function Button<C extends React.ElementType = 'button'>(
       data-full-width={fullWidth || undefined}
       data-enable-elevation={enableElevation || undefined}
       data-loading={loading || undefined}
+      data-keep-colors-while-loading={keepColorsWhileLoading || undefined}
       disabled={disabled || loading}
       {...other}
     >
@@ -145,6 +149,7 @@ const useStyles = makeStyles<ButtonOwnProps>({
     size,
     loadingPosition,
     loading,
+    keepColorsWhileLoading,
     fullWidth,
     variant,
   } = props;
@@ -322,6 +327,16 @@ const useStyles = makeStyles<ButtonOwnProps>({
         backgroundColor: 'var(--variant-containedDisabledBg)',
       },
     },
+    keepColorsWhileLoading: {
+      '--variant-textDisabledColor': 'var(--variant-textColor)',
+      '--variant-outlinedDisabledColor': 'var(--variant-outlinedColor)',
+      '--variant-outlinedDisabledBorder': 'var(--variant-outlinedBorder)',
+      '--variant-containedDisabledColor': 'var(--variant-containedColor)',
+      '--variant-containedDisabledBg': 'var(--variant-containedBg)',
+      '&&:disabled': {
+        cursor: 'progress',
+      },
+    },
     enableElevation: {
       boxShadow: theme.shadows[2],
       '&:hover': {
@@ -350,7 +365,11 @@ const useStyles = makeStyles<ButtonOwnProps>({
             duration: theme.transitions.duration.short,
           }
         ),
-        color: 'transparent',
+        ...(keepColorsWhileLoading ? {
+          WebkitTextFillColor: 'transparent',
+        } : {
+          color: 'transparent',
+        }),
       }),
     },
     fullWidth: {
@@ -358,6 +377,9 @@ const useStyles = makeStyles<ButtonOwnProps>({
     },
     icon: {
       fontSize: 'calc(var(--font-size) * 1.4)',
+      ...(loading && loadingPosition === 'center' && keepColorsWhileLoading && {
+        visibility: 'hidden',
+      }),
     },
     startIcon: {
       flexShrink: 0,
@@ -420,7 +442,9 @@ const useStyles = makeStyles<ButtonOwnProps>({
       ...(loadingPosition === 'center' && {
         left: '50%',
         transform: 'translateX(-50%)',
-        color: theme.palette.action.disabled,
+        ...(!keepColorsWhileLoading && {
+          color: theme.palette.action.disabled,
+        }),
       }),
       ...(loadingPosition === 'end' && {
         right: 14,
@@ -494,6 +518,12 @@ export interface ButtonOwnProps {
    * @default 'center'
    */
   loadingPosition?: 'start' | 'end' | 'center';
+  /**
+   * If `true`, the button keeps its regular colors while `loading` instead of looking disabled,
+   * and the loading indicator takes its text color. It still doesn't take interactions.
+   * @default false
+   */
+  keepColorsWhileLoading?: boolean;
   /**
    * The size of the component.
    * @default 'medium'
