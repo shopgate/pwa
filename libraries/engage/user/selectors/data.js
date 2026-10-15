@@ -14,7 +14,7 @@ export const getUserId = (state) => {
  * Selects the external customer number (ecp identifier)
  * of the currently logged in user or null if not logged in.
  * @param {Object} state The application state.
- * @returns {number|null}
+ * @returns {string|null}
  */
 export const getExternalCustomerNumber = (state) => {
   const userData = getUserData(state) || {};
