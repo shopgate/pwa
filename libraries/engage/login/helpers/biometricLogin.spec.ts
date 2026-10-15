@@ -1,4 +1,5 @@
 import { Keychain } from '@shopgate/native-modules';
+import { appSupportsBiometricLogin } from '../../core/helpers/appFeatures';
 import {
   getBiometricLoginStatus,
   storeBiometricLogin,
@@ -11,6 +12,10 @@ jest.mock('@shopgate/native-modules', () => ({
     setLogin: jest.fn(),
     resetLogin: jest.fn(),
   },
+}));
+
+jest.mock('../../core/helpers/appFeatures', () => ({
+  appSupportsBiometricLogin: jest.fn(),
 }));
 
 const getLoginStatus = Keychain.getLoginStatus as jest.Mock;
@@ -26,9 +31,17 @@ const unavailable = {
 describe('biometric login helpers', () => {
   beforeEach(() => {
     jest.clearAllMocks();
+    (appSupportsBiometricLogin as jest.Mock).mockReturnValue(true);
   });
 
   describe('getBiometricLoginStatus()', () => {
+    it('should report everything as off in apps without the feature flag', async () => {
+      (appSupportsBiometricLogin as jest.Mock).mockReturnValue(false);
+
+      await expect(getBiometricLoginStatus()).resolves.toEqual(unavailable);
+      expect(getLoginStatus).not.toHaveBeenCalled();
+    });
+
     it('should resolve with the status of the app', async () => {
       getLoginStatus.mockResolvedValueOnce({
         available: true,

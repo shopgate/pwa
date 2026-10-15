@@ -1,3 +1,4 @@
+import type { KeychainLoginResponse } from '@shopgate/native-modules';
 import { LoadingProvider } from '../../core/providers';
 import { getCurrentPathname } from '../../core/selectors';
 import { getRecaptchaToken } from '../../core/helpers/recaptcha';
@@ -16,20 +17,6 @@ export interface BiometricLoginParams {
    * The texts of the system prompt that asks for the biometrics.
    */
   prompt?: BiometricLoginPrompt;
-}
-
-/**
- * The part of the login pipeline response that the action reads.
- */
-interface LoginPipelineResponse {
-  /**
-   * Whether the credentials were accepted.
-   */
-  success?: boolean;
-  /**
-   * The time until the session expires and the user is logged out automatically.
-   */
-  sessionLifetimeInSeconds?: number;
 }
 
 /**
@@ -52,11 +39,11 @@ const biometricLogin = (
 
   try {
     const recaptchaToken = await getRecaptchaToken('login');
-    const response = await keychain.login(recaptchaToken, prompt);
-    const {
-      success,
-      sessionLifetimeInSeconds,
-    } = (response?.pipelineResponse ?? {}) as LoginPipelineResponse;
+    const response: Partial<KeychainLoginResponse> | undefined = await keychain.login(
+      recaptchaToken,
+      prompt
+    );
+    const { success, sessionLifetimeInSeconds } = response?.pipelineResponse ?? {};
 
     if (!success) {
       return {

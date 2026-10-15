@@ -1,4 +1,10 @@
 import { Keychain } from '@shopgate/native-modules';
+import type {
+  AuthenticationPrompt,
+  BiometryType as KeychainBiometryType,
+  KeychainLoginStatus,
+} from '@shopgate/native-modules';
+import { appSupportsBiometricLogin } from '../../core/helpers/appFeatures';
 import { getBiometricLoginErrorReason } from './biometricLoginErrors';
 import type { BiometricLoginErrorReason } from './biometricLoginErrors';
 
@@ -6,47 +12,19 @@ import type { BiometricLoginErrorReason } from './biometricLoginErrors';
  * The kind of biometrics the app reports. iOS: TouchID, FaceID, OpticID.
  * Android: Fingerprint, Face, Iris.
  */
-export type BiometryType = 'TouchID' | 'FaceID' | 'OpticID' | 'Fingerprint' | 'Face' | 'Iris';
+export type BiometryType = KeychainBiometryType;
 
 /**
- * The state of the biometric login on the device.
+ * The state of the biometric login on the device: usable biometrics, stored credentials and the
+ * kind of biometrics.
  */
-export interface BiometricLoginStatus {
-  /**
-   * Whether the device has biometrics that are enrolled and usable by the app.
-   */
-  available: boolean;
-  /**
-   * Whether a credential is stored for the biometric login.
-   */
-  enabled: boolean;
-  /**
-   * The kind of biometrics of the device, `null` when none is available.
-   */
-  biometryType: BiometryType | null;
-}
+export type BiometricLoginStatus = KeychainLoginStatus;
 
 /**
- * The texts of the system prompt. iOS only shows the title.
+ * The texts of the system prompt: `title`, and on Android also `subtitle`, `description` and
+ * `cancel`.
  */
-export interface BiometricLoginPrompt {
-  /**
-   * The reason for the prompt, e.g. "Sign in to the shop".
-   */
-  title: string;
-  /**
-   * A second line below the title (Android only).
-   */
-  subtitle?: string;
-  /**
-   * A longer explanation below the subtitle (Android only).
-   */
-  description?: string;
-  /**
-   * The label of the cancel button (Android only).
-   */
-  cancel?: string;
-}
+export type BiometricLoginPrompt = AuthenticationPrompt;
 
 /**
  * The outcome of a call to the keychain of the app.
@@ -88,33 +66,7 @@ export interface StoreBiometricLoginParams {
   prompt?: BiometricLoginPrompt;
 }
 
-/**
- * The Keychain module with the prompt parameters that 1.1.0-alpha.2 of the package doesn't
- * declare yet.
- */
-interface KeychainClient {
-  /**
-   * Resolves with the state of the biometric login. Rejects in apps without the feature.
-   */
-  getLoginStatus(): Promise<Partial<BiometricLoginStatus> | undefined>;
-  /**
-   * Stores the credentials behind the biometrics of the device.
-   */
-  setLogin(username: string, password: string, prompt?: BiometricLoginPrompt): Promise<boolean>;
-  /**
-   * Shows the biometric prompt and sends the login request with the stored credentials.
-   * Resolves with the response of the login pipeline.
-   */
-  login(recaptchaToken?: string, prompt?: BiometricLoginPrompt): Promise<{
-    pipelineResponse?: unknown;
-  } | undefined>;
-  /**
-   * Removes the stored credentials.
-   */
-  resetLogin(): Promise<boolean>;
-}
-
-export const keychain = Keychain as unknown as KeychainClient;
+export const keychain = Keychain;
 
 /**
  * The result when the app resolves a call with `false` instead of rejecting it.
@@ -152,11 +104,16 @@ export const toBiometricLoginError = (error: unknown): BiometricLoginResult => {
 
 /**
  * Determines whether the biometric login can be used and whether credentials are stored for it.
- * @returns The status. Never rejects: without support by the app everything is reported as off.
+ * @returns The status. Never rejects: in apps without the feature flag of the biometric login,
+ * and when the app can't tell, everything is reported as off.
  */
 export const getBiometricLoginStatus = async (): Promise<BiometricLoginStatus> => {
+  if (!appSupportsBiometricLogin()) {
+    return unavailableStatus;
+  }
+
   try {
-    const status = await keychain.getLoginStatus();
+    const status: Partial<BiometricLoginStatus> | undefined = await keychain.getLoginStatus();
 
     if (!status) {
       return unavailableStatus;
