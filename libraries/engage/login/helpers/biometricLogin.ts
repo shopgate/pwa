@@ -116,6 +116,14 @@ interface KeychainClient {
 
 export const keychain = Keychain as unknown as KeychainClient;
 
+/**
+ * The result when the app resolves a call with `false` instead of rejecting it.
+ */
+const notDoneResult: BiometricLoginResult = {
+  success: false,
+  reason: 'unknown',
+};
+
 const unavailableStatus: BiometricLoginStatus = {
   available: false,
   enabled: false,
@@ -170,7 +178,8 @@ export const getBiometricLoginStatus = async (): Promise<BiometricLoginStatus> =
  * @param params.login The username.
  * @param params.password The password.
  * @param params.prompt The texts for the system prompt.
- * @returns The result. Not successful when the user canceled the prompt or storing failed.
+ * @returns The result. Not successful when the user canceled the prompt or storing failed, also
+ * when the app resolves with `false` instead of rejecting.
  */
 export const storeBiometricLogin = async ({
   login,
@@ -178,8 +187,8 @@ export const storeBiometricLogin = async ({
   prompt,
 }: StoreBiometricLoginParams): Promise<BiometricLoginResult> => {
   try {
-    await keychain.setLogin(login, password, prompt);
-    return { success: true };
+    const stored = await keychain.setLogin(login, password, prompt);
+    return stored === false ? notDoneResult : { success: true };
   } catch (error) {
     return toBiometricLoginError(error);
   }
@@ -187,12 +196,13 @@ export const storeBiometricLogin = async ({
 
 /**
  * Removes the stored login credentials from the keychain of the app.
- * @returns The result.
+ * @returns The result. Not successful when removing failed, also when the app resolves with
+ * `false` instead of rejecting.
  */
 export const resetBiometricLogin = async (): Promise<BiometricLoginResult> => {
   try {
-    await keychain.resetLogin();
-    return { success: true };
+    const removed = await keychain.resetLogin();
+    return removed === false ? notDoneResult : { success: true };
   } catch (error) {
     return toBiometricLoginError(error);
   }

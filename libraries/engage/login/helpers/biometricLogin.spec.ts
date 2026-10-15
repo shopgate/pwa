@@ -98,6 +98,38 @@ describe('biometric login helpers', () => {
     });
   });
 
+  describe('app resolving with false', () => {
+    it('should report a failed save', async () => {
+      setLogin.mockResolvedValueOnce(false);
+
+      await expect(storeBiometricLogin({
+        login: 'user',
+        password: 'secret',
+      })).resolves.toEqual({
+        success: false,
+        reason: 'unknown',
+      });
+    });
+
+    it('should report a failed removal', async () => {
+      resetLogin.mockResolvedValueOnce(false);
+
+      await expect(resetBiometricLogin()).resolves.toEqual({
+        success: false,
+        reason: 'unknown',
+      });
+    });
+
+    it('should count a call without a value as done', async () => {
+      setLogin.mockResolvedValueOnce(undefined);
+
+      await expect(storeBiometricLogin({
+        login: 'user',
+        password: 'secret',
+      })).resolves.toEqual({ success: true });
+    });
+  });
+
   describe('resetBiometricLogin()', () => {
     it('should resolve successfully when the credentials were removed', async () => {
       resetLogin.mockResolvedValueOnce(true);
