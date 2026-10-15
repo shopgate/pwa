@@ -8,7 +8,9 @@ import Switch from './Switch';
  * @returns The elements and the function to render the switch again with other props.
  */
 const renderSwitch = (props: React.ComponentProps<typeof Switch> = {}) => {
-  const { container, rerender } = render(<Switch id="test" {...props}>Label</Switch>);
+  const { container, rerender } = render(
+    <Switch id="test" onChange={jest.fn()} {...props}>Label</Switch>
+  );
   const root = container.firstChild as HTMLElement;
 
   return {
@@ -59,7 +61,7 @@ describe('engage > components > Switch', () => {
     });
 
     it('should render without a label', () => {
-      const { container } = render(<Switch />);
+      const { container } = render(<Switch onChange={jest.fn()} />);
 
       expect(container.querySelector('label')).toBeNull();
       expect(container.querySelector('input')?.id).not.toBe('');
@@ -82,10 +84,10 @@ describe('engage > components > Switch', () => {
     });
 
     it('should keep a generated id when it renders again', () => {
-      const { container, rerender } = render(<Switch>Label</Switch>);
+      const { container, rerender } = render(<Switch onChange={jest.fn()}>Label</Switch>);
       const { id } = container.querySelector('input') as HTMLInputElement;
 
-      rerender(<Switch checked>Label</Switch>);
+      rerender(<Switch checked onChange={jest.fn()}>Label</Switch>);
 
       expect(id).not.toBe('');
       expect(container.querySelector('input')).toHaveAttribute('id', id);
