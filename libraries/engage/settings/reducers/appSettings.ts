@@ -82,6 +82,9 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     rating: {
       showEmptyStars: false,
     },
+    manufacturer: {
+      showOnProductPage: true,
+    },
     card: {
       productName: { maxLines: 3 },
     },

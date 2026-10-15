@@ -64,6 +64,9 @@ describe('settings / reducers / appSettings', () => {
         rating: {
           showEmptyStars: false,
         },
+        manufacturer: {
+          showOnProductPage: false,
+        },
         card: {
           productName: { maxLines: 1 },
         },
