@@ -24,7 +24,7 @@ const centeredTags = ['h3', 'h4'];
  * @returns {JSX}
  */
 const Headline = ({
-  tag, style, text,
+  tag, style, text, className, 'aria-hidden': ariaHidden,
 }) => {
   const { classes, cx } = useStyles();
 
@@ -37,8 +37,9 @@ const Headline = ({
       variant={variantMap[tag] || 'h2'}
       component={tag}
       align={centeredTags.includes(tag) ? 'center' : 'inherit'}
-      className={cx(classes.root, 'headline', 'theme__headline')}
+      className={cx(classes.root, 'headline', 'theme__headline', className)}
       style={style}
+      aria-hidden={ariaHidden}
       data-test-id="Headline"
     >
       <I18n.Text string={text} />
@@ -47,12 +48,16 @@ const Headline = ({
 };
 
 Headline.propTypes = {
+  'aria-hidden': PropTypes.bool,
+  className: PropTypes.string,
   style: PropTypes.shape(),
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4']),
   text: PropTypes.string,
 };
 
 Headline.defaultProps = {
+  'aria-hidden': undefined,
+  className: undefined,
   style: null,
   tag: 'h2',
   text: '',

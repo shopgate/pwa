@@ -53,12 +53,13 @@ const More = (props) => {
   return (
     <View aria-hidden={false}>
       <BackBar right={null} />
-      <div
+      <Headline
+        style={headline}
+        tag="h1"
+        text={welcomeMessage}
         className={cx(classes.headline, { [classes.headlinePending]: isUserPending })}
-        aria-hidden={isUserPending}
-      >
-        <Headline style={headline} tag="h1" text={welcomeMessage} />
-      </div>
+        aria-hidden={isUserPending || undefined}
+      />
       {!isLoggedIn && <UserMenu {...props} />}
       <Portal name={NAV_MENU_CONTENT_BEFORE} props={portalProps} />
       {isLoggedIn && <UserMenu {...props} />}
