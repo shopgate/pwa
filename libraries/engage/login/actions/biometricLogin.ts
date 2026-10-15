@@ -1,8 +1,8 @@
-import { successLogin } from '@shopgate/pwa-common/action-creators/user';
-import { DEFAULT_LOGIN_STRATEGY } from '@shopgate/pwa-common/constants/user';
-import LoadingProvider from '@shopgate/pwa-common/providers/loading';
-import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
+import { LoadingProvider } from '../../core/providers';
+import { getCurrentPathname } from '../../core/selectors';
 import { getRecaptchaToken } from '../../core/helpers/recaptcha';
+import { successLogin } from '../../user/action-creators';
+import { DEFAULT_LOGIN_STRATEGY } from '../../user/constants';
 import { LOGIN_SOURCE_BIOMETRIC } from '../constants/sources';
 import type { AppThunk } from '../../core/types';
 import { keychain, toBiometricLoginError } from '../helpers/biometricLogin';

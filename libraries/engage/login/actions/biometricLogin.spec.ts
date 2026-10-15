@@ -1,6 +1,6 @@
 import { Keychain } from '@shopgate/native-modules';
 import { SUCCESS_LOGIN } from '@shopgate/pwa-common/constants/ActionTypes';
-import LoadingProvider from '@shopgate/pwa-common/providers/loading';
+import { LoadingProvider } from '../../core/providers';
 import { getRecaptchaToken } from '../../core/helpers/recaptcha';
 import biometricLogin from './biometricLogin';
 
@@ -9,11 +9,13 @@ jest.mock('@shopgate/native-modules', () => ({
     login: jest.fn(),
   },
 }));
-jest.mock('@shopgate/pwa-common/providers/loading', () => ({
-  setLoading: jest.fn(),
-  unsetLoading: jest.fn(),
+jest.mock('../../core/providers', () => ({
+  LoadingProvider: {
+    setLoading: jest.fn(),
+    unsetLoading: jest.fn(),
+  },
 }));
-jest.mock('@shopgate/pwa-common/selectors/router', () => ({
+jest.mock('../../core/selectors', () => ({
   getCurrentPathname: jest.fn(() => '/more'),
 }));
 jest.mock('../../core/helpers/recaptcha', () => ({
