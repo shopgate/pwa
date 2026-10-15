@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -8,7 +8,7 @@ import {
 import { ClientInformation } from '@shopgate/engage/development/components';
 import { View } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, keyframes } from '@shopgate/engage/styles';
 import { BackBar } from 'Components/AppBar/presets';
 import Headline from 'Components/Headline';
 import Quicklinks from './components/Quicklinks';
@@ -21,16 +21,21 @@ const headline = {
   margin: '24px 20px 16px',
 };
 
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 const useStyles = makeStyles()({
-  headline: {
-    transition: 'opacity 0.3s ease-out',
+  headlineChanged: {
+    animation: `${fadeIn} 0.3s ease-out`,
     '@media (prefers-reduced-motion: reduce)': {
-      transition: 'none',
+      animation: 'none',
     },
-  },
-  headlinePending: {
-    opacity: 0,
-    transition: 'none',
   },
 });
 
@@ -40,9 +45,8 @@ const useStyles = makeStyles()({
  */
 const More = (props) => {
   const { isLoggedIn, user } = props;
-  const { classes, cx } = useStyles();
+  const { classes } = useStyles();
   const firstName = isLoggedIn ? user?.firstName : null;
-  const isUserPending = isLoggedIn && !firstName && user?.isFetching !== false;
 
   const welcomeMessage = useMemo(() => {
     if (firstName) {
@@ -51,15 +55,18 @@ const More = (props) => {
     return i18n.text('login.headline');
   }, [firstName]);
 
+  const initialWelcomeMessage = useRef(welcomeMessage);
+  const isWelcomeMessageChanged = welcomeMessage !== initialWelcomeMessage.current;
+
   return (
     <View aria-hidden={false}>
       <BackBar right={null} />
       <Headline
+        key={welcomeMessage}
         style={headline}
         tag="h1"
         text={welcomeMessage}
-        className={cx(classes.headline, { [classes.headlinePending]: isUserPending })}
-        aria-hidden={isUserPending || undefined}
+        className={isWelcomeMessageChanged ? classes.headlineChanged : undefined}
       />
       {!isLoggedIn && <UserMenu {...props} />}
       <Portal name={NAV_MENU_CONTENT_BEFORE} props={portalProps} />

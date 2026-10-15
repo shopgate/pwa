@@ -145,7 +145,7 @@ export const storeBiometricLogin = async ({
 }: StoreBiometricLoginParams): Promise<BiometricLoginResult> => {
   try {
     const stored = await keychain.setLogin(login, password, prompt);
-    return stored === false ? notDoneResult : { success: true };
+    return stored === false ? { ...notDoneResult } : { success: true };
   } catch (error) {
     return toBiometricLoginError(error);
   }
@@ -159,7 +159,7 @@ export const storeBiometricLogin = async ({
 export const resetBiometricLogin = async (): Promise<BiometricLoginResult> => {
   try {
     const removed = await keychain.resetLogin();
-    return removed === false ? notDoneResult : { success: true };
+    return removed === false ? { ...notDoneResult } : { success: true };
   } catch (error) {
     return toBiometricLoginError(error);
   }

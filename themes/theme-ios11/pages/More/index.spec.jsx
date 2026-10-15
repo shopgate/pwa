@@ -99,22 +99,12 @@ describe('<More />', () => {
           <More />
         </Provider>));
 
-      return screen.getByRole('heading', {
-        level: 1,
-        hidden: true,
-      });
+      return screen.getByRole('heading', { level: 1 });
     };
-
-    it('should hide the headline while the user data is fetched', () => {
-      const headline = renderHeadline({ isFetching: true });
-
-      expect(headline).toHaveAttribute('aria-hidden', 'true');
-    });
 
     it('should show the generic headline when the user data could not be fetched', () => {
       const headline = renderHeadline({ isFetching: false });
 
-      expect(headline).not.toHaveAttribute('aria-hidden');
       expect(headline).toHaveTextContent('login.headline');
     });
 
@@ -124,7 +114,6 @@ describe('<More />', () => {
         isFetching: false,
       });
 
-      expect(headline).not.toHaveAttribute('aria-hidden');
       expect(headline).toHaveTextContent('navigation.welcome_message');
     });
   });
