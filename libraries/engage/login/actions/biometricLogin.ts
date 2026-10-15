@@ -3,6 +3,7 @@ import { DEFAULT_LOGIN_STRATEGY } from '@shopgate/pwa-common/constants/user';
 import LoadingProvider from '@shopgate/pwa-common/providers/loading';
 import { getCurrentPathname } from '@shopgate/pwa-common/selectors/router';
 import { getRecaptchaToken } from '../../core/helpers/recaptcha';
+import { LOGIN_SOURCE_BIOMETRIC } from '../constants/sources';
 import type { AppThunk } from '../../core/types';
 import { keychain, toBiometricLoginError } from '../helpers/biometricLogin';
 import type { BiometricLoginPrompt, BiometricLoginResult } from '../helpers/biometricLogin';
@@ -34,7 +35,8 @@ interface LoginPipelineResponse {
 /**
  * Logs the user in with the credentials from the keychain of the app. The app shows the biometric
  * prompt and sends the login request itself, so the credentials don't reach the web layer.
- * The user stays on the current page after a successful login. The current page shows its loading
+ * The user stays on the current page after a successful login, and the `SUCCESS_LOGIN` action
+ * carries `LOGIN_SOURCE_BIOMETRIC` as its source. The current page shows its loading
  * state while the action runs.
  * @param params The action params.
  * @param params.prompt The texts for the system prompt.
@@ -60,7 +62,9 @@ const biometricLogin = (
       return { success: false };
     }
 
-    dispatch(successLogin(false, DEFAULT_LOGIN_STRATEGY, sessionLifetimeInSeconds));
+    dispatch(successLogin(false, DEFAULT_LOGIN_STRATEGY, sessionLifetimeInSeconds, {
+      source: LOGIN_SOURCE_BIOMETRIC,
+    }));
 
     return { success: true };
   } catch (error) {

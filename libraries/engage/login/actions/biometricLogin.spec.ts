@@ -52,6 +52,7 @@ describe('biometricLogin()', () => {
       redirect: false,
       strategy: 'basic',
       sessionLifetimeInSeconds: 1209480,
+      source: 'biometric',
     });
   });
 

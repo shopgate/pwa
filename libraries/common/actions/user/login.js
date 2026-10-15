@@ -20,8 +20,9 @@ import { mutable } from '../../helpers/redux';
  * @param {Object} parameters The login credentials.
  * @param {string} parameters.login The username to login.
  * @param {string} parameters.password The password to login.
- * @param {string} redirect The location to redirect to when logged in.
- * @param {string} strategy basic or facebook, amazon, etc
+ * @param {Object|boolean} [redirect] The redirect params, e.g. `{ location }` of the page to open
+ * when logged in. When set to `false` the user stays on the current page.
+ * @param {string} [strategy] basic or facebook, amazon, etc
  * @return {Function} A redux thunk.
  */
 function login(parameters, redirect, strategy = DEFAULT_LOGIN_STRATEGY) {
