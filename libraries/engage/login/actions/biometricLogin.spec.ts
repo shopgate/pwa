@@ -69,14 +69,20 @@ describe('biometricLogin()', () => {
   it('should not dispatch when the pipeline response is not successful', async () => {
     login.mockResolvedValueOnce({ pipelineResponse: { success: false } });
 
-    await expect(biometricLogin()(dispatch, getState)).resolves.toEqual({ success: false });
+    await expect(biometricLogin()(dispatch, getState)).resolves.toEqual({
+      success: false,
+      reason: 'unknown',
+    });
     expect(dispatch).not.toHaveBeenCalled();
   });
 
   it('should not dispatch when the app does not answer with a response', async () => {
     login.mockResolvedValueOnce(undefined);
 
-    await expect(biometricLogin()(dispatch, getState)).resolves.toEqual({ success: false });
+    await expect(biometricLogin()(dispatch, getState)).resolves.toEqual({
+      success: false,
+      reason: 'unknown',
+    });
     expect(dispatch).not.toHaveBeenCalled();
   });
 
@@ -90,6 +96,7 @@ describe('biometricLogin()', () => {
       success: false,
       code: 'EINVALIDCREDENTIALS',
       message: 'Invalid credentials',
+      reason: 'invalidCredentials',
     });
     expect(dispatch).not.toHaveBeenCalled();
   });

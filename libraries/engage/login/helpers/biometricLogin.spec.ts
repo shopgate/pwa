@@ -82,8 +82,8 @@ describe('biometric login helpers', () => {
 
     it('should resolve with the error of the app', async () => {
       setLogin.mockRejectedValueOnce({
-        code: 'BIOMETRIC_CANCELED',
-        message: 'Canceled',
+        code: '-128',
+        message: 'User canceled the operation.',
       });
 
       await expect(storeBiometricLogin({
@@ -91,8 +91,9 @@ describe('biometric login helpers', () => {
         password: 'secret',
       })).resolves.toEqual({
         success: false,
-        code: 'BIOMETRIC_CANCELED',
-        message: 'Canceled',
+        code: '-128',
+        message: 'User canceled the operation.',
+        reason: 'canceled',
       });
     });
   });
@@ -110,6 +111,7 @@ describe('biometric login helpers', () => {
       await expect(resetBiometricLogin()).resolves.toEqual({
         success: false,
         message: 'Failed',
+        reason: 'unknown',
       });
     });
   });

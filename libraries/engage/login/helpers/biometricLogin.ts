@@ -1,4 +1,6 @@
 import { Keychain } from '@shopgate/native-modules';
+import { getBiometricLoginErrorReason } from './biometricLoginErrors';
+import type { BiometricLoginErrorReason } from './biometricLoginErrors';
 
 /**
  * The kind of biometrics the app reports. iOS: TouchID, FaceID, OpticID.
@@ -62,6 +64,10 @@ export interface BiometricLoginResult {
    * The error message of the app or of the login pipeline.
    */
   message?: string;
+  /**
+   * Why the call failed, the same on iOS and Android. Only set when it failed.
+   */
+  reason?: BiometricLoginErrorReason;
 }
 
 /**
@@ -119,15 +125,20 @@ const unavailableStatus: BiometricLoginStatus = {
 /**
  * Converts a rejection of the app into a failed result.
  * @param error The value the app rejected with.
- * @returns The failed result with the error code and message, when the app provided them.
+ * @returns The failed result with the reason, and the error code and message when the app
+ * provided them.
  */
 export const toBiometricLoginError = (error: unknown): BiometricLoginResult => {
   const { code, message } = (error ?? {}) as { code?: unknown; message?: unknown };
+  const details = {
+    ...(typeof code === 'string' ? { code } : null),
+    ...(typeof message === 'string' ? { message } : null),
+  };
 
   return {
     success: false,
-    ...(typeof code === 'string' ? { code } : null),
-    ...(typeof message === 'string' ? { message } : null),
+    ...details,
+    reason: getBiometricLoginErrorReason(details),
   };
 };
 

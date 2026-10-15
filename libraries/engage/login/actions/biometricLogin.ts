@@ -59,7 +59,10 @@ const biometricLogin = (
     } = (response?.pipelineResponse ?? {}) as LoginPipelineResponse;
 
     if (!success) {
-      return { success: false };
+      return {
+        success: false,
+        reason: 'unknown',
+      };
     }
 
     dispatch(successLogin(false, DEFAULT_LOGIN_STRATEGY, sessionLifetimeInSeconds, {
