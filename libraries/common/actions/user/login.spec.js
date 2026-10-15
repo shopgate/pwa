@@ -1,12 +1,12 @@
-import { EINVALIDCALL } from '@shopgate/pwa-core/constants/Pipeline';
-import { getRecaptchaToken } from '@shopgate/engage/core/helpers/recaptcha';
+import { EINVALIDCALL } from '@shopgate/engage/core/constants';
+import { getRecaptchaToken } from '@shopgate/engage/core/helpers';
 import { requestLogin, successLogin, errorLogin } from '../../action-creators/user';
 import login from './login';
 
 let mockSuccessResponse;
 let mockErrorResponse;
 let mockedRequest;
-jest.mock('@shopgate/pwa-core', () => {
+jest.mock('@shopgate/engage/core/classes', () => {
   const { mockedPipelineRequestFactory } = jest.requireActual('@shopgate/pwa-core/classes/PipelineRequest/mock');
 
   const MockedPipelineRequest = mockedPipelineRequestFactory((mockInstance, resolve, reject) => {
@@ -20,7 +20,7 @@ jest.mock('@shopgate/pwa-core', () => {
   });
 
   return {
-    ...jest.requireActual('@shopgate/pwa-core/constants/Pipeline'),
+    ...jest.requireActual('@shopgate/engage/core/classes'),
     PipelineRequest: class extends MockedPipelineRequest {
       /**
        * Marks the request as trusted.

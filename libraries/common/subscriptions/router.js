@@ -9,7 +9,7 @@ import {
 import Route from '@virtuous/conductor/Route';
 import { Linking } from '@shopgate/native-modules';
 import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
-import { logger } from '@shopgate/pwa-core';
+import { logger } from '@shopgate/engage/core/helpers';
 import { isNavigationBlocked } from '@shopgate/engage/admin-preview/helpers';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { getCurrentRoute, getRouterStackIndex } from '../selectors/router';

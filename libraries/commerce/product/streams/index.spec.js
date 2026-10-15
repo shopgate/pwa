@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { ENOTFOUND } from '@shopgate/pwa-core';
+import { ENOTFOUND } from '@shopgate/engage/core/constants';
 import { mainSubject } from '@shopgate/pwa-common/store/middelwares/streams';
 import { bin2hex as mockBin2Hex } from '@shopgate/pwa-common/helpers/data';
 import { routeDidUpdate } from '@shopgate/pwa-common/action-creators/router';

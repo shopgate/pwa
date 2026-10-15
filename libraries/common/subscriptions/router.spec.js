@@ -8,7 +8,7 @@ import {
 import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { redirects } from '@shopgate/pwa-common/collections';
 import { HISTORY_RESET_TO } from '@shopgate/pwa-common/constants/ActionTypes';
-import { logger } from '@shopgate/pwa-core/helpers';
+import { logger } from '@shopgate/engage/core/helpers';
 import addCouponsToCart from '@shopgate/pwa-common-commerce/cart/actions/addCouponsToCart';
 import { Linking } from '@shopgate/native-modules';
 import { historyRedirect, historyPush, windowOpenOverride } from '../actions/router';
@@ -50,6 +50,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
 }));
 jest.mock('@shopgate/pwa-core/helpers/logGroup', () => jest.fn());
 jest.mock('@shopgate/engage/core/helpers', () => ({
+  logger: jest.requireActual('@shopgate/pwa-core/helpers').logger,
   hasWebBridge: jest.fn().mockReturnValue(false),
   hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
   hasNewServices: jest.fn().mockReturnValue(false),

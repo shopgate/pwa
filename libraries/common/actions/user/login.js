@@ -1,10 +1,10 @@
+import { PipelineRequest } from '@shopgate/engage/core/classes';
 import {
-  PipelineRequest,
   EINVALIDCALL,
   ELEGACYSGCONNECT,
   EINCOMPLETELOGIN,
-} from '@shopgate/pwa-core';
-import { getRecaptchaToken } from '@shopgate/engage/core/helpers/recaptcha';
+} from '@shopgate/engage/core/constants';
+import { getRecaptchaToken } from '@shopgate/engage/core/helpers';
 import {
   requestLogin,
   successLogin,
