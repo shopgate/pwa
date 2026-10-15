@@ -49,6 +49,7 @@
     "react-portal": "^3.1.0",
     "react-scroll-parallax": "^3.5.0",
     "react-transition-group": "^4.4.5",
+    "rxjs": "~5.5.12",
     "tss-react": "4.9.21"
   },
   "devDependencies": {
