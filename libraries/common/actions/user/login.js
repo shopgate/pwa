@@ -4,7 +4,7 @@ import {
   ELEGACYSGCONNECT,
   EINCOMPLETELOGIN,
 } from '@shopgate/pwa-core';
-import { getRecaptchaToken } from '@shopgate/engage/core/helpers';
+import { getRecaptchaToken } from '@shopgate/engage/core/helpers/recaptcha';
 import {
   requestLogin,
   successLogin,

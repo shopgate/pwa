@@ -1,4 +1,5 @@
 import type { KeychainLoginResponse } from '@shopgate/native-modules';
+import { EINVALIDCALL } from '../../core/constants';
 import { LoadingProvider } from '../../core/providers';
 import { getCurrentPathname } from '../../core/selectors';
 import { getRecaptchaToken } from '../../core/helpers/recaptcha';
@@ -25,6 +26,9 @@ export interface BiometricLoginParams {
  * The user stays on the current page after a successful login, and the `SUCCESS_LOGIN` action
  * carries `LOGIN_SOURCE_BIOMETRIC` as its source. The current page shows its loading
  * state while the action runs.
+ * Unlike the login via the form, it dispatches neither `REQUEST_LOGIN` nor `ERROR_LOGIN`, so
+ * `userWillLogin$` and `loginDidFail$` don't emit for it. An `EINVALIDCALL` of the login pipeline
+ * means the user is logged in already, which counts as success like for the login via the form.
  * @param params The action params.
  * @param params.prompt The texts for the system prompt.
  * @returns A redux thunk that resolves with the result. It carries the error code of the app or
@@ -58,6 +62,14 @@ const biometricLogin = (
 
     return { success: true };
   } catch (error) {
+    if ((error as { code?: unknown } | null)?.code === EINVALIDCALL) {
+      dispatch(successLogin(false, DEFAULT_LOGIN_STRATEGY, undefined, {
+        source: LOGIN_SOURCE_BIOMETRIC,
+      }));
+
+      return { success: true };
+    }
+
     return toBiometricLoginError(error);
   } finally {
     LoadingProvider.unsetLoading(pathname);

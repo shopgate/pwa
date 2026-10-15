@@ -41,14 +41,15 @@ const useStyles = makeStyles()({
 const More = (props) => {
   const { isLoggedIn, user } = props;
   const { classes, cx } = useStyles();
-  const isUserPending = isLoggedIn && !user;
+  const firstName = isLoggedIn ? user?.firstName : null;
+  const isUserPending = isLoggedIn && !firstName && user?.isFetching !== false;
 
   const welcomeMessage = useMemo(() => {
-    if (isLoggedIn && user) {
-      return i18n.text('navigation.welcome_message', { name: user.firstName });
+    if (firstName) {
+      return i18n.text('navigation.welcome_message', { name: firstName });
     }
     return i18n.text('login.headline');
-  }, [isLoggedIn, user]);
+  }, [firstName]);
 
   return (
     <View aria-hidden={false}>

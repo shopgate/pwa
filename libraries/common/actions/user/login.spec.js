@@ -1,5 +1,5 @@
 import { EINVALIDCALL } from '@shopgate/pwa-core/constants/Pipeline';
-import { getRecaptchaToken } from '@shopgate/engage/core/helpers';
+import { getRecaptchaToken } from '@shopgate/engage/core/helpers/recaptcha';
 import { requestLogin, successLogin, errorLogin } from '../../action-creators/user';
 import login from './login';
 
@@ -33,7 +33,7 @@ jest.mock('@shopgate/pwa-core', () => {
     },
   };
 });
-jest.mock('@shopgate/engage/core/helpers', () => ({
+jest.mock('@shopgate/engage/core/helpers/recaptcha', () => ({
   getRecaptchaToken: jest.fn(),
 }));
 

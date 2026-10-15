@@ -86,6 +86,22 @@ describe('biometricLogin()', () => {
     expect(dispatch).not.toHaveBeenCalled();
   });
 
+  it('should count a user who is logged in already as logged in', async () => {
+    login.mockRejectedValueOnce({
+      code: 'EINVALIDCALL',
+      message: 'User is already logged in',
+    });
+
+    await expect(biometricLogin()(dispatch, getState)).resolves.toEqual({ success: true });
+    expect(dispatch).toHaveBeenCalledWith({
+      type: SUCCESS_LOGIN,
+      redirect: false,
+      strategy: 'basic',
+      sessionLifetimeInSeconds: undefined,
+      source: 'biometric',
+    });
+  });
+
   it('should resolve with the error code of the app or the pipeline', async () => {
     login.mockRejectedValueOnce({
       code: 'EINVALIDCREDENTIALS',

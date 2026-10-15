@@ -84,5 +84,49 @@ describe('<More />', () => {
     expect(getPortals(container, USER_MENU_CONTAINER)).toHaveLength(1);
     expect(screen.getByText('navigation.logout')).toBeInTheDocument();
   });
+
+  describe('welcome headline', () => {
+    /**
+     * Renders the page for a logged in user with the given user data.
+     * @param {Object} userData The user data.
+     * @returns {HTMLElement} The headline.
+     */
+    const renderHeadline = (userData) => {
+      isUserLoggedIn.mockReturnValue(true);
+      getUserData.mockReturnValue(userData);
+      render((
+        <Provider store={store}>
+          <More />
+        </Provider>));
+
+      return screen.getByRole('heading', {
+        level: 1,
+        hidden: true,
+      });
+    };
+
+    it('should hide the headline while the user data is fetched', () => {
+      const headline = renderHeadline({ isFetching: true });
+
+      expect(headline).toHaveAttribute('aria-hidden', 'true');
+    });
+
+    it('should show the generic headline when the user data could not be fetched', () => {
+      const headline = renderHeadline({ isFetching: false });
+
+      expect(headline).not.toHaveAttribute('aria-hidden');
+      expect(headline).toHaveTextContent('login.headline');
+    });
+
+    it('should show the headline with the name once it is known', () => {
+      const headline = renderHeadline({
+        firstName: 'John',
+        isFetching: false,
+      });
+
+      expect(headline).not.toHaveAttribute('aria-hidden');
+      expect(headline).toHaveTextContent('navigation.welcome_message');
+    });
+  });
 });
 /* eslint-enable react/prop-types */

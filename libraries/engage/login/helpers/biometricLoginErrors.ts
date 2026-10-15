@@ -42,6 +42,7 @@ const iosReasons: Record<string, BiometricLoginErrorReason> = {
  */
 const androidReasons: Record<number, BiometricLoginErrorReason> = {
   1: 'notAvailable',
+  3: 'interrupted',
   5: 'interrupted',
   7: 'lockout',
   9: 'lockout',
@@ -71,7 +72,7 @@ const getAndroidPromptCode = (message?: string): number | null => {
  * between iOS and Android. The reasons:
  * - `invalidCredentials`: the backend rejected the stored credentials.
  * - `canceled`: the user canceled the prompt. Android also reports switching apps this way.
- * - `interrupted`: the system ended the prompt, e.g. because the screen was locked.
+ * - `interrupted`: the system ended the prompt, e.g. because the screen was locked or it timed out.
  * - `lockout`: biometrics are locked after too many failed attempts (Android).
  * - `notAvailable`: the device has no usable biometrics at the moment (Android).
  * - `authFailed`: the biometrics weren't accepted. On iOS this also covers an interrupted prompt

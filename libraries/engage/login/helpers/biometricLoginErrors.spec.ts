@@ -68,6 +68,7 @@ describe('getBiometricLoginErrorReason()', () => {
     it('should recognize a prompt the system ended', () => {
       expect(getBiometricLoginErrorReason(promptError(5, 'Fingerprint operation cancelled')))
         .toBe('interrupted');
+      expect(getBiometricLoginErrorReason(promptError(3, 'Timeout'))).toBe('interrupted');
     });
 
     it('should recognize a lockout', () => {
@@ -85,7 +86,7 @@ describe('getBiometricLoginErrorReason()', () => {
     });
 
     it('should treat other codes of the prompt as failed biometrics', () => {
-      expect(getBiometricLoginErrorReason(promptError(3))).toBe('authFailed');
+      expect(getBiometricLoginErrorReason(promptError(2))).toBe('authFailed');
     });
 
     it('should not guess when the message carries no code of the prompt', () => {
