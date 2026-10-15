@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, keyframes } from '@shopgate/engage/styles';
 import type { PaletteColorsWithMain } from '@shopgate/engage/styles';
 import CircularProgress from '../CircularProgress';
 import ButtonBase from '../ButtonBase';
@@ -55,31 +55,36 @@ function Button<C extends React.ElementType = 'button'>(
     <CircularProgress color="inherit" size={16} />
   );
 
+  const indicator = (
+    <span className={cx(classes.loadingIndicator, 'engage__button__loading-indicator')}>
+      {loadingIndicator}
+    </span>
+  );
+
   const startIcon = (startIconProp || (loading && loadingPosition === 'start')) && (
-    <span className={cx(classes.icon, classes.startIcon)}>
+    <span
+      className={cx(classes.icon, classes.startIcon, {
+        [classes.loadingIconEnter]: !startIconProp,
+      })}
+    >
       {startIconProp || <span className={classes.loadingPlaceholder} />}
+      {loading && loadingPosition === 'start' && indicator}
     </span>
   );
   const endIcon = (endIconProp || (loading && loadingPosition === 'end')) && (
-    <span className={cx(classes.icon, classes.endIcon)}>
+    <span
+      className={cx(classes.icon, classes.endIcon, {
+        [classes.loadingIconEnter]: !endIconProp,
+      })}
+    >
       {endIconProp || <span className={classes.loadingPlaceholder} />}
+      {loading && loadingPosition === 'end' && indicator}
     </span>
   );
 
-  const loader = typeof loading === 'boolean' ? (
-    <span
-      style={{ display: 'contents' }}
-      className={cx(classes.loader, {
-        [classes.startIcon]: loadingPosition === 'start',
-        [classes.endIcon]: loadingPosition === 'end',
-      })}
-    >
-      {loading && (
-      <span className={classes.loadingIndicator}>
-        { loadingIndicator }
-      </span>
-      )}
-
+  const loader = typeof loading === 'boolean' && loadingPosition === 'center' ? (
+    <span style={{ display: 'contents' }} className={classes.loader}>
+      {loading && indicator}
     </span>
   ) : null;
 
@@ -116,9 +121,8 @@ function Button<C extends React.ElementType = 'button'>(
     >
       <span className={classes.label}>
         {startIcon}
-        {loadingPosition !== 'end' && loader}
+        {loader}
         {children}
-        {loadingPosition === 'end' && loader}
         {endIcon}
       </span>
     </ButtonBase>
@@ -141,6 +145,26 @@ const HOVER_OVERLAY_OPACITY_DARK = 0.28;
 const OUTLINED_BORDER_OPACITY = 0.5;
 const OUTLINED_BORDER_OPACITY_DARK = 0.7;
 
+const loadingIconEnter = keyframes`
+  from {
+    margin-left: 0;
+    margin-right: 0;
+  }
+`;
+
+const loadingPlaceholderEnter = keyframes`
+  from {
+    width: 0;
+  }
+`;
+
+const loadingIndicatorEnter = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+`;
+
 const useStyles = makeStyles<ButtonOwnProps>({
   name: 'Button',
 })((theme, props) => {
@@ -150,7 +174,6 @@ const useStyles = makeStyles<ButtonOwnProps>({
     loadingPosition,
     loading,
     keepColorsWhileLoading,
-    fullWidth,
     variant,
   } = props;
 
@@ -389,14 +412,17 @@ const useStyles = makeStyles<ButtonOwnProps>({
       ...(size === 'small' && {
         marginLeft: -2,
       }),
-      ...(loading && loadingPosition === 'start' && {
-        transition: theme.transitions.create('opacity', {
-          duration: theme.transitions.duration.short,
-        }),
-        opacity: 0,
+      ...(loading && loadingPosition === 'start' && variant === 'link' && {
+        marginLeft: 0,
       }),
-      ...(loading && loadingPosition === 'start' && fullWidth && {
-        marginRight: -8,
+      ...(loading && loadingPosition === 'start' && {
+        position: 'relative',
+        '& > :not(.engage__button__loading-indicator)': {
+          transition: theme.transitions.create('opacity', {
+            duration: theme.transitions.duration.short,
+          }),
+          opacity: 0,
+        },
       }),
     },
     endIcon: {
@@ -407,24 +433,37 @@ const useStyles = makeStyles<ButtonOwnProps>({
       ...(size === 'small' && {
         marginRight: -2,
       }),
-      ...(loading && loadingPosition === 'end' && {
-        transition: theme.transitions.create('opacity', {
-          duration: theme.transitions.duration.short,
-        }),
-        opacity: 0,
+      ...(loading && loadingPosition === 'end' && variant === 'link' && {
+        marginRight: 0,
       }),
-      ...(loading && loadingPosition === 'end' && fullWidth && {
-        marginLeft: -8,
+      ...(loading && loadingPosition === 'end' && {
+        position: 'relative',
+        '& > :not(.engage__button__loading-indicator)': {
+          transition: theme.transitions.create('opacity', {
+            duration: theme.transitions.duration.short,
+          }),
+          opacity: 0,
+        },
       }),
     },
     loader: {
       position: 'absolute',
       left: 0,
     },
+    loadingIconEnter: {
+      animation: `${loadingIconEnter} ${theme.transitions.duration.short}ms ease-out`,
+      '@media (prefers-reduced-motion: reduce)': {
+        animation: 'none',
+      },
+    },
     loadingPlaceholder: {
       display: 'inline-block',
       width: '1em',
       height: '1em',
+      animation: `${loadingPlaceholderEnter} ${theme.transitions.duration.short}ms ease-out`,
+      '@media (prefers-reduced-motion: reduce)': {
+        animation: 'none',
+      },
     },
     loadingIndicator: {
       display: 'none',
@@ -433,12 +472,6 @@ const useStyles = makeStyles<ButtonOwnProps>({
       ...(loading && {
         display: 'flex',
       }),
-      ...(loadingPosition === 'start' && {
-        left: 14,
-      }),
-      ...(loadingPosition === 'start' && size === 'small' && {
-        left: 10,
-      }),
       ...(loadingPosition === 'center' && {
         left: '50%',
         transform: 'translateX(-50%)',
@@ -446,22 +479,16 @@ const useStyles = makeStyles<ButtonOwnProps>({
           color: theme.palette.action.disabled,
         }),
       }),
-      ...(loadingPosition === 'end' && {
-        right: 14,
+      ...(loadingPosition !== 'center' && {
+        inset: 0,
+        alignItems: 'center',
+        justifyContent: 'center',
       }),
-      ...(loadingPosition === 'end' && size === 'small' && {
-        right: 10,
-      }),
-      ...(loadingPosition === 'end' && size === 'large' && {
-        right: 20,
-      }),
-      ...(loadingPosition === 'start' && fullWidth && {
-        position: 'relative',
-        left: -10,
-      }),
-      ...(loadingPosition === 'end' && fullWidth && {
-        position: 'relative',
-        right: -10,
+      ...(loading && loadingPosition !== 'center' && {
+        animation: `${loadingIndicatorEnter} ${theme.transitions.duration.short}ms ease-out`,
+        '@media (prefers-reduced-motion: reduce)': {
+          animation: 'none',
+        },
       }),
     },
   };

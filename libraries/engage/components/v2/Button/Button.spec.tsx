@@ -327,6 +327,53 @@ describe('<Button />', () => {
       expect(indicator).toMatch(/[^-]color: /);
     });
 
+    it('should animate the space for the indicator and the indicator in at the start', () => {
+      const { container } = render(<Button loading loadingPosition="start">Press</Button>);
+      const indicator = container.querySelector('[role="progressbar"]')?.parentElement as Element;
+      const placeholder = container.querySelector('button > span > span > span:empty') as Element;
+
+      expect(getRules(placeholder)).toContain('animation:');
+      expect(getRules(placeholder.parentElement as Element)).toContain('animation:');
+      expect(getRules(indicator)).toContain('animation:');
+    });
+
+    it('should place the indicator inside the slot of the start or end icon', () => {
+      ['start', 'end'].forEach((position) => {
+        const { container, unmount } = render(
+          <Button loading loadingPosition={position as 'start' | 'end'}>Press</Button>
+        );
+        const indicator = container.querySelector('.engage__button__loading-indicator') as Element;
+        const slot = indicator.parentElement as Element;
+
+        expect(slot.querySelector('span:empty')).not.toBeNull();
+        expect(getRules(slot)).toContain('position: relative;');
+        unmount();
+      });
+    });
+
+    it('should keep the centered indicator outside of the icon slots', () => {
+      const { container } = render(<Button loading startIcon={<svg data-testid="icon" />}>Press</Button>);
+      const indicator = container.querySelector('.engage__button__loading-indicator') as Element;
+
+      expect(indicator.parentElement?.contains(screen.getByTestId('icon'))).toBe(false);
+    });
+
+    it('should not animate an own start icon in', () => {
+      render(
+        <Button loading loadingPosition="start" startIcon={<svg data-testid="icon" />}>Press</Button>
+      );
+
+      expect(getRules(screen.getByTestId('icon').parentElement as Element))
+        .not.toContain('animation:');
+    });
+
+    it('should not animate the centered indicator in', () => {
+      const { container } = render(<Button loading>Press</Button>);
+      const indicator = container.querySelector('[role="progressbar"]')?.parentElement as Element;
+
+      expect(getRules(indicator)).not.toContain('animation:');
+    });
+
     it('should hide the icons while it keeps its colors and loads', () => {
       render(
         <Button loading keepColorsWhileLoading startIcon={<svg data-testid="icon" />}>Press</Button>
