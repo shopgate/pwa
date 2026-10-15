@@ -1,5 +1,5 @@
 import { Keychain } from '@shopgate/native-modules';
-import { SUCCESS_LOGIN } from '@shopgate/pwa-common/constants/ActionTypes';
+import { SUCCESS_LOGIN } from '../../core/constants';
 import { LoadingProvider } from '../../core/providers';
 import { getRecaptchaToken } from '../../core/helpers/recaptcha';
 import biometricLogin from './biometricLogin';
