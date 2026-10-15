@@ -475,7 +475,9 @@ const useStyles = makeStyles<ButtonOwnProps>({
       ...(loadingPosition === 'center' && {
         left: '50%',
         transform: 'translateX(-50%)',
-        ...(!keepColorsWhileLoading && {
+        ...(keepColorsWhileLoading ? {
+          WebkitTextFillColor: 'currentcolor',
+        } : {
           color: theme.palette.action.disabled,
         }),
       }),

@@ -319,6 +319,15 @@ describe('<Button />', () => {
       expect(indicator).not.toMatch(/[^-]color: /);
     });
 
+    it('should keep a text indicator visible while the label text is hidden', () => {
+      const { container } = render(
+        <Button loading keepColorsWhileLoading loadingIndicator={<span>Saving</span>}>Press</Button>
+      );
+      const indicator = container.querySelector('.engage__button__loading-indicator') as Element;
+
+      expect(getRules(indicator)).toContain('-webkit-text-fill-color: currentcolor;');
+    });
+
     it('should hide the label and draw the indicator in the disabled color by default', () => {
       const { container } = render(<Button variant="outlined" loading>Press</Button>);
       const { indicator, label } = getLoadingRules(container);
