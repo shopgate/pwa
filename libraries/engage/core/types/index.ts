@@ -151,7 +151,8 @@ export type MutableStepResult = {
 
 /**
  * A function made mutable with `mutable`, e.g. many actions of the core. Extensions can replace
- * it or add steps that run before it.
+ * it or add steps that run before it. When a step calls `stop()`, a call returns a no-op function
+ * instead of the result of the function, which redux can still dispatch.
  */
 export interface MutableFunction<F extends (...args: never[]) => unknown> {
   (...args: Parameters<F>): ReturnType<F>;

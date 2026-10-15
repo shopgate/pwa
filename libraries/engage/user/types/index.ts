@@ -5,13 +5,13 @@ import type { StreamAction } from '../../core/types';
  */
 export interface RequestLoginAction extends StreamAction {
   /**
-   * The username, as it was entered.
+   * The username, as it was entered. Logins via other strategies may come without it.
    */
-  user: string;
+  user?: string;
   /**
-   * The password, as it was entered.
+   * The password, as it was entered. Logins via other strategies may come without it.
    */
-  password: string;
+  password?: string;
   /**
    * The login strategy, `basic` for the login form.
    */
