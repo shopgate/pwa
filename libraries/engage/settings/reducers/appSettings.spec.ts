@@ -47,6 +47,22 @@ describe('settings / reducers / appSettings', () => {
     expect(state.product.manufacturer.showOnProductPage).toBe(true);
   });
 
+  it.each([null, 'false', 0])('keeps showing the manufacturer for the value %p', (value) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: value } },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it.each([null, 'hidden', [false]])('ignores the manufacturer branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: branch },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.manufacturer).toEqual(DEFAULT_APP_SETTINGS.product.manufacturer);
+  });
+
   it('ignores unrelated actions', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, { type: 'SOME_OTHER_ACTION' });
 

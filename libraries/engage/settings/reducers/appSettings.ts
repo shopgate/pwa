@@ -191,6 +191,10 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           DEFAULT_APP_SETTINGS.product.actionButtons,
           ACTION_BUTTON_OPTIONS
         ),
+        manufacturer: pickValidSettings(
+          product?.manufacturer,
+          DEFAULT_APP_SETTINGS.product.manufacturer
+        ),
       },
       widgets: widgets === null ? undefined : {
         ...widgets,
