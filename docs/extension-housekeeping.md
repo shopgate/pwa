@@ -67,17 +67,17 @@ the store, and so on. See [Dependencies](#dependencies).
   `@shopgate/eslint-config` the lint rules with their plugins, `@shopgate/pwa-unit-test` the Jest
   and Babel setup for tests. The few other `@shopgate` packages an extension may need are listed
   under [Dependencies](#dependencies).
-  - `@shopgate/eslint-config` and `@shopgate/pwa-unit-test` are tooling and stay at the current
-    version.
-  - `@shopgate/engage` decides which APIs the editor, lint and tests offer, and shops run older
-    PWA versions as well. It is `^7.33.2`: the first version with the complete tooling (the
-    TypeScript config for extensions exists since 7.33.0, the import path proposals work since
-    7.33.1), and a version without new APIs that aren't rolled out widely yet. Use a newer
-    version only when the extension's minimum PWA version is newer; then both are the same, e.g.
-    `^7.35.0` with `>=7.35.0`. The lockfile keeps the installed version; don't update engage in
-    it beyond that version.
-  - The cleanup raises a lower version to `^7.33.2`, and never beyond the higher of `7.33.2` and
-    the minimum. A version above both is lowered to it and named in the report.
+  - All three are `^7.33.2`. The lockfile may contain a newer 7.x. Shops run older PWA versions
+    as well, so the declared version stands for what the code may use. An AI agent only uses
+    imports that 7.33.2 offers, see
+    [Imports that engage 7.33.2 offers](#imports-that-engage-7332-offers). 7.33.2 is the first
+    version with the complete tooling (the TypeScript config for extensions exists since 7.33.0,
+    the import path proposals work since 7.33.1), and a version without new APIs that aren't
+    rolled out widely yet.
+  - Use a newer version only when the extension's minimum PWA version is newer; then both are
+    the same, e.g. `^7.35.0` with `>=7.35.0`.
+  - The cleanup raises a lower version to 7.33.2, and never beyond the higher of 7.33.2 and the
+    minimum. A version above both was chosen by a developer; it stays and is named in the report.
 - **`@shopgate/pwa-unit-test` in every extension,** also in one without tests. It brings the Jest
   types that the TypeScript config of engage lists; without them the editor reports an error for
   the `jsconfig.json`. It has `jest` as a peer dependency, so npm installs Jest in an extension
@@ -253,6 +253,27 @@ grep -rnE "(from|import|require\(|import\(|jest\.mock\()\s*'(\.\./)+(extension|e
   --exclude-dir=node_modules .
 ```
 
+### Imports that engage 7.33.2 offers
+
+An AI agent only writes imports that `@shopgate/engage` 7.33.2 offers. A newer version may add
+folders or exports, such as a new folder under `@shopgate/engage/user`, but shops run older PWA
+versions as well, where such an import fails. A developer may use a newer import on purpose, and
+then decides about the minimum PWA version.
+
+The exception for an agent is a task about a feature that needs a newer engage version, for
+example one that builds on an API the PWA introduced later. Then the agent uses that version:
+it raises the minimum in `peerDependencies` to it, installs `@shopgate/engage` in the same
+version, see [`package.json`](#packagejson), and names the version and the reason in its
+report. A cleanup is never such a task.
+
+The installed version may be newer than 7.33.2, so lint and the editor don't show whether an
+import exists in 7.33.2. An agent checks every new import against the sources of that version,
+which this repository has under the tag `v7.33.2`, for example with
+`git show v7.33.2:libraries/engage/user/index.js`. An existing import that needs a newer version
+is reported, not rewritten. Older import paths, such as deep imports from
+`@shopgate/pwa-common`, keep working in newer PWA versions for now, so the cleanup leaves them
+alone.
+
 ### What gets removed
 
 | What | Why it can go |
@@ -289,6 +310,7 @@ The lockfile of the backend keeps its state. When the removed line also covered
 `extension/package-lock.json`, add that path as a line of its own.
 
 Run `npm install` after every change to `package.json`, so the lockfile is up to date at the end.
+
 When the install fails with `ERESOLVE` although the versions are right, the folder contains an
 outdated lockfile or `node_modules` from an old setup: delete both and install again. Old
 lockfiles (`lockfileVersion` 1) are replaced this way.
