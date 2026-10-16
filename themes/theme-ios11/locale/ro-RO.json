@@ -243,6 +243,8 @@
     "item_added_unit": "{count} {unit} adăugat",
     "adding_item": "{count, plural, =1 {Se adaugă un produs} other {Se adaugă {count} produse}}",
     "pick_option_first": "Selectați mai întâi o opțiune. {option}",
+    "variant_unavailable": "Indisponibil în această combinație",
+    "variant_sold_out": "Stoc epuizat",
     "fill_out_required_input_first": "Completați mai întâi toate câmpurile obligatorii.",
     "add_to_cart": "Adăugați la coș",
     "go_to_cart": "Coș de cumpărături",

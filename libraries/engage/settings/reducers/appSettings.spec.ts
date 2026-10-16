@@ -25,6 +25,44 @@ describe('settings / reducers / appSettings', () => {
     expect(DEFAULT_APP_SETTINGS.product.rating.showEmptyStars).toBe(false);
   });
 
+  it('defaults to showing the manufacturer on the product page', () => {
+    expect(DEFAULT_APP_SETTINGS.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it('hides the manufacturer on the product page when the payload turns it off', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: false } },
+    }));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(false);
+    expect(state.product.rating).toEqual(DEFAULT_APP_SETTINGS.product.rating);
+  });
+
+  it('falls back to showing the manufacturer when a later payload omits the setting', () => {
+    const hidden = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: false } },
+    }));
+    const state = appSettings(hidden, receiveAppSettings({ product: {} }));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it.each([null, 'false', 0])('keeps showing the manufacturer for the value %p', (value) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: value } },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it.each([null, 'hidden', [false]])('ignores the manufacturer branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: branch },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.manufacturer).toEqual(DEFAULT_APP_SETTINGS.product.manufacturer);
+  });
+
   it('ignores unrelated actions', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, { type: 'SOME_OTHER_ACTION' });
 
@@ -64,11 +102,32 @@ describe('settings / reducers / appSettings', () => {
         rating: {
           showEmptyStars: false,
         },
+        manufacturer: {
+          showOnProductPage: false,
+        },
         card: {
           productName: { maxLines: 1 },
         },
         tile: {
           productName: { maxLines: 4 },
+        },
+        variantSelector: {
+          type: 'chips',
+          swatchesEnabled: true,
+          swatchCharacteristics: 'Farbe',
+          swatchSource: 'variantImage',
+          swatchShape: 'square',
+          swatchImageZoom: 200,
+          swatchProperty: '',
+          chipsLayout: 'scroll',
+          preselect: true,
+          soldOut: 'hide',
+        },
+        actionButtons: {
+          position: 'topRight',
+          addToCart: 'button',
+          direction: 'vertical',
+          showShareButton: true,
         },
       },
       cards: {
@@ -162,6 +221,71 @@ describe('settings / reducers / appSettings', () => {
       left: 0,
       right: 0,
     });
+  });
+
+  it('keeps the product defaults when the branch is cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: null,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product).toEqual(DEFAULT_APP_SETTINGS.product);
+  });
+
+  it('keeps the defaults of single cleared variant selector and action button values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        variantSelector: {
+          type: null,
+          soldOut: 'hide',
+        },
+        actionButtons: {
+          position: null,
+          direction: 'vertical',
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.variantSelector).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.variantSelector,
+      soldOut: 'hide',
+    });
+    expect(state.product.actionButtons).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.actionButtons,
+      direction: 'vertical',
+    });
+  });
+
+  it('keeps the defaults of invalid variant selector and action button values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        variantSelector: {
+          type: 'constructor',
+          swatchesEnabled: 'false',
+          swatchImageZoom: '200',
+          soldOut: 'hide',
+        },
+        actionButtons: {
+          position: 'topLeft',
+          direction: 'diagonal',
+          addToCart: ['button'],
+          showShareButton: 0,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.variantSelector).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.variantSelector,
+      soldOut: 'hide',
+    });
+    expect(state.product.actionButtons).toEqual(DEFAULT_APP_SETTINGS.product.actionButtons);
+  });
+
+  it.each(['chips', ['chips'], 5])('ignores the variant selector branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { variantSelector: branch },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.variantSelector).toEqual(DEFAULT_APP_SETTINGS.product.variantSelector);
   });
 
   it('keeps the widget defaults when only the media margins are cleared', () => {

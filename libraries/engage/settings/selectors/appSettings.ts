@@ -64,6 +64,30 @@ export const getShowEmptyRatingStars = createSelector(
 );
 
 /**
+ * Selects whether the product page shows the manufacturer.
+ */
+export const getShowManufacturerOnProductPage = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.manufacturer.showOnProductPage
+);
+
+/**
+ * Selects the action buttons of product tiles and of the product page.
+ */
+export const getProductActionButtons = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.actionButtons
+);
+
+/**
+ * Selects the variant selector settings.
+ */
+export const getVariantSelectorSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.variantSelector
+);
+
+/**
  * Selects the image settings.
  */
 export const getImageSettings = createSelector(

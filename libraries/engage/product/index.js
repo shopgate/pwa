@@ -31,6 +31,7 @@ export * from '@shopgate/pwa-common-commerce/product/selectors/variants';
 export * from './selectors/media';
 export {
   getProductIsFetching,
+  getProductRequestFailed,
   makeGetProductProperties,
   makeGetProductEffectivityDates,
   makeGetProductCharacteristics,

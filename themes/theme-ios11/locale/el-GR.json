@@ -243,6 +243,8 @@
     "item_added_unit": "{count} {unit} προστέθηκε",
     "adding_item": "{count, plural, =1 {Προστίθεται ένα προϊόν} other {Προστίθενται {count} προϊόντα}}",
     "pick_option_first": "Επιλέξτε πρώτα μια επιλογή. {option}",
+    "variant_unavailable": "Μη διαθέσιμο σε αυτόν τον συνδυασμό",
+    "variant_sold_out": "Εξαντλήθηκε",
     "fill_out_required_input_first": "Συμπληρώστε πρώτα όλα τα υποχρεωτικά πεδία.",
     "add_to_cart": "Προσθήκη στο καλάθι",
     "go_to_cart": "Καλάθι αγορών",

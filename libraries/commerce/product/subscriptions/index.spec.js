@@ -6,6 +6,7 @@ import expireProductById from '../action-creators/expireProductById';
 import subscription from './index';
 import errorProduct from '../action-creators/errorProduct';
 import fetchProductImages from '../actions/fetchProductImages';
+import fetchProductVariants from '../actions/fetchProductVariants';
 import { galleryWillEnter$, productRelationsReceived$ } from '../streams';
 
 const mockedGetProductsById = jest.fn();
@@ -16,6 +17,8 @@ jest.mock('@shopgate/engage/core', () => ({
 jest.mock('../actions/fetchProductsById', () => (...args) => mockedGetProductsById(...args));
 jest.mock('../action-creators/expireProductById', () => jest.fn());
 jest.mock('../actions/fetchProductImages', () => jest.fn());
+jest.mock('../actions/fetchProductVariants', () => jest.fn());
+jest.mock('../actions/fetchProduct', () => jest.fn());
 jest.mock('@shopgate/engage/account', () => ({}));
 
 describe('Product subscription', () => {
@@ -29,6 +32,41 @@ describe('Product subscription', () => {
 
   it('should subscribe', () => {
     expect(subscribe).toHaveBeenCalledTimes(10);
+  });
+
+  describe('fetchPDPData$', () => {
+    let callback;
+    const action = { route: { params: { productId: '31333337' }, state: {} } };
+
+    beforeAll(() => {
+      ([[, callback]] = subscribe.mock.calls);
+    });
+
+    beforeEach(() => {
+      fetchProductVariants.mockClear();
+    });
+
+    it('should fetch the variants right away when the product is known to have variants', () => {
+      getState.mockReturnValueOnce({
+        product: {
+          productsById: {
+            1337: { productData: { id: '1337', active: true, flags: { hasVariants: true } } },
+          },
+        },
+      });
+
+      callback({ dispatch, getState, action });
+
+      expect(fetchProductVariants).toHaveBeenCalledWith('1337');
+    });
+
+    it('should wait for the product when it is unknown', () => {
+      getState.mockReturnValueOnce({ product: { productsById: {} } });
+
+      callback({ dispatch, getState, action });
+
+      expect(fetchProductVariants).not.toHaveBeenCalled();
+    });
   });
 
   describe('galleryWillEnter$', () => {

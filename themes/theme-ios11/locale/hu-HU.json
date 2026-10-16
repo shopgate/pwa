@@ -243,6 +243,8 @@
     "item_added_unit": "{count} {unit} hozzáadva",
     "adding_item": "{count, plural, =1 {Egy termék hozzáadása folyamatban van} other {Hozzáadás alatt van {count} termék}}",
     "pick_option_first": "Először válasszon ki egy opciót. {option}",
+    "variant_unavailable": "Ebben a kombinációban nem érhető el",
+    "variant_sold_out": "Elfogyott",
     "fill_out_required_input_first": "Először töltsd ki az összes kötelező mezőt.",
     "add_to_cart": "Kosárba helyezés",
     "go_to_cart": "Bevásárlókosár",

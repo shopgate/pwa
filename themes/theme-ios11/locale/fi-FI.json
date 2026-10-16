@@ -243,6 +243,8 @@
     "item_added_unit": "{count} {unit} lisätty",
     "adding_item": "{count, plural, =1 {Lisätään yksi tuote} other {Lisätään {count} tuotetta}}",
     "pick_option_first": "Valitse vaihtoehto ensin. {option}",
+    "variant_unavailable": "Ei saatavilla tässä yhdistelmässä",
+    "variant_sold_out": "Loppuunmyyty",
     "fill_out_required_input_first": "Täytä ensin kaikki pakolliset kentät.",
     "add_to_cart": "Lisää koriin",
     "go_to_cart": "Ostoskori",

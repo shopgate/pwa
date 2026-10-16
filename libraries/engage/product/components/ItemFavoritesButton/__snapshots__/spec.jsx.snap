@@ -2,14 +2,14 @@
 
 exports[`<ItemFavoritesButton /> should not render when it's not a favorite 1`] = `
 <div
-  class="sg-wn14dv-root"
+  class="sg-1fcc9g9-root"
   data-test-id="favorites"
 />
 `;
 
 exports[`<ItemFavoritesButton /> should render if it's a favorite 1`] = `
 <div
-  class="sg-wn14dv-root"
+  class="sg-1fcc9g9-root"
   data-test-id="favorites"
 />
 `;

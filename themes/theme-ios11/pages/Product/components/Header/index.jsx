@@ -9,17 +9,12 @@ import { Section } from '@shopgate/engage/a11y';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import { Rating } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import CTAButtons from './components/CTAButtons';
 import Name from './components/Name';
 import ProductInfo from './components/ProductInfo';
 
 const useStyles = makeStyles()(theme => ({
   content: {
-    // CTA icon buttons inside the header section are supposed to be elevated,
-    // so we apply a shadow custom property for the IconButton component to the whole header section
-    // to make sure that also buttons that are rendered by extensions (e.g. the share button) are
-    // elevated.
-    [theme.vars.components.iconButton.boxShadow]: theme.shadowSizes.medium,
+    [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
     position: 'relative',
     padding: theme.spacing(2),
   },
@@ -35,16 +30,15 @@ const ProductHeader = () => {
   /**
    * @param {Object} params Params from product context.
    * @param {string} params.productId Product id.
-   * @param {string} [params.variantId] Variant id.
+   * @param {string} [params.displayVariantId] Id of the variant whose data is shown.
    * @param {Object} [params.options] Options.
    * @returns {JSX.Element}
    */
-  const consumeRenderer = ({ productId, variantId, options }) => {
-    const id = variantId || productId;
+  const consumeRenderer = ({ productId, displayVariantId, options }) => {
+    const id = displayVariantId || productId;
 
     return (
       <div className={cx(classes.content, 'theme__product__header')}>
-        <CTAButtons productId={id} />
         <Section title="product.sections.information">
           <Rating productId={productId} />
           <Name productId={id} />

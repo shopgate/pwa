@@ -1,6 +1,7 @@
 import {
   getCanSelectColorScheme,
   getDefaultColorSchemeMode,
+  getShowManufacturerOnProductPage,
   getTypographyFontCssUrls,
   getTypographySettings,
   getWidgetMediaMargins,
@@ -9,6 +10,7 @@ import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
 import type {
   AppearanceSettings,
   AppSettingsState,
+  ProductManufacturerSettings,
   TypographySettings,
   WidgetSettings,
 } from '../types/appSettings';
@@ -40,7 +42,31 @@ const stateWithWidgets = (widgets: WidgetSettings): AppSettingsState => ({
   },
 });
 
+const stateWithManufacturer = (manufacturer: ProductManufacturerSettings): AppSettingsState => ({
+  settings: {
+    appSettings: {
+      ...DEFAULT_APP_SETTINGS,
+      product: {
+        ...DEFAULT_APP_SETTINGS.product,
+        manufacturer,
+      },
+    },
+  },
+});
+
 describe('settings/selectors/appSettings', () => {
+  describe('getShowManufacturerOnProductPage', () => {
+    it('returns the configured setting', () => {
+      expect(getShowManufacturerOnProductPage(stateWithManufacturer({
+        showOnProductPage: false,
+      }))).toBe(false);
+    });
+
+    it('shows the manufacturer when the slice is missing', () => {
+      expect(getShowManufacturerOnProductPage({} as AppSettingsState)).toBe(true);
+    });
+  });
+
   describe('getWidgetMediaMargins', () => {
     it('returns the configured media widget margins', () => {
       const mediaMargins = {
