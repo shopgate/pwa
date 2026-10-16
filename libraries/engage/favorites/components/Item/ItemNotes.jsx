@@ -50,12 +50,12 @@ const ItemNotes = ({
   onClickDeleteComment,
   notesButtonRef,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   if (!wishlistItemNotesEnabled) {
     return null;
   }
   return (
-    <div className={classes.root}>
+    <div className={cx(classes.root, 'engage__favorites__item__notes')}>
       {notes && (
         <span>
           <Typography variant="body1" component="span" color="textPrimary" fontWeight="medium" noWrap>
@@ -71,7 +71,16 @@ const ItemNotes = ({
           screen reader support. This approach takes care that there is always one DOM element
           with the "notesId" that can be focused when closing the CommentDialog modal.
         */}
-        <button type="button" onClick={onClickOpenComment} className={classes.addCommentButton} ref={notesButtonRef}>
+        <button
+          type="button"
+          onClick={onClickOpenComment}
+          className={cx(
+            classes.addCommentButton,
+            'engage__favorites__item__notes__button',
+            'engage__favorites__item__notes__edit-button'
+          )}
+          ref={notesButtonRef}
+        >
           <Typography variant="body1" component="span" color="secondary" fontWeight="medium">
             {notes ? i18n.text('favorites.comments.edit') : i18n.text('favorites.comments.add')}
           </Typography>
@@ -79,7 +88,15 @@ const ItemNotes = ({
         { notes && (
           <>
             <span aria-hidden> | </span>
-            <button type="button" onClick={onClickDeleteComment} className={classes.addCommentButton}>
+            <button
+              type="button"
+              onClick={onClickDeleteComment}
+              className={cx(
+                classes.addCommentButton,
+                'engage__favorites__item__notes__button',
+                'engage__favorites__item__notes__delete-button'
+              )}
+            >
               <Typography variant="body1" component="span" color="secondary" fontWeight="medium">
                 {i18n.text('favorites.comments.delete')}
               </Typography>

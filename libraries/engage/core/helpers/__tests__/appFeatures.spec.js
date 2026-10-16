@@ -1,9 +1,12 @@
-import { hasSGJavaScriptBridge } from '@shopgate/pwa-core/helpers';
+import { hasSGJavaScriptBridge } from '@shopgate/engage/core/helpers';
 import { APP_FEATURE_PUSH_OPT_IN } from '@shopgate/engage/core/constants';
 import { appSupportsPushOptIn } from '../appFeatures';
 
-jest.mock('@shopgate/pwa-core/helpers', () => ({
+jest.mock('@shopgate/engage/core/helpers', () => ({
   hasSGJavaScriptBridge: jest.fn().mockReturnValue(true),
+  hasWebBridge: jest.fn().mockReturnValue(false),
+  hasNewServices: jest.fn().mockReturnValue(false),
+  isAndroidOs: false,
 }));
 
 describe('App Features', () => {

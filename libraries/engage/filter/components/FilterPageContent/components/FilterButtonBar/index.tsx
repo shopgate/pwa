@@ -30,7 +30,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns The rendered component, or `null` when the app footer is not available.
  */
 const FilterButtonBar = () => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     hasChanged,
     resetPossible,
@@ -48,14 +48,14 @@ const FilterButtonBar = () => {
 
   return createPortal(
     <ResponsiveContainer appAlways breakpoint="<sm">
-      <div className={classes.bar}>
+      <div className={cx(classes.bar, 'engage__filter-page__button-bar')}>
         <ApplyButton
-          className={classes.apply}
+          className={cx(classes.apply, 'engage__filter-page__apply-button')}
           disabled={!hasChanged}
           onClick={applyFilters}
         />
         <ResetButton
-          className={classes.reset}
+          className={cx(classes.reset, 'engage__filter-page__reset-button')}
           disabled={!resetPossible}
           onClick={resetAllFilters}
         />

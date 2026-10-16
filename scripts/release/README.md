@@ -133,7 +133,13 @@ before the release starts instead of in the tablet job.
 3. Sets the version in all `package.json` files of the workspace (internal `@shopgate` dependencies
    exactly pinned) and the `extension-config.json` of the themes.
 4. Builds the packages into `dist`: babel, type declarations with tsc for packages with a
-   `tsconfig.build.json`, then removes tests, snapshots, specs and tsconfig files.
+   `tsconfig.build.json`, then removes tests, snapshots, specs and tsconfig files. When all packages
+   are built, star exports in the declaration files that point to a module without declarations
+   are replaced by the list of the module's names, so that extensions can import them. The result is
+   type checked the way an extension uses it; a name that a module exports but its declarations
+   lack stops the release. Only a hand-written `.d.ts` that is out of date can cause this: add
+   the name there and start the release again. `node scripts/release/cli.ts build` runs the same
+   check locally.
 5. Commits the version changes as "Released X". In the pipeline, the commit message also contains
    the line `Pipeline: <ID>`, so a retried job recognizes the release as its own. `dist` is not
    committed.

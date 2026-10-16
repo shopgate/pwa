@@ -100,6 +100,27 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   doesn't remove the hint. `libraries/engage/tsconfig.json` has the same mappings for the
   libraries.
   It sets `types`, so `@shopgate/pwa-unit-test` has `@types/jest` as a dependency.
+- **Declarations of JavaScript modules:** the release build writes type declarations for the
+  files a `tsconfig.build.json` includes, plus every file those import. The barrels of engage
+  re-export many names with `export *` from JavaScript modules of `pwa-common` and `pwa-core`. When
+  such a module is published without declarations, the untyped fallback turns it into `any` and
+  the star export passes on nothing: an extension then gets "has no exported member" for the name.
+  The build therefore ends with a pass over all declaration files (`scripts/release/lib/starExports.ts`):
+  a star export to a published module without declarations is replaced by the list of its names
+  (`export { a, b } from '...'`), which are `any` for the consumer. The build fails when such a
+  star export can't be resolved. Nothing has to be maintained for this. The build then type checks
+  the result the way an extension uses it (`scripts/release/lib/consumerCheck.ts`): it installs the
+  built packages into a temporary folder, with the tsconfig that is published for extensions, and
+  reads every name that a module with declarations exports. It fails when the declarations lack
+  one, e.g. because a hand-written `.d.ts` is out of date. The build configs of
+  `pwa-common` and `pwa-core` additionally include `constants` and `helpers/redux`, so that these
+  get real types. Don't include the streams: rxjs 5 only types the operators that are imported,
+  so `stream$.filter(...)` wouldn't type check in an extension. Don't include all JavaScript
+  either, see `maxNodeModuleJsDepth` above for the reason.
+  Don't add new hand-written `.d.ts` files: convert the file to TypeScript instead. When you
+  change the exports of a JavaScript file that has a hand-written `.d.ts` next to it, update the
+  `.d.ts` in the same change and run `node scripts/release/cli.ts build`, which contains this
+  check. Otherwise the mistake only shows up in `release prepare` of the next release.
 - **Type check:** `npm run typecheck` checks every library, util and theme with a `tsconfig.json`
   plus `scripts/release`, and fails on any error. `release prepare` runs it, so a type error
   stops a release. The release build itself uses `tsc --noCheck`. The gate runs without the

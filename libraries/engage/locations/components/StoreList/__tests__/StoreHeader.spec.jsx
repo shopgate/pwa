@@ -2,6 +2,7 @@ import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { FulfillmentContext } from '../../../locations.context';
 import { StoreContext } from '../Store.context';
+import { isProductAvailable } from '../../../helpers';
 import { StoreHeader } from '../StoreHeader';
 
 const context = {
@@ -50,5 +51,40 @@ describe('engage > locations > StoreList > StoreHeader', () => {
       </FulfillmentContext.Provider>
     ));
     expect(screen.getByText('SomeStore')).toBeTruthy();
+  });
+
+  it('should expose a stable class and the unavailable state for custom styling', () => {
+    /**
+     * @returns {HTMLElement|null} The root element of the header.
+     */
+    const renderHeader = () => {
+      const { container, unmount } = render((
+        <FulfillmentContext.Provider value={context}>
+          <StoreContext.Provider value={store}>
+            <StoreHeader />
+          </StoreContext.Provider>
+        </FulfillmentContext.Provider>
+      ));
+      const header = container.querySelector('.engage__locations__store-list__store__header');
+      const unavailable = header ? header.hasAttribute('data-unavailable') : null;
+      unmount();
+
+      return {
+        found: !!header,
+        unavailable,
+      };
+    };
+
+    expect(renderHeader()).toEqual({
+      found: true,
+      unavailable: false,
+    });
+
+    isProductAvailable.mockReturnValueOnce(false);
+
+    expect(renderHeader()).toEqual({
+      found: true,
+      unavailable: true,
+    });
   });
 });

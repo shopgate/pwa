@@ -44,9 +44,9 @@ An extension with tests:
     "coverage:watch": "jest --coverage --watch"
   },
   "devDependencies": {
-    "@shopgate/engage": "^7.33.1",
-    "@shopgate/eslint-config": "^7.33.1",
-    "@shopgate/pwa-unit-test": "^7.33.1",
+    "@shopgate/engage": "^7.33.2",
+    "@shopgate/eslint-config": "^7.33.2",
+    "@shopgate/pwa-unit-test": "^7.33.2",
     "eslint": "^8.57.1",
     "jest": "^29.7.0",
     "react": "^17.0.2",
@@ -56,16 +56,28 @@ An extension with tests:
 ```
 
 An extension without tests, which is the more common case, has only the `lint` script and no
-`jest` entry. Everything else stays the same.
+`jest` entry. An extension without React code also leaves out `react` and `react-dom`, see
+[Dependencies](#dependencies). Everything else stays the same.
 
 This is the base. Other packages are added only when the code imports them: `prop-types` for
 components that declare prop types, `react-redux` and `reselect` only when the extension accesses
 the store, and so on. See [Dependencies](#dependencies).
 
-- **`@shopgate` packages:** these three, all at the current version, at least `7.33.1`.
-  `@shopgate/engage` brings the main libraries, `@shopgate/eslint-config` the lint rules with
-  their plugins, `@shopgate/pwa-unit-test` the Jest and Babel setup for tests. The few other
-  `@shopgate` packages an extension may need are listed under [Dependencies](#dependencies).
+- **`@shopgate` packages:** these three. `@shopgate/engage` brings the main libraries,
+  `@shopgate/eslint-config` the lint rules with their plugins, `@shopgate/pwa-unit-test` the Jest
+  and Babel setup for tests. The few other `@shopgate` packages an extension may need are listed
+  under [Dependencies](#dependencies).
+  - `@shopgate/eslint-config` and `@shopgate/pwa-unit-test` are tooling and stay at the current
+    version.
+  - `@shopgate/engage` decides which APIs the editor, lint and tests offer, and shops run older
+    PWA versions as well. It is `^7.33.2`: the first version with the complete tooling (the
+    TypeScript config for extensions exists since 7.33.0, the import path proposals work since
+    7.33.1), and a version without new APIs that aren't rolled out widely yet. Use a newer
+    version only when the extension's minimum PWA version is newer; then both are the same, e.g.
+    `^7.35.0` with `>=7.35.0`. The lockfile keeps the installed version; don't update engage in
+    it beyond that version.
+  - The cleanup raises a lower version to `^7.33.2`, and never beyond the higher of `7.33.2` and
+    the minimum. A version above both is lowered to it and named in the report.
 - **`@shopgate/pwa-unit-test` in every extension,** also in one without tests. It brings the Jest
   types that the TypeScript config of engage lists; without them the editor reports an error for
   the `jsconfig.json`. It has `jest` as a peer dependency, so npm installs Jest in an extension
@@ -94,8 +106,9 @@ the store, and so on. See [Dependencies](#dependencies).
 
 ### Minimum PWA version
 
-`peerDependencies` states the oldest PWA version the extension runs with. It is independent of the
-versions under `devDependencies`, which are the ones used for development.
+`peerDependencies` states the oldest PWA version the extension runs with. The `@shopgate/engage`
+version under `devDependencies` is the one used for development: `^7.33.2`, or the minimum when
+that is newer, see [`package.json`](#packagejson).
 
 ```json
 "peerDependencies": {
@@ -126,39 +139,45 @@ key such as `peerDependenciees` after moving its entries the same way.
 
 ### Dependencies
 
-Every package that the extension's code imports directly is declared, and nothing else. Where a
-package goes depends on who provides it when the app runs:
+Every package that the extension's code imports directly is declared, and nothing else. An
+extension never relies on a package that only arrives as a dependency of a PWA package: when that
+package is replaced or removed there, the extension breaks. The exceptions are the test libraries
+of `@shopgate/pwa-unit-test` and the ESLint plugins and parsers of `@shopgate/eslint-config`,
+which the two packages provide on purpose. Where a package goes depends on who provides it when
+the app runs:
 
 | The package is … | Goes into | Examples |
 | --- | --- | --- |
-| provided through webpack at runtime | `devDependencies` | `react`, `react-dom`, `react-redux`, `redux`, `reselect`, `prop-types`, `lodash`, `@virtuous/conductor` |
-| brought by a core library and shared through the theme | `devDependencies`, in the version of that library | `rxjs` and `intl-messageformat` from `@shopgate/pwa-common` |
-| used at runtime and not provided through webpack | `dependencies`; ask the developer before adding one | a library only this extension uses, e.g. `react-spring` |
+| in the alias list of webpack | `devDependencies` | `react`, `react-dom`, `react-redux`, `redux`, `reselect`, `prop-types`, `lodash`, `@virtuous/conductor`, `rxjs` |
+| used at runtime and not in the alias list | `dependencies`; ask the developer before adding one | a library only this extension uses, e.g. `react-spring`; `intl-messageformat`, which `@shopgate/pwa-common` brings without an alias; `classnames` and `react-portal`, which the theme declares without an alias; `@shopgate/native-modules`, of which the bundle may contain several versions, in the version of engage or a higher one |
 | only used by tests, lint or scripts | `devDependencies` | `jest`, `redux-mock-store` |
-| a library that `@shopgate/engage` brings | not declared | `@shopgate/pwa-common`, `pwa-common-commerce`, `pwa-core`, `pwa-ui-ios`, `pwa-ui-material`, `pwa-ui-shared`, `native-modules` |
+| a library that `@shopgate/engage` brings | not declared | `@shopgate/pwa-common`, `pwa-common-commerce`, `pwa-core`, `pwa-ui-ios`, `pwa-ui-material`, `pwa-ui-shared` |
 | a core library that engage doesn't bring | `devDependencies`, in the version of engage | `@shopgate/pwa-tracking`, `@shopgate/tracking-core`, `@shopgate/pwa-webcheckout-shopify` |
 | a test library that `@shopgate/pwa-unit-test` brings | not declared | `@testing-library/react`, `@testing-library/jest-dom`, `enzyme` |
-| legacy and replaced by something the PWA offers | `devDependencies` as long as the code imports it, see below | `@shopgate-ps/pwa-extension-kit`, `classnames`, `react-portal` |
+| legacy and replaced by something the PWA offers | as long as the code imports it: `devDependencies` when aliased, otherwise `dependencies`, see below | `@shopgate-ps/pwa-extension-kit` (aliased), `classnames`, `react-portal` |
 
-- **Is it provided through webpack?** Two places decide it. The `resolve.alias` list in
-  `utils/webpack/webpack.config.js` names the packages that are always taken from the theme's
-  copy. Packages in the `dependencies` of `themes/theme-ios11/package.json` are found in the
-  theme as well. What the extension installs of these packages only serves lint, tests and the
-  editor.
-- **Everything else the code uses at runtime goes under `dependencies`.** These are the packages
-  only this extension brings.
+- **Is it provided through webpack?** Only the `resolve.alias` list in
+  `utils/webpack/webpack.config.js` decides it (`rxjs` through `rxPaths()`). Webpack always takes
+  these packages from the theme's copy, so what the extension installs of them only serves lint,
+  tests and the editor. The PWA aliases the packages that must not end up in the bundle in more
+  than one version.
+- **Everything else the code uses at runtime goes under `dependencies`,** also when the theme or a
+  core library happens to bring the package along. Webpack looks into the extension's own
+  `node_modules` first, so its installed copy is bundled; without one, the import only resolves
+  as long as npm hoists another package's dependency to a place webpack searches.
 - **When to ask the developer.** Move a package from `dependencies` to `devDependencies` without
-  asking when it is in the alias list of webpack or is a core library: its installed copy is
-  never bundled, so the move can't change the app. A package that is under `dependencies`
-  already, is imported and isn't provided by webpack or the theme stays there without a
-  question, and is named in the report. Ask in every other case: before a package that is only
-  found through the theme's `dependencies`, such as `classnames`, changes its section, and
-  before a package is added to `dependencies`. Name where the code imports it. Don't decide
-  these cases alone.
+  asking when it is in the alias list of webpack: its installed copy is never bundled, so the
+  move can't change the app. A package that is under `dependencies` already, is imported and
+  isn't in the alias list stays there without a question, and is named in the report. Ask
+  before a package is added to `dependencies`, also when it moves there from `devDependencies`,
+  such as `classnames`. Name where the code imports it. Don't decide these cases alone.
 - **A runtime package that isn't declared at all** only works as long as another package happens
   to bring it along. Check this case most carefully.
-- **Take the version range from the theme's `package.json`** for packages the theme provides.
-  Report it when the code needs another major version.
+- **Take the version range from the theme's `package.json`** for packages the theme declares, and
+  from the core library that brings a package otherwise, such as `rxjs` and `intl-messageformat`
+  from `@shopgate/pwa-common`. Report it when the code needs another major version.
+  `@shopgate/native-modules` is the exception: the extension may also use a higher version than
+  engage does.
 - **`react` and `react-dom`:** Babel uses the automatic JSX runtime, so a file that only contains
   JSX needs no `import React`, and the lint rules don't ask for it. The packages are still
   needed: the compiled JSX loads `react/jsx-runtime`, and most components import hooks from
@@ -166,10 +185,19 @@ package goes depends on who provides it when the app runs:
   its own, but as soon as another package with a React peer dependency is declared, such as
   `react-redux`, the install fails without them, because npm then picks a newer React for that
   package.
-- **Legacy packages go when nothing imports them anymore.** The theme still provides them, so
-  code that uses them keeps working. The cleanup makes one replacement itself, the import of
-  `isIOSTheme`. Every other import is reported, and the package stays under `devDependencies`
-  until a developer has replaced it.
+  - Leave both out when the frontend has no React code at all. That means: no JSX and no import
+    from `react` or a React library such as `@testing-library/react`, in the code as well as in
+    the specs, and no declared package with a React peer dependency.
+    - The three `@shopgate` packages don't count as such a package. Every extension has them, and
+      `@shopgate/pwa-unit-test` brings React 17 on its own.
+    - An extension that only registers subscriptions or reducers is such a case, also when it has
+      tests for them.
+    - Add both as soon as one of the conditions applies.
+- **Legacy packages go when nothing imports them anymore.** Until then they stay declared, so code
+  that uses them keeps working: the aliased extension kit under `devDependencies`, `classnames`
+  and `react-portal` under `dependencies`. The cleanup makes one replacement itself, the import of
+  `isIOSTheme`. Every other import is reported, and the package stays declared until a developer
+  has replaced it.
   - `@shopgate-ps/pwa-extension-kit` and `@shopgate/pwa-extension-kit`:
     - `isIOSTheme` is replaced as part of the cleanup, see
       [Code changes](#code-changes-that-are-part-of-the-cleanup).

@@ -36,8 +36,14 @@ const Toggle = ({ label, selected = null }: ToggleProps) => {
   const { classes, cx } = useStyles();
 
   return (
-    <div className={classes.toggle}>
-      <span className={cx(classes.label, 'filter-selector-toggle-label')}>
+    <div className={cx(classes.toggle, 'engage__filter-page__selector__toggle')}>
+      <span
+        className={cx(
+          classes.label,
+          'filter-selector-toggle-label',
+          'engage__filter-page__selector__label'
+        )}
+      >
         {label}
       </span>
       {selected}
