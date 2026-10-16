@@ -10,6 +10,7 @@ import {
   getReviewFilterOptions,
   getReviewListFilters,
   getReviewListSort,
+  isReviewListStale,
 } from '@shopgate/engage/reviews/selectors';
 import { reviewsWillEnter$ } from '@shopgate/engage/reviews/streams';
 
@@ -45,6 +46,10 @@ export default function reviews(subscribe) {
       productId,
       variantId: null,
     };
+
+    if (!isReviewListStale(state, listProps)) {
+      return;
+    }
 
     dispatch(fetchReviews(
       baseProductId,

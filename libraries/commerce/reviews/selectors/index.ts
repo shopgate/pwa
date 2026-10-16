@@ -246,6 +246,22 @@ export const hasReviewListError = createSelector(
 );
 
 /**
+ * Whether the review list of the current base product has to be requested again.
+ * Not memoized, because the result depends on the current time.
+ * @param state The current application state.
+ * @param props The product id and an optional variant id.
+ * @returns True when the list is missing, failed or expired, false while a request runs.
+ */
+export const isReviewListStale = (
+  state: ReviewsProductState,
+  props?: ReviewsProductProps
+) => {
+  const collection = getCollectionForCurrentBaseProduct(state, props);
+
+  return !collection || (!collection.isFetching && (collection.expires ?? 0) <= Date.now());
+};
+
+/**
  * Whether the review list of the current base product is still loading.
  * @param state The current application state.
  * @returns True while a request runs or before the first response, unless the last request failed.

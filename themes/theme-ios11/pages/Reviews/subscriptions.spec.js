@@ -8,6 +8,7 @@ import {
   getReviewFilterOptions,
   getReviewListFilters,
   getReviewListSort,
+  isReviewListStale,
 } from '@shopgate/engage/reviews/selectors';
 import { reviewsWillEnter$ } from '@shopgate/engage/reviews/streams';
 import subscriber from './subscriptions';
@@ -22,6 +23,7 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => ({
   getReviewFilterOptions: jest.fn(),
   getReviewListFilters: jest.fn(),
   getReviewListSort: jest.fn(),
+  isReviewListStale: jest.fn(),
 }));
 
 describe('Reviews subscriptions', () => {
@@ -42,6 +44,7 @@ describe('Reviews subscriptions', () => {
     getProduct.mockReturnValue({ id: 'variant' });
     getReviewListSort.mockReturnValue('rateDesc');
     getReviewListFilters.mockReturnValue({ filterMedia: true });
+    isReviewListStale.mockReturnValue(true);
     getReviewFilterOptions.mockReturnValue([{
       param: 'filterRate',
       type: 'rate',
@@ -91,7 +94,7 @@ describe('Reviews subscriptions', () => {
     expect(dispatch).toHaveBeenCalledTimes(1);
   });
 
-  it('should keep the selected sort and filter when the route is entered by going back', () => {
+  it('should request a stale list with the selected sort and filter when going back', () => {
     reviewsWillEnterCallback(createParams(ACTION_POP));
 
     const listProps = {
@@ -107,6 +110,28 @@ describe('Reviews subscriptions', () => {
       'rateDesc',
       { filterMedia: true }
     );
+  });
+
+  it('should keep the stored list when the route is entered by going back', () => {
+    isReviewListStale.mockReturnValue(false);
+
+    reviewsWillEnterCallback(createParams(ACTION_POP));
+
+    expect(isReviewListStale).toHaveBeenCalledWith(state, {
+      productId: 'variant',
+      variantId: null,
+    });
+    expect(fetchReviews).not.toHaveBeenCalled();
+    expect(dispatch).toHaveBeenCalledTimes(1);
+    expect(dispatch).toHaveBeenCalledWith('fetchProduct');
+  });
+
+  it('should request the list on a new entry even when the stored list is still valid', () => {
+    isReviewListStale.mockReturnValue(false);
+
+    reviewsWillEnterCallback(createParams(ACTION_PUSH));
+
+    expect(fetchReviews).toHaveBeenCalledWith('base', REVIEW_ITEMS_PER_PAGE);
   });
 
   it('should not read the selected sort and filter on a new entry', () => {

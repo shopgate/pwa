@@ -1,24 +1,38 @@
 import uniq from 'lodash/uniq';
 import type { Reducer } from 'redux';
+import { generateResultHash } from '@shopgate/pwa-common/helpers/redux';
 import {
   REVIEWS_LIFETIME,
   REQUEST_REVIEWS,
   RECEIVE_REVIEWS,
   ERROR_REVIEWS,
+  RECEIVE_SUBMIT_REVIEW,
 } from '../constants';
+import { SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS } from '../constants/Pipelines';
 import type { RequestReviewsAction } from '../action-creators/requestReviews';
 import type { ReceiveReviewsAction } from '../action-creators/receiveReviews';
 import type { ErrorReviewsAction } from '../action-creators/errorReviews';
 import { areReviewFiltersEqual } from '../helpers/filters';
 import type { ReviewsByHash } from '../types/reviews';
 
-type ReviewsByHashAction = RequestReviewsAction | ReceiveReviewsAction | ErrorReviewsAction;
+type ReceiveSubmitReviewAction = {
+  type: typeof RECEIVE_SUBMIT_REVIEW;
+  review: {
+    productId: string;
+  };
+};
+
+type ReviewsByHashAction =
+  | RequestReviewsAction
+  | ReceiveReviewsAction
+  | ErrorReviewsAction
+  | ReceiveSubmitReviewAction;
 
 /**
  * Stores a collection of products by the related hash of the request parameters.
  * Responses are only applied when they belong to the latest request of a collection.
  * A first page replaces the collection, later pages are only appended for the same sort and
- * filter.
+ * filter. A submitted review expires the list of its product without marking it as failed.
  * @param state The current state.
  * @param action The current redux action.
  * @returns The new state.
@@ -96,6 +110,24 @@ const reviewsByHash: Reducer<ReviewsByHash, ReviewsByHashAction> = (
           ...collection,
           isFetching: false,
           expires: 0,
+        },
+      };
+    }
+    case RECEIVE_SUBMIT_REVIEW: {
+      const hash = generateResultHash({
+        pipeline: SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS,
+        productId: action.review.productId,
+      }, false);
+
+      if (!state[hash]) {
+        return state;
+      }
+
+      return {
+        ...state,
+        [hash]: {
+          ...state[hash],
+          expires: Date.now(),
         },
       };
     }

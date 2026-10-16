@@ -15,6 +15,7 @@ import {
   isReviewListMissing,
   isReviewListLoading,
   hasReviewListError,
+  isReviewListStale,
   getReviewListRequestOffset,
   hasMoreReviews,
   getReviewListSort,
@@ -311,6 +312,7 @@ describe('Reviews selectors', () => {
       missing: isReviewListMissing(state, propsProductId),
       loading: isReviewListLoading(state, propsProductId),
       error: hasReviewListError(state, propsProductId),
+      stale: isReviewListStale(state, propsProductId),
       requestOffset: getReviewListRequestOffset(state, propsProductId),
     });
 
@@ -319,6 +321,7 @@ describe('Reviews selectors', () => {
         missing: true,
         loading: true,
         error: false,
+        stale: true,
         requestOffset: 0,
       });
     });
@@ -332,6 +335,7 @@ describe('Reviews selectors', () => {
         missing: false,
         loading: true,
         error: false,
+        stale: false,
         requestOffset: 0,
       });
     });
@@ -346,6 +350,7 @@ describe('Reviews selectors', () => {
         missing: false,
         loading: true,
         error: false,
+        stale: false,
         requestOffset: 2,
       });
     });
@@ -360,6 +365,7 @@ describe('Reviews selectors', () => {
         missing: false,
         loading: false,
         error: false,
+        stale: false,
         requestOffset: 0,
       });
     });
@@ -373,6 +379,7 @@ describe('Reviews selectors', () => {
         missing: false,
         loading: false,
         error: true,
+        stale: true,
         requestOffset: 0,
       });
     });
@@ -387,6 +394,35 @@ describe('Reviews selectors', () => {
         missing: false,
         loading: false,
         error: true,
+        stale: true,
+        requestOffset: 2,
+      });
+    });
+
+    it('should report a list expiring now as stale', () => {
+      jest.useFakeTimers();
+      jest.setSystemTime(1000);
+
+      expect(isReviewListStale(buildState({
+        isFetching: false,
+        expires: 1000,
+        reviews: [1, 2],
+      }), propsProductId)).toBe(true);
+
+      jest.useRealTimers();
+    });
+
+    it('should report an expired list as stale but not as failed', () => {
+      expect(getFlags(buildState({
+        isFetching: false,
+        expires: Date.now() - 1,
+        reviews: [1, 2],
+        requestOffset: 2,
+      }))).toEqual({
+        missing: false,
+        loading: false,
+        error: false,
+        stale: true,
         requestOffset: 2,
       });
     });
