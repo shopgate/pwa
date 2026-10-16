@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { ERROR_HANDLE_SUPPRESS } from '@shopgate/pwa-core/constants/ErrorHandleTypes';
 import { shouldFetchData, mutable } from '@shopgate/pwa-common/helpers/redux';
 import { SORT_RELEVANCE } from '@shopgate/pwa-common/constants/DisplayOptions';
 import type { Dispatch } from 'redux';
@@ -51,6 +52,7 @@ function fetchProductReviews(
         limit,
         sort,
       })
+      .setHandleErrors(ERROR_HANDLE_SUPPRESS)
       .dispatch();
 
     request

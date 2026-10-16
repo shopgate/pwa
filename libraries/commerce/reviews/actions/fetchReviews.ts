@@ -1,4 +1,5 @@
 import PipelineRequest from '@shopgate/pwa-core/classes/PipelineRequest';
+import { ERROR_HANDLE_SUPPRESS } from '@shopgate/pwa-core/constants/ErrorHandleTypes';
 import { SORT_DATE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions';
 import { generateResultHash, mutable } from '@shopgate/pwa-common/helpers/redux';
 import type { Dispatch } from 'redux';
@@ -84,6 +85,7 @@ function fetchReviews(
         ...(after ? { after } : requestOffset > 0 && { offset: requestOffset }),
         ...activeFilters,
       })
+      .setHandleErrors(ERROR_HANDLE_SUPPRESS)
       .dispatch();
 
     request

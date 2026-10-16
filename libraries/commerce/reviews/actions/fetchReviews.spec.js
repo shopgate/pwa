@@ -1,4 +1,5 @@
 import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
+import { ERROR_HANDLE_SUPPRESS } from '@shopgate/pwa-core/constants/ErrorHandleTypes';
 import { generateResultHash, mutableActions } from '@shopgate/pwa-common/helpers/redux';
 import { REQUEST_REVIEWS, RECEIVE_REVIEWS, ERROR_REVIEWS } from '../constants';
 import { SHOPGATE_CATALOG_GET_PRODUCT_REVIEWS } from '../constants/Pipelines';
@@ -78,11 +79,17 @@ describe('Reviews actions: fetchReviews', () => {
   });
 
   it('should dispatch the error with the request id on failure', async () => {
-    mockedResolver = (mockInstance, resolve, reject) => reject(new Error('failed'));
+    let handleErrors;
+    mockedResolver = (mockInstance, resolve, reject) => {
+      ({ handleErrors } = mockInstance);
+      reject(new Error('failed'));
+    };
     const dispatch = jest.fn();
 
     await fetchReviews('foo', 10, 0)(dispatch, createGetState()).catch(() => undefined);
     await Promise.resolve();
+
+    expect(handleErrors).toBe(ERROR_HANDLE_SUPPRESS);
 
     const [[requestAction]] = dispatch.mock.calls;
     expect(dispatch).toHaveBeenCalledWith({
