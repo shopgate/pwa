@@ -1,5 +1,5 @@
-import { RouteContext } from '@shopgate/pwa-common/context';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
+import { RouteContext } from '@shopgate/engage/core/contexts';
+import { hex2bin } from '@shopgate/engage/core/helpers';
 import { View } from '@shopgate/engage/components';
 import { ReviewsPage } from '@shopgate/engage/reviews';
 import { BackBar } from 'Components/AppBar/presets';

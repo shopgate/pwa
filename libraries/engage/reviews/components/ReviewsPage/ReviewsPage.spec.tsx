@@ -3,10 +3,9 @@ import type { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { render, screen, fireEvent } from '@testing-library/react';
-import appConfig from '@shopgate/pwa-common/helpers/config';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
-import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
-import { PRODUCT_REVIEWS_ALL } from '@shopgate/pwa-common-commerce/reviews/constants/Portals';
+import { appConfig } from '@shopgate/engage';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { PRODUCT_REVIEWS_ALL, REVIEW_ITEMS_PER_PAGE } from '@shopgate/engage/reviews/constants';
 import type {
   Review,
   ReviewFilterOption,

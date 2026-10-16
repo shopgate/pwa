@@ -1,14 +1,14 @@
 import { memo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
-import appConfig from '@shopgate/pwa-common/helpers/config';
-import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
-import { REVIEW_FEATURE_RATING_SUMMARY } from '@shopgate/pwa-common-commerce/reviews/constants';
+import { appConfig } from '@shopgate/engage';
+import { REVIEW_FEATURE_RATING_SUMMARY } from '@shopgate/engage/reviews/constants';
 import {
   getReviewSummary,
   hasReviewFeature,
   isProductReviewsExcerptPending,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
+} from '@shopgate/engage/reviews/selectors';
 import {
+  PlaceholderLabel,
   RatingStars,
   SurroundPortals,
 } from '@shopgate/engage/components';

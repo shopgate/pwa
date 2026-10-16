@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { appConfig } from '@shopgate/engage';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -21,13 +21,13 @@ import {
   isReviewListLoading,
   isReviewListMissing,
   isReviewListQueryChanged,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
-import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
+} from '@shopgate/engage/reviews/selectors';
+import { fetchReviews } from '@shopgate/engage/reviews/actions';
 import {
+  PRODUCT_REVIEWS_ALL,
   REVIEW_FEATURE_RATING_SUMMARY,
   REVIEW_ITEMS_PER_PAGE,
-} from '@shopgate/pwa-common-commerce/reviews/constants';
-import { PRODUCT_REVIEWS_ALL } from '@shopgate/pwa-common-commerce/reviews/constants/Portals';
+} from '@shopgate/engage/reviews/constants';
 import {
   areReviewFiltersEqual,
   getActiveReviewFilters,

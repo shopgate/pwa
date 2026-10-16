@@ -1,13 +1,12 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import appConfig from '@shopgate/pwa-common/helpers/config';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { historyPush } from '@shopgate/pwa-common/actions/router';
+import { appConfig } from '@shopgate/engage';
+import { historyPush } from '@shopgate/engage/core/actions';
+import { bin2hex } from '@shopgate/engage/core/helpers';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { PRODUCT_REVIEWS } from '@shopgate/engage/product/constants';
+import { ITEM_PATH, PRODUCT_REVIEWS } from '@shopgate/engage/product/constants';
 import { getBaseProductId, makeIsBaseProductActive } from '@shopgate/engage/product/selectors/product';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import {
   getProductReviewsExcerpt,
   getReviewFilterOptions,
@@ -16,12 +15,12 @@ import {
   hasReviewFeature,
   isProductReviewsExcerptLoading,
   isProductReviewsExcerptMissing,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
-import fetchProductReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchProductReviews';
+} from '@shopgate/engage/reviews/selectors';
+import { fetchProductReviews } from '@shopgate/engage/reviews/actions';
 import {
   REVIEW_FEATURE_RATING_SUMMARY,
   REVIEW_PREVIEW_COUNT,
-} from '@shopgate/pwa-common-commerce/reviews/constants';
+} from '@shopgate/engage/reviews/constants';
 import type {
   Review,
   ReviewsConfig,

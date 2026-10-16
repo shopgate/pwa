@@ -1,7 +1,6 @@
 import { I18n } from '@shopgate/engage/components';
-import { i18n } from '@shopgate/engage/core/helpers';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { bin2hex, i18n } from '@shopgate/engage/core/helpers';
+import { ITEM_PATH } from '@shopgate/engage/product/constants';
 import { Button } from '@shopgate/engage/components/v2';
 
 export interface WriteReviewLinkProps {

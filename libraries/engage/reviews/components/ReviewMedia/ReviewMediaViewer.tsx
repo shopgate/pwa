@@ -1,8 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
-import CrossIcon from '@shopgate/pwa-ui-shared/icons/CrossIcon';
 import { FocusTrap } from '@shopgate/engage/a11y/components';
 import { useTrackModalState } from '@shopgate/engage/a11y/hooks';
-import { ConnectedReactPortal, Swiper, VideoPlayer } from '@shopgate/engage/components';
+import {
+  ConnectedReactPortal,
+  CrossIcon,
+  Swiper,
+  VideoPlayer,
+} from '@shopgate/engage/components';
 import { IconButton } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';

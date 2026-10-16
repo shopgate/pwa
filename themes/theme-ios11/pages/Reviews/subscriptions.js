@@ -1,17 +1,17 @@
 import { ACTION_POP } from '@virtuous/conductor';
-import { SORT_DATE_DESC } from '@shopgate/pwa-common/constants/DisplayOptions';
-import { hex2bin } from '@shopgate/pwa-common/helpers/data';
-import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchProduct';
+import { SORT_DATE_DESC } from '@shopgate/engage/core/constants';
+import { hex2bin } from '@shopgate/engage/core/helpers';
+import { fetchProduct } from '@shopgate/engage/product';
 import { getBaseProductId, getProduct } from '@shopgate/engage/product/selectors/product';
-import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
-import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
+import { fetchReviews } from '@shopgate/engage/reviews/actions';
+import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/engage/reviews/constants';
 import { getActiveReviewFilters } from '@shopgate/pwa-common-commerce/reviews/helpers/filters';
 import {
   getReviewFilterOptions,
   getReviewListFilters,
   getReviewListSort,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
-import { reviewsWillEnter$ } from '@shopgate/pwa-common-commerce/reviews/streams';
+} from '@shopgate/engage/reviews/selectors';
+import { reviewsWillEnter$ } from '@shopgate/engage/reviews/streams';
 
 /**
  * @param {Function} subscribe The subscribe function.

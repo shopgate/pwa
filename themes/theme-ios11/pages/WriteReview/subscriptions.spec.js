@@ -3,7 +3,7 @@ import { LoadingProvider } from '@shopgate/pwa-common/providers';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import requestSubmitReview from '@shopgate/pwa-common-commerce/reviews/action-creators/requestSubmitReview';
 import fetchUserReview from '@shopgate/pwa-common-commerce/reviews/actions/fetchUserReview';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
+import { bin2hex } from '@shopgate/engage/core/helpers';
 import { writeReviewRouteWillEnter$ } from './streams';
 import subscriber from './subscriptions';
 

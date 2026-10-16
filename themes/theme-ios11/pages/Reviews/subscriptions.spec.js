@@ -1,15 +1,15 @@
 import { ACTION_POP, ACTION_PUSH } from '@virtuous/conductor';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchProduct';
+import { bin2hex } from '@shopgate/engage/core/helpers';
+import { fetchProduct } from '@shopgate/engage/product';
 import { getBaseProductId, getProduct } from '@shopgate/engage/product/selectors/product';
-import fetchReviews from '@shopgate/pwa-common-commerce/reviews/actions/fetchReviews';
-import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/pwa-common-commerce/reviews/constants';
+import { fetchReviews } from '@shopgate/engage/reviews/actions';
+import { REVIEW_ITEMS_PER_PAGE } from '@shopgate/engage/reviews/constants';
 import {
   getReviewFilterOptions,
   getReviewListFilters,
   getReviewListSort,
-} from '@shopgate/pwa-common-commerce/reviews/selectors';
-import { reviewsWillEnter$ } from '@shopgate/pwa-common-commerce/reviews/streams';
+} from '@shopgate/engage/reviews/selectors';
+import { reviewsWillEnter$ } from '@shopgate/engage/reviews/streams';
 import subscriber from './subscriptions';
 
 jest.mock('@shopgate/pwa-common-commerce/product/actions/fetchProduct', () => jest.fn(() => 'fetchProduct'));

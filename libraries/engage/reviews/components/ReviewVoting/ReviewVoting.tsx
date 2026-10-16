@@ -4,9 +4,9 @@ import { I18n, Typography } from '@shopgate/engage/components';
 import { ButtonBase } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
-import submitReviewVote from '@shopgate/pwa-common-commerce/reviews/actions/submitReviewVote';
-import { REVIEW_FEATURE_VOTES } from '@shopgate/pwa-common-commerce/reviews/constants';
-import { getOwnReviewVote, hasReviewFeature } from '@shopgate/pwa-common-commerce/reviews/selectors';
+import { submitReviewVote } from '@shopgate/engage/reviews/actions';
+import { REVIEW_FEATURE_VOTES } from '@shopgate/engage/reviews/constants';
+import { getOwnReviewVote, hasReviewFeature } from '@shopgate/engage/reviews/selectors';
 import type {
   Review,
   ReviewVote,

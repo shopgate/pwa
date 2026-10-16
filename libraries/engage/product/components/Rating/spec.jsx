@@ -12,7 +12,11 @@ import Rating from './index';
 import { getElementById } from './mock';
 
 setMocks();
-jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/components', () => Object.assign(
+  Object.create(jest.requireActual('@shopgate/engage/components/__mocks__')),
+  // eslint-disable-next-line react/prop-types
+  { PlaceholderLabel: ({ className }) => <div className={className} /> }
+));
 
 describe('Rating (product header)', () => {
   const mockedStore = configureStore();

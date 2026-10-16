@@ -1,7 +1,7 @@
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { I18n } from '@shopgate/engage/components';
-import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants/index';
-import { REVIEW_PREVIEW_COUNT } from '@shopgate/pwa-common-commerce/reviews/constants';
+import { bin2hex } from '@shopgate/engage/core/helpers';
+import { ITEM_PATH } from '@shopgate/engage/product/constants';
+import { REVIEW_PREVIEW_COUNT } from '@shopgate/engage/reviews/constants';
 import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './connector';

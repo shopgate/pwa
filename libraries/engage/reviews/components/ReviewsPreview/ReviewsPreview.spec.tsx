@@ -3,11 +3,11 @@ import type { ReactElement, ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { render, screen, fireEvent } from '@testing-library/react';
-import appConfig from '@shopgate/pwa-common/helpers/config';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { appConfig } from '@shopgate/engage';
+import { SurroundPortals } from '@shopgate/engage/components';
+import { bin2hex } from '@shopgate/engage/core/helpers';
 import { PRODUCT_REVIEWS } from '@shopgate/engage/product/constants';
-import { REVIEW_PREVIEW_COUNT } from '@shopgate/pwa-common-commerce/reviews/constants';
+import { REVIEW_PREVIEW_COUNT } from '@shopgate/engage/reviews/constants';
 import type { Review } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import type { ReviewSummary } from '@shopgate/pwa-common-commerce/reviews/types/reviewSummary';
 import ReviewsPreview from './ReviewsPreview';
@@ -65,7 +65,7 @@ jest.mock('@shopgate/pwa-common-commerce/reviews/selectors', () => {
     hasProductReviewsExcerptError: mockBaseSelector(() => mockPreview.error, false),
   };
 });
-jest.mock('@shopgate/pwa-common/actions/router', () => ({
+jest.mock('@shopgate/pwa-common/actions/router/historyPush', () => ({
   historyPush: (params: unknown) => ({
     type: 'HISTORY_PUSH',
     params,

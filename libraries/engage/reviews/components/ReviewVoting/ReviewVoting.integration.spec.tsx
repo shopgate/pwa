@@ -3,10 +3,10 @@ import { applyMiddleware, combineReducers, createStore } from 'redux';
 import type { Reducer } from 'redux';
 import { thunk } from 'redux-thunk';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { mockedPipelineRequestFactory } from '@shopgate/pwa-core/classes/PipelineRequest/mock';
+import { mockedPipelineRequestFactory } from '@shopgate/engage/mocks';
 import reviewsById from '@shopgate/pwa-common-commerce/reviews/reducers/reviewsById';
 import ownReviewVotes from '@shopgate/pwa-common-commerce/reviews/reducers/ownReviewVotes';
-import { getReviews } from '@shopgate/pwa-common-commerce/reviews/selectors';
+import { getReviews } from '@shopgate/engage/reviews/selectors';
 import ReviewVoting from './ReviewVoting';
 
 jest.mock(

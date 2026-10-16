@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
-import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_REVIEWS_ENTRY } from '@shopgate/engage/product/constants';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import type { Review } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
