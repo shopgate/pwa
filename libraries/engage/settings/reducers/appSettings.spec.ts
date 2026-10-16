@@ -25,6 +25,44 @@ describe('settings / reducers / appSettings', () => {
     expect(DEFAULT_APP_SETTINGS.product.rating.showEmptyStars).toBe(false);
   });
 
+  it('defaults to showing the manufacturer on the product page', () => {
+    expect(DEFAULT_APP_SETTINGS.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it('hides the manufacturer on the product page when the payload turns it off', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: false } },
+    }));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(false);
+    expect(state.product.rating).toEqual(DEFAULT_APP_SETTINGS.product.rating);
+  });
+
+  it('falls back to showing the manufacturer when a later payload omits the setting', () => {
+    const hidden = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: false } },
+    }));
+    const state = appSettings(hidden, receiveAppSettings({ product: {} }));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it.each([null, 'false', 0])('keeps showing the manufacturer for the value %p', (value) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: value } },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it.each([null, 'hidden', [false]])('ignores the manufacturer branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: branch },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.manufacturer).toEqual(DEFAULT_APP_SETTINGS.product.manufacturer);
+  });
+
   it('ignores unrelated actions', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, { type: 'SOME_OTHER_ACTION' });
 
@@ -63,6 +101,9 @@ describe('settings / reducers / appSettings', () => {
         },
         rating: {
           showEmptyStars: false,
+        },
+        manufacturer: {
+          showOnProductPage: false,
         },
         card: {
           productName: { maxLines: 1 },
