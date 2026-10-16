@@ -2,6 +2,7 @@ import {
   APP_FEATURE_PUSH_OPT_IN,
   APP_FEATURE_COOKIE_CONSENT,
   APP_FEATURE_ANDROID_EDGE_TO_EDGE,
+  APP_FEATURE_BIOMETRIC_LOGIN,
 } from '@shopgate/engage/core/constants';
 import {
   hasSGJavaScriptBridge,
@@ -77,4 +78,16 @@ export const appSupportsAndroidEdgeToEdge = () => {
   }
 
   return isFeatureFlagEnabled('StatusBar', APP_FEATURE_ANDROID_EDGE_TO_EDGE);
+};
+
+/**
+ * Determines if the app supports the biometric login feature
+ * @returns {boolean}
+ */
+export const appSupportsBiometricLogin = () => {
+  if (hasWebBridge() || !hasSGJavaScriptBridge()) {
+    return false;
+  }
+
+  return isFeatureFlagEnabled('Keychain', APP_FEATURE_BIOMETRIC_LOGIN);
 };

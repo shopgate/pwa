@@ -65,6 +65,16 @@ describe('Action Creators: user', () => {
       };
       expect(successLogin(redirect, strategy)).toEqual(expected);
     });
+
+    it('should pass the session lifetime and the source of the login on', () => {
+      expect(successLogin(false, 'basic', 3600, { source: 'biometric' })).toEqual({
+        type: SUCCESS_LOGIN,
+        redirect: false,
+        strategy: 'basic',
+        sessionLifetimeInSeconds: 3600,
+        source: 'biometric',
+      });
+    });
   });
 
   describe('errorLogin()', () => {

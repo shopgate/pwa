@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  Grid, I18n,
+  Grid, I18n, SurroundPortals,
 } from '@shopgate/engage/components';
+import { USER_MENU_LOGIN } from '@shopgate/engage/core/constants';
 import { Button } from '@shopgate/engage/components/v2';
 import {
   LOGIN_PATH,
@@ -41,16 +42,18 @@ const LoggedOut = ({ isDisabled }) => {
     <div data-test-id="userMenu">
       <Grid className={cx(classes.grid, 'theme__more-page__user-menu__container')}>
         <Grid.Item className={cx(classes.gridItem, 'theme__more-page__login-button__container')}>
-          <Button
-            href={LOGIN_PATH}
-            color="primary"
-            fullWidth
-            className={cx(classes.button, 'theme__more-page__login-button')}
-            testId="UserMenuLogin"
-            disabled={isDisabled}
-          >
-            <I18n.Text string="login.button" />
-          </Button>
+          <SurroundPortals portalName={USER_MENU_LOGIN} portalProps={{ isDisabled }}>
+            <Button
+              href={LOGIN_PATH}
+              color="primary"
+              fullWidth
+              className={cx(classes.button, 'theme__more-page__login-button')}
+              testId="UserMenuLogin"
+              disabled={isDisabled}
+            >
+              <I18n.Text string="login.button" />
+            </Button>
+          </SurroundPortals>
         </Grid.Item>
         <Grid.Item className={cx(classes.gridItem, 'theme__more-page-register-button__container')}>
           <Button

@@ -21,13 +21,18 @@ import type { AppSettingsState } from '@shopgate/engage/settings/types/appSettin
 import { awaitInitialFrontendSettings } from '@shopgate/engage/admin-preview/initialization/awaitInitialFrontendSettings';
 import { fetchSettings } from './fetchSettings';
 
-declare global {
-  interface Window {
-    SGConnectDev?: {
-      isDevBrowser: boolean;
-      isDev: boolean;
-    };
-  }
+/**
+ * The flags core exposes on the window object in dev mode.
+ */
+interface ConnectDevInfo {
+  /**
+   * Whether the dev app is running in a browser instead of the real app.
+   */
+  isDevBrowser: boolean;
+  /**
+   * Whether the PWA is running in a dev environment.
+   */
+  isDev: boolean;
 }
 
 /**
@@ -64,7 +69,7 @@ export const initialize = async (
 
   if (isDev) {
     // Inject an object to the window that can be used to check if the PWA is running in dev mode
-    window.SGConnectDev = {
+    (window as Window & { SGConnectDev?: ConnectDevInfo }).SGConnectDev = {
       // Indicates the the current dev app is running in a browser - not in the real app
       isDevBrowser: !hasWebBridge() && !hasSGJavaScriptBridge(),
       // Indicates that the PWA is running in a dev environment

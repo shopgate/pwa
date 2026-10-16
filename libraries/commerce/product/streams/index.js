@@ -1,7 +1,7 @@
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/observable/of';
 import { Observable } from 'rxjs/Observable';
-import { ENOTFOUND } from '@shopgate/pwa-core';
+import { ENOTFOUND } from '@shopgate/engage/core/constants';
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { routeWillEnter$, routeWillLeave$, routeDidUpdate$ } from '@shopgate/pwa-common/streams/router';
 import { pwaDidAppear$ } from '@shopgate/pwa-common/streams';
@@ -189,10 +189,8 @@ export const productDataExpired$ = main$
  */
 export const pdpDataNeedsRefresh$ = main$
   .filter(({ action }) => action.type === REFRESH_EXPIRED_PDP_DATA)
-  .filter(({ getState }) => {
-    const { pattern } = getCurrentRoute(getState());
-    return pattern === ITEM_PATTERN;
-  }).switchMap((params) => {
+  .filter(({ getState }) => getCurrentRoute(getState())?.pattern === ITEM_PATTERN)
+  .switchMap((params) => {
     const { getState } = params;
     const route = getCurrentRoute(getState());
     return Observable.of({

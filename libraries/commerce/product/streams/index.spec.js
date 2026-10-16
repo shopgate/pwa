@@ -1,7 +1,7 @@
 /* eslint-disable extra-rules/no-single-line-objects */
 import { combineReducers } from 'redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
-import { ENOTFOUND } from '@shopgate/pwa-core';
+import { ENOTFOUND } from '@shopgate/engage/core/constants';
 import { mainSubject } from '@shopgate/pwa-common/store/middelwares/streams';
 import { bin2hex as mockBin2Hex } from '@shopgate/pwa-common/helpers/data';
 import { routeDidUpdate } from '@shopgate/pwa-common/action-creators/router';
@@ -11,9 +11,12 @@ import router from '@shopgate/pwa-common/reducers/router';
 import product from '@shopgate/pwa-common-commerce/product/reducers';
 import receiveProduct from '@shopgate/pwa-common-commerce/product/action-creators/receiveProduct';
 import errorProduct from '../action-creators/errorProduct';
+import refreshExpiredPDPData from '../action-creators/refreshExpiredPDPData';
 import { ITEM_PATTERN } from '../constants';
 import {
   productReceived$,
+  productWillEnter$,
+  pdpDataNeedsRefresh$,
   variantWillUpdate$,
   variantDidChange$,
   visibleProductNotFound$,
@@ -144,6 +147,53 @@ describe('Product streams', () => {
       const notFound = errorProduct(bin, ENOTFOUND);
       mainSubject.next({ action: notFound });
       expect(subscriber).toHaveBeenCalledTimes(0);
+    });
+  });
+
+  describe('pdpDataNeedsRefresh$', () => {
+    const itemRoute = { pattern: ITEM_PATTERN, params: { productId: 'abc123' }, state: {} };
+    let subscriber;
+
+    beforeEach(() => {
+      subscriber = jest.fn();
+    });
+
+    it('should emit with the current route when a product page is active', () => {
+      pdpDataNeedsRefresh$.subscribe(subscriber);
+      mainSubject.next({
+        action: refreshExpiredPDPData(),
+        getState: () => ({ router: { currentRoute: itemRoute, stack: [] } }),
+      });
+
+      expect(subscriber).toHaveBeenCalledTimes(1);
+      expect(subscriber.mock.calls[0][0].action).toEqual({ route: itemRoute });
+    });
+
+    it('should not emit when another page is active', () => {
+      pdpDataNeedsRefresh$.subscribe(subscriber);
+      mainSubject.next({
+        action: refreshExpiredPDPData(),
+        getState: () => ({ router: { currentRoute: { pattern: '/cart' }, stack: [] } }),
+      });
+
+      expect(subscriber).not.toHaveBeenCalled();
+    });
+
+    it('should keep merged streams alive when there is no current route yet', () => {
+      productWillEnter$.merge(pdpDataNeedsRefresh$).subscribe(subscriber);
+
+      expect(() => mainSubject.next({
+        action: refreshExpiredPDPData(),
+        getState: () => ({ router: { currentRoute: null, stack: [] } }),
+      })).not.toThrow();
+      expect(subscriber).not.toHaveBeenCalled();
+
+      mainSubject.next({
+        action: { type: ROUTE_WILL_ENTER, route: itemRoute },
+        getState: () => ({ router: { currentRoute: itemRoute, stack: [] } }),
+      });
+
+      expect(subscriber).toHaveBeenCalledTimes(1);
     });
   });
 });
