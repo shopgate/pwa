@@ -3,7 +3,7 @@ import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { appConfig } from '@shopgate/engage';
 import { historyPush } from '@shopgate/engage/core/actions';
 import { bin2hex } from '@shopgate/engage/core/helpers';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { I18n, SurroundPortals, Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { ITEM_PATH, PRODUCT_REVIEWS } from '@shopgate/engage/product/constants';
 import { getBaseProductId, makeIsBaseProductActive } from '@shopgate/engage/product/selectors/product';
@@ -41,6 +41,10 @@ const useStyles = makeStyles()(theme => ({
   gutters: {
     padding: theme.spacing(0, 2),
   },
+  title: {
+    paddingTop: '0.8125rem',
+    marginBottom: theme.spacing(1),
+  },
   writeReview: {
     marginTop: theme.spacing(1),
   },
@@ -59,6 +63,8 @@ export interface ReviewsPreviewProps {
   disablePortal?: boolean;
   /** Removes the horizontal inset of the section, for placements that bring their own. */
   disableGutters?: boolean;
+  /** Shows the heading "product.sections.ratings" above the summary. */
+  showTitle?: boolean;
 }
 
 /**
@@ -69,6 +75,7 @@ const ReviewsPreview = ({
   productId,
   disablePortal = false,
   disableGutters = false,
+  showTitle = false,
 }: ReviewsPreviewProps) => {
   const { classes, cx } = useStyles();
   const dispatch = useDispatch() as unknown as (action: unknown) => void;
@@ -135,8 +142,18 @@ const ReviewsPreview = ({
       )}
       data-test-id="reviewSection"
       data-disable-gutters={disableGutters || undefined}
+      data-show-title={showTitle || undefined}
     >
       <div id="reviewsExcerpt" className="engage__reviews__reviews-excerpt">
+        {showTitle && (
+          <Typography
+            variant="h5"
+            component="div"
+            className={cx(classes.title, 'engage__reviews__reviews-preview__title')}
+          >
+            <I18n.Text string="product.sections.ratings" />
+          </Typography>
+        )}
         <ReviewsSummary
           summary={summary}
           isLoading={expectsSummary && isLoading}

@@ -370,8 +370,8 @@ describe('<ReviewsPreview />', () => {
     expect(getActions()).toEqual([]);
   });
 
-  it('should keep the portal contract and the child order of the review section', () => {
-    renderPreview();
+  it.each([false, true])('should keep the portal contract and the child order of the review section (title %s)', (showTitle) => {
+    renderPreview({ showTitle });
 
     const portalCall = jest.mocked(SurroundPortals).mock.calls
       .find(([props]) => props.portalName === PRODUCT_REVIEWS);
@@ -441,6 +441,33 @@ describe('<ReviewsPreview />', () => {
       expect(container.querySelector('[data-test-id="reviewSection"]'))
         .toHaveAttribute('data-disable-gutters', 'true');
     });
+  });
+
+  it('should show the title at the top of the summary block when asked for', () => {
+    const { container } = renderPreview({ showTitle: true });
+
+    const excerpt = container.querySelector('#reviewsExcerpt');
+    const title = container.querySelector('.engage__reviews__reviews-preview__title');
+    expect(excerpt?.firstElementChild).toBe(title);
+    expect(title).toHaveTextContent('product.sections.ratings');
+    expect(container.querySelector('[data-test-id="reviewSection"]'))
+      .toHaveAttribute('data-show-title', 'true');
+  });
+
+  it('should show no title by default', () => {
+    const { container } = renderPreview();
+
+    expect(container.querySelector('.engage__reviews__reviews-preview__title')).not.toBeInTheDocument();
+    expect(container.querySelector('[data-test-id="reviewSection"]'))
+      .not.toHaveAttribute('data-show-title');
+  });
+
+  it('should show no title when reviews are disabled', () => {
+    hasReviewsGetter.mockReturnValue(false);
+
+    const { container } = renderPreview({ showTitle: true });
+
+    expect(container.querySelector('.engage__reviews__reviews-preview__title')).not.toBeInTheDocument();
   });
 
   it('should keep the gutters by default', () => {

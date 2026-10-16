@@ -230,7 +230,7 @@ class ProductContent extends PureComponent {
             */}
           <RelationsSlider desiredPosition="properties" />
           <Section title="product.sections.ratings">
-            <ReviewsPreview productId={productId} />
+            <ReviewsPreview productId={productId} showTitle />
           </Section>
           <TaxDisclaimer />
           <AddToCartBar
