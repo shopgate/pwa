@@ -681,7 +681,7 @@ describe('settings / reducers / appSettings', () => {
       },
       search: {
         persistentBar: {
-          home: true,
+          home: false,
           hideOnScroll: null,
         },
       },
@@ -699,8 +699,8 @@ describe('settings / reducers / appSettings', () => {
       link: '',
     });
     expect(appBar.floating).toEqual(DEFAULT_APP_SETTINGS.navigation.appBar.floating);
-    expect(search.persistentBar.home).toBe(true);
-    expect(search.persistentBar.hideOnScroll).toBe(false);
+    expect(search.persistentBar.home).toBe(false);
+    expect(search.persistentBar.hideOnScroll).toBe(true);
     expect(tabBar.variant).toBe('fixed');
     expect(tabBar.fixed).toEqual(DEFAULT_APP_SETTINGS.navigation.tabBar.fixed);
   });

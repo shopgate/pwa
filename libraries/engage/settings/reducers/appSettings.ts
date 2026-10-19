@@ -177,13 +177,13 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   },
   search: {
     persistentBar: {
-      home: false,
-      category: false,
+      home: true,
+      category: true,
       search: true,
       product: false,
       page: false,
       favorites: false,
-      hideOnScroll: false,
+      hideOnScroll: true,
     },
     showScannerIcon: true,
   },
