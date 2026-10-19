@@ -372,6 +372,7 @@ export type NavigationActionType =
   | 'storeFinder'
   | 'cart'
   | 'favorites'
+  | 'browse'
   | 'categoryDrawer';
 
 /**

@@ -12,7 +12,7 @@ import { STORE_FINDER_PATTERN } from '@shopgate/engage/locations/constants';
 import { useRoute, useNavigation } from '@shopgate/engage/core/hooks';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { useProductShare } from '@shopgate/engage/product/hooks';
-import { BROWSE_PATH, OPEN_SEARCH } from '../constants';
+import { BROWSE_PATH, OPEN_CATEGORY_DRAWER, OPEN_SEARCH } from '../constants';
 import type { NavigationActionHook } from '../types';
 
 const { hasNoScanner, hasFavorites } = (appConfig || {}) as {
@@ -122,11 +122,20 @@ const useFavoritesAction: NavigationActionHook = () => ({
   )),
 });
 
+const useBrowseAction: NavigationActionHook = () => ({
+  available: true,
+  icon: 'browse',
+  label: 'tab_bar.browse',
+  onClick: usePush(BROWSE_PATH),
+});
+
 const useCategoryMenuAction: NavigationActionHook = () => ({
   available: true,
   icon: 'burger',
   label: 'navigation.categories',
-  onClick: usePush(BROWSE_PATH),
+  onClick: useCallback(() => {
+    UIEvents.emit(OPEN_CATEGORY_DRAWER);
+  }, []),
 });
 
 export const CORE_NAVIGATION_ACTIONS: Partial<Record<string, NavigationActionHook>> = {
@@ -137,5 +146,6 @@ export const CORE_NAVIGATION_ACTIONS: Partial<Record<string, NavigationActionHoo
   storeFinder: useStoreFinderAction,
   cart: useCartAction,
   favorites: useFavoritesAction,
+  browse: useBrowseAction,
   categoryDrawer: useCategoryMenuAction,
 };
