@@ -84,7 +84,11 @@ const ValueCheckbox = ({
   }, [id, onToggle]);
 
   return (
-    <div data-test-id={id}>
+    <div
+      className="engage__filter-page__selector__value"
+      data-test-id={id}
+      data-selected={isActive ? '' : undefined}
+    >
       <CheckboxField
         className={classes.root}
         checkboxClassName={classes.checkbox}

@@ -1,8 +1,13 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { PUBLISHABLE_PACKAGES, ROOT, getPublishDir } from '../config.ts';
+import {
+  PUBLISHABLE_PACKAGES, ROOT, getPackageName, getPublishDir,
+} from '../config.ts';
 import type { PublishablePackage } from '../config.ts';
+import { checkConsumer } from '../lib/consumerCheck.ts';
 import { logStep, run } from '../lib/exec.ts';
+import { rewriteAllStarExports } from '../lib/starExports.ts';
+import type { PublishedPackage } from '../lib/starExports.ts';
 
 const REMOVED_DIRS = new Set(['__tests__', 'tests', '__mocks__', '__snapshots__']);
 
@@ -120,11 +125,61 @@ export const build = (pkg: PublishablePackage, root = ROOT) => {
 };
 
 /**
+ * Returns the transpiled packages with their npm names and the directories they are published
+ * from.
+ * @param root The repository root.
+ * @returns The packages.
+ */
+const publishedPackages = (root = ROOT): PublishedPackage[] => (
+  transpiledPackages().map(pkg => ({
+    name: getPackageName(pkg.dir, root),
+    dir: getPublishDir(pkg, root),
+  }))
+);
+
+/**
+ * Makes sure that every name a declaration file re-exports with `export *` reaches the consumer.
+ * A star export to a module that is published without declarations is replaced by the list of
+ * its names. It runs after all packages are built, since a star export can point to another
+ * package.
+ * @param root The repository root.
+ */
+export const completeStarExports = (root = ROOT) => {
+  logStep('Completing star exports of the type declarations');
+
+  const unresolved = rewriteAllStarExports(publishedPackages(root));
+
+  if (unresolved.length > 0) {
+    const list = unresolved
+      .map(({ file, specifier }) => `  ${path.relative(root, file)}: ${specifier}`)
+      .join('\n');
+
+    throw new Error(`The names of these star exports can't be determined:\n${list}`);
+  }
+};
+
+/**
+ * Type checks the built packages the way an extension uses them. It fails when the declarations
+ * of a module lack a name that the module exports.
+ * @param root The repository root.
+ */
+export const checkDeclarations = (root = ROOT) => {
+  logStep('Checking the type declarations as an extension');
+
+  const start = performance.now();
+  const count = checkConsumer(publishedPackages(root), root);
+
+  console.log(`Successfully checked ${count} modules (${Math.round(performance.now() - start)}ms).`);
+};
+
+/**
  * Builds all transpiled packages.
  * @param root The repository root.
  */
 export const buildAll = (root = ROOT) => {
   transpiledPackages().forEach(pkg => build(pkg, root));
+  completeStarExports(root);
+  checkDeclarations(root);
 };
 
 /**

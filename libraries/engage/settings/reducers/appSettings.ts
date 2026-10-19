@@ -96,6 +96,9 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     rating: {
       showEmptyStars: false,
     },
+    manufacturer: {
+      showOnProductPage: true,
+    },
     card: {
       productName: { maxLines: 3 },
     },
@@ -210,6 +213,10 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           product?.actionButtons,
           DEFAULT_APP_SETTINGS.product.actionButtons,
           ACTION_BUTTON_OPTIONS
+        ),
+        manufacturer: pickValidSettings(
+          product?.manufacturer,
+          DEFAULT_APP_SETTINGS.product.manufacturer
         ),
         addToCartBar: pickValidSettings(
           product?.addToCartBar,

@@ -36,7 +36,7 @@ export interface FilterPageContentProps {
  * @returns The rendered component.
  */
 const FilterPageContent = ({ AppBarComponent = null }: FilterPageContentProps) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const {
     apiFilters,
     getSelectedFilterValues,
@@ -48,7 +48,7 @@ const FilterPageContent = ({ AppBarComponent = null }: FilterPageContentProps) =
       { AppBarComponent && (
         <AppBarComponent title="titles.filter" />
       )}
-      <div className={classes.content}>
+      <div className={cx(classes.content, 'engage__filter-page__content')}>
         {apiFilters.map((filter) => {
           const portalProps = { filter };
           const value = getSelectedFilterValues(filter.id);

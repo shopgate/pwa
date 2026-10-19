@@ -19,7 +19,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 const StoreSelectLocationButton = ({ setPostalCode }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const store = useContext(StoreContext);
   const { setUserSearchZipLocationFromSelection = true } = useWidgetSettings('@shopgate/engage/locations') || {};
 
@@ -48,8 +48,14 @@ const StoreSelectLocationButton = ({ setPostalCode }) => {
   ]);
 
   return (
-    <div className={classes.selectLocationButtonWrapper}>
+    <div
+      className={cx(
+        classes.selectLocationButtonWrapper,
+        'engage__locations__store-list__store__select-location'
+      )}
+    >
       <Button
+        className="engage__locations__store-list__store__select-location-button"
         color="primary"
         size="small"
         fullWidth

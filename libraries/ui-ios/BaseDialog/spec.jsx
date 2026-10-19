@@ -1,4 +1,6 @@
-import { render, screen, within } from '@testing-library/react';
+import {
+  render, screen, waitFor, within,
+} from '@testing-library/react';
 import BasicDialog from './index';
 
 const props = {
@@ -20,7 +22,22 @@ const props = {
   ],
 };
 
-jest.mock('@shopgate/engage/a11y/components');
+jest.mock('@shopgate/engage/a11y/components', () => {
+  const FocusTrap = jest.requireActual('focus-trap-react');
+
+  return {
+    // eslint-disable-next-line react/prop-types
+    FocusTrap: ({ focusTrapOptions, ...rest }) => (
+      <FocusTrap
+        {...rest}
+        focusTrapOptions={{
+          ...focusTrapOptions,
+          tabbableOptions: { displayCheck: 'none' },
+        }}
+      />
+    ),
+  };
+});
 
 describe('<BasicDialog />', () => {
   it('should render with minimal props', () => {
@@ -42,5 +59,11 @@ describe('<BasicDialog />', () => {
     expect(within(dialog).getByText('Dialog content')).toBeInTheDocument();
     expect(within(dialog).getAllByRole('button').map(button => button.textContent))
       .toEqual(props.actions.map(({ label }) => label));
+  });
+
+  it('should focus the dialog instead of its first button when it opens', async () => {
+    render(<BasicDialog {...props} />);
+
+    await waitFor(() => expect(screen.getByRole('alertdialog')).toHaveFocus());
   });
 });

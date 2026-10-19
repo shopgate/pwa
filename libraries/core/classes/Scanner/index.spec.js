@@ -51,6 +51,10 @@ describe('Scanner', () => {
     mockedIsLibVersionAtLeast = jest.fn(() => true);
   });
 
+  afterEach(() => {
+    appEvent.removeAllListeners(APP_EVENT_SCANNER_DID_SCAN);
+  });
+
   describe('constructor()', () => {
     it('should register the app scanners scan event correctly', () => {
       expect(registerEvents).toBeCalledTimes(1);

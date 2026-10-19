@@ -80,7 +80,7 @@ describe('bump', () => {
     writeJson(root, 'extensions/theme-config/frontend/package.json', {
       name: '@shopgate/theme-config',
       version: '7.32.0',
-      peerDependencies: { '@shopgate/pwa-common': '>=7.20.0' },
+      devDependencies: { '@shopgate/pwa-common': '7.32.0' },
     });
   });
 
@@ -122,7 +122,7 @@ describe('bump', () => {
     assert.deepEqual(readJson(root, 'extensions/theme-config/frontend/package.json'), {
       name: '@shopgate/theme-config',
       version: '7.33.0-beta.1',
-      peerDependencies: { '@shopgate/pwa-common': '>=7.20.0' },
+      devDependencies: { '@shopgate/pwa-common': '7.33.0-beta.1' },
     });
     assert.equal(readJson(root, 'libraries/common/package.json').dependencies.lodash, '^4.17.21');
   });

@@ -35,7 +35,7 @@ const useStyles = makeStyles()(theme => ({
  * @returns {JSX.Element}
  */
 function StoreListLocations() {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { locations, isLoading } = useContext(FulfillmentContext);
 
   if (!isLoading && (!locations || locations.length === 0)) {
@@ -53,7 +53,10 @@ function StoreListLocations() {
         <CardList className={classes.stores}>
           <PlaceholderLabel className={classes.storeCardPlaceholder} ready={!showPlaceholder}>
             {locations.map(location => (
-              <CardList.Item className={classes.storeCard} key={location.code}>
+              <CardList.Item
+                className={cx(classes.storeCard, 'engage__locations__store-list__store')}
+                key={location.code}
+              >
                 <StoreContext.Provider value={location}>
                   <StoreCard />
                 </StoreContext.Provider>
