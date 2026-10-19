@@ -28,6 +28,7 @@ const MAX_QUANTITY = 99;
 const useStyles = makeStyles()(theme => ({
   base: {
     display: 'flex',
+    flexWrap: 'wrap',
     gap: theme.spacing(1),
     padding: theme.spacing(1),
   },

@@ -4,15 +4,16 @@ import { AddedTick } from '@shopgate/engage/product/components/AddedTick';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   button: {
     position: 'relative',
-    flex: 1,
-    minWidth: 0,
+    flex: '1 1 auto',
     minHeight: 46,
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
+    whiteSpace: 'nowrap',
   },
   label: {
-    textWrap: 'balance',
     '&[data-hidden]': {
       opacity: 0,
     },
@@ -27,7 +28,7 @@ const useStyles = makeStyles()({
   tick: {
     fontSize: '1.5em',
   },
-});
+}));
 
 /**
  * The add to cart button of the add to cart bar. While the product is added it shows a spinner,
@@ -43,7 +44,6 @@ const AddToCartButton = ({ disabled, state, onClick }) => {
   return (
     <Button
       color="cta"
-      fullWidth
       className={cx(classes.button, 'theme__product__add-to-cart-bar__add-to-cart-button')}
       onClick={onClick}
       disabled={disabled}
