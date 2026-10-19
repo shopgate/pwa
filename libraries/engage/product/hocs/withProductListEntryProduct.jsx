@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import withProductListEntry from './withProductListEntry';
 import { getProduct } from '../selectors/product';
@@ -33,11 +32,5 @@ export default function withProductListEntryProduct(WrappedComponent, options = 
     };
   };
 
-  const connector = connect(makeMapStateToProps);
-
-  return (props) => {
-    const Connected = withProductListEntry(connector(WrappedComponent));
-
-    return (<Connected {...props} />);
-  };
+  return withProductListEntry(connect(makeMapStateToProps)(WrappedComponent));
 }

@@ -1,26 +1,16 @@
 /** @module user */
-import { REGISTER_PATH, LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 
 // ACTION-CREATORS
-export { disableLogin } from '@shopgate/pwa-common/action-creators/user';
+export { disableLogin } from './action-creators';
 
 // ACTIONS
-export { default as fetchRegisterUrl } from '@shopgate/pwa-common/actions/user/fetchRegisterUrl';
-export { default as fetchUser } from '@shopgate/pwa-common/actions/user/fetchUser';
-export { default as login } from '@shopgate/pwa-common/actions/user/login';
-export { default as logout } from '@shopgate/pwa-common/actions/user/logout';
+export * from './actions';
 
 // CONSTANTS
-export * from '@shopgate/pwa-common/constants/Registration';
-export * from '@shopgate/pwa-common/constants/user';
-export { REGISTER_PATH, LOGIN_PATH };
+export * from './constants';
 
 // SELECTORS
-export * from '@shopgate/pwa-common/selectors/user';
-export * from './selectors/login';
-export * from './selectors/data';
+export * from './selectors';
 
 // STREAMS
-export * from '@shopgate/pwa-common/streams/user';
-
-export { registrationSuccess$ } from '@shopgate/engage/registration/streams';
+export * from './streams';

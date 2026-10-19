@@ -33,6 +33,7 @@ const CLOSE = 'close';
 const SIMPLE = 'simple';
 const CART_BUTTON = 'cart-button';
 const ITEMS = 'items';
+const SUBMIT = 'submit';
 
 // POSITIONS
 export const BEFORE = 'before';
@@ -60,6 +61,10 @@ export const PAGE_LOGIN_AFTER = `${PAGE}.${LOGIN}.${AFTER}`;
 export const PAGE_LOGIN_FORM_BEFORE = `${PAGE}.${LOGIN}.${FORM}.${BEFORE}`;
 export const PAGE_LOGIN_FORM = `${PAGE}.${LOGIN}.${FORM}`;
 export const PAGE_LOGIN_FORM_AFTER = `${PAGE}.${LOGIN}.${FORM}.${AFTER}`;
+
+export const PAGE_LOGIN_FORM_SUBMIT_BEFORE = `${PAGE}.${LOGIN}.${FORM}.${SUBMIT}.${BEFORE}`;
+export const PAGE_LOGIN_FORM_SUBMIT = `${PAGE}.${LOGIN}.${FORM}.${SUBMIT}`;
+export const PAGE_LOGIN_FORM_SUBMIT_AFTER = `${PAGE}.${LOGIN}.${FORM}.${SUBMIT}.${AFTER}`;
 
 export const PAGE_LOGIN_REGISTER_LINK_BEFORE = `${PAGE}.${LOGIN}.${REGISTER_LINK}.${BEFORE}`;
 export const PAGE_LOGIN_REGISTER_LINK = `${PAGE}.${LOGIN}.${REGISTER_LINK}`;
@@ -127,6 +132,10 @@ export const NO_RESULTS_CONTENT_AFTER = `${NO_RESULTS}.${CONTENT}.${AFTER}`;
 export const USER_MENU_CONTAINER_BEFORE = `${USER_MENU}.${CONTAINER}.${BEFORE}`;
 export const USER_MENU_CONTAINER = `${USER_MENU}.${CONTAINER}`;
 export const USER_MENU_CONTAINER_AFTER = `${USER_MENU}.${CONTAINER}.${AFTER}`;
+
+export const USER_MENU_LOGIN_BEFORE = `${USER_MENU}.${LOGIN}.${BEFORE}`;
+export const USER_MENU_LOGIN = `${USER_MENU}.${LOGIN}`;
+export const USER_MENU_LOGIN_AFTER = `${USER_MENU}.${LOGIN}.${AFTER}`;
 
 export const APP_BAR_DEFAULT_BEFORE = `${APP_BAR}.${DEFAULT}.${BEFORE}`;
 export const APP_BAR_DEFAULT = `${APP_BAR}.${DEFAULT}`;

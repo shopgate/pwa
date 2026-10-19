@@ -61,6 +61,7 @@ const Buttons = () => {
   const { classes } = useStyles();
 
   const [loading, setLoading] = useState(false);
+  const [keepColorsWhileLoading, setKeepColorsWhileLoading] = useState(false);
   const [showStartIcon, setShowStartIcon] = useState(true);
   const [showEndIcon, setShowEndIcon] = useState(false);
   const [enableElevation, setEnableElevation] = useState(false);
@@ -109,6 +110,14 @@ const Buttons = () => {
             </div>
             <div>
               <Switch
+                checked={keepColorsWhileLoading}
+                onChange={() => setKeepColorsWhileLoading(!keepColorsWhileLoading)}
+              >
+                Keep Colors While Loading
+              </Switch>
+            </div>
+            <div>
+              <Switch
                 checked={showStartIcon}
                 onChange={() => setShowStartIcon(!showStartIcon)}
               >
@@ -147,6 +156,7 @@ const Buttons = () => {
             endIcon={endIcon}
             loadingPosition={loadingPosition}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
           >
             Contained
           </Button>
@@ -158,6 +168,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Outlined
@@ -170,6 +181,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Text
@@ -182,6 +194,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Link
@@ -197,6 +210,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
             fullWidth
           >
@@ -252,6 +266,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Small
@@ -265,6 +280,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Medium
@@ -278,6 +294,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Large
@@ -293,6 +310,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Small
@@ -306,6 +324,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Medium
@@ -319,6 +338,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Large
@@ -334,6 +354,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Small
@@ -347,6 +368,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Medium
@@ -360,6 +382,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Large
@@ -375,6 +398,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Small
@@ -388,6 +412,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Medium
@@ -401,6 +426,7 @@ const Buttons = () => {
             startIcon={startIcon}
             endIcon={endIcon}
             loading={loading}
+            keepColorsWhileLoading={keepColorsWhileLoading}
             loadingPosition={loadingPosition}
           >
             Large

@@ -33,20 +33,27 @@ export const requestLogin = (user, password, strategy = DEFAULT_LOGIN_STRATEGY) 
 
 /**
  * Creates the dispatched RECEIVE_LOGIN action object.
- * @param {string} redirect The location to redirect to.
+ * @param {Object|boolean} [redirect] The redirect params. When set to `false` the user stays on
+ * the current page.
  * @param {string} strategy The login strategy.
  * @param {number} [sessionLifetimeInSeconds] The session lifetime in seconds
+ * @param {Object} [options] Further details of the login.
+ * @param {string} [options.source] What the login came from when it wasn't the login form, e.g.
+ * `LOGIN_SOURCE_BIOMETRIC` of `@shopgate/engage/login/constants`. Subscriptions can use it to
+ * react differently, e.g. to skip a confirmation.
  * @returns {Object} The dispatched action object.
  */
 export const successLogin = (
   redirect,
   strategy = DEFAULT_LOGIN_STRATEGY,
-  sessionLifetimeInSeconds
+  sessionLifetimeInSeconds = undefined,
+  { source } = {}
 ) => ({
   type: SUCCESS_LOGIN,
   redirect,
   strategy,
   sessionLifetimeInSeconds,
+  source,
 });
 
 /**

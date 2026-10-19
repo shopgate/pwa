@@ -27,6 +27,10 @@ export default function shopify(subscribe) {
   const shouldRedirect$ = userDidLogin$.zip(shopifyDidRespond$).map(([first]) => first);
 
   subscribe(shouldRedirect$, ({ dispatch, action }) => {
+    if (action.redirect === false) {
+      return;
+    }
+
     dispatch(historyRedirect(action.redirect));
   });
 

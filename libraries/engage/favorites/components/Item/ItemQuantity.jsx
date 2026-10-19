@@ -29,7 +29,7 @@ const ItemQuantity = ({
   quantity,
   onChange,
 }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [internalQuantity, setInternalQuantity] = useState(quantity);
 
   const handleChange = useCallback((newQuantity) => {
@@ -46,7 +46,7 @@ const ItemQuantity = ({
   }
 
   return (
-    <div className={classes.root}>
+    <div className={cx(classes.root, 'engage__favorites__item__quantity')}>
       <UnitQuantityPicker
         maxValue={99}
         minValue={1}

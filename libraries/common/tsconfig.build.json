@@ -4,7 +4,12 @@
     "outDir": "./dist",
     "rootDir": "."
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "constants/**/*.js",
+    "helpers/redux/**/*.js"
+  ],
   "exclude": [
     "dist",
     "node_modules",

@@ -1,16 +1,13 @@
 import { useContext, useMemo } from 'react';
+import { useSelector } from 'react-redux';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { CART_CHECKOUT_BUTTON } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import { Button } from '@shopgate/engage/components/v2';
-import { CHECKOUT_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
+import { CHECKOUT_PATH } from '@shopgate/engage/checkout/constants';
+import { getGrandTotal, getOrderableStatus } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { CartContext } from '../../cart.context';
-import connect from './PaymentBarCheckoutButton.connector';
 
 export interface PaymentBarCheckoutButtonProps {
-  /** Whether the cart is orderable. */
-  isOrderable?: boolean;
-  /** The grand total of the cart. */
-  grandTotal?: number | null;
   /** Whether the label carries the grand total. */
   showTotal?: boolean;
 }
@@ -26,9 +23,9 @@ interface CheckoutButtonCartContext {
  * Renders the cart payment bar checkout button.
  * @returns The checkout button.
  */
-const PaymentBarCheckoutButton = ({
-  isOrderable = true, grandTotal = null, showTotal = false,
-}: PaymentBarCheckoutButtonProps) => {
+const PaymentBarCheckoutButton = ({ showTotal = false }: PaymentBarCheckoutButtonProps) => {
+  const isOrderable = useSelector(getOrderableStatus);
+  const grandTotal = useSelector(getGrandTotal);
   const {
     isLoading, currency, config: { hideTotal } = {},
   } = useContext(CartContext) as CheckoutButtonCartContext;
@@ -50,4 +47,4 @@ const PaymentBarCheckoutButton = ({
   );
 };
 
-export default connect(PaymentBarCheckoutButton);
+export default PaymentBarCheckoutButton;

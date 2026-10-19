@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import { getOrderableStatus } from '@shopgate/pwa-common-commerce/cart/selectors';
 import PaymentBarCheckoutButton from '../PaymentBarCheckoutButton';
 import { CartContext } from '../../../cart.context';
 
@@ -22,7 +23,14 @@ jest.mock('@shopgate/engage/components/v2', () => ({
   Button: mockFactories().createButtonMock(),
 }));
 
-jest.mock('../PaymentBarCheckoutButton.connector', () => cmp => cmp);
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: selector => selector(),
+}));
+jest.mock('@shopgate/pwa-common-commerce/cart/selectors', () => ({
+  getOrderableStatus: jest.fn(),
+  getGrandTotal: () => 89.9,
+}));
 
 describe('<PaymentBarCheckoutButton />', () => {
   const renderWithCartContext = ui => render(
@@ -37,30 +45,32 @@ describe('<PaymentBarCheckoutButton />', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    getOrderableStatus.mockReturnValue(true);
   });
 
   it('should render disabled button', () => {
-    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable={false} />);
+    getOrderableStatus.mockReturnValue(false);
+    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton />);
 
     expect(getByRole('button')).toBeDisabled();
     expect(mockText).toHaveBeenCalledWith(expect.objectContaining({ string: 'cart.checkout' }));
   });
 
   it('should render enabled button', () => {
-    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable />);
+    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton />);
 
     expect(getByRole('button')).not.toBeDisabled();
   });
 
   // The button navigates through the router itself now, rather than being wrapped in a Link.
   it('should link to the checkout', () => {
-    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable />);
+    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton />);
 
     expect(getByRole('button')).toHaveAttribute('data-href', '/checkout');
   });
 
   it('should render the button in the merchant configurable cta color', () => {
-    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton isOrderable />);
+    const { getByRole } = renderWithCartContext(<PaymentBarCheckoutButton />);
 
     expect(getByRole('button')).toHaveAttribute('data-color', 'cta');
   });
@@ -73,7 +83,7 @@ describe('<PaymentBarCheckoutButton />', () => {
         config: {},
       }}
       >
-        <PaymentBarCheckoutButton isOrderable grandTotal={89.9} showTotal />
+        <PaymentBarCheckoutButton showTotal />
       </CartContext.Provider>
     );
 
@@ -88,7 +98,7 @@ describe('<PaymentBarCheckoutButton />', () => {
         config: { hideTotal: true },
       }}
       >
-        <PaymentBarCheckoutButton isOrderable grandTotal={89.9} showTotal />
+        <PaymentBarCheckoutButton showTotal />
       </CartContext.Provider>
     );
 

@@ -1,5 +1,5 @@
 export type Breakpoint =  'xs' | 'sm' | 'md' | 'lg' | 'xl';
-export const keys: Breakpoint[];
+export const breakpointKeys: Breakpoint[];
 
 export interface Breakpoints {
   keys: Breakpoint[];

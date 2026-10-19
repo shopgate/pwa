@@ -140,6 +140,14 @@ export interface ProductRatingSettings {
 }
 
 /**
+ * Settings for the product manufacturer.
+ */
+export interface ProductManufacturerSettings {
+  /** Whether the product page shows the manufacturer below the product name. */
+  showOnProductPage: boolean;
+}
+
+/**
  * Display type of a characteristic in the variant selector.
  */
 export type VariantSelectorType = 'dropdown' | 'chips';
@@ -181,6 +189,7 @@ export interface ProductSettings {
   grid: ProductGridSettings;
   slider: ProductSliderSettings;
   rating: ProductRatingSettings;
+  manufacturer: ProductManufacturerSettings;
   /** Product cards (sliders, relations, live shopping). */
   card: { productName: ProductNameSettings };
   /** Product grid tiles. */

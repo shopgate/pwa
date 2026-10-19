@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
+import { useSelector } from 'react-redux';
 import {
   MapPriceHint,
   EffectivityDates,
@@ -25,6 +26,7 @@ import {
   PRODUCT_INFO_ROW2,
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import { makeStyles } from '@shopgate/engage/styles';
+import { getShowManufacturerOnProductPage } from '@shopgate/engage/settings/selectors/appSettings';
 import Manufacturer from '../Manufacturer';
 import Price from '../Price';
 import PriceInfo from '../PriceInfo';
@@ -55,6 +57,7 @@ const useStyles = makeStyles()(theme => ({
  */
 const ProductInfo = ({ productId, options, isROPEActive }) => {
   const { classes, cx } = useStyles();
+  const showManufacturer = useSelector(getShowManufacturerOnProductPage);
 
   return (
     <>
@@ -68,9 +71,11 @@ const ProductInfo = ({ productId, options, isROPEActive }) => {
               It should only be used for approved BETA Client Projects */}
                 <MapPriceHint productId={productId} />
               </div>
-              <div className={classes.productInfo}>
-                <Manufacturer productId={productId} />
-              </div>
+              {showManufacturer && (
+                <div className={classes.productInfo}>
+                  <Manufacturer productId={productId} />
+                </div>
+              )}
               <div className={classes.productInfo}>
                 {!isROPEActive && (
                 <Shipping productId={productId} />

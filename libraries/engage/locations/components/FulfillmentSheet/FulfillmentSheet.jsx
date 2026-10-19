@@ -23,4 +23,6 @@ FulfillmentSheet.defaultProps = {
   allowClose: true,
 };
 
-FulfillmentSheet.open = openSheet;
+// Wrapped instead of assigned directly: this file can be loaded while the providers are still
+// loading (circular import), and at that point openSheet is not defined yet.
+FulfillmentSheet.open = params => openSheet(params);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { FocusTrap } from '@shopgate/engage/a11y/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -20,6 +20,7 @@ const useStyles = makeStyles()({
     borderRadius: 14,
     background: 'rgba(255, 255, 255, 0.82)',
     backdropFilter: 'blur(20px)',
+    outline: 'none',
     '& input, & textarea': {
       color: 'inherit',
     },
@@ -47,10 +48,22 @@ const useStyles = makeStyles()({
  */
 const BasicDialog = ({ children, actions, title }) => {
   const { classes, cx } = useStyles();
+  const containerRef = useRef(null);
+  /**
+   * @returns {HTMLElement|null} The container of the dialog.
+   */
+  const getContainer = () => containerRef.current;
 
   return (
-    <FocusTrap>
+    <FocusTrap
+      focusTrapOptions={{
+        initialFocus: getContainer,
+        fallbackFocus: getContainer,
+      }}
+    >
       <div
+        ref={containerRef}
+        tabIndex={-1}
         className={cx(classes.container, 'ui-ios__base-dialog')}
         data-test-id="basicDialog"
         role="alertdialog"

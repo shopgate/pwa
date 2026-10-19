@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductStock } from '@shopgate/engage/product';
+import { getProduct } from '../selectors/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -7,8 +7,12 @@ import { getProductStock } from '@shopgate/engage/product';
  * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = (state, props) => ({
-  stock: getProductStock(state, props),
-});
+const mapStateToProps = (state, props) => {
+  const product = getProduct(state, props);
+
+  return {
+    stock: product ? product.stock : null,
+  };
+};
 
 export default connect(mapStateToProps);

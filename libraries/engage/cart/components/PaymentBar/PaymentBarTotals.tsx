@@ -1,16 +1,15 @@
 import type { ComponentType, ReactNode } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { isIOSTheme } from '@shopgate/engage/core';
-import UntypedGrid from '@shopgate/pwa-common/components/Grid';
-import { SurroundPortals } from '@shopgate/engage/components';
+import { Grid as UntypedGrid, SurroundPortals } from '@shopgate/engage/components';
 import { CART_PAYMENT_BAR_TOTALS } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import PaymentBarShippingCost from './PaymentBarShippingCost';
-import UntypedDiscounts from './PaymentBarDiscounts';
-import UntypedTax from './PaymentBarTax';
-import UntypedSubTotal from './PaymentBarSubTotal';
-import UntypedGrandTotal from './PaymentBarGrandTotal';
-import UntypedPromotionCoupons from './PaymentBarPromotionCoupons';
-import UntypedAppliedPromotions from './PaymentBarAppliedPromotions';
+import PaymentBarDiscounts from './PaymentBarDiscounts';
+import PaymentBarTax from './PaymentBarTax';
+import PaymentBarSubTotal from './PaymentBarSubTotal';
+import PaymentBarGrandTotal from './PaymentBarGrandTotal';
+import PaymentBarPromotionCoupons from './PaymentBarPromotionCoupons';
+import PaymentBarAppliedPromotions from './PaymentBarAppliedPromotions';
 
 export interface PaymentBarTotalsProps {
   /** Whether the lines show separators. */
@@ -18,15 +17,7 @@ export interface PaymentBarTotalsProps {
   className?: string | null;
 }
 
-type TotalLine = ComponentType<{ showSeparator?: boolean }>;
-
 const Grid = UntypedGrid as unknown as ComponentType<{ className?: string; children?: ReactNode }>;
-const PaymentBarSubTotal = UntypedSubTotal as unknown as TotalLine;
-const PaymentBarAppliedPromotions = UntypedAppliedPromotions as unknown as TotalLine;
-const PaymentBarPromotionCoupons = UntypedPromotionCoupons as unknown as TotalLine;
-const PaymentBarDiscounts = UntypedDiscounts as unknown as TotalLine;
-const PaymentBarTax = UntypedTax as unknown as TotalLine;
-const PaymentBarGrandTotal = UntypedGrandTotal as unknown as TotalLine;
 
 const useStyles = makeStyles()(theme => ({
   container: {
