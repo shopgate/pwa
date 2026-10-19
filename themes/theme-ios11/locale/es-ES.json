@@ -617,6 +617,7 @@
     "sort_dateAsc": "Más antiguas primero",
     "sort_rateDesc": "Mejor valoración",
     "sort_rateAsc": "Peor valoración",
+    "sort_helpfulDesc": "Más útiles primero",
     "filter_media": "Con fotos o vídeos",
     "filter_verified": "Solo verificadas",
     "filter_rate_all": "Todas las valoraciones",

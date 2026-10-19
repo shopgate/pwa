@@ -617,6 +617,7 @@
     "sort_dateAsc": "Legrégebbi elöl",
     "sort_rateDesc": "Legjobb értékelés",
     "sort_rateAsc": "Legrosszabb értékelés",
+    "sort_helpfulDesc": "Leghasznosabb elöl",
     "filter_media": "Médiával",
     "filter_verified": "Csak ellenőrzött",
     "filter_rate_all": "Minden értékelés",

@@ -616,6 +616,7 @@
     "sort_dateAsc": "Najstarsze",
     "sort_rateDesc": "Najwyższa ocena",
     "sort_rateAsc": "Najniższa ocena",
+    "sort_helpfulDesc": "Najbardziej pomocne",
     "filter_media": "Z multimediami",
     "filter_verified": "Tylko zweryfikowane",
     "filter_rate_all": "Wszystkie oceny",

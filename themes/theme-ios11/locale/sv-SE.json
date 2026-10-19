@@ -616,6 +616,7 @@
     "sort_dateAsc": "Äldsta först",
     "sort_rateDesc": "Högsta betyg",
     "sort_rateAsc": "Lägsta betyg",
+    "sort_helpfulDesc": "Mest användbara först",
     "filter_media": "Med media",
     "filter_verified": "Endast verifierade",
     "filter_rate_all": "Alla betyg",

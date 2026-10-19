@@ -617,6 +617,7 @@
     "sort_dateAsc": "Oudste eerst",
     "sort_rateDesc": "Hoogste beoordeling",
     "sort_rateAsc": "Laagste beoordeling",
+    "sort_helpfulDesc": "Nuttigste eerst",
     "filter_media": "Met media",
     "filter_verified": "Alleen geverifieerd",
     "filter_rate_all": "Alle beoordelingen",

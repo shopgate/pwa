@@ -52,7 +52,14 @@ export const REVIEW_FILTERS = [
     label: 'reviews.filter_rate_all',
   },
 ];
-export const REVIEW_SORT_OPTIONS = ['relevance', 'dateDesc', 'dateAsc', 'rateDesc', 'rateAsc'];
+export const REVIEW_SORT_OPTIONS = [
+  'relevance',
+  'dateDesc',
+  'dateAsc',
+  'rateDesc',
+  'rateAsc',
+  'helpfulDesc',
+];
 
 // PRODUCT REVIEW SETTINGS
 export const REVIEW_SETTINGS_LIFETIME = 60 * 60 * 1000;

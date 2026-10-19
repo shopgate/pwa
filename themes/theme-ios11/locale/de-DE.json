@@ -617,6 +617,7 @@
     "sort_dateAsc": "Älteste zuerst",
     "sort_rateDesc": "Beste Bewertung",
     "sort_rateAsc": "Schlechteste Bewertung",
+    "sort_helpfulDesc": "Hilfreichste zuerst",
     "filter_media": "Mit Medien",
     "filter_verified": "Nur verifiziert",
     "filter_rate_all": "Alle Bewertungen",

@@ -98,10 +98,10 @@ describe('Reviews selectors: reviewSettings', () => {
   });
 
   describe('getReviewSortOptions', () => {
-    it('should keep the contract values in the order of the provider', () => {
+    it('should keep the known values in the order of the provider', () => {
       expect(getReviewSortOptions(buildState({
-        sortOptions: ['rateDesc', 'helpfulDesc', 'dateDesc'],
-      }))).toEqual(['rateDesc', 'dateDesc']);
+        sortOptions: ['rateDesc', 'helpfulAsc', 'helpfulDesc', 'dateDesc'],
+      }))).toEqual(['rateDesc', 'helpfulDesc', 'dateDesc']);
     });
 
     it('should return no options when the provider reports none or an invalid value', () => {

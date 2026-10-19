@@ -617,6 +617,7 @@
     "sort_dateAsc": "Vanhimmat ensin",
     "sort_rateDesc": "Paras arvosana",
     "sort_rateAsc": "Heikoin arvosana",
+    "sort_helpfulDesc": "Hyödyllisimmät ensin",
     "filter_media": "Sisältää mediaa",
     "filter_verified": "Vain vahvistetut",
     "filter_rate_all": "Kaikki arviot",

@@ -37,7 +37,7 @@ export const getReviewCustomFields = createSelector(
 );
 
 /**
- * Selects the sort values the provider supports, limited to the values of the pipeline contract
+ * Selects the sort values the provider supports, limited to the sort values the PWA knows
  * and kept in the provider's order.
  */
 export const getReviewSortOptions = createSelector(

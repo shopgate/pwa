@@ -617,6 +617,7 @@
     "sort_dateAsc": "Les plus anciens",
     "sort_rateDesc": "Meilleures notes",
     "sort_rateAsc": "Moins bonnes notes",
+    "sort_helpfulDesc": "Les plus utiles",
     "filter_media": "Avec médias",
     "filter_verified": "Vérifiés uniquement",
     "filter_rate_all": "Toutes les notes",
