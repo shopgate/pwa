@@ -44,6 +44,7 @@ jest.mock('../../constants', () => ({
 }));
 jest.mock('../../hooks', () => ({
   useOverlayScroll: () => mockScroll,
+  useForwardScroll: () => {},
 }));
 
 const slot = action => ({

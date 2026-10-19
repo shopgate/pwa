@@ -12,7 +12,7 @@ import type {
   AppBarSettings,
 } from '@shopgate/engage/settings/types/appSettings';
 import ActionButton from '../ActionButton';
-import { useOverlayScroll } from '../../hooks';
+import { useForwardScroll, useOverlayScroll } from '../../hooks';
 import {
   APP_BAR_BUTTON_SIZE,
   FLOATING_BUTTON_INSET,
@@ -47,7 +47,11 @@ const translucent = (color: string, opacity: string) => (
   `color-mix(in srgb, ${color} ${opacity}, transparent)`
 );
 
-const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset, side }) => {
+const useStyles = makeStyles<{
+  inset: number;
+  side: number;
+  buttonsSide: number;
+}>()((theme, { inset, side, buttonsSide }) => {
   const { appBar } = theme.components;
   const fade = theme.transitions.create(['opacity', 'transform'], { duration: 200 });
   const revealedGlass = {
@@ -73,13 +77,14 @@ const useStyles = makeStyles<{ inset: number; side: number }>()((theme, { inset,
       flex: '0 1 auto',
       '& img': {
         display: 'block',
-        maxWidth: '100%',
+        maxWidth: `min(100%, calc(var(--page-content-width, 100vw) - ${2 * buttonsSide}px - ${theme.spacing(5)}px))`,
         objectFit: 'contain',
         objectPosition: 'left center',
       },
     },
     logoRight: {
-      '& img': {
+      '&& img': {
+        marginLeft: 'auto',
         objectPosition: 'right center',
       },
     },
@@ -278,6 +283,7 @@ const ConfiguredBar = ({
   const logo = isLogoPage && showLogo;
 
   useHeaderOverlay(overlay);
+  useForwardScroll(overlay);
 
   /**
    * @param slots The slots of one side.
@@ -301,6 +307,10 @@ const ConfiguredBar = ({
   const { classes, cx } = useStyles({
     inset,
     side: Math.max(leftCount, rightCount) * APP_BAR_BUTTON_SIZE,
+    buttonsSide: Math.max(
+      (left ? 1 : 0) + leftSlots.length,
+      (right ? 1 : 0) + rightSlots.length
+    ) * APP_BAR_BUTTON_SIZE,
   });
 
   const hidden = overlay && scrollBehavior === 'scrollAway' && scrollingDown;
