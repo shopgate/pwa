@@ -12,8 +12,11 @@ import {
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getShowAllProductsFilters } from '@shopgate/engage/category';
 import { SheetList, TextLink } from '@shopgate/engage/components';
+import { useCategoryImageRatio } from '@shopgate/engage/category/hooks';
 import CategoryImage from '../CategoryImage';
 import CategoryGrid from '../CategoryGrid';
+
+const LEFT_IMAGE_WIDTH = 96;
 
 const useStyles = makeStyles()(theme => ({
   sheet: {
@@ -57,6 +60,7 @@ const CategoryList = ({
   labelled,
 }) => {
   const { classes, cx } = useStyles();
+  const leftImage = useCategoryImageRatio(LEFT_IMAGE_WIDTH);
 
   if (layout === 'grid') {
     return (
@@ -132,6 +136,8 @@ const CategoryList = ({
                   <CategoryImage
                     className={classes.image}
                     src={category.imageUrl}
+                    ratio={leftImage.ratio}
+                    resolutions={leftImage.resolutions}
                     fallback={<div className={classes.imageFallback} />}
                   />
                 )

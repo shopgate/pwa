@@ -29,7 +29,10 @@ jest.mock('@shopgate/engage/category/helpers', () => ({
   getCategoryRoute: (id: string) => `/category/${id}`,
   getShowAllProductsFilters: () => ({}),
 }));
-jest.mock('@shopgate/engage/category/hooks', () => ({ useCategoryGridColumns: () => 2 }));
+jest.mock('@shopgate/engage/category/hooks', () => ({
+  useCategoryGridColumns: () => 2,
+  useCategoryImageRatio: jest.requireActual('../../hooks/useCategoryImageRatio').default,
+}));
 jest.mock('@shopgate/engage/product/hooks', () => ({ useProductImageShadow: () => true }));
 jest.mock('@shopgate/engage/components', () => ({
   Portal: ({ children, name, props }: {

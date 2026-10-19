@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Ellipsis, Portal } from '@shopgate/engage/components';
@@ -7,12 +6,9 @@ import {
   CATEGORY_GRID_ITEM,
   CATEGORY_GRID_SHOW_ALL_PRODUCTS,
 } from '@shopgate/engage/category/constants';
-import { useCategoryGridColumns } from '@shopgate/engage/category/hooks';
+import { useCategoryGridColumns, useCategoryImageRatio } from '@shopgate/engage/category/hooks';
 import { useProductImageShadow } from '@shopgate/engage/product/hooks';
-import {
-  getCategoryImageRatio,
-  getProductTileNameMaxLines,
-} from '@shopgate/engage/settings/selectors/appSettings';
+import { getProductTileNameMaxLines } from '@shopgate/engage/settings/selectors/appSettings';
 import CategoryImage from '../CategoryImage';
 import CategoryLink from '../CategoryLink';
 import type { CategoryNavigationItem } from '../../types';
@@ -143,24 +139,13 @@ const CategoryGrid = ({
   labelled = true,
 }: CategoryGridProps) => {
   const columns = useCategoryGridColumns();
-  const { width, height } = useSelector(getCategoryImageRatio);
-  const hasValidRatio = width > 0 && height > 0;
-  const ratioWidth = hasValidRatio ? width : 1;
-  const ratioHeight = hasValidRatio ? height : 1;
+  const image = useCategoryImageRatio(IMAGE_WIDTH);
   const { classes, cx } = useStyles({
     columns,
-    aspectRatio: `${ratioWidth} / ${ratioHeight}`,
+    aspectRatio: image.aspectRatio,
   });
   const showInnerShadow = useProductImageShadow();
   const nameMaxLines = useSelector(getProductTileNameMaxLines);
-
-  const image = useMemo(() => ({
-    ratio: [ratioWidth, ratioHeight],
-    resolutions: [{
-      width: IMAGE_WIDTH,
-      height: Math.round((IMAGE_WIDTH * ratioHeight) / ratioWidth),
-    }],
-  }), [ratioHeight, ratioWidth]);
 
   if (!categories?.length) {
     if (!prerender) {
