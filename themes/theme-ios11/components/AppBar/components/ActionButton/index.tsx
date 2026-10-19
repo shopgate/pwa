@@ -1,14 +1,11 @@
 import { useCallback } from 'react';
 import type { ComponentType } from 'react';
 import { useSelector } from 'react-redux';
-import {
-  Icon, AppBarIOS as AppBar, Badge, SurroundPortals,
-} from '@shopgate/engage/components';
+import { AppBarIOS as AppBar, Badge, SurroundPortals } from '@shopgate/engage/components';
 import { APP_BAR_ACTION, APP_BAR_CART_BUTTON } from '@shopgate/engage/core/constants';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { NavigationAction } from '@shopgate/engage/navigation';
 import type { ResolvedNavigationAction } from '@shopgate/engage/navigation';
-import { getThemeIcon } from '@shopgate/engage/core/icons';
 import { getShowWishlistItemsCountBadge } from '@shopgate/engage/settings/selectors/shopSettings';
 import type {
   AppBarButtonSlot,
@@ -16,10 +13,17 @@ import type {
 } from '@shopgate/engage/settings/types/appSettings';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useShowFavoritesCounter } from '../../../TabBar/components/FavoritesAction/hooks';
+import { getActionIcon } from './icons';
 
 const AppBarIcon = AppBar.Icon as unknown as ComponentType<Record<string, unknown>>;
 
 const BADGE_MAX = 99;
+
+/**
+ * Takes the place of an icon nobody defined.
+ * @returns Nothing.
+ */
+const NoIcon = () => null;
 
 const useStyles = makeStyles()(theme => ({
   badge: {
@@ -30,14 +34,6 @@ const useStyles = makeStyles()(theme => ({
     transformOrigin: 'top right',
   },
 }));
-
-/**
- * Renders a theme icon by its name.
- * @param props The component props.
- * @param props.name The name of the icon.
- * @returns The icon.
- */
-const ThemeIcon = ({ name }: { name: string }) => <Icon content={getThemeIcon(name) || ''} />;
 
 interface ResolvedButtonProps {
   action: ResolvedNavigationAction;
@@ -61,7 +57,9 @@ const ResolvedButton = ({ action, settings, slot }: ResolvedButtonProps) => {
   const showFavoritesBadge = useSelector(getShowWishlistItemsCountBadge) as boolean;
   const showBadge = badgeCount > 0 && (!isFavorites || showFavoritesBadge);
   const showCount = !isFavorites || showFavoritesCounter;
-  const iconName = settings.icon && getThemeIcon(settings.icon) ? settings.icon : action.icon;
+  const configuredIcon = getActionIcon(settings.icon);
+  const iconName = configuredIcon ? settings.icon : action.icon;
+  const IconComponent = configuredIcon ?? getActionIcon(action.icon) ?? NoIcon;
 
   const renderBadge = useCallback(() => (
     <Badge
@@ -76,8 +74,7 @@ const ResolvedButton = ({ action, settings, slot }: ResolvedButtonProps) => {
 
   return (
     <AppBarIcon
-      icon={ThemeIcon}
-      name={iconName}
+      icon={IconComponent}
       onClick={onClick}
       badge={showBadge ? renderBadge : null}
       aria-label={showBadge && showCount ? `${text}. ${i18n.text('common.products')}: ${badgeCount}.` : text}
