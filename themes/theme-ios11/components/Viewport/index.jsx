@@ -8,6 +8,7 @@ import { applyScrollContainer, hasWebBridge } from '@shopgate/engage/core/helper
 import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import TabBar from 'Components/TabBar';
 import SearchOverlay from '../Search/SearchOverlay';
+import CategoryDrawer from '../CategoryDrawer';
 
 injectGlobal({
   html: {
@@ -79,6 +80,7 @@ const Viewport = (props) => {
         <TabBar />
       </Footer>
       <SearchOverlay />
+      <CategoryDrawer />
     </main>
   );
 };

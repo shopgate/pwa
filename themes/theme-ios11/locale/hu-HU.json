@@ -413,6 +413,10 @@
     "showAllProducts": {
       "label": "Összes termék megjelenítése"
     },
+    "drawer": {
+      "retry": "Újra",
+      "subcategories": "Alkategóriák"
+    },
     "errors": {
       "404": "Kategória nem található"
     }

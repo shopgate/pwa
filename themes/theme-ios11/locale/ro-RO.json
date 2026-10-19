@@ -413,6 +413,10 @@
     "showAllProducts": {
       "label": "Arată toate produsele"
     },
+    "drawer": {
+      "retry": "Încearcă din nou",
+      "subcategories": "Subcategorii"
+    },
     "errors": {
       "404": "Categoria nu a fost găsită"
     }

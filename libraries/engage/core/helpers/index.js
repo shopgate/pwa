@@ -19,6 +19,7 @@ export { svgToDataUrl } from './svgToDataUrl';
 export { i18n, getWeekDaysOrder } from './i18n';
 export { updateLegacyNavigationBar } from './updateLegacyNavigationBar';
 export { updateAndroidNavigationBarColor } from './androidNavigationBar';
+export { setStatusBarHidden } from './statusBar';
 export { default as nl2br } from './nl2br';
 export * from './string';
 export { isIOSTheme } from './isIOSTheme';
