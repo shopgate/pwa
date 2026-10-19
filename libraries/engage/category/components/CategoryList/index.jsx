@@ -16,9 +16,10 @@ import { useCategoryImageRatio } from '@shopgate/engage/category/hooks';
 import CategoryImage from '../CategoryImage';
 import CategoryGrid from '../CategoryGrid';
 
-const LEFT_IMAGE_WIDTH = 96;
+const LEFT_IMAGE_HEIGHT = 30;
+const LEFT_IMAGE_REQUEST_WIDTH = 270;
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()((theme, { leftImageWidth }) => ({
   sheet: {
     background: theme.palette.background.surface,
   },
@@ -27,6 +28,10 @@ const useStyles = makeStyles()(theme => ({
   },
   image: {
     width: '30px',
+    marginRight: 8,
+  },
+  leftImage: {
+    width: leftImageWidth,
     marginRight: 8,
   },
   imageFallback: {
@@ -59,8 +64,8 @@ const CategoryList = ({
   layout,
   labelled,
 }) => {
-  const { classes, cx } = useStyles();
-  const leftImage = useCategoryImageRatio(LEFT_IMAGE_WIDTH);
+  const leftImage = useCategoryImageRatio(LEFT_IMAGE_REQUEST_WIDTH, LEFT_IMAGE_HEIGHT);
+  const { classes, cx } = useStyles({ leftImageWidth: leftImage.thumbnailWidth });
 
   if (layout === 'grid') {
     return (
@@ -134,7 +139,7 @@ const CategoryList = ({
               showLeftSideImages
                 ? (
                   <CategoryImage
-                    className={classes.image}
+                    className={classes.leftImage}
                     src={category.imageUrl}
                     ratio={leftImage.ratio}
                     resolutions={leftImage.resolutions}

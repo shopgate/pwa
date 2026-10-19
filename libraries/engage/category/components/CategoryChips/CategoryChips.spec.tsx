@@ -5,6 +5,17 @@ import { useSelector } from 'react-redux';
 import CategoryChips from './index';
 
 jest.mock('react-redux', () => ({ useSelector: jest.fn() }));
+jest.mock('@shopgate/engage/category/hooks', () => ({
+  useCategoryImageRatio: () => ({
+    ratio: [2, 1],
+    resolutions: [{
+      width: 270,
+      height: 135,
+    }],
+    aspectRatio: '2 / 1',
+    thumbnailWidth: 60,
+  }),
+}));
 jest.mock('@shopgate/engage/settings/selectors/shopSettings', () => ({
   getCategoryImagePlaceholder: jest.fn(),
 }));

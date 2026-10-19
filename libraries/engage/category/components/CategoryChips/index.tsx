@@ -8,22 +8,22 @@ import {
   CATEGORY_CHIPS_SHOW_ALL_PRODUCTS,
 } from '@shopgate/engage/category/constants';
 import { getCategoryImagePlaceholder } from '@shopgate/engage/settings/selectors/shopSettings';
+import { useCategoryImageRatio } from '@shopgate/engage/category/hooks';
 import CategoryImage from '../CategoryImage';
 import CategoryLink from '../CategoryLink';
 import type { CategoryNavigationItem } from '../../types';
 
-const IMAGE_RATIO = [1, 1];
-const IMAGE_RESOLUTIONS = [{
-  width: 96,
-  height: 96,
-}];
+const IMAGE_REQUEST_WIDTH = 270;
 const CHIP_PADDING = 4;
 const CHIP_TEXT_PADDING = 12;
 const CHIP_HEIGHT = 40;
 const CHIP_BORDER = 1;
+const IMAGE_HEIGHT = CHIP_HEIGHT - (2 * CHIP_PADDING) - (2 * CHIP_BORDER);
 const MAX_PLACEHOLDERS = 5;
 
-const useStyles = makeStyles({ name: 'CategoryChips' })(theme => ({
+const useStyles = makeStyles<{ imageWidth: number }>({ name: 'CategoryChips' })((theme, {
+  imageWidth,
+}) => ({
   root: {
     display: 'flex',
     gap: theme.spacing(1),
@@ -75,7 +75,7 @@ const useStyles = makeStyles({ name: 'CategoryChips' })(theme => ({
     textOverflow: 'ellipsis',
   },
   image: {
-    width: CHIP_HEIGHT - (2 * CHIP_PADDING) - (2 * CHIP_BORDER),
+    width: imageWidth,
     flexShrink: 0,
     borderRadius: `max(0px, calc(${theme.shape.borderRadius} - ${CHIP_PADDING}px))`,
   },
@@ -114,7 +114,8 @@ const CategoryChips = ({
   parentCategory = null,
   showAllProducts = false,
 }: CategoryChipsProps) => {
-  const { classes, cx } = useStyles();
+  const image = useCategoryImageRatio(IMAGE_REQUEST_WIDTH, IMAGE_HEIGHT);
+  const { classes, cx } = useStyles({ imageWidth: image.thumbnailWidth });
   const placeholderSrc = useSelector(getCategoryImagePlaceholder) as string | null;
 
   if (!categories?.length) {
@@ -179,8 +180,8 @@ const CategoryChips = ({
                     <CategoryImage
                       className={classes.image}
                       src={category.imageUrl}
-                      ratio={IMAGE_RATIO}
-                      resolutions={IMAGE_RESOLUTIONS}
+                      ratio={image.ratio}
+                      resolutions={image.resolutions}
                       fallback={<div className={classes.fallback} />}
                     />
                   )}

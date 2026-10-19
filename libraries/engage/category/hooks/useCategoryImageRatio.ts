@@ -10,14 +10,22 @@ export interface CategoryImageRatio {
   resolutions: ImageResolution[];
   /** The ratio as CSS `aspect-ratio` value. */
   aspectRatio: string;
+  /** Width of a thumbnail with the given height, at most three times as wide as high. */
+  thumbnailWidth: number;
 }
+
+const MAX_THUMBNAIL_FACTOR = 3;
 
 /**
  * Resolves the configured aspect ratio of category images.
  * @param imageWidth The width in pixels to request from the image service.
- * @returns The ratio, the resolutions to request and the CSS value.
+ * @param thumbnailHeight Height of a thumbnail whose width follows the ratio.
+ * @returns The ratio, the resolutions to request, the CSS value and the thumbnail width.
  */
-const useCategoryImageRatio = (imageWidth: number): CategoryImageRatio => {
+const useCategoryImageRatio = (
+  imageWidth: number,
+  thumbnailHeight = 0
+): CategoryImageRatio => {
   const { width, height } = useSelector(getCategoryImageRatio);
   const isValid = width > 0 && height > 0;
   const ratioWidth = isValid ? width : 1;
@@ -30,7 +38,11 @@ const useCategoryImageRatio = (imageWidth: number): CategoryImageRatio => {
       height: Math.round((imageWidth * ratioHeight) / ratioWidth),
     }],
     aspectRatio: `${ratioWidth} / ${ratioHeight}`,
-  }), [imageWidth, ratioHeight, ratioWidth]);
+    thumbnailWidth: Math.min(
+      Math.round((thumbnailHeight * ratioWidth) / ratioHeight),
+      thumbnailHeight * MAX_THUMBNAIL_FACTOR
+    ),
+  }), [imageWidth, ratioHeight, ratioWidth, thumbnailHeight]);
 };
 
 export default useCategoryImageRatio;
