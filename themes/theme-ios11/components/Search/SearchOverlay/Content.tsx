@@ -76,7 +76,6 @@ const useStyles = makeStyles()(theme => ({
     listStyle: 'none',
     margin: 0,
     padding: 0,
-    background: theme.palette.background.surface,
   },
   listEntering: staggered('li'),
   listItem: {

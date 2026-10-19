@@ -75,7 +75,7 @@ const SearchBar = ({ query = '', hideOnScroll = false, overlay = false }: Props)
 
   useLayoutEffect(() => {
     const bar = barRef.current;
-    const height = `${bar?.offsetHeight || 0}px`;
+    const height = `${bar?.getBoundingClientRect().height || 0}px`;
     const visibleHeight = collapsed ? '0px' : height;
     const { style } = document.documentElement;
     style.setProperty(SEARCH_BAR_HEIGHT_VAR, overlay ? '0px' : height);
