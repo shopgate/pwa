@@ -365,6 +365,40 @@ describe('settings / reducers / appSettings', () => {
     });
   });
 
+  it('keeps a medium column count of the category grid', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        grid: {
+          columns: {
+            small: 2,
+            medium: 3,
+            large: 'five',
+          },
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category.grid.columns).toEqual({
+      small: 2,
+      medium: 3,
+      large: 4,
+    });
+  });
+
+  it('falls back to the category and filter bar defaults when a later payload omits them', () => {
+    const configured = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        layout: 'grid',
+        showAllProducts: true,
+      },
+      product: { filterBar: { showSubcategoryChips: true } },
+    }));
+    const state = appSettings(configured, receiveAppSettings({ product: {} }));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+    expect(state.product.filterBar).toEqual(DEFAULT_APP_SETTINGS.product.filterBar);
+  });
+
   it.each(['grid', ['grid'], 3])('ignores the category branch %p', (branch) => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
       category: branch,

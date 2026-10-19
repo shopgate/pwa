@@ -127,6 +127,8 @@ export interface CategoryGridProps {
   parentCategory?: CategoryNavigationItem | null;
   /** Whether the grid starts with an entry that shows all products of the parent category. */
   showAllProducts?: boolean;
+  /** Whether the grid names itself. Off inside a section that already names it. */
+  labelled?: boolean;
 }
 
 /**
@@ -138,6 +140,7 @@ const CategoryGrid = ({
   prerender = 0,
   parentCategory = null,
   showAllProducts = false,
+  labelled = true,
 }: CategoryGridProps) => {
   const columns = useCategoryGridColumns();
   const { width, height } = useSelector(getCategoryImageRatio);
@@ -179,7 +182,7 @@ const CategoryGrid = ({
   return (
     <ul
       className={cx(classes.root, 'engage__category__category-grid')}
-      aria-label={i18n.text('category.sections.categories')}
+      aria-label={labelled ? i18n.text('category.sections.categories') : undefined}
     >
       {showAllProducts && parentCategory ? (
         <li className={classes.showAllProductsItem}>

@@ -32,6 +32,7 @@ const useStyles = makeStyles({ name: 'CategoryChips' })(theme => ({
     listStyle: 'none',
     overflowX: 'auto',
     overflowY: 'hidden',
+    scrollPaddingInline: theme.spacing(2),
     scrollbarWidth: 'none',
     '&::-webkit-scrollbar': {
       display: 'none',

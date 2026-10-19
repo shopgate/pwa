@@ -3,6 +3,7 @@ import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppSettingsSlice,
   CategorySettings,
+  PerScreenSize,
   ProductActionButtonsSettings,
   ProductVariantSelectorSettings,
 } from '../types/appSettings';
@@ -36,6 +37,12 @@ const VARIANT_SELECTOR_OPTIONS: {
   swatchShape: ['round', 'square'],
   chipsLayout: ['wrap', 'scroll'],
   soldOut: ['strike', 'hide', 'none'],
+};
+
+const SCREEN_SIZE_NUMBERS: Required<PerScreenSize> = {
+  small: 0,
+  medium: 0,
+  large: 0,
 };
 
 const CATEGORY_OPTIONS: {
@@ -238,10 +245,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       category: category === null ? undefined : {
         ...pickValidSettings(category, DEFAULT_APP_SETTINGS.category, CATEGORY_OPTIONS),
         grid: {
-          columns: pickValidSettings(
-            category?.grid?.columns,
-            DEFAULT_APP_SETTINGS.category.grid.columns
-          ),
+          columns: pickValidSettings(category?.grid?.columns, SCREEN_SIZE_NUMBERS),
         },
       },
       widgets: widgets === null ? undefined : {

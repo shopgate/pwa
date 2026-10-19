@@ -5,7 +5,10 @@ import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import { Placeholder } from '@shopgate/pwa-ui-shared';
-import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import {
+  CATEGORY_ITEM,
+  CATEGORY_SHOW_ALL_PRODUCTS,
+} from '@shopgate/pwa-common-commerce/category/constants/Portals';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getShowAllProductsFilters } from '@shopgate/engage/category';
 import { SheetList, TextLink } from '@shopgate/engage/components';
@@ -40,6 +43,7 @@ const useStyles = makeStyles()(theme => ({
  * @param {boolean} props.showImages Whether to show category images
  * @param {boolean} props.showLeftSideImages Whether to show category images on the left side
  * @param {string} props.layout Whether the categories are shown as a list or as a grid
+ * @param {boolean} props.labelled Whether the grid names itself, off inside a named section
  * @returns {JSX.Element}
  */
 const CategoryList = ({
@@ -50,6 +54,7 @@ const CategoryList = ({
   showImages,
   showLeftSideImages,
   layout,
+  labelled,
 }) => {
   const { classes, cx } = useStyles();
 
@@ -60,6 +65,7 @@ const CategoryList = ({
         prerender={prerender}
         parentCategory={parentCategory}
         showAllProducts={showAllProducts}
+        labelled={labelled}
       />
     );
   }
@@ -86,7 +92,7 @@ const CategoryList = ({
         <div className={cx(classes.showAllProducts, 'engage__category__category-show-all-products')}>
           <Portal
             key={parentCategory.id}
-            name="category.show-all-products"
+            name={CATEGORY_SHOW_ALL_PRODUCTS}
             props={{ categoryId: parentCategory.id }}
           >
             <SheetList.Item
@@ -141,6 +147,7 @@ const CategoryList = ({
 
 CategoryList.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape()),
+  labelled: PropTypes.bool,
   layout: PropTypes.oneOf(['list', 'grid']),
   parentCategory: PropTypes.shape(),
   prerender: PropTypes.number,
@@ -151,6 +158,7 @@ CategoryList.propTypes = {
 
 CategoryList.defaultProps = {
   categories: null,
+  labelled: true,
   layout: 'list',
   parentCategory: null,
   prerender: 0,

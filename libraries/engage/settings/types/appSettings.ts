@@ -196,7 +196,7 @@ export interface CategorySettings {
     /** Number of category columns, keyed by screen size. */
     columns: PerScreenSize;
   };
-  /** Whether the list and the chips show category images. The grid always shows them. */
+  /** Whether the list, the chips and the category menu show images. The grid always does. */
   showImages: boolean;
   /**
    * Whether list, grid and chips start with an entry that shows all products of the category.

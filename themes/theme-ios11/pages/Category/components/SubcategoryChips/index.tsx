@@ -8,6 +8,7 @@ import {
   getCategoryChildCount,
 } from '@shopgate/engage/category/selectors';
 import { CategoryChips } from '@shopgate/engage/category/components';
+import type { CategoryNavigationItem } from '@shopgate/engage/category/types';
 
 interface SubcategoryChipsProps {
   categoryId: string;
@@ -25,10 +26,12 @@ const SubcategoryChips = ({
   showAllProducts = false,
 }: SubcategoryChipsProps) => {
   const props = useMemo(() => ({ categoryId }), [categoryId]);
-  const category = useSelector(state => getCategory(state, props));
-  const categories = useSelector(state => getCategoryChildren(state, props));
-  const isFetching = useSelector(state => areCategoryChildrenFetching(state, props));
-  const childrenCount = useSelector(state => getCategoryChildCount(state, props));
+  const category: CategoryNavigationItem | null = useSelector(state => getCategory(state, props));
+  const categories: CategoryNavigationItem[] | null = useSelector(
+    state => getCategoryChildren(state, props)
+  );
+  const isFetching: boolean = useSelector(state => areCategoryChildrenFetching(state, props));
+  const childrenCount: number = useSelector(state => getCategoryChildCount(state, props));
 
   return (
     <CategoryChips

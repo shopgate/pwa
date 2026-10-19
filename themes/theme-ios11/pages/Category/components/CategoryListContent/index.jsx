@@ -1,13 +1,13 @@
 import React, { Fragment, PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import Portal from '@shopgate/pwa-common/components/Portal';
+import { Portal } from '@shopgate/engage/components';
 import {
   CATEGORY_LIST,
   CATEGORY_LIST_AFTER,
   CATEGORY_LIST_BEFORE,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
+} from '@shopgate/engage/category/constants';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
-import { Section } from '@shopgate/engage/a11y';
+import { Section } from '@shopgate/engage/a11y/components';
 import { CategoryList } from '@shopgate/engage/category/components';
 import connect from './connector';
 
@@ -53,21 +53,22 @@ class CategoryListContent extends PureComponent {
       <>
         <Portal name={CATEGORY_LIST_BEFORE} props={{ categoryId }} />
         {showList && (
-        <Portal name={CATEGORY_LIST} props={{ categoryId }}>
-          {hasChildren && (
-            <Section title="category.sections.categories">
-              <CategoryList
-                categories={categories}
-                prerender={categoriesFetching ? childrenCount : 0}
-                // "show all products" feature is only supported by the "old" services
-                showAllProducts={!hasNewServices() && showAllProducts}
-                parentCategory={category}
-                layout={layout}
-                showLeftSideImages={layout === 'list' && showImages}
-              />
-            </Section>
-          )}
-        </Portal>
+          <Portal name={CATEGORY_LIST} props={{ categoryId }}>
+            {hasChildren && (
+              <Section title="category.sections.categories">
+                <CategoryList
+                  categories={categories}
+                  prerender={categoriesFetching ? childrenCount : 0}
+                  // "show all products" feature is only supported by the "old" services
+                  showAllProducts={!hasNewServices() && showAllProducts}
+                  parentCategory={category}
+                  layout={layout}
+                  showLeftSideImages={layout === 'list' && showImages}
+                  labelled={false}
+                />
+              </Section>
+            )}
+          </Portal>
         )}
         <Portal name={CATEGORY_LIST_AFTER} props={{ categoryId }} />
       </>

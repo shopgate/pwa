@@ -16,7 +16,9 @@ jest.mock('@shopgate/engage/category/helpers', () => ({
   getShowAllProductsFilters: () => ({}),
 }));
 jest.mock('@shopgate/engage/components', () => ({
-  Portal: ({ children }: { children: ReactNode }) => children,
+  Portal: ({ children, name, props }: {
+    children: ReactNode; name: string; props: { categoryId: string };
+  }) => <div data-portal={name} data-category-id={props.categoryId}>{children}</div>,
   SurroundPortals: ({ children }: { children: ReactNode }) => children,
   TextLink: ({ href, children }: { href: string; children: ReactNode }) => (
     <a href={href}>{children}</a>
@@ -72,6 +74,22 @@ describe('<CategoryChips />', () => {
 
     expect(within(screen.getByRole('link', { name: 'Shirts' })).getAllByTestId('image'))
       .not.toHaveLength(0);
+  });
+
+  it('passes the category to the portals', () => {
+    const { container } = render(<CategoryChips
+      categories={categories}
+      parentCategory={{
+        id: 'p',
+        name: 'Men',
+      }}
+      showAllProducts
+    />);
+
+    expect(container.querySelector('[data-portal="category.chips.item"][data-category-id="a"]'))
+      .toBeInTheDocument();
+    expect(container.querySelector('[data-portal="category.chips.show-all-products"][data-category-id="p"]'))
+      .toBeInTheDocument();
   });
 
   it('starts with a chip for all products of the parent category', () => {

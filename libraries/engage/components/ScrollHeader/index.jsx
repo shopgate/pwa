@@ -1,4 +1,6 @@
-import React, { useState, forwardRef, useEffect } from 'react';
+import React, {
+  useState, forwardRef, useEffect, useRef, useImperativeHandle,
+} from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { useScrollDirectionChange, useRoute } from '@shopgate/engage/core/hooks';
@@ -65,6 +67,9 @@ function ScrollHeaderBase({
   const { classes, cx } = useStyles();
   const reduceMotion = useReduceMotion();
   const [shouldHideHeader, setShouldHideHeader] = useState(false);
+  const rootRef = useRef(null);
+
+  useImperativeHandle(ref, () => rootRef.current);
 
   // The `viewScroll$` stream is shared across all mounted views. Cached routes (e.g. a product
   // list) stay mounted in the background while another route is active, so without this guard the
@@ -79,12 +84,22 @@ function ScrollHeaderBase({
     onlyFireOnScrollUpAtTop: onlyShowAtTop,
     onlyFireOnScrollUpAtTopOffset: onlyShowAtTopOffset,
     onScrollDown: () => {
+      if (rootRef.current?.contains(document.activeElement)) {
+        return;
+      }
+
       setShouldHideHeader(true);
     },
     onScrollUp: () => {
       setShouldHideHeader(false);
     },
   });
+
+  useEffect(() => {
+    if (!hideOnScroll) {
+      setShouldHideHeader(false);
+    }
+  }, [hideOnScroll]);
 
   const isHidden = hideOnScroll && shouldHideHeader;
 
@@ -98,7 +113,7 @@ function ScrollHeaderBase({
 
   return (
     <div
-      ref={ref}
+      ref={rootRef}
       onFocus={() => setShouldHideHeader(false)}
       className={cx(classes.root, className, {
         [classes.transition]: !reduceMotion,

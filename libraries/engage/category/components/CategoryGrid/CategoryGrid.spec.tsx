@@ -32,7 +32,9 @@ jest.mock('@shopgate/engage/category/helpers', () => ({
 jest.mock('@shopgate/engage/category/hooks', () => ({ useCategoryGridColumns: () => 2 }));
 jest.mock('@shopgate/engage/product/hooks', () => ({ useProductImageShadow: () => true }));
 jest.mock('@shopgate/engage/components', () => ({
-  Portal: ({ children }: { children: ReactNode }) => children,
+  Portal: ({ children, name, props }: {
+    children: ReactNode; name: string; props: { categoryId: string };
+  }) => <div data-portal={name} data-category-id={props.categoryId}>{children}</div>,
   Ellipsis: ({ children, rows }: { children: ReactNode; rows?: number }) => (
     <span data-rows={rows}>{children}</span>
   ),
@@ -114,6 +116,22 @@ describe('<CategoryGrid />', () => {
     render(<CategoryGrid categories={categories} />);
 
     expect(within(screen.getByRole('link', { name: 'Shirts' })).getByTestId('image-fallback'))
+      .toBeInTheDocument();
+  });
+
+  it('passes the category to the portals', () => {
+    const { container } = render(<CategoryGrid
+      categories={categories}
+      parentCategory={{
+        id: 'p',
+        name: 'Men',
+      }}
+      showAllProducts
+    />);
+
+    expect(container.querySelector('[data-portal="category.grid.item"][data-category-id="a"]'))
+      .toBeInTheDocument();
+    expect(container.querySelector('[data-portal="category.grid.show-all-products"][data-category-id="p"]'))
       .toBeInTheDocument();
   });
 
