@@ -1,14 +1,19 @@
-import { render, act } from '@testing-library/react';
-import { useDebouncedValue, useSearchHistory, useSubmitSearch } from './hooks';
+import { render, act, waitFor } from '@testing-library/react';
+import { fetchProducts } from '@shopgate/engage/product';
+import { fetchSearchResults } from '@shopgate/engage/search/actions';
+import {
+  useDebouncedValue, useSearchHistory, useSearchPreview, useSubmitSearch,
+} from './hooks';
 
 const mockPush = jest.fn();
 const mockReplace = jest.fn();
 let mockRoute = { pattern: '/browse' };
 let mockRouteListener = null;
 let mockStored;
+const mockDispatch = jest.fn(action => (typeof action === 'function' ? action(mockDispatch, () => ({})) : action));
 
 jest.mock('react-redux', () => ({
-  useDispatch: () => jest.fn(),
+  useDispatch: () => mockDispatch,
   useSelector: selector => selector(),
   shallowEqual: () => true,
 }));
@@ -24,6 +29,13 @@ jest.mock('@shopgate/engage/core/hooks', () => {
 });
 jest.mock('@shopgate/engage/product', () => ({
   buildFetchSearchResultsParams: () => ({}),
+  fetchProducts: jest.fn(() => Promise.resolve({
+    products: [{ id: 'a' }, { id: 'b' }],
+    totalProductCount: 17,
+  })),
+}));
+jest.mock('@shopgate/engage/filter/selectors', () => ({
+  makeGetDefaultSortOrder: () => () => 'relevance',
 }));
 jest.mock('@shopgate/engage/product/selectors/product', () => ({
   getProductById: jest.fn(),
@@ -177,6 +189,34 @@ describe('useDebouncedValue', () => {
     });
 
     expect(result.current).toBe('Beanie');
+  });
+});
+
+describe('useSearchPreview', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('loads the products without the search actions and keeps them apart from the results page', async () => {
+    const { result } = renderHook(useSearchPreview, 'bean');
+
+    await waitFor(() => expect(result.current.totalProductCount).toBe(17));
+    expect(fetchProducts).toHaveBeenCalledWith(expect.objectContaining({
+      id: 'search-preview',
+      params: expect.objectContaining({
+        searchPhrase: 'bean',
+        offset: 0,
+        limit: 12,
+        sort: 'relevance',
+      }),
+    }));
+    expect(fetchSearchResults).not.toHaveBeenCalled();
+  });
+
+  it('loads nothing below three characters', () => {
+    renderHook(useSearchPreview, 'be');
+
+    expect(fetchProducts).not.toHaveBeenCalled();
   });
 });
 

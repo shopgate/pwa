@@ -4,10 +4,11 @@ import {
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import debounce from 'lodash/debounce';
 import { useLocalStorage, useNavigation } from '@shopgate/engage/core/hooks';
-import { buildFetchSearchResultsParams } from '@shopgate/engage/product';
+import { buildFetchSearchResultsParams, fetchProducts } from '@shopgate/engage/product';
+import { makeGetDefaultSortOrder } from '@shopgate/engage/filter/selectors';
 import { getProductById } from '@shopgate/engage/product/selectors/product';
 import { SEARCH_PATH, SEARCH_PATTERN } from '@shopgate/engage/search/constants';
-import { fetchSearchResults, fetchSearchSuggestions } from '@shopgate/engage/search/actions';
+import { fetchSearchSuggestions } from '@shopgate/engage/search/actions';
 import { getSuggestions } from '@shopgate/engage/search/selectors';
 import { getCurrentRoute } from '@shopgate/engage/core/selectors';
 import { routeDidEnter$ } from '@shopgate/engage/core/streams';
@@ -16,6 +17,7 @@ import {
   SEARCH_HISTORY_MAX,
   SEARCH_MIN_CHARS,
   SEARCH_PREVIEW_LIMIT,
+  SEARCH_PREVIEW_RESULT_ID,
   SEARCH_PREVIEW_RETRIES,
   SEARCH_PREVIEW_RETRY_DELAY,
 } from './constants';
@@ -54,6 +56,7 @@ interface Route {
   query?: Record<string, string>;
 }
 
+type GetState = () => unknown;
 type Dispatch = (action: unknown) => unknown;
 
 const EMPTY_HISTORY: string[] = [];
@@ -83,21 +86,36 @@ const toPreviewResult = (result?: ProductsResult | null): PreviewResult | null =
   };
 };
 
+const getDefaultSortOrder = makeGetDefaultSortOrder();
+
 /**
- * Requests the first products of a search. Products the store already holds for the search are
- * used without a request.
+ * Requests the first products of a search. It loads the products directly instead of through the
+ * search actions, so typing triggers no search events: extensions that react to search results,
+ * like keyword redirects, act on submit only. The preview has a result of its own, so the results
+ * page always requests its search.
  * @param searchPhrase The search phrase.
  * @returns A redux thunk that resolves with the preview, or with null while the same request
  * is still running.
  */
 const fetchSearchPreview = (searchPhrase: string) => (
-  dispatch: Dispatch
-): Promise<PreviewResult | null> => (
-  Promise.resolve(dispatch(fetchSearchResults({
-    ...buildFetchSearchResultsParams(),
-    searchPhrase,
-    limit: SEARCH_PREVIEW_LIMIT,
-    filters: undefined,
+  dispatch: Dispatch,
+  getState: GetState
+): Promise<PreviewResult | null> => {
+  const { params, cachedTime = null } = (buildFetchSearchResultsParams() || {}) as {
+    params?: Record<string, unknown>;
+    cachedTime?: number | null;
+  };
+
+  return Promise.resolve(dispatch(fetchProducts({
+    id: SEARCH_PREVIEW_RESULT_ID,
+    cachedTime,
+    params: {
+      searchPhrase,
+      offset: 0,
+      limit: SEARCH_PREVIEW_LIMIT,
+      sort: getDefaultSortOrder(getState(), { searchPhrase }),
+      ...params,
+    },
   }))).then((result) => {
     if (!result || !Array.isArray((result as ProductsResult).products)) {
       return null;
@@ -107,8 +125,8 @@ const fetchSearchPreview = (searchPhrase: string) => (
       productIds: [],
       totalProductCount: 0,
     };
-  })
-);
+  });
+};
 
 /**
  * Cleans up stored search terms.
