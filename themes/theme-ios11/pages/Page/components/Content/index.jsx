@@ -2,13 +2,11 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { PAGE_CONTENT } from '@shopgate/engage/core/constants';
 import {
-  Logo,
   SurroundPortals,
   Widgets as WidgetsV1,
 } from '@shopgate/engage/components';
 import { PAGE_ID_INDEX } from '@shopgate/engage/page/constants';
 import { NotFound, Widgets as WidgetsV2 } from '@shopgate/engage/page/components';
-import { AppBar } from '@shopgate/pwa-ui-ios';
 import { DefaultBar, BackBar } from 'Components/AppBar/presets';
 import { i18n } from '@shopgate/engage/core/helpers';
 import connect from './connector';
@@ -31,19 +29,14 @@ const PageContent = ({
   widgets = [],
   hasError = false,
 }) => {
-  let center = <Logo />;
-
-  if (pageId !== PAGE_ID_INDEX) {
-    center = <AppBar.Title title={hasError ? i18n.text('titles.page_not_found') : title} />;
-  }
-
-  const Bar = (pageId === PAGE_ID_INDEX) ? DefaultBar : BackBar;
+  const isIndex = pageId === PAGE_ID_INDEX;
+  const Bar = isIndex ? DefaultBar : BackBar;
 
   const Component = isCmsV2Enabled ? WidgetsV2 : WidgetsV1;
 
   return (
     <>
-      <Bar center={center} title={hasError ? i18n.text('titles.page_not_found') : title} />
+      <Bar logo={isIndex} title={hasError ? i18n.text('titles.page_not_found') : title} />
       <SurroundPortals
         portalName={PAGE_CONTENT}
         portalProps={{ id: pageId }}

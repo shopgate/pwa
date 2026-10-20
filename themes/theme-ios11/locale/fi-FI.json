@@ -424,7 +424,13 @@
     "no_result": {
       "heading": "Hups!",
       "body": "Hakusi \"{searchPhrase}\" ei tuottanut tuloksia."
-    }
+    },
+    "history_title": "Viimeisimmät haut",
+    "history_clear": "Tyhjennä historia",
+    "results_count": "{count, plural, =1 {1 tulos} other {{count} tulosta}}",
+    "show_all_results": "Näytä kaikki tulokset",
+    "clear": "Tyhjennä haku",
+    "new_search": "Uusi haku"
   },
   "shipping": {
     "unknown": "plus toimituskulut",
@@ -578,7 +584,8 @@
     "order_history": "Tilaushistoria",
     "profile": "Profiili",
     "back": "Takaisin {title}",
-    "open_menu": "Avaa valikko"
+    "open_menu": "Avaa valikko",
+    "open_link": "Avaa sivu"
   },
   "reviews": {
     "rating": "Arviointi",

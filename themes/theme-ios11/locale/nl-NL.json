@@ -424,7 +424,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
-    }
+    },
+    "history_title": "Recente zoekopdrachten",
+    "history_clear": "Geschiedenis wissen",
+    "results_count": "{count, plural, =1 {1 resultaat} other {{count} resultaten}}",
+    "show_all_results": "Alle resultaten tonen",
+    "clear": "Zoekopdracht wissen",
+    "new_search": "Nieuwe zoekopdracht"
   },
   "shipping": {
     "unknown": "plus verzendkosten",
@@ -578,7 +584,8 @@
     "order_history": "Bestelgeschiedenis",
     "profile": "Profiel",
     "back": "Terug naar {title}",
-    "open_menu": "Menu openen"
+    "open_menu": "Menu openen",
+    "open_link": "Pagina openen"
   },
   "reviews": {
     "rating": "Rating",
