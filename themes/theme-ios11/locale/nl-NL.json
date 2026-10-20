@@ -240,7 +240,6 @@
     "tax_disclaimer": "* Inclusief BTW, eventueel vermeerderd met verzendkosten",
     "tax_disclaimer_aria": "Inclusief BTW, eventueel vermeerderd met verzendkosten",
     "item_added": "{count, plural, =0 {# geen producten toegevoegd} =1 {{count} product toegevoegd} other {{count} producten toegevoegd}}",
-    "item_added_unit": "{count} {unit} toegevoegd",
     "adding_item": "{count, plural, =1 {Er wordt één product toegevoegd} other {Er worden {count} producten toegevoegd}}",
     "pick_option_first": "Kies eerst een optie. {option}",
     "variant_unavailable": "Niet beschikbaar in deze combinatie",
@@ -425,7 +424,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
-    }
+    },
+    "history_title": "Recente zoekopdrachten",
+    "history_clear": "Geschiedenis wissen",
+    "results_count": "{count, plural, =1 {1 resultaat} other {{count} resultaten}}",
+    "show_all_results": "Alle resultaten tonen",
+    "clear": "Zoekopdracht wissen",
+    "new_search": "Nieuwe zoekopdracht"
   },
   "shipping": {
     "unknown": "plus verzendkosten",
@@ -579,7 +584,8 @@
     "order_history": "Bestelgeschiedenis",
     "profile": "Profiel",
     "back": "Terug naar {title}",
-    "open_menu": "Menu openen"
+    "open_menu": "Menu openen",
+    "open_link": "Pagina openen"
   },
   "reviews": {
     "rating": "Rating",

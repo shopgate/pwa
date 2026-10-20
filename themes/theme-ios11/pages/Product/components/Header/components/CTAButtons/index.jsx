@@ -7,16 +7,22 @@ import {
   PRODUCT_CTAS_SHARE,
 } from '@shopgate/engage/product/constants';
 import { ProductShareButton } from '@shopgate/engage/product/components';
-import { useStickyValue } from '@shopgate/engage/product/hooks';
-import { appConfig } from '@shopgate/engage';
+import { useProductGallerySettings, useStickyValue } from '@shopgate/engage/product/hooks';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getProductActionButtons } from '@shopgate/engage/settings/selectors/appSettings';
+import {
+  getAppBarSettings,
+  getProductActionButtons,
+} from '@shopgate/engage/settings/selectors/appSettings';
+import {
+  FLOATING_BUTTON_INSET,
+  FLOATING_BUTTON_SIZE,
+  SEARCH_BAR_FLOATING_HEIGHT_VAR,
+} from 'Components/AppBar/constants';
 import connect from './connector';
 
-const { pdpImageSliderPaginationType } = appConfig;
-
 const BULLETS_BELOW_OFFSET = 28;
+const FRACTION_BELOW_OFFSET = 32;
 
 const useStyles = makeStyles()(theme => ({
   buttons: {
@@ -40,6 +46,18 @@ const useStyles = makeStyles()(theme => ({
     '&[data-position="bottomRight"][data-bullets-below]': {
       bottom: theme.spacing(2) + BULLETS_BELOW_OFFSET,
     },
+    '&[data-position="bottomRight"][data-fraction-below]': {
+      bottom: theme.spacing(2) + FRACTION_BELOW_OFFSET,
+    },
+    '&[data-floating-header][data-position="topRight"]': {
+      top: `calc(var(--app-bar-height, 0px) + var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px) + ${FLOATING_BUTTON_INSET}px)`,
+    },
+    '&[data-floating-header] > button, &[data-floating-header] > * > button': {
+      width: FLOATING_BUTTON_SIZE,
+      height: FLOATING_BUTTON_SIZE,
+      minWidth: FLOATING_BUTTON_SIZE,
+      minHeight: FLOATING_BUTTON_SIZE,
+    },
   },
   favButton: {
     zIndex: 1,
@@ -56,8 +74,11 @@ const CTAButtons = ({
 }) => {
   const { classes, cx } = useStyles();
   const { position, direction } = useSelector(getProductActionButtons);
+  const { variant: headerVariant } = useSelector(getAppBarSettings);
   const hasGallery = useStickyValue(hasImageGallery, hasImageGallery === null);
-  const bulletsBelow = pdpImageSliderPaginationType === 'bulletsBelow' && !!hasGallery;
+  const { pagination } = useProductGallerySettings();
+  const bulletsBelow = pagination === 'bulletsBelow' && !!hasGallery;
+  const fractionBelow = pagination === 'fractionBelow' && !!hasGallery;
 
   const favoritesFirst = position === 'topRight' && direction === 'vertical';
   const favorites = (
@@ -80,6 +101,8 @@ const CTAButtons = ({
         data-position={position}
         data-direction={direction}
         data-bullets-below={bulletsBelow ? true : undefined}
+        data-fraction-below={fractionBelow ? true : undefined}
+        data-floating-header={headerVariant === 'floating' ? true : undefined}
       >
         {favoritesFirst && favorites}
         <SurroundPortals portalName={PRODUCT_CTAS_SHARE}>

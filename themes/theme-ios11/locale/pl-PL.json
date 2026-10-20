@@ -240,7 +240,6 @@
     "tax_disclaimer": "* Z uwzględnieniem podatku VAT oraz ewentualnych kosztów wysyłki.",
     "tax_disclaimer_aria": "Z uwzględnieniem podatku VAT oraz ewentualnych kosztów wysyłki.",
     "item_added": "{count, plural, =0 {# brak produktów} =1 {{count} dodany produkt} other {{count} dodane produkty}}",
-    "item_added_unit": "{count} {unit} dodano",
     "adding_item": "{count, plural, =1 {Dodawany jest jeden produkt} other {Dodawane są {count} produkty}}",
     "pick_option_first": "Najpierw wybierz opcję. {option}",
     "variant_unavailable": "Niedostępne w tej kombinacji",
@@ -424,7 +423,13 @@
     "no_result": {
       "heading": "Ups!",
       "body": "Twoje wyszukiwanie dla frazy \"{searchPhrase}\" nie przyniosło żadnych rezultatów."
-    }
+    },
+    "history_title": "Ostatnie wyszukiwania",
+    "history_clear": "Wyczyść historię",
+    "results_count": "{count, plural, =1 {1 wynik} other {Wyniki: {count}}}",
+    "show_all_results": "Pokaż wszystkie wyniki",
+    "clear": "Wyczyść wyszukiwanie",
+    "new_search": "Nowe wyszukiwanie"
   },
   "shipping": {
     "unknown": "plus wysyłka",
@@ -578,7 +583,8 @@
     "order_history": "Historia zamówień",
     "profile": "Profil",
     "back": "Powrót do {title}",
-    "open_menu": "Otwórz menu"
+    "open_menu": "Otwórz menu",
+    "open_link": "Otwórz stronę"
   },
   "reviews": {
     "rating": "Przegląd",
