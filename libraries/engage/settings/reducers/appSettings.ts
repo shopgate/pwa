@@ -7,6 +7,8 @@ import type {
   AppBarSettings,
   AppSettingsSlice,
   CartPaymentBarSettings,
+  CategorySettings,
+  PerScreenSize,
   ProductActionButtonsSettings,
   ProductAddToCartBarSettings,
   ProductGallerySettings,
@@ -42,6 +44,18 @@ const VARIANT_SELECTOR_OPTIONS: {
   swatchShape: ['round', 'square'],
   chipsLayout: ['wrap', 'scroll'],
   soldOut: ['strike', 'hide', 'none'],
+};
+
+const SCREEN_SIZE_NUMBERS: Required<PerScreenSize> = {
+  small: 0,
+  medium: 0,
+  large: 0,
+};
+
+const CATEGORY_OPTIONS: {
+  [K in keyof CategorySettings]?: readonly CategorySettings[K][]
+} = {
+  layout: ['list', 'grid'],
 };
 
 const ACTION_BUTTON_OPTIONS: {
@@ -177,6 +191,11 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       direction: 'horizontal',
       showShareButton: true,
     },
+    filterBar: {
+      showSubcategoryChips: false,
+      showOnParentCategories: false,
+      hideOnScroll: true,
+    },
     gallery: {
       pagination: 'bullets',
     },
@@ -184,6 +203,17 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       variant: 'fixed',
       quantityPicker: false,
     },
+  },
+  category: {
+    layout: 'list',
+    grid: {
+      columns: {
+        small: 2,
+        large: 4,
+      },
+    },
+    showImages: false,
+    showAllProducts: false,
   },
   search: {
     persistentBar: {
@@ -232,6 +262,12 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
       showInnerShadow: DEFAULT_SHOW_INNER_SHADOW,
     },
+    category: {
+      ratio: {
+        width: 1,
+        height: 1,
+      },
+    },
   },
 };
 
@@ -249,7 +285,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product, cart, navigation, search,
+      images, typography, appearance, widgets, product, category, cart, navigation, search,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -264,6 +300,12 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       images: images === null ? undefined : {
         ...images,
         product: images?.product ?? undefined,
+        category: {
+          ratio: pickValidSettings(
+            images?.category?.ratio,
+            DEFAULT_APP_SETTINGS.images.category.ratio
+          ),
+        },
       },
       typography: typography === null ? undefined : {
         ...typography,
@@ -317,6 +359,10 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           product?.manufacturer,
           DEFAULT_APP_SETTINGS.product.manufacturer
         ),
+        filterBar: pickValidSettings(
+          product?.filterBar,
+          DEFAULT_APP_SETTINGS.product.filterBar
+        ),
         gallery: pickValidSettings(
           product?.gallery,
           DEFAULT_APP_SETTINGS.product.gallery,
@@ -327,6 +373,12 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           DEFAULT_APP_SETTINGS.product.addToCartBar,
           ADD_TO_CART_BAR_OPTIONS
         ),
+      },
+      category: category === null ? undefined : {
+        ...pickValidSettings(category, DEFAULT_APP_SETTINGS.category, CATEGORY_OPTIONS),
+        grid: {
+          columns: pickValidSettings(category?.grid?.columns, SCREEN_SIZE_NUMBERS),
+        },
       },
       search: !isPlainObject(search) ? undefined : {
         ...pickValidSettings(search, {

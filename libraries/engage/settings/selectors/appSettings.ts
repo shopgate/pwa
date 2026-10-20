@@ -104,6 +104,30 @@ export const getProductActionButtons = createSelector(
 );
 
 /**
+ * Selects the settings of the bar with sort and filter.
+ */
+export const getProductFilterBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.filterBar
+);
+
+/**
+ * Selects the aspect ratio of category images in the category list, grid and chips.
+ */
+export const getCategoryImageRatio = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.images.category.ratio
+);
+
+/**
+ * Selects how categories are presented.
+ */
+export const getCategorySettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.category
+);
+
+/**
  * Selects the settings of the image gallery of the product page.
  */
 export const getProductGallerySettings = createSelector(

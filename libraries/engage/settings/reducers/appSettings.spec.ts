@@ -171,6 +171,11 @@ describe('settings / reducers / appSettings', () => {
           direction: 'vertical',
           showShareButton: true,
         },
+        filterBar: {
+          showSubcategoryChips: true,
+          showOnParentCategories: true,
+          hideOnScroll: false,
+        },
         gallery: {
           pagination: 'fraction',
         },
@@ -178,6 +183,17 @@ describe('settings / reducers / appSettings', () => {
           variant: 'floating',
           quantityPicker: true,
         },
+      },
+      category: {
+        layout: 'grid',
+        grid: {
+          columns: {
+            small: 3,
+            large: 6,
+          },
+        },
+        showImages: true,
+        showAllProducts: true,
       },
       cart: {
         paymentBar: {
@@ -205,6 +221,12 @@ describe('settings / reducers / appSettings', () => {
           },
           showInnerShadow: false,
         },
+        category: {
+          ratio: {
+            width: 4,
+            height: 5,
+          },
+        },
       },
       appearance: {
         defaultColorSchemeMode: 'dark',
@@ -225,6 +247,7 @@ describe('settings / reducers / appSettings', () => {
     expect(state.navigation).toEqual(settings.navigation);
     expect(state.search).toEqual(settings.search);
     expect(state.product).toEqual(settings.product);
+    expect(state.category).toEqual(settings.category);
     expect(state.cart).toEqual(settings.cart);
     expect(state.cards).toEqual(settings.cards);
     expect(state.appearance).toEqual(settings.appearance);
@@ -371,6 +394,102 @@ describe('settings / reducers / appSettings', () => {
     expect(state.product.variantSelector).toEqual(DEFAULT_APP_SETTINGS.product.variantSelector);
   });
 
+  it('keeps the defaults of cleared and invalid filter bar values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        filterBar: {
+          showSubcategoryChips: 'yes',
+          showOnParentCategories: true,
+          hideOnScroll: null,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.filterBar).toEqual({
+      showSubcategoryChips: false,
+      showOnParentCategories: true,
+      hideOnScroll: true,
+    });
+  });
+
+  it('keeps the category defaults when the branch is cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: null,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+  });
+
+  it('keeps the defaults of cleared and invalid category values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        layout: 'chips',
+        showImages: true,
+        showAllProducts: 1,
+        grid: {
+          columns: {
+            small: null,
+            large: 5,
+          },
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual({
+      layout: 'list',
+      showImages: true,
+      showAllProducts: false,
+      grid: {
+        columns: {
+          small: 2,
+          large: 5,
+        },
+      },
+    });
+  });
+
+  it('keeps a medium column count of the category grid', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        grid: {
+          columns: {
+            small: 2,
+            medium: 3,
+            large: 'five',
+          },
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category.grid.columns).toEqual({
+      small: 2,
+      medium: 3,
+      large: 4,
+    });
+  });
+
+  it('falls back to the category and filter bar defaults when a later payload omits them', () => {
+    const configured = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        layout: 'grid',
+        showAllProducts: true,
+      },
+      product: { filterBar: { showSubcategoryChips: true } },
+    }));
+    const state = appSettings(configured, receiveAppSettings({ product: {} }));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+    expect(state.product.filterBar).toEqual(DEFAULT_APP_SETTINGS.product.filterBar);
+  });
+
+  it.each(['grid', ['grid'], 3])('ignores the category branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: branch,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+  });
+
   it('falls back to the defaults for cleared or invalid bar settings', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
       product: {
@@ -504,6 +623,24 @@ describe('settings / reducers / appSettings', () => {
   });
 
   describe('images', () => {
+    it('keeps the default of a cleared or invalid category image ratio side', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        images: {
+          category: {
+            ratio: {
+              width: 3,
+              height: null,
+            },
+          },
+        },
+      } as unknown as AppSettingsPayload));
+
+      expect(state.images.category.ratio).toEqual({
+        width: 3,
+        height: 1,
+      });
+    });
+
     it('deep merges a partial images payload', () => {
       const partial = {
         images: {
