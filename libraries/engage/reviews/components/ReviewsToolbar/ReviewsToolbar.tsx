@@ -32,13 +32,12 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     flexWrap: 'wrap',
     alignItems: 'center',
-    columnGap: theme.spacing(1),
+    columnGap: theme.spacing(2),
     marginTop: theme.spacing(2),
     borderTop: `1px solid ${theme.components.border.light}`,
   },
   selects: {
     display: 'flex',
-    flexGrow: 2,
     minWidth: 0,
   },
   selectBox: {
