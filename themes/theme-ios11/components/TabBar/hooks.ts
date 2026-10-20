@@ -4,7 +4,7 @@ import { themeConfig } from '@shopgate/engage';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { useWidgetSettings, useScrollDirectionChange } from '@shopgate/engage/core/hooks';
 import { getAreAppSettingsHydrated, getTabBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
-import type { AppSettings } from '@shopgate/engage/settings/types/appSettings';
+import type { AppSettings, FooterBarVariant } from '@shopgate/engage/settings/types/appSettings';
 import {
   HIDE_TAB_BAR,
   SHOW_TAB_BAR,
@@ -90,4 +90,33 @@ export const useTabBarScrollObserver = (isVisible: boolean) => {
       UIEvents.emit(SHOW_TAB_BAR, { scroll: true });
     },
   });
+};
+
+/**
+ * Layout of a bar that sits on top of the tab bar.
+ */
+export interface FooterBarLayout {
+  variant: FooterBarVariant;
+  /** Space in px between the floating bar and the tab bar. */
+  gap: number;
+}
+
+/**
+ * Resolves how a bar at the bottom of a page is laid out. A floating tab bar makes it float as
+ * well, otherwise the configured variant applies.
+ * @param variant The configured variant of the bar.
+ * @returns The layout.
+ */
+export const useFooterBarLayout = (variant: FooterBarVariant): FooterBarLayout => {
+  const { variant: tabBarVariant } = useTabBarSettings();
+
+  return useMemo<FooterBarLayout>(() => (tabBarVariant === 'floating'
+    ? {
+      variant: 'floating',
+      gap: 8,
+    }
+    : {
+      variant: variant === 'floating' ? 'floating' : 'fixed',
+      gap: 16,
+    }), [tabBarVariant, variant]);
 };

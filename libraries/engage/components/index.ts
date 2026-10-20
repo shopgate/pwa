@@ -186,6 +186,8 @@ export { default as Toggle } from './Toggle';
 export { Form } from './Form';
 export { FormBuilder } from './Form';
 export { Footer } from './Footer';
+export { FooterBar } from './FooterBar';
+export type { FooterBarProps } from './FooterBar';
 export { SideNavigation } from './SideNavigation';
 export { default as TextLink } from './TextLink/TextLink';
 export { ConditionalWrapper } from './ConditionalWrapper';

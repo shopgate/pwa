@@ -1,11 +1,19 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { render } from '@testing-library/react';
+import { getDiscounts } from '@shopgate/pwa-common-commerce/cart/selectors';
 import PaymentBarDiscounts from '../PaymentBarDiscounts';
 import { CartContext } from '../../../cart.context';
 
-jest.mock('../PaymentBarDiscounts.connector', () => cmp => cmp);
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: selector => selector(),
+}));
+jest.mock('@shopgate/pwa-common-commerce/cart/selectors', () => ({ getDiscounts: jest.fn() }));
 jest.mock('@shopgate/engage/components', () => ({
+  get CartTotalLine() {
+    return jest.requireActual('@shopgate/pwa-ui-shared/CartTotalLine').default;
+  },
   SurroundPortals: ({ children }) => children,
   I18n: {
     Text: ({ string, params }) => <span>{params?.label ? `${string} ${params.label}` : string}</span>,
@@ -31,7 +39,7 @@ describe('<PaymentBarDiscounts />', () => {
   );
 
   it('should render discount labels and signed amounts', () => {
-    const discounts = [
+    getDiscounts.mockReturnValue([
       {
         label: 'Coupon',
         amount: 10,
@@ -40,8 +48,8 @@ describe('<PaymentBarDiscounts />', () => {
         label: '',
         amount: 2,
       },
-    ];
-    const { container } = renderWithCartContext(<PaymentBarDiscounts discounts={discounts} />);
+    ]);
+    const { container } = renderWithCartContext(<PaymentBarDiscounts />);
 
     expect(container.querySelectorAll('[data-test-id="discountCartTotal"]')).toHaveLength(2);
     expect(container).toHaveTextContent('cart.discount_with_label Coupon:');
@@ -51,7 +59,8 @@ describe('<PaymentBarDiscounts />', () => {
   });
 
   it('should be empty render', () => {
-    const { container } = renderWithCartContext(<PaymentBarDiscounts discounts={null} />);
+    getDiscounts.mockReturnValue(null);
+    const { container } = renderWithCartContext(<PaymentBarDiscounts />);
     expect(container.firstChild).toBeNull();
   });
 });

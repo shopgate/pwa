@@ -39,11 +39,11 @@ jest.mock('@shopgate/engage/locations/constants', () => ({ DIRECT_SHIP: 'directS
 jest.mock('@shopgate/engage/a11y/helpers', () => ({ broadcastLiveMessage: jest.fn() }));
 jest.mock('@shopgate/engage/components', () => ({
   CartIcon: () => null,
-  TickIcon: () => <span>tick</span>,
   SurroundPortals: ({ portalName, children }: { portalName: string; children: ReactNode }) => (
     <div data-portal={portalName}>{children}</div>
   ),
 }));
+jest.mock('@shopgate/pwa-ui-shared/icons/TickIcon', () => () => <span>tick</span>);
 jest.mock('@shopgate/engage/components/v2', () => ({
   CircularProgress: () => <span>loading</span>,
   IconButton: ({
