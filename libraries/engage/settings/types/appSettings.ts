@@ -183,10 +183,11 @@ export interface ProductVariantSelectorSettings {
 }
 
 /**
- * How the image gallery of the product page shows the position of the visible image. `bulletsBelow`
- * places the bullets under the image instead of on top of it.
+ * How the image gallery of the product page shows the position of the visible image. The `Below`
+ * variants place the indicator under the image instead of on top of it.
  */
-export type ProductGalleryPagination = 'bullets' | 'bulletsBelow' | 'fraction' | 'progressbar';
+export type ProductGalleryPagination =
+  'bullets' | 'bulletsBelow' | 'fraction' | 'fractionBelow' | 'progressbar';
 
 /**
  * Settings for the image gallery of the product page.

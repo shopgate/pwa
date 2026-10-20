@@ -13,5 +13,6 @@ export const PRODUCT_GALLERY_PAGINATIONS: readonly ProductGalleryPagination[] = 
   'bullets',
   'bulletsBelow',
   'fraction',
+  'fractionBelow',
   'progressbar',
 ];

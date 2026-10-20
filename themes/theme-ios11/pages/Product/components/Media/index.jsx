@@ -51,11 +51,11 @@ const useStyles = makeStyles()((theme) => {
     },
     slider: {
       '&:not(.common__swiper), & > .swiper': rounded,
-      '[data-pagination="bulletsBelow"] & > .swiper': {
+      '[data-pagination$="Below"] & > .swiper': {
         borderRadius: 0,
       },
-      '[data-pagination="bulletsBelow"] & .swiper-slide': rounded,
-      '[data-action-buttons-position="topRight"] & .swiper-pagination-fraction': {
+      '[data-pagination$="Below"] & .swiper-slide': rounded,
+      '[data-pagination="fraction"][data-action-buttons-position="topRight"] & .swiper-pagination-fraction': {
         top: 'auto',
         bottom: fractionOffset,
       },
