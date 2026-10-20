@@ -104,6 +104,14 @@ export const getProductActionButtons = createSelector(
 );
 
 /**
+ * Selects the settings of the image gallery of the product page.
+ */
+export const getProductGallerySettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.gallery
+);
+
+/**
  * Selects the add to cart bar settings of the product page.
  */
 export const getProductAddToCartBarSettings = createSelector(

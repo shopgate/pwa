@@ -171,6 +171,9 @@ describe('settings / reducers / appSettings', () => {
           direction: 'vertical',
           showShareButton: true,
         },
+        gallery: {
+          pagination: 'fraction',
+        },
         addToCartBar: {
           variant: 'floating',
           quantityPicker: true,
@@ -307,6 +310,33 @@ describe('settings / reducers / appSettings', () => {
       direction: 'vertical',
     });
   });
+
+  it('stores the pagination of the product gallery', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        gallery: {
+          pagination: 'bulletsBelow',
+        },
+      },
+    }));
+
+    expect(state.product.gallery).toEqual({ pagination: 'bulletsBelow' });
+  });
+
+  it.each([null, 'dots', 123, { type: 'fraction' }])(
+    'keeps the default pagination of the product gallery for %p',
+    (pagination) => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        product: {
+          gallery: {
+            pagination,
+          },
+        },
+      } as unknown as AppSettingsPayload));
+
+      expect(state.product.gallery).toEqual({ pagination: 'bullets' });
+    }
+  );
 
   it('keeps the defaults of invalid variant selector and action button values', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
