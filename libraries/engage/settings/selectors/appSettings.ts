@@ -112,7 +112,7 @@ export const getProductFilterBarSettings = createSelector(
 );
 
 /**
- * Selects the aspect ratio of category images in the category grid.
+ * Selects the aspect ratio of category images in the category list, grid and chips.
  */
 export const getCategoryImageRatio = createSelector(
   getAppSettingsState,

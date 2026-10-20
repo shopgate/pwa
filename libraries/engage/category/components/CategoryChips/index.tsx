@@ -1,4 +1,3 @@
-import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Portal, SurroundPortals } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -7,7 +6,6 @@ import {
   CATEGORY_CHIPS_ITEM,
   CATEGORY_CHIPS_SHOW_ALL_PRODUCTS,
 } from '@shopgate/engage/category/constants';
-import { getCategoryImagePlaceholder } from '@shopgate/engage/settings/selectors/shopSettings';
 import { useCategoryImageRatio } from '@shopgate/engage/category/hooks';
 import CategoryImage from '../CategoryImage';
 import CategoryLink from '../CategoryLink';
@@ -79,11 +77,6 @@ const useStyles = makeStyles<{ imageWidth: number }>({ name: 'CategoryChips' })(
     flexShrink: 0,
     borderRadius: `max(0px, calc(${theme.shape.borderRadius} - ${CHIP_PADDING}px))`,
   },
-  fallback: {
-    width: '100%',
-    height: '100%',
-    background: theme.palette.background.emphasized,
-  },
   placeholder: {
     width: 96,
     height: 40,
@@ -116,7 +109,6 @@ const CategoryChips = ({
 }: CategoryChipsProps) => {
   const image = useCategoryImageRatio(IMAGE_REQUEST_WIDTH, IMAGE_HEIGHT);
   const { classes, cx } = useStyles({ imageWidth: image.thumbnailWidth });
-  const placeholderSrc = useSelector(getCategoryImagePlaceholder) as string | null;
 
   if (!categories?.length) {
     if (!prerender) {
@@ -162,35 +154,30 @@ const CategoryChips = ({
             </Portal>
           </li>
         ) : null}
-        {categories.map((category) => {
-          const hasImage = showImages && Boolean(category.imageUrl || placeholderSrc);
-
-          return (
-            <li
-              key={category.id}
-              className={classes.item}
-              data-has-image={hasImage ? true : undefined}
-            >
-              <Portal name={CATEGORY_CHIPS_ITEM} props={{ categoryId: category.id }}>
-                <CategoryLink
-                  category={category}
-                  className={cx(classes.chip, 'engage__category__category-chips__item')}
-                >
-                  {hasImage && (
-                    <CategoryImage
-                      className={classes.image}
-                      src={category.imageUrl}
-                      ratio={image.ratio}
-                      resolutions={image.resolutions}
-                      fallback={<div className={classes.fallback} />}
-                    />
-                  )}
-                  <span className={classes.label}>{category.name}</span>
-                </CategoryLink>
-              </Portal>
-            </li>
-          );
-        })}
+        {categories.map(category => (
+          <li
+            key={category.id}
+            className={classes.item}
+            data-has-image={showImages ? true : undefined}
+          >
+            <Portal name={CATEGORY_CHIPS_ITEM} props={{ categoryId: category.id }}>
+              <CategoryLink
+                category={category}
+                className={cx(classes.chip, 'engage__category__category-chips__item')}
+              >
+                {showImages && (
+                  <CategoryImage
+                    className={classes.image}
+                    src={category.imageUrl}
+                    ratio={image.ratio}
+                    resolutions={image.resolutions}
+                  />
+                )}
+                <span className={classes.label}>{category.name}</span>
+              </CategoryLink>
+            </Portal>
+          </li>
+        ))}
       </ul>
     </SurroundPortals>
   );

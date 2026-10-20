@@ -87,11 +87,6 @@ const useStyles = makeStyles<CategoryGridStyleParams>({ name: 'CategoryGrid' })(
   image: {
     borderRadius: theme.components.productImage.borderRadius,
   },
-  fallback: {
-    width: '100%',
-    height: '100%',
-    background: theme.palette.background.emphasized,
-  },
   placeholderImage: {
     aspectRatio,
     borderRadius: theme.components.productImage.borderRadius,
@@ -202,7 +197,6 @@ const CategoryGrid = ({
                     src={category.imageUrl}
                     ratio={image.ratio}
                     resolutions={image.resolutions}
-                    fallback={<div className={classes.fallback} />}
                   />
                 </div>
               </div>

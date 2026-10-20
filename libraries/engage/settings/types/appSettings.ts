@@ -367,7 +367,7 @@ export interface ImageSettings {
    */
   product: ProductImageSettings;
   /**
-   * Category images in the category grid.
+   * Category images in the category list, grid and chips.
    */
   category: {
     ratio: AspectRatio;

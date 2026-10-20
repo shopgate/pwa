@@ -51,6 +51,7 @@ jest.mock('@shopgate/engage/components', () => ({
       ? <img alt="" data-testid="image" src={src} data-ratio={ratio?.join(':')} />
       : <div data-testid="image-fallback">{placeholder}</div>
   ),
+  PlaceholderIcon: () => <svg data-testid="placeholder-icon" />,
 }));
 
 const categories = [
@@ -118,7 +119,7 @@ describe('<CategoryGrid />', () => {
   it('keeps the image space of categories without an image', () => {
     render(<CategoryGrid categories={categories} />);
 
-    expect(within(screen.getByRole('link', { name: 'Shirts' })).getByTestId('image-fallback'))
+    expect(within(screen.getByRole('link', { name: 'Shirts' })).getByTestId('placeholder-icon'))
       .toBeInTheDocument();
   });
 

@@ -1,17 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { Placeholder } from '@shopgate/pwa-ui-shared';
 import {
   CATEGORY_ITEM,
   CATEGORY_SHOW_ALL_PRODUCTS,
-} from '@shopgate/pwa-common-commerce/category/constants/Portals';
+} from '@shopgate/engage/category/constants';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { getShowAllProductsFilters } from '@shopgate/engage/category';
-import { SheetList, TextLink } from '@shopgate/engage/components';
+import { getCategoryRoute, getShowAllProductsFilters } from '@shopgate/engage/category/helpers';
+import {
+  Placeholder, Portal, SheetList, TextLink,
+} from '@shopgate/engage/components';
 import { useCategoryImageRatio } from '@shopgate/engage/category/hooks';
 import CategoryImage from '../CategoryImage';
 import CategoryGrid from '../CategoryGrid';
@@ -33,11 +31,6 @@ const useStyles = makeStyles()((theme, { leftImageWidth }) => ({
   leftImage: {
     width: leftImageWidth,
     marginRight: 8,
-  },
-  imageFallback: {
-    width: '100%',
-    height: '100%',
-    background: theme.palette.background.emphasized,
   },
 }));
 
@@ -105,7 +98,7 @@ const CategoryList = ({
             props={{ categoryId: parentCategory.id }}
           >
             <SheetList.Item
-              link={`${CATEGORY_PATH}/${bin2hex(parentCategory.id)}/all`}
+              link={`${getCategoryRoute(parentCategory.id)}/all`}
               title={i18n.text('category.showAllProducts.label')}
               linkState={{
                 categoryName: parentCategory.name,
@@ -122,7 +115,7 @@ const CategoryList = ({
       {categories.map(category => (
         <Portal key={category.id} name={CATEGORY_ITEM} props={{ categoryId: category.id }}>
           <SheetList.Item
-            link={`${CATEGORY_PATH}/${bin2hex(category.id)}`}
+            link={getCategoryRoute(category.id)}
             title={category.name}
             description={category.description}
             linkState={{
@@ -143,7 +136,6 @@ const CategoryList = ({
                     src={category.imageUrl}
                     ratio={leftImage.ratio}
                     resolutions={leftImage.resolutions}
-                    fallback={<div className={classes.imageFallback} />}
                   />
                 )
                 : null

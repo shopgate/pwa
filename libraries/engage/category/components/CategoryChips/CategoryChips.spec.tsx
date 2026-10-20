@@ -34,7 +34,10 @@ jest.mock('@shopgate/engage/components', () => ({
   TextLink: ({ href, children }: { href: string; children: ReactNode }) => (
     <a href={href}>{children}</a>
   ),
-  Image: ({ src }: { src?: string | null }) => <img alt="" data-testid="image" src={src ?? 'placeholder'} />,
+  Image: ({ src, placeholder }: { src?: string | null; placeholder?: ReactNode }) => (
+    src ? <img alt="" data-testid="image" src={src} /> : <div>{placeholder}</div>
+  ),
+  PlaceholderIcon: () => <svg data-testid="placeholder-icon" />,
 }));
 
 const categories = [
@@ -70,21 +73,21 @@ describe('<CategoryChips />', () => {
     expect(screen.queryByTestId('image')).not.toBeInTheDocument();
   });
 
-  it('shows images of categories that have one', () => {
+  it('shows the placeholder icon for categories without an image', () => {
     render(<CategoryChips categories={categories} showImages />);
 
     expect(within(screen.getByRole('link', { name: 'Jackets' })).getByTestId('image'))
       .toBeInTheDocument();
-    expect(within(screen.getByRole('link', { name: 'Shirts' })).queryByTestId('image'))
-      .not.toBeInTheDocument();
+    expect(within(screen.getByRole('link', { name: 'Shirts' })).getByTestId('placeholder-icon'))
+      .toBeInTheDocument();
   });
 
   it('shows the shop placeholder for categories without an image', () => {
     (useSelector as jest.Mock).mockReturnValue('https://img.example/placeholder.png');
     render(<CategoryChips categories={categories} showImages />);
 
-    expect(within(screen.getByRole('link', { name: 'Shirts' })).getAllByTestId('image'))
-      .not.toHaveLength(0);
+    expect(within(screen.getByRole('link', { name: 'Shirts' })).getByTestId('image'))
+      .toHaveAttribute('src', 'https://img.example/placeholder.png');
   });
 
   it('passes the category to the portals', () => {
