@@ -32,6 +32,30 @@ export const getTabBarSettings = createSelector(
 );
 
 /**
+ * Selects the header settings.
+ */
+export const getAppBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.navigation.appBar
+);
+
+/**
+ * Selects the page types that show the search bar below the header.
+ */
+export const getPersistentSearchBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.search.persistentBar
+);
+
+/**
+ * Selects whether the search field offers the scanner.
+ */
+export const getShowSearchScannerIcon = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.search.showScannerIcon
+);
+
+/**
  * Selects the ProductGrid columns setting (keyed by breakpoint).
  */
 export const getProductGridColumns = createSelector(
@@ -85,6 +109,22 @@ export const getProductActionButtons = createSelector(
 export const getProductGallerySettings = createSelector(
   getAppSettingsState,
   appSettings => appSettings.product.gallery
+);
+
+/**
+ * Selects the add to cart bar settings of the product page.
+ */
+export const getProductAddToCartBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.addToCartBar
+);
+
+/**
+ * Selects the payment bar settings of the cart.
+ */
+export const getCartPaymentBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.cart.paymentBar
 );
 
 /**

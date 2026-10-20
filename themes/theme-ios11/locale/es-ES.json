@@ -240,7 +240,6 @@
     "tax_disclaimer": "* IVA incluido, eventualmente más gastos de envío",
     "tax_disclaimer_aria": "IVA incluido, eventualmente más gastos de envío",
     "item_added": "{count, plural, =0 {# no se agregaron artículos} =1 {{count} artículo agregado} other {{count} artículos agregados}}",
-    "item_added_unit": "{count} {unit} añadido",
     "adding_item": "{count, plural, =1 {Se está añadiendo un producto} other {Se están añadiendo {count} productos}}",
     "pick_option_first": "Seleccionar primero una opción. {option}",
     "variant_unavailable": "No disponible en esta combinación",
@@ -425,7 +424,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Su búsqueda \"{searchPhrase}\" tiene 0 resultados."
-    }
+    },
+    "history_title": "Búsquedas recientes",
+    "history_clear": "Borrar historial",
+    "results_count": "{count, plural, =1 {1 resultado} other {{count} resultados}}",
+    "show_all_results": "Ver todos los resultados",
+    "clear": "Borrar búsqueda",
+    "new_search": "Nueva búsqueda"
   },
   "shipping": {
     "unknown": "más envío",
@@ -579,7 +584,8 @@
     "order_history": "Historial de pedidos",
     "profile": "Perfil",
     "back": "Volver a {title}",
-    "open_menu": "Abra el menú"
+    "open_menu": "Abra el menú",
+    "open_link": "Abrir página"
   },
   "reviews": {
     "rating": "Calificación",

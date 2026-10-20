@@ -240,7 +240,6 @@
     "tax_disclaimer": "* TVA inclus, eventual plus costuri de livrare",
     "tax_disclaimer_aria": "TVA inclus, eventual plus costuri de livrare",
     "item_added": "{count, plural, =0 {# fără Produse} =1 {{count} Produs adăugat} other {{count} Produse adăugate}}",
-    "item_added_unit": "{count} {unit} adăugat",
     "adding_item": "{count, plural, =1 {Se adaugă un produs} other {Se adaugă {count} produse}}",
     "pick_option_first": "Selectați mai întâi o opțiune. {option}",
     "variant_unavailable": "Indisponibil în această combinație",
@@ -425,7 +424,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Căutarea dvs. pentru \"{searchPhrase}\" nu a dat niciun rezultat."
-    }
+    },
+    "history_title": "Căutări recente",
+    "history_clear": "Șterge istoricul",
+    "results_count": "{count, plural, =1 {1 rezultat} other {{count} rezultate}}",
+    "show_all_results": "Afișează toate rezultatele",
+    "clear": "Șterge căutarea",
+    "new_search": "Căutare nouă"
   },
   "shipping": {
     "unknown": "plus transport maritim",
@@ -579,7 +584,8 @@
     "order_history": "Istoricul comenzilor",
     "profile": "Profil",
     "back": "Înapoi la {title}",
-    "open_menu": "Deschide meniul"
+    "open_menu": "Deschide meniul",
+    "open_link": "Deschide pagina"
   },
   "reviews": {
     "rating": "Evaluare",

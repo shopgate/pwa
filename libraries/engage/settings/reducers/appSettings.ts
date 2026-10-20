@@ -1,8 +1,14 @@
-import { merge } from 'lodash';
+import {
+  isNil, isPlainObject, mapValues, merge, omitBy,
+} from 'lodash';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
+  AppBarButtonSlot,
+  AppBarSettings,
   AppSettingsSlice,
+  CartPaymentBarSettings,
   ProductActionButtonsSettings,
+  ProductAddToCartBarSettings,
   ProductGallerySettings,
   ProductVariantSelectorSettings,
 } from '../types/appSettings';
@@ -52,6 +58,31 @@ const GALLERY_OPTIONS: {
   pagination: PRODUCT_GALLERY_PAGINATIONS,
 };
 
+const ADD_TO_CART_BAR_OPTIONS: {
+  [K in keyof ProductAddToCartBarSettings]?: readonly ProductAddToCartBarSettings[K][]
+} = {
+  variant: ['fixed', 'floating'],
+};
+
+const PAYMENT_BAR_OPTIONS: {
+  [K in keyof CartPaymentBarSettings]?: readonly CartPaymentBarSettings[K][]
+} = {
+  variant: ['fixed', 'floating'],
+};
+
+const APP_BAR_OPTIONS: {
+  [K in keyof AppBarSettings]?: readonly AppBarSettings[K][]
+} = {
+  variant: ['fixed', 'floating'],
+  logoPosition: ['left', 'center', 'right'],
+};
+
+const APP_BAR_MODERN_OPTIONS: {
+  [K in keyof AppBarSettings['floating']]?: readonly AppBarSettings['floating'][K][]
+} = {
+  scrollBehavior: ['revealBar', 'floatingButtons', 'scrollAway'],
+};
+
 /**
  * The built-in default app settings. Used as the reducer's initial state and as
  * a safe fallback for selectors when the slice is not present in the store yet.
@@ -59,6 +90,36 @@ const GALLERY_OPTIONS: {
 export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   isHydrated: false,
   navigation: {
+    appBar: {
+      variant: 'fixed',
+      showLogo: true,
+      logoPosition: 'center',
+      buttons: {
+        left1: {
+          action: 'none',
+          icon: '',
+          link: '',
+        },
+        left2: {
+          action: 'none',
+          icon: '',
+          link: '',
+        },
+        right1: {
+          action: 'none',
+          icon: '',
+          link: '',
+        },
+        right2: {
+          action: 'none',
+          icon: '',
+          link: '',
+        },
+      },
+      floating: {
+        scrollBehavior: 'revealBar',
+      },
+    },
     tabBar: {
       variant: 'fixed',
       showLabels: true,
@@ -119,6 +180,27 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     gallery: {
       pagination: 'bullets',
     },
+    addToCartBar: {
+      variant: 'fixed',
+      quantityPicker: false,
+    },
+  },
+  search: {
+    persistentBar: {
+      home: true,
+      category: true,
+      search: true,
+      product: false,
+      page: false,
+      favorites: false,
+      hideOnScroll: true,
+    },
+    showScannerIcon: true,
+  },
+  cart: {
+    paymentBar: {
+      variant: 'fixed',
+    },
   },
   cards: {
     style: 'shadow',
@@ -153,6 +235,8 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
   },
 };
 
+const DEFAULT_APP_BAR = DEFAULT_APP_SETTINGS.navigation.appBar;
+
 /**
  * Stores the app settings.
  * @param state The current state.
@@ -165,7 +249,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product,
+      images, typography, appearance, widgets, product, cart, navigation, search,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -189,6 +273,34 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
         ...appearance,
         defaultColorSchemeMode: appearance?.defaultColorSchemeMode ?? undefined,
       },
+      navigation: !isPlainObject(navigation) ? undefined : {
+        ...navigation,
+        appBar: !isPlainObject(navigation?.appBar) ? undefined : {
+          ...pickValidSettings(navigation?.appBar, {
+            variant: DEFAULT_APP_BAR.variant,
+            showLogo: DEFAULT_APP_BAR.showLogo,
+            logoPosition: DEFAULT_APP_BAR.logoPosition,
+          }, APP_BAR_OPTIONS),
+          buttons: !isPlainObject(navigation?.appBar?.buttons)
+            ? undefined
+            : mapValues(DEFAULT_APP_BAR.buttons, (defaults, slot) => pickValidSettings(
+              navigation?.appBar?.buttons?.[slot as AppBarButtonSlot],
+              defaults
+            )),
+          floating: pickValidSettings(
+            navigation?.appBar?.floating,
+            DEFAULT_APP_BAR.floating,
+            APP_BAR_MODERN_OPTIONS
+          ),
+        },
+        tabBar: navigation?.tabBar ? {
+          ...omitBy(navigation.tabBar, isNil),
+          fixed: navigation.tabBar.fixed ? omitBy(navigation.tabBar.fixed, isNil) : undefined,
+          favorites: navigation.tabBar.favorites
+            ? omitBy(navigation.tabBar.favorites, isNil)
+            : undefined,
+        } : undefined,
+      },
       product: product === null ? undefined : {
         ...product,
         variantSelector: pickValidSettings(
@@ -209,6 +321,28 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           product?.gallery,
           DEFAULT_APP_SETTINGS.product.gallery,
           GALLERY_OPTIONS
+        ),
+        addToCartBar: pickValidSettings(
+          product?.addToCartBar,
+          DEFAULT_APP_SETTINGS.product.addToCartBar,
+          ADD_TO_CART_BAR_OPTIONS
+        ),
+      },
+      search: !isPlainObject(search) ? undefined : {
+        ...pickValidSettings(search, {
+          showScannerIcon: DEFAULT_APP_SETTINGS.search.showScannerIcon,
+        }),
+        persistentBar: pickValidSettings(
+          search?.persistentBar,
+          DEFAULT_APP_SETTINGS.search.persistentBar
+        ),
+      },
+      cart: !isPlainObject(cart) ? undefined : {
+        ...cart,
+        paymentBar: pickValidSettings(
+          cart?.paymentBar,
+          DEFAULT_APP_SETTINGS.cart.paymentBar,
+          PAYMENT_BAR_OPTIONS
         ),
       },
       widgets: widgets === null ? undefined : {
