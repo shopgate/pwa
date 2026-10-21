@@ -148,6 +148,24 @@ describe('<HtmlSanitizer />', () => {
     }));
   });
 
+  it('does not run scripts by default', () => {
+    createWrapper('<script>var notRun = 1;</script><p>Foo</p>');
+
+    expect(document.querySelector('[id^="html-sanitizer-"] script')).toBeNull();
+  });
+
+  it('runs scripts when allowScripts is set', () => {
+    createWrapper('<script>var run = 1;</script><p>Foo</p>', { allowScripts: true });
+
+    expect(document.querySelector('[id^="html-sanitizer-"] script')).not.toBeNull();
+  });
+
+  it('removes event handlers and unsafe links but keeps embedded media', () => {
+    const { container } = createWrapper('<iframe src="https://www.youtube.com/embed/abc" sandbox="allow-scripts" allowfullscreen=""></iframe><img src="https://shop.com/a.jpg" onerror="alert(1)"><a href="javascript:alert(1)">Link</a>', { allowScripts: true });
+
+    expect(container.innerHTML).toEqual('<div class="common__html-sanitizer"><iframe src="https://www.youtube.com/embed/abc" sandbox="allow-scripts" allowfullscreen=""></iframe><img src="https://shop.com/a.jpg"><a>Link</a></div>');
+  });
+
   describe('Link handling', () => {
     const mockedHandleClick = jest.fn();
 

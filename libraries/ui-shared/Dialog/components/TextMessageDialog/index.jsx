@@ -1,8 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
-import { i18n, nl2br } from '@shopgate/engage/core';
+import PlainText from '@shopgate/engage/components/PlainText';
+import { i18n } from '@shopgate/engage/core';
+import { makeStyles } from '@shopgate/engage/styles';
 import BasicDialog from '../BasicDialog';
+
+const useStyles = makeStyles()({
+  message: {
+    whiteSpace: 'pre-line',
+  },
+});
 
 /**
  * Renders a simple dialog with a title and a text message.
@@ -12,13 +20,18 @@ import BasicDialog from '../BasicDialog';
  */
 const TextMessageDialog = ({
   actions, message, title, params, children,
-}) => (
-  <BasicDialog title={title} actions={actions}>
-    {/* eslint-disable-next-line react/no-danger */}
-    <span dangerouslySetInnerHTML={{ __html: nl2br(i18n.text(message, params)) }} />
-    {children}
-  </BasicDialog>
-);
+}) => {
+  const { classes } = useStyles();
+
+  return (
+    <BasicDialog title={title} actions={actions}>
+      <span className={classes.message}>
+        <PlainText text={String(i18n.text(message, params))} />
+      </span>
+      {children}
+    </BasicDialog>
+  );
+};
 
 TextMessageDialog.propTypes = {
   actions: PropTypes.arrayOf(PropTypes.shape()).isRequired,

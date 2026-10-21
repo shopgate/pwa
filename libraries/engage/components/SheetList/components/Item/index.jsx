@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@shopgate/engage/components';
+import { Typography, PlainText } from '@shopgate/engage/components';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery, useTheme } from '@shopgate/engage/styles';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -125,8 +125,9 @@ const Item = ({
                 component="div"
                 color="textSecondary"
                 className={classes.description}
-                dangerouslySetInnerHTML={{ __html: description }}
-              />
+              >
+                <PlainText text={description} />
+              </Typography>
             )}
           </Grid.Item>
           {(rightComponent !== null) && (

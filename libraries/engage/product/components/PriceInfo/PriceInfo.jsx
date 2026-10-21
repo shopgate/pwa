@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { ConditionalWrapper } from '@shopgate/engage/components';
+import { ConditionalWrapper, PlainText } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './PriceInfo.connector';
 
@@ -70,10 +70,10 @@ const PriceInfo = ({
         className={cx(classes.container, className, 'engage__product__price-info', {
           [classes.noWrap]: content !== info,
         })}
-        // eslint-disable-next-line react/no-danger
-        dangerouslySetInnerHTML={{ __html: content }}
         data-test-id={`priceInfo: ${content}`}
-      />
+      >
+        <PlainText text={content} />
+      </div>
     </ConditionalWrapper>
   );
 };

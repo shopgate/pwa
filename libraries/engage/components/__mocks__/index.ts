@@ -115,6 +115,8 @@ export const PlaceholderParagraph = ({ children }) => children;
 export const PlaceholderLabel = ({ children }) => children;
 /** @returns {ReactElement} */
 export const HtmlSanitizer = ({ children }) => children;
+export { default as PlainText, usePlainText } from '../PlainText';
+export { default as SafeHtml } from '../SafeHtml';
 export const RippleButton = ({ children }) => children;
 export const Button = ({ children }) => children;
 const typographyVariantMapping = {

@@ -30,6 +30,7 @@ import {
   TextLink,
   SurroundPortals,
   Typography,
+  PlainText,
 } from '@shopgate/engage/components';
 import {
   makeIsRopeProductOrderable,
@@ -369,8 +370,9 @@ const FavoriteItem = ({
                     <Typography
                       component="span"
                       fontWeight="bold"
-                      dangerouslySetInnerHTML={{ __html: `${product.name}` }}
-                    />
+                    >
+                      <PlainText text={product.name} />
+                    </Typography>
                   </TextLink>
 
                 </SurroundPortals>

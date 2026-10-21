@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@shopgate/engage/components';
+import { Typography, SafeHtml } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import connect from './SupplementalContent.connector';
 
@@ -41,12 +41,13 @@ const SupplementalContent = ({ text, className }) => {
   }
 
   return (
-    <Typography
+    <SafeHtml
+      as={Typography}
       variant="caption"
       component="div"
       color="textSecondary"
       className={cx(classes.wrapper, className)}
-      dangerouslySetInnerHTML={{ __html: text }}
+      html={text}
     />
   );
 };

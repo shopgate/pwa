@@ -1,7 +1,9 @@
 import { useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { nl2br, showModal, isIOSTheme } from '@shopgate/engage/core';
-import { InfoIcon, Typography, CartTotalLine } from '@shopgate/engage/components';
+import { showModal, isIOSTheme } from '@shopgate/engage/core';
+import {
+  InfoIcon, Typography, CartTotalLine, PlainText,
+} from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
 
@@ -15,6 +17,7 @@ const useStyles = makeStyles()(theme => ({
   textWrapper: {
     padding: theme.spacing(0.5, 0),
     order: 3,
+    whiteSpace: 'pre-line',
   },
   line: {
     justifyContent: 'start',
@@ -82,8 +85,9 @@ const PaymentBarPromotionalText = ({
             className={cx(classes.textWrapper, {
               [classes.loading]: isLoading,
             })}
-            dangerouslySetInnerHTML={{ __html: nl2br(text) }}
-          />
+          >
+            <PlainText text={text} />
+          </Typography>
           <CartTotalLine.Spacer className={classes.spacer} />
         </>
       </CartTotalLine>

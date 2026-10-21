@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
-import { Card, TextLink, Typography } from '@shopgate/engage/components';
+import {
+  Card, TextLink, Typography, PlainText,
+} from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core/helpers/i18n';
 
@@ -74,7 +76,6 @@ const CheckoutConfirmationSegment = ({
 
   const isString = typeof content === 'string';
 
-  /* eslint-disable react/no-danger */
   return (
     <div className={cx(classes.wrapper, className)}>
       <Typography
@@ -101,7 +102,7 @@ const CheckoutConfirmationSegment = ({
                 {link ? (
                   <Typography variant="body2" component="dd" color="textSecondary" className={classes.listEntry}>
                     <TextLink href={link} className={classes.link}>
-                      <span dangerouslySetInnerHTML={{ __html: text }} />
+                      <PlainText text={text} />
                     </TextLink>
                   </Typography>
                 ) : (
@@ -110,8 +111,9 @@ const CheckoutConfirmationSegment = ({
                     component="dd"
                     color="textSecondary"
                     className={classes.listEntry}
-                    dangerouslySetInnerHTML={{ __html: text }}
-                  />
+                  >
+                    <PlainText text={text} />
+                  </Typography>
                 )}
               </Fragment>
             ))}
@@ -137,8 +139,9 @@ const CheckoutConfirmationSegment = ({
                     <Typography
                       variant={isLastRow ? 'body1' : 'body2'}
                       component="td"
-                      dangerouslySetInnerHTML={{ __html: text }}
-                    />
+                    >
+                      <PlainText text={text} />
+                    </Typography>
                   </tr>
                 );
               })}
@@ -149,8 +152,6 @@ const CheckoutConfirmationSegment = ({
     </div>
   );
 };
-
-/* eslint-enable react/no-danger */
 
 CheckoutConfirmationSegment.propTypes = {
   title: PropTypes.string.isRequired,

@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Typography } from '@shopgate/engage/components';
+import { Typography, PlainText } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { Ellipsis } from '../../../components';
 import { FulfillmentContext } from '../../locations.context';
@@ -23,8 +23,7 @@ function StoreListProductName() {
 
   return (
     <Typography variant="h3" component="div" className={classes.productName}>
-      {/* eslint-disable-next-line react/no-danger */}
-      <Ellipsis><span dangerouslySetInnerHTML={{ __html: baseProduct.name }} /></Ellipsis>
+      <Ellipsis><span><PlainText text={baseProduct.name} /></span></Ellipsis>
     </Typography>
   );
 }

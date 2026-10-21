@@ -1,7 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/helpers';
-import { SurroundPortals, PlaceholderLabel } from '@shopgate/engage/components';
+import { SurroundPortals, PlaceholderLabel, PlainText } from '@shopgate/engage/components';
 import { PRODUCT_NAME } from '@shopgate/engage/product/constants';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import connect from './connector';
@@ -40,20 +40,16 @@ const Content = ({ name, longName }) => {
       { isBeta()
         ? (
           <PlaceholderLabel className={classes.placeholder} ready={(longName !== null)}>
-            <span
-              data-test-id={`name: ${longName}`}
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html: longName }}
-            />
+            <span data-test-id={`name: ${longName}`}>
+              <PlainText text={longName} />
+            </span>
           </PlaceholderLabel>
         )
         : (
           <PlaceholderLabel className={classes.placeholder} ready={(name !== null)}>
-            <span
-              data-test-id={`name: ${name}`}
-              // eslint-disable-next-line react/no-danger
-              dangerouslySetInnerHTML={{ __html: name }}
-            />
+            <span data-test-id={`name: ${name}`}>
+              <PlainText text={name} />
+            </span>
           </PlaceholderLabel>
         )}
     </div>

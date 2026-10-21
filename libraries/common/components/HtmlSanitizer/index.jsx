@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { embeddedMedia, configuration } from '@shopgate/engage/core/collections';
 import { CONFIGURATION_COLLECTION_KEY_UNIVERSAL_LINK_HANDLER } from '@shopgate/engage/core/constants';
+import SafeHtml from '@shopgate/engage/components/SafeHtml';
 import EmbeddedMedia from '../EmbeddedMedia';
 import parseHTML from '../../helpers/html/parseHTML';
 import connect from './connector';
@@ -20,6 +21,7 @@ const isUniversalLink = link => link.startsWith('http://') || link.startsWith('h
 class HtmlSanitizer extends Component {
   static propTypes = {
     navigate: PropTypes.func.isRequired,
+    allowScripts: PropTypes.bool,
     children: PropTypes.string,
     className: PropTypes.string,
     comfortCookiesAccepted: PropTypes.bool,
@@ -31,6 +33,7 @@ class HtmlSanitizer extends Component {
   };
 
   static defaultProps = {
+    allowScripts: false,
     children: '',
     className: '',
     decode: false,
@@ -164,23 +167,22 @@ class HtmlSanitizer extends Component {
       statisticsCookiesAccepted: this.props.statisticsCookiesAccepted,
     };
 
-    const innerHTML = {
-      __html: parseHTML(
-        this.props.children,
-        this.props.decode,
-        this.props.settings,
-        this.props.processStyles,
-        cookieConsentSettings
-      ),
-    };
+    const html = parseHTML(
+      this.props.children,
+      this.props.decode,
+      this.props.settings,
+      this.props.processStyles,
+      cookieConsentSettings,
+      this.props.allowScripts
+    );
 
     const { wrapper: Wrapper } = this.props;
 
     return (
       <Wrapper cookieConsentSettings={cookieConsentSettings}>
-        <div
-          // eslint-disable-next-line react/no-danger
-          dangerouslySetInnerHTML={innerHTML}
+        <SafeHtml
+          profile="rich"
+          html={html}
           ref={this.htmlContainer}
           className={classNames(this.props.className, 'common__html-sanitizer')}
           onClickCapture={this.handleClick}

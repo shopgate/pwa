@@ -76,7 +76,7 @@ const HtmlWidget = () => {
   const { html } = useHtmlWidget();
 
   return (
-    <HtmlSanitizer settings={{ html }} processStyles className={classes.root}>
+    <HtmlSanitizer settings={{ html }} processStyles allowScripts className={classes.root}>
       {html}
     </HtmlSanitizer>
   );

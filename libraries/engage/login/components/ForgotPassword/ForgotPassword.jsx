@@ -7,7 +7,7 @@ import {
 import { Button } from '@shopgate/engage/components/v2';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
-import { i18n, EUSERNOTFOUND } from '@shopgate/engage/core';
+import { EUSERNOTFOUND } from '@shopgate/engage/core';
 import connect from './ForgotPassword.connector';
 
 const useStyles = makeStyles()(theme => ({
@@ -145,15 +145,11 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
       ) : (
         <>
           <div className={classes.resetInstructions}>
-            <span
-              /* eslint-disable react/no-danger */
-              dangerouslySetInnerHTML={{
-                __html: i18n.text('login.reset_password.reset_instructions', {
-                  email: `<span class="${classes.resetInstructionsEmail}">${email}</span>`,
-                }),
-              }}
-             /* eslint-enable react/no-danger */
-            />
+            <I18n.Text string="login.reset_password.reset_instructions">
+              <I18n.Placeholder forKey="email">
+                <span className={classes.resetInstructionsEmail}>{email}</span>
+              </I18n.Placeholder>
+            </I18n.Text>
           </div>
           <div className={classes.goBackButtonContainer}>
             <Button

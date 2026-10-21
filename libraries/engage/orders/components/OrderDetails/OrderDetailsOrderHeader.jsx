@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import moment from 'moment';
-import { Typography } from '@shopgate/engage/components';
+import { Typography, PlainText } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 import { i18n } from '@shopgate/engage/core/helpers';
@@ -93,7 +93,9 @@ const OrderDetailsOrderHeader = ({ order }) => {
       ) : null}
       { statusText && (
         <div className={classes.instructions}>
-          <Typography variant="body2" component="p" className={classes.body} dangerouslySetInnerHTML={{ __html: statusText }} />
+          <Typography variant="body2" component="p" className={classes.body}>
+            <PlainText text={statusText} />
+          </Typography>
         </div>
       )}
     </div>

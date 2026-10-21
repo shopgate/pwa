@@ -8,6 +8,7 @@ import {
   Price,
   Availability,
   Typography,
+  PlainText,
 } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getProductRoute, ProductImage } from '@shopgate/engage/product';
@@ -109,8 +110,9 @@ const Subscription = ({
               component="span"
               fontWeight="bold"
               className={classes.title}
-              dangerouslySetInnerHTML={{ __html: `${product.name}` }}
-            />
+            >
+              <PlainText text={product.name} />
+            </Typography>
           </Link>
           <div className={classes.removeContainer}>
             <button
