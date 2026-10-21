@@ -431,6 +431,7 @@ export type NavigationActionType =
   | 'cart'
   | 'favorites'
   | 'browse'
+  | 'more'
   | 'categoryDrawer';
 
 /**

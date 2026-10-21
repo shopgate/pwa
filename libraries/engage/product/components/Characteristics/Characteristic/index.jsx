@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Transition from 'react-transition-group/Transition';
 import { ArrowDropIcon, Typography } from '@shopgate/engage/components';
 import { withStyles, cx } from '@shopgate/engage/styles';
+import { VisuallyHidden } from '@shopgate/engage/a11y/components';
+import { getValueStateText } from '../../VariantSelector/renderers/valueState';
 import Sheet from './components/Sheet';
 import transition from '../transition';
 
@@ -63,13 +65,19 @@ class Characteristic extends PureComponent {
    * @return {string}
    */
   getButtonLabel = (defaultLabel) => {
+    const value = this.getSelectedValue();
+    return value ? value.label : defaultLabel;
+  };
+
+  /**
+   * @return {Object|null} The selected value.
+   */
+  getSelectedValue = () => {
     if (!this.props.selected) {
-      return defaultLabel;
+      return null;
     }
 
-    const value = this.props.values.find(val => (val.id === this.props.selected));
-
-    return value.label;
+    return this.props.values.find(val => (val.id === this.props.selected)) || null;
   };
 
   /**
@@ -132,6 +140,8 @@ class Characteristic extends PureComponent {
       disabled, selected, charRef, label, classes,
     } = this.props;
     const buttonLabel = this.getButtonLabel(__('common.please_choose'));
+    const selectedValue = this.getSelectedValue();
+    const stateText = selectedValue ? getValueStateText(selectedValue) : '';
     const cmpClasses = cx(
       classes.button,
       { [classes.buttonDisabled]: disabled },
@@ -156,8 +166,10 @@ class Characteristic extends PureComponent {
           <div
             className={`${classes.selection} theme__product__characteristic__selection`}
             {...selected && { 'data-selected': true }}
+            {...selectedValue?.soldOut && { 'data-sold-out': true }}
           >
             {buttonLabel}
+            {stateText && <VisuallyHidden>{`, ${stateText}`}</VisuallyHidden>}
           </div>
         </div>
         <div className={`${classes.arrow} theme__product__characteristic__arrow`} aria-hidden>
@@ -240,6 +252,11 @@ export default withStyles(Characteristic, theme => ({
   selection: {
     fontWeight: theme.typography.fontWeightMedium,
     lineHeight: 1.25,
+    '&[data-sold-out]': {
+      color: theme.palette.text.secondary,
+      textDecoration: 'line-through',
+      textDecorationThickness: 2,
+    },
   },
   arrow: {
     display: 'flex',

@@ -15,6 +15,7 @@ import {
   getProductActionButtons,
 } from '@shopgate/engage/settings/selectors/appSettings';
 import {
+  FLOATING_BAR_PADDING,
   FLOATING_BUTTON_INSET,
   FLOATING_BUTTON_SIZE,
   SEARCH_BAR_FLOATING_HEIGHT_VAR,
@@ -23,46 +24,58 @@ import connect from './connector';
 
 const BULLETS_BELOW_OFFSET = 28;
 const FRACTION_BELOW_OFFSET = 32;
+/** Distance of the floating header buttons to the screen edge. */
+const FLOATING_HEADER_EDGE = FLOATING_BAR_PADDING + FLOATING_BUTTON_INSET;
+/** Smallest distance of the buttons to the image edge. */
+const MIN_IMAGE_INSET = 8;
 
-const useStyles = makeStyles()(theme => ({
-  buttons: {
-    position: 'absolute',
-    right: theme.spacing(2),
-    zIndex: 2,
-    display: 'flex',
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-    [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
-    gap: theme.spacing(1),
-    '&[data-direction="vertical"]': {
-      flexDirection: 'column',
+const useStyles = makeStyles()((theme) => {
+  const { margin, borderRadius } = theme.components.productMedia;
+
+  return {
+    buttons: {
+      position: 'absolute',
+      right: theme.spacing(2),
+      zIndex: 2,
+      display: 'flex',
+      justifyContent: 'flex-end',
+      alignItems: 'center',
+      [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
+      gap: theme.spacing(1),
+      '&[data-direction="vertical"]': {
+        flexDirection: 'column',
+      },
+      '&[data-position="topRight"]': {
+        top: theme.spacing(2),
+      },
+      '&[data-position="bottomRight"]': {
+        bottom: theme.spacing(2),
+      },
+      '&[data-position="bottomRight"][data-bullets-below]': {
+        bottom: theme.spacing(2) + BULLETS_BELOW_OFFSET,
+      },
+      '&[data-position="bottomRight"][data-fraction-below]': {
+        bottom: theme.spacing(2) + FRACTION_BELOW_OFFSET,
+      },
+      '&[data-floating-header]': {
+        // Line up with the floating header buttons, but keep clear of the image edge and corner.
+        right: `max(calc(${FLOATING_HEADER_EDGE}px - ${margin}), ${MIN_IMAGE_INSET}px, calc(${borderRadius} * 0.3))`,
+      },
+      '&[data-floating-header][data-position="topRight"]': {
+        top: `calc(var(--app-bar-height, 0px) + var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px) + ${FLOATING_BUTTON_INSET}px)`,
+      },
+      '&[data-floating-header] > button, &[data-floating-header] > * > button': {
+        width: FLOATING_BUTTON_SIZE,
+        height: FLOATING_BUTTON_SIZE,
+        minWidth: FLOATING_BUTTON_SIZE,
+        minHeight: FLOATING_BUTTON_SIZE,
+      },
     },
-    '&[data-position="topRight"]': {
-      top: theme.spacing(2),
+    favButton: {
+      zIndex: 1,
     },
-    '&[data-position="bottomRight"]': {
-      bottom: theme.spacing(2),
-    },
-    '&[data-position="bottomRight"][data-bullets-below]': {
-      bottom: theme.spacing(2) + BULLETS_BELOW_OFFSET,
-    },
-    '&[data-position="bottomRight"][data-fraction-below]': {
-      bottom: theme.spacing(2) + FRACTION_BELOW_OFFSET,
-    },
-    '&[data-floating-header][data-position="topRight"]': {
-      top: `calc(var(--app-bar-height, 0px) + var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px) + ${FLOATING_BUTTON_INSET}px)`,
-    },
-    '&[data-floating-header] > button, &[data-floating-header] > * > button': {
-      width: FLOATING_BUTTON_SIZE,
-      height: FLOATING_BUTTON_SIZE,
-      minWidth: FLOATING_BUTTON_SIZE,
-      minHeight: FLOATING_BUTTON_SIZE,
-    },
-  },
-  favButton: {
-    zIndex: 1,
-  },
-}));
+  };
+});
 
 /**
  * Renders CTA buttons for product page (add to cart + toggle favorites).

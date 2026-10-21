@@ -13,9 +13,11 @@ import fetchProduct from '@shopgate/pwa-common-commerce/product/actions/fetchPro
 import fetchProductVariants from '@shopgate/pwa-common-commerce/product/actions/fetchProductVariants';
 import { Conditioner as ConditionerClass } from '@shopgate/engage/core/classes';
 import { PRODUCT_VARIANT_SELECT_SHEET } from '@shopgate/engage/product/constants';
+import { getProductAddToCartBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
 import { getProduct, getProductVariants } from '../../selectors/catalog';
 import { ProductContext } from '../context';
 import ProductImage from '../ProductImage';
+import { QuantityStepper } from '../QuantityStepper';
 import { VariantSelector } from '../VariantSelector';
 import type { ProductVariants, VariantProduct, VariantSelection } from '../VariantSelector';
 
@@ -29,6 +31,10 @@ export interface VariantSheetProduct extends VariantProduct {
     msrp?: number | null;
   } | null;
   fulfillmentMethods?: string[] | null;
+  stock?: VariantProduct['stock'] & {
+    minOrderQuantity?: number;
+    maxOrderQuantity?: number;
+  };
 }
 
 export interface VariantSelectSheetProps {
@@ -36,9 +42,16 @@ export interface VariantSelectSheetProps {
   productId: string;
   isOpen: boolean;
   onClose: () => void;
-  /** Called with the selected variant when the add to cart button is pressed. */
-  onAddToCart: (variant: VariantSheetProduct) => unknown;
+  /**
+   * Called with the selected variant and the quantity when the add to cart button is pressed.
+   * The quantity is the initial one unless the quantity stepper of the add to cart bar is active.
+   */
+  onAddToCart: (variant: VariantSheetProduct, quantity: number) => unknown;
+  /** Quantity the sheet starts with. */
+  initialQuantity?: number;
 }
+
+const MAX_QUANTITY = 99;
 
 const SheetDrawer = SheetDrawerComponent as unknown as ComponentType<{
   isOpen: boolean;
@@ -75,8 +88,15 @@ const useStyles = makeStyles({ name: 'VariantSelectSheet' })(theme => ({
     alignItems: 'baseline',
   },
   footer: {
+    display: 'flex',
+    gap: theme.spacing(1),
+    alignItems: 'stretch',
     padding: theme.spacing(1, 2, 0),
     paddingBottom: `calc(${theme.spacing(2)}px + ${theme.layout.safeArea.bottom})`,
+  },
+  button: {
+    flex: 1,
+    minWidth: 0,
   },
 }));
 
@@ -108,10 +128,15 @@ const VariantSelectSheet = ({
   isOpen,
   onClose,
   onAddToCart,
+  initialQuantity = 1,
 }: VariantSelectSheetProps) => {
   const { classes, cx } = useStyles();
   const dispatch = useDispatch() as unknown as (action: unknown) => unknown;
   const [selection, setSelection] = useState<VariantSelection>({});
+  const [quantity, setQuantity] = useState(initialQuantity);
+  const { quantityPicker } = useSelector(getProductAddToCartBarSettings) as {
+    quantityPicker: boolean;
+  };
 
   const baseProduct = useSelector((state: unknown) => getProduct(state, { productId }));
   const variants = useSelector((state: unknown) => getProductVariants(state, { productId }));
@@ -159,8 +184,18 @@ const VariantSelectSheet = ({
   useEffect(() => {
     if (isOpen) {
       submitted.current = false;
+      setQuantity(initialQuantity);
     }
-  }, [isOpen]);
+  }, [initialQuantity, isOpen]);
+
+  const stock = variant?.stock;
+  const minQuantity = stock?.minOrderQuantity && stock.minOrderQuantity > 0
+    ? stock.minOrderQuantity
+    : 1;
+  const maxQuantity = stock?.maxOrderQuantity && stock.maxOrderQuantity > 0
+    ? Math.min(stock.maxOrderQuantity, MAX_QUANTITY)
+    : MAX_QUANTITY;
+  const boundedQuantity = Math.min(Math.max(quantity, minQuantity), maxQuantity);
 
   const handleAddToCart = useCallback(async () => {
     if (submitted.current) {
@@ -174,8 +209,16 @@ const VariantSelectSheet = ({
       return;
     }
 
-    onAddToCart(variant);
-  }, [conditioner, isOrderable, onAddToCart, variant]);
+    onAddToCart(variant, quantityPicker ? boundedQuantity : initialQuantity);
+  }, [
+    boundedQuantity,
+    conditioner,
+    initialQuantity,
+    isOrderable,
+    onAddToCart,
+    quantityPicker,
+    variant,
+  ]);
 
   const contextValue = useMemo(() => ({
     productId,
@@ -242,9 +285,18 @@ const VariantSelectSheet = ({
           />
         </ProductContext.Provider>
         <div className={cx(classes.footer, 'engage__variant-select-sheet__footer')}>
+          {quantityPicker && (
+            <QuantityStepper
+              value={boundedQuantity}
+              onChange={setQuantity}
+              min={minQuantity}
+              max={maxQuantity}
+              disabled={!variants || (!!variant && !isOrderable)}
+            />
+          )}
           <Button
             color="cta"
-            fullWidth
+            className={cx(classes.button, 'engage__variant-select-sheet__button')}
             disabled={!variants || (!!variant && !isOrderable)}
             onClick={handleAddToCart}
           >

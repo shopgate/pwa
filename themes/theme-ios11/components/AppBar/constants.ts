@@ -33,6 +33,8 @@ export const ACTION_BUTTONS_HIDDEN_PATTERNS = [
 
 export const APP_BAR_BUTTON_SIZE = 44;
 export const FLOATING_BUTTON_INSET = 4;
+/** Side padding of the header bar while its buttons float. */
+export const FLOATING_BAR_PADDING = 12;
 export const FLOATING_BUTTON_SIZE = APP_BAR_BUTTON_SIZE - (2 * FLOATING_BUTTON_INSET);
 export const SEARCH_BAR_HEIGHT_VAR = '--sg-search-bar-height';
 export const SEARCH_BAR_OFFSET_VAR = '--sg-search-bar-offset';

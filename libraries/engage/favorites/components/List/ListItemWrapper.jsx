@@ -40,7 +40,7 @@ const ListItemWrapper = ({
         quantity={quantity}
         listId={listId}
         productId={product.id}
-        addToCart={(e, variant) => {
+        addToCart={(e, variant, variantQuantity) => {
           if (e) {
             e.preventDefault();
             e.stopPropagation();
@@ -49,7 +49,7 @@ const ListItemWrapper = ({
             ...variant,
             fulfillmentMethods: variant.fulfillmentMethods || product.fulfillmentMethods,
           } : product;
-          return addToCart(item, quantity, product.id);
+          return addToCart(item, variantQuantity ?? quantity, product.id);
         }}
         remove={(e) => {
           e.preventDefault();

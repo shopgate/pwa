@@ -83,9 +83,9 @@ jest.mock('@shopgate/pwa-ui-shared/icons/TickIcon', () => () => <span>tick</span
 jest.mock('../VariantSelectSheet', () => ({
   VariantSelectSheet: ({ isOpen, onAddToCart }: {
     isOpen: boolean;
-    onAddToCart: (variant: { id: string }) => unknown;
+    onAddToCart: (variant: { id: string }, quantity: number) => unknown;
   }) => (isOpen ? (
-    <button type="button" onClick={() => onAddToCart({ id: 'variant-1' })}>sheet</button>
+    <button type="button" onClick={() => onAddToCart({ id: 'variant-1' }, 2)}>sheet</button>
   ) : null),
 }));
 
@@ -116,7 +116,7 @@ describe('<ProductCardAddToCart />', () => {
     }]);
   });
 
-  it('opens the variant sheet for variant products and adds the selected variant', async () => {
+  it('opens the variant sheet for variant products and adds the selected variant and quantity', async () => {
     mockProduct = {
       id: 'base',
       flags: { hasVariants: true },
@@ -131,7 +131,7 @@ describe('<ProductCardAddToCart />', () => {
     });
     expect(addProductsToCart).toHaveBeenCalledWith([{
       productId: 'variant-1',
-      quantity: 1,
+      quantity: 2,
     }]);
   });
 

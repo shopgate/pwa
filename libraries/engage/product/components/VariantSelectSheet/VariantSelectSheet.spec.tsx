@@ -63,6 +63,16 @@ jest.mock('@shopgate/engage/components/v2', () => ({
 }));
 jest.mock('../ProductImage', () => () => null);
 let mockSelected = false;
+let mockQuantityPicker = false;
+
+jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
+  getProductAddToCartBarSettings: () => ({ quantityPicker: mockQuantityPicker }),
+}));
+jest.mock('../QuantityStepper', () => ({
+  QuantityStepper: ({ value, onChange }: { value: number; onChange: (value: number) => void }) => (
+    <button type="button" onClick={() => onChange(value + 1)}>{`quantity ${value}`}</button>
+  ),
+}));
 
 jest.mock('../VariantSelector', () => ({
   VariantSelector: ({ onCharacteristicsChange, compact, conditioner }: VariantSelectorProps) => {
@@ -86,6 +96,7 @@ jest.mock('../VariantSelector', () => ({
 describe('<VariantSelectSheet />', () => {
   beforeEach(() => {
     mockSelected = false;
+    mockQuantityPicker = false;
   });
 
   it('checks the selection first and passes the selected variant once', async () => {
@@ -115,7 +126,42 @@ describe('<VariantSelectSheet />', () => {
     });
 
     expect(onAddToCart).toHaveBeenCalledTimes(1);
-    expect(onAddToCart).toHaveBeenCalledWith(expect.objectContaining({ id: 'gold-1' }));
+    expect(onAddToCart).toHaveBeenCalledWith(expect.objectContaining({ id: 'gold-1' }), 1);
+    expect(screen.queryByRole('button', { name: /^quantity/ })).not.toBeInTheDocument();
+  });
+
+  it('passes the initial quantity without the quantity stepper', async () => {
+    const onAddToCart = jest.fn();
+    render(
+      <VariantSelectSheet
+        productId="base"
+        isOpen
+        onClose={jest.fn()}
+        onAddToCart={onAddToCart}
+        initialQuantity={3}
+      />
+    );
+
+    fireEvent.click(screen.getByRole('button', { name: 'select gold' }));
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'product.add_to_cart' }));
+    });
+
+    expect(onAddToCart).toHaveBeenCalledWith(expect.objectContaining({ id: 'gold-1' }), 3);
+  });
+
+  it('shows the quantity stepper of the add to cart bar and passes its quantity', async () => {
+    mockQuantityPicker = true;
+    const onAddToCart = jest.fn();
+    render(<VariantSelectSheet productId="base" isOpen onClose={jest.fn()} onAddToCart={onAddToCart} />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'select gold' }));
+    fireEvent.click(screen.getByRole('button', { name: 'quantity 1' }));
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'product.add_to_cart' }));
+    });
+
+    expect(onAddToCart).toHaveBeenCalledWith(expect.objectContaining({ id: 'gold-1' }), 2);
   });
 
   it('renders nothing while closed', () => {

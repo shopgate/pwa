@@ -15,6 +15,7 @@ import ActionButton from '../ActionButton';
 import { useForwardScroll, useOverlayScroll } from '../../hooks';
 import {
   APP_BAR_BUTTON_SIZE,
+  FLOATING_BAR_PADDING,
   FLOATING_BUTTON_INSET,
   SEARCH_BAR_FLOATING_HEIGHT_VAR,
 } from '../../constants';
@@ -70,7 +71,7 @@ const useStyles = makeStyles<{
       },
     },
     floatingInner: {
-      padding: theme.spacing(0, 1.5),
+      padding: `0 ${FLOATING_BAR_PADDING}px`,
     },
     logo: {
       minWidth: 0,

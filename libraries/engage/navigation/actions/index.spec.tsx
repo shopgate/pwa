@@ -84,6 +84,13 @@ describe('category actions', () => {
     expect(UIEvents.emit).not.toHaveBeenCalled();
   });
 
+  it('opens the more page', () => {
+    render(<ActionButton name="more" />);
+    fireEvent.click(screen.getByRole('button', { name: 'tab_bar.more' }));
+
+    expect(push).toHaveBeenCalledWith({ pathname: '/more' });
+  });
+
   it('opens the category drawer', () => {
     render(<ActionButton name="categoryDrawer" />);
     fireEvent.click(screen.getByRole('button', { name: 'navigation.categories' }));
