@@ -15,7 +15,6 @@ import ActionButton from '../ActionButton';
 import { useForwardScroll, useOverlayScroll } from '../../hooks';
 import {
   APP_BAR_BUTTON_SIZE,
-  FLOATING_BAR_PADDING,
   FLOATING_BUTTON_INSET,
   SEARCH_BAR_FLOATING_HEIGHT_VAR,
 } from '../../constants';
@@ -71,7 +70,7 @@ const useStyles = makeStyles<{
       },
     },
     floatingInner: {
-      padding: `0 ${FLOATING_BAR_PADDING}px`,
+      padding: theme.spacing(0, 1.5),
     },
     logo: {
       minWidth: 0,
@@ -202,12 +201,6 @@ const useStyles = makeStyles<{
     hidden: {
       transform: `translateY(calc(-100% - var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px)))`,
     },
-    logoHidden: {
-      '& .engage__logo': {
-        opacity: 0,
-        pointerEvents: 'none',
-      },
-    },
   };
 });
 
@@ -316,7 +309,6 @@ const ConfiguredBar = ({
 
   const hidden = overlay && scrollBehavior === 'scrollAway' && scrollingDown;
   const revealed = overlay && scrollBehavior === 'revealBar' && moved;
-  const logoHidden = overlay && scrollBehavior === 'floatingButtons' && moved;
 
   const portalProps = useMemo(() => ({
     floating,
@@ -364,13 +356,11 @@ const ConfiguredBar = ({
       data-overlay={overlay ? true : undefined}
       data-revealed={revealed ? true : undefined}
       data-hidden={hidden ? true : undefined}
-      data-logo-hidden={logoHidden ? true : undefined}
       classes={{
         outer: cx(
           overlay && classes.overlay,
           revealed && classes.searchBarRevealed,
           revealed && classes.revealed,
-          logoHidden && classes.logoHidden,
           hidden && classes.hidden,
           parentClasses.outer
         ),

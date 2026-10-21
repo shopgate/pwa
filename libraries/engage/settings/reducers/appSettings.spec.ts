@@ -917,6 +917,18 @@ describe('settings / reducers / appSettings', () => {
     expect(search).toEqual(DEFAULT_APP_SETTINGS.search);
   });
 
+  it('falls back to revealing the bar for the removed floating buttons behavior', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: {
+        appBar: {
+          floating: { scrollBehavior: 'floatingButtons' },
+        },
+      },
+    } as unknown as AppSettings));
+
+    expect(state.navigation.appBar.floating.scrollBehavior).toBe('revealBar');
+  });
+
   it.each([['a string', 'floating'], ['an array', []]])(
     'falls back to the default navigation for %s',
     (_, navigation) => {
