@@ -13,7 +13,7 @@ const HtmlContentDialog = ({
   actions, message, title,
 }) => (
   <BasicDialog title={title} actions={actions}>
-    <SafeHtml html={message} />
+    <SafeHtml profile="html" html={message} />
   </BasicDialog>
 );
 

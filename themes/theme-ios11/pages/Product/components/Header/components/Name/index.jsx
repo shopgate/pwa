@@ -5,7 +5,7 @@ import {
   SurroundPortals,
   PlaceholderLabel,
   Typography,
-  PlainText,
+  SafeHtml,
 } from '@shopgate/engage/components';
 import { PRODUCT_NAME } from '@shopgate/engage/product/constants';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -41,16 +41,20 @@ const Content = ({ longName, name }) => {
       { isBeta()
         ? (
           <PlaceholderLabel className={classes.placeholder} ready={(longName !== null)}>
-            <span data-test-id={`name: ${longName}`}>
-              <PlainText text={longName} />
-            </span>
+            <SafeHtml
+              as="span"
+              data-test-id={`name: ${longName}`}
+              html={longName}
+            />
           </PlaceholderLabel>
         )
         : (
           <PlaceholderLabel className={classes.placeholder} ready={(name !== null)}>
-            <span data-test-id={`name: ${name}`}>
-              <PlainText text={name} />
-            </span>
+            <SafeHtml
+              as="span"
+              data-test-id={`name: ${name}`}
+              html={name}
+            />
           </PlaceholderLabel>
         )}
     </Typography>

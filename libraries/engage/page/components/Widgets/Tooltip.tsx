@@ -200,6 +200,7 @@ function Tooltip({ children, text }: TooltipProps) {
         ReactDOM.createPortal(
           <SafeHtml
             as={Typography}
+            profile="html"
             variant="body2"
             component="div"
             className={cx(classes.tooltipBox, arrowClass, 'tooltip-box')}

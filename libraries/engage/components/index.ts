@@ -206,8 +206,6 @@ export { default as Paper } from './Paper';
 export type { PaperProps, PaperVariant } from './Paper';
 export { default as Card } from './Card';
 export type { CardProps, CardVariant } from './Card';
-export { default as PlainText, usePlainText } from './PlainText';
-export type { PlainTextProps } from './PlainText';
 export { default as SafeHtml } from './SafeHtml';
 export type { SafeHtmlProps } from './SafeHtml';
 

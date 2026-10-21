@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { PlainText } from '@shopgate/engage/components';
+import { SafeHtml } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -34,10 +34,10 @@ const Row = ({ label, value, type }) => {
       tabIndex={0}
     >
       <td className={classes.tableCell} aria-hidden>
-        <span><PlainText text={label} /></span>
+        <SafeHtml as="span" html={label} />
       </td>
       <td className={classes.tableCell} data-test-id={`property: ${value}`} aria-hidden>
-        <span><PlainText text={value} /></span>
+        <SafeHtml as="span" html={value} />
       </td>
     </tr>
   );

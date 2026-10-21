@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ellipsis, ConditionalWrapper, PlainText } from '@shopgate/engage/components';
+import { Ellipsis, ConditionalWrapper, SafeHtml } from '@shopgate/engage/components';
 
 export interface ProductNameContentProps {
   name?: string | null;
@@ -26,7 +26,7 @@ const ProductNameContent = ({
       </Ellipsis>
     )}
   >
-    <span><PlainText text={name} /></span>
+    <SafeHtml as="span" html={name} />
   </ConditionalWrapper>
 );
 

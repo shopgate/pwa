@@ -3,9 +3,9 @@ import memoize from 'lodash/memoize';
 
 const SAFE_PROTOCOLS = ['http:', 'https:', 'mailto:', 'tel:'];
 
-const HTML_TAGS = [
-  'a', 'b', 'br', 'em', 'i', 'li', 'ol', 'p', 's', 'small', 'span', 'strong', 'sub', 'sup', 'u', 'ul',
-];
+const INLINE_TAGS = ['b', 'br', 'em', 'i', 's', 'small', 'span', 'strong', 'sub', 'sup', 'u'];
+
+const HTML_TAGS = [...INLINE_TAGS, 'a', 'li', 'ol', 'p', 'ul'];
 
 const purifier = DOMPurify(window);
 
@@ -27,6 +27,16 @@ purifier.addHook('uponSanitizeAttribute', (node, event) => {
     // eslint-disable-next-line no-param-reassign
     event.keepAttr = false;
   }
+});
+
+/**
+ * Removes everything from an HTML string except inline formatting tags.
+ * @param html The HTML string.
+ * @returns The sanitized HTML string.
+ */
+export const sanitizeInlineHtml = (html: string) => purifier.sanitize(html, {
+  ALLOWED_TAGS: INLINE_TAGS,
+  ALLOWED_ATTR: [],
 });
 
 /**

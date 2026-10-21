@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/engage/core';
 import { CATEGORY_PATH, CATEGORY_ITEM, CategoryImage } from '@shopgate/engage/category';
 import {
-  Link, TextLink, Portal, PlainText, SafeHtml,
+  Link, TextLink, Portal, SafeHtml,
 } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -99,9 +99,10 @@ const CategoryGridItem = ({ category, showImages }) => {
                 title: category.name,
               }}
             >
-              <span><PlainText text={category.name} /></span>
+              <SafeHtml as="span" html={category.name} />
             </TextLink>
             <SafeHtml
+              profile="html"
               className={classes.categoryDescription}
               html={category.description}
             />

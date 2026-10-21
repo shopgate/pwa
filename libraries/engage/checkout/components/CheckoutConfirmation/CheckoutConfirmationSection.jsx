@@ -1,7 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import {
-  Card, TextLink, Typography, PlainText,
+  Card, TextLink, Typography, SafeHtml,
 } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { i18n } from '../../../core/helpers/i18n';
@@ -102,18 +102,18 @@ const CheckoutConfirmationSegment = ({
                 {link ? (
                   <Typography variant="body2" component="dd" color="textSecondary" className={classes.listEntry}>
                     <TextLink href={link} className={classes.link}>
-                      <PlainText text={text} />
+                      <SafeHtml as="span" html={text} />
                     </TextLink>
                   </Typography>
                 ) : (
-                  <Typography
+                  <SafeHtml
+                    as={Typography}
                     variant="body2"
                     component="dd"
                     color="textSecondary"
                     className={classes.listEntry}
-                  >
-                    <PlainText text={text} />
-                  </Typography>
+                    html={text}
+                  />
                 )}
               </Fragment>
             ))}
@@ -136,12 +136,12 @@ const CheckoutConfirmationSegment = ({
                       {i18n.text(label)}
                     </Typography>
                     )}
-                    <Typography
+                    <SafeHtml
+                      as={Typography}
                       variant={isLastRow ? 'body1' : 'body2'}
                       component="td"
-                    >
-                      <PlainText text={text} />
-                    </Typography>
+                      html={text}
+                    />
                   </tr>
                 );
               })}

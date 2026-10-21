@@ -18,7 +18,7 @@ jest.mock('@shopgate/engage/components', () => ({
     gutterBottom, noWrap, paragraph, classes, variantMapping, ...rest
   }) => <Component {...rest}>{children}</Component>,
   HtmlSanitizer: ({ children }) => children,
-  PlainText: ({ text = null }) => text,
+  SafeHtml: jest.requireActual('@shopgate/engage/components/SafeHtml').default,
 }));
 /* eslint-enable react/prop-types */
 

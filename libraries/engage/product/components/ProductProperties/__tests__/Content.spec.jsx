@@ -14,7 +14,7 @@ jest.mock('../GroupedProperties', () => jest.fn(() => 'GroupedProperties'));
 jest.mock('@shopgate/engage/components', () => ({
   Typography: ({ children }) => children,
   HtmlSanitizer: ({ children }) => children,
-  PlainText: ({ text = null }) => text,
+  SafeHtml: jest.requireActual('@shopgate/engage/components/SafeHtml').default,
 }));
 
 const properties = [

@@ -43,6 +43,7 @@ const SupplementalContent = ({ text, className }) => {
   return (
     <SafeHtml
       as={Typography}
+      profile="html"
       variant="caption"
       component="div"
       color="textSecondary"

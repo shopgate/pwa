@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
-import PlainText from '@shopgate/engage/components/PlainText';
+import SafeHtml from '@shopgate/engage/components/SafeHtml';
 import { i18n } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import BasicDialog from '../BasicDialog';
@@ -25,9 +25,7 @@ const TextMessageDialog = ({
 
   return (
     <BasicDialog title={title} actions={actions}>
-      <span className={classes.message}>
-        <PlainText text={String(i18n.text(message, params))} />
-      </span>
+      <SafeHtml as="span" className={classes.message} html={String(i18n.text(message, params))} />
       {children}
     </BasicDialog>
   );

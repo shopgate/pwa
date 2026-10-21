@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { InfoIcon, Typography, PlainText } from '@shopgate/engage/components';
+import { InfoIcon, Typography, SafeHtml } from '@shopgate/engage/components';
 import { showModal as showModalAction } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 
@@ -48,14 +48,14 @@ const CheckoutSectionInfo = ({ text, showModal, renderIcon }) => {
 
   if (!renderIcon) {
     return (
-      <Typography
+      <SafeHtml
+        as={Typography}
         variant="caption"
         component="div"
         color="error"
         className={classes.textWrapper}
-      >
-        <PlainText text={text} />
-      </Typography>
+        html={text}
+      />
     );
   }
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import PlainText from '@shopgate/engage/components/PlainText';
+import SafeHtml from '@shopgate/engage/components/SafeHtml';
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -21,7 +21,7 @@ const Manufacturer = ({ className, text }) => {
 
   return (
     <div className={cx(classes.root, className, 'ui-shared__manufacturer')}>
-      <span><PlainText text={text} /></span>
+      <SafeHtml as="span" html={text} />
     </div>
   );
 };

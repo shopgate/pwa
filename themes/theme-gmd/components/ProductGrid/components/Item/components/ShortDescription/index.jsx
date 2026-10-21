@@ -26,7 +26,7 @@ const ShortDescription = ({ shortDescription }) => {
   }
 
   return (
-    <SafeHtml className={classes.wrapper} html={shortDescription} />
+    <SafeHtml profile="html" className={classes.wrapper} html={shortDescription} />
   );
 };
 

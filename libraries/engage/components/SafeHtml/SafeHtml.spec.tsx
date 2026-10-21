@@ -4,10 +4,30 @@ import { render } from '@testing-library/react';
 import SafeHtml from './SafeHtml';
 
 describe('engage > components > SafeHtml', () => {
+  describe('inline profile', () => {
+    it('should keep inline formatting and entities', () => {
+      const { container } = render(
+        <SafeHtml as="span" html={'Tom &amp; Jerry <b>New</b> Shirt<sup>®</sup><br>Blue'} />
+      );
+
+      expect(container.innerHTML).toBe('<span>Tom &amp; Jerry <b>New</b> Shirt<sup>®</sup><br>Blue</span>');
+    });
+
+    it('should remove links, blocks, attributes and scripts but keep their text', () => {
+      const alert = jest.spyOn(window, 'alert').mockImplementation(noop);
+      const { container } = render(
+        <SafeHtml as="span" html='<a href="https://shop.com">Link</a><p>Block</p><b style="color:red" onclick="alert(1)">Bold</b><img src=x onerror=alert(1)><script>alert(1)</script>' />
+      );
+
+      expect(container.innerHTML).toBe('<span>LinkBlock<b>Bold</b></span>');
+      expect(alert).not.toHaveBeenCalled();
+    });
+  });
+
   describe('html profile', () => {
     it('should keep formatting tags, lists and entities', () => {
       const { container } = render(
-        <SafeHtml html={'<p>Tom &amp; <b>Jerry</b><br><sup>1</sup></p><ul><li>One</li></ul>'} />
+        <SafeHtml profile="html" html={'<p>Tom &amp; <b>Jerry</b><br><sup>1</sup></p><ul><li>One</li></ul>'} />
       );
 
       expect(container.innerHTML).toBe('<div><p>Tom &amp; <b>Jerry</b><br><sup>1</sup></p><ul><li>One</li></ul></div>');
@@ -15,7 +35,7 @@ describe('engage > components > SafeHtml', () => {
 
     it('should keep links with safe protocols and relative links', () => {
       const { container } = render(
-        <SafeHtml html='<a href="https://shop.com" target="_blank">A</a><a href="mailto:a@shop.com">B</a><a href="tel:123">C</a><a href="/terms">D</a>' />
+        <SafeHtml profile="html" html='<a href="https://shop.com" target="_blank">A</a><a href="mailto:a@shop.com">B</a><a href="tel:123">C</a><a href="/terms">D</a>' />
       );
 
       expect(container.innerHTML).toBe('<div><a href="https://shop.com" target="_blank">A</a><a href="mailto:a@shop.com">B</a><a href="tel:123">C</a><a href="/terms">D</a></div>');
@@ -23,7 +43,7 @@ describe('engage > components > SafeHtml', () => {
 
     it('should remove links with unsafe protocols', () => {
       const { container } = render(
-        <SafeHtml html={'<a href="javascript:alert(1)">A</a><a href=" java\tscript:alert(1)">B</a><a href="data:text/html,<script>alert(1)</script>">C</a>'} />
+        <SafeHtml profile="html" html={'<a href="javascript:alert(1)">A</a><a href=" java\tscript:alert(1)">B</a><a href="data:text/html,<script>alert(1)</script>">C</a>'} />
       );
 
       expect(container.innerHTML).toBe('<div><a>A</a><a>B</a><a>C</a></div>');
@@ -32,7 +52,7 @@ describe('engage > components > SafeHtml', () => {
     it('should remove scripts, event handlers and other tags', () => {
       const alert = jest.spyOn(window, 'alert').mockImplementation(noop);
       const { container } = render(
-        <SafeHtml html='<img src=x onerror=alert(1)><script>alert(1)</script><svg onload=alert(1)></svg><iframe src="https://evil.com"></iframe><style>*{}</style><b onclick="alert(1)" style="color:red">Name</b>' />
+        <SafeHtml profile="html" html='<img src=x onerror=alert(1)><script>alert(1)</script><svg onload=alert(1)></svg><iframe src="https://evil.com"></iframe><style>*{}</style><b onclick="alert(1)" style="color:red">Name</b>' />
       );
 
       expect(container.innerHTML).toBe('<div><b>Name</b></div>');

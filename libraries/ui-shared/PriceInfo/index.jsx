@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import PlainText from '@shopgate/engage/components/PlainText';
+import SafeHtml from '@shopgate/engage/components/SafeHtml';
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -20,12 +20,11 @@ const PriceInfo = ({ className, text }) => {
   const { classes, cx } = useStyles();
 
   return (
-    <div
+    <SafeHtml
       className={cx(classes.root, className, 'ui-shared__price-info')}
       data-test-id={`priceInfo: ${text}`}
-    >
-      <PlainText text={text} />
-    </div>
+      html={text}
+    />
   );
 };
 
