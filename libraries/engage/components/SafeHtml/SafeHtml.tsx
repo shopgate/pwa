@@ -10,6 +10,7 @@ const sanitizers = {
   html: sanitizeHtml,
   rich: sanitizeRichHtml,
   svg: sanitizeSvg,
+  trusted: (html: string) => html,
 };
 
 export interface SafeHtmlProps extends Omit<HTMLAttributes<HTMLElement>, 'children' | 'dangerouslySetInnerHTML'> {
@@ -17,7 +18,8 @@ export interface SafeHtmlProps extends Omit<HTMLAttributes<HTMLElement>, 'childr
   html?: string | null;
   /** The element or component that renders the HTML. */
   as?: ElementType;
-  /** Inline formatting (inline, default), with lists and links (html), embedded media (rich), SVG. */
+  /** Inline formatting (inline, default), with lists and links (html), embedded media (rich), SVG.
+   * trusted renders unchanged, only for content that runs its own scripts (CMS HTML widget). */
   profile?: keyof typeof sanitizers;
   [prop: string]: unknown;
 }

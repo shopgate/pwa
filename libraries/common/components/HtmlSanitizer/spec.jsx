@@ -161,9 +161,15 @@ describe('<HtmlSanitizer />', () => {
   });
 
   it('removes event handlers and unsafe links but keeps embedded media', () => {
-    const { container } = createWrapper('<iframe src="https://www.youtube.com/embed/abc" sandbox="allow-scripts" allowfullscreen=""></iframe><img src="https://shop.com/a.jpg" onerror="alert(1)"><a href="javascript:alert(1)">Link</a>', { allowScripts: true });
+    const { container } = createWrapper('<iframe src="https://www.youtube.com/embed/abc" sandbox="allow-scripts" allowfullscreen=""></iframe><img src="https://shop.com/a.jpg" onerror="alert(1)"><a href="javascript:alert(1)">Link</a>');
 
     expect(container.innerHTML).toEqual('<div class="common__html-sanitizer"><iframe src="https://www.youtube.com/embed/abc" sandbox="allow-scripts" allowfullscreen=""></iframe><img src="https://shop.com/a.jpg"><a>Link</a></div>');
+  });
+
+  it('keeps the markup unchanged when allowScripts is set', () => {
+    const { container } = createWrapper('<button onclick="track()">Track</button><trust-widget data-id="1"></trust-widget>', { allowScripts: true });
+
+    expect(container.innerHTML).toEqual('<div class="common__html-sanitizer"><button onclick="track()">Track</button><trust-widget data-id="1"></trust-widget></div>');
   });
 
   describe('Link handling', () => {

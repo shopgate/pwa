@@ -181,7 +181,7 @@ class HtmlSanitizer extends Component {
     return (
       <Wrapper cookieConsentSettings={cookieConsentSettings}>
         <SafeHtml
-          profile="rich"
+          profile={this.props.allowScripts ? 'trusted' : 'rich'}
           html={html}
           ref={this.htmlContainer}
           className={classNames(this.props.className, 'common__html-sanitizer')}
