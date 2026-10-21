@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { type ReactNode, useEffect as mockUseEffect } from 'react';
 import {
   act, fireEvent, render, screen,
 } from '@testing-library/react';
@@ -64,6 +64,7 @@ jest.mock('@shopgate/engage/components/v2', () => ({
 jest.mock('../ProductImage', () => () => null);
 let mockSelected = false;
 let mockQuantityPicker = false;
+let mockInitialSelection = false;
 
 jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
   getProductAddToCartBarSettings: () => ({ quantityPicker: mockQuantityPicker }),
@@ -77,6 +78,12 @@ jest.mock('../QuantityStepper', () => ({
 jest.mock('../VariantSelector', () => ({
   VariantSelector: ({ onCharacteristicsChange, compact, conditioner }: VariantSelectorProps) => {
     conditioner?.addConditioner('variants', () => mockSelected);
+    mockUseEffect(() => {
+      if (mockInitialSelection) {
+        mockSelected = true;
+        onCharacteristicsChange?.({ color: 'gold' });
+      }
+    }, [onCharacteristicsChange]);
 
     return (
       <button
@@ -97,6 +104,19 @@ describe('<VariantSelectSheet />', () => {
   beforeEach(() => {
     mockSelected = false;
     mockQuantityPicker = false;
+    mockInitialSelection = false;
+  });
+
+  it('keeps the selection the selector starts with, e.g. for a single variant', async () => {
+    mockInitialSelection = true;
+    const onAddToCart = jest.fn();
+    render(<VariantSelectSheet productId="base" isOpen onClose={jest.fn()} onAddToCart={onAddToCart} />);
+
+    await act(async () => {
+      fireEvent.click(screen.getByRole('button', { name: 'product.add_to_cart' }));
+    });
+
+    expect(onAddToCart).toHaveBeenCalledWith(expect.objectContaining({ id: 'gold-1' }), 1);
   });
 
   it('checks the selection first and passes the selected variant once', async () => {
