@@ -174,22 +174,6 @@ describe('<ConfiguredBar />', () => {
     expect(document.getElementById('AppHeader')).not.toHaveAttribute('data-overlay');
   });
 
-  it('hides the logo while the buttons float over scrolled content', () => {
-    mockScroll = {
-      moved: true,
-      scrolled: true,
-      scrollingDown: false,
-    };
-    renderBar({
-      floating: true,
-      overlay: true,
-      settings: { floating: { scrollBehavior: 'floatingButtons' } },
-    });
-
-    expect(screen.getByTestId('bar')).toHaveAttribute('data-logo-hidden');
-    expect(screen.getByTestId('bar')).not.toHaveAttribute('data-revealed');
-  });
-
   it('reveals the bar as soon as content moves below it', () => {
     renderBar({
       floating: true,

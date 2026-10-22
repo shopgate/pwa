@@ -191,6 +191,7 @@ const FavoriteItem = ({
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const [variantSheetOpen, setVariantSheetOpen] = useState(false);
   const [variantSheetMounted, setVariantSheetMounted] = useState(false);
+  const [variantAddedCount, setVariantAddedCount] = useState(0);
   const currency = product.price?.currency || 'EUR';
   const defaultPrice = product.price?.unitPrice || 0;
   const specialPrice = product.price?.unitPriceStriked;
@@ -267,16 +268,16 @@ const FavoriteItem = ({
     showModal,
   ]);
 
-  const handleVariantSheetAddToCart = useCallback((variant) => {
+  const handleVariantSheetAddToCart = useCallback((variant, variantQuantity) => {
     setVariantSheetOpen(false);
     broadcastLiveMessage('product.adding_item', {
-      params: { count: 1 },
+      params: { count: variantQuantity },
     });
 
-    const result = addToCart(null, variant);
-    if (result instanceof Promise) {
-      result.catch(() => {});
-    }
+    const result = addToCart(null, variant, variantQuantity);
+    Promise.resolve(result)
+      .then(() => setVariantAddedCount(count => count + 1))
+      .catch(() => {});
 
     return result;
   }, [addToCart]);
@@ -434,6 +435,7 @@ const FavoriteItem = ({
                   onClick={handleAddToCart}
                   isLoading={false}
                   isDisabled={isDisabled}
+                  successCount={variantAddedCount}
                   aria-label={i18n.text('product.add_to_cart')}
                 />
               </SurroundPortals>
@@ -443,6 +445,7 @@ const FavoriteItem = ({
                   isOpen={variantSheetOpen}
                   onClose={closeVariantSheet}
                   onAddToCart={handleVariantSheetAddToCart}
+                  initialQuantity={quantity}
                 />
               )}
             </div>

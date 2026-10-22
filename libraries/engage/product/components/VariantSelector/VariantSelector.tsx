@@ -275,7 +275,7 @@ const VariantSelector = ({
         );
       })}
       {isComplete && lastType !== 'dropdown' && (
-        <SelectedVariantInfo productId={productId} selection={selection} />
+        <SelectedVariantInfo selection={selection} />
       )}
     </VariantContext.Provider>
   );

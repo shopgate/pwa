@@ -94,7 +94,7 @@ const APP_BAR_OPTIONS: {
 const APP_BAR_MODERN_OPTIONS: {
   [K in keyof AppBarSettings['floating']]?: readonly AppBarSettings['floating'][K][]
 } = {
-  scrollBehavior: ['revealBar', 'floatingButtons', 'scrollAway'],
+  scrollBehavior: ['revealBar', 'scrollAway'],
 };
 
 /**

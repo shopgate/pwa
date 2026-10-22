@@ -12,3 +12,8 @@ export const OPEN_CATEGORY_DRAWER = 'navigation.openCategoryDrawer';
  * The category overview page.
  */
 export const BROWSE_PATH = '/browse';
+
+/**
+ * The more page with the merchant's menu entries.
+ */
+export const MORE_PATH = '/more';

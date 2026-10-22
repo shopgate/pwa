@@ -431,6 +431,7 @@ export type NavigationActionType =
   | 'cart'
   | 'favorites'
   | 'browse'
+  | 'more'
   | 'categoryDrawer';
 
 /**
@@ -459,7 +460,7 @@ export type AppBarVariant = 'fixed' | 'floating';
 /**
  * How the floating header reacts to scrolling.
  */
-export type AppBarScrollBehavior = 'revealBar' | 'floatingButtons' | 'scrollAway';
+export type AppBarScrollBehavior = 'revealBar' | 'scrollAway';
 
 /**
  * Settings for the header.

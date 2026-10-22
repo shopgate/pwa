@@ -128,7 +128,7 @@ const ProductCardAddToCart = ({
   const isDisabled = !product
     || (!hasVariants && !hasOptions && product.stock?.orderable === false);
 
-  const addToCart = useCallback((id: string) => {
+  const addToCart = useCallback((id: string, quantity = 1) => {
     const state = store.getState();
     const method = hasNewServices()
       ? getPreferredFulfillmentMethod(state, { productId: id })
@@ -140,11 +140,11 @@ const ProductCardAddToCart = ({
       return false;
     }
 
-    broadcastLiveMessage('product.adding_item', { params: { count: 1 } });
+    broadcastLiveMessage('product.adding_item', { params: { count: quantity } });
 
     const request = dispatch(addProductsToCart([{
       productId: id,
-      quantity: 1,
+      quantity,
       ...(method && method !== DIRECT_SHIP && location && {
         fulfillment: {
           method,
@@ -157,7 +157,7 @@ const ProductCardAddToCart = ({
     }])) as Promise<{ messages?: { type?: string }[] } | undefined>;
 
     track(request, () => {
-      broadcastLiveMessage('product.item_added', { params: { count: 1 } });
+      broadcastLiveMessage('product.item_added', { params: { count: quantity } });
     });
 
     return request;
@@ -185,13 +185,13 @@ const ProductCardAddToCart = ({
     return addToCart(product.id);
   }, [addState, addToCart, hasOptions, hasVariants, product, push]);
 
-  const handleSheetAddToCart = useCallback((selected: VariantSheetProduct) => {
+  const handleSheetAddToCart = useCallback((selected: VariantSheetProduct, quantity: number) => {
     if (addState !== 'idle') {
       return false;
     }
 
     setSheetOpen(false);
-    return addToCart(selected.id);
+    return addToCart(selected.id, quantity);
   }, [addState, addToCart]);
 
   const closeSheet = useCallback(() => setSheetOpen(false), []);

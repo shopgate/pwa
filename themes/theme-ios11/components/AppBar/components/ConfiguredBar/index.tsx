@@ -201,12 +201,6 @@ const useStyles = makeStyles<{
     hidden: {
       transform: `translateY(calc(-100% - var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px)))`,
     },
-    logoHidden: {
-      '& .engage__logo': {
-        opacity: 0,
-        pointerEvents: 'none',
-      },
-    },
   };
 });
 
@@ -315,7 +309,6 @@ const ConfiguredBar = ({
 
   const hidden = overlay && scrollBehavior === 'scrollAway' && scrollingDown;
   const revealed = overlay && scrollBehavior === 'revealBar' && moved;
-  const logoHidden = overlay && scrollBehavior === 'floatingButtons' && moved;
 
   const portalProps = useMemo(() => ({
     floating,
@@ -363,13 +356,11 @@ const ConfiguredBar = ({
       data-overlay={overlay ? true : undefined}
       data-revealed={revealed ? true : undefined}
       data-hidden={hidden ? true : undefined}
-      data-logo-hidden={logoHidden ? true : undefined}
       classes={{
         outer: cx(
           overlay && classes.overlay,
           revealed && classes.searchBarRevealed,
           revealed && classes.revealed,
-          logoHidden && classes.logoHidden,
           hidden && classes.hidden,
           parentClasses.outer
         ),

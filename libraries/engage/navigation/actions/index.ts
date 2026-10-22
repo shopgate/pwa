@@ -12,7 +12,9 @@ import { STORE_FINDER_PATTERN } from '@shopgate/engage/locations/constants';
 import { useRoute, useNavigation } from '@shopgate/engage/core/hooks';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { useProductShare } from '@shopgate/engage/product/hooks';
-import { BROWSE_PATH, OPEN_CATEGORY_DRAWER, OPEN_SEARCH } from '../constants';
+import {
+  BROWSE_PATH, MORE_PATH, OPEN_CATEGORY_DRAWER, OPEN_SEARCH,
+} from '../constants';
 import type { NavigationActionHook } from '../types';
 
 const { hasNoScanner, hasFavorites } = (appConfig || {}) as {
@@ -129,6 +131,13 @@ const useBrowseAction: NavigationActionHook = () => ({
   onClick: usePush(BROWSE_PATH),
 });
 
+const useMoreAction: NavigationActionHook = () => ({
+  available: true,
+  icon: 'burger',
+  label: 'tab_bar.more',
+  onClick: usePush(MORE_PATH),
+});
+
 const useCategoryMenuAction: NavigationActionHook = () => ({
   available: true,
   icon: 'burger',
@@ -147,5 +156,6 @@ export const CORE_NAVIGATION_ACTIONS: Partial<Record<string, NavigationActionHoo
   cart: useCartAction,
   favorites: useFavoritesAction,
   browse: useBrowseAction,
+  more: useMoreAction,
   categoryDrawer: useCategoryMenuAction,
 };

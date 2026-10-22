@@ -55,6 +55,11 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
   },
   selection: {
     fontWeight: theme.typography.fontWeightMedium,
+    '&[data-sold-out]': {
+      color: theme.palette.text.secondary,
+      textDecoration: 'line-through',
+      textDecorationThickness: 2,
+    },
   },
   arrow: {
     display: 'flex',
@@ -95,6 +100,7 @@ const useStyles = makeStyles({ name: 'VariantInlineDropdown' })(theme => ({
     '&[data-sold-out]': {
       color: theme.palette.text.secondary,
       textDecoration: 'line-through',
+      textDecorationThickness: 2,
     },
   },
 }));
@@ -119,7 +125,8 @@ const VariantInlineDropdown = ({
   const listId = `variant-inline-dropdown-${domId}`;
   const labelId = `${listId}-label`;
   const wasExpanded = useRef(false);
-  const selectedLabel = values.find(value => value.id === selected)?.label;
+  const selectedValue = values.find(value => value.id === selected);
+  const selectedState = selectedValue ? getValueStateText(selectedValue) : '';
 
   useEffect(() => {
     setHighlight(highlightProp);
@@ -184,8 +191,12 @@ const VariantInlineDropdown = ({
           >
             <span className={cx(classes.text, 'engage__variant-selector__inline-dropdown__text')}>
               <span id={labelId} className={cx(classes.label, 'engage__variant-selector__label')}>{label}</span>
-              <span className={cx(classes.selection, 'engage__variant-selector__selected-value')}>
-                {selectedLabel || i18n.text('common.please_choose')}
+              <span
+                className={cx(classes.selection, 'engage__variant-selector__selected-value')}
+                data-sold-out={selectedValue?.soldOut ? true : undefined}
+              >
+                {selectedValue?.label || i18n.text('common.please_choose')}
+                {selectedState && <VisuallyHidden>{`, ${selectedState}`}</VisuallyHidden>}
               </span>
             </span>
             <span

@@ -32,7 +32,10 @@ const useStyles = makeStyles()((theme) => {
     },
     buttonSoldOut: {
       color: theme.palette.text.secondary,
+    },
+    labelSoldOut: {
       textDecoration: 'line-through',
+      textDecorationThickness: 2,
     },
     root: {
       padding: '16px 0',
@@ -130,7 +133,7 @@ const SheetItem = ({
         type="button"
       >
         <div className={classes.mainRow}>
-          <div>
+          <div className={item.selectable && item.soldOut ? classes.labelSoldOut : undefined}>
             {item.label}
             {getValueStateText(item) && <VisuallyHidden>{`, ${getValueStateText(item)}`}</VisuallyHidden>}
           </div>

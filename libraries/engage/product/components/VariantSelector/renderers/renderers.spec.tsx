@@ -184,6 +184,21 @@ describe('<VariantInlineDropdown />', () => {
     });
     expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
   });
+
+  it('strikes a selected sold out value in the closed field', () => {
+    render(<VariantInlineDropdown {...renderProps({
+      selected: 'm',
+      values: values.map(value => ({
+        ...value,
+        selected: value.id === 'm',
+      })),
+    })}
+    />);
+
+    const field = screen.getByRole('button', { name: /Size/ });
+    expect(field).toHaveAccessibleName(/M ?, product.variant_sold_out/);
+    expect(field.querySelector('[data-sold-out]')).toHaveTextContent('M');
+  });
 });
 
 describe('<VariantSwatches />', () => {
