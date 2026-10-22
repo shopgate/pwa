@@ -37,11 +37,31 @@ describe('useProductShare()', () => {
     (hasWebBridgeCore as jest.Mock).mockReturnValue(false);
   });
 
-  it('cannot share products without url', () => {
+  it('cannot share while the product or its url field is missing', () => {
+    mockProduct = null;
+    const { unmount } = render(<Share />);
+    expect(screen.getByText('none')).toBeInTheDocument();
+    unmount();
+
     mockProduct = { name: 'Jacket' };
     render(<Share />);
-
     expect(screen.getByText('none')).toBeInTheDocument();
+  });
+
+  it('shares products with an empty url, like the former share extension', () => {
+    mockProduct = {
+      name: 'Variant product',
+      productUrl: '',
+    };
+    render(<Share />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'share' }));
+
+    expect(shareItem).toHaveBeenCalledWith({
+      title: 'Variant product',
+      imageURL: '',
+      deepLink: '',
+    });
   });
 
   it('shares name, image and url with the app', () => {
@@ -81,6 +101,28 @@ describe('useProductShare()', () => {
       url: 'https://shop.example/jacket',
     });
     expect(shareItem).not.toHaveBeenCalled();
+    Object.defineProperty(navigator, 'share', {
+      value: undefined,
+      configurable: true,
+    });
+  });
+
+  it('leaves out an empty url in the share sheet of the browser', () => {
+    const share = jest.fn(() => Promise.resolve());
+    Object.defineProperty(navigator, 'share', {
+      value: share,
+      configurable: true,
+    });
+    (hasSGJavaScriptBridge as jest.Mock).mockReturnValue(false);
+    mockProduct = {
+      name: 'Variant product',
+      productUrl: '',
+    };
+    render(<Share />);
+
+    fireEvent.click(screen.getByRole('button', { name: 'share' }));
+
+    expect(share).toHaveBeenCalledWith({ title: 'Variant product' });
     Object.defineProperty(navigator, 'share', {
       value: undefined,
       configurable: true,

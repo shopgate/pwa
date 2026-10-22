@@ -49,7 +49,9 @@ const useProductShare = (productId: string | null) => {
   const { showShareButton } = useSelector(getProductActionButtons);
 
   const params = useMemo<ProductShareParams | null>(() => {
-    if (!product?.productUrl) {
+    // Like the former pdp-native-share extension, only a product without the url field can't be
+    // shared. An empty url is passed on, the app's share sheet still shares name and image.
+    if (!product || product.productUrl === undefined || product.productUrl === null) {
       return null;
     }
 
@@ -70,7 +72,7 @@ const useProductShare = (productId: string | null) => {
     if (!isApp && typeof navigator !== 'undefined' && typeof navigator.share === 'function') {
       navigator.share({
         title: params.title,
-        url: params.deepLink,
+        ...(params.deepLink && { url: params.deepLink }),
       }).catch(() => null);
       return;
     }
