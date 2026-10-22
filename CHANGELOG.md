@@ -1,5 +1,23 @@
 # Changelog
 
+## [v7.34.0](https://github.com/shopgate/pwa/compare/v7.33.3...v7.34.0) (2026-10-22)
+
+#### :rocket: Enhancement
+* [#1508](https://github.com/shopgate/pwa/pull/1508) Reviews V2 ([@patrick-scherer](https://github.com/patrick-scherer))
+* [#1533](https://github.com/shopgate/pwa/pull/1533) Polish variant selection, variant sheet and floating header from the Theme Config test ([@shopg8felix](https://github.com/shopg8felix))
+* [#1530](https://github.com/shopgate/pwa/pull/1530) Configurable category display (list or grid), subcategory chips and filter bar settings ([@shopg8felix](https://github.com/shopg8felix))
+* [#1529](https://github.com/shopgate/pwa/pull/1529) Configurable position indicator, margin and corner radius for the product page image gallery ([@shopg8felix](https://github.com/shopg8felix))
+* [#1521](https://github.com/shopgate/pwa/pull/1521) Configurable header with buttons and floating display type, search with history and preview in the core ([@shopg8felix](https://github.com/shopg8felix))
+* [#1520](https://github.com/shopgate/pwa/pull/1520) Tab bar on product page and cart, floating add to cart bar with quantity picker ([@shopg8felix](https://github.com/shopg8felix))
+* [#1519](https://github.com/shopgate/pwa/pull/1519) New variant selector, no product page flicker and quick add on product tiles ([@shopg8felix](https://github.com/shopg8felix))
+
+#### :boom: Breaking Change
+* [#1530](https://github.com/shopgate/pwa/pull/1530) Configurable category display (list or grid), subcategory chips and filter bar settings ([@shopg8felix](https://github.com/shopg8felix))
+* [#1521](https://github.com/shopgate/pwa/pull/1521) Configurable header with buttons and floating display type, search with history and preview in the core ([@shopg8felix](https://github.com/shopg8felix))
+* [#1520](https://github.com/shopgate/pwa/pull/1520) Tab bar on product page and cart, floating add to cart bar with quantity picker ([@shopg8felix](https://github.com/shopg8felix))
+* [#1519](https://github.com/shopgate/pwa/pull/1519) New variant selector, no product page flicker and quick add on product tiles ([@shopg8felix](https://github.com/shopg8felix))
+
+
 ## [v7.33.3](https://github.com/shopgate/pwa/compare/v7.33.2...v7.33.3) (2026-10-16)
 
 #### :rocket: Enhancement
