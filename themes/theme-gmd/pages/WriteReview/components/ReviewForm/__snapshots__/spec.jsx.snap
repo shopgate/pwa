@@ -102,13 +102,11 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -117,7 +115,24 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -135,13 +150,11 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -150,7 +163,24 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -168,13 +198,11 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -183,7 +211,24 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -201,13 +246,11 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -216,7 +259,24 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -234,13 +294,11 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -249,7 +307,24 @@ exports[`<ReviewForm /> should render empty 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -1291,13 +1366,11 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -1306,7 +1379,24 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -1324,13 +1414,11 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -1339,7 +1427,24 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -1357,13 +1462,11 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -1372,7 +1475,24 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -1390,13 +1510,11 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -1405,7 +1523,24 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -1423,13 +1558,11 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -1438,7 +1571,24 @@ exports[`<ReviewForm /> should render form correctly 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2582,13 +2732,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2597,7 +2745,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2615,13 +2780,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2630,7 +2793,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2648,13 +2828,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2663,7 +2841,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2681,13 +2876,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2696,7 +2889,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2714,13 +2924,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2729,7 +2937,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2749,13 +2974,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2764,7 +2987,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2780,13 +3020,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2795,7 +3033,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2811,13 +3066,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2826,7 +3079,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2842,13 +3112,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2857,7 +3125,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -2873,13 +3158,11 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -2888,7 +3171,24 @@ exports[`<ReviewForm /> should set form data 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -3896,13 +4196,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -3911,7 +4209,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -3929,13 +4244,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -3944,7 +4257,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -3962,13 +4292,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -3977,7 +4305,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -3995,13 +4340,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -4010,7 +4353,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -4028,13 +4388,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -4043,7 +4401,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -4063,13 +4438,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -4078,7 +4451,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -4094,13 +4484,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -4109,7 +4497,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -4125,13 +4530,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -4140,7 +4543,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -4156,13 +4576,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -4171,7 +4589,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -4187,13 +4622,11 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -4202,7 +4635,24 @@ exports[`<ReviewForm /> should submit with valid review 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5210,13 +5660,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5225,7 +5673,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5243,13 +5708,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5258,7 +5721,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5276,13 +5756,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5291,7 +5769,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5309,13 +5804,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5324,7 +5817,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5342,13 +5852,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5357,7 +5865,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5377,13 +5902,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5392,7 +5915,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5408,13 +5948,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5423,7 +5961,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5439,13 +5994,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5454,7 +6007,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5470,13 +6040,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5485,7 +6053,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -5501,13 +6086,11 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -5516,7 +6099,24 @@ exports[`<ReviewForm /> should validate fields on change 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6524,13 +7124,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6539,7 +7137,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6557,13 +7172,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6572,7 +7185,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6590,13 +7220,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6605,7 +7233,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6623,13 +7268,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6638,7 +7281,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6656,13 +7316,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6671,7 +7329,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6691,13 +7366,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6706,7 +7379,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6722,13 +7412,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6737,7 +7425,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6753,13 +7458,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6768,7 +7471,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6784,13 +7504,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6799,7 +7517,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -6815,13 +7550,11 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -6830,7 +7563,24 @@ exports[`<ReviewForm /> should validate fields on change 2`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -7839,13 +8589,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -7854,7 +8602,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -7872,13 +8637,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -7887,7 +8650,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -7905,13 +8685,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -7920,7 +8698,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -7938,13 +8733,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -7953,7 +8746,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -7971,13 +8781,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -7986,7 +8794,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -8006,13 +8831,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -8021,7 +8844,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -8037,13 +8877,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -8052,7 +8890,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -8068,13 +8923,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -8083,7 +8936,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -8099,13 +8969,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -8114,7 +8982,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -8130,13 +9015,11 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -8145,7 +9028,24 @@ exports[`<ReviewForm /> should validate fields on change 3`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -9133,13 +10033,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -9148,7 +10046,24 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -9166,13 +10081,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -9181,7 +10094,24 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -9199,13 +10129,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -9214,7 +10142,24 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -9232,13 +10177,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -9247,7 +10190,24 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>
@@ -9265,13 +10225,11 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                   content="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
                                   size="2.3em"
                                 >
-                                  <svg
+                                  <ForwardRef
+                                    as="svg"
                                     className="sg-1n8b10t-root common__icon"
-                                    dangerouslySetInnerHTML={
-                                      {
-                                        "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>",
-                                      }
-                                    }
+                                    html="<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>"
+                                    profile="svg"
                                     style={
                                       {
                                         "fill": undefined,
@@ -9280,7 +10238,24 @@ exports[`<ReviewForm /> should validate form on submit 1`] = `
                                     }
                                     viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg"
-                                  />
+                                  >
+                                    <svg
+                                      className="sg-1n8b10t-root common__icon"
+                                      dangerouslySetInnerHTML={
+                                        {
+                                          "__html": "<path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path>",
+                                        }
+                                      }
+                                      style={
+                                        {
+                                          "fill": undefined,
+                                          "fontSize": "2.3em",
+                                        }
+                                      }
+                                      viewBox="0 0 24 24"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    />
+                                  </ForwardRef>
                                 </Icon>
                               </Star>
                             </div>

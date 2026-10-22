@@ -229,13 +229,11 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                       content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                       size={24}
                                     >
-                                      <svg
+                                      <ForwardRef
+                                        as="svg"
                                         className="sg-1n8b10t-root common__icon"
-                                        dangerouslySetInnerHTML={
-                                          {
-                                            "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                          }
-                                        }
+                                        html="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                                        profile="svg"
                                         style={
                                           {
                                             "fill": undefined,
@@ -244,7 +242,24 @@ exports[`<NestedCategoryFilterPicker /> should accept user interaction when the 
                                         }
                                         viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg"
-                                      />
+                                      >
+                                        <svg
+                                          className="sg-1n8b10t-root common__icon"
+                                          dangerouslySetInnerHTML={
+                                            {
+                                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>",
+                                            }
+                                          }
+                                          style={
+                                            {
+                                              "fill": undefined,
+                                              "fontSize": 24,
+                                            }
+                                          }
+                                          viewBox="0 0 24 24"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                      </ForwardRef>
                                     </Icon>
                                   </Cross>
                                 </div>
@@ -671,13 +686,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                       content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                       size={24}
                                     >
-                                      <svg
+                                      <ForwardRef
+                                        as="svg"
                                         className="sg-1n8b10t-root common__icon"
-                                        dangerouslySetInnerHTML={
-                                          {
-                                            "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                          }
-                                        }
+                                        html="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                                        profile="svg"
                                         style={
                                           {
                                             "fill": undefined,
@@ -686,7 +699,24 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                         }
                                         viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg"
-                                      />
+                                      >
+                                        <svg
+                                          className="sg-1n8b10t-root common__icon"
+                                          dangerouslySetInnerHTML={
+                                            {
+                                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>",
+                                            }
+                                          }
+                                          style={
+                                            {
+                                              "fill": undefined,
+                                              "fontSize": 24,
+                                            }
+                                          }
+                                          viewBox="0 0 24 24"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                      </ForwardRef>
                                     </Icon>
                                   </Cross>
                                 </div>
@@ -1153,13 +1183,11 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                       content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                       size={24}
                                     >
-                                      <svg
+                                      <ForwardRef
+                                        as="svg"
                                         className="sg-1n8b10t-root common__icon"
-                                        dangerouslySetInnerHTML={
-                                          {
-                                            "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                          }
-                                        }
+                                        html="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                                        profile="svg"
                                         style={
                                           {
                                             "fill": undefined,
@@ -1168,7 +1196,24 @@ exports[`<NestedCategoryFilterPicker /> should handle user interaction as expect
                                         }
                                         viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg"
-                                      />
+                                      >
+                                        <svg
+                                          className="sg-1n8b10t-root common__icon"
+                                          dangerouslySetInnerHTML={
+                                            {
+                                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>",
+                                            }
+                                          }
+                                          style={
+                                            {
+                                              "fill": undefined,
+                                              "fontSize": 24,
+                                            }
+                                          }
+                                          viewBox="0 0 24 24"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                      </ForwardRef>
                                     </Icon>
                                   </Cross>
                                 </div>
@@ -1596,13 +1641,11 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                       content="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
                                       size={24}
                                     >
-                                      <svg
+                                      <ForwardRef
+                                        as="svg"
                                         className="sg-1n8b10t-root common__icon"
-                                        dangerouslySetInnerHTML={
-                                          {
-                                            "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>",
-                                          }
-                                        }
+                                        html="<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>"
+                                        profile="svg"
                                         style={
                                           {
                                             "fill": undefined,
@@ -1611,7 +1654,24 @@ exports[`<NestedCategoryFilterPicker /> should highlight the preselected subcate
                                         }
                                         viewBox="0 0 24 24"
                                         xmlns="http://www.w3.org/2000/svg"
-                                      />
+                                      >
+                                        <svg
+                                          className="sg-1n8b10t-root common__icon"
+                                          dangerouslySetInnerHTML={
+                                            {
+                                              "__html": "<path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path>",
+                                            }
+                                          }
+                                          style={
+                                            {
+                                              "fill": undefined,
+                                              "fontSize": 24,
+                                            }
+                                          }
+                                          viewBox="0 0 24 24"
+                                          xmlns="http://www.w3.org/2000/svg"
+                                        />
+                                      </ForwardRef>
                                     </Icon>
                                   </Cross>
                                 </div>
