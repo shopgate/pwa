@@ -61,15 +61,6 @@ class Characteristic extends PureComponent {
   }
 
   /**
-   * @param {string} defaultLabel The default button label.
-   * @return {string}
-   */
-  getButtonLabel = (defaultLabel) => {
-    const value = this.getSelectedValue();
-    return value ? value.label : defaultLabel;
-  };
-
-  /**
    * @return {Object|null} The selected value.
    */
   getSelectedValue = () => {
@@ -139,8 +130,8 @@ class Characteristic extends PureComponent {
     const {
       disabled, selected, charRef, label, classes,
     } = this.props;
-    const buttonLabel = this.getButtonLabel(__('common.please_choose'));
     const selectedValue = this.getSelectedValue();
+    const buttonLabel = selectedValue ? selectedValue.label : __('common.please_choose');
     const stateText = selectedValue ? getValueStateText(selectedValue) : '';
     const cmpClasses = cx(
       classes.button,

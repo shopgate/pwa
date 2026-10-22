@@ -275,7 +275,6 @@ const FavoriteItem = ({
     });
 
     const result = addToCart(null, variant, variantQuantity);
-    // The button opened the sheet instead of adding, so it plays its checkmark from here.
     Promise.resolve(result)
       .then(() => setVariantAddedCount(count => count + 1))
       .catch(() => {});

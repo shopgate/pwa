@@ -148,17 +148,6 @@ const VariantSelectSheet = ({
   const variant = variantFromStore || variantFromList;
   const shown = variant || baseProduct;
 
-  const selectionProductId = useRef(productId);
-
-  useEffect(() => {
-    // Only reset when the product changes. On mount the selector already reported its initial
-    // selection (e.g. a product with one variant), which must not be wiped.
-    if (selectionProductId.current !== productId) {
-      selectionProductId.current = productId;
-      setSelection({});
-    }
-  }, [productId]);
-
   const triggerRef = useRef<HTMLElement | null>(null);
   const wasOpen = useRef(false);
 
