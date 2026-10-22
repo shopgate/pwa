@@ -26,6 +26,7 @@ const ListsHTML = ({ properties }) => {
       data-label={label}
     >
       <HtmlSanitizer
+        allowScripts
         settings={{
           handleClick,
           html: value,
