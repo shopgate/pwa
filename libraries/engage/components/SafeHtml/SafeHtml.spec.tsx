@@ -16,7 +16,7 @@ describe('engage > components > SafeHtml', () => {
     it('should remove links, blocks, attributes and scripts but keep their text', () => {
       const alert = jest.spyOn(window, 'alert').mockImplementation(noop);
       const { container } = render(
-        <SafeHtml as="span" html='<a href="https://shop.com">Link</a><p>Block</p><b style="color:red" onclick="alert(1)">Bold</b><img src=x onerror=alert(1)><script>alert(1)</script>' />
+        <SafeHtml as="span" html='<a href="https://shop.com">Link</a><p>Block</p><b style="color:red" onclick="alert(1)" data-x="1" aria-label="a">Bold</b><img src=x onerror=alert(1)><script>alert(1)</script>' />
       );
 
       expect(container.innerHTML).toBe('<span>LinkBlock<b>Bold</b></span>');
