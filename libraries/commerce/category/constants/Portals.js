@@ -33,6 +33,10 @@ export const CATEGORY_GRID_SHOW_ALL_PRODUCTS = `${CATEGORY}.grid.show-all-produc
 export const CATEGORY_CHIPS = `${CATEGORY}.chips`;
 export const CATEGORY_CHIPS_ITEM = `${CATEGORY}.chips.${ITEM}`;
 export const CATEGORY_CHIPS_SHOW_ALL_PRODUCTS = `${CATEGORY}.chips.show-all-products`;
+export const CATEGORY_DRAWER = `${CATEGORY}.drawer`;
+export const CATEGORY_DRAWER_HEADER = `${CATEGORY}.drawer.header`;
+export const CATEGORY_DRAWER_ITEM = `${CATEGORY}.drawer.item`;
+export const CATEGORY_DRAWER_SHOW_ALL_PRODUCTS = `${CATEGORY}.drawer.show-all-products`;
 
 export const PRODUCT_LIST = `${PRODUCT}.${LIST}`;
 export const PRODUCT_LIST_BEFORE = `${PRODUCT}.${LIST}.${BEFORE}`;

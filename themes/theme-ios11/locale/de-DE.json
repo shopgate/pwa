@@ -413,6 +413,10 @@
     "showAllProducts": {
       "label": "Alle Produkte anzeigen"
     },
+    "drawer": {
+      "retry": "Erneut versuchen",
+      "subcategories": "Unterkategorien"
+    },
     "errors": {
       "404": "Kategorie nicht gefunden"
     }

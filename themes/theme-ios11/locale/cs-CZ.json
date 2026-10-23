@@ -413,6 +413,10 @@
     "showAllProducts": {
       "label": "Zobrazit všechny produkty"
     },
+    "drawer": {
+      "retry": "Zkusit znovu",
+      "subcategories": "Podkategorie"
+    },
     "errors": {
       "404": "Kategorie nebyla nalezena"
     }

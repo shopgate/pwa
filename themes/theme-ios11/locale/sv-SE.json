@@ -412,6 +412,10 @@
     "showAllProducts": {
       "label": "Visa alla produkter"
     },
+    "drawer": {
+      "retry": "Försök igen",
+      "subcategories": "Underkategorier"
+    },
     "errors": {
       "404": "Kategorin hittades inte"
     }
