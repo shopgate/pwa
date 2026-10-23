@@ -165,10 +165,7 @@ const Level = ({
       return;
     }
 
-    const active = rootRef.current?.querySelector('[data-current]');
-    if (active && typeof active.scrollIntoView === 'function') {
-      active.scrollIntoView({ block: 'center' });
-    }
+    rootRef.current?.querySelector('[data-current]')?.scrollIntoView({ block: 'center' });
   }, [hasActiveRow, stagger]);
 
   useEffect(() => {
@@ -195,7 +192,7 @@ const Level = ({
     });
   }, [onDrill, onNavigate]);
 
-  const handleOverview = useCallback(() => {
+  const handleOverview = () => {
     if (!entry || !parentCategory) {
       return;
     }
@@ -205,12 +202,12 @@ const Level = ({
       categoryId: entry.id,
       filters: getShowAllProductsFilters(parentCategory),
     });
-  }, [entry, onNavigate, parentCategory]);
+  };
 
-  const handleRetry = useCallback(() => {
+  const handleRetry = () => {
     onFocusLost();
     retry();
-  }, [onFocusLost, retry]);
+  };
 
   const hasList = showOverview || (!isGrid && !!ids?.length);
 

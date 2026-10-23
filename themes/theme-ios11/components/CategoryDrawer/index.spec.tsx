@@ -154,6 +154,8 @@ const categoriesById = {
 let mockChildren: Record<string, { children: string[] }> = {};
 let modalCount = 0;
 
+Element.prototype.scrollIntoView = jest.fn();
+
 const renderDrawer = (route: Record<string, unknown> = {
   id: 'home',
   pattern: '/',
