@@ -55,7 +55,7 @@ export interface ValueCheckboxProps {
   /**
    * Number of products that are available for the filter value.
    */
-  hits?: number;
+  hits?: number | null;
   /**
    * Whether the value is currently selected.
    */
@@ -98,7 +98,7 @@ const ValueCheckbox = ({
         label={(
           <div
             className={classes.label}
-            aria-label={hits === undefined
+            aria-label={hits == null
               ? label
               : i18n.text('filter.hits', {
                 label,
@@ -106,7 +106,7 @@ const ValueCheckbox = ({
               })}
           >
             <span>{label}</span>
-            {hits !== undefined && <span>{`(${hits})`}</span>}
+            {hits != null && <span>{`(${hits})`}</span>}
           </div>
         )}
       />
