@@ -74,6 +74,25 @@ describe('updateLegacyNavigationBar()', () => {
     });
   });
 
+  it('should broadcast when called with a content background', () => {
+    const options = {
+      statusBarBackground: '#1c1c1e',
+      contentBackground: '#000000',
+    };
+    updateLegacyNavigationBar(options);
+    expect(broadcastEvent).toHaveBeenCalledWith({
+      event: 'updateNavigationBarStyle',
+      parameters: [{
+        targetTab: 'main',
+        styles: {
+          statusBarBackground: '#1c1c1e',
+          contentBackground: '#000000',
+        },
+        statusBarStyle: 'light',
+      }],
+    });
+  });
+
   it('should broadcast when called with custom targetTab and statusBarStyle', () => {
     const options = {
       statusBarStyle: 'dark',
