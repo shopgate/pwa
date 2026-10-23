@@ -54,7 +54,7 @@ export interface FilterValue {
   /**
    * Number of products available for the filter value.
    */
-  hits?: number;
+  hits?: number | null;
 }
 
 export interface SelectorProps {
