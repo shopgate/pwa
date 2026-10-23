@@ -1,6 +1,7 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
 import { getShippingLine } from '@shopgate/pwa-common-commerce/cart';
+import { getShippingCost } from '@shopgate/pwa-common-commerce/cart/selectors';
 import PaymentBarShippingCost from '../PaymentBarShippingCost';
 import { CartContext } from '../../../cart.context';
 
@@ -11,13 +12,15 @@ function mockFactories() {
 jest.mock('@shopgate/pwa-common-commerce/cart', () => ({
   getShippingLine: jest.fn(),
 }));
-jest.mock('../PaymentBarShippingCost.connector', () => cmp => cmp);
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: selector => selector(),
+}));
+jest.mock('@shopgate/pwa-common-commerce/cart/selectors', () => ({ getShippingCost: jest.fn() }));
 jest.mock('@shopgate/engage/components', () => ({
   SurroundPortals: mockFactories().createSurroundPortalsMock(),
+  CartTotalLine: mockFactories().createCartTotalLineMock(),
 }));
-
-jest.mock('@shopgate/pwa-ui-shared/CartTotalLine', () =>
-  mockFactories().createCartTotalLineMock());
 
 describe('<PaymentBarShippingCost>', () => {
   const renderWithCartContext = ui => render(
@@ -48,9 +51,10 @@ describe('<PaymentBarShippingCost>', () => {
       label: 'My label',
       amount: 10,
     };
+    getShippingCost.mockReturnValue(shippingCost);
     getShippingLine.mockReturnValue(shippingLine);
 
-    renderWithCartContext(<PaymentBarShippingCost shippingCost={shippingCost} />);
+    renderWithCartContext(<PaymentBarShippingCost />);
 
     expect(getShippingLine).toHaveBeenCalledWith(
       {
@@ -69,14 +73,11 @@ describe('<PaymentBarShippingCost>', () => {
   });
   it('should not render shipping line', () => {
     getShippingLine.mockReturnValue(null);
-    renderWithCartContext((
-      <PaymentBarShippingCost
-        shippingCost={{
-          amount: 10,
-          label: 'Label',
-        }}
-      />
-    ));
+    getShippingCost.mockReturnValue({
+      amount: 10,
+      label: 'Label',
+    });
+    renderWithCartContext(<PaymentBarShippingCost />);
     expect(screen.queryByTestId('cart-total-line')).toBeNull();
   });
 });

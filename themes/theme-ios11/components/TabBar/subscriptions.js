@@ -1,8 +1,6 @@
 import { LOGIN_PATH, CHECKOUT_PATH, REGISTER_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
 import {
-  ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
-  ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
 } from '@shopgate/pwa-common-commerce/product/constants';
 import { checkoutRoutes } from '@shopgate/engage/checkout';
@@ -10,7 +8,6 @@ import { CATEGORY_FILTER_PATTERN, CATEGORY_ALL_FILTER_PATTERN } from '@shopgate/
 import { SEARCH_FILTER_PATTERN } from '@shopgate/pwa-common-commerce/search/constants';
 import { SCANNER_PATH } from '@shopgate/pwa-common-commerce/scanner/constants';
 import { routeDidEnter$ } from '@shopgate/pwa-common/streams/router';
-import { cartUpdatedWhileVisible$ } from '@shopgate/pwa-common-commerce/cart/streams';
 import { getCurrentRoute } from '@shopgate/pwa-common/selectors/router';
 import { appWillStart$ } from '@shopgate/pwa-common/streams';
 import { configuration } from '@shopgate/pwa-common/collections';
@@ -20,14 +17,14 @@ import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
 import {
   enableTabBar,
   disableTabBar,
+  setTabLastRoute,
 } from './actions';
-import shouldCartHaveTabBar from './helpers/shouldCartHaveTabBar';
 import isTabBarVisible from './helpers/isTabBarVisible';
+import getTabForPathname from './helpers/getTabForPathname';
+import { TAB_NONE } from './constants';
 
 const blacklist = [
-  ITEM_PATTERN,
   ITEM_GALLERY_PATTERN,
-  ITEM_REVIEWS_PATTERN,
   ITEM_WRITE_REVIEW_PATTERN,
   CATEGORY_FILTER_PATTERN,
   CATEGORY_ALL_FILTER_PATTERN,
@@ -51,16 +48,24 @@ export default function tabBar(subscribe) {
     configuration.set(TAB_BAR_PATTERNS_BLACK_LIST, blacklist);
   });
 
-  // When a route enters we update the tab bar visibility.
   subscribe(routeDidEnter$, ({ dispatch, getState }) => {
-    const { pattern } = getCurrentRoute(getState());
-    dispatch(isTabBarVisible(getState(), pattern) ? enableTabBar() : disableTabBar());
-  });
+    const { pathname, pattern, state } = getCurrentRoute(getState()) || {};
 
-  // When the cart update we need reevaluate the decision.
-  subscribe(cartUpdatedWhileVisible$, ({ getState, dispatch }) => {
-    dispatch(shouldCartHaveTabBar(getState())
-      ? enableTabBar()
-      : disableTabBar());
+    if (!pattern) {
+      return;
+    }
+
+    const visible = isTabBarVisible(pattern);
+    const tab = getTabForPathname(pathname);
+
+    dispatch(visible ? enableTabBar() : disableTabBar());
+
+    if (visible && tab !== TAB_NONE) {
+      dispatch(setTabLastRoute(tab, {
+        pathname,
+        pattern,
+        state,
+      }));
+    }
   });
 }

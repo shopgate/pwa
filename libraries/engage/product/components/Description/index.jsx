@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 import {
   SurroundPortals, PlaceholderParagraph, HtmlSanitizer, I18n, Typography,
 } from '@shopgate/engage/components';
 import { PRODUCT_DESCRIPTION } from '@shopgate/engage/product';
 import { makeStyles } from '@shopgate/engage/styles';
+import { useStickyValue } from '@shopgate/engage/product/hooks';
+import { ProductContext } from '../context';
 import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
@@ -45,11 +47,16 @@ const useStyles = makeStyles()(theme => ({
  * The product description.
  * @param {Object} props The component props.
  * @param {string} props.html html describing the product
+ * @param {boolean} props.isLoading Whether the description is loading
  * @param {Function} props.navigate where to navigate on click
  * @returns {JSX.Element}
  */
-function Description({ html, navigate, ...props }) {
+function Description({
+  html: currentHtml, isLoading, navigate, ...props
+}) {
   const { classes, cx } = useStyles();
+  const { productId } = useContext(ProductContext) || {};
+  const html = useStickyValue(currentHtml, isLoading, productId);
 
   return (
     <SurroundPortals
@@ -85,11 +92,13 @@ function Description({ html, navigate, ...props }) {
 
 Description.propTypes = {
   html: PropTypes.string,
+  isLoading: PropTypes.bool,
   navigate: PropTypes.func,
 };
 
 Description.defaultProps = {
   html: null,
+  isLoading: false,
   navigate: () => { },
 };
 

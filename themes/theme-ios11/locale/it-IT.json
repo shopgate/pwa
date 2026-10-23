@@ -240,9 +240,10 @@
     "tax_disclaimer": "* IVA inclusa, eventualmente più spese di spedizione",
     "tax_disclaimer_aria": "IVA inclusa, eventualmente più spese di spedizione",
     "item_added": "{count, plural, =0 {# non ci sono elementi aggiunti} =1 {{count} elemento aggiunto} other {{count} elementi aggiunti}}",
-    "item_added_unit": "{count} {unit} aggiunto",
     "adding_item": "{count, plural, =1 {Un prodotto viene aggiunto} other {Vengono aggiunti {count} prodotti}}",
     "pick_option_first": "Prima scegli un'opzione. {option}",
+    "variant_unavailable": "Non disponibile in questa combinazione",
+    "variant_sold_out": "Esaurito",
     "fill_out_required_input_first": "Prima inserisci i dati richiesti.",
     "add_to_cart": "Aggiungi al carrello",
     "go_to_cart": "Vai al carrello",
@@ -412,6 +413,10 @@
     "showAllProducts": {
       "label": "Mostra tutti i prodotti"
     },
+    "drawer": {
+      "retry": "Riprova",
+      "subcategories": "Sottocategorie"
+    },
     "errors": {
       "404": "Categoria non trovata"
     }
@@ -423,7 +428,13 @@
     "no_result": {
       "heading": "Ops!",
       "body": "La tua ricerca \"{searchPhrase}\" ha prodotto 0 risultati."
-    }
+    },
+    "history_title": "Ricerche recenti",
+    "history_clear": "Cancella cronologia",
+    "results_count": "{count, plural, =1 {1 risultato} other {{count} risultati}}",
+    "show_all_results": "Mostra tutti i risultati",
+    "clear": "Cancella ricerca",
+    "new_search": "Nuova ricerca"
   },
   "shipping": {
     "unknown": "più spedizione",
@@ -577,14 +588,15 @@
     "order_history": "Storico ordini",
     "profile": "Profilo",
     "back": "Indietro alla {title}",
-    "open_menu": "Apra il menu"
+    "open_menu": "Apra il menu",
+    "open_link": "Apri pagina"
   },
   "reviews": {
     "rating": "valutazione",
     "no_reviews": "Vota prima degli altri questo prodotto:",
-    "review_count": "({count} {count, plural, =1 {Recensione} other {Recensioni}})",
+    "review_count": "({count} {count, plural, =1 {Valutazione} other {Valutazioni}})",
     "button_add": "Scrivi una recensione",
-    "button_all": "Tutte le {count} Recensioni",
+    "button_all": "Tutte le {count} recensioni",
     "author": "da {author}",
     "rating_stars": "{rate, plural, =1 {Una stella} other {{rate} stelle}} su {maxRate}.",
     "review_form_rate": "Vota questo prodotto:",
@@ -595,7 +607,39 @@
     "review_form_rate_error": "Selezionare le stelle per la valutazione prego.",
     "review_form_error_length": "Massima lunghezza {length} caratteri.",
     "press_to_rate_with_x_stars": "Premere per valutare con {rate, plural, =1 {una stella} other {{rate} stelle}}.",
-    "success_message": "Grazie per la tua recensione!"
+    "success_message": "Grazie per la tua recensione!",
+    "summary_count": "{count, plural, =1 {# valutazione} other {# valutazioni}}",
+    "list_count": "{count, plural, =1 {# recensione} other {# recensioni}}",
+    "list_empty": "Ancora nessuna recensione",
+    "button_retry": "Riprova",
+    "verified": "Verificata",
+    "verified_info": "Le recensioni contrassegnate come verificate sono state controllate dal fornitore di recensioni.",
+    "merchant_reply": "Risposta del venditore",
+    "merchant_reply_show": "Mostra risposta del venditore",
+    "media_image": "Apri immagine {index}",
+    "media_video": "Riproduci video {index}",
+    "media_viewer": "Immagini e video della recensione",
+    "vote_question": "Questa recensione è stata utile?",
+    "vote_up": "Utile",
+    "vote_down": "Non utile",
+    "vote_pending": "Invio…",
+    "vote_error": "Invio non riuscito",
+    "sort_relevance": "Rilevanza",
+    "sort_dateDesc": "Più recenti",
+    "sort_dateAsc": "Meno recenti",
+    "sort_rateDesc": "Valutazione più alta",
+    "sort_rateAsc": "Valutazione più bassa",
+    "sort_helpfulDesc": "Più utili",
+    "filter_media": "Con media",
+    "filter_verified": "Solo verificate",
+    "filter_rate_all": "Tutte le valutazioni",
+    "filter_rate_5": "5 stelle",
+    "filter_rate_4": "4 stelle",
+    "filter_rate_3": "3 stelle",
+    "filter_rate_2": "2 stelle",
+    "filter_rate_1": "1 stella",
+    "distribution_open": "{label}: mostra recensioni",
+    "list_empty_filtered": "Nessuna recensione corrisponde a questa selezione."
   },
   "tab_bar": {
     "home": "Pagina Iniziale",

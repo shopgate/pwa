@@ -8,7 +8,9 @@ const GALLERY = 'gallery';
 const MEDIA = 'media';
 const HEADER = 'header';
 const VARIANT_SELECT = 'variant-select';
+const VARIANT_SELECT_SHEET = 'variant-select-sheet';
 const PICKER = 'picker';
+const CHARACTERISTIC = 'characteristic';
 const OPTIONS = 'options';
 const SWATCHES = 'swatches';
 const SWATCH = 'swatch';
@@ -18,6 +20,7 @@ const REVIEWS = 'reviews';
 const TAX_DISCLAIMER = 'tax-disclaimer';
 const CTAS = 'ctas';
 const FAVORITES = 'favorites';
+const SHARE = 'share';
 const ADD_TO_CART = 'add-to-cart';
 const RATING = 'rating';
 const NAME = 'name';
@@ -33,6 +36,7 @@ const MAP_PRICE = 'map-price';
 const ORDER_QUANTITY = 'order-quantity';
 const EFFECTIVITY_DATES = 'effectivity-dates';
 const UNIT_QUANTITY_PICKER = 'unit-quantity-picker';
+const QUANTITY_PICKER = 'quantity-picker';
 const TIERS = 'tiers';
 const ADD_TO_CART_BAR = 'add-to-cart-bar';
 const DISCOUNT = 'discount';
@@ -73,6 +77,10 @@ export const PRODUCT_CTAS_AFTER = `${PRODUCT}.${CTAS}.${AFTER}`;
 export const PRODUCT_CTAS_FAVORITES_BEFORE = `${PRODUCT}.${CTAS}.${FAVORITES}.${BEFORE}`;
 export const PRODUCT_CTAS_FAVORITES = `${PRODUCT}.${CTAS}.${FAVORITES}`;
 export const PRODUCT_CTAS_FAVORITES_AFTER = `${PRODUCT}.${CTAS}.${FAVORITES}.${AFTER}`;
+
+export const PRODUCT_CTAS_SHARE_BEFORE = `${PRODUCT}.${CTAS}.${SHARE}.${BEFORE}`;
+export const PRODUCT_CTAS_SHARE = `${PRODUCT}.${CTAS}.${SHARE}`;
+export const PRODUCT_CTAS_SHARE_AFTER = `${PRODUCT}.${CTAS}.${SHARE}.${AFTER}`;
 
 export const PRODUCT_CTAS_ADD_TO_CART_BEFORE = `${PRODUCT}.${CTAS}.${ADD_TO_CART}.${BEFORE}`;
 export const PRODUCT_CTAS_ADD_TO_CART = `${PRODUCT}.${CTAS}.${ADD_TO_CART}`;
@@ -139,6 +147,11 @@ export const PRODUCT_TIERS_AFTER = `${PRODUCT}.${TIERS}.${AFTER}`;
 export const PRODUCT_VARIANT_SELECT_BEFORE = `${PRODUCT}.${VARIANT_SELECT}.${BEFORE}`;
 export const PRODUCT_VARIANT_SELECT = `${PRODUCT}.${VARIANT_SELECT}`;
 export const PRODUCT_VARIANT_SELECT_AFTER = `${PRODUCT}.${VARIANT_SELECT}.${AFTER}`;
+export const PRODUCT_VARIANT_SELECT_CHARACTERISTIC = `${PRODUCT}.${VARIANT_SELECT}.${CHARACTERISTIC}`;
+
+export const PRODUCT_VARIANT_SELECT_SHEET_BEFORE = `${PRODUCT}.${VARIANT_SELECT_SHEET}.${BEFORE}`;
+export const PRODUCT_VARIANT_SELECT_SHEET = `${PRODUCT}.${VARIANT_SELECT_SHEET}`;
+export const PRODUCT_VARIANT_SELECT_SHEET_AFTER = `${PRODUCT}.${VARIANT_SELECT_SHEET}.${AFTER}`;
 
 // VARIANT SELECT PICKER AVAILABILITY
 export const PRODUCT_VARIANT_SELECT_PICKER_AVAILABILITY_BEFORE = `${PRODUCT}.${VARIANT_SELECT}.${PICKER}.${AVAILABILITY}.${BEFORE}`;
@@ -186,6 +199,9 @@ export const PRODUCT_TAX_DISCLAIMER_AFTER = `${PRODUCT}.${TAX_DISCLAIMER}.${AFTE
 export const PRODUCT_ADD_TO_CART_BAR_BEFORE = `${PRODUCT}.${ADD_TO_CART_BAR}.${BEFORE}`;
 export const PRODUCT_ADD_TO_CART_BAR = `${PRODUCT}.${ADD_TO_CART_BAR}`;
 export const PRODUCT_ADD_TO_CART_BAR_AFTER = `${PRODUCT}.${ADD_TO_CART_BAR}.${AFTER}`;
+export const PRODUCT_ADD_TO_CART_BAR_QUANTITY_PICKER_BEFORE = `${PRODUCT}.${ADD_TO_CART_BAR}.${QUANTITY_PICKER}.${BEFORE}`;
+export const PRODUCT_ADD_TO_CART_BAR_QUANTITY_PICKER = `${PRODUCT}.${ADD_TO_CART_BAR}.${QUANTITY_PICKER}`;
+export const PRODUCT_ADD_TO_CART_BAR_QUANTITY_PICKER_AFTER = `${PRODUCT}.${ADD_TO_CART_BAR}.${QUANTITY_PICKER}.${AFTER}`;
 
 // MAP PRICE
 export const PRODUCT_MAP_PRICE_BEFORE = `${PRODUCT}.${MAP_PRICE}.${BEFORE}`;

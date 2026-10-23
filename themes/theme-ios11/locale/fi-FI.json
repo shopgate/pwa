@@ -240,9 +240,10 @@
     "tax_disclaimer": "* Sisältäen arvonlisäveron, mahdolliset toimituskulut erikseen",
     "tax_disclaimer_aria": "Sisältäen arvonlisäveron, mahdolliset toimituskulut erikseen",
     "item_added": "{count, plural, =0 {# kei tuotteita} =1 {{count} Tuote lisätty} other {{count} Lisätyt tuotteet}}",
-    "item_added_unit": "{count} {unit} lisätty",
     "adding_item": "{count, plural, =1 {Lisätään yksi tuote} other {Lisätään {count} tuotetta}}",
     "pick_option_first": "Valitse vaihtoehto ensin. {option}",
+    "variant_unavailable": "Ei saatavilla tässä yhdistelmässä",
+    "variant_sold_out": "Loppuunmyyty",
     "fill_out_required_input_first": "Täytä ensin kaikki pakolliset kentät.",
     "add_to_cart": "Lisää koriin",
     "go_to_cart": "Ostoskori",
@@ -412,6 +413,10 @@
     "showAllProducts": {
       "label": "Näytä kaikki tuotteet"
     },
+    "drawer": {
+      "retry": "Yritä uudelleen",
+      "subcategories": "Alaluokat"
+    },
     "errors": {
       "404": "Kategoriaa ei löytynyt"
     }
@@ -423,7 +428,13 @@
     "no_result": {
       "heading": "Hups!",
       "body": "Hakusi \"{searchPhrase}\" ei tuottanut tuloksia."
-    }
+    },
+    "history_title": "Viimeisimmät haut",
+    "history_clear": "Tyhjennä historia",
+    "results_count": "{count, plural, =1 {1 tulos} other {{count} tulosta}}",
+    "show_all_results": "Näytä kaikki tulokset",
+    "clear": "Tyhjennä haku",
+    "new_search": "Uusi haku"
   },
   "shipping": {
     "unknown": "plus toimituskulut",
@@ -577,14 +588,15 @@
     "order_history": "Tilaushistoria",
     "profile": "Profiili",
     "back": "Takaisin {title}",
-    "open_menu": "Avaa valikko"
+    "open_menu": "Avaa valikko",
+    "open_link": "Avaa sivu"
   },
   "reviews": {
     "rating": "Arviointi",
     "no_reviews": "Kirjoita ensimmäinen arvostelu.",
-    "review_count": "({count} {count, plural, =1 {Arviointi} other {Arviot}})",
-    "button_add": "Arvioi tuote",
-    "button_all": "Kaikki {count} arvostelut",
+    "review_count": "({count} {count, plural, =1 {Arvio} other {Arviota}})",
+    "button_add": "Kirjoita arvostelu",
+    "button_all": "Kaikki {count} arvostelua",
     "author": "osoitteesta {author}",
     "rating_stars": "{rate, plural, =1 {Yksi tähti} other {{rate} tähteä}} {maxRate} tähdestä.",
     "review_form_rate": "Arvioi tämä tuote:",
@@ -595,7 +607,39 @@
     "review_form_rate_error": "Kuinka monta tähteä annat?",
     "review_form_error_length": "Enintään {length} merkkiä sallittu.",
     "press_to_rate_with_x_stars": "Valitse arvioidaksesi {rate, plural, =1 {yhdellä tähdellä} other {{rate} tähdellä}}.",
-    "success_message": "Kiitos luokituksestasi!"
+    "success_message": "Kiitos arvostelustasi!",
+    "summary_count": "{count, plural, =1 {# arvio} other {# arviota}}",
+    "list_count": "{count, plural, =1 {# arvostelu} other {# arvostelua}}",
+    "list_empty": "Ei vielä arvosteluja",
+    "button_retry": "Yritä uudelleen",
+    "verified": "Vahvistettu",
+    "verified_info": "Vahvistetuiksi merkityt arvostelut on tarkistanut arvostelupalvelun tarjoaja.",
+    "merchant_reply": "Myyjän vastaus",
+    "merchant_reply_show": "Näytä myyjän vastaus",
+    "media_image": "Avaa kuva {index}",
+    "media_video": "Toista video {index}",
+    "media_viewer": "Arvostelun kuvat ja videot",
+    "vote_question": "Oliko tämä arvostelu hyödyllinen?",
+    "vote_up": "Hyödyllinen",
+    "vote_down": "Ei hyödyllinen",
+    "vote_pending": "Lähetetään…",
+    "vote_error": "Lähetys epäonnistui",
+    "sort_relevance": "Osuvuus",
+    "sort_dateDesc": "Uusimmat ensin",
+    "sort_dateAsc": "Vanhimmat ensin",
+    "sort_rateDesc": "Paras arvosana",
+    "sort_rateAsc": "Heikoin arvosana",
+    "sort_helpfulDesc": "Hyödyllisimmät ensin",
+    "filter_media": "Sisältää mediaa",
+    "filter_verified": "Vain vahvistetut",
+    "filter_rate_all": "Kaikki arviot",
+    "filter_rate_5": "5 tähteä",
+    "filter_rate_4": "4 tähteä",
+    "filter_rate_3": "3 tähteä",
+    "filter_rate_2": "2 tähteä",
+    "filter_rate_1": "1 tähti",
+    "distribution_open": "{label}: näytä arvostelut",
+    "list_empty_filtered": "Yksikään arvostelu ei vastaa valintaa."
   },
   "tab_bar": {
     "home": "Koti",

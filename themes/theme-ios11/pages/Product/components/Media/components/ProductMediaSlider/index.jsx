@@ -1,10 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MediaSlider, MediaImage } from '@shopgate/engage/product';
-import { appConfig } from '@shopgate/engage';
+import { useProductGallerySettings } from '@shopgate/engage/product/hooks';
 import connect from './connector';
-
-const { pdpImageSliderPaginationType } = appConfig || {};
 
 /**
  * The product media slider component.
@@ -15,24 +13,29 @@ const ProductMediaSlider = ({
   featuredMediaBaseProduct,
   featuredMediaCharacteristics,
   className,
-}) => (
-  <MediaSlider
-    paginationType={pdpImageSliderPaginationType}
-    productId={productId}
-    className={className}
-    renderPlaceholder={(featuredMedia) => {
-      const props = featuredMediaCharacteristics || featuredMedia || featuredMediaBaseProduct;
-      return (<MediaImage {...props} className={className} />);
-    }}
-    {...pdpImageSliderPaginationType === 'bulletsBelow' ? {
-      swiperProps: {
-        style: {
-          marginBottom: -8,
+}) => {
+  const { pagination } = useProductGallerySettings();
+
+  return (
+    <MediaSlider
+      key={pagination}
+      paginationType={pagination}
+      productId={productId}
+      className={className}
+      renderPlaceholder={(featuredMedia) => {
+        const props = featuredMediaCharacteristics || featuredMedia || featuredMediaBaseProduct;
+        return (<MediaImage {...props} className={className} />);
+      }}
+      {...pagination === 'bulletsBelow' ? {
+        swiperProps: {
+          style: {
+            marginBottom: -8,
+          },
         },
-      },
-    } : {}}
-  />
-);
+      } : {}}
+    />
+  );
+};
 
 ProductMediaSlider.propTypes = {
   className: PropTypes.string,

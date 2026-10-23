@@ -25,6 +25,44 @@ describe('settings / reducers / appSettings', () => {
     expect(DEFAULT_APP_SETTINGS.product.rating.showEmptyStars).toBe(false);
   });
 
+  it('defaults to showing the manufacturer on the product page', () => {
+    expect(DEFAULT_APP_SETTINGS.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it('hides the manufacturer on the product page when the payload turns it off', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: false } },
+    }));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(false);
+    expect(state.product.rating).toEqual(DEFAULT_APP_SETTINGS.product.rating);
+  });
+
+  it('falls back to showing the manufacturer when a later payload omits the setting', () => {
+    const hidden = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: false } },
+    }));
+    const state = appSettings(hidden, receiveAppSettings({ product: {} }));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it.each([null, 'false', 0])('keeps showing the manufacturer for the value %p', (value) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: { showOnProductPage: value } },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.manufacturer.showOnProductPage).toBe(true);
+  });
+
+  it.each([null, 'hidden', [false]])('ignores the manufacturer branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { manufacturer: branch },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.manufacturer).toEqual(DEFAULT_APP_SETTINGS.product.manufacturer);
+  });
+
   it('ignores unrelated actions', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, { type: 'SOME_OTHER_ACTION' });
 
@@ -34,6 +72,36 @@ describe('settings / reducers / appSettings', () => {
   it('hydrates from a full payload and flags isHydrated', () => {
     const settings: AppSettings = {
       navigation: {
+        appBar: {
+          variant: 'floating',
+          showLogo: false,
+          logoPosition: 'left',
+          buttons: {
+            left1: {
+              action: 'openSearch',
+              icon: '',
+              link: '',
+            },
+            left2: {
+              action: 'none',
+              icon: '',
+              link: '',
+            },
+            right1: {
+              action: 'link',
+              icon: 'locator',
+              link: '/storefinder',
+            },
+            right2: {
+              action: 'share',
+              icon: '',
+              link: '',
+            },
+          },
+          floating: {
+            scrollBehavior: 'scrollAway',
+          },
+        },
         tabBar: {
           variant: 'floating',
           transition: 'slide',
@@ -46,6 +114,18 @@ describe('settings / reducers / appSettings', () => {
             showCounter: false,
           },
         },
+      },
+      search: {
+        persistentBar: {
+          home: true,
+          category: true,
+          search: false,
+          product: false,
+          page: false,
+          favorites: true,
+          hideOnScroll: false,
+        },
+        showScannerIcon: false,
       },
       product: {
         grid: {
@@ -64,11 +144,60 @@ describe('settings / reducers / appSettings', () => {
         rating: {
           showEmptyStars: false,
         },
+        manufacturer: {
+          showOnProductPage: false,
+        },
         card: {
           productName: { maxLines: 1 },
         },
         tile: {
           productName: { maxLines: 4 },
+        },
+        variantSelector: {
+          type: 'chips',
+          swatchesEnabled: true,
+          swatchCharacteristics: 'Farbe',
+          swatchSource: 'variantImage',
+          swatchShape: 'square',
+          swatchImageZoom: 200,
+          swatchProperty: '',
+          chipsLayout: 'scroll',
+          preselect: true,
+          soldOut: 'hide',
+        },
+        actionButtons: {
+          position: 'topRight',
+          addToCart: 'button',
+          direction: 'vertical',
+          showShareButton: true,
+        },
+        filterBar: {
+          showSubcategoryChips: true,
+          showOnParentCategories: true,
+          hideOnScroll: false,
+        },
+        gallery: {
+          pagination: 'fraction',
+        },
+        addToCartBar: {
+          variant: 'floating',
+          quantityPicker: true,
+        },
+      },
+      category: {
+        layout: 'grid',
+        grid: {
+          columns: {
+            small: 3,
+            large: 6,
+          },
+        },
+        showImages: true,
+        showAllProducts: true,
+      },
+      cart: {
+        paymentBar: {
+          variant: 'floating',
         },
       },
       cards: {
@@ -92,6 +221,12 @@ describe('settings / reducers / appSettings', () => {
           },
           showInnerShadow: false,
         },
+        category: {
+          ratio: {
+            width: 4,
+            height: 5,
+          },
+        },
       },
       appearance: {
         defaultColorSchemeMode: 'dark',
@@ -109,8 +244,11 @@ describe('settings / reducers / appSettings', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
 
     expect(state.isHydrated).toBe(true);
-    expect(state.navigation.tabBar).toEqual(settings.navigation.tabBar);
+    expect(state.navigation).toEqual(settings.navigation);
+    expect(state.search).toEqual(settings.search);
     expect(state.product).toEqual(settings.product);
+    expect(state.category).toEqual(settings.category);
+    expect(state.cart).toEqual(settings.cart);
     expect(state.cards).toEqual(settings.cards);
     expect(state.appearance).toEqual(settings.appearance);
     expect(state.widgets).toEqual(settings.widgets);
@@ -162,6 +300,221 @@ describe('settings / reducers / appSettings', () => {
       left: 0,
       right: 0,
     });
+  });
+
+  it('keeps the product defaults when the branch is cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: null,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product).toEqual(DEFAULT_APP_SETTINGS.product);
+  });
+
+  it('keeps the defaults of single cleared variant selector and action button values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        variantSelector: {
+          type: null,
+          soldOut: 'hide',
+        },
+        actionButtons: {
+          position: null,
+          direction: 'vertical',
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.variantSelector).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.variantSelector,
+      soldOut: 'hide',
+    });
+    expect(state.product.actionButtons).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.actionButtons,
+      direction: 'vertical',
+    });
+  });
+
+  it('stores the pagination of the product gallery', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        gallery: {
+          pagination: 'bulletsBelow',
+        },
+      },
+    }));
+
+    expect(state.product.gallery).toEqual({ pagination: 'bulletsBelow' });
+  });
+
+  it.each([null, 'dots', 123, { type: 'fraction' }])(
+    'keeps the default pagination of the product gallery for %p',
+    (pagination) => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        product: {
+          gallery: {
+            pagination,
+          },
+        },
+      } as unknown as AppSettingsPayload));
+
+      expect(state.product.gallery).toEqual({ pagination: 'bullets' });
+    }
+  );
+
+  it('keeps the defaults of invalid variant selector and action button values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        variantSelector: {
+          type: 'constructor',
+          swatchesEnabled: 'false',
+          swatchImageZoom: '200',
+          soldOut: 'hide',
+        },
+        actionButtons: {
+          position: 'topLeft',
+          direction: 'diagonal',
+          addToCart: ['button'],
+          showShareButton: 0,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.variantSelector).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.variantSelector,
+      soldOut: 'hide',
+    });
+    expect(state.product.actionButtons).toEqual(DEFAULT_APP_SETTINGS.product.actionButtons);
+  });
+
+  it.each(['chips', ['chips'], 5])('ignores the variant selector branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { variantSelector: branch },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.variantSelector).toEqual(DEFAULT_APP_SETTINGS.product.variantSelector);
+  });
+
+  it('keeps the defaults of cleared and invalid filter bar values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        filterBar: {
+          showSubcategoryChips: 'yes',
+          showOnParentCategories: true,
+          hideOnScroll: null,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.filterBar).toEqual({
+      showSubcategoryChips: false,
+      showOnParentCategories: true,
+      hideOnScroll: true,
+    });
+  });
+
+  it('keeps the category defaults when the branch is cleared', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: null,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+  });
+
+  it('keeps the defaults of cleared and invalid category values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        layout: 'chips',
+        showImages: true,
+        showAllProducts: 1,
+        grid: {
+          columns: {
+            small: null,
+            large: 5,
+          },
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual({
+      layout: 'list',
+      showImages: true,
+      showAllProducts: false,
+      grid: {
+        columns: {
+          small: 2,
+          large: 5,
+        },
+      },
+    });
+  });
+
+  it('keeps a medium column count of the category grid', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        grid: {
+          columns: {
+            small: 2,
+            medium: 3,
+            large: 'five',
+          },
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category.grid.columns).toEqual({
+      small: 2,
+      medium: 3,
+      large: 4,
+    });
+  });
+
+  it('falls back to the category and filter bar defaults when a later payload omits them', () => {
+    const configured = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: {
+        layout: 'grid',
+        showAllProducts: true,
+      },
+      product: { filterBar: { showSubcategoryChips: true } },
+    }));
+    const state = appSettings(configured, receiveAppSettings({ product: {} }));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+    expect(state.product.filterBar).toEqual(DEFAULT_APP_SETTINGS.product.filterBar);
+  });
+
+  it.each(['grid', ['grid'], 3])('ignores the category branch %p', (branch) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      category: branch,
+    } as unknown as AppSettingsPayload));
+
+    expect(state.category).toEqual(DEFAULT_APP_SETTINGS.category);
+  });
+
+  it('falls back to the defaults for cleared or invalid bar settings', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        addToCartBar: {
+          variant: 'docked',
+          quantityPicker: 'yes',
+        },
+      },
+      cart: {
+        paymentBar: { variant: null },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.addToCartBar).toEqual(DEFAULT_APP_SETTINGS.product.addToCartBar);
+    expect(state.cart).toEqual(DEFAULT_APP_SETTINGS.cart);
+  });
+
+  it('keeps the bar defaults when a branch is not an object', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { addToCartBar: 'floating' },
+      cart: 'floating',
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.addToCartBar).toEqual(DEFAULT_APP_SETTINGS.product.addToCartBar);
+    expect(state.cart).toEqual(DEFAULT_APP_SETTINGS.cart);
   });
 
   it('keeps the widget defaults when only the media margins are cleared', () => {
@@ -270,6 +623,24 @@ describe('settings / reducers / appSettings', () => {
   });
 
   describe('images', () => {
+    it('keeps the default of a cleared or invalid category image ratio side', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        images: {
+          category: {
+            ratio: {
+              width: 3,
+              height: null,
+            },
+          },
+        },
+      } as unknown as AppSettingsPayload));
+
+      expect(state.images.category.ratio).toEqual({
+        width: 3,
+        height: 1,
+      });
+    });
+
     it('deep merges a partial images payload', () => {
       const partial = {
         images: {
@@ -451,5 +822,129 @@ describe('settings / reducers / appSettings', () => {
 
     expect(DEFAULT_APP_SETTINGS.navigation.tabBar.variant).toBe('fixed');
     expect(DEFAULT_APP_SETTINGS.isHydrated).toBe(false);
+  });
+
+  it('falls back to the defaults for cleared navigation fields', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: {
+        appBar: {
+          variant: null,
+          showLogo: null,
+          logoPosition: 'right',
+          buttons: {
+            left1: null,
+            right1: {
+              action: 'cart',
+              icon: null,
+              link: null,
+            },
+          },
+          floating: null,
+        },
+        tabBar: {
+          variant: null,
+          fixed: null,
+        },
+      },
+      search: {
+        persistentBar: {
+          home: false,
+          hideOnScroll: null,
+        },
+      },
+    } as unknown as AppSettings));
+
+    const { appBar, tabBar } = state.navigation;
+    const { search } = state;
+    expect(appBar.variant).toBe('fixed');
+    expect(appBar.showLogo).toBe(true);
+    expect(appBar.logoPosition).toBe('right');
+    expect(appBar.buttons.left1).toEqual(DEFAULT_APP_SETTINGS.navigation.appBar.buttons.left1);
+    expect(appBar.buttons.right1).toEqual({
+      action: 'cart',
+      icon: '',
+      link: '',
+    });
+    expect(appBar.floating).toEqual(DEFAULT_APP_SETTINGS.navigation.appBar.floating);
+    expect(search.persistentBar.home).toBe(false);
+    expect(search.persistentBar.hideOnScroll).toBe(true);
+    expect(tabBar.variant).toBe('fixed');
+    expect(tabBar.fixed).toEqual(DEFAULT_APP_SETTINGS.navigation.tabBar.fixed);
+  });
+
+  it('falls back to the defaults for invalid navigation values', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: {
+        appBar: {
+          variant: 'FLOATING',
+          showLogo: 'false',
+          logoPosition: 'top',
+          buttons: {
+            left1: 'cart',
+            left3: { action: 'cart' },
+            right1: {
+              action: 'link',
+              icon: 5,
+              link: 42,
+            },
+          },
+          floating: { scrollBehavior: 'foo' },
+        },
+      },
+      search: {
+        persistentBar: {
+          home: 'false',
+          hideOnScroll: 'false',
+        },
+        showScannerIcon: 'no',
+      },
+    } as unknown as AppSettings));
+
+    const { appBar } = state.navigation;
+    const { search } = state;
+    expect(appBar.variant).toBe('fixed');
+    expect(appBar.showLogo).toBe(true);
+    expect(appBar.logoPosition).toBe('center');
+    expect(appBar.buttons).toEqual({
+      ...DEFAULT_APP_SETTINGS.navigation.appBar.buttons,
+      right1: {
+        action: 'link',
+        icon: '',
+        link: '',
+      },
+    });
+    expect(appBar.floating.scrollBehavior).toBe('revealBar');
+    expect(search).toEqual(DEFAULT_APP_SETTINGS.search);
+  });
+
+  it('falls back to revealing the bar for the removed floating buttons behavior', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: {
+        appBar: {
+          floating: { scrollBehavior: 'floatingButtons' },
+        },
+      },
+    } as unknown as AppSettings));
+
+    expect(state.navigation.appBar.floating.scrollBehavior).toBe('revealBar');
+  });
+
+  it.each([['a string', 'floating'], ['an array', []]])(
+    'falls back to the default navigation for %s',
+    (_, navigation) => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        navigation,
+      } as unknown as AppSettings));
+
+      expect(state.navigation).toEqual(DEFAULT_APP_SETTINGS.navigation);
+    }
+  );
+
+  it('falls back to the default navigation for a cleared branch', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: null,
+    } as unknown as AppSettings));
+
+    expect(state.navigation).toEqual(DEFAULT_APP_SETTINGS.navigation);
   });
 });

@@ -86,6 +86,50 @@ export interface ProductSliderSettings {
 }
 
 /**
+ * Buttons on product tiles and on the image of the product page.
+ */
+export interface ProductActionButtonsSettings {
+  /** Corner of the image the action buttons are placed in. */
+  position: 'topRight' | 'bottomRight';
+  /** `actionButton` adds a cart button next to the favorites button, `button` one below the tile. */
+  addToCart: 'hidden' | 'actionButton' | 'button';
+  /** Whether the action buttons line up side by side or stacked. */
+  direction: 'horizontal' | 'vertical';
+  /** Whether the product page shows a share button next to the favorites button. */
+  showShareButton: boolean;
+}
+
+/**
+ * Whether a bar at the bottom of a page spans the full width or floats as a pill. A floating tab
+ * bar makes it float regardless.
+ */
+export type FooterBarVariant = 'fixed' | 'floating';
+
+/**
+ * Settings for the add to cart bar of the product page.
+ */
+export interface ProductAddToCartBarSettings {
+  variant: FooterBarVariant;
+  /** Whether a quantity stepper sits next to the add to cart button. */
+  quantityPicker: boolean;
+}
+
+/**
+ * Settings for the payment bar of the cart.
+ */
+export interface CartPaymentBarSettings {
+  /** `floating` moves the totals into the page and leaves only the checkout button below. */
+  variant: FooterBarVariant;
+}
+
+/**
+ * Settings for the cart page.
+ */
+export interface CartSettings {
+  paymentBar: CartPaymentBarSettings;
+}
+
+/**
  * Settings for the product rating stars.
  */
 export interface ProductRatingSettings {
@@ -96,16 +140,115 @@ export interface ProductRatingSettings {
 }
 
 /**
+ * Settings for the product manufacturer.
+ */
+export interface ProductManufacturerSettings {
+  /** Whether the product page shows the manufacturer below the product name. */
+  showOnProductPage: boolean;
+}
+
+/**
+ * Display type of a characteristic in the variant selector.
+ */
+export type VariantSelectorType = 'dropdown' | 'chips';
+
+/**
+ * Where swatch colors and images come from: the image of the variant or a property of it.
+ */
+export type VariantSwatchSource = 'variantImage' | 'property';
+
+/**
+ * Settings for the variant selector on the product page and in the variant sheet.
+ */
+export interface ProductVariantSelectorSettings {
+  /** Display type of all characteristics that are not shown as swatches. */
+  type: VariantSelectorType;
+  /** Whether the characteristics listed below are shown as swatches. */
+  swatchesEnabled: boolean;
+  /** Comma separated characteristic labels that are shown as swatches. */
+  swatchCharacteristics: string;
+  swatchSource: VariantSwatchSource;
+  /** Shape of swatches. `square` uses the border radius of the theme. */
+  swatchShape: 'round' | 'square';
+  /** Zoom of image swatches in percent, 100 shows the whole image. */
+  swatchImageZoom: number;
+  /** Product property that holds the swatch color or image when `swatchSource` is `property`. */
+  swatchProperty: string;
+  /** `wrap` breaks chips into lines, `scroll` keeps them in one swipeable row. */
+  chipsLayout: 'wrap' | 'scroll';
+  /** Whether the first available variant is preselected. */
+  preselect: boolean;
+  /** How values are shown whose variants are all sold out. */
+  soldOut: 'strike' | 'hide' | 'none';
+}
+
+/**
+ * Settings for the category and filter bar above product lists: subcategory chips, sort and
+ * filter.
+ */
+export interface ProductFilterBarSettings {
+  /** Whether categories with products show their subcategories as chips in the bar. */
+  showSubcategoryChips: boolean;
+  /** Whether categories that still have subcategories show sort and filter above their products. */
+  showOnParentCategories: boolean;
+  /** Whether the bar slides out while scrolling down. */
+  hideOnScroll: boolean;
+}
+
+/**
+ * How the image gallery of the product page shows the position of the visible image. The `Below`
+ * variants place the indicator under the image instead of on top of it.
+ */
+export type ProductGalleryPagination =
+  'bullets' | 'bulletsBelow' | 'fraction' | 'fractionBelow' | 'progressbar';
+
+/**
+ * Settings for the image gallery of the product page.
+ */
+export interface ProductGallerySettings {
+  pagination: ProductGalleryPagination;
+}
+
+/**
  * Settings for product presentation across the app.
  */
 export interface ProductSettings {
   grid: ProductGridSettings;
   slider: ProductSliderSettings;
   rating: ProductRatingSettings;
+  manufacturer: ProductManufacturerSettings;
   /** Product cards (sliders, relations, live shopping). */
   card: { productName: ProductNameSettings };
   /** Product grid tiles. */
   tile: { productName: ProductNameSettings };
+  variantSelector: ProductVariantSelectorSettings;
+  actionButtons: ProductActionButtonsSettings;
+  filterBar: ProductFilterBarSettings;
+  gallery: ProductGallerySettings;
+  addToCartBar: ProductAddToCartBarSettings;
+}
+
+/**
+ * How subcategories are presented, unless the category and filter bar shows them as chips.
+ */
+export type CategoryLayout = 'list' | 'grid';
+
+/**
+ * Settings for category navigation on the browse page and on category pages.
+ */
+export interface CategorySettings {
+  layout: CategoryLayout;
+  grid: {
+    /** Number of category columns, keyed by screen size. */
+    columns: PerScreenSize;
+  };
+  /** Whether the list, the chips and the category menu show images. The grid always does. */
+  showImages: boolean;
+  /**
+   * Whether list, grid and chips start with an entry that shows all products of the category.
+   * Only supported by some integrations.
+   */
+  showAllProducts: boolean;
 }
 
 /**
@@ -223,6 +366,12 @@ export interface ImageSettings {
    * Aspect ratios for the product image contexts.
    */
   product: ProductImageSettings;
+  /**
+   * Category images in the category list, grid and chips.
+   */
+  category: {
+    ratio: AspectRatio;
+  };
 }
 
 /**
@@ -269,8 +418,89 @@ export interface AppearanceSettings {
   defaultColorSchemeMode: DefaultColorSchemeMode;
 }
 
+/**
+ * What a header button does. Extensions can register further actions under their own names.
+ */
+export type NavigationActionType =
+  | 'none'
+  | 'link'
+  | 'openSearch'
+  | 'share'
+  | 'scanner'
+  | 'storeFinder'
+  | 'cart'
+  | 'favorites'
+  | 'browse'
+  | 'more'
+  | 'categoryDrawer';
+
+/**
+ * A configurable button of the header.
+ */
+export interface NavigationActionSettings {
+  /** The action, or the name an extension registered its action under. */
+  action: NavigationActionType | string;
+  /** Key of a theme icon. Empty uses the icon of the action. */
+  icon: string;
+  /** Target path of the `link` action. */
+  link: string;
+}
+
+/**
+ * The button slots of the header, two on each side.
+ */
+export type AppBarButtonSlot = 'left1' | 'left2' | 'right1' | 'right2';
+
+/**
+ * `fixed` keeps the bar on every page, `floating` lets logo and buttons float over home and
+ * product page.
+ */
+export type AppBarVariant = 'fixed' | 'floating';
+
+/**
+ * How the floating header reacts to scrolling.
+ */
+export type AppBarScrollBehavior = 'revealBar' | 'scrollAway';
+
+/**
+ * Settings for the header.
+ */
+export interface AppBarSettings {
+  variant: AppBarVariant;
+  /** Whether the start page shows the logo in the header. */
+  showLogo: boolean;
+  logoPosition: 'left' | 'center' | 'right';
+  buttons: Record<AppBarButtonSlot, NavigationActionSettings>;
+  floating: {
+    scrollBehavior: AppBarScrollBehavior;
+  };
+}
+
+/**
+ * Page types that can show the search bar below the header.
+ */
+export type SearchBarPage = 'home' | 'category' | 'search' | 'product' | 'page' | 'favorites';
+
+/**
+ * Settings for the search bar below the header.
+ */
+export type PersistentSearchBarSettings = Record<SearchBarPage, boolean> & {
+  /** Whether the bar slides out while scrolling down. */
+  hideOnScroll: boolean;
+};
+
+/**
+ * Settings for the search.
+ */
+export interface SearchSettings {
+  persistentBar: PersistentSearchBarSettings;
+  /** Whether the search field offers the scanner, in apps that support it. */
+  showScannerIcon: boolean;
+}
+
 export interface AppSettings {
   navigation: {
+    appBar: AppBarSettings;
     tabBar: {
       variant: 'fixed' | 'floating'
       transition: 'fade' | 'slide';
@@ -288,6 +518,9 @@ export interface AppSettings {
     }
   }
   product: ProductSettings;
+  category: CategorySettings;
+  search: SearchSettings;
+  cart: CartSettings;
   /**
    * Settings for images that are served through the image service.
    */

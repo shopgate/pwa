@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import { historyPush } from '@shopgate/engage/core';
 import { getProductDescription } from '@shopgate/engage/product';
+import {
+  getProductDescriptionState,
+  getProductId,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,9 +12,14 @@ import { getProductDescription } from '@shopgate/engage/product';
  * @param {Object} props The current component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = (state, props) => ({
-  html: getProductDescription(state, props),
-});
+const mapStateToProps = (state, props) => {
+  const entry = getProductDescriptionState(state)[getProductId(state, props)];
+
+  return {
+    html: getProductDescription(state, props),
+    isLoading: !entry || !!entry.isFetching,
+  };
+};
 
 /**
  * Connects the dispatch function to a callable function in the props.

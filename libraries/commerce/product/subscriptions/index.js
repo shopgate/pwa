@@ -31,7 +31,7 @@ import { getProductRelationsByHash } from '../selectors/relations';
 import { checkoutSucceeded$ } from '../../checkout/streams';
 import expireProductById from '../action-creators/expireProductById';
 import { ITEM_PATTERN, NOT_AVAILABLE_EFFECTIVITY_DATES } from '../constants';
-import { getProductName } from '../selectors/product';
+import { getProductName, getProductDataById } from '../selectors/product';
 
 const fetchPDPData$ = productWillEnter$
   .merge(pdpDataNeedsRefresh$);
@@ -43,12 +43,18 @@ const fetchPDPData$ = productWillEnter$
 function product(subscribe) {
   const processProduct$ = productReceived$.merge(cachedProductReceived$);
 
-  subscribe(fetchPDPData$, ({ action, dispatch }) => {
+  subscribe(fetchPDPData$, ({ action, dispatch, getState }) => {
     const { productId } = action.route.params;
     const { productId: variantId } = action.route.state;
     const id = variantId || hex2bin(productId);
+    const knownProduct = getState ? getProductDataById(getState(), { productId: id }) : null;
 
     dispatch(fetchProduct(id));
+
+    if (knownProduct?.active && knownProduct.flags?.hasVariants) {
+      dispatch(fetchProductVariants(id));
+    }
+
     dispatch(fetchProductDescription(id));
     dispatch(fetchProductProperties(id));
     dispatch(fetchProductImages(id));
