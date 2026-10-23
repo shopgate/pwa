@@ -16,6 +16,7 @@ export const updateLegacyNavigationBar = (options = {}) => {
     ...options.buttonColor && { buttonColor: options.buttonColor },
     ...options.buttonColorDisabled && { buttonColorDisabled: options.buttonColorDisabled },
     ...options.statusBarBackground && { statusBarBackground: options.statusBarBackground },
+    ...options.contentBackground && { contentBackground: options.contentBackground },
   };
 
   if (!styles.statusBarBackground && styles.background) {

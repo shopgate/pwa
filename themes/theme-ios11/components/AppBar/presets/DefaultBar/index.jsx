@@ -1,4 +1,6 @@
-import React, { Fragment, PureComponent, useMemo } from 'react';
+import React, {
+  Fragment, PureComponent, useEffect, useMemo, useRef,
+} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
@@ -11,7 +13,8 @@ import {
   withRoute, withApp, INDEX_PATH, router,
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { getCSSCustomProp } from '@shopgate/engage/styles';
+import { getCSSCustomProp, useColorScheme } from '@shopgate/engage/styles';
+import { isColor } from '@shopgate/engage/styles/theme/utils/color';
 import { ViewContext } from '@shopgate/engage/components/View';
 import { useSelector } from 'react-redux';
 import { getPersistentSearchBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
@@ -33,6 +36,24 @@ import connect from './connector';
 
 const NO_CENTER = { center: null };
 const EMPTY_PROPS = {};
+
+/**
+ * Resolves the colors the native status bar and the in-app browser header take from the app bar.
+ *
+ * The app needs plain color values, so both are read from the live custom properties. The text
+ * color is only passed when it was configured as such. By default it is a contrast expression the
+ * app cannot use, and the app derives black or white from the status bar style instead.
+ * @param {boolean} overlay Whether the app bar overlays the content.
+ * @returns {Object} The background and the text color.
+ */
+const getStatusBarColors = (overlay) => {
+  const color = getCSSCustomProp('--sg-components-appBar-color');
+
+  return {
+    background: overlay ? 'transparent' : getCSSCustomProp('--sg-components-appBar-background'),
+    color: isColor(color) ? color : undefined,
+  };
+};
 
 /**
  * The AppBarDefault component.
@@ -160,14 +181,9 @@ class AppBarDefault extends PureComponent {
     /**
      * The settings for the startpage need to be preserved within the statusbar to optimize
      * the initial rendering at the app start.
-     *
-     * The native status bar needs a resolved color value, so the app bar background is read
-     * from the live custom property rather than passed along as a var() reference.
      */
-    this.props.updateStatusBar(
-      this.props.overlay ? 'transparent' : getCSSCustomProp('--sg-components-appBar-background'),
-      pathname === INDEX_PATH
-    );
+    const { background, color } = getStatusBarColors(this.props.overlay);
+    this.props.updateStatusBar(background, pathname === INDEX_PATH, color);
   }
 
   /**
@@ -263,6 +279,23 @@ const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
   } : null), [searchBarSettings.hideOnScroll, searchQuery, showSearchBar]);
   const titleProps = searchBar && isSearch ? NO_CENTER : EMPTY_PROPS;
 
+  const { route, updateStatusBar } = props;
+  const { activeColorScheme } = useColorScheme();
+  const syncedColorScheme = useRef(activeColorScheme);
+
+  useEffect(() => {
+    if (syncedColorScheme.current === activeColorScheme) {
+      return;
+    }
+
+    syncedColorScheme.current = activeColorScheme;
+
+    if (route.visible) {
+      const { background, color } = getStatusBarColors(overlay);
+      updateStatusBar(background, route.pathname === INDEX_PATH, color);
+    }
+  }, [activeColorScheme, overlay, route, updateStatusBar]);
+
   return (
     <ViewContext.Consumer>
       {({ ariaHidden }) => (
@@ -283,6 +316,7 @@ const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
 
 AppBarDefaultWithContext.propTypes = {
   route: PropTypes.shape().isRequired,
+  updateStatusBar: PropTypes.func.isRequired,
   actionButtons: PropTypes.bool,
 };
 
