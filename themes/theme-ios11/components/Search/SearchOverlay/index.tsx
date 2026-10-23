@@ -26,6 +26,7 @@ import {
 } from '../hooks';
 import { SEARCH_MIN_CHARS } from '../constants';
 import { focusElement } from '../../../helpers/focus';
+import { setAppInert } from '../../../helpers/inert';
 
 const loadingSweep = keyframes({
   '0%': { transform: 'translateX(-100%)' },
@@ -140,14 +141,6 @@ const syncStatusBar = (dispatch: Dispatch, isOpen: boolean) => {
     ? 'transparent'
     : getCSSCustomProp('--sg-components-appBar-background');
   dispatch(updateStatusBarBackground(background) as never);
-};
-
-/**
- * Takes the app below the search out of reach of keyboard and screen readers.
- * @param inert Whether the app is out of reach.
- */
-const setAppInert = (inert: boolean) => {
-  document.getElementById('root')?.toggleAttribute('inert', inert);
 };
 
 /**

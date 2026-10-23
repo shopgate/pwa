@@ -24,6 +24,7 @@ import {
 import { getContextCategoryId, resolveStartPosition } from './startPosition';
 import type { PathEntry, StartPosition } from './types';
 import { focusElement } from '../../helpers/focus';
+import { setAppInert, supportsInert } from '../../helpers/inert';
 
 const DRAG_START = 10;
 const DRAG_CLOSE = 72;
@@ -36,8 +37,6 @@ const fadeIn = keyframes({
   '0%': { opacity: 0 },
   '100%': { opacity: 1 },
 });
-
-const supportsInert = typeof HTMLElement !== 'undefined' && 'inert' in HTMLElement.prototype;
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -145,28 +144,6 @@ const ROOT_POSITION: StartPosition = {
   path: [],
   activeId: null,
 };
-
-/**
- * Takes the app below the drawer out of reach of keyboard and screen readers.
- * @param inert Whether the app is out of reach.
- */
-const setAppInert = (inert: boolean) => {
-  const root = document.getElementById('root');
-
-  if (supportsInert) {
-    root?.toggleAttribute('inert', inert);
-  } else if (inert) {
-    root?.setAttribute('aria-hidden', 'true');
-  } else {
-    root?.removeAttribute('aria-hidden');
-  }
-};
-
-/**
- * Checks whether a dialog covers the drawer.
- * @returns Whether a modal is open on top of the drawer.
- */
-const isCoveredByModal = () => !!document.querySelector('#portals .common__modal');
 
 /**
  * Keeps the keyboard focus inside the panel where the browser cannot take the app out of reach.
@@ -333,7 +310,7 @@ const CategoryDrawer = () => {
      * @param keyEvent The key event.
      */
     const handleKeyDown = (keyEvent: KeyboardEvent) => {
-      if (keyEvent.key === 'Escape' && !isCoveredByModal()) {
+      if (keyEvent.key === 'Escape' && modalCount <= 1) {
         keyEvent.preventDefault();
         closeAnimated();
         return;
@@ -346,7 +323,7 @@ const CategoryDrawer = () => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [closeAnimated, isOpen]);
+  }, [closeAnimated, isOpen, modalCount]);
 
   const levelKey = getLevelKey(path);
 

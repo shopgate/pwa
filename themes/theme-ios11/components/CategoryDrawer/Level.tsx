@@ -144,7 +144,7 @@ const Level = ({
   const needsParentCategory = Boolean(entry && showAllProducts && !parentCategory?.name);
   const activeId = activeIds[activeIds.length - 1];
   const hasActiveRow = Boolean(ids?.some(id => activeIds.includes(id)));
-  const isEmpty = Boolean(entry && ids && !ids.length && !isLoading && !hasError);
+  const isEmpty = Boolean(entry && ids && !ids.length);
 
   const getMark = (id: string): CurrentMark => {
     if (id === activeId) {

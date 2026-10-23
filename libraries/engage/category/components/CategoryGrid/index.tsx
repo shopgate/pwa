@@ -1,16 +1,13 @@
-import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { Ellipsis, Portal } from '@shopgate/engage/components';
+import { Portal } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import {
   CATEGORY_GRID_ITEM,
   CATEGORY_GRID_SHOW_ALL_PRODUCTS,
 } from '@shopgate/engage/category/constants';
 import { useCategoryGridColumns, useCategoryImageRatio } from '@shopgate/engage/category/hooks';
-import { useProductImageShadow } from '@shopgate/engage/product/hooks';
-import { getProductTileNameMaxLines } from '@shopgate/engage/settings/selectors/appSettings';
-import CategoryImage from '../CategoryImage';
 import CategoryLink from '../CategoryLink';
+import CategoryTileContent from '../CategoryTileContent';
 import type { CategoryNavigationItem } from '../../types';
 
 const IMAGE_WIDTH = 440;
@@ -67,39 +64,10 @@ const useStyles = makeStyles<CategoryGridStyleParams>({ name: 'CategoryGrid' })(
       outlineOffset: 2,
     },
   },
-  imageWrapper: {
-    padding: theme.components.tiles.imagePadding,
-  },
-  imageFrame: {
-    '&[data-inner-shadow]': {
-      position: 'relative',
-      overflow: 'hidden',
-      borderRadius: theme.components.productImage.borderRadius,
-      ':after': {
-        content: '""',
-        position: 'absolute',
-        inset: 0,
-        boxShadow: 'inset 0 0 20px rgba(0, 0, 0, .05)',
-        pointerEvents: 'none',
-      },
-    },
-  },
-  image: {
-    borderRadius: theme.components.productImage.borderRadius,
-  },
   placeholderImage: {
     aspectRatio,
     borderRadius: theme.components.productImage.borderRadius,
     background: theme.palette.background.emphasized,
-  },
-  name: {
-    padding: theme.components.tiles.textPadding,
-    paddingTop: theme.components.tiles.textPaddingTop,
-    fontSize: theme.typography.body2.fontSize,
-    fontWeight: theme.typography.fontWeightMedium,
-    lineHeight: 1.2,
-    wordBreak: 'break-word',
-    hyphens: 'auto',
   },
   placeholderName: {
     height: 14,
@@ -139,9 +107,6 @@ const CategoryGrid = ({
     columns,
     aspectRatio: image.aspectRatio,
   });
-  const showInnerShadow = useProductImageShadow();
-  const nameMaxLines = useSelector(getProductTileNameMaxLines);
-
   if (!categories?.length) {
     if (!prerender) {
       return null;
@@ -187,22 +152,15 @@ const CategoryGrid = ({
               category={category}
               className={cx(classes.tile, 'engage__category__category-grid__item')}
             >
-              <div className={cx(classes.imageWrapper, 'engage__category__category-grid__image')}>
-                <div
-                  className={classes.imageFrame}
-                  data-inner-shadow={showInnerShadow ? true : undefined}
-                >
-                  <CategoryImage
-                    className={classes.image}
-                    src={category.imageUrl}
-                    ratio={image.ratio}
-                    resolutions={image.resolutions}
-                  />
-                </div>
-              </div>
-              <span className={cx(classes.name, 'engage__category__category-grid__name')}>
-                <Ellipsis rows={nameMaxLines}>{category.name}</Ellipsis>
-              </span>
+              <CategoryTileContent
+                name={category.name}
+                imageUrl={category.imageUrl}
+                image={image}
+                classNames={{
+                  image: 'engage__category__category-grid__image',
+                  name: 'engage__category__category-grid__name',
+                }}
+              />
             </CategoryLink>
           </Portal>
         </li>

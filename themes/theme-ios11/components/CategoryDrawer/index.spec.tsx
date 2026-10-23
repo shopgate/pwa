@@ -152,6 +152,7 @@ const categoriesById = {
 };
 
 let mockChildren: Record<string, { children: string[] }> = {};
+let modalCount = 0;
 
 const renderDrawer = (route: Record<string, unknown> = {
   id: 'home',
@@ -159,7 +160,7 @@ const renderDrawer = (route: Record<string, unknown> = {
   pathname: '/',
 }) => {
   const state = {
-    a11y: { modalCount: 0 },
+    a11y: { modalCount },
     router: {
       currentRoute: route,
       stack: [route],
@@ -211,13 +212,13 @@ describe('<CategoryDrawer />', () => {
     mockFetchCategory.mockImplementation(() => Promise.resolve());
     mockNewServices = false;
     mockChildren = {};
+    modalCount = 0;
     mockSetStatusBarHidden.mockClear();
     mockSettings = {
       ...LIST_SETTINGS,
       showImages: false,
       showAllProducts: false,
     };
-    document.getElementById('portals')?.remove();
   });
 
   it('renders nothing until it is opened', () => {
@@ -404,13 +405,9 @@ describe('<CategoryDrawer />', () => {
   });
 
   it('stays open on escape while a dialog covers it', async () => {
+    modalCount = 2;
     renderDrawer();
     await open();
-
-    const portals = document.createElement('div');
-    portals.id = 'portals';
-    portals.innerHTML = '<div class="common__modal"></div>';
-    document.body.appendChild(portals);
 
     await settle(() => fireEvent.keyDown(document, { key: 'Escape' }));
 
