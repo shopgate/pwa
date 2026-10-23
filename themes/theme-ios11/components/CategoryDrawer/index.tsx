@@ -201,7 +201,7 @@ const CategoryDrawer = () => {
   const focusRowRef = useRef<string | null>(null);
   const openedOnRef = useRef<string | null>(null);
   const openGenerationRef = useRef(0);
-  const closingRef = useRef(0);
+  const closingRef = useRef(false);
   const dragRef = useRef<{ x: number; y: number; offset: number; active: boolean } | null>(null);
 
   useTrackModalState(isOpen);
@@ -213,7 +213,7 @@ const CategoryDrawer = () => {
     openGenerationRef.current += 1;
     setLeaving(null);
     openedOnRef.current = null;
-    closingRef.current = 0;
+    closingRef.current = false;
 
     if (returnFocus && returnFocusRef.current?.isConnected) {
       focusElement(returnFocusRef.current);
@@ -226,14 +226,9 @@ const CategoryDrawer = () => {
       return;
     }
 
-    const generation = Date.now();
-    closingRef.current = generation;
+    closingRef.current = true;
     setStatusBarHidden(false);
-    animateClose(panelRef.current, backdropRef.current, offset).then(() => {
-      if (closingRef.current === generation) {
-        close(returnFocus);
-      }
-    });
+    animateClose(panelRef.current, backdropRef.current, offset).then(() => close(returnFocus));
   }, [close]);
 
   useEffect(() => {
@@ -242,13 +237,6 @@ const CategoryDrawer = () => {
      */
     const handleOpen = (payload?: OpenPayload) => {
       if (openedOnRef.current) {
-        if (closingRef.current && panelRef.current) {
-          const offset = panelRef.current.getBoundingClientRect().left;
-          closingRef.current = 0;
-          cancelAnimations(panelRef.current, backdropRef.current);
-          animateOpen(panelRef.current, backdropRef.current, offset);
-          setStatusBarHidden(true);
-        }
         return;
       }
 
@@ -258,7 +246,6 @@ const CategoryDrawer = () => {
       openGenerationRef.current = generation;
       openedOnRef.current = getCurrentPathname(state) as string;
       returnFocusRef.current = active && active !== document.body ? active : null;
-      closingRef.current = 0;
       setPath([]);
       setPosition(null);
       setStagger(true);
@@ -285,7 +272,6 @@ const CategoryDrawer = () => {
     }
 
     setAppInert(true);
-    cancelAnimations(panelRef.current, backdropRef.current);
     animateOpen(panelRef.current, backdropRef.current);
     setStatusBarHidden(true);
   }, [isOpen]);
@@ -295,11 +281,6 @@ const CategoryDrawer = () => {
       closeAnimated(false);
     }
   }, [closeAnimated, isOpen, pathname]);
-
-  useEffect(() => () => {
-    setAppInert(false);
-    setStatusBarHidden(false);
-  }, []);
 
   useEffect(() => {
     if (!isOpen) {
@@ -348,11 +329,11 @@ const CategoryDrawer = () => {
     panelRef.current?.toggleAttribute('inert', modalCount > 1);
   }, [modalCount]);
 
-  const focusTitle = useCallback(() => {
+  const focusTitle = () => {
     if (titleRef.current) {
       focusElement(titleRef.current);
     }
-  }, []);
+  };
 
   useLayoutEffect(() => {
     if (!leaving) {
@@ -395,7 +376,7 @@ const CategoryDrawer = () => {
     closeAnimated(target === pathname);
   }, [closeAnimated, pathname, push]);
 
-  const handleTouchStart = useCallback((touchEvent: TouchEvent) => {
+  const handleTouchStart = (touchEvent: TouchEvent) => {
     const touch = touchEvent.touches[0];
     dragRef.current = touchEvent.touches.length === 1 ? {
       x: touch.clientX,
@@ -403,9 +384,9 @@ const CategoryDrawer = () => {
       offset: 0,
       active: false,
     } : null;
-  }, []);
+  };
 
-  const handleTouchMove = useCallback((touchEvent: TouchEvent) => {
+  const handleTouchMove = (touchEvent: TouchEvent) => {
     const drag = dragRef.current;
     if (!drag || closingRef.current) {
       return;
@@ -430,9 +411,9 @@ const CategoryDrawer = () => {
 
     drag.offset = Math.min(0, deltaX + DRAG_START);
     setDragOffset(panelRef.current, backdropRef.current, drag.offset);
-  }, []);
+  };
 
-  const handleTouchEnd = useCallback(() => {
+  const handleTouchEnd = () => {
     const drag = dragRef.current;
     dragRef.current = null;
 
@@ -446,7 +427,7 @@ const CategoryDrawer = () => {
     }
 
     animateOpen(panelRef.current, backdropRef.current, drag.offset);
-  }, [closeAnimated]);
+  };
 
   const activeIds = useMemo(() => (position?.activeId ? [
     ...position.path.map(entry => entry.id),
