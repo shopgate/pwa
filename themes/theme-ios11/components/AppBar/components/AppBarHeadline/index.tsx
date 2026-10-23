@@ -5,10 +5,6 @@ import { htmlToText } from '@shopgate/engage/core/helpers';
 import { APP_BAR_HEADLINE } from '@shopgate/engage/core/constants';
 
 const useStyles = makeStyles()(theme => ({
-  root: {
-    background: theme.components.appBar.background,
-    color: theme.components.appBar.color,
-  },
   text: {
     margin: 0,
     padding: theme.spacing(1.5, 2),
@@ -23,7 +19,7 @@ interface Props {
 }
 
 /**
- * The page title. It continues the header above the content.
+ * The page title at the top of the content, below the header.
  * @param props The component props.
  * @param props.title The title.
  * @param props.focus Whether the headline takes the focus when it appears.
@@ -46,7 +42,7 @@ const AppBarHeadline = ({ title = '', focus = false }: Props) => {
 
   return (
     <SurroundPortals portalName={APP_BAR_HEADLINE} portalProps={{ title: text }}>
-      <div className={cx(classes.root, 'theme__app-bar__headline')}>
+      <div className="theme__app-bar__headline">
         <Typography
           ref={ref}
           variant="h2"
