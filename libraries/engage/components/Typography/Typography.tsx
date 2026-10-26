@@ -251,7 +251,12 @@ export type TypographyOwnProps<C extends React.ElementType = 'span'> = {
  */
 export type TypographyProps<C extends React.ElementType = 'span'> =
   TypographyOwnProps<C> &
-  Omit<React.ComponentPropsWithRef<C>, keyof TypographyOwnProps<C>>;
+  Omit<
+    React.ElementType extends C
+      ? React.HTMLAttributes<HTMLElement>
+      : React.ComponentPropsWithRef<C>,
+    keyof TypographyOwnProps<C>
+  >;
 
 /**
  * The Typography component is used to render text with various styles and alignments.
