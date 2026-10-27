@@ -647,16 +647,6 @@
         "label": "Tracking settings: webTrackingEngage, etc"
       }
     },
-    "customStyleUrl": {
-      "type": "static",
-      "destination": "frontend",
-      "default": null,
-      "params": {
-        "type": "json",
-        "label": "A url to fetch a css file for Engage.",
-        "value": "%(customStyleUrl)s"
-      }
-    },
     "settingsUrl": {
       "type": "static",
       "destination": "frontend",
