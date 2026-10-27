@@ -1,13 +1,14 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+import escape from 'lodash/escape';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
-  I18n, ArrowIcon, Typography,
+  I18n, ArrowIcon, Typography, SafeHtml,
 } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import TextField from '@shopgate/pwa-ui-shared/TextField';
-import { EUSERNOTFOUND } from '@shopgate/engage/core';
+import { i18n, EUSERNOTFOUND } from '@shopgate/engage/core';
 import connect from './ForgotPassword.connector';
 
 const useStyles = makeStyles()(theme => ({
@@ -145,11 +146,13 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
       ) : (
         <>
           <div className={classes.resetInstructions}>
-            <I18n.Text string="login.reset_password.reset_instructions">
-              <I18n.Placeholder forKey="email">
-                <span className={classes.resetInstructionsEmail}>{email}</span>
-              </I18n.Placeholder>
-            </I18n.Text>
+            <SafeHtml
+              as="span"
+              profile="html"
+              html={i18n.text('login.reset_password.reset_instructions', {
+                email: `<span class="${classes.resetInstructionsEmail}">${escape(email)}</span>`,
+              })}
+            />
           </div>
           <div className={classes.goBackButtonContainer}>
             <Button

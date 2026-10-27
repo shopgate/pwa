@@ -11,10 +11,7 @@ const INLINE_CONFIG: Config = {
 };
 
 const HTML_CONFIG: Config = {
-  ALLOWED_TAGS: [...INLINE_TAGS, 'a', 'li', 'ol', 'p', 'ul'],
-  ALLOWED_ATTR: ['href', 'target'],
-  ALLOW_DATA_ATTR: false,
-  ALLOW_ARIA_ATTR: false,
+  ADD_ATTR: ['target'],
 };
 
 const RICH_CONFIG: Config = {
@@ -40,7 +37,7 @@ const purifier = DOMPurify(window);
 export const sanitizeInlineHtml = (html: string) => purifier.sanitize(html, INLINE_CONFIG);
 
 /**
- * Removes everything from an HTML string except formatting tags, lists and links.
+ * Removes scripts, event handlers, unsafe links and embedded media from an HTML string.
  * @param html The HTML string.
  * @returns The sanitized HTML string.
  */

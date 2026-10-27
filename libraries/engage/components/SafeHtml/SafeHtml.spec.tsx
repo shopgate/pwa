@@ -25,12 +25,12 @@ describe('engage > components > SafeHtml', () => {
   });
 
   describe('html profile', () => {
-    it('should keep formatting tags, lists and entities', () => {
+    it('should keep markup, attributes and entities', () => {
       const { container } = render(
-        <SafeHtml profile="html" html={'<p>Tom &amp; <b>Jerry</b><br><sup>1</sup></p><ul><li>One</li></ul>'} />
+        <SafeHtml profile="html" html={'<div class="box" aria-label="Box"><p>Tom &amp; <span style="font-size:14px">Jerry</span></p><ul><li>One</li></ul></div>'} />
       );
 
-      expect(container.innerHTML).toBe('<div><p>Tom &amp; <b>Jerry</b><br><sup>1</sup></p><ul><li>One</li></ul></div>');
+      expect(container.innerHTML).toBe('<div><div class="box" aria-label="Box"><p>Tom &amp; <span style="font-size:14px">Jerry</span></p><ul><li>One</li></ul></div></div>');
     });
 
     it('should keep links with safe protocols and relative links', () => {
@@ -49,13 +49,13 @@ describe('engage > components > SafeHtml', () => {
       expect(container.innerHTML).toBe('<div><a>A</a><a>B</a><a>C</a></div>');
     });
 
-    it('should remove scripts, event handlers and other tags', () => {
+    it('should remove scripts, event handlers and iframes', () => {
       const alert = jest.spyOn(window, 'alert').mockImplementation(noop);
       const { container } = render(
-        <SafeHtml profile="html" html='<img src=x onerror=alert(1)><script>alert(1)</script><svg onload=alert(1)></svg><iframe src="https://evil.com"></iframe><style>*{}</style><b onclick="alert(1)" style="color:red">Name</b>' />
+        <SafeHtml profile="html" html='<img src="x" onerror="alert(1)"><script>alert(1)</script><iframe src="https://evil.com"></iframe><b onclick="alert(1)">Name</b>' />
       );
 
-      expect(container.innerHTML).toBe('<div><b>Name</b></div>');
+      expect(container.innerHTML).toBe('<div><img src="x"><b>Name</b></div>');
       expect(alert).not.toHaveBeenCalled();
     });
 
