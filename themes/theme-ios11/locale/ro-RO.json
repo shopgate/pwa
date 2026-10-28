@@ -577,7 +577,12 @@
     "order_history": "Istoricul comenzilor",
     "profile": "Profil",
     "back": "Înapoi la {title}",
-    "open_menu": "Deschide meniul"
+    "open_menu": "Deschide meniul",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Mai multe",
+      "about": "Despre noi"
+    }
   },
   "reviews": {
     "rating": "Evaluare",

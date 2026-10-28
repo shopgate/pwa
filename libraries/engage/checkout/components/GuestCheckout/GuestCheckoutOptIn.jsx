@@ -1,6 +1,6 @@
 import React, { useMemo, useCallback, useEffect } from 'react';
 import { FormBuilder, SurroundPortals } from '@shopgate/engage/components';
-import { isIOSTheme } from '@shopgate/engage/core';
+import { hasWebBridge } from '@shopgate/engage/core';
 import { StylePresets } from '@shopgate/engage/components/Form';
 import { makeStyles } from '@shopgate/engage/styles';
 import Section from '../Checkout/CheckoutSection';
@@ -11,7 +11,7 @@ import { CHECKOUT_MARKETING_OPTIN } from '../../constants';
 const useStyles = makeStyles()(theme => ({
   root: {
     padding: theme.spacing(0, 2),
-    ...(!isIOSTheme() ? {
+    ...(hasWebBridge() ? {
       paddingBottom: theme.spacing(4),
     } : {}),
   },

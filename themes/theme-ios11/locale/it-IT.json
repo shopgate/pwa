@@ -577,7 +577,12 @@
     "order_history": "Storico ordini",
     "profile": "Profilo",
     "back": "Indietro alla {title}",
-    "open_menu": "Apra il menu"
+    "open_menu": "Apra il menu",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Di più",
+      "about": "Su di noi"
+    }
   },
   "reviews": {
     "rating": "valutazione",
