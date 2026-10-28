@@ -1,5 +1,14 @@
 # Changelog
 
+## [v7.33.5](https://github.com/shopgate/pwa/compare/v7.33.4...v7.33.5) (2026-10-28)
+
+#### :bug: Bug Fix
+* [#1537](https://github.com/shopgate/pwa/pull/1537) Transpile third-party packages for the browserslist targets ([@fkloes](https://github.com/fkloes))
+
+#### :house: Internal
+* [#1538](https://github.com/shopgate/pwa/pull/1538) Use auto-generated URLs for the theme URL settings ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.33.3](https://github.com/shopgate/pwa/compare/v7.33.2...v7.33.3) (2026-10-16)
 
 #### :rocket: Enhancement
