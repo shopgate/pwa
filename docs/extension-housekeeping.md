@@ -472,6 +472,9 @@ Report these instead of changing them:
 
 End the cleanup of an extension with a report that contains:
 
+- a table of every package the code imports, from the command under
+  [Dependencies](#dependencies), with where it is declared after the cleanup (`dependencies`,
+  `devDependencies`, or the package that brings it, such as `@shopgate/engage`)
 - what was removed, added and kept in `package.json`, with the reason for every package that was
   kept although it looked unused, and for every package under `dependencies`
 - the `peerDependencies` range before and after, with the reason for the range after, or "none"
