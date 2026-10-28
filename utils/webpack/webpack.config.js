@@ -296,7 +296,6 @@ const config = {
               babelrc: false,
               configFile: false,
               sourceType: 'unambiguous',
-              browserslistConfigFile: path.resolve(themePath, '.browserslistrc'),
               presets: [
                 ['@babel/preset-env', {
                   modules: false,
