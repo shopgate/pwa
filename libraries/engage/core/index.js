@@ -2,7 +2,7 @@
 
 // --------------- STORE --------------- //
 
-export * from '@shopgate/pwa-common/store';
+export * from './store';
 
 // --------------- CONFIG --------------- //
 export { ThemeConfigResolver } from './config/ThemeConfigResolver';

@@ -9,6 +9,24 @@ describe('Filter: <ValueCheckbox />', () => {
     expect(screen.getByText('Blau')).toBeTruthy();
   });
 
+  it('should render the hits next to the label', () => {
+    render(<ValueCheckbox id="blue" label="Blau" hits={3} />);
+
+    expect(screen.getByText('(3)')).toBeTruthy();
+  });
+
+  it('should render zero hits', () => {
+    render(<ValueCheckbox id="blue" label="Blau" hits={0} />);
+
+    expect(screen.getByText('(0)')).toBeTruthy();
+  });
+
+  it('should not render hits when they are null', () => {
+    render(<ValueCheckbox id="blue" label="Blau" hits={null} />);
+
+    expect(screen.queryByText('(null)')).toBeNull();
+  });
+
   it('should expose the checked state', () => {
     render(<ValueCheckbox id="blue" label="Blau" isActive />);
 

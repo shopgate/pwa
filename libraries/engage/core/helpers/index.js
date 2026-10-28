@@ -27,6 +27,7 @@ export { generateGoogleMapsDirectionsUrl } from './googleMaps';
 export { applyScrollContainer, useScrollContainer } from './scrollContainer';
 export { getDeviceTypeForCms } from './deviceType';
 export * from './featureFlag';
+export { getRecaptchaToken } from './recaptcha';
 
 // --------------- CORE --------------- //
 

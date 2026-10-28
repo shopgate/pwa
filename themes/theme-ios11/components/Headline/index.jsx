@@ -24,7 +24,7 @@ const centeredTags = ['h3', 'h4'];
  * @returns {JSX}
  */
 const Headline = ({
-  tag, style, text,
+  tag, style, text, className,
 }) => {
   const { classes, cx } = useStyles();
 
@@ -37,7 +37,7 @@ const Headline = ({
       variant={variantMap[tag] || 'h2'}
       component={tag}
       align={centeredTags.includes(tag) ? 'center' : 'inherit'}
-      className={cx(classes.root, 'headline', 'theme__headline')}
+      className={cx(classes.root, 'headline', 'theme__headline', className)}
       style={style}
       data-test-id="Headline"
     >
@@ -47,12 +47,14 @@ const Headline = ({
 };
 
 Headline.propTypes = {
+  className: PropTypes.string,
   style: PropTypes.shape(),
   tag: PropTypes.oneOf(['h1', 'h2', 'h3', 'h4']),
   text: PropTypes.string,
 };
 
 Headline.defaultProps = {
+  className: undefined,
   style: null,
   tag: 'h2',
   text: '',

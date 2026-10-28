@@ -161,6 +161,13 @@ export const componentsSchema = {
       color: '',
     },
   },
+  switch: {
+    vars: {
+      trackColor: '',
+      checkedTrackColor: '',
+      thumbColor: '',
+    },
+  },
   appBar: {
     vars: {
       background: '',

@@ -44,9 +44,9 @@ An extension with tests:
     "coverage:watch": "jest --coverage --watch"
   },
   "devDependencies": {
-    "@shopgate/engage": "^7.33.1",
-    "@shopgate/eslint-config": "^7.33.1",
-    "@shopgate/pwa-unit-test": "^7.33.1",
+    "@shopgate/engage": "^7.33.2",
+    "@shopgate/eslint-config": "^7.33.2",
+    "@shopgate/pwa-unit-test": "^7.33.2",
     "eslint": "^8.57.1",
     "jest": "^29.7.0",
     "react": "^17.0.2",
@@ -63,10 +63,21 @@ This is the base. Other packages are added only when the code imports them: `pro
 components that declare prop types, `react-redux` and `reselect` only when the extension accesses
 the store, and so on. See [Dependencies](#dependencies).
 
-- **`@shopgate` packages:** these three, all at the current version, at least `7.33.1`.
-  `@shopgate/engage` brings the main libraries, `@shopgate/eslint-config` the lint rules with
-  their plugins, `@shopgate/pwa-unit-test` the Jest and Babel setup for tests. The few other
-  `@shopgate` packages an extension may need are listed under [Dependencies](#dependencies).
+- **`@shopgate` packages:** these three. `@shopgate/engage` brings the main libraries,
+  `@shopgate/eslint-config` the lint rules with their plugins, `@shopgate/pwa-unit-test` the Jest
+  and Babel setup for tests. The few other `@shopgate` packages an extension may need are listed
+  under [Dependencies](#dependencies).
+  - All three are `^7.33.2`. The lockfile may contain a newer 7.x. Shops run older PWA versions
+    as well, so the declared version stands for what the code may use. An AI agent only uses
+    imports that 7.33.2 offers, see
+    [Imports that engage 7.33.2 offers](#imports-that-engage-7332-offers). 7.33.2 is the first
+    version with the complete tooling (the TypeScript config for extensions exists since 7.33.0,
+    the import path proposals work since 7.33.1), and a version without new APIs that aren't
+    rolled out widely yet.
+  - Use a newer version only when the extension's minimum PWA version is newer; then both are
+    the same, e.g. `^7.35.0` with `>=7.35.0`.
+  - The cleanup raises a lower version to 7.33.2, and never beyond the higher of 7.33.2 and the
+    minimum. A version above both was chosen by a developer; it stays and is named in the report.
 - **`@shopgate/pwa-unit-test` in every extension,** also in one without tests. It brings the Jest
   types that the TypeScript config of engage lists; without them the editor reports an error for
   the `jsconfig.json`. It has `jest` as a peer dependency, so npm installs Jest in an extension
@@ -95,8 +106,9 @@ the store, and so on. See [Dependencies](#dependencies).
 
 ### Minimum PWA version
 
-`peerDependencies` states the oldest PWA version the extension runs with. It is independent of the
-versions under `devDependencies`, which are the ones used for development.
+`peerDependencies` states the oldest PWA version the extension runs with. The `@shopgate/engage`
+version under `devDependencies` is the one used for development: `^7.33.2`, or the minimum when
+that is newer, see [`package.json`](#packagejson).
 
 ```json
 "peerDependencies": {
@@ -104,16 +116,23 @@ versions under `devDependencies`, which are the ones used for development.
 }
 ```
 
-- **Add it when the extension is migrated to the current theme.** That theme is available from
-  7.32, so the range is `>=7.32.0`.
+- **Add it when the extension's components are migrated to the current theme,** for example
+  when their styles move to `makeStyles`. That theme is available from 7.32, so the range is
+  `>=7.32.0`. The migration isn't part of the cleanup, so a cleanup never adds this range.
+  Changing imports to `@shopgate/engage` or updating `package.json` is no migration.
 - **Add it when the code relies on something that a certain engage version introduced,** for
   example a new component, hook or helper. The range starts at that version. Raise an existing
-  range when a new feature needs a newer version.
+  range when a new feature needs a newer version. This also applies to code that already uses
+  such an export, for example `makeStyles` of `@shopgate/engage/styles`, which exists since
+  7.29.0. To find the version, check the engage imports of the code against older release tags,
+  for example with `git show v7.29.0:libraries/engage/styles/index.js`; many exports reach engage
+  through `export *` from a core library, so follow those as well.
 - **An existing range for PWA 7 stays** and is named in the report, since it may stand for a
   feature. Write it as `>=x.y.z`: no caret, no pre-release suffix (`^7.29.0` and
   `>=7.29.0-beta.3` both become `>=7.29.0`).
 - **An existing range for PWA 6 is removed,** also as part of a combined range such as
-  `^6.11.0 || ^7.11.0`, which becomes `>=7.11.0`.
+  `^6.11.0 || ^7.11.0`, which becomes `>=7.11.0`. It isn't replaced by a range for engage:
+  without another reason from this list, the extension has no entry afterwards.
 - **Without one of these reasons there is no entry.** An extension that runs with any PWA version
   states no minimum.
 
@@ -127,39 +146,45 @@ key such as `peerDependenciees` after moving its entries the same way.
 
 ### Dependencies
 
-Every package that the extension's code imports directly is declared, and nothing else. Where a
-package goes depends on who provides it when the app runs:
+Every package that the extension's code imports directly is declared, and nothing else. An
+extension never relies on a package that only arrives as a dependency of a PWA package: when that
+package is replaced or removed there, the extension breaks. The exceptions are the test libraries
+of `@shopgate/pwa-unit-test` and the ESLint plugins and parsers of `@shopgate/eslint-config`,
+which the two packages provide on purpose. Where a package goes depends on who provides it when
+the app runs:
 
 | The package is … | Goes into | Examples |
 | --- | --- | --- |
-| provided through webpack at runtime | `devDependencies` | `react`, `react-dom`, `react-redux`, `redux`, `reselect`, `prop-types`, `lodash`, `@virtuous/conductor` |
-| brought by a core library and shared through the theme | `devDependencies`, in the version of that library | `rxjs` and `intl-messageformat` from `@shopgate/pwa-common` |
-| used at runtime and not provided through webpack | `dependencies`; ask the developer before adding one | a library only this extension uses, e.g. `react-spring` |
+| in the alias list of webpack | `devDependencies` | `react`, `react-dom`, `react-redux`, `redux`, `reselect`, `prop-types`, `lodash`, `@virtuous/conductor`, `rxjs` |
+| used at runtime and not in the alias list | `dependencies`; ask the developer before adding one | a library only this extension uses, e.g. `react-spring`; `intl-messageformat`, which `@shopgate/pwa-common` brings without an alias; `classnames` and `react-portal`, which the theme declares without an alias; `@shopgate/native-modules`, of which the bundle may contain several versions, in the version of engage or a higher one |
 | only used by tests, lint or scripts | `devDependencies` | `jest`, `redux-mock-store` |
-| a library that `@shopgate/engage` brings | not declared | `@shopgate/pwa-common`, `pwa-common-commerce`, `pwa-core`, `pwa-ui-ios`, `pwa-ui-material`, `pwa-ui-shared`, `native-modules` |
+| a library that `@shopgate/engage` brings | not declared | `@shopgate/pwa-common`, `pwa-common-commerce`, `pwa-core`, `pwa-ui-ios`, `pwa-ui-material`, `pwa-ui-shared` |
 | a core library that engage doesn't bring | `devDependencies`, in the version of engage | `@shopgate/pwa-tracking`, `@shopgate/tracking-core`, `@shopgate/pwa-webcheckout-shopify` |
 | a test library that `@shopgate/pwa-unit-test` brings | not declared | `@testing-library/react`, `@testing-library/jest-dom`, `enzyme` |
-| legacy and replaced by something the PWA offers | `devDependencies` as long as the code imports it, see below | `@shopgate-ps/pwa-extension-kit`, `classnames`, `react-portal` |
+| legacy and replaced by something the PWA offers | as long as the code imports it: `devDependencies` when aliased, otherwise `dependencies`, see below | `@shopgate-ps/pwa-extension-kit` (aliased), `classnames`, `react-portal` |
 
-- **Is it provided through webpack?** Two places decide it. The `resolve.alias` list in
-  `utils/webpack/webpack.config.js` names the packages that are always taken from the theme's
-  copy. Packages in the `dependencies` of `themes/theme-ios11/package.json` are found in the
-  theme as well. What the extension installs of these packages only serves lint, tests and the
-  editor.
-- **Everything else the code uses at runtime goes under `dependencies`.** These are the packages
-  only this extension brings.
+- **Is it provided through webpack?** Only the `resolve.alias` list in
+  `utils/webpack/webpack.config.js` decides it (`rxjs` through `rxPaths()`). Webpack always takes
+  these packages from the theme's copy, so what the extension installs of them only serves lint,
+  tests and the editor. The PWA aliases the packages that must not end up in the bundle in more
+  than one version.
+- **Everything else the code uses at runtime goes under `dependencies`,** also when the theme or a
+  core library happens to bring the package along. Webpack looks into the extension's own
+  `node_modules` first, so its installed copy is bundled; without one, the import only resolves
+  as long as npm hoists another package's dependency to a place webpack searches.
 - **When to ask the developer.** Move a package from `dependencies` to `devDependencies` without
-  asking when it is in the alias list of webpack or is a core library: its installed copy is
-  never bundled, so the move can't change the app. A package that is under `dependencies`
-  already, is imported and isn't provided by webpack or the theme stays there without a
-  question, and is named in the report. Ask in every other case: before a package that is only
-  found through the theme's `dependencies`, such as `classnames`, changes its section, and
-  before a package is added to `dependencies`. Name where the code imports it. Don't decide
-  these cases alone.
+  asking when it is in the alias list of webpack: its installed copy is never bundled, so the
+  move can't change the app. A package that is under `dependencies` already, is imported and
+  isn't in the alias list stays there without a question, and is named in the report. Ask
+  before a package is added to `dependencies`, also when it moves there from `devDependencies`,
+  such as `classnames`. Name where the code imports it. Don't decide these cases alone.
 - **A runtime package that isn't declared at all** only works as long as another package happens
   to bring it along. Check this case most carefully.
-- **Take the version range from the theme's `package.json`** for packages the theme provides.
-  Report it when the code needs another major version.
+- **Take the version range from the theme's `package.json`** for packages the theme declares, and
+  from the core library that brings a package otherwise, such as `rxjs` and `intl-messageformat`
+  from `@shopgate/pwa-common`. Report it when the code needs another major version.
+  `@shopgate/native-modules` is the exception: the extension may also use a higher version than
+  engage does.
 - **`react` and `react-dom`:** Babel uses the automatic JSX runtime, so a file that only contains
   JSX needs no `import React`, and the lint rules don't ask for it. The packages are still
   needed: the compiled JSX loads `react/jsx-runtime`, and most components import hooks from
@@ -175,10 +200,11 @@ package goes depends on who provides it when the app runs:
     - An extension that only registers subscriptions or reducers is such a case, also when it has
       tests for them.
     - Add both as soon as one of the conditions applies.
-- **Legacy packages go when nothing imports them anymore.** The theme still provides them, so
-  code that uses them keeps working. The cleanup makes one replacement itself, the import of
-  `isIOSTheme`. Every other import is reported, and the package stays under `devDependencies`
-  until a developer has replaced it.
+- **Legacy packages go when nothing imports them anymore.** Until then they stay declared, so code
+  that uses them keeps working: the aliased extension kit under `devDependencies`, `classnames`
+  and `react-portal` under `dependencies`. The cleanup makes one replacement itself, the import of
+  `isIOSTheme`. Every other import is reported, and the package stays declared until a developer
+  has replaced it.
   - `@shopgate-ps/pwa-extension-kit` and `@shopgate/pwa-extension-kit`:
     - `isIOSTheme` is replaced as part of the cleanup, see
       [Code changes](#code-changes-that-are-part-of-the-cleanup).
@@ -234,6 +260,28 @@ grep -rnE "(from|import|require\(|import\(|jest\.mock\()\s*'(\.\./)+(extension|e
   --exclude-dir=node_modules .
 ```
 
+### Imports that engage 7.33.2 offers
+
+An AI agent only writes imports that `@shopgate/engage` 7.33.2 offers. A newer version may add
+folders or exports, such as a new folder under `@shopgate/engage/user`, but shops run older PWA
+versions as well, where such an import fails. A developer may use a newer import on purpose, and
+then decides about the minimum PWA version.
+
+The exception for an agent is a task about a feature that needs a newer engage version, for
+example one that builds on an API the PWA introduced later. Then the agent uses that version:
+it raises the minimum in `peerDependencies` to it, installs `@shopgate/engage` in the same
+version, see [`package.json`](#packagejson), and names the version and the reason in its
+report. A cleanup is never such a task.
+
+The installed version may be newer than 7.33.2, so lint and the editor don't show whether an
+import exists in 7.33.2. An agent checks every new import against the sources of that version,
+which this repository has under the tag `v7.33.2`, for example with
+`git show v7.33.2:libraries/engage/user/index.js`. An existing import that needs a newer version
+is reported, not rewritten. Older import paths, such as deep imports from
+`@shopgate/pwa-common`, keep working in newer PWA versions for now, so the cleanup leaves them
+alone. The same applies to deprecated exports: `isAndroid` stays and isn't replaced by
+`getIsAndroid`, which only exists since 7.30.2 and would raise the minimum PWA version.
+
 ### What gets removed
 
 | What | Why it can go |
@@ -270,6 +318,7 @@ The lockfile of the backend keeps its state. When the removed line also covered
 `extension/package-lock.json`, add that path as a line of its own.
 
 Run `npm install` after every change to `package.json`, so the lockfile is up to date at the end.
+
 When the install fails with `ERESOLVE` although the versions are right, the folder contains an
 outdated lockfile or `node_modules` from an old setup: delete both and install again. Old
 lockfiles (`lockfileVersion` 1) are replaced this way.
@@ -287,8 +336,9 @@ lockfiles (`lockfileVersion` 1) are replaced this way.
   Create `.eslintrc` when there is none.
 - **`root: true` is required,** also in the ESLint config of the backend folder
   (`extension/.eslintrc`) when there is one. Without it, ESLint merges the configs of the
-  folders above. For an extension inside this repository that is the config of the monorepo,
-  and the lint run aborts with "ESLint couldn't determine the plugin … uniquely".
+  folders above. For an extension inside this repository that is the config of the monorepo.
+  The lint run may abort with "ESLint couldn't determine the plugin … uniquely", but it often
+  passes without the key, so a passing lint doesn't show it is set: check the config file.
 - **Remove what the shared config does itself:** a `parser` with `parserOptions`, and an own
   `import/no-unresolved` rule that ignores `config.json`. Keep rules the extension sets on
   purpose.
@@ -359,7 +409,8 @@ as well. When this was the only import from the kit, remove the package.
 Run all of these, and report the results:
 
 1. **Install:** `npm ls` reports nothing as invalid or missing, and `npm ci --dry-run` passes,
-   which shows that the lockfile matches `package.json`.
+   which shows that the lockfile matches `package.json`. Run `npm ci` before the other steps: a
+   `node_modules` from the old setup makes `npm ls` fail and lets lint run with the old rules.
 2. **Lint:** `npm run lint` runs through and reports no error that the setup causes: no config
    or parser error, no unresolved import, no missing file extension. Most extensions come from a
    much older ESLint and rule set, so rules may report errors in the code. Those aren't fixed,
@@ -427,9 +478,12 @@ Report these instead of changing them:
 
 End the cleanup of an extension with a report that contains:
 
+- a table of every package the code imports, from the command under
+  [Dependencies](#dependencies), with where it is declared after the cleanup (`dependencies`,
+  `devDependencies`, or the package that brings it, such as `@shopgate/engage`)
 - what was removed, added and kept in `package.json`, with the reason for every package that was
   kept although it looked unused, and for every package under `dependencies`
-- the `peerDependencies` range before and after
+- the `peerDependencies` range before and after, with the reason for the range after, or "none"
 - the files that were deleted, created or changed
 - the result of each verification step, including the steps that were skipped and why
 - everything from [Where housekeeping ends](#where-housekeeping-ends) that was found, and
@@ -451,3 +505,8 @@ The cleanup of an extension is one commit, in the repository of the extension, w
 files whose imports were changed. The lockfile has to be added explicitly the first time, since it
 was ignored before. When a `README.md` or `AGENTS.md` of the extension describes scripts or setup
 that changed, it is updated as part of the same change.
+
+An extension with a `CHANGELOG.md` gets an entry for the cleanup with the next patch version. A
+major version is only needed when the minimum PWA version rises above the one the last release
+already required; then the entry names the new minimum as a breaking change. The `version` in
+`extension-config.json` is left to the developer.

@@ -263,6 +263,148 @@ describe('<Button />', () => {
       expect(link).toHaveAttribute('aria-disabled', 'true');
       expect(link).not.toHaveAttribute('disabled');
     });
+
+    /**
+     * Collects the CSS rules of the generated classes of an element.
+     * @param element The element.
+     * @returns The rules, one per line.
+     */
+    const getRules = (element: Element) => {
+      const generated = Array.from(element.classList).filter(name => /^(tss|css|sg)-/.test(name));
+
+      return Array.from(document.styleSheets)
+        .flatMap(sheet => Array.from(sheet.cssRules))
+        .map(rule => rule.cssText)
+        .filter(rule => generated.some(name => rule.includes(`.${name}`)))
+        .join('\n');
+    };
+
+    it('should keep its regular colors while loading when asked to', () => {
+      render(<Button loading keepColorsWhileLoading>Press</Button>);
+
+      const button = screen.getByRole('button');
+      const rules = getRules(button);
+
+      expect(button).toBeDisabled();
+      expect(button).toHaveAttribute('data-keep-colors-while-loading', 'true');
+      expect(rules).toContain('--variant-containedDisabledBg: var(--variant-containedBg);');
+      expect(rules).toContain('--variant-containedDisabledColor: var(--variant-containedColor);');
+      expect(rules).toContain('--variant-outlinedDisabledBorder: var(--variant-outlinedBorder);');
+      expect(rules).toContain('--variant-textDisabledColor: var(--variant-textColor);');
+    });
+
+    /**
+     * Returns the CSS rules of the label and of the loading indicator of a rendered button.
+     * @param container The container of the rendered button.
+     * @returns The rules of both elements.
+     */
+    const getLoadingRules = (container: HTMLElement) => {
+      const indicator = container.querySelector('[role="progressbar"]')?.parentElement as Element;
+      const label = indicator.closest('button')?.firstElementChild as Element;
+
+      return {
+        indicator: getRules(indicator),
+        label: getRules(label),
+      };
+    };
+
+    it('should only hide the text glyphs and let the indicator inherit the text color when asked to', () => {
+      const { container } = render(
+        <Button variant="outlined" loading keepColorsWhileLoading>Press</Button>
+      );
+      const { indicator, label } = getLoadingRules(container);
+
+      expect(label).toContain('-webkit-text-fill-color: transparent;');
+      expect(label).not.toMatch(/[^-]color: transparent;/);
+      expect(indicator).not.toMatch(/[^-]color: /);
+    });
+
+    it('should keep a text indicator visible while the label text is hidden', () => {
+      const { container } = render(
+        <Button loading keepColorsWhileLoading loadingIndicator={<span>Saving</span>}>Press</Button>
+      );
+      const indicator = container.querySelector('.engage__button__loading-indicator') as Element;
+
+      expect(getRules(indicator)).toContain('-webkit-text-fill-color: currentcolor;');
+    });
+
+    it('should hide the label and draw the indicator in the disabled color by default', () => {
+      const { container } = render(<Button variant="outlined" loading>Press</Button>);
+      const { indicator, label } = getLoadingRules(container);
+
+      expect(label).toMatch(/[^-]color: transparent;/);
+      expect(indicator).toMatch(/[^-]color: /);
+    });
+
+    it('should animate the space for the indicator and the indicator in at the start', () => {
+      const { container } = render(<Button loading loadingPosition="start">Press</Button>);
+      const indicator = container.querySelector('[role="progressbar"]')?.parentElement as Element;
+      const placeholder = container.querySelector('button > span > span > span:empty') as Element;
+
+      expect(getRules(placeholder)).toContain('animation:');
+      expect(getRules(placeholder.parentElement as Element)).toContain('animation:');
+      expect(getRules(indicator)).toContain('animation:');
+    });
+
+    it('should place the indicator inside the slot of the start or end icon', () => {
+      ['start', 'end'].forEach((position) => {
+        const { container, unmount } = render(
+          <Button loading loadingPosition={position as 'start' | 'end'}>Press</Button>
+        );
+        const indicator = container.querySelector('.engage__button__loading-indicator') as Element;
+        const slot = indicator.parentElement as Element;
+
+        expect(slot.querySelector('span:empty')).not.toBeNull();
+        expect(getRules(slot)).toContain('position: relative;');
+        unmount();
+      });
+    });
+
+    it('should keep the centered indicator outside of the icon slots', () => {
+      const { container } = render(<Button loading startIcon={<svg data-testid="icon" />}>Press</Button>);
+      const indicator = container.querySelector('.engage__button__loading-indicator') as Element;
+
+      expect(indicator.parentElement?.contains(screen.getByTestId('icon'))).toBe(false);
+    });
+
+    it('should not animate an own start icon in', () => {
+      render(
+        <Button loading loadingPosition="start" startIcon={<svg data-testid="icon" />}>Press</Button>
+      );
+
+      expect(getRules(screen.getByTestId('icon').parentElement as Element))
+        .not.toContain('animation:');
+    });
+
+    it('should not animate the centered indicator in', () => {
+      const { container } = render(<Button loading>Press</Button>);
+      const indicator = container.querySelector('[role="progressbar"]')?.parentElement as Element;
+
+      expect(getRules(indicator)).not.toContain('animation:');
+    });
+
+    it('should hide the icons while it keeps its colors and loads', () => {
+      render(
+        <Button loading keepColorsWhileLoading startIcon={<svg data-testid="icon" />}>Press</Button>
+      );
+
+      expect(getRules(screen.getByTestId('icon').parentElement as Element))
+        .toContain('visibility: hidden;');
+    });
+
+    it('should keep the disabled colors while loading by default', () => {
+      render(<Button loading>Press</Button>);
+
+      expect(getRules(screen.getByRole('button')))
+        .not.toContain('--variant-containedDisabledBg: var(--variant-containedBg);');
+    });
+
+    it('should look disabled when it is disabled without loading', () => {
+      render(<Button disabled keepColorsWhileLoading>Press</Button>);
+
+      expect(getRules(screen.getByRole('button')))
+        .not.toContain('--variant-containedDisabledBg: var(--variant-containedBg);');
+    });
   });
 
   it('should pass the testId through to the button element', () => {

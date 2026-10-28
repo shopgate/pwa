@@ -85,7 +85,7 @@ export const mutable = (func) => {
 
     // Execute pre-processing steps, if any available.
     if (steps.length > 0) {
-      mutatedArgs = steps.reduce((acc, step, i, arr) => {
+      mutatedArgs = steps.slice().reduce((acc, step, i, arr) => {
         // Call next step func in the pipeline with mutated args
         let res = step(...acc);
 
