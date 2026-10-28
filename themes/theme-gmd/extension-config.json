@@ -88,10 +88,7 @@
     "logo": {
       "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "An url to fetch a shop logo from",
         "value": "%(logoUrl)s"
       }
     },
@@ -638,40 +635,28 @@
     "settingsUrl": {
       "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "A url to fetch a JSONP file with shop settings for Engage.",
         "value": "%(settingsUrl)s"
       }
     },
     "merchantSettingsUrl": {
       "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "A url to fetch a JSONP file with merchant settings for Engage.",
         "value": "%(merchantSettingsUrl)s"
       }
     },
     "appSettingsUrl": {
       "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "A url to fetch a JSONP file with app settings for Engage.",
         "value": "%(appSettingsUrl)s"
       }
     },
     "themeCssUrl": {
       "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "A url to fetch the theme css file for Engage.",
         "value": "%(themeCssUrl)s"
       }
     },
