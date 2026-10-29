@@ -26,6 +26,28 @@ describe('admin-preview/ElementPicker/helpers', () => {
     expect(getStableClass(byId('plain'))).toBeNull();
   });
 
+  it.each([
+    'push-opt-in-modal__title',
+    'cookie-consent-modal__button-accept-all',
+    'no-results__image',
+  ])('accepts the block__element class %s', (stableClass) => {
+    document.body.innerHTML = `<div id="element" class="sg-x-root ${stableClass}">x</div>`;
+
+    expect(getStableClass(document.getElementById('element') as Element)).toBe(stableClass);
+  });
+
+  it.each([
+    'sg-abc__root',
+    'MuiButton-root',
+    'Mui-disabled',
+    'product__',
+    '__title',
+  ])('ignores %s', (name) => {
+    document.body.innerHTML = `<div id="element" class="${name}">x</div>`;
+
+    expect(getStableClass(document.getElementById('element') as Element)).toBeNull();
+  });
+
   it('falls back to the legacy classes', () => {
     document.body.innerHTML = '<span id="legacy" class="sg-x-root price-striked">1 €</span>';
 

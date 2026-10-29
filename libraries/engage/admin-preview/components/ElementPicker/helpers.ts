@@ -1,8 +1,10 @@
 /**
- * Readable classes that the components keep stable across releases, so merchants can target them
- * with custom css. Generated `sg-*` classes change with every build and are never offered.
+ * Readable `block__element` classes that the components keep stable across releases, so merchants
+ * can target them with custom css, e.g. `engage__product-card` or `push-opt-in-modal__title`.
+ * Generated `sg-*` and MUI classes never contain `__`, and change with every build or library
+ * update, so they are never offered.
  */
-const STABLE_CLASS = /^(engage|theme|ui-shared|ui-material|ui-ios|common|widget)__[\w-]+$/;
+const STABLE_CLASS = /^(?!sg-)[a-z][a-z0-9-]*__[\w-]+$/;
 
 /**
  * Unprefixed classes from before the naming scheme, documented by the content styling extension.
