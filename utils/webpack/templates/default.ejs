@@ -18,12 +18,13 @@
   <% } %>
   <%
     // Anchors for the new theming system. Layers must apply in a fixed order:
-    // emotion-insertion-point (all tss styles) -> font css -> theme css -> preview css.
+    // emotion-insertion-point (all tss styles) -> font css -> theme css -> preview css -> custom css.
     //
     // TSS styles carry defaults generated during theme initialization.
     // The font css files (the typography app settings, loaded by loadFontCss) override them.
     // The theme css file (the themeCssUrl setting, loaded by loadThemeCss) overrides both.
     // The admin preview (FrontendSettingsPreviewBridge) overrides all for live customizations.
+    // The merchant's custom css (the appearance.customCss app setting) comes last, so it wins.
     //
     // All of them have the same specificity, so document order is decisive.
     // Declaring the insertion positions here makes the order structural instead of timing-based.
@@ -31,6 +32,7 @@
   <meta name="font-css-insertion-point" content="" />
   <meta name="theme-css-insertion-point" content="" />
   <meta name="preview-css-insertion-point" content="" />
+  <meta name="custom-css-insertion-point" content="" />
   <% const scripts = htmlWebpackPlugin.files.js; %>
   <% const vendor = scripts.find(s => s.includes('vendor')); %>
   <% if (vendor) { %><script src="<%= vendor %>"></script><% } %>

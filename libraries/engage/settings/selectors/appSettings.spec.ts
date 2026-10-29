@@ -3,6 +3,7 @@ import {
   getCategoryImageRatio,
   getCategorySettings,
   getProductFilterBarSettings,
+  getCustomCss,
   getDefaultColorSchemeMode,
   getProductGallerySettings,
   getShowManufacturerOnProductPage,
@@ -171,6 +172,26 @@ describe('settings/selectors/appSettings', () => {
   describe('getTypographySettings', () => {
     it('falls back to the defaults when the slice is missing', () => {
       expect(getTypographySettings({} as AppSettingsState)).toEqual({ variants: {} });
+    });
+  });
+
+  describe('getCustomCss', () => {
+    it('is empty by default', () => {
+      expect(getCustomCss(stateWithAppearance({ defaultColorSchemeMode: 'light' }))).toBe('');
+    });
+
+    it('is empty when the admin cleared it', () => {
+      expect(getCustomCss(stateWithAppearance({
+        defaultColorSchemeMode: 'light',
+        customCss: null,
+      }))).toBe('');
+    });
+
+    it('selects the configured stylesheet', () => {
+      expect(getCustomCss(stateWithAppearance({
+        defaultColorSchemeMode: 'light',
+        customCss: '.headline { color: red; }',
+      }))).toBe('.headline { color: red; }');
     });
   });
 

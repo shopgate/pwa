@@ -245,6 +245,14 @@ export const getTypographySettings = createSelector(
 );
 
 /**
+ * Selects the merchant stylesheet from the advanced custom styling, empty when none is configured.
+ */
+export const getCustomCss = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.appearance?.customCss ?? ''
+);
+
+/**
  * Selects the font stylesheets to load, global file first and without duplicates.
  */
 export const getTypographyFontCssUrls = createSelector(
