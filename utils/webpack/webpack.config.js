@@ -41,6 +41,9 @@ const typeCheckPlugin = isDev && typeCheck
   ? new ShopgateTypeCheckPlugin({ overlay: typeCheck === 'overlay' })
   : null;
 
+// Matches node_modules files, except the ones of @shopgate packages
+const thirdPartyModules = new RegExp(`node_modules\\b(?!\\${path.sep}@shopgate)\\b.*`);
+
 /**
  * @type {import('webpack').Configuration}
  */
@@ -266,7 +269,7 @@ const config = {
       },
       {
         test: /\.(js|jsx|ts|tsx)$/,
-        exclude: new RegExp(`node_modules\\b(?!\\${path.sep}@shopgate)\\b.*`),
+        exclude: thirdPartyModules,
         use: [
           {
             loader: 'babel-loader',
@@ -274,6 +277,34 @@ const config = {
               configFile: path.resolve(themePath, 'babel.config.js'),
               cacheDirectory: path.resolve(themePath, '..', '..', '.cache-loader'),
               plugins: [isDev && require.resolve('react-refresh/babel')].filter(Boolean),
+            },
+          },
+        ],
+      },
+      // Transpile third-party packages for the browserslist targets, since packages may ship
+      // syntax that older browsers can't parse (e.g. class static blocks need iOS 16.4).
+      // Syntax only, polyfills are added for the project code by the theme's Babel config.
+      {
+        test: /\.(js|mjs|cjs)$/,
+        include: thirdPartyModules,
+        // Babel's own helpers, transpiling them can make them import themselves
+        exclude: /@babel[\\/]runtime[\\/]/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              configFile: false,
+              sourceType: 'unambiguous',
+              presets: [
+                ['@babel/preset-env', {
+                  modules: false,
+                  bugfixes: true,
+                  useBuiltIns: false,
+                }],
+              ],
+              cacheDirectory: path.resolve(themePath, '..', '..', '.cache-loader'),
+              compact: true,
             },
           },
         ],

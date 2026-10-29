@@ -1,5 +1,5 @@
 {
-  "version": "7.33.3",
+  "version": "7.33.4",
   "id": "@shopgate/theme-ios11",
   "configuration": {
     "appId": {
@@ -86,12 +86,10 @@
       }
     },
     "logo": {
-      "type": "admin",
+      "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "An url to fetch a shop logo from"
+        "value": "%(logoUrl)s"
       }
     },
     "logoFallback": {
@@ -637,49 +635,32 @@
         "label": "Tracking settings: webTrackingEngage, etc"
       }
     },
-    "customStyleUrl": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": null,
-      "params": {
-        "type": "json",
-        "label": "A url to fetch a css file for Engage."
-      }
-    },
     "settingsUrl": {
-      "type": "admin",
+      "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "A url to fetch a JSONP file with shop settings for Engage."
+        "value": "%(settingsUrl)s"
       }
     },
     "merchantSettingsUrl": {
-      "type": "admin",
+      "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "A url to fetch a JSONP file with merchant settings for Engage."
+        "value": "%(merchantSettingsUrl)s"
       }
     },
     "appSettingsUrl": {
-      "type": "admin",
+      "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "A url to fetch a JSONP file with app settings for Engage."
+        "value": "%(appSettingsUrl)s"
       }
     },
     "themeCssUrl": {
-      "type": "admin",
+      "type": "static",
       "destination": "frontend",
-      "default": null,
       "params": {
-        "type": "json",
-        "label": "A url to fetch the theme css file for Engage."
+        "value": "%(themeCssUrl)s"
       }
     },
     "omniStage": {

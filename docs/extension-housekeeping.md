@@ -116,16 +116,23 @@ that is newer, see [`package.json`](#packagejson).
 }
 ```
 
-- **Add it when the extension is migrated to the current theme.** That theme is available from
-  7.32, so the range is `>=7.32.0`.
+- **Add it when the extension's components are migrated to the current theme,** for example
+  when their styles move to `makeStyles`. That theme is available from 7.32, so the range is
+  `>=7.32.0`. The migration isn't part of the cleanup, so a cleanup never adds this range.
+  Changing imports to `@shopgate/engage` or updating `package.json` is no migration.
 - **Add it when the code relies on something that a certain engage version introduced,** for
   example a new component, hook or helper. The range starts at that version. Raise an existing
-  range when a new feature needs a newer version.
+  range when a new feature needs a newer version. This also applies to code that already uses
+  such an export, for example `makeStyles` of `@shopgate/engage/styles`, which exists since
+  7.29.0. To find the version, check the engage imports of the code against older release tags,
+  for example with `git show v7.29.0:libraries/engage/styles/index.js`; many exports reach engage
+  through `export *` from a core library, so follow those as well.
 - **An existing range for PWA 7 stays** and is named in the report, since it may stand for a
   feature. Write it as `>=x.y.z`: no caret, no pre-release suffix (`^7.29.0` and
   `>=7.29.0-beta.3` both become `>=7.29.0`).
 - **An existing range for PWA 6 is removed,** also as part of a combined range such as
-  `^6.11.0 || ^7.11.0`, which becomes `>=7.11.0`.
+  `^6.11.0 || ^7.11.0`, which becomes `>=7.11.0`. It isn't replaced by a range for engage:
+  without another reason from this list, the extension has no entry afterwards.
 - **Without one of these reasons there is no entry.** An extension that runs with any PWA version
   states no minimum.
 
@@ -272,7 +279,8 @@ which this repository has under the tag `v7.33.2`, for example with
 `git show v7.33.2:libraries/engage/user/index.js`. An existing import that needs a newer version
 is reported, not rewritten. Older import paths, such as deep imports from
 `@shopgate/pwa-common`, keep working in newer PWA versions for now, so the cleanup leaves them
-alone.
+alone. The same applies to deprecated exports: `isAndroid` stays and isn't replaced by
+`getIsAndroid`, which only exists since 7.30.2 and would raise the minimum PWA version.
 
 ### What gets removed
 
@@ -328,8 +336,9 @@ lockfiles (`lockfileVersion` 1) are replaced this way.
   Create `.eslintrc` when there is none.
 - **`root: true` is required,** also in the ESLint config of the backend folder
   (`extension/.eslintrc`) when there is one. Without it, ESLint merges the configs of the
-  folders above. For an extension inside this repository that is the config of the monorepo,
-  and the lint run aborts with "ESLint couldn't determine the plugin … uniquely".
+  folders above. For an extension inside this repository that is the config of the monorepo.
+  The lint run may abort with "ESLint couldn't determine the plugin … uniquely", but it often
+  passes without the key, so a passing lint doesn't show it is set: check the config file.
 - **Remove what the shared config does itself:** a `parser` with `parserOptions`, and an own
   `import/no-unresolved` rule that ignores `config.json`. Keep rules the extension sets on
   purpose.
@@ -400,7 +409,8 @@ as well. When this was the only import from the kit, remove the package.
 Run all of these, and report the results:
 
 1. **Install:** `npm ls` reports nothing as invalid or missing, and `npm ci --dry-run` passes,
-   which shows that the lockfile matches `package.json`.
+   which shows that the lockfile matches `package.json`. Run `npm ci` before the other steps: a
+   `node_modules` from the old setup makes `npm ls` fail and lets lint run with the old rules.
 2. **Lint:** `npm run lint` runs through and reports no error that the setup causes: no config
    or parser error, no unresolved import, no missing file extension. Most extensions come from a
    much older ESLint and rule set, so rules may report errors in the code. Those aren't fixed,
@@ -468,9 +478,12 @@ Report these instead of changing them:
 
 End the cleanup of an extension with a report that contains:
 
+- a table of every package the code imports, from the command under
+  [Dependencies](#dependencies), with where it is declared after the cleanup (`dependencies`,
+  `devDependencies`, or the package that brings it, such as `@shopgate/engage`)
 - what was removed, added and kept in `package.json`, with the reason for every package that was
   kept although it looked unused, and for every package under `dependencies`
-- the `peerDependencies` range before and after
+- the `peerDependencies` range before and after, with the reason for the range after, or "none"
 - the files that were deleted, created or changed
 - the result of each verification step, including the steps that were skipped and why
 - everything from [Where housekeeping ends](#where-housekeeping-ends) that was found, and
@@ -492,3 +505,8 @@ The cleanup of an extension is one commit, in the repository of the extension, w
 files whose imports were changed. The lockfile has to be added explicitly the first time, since it
 was ignored before. When a `README.md` or `AGENTS.md` of the extension describes scripts or setup
 that changed, it is updated as part of the same change.
+
+An extension with a `CHANGELOG.md` gets an entry for the cleanup with the next patch version. A
+major version is only needed when the minimum PWA version rises above the one the last release
+already required; then the entry names the new minimum as a breaking change. The `version` in
+`extension-config.json` is left to the developer.

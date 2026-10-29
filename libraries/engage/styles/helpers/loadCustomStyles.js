@@ -5,6 +5,10 @@ import { initCSSCustomProps, initCSSCustomPropsFallback } from './initCSSCustomP
  * Loads external CSS with custom properties.
  * Resolves when styles are loaded and initialized.
  *
+ * @deprecated The `customStyleUrl` setting was removed from the theme configs, so no stylesheet is
+ * loaded anymore and the colors always come from the theme config. Only the fallback part of this
+ * function is still needed, the stylesheet loading can be removed.
+ *
  * @returns {Promise<void>}
  */
 export const loadCustomStyles = () => new Promise((resolve) => {
