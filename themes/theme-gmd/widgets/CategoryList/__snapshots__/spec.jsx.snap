@@ -186,14 +186,19 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                         }
                       }
                     />
-                    <div
+                    <ForwardRef
                       className="sg-7m7fd6-categoryDescription"
-                      dangerouslySetInnerHTML={
-                        {
-                          "__html": undefined,
+                      profile="html"
+                    >
+                      <div
+                        className="sg-7m7fd6-categoryDescription"
+                        dangerouslySetInnerHTML={
+                          {
+                            "__html": "",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </ForwardRef>
                   </div>
                 </Link>
               </li>
@@ -245,14 +250,19 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                         }
                       }
                     />
-                    <div
+                    <ForwardRef
                       className="sg-7m7fd6-categoryDescription"
-                      dangerouslySetInnerHTML={
-                        {
-                          "__html": undefined,
+                      profile="html"
+                    >
+                      <div
+                        className="sg-7m7fd6-categoryDescription"
+                        dangerouslySetInnerHTML={
+                          {
+                            "__html": "",
+                          }
                         }
-                      }
-                    />
+                      />
+                    </ForwardRef>
                   </div>
                 </Link>
               </li>

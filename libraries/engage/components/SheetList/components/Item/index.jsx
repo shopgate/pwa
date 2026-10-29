@@ -1,6 +1,6 @@
 import React, { memo, useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@shopgate/engage/components';
+import { Typography, SafeHtml } from '@shopgate/engage/components';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery, useTheme } from '@shopgate/engage/styles';
 import Grid from '@shopgate/pwa-common/components/Grid';
@@ -120,12 +120,13 @@ const Item = ({
               {title}
             </div>
             {description && (
-              <Typography
+              <SafeHtml
+                as={Typography}
                 variant="body2"
                 component="div"
                 color="textSecondary"
                 className={classes.description}
-                dangerouslySetInnerHTML={{ __html: description }}
+                html={description}
               />
             )}
           </Grid.Item>

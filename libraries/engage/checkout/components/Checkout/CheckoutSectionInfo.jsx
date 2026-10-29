@@ -1,8 +1,8 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { InfoIcon, Typography } from '@shopgate/engage/components';
-import { nl2br, showModal as showModalAction } from '@shopgate/engage/core';
+import { InfoIcon, Typography, SafeHtml } from '@shopgate/engage/components';
+import { showModal as showModalAction } from '@shopgate/engage/core';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const mapDispatchToProps = {
@@ -12,6 +12,7 @@ const mapDispatchToProps = {
 const useStyles = makeStyles()(theme => ({
   textWrapper: {
     paddingTop: theme.spacing(0.5),
+    whiteSpace: 'pre-line',
   },
   iconWrapper: {
     cursor: 'pointer',
@@ -47,12 +48,13 @@ const CheckoutSectionInfo = ({ text, showModal, renderIcon }) => {
 
   if (!renderIcon) {
     return (
-      <Typography
+      <SafeHtml
+        as={Typography}
         variant="caption"
         component="div"
         color="error"
         className={classes.textWrapper}
-        dangerouslySetInnerHTML={{ __html: nl2br(text) }}
+        html={text}
       />
     );
   }

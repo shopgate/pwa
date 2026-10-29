@@ -75,6 +75,7 @@ function Description({
           <PlaceholderParagraph className={classes.placeholder} ready={!!html}>
             <div className={classes.content} data-test-id="description">
               <HtmlSanitizer
+                allowScripts
                 settings={{
                   html,
                   handleClick: navigate,
