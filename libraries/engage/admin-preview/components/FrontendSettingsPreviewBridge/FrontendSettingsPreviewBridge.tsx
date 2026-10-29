@@ -84,7 +84,10 @@ const FrontendSettingsPreviewBridge = () => {
 
   const handlePick = useCallback((selectors: string[]) => {
     setIsPickingElement(false);
-    sendToParent({ type: 'elementPicked', payload: { selectors } });
+    sendToParent({
+      type: 'elementPicked',
+      payload: { selectors },
+    });
   }, [sendToParent]);
 
   const handleCancelPick = useCallback(() => {

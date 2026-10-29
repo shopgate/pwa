@@ -97,7 +97,10 @@ const findTargets = (selector: string): Target[] => {
     return Array.from(document.querySelectorAll(selector))
       .filter(element => element.getClientRects().length > 0)
       .slice(0, MAX_HIGHLIGHTS)
-      .map(element => ({ element, label: selector }));
+      .map(element => ({
+        element,
+        label: selector,
+      }));
   } catch {
     return [];
   }
@@ -161,7 +164,10 @@ const ElementPicker = ({
       const element = findStableElement(event.target as Element);
 
       if (element !== targetsRef.current[0]?.element) {
-        setTargets(element ? [{ element, label: `.${getStableClass(element)}` }] : []);
+        setTargets(element ? [{
+          element,
+          label: `.${getStableClass(element)}`,
+        }] : []);
       }
     };
 
