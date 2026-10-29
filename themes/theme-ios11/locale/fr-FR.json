@@ -23,7 +23,7 @@
     "filter": "Filtre",
     "cart": "Panier",
     "shipping": "Livraison",
-    "reviews": "Revues",
+    "reviews": "Avis",
     "browse": "Naviguer",
     "favorites": "Favoris",
     "scanner": "Scanner",
@@ -240,9 +240,10 @@
     "tax_disclaimer": "* TVA incluse, plus frais de livraison éventuel",
     "tax_disclaimer_aria": "TVA incluse, plus frais de livraison éventuel",
     "item_added": "{count, plural, =0 {# aucun article ajouté} =1 {{count} article ajouté} other {{count} articles ajoutés}}",
-    "item_added_unit": "{count} {unit} ajouté",
     "adding_item": "{count, plural, =1 {Un produit est en cours d'ajout} other {{count} produits sont en cours d'ajout}}",
     "pick_option_first": "Choisissez d'abord une option. {option}",
+    "variant_unavailable": "Non disponible dans cette combinaison",
+    "variant_sold_out": "Épuisé",
     "fill_out_required_input_first": "Remplissez d'abord les entrées requises.",
     "add_to_cart": "Ajouter au panier",
     "go_to_cart": "Aller au panier",
@@ -412,6 +413,10 @@
     "showAllProducts": {
       "label": "Afficher tous les produits"
     },
+    "drawer": {
+      "retry": "Réessayer",
+      "subcategories": "Sous-catégories"
+    },
     "errors": {
       "404": "Catégorie introuvable"
     }
@@ -423,7 +428,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Votre recherche \"{searchPhrase}\" n'a aucun résultat."
-    }
+    },
+    "history_title": "Recherches récentes",
+    "history_clear": "Effacer l'historique",
+    "results_count": "{count, plural, =1 {1 résultat} other {{count} résultats}}",
+    "show_all_results": "Afficher tous les résultats",
+    "clear": "Effacer la recherche",
+    "new_search": "Nouvelle recherche"
   },
   "shipping": {
     "unknown": "avec frais de livraison",
@@ -577,25 +588,58 @@
     "order_history": "Historique des commandes",
     "profile": "Profil",
     "back": "Retour à {title}",
-    "open_menu": "Ouvrez le menu"
+    "open_menu": "Ouvrez le menu",
+    "open_link": "Ouvrir la page"
   },
   "reviews": {
     "rating": "Evaluation",
     "no_reviews": "Soyez le premier à évaluer ce produit:",
-    "review_count": "({count} {count, plural, =1 {Revue} other {Revues}})",
-    "button_add": "Ecrire une revue",
-    "button_all": "Tous les {count} revues",
+    "review_count": "({count} {count, plural, =1 {Note} other {Notes}})",
+    "button_add": "Écrire un avis",
+    "button_all": "Tous les {count} avis",
     "author": "par {author}",
     "rating_stars": "{rate, plural, =1 {Une étoile} other {{rate} étoiles}} sur {maxRate}.",
     "review_form_rate": "Evaluer ce produit:",
     "review_form_author": "Votre nom",
-    "review_form_title": "Titre de la revue (optional)",
-    "review_form_text": "Produit évalué (optional)",
+    "review_form_title": "Titre de l'avis (facultatif)",
+    "review_form_text": "Votre avis (facultatif)",
     "review_form_error_author_empty": "Veuillez entrer un nom.",
     "review_form_rate_error": "Veuillez sélectionner une note en étoile.",
     "review_form_error_length": "Longueur caractère maximale {length}.",
     "press_to_rate_with_x_stars": "Appuyez pour noter avec {rate, plural, =1 {une étoile} other {{rate} étoiles}}.",
-    "success_message": "Merci pour votre revue!"
+    "success_message": "Merci pour votre avis!",
+    "summary_count": "{count, plural, =1 {# note} other {# notes}}",
+    "list_count": "{count, plural, =1 {# avis} other {# avis}}",
+    "list_empty": "Aucun avis pour le moment",
+    "button_retry": "Réessayer",
+    "verified": "Vérifié",
+    "verified_info": "Les avis marqués comme vérifiés ont été contrôlés par le fournisseur d'avis.",
+    "merchant_reply": "Réponse du vendeur",
+    "merchant_reply_show": "Afficher la réponse du vendeur",
+    "media_image": "Ouvrir l’image {index}",
+    "media_video": "Lire la vidéo {index}",
+    "media_viewer": "Images et vidéos de l’avis",
+    "vote_question": "Cet avis vous a-t-il été utile ?",
+    "vote_up": "Utile",
+    "vote_down": "Pas utile",
+    "vote_pending": "Envoi…",
+    "vote_error": "Échec de l’envoi",
+    "sort_relevance": "Pertinence",
+    "sort_dateDesc": "Les plus récents",
+    "sort_dateAsc": "Les plus anciens",
+    "sort_rateDesc": "Meilleures notes",
+    "sort_rateAsc": "Moins bonnes notes",
+    "sort_helpfulDesc": "Les plus utiles",
+    "filter_media": "Avec médias",
+    "filter_verified": "Vérifiés uniquement",
+    "filter_rate_all": "Toutes les notes",
+    "filter_rate_5": "5 étoiles",
+    "filter_rate_4": "4 étoiles",
+    "filter_rate_3": "3 étoiles",
+    "filter_rate_2": "2 étoiles",
+    "filter_rate_1": "1 étoile",
+    "distribution_open": "{label} : afficher les avis",
+    "list_empty_filtered": "Aucun avis ne correspond à cette sélection."
   },
   "tab_bar": {
     "home": "Accueil",

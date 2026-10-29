@@ -374,7 +374,12 @@ export interface ButtonBaseOwnProps<C extends React.ElementType = 'button'> {
 
 export type ButtonBaseProps<C extends React.ElementType = 'button'> =
   ButtonBaseOwnProps<C> &
-  Omit<React.ComponentPropsWithRef<C>, keyof ButtonBaseOwnProps<C>>;
+  Omit<
+    React.ElementType extends C
+      ? React.ButtonHTMLAttributes<HTMLButtonElement>
+      : React.ComponentPropsWithRef<C>,
+    keyof ButtonBaseOwnProps<C>
+  >;
 
 const ButtonBaseWithRef = forwardRef(ButtonBase);
 

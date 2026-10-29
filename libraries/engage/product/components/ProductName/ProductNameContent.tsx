@@ -1,5 +1,5 @@
 import React from 'react';
-import { Ellipsis, ConditionalWrapper } from '@shopgate/engage/components';
+import { Ellipsis, ConditionalWrapper, SafeHtml } from '@shopgate/engage/components';
 
 export interface ProductNameContentProps {
   name?: string | null;
@@ -26,8 +26,7 @@ const ProductNameContent = ({
       </Ellipsis>
     )}
   >
-    {/* eslint-disable-next-line react/no-danger */}
-    <span dangerouslySetInnerHTML={{ __html: name || '' }} />
+    <SafeHtml as="span" html={name} />
   </ConditionalWrapper>
 );
 

@@ -24,6 +24,11 @@ const INSET_LEFT = 'var(--swiper-pagination-inset-left, 0px)';
 const INSET_RIGHT = 'var(--swiper-pagination-inset-right, 0px)';
 const INSET_WIDTH = `calc(100% - ${INSET_LEFT} - ${INSET_RIGHT})`;
 
+const BELOW_PAGINATION_TYPES = {
+  bulletsBelow: 'bullets',
+  fractionBelow: 'fraction',
+};
+
 const useStyles = makeStyles()(theme => ({
   container: {
     position: 'relative',
@@ -36,6 +41,13 @@ const useStyles = makeStyles()(theme => ({
         position: 'relative',
         height: 32,
         lineHeight: '40px',
+      },
+      '& .swiper-pagination.swiper-pagination-fraction': {
+        position: 'relative',
+        top: 'auto',
+        right: 'auto',
+        margin: '8px auto 0',
+        lineHeight: '16px',
       },
     },
   },
@@ -164,7 +176,7 @@ const Swiper = ({
 }) => {
   const { classes, cx } = useStyles();
 
-  const isBulletsBelow = paginationTypeProp === 'bulletsBelow';
+  const belowPaginationType = BELOW_PAGINATION_TYPES[paginationTypeProp];
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
   const showPagination = (indicators && children.length > 1);
@@ -225,7 +237,7 @@ const Swiper = ({
     ...showPagination && {
       pagination: {
         el: undefined,
-        type: isBulletsBelow ? 'bullets' : (paginationTypeProp || paginationType),
+        type: belowPaginationType || paginationTypeProp || paginationType,
         bulletClass: classNames.bulletClass || 'swiper-pagination-bullet',
         bulletActiveClass: classNames.bulletActiveClass || 'swiper-pagination-bullet-active',
         dynamicBullets: true,
@@ -255,7 +267,7 @@ const Swiper = ({
     children.length,
     disabled,
     handleSlideChange,
-    isBulletsBelow,
+    belowPaginationType,
     cx,
   ]);
 
@@ -337,7 +349,7 @@ const Swiper = ({
   return (
     <div
       className={cx(classes.container, className, 'common__swiper', {
-        'pagination-below': isBulletsBelow,
+        'pagination-below': !!belowPaginationType,
       })}
       aria-hidden={ariaHidden}
     >

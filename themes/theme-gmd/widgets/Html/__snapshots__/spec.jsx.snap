@@ -34,6 +34,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
         style={{}}
       >
         <Connect(HtmlSanitizer)
+          allowScripts={true}
           className="sg-rfk36k-root"
           decode={true}
           processStyles={true}
@@ -45,6 +46,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
           }
         >
           <HtmlSanitizer
+            allowScripts={true}
             className="sg-rfk36k-root"
             comfortCookiesAccepted={true}
             decode={true}
@@ -67,15 +69,22 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
                 }
               }
             >
-              <div
+              <ForwardRef
                 className="sg-rfk36k-root common__html-sanitizer"
-                dangerouslySetInnerHTML={
-                  {
-                    "__html": "<h1>Hello World!</h1>",
-                  }
-                }
+                html="<h1>Hello World!</h1>"
                 onClickCapture={[Function]}
-              />
+                profile="trusted"
+              >
+                <div
+                  className="sg-rfk36k-root common__html-sanitizer"
+                  dangerouslySetInnerHTML={
+                    {
+                      "__html": "<h1>Hello World!</h1>",
+                    }
+                  }
+                  onClickCapture={[Function]}
+                />
+              </ForwardRef>
             </EmbeddedMedia>
           </HtmlSanitizer>
         </Connect(HtmlSanitizer)>
@@ -123,6 +132,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
         }
       >
         <Connect(HtmlSanitizer)
+          allowScripts={true}
           className="sg-rfk36k-root"
           decode={true}
           processStyles={true}
@@ -134,6 +144,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
           }
         >
           <HtmlSanitizer
+            allowScripts={true}
             className="sg-rfk36k-root"
             comfortCookiesAccepted={true}
             decode={true}
@@ -156,15 +167,22 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
                 }
               }
             >
-              <div
+              <ForwardRef
                 className="sg-rfk36k-root common__html-sanitizer"
-                dangerouslySetInnerHTML={
-                  {
-                    "__html": "<h1>Hello World!</h1>",
-                  }
-                }
+                html="<h1>Hello World!</h1>"
                 onClickCapture={[Function]}
-              />
+                profile="trusted"
+              >
+                <div
+                  className="sg-rfk36k-root common__html-sanitizer"
+                  dangerouslySetInnerHTML={
+                    {
+                      "__html": "<h1>Hello World!</h1>",
+                    }
+                  }
+                  onClickCapture={[Function]}
+                />
+              </ForwardRef>
             </EmbeddedMedia>
           </HtmlSanitizer>
         </Connect(HtmlSanitizer)>

@@ -240,9 +240,10 @@
     "tax_disclaimer": "* Áfával együtt, esetlegesen további szállítási költséggel",
     "tax_disclaimer_aria": "Áfával együtt, esetlegesen további szállítási költséggel",
     "item_added": "{count, plural, =0 {# nincsenek termékek} =1 {{count} Termék hozzáadva} other {{count} Hozzáadott termékek}}",
-    "item_added_unit": "{count} {unit} hozzáadva",
     "adding_item": "{count, plural, =1 {Egy termék hozzáadása folyamatban van} other {Hozzáadás alatt van {count} termék}}",
     "pick_option_first": "Először válasszon ki egy opciót. {option}",
+    "variant_unavailable": "Ebben a kombinációban nem érhető el",
+    "variant_sold_out": "Elfogyott",
     "fill_out_required_input_first": "Először töltsd ki az összes kötelező mezőt.",
     "add_to_cart": "Kosárba helyezés",
     "go_to_cart": "Bevásárlókosár",
@@ -412,6 +413,10 @@
     "showAllProducts": {
       "label": "Összes termék megjelenítése"
     },
+    "drawer": {
+      "retry": "Újra",
+      "subcategories": "Alkategóriák"
+    },
     "errors": {
       "404": "Kategória nem található"
     }
@@ -423,7 +428,13 @@
     "no_result": {
       "heading": "Hoppá!",
       "body": "A \"{searchPhrase}\" keresése nem adott eredményt."
-    }
+    },
+    "history_title": "Legutóbbi keresések",
+    "history_clear": "Előzmények törlése",
+    "results_count": "{count, plural, =1 {1 találat} other {{count} találat}}",
+    "show_all_results": "Összes találat megjelenítése",
+    "clear": "Keresés törlése",
+    "new_search": "Új keresés"
   },
   "shipping": {
     "unknown": "plusz szállítás",
@@ -577,14 +588,15 @@
     "order_history": "Rendelési előzmények",
     "profile": "Profil",
     "back": "Vissza a {title}",
-    "open_menu": "Menü megnyitása"
+    "open_menu": "Menü megnyitása",
+    "open_link": "Oldal megnyitása"
   },
   "reviews": {
     "rating": "Értékelés",
     "no_reviews": "Az első értékelés megírása.",
-    "review_count": "({count} {count, plural, =1 {Értékelés} other {Értékelések}})",
-    "button_add": "Értékelje a terméket",
-    "button_all": "Minden {count} értékelés",
+    "review_count": "({count} {count, plural, =1 {Értékelés} other {Értékelés}})",
+    "button_add": "Vélemény írása",
+    "button_all": "Összes vélemény ({count})",
     "author": "a címről {author}",
     "rating_stars": "{rate, plural, =1 {Egy csillag} other {{rate} csillag}} a {maxRate}-ból.",
     "review_form_rate": "Értékelje ezt a terméket:",
@@ -595,7 +607,39 @@
     "review_form_rate_error": "Hány csillagot ad?",
     "review_form_error_length": "Maximális {length} megengedett karakterek.",
     "press_to_rate_with_x_stars": "Válassza a {rate, plural, =1 {egy csillaggal} other {{rate} csillaggal}} történő értékeléshez.",
-    "success_message": "Köszönjük az értékelést!"
+    "success_message": "Köszönjük a véleményét!",
+    "summary_count": "{count, plural, other {# értékelés}}",
+    "list_count": "{count, plural, other {# vélemény}}",
+    "list_empty": "Még nincsenek vélemények",
+    "button_retry": "Próbálja újra",
+    "verified": "Ellenőrzött",
+    "verified_info": "Az ellenőrzöttként jelölt véleményeket a véleménykezelő szolgáltató ellenőrizte.",
+    "merchant_reply": "A kereskedő válasza",
+    "merchant_reply_show": "A kereskedő válaszának megjelenítése",
+    "media_image": "{index}. kép megnyitása",
+    "media_video": "{index}. videó lejátszása",
+    "media_viewer": "A vélemény képei és videói",
+    "vote_question": "Hasznos volt ez a vélemény?",
+    "vote_up": "Hasznos",
+    "vote_down": "Nem hasznos",
+    "vote_pending": "Küldés…",
+    "vote_error": "A küldés sikertelen",
+    "sort_relevance": "Relevancia",
+    "sort_dateDesc": "Legújabb elöl",
+    "sort_dateAsc": "Legrégebbi elöl",
+    "sort_rateDesc": "Legjobb értékelés",
+    "sort_rateAsc": "Legrosszabb értékelés",
+    "sort_helpfulDesc": "Leghasznosabb elöl",
+    "filter_media": "Médiával",
+    "filter_verified": "Csak ellenőrzött",
+    "filter_rate_all": "Minden értékelés",
+    "filter_rate_5": "5 csillag",
+    "filter_rate_4": "4 csillag",
+    "filter_rate_3": "3 csillag",
+    "filter_rate_2": "2 csillag",
+    "filter_rate_1": "1 csillag",
+    "distribution_open": "{label}: vélemények megjelenítése",
+    "list_empty_filtered": "Egy vélemény sem felel meg a kiválasztásnak."
   },
   "tab_bar": {
     "home": "Kezdőlap",

@@ -10,6 +10,7 @@ const IMAGE = 'image';
 const PRICE = 'price';
 const DISCOUNT = 'discount';
 const FAVORITES_BUTTON = 'favorites-button';
+const ADD_TO_CART = 'add-to-cart';
 const NAME = 'name';
 const MANUFACTURER = 'manufacturer';
 const AVAILABILITY = 'availability';
@@ -25,6 +26,17 @@ export const CATEGORY_LIST_BEFORE = `${CATEGORY}.${LIST}.${BEFORE}`;
 export const CATEGORY_LIST_AFTER = `${CATEGORY}.${LIST}.${AFTER}`;
 
 export const CATEGORY_ITEM = `${CATEGORY}.${ITEM}`;
+
+export const CATEGORY_SHOW_ALL_PRODUCTS = `${CATEGORY}.show-all-products`;
+export const CATEGORY_GRID_ITEM = `${CATEGORY}.grid.${ITEM}`;
+export const CATEGORY_GRID_SHOW_ALL_PRODUCTS = `${CATEGORY}.grid.show-all-products`;
+export const CATEGORY_CHIPS = `${CATEGORY}.chips`;
+export const CATEGORY_CHIPS_ITEM = `${CATEGORY}.chips.${ITEM}`;
+export const CATEGORY_CHIPS_SHOW_ALL_PRODUCTS = `${CATEGORY}.chips.show-all-products`;
+export const CATEGORY_DRAWER = `${CATEGORY}.drawer`;
+export const CATEGORY_DRAWER_HEADER = `${CATEGORY}.drawer.header`;
+export const CATEGORY_DRAWER_ITEM = `${CATEGORY}.drawer.item`;
+export const CATEGORY_DRAWER_SHOW_ALL_PRODUCTS = `${CATEGORY}.drawer.show-all-products`;
 
 export const PRODUCT_LIST = `${PRODUCT}.${LIST}`;
 export const PRODUCT_LIST_BEFORE = `${PRODUCT}.${LIST}.${BEFORE}`;
@@ -45,6 +57,10 @@ export const PRODUCT_ITEM_DISCOUNT_AFTER = `${PRODUCT}-${ITEM}.${DISCOUNT}.${AFT
 export const PRODUCT_ITEM_FAVORITES_BUTTON_BEFORE = `${PRODUCT}-${ITEM}.${FAVORITES_BUTTON}.${BEFORE}`;
 export const PRODUCT_ITEM_FAVORITES_BUTTON = `${PRODUCT}-${ITEM}.${FAVORITES_BUTTON}`;
 export const PRODUCT_ITEM_FAVORITES_BUTTON_AFTER = `${PRODUCT}-${ITEM}.${FAVORITES_BUTTON}.${AFTER}`;
+
+export const PRODUCT_ITEM_ADD_TO_CART_BEFORE = `${PRODUCT}-${ITEM}.${ADD_TO_CART}.${BEFORE}`;
+export const PRODUCT_ITEM_ADD_TO_CART = `${PRODUCT}-${ITEM}.${ADD_TO_CART}`;
+export const PRODUCT_ITEM_ADD_TO_CART_AFTER = `${PRODUCT}-${ITEM}.${ADD_TO_CART}.${AFTER}`;
 
 export const PRODUCT_ITEM_NAME_BEFORE = `${PRODUCT}-${ITEM}.${NAME}.${BEFORE}`;
 export const PRODUCT_ITEM_NAME = `${PRODUCT}-${ITEM}.${NAME}`;

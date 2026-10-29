@@ -2,6 +2,7 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import reducers from 'Pages/reducers';
+import { appConfig } from '@shopgate/engage';
 import ProductsContent from '../ProductsContent';
 import Empty from '../Empty';
 import CategoryListContent from '../CategoryListContent';
@@ -23,7 +24,13 @@ describe('<Content />', () => {
       </Provider>
     ));
 
-    expect(CategoryListContent.mock.lastCall[0]).toEqual({ categoryId: '1234' });
+    expect(CategoryListContent.mock.lastCall[0]).toEqual({
+      categoryId: '1234',
+      layout: 'list',
+      showImages: false,
+      showAllProducts: Boolean(appConfig.categoriesShowAllProducts),
+      showList: true,
+    });
     expect(ProductsContent.mock.lastCall[0]).toEqual({
       categoryId: '1234',
       hasProducts: false,

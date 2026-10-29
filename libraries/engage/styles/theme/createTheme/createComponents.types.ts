@@ -143,6 +143,11 @@ export const componentsSchema = {
       boxShadow: '',
     },
   },
+  actionButton: {
+    vars: {
+      boxShadow: '',
+    },
+  },
   input: {
     vars: {
       background: '',
@@ -172,6 +177,11 @@ export const componentsSchema = {
     vars: {
       background: '',
       color: '',
+      floatingButtonBackgroundOpacity: '',
+      floatingButtonBackdropBlur: '',
+      floatingButtonBoxShadow: '',
+      revealedBarBackgroundOpacity: '',
+      revealedBarBackdropBlur: '',
     },
   },
   badge: {
@@ -275,6 +285,12 @@ export const componentsSchema = {
       borderRadius: '',
     },
   },
+  productMedia: {
+    vars: {
+      margin: '',
+      borderRadius: '',
+    },
+  },
 } as const;
 
 /**
@@ -295,6 +311,11 @@ export const componentsDefaults = {
     vars: {
       background: t => t.palette.background.surface,
       borderRadius: t => t.shape.borderRadius,
+    },
+  },
+  actionButton: {
+    vars: {
+      boxShadow: 'none',
     },
   },
   border: {
@@ -333,6 +354,11 @@ export const componentsDefaults = {
     vars: {
       background: '#FFFFFF',
       color: t => t.contrastColor('var(--sg-components-appBar-background)'),
+      floatingButtonBackgroundOpacity: '85%',
+      floatingButtonBackdropBlur: '8px',
+      floatingButtonBoxShadow: 'none',
+      revealedBarBackgroundOpacity: '100%',
+      revealedBarBackdropBlur: '0px',
     },
   },
   badge: {
@@ -433,6 +459,12 @@ export const componentsDefaults = {
   productImage: {
     vars: {
       borderRadius: 'var(--sg-shape-borderRadius)',
+    },
+  },
+  productMedia: {
+    vars: {
+      margin: 0,
+      borderRadius: 0,
     },
   },
 } satisfies ComponentsDefaults;

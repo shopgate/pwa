@@ -1,10 +1,9 @@
-/* eslint-disable react/no-danger */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { bin2hex } from '@shopgate/engage/core';
 import { CATEGORY_PATH, CATEGORY_ITEM, CategoryImage } from '@shopgate/engage/category';
 import {
-  Link, TextLink, Portal,
+  Link, TextLink, Portal, SafeHtml,
 } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { themeConfig } from '@shopgate/pwa-common/helpers/config';
@@ -100,11 +99,12 @@ const CategoryGridItem = ({ category, showImages }) => {
                 title: category.name,
               }}
             >
-              <span dangerouslySetInnerHTML={{ __html: category.name }} />
+              <SafeHtml as="span" html={category.name} />
             </TextLink>
-            <div
+            <SafeHtml
+              profile="html"
               className={classes.categoryDescription}
-              dangerouslySetInnerHTML={{ __html: category.description }}
+              html={category.description}
             />
           </div>
           { showImages && (
@@ -128,5 +128,3 @@ CategoryGridItem.defaultProps = {
 };
 
 export default CategoryGridItem;
-
-/* eslint-enable react/no-danger */

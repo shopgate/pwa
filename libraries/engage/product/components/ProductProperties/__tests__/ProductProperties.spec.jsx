@@ -11,6 +11,7 @@ const store = mockStore({});
 jest.mock('@shopgate/engage/components', () => ({
   Typography: ({ children }) => children,
   SurroundPortals: ({ children }) => children,
+  SafeHtml: jest.requireActual('@shopgate/engage/components/SafeHtml').default,
 }));
 jest.mock('@shopgate/engage/core', () => ({
   hasWebBridge: () => false,

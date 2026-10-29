@@ -1,6 +1,11 @@
 import {
   getCanSelectColorScheme,
+  getCategoryImageRatio,
+  getCategorySettings,
+  getProductFilterBarSettings,
   getDefaultColorSchemeMode,
+  getProductGallerySettings,
+  getShowManufacturerOnProductPage,
   getTypographyFontCssUrls,
   getTypographySettings,
   getWidgetMediaMargins,
@@ -8,10 +13,22 @@ import {
 import { DEFAULT_APP_SETTINGS } from '../reducers/appSettings';
 import type {
   AppearanceSettings,
+  AppSettings,
   AppSettingsState,
+  ProductGallerySettings,
+  ProductManufacturerSettings,
   TypographySettings,
   WidgetSettings,
 } from '../types/appSettings';
+
+const stateWithSettings = (settings: Partial<AppSettings>): AppSettingsState => ({
+  settings: {
+    appSettings: {
+      ...DEFAULT_APP_SETTINGS,
+      ...settings,
+    },
+  },
+});
 
 const stateWith = (typography: TypographySettings): AppSettingsState => ({
   settings: {
@@ -40,7 +57,55 @@ const stateWithWidgets = (widgets: WidgetSettings): AppSettingsState => ({
   },
 });
 
+const stateWithManufacturer = (manufacturer: ProductManufacturerSettings): AppSettingsState => ({
+  settings: {
+    appSettings: {
+      ...DEFAULT_APP_SETTINGS,
+      product: {
+        ...DEFAULT_APP_SETTINGS.product,
+        manufacturer,
+      },
+    },
+  },
+});
+
+const stateWithGallery = (gallery: ProductGallerySettings): AppSettingsState => ({
+  settings: {
+    appSettings: {
+      ...DEFAULT_APP_SETTINGS,
+      product: {
+        ...DEFAULT_APP_SETTINGS.product,
+        gallery,
+      },
+    },
+  },
+});
+
 describe('settings/selectors/appSettings', () => {
+  describe('getShowManufacturerOnProductPage', () => {
+    it('returns the configured setting', () => {
+      expect(getShowManufacturerOnProductPage(stateWithManufacturer({
+        showOnProductPage: false,
+      }))).toBe(false);
+    });
+
+    it('shows the manufacturer when the slice is missing', () => {
+      expect(getShowManufacturerOnProductPage({} as AppSettingsState)).toBe(true);
+    });
+  });
+
+  describe('getProductGallerySettings', () => {
+    it('returns the configured setting', () => {
+      expect(getProductGallerySettings(stateWithGallery({
+        pagination: 'fraction',
+      }))).toEqual({ pagination: 'fraction' });
+    });
+
+    it('uses bullets when the slice is missing', () => {
+      expect(getProductGallerySettings({} as AppSettingsState)).toEqual({ pagination: 'bullets' });
+    });
+  });
+
   describe('getWidgetMediaMargins', () => {
     it('returns the configured media widget margins', () => {
       const mediaMargins = {
@@ -170,6 +235,72 @@ describe('settings/selectors/appSettings', () => {
       }));
 
       expect(urls).toEqual(['h2.css']);
+    });
+  });
+
+  describe('getCategorySettings', () => {
+    it('returns the configured settings', () => {
+      const category = {
+        ...DEFAULT_APP_SETTINGS.category,
+        layout: 'grid' as const,
+        showImages: true,
+      };
+
+      expect(getCategorySettings(stateWithSettings({ category }))).toEqual(category);
+    });
+
+    it('returns the defaults when the slice is missing', () => {
+      expect(getCategorySettings({} as AppSettingsState)).toEqual(DEFAULT_APP_SETTINGS.category);
+    });
+  });
+
+  describe('getCategoryImageRatio', () => {
+    it('returns the configured ratio', () => {
+      const images = {
+        ...DEFAULT_APP_SETTINGS.images,
+        category: {
+          ratio: {
+            width: 4,
+            height: 3,
+          },
+        },
+      };
+
+      expect(getCategoryImageRatio(stateWithSettings({ images }))).toEqual({
+        width: 4,
+        height: 3,
+      });
+    });
+
+    it('returns a square when the slice is missing', () => {
+      expect(getCategoryImageRatio({} as AppSettingsState)).toEqual({
+        width: 1,
+        height: 1,
+      });
+    });
+  });
+
+  describe('getProductFilterBarSettings', () => {
+    it('returns the configured settings', () => {
+      const product = {
+        ...DEFAULT_APP_SETTINGS.product,
+        filterBar: {
+          showSubcategoryChips: true,
+          showOnParentCategories: true,
+          hideOnScroll: false,
+        },
+      };
+
+      expect(getProductFilterBarSettings(stateWithSettings({ product })))
+        .toEqual(product.filterBar);
+    });
+
+    it('hides on scroll when the slice is missing', () => {
+      expect(getProductFilterBarSettings({} as AppSettingsState)).toEqual({
+        showSubcategoryChips: false,
+        showOnParentCategories: false,
+        hideOnScroll: true,
+      });
     });
   });
 });

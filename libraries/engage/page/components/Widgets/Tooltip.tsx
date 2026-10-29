@@ -2,7 +2,7 @@ import {
   useState, useRef, useEffect, type ReactNode, type ReactElement, type CSSProperties,
 } from 'react';
 import ReactDOM from 'react-dom';
-import { Typography } from '@shopgate/engage/components';
+import { Typography, SafeHtml } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -198,14 +198,16 @@ function Tooltip({ children, text }: TooltipProps) {
       {children}
       {mounted &&
         ReactDOM.createPortal(
-          <Typography
+          <SafeHtml
+            as={Typography}
+            profile="html"
             variant="body2"
             component="div"
             className={cx(classes.tooltipBox, arrowClass, 'tooltip-box')}
             style={portalStyle}
             data-visible={animate ? 'true' : 'false'}
             data-tooltip-id={tooltipId.current}
-            dangerouslySetInnerHTML={{ __html: text }}
+            html={text}
           />,
           document.body
         )}
