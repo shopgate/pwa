@@ -295,7 +295,7 @@ alone. The same applies to deprecated exports: `isAndroid` stays and isn't repla
 | The `jest` key in `package.json` | the config comes from `jest.config.js` |
 | Packages nothing imports | leftovers |
 | A test setup without any test (scripts, `jest.config.js`, `jest`) | `npm test` fails with "No tests found"; `@shopgate/pwa-unit-test` stays for its types |
-| `.npmrc` with `package-lock=false` or `legacy-peer-deps=true` | the first prevents the lockfile, the second hides conflicts between the declared versions and changes what gets installed. Neither is needed with the versions of the target state. Delete the file when nothing else is in it. When the install fails afterwards, correct the declared versions instead of bringing the setting back |
+| `.npmrc` with `package-lock=false` or `legacy-peer-deps=true` | the first prevents the lockfile, the second hides conflicts between the declared versions and changes what gets installed. Neither is needed with the versions of the target state. Delete the file when nothing else is in it. When the install fails afterwards, correct the declared versions instead of bringing the setting back, also not as a command-line flag (see [Lockfile](#lockfile)) |
 | `yarn.lock`, and its line in `.gitignore` | extensions use npm |
 | `.travis.yml` in the extension root | Travis is no longer used |
 
@@ -319,9 +319,15 @@ The lockfile of the backend keeps its state. When the removed line also covered
 
 Run `npm install` after every change to `package.json`, so the lockfile is up to date at the end.
 
+Install without `--legacy-peer-deps` and `--force`, also not once, and check that
+`npm config get legacy-peer-deps` returns `false`. A lockfile written with the setting lacks
+the peer packages, such as `@types/react` for `@types/react-dom`, and `npm ci` then fails with
+"Missing: … from lock file" everywhere the setting is off.
+
 When the install fails with `ERESOLVE` although the versions are right, the folder contains an
 outdated lockfile or `node_modules` from an old setup: delete both and install again. Old
-lockfiles (`lockfileVersion` 1) are replaced this way.
+lockfiles (`lockfileVersion` 1) are replaced this way. When it still fails, correct the declared
+versions, or stop and report the conflict.
 
 ### ESLint config
 
@@ -411,6 +417,8 @@ Run all of these, and report the results:
 1. **Install:** `npm ls` reports nothing as invalid or missing, and `npm ci --dry-run` passes,
    which shows that the lockfile matches `package.json`. Run `npm ci` before the other steps: a
    `node_modules` from the old setup makes `npm ls` fail and lets lint run with the old rules.
+   Run all of them without `--legacy-peer-deps` and `--force`: with the setting, `npm ci` also
+   passes on a lockfile that lacks the peer packages.
 2. **Lint:** `npm run lint` runs through and reports no error that the setup causes: no config
    or parser error, no unresolved import, no missing file extension. Most extensions come from a
    much older ESLint and rule set, so rules may report errors in the code. Those aren't fixed,
@@ -485,6 +493,7 @@ End the cleanup of an extension with a report that contains:
   kept although it looked unused, and for every package under `dependencies`
 - the `peerDependencies` range before and after, with the reason for the range after, or "none"
 - the files that were deleted, created or changed
+- the npm commands that wrote the lockfile, with their flags
 - the result of each verification step, including the steps that were skipped and why
 - everything from [Where housekeeping ends](#where-housekeeping-ends) that was found, and
   anything else that needs a decision
