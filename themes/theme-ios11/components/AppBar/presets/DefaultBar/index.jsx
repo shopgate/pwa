@@ -14,7 +14,6 @@ import {
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { getCSSCustomProp, useColorScheme } from '@shopgate/engage/styles';
-import { isColor } from '@shopgate/engage/styles/theme/utils/color';
 import { ViewContext } from '@shopgate/engage/components/View';
 import { useSelector } from 'react-redux';
 import { getPersistentSearchBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
@@ -38,22 +37,14 @@ const NO_CENTER = { center: null };
 const EMPTY_PROPS = {};
 
 /**
- * Resolves the colors the native status bar and the in-app browser header take from the app bar.
- *
- * The app needs plain color values, so both are read from the live custom properties. The text
- * color is only passed when it was configured as such. By default it is a contrast expression the
- * app cannot use, and the app derives black or white from the status bar style instead.
+ * Reads the status bar background of the app bar. The native status bar needs a resolved color
+ * value, so it is read from the live custom property rather than passed along as a var() reference.
  * @param {boolean} overlay Whether the app bar overlays the content.
- * @returns {Object} The background and the text color.
+ * @returns {string}
  */
-const getStatusBarColors = (overlay) => {
-  const color = getCSSCustomProp('--sg-components-appBar-color');
-
-  return {
-    background: overlay ? 'transparent' : getCSSCustomProp('--sg-components-appBar-background'),
-    color: isColor(color) ? color : undefined,
-  };
-};
+const getStatusBarBackground = overlay => (
+  overlay ? 'transparent' : getCSSCustomProp('--sg-components-appBar-background')
+);
 
 /**
  * The AppBarDefault component.
@@ -182,8 +173,10 @@ class AppBarDefault extends PureComponent {
      * The settings for the startpage need to be preserved within the statusbar to optimize
      * the initial rendering at the app start.
      */
-    const { background, color } = getStatusBarColors(this.props.overlay);
-    this.props.updateStatusBar(background, pathname === INDEX_PATH, color);
+    this.props.updateStatusBar(
+      getStatusBarBackground(this.props.overlay),
+      pathname === INDEX_PATH
+    );
   }
 
   /**
@@ -291,8 +284,7 @@ const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
     syncedColorScheme.current = activeColorScheme;
 
     if (route.visible) {
-      const { background, color } = getStatusBarColors(overlay);
-      updateStatusBar(background, route.pathname === INDEX_PATH, color);
+      updateStatusBar(getStatusBarBackground(overlay), route.pathname === INDEX_PATH);
     }
   }, [activeColorScheme, overlay, route, updateStatusBar]);
 

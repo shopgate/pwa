@@ -1,6 +1,5 @@
-import { isAvailable } from '@shopgate/native-modules';
 import { isIos } from '@shopgate/pwa-common/selectors/client';
-import { getCSSCustomProp } from '@shopgate/engage/styles/helpers/cssCustomProperties';
+import { appSupportsInAppBrowserColors } from '@shopgate/engage/core/helpers';
 import { updateLegacyNavigationBar } from '../../helpers/updateLegacyNavigationBar';
 import updateStatusBarBackground from '../updateStatusBarBackground';
 
@@ -16,8 +15,17 @@ jest.mock('@shopgate/pwa-common/selectors/client', () => ({
   isIos: jest.fn().mockReturnValue(true),
 }));
 
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  appSupportsAndroidEdgeToEdge: jest.fn(() => false),
+  appSupportsInAppBrowserColors: jest.fn(() => false),
+}));
+
 jest.mock('@shopgate/engage/styles/helpers/cssCustomProperties', () => ({
-  getCSSCustomProp: jest.fn(() => ''),
+  getCSSCustomProp: jest.fn(key => ({
+    '--sg-components-appBar-background': '#1c1c1e',
+    '--sg-components-appBar-color': 'rgb(255, 204, 0)',
+    '--sg-palette-background-default': '#000000',
+  }[key])),
 }));
 
 describe('engage > core > actions > updateStatusBarBackground()', () => {
@@ -62,33 +70,27 @@ describe('engage > core > actions > updateStatusBarBackground()', () => {
     expect(updateLegacyNavigationBar).toHaveBeenCalledWith({ isDefault: false });
   });
 
-  it('should pass the text color along with the background', () => {
-    updateStatusBarBackground(color, false, 'rgb(255, 255, 255)')(null, getState);
+  it('should pass the colors of the app bar when the app themes its in-app browser', () => {
+    appSupportsInAppBrowserColors.mockReturnValueOnce(true);
+    updateStatusBarBackground('transparent')(null, getState);
     expect(updateLegacyNavigationBar).toHaveBeenCalledWith({
-      statusBarBackground: color,
-      color: 'rgb(255, 255, 255)',
+      statusBarBackground: 'transparent',
+      inAppBrowser: {
+        styles: {
+          background: '#1c1c1e',
+          color: 'rgb(255, 204, 0)',
+          contentBackground: '#000000',
+        },
+        statusBarStyle: 'light',
+      },
       isDefault: false,
     });
   });
 
-  it('should pass the page background along with the color', () => {
-    getCSSCustomProp.mockReturnValueOnce('#1c1c1e');
-    updateStatusBarBackground(color)(null, getState);
-    expect(getCSSCustomProp).toHaveBeenCalledWith('--sg-palette-background-default');
-    expect(updateLegacyNavigationBar).toHaveBeenCalledWith({
-      statusBarBackground: color,
-      contentBackground: '#1c1c1e',
-      isDefault: false,
-    });
-  });
-
-  it('should call the updateLegacyNavigationBar helper on Android when the React Native app is available', () => {
+  it('should call the updateLegacyNavigationBar helper on Android when the app themes its in-app browser', () => {
     isIos.mockReturnValueOnce(false);
-    isAvailable.mockReturnValueOnce(true);
+    appSupportsInAppBrowserColors.mockReturnValueOnce(true);
     updateStatusBarBackground(color)(null, getState);
-    expect(updateLegacyNavigationBar).toHaveBeenCalledWith({
-      statusBarBackground: color,
-      isDefault: false,
-    });
+    expect(updateLegacyNavigationBar).toHaveBeenCalledTimes(1);
   });
 });

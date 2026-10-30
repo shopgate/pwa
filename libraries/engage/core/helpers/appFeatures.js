@@ -3,6 +3,7 @@ import {
   APP_FEATURE_COOKIE_CONSENT,
   APP_FEATURE_ANDROID_EDGE_TO_EDGE,
   APP_FEATURE_BIOMETRIC_LOGIN,
+  APP_FEATURE_IN_APP_BROWSER_COLORS,
 } from '@shopgate/engage/core/constants';
 import {
   hasSGJavaScriptBridge,
@@ -90,4 +91,16 @@ export const appSupportsBiometricLogin = () => {
   }
 
   return isFeatureFlagEnabled('Keychain', APP_FEATURE_BIOMETRIC_LOGIN);
+};
+
+/**
+ * Determines if the app themes its in-app browser with the header colors sent by the PWA
+ * @returns {boolean}
+ */
+export const appSupportsInAppBrowserColors = () => {
+  if (hasWebBridge() || !hasSGJavaScriptBridge()) {
+    return false;
+  }
+
+  return isFeatureFlagEnabled('InAppBrowser', APP_FEATURE_IN_APP_BROWSER_COLORS);
 };
