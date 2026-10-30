@@ -9,6 +9,10 @@ export type FrontendSettingsPreviewBridgeMessage =
     type: 'receiveFrontendSettings';
     payload?: {
       styling?: FrontendSettingsStyling;
+      /**
+       * The merchant's custom stylesheet from the `rawStyling` inputs. Applied after the styling.
+       */
+      customCss?: string;
       appSettings?: AppSettingsPayload;
     };
   }

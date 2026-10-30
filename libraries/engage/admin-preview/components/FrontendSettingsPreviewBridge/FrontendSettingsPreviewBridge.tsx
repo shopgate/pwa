@@ -12,6 +12,7 @@ import { logger } from '@shopgate/engage/core/helpers';
 import useColorScheme from '@shopgate/engage/styles/theme/hooks/useColorScheme';
 import { loadFontCss } from '@shopgate/engage/styles/helpers/loadFontCss';
 import {
+  getInitialFrontendSettingsCustomCss,
   getInitialFrontendSettingsStyling,
   hasInitialFrontendSettings,
 } from '../../initialization/_internal/initialFrontendSettings';
@@ -22,7 +23,7 @@ import type {
 import {
   getOrCreateStyleTag,
   removeStyleTag,
-  serializeStyling,
+  serializePreviewCss,
 } from './helpers';
 import ElementPicker from '../ElementPicker';
 
@@ -35,6 +36,7 @@ const FrontendSettingsPreviewBridge = () => {
   const [styling, setStyling] = useState<FrontendSettingsStyling | null>(
     getInitialFrontendSettingsStyling
   );
+  const [customCss, setCustomCss] = useState<string | null>(getInitialFrontendSettingsCustomCss);
   const [applied, setApplied] = useState(hasInitialFrontendSettings);
   const [isPickingElement, setIsPickingElement] = useState(false);
   const [highlightedSelector, setHighlightedSelector] = useState<string | null>(null);
@@ -54,6 +56,7 @@ const FrontendSettingsPreviewBridge = () => {
       }
 
       setStyling(data.payload?.styling ?? null);
+      setCustomCss(data.payload?.customCss ?? null);
       setApplied(true);
     }
 
@@ -106,13 +109,15 @@ const FrontendSettingsPreviewBridge = () => {
   }, [fontCssUrls]);
 
   useEffect(() => {
-    if (!styling) {
+    const previewCss = serializePreviewCss(styling, customCss);
+
+    if (!previewCss) {
       removeStyleTag();
       return;
     }
 
-    getOrCreateStyleTag().textContent = serializeStyling(styling);
-  }, [styling]);
+    getOrCreateStyleTag().textContent = previewCss;
+  }, [styling, customCss]);
 
   // Declared after the styling and font effects so both have run for the applied payload before the
   // admin is told it can drop its overlay - effects run in declaration order, and React defers them

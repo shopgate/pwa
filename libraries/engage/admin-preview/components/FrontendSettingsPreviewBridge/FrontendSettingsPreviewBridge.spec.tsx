@@ -195,6 +195,29 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
         .toBe('.button { background-color: red; }');
     });
 
+    it('should add the received custom css after the styling', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({
+        type: 'receiveFrontendSettings',
+        payload: {
+          styling: { '.button': { backgroundColor: 'red' } },
+          customCss: '.button { color: blue; }',
+        },
+      });
+
+      expect(document.getElementById(PREVIEW_STYLE_TAG_ID)?.textContent)
+        .toBe('.button { background-color: red; }\n.button { color: blue; }');
+
+      sendMessage({
+        type: 'receiveFrontendSettings',
+        payload: { styling: { '.button': { backgroundColor: 'red' } } },
+      });
+
+      expect(document.getElementById(PREVIEW_STYLE_TAG_ID)?.textContent)
+        .toBe('.button { background-color: red; }');
+    });
+
     it('should dispatch the received app settings', () => {
       render(<FrontendSettingsPreviewBridge />);
 
@@ -242,12 +265,12 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
     const flushFontCssSync = () => act(() => Promise.resolve());
 
     it('should keep the styling that app start already applied', () => {
-      setInitialFrontendSettings({ '.button': { backgroundColor: 'red' } });
+      setInitialFrontendSettings({ '.button': { backgroundColor: 'red' } }, '.a { color: blue; }');
 
       render(<FrontendSettingsPreviewBridge />);
 
       expect(document.getElementById(PREVIEW_STYLE_TAG_ID)?.textContent)
-        .toBe('.button { background-color: red; }');
+        .toBe('.button { background-color: red; }\n.a { color: blue; }');
     });
 
     it('should announce on mount when app start received the payload', async () => {

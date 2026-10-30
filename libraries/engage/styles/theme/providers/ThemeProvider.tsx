@@ -9,15 +9,12 @@ import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-pre
 import { FrontendSettingsPreviewBridge } from '@shopgate/engage/admin-preview/components';
 // Imported via its module path rather than a settings barrel, to keep this module out of an import
 // cycle - the settings types reach back into the "styles/theme" barrel, which exports this file.
-import {
-  getCanSelectColorScheme, getCustomCss, getDefaultColorSchemeMode,
-} from '@shopgate/engage/settings/selectors/appSettings';
+import { getCanSelectColorScheme, getDefaultColorSchemeMode } from '@shopgate/engage/settings/selectors/appSettings';
 import { getIsColorSchemeSelectionEnabled } from '@shopgate/engage/development/selectors';
 import ActiveBreakpointProvider from './ActiveBreakpointProvider';
 import { ColorSchemeContext, type ColorSchemeContextValue } from './ColorSchemeContext';
 import { ThemeContext } from './ThemeContext';
 import { useMatchMedia } from '../hooks/useMediaQuery';
-import { applyCustomCss } from '../../helpers/applyCustomCss';
 import {
   COLOR_SCHEME_SYSTEM, type ThemeInternal, type ColorSchemeMode, type ColorSchemeName,
 } from '../createTheme';
@@ -43,7 +40,6 @@ const ThemeProvider = ({
   );
 
   const configuredMode = useSelector(getDefaultColorSchemeMode);
-  const customCss = useSelector(getCustomCss);
   const isColorSchemeSelectable = useSelector(getCanSelectColorScheme);
 
   // The development setting simulates the `selectable` appearance rather than lifting the gate on
@@ -132,10 +128,6 @@ const ThemeProvider = ({
 
     theme.setActiveColorScheme(activeColorScheme);
   }, [activeColorScheme, theme]);
-
-  useLayoutEffect(() => {
-    applyCustomCss(customCss);
-  }, [customCss]);
 
   const styleSheets = useMemo(() => theme.generateStyleSheets(), [theme]);
 

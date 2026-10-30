@@ -416,10 +416,6 @@ export interface AppearanceSettings {
    * `selectable` starts from the operating system preference and lets the visitor pick another.
    */
   defaultColorSchemeMode: DefaultColorSchemeMode;
-  /**
-   * Merchant stylesheet from the admin's advanced custom styling, applied after all other css.
-   */
-  customCss?: string | null;
 }
 
 /**
