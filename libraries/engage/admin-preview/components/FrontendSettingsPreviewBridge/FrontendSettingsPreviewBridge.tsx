@@ -1,4 +1,6 @@
-import { useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback, useEffect, useRef, useState,
+} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIframeMessenger } from '@shopgate/engage/admin-preview/hooks';
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/constants';
@@ -10,6 +12,7 @@ import { logger } from '@shopgate/engage/core/helpers';
 import useColorScheme from '@shopgate/engage/styles/theme/hooks/useColorScheme';
 import { loadFontCss } from '@shopgate/engage/styles/helpers/loadFontCss';
 import {
+  getInitialFrontendSettingsCustomCss,
   getInitialFrontendSettingsStyling,
   hasInitialFrontendSettings,
 } from '../../initialization/_internal/initialFrontendSettings';
@@ -20,19 +23,23 @@ import type {
 import {
   getOrCreateStyleTag,
   removeStyleTag,
-  serializeStyling,
+  serializePreviewCss,
 } from './helpers';
+import ElementPicker from '../ElementPicker';
 
 /**
- * Headless bridge that connects the app to the admin frontend settings preview. It listens for
- * messages from the parent window and applies the received styling, app settings and color scheme
- * while in preview mode.
+ * Bridge that connects the app to the admin frontend settings preview. It listens for messages from
+ * the parent window and applies the received styling, app settings and color scheme while in
+ * preview mode. On request it lets the merchant pick an element to find its classes.
  */
 const FrontendSettingsPreviewBridge = () => {
   const [styling, setStyling] = useState<FrontendSettingsStyling | null>(
     getInitialFrontendSettingsStyling
   );
+  const [customCss, setCustomCss] = useState<string | null>(getInitialFrontendSettingsCustomCss);
   const [applied, setApplied] = useState(hasInitialFrontendSettings);
+  const [isPickingElement, setIsPickingElement] = useState(false);
+  const [highlightedSelector, setHighlightedSelector] = useState<string | null>(null);
   const announcedRef = useRef(false);
   const fontCssSyncRef = useRef<Promise<void>>(Promise.resolve());
   const dispatch = useDispatch();
@@ -49,6 +56,7 @@ const FrontendSettingsPreviewBridge = () => {
       }
 
       setStyling(data.payload?.styling ?? null);
+      setCustomCss(data.payload?.customCss ?? null);
       setApplied(true);
     }
 
@@ -65,7 +73,30 @@ const FrontendSettingsPreviewBridge = () => {
 
       setMode(colorScheme);
     }
+
+    if (data.type === 'setElementPicker') {
+      setIsPickingElement(!!data.payload?.active);
+    }
+
+    if (data.type === 'highlightSelector') {
+      const selector = data.payload?.selector;
+
+      setHighlightedSelector(typeof selector === 'string' && selector ? selector : null);
+    }
   }, ALLOWED_ADMIN_PREVIEW_ORIGINS);
+
+  const handlePick = useCallback((selectors: string[]) => {
+    setIsPickingElement(false);
+    sendToParent({
+      type: 'elementPicked',
+      payload: { selectors },
+    });
+  }, [sendToParent]);
+
+  const handleCancelPick = useCallback(() => {
+    setIsPickingElement(false);
+    sendToParent({ type: 'elementPickerStopped' });
+  }, [sendToParent]);
 
   useEffect(() => {
     sendToParent({ type: 'frontendSettingsPreviewReady' });
@@ -78,13 +109,15 @@ const FrontendSettingsPreviewBridge = () => {
   }, [fontCssUrls]);
 
   useEffect(() => {
-    if (!styling) {
+    const previewCss = serializePreviewCss(styling, customCss);
+
+    if (!previewCss) {
       removeStyleTag();
       return;
     }
 
-    getOrCreateStyleTag().textContent = serializeStyling(styling);
-  }, [styling]);
+    getOrCreateStyleTag().textContent = previewCss;
+  }, [styling, customCss]);
 
   // Declared after the styling and font effects so both have run for the applied payload before the
   // admin is told it can drop its overlay - effects run in declaration order, and React defers them
@@ -107,7 +140,14 @@ const FrontendSettingsPreviewBridge = () => {
     removeStyleTag();
   }, []);
 
-  return null;
+  return (
+    <ElementPicker
+      active={isPickingElement}
+      highlightSelector={highlightedSelector}
+      onPick={handlePick}
+      onCancel={handleCancelPick}
+    />
+  );
 };
 
 export default FrontendSettingsPreviewBridge;

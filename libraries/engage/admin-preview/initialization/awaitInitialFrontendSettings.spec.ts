@@ -5,6 +5,7 @@ import { PREVIEW_STYLE_TAG_ID } from '../components/FrontendSettingsPreviewBridg
 import type { FrontendSettingsPreviewBridgeMessage } from '../components/FrontendSettingsPreviewBridge/types';
 import { awaitInitialFrontendSettings } from './awaitInitialFrontendSettings';
 import {
+  getInitialFrontendSettingsCustomCss,
   getInitialFrontendSettingsStyling,
   hasInitialFrontendSettings,
   resetInitialFrontendSettings,
@@ -161,6 +162,23 @@ describe('engage > admin-preview > awaitInitialFrontendSettings', () => {
       expect(getInitialFrontendSettingsStyling()).toEqual({
         '.button': { backgroundColor: 'red' },
       });
+    });
+
+    it('should apply the custom css after the styling and hand it over to the bridge', async () => {
+      const promise = awaitInitialFrontendSettings(store);
+
+      deliver({
+        type: 'receiveFrontendSettings',
+        payload: {
+          styling: { '.button': { backgroundColor: 'red' } },
+          customCss: '.button { color: blue; }',
+        },
+      });
+      await promise;
+
+      expect(document.getElementById(PREVIEW_STYLE_TAG_ID)?.textContent)
+        .toBe('.button { background-color: red; }\n.button { color: blue; }');
+      expect(getInitialFrontendSettingsCustomCss()).toBe('.button { color: blue; }');
     });
 
     it('should record a payload without styling, so the bridge still reports it applied', async () => {
