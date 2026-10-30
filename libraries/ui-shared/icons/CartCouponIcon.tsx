@@ -70,6 +70,7 @@ const content = `
 const CartCouponIcon = (props: Omit<IconProps, 'content'>) => <Icon
   content={content}
   viewBox="3548 7826 45.999 46"
+  keepColors
   {...props}
 />;
 
