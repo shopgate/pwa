@@ -51,6 +51,7 @@ export const updateLegacyNavigationBar = (options = {}) => {
   const payload = {
     ...statusBarStyle && { statusBarStyle },
     ...isDefault && { isDefault },
+    ...options.inAppBrowser && { inAppBrowser: options.inAppBrowser },
     targetTab,
     styles,
   };

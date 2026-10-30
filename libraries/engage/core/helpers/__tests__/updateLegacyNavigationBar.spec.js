@@ -74,6 +74,26 @@ describe('updateLegacyNavigationBar()', () => {
     });
   });
 
+  it('should broadcast the colors of the in-app browser', () => {
+    const inAppBrowser = {
+      styles: { background: '#1c1c1e' },
+      statusBarStyle: 'light',
+    };
+    updateLegacyNavigationBar({
+      statusBarBackground: 'transparent',
+      inAppBrowser,
+    });
+    expect(broadcastEvent).toHaveBeenCalledWith({
+      event: 'updateNavigationBarStyle',
+      parameters: [{
+        targetTab: 'main',
+        styles: { statusBarBackground: 'transparent' },
+        statusBarStyle: 'none',
+        inAppBrowser,
+      }],
+    });
+  });
+
   it('should broadcast when called with custom targetTab and statusBarStyle', () => {
     const options = {
       statusBarStyle: 'dark',
