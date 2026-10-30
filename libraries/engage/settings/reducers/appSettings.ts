@@ -1,6 +1,7 @@
 import {
-  isNil, isPlainObject, mapValues, merge, omitBy,
+  isNil, isPlainObject, mapValues, merge, omitBy, pickBy,
 } from 'lodash';
+import type { IconOverride, IconOverrides } from '@shopgate/engage/icons/types';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppBarButtonSlot,
@@ -95,6 +96,29 @@ const APP_BAR_MODERN_OPTIONS: {
   [K in keyof AppBarSettings['floating']]?: readonly AppBarSettings['floating'][K][]
 } = {
   scrollBehavior: ['revealBar', 'scrollAway'],
+};
+
+const ICON_OVERRIDE_DEFAULTS: Required<IconOverride> = {
+  svg: '',
+  keepColors: false,
+};
+
+/**
+ * Keeps the icon overrides that have svg markup and drops invalid fields.
+ * @param icons The incoming icon overrides.
+ * @returns The valid overrides, or undefined when the branch is no object.
+ */
+const pickValidIconOverrides = (icons: unknown): IconOverrides | undefined => {
+  if (!isPlainObject(icons)) {
+    return undefined;
+  }
+
+  const overrides = mapValues(
+    icons as Record<string, unknown>,
+    icon => pickValidSettings(icon, ICON_OVERRIDE_DEFAULTS)
+  );
+
+  return pickBy(overrides, icon => !!icon?.svg?.trim()) as IconOverrides;
 };
 
 /**
@@ -250,6 +274,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       right: 0,
     },
   },
+  icons: {},
   images: {
     quality: DEFAULT_IMAGE_QUALITY,
     // Already in the image service's format, so the unhydrated path needs no conversion.
@@ -285,7 +310,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product, category, cart, navigation, search,
+      images, typography, appearance, widgets, product, category, cart, navigation, search, icons,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -408,6 +433,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           right: mediaMargins.right ?? undefined,
         },
       },
+      icons: pickValidIconOverrides(icons),
     }, { isHydrated: true });
 
     // Converted on the way in, so the slice holds wire ready values and every image url does not

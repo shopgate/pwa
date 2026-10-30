@@ -5,6 +5,7 @@ import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/co
 import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
 import { getTypographyFontCssUrls } from '@shopgate/engage/settings/selectors/appSettings';
 import { logger } from '@shopgate/engage/core/helpers';
+import { getIconCatalog } from '@shopgate/engage/icons/helpers/catalog';
 // Imported via their module paths, since the "styles" barrel pulls in the ThemeProvider which
 // renders this component, and would therefore create a circular import.
 import useColorScheme from '@shopgate/engage/styles/theme/hooks/useColorScheme';
@@ -50,6 +51,13 @@ const FrontendSettingsPreviewBridge = () => {
 
       setStyling(data.payload?.styling ?? null);
       setApplied(true);
+    }
+
+    if (data.type === 'requestIconCatalog') {
+      sendToParent({
+        type: 'iconCatalog',
+        payload: getIconCatalog(),
+      });
     }
 
     if (data.type === 'setColorScheme') {

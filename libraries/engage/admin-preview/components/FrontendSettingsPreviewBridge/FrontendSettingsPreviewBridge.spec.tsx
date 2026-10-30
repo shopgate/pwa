@@ -338,4 +338,26 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
       expect(appliedCallCount()).toBe(0);
     });
   });
+
+  describe('requestIconCatalog', () => {
+    it('should answer with the icons a merchant can replace', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({ type: 'requestIconCatalog' });
+
+      expect(mockedSendToParent).toHaveBeenCalledWith({
+        type: 'iconCatalog',
+        payload: {
+          version: 1,
+          icons: expect.arrayContaining([
+            expect.objectContaining({
+              name: 'cart',
+              source: 'core',
+              default: expect.stringMatching(/^<svg viewBox="0 0 24 24">/),
+            }),
+          ]),
+        },
+      });
+    });
+  });
 });

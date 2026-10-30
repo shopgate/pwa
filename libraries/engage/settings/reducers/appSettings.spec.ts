@@ -239,10 +239,17 @@ describe('settings / reducers / appSettings', () => {
           right: 8,
         },
       },
+      icons: {
+        cart: {
+          svg: '<svg viewBox="0 0 48 48"><path d="M0 0h48"/></svg>',
+          keepColors: true,
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
 
+    expect(state.icons).toEqual(settings.icons);
     expect(state.isHydrated).toBe(true);
     expect(state.navigation).toEqual(settings.navigation);
     expect(state.search).toEqual(settings.search);
@@ -946,5 +953,47 @@ describe('settings / reducers / appSettings', () => {
     } as unknown as AppSettings));
 
     expect(state.navigation).toEqual(DEFAULT_APP_SETTINGS.navigation);
+  });
+
+  describe('icons', () => {
+    it('defaults to no icon overrides', () => {
+      expect(DEFAULT_APP_SETTINGS.icons).toEqual({});
+    });
+
+    it('keeps valid overrides and drops invalid fields and entries', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg><path d="M1 1"/></svg>',
+            keepColors: 'yes',
+          },
+          heart: { svg: '' },
+          home: { keepColors: true },
+          star: 'not an override',
+          tick: null,
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: { svg: '<svg><path d="M1 1"/></svg>' },
+      });
+    });
+
+    it('drops an override a later payload omits', () => {
+      const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: { cart: { svg: '<svg/>' } },
+      }));
+      const second = appSettings(first, receiveAppSettings({}));
+
+      expect(second.icons).toEqual({});
+    });
+
+    it.each([null, 'icons', ['<svg/>']])('falls back to no overrides for %j', (icons) => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons,
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({});
+    });
   });
 });

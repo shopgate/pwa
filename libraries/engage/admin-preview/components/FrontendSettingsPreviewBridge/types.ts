@@ -1,4 +1,5 @@
 import type { AppSettingsPayload } from '@shopgate/engage/settings/types/appSettings';
+import type { IconCatalog } from '@shopgate/engage/icons/types';
 import type { ColorSchemeName } from '@shopgate/engage/styles/theme/createTheme';
 
 export type CSSDeclarationValue = string | number;
@@ -29,4 +30,18 @@ export type FrontendSettingsPreviewBridgeMessage =
      */
     type: 'frontendSettingsPreviewApplied';
     payload?: never;
+  }
+  | {
+    /**
+     * Inbound. Asks for the icons a merchant can replace, answered with `iconCatalog`.
+     */
+    type: 'requestIconCatalog';
+    payload?: never;
+  }
+  | {
+    /**
+     * Outbound. The icons a merchant can replace, with their defaults.
+     */
+    type: 'iconCatalog';
+    payload: IconCatalog;
   };
