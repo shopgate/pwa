@@ -7,7 +7,7 @@ import {
 import configCommon from './config-common';
 import configGmd from './config-gmd';
 import configIos from './config-ios';
-import nmaConfig from './config';
+import nmaConfig from './config.json';
 
 // Write predefined configs, first: Deep merge with page and widget array item identity check.
 const config = configCommon;
