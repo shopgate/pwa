@@ -77,8 +77,8 @@ describe('engage > core > actions > updateStatusBarBackground()', () => {
       statusBarBackground: 'transparent',
       inAppBrowser: {
         styles: {
-          background: '#1c1c1e',
-          color: 'rgb(255, 204, 0)',
+          background: '#1C1C1E',
+          color: '#FFCC00',
           contentBackground: '#000000',
         },
         statusBarStyle: 'light',

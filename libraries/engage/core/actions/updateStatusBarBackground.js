@@ -11,6 +11,7 @@ import { updateLegacyNavigationBar } from '../helpers/updateLegacyNavigationBar'
 /**
  * Resolves the colors of the configured app bar for the in-app browser of the app. They are
  * independent of the passed status bar color, which can be transparent or belong to another bar.
+ * The colors are sent as #RRGGBB, since the Android browser of the app accepts no other notation.
  * @returns {Object|null} The navigation bar styles of the in-app browser.
  */
 const getInAppBrowserColors = () => {
@@ -25,9 +26,9 @@ const getInAppBrowserColors = () => {
 
   return {
     styles: {
-      background,
-      ...isColor(color) && { color },
-      ...isColor(contentBackground) && { contentBackground },
+      background: Color(background).hex(),
+      ...isColor(color) && { color: Color(color).hex() },
+      ...isColor(contentBackground) && { contentBackground: Color(contentBackground).hex() },
     },
     statusBarStyle: Color(background).isDark() ? 'light' : 'dark',
   };
