@@ -1,0 +1,1 @@
+export { useThemeIcon } from './useThemeIcon';

@@ -17,4 +17,5 @@ export const ALLOWED_ADMIN_PREVIEW_ORIGINS = [
   'https://*.shopgatepg.com',
   'http://localhost.localdev.cc',
   'http://localhost:1337',
+  'http://localhost:1338',
 ];
