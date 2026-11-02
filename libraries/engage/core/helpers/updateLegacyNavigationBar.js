@@ -3,6 +3,7 @@ import { isAvailable, StatusBar } from '@shopgate/native-modules';
 import { broadcastEvent } from '@shopgate/engage/core/commands';
 import { isDev } from '@shopgate/engage/core/helpers';
 import { UIEvents } from '@shopgate/engage/core/events';
+import { isColor } from '@shopgate/engage/styles/theme/utils/color';
 /**
  * Updates the styles of the navigation bar of iOS devices.
  * @param {Object} options Options for the status bar.
@@ -26,12 +27,10 @@ export const updateLegacyNavigationBar = (options = {}) => {
 
   if (options.statusBarStyle) {
     ({ statusBarStyle } = options);
-  } else if (styles.statusBarBackground) {
-    if (styles.statusBarBackground === 'transparent') {
-      statusBarStyle = 'none';
-    } else {
-      statusBarStyle = Color(styles.statusBarBackground).isDark() ? 'light' : 'dark';
-    }
+  } else if (styles.statusBarBackground === 'transparent') {
+    statusBarStyle = 'none';
+  } else if (isColor(styles.statusBarBackground)) {
+    statusBarStyle = Color(styles.statusBarBackground).isDark() ? 'light' : 'dark';
   }
 
   // Status bar update via native-modules deactivated for now since it doesn't work

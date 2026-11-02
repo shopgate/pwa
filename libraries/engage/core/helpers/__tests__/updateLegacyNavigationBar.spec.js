@@ -74,6 +74,18 @@ describe('updateLegacyNavigationBar()', () => {
     });
   });
 
+  it('should broadcast without a status bar style when the status bar background is no valid color', () => {
+    const statusBarBackground = 'color-mix(in oklch, #fff, #000 20%)';
+    updateLegacyNavigationBar({ statusBarBackground });
+    expect(broadcastEvent).toHaveBeenCalledWith({
+      event: 'updateNavigationBarStyle',
+      parameters: [{
+        targetTab: 'main',
+        styles: { statusBarBackground },
+      }],
+    });
+  });
+
   it('should broadcast the colors of the in-app browser', () => {
     const inAppBrowser = {
       styles: { background: '#1c1c1e' },
