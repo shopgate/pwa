@@ -229,7 +229,7 @@ interface Props {
   showActions: boolean;
   /** Whether the page shows the logo. */
   logo?: boolean;
-  /** The page title. It is shown as headline in the content, not in the bar. */
+  /** The page title. DefaultBar passes it as the center element. */
   title?: string | null;
   left?: ReactNode;
   center?: ReactNode;

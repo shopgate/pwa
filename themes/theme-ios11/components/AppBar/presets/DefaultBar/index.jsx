@@ -142,7 +142,7 @@ class AppBarDefault extends PureComponent {
   }
 
   /**
-   * @returns {boolean} Whether the page title is shown as headline in the content.
+   * @returns {boolean} Whether the page title is shown in the center of the header.
    */
   hasHeadline() {
     const {
@@ -193,7 +193,7 @@ class AppBarDefault extends PureComponent {
       : null;
 
     if (!route.visible || !this.state.target) {
-      return headline;
+      return null;
     }
 
     const portalProps = {
@@ -217,13 +217,13 @@ class AppBarDefault extends PureComponent {
 
     return (
       <>
-        {headline}
         {ReactDOM.createPortal(
           <>
             <Portal name={APP_BAR_DEFAULT_BEFORE} props={portalProps} />
             <Portal name={APP_BAR_DEFAULT} props={portalProps}>
               <ConfiguredBar
                 {...barProps}
+                center={headline || barProps.center}
                 settings={appBarSettings}
                 floating={floating}
                 overlay={overlay}
