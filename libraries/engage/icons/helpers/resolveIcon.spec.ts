@@ -44,6 +44,23 @@ describe('engage > icons > helpers', () => {
       });
     });
 
+    it('passes the scale of an override on', () => {
+      const overrides = {
+        cart: {
+          svg: '<svg/>',
+          scale: 1.1,
+        },
+      };
+
+      expect(resolveIcon('cart', overrides)).toEqual({
+        svg: '<svg/>',
+        keepColors: false,
+        scale: 1.1,
+        source: 'override',
+        normalize: true,
+      });
+    });
+
     it('uses an icon customized in the theme extension config', () => {
       mockLegacyIcons.cart = '<path d="legacy"/>';
 

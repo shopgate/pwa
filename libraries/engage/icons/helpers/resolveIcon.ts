@@ -48,6 +48,7 @@ export const resolveIcon = (
     return {
       svg: override.svg,
       keepColors: override.keepColors ?? false,
+      ...(typeof override.scale === 'number' ? { scale: override.scale } : {}),
       source: 'override',
       normalize: true,
     };

@@ -101,6 +101,7 @@ const APP_BAR_MODERN_OPTIONS: {
 const ICON_OVERRIDE_DEFAULTS: Required<IconOverride> = {
   svg: '',
   keepColors: false,
+  scale: 1,
 };
 
 /**

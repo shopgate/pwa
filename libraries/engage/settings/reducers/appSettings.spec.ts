@@ -979,6 +979,29 @@ describe('settings / reducers / appSettings', () => {
       });
     });
 
+    it('keeps the scale of an override and drops one that is no number', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg/>',
+            scale: 0.9,
+          },
+          heart: {
+            svg: '<svg/>',
+            scale: 'big',
+          },
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg/>',
+          scale: 0.9,
+        },
+        heart: { svg: '<svg/>' },
+      });
+    });
+
     it('drops an override a later payload omits', () => {
       const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
         icons: { cart: { svg: '<svg/>' } },

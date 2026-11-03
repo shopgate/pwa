@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import SvgIcon from './SvgIcon';
+import SvgIcon, { scaleViewBox } from './SvgIcon';
 
 /**
  * Renders the icon and returns its svg element.
@@ -12,6 +12,31 @@ const renderSvg = (props: Parameters<typeof SvgIcon>[0]) => {
 };
 
 describe('engage > icons > components > SvgIcon', () => {
+  describe('scaleViewBox()', () => {
+    it('widens or narrows the viewBox around its center', () => {
+      expect(scaleViewBox('0 0 24 24', 0.8)).toBe('-3 -3 30 30');
+      expect(scaleViewBox('0 0 24 24', 1.2)).toBe('2 2 20 20');
+    });
+
+    it('keeps the viewBox without a valid scale and limits extreme scales', () => {
+      expect(scaleViewBox('0 0 24 24')).toBe('0 0 24 24');
+      expect(scaleViewBox('0 0 24 24', 1)).toBe('0 0 24 24');
+      expect(scaleViewBox('0 0 24 24', Number.NaN)).toBe('0 0 24 24');
+      expect(scaleViewBox('invalid', 0.8)).toBe('invalid');
+      expect(scaleViewBox('0 0 24 24', 10)).toBe('6 6 12 12');
+    });
+  });
+
+  it('applies the scale to the viewBox and keeps the stroke width of line icons', () => {
+    const svg = renderSvg({
+      markup: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1"/></svg>',
+      scale: 0.8,
+    });
+
+    expect(svg.getAttribute('viewBox')).toBe('-3 -3 30 30');
+    expect(svg.style.getPropertyValue('--sgi-stroke-scale')).toBe('1.25');
+  });
+
   it('renders the content of an svg element with the given or the default viewBox', () => {
     expect(renderSvg({ markup: '<path d="M1 1"/>' }).getAttribute('viewBox')).toBe('0 0 24 24');
     expect(renderSvg({

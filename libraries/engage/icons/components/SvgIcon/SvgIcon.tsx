@@ -6,6 +6,10 @@ import type { ParsedIcon } from '../../types';
 
 const DEFAULT_VIEW_BOX = '0 0 24 24';
 
+const MIN_SCALE = 0.5;
+
+const MAX_SCALE = 2;
+
 const useStyles = makeStyles()(theme => ({
   root: {
     fill: 'currentColor',
@@ -48,6 +52,11 @@ export interface SvgIconProps {
    * Whether to normalize the markup. Core icons are stored normalized.
    */
   normalize?: boolean;
+  /**
+   * Size of the drawing relative to the icon box, e.g. 0.9 for 90%.
+   * @default 1
+   */
+  scale?: number;
 }
 
 /**
@@ -58,13 +67,46 @@ export interface SvgIconProps {
 const formatNumber = (value: number) => String(Math.round(value * 10000) / 10000);
 
 /**
+ * Scales the drawing inside its box by widening or narrowing the viewBox around its center.
+ * @param viewBox The viewBox.
+ * @param scale The scale, limited to a sensible range.
+ * @returns The scaled viewBox, or the viewBox itself without a valid scale.
+ */
+export const scaleViewBox = (viewBox: string, scale?: number) => {
+  const values = viewBox.split(/[\s,]+/).map(Number);
+
+  if (
+    typeof scale !== 'number'
+    || !Number.isFinite(scale)
+    || scale === 1
+    || values.length !== 4
+    || values.some(value => !Number.isFinite(value))
+  ) {
+    return viewBox;
+  }
+
+  const factor = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale));
+  const [x, y, width, height] = values;
+  const scaledWidth = width / factor;
+  const scaledHeight = height / factor;
+
+  return [
+    x - (scaledWidth - width) / 2,
+    y - (scaledHeight - height) / 2,
+    scaledWidth,
+    scaledHeight,
+  ].map(formatNumber).join(' ');
+};
+
+/**
  * Derives the root attributes and styles of the svg element from a parsed icon.
  * @param icon The parsed icon.
  * @param viewBox The viewBox prop.
+ * @param scale Size of the drawing relative to the icon box.
  * @returns The viewBox, the attributes and the styles of the svg element.
  */
-const getSvgProps = (icon: ParsedIcon, viewBox?: string) => {
-  const resolvedViewBox = icon.viewBox ?? viewBox ?? DEFAULT_VIEW_BOX;
+const getSvgProps = (icon: ParsedIcon, viewBox?: string, scale?: number) => {
+  const resolvedViewBox = scaleViewBox(icon.viewBox ?? viewBox ?? DEFAULT_VIEW_BOX, scale);
   const { fill, ...presentation } = icon.attributes;
 
   const attributes = Object.entries(presentation).reduce<Record<string, string>>(
@@ -83,10 +125,10 @@ const getSvgProps = (icon: ParsedIcon, viewBox?: string) => {
 
   if (icon.strokeWidth !== undefined) {
     const viewBoxWidth = parseFloat(resolvedViewBox.split(/[\s,]+/)[2]);
-    const scale = viewBoxWidth > 0 ? viewBoxWidth / 24 : 1;
+    const strokeScale = viewBoxWidth > 0 ? viewBoxWidth / 24 : 1;
 
-    style['--sgi-stroke-base'] = formatNumber(icon.strokeWidth / scale);
-    style['--sgi-stroke-scale'] = formatNumber(scale);
+    style['--sgi-stroke-base'] = formatNumber(icon.strokeWidth / strokeScale);
+    style['--sgi-stroke-scale'] = formatNumber(strokeScale);
   }
 
   return {
@@ -110,6 +152,7 @@ const SvgIcon = ({
   viewBox,
   keepColors = false,
   normalize = true,
+  scale,
 }: SvgIconProps) => {
   const { cx, classes } = useStyles();
   const icon = useMemo(
@@ -119,7 +162,7 @@ const SvgIcon = ({
     }),
     [markup, keepColors, normalize]
   );
-  const svg = useMemo(() => getSvgProps(icon, viewBox), [icon, viewBox]);
+  const svg = useMemo(() => getSvgProps(icon, viewBox, scale), [icon, viewBox, scale]);
 
   const style: CSSProperties = {
     ...svg.style,

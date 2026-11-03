@@ -23,6 +23,10 @@ export interface IconDefinition {
    * Whether the icon keeps its own colors instead of following the text color.
    */
   keepColors?: boolean;
+  /**
+   * Size of the drawing relative to the icon box, e.g. 0.9 for 90%. Defaults to 1.
+   */
+  scale?: number;
 }
 
 /**
