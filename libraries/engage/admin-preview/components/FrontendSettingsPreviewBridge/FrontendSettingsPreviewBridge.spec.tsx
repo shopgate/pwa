@@ -221,10 +221,13 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
     });
   });
 
-  it('should announce readiness to the parent on mount', () => {
+  it('should announce readiness and the supported preview features to the parent on mount', () => {
     render(<FrontendSettingsPreviewBridge />);
 
-    expect(mockedSendToParent).toHaveBeenCalledWith({ type: 'frontendSettingsPreviewReady' });
+    expect(mockedSendToParent).toHaveBeenCalledWith({
+      type: 'frontendSettingsPreviewReady',
+      payload: { features: ['iconCatalog'] },
+    });
   });
 
   describe('frontendSettingsPreviewApplied', () => {

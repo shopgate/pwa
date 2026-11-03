@@ -101,7 +101,10 @@ describe('engage > admin-preview > awaitInitialFrontendSettings', () => {
 
       expect(postMessage).toHaveBeenCalledTimes(1);
       expect(postMessage).toHaveBeenCalledWith(
-        { type: 'frontendSettingsPreviewReady' },
+        {
+          type: 'frontendSettingsPreviewReady',
+          payload: { features: ['iconCatalog'] },
+        },
         ALLOWED_ORIGIN
       );
     });

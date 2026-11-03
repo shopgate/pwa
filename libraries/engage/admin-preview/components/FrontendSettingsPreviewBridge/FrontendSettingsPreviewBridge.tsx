@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIframeMessenger } from '@shopgate/engage/admin-preview/hooks';
-import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/constants';
+import {
+  ALLOWED_ADMIN_PREVIEW_ORIGINS,
+  PREVIEW_READY_MESSAGE,
+} from '@shopgate/engage/admin-preview/constants';
 import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
 import { getTypographyFontCssUrls } from '@shopgate/engage/settings/selectors/appSettings';
 import { logger } from '@shopgate/engage/core/helpers';
@@ -76,7 +79,7 @@ const FrontendSettingsPreviewBridge = () => {
   }, ALLOWED_ADMIN_PREVIEW_ORIGINS);
 
   useEffect(() => {
-    sendToParent({ type: 'frontendSettingsPreviewReady' });
+    sendToParent(PREVIEW_READY_MESSAGE);
   }, [sendToParent]);
 
   // App start already loaded the configured files. This keeps them in sync while the merchant
