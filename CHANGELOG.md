@@ -1,5 +1,33 @@
 # Changelog
 
+## [v7.34.0](https://github.com/shopgate/pwa/compare/v7.33.4...v7.34.0) (2026-11-03)
+
+#### :rocket: Enhancement
+* [#1534](https://github.com/shopgate/pwa/pull/1534) Category drawer in the core, opened from the header ([@shopg8felix](https://github.com/shopg8felix))
+* [#1508](https://github.com/shopgate/pwa/pull/1508) Reviews V2 ([@patrick-scherer](https://github.com/patrick-scherer))
+* [#1533](https://github.com/shopgate/pwa/pull/1533) Polish variant selection, variant sheet and floating header from the Theme Config test ([@shopg8felix](https://github.com/shopg8felix))
+* [#1530](https://github.com/shopgate/pwa/pull/1530) Configurable category display (list or grid), subcategory chips and filter bar settings ([@shopg8felix](https://github.com/shopg8felix))
+* [#1529](https://github.com/shopgate/pwa/pull/1529) Configurable position indicator, margin and corner radius for the product page image gallery ([@shopg8felix](https://github.com/shopg8felix))
+* [#1521](https://github.com/shopgate/pwa/pull/1521) Configurable header with buttons and floating display type, search with history and preview in the core ([@shopg8felix](https://github.com/shopg8felix))
+* [#1520](https://github.com/shopgate/pwa/pull/1520) Tab bar on product page and cart, floating add to cart bar with quantity picker ([@shopg8felix](https://github.com/shopg8felix))
+* [#1519](https://github.com/shopgate/pwa/pull/1519) New variant selector, no product page flicker and quick add on product tiles ([@shopg8felix](https://github.com/shopg8felix))
+
+#### :bug: Bug Fix
+* [#1532](https://github.com/shopgate/pwa/pull/1532) Remove unsanitized dangerouslySetInnerHTML ([@AylinUenal](https://github.com/AylinUenal))
+* [#1537](https://github.com/shopgate/pwa/pull/1537) Transpile third-party packages for the browserslist targets ([@fkloes](https://github.com/fkloes))
+* [#1535](https://github.com/shopgate/pwa/pull/1535) Keep the page headline out of the header colors ([@shopg8felix](https://github.com/shopg8felix))
+
+#### :boom: Breaking Change
+* [#1532](https://github.com/shopgate/pwa/pull/1532) Remove unsanitized dangerouslySetInnerHTML ([@AylinUenal](https://github.com/AylinUenal))
+* [#1530](https://github.com/shopgate/pwa/pull/1530) Configurable category display (list or grid), subcategory chips and filter bar settings ([@shopg8felix](https://github.com/shopg8felix))
+* [#1521](https://github.com/shopgate/pwa/pull/1521) Configurable header with buttons and floating display type, search with history and preview in the core ([@shopg8felix](https://github.com/shopg8felix))
+* [#1520](https://github.com/shopgate/pwa/pull/1520) Tab bar on product page and cart, floating add to cart bar with quantity picker ([@shopg8felix](https://github.com/shopg8felix))
+* [#1519](https://github.com/shopgate/pwa/pull/1519) New variant selector, no product page flicker and quick add on product tiles ([@shopg8felix](https://github.com/shopg8felix))
+
+#### :house: Internal
+* [#1538](https://github.com/shopgate/pwa/pull/1538) Use auto-generated URLs for the theme URL settings ([@fkloes](https://github.com/fkloes))
+
+
 ## [v7.33.3](https://github.com/shopgate/pwa/compare/v7.33.2...v7.33.3) (2026-10-16)
 
 #### :rocket: Enhancement
