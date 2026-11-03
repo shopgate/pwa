@@ -37,6 +37,27 @@ describe('engage > icons > components > SvgIcon', () => {
     expect(svg.style.getPropertyValue('--sgi-stroke-scale')).toBe('1.25');
   });
 
+  it('sets the line width of the icon for line icons', () => {
+    const svg = renderSvg({
+      markup: '<svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="3"><path d="M1 1"/></svg>',
+      strokeWidth: 1.5,
+    });
+
+    expect(svg.style.getPropertyValue('--sgi-stroke-icon')).toBe('1.5');
+    expect(svg.style.getPropertyValue('--sgi-stroke-scale')).toBe('2');
+  });
+
+  it('ignores the line width of the icon for fill icons and invalid values', () => {
+    expect(renderSvg({
+      markup: '<svg viewBox="0 0 24 24"><path d="M1 1"/></svg>',
+      strokeWidth: 1.5,
+    }).style.getPropertyValue('--sgi-stroke-icon')).toBe('');
+    expect(renderSvg({
+      markup: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 1"/></svg>',
+      strokeWidth: 0,
+    }).style.getPropertyValue('--sgi-stroke-icon')).toBe('');
+  });
+
   it('renders the content of an svg element with the given or the default viewBox', () => {
     expect(renderSvg({ markup: '<path d="M1 1"/>' }).getAttribute('viewBox')).toBe('0 0 24 24');
     expect(renderSvg({
@@ -65,7 +86,7 @@ describe('engage > icons > components > SvgIcon', () => {
     expect(svg.style.strokeWidth).toBe('');
     expect(svg.style.getPropertyValue('--sgi-stroke-base')).toBe('1.5');
     expect(svg.style.getPropertyValue('--sgi-stroke-scale')).toBe('2');
-    expect(getComputedStyle(svg).strokeWidth).toBe('calc(var(--sg-components-icon-strokeWidth, var(--sgi-stroke-base)) * var(--sgi-stroke-scale))');
+    expect(getComputedStyle(svg).strokeWidth).toBe('calc(var(--sgi-stroke-icon, var(--sg-components-icon-strokeWidth, var(--sgi-stroke-base))) * var(--sgi-stroke-scale))');
     expect(svg.getAttribute('stroke-linecap')).toBe('round');
     expect(svg.getAttribute('class')).toContain('custom');
     expect(svg.getAttribute('class')).toContain('common__icon');

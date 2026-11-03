@@ -1002,6 +1002,39 @@ describe('settings / reducers / appSettings', () => {
       });
     });
 
+    it('keeps a positive line width of an override and drops invalid ones', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg/>',
+            strokeWidth: 1.5,
+          },
+          heart: {
+            svg: '<svg/>',
+            strokeWidth: -1,
+          },
+          home: {
+            svg: '<svg/>',
+            strokeWidth: 'thin',
+          },
+          share: {
+            svg: '<svg/>',
+            strokeWidth: Number.NaN,
+          },
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg/>',
+          strokeWidth: 1.5,
+        },
+        heart: { svg: '<svg/>' },
+        home: { svg: '<svg/>' },
+        share: { svg: '<svg/>' },
+      });
+    });
+
     it('drops an override a later payload omits', () => {
       const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
         icons: { cart: { svg: '<svg/>' } },

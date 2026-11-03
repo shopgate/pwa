@@ -17,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
     height: '1em',
   },
   stroke: {
-    strokeWidth: `calc(var(${theme.vars.components.icon.strokeWidth}, var(--sgi-stroke-base)) * var(--sgi-stroke-scale))`,
+    strokeWidth: `calc(var(--sgi-stroke-icon, var(${theme.vars.components.icon.strokeWidth}, var(--sgi-stroke-base))) * var(--sgi-stroke-scale))`,
   },
 }));
 
@@ -57,6 +57,10 @@ export interface SvgIconProps {
    * @default 1
    */
   scale?: number;
+  /**
+   * Line width on the 24 unit grid for icons drawn with lines. Wins over the global line width.
+   */
+  strokeWidth?: number;
 }
 
 /**
@@ -103,9 +107,15 @@ export const scaleViewBox = (viewBox: string, scale?: number) => {
  * @param icon The parsed icon.
  * @param viewBox The viewBox prop.
  * @param scale Size of the drawing relative to the icon box.
+ * @param strokeWidth Line width of this icon on the 24 unit grid.
  * @returns The viewBox, the attributes and the styles of the svg element.
  */
-const getSvgProps = (icon: ParsedIcon, viewBox?: string, scale?: number) => {
+const getSvgProps = (
+  icon: ParsedIcon,
+  viewBox?: string,
+  scale?: number,
+  strokeWidth?: number
+) => {
   const resolvedViewBox = scaleViewBox(icon.viewBox ?? viewBox ?? DEFAULT_VIEW_BOX, scale);
   const { fill, ...presentation } = icon.attributes;
 
@@ -129,6 +139,10 @@ const getSvgProps = (icon: ParsedIcon, viewBox?: string, scale?: number) => {
 
     style['--sgi-stroke-base'] = formatNumber(icon.strokeWidth / strokeScale);
     style['--sgi-stroke-scale'] = formatNumber(strokeScale);
+
+    if (typeof strokeWidth === 'number' && Number.isFinite(strokeWidth) && strokeWidth > 0) {
+      style['--sgi-stroke-icon'] = formatNumber(strokeWidth);
+    }
   }
 
   return {
@@ -153,6 +167,7 @@ const SvgIcon = ({
   keepColors = false,
   normalize = true,
   scale,
+  strokeWidth,
 }: SvgIconProps) => {
   const { cx, classes } = useStyles();
   const icon = useMemo(
@@ -162,7 +177,10 @@ const SvgIcon = ({
     }),
     [markup, keepColors, normalize]
   );
-  const svg = useMemo(() => getSvgProps(icon, viewBox, scale), [icon, viewBox, scale]);
+  const svg = useMemo(
+    () => getSvgProps(icon, viewBox, scale, strokeWidth),
+    [icon, viewBox, scale, strokeWidth]
+  );
 
   const style: CSSProperties = {
     ...svg.style,

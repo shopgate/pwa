@@ -2,7 +2,7 @@ import SvgIcon, { type SvgIconProps } from '../SvgIcon';
 import { useThemeIcon } from '../../hooks/useThemeIcon';
 import type { IconName } from '../../types';
 
-export interface ThemeIconProps extends Omit<SvgIconProps, 'markup' | 'keepColors' | 'normalize' | 'scale'> {
+export interface ThemeIconProps extends Omit<SvgIconProps, 'markup' | 'keepColors' | 'normalize' | 'scale' | 'strokeWidth'> {
   /**
    * The name of the icon, a core icon or one an extension registered.
    */
@@ -27,6 +27,7 @@ const ThemeIcon = ({ name, ...props }: ThemeIconProps) => {
       keepColors={icon.keepColors}
       normalize={icon.normalize}
       scale={icon.scale}
+      strokeWidth={icon.strokeWidth}
     />
   );
 };

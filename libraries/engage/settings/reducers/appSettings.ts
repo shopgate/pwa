@@ -102,6 +102,7 @@ const ICON_OVERRIDE_DEFAULTS: Required<IconOverride> = {
   svg: '',
   keepColors: false,
   scale: 1,
+  strokeWidth: 0,
 };
 
 /**
@@ -114,10 +115,16 @@ const pickValidIconOverrides = (icons: unknown): IconOverrides | undefined => {
     return undefined;
   }
 
-  const overrides = mapValues(
-    icons as Record<string, unknown>,
-    icon => pickValidSettings(icon, ICON_OVERRIDE_DEFAULTS)
-  );
+  const overrides = mapValues(icons as Record<string, unknown>, (icon) => {
+    const { strokeWidth, ...valid } = pickValidSettings(icon, ICON_OVERRIDE_DEFAULTS) ?? {};
+
+    return typeof strokeWidth === 'number' && Number.isFinite(strokeWidth) && strokeWidth > 0
+      ? {
+        ...valid,
+        strokeWidth,
+      }
+      : valid;
+  });
 
   return pickBy(overrides, icon => !!icon?.svg?.trim()) as IconOverrides;
 };

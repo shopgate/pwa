@@ -27,6 +27,10 @@ export interface IconDefinition {
    * Size of the drawing relative to the icon box, e.g. 0.9 for 90%. Defaults to 1.
    */
   scale?: number;
+  /**
+   * Line width on the 24 unit grid for icons drawn with lines. Wins over the global line width.
+   */
+  strokeWidth?: number;
 }
 
 /**

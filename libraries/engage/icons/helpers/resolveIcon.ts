@@ -49,6 +49,9 @@ export const resolveIcon = (
       svg: override.svg,
       keepColors: override.keepColors ?? false,
       ...(typeof override.scale === 'number' ? { scale: override.scale } : {}),
+      ...(typeof override.strokeWidth === 'number' && override.strokeWidth > 0
+        ? { strokeWidth: override.strokeWidth }
+        : {}),
       source: 'override',
       normalize: true,
     };
