@@ -2,14 +2,6 @@ import type { ComponentType } from 'react';
 import ThemeIcon from '@shopgate/engage/icons/components/ThemeIcon';
 import { resolveIcon } from '@shopgate/engage/icons/helpers';
 
-/**
- * Names the Theme Config offers for header icons that differ from the icon names.
- */
-const ICON_ALIASES: Record<string, string> = {
-  pin: 'location',
-  store: 'locator',
-};
-
 const actionIcons = new Map<string, ComponentType>();
 
 /**
@@ -22,12 +14,8 @@ export const getActionIcon = (name: string): ComponentType | null => {
     return null;
   }
 
-  const iconName = Object.prototype.hasOwnProperty.call(ICON_ALIASES, name)
-    ? ICON_ALIASES[name]
-    : name;
-
-  if (!actionIcons.has(iconName)) {
-    if (!resolveIcon(iconName)) {
+  if (!actionIcons.has(name)) {
+    if (!resolveIcon(name)) {
       return null;
     }
 
@@ -35,9 +23,9 @@ export const getActionIcon = (name: string): ComponentType | null => {
      * Renders the icon of a header button.
      * @returns The icon.
      */
-    const ActionIcon = () => <ThemeIcon name={iconName} />;
-    actionIcons.set(iconName, ActionIcon);
+    const ActionIcon = () => <ThemeIcon name={name} />;
+    actionIcons.set(name, ActionIcon);
   }
 
-  return actionIcons.get(iconName) ?? null;
+  return actionIcons.get(name) ?? null;
 };

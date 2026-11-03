@@ -101,7 +101,7 @@ const useScannerAction: NavigationActionHook = () => {
 
 const useStoreFinderAction: NavigationActionHook = () => ({
   available: true,
-  icon: 'pin',
+  icon: 'location',
   label: 'titles.store_finder',
   onClick: usePush(STORE_FINDER_PATTERN),
 });

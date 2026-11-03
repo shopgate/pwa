@@ -16,9 +16,9 @@ describe('getActionIcon', () => {
     expect(getActionIcon('magnifier')).toBe(icon);
   });
 
-  it('maps the header icon names that differ from the icon names', () => {
-    expect(getActionIcon('store')).toBe(getActionIcon('locator'));
-    expect(getActionIcon('pin')).toBe(getActionIcon('location'));
+  it('uses the icon names as they are', () => {
+    expect(getActionIcon('pin')).not.toBe(getActionIcon('location'));
+    expect(getActionIcon('store')).not.toBe(getActionIcon('locator'));
   });
 
   it('renders other icons of the shop theme config', () => {
