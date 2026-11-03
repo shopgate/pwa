@@ -60,7 +60,6 @@ const createSettings = (overrides = {}) => ({
   floating: { scrollBehavior: 'revealBar' },
   buttons: {
     left1: slot('openSearch'),
-    left2: slot('none'),
     right1: slot('share'),
     right2: slot('favorites'),
   },
