@@ -16,16 +16,24 @@ import { getProductAddToCartBarSettings } from '@shopgate/engage/settings/select
 import { broadcastLiveMessage, Section } from '@shopgate/engage/a11y';
 import { DIRECT_SHIP } from '@shopgate/engage/locations';
 import { ProductContext } from '@shopgate/engage/product/contexts';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
 import { useAddToCartFeedback } from '@shopgate/engage/product/hooks/useAddToCartFeedback';
 import { useFooterBarLayout } from '../../../../components/TabBar/hooks';
 import * as constants from './constants';
 import AddToCartButton from './components/AddToCartButton';
+import { MEDIA_COLUMN_WIDTH } from '../Layout';
 import connect from './connector';
 
 const MAX_QUANTITY = 99;
 
 const useStyles = makeStyles()(theme => ({
+  bar: {
+    [theme.breakpoints.up('md')]: {
+      '&&[data-variant="floating"]': {
+        paddingLeft: `calc(${MEDIA_COLUMN_WIDTH} + ${theme.spacing(2)}px)`,
+      },
+    },
+  },
   base: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -63,7 +71,8 @@ const AddToCartBar = (props) => {
     variant: configuredVariant,
     quantityPicker,
   } = useSelector(getProductAddToCartBarSettings);
-  const layout = useFooterBarLayout(configuredVariant);
+  const twoColumns = useMediaQuery(theme => theme.breakpoints.up('md'));
+  const layout = useFooterBarLayout(twoColumns ? 'floating' : configuredVariant);
   const stock = useSelector(state => getProductStock(state, { productId }));
   const minQuantity = stock?.minOrderQuantity > 0 ? stock.minOrderQuantity : 1;
   const maxQuantity = stock?.maxOrderQuantity > 0
@@ -187,7 +196,7 @@ const AddToCartBar = (props) => {
 
   return (
     (
-      <FooterBar variant={layout.variant} gap={layout.gap}>
+      <FooterBar variant={layout.variant} gap={layout.gap} className={classes.bar}>
         <SurroundPortals
           portalName={PRODUCT_ADD_TO_CART_BAR}
           portalProps={{

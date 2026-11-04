@@ -38,7 +38,7 @@ const buildUrl = (baseUrl, params = {}) => {
    * the params in the order given by the "params" object. Since "append" could create duplicate
    * query params, each param needs to be removed from the URLSearchParams before it's added again.
    */
-  Object.keys(params).forEach((key) => {
+  Object.keys(params).filter(key => params[key] !== undefined).forEach((key) => {
     parsedUrl.searchParams.delete(key);
     return parsedUrl.searchParams.append(key, params[key]);
   });
@@ -56,7 +56,7 @@ const buildUrl = (baseUrl, params = {}) => {
  * @param {string|null} src Source to the image.
  * @param {Object} dimension Dimension of the requested image.
  * @param {number} dimension.width Width in pixels.
- * @param {number} dimension.height Height in pixels.
+ * @param {number} [dimension.height] Height in pixels. Without one the image keeps its own shape.
  * @param {Object} [settings] Image service settings, as resolved by useImageServiceSettings.
  * @param {number} [settings.quality] Compression quality.
  * @param {string} [settings.fillColor] Fill color as a hash free hex, not a CSS color.

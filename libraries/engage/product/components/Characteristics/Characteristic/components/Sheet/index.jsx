@@ -4,8 +4,8 @@ import {
   SheetDrawer,
   SheetList,
   Menu,
-  ResponsiveContainer,
 } from '@shopgate/engage/components';
+import { useMediaQuery } from '@shopgate/engage/styles';
 import { ThemeContext } from '@shopgate/engage/core/contexts';
 import { VariantContext, ProductContext } from '@shopgate/engage/product/contexts';
 import { VariantAvailability } from '@shopgate/engage/product/components';
@@ -21,6 +21,7 @@ class CharacteristicSheet extends PureComponent {
     charId: PropTypes.string.isRequired,
     items: PropTypes.arrayOf(PropTypes.shape()).isRequired,
     label: PropTypes.string.isRequired,
+    menu: PropTypes.bool.isRequired,
     open: PropTypes.bool.isRequired,
     setViewAriaHidden: PropTypes.func.isRequired,
     contextRef: PropTypes.shape(),
@@ -45,6 +46,24 @@ class CharacteristicSheet extends PureComponent {
     selection: null,
     isFetching: false,
   };
+
+  /**
+   * Moves the focus into an opened menu and back to the characteristic once it closed.
+   * @param {Object} prevProps The previous component props.
+   */
+  componentDidUpdate(prevProps) {
+    const { menu, open, onDidClose } = this.props;
+
+    if (!menu || open === prevProps.open) {
+      return;
+    }
+
+    if (open) {
+      this.firstSelectableItemRef.current?.focus();
+    } else {
+      onDidClose();
+    }
+  }
 
   firstSelectableItemRef = React.createRef();
 
@@ -101,7 +120,7 @@ class CharacteristicSheet extends PureComponent {
    */
   render() {
     const {
-      items, label, open, selectedValue, contextRef, onDidClose,
+      items, label, menu, open, selectedValue, contextRef, onDidClose,
     } = this.props;
 
     let selectedIndex;
@@ -112,65 +131,64 @@ class CharacteristicSheet extends PureComponent {
       selectedIndex = items.findIndex(item => item.selectable);
     }
 
+    if (menu) {
+      return (
+        <ThemeContext.Consumer>
+          {({ ...contextProps }) => (
+            <Menu
+              isOpen={open}
+              onClose={this.onClose}
+              contextRef={contextRef}
+            >
+              {/* Since the Menu component uses a "portal" internally, we need to manually
+                transfer the ThemeContext inside, so that children can access it */}
+              <ThemeContext.Provider value={contextProps}>
+                {items.map((item, index) => (
+                  <Item
+                    key={item.id}
+                    item={item}
+                    onClick={this.handleItemClick}
+                    rightComponent={() => this.renderAvailability(item.id)}
+                    selected={item.id === selectedValue}
+                    ref={index === selectedIndex ? this.firstSelectableItemRef : null}
+                    characteristics={{
+                      ...this.props.selection,
+                      [this.props.charId]: item.id,
+                    }}
+                  />
+                ))}
+              </ThemeContext.Provider>
+            </Menu>
+          )}
+        </ThemeContext.Consumer>
+      );
+    }
+
     return (
-      <>
-        <ResponsiveContainer appAlways breakpoint="xs">
-          <SheetDrawer
-            title={label}
-            isOpen={open}
-            onClose={this.onClose}
-            onDidOpen={this.onDidOpen}
-            onDidClose={onDidClose}
-          >
-            <SheetList className="theme__product__characteristic__sheet">
-              {items.map((item, index) => (
-                <Item
-                  item={item}
-                  key={item.id}
-                  onClick={this.handleItemClick}
-                  rightComponent={() => this.renderAvailability(item.id)}
-                  selected={item.id === selectedValue}
-                  ref={index === selectedIndex ? this.firstSelectableItemRef : null}
-                  characteristics={{
-                    ...this.props.selection,
-                    [this.props.charId]: item.id,
-                  }}
-                />
-              ))}
-            </SheetList>
-          </SheetDrawer>
-        </ResponsiveContainer>
-        <ResponsiveContainer webOnly breakpoint=">xs">
-          <ThemeContext.Consumer>
-            {({ ...contextProps }) => (
-              <Menu
-                isOpen={open}
-                onClose={this.onClose}
-                contextRef={contextRef}
-              >
-                {/* Since the Menu component uses a "portal" internally, we need to manually
-                  transfer the ThemeContext inside, so that children can access it */}
-                <ThemeContext.Provider value={contextProps}>
-                  {items.map((item, index) => (
-                    <Item
-                      key={item.id}
-                      item={item}
-                      onClick={this.handleItemClick}
-                      rightComponent={() => this.renderAvailability(item.id)}
-                      selected={item.id === selectedValue}
-                      ref={index === selectedIndex ? this.firstSelectableItemRef : null}
-                      characteristics={{
-                        ...this.props.selection,
-                        [this.props.charId]: item.id,
-                      }}
-                    />
-                  ))}
-                </ThemeContext.Provider>
-              </Menu>
-            )}
-          </ThemeContext.Consumer>
-        </ResponsiveContainer>
-      </>
+      <SheetDrawer
+        title={label}
+        isOpen={open}
+        onClose={this.onClose}
+        onDidOpen={this.onDidOpen}
+        onDidClose={onDidClose}
+      >
+        <SheetList className="theme__product__characteristic__sheet">
+          {items.map((item, index) => (
+            <Item
+              item={item}
+              key={item.id}
+              onClick={this.handleItemClick}
+              rightComponent={() => this.renderAvailability(item.id)}
+              selected={item.id === selectedValue}
+              ref={index === selectedIndex ? this.firstSelectableItemRef : null}
+              characteristics={{
+                ...this.props.selection,
+                [this.props.charId]: item.id,
+              }}
+            />
+          ))}
+        </SheetList>
+      </SheetDrawer>
     );
   }
 }
@@ -179,28 +197,32 @@ class CharacteristicSheet extends PureComponent {
  * @param {Object} props The original component props.
  * @returns {JSX}
  */
-const SheetComponent = props => (
-  <ViewContext.Consumer>
-    {({ setAriaHidden }) => (
-      <ProductContext.Consumer>
-        {({ productId, fulfillmentMethods, isFetching }) => (
-          <VariantContext.Consumer>
-            {({ characteristics }) => (
-              <CharacteristicSheet
-                productId={productId}
-                selection={characteristics}
-                setViewAriaHidden={setAriaHidden}
-                fulfillmentMethods={fulfillmentMethods}
-                isFetching={isFetching}
-                {...props}
-              />
-            )}
-          </VariantContext.Consumer>
-        )}
-      </ProductContext.Consumer>
-    )}
-  </ViewContext.Consumer>
+const SheetComponent = (props) => {
+  const menu = useMediaQuery(theme => theme.breakpoints.up('md'));
 
-);
+  return (
+    <ViewContext.Consumer>
+      {({ setAriaHidden }) => (
+        <ProductContext.Consumer>
+          {({ productId, fulfillmentMethods, isFetching }) => (
+            <VariantContext.Consumer>
+              {({ characteristics }) => (
+                <CharacteristicSheet
+                  productId={productId}
+                  selection={characteristics}
+                  setViewAriaHidden={setAriaHidden}
+                  fulfillmentMethods={fulfillmentMethods}
+                  isFetching={isFetching}
+                  menu={menu}
+                  {...props}
+                />
+              )}
+            </VariantContext.Consumer>
+          )}
+        </ProductContext.Consumer>
+      )}
+    </ViewContext.Consumer>
+  );
+};
 
 export default SheetComponent;
