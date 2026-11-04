@@ -1,7 +1,13 @@
 import { act, render } from '@testing-library/react';
 import { renderToString } from 'react-dom/server';
+import { logger } from '@shopgate/engage/core/helpers';
 import { setIconOverrides } from '../../helpers/overrides';
 import ThemeIcon from './ThemeIcon';
+
+jest.mock('@shopgate/engage/core/helpers', () => ({
+  isDev: true,
+  logger: { warn: jest.fn() },
+}));
 
 jest.mock('../../helpers/themeIcons', () => ({
   ...jest.requireActual('../../helpers/themeIcons'),
@@ -46,5 +52,24 @@ describe('engage > icons > components > ThemeIcon', () => {
     const { container } = render(<ThemeIcon name="unknown" />);
 
     expect(container.innerHTML).toBe('');
+  });
+
+  it('warns once per unknown name', () => {
+    (logger.warn as jest.Mock).mockClear();
+
+    render(<ThemeIcon name="@shopgate/ext-foo/missing" />);
+    render(<ThemeIcon name="@shopgate/ext-foo/missing" />);
+    render(<ThemeIcon name="@shopgate/ext-foo/other" />);
+
+    expect(logger.warn).toHaveBeenCalledTimes(2);
+    expect(logger.warn).toHaveBeenCalledWith(expect.stringContaining('"@shopgate/ext-foo/missing"'));
+  });
+
+  it('doesn\'t warn for known names', () => {
+    (logger.warn as jest.Mock).mockClear();
+
+    render(<ThemeIcon name="cart" />);
+
+    expect(logger.warn).not.toHaveBeenCalled();
   });
 });

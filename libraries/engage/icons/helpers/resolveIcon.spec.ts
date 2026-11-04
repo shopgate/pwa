@@ -4,7 +4,7 @@ import { getIconCatalog } from './catalog';
 import { getIconDefinition, registerIcons } from './registry';
 import { resolveIcon } from './resolveIcon';
 import { parseIconSvg } from './parseIconSvg';
-import type { RegisteredIcon } from '../types';
+import type { IconOverrides, RegisteredIcon } from '../types';
 
 const mockLegacyIcons: Record<string, string | null> = {};
 
@@ -202,6 +202,41 @@ describe('engage > icons > helpers', () => {
         name: '@shopgate/ext-foo/truck',
         source: '@shopgate/ext-foo',
         default: '<svg viewBox="0 0 32 32"/>',
+      });
+    });
+
+    it('names the scope of the extension as the source of nested names', () => {
+      registerIcons({ '@shopgate/ext-foo/arrows/left': '<svg/>' });
+
+      expect(getIconCatalog().icons).toContainEqual({
+        name: '@shopgate/ext-foo/arrows/left',
+        source: '@shopgate/ext-foo/arrows',
+        default: '<svg/>',
+      });
+    });
+
+    it('lists every core icon once with its default and without a legacy override by default', () => {
+      const coreEntries = getIconCatalog().icons.filter(icon => icon.source === 'core');
+
+      expect(coreEntries.map(icon => icon.name)).toEqual(Object.keys(coreIcons));
+      expect(coreEntries.every(icon => icon.default && !('legacyOverride' in icon))).toBe(true);
+    });
+
+    it('drops the options of an override that have the wrong type', () => {
+      const overrides = {
+        cart: {
+          svg: '<svg/>',
+          keepColors: 'yes',
+          scale: '2',
+          strokeWidth: -1,
+        },
+      } as unknown as IconOverrides;
+
+      expect(resolveIcon('cart', overrides)).toEqual({
+        svg: '<svg/>',
+        keepColors: false,
+        source: 'override',
+        normalize: true,
       });
     });
   });

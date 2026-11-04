@@ -14,6 +14,8 @@ export const isCoreIcon = (name: string) => Object.prototype.hasOwnProperty.call
 /**
  * Registers icons of an extension, so merchants can replace them like the icons of the app.
  * Names have to be namespaced with the extension's scope, e.g. `@shopgate/ext-foo/truck`.
+ * Register them in an `appWillStart$` subscriber: icons registered after the first render only
+ * show once their component renders again.
  * @param icons The icons by name, as complete svg elements or as `{ svg }`.
  */
 export const registerIcons = (icons: Record<string, string | RegisteredIcon>) => {

@@ -78,7 +78,7 @@ export const parseIconSvg = memoize((
 
   const context: NormalizeContext = {
     keepColors,
-    idPrefix: `sgi${hashString(markup)}-`,
+    idPrefix: `sgi${hashString(`${Number(keepColors)}${markup}`)}-`,
     strokeWidths: [],
   };
 

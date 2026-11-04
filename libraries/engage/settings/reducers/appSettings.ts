@@ -2,6 +2,7 @@ import {
   isNil, isPlainObject, mapValues, merge, omitBy, pickBy,
 } from 'lodash';
 import type { IconOverride, IconOverrides } from '@shopgate/engage/icons/types';
+import { isValidStrokeWidth } from '@shopgate/engage/icons/helpers/iconOptions';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppBarButtonSlot,
@@ -118,7 +119,7 @@ const pickValidIconOverrides = (icons: unknown): IconOverrides | undefined => {
   const overrides = mapValues(icons as Record<string, unknown>, (icon) => {
     const { strokeWidth, ...valid } = pickValidSettings(icon, ICON_OVERRIDE_DEFAULTS) ?? {};
 
-    return typeof strokeWidth === 'number' && Number.isFinite(strokeWidth) && strokeWidth > 0
+    return isValidStrokeWidth(strokeWidth)
       ? {
         ...valid,
         strokeWidth,

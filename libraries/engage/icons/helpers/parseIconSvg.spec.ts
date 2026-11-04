@@ -125,6 +125,14 @@ describe('engage > icons > helpers > parseIconSvg', () => {
     expect(icon.content).toBe('<image></image><path d="M1"></path>');
   });
 
+  it('uses other ids for the same markup with and without its colors', () => {
+    const markup = '<svg viewBox="0 0 10 10"><defs><linearGradient id="g"></linearGradient></defs><path fill="url(#g)"/></svg>';
+    const idOf = (content: string) => content.match(/id="([^"]+)"/)?.[1];
+
+    expect(idOf(parseIconSvg(markup).content))
+      .not.toBe(idOf(parseIconSvg(markup, { keepColors: true }).content));
+  });
+
   it.each([undefined, null, '', '   '])('returns an empty icon for %j', (markup) => {
     expect(parseIconSvg(markup as unknown as string)).toEqual({
       attributes: {},

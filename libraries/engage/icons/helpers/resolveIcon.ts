@@ -3,6 +3,7 @@ import { getLegacyThemeIcons } from './themeIcons';
 import { legacyDefaultHashes } from '../defaults/legacyDefaultHashes';
 import type { IconOverrides, ResolvedIcon } from '../types';
 import { collapseMarkup, hashString } from './_internal/hash';
+import { pickIconOptions } from './iconOptions';
 import { getIconOverrides } from './overrides';
 import { getIconDefinition, isCoreIcon } from './registry';
 
@@ -47,11 +48,7 @@ export const resolveIcon = (
   if (typeof override?.svg === 'string' && override.svg.trim()) {
     return {
       svg: override.svg,
-      keepColors: override.keepColors ?? false,
-      ...(typeof override.scale === 'number' ? { scale: override.scale } : {}),
-      ...(typeof override.strokeWidth === 'number' && override.strokeWidth > 0
-        ? { strokeWidth: override.strokeWidth }
-        : {}),
+      ...pickIconOptions(override),
       source: 'override',
       normalize: true,
     };

@@ -72,7 +72,7 @@ export const sanitizeSvgElement = (
   markup: string,
   onElement?: (element: Element) => void
 ): Element | null => {
-  const withoutProlog = markup.replace(/^(\s*(<\?xml[^>]*>|<!--[\s\S]*?-->|<!DOCTYPE[^>]*>))*/i, '').trim();
+  const withoutProlog = markup.replace(/^(\s*(<\?xml[^>]*>|<!--[\s\S]*?-->|<!DOCTYPE[^>[]*(\[[\s\S]*?\])?\s*>))*/i, '').trim();
   const svg = /^<svg[\s>]/i.test(withoutProlog) ? withoutProlog : `<svg>${withoutProlog}</svg>`;
 
   visitSvgElement = onElement ?? null;

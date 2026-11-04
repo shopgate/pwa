@@ -2,6 +2,7 @@ import { useMemo, type CSSProperties } from 'react';
 import camelCase from 'lodash/camelCase';
 import { makeStyles } from '@shopgate/engage/styles';
 import { parseIconSvg } from '../../helpers/parseIconSvg';
+import { isValidStrokeWidth } from '../../helpers/iconOptions';
 import type { ParsedIcon } from '../../types';
 
 const DEFAULT_VIEW_BOX = '0 0 24 24';
@@ -140,7 +141,7 @@ const getSvgProps = (
     style['--sgi-stroke-base'] = formatNumber(icon.strokeWidth / strokeScale);
     style['--sgi-stroke-scale'] = formatNumber(strokeScale);
 
-    if (typeof strokeWidth === 'number' && Number.isFinite(strokeWidth) && strokeWidth > 0) {
+    if (isValidStrokeWidth(strokeWidth)) {
       style['--sgi-stroke-icon'] = formatNumber(strokeWidth);
     }
   }

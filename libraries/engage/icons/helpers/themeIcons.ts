@@ -37,6 +37,8 @@ const readIcon = (name: string) => (resolver && resolver(name)) || legacyIcons[n
  * Creates the `icons` object of the theme config. It keeps the keys of the theme extension
  * config, but reads each icon through the resolver once one is set. Writes of a changed value
  * replace the delivered icon, writes of the value just read (e.g. by `writeToConfig`) are ignored.
+ * The icons are plain markup: `keepColors`, `scale` and `strokeWidth` of a merchant override don't
+ * reach code that renders them from here. Render icons with `ThemeIcon` to get those.
  * @param icons The icons of the theme extension config.
  * @returns The icons object.
  */

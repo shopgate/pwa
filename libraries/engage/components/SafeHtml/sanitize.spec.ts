@@ -14,6 +14,12 @@ describe('engage > components > SafeHtml > sanitizeSvgElement', () => {
     expect(svg?.getAttribute('fill')).toBe('none');
   });
 
+  it('removes a doctype with an internal subset', () => {
+    const svg = sanitizeSvgElement('<?xml version="1.0"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [\n  <!ENTITY ns "http://example.com">\n]><svg viewBox="0 0 48 48"><path d="M0"></path></svg>');
+
+    expect(svg?.outerHTML).toBe('<svg viewBox="0 0 48 48"><path d="M0"></path></svg>');
+  });
+
   it('removes scripts, event handlers and embedded html', () => {
     const svg = sanitizeSvgElement('<path d="M0" onload="alert(1)"></path><script>alert(1)</script><foreignObject><img src=x onerror=alert(1)></foreignObject><a href="javascript:alert(1)"><path d="M1"></path></a>');
 
