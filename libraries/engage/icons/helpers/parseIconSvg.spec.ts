@@ -116,6 +116,18 @@ describe('engage > icons > helpers > parseIconSvg', () => {
     expect(icon.content).toContain('<path d="M1"></path>');
   });
 
+  it('removes remote urls from presentation attributes and styles', () => {
+    const icon = parseIconSvg(
+      '<svg viewBox="0 0 24 24"><defs><linearGradient id="g"/></defs><path d="M0" fill="url(https://tracker.example/p.svg#g)" filter="url(\'https://tracker.example/f.svg#f\')" stroke="url(#g)" style="mask:url(https://tracker.example/m.svg#m);opacity:.5"/><path d="M1" style="clip-path:url(https://tracker.example/c.svg#c)"/></svg>',
+      { keepColors: true }
+    );
+
+    expect(icon.content).not.toContain('tracker.example');
+    expect(icon.content).toMatch(/stroke="url\(#sgi\w+-g\)"/);
+    expect(icon.content).toContain('style="opacity:.5"');
+    expect(icon.content).toContain('<path d="M1"></path>');
+  });
+
   it('removes references to other documents when normalizing is turned off', () => {
     const icon = parseIconSvg(
       '<svg viewBox="0 0 24 24"><image href="https://tracker.example/p.png"/><a href="https://example.com"><path d="M1"/></a></svg>',

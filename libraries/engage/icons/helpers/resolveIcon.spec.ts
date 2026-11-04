@@ -14,6 +14,7 @@ jest.mock('./themeIcons', () => ({
 }));
 
 jest.mock('@shopgate/engage/core/helpers', () => ({
+  isDev: true,
   logger: { warn: jest.fn() },
 }));
 
@@ -144,6 +145,29 @@ describe('engage > icons > helpers', () => {
         normalize: true,
       });
       expect(resolveIcon('@shopgate/ext-foo/box', {})?.svg).toBe('<svg/>');
+    });
+
+    it('warns about ignored properties of registered icons', () => {
+      registerIcons({
+        '@shopgate/ext-foo/colored': {
+          svg: '<svg/>',
+          keepColors: true,
+          scale: 0.9,
+        } as RegisteredIcon,
+      });
+
+      expect(logger.warn).toHaveBeenCalledWith(
+        'registerIcons: "@shopgate/ext-foo/colored" ignores keepColors, scale; only svg is supported'
+      );
+    });
+
+    it('doesn\'t warn for markup only', () => {
+      registerIcons({
+        '@shopgate/ext-foo/string': '<svg/>',
+        '@shopgate/ext-foo/object': { svg: '<svg/>' },
+      });
+
+      expect(logger.warn).not.toHaveBeenCalled();
     });
 
     it('keeps only the markup of registered icons', () => {

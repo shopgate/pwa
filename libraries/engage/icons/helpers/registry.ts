@@ -1,8 +1,23 @@
-import { logger } from '@shopgate/engage/core/helpers';
+import { isDev, logger } from '@shopgate/engage/core/helpers';
 import { coreIcons } from '../defaults/coreIcons';
 import type { IconDefinition, RegisteredIcon } from '../types';
 
 const registeredIcons = new Map<string, RegisteredIcon>();
+
+const SUPPORTED_PROPERTIES = ['svg'];
+
+/**
+ * Warns in development about properties of a registered icon that are ignored.
+ * @param name The icon name.
+ * @param icon The icon as passed to `registerIcons`.
+ */
+const warnIgnoredProperties = (name: string, icon: RegisteredIcon) => {
+  const ignored = Object.keys(icon).filter(key => !SUPPORTED_PROPERTIES.includes(key));
+
+  if (isDev && ignored.length) {
+    logger.warn(`registerIcons: "${name}" ignores ${ignored.join(', ')}; only ${SUPPORTED_PROPERTIES.join(', ')} is supported`);
+  }
+};
 
 /**
  * Checks whether a name belongs to an icon the app ships with.
@@ -32,6 +47,7 @@ export const registerIcons = (icons: Record<string, string | RegisteredIcon>) =>
       return;
     }
 
+    warnIgnoredProperties(name, definition);
     registeredIcons.set(name, { svg: definition.svg });
   });
 };

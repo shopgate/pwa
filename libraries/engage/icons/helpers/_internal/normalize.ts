@@ -12,6 +12,10 @@ const INLINED_PROPERTIES = [
 
 const SIMPLE_CLASS_SELECTOR = /^\.[\w-]+$/;
 
+const URL_ATTRIBUTES = [
+  'fill', 'stroke', 'filter', 'mask', 'clip-path', 'marker-start', 'marker-mid', 'marker-end',
+];
+
 const EXTERNAL_URL = /url\(\s*['"]?(?!#)/i;
 
 /**
@@ -149,6 +153,27 @@ export const removeExternalReferences = (element: Element) => {
 
     element.removeAttribute(name);
   });
+
+  URL_ATTRIBUTES.forEach((name) => {
+    if (EXTERNAL_URL.test(element.getAttribute(name) ?? '')) {
+      element.removeAttribute(name);
+    }
+  });
+
+  const style = element.getAttribute('style');
+
+  if (style && EXTERNAL_URL.test(style)) {
+    const kept = parseDeclarations(style)
+      .filter(([, value]) => !EXTERNAL_URL.test(value))
+      .map(([property, value]) => `${property}:${value}`)
+      .join(';');
+
+    if (kept) {
+      element.setAttribute('style', kept);
+    } else {
+      element.removeAttribute('style');
+    }
+  }
 };
 
 /**
