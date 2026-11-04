@@ -71,6 +71,7 @@ const useStyles = makeStyles<{
     },
     floatingInner: {
       padding: theme.spacing(0, 1.5),
+      '--app-bar-title-inset': `${inset + theme.spacing(1.5)}px`,
     },
     logo: {
       minWidth: 0,

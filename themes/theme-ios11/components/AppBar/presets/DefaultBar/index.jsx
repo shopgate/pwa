@@ -188,13 +188,13 @@ class AppBarDefault extends PureComponent {
       ...barProps
     } = this.props;
 
-    const headline = this.hasHeadline()
-      ? <AppBarHeadline title={i18n.text(barProps.title || '')} focus={setFocus && route.visible} />
-      : null;
-
     if (!route.visible || !this.state.target) {
       return null;
     }
+
+    const headline = this.hasHeadline()
+      ? <AppBarHeadline title={i18n.text(barProps.title || '')} focus={setFocus} />
+      : null;
 
     const portalProps = {
       floating,

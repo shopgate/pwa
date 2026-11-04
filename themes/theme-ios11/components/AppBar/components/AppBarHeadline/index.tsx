@@ -20,7 +20,6 @@ const useStyles = makeStyles()({
     textAlign: 'center',
     color: 'inherit',
     outline: 0,
-    pointerEvents: 'auto',
   },
 });
 
@@ -63,6 +62,7 @@ const AppBarHeadline = ({ title = '', focus = false }: Props) => {
           noWrap
           fontWeight="bold"
           tabIndex={-1}
+          aria-live="polite"
           className={cx(classes.text, 'theme__app-bar__title')}
           data-test-id={`title: ${text}`}
         >
