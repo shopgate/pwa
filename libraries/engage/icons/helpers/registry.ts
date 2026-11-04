@@ -6,6 +6,8 @@ const registeredIcons = new Map<string, RegisteredIcon>();
 
 const SUPPORTED_PROPERTIES = ['svg'];
 
+const EXTENSION_ICON_NAME = /^@[^/\s]+\/[^/\s]+\/[^\s]*[^/\s]$/;
+
 /**
  * Warns in development about properties of a registered icon that are ignored.
  * @param name The icon name.
@@ -37,8 +39,8 @@ export const registerIcons = (icons: Record<string, string | RegisteredIcon>) =>
   Object.entries(icons).forEach(([name, icon]) => {
     const definition: RegisteredIcon = typeof icon === 'string' ? { svg: icon } : icon;
 
-    if (isCoreIcon(name) || !name.includes('/')) {
-      logger.warn(`registerIcons: "${name}" is no namespaced extension icon name and was skipped`);
+    if (isCoreIcon(name) || !EXTENSION_ICON_NAME.test(name)) {
+      logger.warn(`registerIcons: "${name}" is no extension icon name of the form @scope/extension/name and was skipped`);
       return;
     }
 

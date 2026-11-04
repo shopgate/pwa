@@ -193,6 +193,11 @@ describe('engage > icons > helpers', () => {
     it.each([
       ['a core icon name', { cart: '<svg/>' }],
       ['a name without namespace', { truck: '<svg/>' }],
+      ['a name without scope', { 'ext-foo/truck': '<svg/>' }],
+      ['a name of a custom icon', { 'custom/abc': '<svg/>' }],
+      ['a scoped name without icon part', { '@shopgate/ext-foo': '<svg/>' }],
+      ['a name ending with a slash', { '@shopgate/ext-foo/': '<svg/>' }],
+      ['a name with whitespace', { '@shopgate/ext-foo/big truck': '<svg/>' }],
       ['an icon without markup', { '@shopgate/ext-foo/empty': '' }],
     ])('skips %s', (_, icons) => {
       registerIcons(icons);
