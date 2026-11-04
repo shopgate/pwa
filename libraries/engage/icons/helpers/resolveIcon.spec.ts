@@ -85,19 +85,19 @@ describe('engage > icons > helpers', () => {
 
       expect(resolveIcon('cart', {})).toEqual({
         svg: '<path d="legacy"/>',
-        keepColors: true,
+        keepColors: false,
         source: 'legacy',
         normalize: true,
       });
     });
 
-    it('keeps the colors of an icon customized in the theme extension config', () => {
+    it('replaces the colors of an icon customized in the theme extension config', () => {
       mockLegacyIcons.cart = '<path fill="#e30000" d="legacy"/>';
 
       const icon = resolveIcon('cart', {});
 
       expect(parseIconSvg(icon?.svg ?? '', { keepColors: icon?.keepColors }).content)
-        .toContain('fill="#e30000"');
+        .toContain('fill="currentColor"');
     });
 
     it('ignores defaults the theme extension config shipped, whatever their formatting', () => {

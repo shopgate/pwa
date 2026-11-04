@@ -31,8 +31,7 @@ export const getLegacyIconOverride = (name: string) => {
 
 /**
  * Resolves an icon by its name: an override from the app settings first, then an icon the
- * merchant customized in the theme extension config, then the default of the icon. Icons of the
- * theme extension config keep their colors, as they always did.
+ * merchant customized in the theme extension config, then the default of the icon.
  * @param name The icon name.
  * @param overrides The icon overrides of the app settings.
  * @returns The resolved icon, or null when no icon has that name.
@@ -63,7 +62,7 @@ export const resolveIcon = (
   if (legacy) {
     return {
       svg: legacy,
-      keepColors: true,
+      keepColors: false,
       source: 'legacy',
       normalize: true,
     };
