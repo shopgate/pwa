@@ -6,6 +6,7 @@ import {
   inlineStyleElements,
   normalizeElement,
   removeExternalReferences,
+  removeExternalStyleReferences,
   unwrapLinks,
   type NormalizeContext,
 } from './_internal/normalize';
@@ -95,6 +96,7 @@ export const parseIconSvg = memoize((
   }
 
   unwrapLinks(root);
+  removeExternalStyleReferences(root);
 
   if (normalize) {
     inlineStyleElements(root, context);

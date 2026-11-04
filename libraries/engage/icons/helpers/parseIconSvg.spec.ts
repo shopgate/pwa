@@ -128,6 +128,18 @@ describe('engage > icons > helpers > parseIconSvg', () => {
     expect(icon.content).toContain('<path d="M1"></path>');
   });
 
+  it('removes remote urls and imports from style elements when normalizing is turned off', () => {
+    const icon = parseIconSvg(
+      '<svg viewBox="0 0 24 24"><style>@import url(https://tracker.example/s.css);.a{fill:url(https://tracker.example/p.svg#g)}.b{fill:url(#local);opacity:.5}</style><path class="a" d="M0"/><path class="b" d="M1"/></svg>',
+      { normalize: false }
+    );
+
+    expect(icon.content).not.toContain('tracker.example');
+    expect(icon.content).not.toContain('@import');
+    expect(icon.content).toContain('.a{fill:none}');
+    expect(icon.content).toContain('.b{fill:url(#local);opacity:.5}');
+  });
+
   it('removes references to other documents when normalizing is turned off', () => {
     const icon = parseIconSvg(
       '<svg viewBox="0 0 24 24"><image href="https://tracker.example/p.png"/><a href="https://example.com"><path d="M1"/></a></svg>',

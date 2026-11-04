@@ -177,6 +177,24 @@ export const removeExternalReferences = (element: Element) => {
 };
 
 /**
+ * Removes remote content from the `<style>` elements of icon markup: external `url()` values become
+ * `none` and `@import` rules are dropped. Local references to an id stay.
+ * @param root The svg element.
+ */
+export const removeExternalStyleReferences = (root: Element) => {
+  root.querySelectorAll('style').forEach((styleElement) => {
+    const css = styleElement.textContent ?? '';
+    const cleaned = css
+      .replace(/@import[^;]*;?/gi, '')
+      .replace(/url\(\s*(['"]?)(?!#)[^)]*\)/gi, 'none');
+
+    if (cleaned !== css) {
+      styleElement.replaceChildren(cleaned);
+    }
+  });
+};
+
+/**
  * Replaces the link elements of icon markup with their children, so an icon can't navigate.
  * @param root The svg element.
  */
