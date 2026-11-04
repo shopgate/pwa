@@ -2,7 +2,13 @@ import memoize from 'lodash/memoize';
 import { sanitizeSvgElement } from '@shopgate/engage/components/SafeHtml/sanitize';
 import type { ParseIconOptions, ParsedIcon } from '../types';
 import { hashString } from './_internal/hash';
-import { inlineStyleElements, normalizeElement, type NormalizeContext } from './_internal/normalize';
+import {
+  inlineStyleElements,
+  normalizeElement,
+  removeExternalReferences,
+  unwrapLinks,
+  type NormalizeContext,
+} from './_internal/normalize';
 
 const ROOT_ATTRIBUTES = [
   'fill', 'fill-rule', 'clip-rule', 'stroke', 'stroke-linecap', 'stroke-linejoin',
@@ -56,7 +62,8 @@ const readRootAttributes = (root: Element) => {
 
 /**
  * Parses icon markup: sanitizes it, reads the svg element's own viewBox and presentation
- * attributes and normalizes colors, ids and stroke widths within the same pass.
+ * attributes and normalizes colors, ids and stroke widths within the same pass. References to
+ * other documents and links are removed in any case.
  * @param markup A complete svg element or the content of one.
  * @param options The parse options.
  * @returns The parsed icon.
@@ -75,14 +82,19 @@ export const parseIconSvg = memoize((
     strokeWidths: [],
   };
 
-  const root = sanitizeSvgElement(
-    markup,
-    normalize ? element => normalizeElement(element, context) : undefined
-  );
+  const root = sanitizeSvgElement(markup, (element) => {
+    removeExternalReferences(element);
+
+    if (normalize) {
+      normalizeElement(element, context);
+    }
+  });
 
   if (!root) {
     return EMPTY_ICON;
   }
+
+  unwrapLinks(root);
 
   if (normalize) {
     inlineStyleElements(root, context);

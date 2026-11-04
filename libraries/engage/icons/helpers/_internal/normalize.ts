@@ -131,6 +131,37 @@ export const normalizeElement = (element: Element, context: NormalizeContext) =>
 };
 
 /**
+ * Removes references to other documents from an element of icon markup, so an icon can't load
+ * remote content. Local references to an id stay, and images keep embedded data.
+ * @param element The element.
+ */
+export const removeExternalReferences = (element: Element) => {
+  REFERENCE_ATTRIBUTES.forEach((name) => {
+    const value = element.getAttribute(name)?.trim();
+
+    if (value === undefined || value.startsWith('#')) {
+      return;
+    }
+
+    if (element.nodeName.toLowerCase() === 'image' && /^data:image\//i.test(value)) {
+      return;
+    }
+
+    element.removeAttribute(name);
+  });
+};
+
+/**
+ * Replaces the link elements of icon markup with their children, so an icon can't navigate.
+ * @param root The svg element.
+ */
+export const unwrapLinks = (root: Element) => {
+  Array.from(root.querySelectorAll('a')).forEach((link) => {
+    link.replaceWith(...Array.from(link.childNodes));
+  });
+};
+
+/**
  * Applies the simple class rules of `<style>` elements as attributes and removes the elements.
  * Inline svg styles apply to the whole page, so they must not stay in the markup.
  * @param root The svg element.

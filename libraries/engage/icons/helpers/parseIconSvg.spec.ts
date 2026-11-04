@@ -102,6 +102,29 @@ describe('engage > icons > helpers > parseIconSvg', () => {
     expect(icon.content).toBe('<path d="M1 1"></path>');
   });
 
+  it('removes references to other documents and links', () => {
+    const icon = parseIconSvg(
+      '<svg viewBox="0 0 24 24"><defs><linearGradient id="base"/><linearGradient id="g" href="#base"/></defs><image href="https://tracker.example/p.png"/><image xlink:href="https://tracker.example/q.png"/><image href="data:image/png;base64,AAAA"/><a href="https://example.com"><path d="M1"/></a></svg>',
+      { keepColors: true }
+    );
+
+    expect(icon.content).not.toContain('tracker.example');
+    expect(icon.content).not.toContain('example.com');
+    expect(icon.content).not.toContain('<a');
+    expect(icon.content).toContain('href="data:image/png;base64,AAAA"');
+    expect(icon.content).toMatch(/<linearGradient id="sgi\w+-g" href="#sgi\w+-base">/);
+    expect(icon.content).toContain('<path d="M1"></path>');
+  });
+
+  it('removes references to other documents when normalizing is turned off', () => {
+    const icon = parseIconSvg(
+      '<svg viewBox="0 0 24 24"><image href="https://tracker.example/p.png"/><a href="https://example.com"><path d="M1"/></a></svg>',
+      { normalize: false }
+    );
+
+    expect(icon.content).toBe('<image></image><path d="M1"></path>');
+  });
+
   it.each([undefined, null, '', '   '])('returns an empty icon for %j', (markup) => {
     expect(parseIconSvg(markup as unknown as string)).toEqual({
       attributes: {},
