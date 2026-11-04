@@ -138,6 +138,26 @@ describe('engage > icons > helpers', () => {
       expect(resolveIcon('@shopgate/ext-foo/box', {})?.keepColors).toBe(true);
     });
 
+    it('keeps the scale and line width of registered icons', () => {
+      registerIcons({
+        '@shopgate/ext-foo/sized': {
+          svg: '<svg/>',
+          scale: 0.9,
+          strokeWidth: 1.5,
+        },
+        '@shopgate/ext-foo/flat': {
+          svg: '<svg/>',
+          strokeWidth: 0,
+        },
+      });
+
+      expect(resolveIcon('@shopgate/ext-foo/sized', {})).toMatchObject({
+        scale: 0.9,
+        strokeWidth: 1.5,
+      });
+      expect(resolveIcon('@shopgate/ext-foo/flat', {})).not.toHaveProperty('strokeWidth');
+    });
+
     it.each([
       ['a core icon name', { cart: '<svg/>' }],
       ['a name without namespace', { truck: '<svg/>' }],
