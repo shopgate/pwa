@@ -43,6 +43,7 @@ describe('focusElement', () => {
 
     blurWindow(button);
     blurWindow(button);
+    button.dispatchEvent(new FocusEvent('focus'));
 
     expect(document.activeElement).toBe(button);
     expect(button.hasAttribute('data-silent-focus')).toBe(true);
@@ -67,5 +68,36 @@ describe('focusElement', () => {
     focusElement(button);
 
     expect(button.hasAttribute('data-silent-focus')).toBe(false);
+  });
+
+  it('shows the focus when the visitor starts using the keyboard on a silently focused element', () => {
+    const button = createButton('back');
+    document.dispatchEvent(new Event('pointerdown'));
+    focusElement(button);
+
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowDown' }));
+
+    expect(button.hasAttribute('data-silent-focus')).toBe(false);
+  });
+
+  it('removes a silent focus left from a tap when the keyboard is used later', () => {
+    const button = createButton('back');
+    button.setAttribute('data-silent-focus', '');
+    document.dispatchEvent(new KeyboardEvent('keydown', { key: 'Tab' }));
+
+    focusElement(button);
+
+    expect(button.hasAttribute('data-silent-focus')).toBe(false);
+  });
+
+  it('adds only one blur listener when the element is focused silently again', () => {
+    const button = createButton('back');
+    const addEventListener = jest.spyOn(button, 'addEventListener');
+    document.dispatchEvent(new Event('pointerdown'));
+
+    focusElement(button);
+    focusElement(button);
+
+    expect(addEventListener).toHaveBeenCalledTimes(1);
   });
 });

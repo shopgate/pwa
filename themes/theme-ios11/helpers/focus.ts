@@ -6,6 +6,7 @@ let keyboardUsed = false;
 document.addEventListener('keydown', (event) => {
   if (NAVIGATION_KEYS.includes(event.key)) {
     keyboardUsed = true;
+    (document.activeElement as HTMLElement | null)?.removeAttribute('data-silent-focus');
   }
 }, true);
 
@@ -14,9 +15,7 @@ document.addEventListener('pointerdown', () => {
 }, true);
 
 /**
- * Keeps the focus indicator of an element hidden until the focus moves to another element.
- * When the app or the browser window goes to the background, the element also gets a blur event
- * but stays the active element. It gets the focus back on return, so it stays silent.
+ * Keeps the focus indicator hidden until the focus moves on, also while the app is in the background.
  * @param element The element with the silent focus.
  */
 const keepSilentUntilFocusMoves = (element: HTMLElement) => {
