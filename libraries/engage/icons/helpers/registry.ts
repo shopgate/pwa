@@ -1,8 +1,8 @@
 import { logger } from '@shopgate/engage/core/helpers';
 import { coreIcons } from '../defaults/coreIcons';
-import type { IconDefinition } from '../types';
+import type { IconDefinition, RegisteredIcon } from '../types';
 
-const registeredIcons = new Map<string, IconDefinition>();
+const registeredIcons = new Map<string, RegisteredIcon>();
 
 /**
  * Checks whether a name belongs to an icon the app ships with.
@@ -14,9 +14,10 @@ export const isCoreIcon = (name: string) => Object.prototype.hasOwnProperty.call
 /**
  * Registers icons of an extension, so merchants can replace them like the icons of the app.
  * Names have to be namespaced with the extension's scope, e.g. `@shopgate/ext-foo/truck`.
- * @param icons The icons by name, as complete svg elements or as icon definitions.
+ * @param icons The icons by name, as complete svg elements or as icon definitions. A definition can
+ * carry further properties, which are kept with the icon.
  */
-export const registerIcons = (icons: Record<string, string | IconDefinition>) => {
+export const registerIcons = (icons: Record<string, string | RegisteredIcon>) => {
   Object.entries(icons).forEach(([name, icon]) => {
     const definition = typeof icon === 'string' ? { svg: icon } : icon;
 

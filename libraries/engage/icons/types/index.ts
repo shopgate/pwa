@@ -34,6 +34,14 @@ export interface IconDefinition {
 }
 
 /**
+ * An icon an extension registers. Besides the definition it can carry further properties, which
+ * are kept with the icon for features that build on them later.
+ */
+export interface RegisteredIcon extends IconDefinition {
+  [property: string]: unknown;
+}
+
+/**
  * An icon a merchant configured to replace one of the app.
  */
 export type IconOverride = IconDefinition;

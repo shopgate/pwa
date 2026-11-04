@@ -1,7 +1,7 @@
 import { logger } from '@shopgate/engage/core/helpers';
 import { coreIcons } from '../defaults/coreIcons';
 import { getIconCatalog } from './catalog';
-import { registerIcons } from './registry';
+import { getIconDefinition, registerIcons } from './registry';
 import { resolveIcon } from './resolveIcon';
 
 const mockLegacyIcons: Record<string, string | null> = {};
@@ -136,6 +136,21 @@ describe('engage > icons > helpers', () => {
         normalize: true,
       });
       expect(resolveIcon('@shopgate/ext-foo/box', {})?.keepColors).toBe(true);
+    });
+
+    it('keeps further properties of registered icons', () => {
+      registerIcons({
+        '@shopgate/ext-foo/labeled': {
+          svg: '<svg/>',
+          label: 'Labeled',
+        },
+      });
+
+      expect(getIconDefinition('@shopgate/ext-foo/labeled')).toEqual({
+        svg: '<svg/>',
+        label: 'Labeled',
+      });
+      expect(resolveIcon('@shopgate/ext-foo/labeled', {})).not.toHaveProperty('label');
     });
 
     it('keeps the scale and line width of registered icons', () => {
