@@ -10,15 +10,11 @@ const actionIcons = new Map<string, ComponentType>();
  * @returns The icon component, or null when no icon has that name.
  */
 export const getActionIcon = (name: string): ComponentType | null => {
-  if (!name) {
+  if (!name || !resolveIcon(name)) {
     return null;
   }
 
   if (!actionIcons.has(name)) {
-    if (!resolveIcon(name)) {
-      return null;
-    }
-
     /**
      * Renders the icon of a header button.
      * @returns The icon.
