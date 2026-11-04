@@ -3,6 +3,7 @@ import { coreIcons } from '../defaults/coreIcons';
 import { getIconCatalog } from './catalog';
 import { getIconDefinition, registerIcons } from './registry';
 import { resolveIcon } from './resolveIcon';
+import { parseIconSvg } from './parseIconSvg';
 import type { RegisteredIcon } from '../types';
 
 const mockLegacyIcons: Record<string, string | null> = {};
@@ -84,10 +85,19 @@ describe('engage > icons > helpers', () => {
 
       expect(resolveIcon('cart', {})).toEqual({
         svg: '<path d="legacy"/>',
-        keepColors: false,
+        keepColors: true,
         source: 'legacy',
         normalize: true,
       });
+    });
+
+    it('keeps the colors of an icon customized in the theme extension config', () => {
+      mockLegacyIcons.cart = '<path fill="#e30000" d="legacy"/>';
+
+      const icon = resolveIcon('cart', {});
+
+      expect(parseIconSvg(icon?.svg ?? '', { keepColors: icon?.keepColors }).content)
+        .toContain('fill="#e30000"');
     });
 
     it('ignores defaults the theme extension config shipped, whatever their formatting', () => {

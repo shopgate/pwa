@@ -14,7 +14,10 @@ export interface IconProps extends Omit<SvgIconProps, 'markup' | 'normalize'> {
  *
  * Provides basic styling via `currentColor` and supports size and color
  * overrides through props while allowing external class-based overrides.
+ * Colors of the markup are kept unless `keepColors` is false.
  */
-const Icon = ({ content, ...props }: IconProps) => <SvgIcon markup={content} {...props} />;
+const Icon = ({ content, keepColors = true, ...props }: IconProps) => (
+  <SvgIcon markup={content} keepColors={keepColors} {...props} />
+);
 
 export default Icon;
