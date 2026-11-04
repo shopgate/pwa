@@ -77,10 +77,6 @@ export const resolveIcon = (
   return {
     svg: definition.svg,
     keepColors: definition.keepColors ?? false,
-    ...(typeof definition.scale === 'number' ? { scale: definition.scale } : {}),
-    ...(typeof definition.strokeWidth === 'number' && definition.strokeWidth > 0
-      ? { strokeWidth: definition.strokeWidth }
-      : {}),
     source: 'default',
     normalize: !isCoreIcon(name),
   };

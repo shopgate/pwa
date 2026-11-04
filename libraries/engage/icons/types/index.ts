@@ -34,11 +34,13 @@ export interface IconDefinition {
 }
 
 /**
- * An icon an extension registers. Besides the definition it can carry further properties, which
- * are kept with the icon for features that build on them later.
+ * An icon an extension registers. Further optional fields, e.g. a label for the admin, can follow.
  */
-export interface RegisteredIcon extends IconDefinition {
-  [property: string]: unknown;
+export interface RegisteredIcon {
+  /**
+   * The markup of the icon as a complete svg element.
+   */
+  svg: string;
 }
 
 /**

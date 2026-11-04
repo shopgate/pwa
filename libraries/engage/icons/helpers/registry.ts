@@ -14,12 +14,11 @@ export const isCoreIcon = (name: string) => Object.prototype.hasOwnProperty.call
 /**
  * Registers icons of an extension, so merchants can replace them like the icons of the app.
  * Names have to be namespaced with the extension's scope, e.g. `@shopgate/ext-foo/truck`.
- * @param icons The icons by name, as complete svg elements or as icon definitions. A definition can
- * carry further properties, which are kept with the icon.
+ * @param icons The icons by name, as complete svg elements or as `{ svg }`.
  */
 export const registerIcons = (icons: Record<string, string | RegisteredIcon>) => {
   Object.entries(icons).forEach(([name, icon]) => {
-    const definition = typeof icon === 'string' ? { svg: icon } : icon;
+    const definition: RegisteredIcon = typeof icon === 'string' ? { svg: icon } : icon;
 
     if (isCoreIcon(name) || !name.includes('/')) {
       logger.warn(`registerIcons: "${name}" is no namespaced extension icon name and was skipped`);
@@ -31,7 +30,7 @@ export const registerIcons = (icons: Record<string, string | RegisteredIcon>) =>
       return;
     }
 
-    registeredIcons.set(name, definition);
+    registeredIcons.set(name, { svg: definition.svg });
   });
 };
 

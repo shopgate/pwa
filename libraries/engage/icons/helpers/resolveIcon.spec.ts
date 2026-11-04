@@ -3,6 +3,7 @@ import { coreIcons } from '../defaults/coreIcons';
 import { getIconCatalog } from './catalog';
 import { getIconDefinition, registerIcons } from './registry';
 import { resolveIcon } from './resolveIcon';
+import type { RegisteredIcon } from '../types';
 
 const mockLegacyIcons: Record<string, string | null> = {};
 
@@ -123,10 +124,7 @@ describe('engage > icons > helpers', () => {
     it('registers namespaced extension icons that get normalized', () => {
       registerIcons({
         '@shopgate/ext-foo/truck': '<svg viewBox="0 0 32 32"/>',
-        '@shopgate/ext-foo/box': {
-          svg: '<svg/>',
-          keepColors: true,
-        },
+        '@shopgate/ext-foo/box': { svg: '<svg/>' },
       });
 
       expect(resolveIcon('@shopgate/ext-foo/truck', {})).toEqual({
@@ -135,42 +133,27 @@ describe('engage > icons > helpers', () => {
         source: 'default',
         normalize: true,
       });
-      expect(resolveIcon('@shopgate/ext-foo/box', {})?.keepColors).toBe(true);
+      expect(resolveIcon('@shopgate/ext-foo/box', {})?.svg).toBe('<svg/>');
     });
 
-    it('keeps further properties of registered icons', () => {
-      registerIcons({
-        '@shopgate/ext-foo/labeled': {
-          svg: '<svg/>',
-          label: 'Labeled',
-        },
-      });
-
-      expect(getIconDefinition('@shopgate/ext-foo/labeled')).toEqual({
-        svg: '<svg/>',
-        label: 'Labeled',
-      });
-      expect(resolveIcon('@shopgate/ext-foo/labeled', {})).not.toHaveProperty('label');
-    });
-
-    it('keeps the scale and line width of registered icons', () => {
+    it('keeps only the markup of registered icons', () => {
       registerIcons({
         '@shopgate/ext-foo/sized': {
           svg: '<svg/>',
+          keepColors: true,
           scale: 0.9,
           strokeWidth: 1.5,
-        },
-        '@shopgate/ext-foo/flat': {
-          svg: '<svg/>',
-          strokeWidth: 0,
-        },
+          label: 'Sized',
+        } as RegisteredIcon,
       });
 
-      expect(resolveIcon('@shopgate/ext-foo/sized', {})).toMatchObject({
-        scale: 0.9,
-        strokeWidth: 1.5,
+      expect(getIconDefinition('@shopgate/ext-foo/sized')).toEqual({ svg: '<svg/>' });
+      expect(resolveIcon('@shopgate/ext-foo/sized', {})).toEqual({
+        svg: '<svg/>',
+        keepColors: false,
+        source: 'default',
+        normalize: true,
       });
-      expect(resolveIcon('@shopgate/ext-foo/flat', {})).not.toHaveProperty('strokeWidth');
     });
 
     it.each([
