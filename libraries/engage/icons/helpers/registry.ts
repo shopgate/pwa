@@ -6,7 +6,7 @@ const registeredIcons = new Map<string, RegisteredIcon>();
 
 const SUPPORTED_PROPERTIES = ['svg'];
 
-const EXTENSION_ICON_NAME = /^@[^/\s]+\/[^/\s]+\/[^\s]*[^/\s]$/;
+const EXTENSION_ICON_NAME = /^@[^/\s]+\/[^/\s]+(\/[^/\s]+)+$/;
 
 /**
  * Warns in development about properties of a registered icon that are ignored.
