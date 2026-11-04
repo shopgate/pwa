@@ -1,6 +1,8 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
+import { IconButton } from '@shopgate/engage/components/v2';
+import TrashOutlineIcon from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
 import {
   Grid, I18n, ContextMenu, SurroundPortals, TextLink,
 } from '@shopgate/engage/components';
@@ -12,13 +14,25 @@ import {
 import {
   CartContextMenuItemChangeLocation,
   CartContextMenuItemChangeFulfillment,
+  DIRECT_SHIP,
 } from '@shopgate/engage/locations';
+import { i18n } from '@shopgate/engage/core/helpers';
 import { ITEM_PATH, ProductName } from '@shopgate/engage/product';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 import { ConditionalWrapper } from '../../../components';
 
 const useStyles = makeStyles()(theme => ({
+  root: {
+    [theme.breakpoints.up('md')]: {
+      display: 'contents',
+    },
+  },
+  name: {
+    [theme.breakpoints.up('md')]: {
+      gridArea: 'name',
+    },
+  },
   title: {
     fontWeight: theme.typography.fontWeightMedium,
     wordBreak: ['keep-all', 'break-word'],
@@ -27,9 +41,31 @@ const useStyles = makeStyles()(theme => ({
   menuContainer: {
     marginTop: theme.spacing(-2),
     marginRight: theme.spacing(-2),
+    [theme.breakpoints.up('md')]: {
+      gridArea: 'menu',
+      margin: 0,
+      display: 'flex',
+      alignItems: 'center',
+    },
+    '.theme__cart__item-cards &': {
+      gridArea: 'auto',
+      position: 'absolute',
+      top: theme.spacing(1),
+      right: theme.spacing(1),
+      zIndex: 1,
+      gap: theme.spacing(0.5),
+      '& .engage__cart__item__remove, & button': {
+        background: theme.palette.background.surface,
+        boxShadow: theme.shadows[1],
+        borderRadius: '50%',
+      },
+    },
   },
   menuToggleContainer: {
     margin: theme.spacing(1),
+    [theme.breakpoints.up('md')]: {
+      margin: 0,
+    },
   },
   menuToggleButton: {
     height: theme.spacing(4),
@@ -38,6 +74,9 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-end',
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'center',
+    },
   },
 }));
 
@@ -50,7 +89,8 @@ const useStyles = makeStyles()(theme => ({
  */
 export function CartItemProductTitle({ value, productId }) {
   const { classes } = useStyles();
-  const { invokeFulfillmentAction } = useCartItem();
+  const { invokeFulfillmentAction, merchantFulfillmentMethodsCount } = useCartItem();
+  const isWide = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   const context = useCartItemProduct();
   const {
@@ -71,14 +111,17 @@ export function CartItemProductTitle({ value, productId }) {
     invokeFulfillmentAction('changeFulfillment');
   }, [invokeFulfillmentAction]);
 
+  const hasFulfillmentActions = merchantFulfillmentMethodsCount > 1
+    || (!!cartItem?.fulfillment?.method && cartItem.fulfillment.method !== DIRECT_SHIP);
+
   const contextMenuClasses = useMemo(() => ({
     button: classes.menuToggleButton,
     container: classes.menuToggleContainer,
   }), [classes.menuToggleButton, classes.menuToggleContainer]);
 
   return (
-    <Grid>
-      <Grid.Item grow={1}>
+    <Grid className={classes.root}>
+      <Grid.Item grow={1} className={classes.name}>
         <ConditionalWrapper
           condition={isEditable && isLinkable}
           wrapper={children =>
@@ -106,6 +149,17 @@ export function CartItemProductTitle({ value, productId }) {
               toggleEditMode,
             }}
           >
+            {isWide && (
+              <IconButton
+                aria-label={i18n.text('cart.remove')}
+                onClick={handleRemove}
+                className="engage__cart__item__remove"
+                data-test-id="cartItemRemove"
+              >
+                <TrashOutlineIcon />
+              </IconButton>
+            )}
+            {(!isWide || hasFulfillmentActions) && (
             <ContextMenu classes={contextMenuClasses}>
               <SurroundPortals
                 portalName={CART_ITEM_CONTEXT_MENU_ITEM_REMOVE}
@@ -129,6 +183,7 @@ export function CartItemProductTitle({ value, productId }) {
                 onClick={handleChangeFulfillmentClick}
               />
             </ContextMenu>
+            )}
           </SurroundPortals>
         </Grid.Item>
       )}

@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
 import {
   Grid, Link, ProductProperties, SurroundPortals, ConditionalWrapper, I18n,
 } from '@shopgate/engage/components';
@@ -12,7 +12,9 @@ import {
 import { showTaxDisclaimer } from '@shopgate/engage/market';
 import { bin2hex } from '@shopgate/engage/core/helpers';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
-import { ProductImage, PriceInfo, ITEM_PATH } from '@shopgate/engage/product';
+import {
+  ProductImage, PriceInfo, QuantityStepper, ITEM_PATH,
+} from '@shopgate/engage/product';
 import {
   CartItemProductChangeLocation,
   CartChangeFulfillmentMethod,
@@ -25,21 +27,70 @@ import CartItemProductPriceList from './CartItemProductPriceList';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 
 const leftColumnWidth = 72;
+const leftColumnWidthWide = 112;
+const TILE_SCOPE = '.theme__cart__item-cards &';
 
 const useStyles = makeStyles()((theme, _params, classes) => ({
   item: {
     padding: theme.spacing(2),
     // Row is DOM reversed for a11y navigation.
     flexDirection: 'row-reverse',
+    [theme.breakpoints.up('md')]: {
+      display: 'grid',
+      gridTemplateColumns: `${leftColumnWidthWide}px minmax(0, 2fr) minmax(max-content, 1fr) auto auto`,
+      gridTemplateRows: '1fr auto auto 1fr',
+      gridTemplateAreas: `
+        "image . price stepper menu"
+        "image name price stepper menu"
+        "image props price stepper menu"
+        "image . price stepper menu"
+      `,
+      alignItems: 'center',
+      columnGap: theme.spacing(2),
+    },
+    [TILE_SCOPE]: {
+      position: 'relative',
+      flex: 1,
+      padding: theme.spacing(1.5, 1.5, 2),
+      gridTemplateColumns: 'minmax(0, 1fr)',
+      gridTemplateRows: 'auto auto 1fr auto auto',
+      gridTemplateAreas: '"image" "name" "props" "price" "stepper"',
+      alignItems: 'start',
+      rowGap: theme.spacing(1),
+    },
+  },
+  flattened: {
+    [theme.breakpoints.up('md')]: {
+      display: 'contents',
+    },
   },
   leftColumn: {
     width: leftColumnWidth,
+    [theme.breakpoints.up('md')]: {
+      gridArea: 'image',
+      width: leftColumnWidthWide,
+    },
+    [TILE_SCOPE]: {
+      width: `calc(100% + ${theme.spacing(3)}px)`,
+      margin: theme.spacing(-1.5, -1.5, 0.5),
+    },
   },
   image: {
     background: theme.palette.background.emphasized,
     borderRadius: theme.shape.borderRadius,
     marginBottom: theme.spacing(1.25),
     width: leftColumnWidth,
+    [theme.breakpoints.up('md')]: {
+      width: leftColumnWidthWide,
+      marginBottom: 0,
+    },
+    [TILE_SCOPE]: {
+      width: '100%',
+      borderRadius: 0,
+    },
+  },
+  stepper: {
+    gridArea: 'stepper',
   },
   content: {
     display: 'flex',
@@ -56,6 +107,10 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   },
   promotionLine: {
     marginTop: 0,
+    [theme.breakpoints.up('md')]: {
+      gridArea: 'price',
+      display: 'block',
+    },
   },
   promotionLineItem: {
     width: '100%',
@@ -66,12 +121,25 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
   },
   disclaimerSpacer: {
     width: 10,
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
   price: {
     display: 'flex',
     marginLeft: '1em',
     alignItems: 'flex-end',
     flexDirection: 'column',
+    [theme.breakpoints.up('md')]: {
+      gridArea: 'price',
+      marginLeft: 0,
+      alignItems: 'center',
+      textAlign: 'center',
+    },
+    [TILE_SCOPE]: {
+      alignItems: 'flex-start',
+      textAlign: 'left',
+    },
   },
   properties: {
     wordBreak: 'break-word',
@@ -83,7 +151,14 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
       [`+ .${classes.price}`]: {
         textAlign: 'right',
         maxWidth: '40%',
+        [theme.breakpoints.up('md')]: {
+          maxWidth: 'none',
+        },
       },
+    },
+    [theme.breakpoints.up('md')]: {
+      gridArea: 'props',
+      marginTop: theme.spacing(0.5),
     },
   },
   itemInactive: {
@@ -105,6 +180,7 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
  */
 export function CartItemProductLayout() {
   const { classes, cx } = useStyles();
+  const isWide = useMediaQuery(theme => theme.breakpoints.up('md'));
   // Added with PWA 6 - CCP-2372
   const {
     show,
@@ -144,6 +220,9 @@ export function CartItemProductLayout() {
     ? true
     : getLineItemActiveStatus(cartItem?.status, cartItem?.subStatus);
 
+  const showQuantityPicker = !isOrderDetails && allowQuantityChange;
+  const showStepper = isWide && !(product.unit && product.hasCatchWeight);
+
   const showLineItemPromotions = useMemo(() => {
     if (isOrderDetails || isCheckoutConfirmation) {
       return false;
@@ -158,14 +237,14 @@ export function CartItemProductLayout() {
         [classes.itemInactive]: !isActive,
       })}
       >
-        <Grid.Item className={classes.content} grow={1}>
+        <Grid.Item className={cx(classes.content, classes.flattened)} grow={1}>
           <SurroundPortals
             portalName={CART_ITEM_LINK}
             portalProps={portalProps}
           >
             <CartItemProductTitle value={product.name} productId={product.id} />
           </SurroundPortals>
-          <Grid className={classes.info}>
+          <Grid className={cx(classes.info, classes.flattened)}>
             <Grid.Item grow={1} className={classes.properties}>
               <SurroundPortals
                 portalName={CART_ITEM_PROPERTIES}
@@ -188,6 +267,21 @@ export function CartItemProductLayout() {
                 </>
               )}
             </Grid.Item>
+            {showQuantityPicker && showStepper && (
+              <Grid.Item className={classes.stepper}>
+                <SurroundPortals
+                  portalName={CART_ITEM_QUANTITY_PICKER}
+                  portalProps={portalProps}
+                >
+                  <QuantityStepper
+                    value={cartItem.quantity}
+                    onChange={handleUpdate}
+                    disabled={!isEditable}
+                    className="theme__cart__product__quantity-picker"
+                  />
+                </SurroundPortals>
+              </Grid.Item>
+            )}
             {showDisclaimer && (
               <Grid.Item
                 className={classes.disclaimerSpacer}
@@ -224,7 +318,7 @@ export function CartItemProductLayout() {
               </SurroundPortals>
             </ConditionalWrapper>
           </div>
-          {!isOrderDetails && allowQuantityChange && (
+          {showQuantityPicker && !showStepper && (
             <SurroundPortals
               portalName={CART_ITEM_QUANTITY_PICKER}
               portalProps={portalProps}

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
 import { i18n } from '@shopgate/engage/core/helpers';
 import {
   ProductListTypeProvider,
@@ -21,6 +21,17 @@ const useStyles = makeStyles()((theme, { isAccordion }) => ({
     marginLeft: -16,
     marginRight: -16,
     marginBottom: 16,
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+    gap: theme.spacing(2),
+    [theme.breakpoints.up('lg')]: {
+      gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+    },
+    [theme.breakpoints.up('xl')]: {
+      gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
+    },
   },
   loadMoreButton: {
     width: 'calc(100% - 32px)',
@@ -51,7 +62,48 @@ const ListContent = ({
   onLoadMore,
   isAccordion,
 }) => {
-  const { classes } = useStyles({ isAccordion });
+  const { classes, cx } = useStyles({ isAccordion });
+  const isWide = useMediaQuery(theme => theme.breakpoints.up('md'));
+
+  const listItems = (
+    <>
+      {/** The getFavoriteIds pipeline doesn't return full products, but only product ids. The
+    ProductProvider requests missing products and provides it to the ListItemWrapper */}
+      { useGetFavoriteIdsPipeline
+        ? (items.map(({ productId }, index) => (
+          <ProductProvider productId={productId} key={productId}>
+            {({ product }) => (
+              product ? (
+                <ListItemWrapper
+                  listId={listId}
+                  product={product}
+                  items={items}
+                  addToCart={addToCart}
+                  removeItem={removeItem}
+                  index={index}
+                  key={product.id}
+                />
+              ) : null)}
+          </ProductProvider>
+        ))) : null}
+      {!useGetFavoriteIdsPipeline &&
+        items
+          .filter(({ product }) => product)
+          .map(({ product, notes, quantity }, index) => (
+            <ListItemWrapper
+              listId={listId}
+              product={product}
+              notes={notes}
+              quantity={quantity}
+              items={items}
+              addToCart={addToCart}
+              removeItem={removeItem}
+              index={index}
+              key={product.id}
+            />
+          ))}
+    </>
+  );
 
   return (
     <>
@@ -60,50 +112,18 @@ const ListContent = ({
         <span>{i18n.text('favorites.empty')}</span>
       ) : null}
       <ProductListTypeProvider type="favoritesList">
-        {/** The getFavoriteIds pipeline doesn't return full products, but only product ids. The
-      ProductProvider requests missing products and provides it to the ListItemWrapper */}
-        { useGetFavoriteIdsPipeline
-          ? (items.map(({ productId }, index) => (
-            <ProductProvider productId={productId} key={productId}>
-              {({ product }) => (
-                product ? (
-                  <ListItemWrapper
-                    listId={listId}
-                    product={product}
-                    items={items}
-                    addToCart={addToCart}
-                    removeItem={removeItem}
-                    index={index}
-                    key={product.id}
-                  />
-                ) : null)}
-            </ProductProvider>
-          ))) : null}
-        {!useGetFavoriteIdsPipeline &&
-          items
-            .filter(({ product }) => product)
-            .map(({ product, notes, quantity }, index) => (
-              <ListItemWrapper
-                listId={listId}
-                product={product}
-                notes={notes}
-                quantity={quantity}
-                items={items}
-                addToCart={addToCart}
-                removeItem={removeItem}
-                index={index}
-                key={product.id}
-              />
-            ))}
+        {isWide ? (
+          <div className={cx(classes.grid, 'engage__favorites__grid')}>{listItems}</div>
+        ) : listItems}
       </ProductListTypeProvider>
       {showLoadMoreButton &&
-        <Button
-          color="secondary"
-          className={classes.loadMoreButton}
-          onClick={onLoadMore}
-        >
-          {i18n.text('favorites.load_more_button')}
-        </Button>}
+      <Button
+        color="secondary"
+        className={classes.loadMoreButton}
+        onClick={onLoadMore}
+      >
+        {i18n.text('favorites.load_more_button')}
+      </Button>}
     </>
   );
 };
