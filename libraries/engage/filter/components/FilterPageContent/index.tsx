@@ -2,7 +2,7 @@ import { Fragment } from 'react';
 import type { ComponentType } from 'react';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { useFilterPage } from '@shopgate/engage/filter/hooks';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
 import {
   PORTAL_FILTER_PRICE_RANGE,
   PORTAL_FILTER_PAGE_CONTENT,
@@ -12,6 +12,8 @@ import {
 } from '@shopgate/engage/filter';
 import Selector from './components/Selector';
 import FilterButtonBar from './components/FilterButtonBar';
+import FilterPanes from './components/Panes';
+import type { ApiFilter } from './components/Panes';
 
 const useStyles = makeStyles()(theme => ({
   content: {
@@ -42,47 +44,56 @@ const FilterPageContent = ({ AppBarComponent = null }: FilterPageContentProps) =
     getSelectedFilterValues,
     updateSelectedFilterValues,
   } = useFilterPage();
+  const isWide = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   return (
     <SurroundPortals portalName={PORTAL_FILTER_PAGE_CONTENT}>
       { AppBarComponent && (
         <AppBarComponent title="titles.filter" />
       )}
-      <div className={cx(classes.content, 'engage__filter-page__content')}>
-        {apiFilters.map((filter) => {
-          const portalProps = { filter };
-          const value = getSelectedFilterValues(filter.id);
+      {isWide ? (
+        <FilterPanes
+          filters={apiFilters as ApiFilter[]}
+          getSelectedValues={getSelectedFilterValues}
+          onChange={updateSelectedFilterValues}
+        />
+      ) : (
+        <div className={cx(classes.content, 'engage__filter-page__content')}>
+          {apiFilters.map((filter) => {
+            const portalProps = { filter };
+            const value = getSelectedFilterValues(filter.id);
 
-          if (filter.type === FILTER_TYPE_RANGE) {
+            if (filter.type === FILTER_TYPE_RANGE) {
+              return (
+                <Fragment key={filter.id}>
+                  <SurroundPortals portalName={PORTAL_FILTER_PRICE_RANGE} portalProps={portalProps}>
+                    <PriceSlider
+                      id={filter.id}
+                      key={filter.id}
+                      min={filter.minimum}
+                      max={filter.maximum}
+                      onChange={updateSelectedFilterValues}
+                      value={value}
+                    />
+                  </SurroundPortals>
+                </Fragment>
+              );
+            }
+
             return (
-              <Fragment key={filter.id}>
-                <SurroundPortals portalName={PORTAL_FILTER_PRICE_RANGE} portalProps={portalProps}>
-                  <PriceSlider
-                    id={filter.id}
-                    key={filter.id}
-                    min={filter.minimum}
-                    max={filter.maximum}
-                    onChange={updateSelectedFilterValues}
-                    value={value}
-                  />
-                </SurroundPortals>
-              </Fragment>
+              <Selector
+                id={filter.id}
+                key={filter.id}
+                label={filter.label}
+                values={filter.values}
+                multi={filter.type === FILTER_TYPE_MULTISELECT}
+                onChange={updateSelectedFilterValues}
+                selected={value}
+              />
             );
-          }
-
-          return (
-            <Selector
-              id={filter.id}
-              key={filter.id}
-              label={filter.label}
-              values={filter.values}
-              multi={filter.type === FILTER_TYPE_MULTISELECT}
-              onChange={updateSelectedFilterValues}
-              selected={value}
-            />
-          );
-        })}
-      </div>
+          })}
+        </div>
+      )}
       <FilterButtonBar />
     </SurroundPortals>
   );

@@ -1,6 +1,6 @@
 import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { IconButton } from '@shopgate/engage/components/v2';
 import TrashOutlineIcon from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
 import {
@@ -39,26 +39,18 @@ const useStyles = makeStyles()(theme => ({
     hyphens: 'auto',
   },
   menuContainer: {
-    marginTop: theme.spacing(-2),
-    marginRight: theme.spacing(-2),
+    display: 'flex',
+    alignItems: 'flex-start',
+    marginTop: theme.spacing(-1),
+    marginRight: theme.spacing(-1),
     [theme.breakpoints.up('md')]: {
       gridArea: 'menu',
       margin: 0,
       display: 'flex',
       alignItems: 'center',
     },
-    '.theme__cart__item-cards &': {
-      gridArea: 'auto',
-      position: 'absolute',
-      top: theme.spacing(1),
-      right: theme.spacing(1),
-      zIndex: 1,
-      gap: theme.spacing(0.5),
-      '& .engage__cart__item__remove, & button': {
-        background: theme.palette.background.surface,
-        boxShadow: theme.shadows[1],
-        borderRadius: '50%',
-      },
+    '& .engage__cart__item__remove': {
+      color: theme.palette.text.secondary,
     },
   },
   menuToggleContainer: {
@@ -90,7 +82,6 @@ const useStyles = makeStyles()(theme => ({
 export function CartItemProductTitle({ value, productId }) {
   const { classes } = useStyles();
   const { invokeFulfillmentAction, merchantFulfillmentMethodsCount } = useCartItem();
-  const isWide = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   const context = useCartItemProduct();
   const {
@@ -149,17 +140,15 @@ export function CartItemProductTitle({ value, productId }) {
               toggleEditMode,
             }}
           >
-            {isWide && (
-              <IconButton
-                aria-label={i18n.text('cart.remove')}
-                onClick={handleRemove}
-                className="engage__cart__item__remove"
-                data-test-id="cartItemRemove"
-              >
-                <TrashOutlineIcon />
-              </IconButton>
-            )}
-            {(!isWide || hasFulfillmentActions) && (
+            <IconButton
+              aria-label={i18n.text('cart.remove')}
+              onClick={handleRemove}
+              className="engage__cart__item__remove"
+              data-test-id="cartItemRemove"
+            >
+              <TrashOutlineIcon />
+            </IconButton>
+            {hasFulfillmentActions && (
             <ContextMenu classes={contextMenuClasses}>
               <SurroundPortals
                 portalName={CART_ITEM_CONTEXT_MENU_ITEM_REMOVE}

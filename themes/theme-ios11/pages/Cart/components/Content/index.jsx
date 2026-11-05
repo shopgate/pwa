@@ -18,9 +18,7 @@ import {
   CartItems,
   CartItem,
 } from '@shopgate/engage/cart';
-import {
-  MessageBar, CardList, SurroundPortals, Card,
-} from '@shopgate/engage/components';
+import { MessageBar, CardList, SurroundPortals } from '@shopgate/engage/components';
 import { FulfillmentSheet } from '@shopgate/engage/locations';
 import { BackBar } from 'Components/AppBar/presets';
 import { getPageSettings } from '@shopgate/engage/core/config';
@@ -38,17 +36,17 @@ const useStyles = makeStyles()(theme => ({
   cardList: {
     marginTop: 4,
   },
-  cards: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
-    gap: theme.spacing(2),
-    [theme.breakpoints.up('xl')]: {
-      gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+  list: {
+    '& > li': {
+      position: 'relative',
     },
-    '& > li, & > li > ul, & > li > ul > li, & [data-test-id="cartItem"]': {
-      display: 'flex',
-      flexDirection: 'column',
-      flex: 1,
+    '& > li + li::before': {
+      content: '""',
+      position: 'absolute',
+      top: 0,
+      left: theme.spacing(2),
+      right: theme.spacing(2),
+      borderTop: `1px solid ${theme.components.separatorLine.borderColor}`,
     },
   },
   totals: {
@@ -155,14 +153,8 @@ function CartContent(props) {
     <ProductListTypeProvider type="cart">
       <SurroundPortals portalName={CART_ITEM_LIST}>
         {(cartItemsDisplay === 'line') && isWide && (
-        <ul className={cx(classes.cards, 'theme__cart__item-cards')}>
-          {cartItemsSorted.map(cartItem => (
-            <Card key={cartItem.id} component="li">
-              <ul>
-                {renderCartItem(cartItem)}
-              </ul>
-            </Card>
-          ))}
+        <ul className={cx(classes.list, 'theme__cart__item-list')}>
+          {cartItemsSorted.map(renderCartItem)}
         </ul>
         )}
         {(cartItemsDisplay === 'line') && !isWide && (

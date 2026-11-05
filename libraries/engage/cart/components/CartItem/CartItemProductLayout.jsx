@@ -27,8 +27,7 @@ import CartItemProductPriceList from './CartItemProductPriceList';
 import { useCartItem, useCartItemProduct } from './CartItem.hooks';
 
 const leftColumnWidth = 72;
-const leftColumnWidthWide = 112;
-const TILE_SCOPE = '.theme__cart__item-cards &';
+const leftColumnWidthWide = 96;
 
 const useStyles = makeStyles()((theme, _params, classes) => ({
   item: {
@@ -48,16 +47,6 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
       alignItems: 'center',
       columnGap: theme.spacing(2),
     },
-    [TILE_SCOPE]: {
-      position: 'relative',
-      flex: 1,
-      padding: theme.spacing(1.5, 1.5, 2),
-      gridTemplateColumns: 'minmax(0, 1fr)',
-      gridTemplateRows: 'auto auto 1fr auto auto',
-      gridTemplateAreas: '"image" "name" "props" "price" "stepper"',
-      alignItems: 'start',
-      rowGap: theme.spacing(1),
-    },
   },
   flattened: {
     [theme.breakpoints.up('md')]: {
@@ -70,10 +59,6 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
       gridArea: 'image',
       width: leftColumnWidthWide,
     },
-    [TILE_SCOPE]: {
-      width: `calc(100% + ${theme.spacing(3)}px)`,
-      margin: theme.spacing(-1.5, -1.5, 0.5),
-    },
   },
   image: {
     background: theme.palette.background.emphasized,
@@ -83,10 +68,6 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
     [theme.breakpoints.up('md')]: {
       width: leftColumnWidthWide,
       marginBottom: 0,
-    },
-    [TILE_SCOPE]: {
-      width: '100%',
-      borderRadius: 0,
     },
   },
   stepper: {
@@ -135,10 +116,6 @@ const useStyles = makeStyles()((theme, _params, classes) => ({
       marginLeft: 0,
       alignItems: 'center',
       textAlign: 'center',
-    },
-    [TILE_SCOPE]: {
-      alignItems: 'flex-start',
-      textAlign: 'left',
     },
   },
   properties: {
