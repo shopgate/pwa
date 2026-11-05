@@ -1,8 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
-import { useProductGridColumns } from '@shopgate/engage/product/components/ProductGrid/hooks';
+import { connect, useSelector } from 'react-redux';
+import mapKeys from 'lodash/mapKeys';
+import { makeStyles, useMediaQuery, useResponsiveValue } from '@shopgate/engage/styles';
+import { getProductGridColumns } from '@shopgate/engage/settings/selectors/appSettings';
+import { SCREEN_SIZE_BREAKPOINTS } from '@shopgate/engage/settings/constants/appSettings';
 import { i18n } from '@shopgate/engage/core/helpers';
 import {
   ProductListTypeProvider,
@@ -57,7 +59,10 @@ const ListContent = ({
   onLoadMore,
   isAccordion,
 }) => {
-  const columns = useProductGridColumns();
+  const gridColumns = useSelector(getProductGridColumns);
+  const columns = useResponsiveValue(
+    mapKeys(gridColumns, (_value, size) => SCREEN_SIZE_BREAKPOINTS[size])
+  );
   const { classes, cx } = useStyles({ isAccordion, columns });
   const isWide = useMediaQuery(theme => theme.breakpoints.up('md'));
 
