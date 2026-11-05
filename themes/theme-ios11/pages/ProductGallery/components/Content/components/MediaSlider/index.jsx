@@ -6,6 +6,7 @@ import { Swiper, Image } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
 import { useGalleryPagination } from '../../../../hooks';
+import Placeholder from '../Placeholder';
 import connect from './connector';
 
 const fullSize = {
@@ -93,6 +94,7 @@ const ProductGalleryMedia = ({ initialSlide, media }) => {
                 classNameImg={classes.slide}
                 resolutions={gallery.resolutions}
                 ratio={gallery.ratio}
+                placeholder={<Placeholder />}
                 unwrapped
               />
             </div>

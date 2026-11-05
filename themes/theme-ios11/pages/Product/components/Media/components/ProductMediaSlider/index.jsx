@@ -13,6 +13,7 @@ const ProductMediaSlider = ({
   featuredMediaBaseProduct,
   featuredMediaCharacteristics,
   className,
+  stacked,
 }) => {
   const { pagination } = useProductGallerySettings();
 
@@ -22,6 +23,7 @@ const ProductMediaSlider = ({
       paginationType={pagination}
       productId={productId}
       className={className}
+      stacked={stacked}
       renderPlaceholder={(featuredMedia) => {
         const props = featuredMediaCharacteristics || featuredMedia || featuredMediaBaseProduct;
         return (<MediaImage {...props} className={className} />);
@@ -54,6 +56,7 @@ ProductMediaSlider.propTypes = {
     url: PropTypes.string,
   }),
   productId: PropTypes.string,
+  stacked: PropTypes.bool,
   variantId: PropTypes.string,
 };
 
@@ -62,6 +65,7 @@ ProductMediaSlider.defaultProps = {
   featuredMediaCharacteristics: null,
   featuredMediaBaseProduct: null,
   productId: null,
+  stacked: false,
   variantId: null,
 };
 

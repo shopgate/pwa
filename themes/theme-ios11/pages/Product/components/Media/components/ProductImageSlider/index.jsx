@@ -31,6 +31,7 @@ class ProductImageSlider extends Component {
     pdpResolutions: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
     productId: PropTypes.string,
+    stacked: PropTypes.bool,
     variantId: PropTypes.string,
   };
 
@@ -44,6 +45,7 @@ class ProductImageSlider extends Component {
     pdpResolutions: null,
     product: null,
     productId: null,
+    stacked: false,
     variantId: null,
   };
 
@@ -147,11 +149,30 @@ class ProductImageSlider extends Component {
    */
   render() {
     const {
-      product, productId, images, 'aria-hidden': ariaHidden, className, paginationType,
+      product, productId, images, 'aria-hidden': ariaHidden, className, paginationType, stacked,
     } = this.props;
     let content;
 
-    if (images && images.length > 1) {
+    if (stacked && images && images.length > 1) {
+      content = (
+        <div className={className} aria-hidden={ariaHidden} data-stacked>
+          {images.map((image, index) => (
+            <div
+              key={`${productId}-${image}`}
+              onClick={() => this.handleSlideChange(index)}
+              role="presentation"
+            >
+              <ProductImage
+                src={image}
+                context="pdp"
+                noBackground
+                naturalRatio
+              />
+            </div>
+          ))}
+        </div>
+      );
+    } else if (images && images.length > 1) {
       content = (
         <Swiper
           paginationType={paginationType}
@@ -240,13 +261,21 @@ const Wrapper = (props) => {
     <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
       <ProductImageSlider
         {...props}
-        key={pagination}
+        key={`${pagination}-${props.stacked}`}
         paginationType={pagination}
         pdpResolutions={pdp.resolutions}
         imageServiceSettings={imageServiceSettings}
       />
     </SurroundPortals>
   );
+};
+
+Wrapper.propTypes = {
+  stacked: PropTypes.bool,
+};
+
+Wrapper.defaultProps = {
+  stacked: false,
 };
 
 export default withNavigation(connect(Wrapper));

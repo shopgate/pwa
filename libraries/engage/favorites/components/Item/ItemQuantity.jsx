@@ -5,6 +5,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { getWishlistItemQuantityEnabled } from '@shopgate/engage/settings/selectors/shopSettings';
 
 import UnitQuantityPicker from '../../../product/components/UnitQuantityPicker/UnitQuantityPicker';
+import { QuantityStepper } from '../../../product/components/QuantityStepper';
 
 const useStyles = makeStyles()({
   root: {
@@ -28,6 +29,7 @@ const ItemQuantity = ({
   wishlistItemQuantityEnabled,
   quantity,
   onChange,
+  stepper,
 }) => {
   const { classes, cx } = useStyles();
   const [internalQuantity, setInternalQuantity] = useState(quantity);
@@ -43,6 +45,16 @@ const ItemQuantity = ({
 
   if (!wishlistItemQuantityEnabled) {
     return null;
+  }
+
+  if (stepper) {
+    return (
+      <QuantityStepper
+        value={internalQuantity}
+        onChange={handleChange}
+        className="engage__favorites__item__quantity"
+      />
+    );
   }
 
   return (
@@ -65,6 +77,11 @@ ItemQuantity.propTypes = {
   onChange: PropTypes.func.isRequired,
   quantity: PropTypes.number.isRequired,
   wishlistItemQuantityEnabled: PropTypes.bool.isRequired,
+  stepper: PropTypes.bool,
+};
+
+ItemQuantity.defaultProps = {
+  stepper: false,
 };
 
 export default connect(makeMapStateToProps)(ItemQuantity);

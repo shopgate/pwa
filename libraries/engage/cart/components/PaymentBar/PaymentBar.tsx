@@ -10,6 +10,8 @@ export interface PaymentBarProps {
   variant?: FooterBarVariant | null;
   /** Space in px between a floating bar and a visible tab bar. */
   gap?: number;
+  /** Class name for the bar, only applied with a variant. */
+  className?: string;
 }
 
 /**
@@ -19,7 +21,7 @@ export interface PaymentBarProps {
  * @returns The payment bar.
  */
 function PaymentBar({
-  visible = true, showSeparator = false, variant = null, gap,
+  visible = true, showSeparator = false, variant = null, gap, className,
 }: PaymentBarProps) {
   const domElement = document.getElementById('AppFooter');
 
@@ -32,7 +34,7 @@ function PaymentBar({
   }
 
   return (
-    <FooterBar variant={variant} gap={gap}>
+    <FooterBar variant={variant} gap={gap} className={className}>
       <PaymentBarContent
         showSeparator={showSeparator}
         embedded

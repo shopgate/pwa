@@ -1,8 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { MediaImage as Image } from '../../../Media';
+
+export interface MediaImageProps {
+  media: {
+    url: string;
+    altText?: string;
+  };
+  onClick: () => void;
+  /** Shows the image in its own shape instead of the configured ratio. */
+  naturalRatio?: boolean;
+}
 
 const useStyles = makeStyles()({
   full: {
@@ -13,12 +21,11 @@ const useStyles = makeStyles()({
 });
 
 /**
- * The product media video slide component.
- * @returns {JSX}
+ * An image of the product media slider.
+ * @returns The image.
  */
-const MediaImage = ({ media, onClick }) => {
+const MediaImage = ({ media, onClick, naturalRatio = false }: MediaImageProps) => {
   const { classes } = useStyles();
-
   const { pdp } = useProductImageSettings();
 
   return (
@@ -26,7 +33,7 @@ const MediaImage = ({ media, onClick }) => {
       onClick={onClick}
       onKeyDown={onClick}
       role="button"
-      tabIndex="0"
+      tabIndex={0}
       className={classes.full}
     >
       <Image
@@ -34,19 +41,10 @@ const MediaImage = ({ media, onClick }) => {
         altText={media.altText}
         resolutions={pdp.resolutions}
         ratio={pdp.ratio}
+        naturalRatio={naturalRatio}
       />
     </div>
   );
 };
-
-MediaImage.propTypes = {
-  media: PropTypes.shape({
-    altText: PropTypes.string,
-    url: PropTypes.string,
-  }).isRequired,
-  onClick: PropTypes.func.isRequired,
-};
-
-MediaImage.displayName = 'MediaSliderImage';
 
 export default MediaImage;
