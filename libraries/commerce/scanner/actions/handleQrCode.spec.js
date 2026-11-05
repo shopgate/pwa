@@ -7,6 +7,7 @@ import { fetchProductsById } from '@shopgate/engage/product';
 import { getProductById } from '@shopgate/engage/product/selectors/product';
 import { fetchCategory } from '@shopgate/engage/category/actions';
 import { getCategory } from '@shopgate/engage/category/selectors';
+import { getAllowedQrCodeLink } from '@shopgate/engage/scanner/helpers/getAllowedQrCodeLink';
 import {
   QR_CODE_TYPE_HOMEPAGE,
   QR_CODE_TYPE_PRODUCT,
@@ -47,6 +48,9 @@ jest.mock('@shopgate/engage/category/selectors', () => ({
 }));
 jest.mock('../helpers', () => ({
   parse2dsQrCode: jest.fn(),
+}));
+jest.mock('@shopgate/engage/scanner/helpers/getAllowedQrCodeLink', () => ({
+  getAllowedQrCodeLink: jest.fn(),
 }));
 jest.mock('@shopgate/pwa-core/commands/registerEvents', () => jest.fn());
 
@@ -246,14 +250,27 @@ describe('handleQrCode', () => {
       parse2dsQrCode.mockReturnValue(null);
     });
 
-    it('should open external link with https url', () => {
-      const externalLink = 'https://shopgate.com';
+    it('should open the normalized link of an allowed https url', () => {
+      const externalLink = 'https://Shopgate.com';
+      const normalizedLink = 'https://shopgate.com/';
+      getAllowedQrCodeLink.mockReturnValue(normalizedLink);
       handleQrCode({ scope, format, payload: externalLink })(dispatch);
+      expect(getAllowedQrCodeLink).toHaveBeenCalledWith(externalLink);
       expect(historyPush).toHaveBeenCalledWith({
-        pathname: externalLink,
+        pathname: normalizedLink,
       });
       expect(dispatch).toHaveBeenCalledWith(successHandleScanner(scope, format, externalLink));
       expect(historyPop).toHaveBeenCalledWith();
+    });
+
+    it('should trigger "no result" handling when the domain of the https url is not allowed', () => {
+      getAllowedQrCodeLink.mockReturnValue(null);
+      const externalLink = 'https://evil.com';
+      const event = { scope, format, payload: externalLink };
+      handleQrCode(event)(dispatch, getState);
+      expect(getAllowedQrCodeLink).toHaveBeenCalledWith(externalLink);
+      expect(historyPush).not.toHaveBeenCalled();
+      expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
 
     it('should trigger "no result" handling when with http url', () => {
