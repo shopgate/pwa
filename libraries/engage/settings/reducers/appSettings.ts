@@ -114,11 +114,6 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
           icon: '',
           link: '',
         },
-        left2: {
-          action: 'none',
-          icon: '',
-          link: '',
-        },
         right1: {
           action: 'none',
           icon: '',

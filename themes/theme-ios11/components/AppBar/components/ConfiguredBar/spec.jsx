@@ -60,7 +60,6 @@ const createSettings = (overrides = {}) => ({
   floating: { scrollBehavior: 'revealBar' },
   buttons: {
     left1: slot('openSearch'),
-    left2: slot('none'),
     right1: slot('share'),
     right2: slot('favorites'),
   },
@@ -133,7 +132,7 @@ describe('<ConfiguredBar />', () => {
     expect(texts('center')).toEqual([]);
   });
 
-  it.each([false, true])('keeps the title out of the bar (floating: %s)', (floating) => {
+  it.each([false, true])('does not render the title prop itself, DefaultBar passes it as center (floating: %s)', (floating) => {
     renderBar({
       floating,
       title: 'Jackets',
