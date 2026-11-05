@@ -5,7 +5,7 @@ import { fetchProductsById } from '@shopgate/engage/product';
 import { getProductById } from '@shopgate/engage/product/selectors/product';
 import { fetchCategory } from '@shopgate/engage/category/actions';
 import { getCategory } from '@shopgate/engage/category/selectors';
-import { isHTTPS, mutable } from '@shopgate/engage/core/helpers';
+import { mutable } from '@shopgate/engage/core/helpers';
 import { getAllowedQrCodeLink } from '@shopgate/engage/scanner/helpers/getAllowedQrCodeLink';
 import successHandleScanner from '../action-creators/successHandleScanner';
 import {
@@ -103,7 +103,7 @@ const handleQrCode = ({ scope, format, payload }) => async (dispatch, getState) 
       }
       break;
     default: {
-      const allowedLink = isHTTPS(payload) ? getAllowedQrCodeLink(payload) : null;
+      const allowedLink = getAllowedQrCodeLink(payload);
 
       if (allowedLink) {
         dispatch(successHandleScanner(scope, format, payload));

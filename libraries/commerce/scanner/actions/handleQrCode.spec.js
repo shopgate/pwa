@@ -274,6 +274,7 @@ describe('handleQrCode', () => {
     });
 
     it('should trigger "no result" handling when with http url', async () => {
+      getAllowedQrCodeLink.mockReturnValue(null);
       const externalLink = 'http://shopgate.com';
       const event = { scope, format, payload: externalLink };
       await handleQrCode(event)(dispatch, getState);

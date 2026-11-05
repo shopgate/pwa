@@ -33,6 +33,11 @@ describe('engage > scanner > helpers > getAllowedQrCodeLink', () => {
       .toBe('https://harborfreight.com/@evil.com/');
   });
 
+  it('should accept an uppercase https scheme', () => {
+    expect(getAllowedQrCodeLink('HTTPS://HARBORFREIGHT.COM/DEALS'))
+      .toBe('https://harborfreight.com/DEALS');
+  });
+
   it('should reject links which do not use https', () => {
     expect(getAllowedQrCodeLink('http://harborfreight.com/')).toBeNull();
     expect(getAllowedQrCodeLink('ftp://harborfreight.com/')).toBeNull();
