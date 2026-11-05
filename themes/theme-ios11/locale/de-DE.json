@@ -23,7 +23,7 @@
     "filter": "Filter",
     "cart": "Warenkorb",
     "shipping": "Versand",
-    "reviews": "Bewertungen",
+    "reviews": "Rezensionen",
     "browse": "Durchsuchen",
     "favorites": "Merkliste",
     "scanner": "Scanner",
@@ -240,9 +240,10 @@
     "tax_disclaimer": "* Inkl. MwSt. evtl. zzgl. Versandkosten",
     "tax_disclaimer_aria": "Inklusive Mehrwertsteuer, eventuell zuzüglich Versandkosten",
     "item_added": "{count, plural, =0 {# keine Produkte} =1 {{count} Produkt hinzugefügt} other {{count} Produkte hinzugefügt}}",
-    "item_added_unit": "{count} {unit} hinzugefügt",
     "adding_item": "{count, plural, =1 {Ein Produkt wird hinzugefügt} other {{count} Produkte werden hinzugefügt}}",
     "pick_option_first": "Wählen Sie zuerst eine Option. {option}",
+    "variant_unavailable": "In dieser Kombination nicht verfügbar",
+    "variant_sold_out": "Ausverkauft",
     "fill_out_required_input_first": "Füllen Sie zuerst alle Pflichtfelder aus.",
     "add_to_cart": "In den Warenkorb",
     "go_to_cart": "Warenkorb",
@@ -412,6 +413,10 @@
     "showAllProducts": {
       "label": "Alle Produkte anzeigen"
     },
+    "drawer": {
+      "retry": "Erneut versuchen",
+      "subcategories": "Unterkategorien"
+    },
     "errors": {
       "404": "Kategorie nicht gefunden"
     }
@@ -423,7 +428,13 @@
     "no_result": {
       "heading": "Ups!",
       "body": "Ihre Suche nach \"{searchPhrase}\" liefert keine Ergebnisse."
-    }
+    },
+    "history_title": "Zuletzt gesucht",
+    "history_clear": "Verlauf löschen",
+    "results_count": "{count, plural, =1 {1 Ergebnis} other {{count} Ergebnisse}}",
+    "show_all_results": "Alle Ergebnisse anzeigen",
+    "clear": "Suche löschen",
+    "new_search": "Neue Suche"
   },
   "shipping": {
     "unknown": "zzgl. Versand",
@@ -577,25 +588,58 @@
     "order_history": "Bestellverlauf",
     "profile": "Profil",
     "back": "Zurück zu {title}",
-    "open_menu": "Menü öffnen"
+    "open_menu": "Menü öffnen",
+    "open_link": "Seite öffnen"
   },
   "reviews": {
     "rating": "Bewertung",
     "no_reviews": "Verfassen Sie die erste Bewertung.",
     "review_count": "({count} {count, plural, =1 {Bewertung} other {Bewertungen}})",
-    "button_add": "Produkt bewerten",
-    "button_all": "Alle {count} Bewertungen",
+    "button_add": "Rezension schreiben",
+    "button_all": "Alle {count} Rezensionen",
     "author": "von {author}",
     "rating_stars": "{rate, plural, =1 {Ein Stern} other {{rate} Sterne}} von {maxRate}.",
     "review_form_rate": "Bewerten Sie dieses Produkt:",
     "review_form_author": "Name",
     "review_form_title": "Titel (optional)",
-    "review_form_text": "Ihre Bewertung (optional)",
+    "review_form_text": "Ihre Rezension (optional)",
     "review_form_error_author_empty": "Bitte geben Sie einen Namen an.",
     "review_form_rate_error": "Wie viele Sterne vergeben Sie?",
     "review_form_error_length": "Maximal {length} Zeichen erlaubt.",
     "press_to_rate_with_x_stars": "Wählen zum Bewerten mit {rate, plural, =1 {einem Stern} other {{rate} Sternen}}.",
-    "success_message": "Vielen Dank für Ihre Bewertung!"
+    "success_message": "Vielen Dank für Ihre Rezension!",
+    "summary_count": "{count, plural, =1 {# Bewertung} other {# Bewertungen}}",
+    "list_count": "{count, plural, =1 {# Rezension} other {# Rezensionen}}",
+    "list_empty": "Noch keine Rezensionen",
+    "button_retry": "Erneut versuchen",
+    "verified": "Verifiziert",
+    "verified_info": "Als verifiziert markierte Rezensionen wurden vom Anbieter der Rezensionen geprüft.",
+    "merchant_reply": "Antwort des Händlers",
+    "merchant_reply_show": "Antwort des Händlers anzeigen",
+    "media_image": "Bild {index} öffnen",
+    "media_video": "Video {index} abspielen",
+    "media_viewer": "Bilder und Videos der Rezension",
+    "vote_question": "War diese Rezension hilfreich?",
+    "vote_up": "Hilfreich",
+    "vote_down": "Nicht hilfreich",
+    "vote_pending": "Wird gesendet …",
+    "vote_error": "Senden fehlgeschlagen",
+    "sort_relevance": "Relevanz",
+    "sort_dateDesc": "Neueste zuerst",
+    "sort_dateAsc": "Älteste zuerst",
+    "sort_rateDesc": "Beste Bewertung",
+    "sort_rateAsc": "Schlechteste Bewertung",
+    "sort_helpfulDesc": "Hilfreichste zuerst",
+    "filter_media": "Mit Medien",
+    "filter_verified": "Nur verifiziert",
+    "filter_rate_all": "Alle Bewertungen",
+    "filter_rate_5": "5 Sterne",
+    "filter_rate_4": "4 Sterne",
+    "filter_rate_3": "3 Sterne",
+    "filter_rate_2": "2 Sterne",
+    "filter_rate_1": "1 Stern",
+    "distribution_open": "{label}: Rezensionen anzeigen",
+    "list_empty_filtered": "Keine Rezensionen passen zu dieser Auswahl."
   },
   "tab_bar": {
     "home": "Home",

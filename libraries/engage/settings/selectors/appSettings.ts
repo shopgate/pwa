@@ -32,6 +32,30 @@ export const getTabBarSettings = createSelector(
 );
 
 /**
+ * Selects the header settings.
+ */
+export const getAppBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.navigation.appBar
+);
+
+/**
+ * Selects the page types that show the search bar below the header.
+ */
+export const getPersistentSearchBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.search.persistentBar
+);
+
+/**
+ * Selects whether the search field offers the scanner.
+ */
+export const getShowSearchScannerIcon = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.search.showScannerIcon
+);
+
+/**
  * Selects the ProductGrid columns setting (keyed by breakpoint).
  */
 export const getProductGridColumns = createSelector(
@@ -61,6 +85,78 @@ export const getShowFavoritesCounter = createSelector(
 export const getShowEmptyRatingStars = createSelector(
   getAppSettingsState,
   appSettings => appSettings.product.rating.showEmptyStars
+);
+
+/**
+ * Selects whether the product page shows the manufacturer.
+ */
+export const getShowManufacturerOnProductPage = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.manufacturer.showOnProductPage
+);
+
+/**
+ * Selects the action buttons of product tiles and of the product page.
+ */
+export const getProductActionButtons = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.actionButtons
+);
+
+/**
+ * Selects the settings of the bar with sort and filter.
+ */
+export const getProductFilterBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.filterBar
+);
+
+/**
+ * Selects the aspect ratio of category images in the category list, grid and chips.
+ */
+export const getCategoryImageRatio = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.images.category.ratio
+);
+
+/**
+ * Selects how categories are presented.
+ */
+export const getCategorySettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.category
+);
+
+/**
+ * Selects the settings of the image gallery of the product page.
+ */
+export const getProductGallerySettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.gallery
+);
+
+/**
+ * Selects the add to cart bar settings of the product page.
+ */
+export const getProductAddToCartBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.addToCartBar
+);
+
+/**
+ * Selects the payment bar settings of the cart.
+ */
+export const getCartPaymentBarSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.cart.paymentBar
+);
+
+/**
+ * Selects the variant selector settings.
+ */
+export const getVariantSelectorSettings = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.variantSelector
 );
 
 /**

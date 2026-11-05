@@ -34,6 +34,7 @@
     "@types/node": "^24.19.1",
     "@virtuous/conductor": "~2.5.0",
     "color": "^4.2.3",
+    "dompurify": "^3.4.17",
     "focus-trap-react": "^10.3.1",
     "immer": "^11.1.11",
     "input-format": "0.3.10",

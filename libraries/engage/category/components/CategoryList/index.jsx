@@ -1,17 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
-import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
-import Portal from '@shopgate/pwa-common/components/Portal';
-import { Placeholder } from '@shopgate/pwa-ui-shared';
-import { CATEGORY_ITEM } from '@shopgate/pwa-common-commerce/category/constants/Portals';
+import {
+  CATEGORY_ITEM,
+  CATEGORY_SHOW_ALL_PRODUCTS,
+} from '@shopgate/engage/category/constants';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { getShowAllProductsFilters } from '@shopgate/engage/category';
-import { SheetList, TextLink } from '@shopgate/engage/components';
+import { getCategoryRoute, getShowAllProductsFilters } from '@shopgate/engage/category/helpers';
+import {
+  Placeholder, Portal, SheetList, TextLink,
+} from '@shopgate/engage/components';
+import { useCategoryImageRatio } from '@shopgate/engage/category/hooks';
 import CategoryImage from '../CategoryImage';
+import CategoryGrid from '../CategoryGrid';
 
-const useStyles = makeStyles()(theme => ({
+const LEFT_IMAGE_HEIGHT = 30;
+const LEFT_IMAGE_REQUEST_WIDTH = 270;
+
+const useStyles = makeStyles()((theme, { leftImageWidth }) => ({
   sheet: {
     background: theme.palette.background.surface,
   },
@@ -20,6 +26,10 @@ const useStyles = makeStyles()(theme => ({
   },
   image: {
     width: '30px',
+    marginRight: 8,
+  },
+  leftImage: {
+    width: leftImageWidth,
     marginRight: 8,
   },
 }));
@@ -33,6 +43,8 @@ const useStyles = makeStyles()(theme => ({
  * @param {boolean} props.showAllProducts Whether to show all products
  * @param {boolean} props.showImages Whether to show category images
  * @param {boolean} props.showLeftSideImages Whether to show category images on the left side
+ * @param {string} props.layout Whether the categories are shown as a list or as a grid
+ * @param {boolean} props.labelled Whether the grid names itself, off inside a named section
  * @returns {JSX.Element}
  */
 const CategoryList = ({
@@ -42,8 +54,23 @@ const CategoryList = ({
   showAllProducts,
   showImages,
   showLeftSideImages,
+  layout,
+  labelled,
 }) => {
-  const { classes, cx } = useStyles();
+  const leftImage = useCategoryImageRatio(LEFT_IMAGE_REQUEST_WIDTH, LEFT_IMAGE_HEIGHT);
+  const { classes, cx } = useStyles({ leftImageWidth: leftImage.thumbnailWidth });
+
+  if (layout === 'grid') {
+    return (
+      <CategoryGrid
+        categories={categories}
+        prerender={prerender}
+        parentCategory={parentCategory}
+        showAllProducts={showAllProducts}
+        labelled={labelled}
+      />
+    );
+  }
   if (!categories || !categories.length) {
     if (prerender === 0) {
       return null;
@@ -67,11 +94,11 @@ const CategoryList = ({
         <div className={cx(classes.showAllProducts, 'engage__category__category-show-all-products')}>
           <Portal
             key={parentCategory.id}
-            name="category.show-all-products"
+            name={CATEGORY_SHOW_ALL_PRODUCTS}
             props={{ categoryId: parentCategory.id }}
           >
             <SheetList.Item
-              link={`${CATEGORY_PATH}/${bin2hex(parentCategory.id)}/all`}
+              link={`${getCategoryRoute(parentCategory.id)}/all`}
               title={i18n.text('category.showAllProducts.label')}
               linkState={{
                 categoryName: parentCategory.name,
@@ -88,7 +115,7 @@ const CategoryList = ({
       {categories.map(category => (
         <Portal key={category.id} name={CATEGORY_ITEM} props={{ categoryId: category.id }}>
           <SheetList.Item
-            link={`${CATEGORY_PATH}/${bin2hex(category.id)}`}
+            link={getCategoryRoute(category.id)}
             title={category.name}
             description={category.description}
             linkState={{
@@ -103,7 +130,14 @@ const CategoryList = ({
             }
             leftComponent={
               showLeftSideImages
-                ? <CategoryImage className={classes.image} src={category.imageUrl} />
+                ? (
+                  <CategoryImage
+                    className={classes.leftImage}
+                    src={category.imageUrl}
+                    ratio={leftImage.ratio}
+                    resolutions={leftImage.resolutions}
+                  />
+                )
                 : null
             }
             linkComponent={TextLink}
@@ -116,6 +150,8 @@ const CategoryList = ({
 
 CategoryList.propTypes = {
   categories: PropTypes.arrayOf(PropTypes.shape()),
+  labelled: PropTypes.bool,
+  layout: PropTypes.oneOf(['list', 'grid']),
   parentCategory: PropTypes.shape(),
   prerender: PropTypes.number,
   showAllProducts: PropTypes.bool,
@@ -125,6 +161,8 @@ CategoryList.propTypes = {
 
 CategoryList.defaultProps = {
   categories: null,
+  labelled: true,
+  layout: 'list',
   parentCategory: null,
   prerender: 0,
   showAllProducts: false,

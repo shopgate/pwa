@@ -89,6 +89,7 @@ const Html = ({ settings, navigate }) => {
         className={classes.root}
         decode
         processStyles
+        allowScripts
         settings={{
           html,
           handleClick: navigate,

@@ -186,6 +186,8 @@ export { default as Toggle } from './Toggle';
 export { Form } from './Form';
 export { FormBuilder } from './Form';
 export { Footer } from './Footer';
+export { FooterBar } from './FooterBar';
+export type { FooterBarProps } from './FooterBar';
 export { SideNavigation } from './SideNavigation';
 export { default as TextLink } from './TextLink/TextLink';
 export { ConditionalWrapper } from './ConditionalWrapper';
@@ -204,6 +206,8 @@ export { default as Paper } from './Paper';
 export type { PaperProps, PaperVariant } from './Paper';
 export { default as Card } from './Card';
 export type { CardProps, CardVariant } from './Card';
+export { default as SafeHtml } from './SafeHtml';
+export type { SafeHtmlProps } from './SafeHtml';
 
 // V2
 export { default as IconButton, type IconButtonProps, type IconButtonSize } from './v2/IconButton';

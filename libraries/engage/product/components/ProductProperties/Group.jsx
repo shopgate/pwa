@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@shopgate/engage/components';
+import { Typography, SafeHtml } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -21,11 +21,12 @@ const Group = ({ group }) => {
   return (
     <tr>
       <td colSpan="2" className={classes.subgroup}>
-        <Typography
+        <SafeHtml
+          as={Typography}
           variant="caption"
           component="span"
           fontWeight="bold"
-          dangerouslySetInnerHTML={{ __html: group }}
+          html={group}
         />
       </td>
     </tr>

@@ -240,9 +240,10 @@
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "tax_disclaimer_aria": "VAT included, plus shipping costs if applicable",
     "item_added": "{count, plural, =0 {# no items added} =1 {{count} item added} other {{count} items added}}",
-    "item_added_unit": "{count} {unit} added",
     "adding_item": "{count, plural, =1 {Adding one item} other {Adding {count} items}}",
     "pick_option_first": "Pick an option first. {option}",
+    "variant_unavailable": "Not available in this combination",
+    "variant_sold_out": "Sold out",
     "fill_out_required_input_first": "Fill out the required inputs first.",
     "add_to_cart": "Add to cart",
     "go_to_cart": "Go to cart",
@@ -412,6 +413,10 @@
     "showAllProducts": {
       "label": "Show all products"
     },
+    "drawer": {
+      "retry": "Try again",
+      "subcategories": "Subcategories"
+    },
     "errors": {
       "404": "Category not found"
     }
@@ -423,7 +428,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Your search \"{searchPhrase}\" has 0 results."
-    }
+    },
+    "history_title": "Recent searches",
+    "history_clear": "Clear history",
+    "results_count": "{count, plural, =1 {1 result} other {{count} results}}",
+    "show_all_results": "Show all results",
+    "clear": "Clear search",
+    "new_search": "New search"
   },
   "shipping": {
     "unknown": "plus shipping",
@@ -577,14 +588,15 @@
     "order_history": "Order History",
     "profile": "Profile",
     "back": "Back to {title}",
-    "open_menu": "Open menu"
+    "open_menu": "Open menu",
+    "open_link": "Open page"
   },
   "reviews": {
     "rating": "Rating",
     "no_reviews": "Be the first to rate this product:",
-    "review_count": "({count} {count, plural, =1 {Review} other {Reviews}})",
+    "review_count": "({count} {count, plural, =1 {Rating} other {Ratings}})",
     "button_add": "Write a Review",
-    "button_all": "All {count} Reviews",
+    "button_all": "All {count} reviews",
     "author": "by {author}",
     "rating_stars": "{rate, plural, =1 {One star} other {{rate} stars}} of {maxRate}.",
     "review_form_rate": "Rate this product:",
@@ -595,7 +607,39 @@
     "review_form_rate_error": "Please select a star rating.",
     "review_form_error_length": "Max length {length} characters.",
     "press_to_rate_with_x_stars": "Press to rate with {rate, plural, =1 {one star} other {{rate} stars}}.",
-    "success_message": "Thanks for your review!"
+    "success_message": "Thanks for your review!",
+    "summary_count": "{count, plural, =1 {# rating} other {# ratings}}",
+    "list_count": "{count, plural, =1 {# review} other {# reviews}}",
+    "list_empty": "No reviews yet",
+    "button_retry": "Try again",
+    "verified": "Verified",
+    "verified_info": "Reviews marked as verified have been checked by the review provider.",
+    "merchant_reply": "Reply from the merchant",
+    "merchant_reply_show": "Show reply from the merchant",
+    "media_image": "Open image {index}",
+    "media_video": "Play video {index}",
+    "media_viewer": "Review images and videos",
+    "vote_question": "Was this review helpful?",
+    "vote_up": "Helpful",
+    "vote_down": "Not helpful",
+    "vote_pending": "Sending…",
+    "vote_error": "Sending failed",
+    "sort_relevance": "Relevance",
+    "sort_dateDesc": "Newest first",
+    "sort_dateAsc": "Oldest first",
+    "sort_rateDesc": "Highest rating",
+    "sort_rateAsc": "Lowest rating",
+    "sort_helpfulDesc": "Most helpful",
+    "filter_media": "With media",
+    "filter_verified": "Verified only",
+    "filter_rate_all": "All ratings",
+    "filter_rate_5": "5 stars",
+    "filter_rate_4": "4 stars",
+    "filter_rate_3": "3 stars",
+    "filter_rate_2": "2 stars",
+    "filter_rate_1": "1 star",
+    "distribution_open": "{label}: show reviews",
+    "list_empty_filtered": "No reviews match this selection."
   },
   "tab_bar": {
     "home": "Home",

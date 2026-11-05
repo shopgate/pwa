@@ -9,12 +9,12 @@ function mockFactories() {
   return jest.requireActual('../testUtils/mockFactories');
 }
 
-jest.mock('../PaymentBarGrandTotal.connector', () => cmp => cmp);
-jest.mock('@shopgate/engage/components', () => ({
-  SurroundPortals: mockFactories().createSurroundPortalsMock(),
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: selector => selector(),
 }));
-
-jest.mock('@shopgate/pwa-ui-shared/CartTotalLine', () => {
+jest.mock('@shopgate/pwa-common-commerce/cart/selectors', () => ({ getGrandTotal: () => 10 }));
+jest.mock('@shopgate/engage/components', () => {
   function CartTotalLine(props) {
     const {
       children,
@@ -55,7 +55,10 @@ jest.mock('@shopgate/pwa-ui-shared/CartTotalLine', () => {
     return <div data-testid="cart-total-line-spacer" className={props.className} />;
   };
 
-  return CartTotalLine;
+  return {
+    SurroundPortals: mockFactories().createSurroundPortalsMock(),
+    CartTotalLine,
+  };
 });
 
 describe('<PaymentBarGrandTotal />', () => {
@@ -74,7 +77,7 @@ describe('<PaymentBarGrandTotal />', () => {
   );
 
   it('should render grand total line with default label and amount', () => {
-    renderWithCartContext(<PaymentBarGrandTotal amount={10} />);
+    renderWithCartContext(<PaymentBarGrandTotal />);
 
     expect(screen.getByTestId('surround-portals')).toBeTruthy();
     expect(screen.getByTestId('cart-total-line')).toHaveAttribute('data-type', 'grandTotal');
@@ -86,7 +89,7 @@ describe('<PaymentBarGrandTotal />', () => {
 
   it('should not render when hideTotal is enabled', () => {
     const { container } = renderWithCartContext(
-      <PaymentBarGrandTotal amount={10} />,
+      <PaymentBarGrandTotal />,
       { config: { hideTotal: true } }
     );
 
@@ -96,7 +99,7 @@ describe('<PaymentBarGrandTotal />', () => {
 
   it('should render spacer when promotion coupons are present', () => {
     renderWithCartContext(
-      <PaymentBarGrandTotal amount={10} />,
+      <PaymentBarGrandTotal />,
       { hasPromotionCoupons: true }
     );
 

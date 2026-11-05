@@ -7,12 +7,23 @@ import { LiveMessenger } from '@shopgate/engage/a11y';
 import { applyScrollContainer, hasWebBridge } from '@shopgate/engage/core/helpers';
 import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import TabBar from 'Components/TabBar';
+import SearchOverlay from '../Search/SearchOverlay';
+import CategoryDrawer from '../CategoryDrawer';
 
 injectGlobal({
   html: {
     '--page-background-color': 'var(--sg-palette-background-default)',
     '--tabbar-height': '0px',
     '--app-bar-height': '0px',
+  },
+  ':where(#AppContent) .engage__view__content__scrollable-content': {
+    paddingTop: 'var(--sg-search-bar-height, 0px)',
+  },
+  '#AppHeader[data-overlay]': {
+    position: 'absolute',
+    left: 0,
+    right: 0,
+    pointerEvents: 'none',
   },
 });
 
@@ -68,6 +79,8 @@ const Viewport = (props) => {
       <Footer>
         <TabBar />
       </Footer>
+      <SearchOverlay />
+      <CategoryDrawer />
     </main>
   );
 };

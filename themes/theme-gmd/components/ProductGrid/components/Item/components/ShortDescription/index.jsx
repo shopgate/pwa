@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { SafeHtml } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 
 const useStyles = makeStyles()(theme => ({
@@ -25,8 +26,7 @@ const ShortDescription = ({ shortDescription }) => {
   }
 
   return (
-    // eslint-disable-next-line react/no-danger
-    <div className={classes.wrapper} dangerouslySetInnerHTML={{ __html: shortDescription }} />
+    <SafeHtml profile="html" className={classes.wrapper} html={shortDescription} />
   );
 };
 

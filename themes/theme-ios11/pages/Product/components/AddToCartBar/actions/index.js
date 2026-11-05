@@ -4,7 +4,7 @@ import addProductsToCart from '@shopgate/pwa-common-commerce/cart/actions/addPro
 /**
  * Adds a product to the cart.
  * @param {Object} data The pieces for the product to be added.
- * @return {Function} A redux thunk.
+ * @return {Function} A redux thunk that resolves with the pipeline result.
  */
 export const addProductToCart = data => (dispatch, getState) => {
   const state = getState();
@@ -15,7 +15,7 @@ export const addProductToCart = data => (dispatch, getState) => {
     productId, quantity, options, ...rest
   } = data;
 
-  dispatch(addProductsToCart([{
+  return dispatch(addProductsToCart([{
     productId,
     quantity,
     ...(transformedOptions) && { options: transformedOptions },

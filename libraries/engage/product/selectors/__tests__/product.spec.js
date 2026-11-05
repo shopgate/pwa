@@ -3,6 +3,7 @@ import {
   makeGetProductEffectivityDates,
   makeGetProductCharacteristics,
   makeGetProductFeaturedMedia,
+  getProductRequestFailed,
 } from '../product';
 import { wrapMemoizedSelector } from '../helpers';
 
@@ -137,6 +138,23 @@ describe('engage > product > selectors', () => {
     it('should return featured media if available for the product', () => {
       const result = getProductFeaturedMedia(mockState, { productId: '123' });
       expect(result).toEqual(mockState.product.productsById[123].productData.featuredMedia);
+    });
+  });
+
+  describe('getProductRequestFailed()', () => {
+    const stateWith = entry => ({ product: { productsById: entry ? { p1: entry } : {} } });
+
+    it('is false while the product was not requested or is fetching', () => {
+      expect(getProductRequestFailed(stateWith(), { productId: 'p1' })).toBe(false);
+      expect(getProductRequestFailed(stateWith({ isFetching: true }), { productId: 'p1' })).toBe(false);
+    });
+
+    it('is true once the request finished without product data', () => {
+      expect(getProductRequestFailed(stateWith({ isFetching: false }), { productId: 'p1' })).toBe(true);
+      expect(getProductRequestFailed(stateWith({
+        isFetching: false,
+        productData: { id: 'p1' },
+      }), { productId: 'p1' })).toBe(false);
     });
   });
 });

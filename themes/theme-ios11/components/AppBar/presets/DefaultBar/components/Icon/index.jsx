@@ -1,23 +1,11 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { AppBarIOS as AppBar } from '@shopgate/engage/components';
-import { withWidgetSettings } from '@shopgate/engage/core';
 
 /**
- * A wrapper component for the AppBarIcon which injects the icon color from the widget settings.
+ * An icon button of the header. It takes the icon color of the header from the theme.
  * @param {Object} props The component props.
  * @returns {JSX}
  */
-const AppBarIcon = ({ widgetSettings, ...rest }) => {
-  const { buttonColor } = widgetSettings;
-  return (
-    <AppBar.Icon color={buttonColor || 'inherit'} {...rest} />
-  );
-};
+const AppBarIcon = props => <AppBar.Icon {...props} />;
 
-AppBarIcon.propTypes = {
-  widgetSettings: PropTypes.shape().isRequired,
-};
-
-export default withWidgetSettings(AppBarIcon, '@shopgate/engage/components/AppBar');
-
+export default AppBarIcon;

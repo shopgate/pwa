@@ -3,11 +3,13 @@ import {
   DISABLE_TAB_BAR,
   SHOW_TAB_BAR,
   HIDE_TAB_BAR,
+  SET_TAB_LAST_ROUTE,
 } from './constants';
 
 const defaultState = {
   enabled: true,
   visible: true,
+  lastRoutes: {},
 };
 
 /**
@@ -37,6 +39,14 @@ export default (state = defaultState, action = {}) => {
       return {
         ...state,
         visible: false,
+      };
+    case SET_TAB_LAST_ROUTE:
+      return {
+        ...state,
+        lastRoutes: {
+          ...state.lastRoutes,
+          [action.tab]: action.route,
+        },
       };
     default:
       return state;
