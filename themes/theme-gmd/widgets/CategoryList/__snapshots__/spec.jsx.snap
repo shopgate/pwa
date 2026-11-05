@@ -186,7 +186,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                         }
                       }
                     />
-                    <ForwardRef
+                    <ForwardRef(SafeHtml)
                       className="sg-7m7fd6-categoryDescription"
                       profile="html"
                     >
@@ -198,7 +198,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                           }
                         }
                       />
-                    </ForwardRef>
+                    </ForwardRef(SafeHtml)>
                   </div>
                 </Link>
               </li>
@@ -250,7 +250,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                         }
                       }
                     />
-                    <ForwardRef
+                    <ForwardRef(SafeHtml)
                       className="sg-7m7fd6-categoryDescription"
                       profile="html"
                     >
@@ -262,7 +262,7 @@ exports[`<CategoryListWidget /> should render the CategoryListWidget 1`] = `
                           }
                         }
                       />
-                    </ForwardRef>
+                    </ForwardRef(SafeHtml)>
                   </div>
                 </Link>
               </li>
