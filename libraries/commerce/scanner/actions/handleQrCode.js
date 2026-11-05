@@ -5,7 +5,8 @@ import { fetchProductsById } from '@shopgate/engage/product';
 import { getProductById } from '@shopgate/engage/product/selectors/product';
 import { fetchCategory } from '@shopgate/engage/category/actions';
 import { getCategory } from '@shopgate/engage/category/selectors';
-import { isHTTPS, mutable } from '@shopgate/engage/core/helpers';
+import { mutable } from '@shopgate/engage/core/helpers';
+import { getAllowedQrCodeLink } from '@shopgate/engage/scanner/helpers/getAllowedQrCodeLink';
 import successHandleScanner from '../action-creators/successHandleScanner';
 import {
   QR_CODE_TYPE_CATEGORY,
@@ -102,11 +103,13 @@ const handleQrCode = ({ scope, format, payload }) => async (dispatch, getState) 
       }
       break;
     default: {
-      if (isHTTPS(payload)) {
+      const allowedLink = getAllowedQrCodeLink(payload);
+
+      if (allowedLink) {
         dispatch(successHandleScanner(scope, format, payload));
         // Open external link in in-app browser
         dispatch(historyPush({
-          pathname: payload,
+          pathname: allowedLink,
         }));
         // Remove the scanner screen from the history
         dispatch(historyPop());
