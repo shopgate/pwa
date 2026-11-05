@@ -27,6 +27,8 @@ const APP_SETTINGS_DEFAULT: ProductColumns = {
 const APP_SETTINGS_DEFAULT_RESOLVED = {
   xs: 2,
   md: 4,
+  lg: 4,
+  xl: 5,
 };
 
 interface SetupOptions {
@@ -84,14 +86,19 @@ describe('useProductGridColumns', () => {
     expect(renderHook('some-widget-code')).toEqual(APP_SETTINGS_DEFAULT_RESOLVED);
   });
 
-  it('honors the legacy scalar flat when outside a widget (pre-hydration)', () => {
+  it('honors the legacy scalar on phones when outside a widget (pre-hydration)', () => {
     setup({
       hydrated: false,
       appColumns: APP_SETTINGS_DEFAULT,
       widgetSettings: { columns: 5 },
     });
 
-    expect(renderHook(null)).toEqual({ xs: 5 });
+    expect(renderHook(null)).toEqual({
+      xs: 5,
+      md: 4,
+      lg: 4,
+      xl: 5,
+    });
   });
 
   it('falls back to the app-settings default outside a widget when the legacy scalar is missing', () => {
@@ -112,6 +119,8 @@ describe('useProductGridColumns', () => {
     const resolved = {
       xs: 1,
       md: 3,
+      lg: 4,
+      xl: 5,
     };
     setup({
       hydrated: true,
@@ -122,5 +131,23 @@ describe('useProductGridColumns', () => {
     // Both inside and outside a widget defer to the hydrated app settings.
     expect(renderHook(null)).toEqual(resolved);
     expect(renderHook('some-widget-code')).toEqual(resolved);
+  });
+
+  it('keeps a merchant column count above the wide screen minimum', () => {
+    setup({
+      hydrated: true,
+      appColumns: {
+        small: 2,
+        large: 6,
+      },
+      widgetSettings: {},
+    });
+
+    expect(renderHook(null)).toEqual({
+      xs: 2,
+      md: 6,
+      lg: 6,
+      xl: 6,
+    });
   });
 });

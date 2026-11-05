@@ -5,6 +5,7 @@ import mapKeys from 'lodash/mapKeys';
 import { makeStyles, useMediaQuery, useResponsiveValue } from '@shopgate/engage/styles';
 import { getProductGridColumns } from '@shopgate/engage/settings/selectors/appSettings';
 import { SCREEN_SIZE_BREAKPOINTS } from '@shopgate/engage/settings/constants/appSettings';
+import { withWideScreenColumns } from '@shopgate/engage/product/components/ProductGrid/hooks';
 import { i18n } from '@shopgate/engage/core/helpers';
 import {
   ProductListTypeProvider,
@@ -60,9 +61,9 @@ const ListContent = ({
   isAccordion,
 }) => {
   const gridColumns = useSelector(getProductGridColumns);
-  const columns = useResponsiveValue(
+  const columns = useResponsiveValue(withWideScreenColumns(
     mapKeys(gridColumns, (_value, size) => SCREEN_SIZE_BREAKPOINTS[size])
-  );
+  ));
   const { classes, cx } = useStyles({ isAccordion, columns });
   const isWide = useMediaQuery(theme => theme.breakpoints.up('md'));
 
