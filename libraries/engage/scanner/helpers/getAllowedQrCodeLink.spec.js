@@ -33,6 +33,11 @@ describe('engage > scanner > helpers > getAllowedQrCodeLink', () => {
       .toBe('https://harborfreight.com/@evil.com/');
   });
 
+  it('should reject links which do not use https', () => {
+    expect(getAllowedQrCodeLink('http://harborfreight.com/')).toBeNull();
+    expect(getAllowedQrCodeLink('ftp://harborfreight.com/')).toBeNull();
+  });
+
   it('should reject links with credentials', () => {
     expect(getAllowedQrCodeLink('https://user:pass@harborfreight.com/')).toBeNull();
     expect(getAllowedQrCodeLink('https://user@harborfreight.com/')).toBeNull();
@@ -72,6 +77,12 @@ describe('engage > scanner > helpers > getAllowedQrCodeLink', () => {
       .toBe('https://www.harborfreight.com/');
     expect(getAllowedQrCodeLink('https://hf.tools')).toBe('https://hf.tools/');
     expect(getAllowedQrCodeLink('https://shop.hf.tools')).toBe('https://shop.hf.tools/');
+  });
+
+  it('should accept entries with a port', () => {
+    mockAppConfig.qrCodeAllowedDomains = ['harborfreight.com:443', 'https://hf.tools:8443/'];
+    expect(getAllowedQrCodeLink('https://harborfreight.com')).toBe('https://harborfreight.com/');
+    expect(getAllowedQrCodeLink('https://hf.tools')).toBe('https://hf.tools/');
   });
 
   it('should ignore entries without a dot', () => {

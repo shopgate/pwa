@@ -250,11 +250,11 @@ describe('handleQrCode', () => {
       parse2dsQrCode.mockReturnValue(null);
     });
 
-    it('should open the normalized link of an allowed https url', () => {
+    it('should open the normalized link of an allowed https url', async () => {
       const externalLink = 'https://Shopgate.com';
       const normalizedLink = 'https://shopgate.com/';
       getAllowedQrCodeLink.mockReturnValue(normalizedLink);
-      handleQrCode({ scope, format, payload: externalLink })(dispatch);
+      await handleQrCode({ scope, format, payload: externalLink })(dispatch, getState);
       expect(getAllowedQrCodeLink).toHaveBeenCalledWith(externalLink);
       expect(historyPush).toHaveBeenCalledWith({
         pathname: normalizedLink,
@@ -263,20 +263,20 @@ describe('handleQrCode', () => {
       expect(historyPop).toHaveBeenCalledWith();
     });
 
-    it('should trigger "no result" handling when the domain of the https url is not allowed', () => {
+    it('should trigger "no result" handling when the domain of the https url is not allowed', async () => {
       getAllowedQrCodeLink.mockReturnValue(null);
       const externalLink = 'https://evil.com';
       const event = { scope, format, payload: externalLink };
-      handleQrCode(event)(dispatch, getState);
+      await handleQrCode(event)(dispatch, getState);
       expect(getAllowedQrCodeLink).toHaveBeenCalledWith(externalLink);
       expect(historyPush).not.toHaveBeenCalled();
       expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
 
-    it('should trigger "no result" handling when with http url', () => {
+    it('should trigger "no result" handling when with http url', async () => {
       const externalLink = 'http://shopgate.com';
       const event = { scope, format, payload: externalLink };
-      handleQrCode(event)(dispatch, getState);
+      await handleQrCode(event)(dispatch, getState);
       expect(historyPush).not.toHaveBeenCalled();
       expect(dispatch).toHaveBeenCalledWith(handleNoResults(event, 'scanner.noResult.qrCode'));
     });
