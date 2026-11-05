@@ -54,10 +54,29 @@ export const findStableElement = (element: Element | null): Element | null => {
 };
 
 /**
+ * Builds selectors that narrow the stable class of an element down to one of its variants, e.g.
+ * `.engage__product-tile-actions[data-position="topRight"]`. Test ids are left out.
+ * @param element The element to check.
+ * @returns One selector per data attribute, or none when the element has no stable class.
+ */
+export const getDataAttributeSelectors = (element: Element): string[] => {
+  const stableClass = getStableClass(element);
+
+  if (!stableClass) {
+    return [];
+  }
+
+  return Array.from(element.attributes)
+    .filter(({ name }) => name.startsWith('data-') && !name.startsWith('data-test'))
+    .map(({ name, value }) => `.${stableClass}[${name}${value ? `="${value}"` : ''}]`);
+};
+
+/**
  * Collects the selectors of a picked element and its ancestors with stable classes, from the
- * element outwards, so a merchant can pick how broad a rule should be.
+ * element outwards, so a merchant can pick how broad a rule should be. The variants of the picked
+ * element follow its own class selector.
  * @param element The picked element.
- * @returns Class selectors like `.engage__product-card`.
+ * @returns Selectors like `.engage__product-card`.
  */
 export const getStableSelectors = (element: Element): string[] => {
   const selectors: string[] = [];
@@ -73,6 +92,8 @@ export const getStableSelectors = (element: Element): string[] => {
 
     current = current.parentElement;
   }
+
+  selectors.splice(1, 0, ...getDataAttributeSelectors(element));
 
   return selectors;
 };

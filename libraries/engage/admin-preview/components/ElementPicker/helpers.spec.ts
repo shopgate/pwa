@@ -1,4 +1,6 @@
-import { findStableElement, getStableClass, getStableSelectors } from './helpers';
+import {
+  findStableElement, getDataAttributeSelectors, getStableClass, getStableSelectors,
+} from './helpers';
 
 const createTree = () => {
   document.body.innerHTML = `
@@ -69,5 +71,38 @@ describe('admin-preview/ElementPicker/helpers', () => {
       '.engage__product-card',
       '.theme__product-grid',
     ]);
+  });
+
+  it('lists the variants of the picked element after its own class', () => {
+    document.body.innerHTML = `
+      <div class="engage__product-card">
+        <div id="actions" class="engage__product-tile-actions" data-position="topRight">x</div>
+      </div>
+    `;
+
+    expect(getStableSelectors(document.getElementById('actions') as Element)).toEqual([
+      '.engage__product-tile-actions',
+      '.engage__product-tile-actions[data-position="topRight"]',
+      '.engage__product-card',
+    ]);
+  });
+
+  it('builds a selector per data attribute and leaves out test ids', () => {
+    document.body.innerHTML = `
+      <button id="button" class="engage__button" data-color="primary" data-selected="" data-test-id="buy">
+        x
+      </button>
+    `;
+
+    expect(getDataAttributeSelectors(document.getElementById('button') as Element)).toEqual([
+      '.engage__button[data-color="primary"]',
+      '.engage__button[data-selected]',
+    ]);
+  });
+
+  it('builds no data attribute selectors without a stable class', () => {
+    document.body.innerHTML = '<div id="element" data-color="primary">x</div>';
+
+    expect(getDataAttributeSelectors(document.getElementById('element') as Element)).toEqual([]);
   });
 });
