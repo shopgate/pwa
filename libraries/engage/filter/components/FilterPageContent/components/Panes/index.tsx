@@ -1,27 +1,12 @@
 import { useEffect, useState } from 'react';
-import { SurroundPortals } from '@shopgate/engage/components';
 import { ButtonBase } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
-import {
-  PORTAL_FILTER_PRICE_RANGE,
-  FILTER_TYPE_RANGE,
-  FILTER_TYPE_MULTISELECT,
-  PriceSlider,
-} from '@shopgate/engage/filter';
-import Selector from '../Selector';
-import type { FilterValue } from '../Selector';
-
-export interface ApiFilter {
-  id: string;
-  label: string;
-  type: string;
-  values: FilterValue[];
-  minimum?: number;
-  maximum?: number;
-}
+import { FILTER_TYPE_RANGE } from '@shopgate/engage/filter';
+import type { APIFilter } from '@shopgate/engage/filter/providers/FilterPageProvider.context';
+import Filter from '../Filter';
 
 export interface FilterPanesProps {
-  filters: ApiFilter[];
+  filters: APIFilter[];
   /** Returns the selected value ids, or the selected range for a range filter. */
   getSelectedValues: (id: string) => string[] | null;
   onChange: (id: string, selected: string[]) => void;
@@ -93,7 +78,7 @@ const useStyles = makeStyles()(theme => ({
  * @param selected The selected values of the filter.
  * @returns The number of active choices.
  */
-const countSelected = (filter: ApiFilter, selected: string[] | null) => {
+const countSelected = (filter: APIFilter, selected: string[] | null) => {
   if (!selected?.length) {
     return 0;
   }
@@ -157,30 +142,13 @@ const FilterPanes = ({ filters, getSelectedValues, onChange }: FilterPanesProps)
         aria-labelledby={`filter-tab-${active.id}`}
       >
         <h2 className={classes.heading}>{active.label}</h2>
-        {active.type === FILTER_TYPE_RANGE ? (
-          <SurroundPortals portalName={PORTAL_FILTER_PRICE_RANGE} portalProps={{ filter: active }}>
-            <PriceSlider
-              id={active.id}
-              key={active.id}
-              min={active.minimum}
-              max={active.maximum}
-              onChange={onChange}
-              value={selected as unknown as number[] | null}
-              inline
-            />
-          </SurroundPortals>
-        ) : (
-          <Selector
-            id={active.id}
-            key={active.id}
-            label={active.label}
-            values={active.values}
-            multi={active.type === FILTER_TYPE_MULTISELECT}
-            onChange={onChange}
-            selected={selected}
-            inline
-          />
-        )}
+        <Filter
+          key={active.id}
+          filter={active}
+          selected={selected}
+          onChange={onChange}
+          inline
+        />
       </div>
     </div>
   );

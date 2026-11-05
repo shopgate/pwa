@@ -124,7 +124,7 @@ const MediaSlider = ({
 
   const isStacked = stacked && media.length > 1;
   const items = media.map((entry, index) => ({
-    key: entry.url,
+    key: `${index}-${entry.url}`,
     content: (
       <MediaItem
         media={entry}

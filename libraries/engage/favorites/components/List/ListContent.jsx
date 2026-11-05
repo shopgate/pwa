@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
+import { useProductGridColumns } from '@shopgate/engage/product/components/ProductGrid/hooks';
 import { i18n } from '@shopgate/engage/core/helpers';
 import {
   ProductListTypeProvider,
@@ -11,7 +12,7 @@ import { Button } from '@shopgate/engage/components/v2';
 import { getUseGetFavoriteIdsPipeline } from '@shopgate/engage/favorites';
 import ListItemWrapper from './ListItemWrapper';
 
-const useStyles = makeStyles()((theme, { isAccordion }) => ({
+const useStyles = makeStyles()((theme, { isAccordion, columns }) => ({
   divider: {
     height: 1,
     width: 'calc(100% + 32px)',
@@ -24,14 +25,8 @@ const useStyles = makeStyles()((theme, { isAccordion }) => ({
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(3, minmax(0, 1fr))',
+    gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
     gap: theme.spacing(2),
-    [theme.breakpoints.up('lg')]: {
-      gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
-    },
-    [theme.breakpoints.up('xl')]: {
-      gridTemplateColumns: 'repeat(5, minmax(0, 1fr))',
-    },
   },
   loadMoreButton: {
     width: 'calc(100% - 32px)',
@@ -62,7 +57,8 @@ const ListContent = ({
   onLoadMore,
   isAccordion,
 }) => {
-  const { classes, cx } = useStyles({ isAccordion });
+  const columns = useProductGridColumns();
+  const { classes, cx } = useStyles({ isAccordion, columns });
   const isWide = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   const listItems = (

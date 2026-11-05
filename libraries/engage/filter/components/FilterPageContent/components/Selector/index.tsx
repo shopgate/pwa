@@ -155,6 +155,18 @@ const Selector = ({
     });
   }, [label, selectedValues]);
 
+  const Value = inline ? ValueChip : ValueCheckbox;
+  const valueList = values.map(value => (
+    <Value
+      key={value.id}
+      id={value.id}
+      label={value.label}
+      hits={value.hits}
+      isActive={selected.includes(value.id)}
+      onToggle={handleToggle}
+    />
+  ));
+
   return (
     <SurroundPortals
       portalName={PORTAL_FILTER_SELECTOR}
@@ -171,16 +183,7 @@ const Selector = ({
     >
       {inline ? (
         <div className={cx(classes.chips, 'engage__filter-page__selector')} role="group" aria-label={label}>
-          {values.map(value => (
-            <ValueChip
-              key={value.id}
-              id={value.id}
-              label={value.label}
-              hits={value.hits}
-              isActive={selected.includes(value.id)}
-              onToggle={handleToggle}
-            />
-          ))}
+          {valueList}
         </div>
       ) : (
         <FilterItem>
@@ -192,16 +195,7 @@ const Selector = ({
             chevronClassName={classes.chevron}
           >
             <div className={classes.content}>
-              {values.map(value => (
-                <ValueCheckbox
-                  key={value.id}
-                  id={value.id}
-                  label={value.label}
-                  hits={value.hits}
-                  isActive={selected.includes(value.id)}
-                  onToggle={handleToggle}
-                />
-              ))}
+              {valueList}
             </div>
           </Accordion>
         </FilterItem>

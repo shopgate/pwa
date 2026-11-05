@@ -1,19 +1,12 @@
-import { Fragment } from 'react';
 import type { ComponentType } from 'react';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { useFilterPage } from '@shopgate/engage/filter/hooks';
 import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
-import {
-  PORTAL_FILTER_PRICE_RANGE,
-  PORTAL_FILTER_PAGE_CONTENT,
-  FILTER_TYPE_RANGE,
-  FILTER_TYPE_MULTISELECT,
-  PriceSlider,
-} from '@shopgate/engage/filter';
-import Selector from './components/Selector';
+import { PORTAL_FILTER_PAGE_CONTENT } from '@shopgate/engage/filter';
+import type { APIFilter } from '@shopgate/engage/filter/providers/FilterPageProvider.context';
+import Filter from './components/Filter';
 import FilterButtonBar from './components/FilterButtonBar';
 import FilterPanes from './components/Panes';
-import type { ApiFilter } from './components/Panes';
 
 const useStyles = makeStyles()(theme => ({
   content: {
@@ -53,45 +46,20 @@ const FilterPageContent = ({ AppBarComponent = null }: FilterPageContentProps) =
       )}
       {isWide ? (
         <FilterPanes
-          filters={apiFilters as ApiFilter[]}
+          filters={apiFilters}
           getSelectedValues={getSelectedFilterValues}
           onChange={updateSelectedFilterValues}
         />
       ) : (
         <div className={cx(classes.content, 'engage__filter-page__content')}>
-          {apiFilters.map((filter) => {
-            const portalProps = { filter };
-            const value = getSelectedFilterValues(filter.id);
-
-            if (filter.type === FILTER_TYPE_RANGE) {
-              return (
-                <Fragment key={filter.id}>
-                  <SurroundPortals portalName={PORTAL_FILTER_PRICE_RANGE} portalProps={portalProps}>
-                    <PriceSlider
-                      id={filter.id}
-                      key={filter.id}
-                      min={filter.minimum}
-                      max={filter.maximum}
-                      onChange={updateSelectedFilterValues}
-                      value={value}
-                    />
-                  </SurroundPortals>
-                </Fragment>
-              );
-            }
-
-            return (
-              <Selector
-                id={filter.id}
-                key={filter.id}
-                label={filter.label}
-                values={filter.values}
-                multi={filter.type === FILTER_TYPE_MULTISELECT}
-                onChange={updateSelectedFilterValues}
-                selected={value}
-              />
-            );
-          })}
+          {apiFilters.map((filter: APIFilter) => (
+            <Filter
+              key={filter.id}
+              filter={filter}
+              selected={getSelectedFilterValues(filter.id)}
+              onChange={updateSelectedFilterValues}
+            />
+          ))}
         </div>
       )}
       <FilterButtonBar />

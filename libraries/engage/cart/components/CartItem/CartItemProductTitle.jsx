@@ -2,13 +2,11 @@ import React, { useCallback, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { makeStyles } from '@shopgate/engage/styles';
 import { IconButton } from '@shopgate/engage/components/v2';
-import TrashOutlineIcon from '@shopgate/pwa-ui-shared/icons/TrashOutlineIcon';
 import {
-  Grid, I18n, ContextMenu, SurroundPortals, TextLink,
+  Grid, ContextMenu, SurroundPortals, TextLink, TrashOutlineIcon,
 } from '@shopgate/engage/components';
 import {
   CART_ITEM_CONTEXT_MENU,
-  CART_ITEM_CONTEXT_MENU_ITEM_REMOVE,
   CART_ITEM_NAME,
 } from '@shopgate/engage/cart';
 import {
@@ -103,7 +101,7 @@ export function CartItemProductTitle({ value, productId }) {
   }, [invokeFulfillmentAction]);
 
   const hasFulfillmentActions = merchantFulfillmentMethodsCount > 1
-    || (!!cartItem?.fulfillment?.method && cartItem.fulfillment.method !== DIRECT_SHIP);
+    || (!!cartItem?.fulfillment && cartItem.fulfillment.method !== DIRECT_SHIP);
 
   const contextMenuClasses = useMemo(() => ({
     button: classes.menuToggleButton,
@@ -150,19 +148,6 @@ export function CartItemProductTitle({ value, productId }) {
             </IconButton>
             {hasFulfillmentActions && (
             <ContextMenu classes={contextMenuClasses}>
-              <SurroundPortals
-                portalName={CART_ITEM_CONTEXT_MENU_ITEM_REMOVE}
-                portalProps={{
-                  context,
-                  handleRemove,
-                }}
-              >
-                <div data-test-id="cartItemContextMenuItemRemove">
-                  <ContextMenu.Item onClick={handleRemove}>
-                    <I18n.Text string="cart.remove" />
-                  </ContextMenu.Item>
-                </div>
-              </SurroundPortals>
               <CartContextMenuItemChangeLocation
                 cartItem={context.cartItem}
                 onClick={handleChangeLocationClick}

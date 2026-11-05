@@ -131,6 +131,21 @@ class CharacteristicSheet extends PureComponent {
       selectedIndex = items.findIndex(item => item.selectable);
     }
 
+    const renderedItems = items.map((item, index) => (
+      <Item
+        key={item.id}
+        item={item}
+        onClick={this.handleItemClick}
+        rightComponent={() => this.renderAvailability(item.id)}
+        selected={item.id === selectedValue}
+        ref={index === selectedIndex ? this.firstSelectableItemRef : null}
+        characteristics={{
+          ...this.props.selection,
+          [this.props.charId]: item.id,
+        }}
+      />
+    ));
+
     if (menu) {
       return (
         <ThemeContext.Consumer>
@@ -143,20 +158,7 @@ class CharacteristicSheet extends PureComponent {
               {/* Since the Menu component uses a "portal" internally, we need to manually
                 transfer the ThemeContext inside, so that children can access it */}
               <ThemeContext.Provider value={contextProps}>
-                {items.map((item, index) => (
-                  <Item
-                    key={item.id}
-                    item={item}
-                    onClick={this.handleItemClick}
-                    rightComponent={() => this.renderAvailability(item.id)}
-                    selected={item.id === selectedValue}
-                    ref={index === selectedIndex ? this.firstSelectableItemRef : null}
-                    characteristics={{
-                      ...this.props.selection,
-                      [this.props.charId]: item.id,
-                    }}
-                  />
-                ))}
+                {renderedItems}
               </ThemeContext.Provider>
             </Menu>
           )}
@@ -173,20 +175,7 @@ class CharacteristicSheet extends PureComponent {
         onDidClose={onDidClose}
       >
         <SheetList className="theme__product__characteristic__sheet">
-          {items.map((item, index) => (
-            <Item
-              item={item}
-              key={item.id}
-              onClick={this.handleItemClick}
-              rightComponent={() => this.renderAvailability(item.id)}
-              selected={item.id === selectedValue}
-              ref={index === selectedIndex ? this.firstSelectableItemRef : null}
-              characteristics={{
-                ...this.props.selection,
-                [this.props.charId]: item.id,
-              }}
-            />
-          ))}
+          {renderedItems}
         </SheetList>
       </SheetDrawer>
     );

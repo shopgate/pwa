@@ -366,7 +366,7 @@ const Image = (props: ImageProps) => {
     <div
       className={cx(
         classes.container,
-        { [classes.natural]: naturalRatio },
+        { [classes.natural]: naturalRatio && !showPlaceholder },
         className,
         'common__image__container'
       )}

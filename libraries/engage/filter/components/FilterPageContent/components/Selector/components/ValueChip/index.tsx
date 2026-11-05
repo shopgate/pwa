@@ -3,6 +3,7 @@ import noop from 'lodash/noop';
 import { ButtonBase } from '@shopgate/engage/components/v2';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { makeStyles } from '@shopgate/engage/styles';
+import type { ValueCheckboxProps } from '../ValueCheckbox';
 
 const useStyles = makeStyles()(theme => ({
   chip: {
@@ -31,28 +32,7 @@ const useStyles = makeStyles()(theme => ({
   },
 }));
 
-export interface ValueChipProps {
-  /**
-   * Id of the filter value.
-   */
-  id: string;
-  /**
-   * Display label of the filter value. Rendered as is — never translated.
-   */
-  label: string;
-  /**
-   * Number of products that are available for the filter value.
-   */
-  hits?: number | null;
-  /**
-   * Whether the value is currently selected.
-   */
-  isActive?: boolean;
-  /**
-   * Invoked with the value id whenever the chip is toggled.
-   */
-  onToggle?: (id: string) => void;
-}
+export type ValueChipProps = ValueCheckboxProps;
 
 /**
  * A selectable filter value shown as a chip, used where the filter page has room to lay its values
