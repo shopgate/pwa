@@ -40,4 +40,10 @@ describe('<AppBarTitle />', () => {
     expect(container.querySelector('img')).toBeNull();
     expect(getByRole('heading')).toHaveTextContent('<img src=x onerror=alert(1)>');
   });
+
+  it('should forward the ref to the title element', () => {
+    const ref = React.createRef();
+    const { getByRole } = render(<AppBarTitle ref={ref} title="My Title" />);
+    expect(ref.current).toBe(getByRole('heading'));
+  });
 });
