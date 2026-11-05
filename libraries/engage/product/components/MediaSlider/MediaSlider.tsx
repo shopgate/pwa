@@ -80,7 +80,7 @@ const MediaItem = ({ media, onClick, naturalRatio }: MediaItemProps) => {
  * @returns The featured image.
  */
 const renderFeaturedMedia = (featuredMedia: ProductMedia | null) => (
-  <FeaturedImage {...featuredMedia} />
+  <FeaturedImage {...(featuredMedia || {})} />
 );
 
 /**
