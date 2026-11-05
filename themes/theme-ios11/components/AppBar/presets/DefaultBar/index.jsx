@@ -1,4 +1,6 @@
-import React, { Fragment, PureComponent, useMemo } from 'react';
+import React, {
+  Fragment, PureComponent, useEffect, useMemo, useRef,
+} from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import { Portal } from '@shopgate/pwa-common/components';
@@ -11,7 +13,7 @@ import {
   withRoute, withApp, INDEX_PATH, router,
 } from '@shopgate/engage/core';
 import { i18n } from '@shopgate/engage/core/helpers';
-import { getCSSCustomProp } from '@shopgate/engage/styles';
+import { getCSSCustomProp, useColorScheme } from '@shopgate/engage/styles';
 import { ViewContext } from '@shopgate/engage/components/View';
 import { useSelector } from 'react-redux';
 import { getPersistentSearchBarSettings } from '@shopgate/engage/settings/selectors/appSettings';
@@ -33,6 +35,16 @@ import connect from './connector';
 
 const NO_CENTER = { center: null };
 const EMPTY_PROPS = {};
+
+/**
+ * Reads the status bar background of the app bar. The native status bar needs a resolved color
+ * value, so it is read from the live custom property rather than passed along as a var() reference.
+ * @param {boolean} overlay Whether the app bar overlays the content.
+ * @returns {string}
+ */
+const getStatusBarBackground = overlay => (
+  overlay ? 'transparent' : getCSSCustomProp('--sg-components-appBar-background')
+);
 
 /**
  * The AppBarDefault component.
@@ -160,12 +172,9 @@ class AppBarDefault extends PureComponent {
     /**
      * The settings for the startpage need to be preserved within the statusbar to optimize
      * the initial rendering at the app start.
-     *
-     * The native status bar needs a resolved color value, so the app bar background is read
-     * from the live custom property rather than passed along as a var() reference.
      */
     this.props.updateStatusBar(
-      this.props.overlay ? 'transparent' : getCSSCustomProp('--sg-components-appBar-background'),
+      getStatusBarBackground(this.props.overlay),
       pathname === INDEX_PATH
     );
   }
@@ -263,6 +272,22 @@ const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
   } : null), [searchBarSettings.hideOnScroll, searchQuery, showSearchBar]);
   const titleProps = searchBar && isSearch ? NO_CENTER : EMPTY_PROPS;
 
+  const { route, updateStatusBar } = props;
+  const { activeColorScheme } = useColorScheme();
+  const syncedColorScheme = useRef(activeColorScheme);
+
+  useEffect(() => {
+    if (syncedColorScheme.current === activeColorScheme) {
+      return;
+    }
+
+    syncedColorScheme.current = activeColorScheme;
+
+    if (route.visible) {
+      updateStatusBar(getStatusBarBackground(overlay), route.pathname === INDEX_PATH);
+    }
+  }, [activeColorScheme, overlay, route, updateStatusBar]);
+
   return (
     <ViewContext.Consumer>
       {({ ariaHidden }) => (
@@ -283,6 +308,7 @@ const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
 
 AppBarDefaultWithContext.propTypes = {
   route: PropTypes.shape().isRequired,
+  updateStatusBar: PropTypes.func.isRequired,
   actionButtons: PropTypes.bool,
 };
 
