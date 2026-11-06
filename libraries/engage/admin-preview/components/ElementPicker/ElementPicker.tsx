@@ -113,6 +113,27 @@ const findTargets = (selector: string): Target[] => {
 };
 
 /**
+ * Whether a node belongs to an outline of the picker.
+ * @param node The node to check.
+ * @returns True for an outline, its label, and their content.
+ */
+const isOutlineNode = (node: Node) => {
+  const element = node instanceof Element ? node : node.parentElement;
+
+  return !!element?.closest('[data-element-picker-highlight]');
+};
+
+/**
+ * Whether a DOM change only concerns the outlines, which the picker renders into the body itself.
+ * Without this, updating an outline would trigger the next update.
+ * @param record The DOM change.
+ * @returns True when the change can be ignored.
+ */
+const isOutlineMutation = (record: MutationRecord) => isOutlineNode(record.target)
+  || (record.type === 'childList'
+    && [...Array.from(record.addedNodes), ...Array.from(record.removedNodes)].every(isOutlineNode));
+
+/**
  * Lets the admin preview pick an element: it outlines the element under the pointer that carries a
  * stable class, and reports the classes of a clicked one instead of passing the click on. While
  * not picking, it outlines the elements of a selector the admin asks for.
@@ -138,20 +159,61 @@ const ElementPicker = ({
     updateHighlights();
   }, [updateHighlights]);
 
-  // Keeps the outlines on their elements while the app scrolls or resizes.
+  // Keeps the outlines on their elements while the app scrolls, resizes or changes its content.
   useEffect(() => {
     if (!active && !highlightSelector) {
       return undefined;
     }
 
-    window.addEventListener('scroll', updateHighlights, true);
-    window.addEventListener('resize', updateHighlights);
+    let frame: number | null = null;
+    let contentChanged = false;
+
+    const refresh = () => {
+      frame = null;
+
+      if (contentChanged && !active && highlightSelector) {
+        contentChanged = false;
+        setTargets(findTargets(highlightSelector));
+        return;
+      }
+
+      contentChanged = false;
+      setTargets(targetsRef.current.filter(({ element }) => element.isConnected));
+    };
+
+    const scheduleRefresh = () => {
+      if (frame === null) {
+        frame = requestAnimationFrame(refresh);
+      }
+    };
+
+    const observer = new MutationObserver((records) => {
+      if (records.every(isOutlineMutation)) {
+        return;
+      }
+
+      contentChanged = true;
+      scheduleRefresh();
+    });
+
+    window.addEventListener('scroll', scheduleRefresh, true);
+    window.addEventListener('resize', scheduleRefresh);
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+    });
 
     return () => {
-      window.removeEventListener('scroll', updateHighlights, true);
-      window.removeEventListener('resize', updateHighlights);
+      window.removeEventListener('scroll', scheduleRefresh, true);
+      window.removeEventListener('resize', scheduleRefresh);
+      observer.disconnect();
+
+      if (frame !== null) {
+        cancelAnimationFrame(frame);
+      }
     };
-  }, [active, highlightSelector, updateHighlights]);
+  }, [active, highlightSelector, setTargets]);
 
   useEffect(() => {
     if (!active) {

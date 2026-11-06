@@ -1,5 +1,7 @@
 import React from 'react';
-import { fireEvent, render, screen } from '@testing-library/react';
+import {
+  act, fireEvent, render, screen,
+} from '@testing-library/react';
 import ElementPicker from './ElementPicker';
 
 const renderPicker = (active = true) => {
@@ -126,6 +128,124 @@ describe('admin-preview/ElementPicker', () => {
     expect(screen.getAllByText('.engage__product-card')).toHaveLength(1);
 
     getClientRects.mockRestore();
+  });
+
+  describe('updates', () => {
+    let getClientRects: jest.SpyInstance;
+    let requestAnimationFrame: jest.SpyInstance;
+
+    const countOutlines = () => document.querySelectorAll('[data-element-picker-highlight]').length;
+
+    const nextFrame = () => act(() => new Promise((resolve) => {
+      window.requestAnimationFrame(() => resolve(undefined));
+    }));
+
+    /**
+     * Reports DOM changes to the picker. The test setup replaces MutationObserver with a stub that
+     * never reports, so the picker's callback is called directly.
+     * @param records The changes to report.
+     */
+    const reportMutations = (records: Partial<MutationRecord>[]) => {
+      const { calls } = (global as unknown as { mutationConstructorSpy: jest.Mock })
+        .mutationConstructorSpy.mock;
+      const callback = calls[calls.length - 1][0] as MutationCallback;
+
+      callback(records as MutationRecord[], {} as MutationObserver);
+    };
+
+    const childListChange = (target: Node, addedNodes: Node[], removedNodes: Node[] = []) => ({
+      type: 'childList' as const,
+      target,
+      addedNodes: addedNodes as unknown as NodeList,
+      removedNodes: removedNodes as unknown as NodeList,
+    });
+
+    const renderHighlighter = () => render(
+      <>
+        <div className="engage__product-card">A</div>
+        <ElementPicker
+          active={false}
+          highlightSelector=".engage__product-card"
+          onPick={jest.fn()}
+          onCancel={jest.fn()}
+        />
+      </>
+    );
+
+    beforeEach(() => {
+      // jsdom lays nothing out, so every element would count as hidden.
+      getClientRects = jest.spyOn(Element.prototype, 'getClientRects')
+        .mockReturnValue([{}] as unknown as DOMRectList);
+      requestAnimationFrame = jest.spyOn(window, 'requestAnimationFrame');
+    });
+
+    afterEach(() => {
+      getClientRects.mockRestore();
+      requestAnimationFrame.mockRestore();
+    });
+
+    it('updates the outlines once per frame while the app scrolls', () => {
+      renderHighlighter();
+
+      fireEvent.scroll(window);
+      fireEvent.scroll(window);
+      fireEvent.scroll(window);
+
+      expect(requestAnimationFrame).toHaveBeenCalledTimes(1);
+    });
+
+    it('outlines elements that match the selector after the content changed', async () => {
+      renderHighlighter();
+
+      expect(countOutlines()).toBe(1);
+
+      const element = document.createElement('div');
+
+      element.className = 'engage__product-card';
+      document.body.appendChild(element);
+      reportMutations([childListChange(document.body, [element])]);
+      await nextFrame();
+
+      expect(countOutlines()).toBe(2);
+
+      element.remove();
+    });
+
+    it('drops the outline of a picked element that left the page', async () => {
+      const onPick = jest.fn();
+      const card = document.createElement('div');
+
+      card.className = 'engage__product-card';
+      document.body.appendChild(card);
+      render(<ElementPicker active onPick={onPick} onCancel={jest.fn()} />);
+
+      fireEvent.pointerMove(card);
+
+      expect(countOutlines()).toBe(1);
+
+      card.remove();
+      reportMutations([childListChange(document.body, [], [card])]);
+      await nextFrame();
+
+      expect(countOutlines()).toBe(0);
+      expect(onPick).not.toHaveBeenCalled();
+    });
+
+    it('ignores changes of its own outlines', () => {
+      renderHighlighter();
+
+      const outline = document.querySelector('[data-element-picker-highlight]') as Element;
+
+      reportMutations([
+        childListChange(document.body, [outline]),
+        {
+          type: 'attributes',
+          target: outline.firstChild as Node,
+        },
+      ]);
+
+      expect(requestAnimationFrame).not.toHaveBeenCalled();
+    });
   });
 
   it('ignores an invalid selector', () => {
