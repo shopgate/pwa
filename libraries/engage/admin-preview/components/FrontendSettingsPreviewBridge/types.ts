@@ -16,6 +16,10 @@ export type FrontendSettingsPreviewBridgeMessage =
     type: 'receiveFrontendSettings';
     payload?: {
       styling?: FrontendSettingsStyling;
+      /**
+       * The merchant's custom stylesheet from the `rawStyling` inputs. Applied after the styling.
+       */
+      customCss?: string;
       appSettings?: AppSettingsPayload;
     };
   }
@@ -55,4 +59,38 @@ export type FrontendSettingsPreviewBridgeMessage =
      */
     type: 'iconCatalog';
     payload: IconCatalog;
+  }
+  | {
+    /**
+     * Inbound. Starts or stops picking an element, to find its classes for custom css.
+     */
+    type: 'setElementPicker';
+    payload: {
+      active: boolean;
+    };
+  }
+  | {
+    /**
+     * Inbound. Outlines the elements that match the selector, or clears the outlines with null.
+     */
+    type: 'highlightSelector';
+    payload: {
+      selector: string | null;
+    };
+  }
+  | {
+    /**
+     * Outbound. The selectors of the picked element and its ancestors, closest first. Picking ends.
+     */
+    type: 'elementPicked';
+    payload: {
+      selectors: string[];
+    };
+  }
+  | {
+    /**
+     * Outbound. Picking was cancelled inside the preview, e.g. with the escape key.
+     */
+    type: 'elementPickerStopped';
+    payload?: never;
   };

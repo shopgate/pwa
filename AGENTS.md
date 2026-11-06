@@ -77,6 +77,8 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
 - **Cleaning up an existing extension** (its `package.json`, lockfile, lint, test and editor
   config) follows `docs/extension-housekeeping.md`. Read it before changing that setup in an
   extension; it lists what to declare, what to remove and how to verify the result.
+- **Housekeeping is opt-in:** when you work on an extension for another reason and its setup looks
+  outdated, ask the developer whether they want the housekeeping. Don't do it unasked.
 - **TypeScript in extensions:** an extension's `tsconfig.json` only needs
   `{ "extends": "@shopgate/engage/tsconfig.extension.json" }`. It's the one tsconfig the release
   build publishes. Most library files are still JavaScript without declarations; the config loads

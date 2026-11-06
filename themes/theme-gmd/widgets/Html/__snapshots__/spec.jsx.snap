@@ -69,7 +69,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
                 }
               }
             >
-              <ForwardRef
+              <ForwardRef(SafeHtml)
                 className="sg-rfk36k-root common__html-sanitizer"
                 html="<h1>Hello World!</h1>"
                 onClickCapture={[Function]}
@@ -84,7 +84,7 @@ exports[`<HtmlWidget /> should render the widget 1`] = `
                   }
                   onClickCapture={[Function]}
                 />
-              </ForwardRef>
+              </ForwardRef(SafeHtml)>
             </EmbeddedMedia>
           </HtmlSanitizer>
         </Connect(HtmlSanitizer)>
@@ -167,7 +167,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
                 }
               }
             >
-              <ForwardRef
+              <ForwardRef(SafeHtml)
                 className="sg-rfk36k-root common__html-sanitizer"
                 html="<h1>Hello World!</h1>"
                 onClickCapture={[Function]}
@@ -182,7 +182,7 @@ exports[`<HtmlWidget /> should render the widget with a padding 1`] = `
                   }
                   onClickCapture={[Function]}
                 />
-              </ForwardRef>
+              </ForwardRef(SafeHtml)>
             </EmbeddedMedia>
           </HtmlSanitizer>
         </Connect(HtmlSanitizer)>

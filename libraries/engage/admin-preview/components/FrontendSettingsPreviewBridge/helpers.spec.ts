@@ -2,6 +2,7 @@ import {
   PREVIEW_STYLE_TAG_ID,
   getOrCreateStyleTag,
   removeStyleTag,
+  serializePreviewCss,
   serializeStyling,
 } from './helpers';
 
@@ -80,6 +81,23 @@ describe('FrontendSettingsPreviewBridge helpers', () => {
 
     it('returns an empty string when there is nothing to serialize', () => {
       expect(serializeStyling({})).toBe('');
+    });
+  });
+
+  describe('serializePreviewCss', () => {
+    it('adds the custom css after the styling', () => {
+      expect(serializePreviewCss({ '.a': { color: 'red' } }, '.a { color: blue; }'))
+        .toBe('.a { color: red; }\n.a { color: blue; }');
+    });
+
+    it('works with either part alone', () => {
+      expect(serializePreviewCss(null, '.a { color: blue; }')).toBe('.a { color: blue; }');
+      expect(serializePreviewCss({ '.a': { color: 'red' } }, null)).toBe('.a { color: red; }');
+    });
+
+    it('is empty without styling and custom css', () => {
+      expect(serializePreviewCss(null, null)).toBe('');
+      expect(serializePreviewCss({}, '')).toBe('');
     });
   });
 
