@@ -100,6 +100,27 @@ describe('admin-preview/ElementPicker/helpers', () => {
     ]);
   });
 
+  it('builds a presence selector for a flag written as "true"', () => {
+    document.body.innerHTML = '<button id="button" class="engage__button" data-full-width="true">x</button>';
+
+    expect(getDataAttributeSelectors(document.getElementById('button') as Element)).toEqual([
+      '.engage__button[data-full-width]',
+    ]);
+  });
+
+  it('escapes quotes, backslashes and line breaks in values', () => {
+    const element = document.createElement('div');
+
+    element.className = 'engage__product__product-property';
+    element.setAttribute('data-label', 'Länge "innen"\\\nmax');
+    document.body.replaceChildren(element);
+
+    const [selector] = getDataAttributeSelectors(element);
+
+    expect(selector).toBe('.engage__product__product-property[data-label="Länge \\"innen\\"\\\\\\a max"]');
+    expect(document.querySelector(selector)).toBe(element);
+  });
+
   it('builds no data attribute selectors without a stable class', () => {
     document.body.innerHTML = '<div id="element" data-color="primary">x</div>';
 

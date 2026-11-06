@@ -59,6 +59,43 @@ describe('admin-preview/ElementPicker', () => {
     expect(onAppClick).not.toHaveBeenCalled();
   });
 
+  it('reports a disabled button on pointer up, since no click reaches it', () => {
+    const onPick = jest.fn();
+
+    render(
+      <>
+        <button type="button" className="engage__button" disabled>
+          <span>Add to cart</span>
+        </button>
+        <ElementPicker active onPick={onPick} onCancel={jest.fn()} />
+      </>
+    );
+
+    fireEvent.pointerUp(screen.getByText('Add to cart'));
+
+    expect(onPick).toHaveBeenCalledWith(['.engage__button']);
+  });
+
+  it('waits for the click of an enabled element', () => {
+    const { onPick } = renderPicker();
+
+    fireEvent.pointerUp(screen.getByRole('button'));
+
+    expect(onPick).not.toHaveBeenCalled();
+  });
+
+  it('lets the pointer reach elements disabled with aria-disabled while picking', () => {
+    const { unmount } = render(<ElementPicker active onPick={jest.fn()} onCancel={jest.fn()} />);
+    const hasRule = () => Array.from(document.head.querySelectorAll('style'))
+      .some(style => style.textContent?.includes('[aria-disabled="true"] { pointer-events: auto !important; }'));
+
+    expect(hasRule()).toBe(true);
+
+    unmount();
+
+    expect(hasRule()).toBe(false);
+  });
+
   it('cancels on escape', () => {
     const { onCancel } = renderPicker();
 

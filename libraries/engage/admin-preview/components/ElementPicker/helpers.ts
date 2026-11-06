@@ -54,8 +54,18 @@ export const findStableElement = (element: Element | null): Element | null => {
 };
 
 /**
+ * Escapes a value for a quoted CSS string, e.g. a product property label with quotes.
+ * @param value The attribute value.
+ * @returns The value with quotes, backslashes and line breaks escaped.
+ */
+const escapeCssString = (value: string) => value
+  .replace(/["\\]/g, '\\$&')
+  .replace(/\r\n|[\n\r\f]/g, '\\a ');
+
+/**
  * Builds selectors that narrow the stable class of an element down to one of its variants, e.g.
- * `.engage__product-tile-actions[data-position="topRight"]`. Test ids are left out.
+ * `.engage__product-tile-actions[data-position="topRight"]`. Test ids are left out. Flags, which
+ * components write as an empty value or `"true"`, become presence selectors like `[data-selected]`.
  * @param element The element to check.
  * @returns One selector per data attribute, or none when the element has no stable class.
  */
@@ -68,7 +78,11 @@ export const getDataAttributeSelectors = (element: Element): string[] => {
 
   return Array.from(element.attributes)
     .filter(({ name }) => name.startsWith('data-') && !name.startsWith('data-test'))
-    .map(({ name, value }) => `.${stableClass}[${name}${value ? `="${value}"` : ''}]`);
+    .map(({ name, value }) => (
+      value === '' || value === 'true'
+        ? `.${stableClass}[${name}]`
+        : `.${stableClass}[${name}="${escapeCssString(value)}"]`
+    ));
 };
 
 /**

@@ -10,7 +10,13 @@ const HIGHLIGHT_COLOR = '#50A9AD';
 /**
  * Events the app must not see while picking, so taps neither navigate nor trigger ripples.
  */
-const BLOCKED_EVENTS = ['pointerdown', 'pointerup', 'mousedown', 'mouseup', 'touchstart', 'touchend'];
+const BLOCKED_EVENTS = ['pointerdown', 'mousedown', 'mouseup', 'touchstart', 'touchend'];
+
+/**
+ * Lets the pointer reach elements that are disabled with `aria-disabled`, which get
+ * `pointer-events: none`, so they can be picked instead of their parent.
+ */
+const PICKABLE_DISABLED_ELEMENTS_CSS = '[aria-disabled="true"] { pointer-events: auto !important; }';
 
 /**
  * Caps the outlines for a selector that matches every item of a long list.
@@ -171,14 +177,27 @@ const ElementPicker = ({
       }
     };
 
-    const handleClick = (event: MouseEvent) => {
-      event.preventDefault();
-      event.stopImmediatePropagation();
-
-      const element = findStableElement(event.target as Element);
+    const pick = (target: Element) => {
+      const element = findStableElement(target);
 
       if (element) {
         onPick(getStableSelectors(element));
+      }
+    };
+
+    const handleClick = (event: MouseEvent) => {
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      pick(event.target as Element);
+    };
+
+    const handlePointerUp = (event: PointerEvent) => {
+      event.stopImmediatePropagation();
+
+      const target = event.target as Element;
+
+      if (target.closest(':disabled')) {
+        pick(target);
       }
     };
 
@@ -194,16 +213,23 @@ const ElementPicker = ({
 
     window.addEventListener('pointermove', handlePointerMove, true);
     window.addEventListener('click', handleClick, true);
+    window.addEventListener('pointerup', handlePointerUp, true);
     BLOCKED_EVENTS.forEach(type => window.addEventListener(type, blockEvent, true));
     window.addEventListener('keydown', handleKeyDown, true);
     document.documentElement.style.cursor = 'crosshair';
 
+    const pickableDisabledElementsStyle = document.createElement('style');
+    pickableDisabledElementsStyle.textContent = PICKABLE_DISABLED_ELEMENTS_CSS;
+    document.head.appendChild(pickableDisabledElementsStyle);
+
     return () => {
       window.removeEventListener('pointermove', handlePointerMove, true);
       window.removeEventListener('click', handleClick, true);
+      window.removeEventListener('pointerup', handlePointerUp, true);
       BLOCKED_EVENTS.forEach(type => window.removeEventListener(type, blockEvent, true));
       window.removeEventListener('keydown', handleKeyDown, true);
       document.documentElement.style.cursor = '';
+      pickableDisabledElementsStyle.remove();
     };
   }, [active, onCancel, onPick, setTargets]);
 
