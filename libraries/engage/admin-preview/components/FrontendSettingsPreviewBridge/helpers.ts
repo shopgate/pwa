@@ -51,6 +51,22 @@ export const serializeStyling = (styling: FrontendSettingsStyling) => Object.ent
   .join('\n');
 
 /**
+ * Builds the preview stylesheet: the styling, then the merchant's custom css (the `rawStyling`
+ * inputs), so custom css overrides the styling.
+ *
+ * @param styling Selector-to-declarations map received from the admin preview.
+ * @param customCss The merchant's custom stylesheet.
+ * @returns Serialized CSS that can be assigned to a style tag, empty when there is none.
+ */
+export const serializePreviewCss = (
+  styling: FrontendSettingsStyling | null,
+  customCss: string | null
+) => [
+  styling ? serializeStyling(styling) : '',
+  typeof customCss === 'string' ? customCss : '',
+].filter(Boolean).join('\n');
+
+/**
  * Returns the existing preview style tag or creates it at the preview css insertion point, which
  * the html template declares directly below the theme css one. The preview has to override both
  * the defaults that theme initialization generates and the theme css file, and since all three

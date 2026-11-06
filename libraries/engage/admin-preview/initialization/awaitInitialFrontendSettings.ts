@@ -8,7 +8,7 @@ import {
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '../constants';
 import {
   getOrCreateStyleTag,
-  serializeStyling,
+  serializePreviewCss,
 } from '../components/FrontendSettingsPreviewBridge/helpers';
 import type {
   FrontendSettingsPreviewBridgeMessage,
@@ -78,16 +78,18 @@ export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void>
       if (data?.type !== 'receiveFrontendSettings') return;
 
       const styling = data.payload?.styling ?? null;
+      const customCss = data.payload?.customCss ?? null;
+      const previewCss = serializePreviewCss(styling, customCss);
 
-      if (styling) {
-        getOrCreateStyleTag().textContent = serializeStyling(styling);
+      if (previewCss) {
+        getOrCreateStyleTag().textContent = previewCss;
       }
 
       if (data.payload?.appSettings) {
         store.dispatch(receiveAppSettings(data.payload.appSettings));
       }
 
-      setInitialFrontendSettings(styling);
+      setInitialFrontendSettings(styling, customCss);
 
       settle();
     }
