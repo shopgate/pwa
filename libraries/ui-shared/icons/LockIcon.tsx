@@ -1,14 +1,12 @@
-import React from 'react';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import Icon from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The lock icon component.
  * @link https://material.io/tools/icons/?icon=lock&style=baseline
  *
  */
-const LockIcon = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.lock} {...props} />);
+const LockIcon = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="lock" {...props} />
+);
 
 export default LockIcon;

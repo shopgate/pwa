@@ -239,10 +239,17 @@ describe('settings / reducers / appSettings', () => {
           right: 8,
         },
       },
+      icons: {
+        cart: {
+          svg: '<svg viewBox="0 0 48 48"><path d="M0 0h48"/></svg>',
+          keepColors: true,
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
 
+    expect(state.icons).toEqual(settings.icons);
     expect(state.isHydrated).toBe(true);
     expect(state.navigation).toEqual(settings.navigation);
     expect(state.search).toEqual(settings.search);
@@ -946,5 +953,120 @@ describe('settings / reducers / appSettings', () => {
     } as unknown as AppSettings));
 
     expect(state.navigation).toEqual(DEFAULT_APP_SETTINGS.navigation);
+  });
+
+  describe('icons', () => {
+    it('defaults to no icon overrides', () => {
+      expect(DEFAULT_APP_SETTINGS.icons).toEqual({});
+    });
+
+    it('keeps valid overrides and drops invalid fields and entries', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg><path d="M1 1"/></svg>',
+            keepColors: 'yes',
+          },
+          heart: { svg: '' },
+          home: { keepColors: true },
+          star: 'not an override',
+          tick: null,
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg><path d="M1 1"/></svg>',
+          keepColors: false,
+        },
+      });
+    });
+
+    it('keeps the scale of an override and drops one that is no number', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg/>',
+            scale: 0.9,
+          },
+          heart: {
+            svg: '<svg/>',
+            scale: 'big',
+          },
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg/>',
+          keepColors: false,
+          scale: 0.9,
+        },
+        heart: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+      });
+    });
+
+    it('keeps a positive line width of an override and drops invalid ones', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg/>',
+            strokeWidth: 1.5,
+          },
+          heart: {
+            svg: '<svg/>',
+            strokeWidth: -1,
+          },
+          home: {
+            svg: '<svg/>',
+            strokeWidth: 'thin',
+          },
+          share: {
+            svg: '<svg/>',
+            strokeWidth: Number.NaN,
+          },
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg/>',
+          keepColors: false,
+          strokeWidth: 1.5,
+        },
+        heart: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+        home: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+        share: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+      });
+    });
+
+    it('drops an override a later payload omits', () => {
+      const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: { cart: { svg: '<svg/>' } },
+      }));
+      const second = appSettings(first, receiveAppSettings({}));
+
+      expect(second.icons).toEqual({});
+    });
+
+    it.each([null, 'icons', ['<svg/>']])('falls back to no overrides for %j', (icons) => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons,
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({});
+    });
   });
 });

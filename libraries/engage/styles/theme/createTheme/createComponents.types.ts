@@ -200,6 +200,7 @@ export const componentsSchema = {
       small: '',
       medium: '',
       large: '',
+      strokeWidth: '',
     },
   },
   snackbar: {
@@ -377,6 +378,7 @@ export const componentsDefaults = {
       small: '1.25rem',
       medium: '1.5rem',
       large: '2rem',
+      strokeWidth: 'initial',
     },
   },
   snackbar: {

@@ -29,6 +29,16 @@ const SVG_CONFIG: Config & { RETURN_DOM: true } = {
 
 const purifier = DOMPurify(window);
 
+const svgElementPurifier = DOMPurify(window);
+
+let visitSvgElement: ((element: Element) => void) | null = null;
+
+svgElementPurifier.addHook('afterSanitizeAttributes', (node) => {
+  if (visitSvgElement && node.nodeType === 1 && node.nodeName !== 'BODY') {
+    visitSvgElement(node as Element);
+  }
+});
+
 /**
  * Removes everything from an HTML string except inline formatting tags.
  * @param html The HTML string.
@@ -51,12 +61,35 @@ export const sanitizeHtml = (html: string) => purifier.sanitize(html, HTML_CONFI
 export const sanitizeRichHtml = (html: string) => purifier.sanitize(html, RICH_CONFIG);
 
 /**
+ * Removes everything from an svg element that is not plain SVG markup. Markup that is not a
+ * complete svg element is wrapped into one.
+ * @param markup A complete svg element or the content of one.
+ * @param onElement Invoked for every kept element in document order, after its attributes were
+ * sanitized, so callers can adjust it within the same pass.
+ * @returns The sanitized svg element, or null when nothing is left.
+ */
+export const sanitizeSvgElement = (
+  markup: string,
+  onElement?: (element: Element) => void
+): Element | null => {
+  const withoutProlog = markup.replace(/^(\s*(<\?xml[^>]*>|<!--[\s\S]*?-->|<!DOCTYPE[^>[]*(\[[\s\S]*?\])?\s*>))*/i, '').trim();
+  const svg = /^<svg[\s>]/i.test(withoutProlog) ? withoutProlog : `<svg>${withoutProlog}</svg>`;
+
+  visitSvgElement = onElement ?? null;
+
+  try {
+    const body = svgElementPurifier.sanitize(svg, SVG_CONFIG) as HTMLElement;
+    const root = body.firstElementChild;
+
+    return root?.nodeName.toLowerCase() === 'svg' ? root : null;
+  } finally {
+    visitSvgElement = null;
+  }
+};
+
+/**
  * Removes everything from the content of an SVG element that is not plain SVG markup.
  * @param content The content of the SVG element.
  * @returns The sanitized content.
  */
-export const sanitizeSvg = memoize((content: string) => {
-  const body = purifier.sanitize(`<svg>${content}</svg>`, SVG_CONFIG) as HTMLElement;
-
-  return body.firstElementChild?.innerHTML ?? '';
-});
+export const sanitizeSvg = memoize((content: string) => sanitizeSvgElement(`<svg>${content}</svg>`)?.innerHTML ?? '');

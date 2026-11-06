@@ -1,6 +1,7 @@
 import type {
   ColorSchemeMode, ColorSchemeName, ShadowSize, TypographyVariant,
 } from '@shopgate/engage/styles/theme';
+import type { IconOverrides } from '@shopgate/engage/icons/types';
 
 // Re-exported so consumers of these settings do not have to reach into the styles layer, which
 // owns the type because it owns the elevation scale the sizes map to. `TypographyVariant` and the
@@ -532,6 +533,10 @@ export interface AppSettings {
    * Settings for the cms widgets.
    */
   widgets: WidgetSettings;
+  /**
+   * Icons the merchant replaced, by icon name.
+   */
+  icons: IconOverrides;
 }
 
 /**
