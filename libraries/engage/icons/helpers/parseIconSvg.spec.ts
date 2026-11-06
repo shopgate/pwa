@@ -147,6 +147,26 @@ describe('engage > icons > helpers > parseIconSvg', () => {
     expect(content).toBe('<path style="opacity:.5" d="M0"></path>');
   });
 
+  it.each([
+    ['an image set', '.a{mask-image:image-set(\'https://tracker.example/p.png\' 1x)}'],
+    ['an escaped url', '.a{fill:\\75 rl(https://tracker.example/p.png)}'],
+    ['a font face', '@font-face{font-family:x;src:url(https://tracker.example/f.woff)}'],
+    ['a property that is no presentation property', '.a{background:red}'],
+  ])('removes %s from style elements when normalizing is turned off', (_, rule) => {
+    const { content } = parseIconSvg(`<svg><style>${rule}.b{opacity:.5}</style><path class="a b" d="M0"/></svg>`, { normalize: false });
+
+    expect(content).toBe('<style>.b{opacity:.5}</style><path class="a b" d="M0"></path>');
+  });
+
+  it.each([
+    ['an escaped url', 'filter', '\\75 rl(https://tracker.example/f.svg#f)'],
+    ['a remote cursor', 'cursor', 'url(https://tracker.example/c.png), auto'],
+  ])('removes presentation attributes with %s', (_, name, value) => {
+    const { content } = parseIconSvg(`<path ${name}="${value}" opacity=".5" d="M0"/>`, { normalize: false });
+
+    expect(content).toBe('<path opacity=".5" d="M0"></path>');
+  });
+
   it('keeps the transform of style attributes', () => {
     const { content } = parseIconSvg('<path style="transform:rotate(45deg)" d="M0"/>', { normalize: false });
 
@@ -161,7 +181,7 @@ describe('engage > icons > helpers > parseIconSvg', () => {
 
     expect(icon.content).not.toContain('tracker.example');
     expect(icon.content).not.toContain('@import');
-    expect(icon.content).toContain('.a{fill:none}');
+    expect(icon.content).not.toContain('.a{');
     expect(icon.content).toContain('.b{fill:url(#local);opacity:.5}');
   });
 

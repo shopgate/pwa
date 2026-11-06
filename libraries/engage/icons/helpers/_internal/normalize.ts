@@ -17,7 +17,7 @@ const STYLE_ATTRIBUTE_PROPERTIES = [
 ];
 
 const URL_ATTRIBUTES = [
-  'fill', 'stroke', 'filter', 'mask', 'clip-path', 'marker-start', 'marker-mid', 'marker-end',
+  'cursor', 'fill', 'stroke', 'filter', 'mask', 'clip-path', 'marker-start', 'marker-mid', 'marker-end',
 ];
 
 const EXTERNAL_URL = /url\(\s*['"]?(?!#)/i;
@@ -59,6 +59,32 @@ const parseDeclarations = (style: string) => style
     ];
   })
   .filter(([property, value]) => property && value);
+
+/**
+ * Parses the rules of a style element. At-rules are left out.
+ * @param css The content of the style element.
+ * @returns The rules as selector list and declarations pairs.
+ */
+const parseStyleRules = (css: string) => {
+  const rulePattern = /([^{}]+)\{([^{}]*)\}/g;
+  const rules: Array<[string, string]> = [];
+  const content = css
+    .replace(/\/\*[\s\S]*?\*\//g, '')
+    .replace(/@[^{};]*;/g, '');
+  let match = rulePattern.exec(content);
+
+  while (match) {
+    const selectorList = match[1].trim();
+
+    if (!selectorList.startsWith('@')) {
+      rules.push([selectorList, match[2]]);
+    }
+
+    match = rulePattern.exec(content);
+  }
+
+  return rules;
+};
 
 /**
  * Prefixes the local references of a value with the id prefix.
@@ -147,22 +173,24 @@ export const normalizeElement = (element: Element, context: NormalizeContext) =>
 };
 
 /**
- * Checks whether a declaration of a style attribute may stay: a presentation property with a value
- * that neither loads remote content nor contains escapes.
- * @param property The property name.
- * @param value The value.
- * @returns Whether the declaration is kept.
+ * Keeps the declarations of a style attribute or rule that may stay: presentation properties with
+ * values that neither load remote content nor contain escapes.
+ * @param style The declarations.
+ * @returns The kept declarations.
  */
-const isKeptStyleDeclaration = (property: string, value: string) => (
-  STYLE_ATTRIBUTE_PROPERTIES.includes(property)
-  && !value.includes('\\')
-  && !EXTERNAL_URL.test(value)
-);
+const keepSafeDeclarations = (style: string) => parseDeclarations(style)
+  .filter(([property, value]) => (
+    STYLE_ATTRIBUTE_PROPERTIES.includes(property)
+    && !value.includes('\\')
+    && !EXTERNAL_URL.test(value)
+  ))
+  .map(([property, value]) => `${property}:${value}`)
+  .join(';');
 
 /**
  * Removes references to other documents from an element of icon markup, so an icon can't load
  * remote content. Local references to an id stay, and images keep embedded data. Style attributes
- * only keep presentation properties.
+ * only keep presentation properties, and attributes with escapes are removed.
  * @param element The element.
  */
 export const removeExternalReferences = (element: Element) => {
@@ -180,6 +208,12 @@ export const removeExternalReferences = (element: Element) => {
     element.removeAttribute(name);
   });
 
+  Array.from(element.attributes).forEach(({ name, value }) => {
+    if (name !== 'style' && value.includes('\\')) {
+      element.removeAttribute(name);
+    }
+  });
+
   URL_ATTRIBUTES.forEach((name) => {
     if (EXTERNAL_URL.test(element.getAttribute(name) ?? '')) {
       element.removeAttribute(name);
@@ -189,10 +223,7 @@ export const removeExternalReferences = (element: Element) => {
   const style = element.getAttribute('style');
 
   if (style !== null) {
-    const kept = parseDeclarations(style)
-      .filter(([property, value]) => isKeptStyleDeclaration(property, value))
-      .map(([property, value]) => `${property}:${value}`)
-      .join(';');
+    const kept = keepSafeDeclarations(style);
 
     if (kept) {
       element.setAttribute('style', kept);
@@ -203,16 +234,18 @@ export const removeExternalReferences = (element: Element) => {
 };
 
 /**
- * Removes remote content from the `<style>` elements of icon markup: external `url()` values become
- * `none` and `@import` rules are dropped. Local references to an id stay.
+ * Removes remote content from the `<style>` elements of icon markup. Rules only keep the
+ * declarations a style attribute keeps, and at-rules like `@import` are dropped.
  * @param root The svg element.
  */
 export const removeExternalStyleReferences = (root: Element) => {
   root.querySelectorAll('style').forEach((styleElement) => {
     const css = styleElement.textContent ?? '';
-    const cleaned = css
-      .replace(/@import[^;]*;?/gi, '')
-      .replace(/url\(\s*(['"]?)(?!#)[^)]*\)/gi, 'none');
+    const cleaned = parseStyleRules(css)
+      .map(([selectorList, body]) => [selectorList, keepSafeDeclarations(body)])
+      .filter(([, declarations]) => declarations)
+      .map(([selectorList, declarations]) => `${selectorList}{${declarations}}`)
+      .join('');
 
     if (cleaned !== css) {
       styleElement.replaceChildren(cleaned);
@@ -240,17 +273,7 @@ export const inlineStyleElements = (root: Element, context: NormalizeContext) =>
   const styleElements = Array.from(root.querySelectorAll('style'));
 
   styleElements.forEach((styleElement) => {
-    const css = (styleElement.textContent ?? '').replace(/\/\*[\s\S]*?\*\//g, '');
-    const rulePattern = /([^{}]+)\{([^{}]*)\}/g;
-    const rules: Array<[string, string]> = [];
-    let match = rulePattern.exec(css);
-
-    while (match) {
-      rules.push([match[1], match[2]]);
-      match = rulePattern.exec(css);
-    }
-
-    rules.forEach(([selectorList, body]) => {
+    parseStyleRules(styleElement.textContent ?? '').forEach(([selectorList, body]) => {
       const declarations = parseDeclarations(body)
         .filter(([property, value]) => (
           INLINED_PROPERTIES.includes(property) && !EXTERNAL_URL.test(value)
