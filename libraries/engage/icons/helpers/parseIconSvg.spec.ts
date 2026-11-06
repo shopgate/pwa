@@ -32,6 +32,15 @@ describe('engage > icons > helpers > parseIconSvg', () => {
     expect(icon.content).not.toContain('stroke-width');
   });
 
+  it('treats a stroke without stroke width as a line of the default width 1', () => {
+    expect(parseIconSvg('<svg fill="none" stroke="#000"><path d="M5 12h14"/></svg>').strokeWidth).toBe(1);
+    expect(parseIconSvg('<path style="stroke:#000" d="M5 12h14"/>').strokeWidth).toBe(1);
+  });
+
+  it('treats an icon without stroke as no line icon', () => {
+    expect(parseIconSvg('<svg stroke="none"><path d="M5 12h14"/></svg>').strokeWidth).toBeUndefined();
+  });
+
   it('replaces hardcoded colors with the text color', () => {
     const icon = parseIconSvg(
       '<svg viewBox="0 0 10 10" stroke="#333"><path fill="#ff0000" stroke="rgb(0, 0, 0)" style="fill: #fff; opacity: .5"/><path fill="none"/><stop stop-color="red"/></svg>'
@@ -126,6 +135,22 @@ describe('engage > icons > helpers > parseIconSvg', () => {
     expect(icon.content).toMatch(/stroke="url\(#sgi\w+-g\)"/);
     expect(icon.content).toContain('style="opacity:.5"');
     expect(icon.content).toContain('<path d="M1"></path>');
+  });
+
+  it.each([
+    ['an image set', 'mask-image:image-set(\'https://tracker.example/p.png\' 1x)'],
+    ['an escaped url', 'fill:\\75 rl(https://tracker.example/p.png)'],
+    ['a property that is no presentation property', 'background:red'],
+  ])('removes %s from style attributes', (_, declaration) => {
+    const { content } = parseIconSvg(`<path style="opacity:.5;${declaration}" d="M0"/>`, { normalize: false });
+
+    expect(content).toBe('<path style="opacity:.5" d="M0"></path>');
+  });
+
+  it('keeps the transform of style attributes', () => {
+    const { content } = parseIconSvg('<path style="transform:rotate(45deg)" d="M0"/>', { normalize: false });
+
+    expect(content).toBe('<path style="transform:rotate(45deg)" d="M0"></path>');
   });
 
   it('removes remote urls and imports from style elements when normalizing is turned off', () => {

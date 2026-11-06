@@ -975,7 +975,10 @@ describe('settings / reducers / appSettings', () => {
       } as unknown as AppSettings));
 
       expect(state.icons).toEqual({
-        cart: { svg: '<svg><path d="M1 1"/></svg>' },
+        cart: {
+          svg: '<svg><path d="M1 1"/></svg>',
+          keepColors: false,
+        },
       });
     });
 
@@ -996,9 +999,13 @@ describe('settings / reducers / appSettings', () => {
       expect(state.icons).toEqual({
         cart: {
           svg: '<svg/>',
+          keepColors: false,
           scale: 0.9,
         },
-        heart: { svg: '<svg/>' },
+        heart: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
       });
     });
 
@@ -1027,11 +1034,21 @@ describe('settings / reducers / appSettings', () => {
       expect(state.icons).toEqual({
         cart: {
           svg: '<svg/>',
+          keepColors: false,
           strokeWidth: 1.5,
         },
-        heart: { svg: '<svg/>' },
-        home: { svg: '<svg/>' },
-        share: { svg: '<svg/>' },
+        heart: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+        home: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+        share: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
       });
     });
 

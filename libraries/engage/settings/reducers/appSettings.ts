@@ -2,7 +2,7 @@ import {
   isNil, isPlainObject, mapValues, merge, omitBy, pickBy,
 } from 'lodash';
 import type { IconOverride, IconOverrides } from '@shopgate/engage/icons/types';
-import { isValidStrokeWidth } from '@shopgate/engage/icons/helpers/iconOptions';
+import { pickIconOptions } from '@shopgate/engage/icons/helpers/iconOptions';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppBarButtonSlot,
@@ -99,13 +99,6 @@ const APP_BAR_MODERN_OPTIONS: {
   scrollBehavior: ['revealBar', 'scrollAway'],
 };
 
-const ICON_OVERRIDE_DEFAULTS: Required<IconOverride> = {
-  svg: '',
-  keepColors: false,
-  scale: 1,
-  strokeWidth: 0,
-};
-
 /**
  * Keeps the icon overrides that have svg markup and drops invalid fields.
  * @param icons The incoming icon overrides.
@@ -117,14 +110,18 @@ const pickValidIconOverrides = (icons: unknown): IconOverrides | undefined => {
   }
 
   const overrides = mapValues(icons as Record<string, unknown>, (icon) => {
-    const { strokeWidth, ...valid } = pickValidSettings(icon, ICON_OVERRIDE_DEFAULTS) ?? {};
+    if (!isPlainObject(icon)) {
+      return null;
+    }
 
-    return isValidStrokeWidth(strokeWidth)
+    const override = icon as Partial<IconOverride>;
+
+    return typeof override.svg === 'string'
       ? {
-        ...valid,
-        strokeWidth,
+        svg: override.svg,
+        ...pickIconOptions(override),
       }
-      : valid;
+      : null;
   });
 
   return pickBy(overrides, icon => !!icon?.svg?.trim()) as IconOverrides;

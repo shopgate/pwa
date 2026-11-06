@@ -81,6 +81,7 @@ export const parseIconSvg = memoize((
     keepColors,
     idPrefix: `sgi${hashString(`${Number(keepColors)}${markup}`)}-`,
     strokeWidths: [],
+    hasStroke: false,
   };
 
   const root = sanitizeSvgElement(markup, (element) => {
@@ -103,7 +104,7 @@ export const parseIconSvg = memoize((
   }
 
   const strokeWidth = normalize
-    ? context.strokeWidths[0]
+    ? context.strokeWidths[0] ?? (context.hasStroke ? 1 : undefined)
     : parseFloat(root.getAttribute('stroke-width') ?? '');
 
   return {

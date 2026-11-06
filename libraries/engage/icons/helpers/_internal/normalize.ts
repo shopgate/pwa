@@ -12,6 +12,10 @@ const INLINED_PROPERTIES = [
 
 const SIMPLE_CLASS_SELECTOR = /^\.[\w-]+$/;
 
+const STYLE_ATTRIBUTE_PROPERTIES = [
+  ...INLINED_PROPERTIES, 'transform', 'transform-box', 'transform-origin',
+];
+
 const URL_ATTRIBUTES = [
   'fill', 'stroke', 'filter', 'mask', 'clip-path', 'marker-start', 'marker-mid', 'marker-end',
 ];
@@ -34,6 +38,10 @@ export interface NormalizeContext {
    * The stroke widths that were removed from the markup, in document order.
    */
   strokeWidths: number[];
+  /**
+   * Whether an element of the markup draws lines.
+   */
+  hasStroke: boolean;
 }
 
 /**
@@ -77,6 +85,10 @@ const normalizeValue = (property: string, value: string, context: NormalizeConte
     }
 
     return null;
+  }
+
+  if (property === 'stroke' && value.trim().toLowerCase() !== 'none') {
+    context.hasStroke = true;
   }
 
   if (!context.keepColors && COLOR_PROPERTIES.includes(property) && !KEPT_COLOR_VALUE.test(value)) {
@@ -135,8 +147,22 @@ export const normalizeElement = (element: Element, context: NormalizeContext) =>
 };
 
 /**
+ * Checks whether a declaration of a style attribute may stay: a presentation property with a value
+ * that neither loads remote content nor contains escapes.
+ * @param property The property name.
+ * @param value The value.
+ * @returns Whether the declaration is kept.
+ */
+const isKeptStyleDeclaration = (property: string, value: string) => (
+  STYLE_ATTRIBUTE_PROPERTIES.includes(property)
+  && !value.includes('\\')
+  && !EXTERNAL_URL.test(value)
+);
+
+/**
  * Removes references to other documents from an element of icon markup, so an icon can't load
- * remote content. Local references to an id stay, and images keep embedded data.
+ * remote content. Local references to an id stay, and images keep embedded data. Style attributes
+ * only keep presentation properties.
  * @param element The element.
  */
 export const removeExternalReferences = (element: Element) => {
@@ -162,9 +188,9 @@ export const removeExternalReferences = (element: Element) => {
 
   const style = element.getAttribute('style');
 
-  if (style && EXTERNAL_URL.test(style)) {
+  if (style !== null) {
     const kept = parseDeclarations(style)
-      .filter(([, value]) => !EXTERNAL_URL.test(value))
+      .filter(([property, value]) => isKeptStyleDeclaration(property, value))
       .map(([property, value]) => `${property}:${value}`)
       .join(';');
 

@@ -14,10 +14,11 @@ export interface IconProps extends Omit<SvgIconProps, 'markup' | 'normalize'> {
  *
  * Provides basic styling via `currentColor` and supports size and color
  * overrides through props while allowing external class-based overrides.
- * Colors of the markup are kept unless `keepColors` is false.
+ * Colors and line widths of the markup are kept unless `keepColors` is false, which
+ * normalizes the markup like the icons merchants replace.
  */
 const Icon = ({ content, keepColors = true, ...props }: IconProps) => (
-  <SvgIcon markup={content} keepColors={keepColors} {...props} />
+  <SvgIcon markup={content} keepColors={keepColors} normalize={!keepColors} {...props} />
 );
 
 export default Icon;
