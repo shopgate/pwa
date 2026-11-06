@@ -259,6 +259,31 @@ describe('<CategoryDrawer />', () => {
     await waitFor(() => expect(screen.queryByRole('button', { name: 'Jackets' })).not.toBeInTheDocument());
   });
 
+  it('opens the category of the level from the title', async () => {
+    renderDrawer();
+    await open();
+
+    expect(screen.queryByRole('button', { name: 'category.drawer.open_category' }))
+      .not.toBeInTheDocument();
+
+    await settle(() => fireEvent.click(screen.getByRole('button', { name: /^Men/ })));
+    await waitFor(() => expect(screen.getByRole('heading')).toHaveTextContent('Men'));
+
+    const titleButton = screen.getByRole('button', { name: 'category.drawer.open_category' });
+    expect(screen.getByRole('heading')).toContainElement(titleButton);
+
+    await settle(() => fireEvent.click(titleButton));
+
+    expect(mockPush).toHaveBeenCalledWith({
+      pathname: '/category/men',
+      state: {
+        categoryId: 'men',
+        title: 'Men',
+      },
+    });
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
+  });
+
   it('opens a category without children and closes', async () => {
     renderDrawer();
     await open();

@@ -414,6 +414,7 @@
       "label": "Show all products"
     },
     "drawer": {
+      "open_category": "Open category {name}",
       "retry": "Try again",
       "subcategories": "Subcategories"
     },

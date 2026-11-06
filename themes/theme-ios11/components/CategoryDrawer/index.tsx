@@ -13,7 +13,10 @@ import { UIEvents } from '@shopgate/engage/core/events';
 import { useAppDispatch, useNavigation } from '@shopgate/engage/core/hooks';
 import { useTrackModalState } from '@shopgate/engage/a11y/hooks';
 import { getModalCount } from '@shopgate/engage/a11y/selectors';
-import { ArrowIcon, CrossIcon, SurroundPortals } from '@shopgate/engage/components';
+import {
+  ArrowIcon, ChevronIcon, CrossIcon, SurroundPortals,
+} from '@shopgate/engage/components';
+import { getCategoryRoute } from '@shopgate/engage/category/helpers';
 import { useCategorySettings } from '@shopgate/engage/category/hooks';
 import { makeStyles, keyframes } from '@shopgate/engage/styles';
 import Level from './Level';
@@ -100,6 +103,53 @@ const useStyles = makeStyles()(theme => ({
     '@media (prefers-reduced-motion: no-preference)': {
       animation: `${fadeIn} 220ms ease-out both`,
     },
+  },
+  titleWithLink: {
+    display: 'flex',
+    padding: 0,
+    '[data-has-back] > &': {
+      paddingLeft: 0,
+    },
+  },
+  titleButton: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: theme.spacing(0.5),
+    width: '100%',
+    minWidth: 0,
+    minHeight: 44,
+    margin: 0,
+    padding: theme.spacing(0.5, 1.5),
+    border: 0,
+    borderRadius: theme.shape.borderRadius,
+    background: 'none',
+    color: 'inherit',
+    font: 'inherit',
+    textAlign: 'left',
+    cursor: 'pointer',
+    '[data-has-back] &': {
+      paddingLeft: theme.spacing(0.5),
+    },
+    '&:active': {
+      background: theme.palette.action.pressed,
+    },
+    '&:focus-visible:not([data-silent-focus])': {
+      outline: `2px solid ${theme.palette.text.primary}`,
+      outlineOffset: -2,
+    },
+  },
+  titleText: {
+    display: '-webkit-box',
+    minWidth: 0,
+    overflow: 'hidden',
+    WebkitBoxOrient: 'vertical',
+    WebkitLineClamp: 2,
+  },
+  titleChevron: {
+    flexShrink: 0,
+    fontSize: theme.components.icon.small,
+    opacity: 0.5,
+    transform: 'rotate(180deg)',
   },
   iconButton: {
     display: 'flex',
@@ -376,6 +426,19 @@ const CategoryDrawer = () => {
     closeAnimated(target === pathname);
   }, [closeAnimated, pathname, push]);
 
+  const handleOpenCurrent = useCallback(() => {
+    const entry = path[path.length - 1];
+
+    if (!entry) {
+      return;
+    }
+
+    handleNavigate(getCategoryRoute(entry.id), {
+      categoryId: entry.id,
+      title: entry.name,
+    });
+  }, [handleNavigate, path]);
+
   const handleTouchStart = (touchEvent: TouchEvent) => {
     const touch = touchEvent.touches[0];
     dragRef.current = touchEvent.touches.length === 1 ? {
@@ -501,13 +564,30 @@ const CategoryDrawer = () => {
                 </button>
               ) : null}
               <h2
-                className={cx(classes.title, 'theme__category-drawer__title')}
+                className={cx(
+                  classes.title,
+                  current && classes.titleWithLink,
+                  'theme__category-drawer__title'
+                )}
                 key={levelKey}
                 id={TITLE_ID}
                 ref={titleRef}
                 tabIndex={-1}
               >
-                {title}
+                {current ? (
+                  <button
+                    type="button"
+                    className={cx(classes.titleButton, 'theme__category-drawer__title-link')}
+                    onClick={handleOpenCurrent}
+                    aria-label={i18n.text('category.drawer.open_category', { name: current.name })}
+                    data-test-id="CategoryDrawerOpenCategory"
+                  >
+                    <span className={classes.titleText}>{title}</span>
+                    <ChevronIcon
+                      className={cx(classes.titleChevron, 'theme__category-drawer__title-chevron')}
+                    />
+                  </button>
+                ) : title}
               </h2>
               <button
                 type="button"
