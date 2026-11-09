@@ -11,16 +11,24 @@ const isLegacyDefault = memoize((markup: string) => (
   legacyDefaultHashes.has(hashString(collapseMarkup(markup)))
 ));
 
+const LEGACY_ICON_NAMES: Record<string, string> = {
+  shipping: 'localShipping',
+};
+
 /**
  * Returns an icon a merchant customized in the theme extension config. Values that equal a
  * default this config ever shipped are no customization, since deployed configs contain those too.
+ * Renamed icons are looked up by the name the config used.
  * @param name The icon name.
  * @returns The markup, or null when the icon was not customized there.
  */
 export const getLegacyIconOverride = (name: string) => {
   const legacyIcons = getLegacyThemeIcons();
-  const markup = Object.prototype.hasOwnProperty.call(legacyIcons, name)
-    ? legacyIcons[name]
+  const legacyName = Object.prototype.hasOwnProperty.call(LEGACY_ICON_NAMES, name)
+    ? LEGACY_ICON_NAMES[name]
+    : name;
+  const markup = Object.prototype.hasOwnProperty.call(legacyIcons, legacyName)
+    ? legacyIcons[legacyName]
     : null;
 
   if (typeof markup !== 'string' || !markup.trim()) {

@@ -1,5 +1,5 @@
 import { logger } from '@shopgate/engage/core/helpers';
-import { coreIcons } from '../defaults/coreIcons';
+import { coreIcons, hiddenCoreIcons } from '../defaults/coreIcons';
 import { getIconCatalog } from './catalog';
 import { getIconDefinition, registerIcons } from './registry';
 import { resolveIcon } from './resolveIcon';
@@ -105,6 +105,23 @@ describe('engage > icons > helpers', () => {
       mockLegacyIcons.burger = `\n  ${BURGER_DEFAULT}\n`;
 
       expect(resolveIcon('burger', {})?.source).toBe('default');
+    });
+
+    it('uses the shipping icon customized under its former name', () => {
+      mockLegacyIcons.localShipping = '<path d="legacy"/>';
+
+      expect(resolveIcon('shipping', {})).toEqual({
+        svg: '<path d="legacy"/>',
+        keepColors: false,
+        source: 'legacy',
+        normalize: true,
+      });
+    });
+
+    it('ignores the shipping default the theme extension config shipped under its former name', () => {
+      mockLegacyIcons.localShipping = coreIcons.shipping.svg.replace(/^<svg[^>]*>|<\/svg>$/g, '');
+
+      expect(resolveIcon('shipping', {})?.source).toBe('default');
     });
 
     it('falls back to the stored normalized core icon', () => {
@@ -240,8 +257,24 @@ describe('engage > icons > helpers', () => {
     it('lists every core icon once with its default and without a legacy override by default', () => {
       const coreEntries = getIconCatalog().icons.filter(icon => icon.source === 'core');
 
-      expect(coreEntries.map(icon => icon.name)).toEqual(Object.keys(coreIcons));
+      expect(coreEntries.map(icon => icon.name)).toEqual(
+        Object.keys(coreIcons).filter(name => !(hiddenCoreIcons as string[]).includes(name))
+      );
       expect(coreEntries.every(icon => icon.default && !('legacyOverride' in icon))).toBe(true);
+    });
+
+    it.each(['addMore', 'cartPlus', 'shoppingCart'])('leaves out the hidden icon %s', (name) => {
+      expect(getIconCatalog().icons.map(icon => icon.name)).not.toContain(name);
+    });
+
+    it.each(['addMore', 'cartPlus', 'shoppingCart'])('still resolves the hidden icon %s', (name) => {
+      mockLegacyIcons[name] = '<path d="legacy"/>';
+
+      expect(resolveIcon(name, {})?.source).toBe('legacy');
+
+      delete mockLegacyIcons[name];
+
+      expect(resolveIcon(name, {})?.source).toBe('default');
     });
 
     it('drops the options of an override that have the wrong type', () => {

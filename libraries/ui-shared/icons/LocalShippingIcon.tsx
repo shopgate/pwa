@@ -4,7 +4,7 @@ import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/component
  * The local shipping icon component.
  */
 const LocalShipping = (props: Omit<ThemeIconProps, 'name'>) => (
-  <ThemeIcon name="localShipping" {...props} />
+  <ThemeIcon name="shipping" {...props} />
 );
 
 export default LocalShipping;
