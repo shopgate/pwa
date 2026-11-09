@@ -414,7 +414,6 @@
       "label": "Alle Produkte anzeigen"
     },
     "drawer": {
-      "open_category": "Kategorie {name} öffnen",
       "retry": "Erneut versuchen",
       "subcategories": "Unterkategorien"
     },

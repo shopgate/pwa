@@ -1,5 +1,5 @@
 import {
-  render, screen, fireEvent, act, waitFor,
+  render, screen, fireEvent, act, waitFor, within,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
@@ -263,14 +263,15 @@ describe('<CategoryDrawer />', () => {
     renderDrawer();
     await open();
 
-    expect(screen.queryByRole('button', { name: 'category.drawer.open_category' }))
-      .not.toBeInTheDocument();
+    expect(within(screen.getByRole('heading')).queryByRole('button')).not.toBeInTheDocument();
 
     await settle(() => fireEvent.click(screen.getByRole('button', { name: /^Men/ })));
     await waitFor(() => expect(screen.getByRole('heading')).toHaveTextContent('Men'));
 
-    const titleButton = screen.getByRole('button', { name: 'category.drawer.open_category' });
-    expect(screen.getByRole('heading')).toContainElement(titleButton);
+    const titleButton = within(screen.getByRole('heading')).getByRole('button');
+    expect(titleButton).toHaveAccessibleName('Men');
+    expect(screen.getByRole('heading')).toHaveAccessibleName('Men');
+    expect(screen.getByRole('dialog')).toHaveAccessibleName('Men');
 
     await settle(() => fireEvent.click(titleButton));
 

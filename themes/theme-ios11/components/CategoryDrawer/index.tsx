@@ -119,7 +119,7 @@ const useStyles = makeStyles()(theme => ({
     minWidth: 0,
     minHeight: 44,
     margin: 0,
-    padding: theme.spacing(0.5, 1.5),
+    padding: theme.spacing(0.5, 1.5, 0.5, 0.5),
     border: 0,
     borderRadius: theme.shape.borderRadius,
     background: 'none',
@@ -127,9 +127,6 @@ const useStyles = makeStyles()(theme => ({
     font: 'inherit',
     textAlign: 'left',
     cursor: 'pointer',
-    '[data-has-back] &': {
-      paddingLeft: theme.spacing(0.5),
-    },
     '&:active': {
       background: theme.palette.action.pressed,
     },
@@ -579,13 +576,14 @@ const CategoryDrawer = () => {
                     type="button"
                     className={cx(classes.titleButton, 'theme__category-drawer__title-link')}
                     onClick={handleOpenCurrent}
-                    aria-label={i18n.text('category.drawer.open_category', { name: current.name })}
                     data-test-id="CategoryDrawerOpenCategory"
                   >
                     <span className={classes.titleText}>{title}</span>
-                    <ChevronIcon
-                      className={cx(classes.titleChevron, 'theme__category-drawer__title-chevron')}
-                    />
+                    <span aria-hidden>
+                      <ChevronIcon
+                        className={cx(classes.titleChevron, 'theme__category-drawer__title-chevron')}
+                      />
+                    </span>
                   </button>
                 ) : title}
               </h2>
