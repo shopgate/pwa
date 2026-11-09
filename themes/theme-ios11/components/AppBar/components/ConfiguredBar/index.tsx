@@ -21,7 +21,7 @@ import {
 
 const AppBar = UntypedAppBar as unknown as ComponentType<Record<string, unknown>>;
 
-const SLOTS_LEFT: AppBarButtonSlot[] = ['left1', 'left2'];
+const SLOTS_LEFT: AppBarButtonSlot[] = ['left1'];
 const SLOTS_RIGHT: AppBarButtonSlot[] = ['right1', 'right2'];
 const TITLE_INSET = 90;
 const CIRCLE = '& .ui-ios__app-bar__icon::before';
@@ -71,6 +71,7 @@ const useStyles = makeStyles<{
     },
     floatingInner: {
       padding: theme.spacing(0, 1.5),
+      '--app-bar-title-inset': `${inset + theme.spacing(1.5)}px`,
     },
     logo: {
       minWidth: 0,
@@ -229,7 +230,7 @@ interface Props {
   showActions: boolean;
   /** Whether the page shows the logo. */
   logo?: boolean;
-  /** The page title. It is shown as headline in the content, not in the bar. */
+  /** The page title. DefaultBar passes it as the center element. */
   title?: string | null;
   left?: ReactNode;
   center?: ReactNode;

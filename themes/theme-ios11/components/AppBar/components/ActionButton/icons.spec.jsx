@@ -18,7 +18,6 @@ describe('getActionIcon', () => {
   });
 
   it('uses the icon names as they are', () => {
-    expect(getActionIcon('pin')).not.toBe(getActionIcon('location'));
     expect(getActionIcon('store')).not.toBe(getActionIcon('locator'));
   });
 
@@ -36,7 +35,7 @@ describe('getActionIcon', () => {
     expect(getActionIcon('custom/abc')).toBeNull();
   });
 
-  it.each(['', 'unknown', 'empty', 'constructor', 'toString', '__proto__'])('has no icon for %j', (name) => {
+  it.each(['', 'unknown', 'pin', 'empty', 'constructor', 'toString', '__proto__'])('has no icon for %j', (name) => {
     expect(getActionIcon(name)).toBeNull();
   });
 });

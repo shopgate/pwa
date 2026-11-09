@@ -448,9 +448,9 @@ export interface NavigationActionSettings {
 }
 
 /**
- * The button slots of the header, two on each side.
+ * The button slots of the header: one on the left next to the back button, two on the right.
  */
-export type AppBarButtonSlot = 'left1' | 'left2' | 'right1' | 'right2';
+export type AppBarButtonSlot = 'left1' | 'right1' | 'right2';
 
 /**
  * `fixed` keeps the bar on every page, `floating` lets logo and buttons float over home and

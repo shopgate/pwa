@@ -133,9 +133,6 @@ export const coreIcons = {
   phone: {
     svg: '<svg viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0z"/><path d="M7 11c1 3 3 5 6 6l2-2h1l4 1 1 1v3l-1 1C11 21 3 13 3 4l1-1h4l1 1v5l-2 2z"/></svg>',
   },
-  pin: {
-    svg: '<svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z"/></svg>',
-  },
   placeholder: {
     svg: '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.2"/><path d="M9 2L7.17 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2h-3.17L15 2H9zm3 15c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>',
   },
