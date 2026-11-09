@@ -5,7 +5,7 @@ import {
 } from '@shopgate/engage/settings/selectors/appSettings';
 
 export interface ReviewVisibility {
-  /** Whether ratings and reviews are shown anywhere in the app. */
+  /** Whether ratings, reviews and the entry points to the review pages are shown. */
   showReviews: boolean;
   /** Whether the app offers to write a review. */
   showWriteReview: boolean;

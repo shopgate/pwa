@@ -72,7 +72,7 @@ export const getProductSliderSlidesPerView = createSelector(
 );
 
 /**
- * Selects whether ratings and reviews are shown anywhere in the app.
+ * Selects whether ratings, reviews and the entry points to the review pages are shown.
  */
 export const getShowReviews = createSelector(
   getAppSettingsState,

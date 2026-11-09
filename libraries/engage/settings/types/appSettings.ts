@@ -137,7 +137,7 @@ export interface ProductRatingSettings {
    * Whether rating stars are also rendered for products that have no rating yet.
    */
   showEmptyStars: boolean;
-  /** Whether ratings and reviews are shown anywhere in the app. */
+  /** Whether ratings, reviews and the entry points to the review pages are shown. */
   showReviews: boolean;
   /** Whether the app offers to write a review. */
   showWriteReview: boolean;
