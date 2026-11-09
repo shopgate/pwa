@@ -54,6 +54,43 @@ describe('<ProductTileActions />', () => {
       .toEqual(['favorite', 'cart']);
   });
 
+  it('hides the favorites button when the tile asks for it', () => {
+    mockActionButtons = {
+      position: 'bottomRight',
+      direction: 'horizontal',
+      addToCart: 'actionButton',
+    };
+    render(<ProductTileActions productId="p1" hideFavorites />);
+
+    expect(screen.getAllByRole('button').map(button => button.textContent))
+      .toEqual(['cart']);
+  });
+
+  it('hides the cart action button when the tile asks for it', () => {
+    mockActionButtons = {
+      position: 'bottomRight',
+      direction: 'horizontal',
+      addToCart: 'actionButton',
+    };
+    render(<ProductTileActions productId="p1" hideAddToCart />);
+
+    expect(screen.getAllByRole('button').map(button => button.textContent))
+      .toEqual(['favorite']);
+  });
+
+  it('renders nothing when both buttons are hidden', () => {
+    mockActionButtons = {
+      position: 'bottomRight',
+      direction: 'horizontal',
+      addToCart: 'actionButton',
+    };
+    const { container } = render(
+      <ProductTileActions productId="p1" hideFavorites hideAddToCart />
+    );
+
+    expect(container).toBeEmptyDOMElement();
+  });
+
   it('leaves the button below the tile to the tile', () => {
     mockActionButtons = {
       position: 'topRight',

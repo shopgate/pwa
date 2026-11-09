@@ -7,6 +7,10 @@ import { ProductCardAddToCart } from '../ProductCardAddToCart';
 export interface ProductTileActionsProps {
   productId: string;
   className?: string;
+  /** Hides the favorites button regardless of the app settings. */
+  hideFavorites?: boolean;
+  /** Hides the add to cart button regardless of the app settings. */
+  hideAddToCart?: boolean;
 }
 
 const useStyles = makeStyles({ name: 'ProductTileActions' })(theme => ({
@@ -35,10 +39,21 @@ const useStyles = makeStyles({ name: 'ProductTileActions' })(theme => ({
  * app settings.
  * @returns The buttons.
  */
-const ProductTileActions = ({ productId, className }: ProductTileActionsProps) => {
+const ProductTileActions = ({
+  productId,
+  className,
+  hideFavorites = false,
+  hideAddToCart = false,
+}: ProductTileActionsProps) => {
   const { classes, cx } = useStyles();
   const { position, addToCart, direction } = useSelector(getProductActionButtons);
   const favoritesFirst = position === 'topRight' && direction === 'vertical';
+  const showFavorites = !hideFavorites;
+  const showAddToCart = !hideAddToCart && addToCart === 'actionButton';
+
+  if (!showFavorites && !showAddToCart) {
+    return null;
+  }
 
   return (
     <div
@@ -46,9 +61,9 @@ const ProductTileActions = ({ productId, className }: ProductTileActionsProps) =
       data-position={position}
       data-direction={direction}
     >
-      {favoritesFirst && <ItemFavoritesButton productId={productId} />}
-      {addToCart === 'actionButton' && <ProductCardAddToCart productId={productId} />}
-      {!favoritesFirst && <ItemFavoritesButton productId={productId} />}
+      {showFavorites && favoritesFirst && <ItemFavoritesButton productId={productId} />}
+      {showAddToCart && <ProductCardAddToCart productId={productId} />}
+      {showFavorites && !favoritesFirst && <ItemFavoritesButton productId={productId} />}
     </div>
   );
 };
