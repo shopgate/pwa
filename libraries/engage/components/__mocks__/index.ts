@@ -65,6 +65,7 @@ export const ShoppingCartIcon = () => null;
 export const SortIcon = () => null;
 export const StarHalfIcon = () => null;
 export const StarIcon = () => null;
+export const StoreIcon = () => null;
 export const StarOutlineIcon = () => null;
 export const TickIcon = () => null;
 export const TrashIcon = () => null;
