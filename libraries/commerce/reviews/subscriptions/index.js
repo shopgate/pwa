@@ -3,7 +3,7 @@ import { getShowReviews } from '@shopgate/engage/settings/selectors/appSettings'
 import fetchProductReviews from '../actions/fetchProductReviews';
 import fetchProductReviewSettings from '../actions/fetchProductReviewSettings';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
-import { reviewsDidReset$, shouldFetchReviews$ } from '../streams';
+import { reviewsDidEnable$, reviewsDidReset$, shouldFetchReviews$ } from '../streams';
 
 /**
  * Review subscriptions.
@@ -20,6 +20,10 @@ export default function product(subscribe) {
     if (getShowReviews(getState())) {
       dispatch(fetchProductReviewSettings());
     }
+  });
+
+  subscribe(reviewsDidEnable$, ({ dispatch }) => {
+    dispatch(fetchProductReviewSettings());
   });
 
   subscribe(shouldFetchReviews$, ({ action, dispatch, getState }) => {
