@@ -82,11 +82,6 @@ describe('settings / reducers / appSettings', () => {
               icon: '',
               link: '',
             },
-            left2: {
-              action: 'none',
-              icon: '',
-              link: '',
-            },
             right1: {
               action: 'link',
               icon: 'locator',
@@ -870,6 +865,31 @@ describe('settings / reducers / appSettings', () => {
     expect(search.persistentBar.hideOnScroll).toBe(true);
     expect(tabBar.variant).toBe('fixed');
     expect(tabBar.fixed).toEqual(DEFAULT_APP_SETTINGS.navigation.tabBar.fixed);
+  });
+
+  it('ignores a second button on the left', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: {
+        appBar: {
+          buttons: {
+            left1: {
+              action: 'more',
+              icon: '',
+              link: '',
+            },
+            left2: {
+              action: 'cart',
+              icon: '',
+              link: '',
+            },
+          },
+        },
+      },
+    } as unknown as AppSettings));
+
+    const { buttons } = state.navigation.appBar;
+    expect(Object.keys(buttons)).toEqual(['left1', 'right1', 'right2']);
+    expect(buttons.left1.action).toBe('more');
   });
 
   it('falls back to the defaults for invalid navigation values', () => {
