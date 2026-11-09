@@ -1,19 +1,22 @@
 import appConfig from '@shopgate/pwa-common/helpers/config';
 
 /**
- * Turns an entry of the qrCodeAllowedDomains list into a plain domain. A scheme, a "*." prefix,
- * a path and a port are removed.
+ * Turns an entry of the qrCodeAllowedDomains list into a plain domain in the same form as the
+ * hostname of a parsed link. A scheme, a "*." prefix, a path and a port are removed.
  * @param {string} entry The list entry.
  * @returns {string} The domain, or an empty string when the entry is no domain with a dot.
  */
 const toDomain = (entry) => {
-  const domain = entry
-    .trim()
-    .toLowerCase()
-    .replace(/^[a-z][a-z0-9+.-]*:\/\//, '')
-    .replace(/^\*?\./, '')
-    .split('/')[0]
-    .split(':')[0];
+  const value = entry.trim();
+
+  let hostname;
+  try {
+    ({ hostname } = new URL(value.includes('://') ? value : `https://${value}`));
+  } catch (e) {
+    return '';
+  }
+
+  const domain = hostname.replace(/^\*?\./, '');
 
   return domain.includes('.') ? domain : '';
 };

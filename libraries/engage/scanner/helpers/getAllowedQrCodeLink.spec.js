@@ -84,6 +84,19 @@ describe('engage > scanner > helpers > getAllowedQrCodeLink', () => {
     expect(getAllowedQrCodeLink('https://shop.hf.tools')).toBe('https://shop.hf.tools/');
   });
 
+  it('should match entries with non-ASCII letters', () => {
+    mockAppConfig.qrCodeAllowedDomains = ['MÜLLER.de'];
+    expect(getAllowedQrCodeLink('https://müller.de/angebote'))
+      .toBe('https://xn--mller-kva.de/angebote');
+    expect(getAllowedQrCodeLink('https://www.xn--mller-kva.de'))
+      .toBe('https://www.xn--mller-kva.de/');
+  });
+
+  it('should accept entries with a leading dot', () => {
+    mockAppConfig.qrCodeAllowedDomains = ['.hf.tools'];
+    expect(getAllowedQrCodeLink('https://shop.hf.tools')).toBe('https://shop.hf.tools/');
+  });
+
   it('should accept entries with a port', () => {
     mockAppConfig.qrCodeAllowedDomains = ['harborfreight.com:443', 'https://hf.tools:8443/'];
     expect(getAllowedQrCodeLink('https://harborfreight.com')).toBe('https://harborfreight.com/');
