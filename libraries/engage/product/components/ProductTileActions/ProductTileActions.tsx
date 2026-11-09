@@ -22,6 +22,10 @@ const useStyles = makeStyles({ name: 'ProductTileActions' })(theme => ({
     display: 'flex',
     gap: theme.spacing(0.75),
     [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
+    '& .engage__icon-button': {
+      '--icon-button-background': theme.components.actionButton.background,
+      '--icon-button-color': theme.components.actionButton.color,
+    },
     '&[data-direction="vertical"]': {
       flexDirection: 'column',
     },
