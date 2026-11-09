@@ -1,5 +1,5 @@
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { appWillStart$ } from '@shopgate/engage/core/streams';
+import { getShowReviews } from '@shopgate/engage/settings/selectors/appSettings';
 import fetchProductReviews from '../actions/fetchProductReviews';
 import fetchProductReviewSettings from '../actions/fetchProductReviewSettings';
 import { REVIEW_PREVIEW_COUNT } from '../constants';
@@ -10,19 +10,23 @@ import { reviewsDidReset$, shouldFetchReviews$ } from '../streams';
  * @param {Function} subscribe The subscribe function.
  */
 export default function product(subscribe) {
-  if (!appConfig.hasReviews) {
-    return;
-  }
-
-  subscribe(appWillStart$, ({ dispatch }) => {
-    dispatch(fetchProductReviewSettings());
+  subscribe(appWillStart$, ({ dispatch, getState }) => {
+    if (getShowReviews(getState())) {
+      dispatch(fetchProductReviewSettings());
+    }
   });
 
-  subscribe(reviewsDidReset$, ({ dispatch }) => {
-    dispatch(fetchProductReviewSettings());
+  subscribe(reviewsDidReset$, ({ dispatch, getState }) => {
+    if (getShowReviews(getState())) {
+      dispatch(fetchProductReviewSettings());
+    }
   });
 
-  subscribe(shouldFetchReviews$, ({ action, dispatch }) => {
+  subscribe(shouldFetchReviews$, ({ action, dispatch, getState }) => {
+    if (!getShowReviews(getState())) {
+      return;
+    }
+
     dispatch(fetchProductReviewSettings());
 
     if (action.productData) {

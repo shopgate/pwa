@@ -5,7 +5,7 @@ import { Link } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { bin2hex } from '@shopgate/pwa-common/helpers/data';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { useReviewVisibility } from '@shopgate/engage/reviews/hooks';
 import RatingCount from '../../../RatingCount';
 
 const useStyles = makeStyles()({
@@ -34,6 +34,7 @@ const useStyles = makeStyles()({
  */
 const AverageRating = ({ average, count, productId }) => {
   const { classes } = useStyles();
+  const { showWriteReview } = useReviewVisibility();
 
   if (!productId) {
     return null;
@@ -44,7 +45,7 @@ const AverageRating = ({ average, count, productId }) => {
       data-test-id="ratedStarsAverage"
       tagName="a"
       href={`${ITEM_PATH}/${bin2hex(productId)}/write_review`}
-      disabled={!appConfig.showWriteReview}
+      disabled={!showWriteReview}
       className={classes.container}
       itemProp="item"
       itemScope

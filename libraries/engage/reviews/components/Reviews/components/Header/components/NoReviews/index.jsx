@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import appConfig from '@shopgate/pwa-common/helpers/config';
+import { useReviewVisibility } from '@shopgate/engage/reviews/hooks';
 import AverageRating from '../AverageRating';
 import WriteReviewLink from '../WriteReviewLink';
 
@@ -27,12 +27,13 @@ const useStyles = makeStyles()(theme => ({
  */
 const NoReviews = ({ productId }) => {
   const { classes } = useStyles();
+  const { showWriteReview } = useReviewVisibility();
 
   return (
     <div className={classes.container}>
       <AverageRating productId={productId} />
       <div className={classes.noReviews}>
-        {appConfig.showWriteReview && (
+        {showWriteReview && (
           <>
             <I18n.Text string="reviews.no_reviews" />
             <WriteReviewLink productId={productId} />

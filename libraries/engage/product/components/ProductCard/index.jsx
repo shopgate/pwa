@@ -29,6 +29,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import {
   getProductCardNameMaxLines,
   getProductActionButtons,
+  getShowReviews,
 } from '@shopgate/engage/settings/selectors/appSettings';
 import { ProductCardAddToCart } from '../ProductCardAddToCart';
 import { ProductTileActions } from '../ProductTileActions';
@@ -103,24 +104,30 @@ function ProductCard(props) {
   const { addToCart } = useSelector(getProductActionButtons);
 
   const showEmptyRatingStars = useShowEmptyRatingStars();
+  const showReviews = useSelector(getShowReviews);
+  const isRatingHidden = hideRating || !showReviews;
 
   const showRatings = useMemo(() => {
-    if (!hideRating && product?.rating?.average > 0) {
+    if (isRatingHidden) {
+      return false;
+    }
+
+    if (product?.rating?.average > 0) {
       return true;
     }
 
-    if (!hideRating && showEmptyRatingStars && product?.rating) {
+    if (showEmptyRatingStars && product?.rating) {
       return true;
     }
 
     return false;
-  }, [hideRating, product, showEmptyRatingStars]);
+  }, [isRatingHidden, product, showEmptyRatingStars]);
 
   const linkProps = {
     href: url || getProductRoute(product.id),
     state: { ...meta },
   };
-  const showDetails = !(hidePrice && hideRating && hideName);
+  const showDetails = !(hidePrice && isRatingHidden && hideName);
 
   return (
     <div
