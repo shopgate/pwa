@@ -155,6 +155,7 @@ export { default as ShoppingCartIcon } from '@shopgate/pwa-ui-shared/icons/Shopp
 export { default as SortIcon } from '@shopgate/pwa-ui-shared/icons/SortIcon';
 export { default as StarHalfIcon } from '@shopgate/pwa-ui-shared/icons/StarHalfIcon';
 export { default as StarIcon } from '@shopgate/pwa-ui-shared/icons/StarIcon';
+export { default as StoreIcon } from '@shopgate/pwa-ui-shared/icons/StoreIcon';
 export { default as StarOutlineIcon } from '@shopgate/pwa-ui-shared/icons/StarOutlineIcon';
 export { default as TickIcon } from '@shopgate/pwa-ui-shared/icons/TickIcon';
 export { default as TrashIcon } from '@shopgate/pwa-ui-shared/icons/TrashIcon';
