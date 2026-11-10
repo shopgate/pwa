@@ -1,12 +1,10 @@
-import Icon from '@shopgate/pwa-common/components/Icon';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The box icon component.
  */
-const Box = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.box} {...props} />
+const Box = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="box" {...props} />
 );
 
 export default Box;

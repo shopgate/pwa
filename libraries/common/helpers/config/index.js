@@ -1,3 +1,4 @@
+import { createThemeIcons } from '@shopgate/engage/icons/helpers/themeIcons';
 import pck from '../../package.json';
 import { buildThemeConfig } from './theme';
 import { assignObjectDeep } from '../data';
@@ -88,6 +89,8 @@ export const themeName = process.env.THEME || 'theme';
  * @type {ThemeConfig}
  */
 export const themeConfig = buildThemeConfig(appConfig);
+
+themeConfig.icons = createThemeIcons(themeConfig.icons);
 
 /** @mixes ThemeColors */
 export const themeColors = themeConfig.colors;

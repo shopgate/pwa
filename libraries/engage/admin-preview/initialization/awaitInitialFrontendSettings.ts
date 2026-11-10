@@ -5,7 +5,7 @@ import {
   isAllowedOrigin,
   isFrontendSettingsAdminPreviewActive,
 } from '../helpers';
-import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '../constants';
+import { ALLOWED_ADMIN_PREVIEW_ORIGINS, PREVIEW_READY_MESSAGE } from '../constants';
 import {
   getOrCreateStyleTag,
   serializePreviewCss,
@@ -111,6 +111,6 @@ export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void>
     const parentOrigin = getReferrerOrigin();
 
     if (isAllowedOrigin(parentOrigin, ALLOWED_ADMIN_PREVIEW_ORIGINS)) {
-      window.parent.postMessage({ type: 'frontendSettingsPreviewReady' }, parentOrigin);
+      window.parent.postMessage(PREVIEW_READY_MESSAGE, parentOrigin);
     }
   });
