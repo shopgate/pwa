@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/helpers';
-import { useProductListType, useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
+import { useProductListType, useShowRatingStars } from '@shopgate/engage/product/hooks';
+import { useReviewVisibility } from '@shopgate/engage/reviews/hooks';
 import {
   Link,
   RatingStars,
@@ -104,25 +105,16 @@ function ProductCard(props) {
   const productNameLines = useSelector(getProductCardNameMaxLines);
   const { addToCart } = useSelector(getProductActionButtons);
 
-  const showEmptyRatingStars = useShowEmptyRatingStars();
-
-  const showRatings = useMemo(() => {
-    if (!hideRating && product?.rating?.average > 0) {
-      return true;
-    }
-
-    if (!hideRating && showEmptyRatingStars && product?.rating) {
-      return true;
-    }
-
-    return false;
-  }, [hideRating, product, showEmptyRatingStars]);
+  const { showReviews } = useReviewVisibility();
+  const showRatingStars = useShowRatingStars(product?.rating);
+  const isRatingHidden = hideRating || !showReviews;
+  const showRatings = showRatingStars && !hideRating;
 
   const linkProps = {
     href: url || getProductRoute(product.id),
     state: { ...meta },
   };
-  const showDetails = !(hidePrice && hideRating && hideName);
+  const showDetails = !(hidePrice && isRatingHidden && hideName);
 
   return (
     <div

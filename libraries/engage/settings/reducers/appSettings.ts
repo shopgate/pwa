@@ -17,7 +17,12 @@ import type {
   ProductVariantSelectorSettings,
 } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
-import { PRODUCT_GALLERY_PAGINATIONS, RECEIVE_APP_SETTINGS } from '../constants/appSettings';
+import {
+  DEFAULT_SHOW_REVIEWS,
+  DEFAULT_SHOW_WRITE_REVIEW,
+  PRODUCT_GALLERY_PAGINATIONS,
+  RECEIVE_APP_SETTINGS,
+} from '../constants/appSettings';
 import {
   DEFAULT_IMAGE_FILL_COLOR,
   DEFAULT_IMAGE_FILL_TRANSPARENT,
@@ -188,6 +193,8 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     },
     rating: {
       showEmptyStars: false,
+      showReviews: DEFAULT_SHOW_REVIEWS,
+      showWriteReview: DEFAULT_SHOW_WRITE_REVIEW,
     },
     manufacturer: {
       showOnProductPage: true,
@@ -371,6 +378,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       },
       product: product === null ? undefined : {
         ...product,
+        rating: pickValidSettings(product?.rating, DEFAULT_APP_SETTINGS.product.rating),
         variantSelector: pickValidSettings(
           product?.variantSelector,
           DEFAULT_APP_SETTINGS.product.variantSelector,

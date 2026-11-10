@@ -4,6 +4,8 @@ export { default as useProductListEntry } from './useProductListEntry';
 export { default as useProductListEntryProduct } from './useProductListEntryProduct';
 export { default as useProductListType } from './useProductListType';
 export { default as useShowEmptyRatingStars } from './useShowEmptyRatingStars';
+export { default as useShowRatingStars } from './useShowRatingStars';
+export type { RatingStarsRating } from './useShowRatingStars';
 export { default as useProductShare } from './useProductShare';
 export { default as useStickyValue } from './useStickyValue';
 export { default as useVariantSelectorSettings } from './useVariantSelectorSettings';

@@ -25,6 +25,62 @@ describe('settings / reducers / appSettings', () => {
     expect(DEFAULT_APP_SETTINGS.product.rating.showEmptyStars).toBe(false);
   });
 
+  it('takes the review defaults from the app config', () => {
+    jest.isolateModules(() => {
+      jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
+        __esModule: true,
+        default: {
+          hasReviews: false,
+          showWriteReview: false,
+        },
+      }));
+      const { DEFAULT_APP_SETTINGS: defaults } = jest.requireActual<{
+        DEFAULT_APP_SETTINGS: AppSettings;
+      }>('./appSettings');
+
+      expect(defaults.product.rating.showReviews).toBe(false);
+      expect(defaults.product.rating.showWriteReview).toBe(false);
+    });
+  });
+
+  it('keeps the review defaults when a payload omits them', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { rating: { showEmptyStars: true } },
+    }));
+
+    expect(state.product.rating).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.rating,
+      showEmptyStars: true,
+    });
+  });
+
+  it('turns reviews off when the payload does', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        rating: {
+          showReviews: false,
+          showWriteReview: false,
+        },
+      },
+    }));
+
+    expect(state.product.rating.showReviews).toBe(false);
+    expect(state.product.rating.showWriteReview).toBe(false);
+  });
+
+  it.each([null, 'false', 0])('keeps the review defaults for the value %p', (value) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        rating: {
+          showReviews: value,
+          showWriteReview: value,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.rating).toEqual(DEFAULT_APP_SETTINGS.product.rating);
+  });
+
   it('defaults to showing the manufacturer on the product page', () => {
     expect(DEFAULT_APP_SETTINGS.product.manufacturer.showOnProductPage).toBe(true);
   });
@@ -138,6 +194,8 @@ describe('settings / reducers / appSettings', () => {
         },
         rating: {
           showEmptyStars: false,
+          showReviews: false,
+          showWriteReview: false,
         },
         manufacturer: {
           showOnProductPage: false,
