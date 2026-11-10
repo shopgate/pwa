@@ -11,10 +11,9 @@ import {
   ProductImage,
 } from '@shopgate/engage/product';
 import { useImageServiceSettings, useProductImageSettings } from '@shopgate/engage/settings/hooks';
-import { appConfig } from '@shopgate/engage';
+import { PRODUCT_GALLERY_PAGINATIONS } from '@shopgate/engage/settings/constants/appSettings';
+import { useProductGallerySettings } from '@shopgate/engage/product/hooks';
 import connect from './connector';
-
-const { pdpImageSliderPaginationType } = appConfig || {};
 
 /**
  * The product image slider component.
@@ -28,6 +27,7 @@ class ProductImageSlider extends Component {
     historyPush: PropTypes.func,
     images: PropTypes.arrayOf(PropTypes.string),
     imageServiceSettings: PropTypes.shape(),
+    paginationType: PropTypes.oneOf(PRODUCT_GALLERY_PAGINATIONS),
     pdpResolutions: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
     productId: PropTypes.string,
@@ -40,6 +40,7 @@ class ProductImageSlider extends Component {
     historyPush: noop,
     images: null,
     imageServiceSettings: undefined,
+    paginationType: undefined,
     pdpResolutions: null,
     product: null,
     productId: null,
@@ -146,20 +147,20 @@ class ProductImageSlider extends Component {
    */
   render() {
     const {
-      product, productId, images, 'aria-hidden': ariaHidden, className,
+      product, productId, images, 'aria-hidden': ariaHidden, className, paginationType,
     } = this.props;
     let content;
 
     if (images && images.length > 1) {
       content = (
         <Swiper
-          paginationType={pdpImageSliderPaginationType}
+          paginationType={paginationType}
           loop
           indicators
           onSlideChange={this.handleSlideChange}
           className={className}
           aria-hidden={ariaHidden}
-          {...pdpImageSliderPaginationType === 'bulletsBelow' ? {
+          {...paginationType === 'bulletsBelow' ? {
             style: {
               marginBottom: -8,
             },
@@ -233,11 +234,14 @@ const Wrapper = (props) => {
   // loadProductImage - the rendered images resolve their own settings from the context prop.
   const { pdp } = useProductImageSettings();
   const imageServiceSettings = useImageServiceSettings();
+  const { pagination } = useProductGallerySettings();
 
   return (
     <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
       <ProductImageSlider
         {...props}
+        key={pagination}
+        paginationType={pagination}
         pdpResolutions={pdp.resolutions}
         imageServiceSettings={imageServiceSettings}
       />

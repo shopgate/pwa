@@ -1,14 +1,23 @@
 import { connect } from 'react-redux';
-import { getProductShipping } from '@shopgate/pwa-common-commerce/product/selectors/product';
+import {
+  getProductId,
+  getProductShipping,
+  getProductShippingState,
+} from '@shopgate/pwa-common-commerce/product/selectors/product';
 
 /**
  * @param {Object} state The current application state.
  * @param {Object} props The component props.
  * @return {Object} The extended component props.
  */
-const mapStateToProps = (state, props) => ({
-  shipping: getProductShipping(state, props),
-});
+const mapStateToProps = (state, props) => {
+  const entry = getProductShippingState(state)[getProductId(state, props)];
+
+  return {
+    shipping: getProductShipping(state, props),
+    isLoading: !entry || !!entry.isFetching,
+  };
+};
 
 /**
  * @param {Object} next The next component props.
@@ -17,6 +26,10 @@ const mapStateToProps = (state, props) => ({
  */
 const areStatePropsEqual = (next, prev) => {
   if (!prev.shipping && next.shipping) {
+    return false;
+  }
+
+  if (prev.isLoading !== next.isLoading) {
     return false;
   }
 

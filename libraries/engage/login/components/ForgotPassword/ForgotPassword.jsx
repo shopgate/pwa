@@ -1,8 +1,9 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
+import escape from 'lodash/escape';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import {
-  I18n, ArrowIcon, Typography,
+  I18n, ArrowIcon, Typography, SafeHtml,
 } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { StylePresets } from '@shopgate/engage/components/Form';
@@ -145,14 +146,12 @@ const ForgotPassword = ({ resetPassword, goBack }) => {
       ) : (
         <>
           <div className={classes.resetInstructions}>
-            <span
-              /* eslint-disable react/no-danger */
-              dangerouslySetInnerHTML={{
-                __html: i18n.text('login.reset_password.reset_instructions', {
-                  email: `<span class="${classes.resetInstructionsEmail}">${email}</span>`,
-                }),
-              }}
-             /* eslint-enable react/no-danger */
+            <SafeHtml
+              as="span"
+              profile="html"
+              html={i18n.text('login.reset_password.reset_instructions', {
+                email: `<span class="${classes.resetInstructionsEmail}">${escape(email)}</span>`,
+              })}
             />
           </div>
           <div className={classes.goBackButtonContainer}>

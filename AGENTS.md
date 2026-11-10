@@ -83,6 +83,8 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
 - **Cleaning up an existing extension** (its `package.json`, lockfile, lint, test and editor
   config) follows `docs/extension-housekeeping.md`. Read it before changing that setup in an
   extension; it lists what to declare, what to remove and how to verify the result.
+- **Housekeeping is opt-in:** when you work on an extension for another reason and its setup looks
+  outdated, ask the developer whether they want the housekeeping. Don't do it unasked.
 - **TypeScript in extensions:** an extension's `tsconfig.json` only needs
   `{ "extends": "@shopgate/engage/tsconfig.extension.json" }`. It's the one tsconfig the release
   build publishes. Most library files are still JavaScript without declarations; the config loads
@@ -202,10 +204,14 @@ emit **stable, unhashed classes** that merchant CSS can target. There are ~200 o
   `theme.components.x.y` emits `var(--sg-components-x-y)`, which resolves on the element itself — so
   any ancestor that redeclares the var restyles everything below it. `components/v2/IconButton`
   draws `components.iconButton.boxShadow`, a token left unseeded so that only a declaration reaches
-  it — the component itself falls back to `none`. The product header declares it on the whole header
-  section (`theme__product__header`), which is what also elevates the buttons extensions render into
-  the surrounding cta portals. Merchant CSS overrides that element (equal specificity, `theme.css`
-  later in the cascade). Resolving the token to a literal on a container instead would break this:
+  it — the component itself falls back to `none`. The product header renders the cta row over the
+  product image and declares it on the row carrying `theme__product__header__cta-buttons` and on the
+  wrapper around the media section, which is what also elevates the buttons extensions render into
+  the surrounding cta portals, and on the header section (`theme__product__header`) for buttons
+  extensions render there. Product tiles declare it on `engage__product-tile-actions`. The value is
+  `components.actionButton.boxShadow` (flat by default), the admin shadow setting of the action
+  buttons. Merchant CSS overrides either element (equal specificity, `theme.css` later in the
+  cascade). Resolving the token to a literal on a container instead would break this:
   custom properties substitute at computed-value time, so a `--a: var(--b)` on an ancestor freezes
   against that ancestor's `--b` and a later override of `--b` no longer reaches it.
 - **Cascade:** `<meta>` anchors in `utils/webpack/templates/default.ejs` fix the layer order as

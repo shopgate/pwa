@@ -1,4 +1,4 @@
-import React, { memo } from 'react';
+import React, { memo, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Portal from '@shopgate/pwa-common/components/Portal';
 import {
@@ -8,6 +8,8 @@ import {
 } from '@shopgate/pwa-common-commerce/product/constants/Portals';
 import PlaceholderLabel from '@shopgate/pwa-ui-shared/PlaceholderLabel';
 import { makeStyles } from '@shopgate/engage/styles';
+import { useStickyValue } from '@shopgate/engage/product/hooks';
+import { ProductContext } from '../../context';
 import Label from './components/Label';
 import connect from './connector';
 
@@ -28,8 +30,10 @@ const useStyles = makeStyles()(theme => ({
  * @param {Object} props The component props.
  * @return {JSX}
  */
-const Shipping = ({ shipping }) => {
+const Shipping = ({ shipping: currentShipping, isLoading }) => {
   const { classes, cx } = useStyles();
+  const { productId } = useContext(ProductContext) || {};
+  const shipping = useStickyValue(currentShipping, isLoading, productId);
 
   return (
     <>
@@ -47,10 +51,12 @@ const Shipping = ({ shipping }) => {
 };
 
 Shipping.propTypes = {
+  isLoading: PropTypes.bool,
   shipping: PropTypes.shape(),
 };
 
 Shipping.defaultProps = {
+  isLoading: false,
   shipping: null,
 };
 

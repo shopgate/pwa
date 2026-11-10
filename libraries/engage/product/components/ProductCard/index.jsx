@@ -26,16 +26,37 @@ import {
 } from '@shopgate/engage/category';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getProductCardNameMaxLines } from '@shopgate/engage/settings/selectors/appSettings';
+import {
+  getProductCardNameMaxLines,
+  getProductActionButtons,
+} from '@shopgate/engage/settings/selectors/appSettings';
+import { ProductCardAddToCart } from '../ProductCardAddToCart';
+import { ProductTileActions } from '../ProductTileActions';
 import ProductGridPrice from '../ProductGridPrice';
 
 const useStyles = makeStyles()(theme => ({
   root: {
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100%',
     padding: theme.components.productCard.padding,
-
   },
   image: {
+    position: 'relative',
     padding: theme.components.productCard.imagePadding,
+    '--product-tile-actions-inset': theme.components.productCard.imagePadding,
+  },
+  imageLink: {
+    display: 'block',
+  },
+  detailsLink: {
+    flexGrow: 1,
+  },
+  addToCartButton: {
+    marginTop: 'auto',
+    padding: theme.components.productCard.textPadding,
+    paddingTop: `max(0px, calc(8px - ${theme.components.productCard.textPadding}))`,
   },
   details: {
     display: 'flex',
@@ -67,6 +88,8 @@ const location = 'productCard';
  * @param {boolean} props.hidePrice Whether the price should be hidden.
  * @param {boolean} props.hideRating Whether the rating should be hidden.
  * @param {boolean} props.hideName Whether the name should be hidden.
+ * @param {boolean} props.hideFavorites Whether the favorites button should be hidden.
+ * @param {boolean} props.hideAddToCart Whether the add to cart button should be hidden.
  * @param {number} props.titleRows Optional override for the max number of rows for the product
  * title
  * @param {string} props.url Optional alternative url for the product link
@@ -75,10 +98,11 @@ const location = 'productCard';
 function ProductCard(props) {
   const { classes, cx } = useStyles();
   const {
-    product, hidePrice, hideRating, hideName, titleRows, url,
+    product, hidePrice, hideRating, hideName, hideFavorites, hideAddToCart, titleRows, url,
   } = props;
   const { meta } = useProductListType();
   const productNameLines = useSelector(getProductCardNameMaxLines);
+  const { addToCart } = useSelector(getProductActionButtons);
 
   const showEmptyRatingStars = useShowEmptyRatingStars();
 
@@ -94,31 +118,44 @@ function ProductCard(props) {
     return false;
   }, [hideRating, product, showEmptyRatingStars]);
 
+  const linkProps = {
+    href: url || getProductRoute(product.id),
+    state: { ...meta },
+  };
+  const showDetails = !(hidePrice && hideRating && hideName);
+
   return (
-    <Link
+    <div
       className={cx(classes.root, 'engage__product-card')}
-      href={url || getProductRoute(product.id)}
       itemProp="item"
       itemScope
       itemType="http://schema.org/Product"
-      tabIndex={0}
-      state={{
-        ...meta,
-      }}
     >
       <div className={classes.image}>
-        {isBeta() && product.featuredMedia
-          ? <FeaturedMedia
-              type={product.featuredMedia.type}
-              url={product.featuredMedia.url}
-              altText={product.featuredMedia.altText}
-          />
-          : <ProductImage
-              src={product.featuredImageBaseUrl}
-              context="list"
-              alt={product.name}
-              itemProp="image"
-          />}
+        <Link
+          {...linkProps}
+          className={classes.imageLink}
+          tabIndex={showDetails ? -1 : 0}
+          aria-hidden={showDetails || undefined}
+        >
+          {isBeta() && product.featuredMedia
+            ? <FeaturedMedia
+                type={product.featuredMedia.type}
+                url={product.featuredMedia.url}
+                altText={product.featuredMedia.altText}
+            />
+            : <ProductImage
+                src={product.featuredImageBaseUrl}
+                context="list"
+                alt={product.name}
+                itemProp="image"
+            />}
+        </Link>
+        <ProductTileActions
+          productId={product.id}
+          hideFavorites={hideFavorites}
+          hideAddToCart={hideAddToCart}
+        />
       </div>
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (
@@ -132,8 +169,13 @@ function ProductCard(props) {
         </div>
         )}
       </ProductBadges>
-      {!(hidePrice && hideRating && hideName) && (
-        <div className={cx(classes.details, 'engage__product-card__information')}>
+      {showDetails && (
+        <Link
+          {...linkProps}
+          className={cx(classes.details, classes.detailsLink, 'engage__product-card__information')}
+          tabIndex={0}
+          aria-label={hideName ? product.name : undefined}
+        >
             {showRatings && <RatingStars value={product.rating.average} />}
           {/*
             This feature is currently in BETA testing.
@@ -173,9 +215,16 @@ function ProductCard(props) {
               <ProductGridPrice product={product} />
             </SurroundPortals>
           )}
-        </div>
+        </Link>
       )}
-    </Link>
+      {addToCart === 'button' && !hideAddToCart && (
+        <ProductCardAddToCart
+          productId={product.id}
+          variant="button"
+          className={classes.addToCartButton}
+        />
+      )}
+    </div>
   );
 }
 
@@ -195,6 +244,8 @@ ProductCard.Title = () => null;
 
 ProductCard.propTypes = {
   product: PropTypes.shape().isRequired,
+  hideAddToCart: PropTypes.bool,
+  hideFavorites: PropTypes.bool,
   hideName: PropTypes.bool,
   hidePrice: PropTypes.bool,
   hideRating: PropTypes.bool,
@@ -203,6 +254,8 @@ ProductCard.propTypes = {
 };
 
 ProductCard.defaultProps = {
+  hideAddToCart: false,
+  hideFavorites: false,
   hideName: false,
   hidePrice: false,
   hideRating: false,

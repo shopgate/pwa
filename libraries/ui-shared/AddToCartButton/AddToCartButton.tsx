@@ -6,7 +6,7 @@ import React, {
 import spring from 'css-spring';
 import { withForwardedRef } from '@shopgate/engage/core';
 import { keyframes, makeStyles, useTheme } from '@shopgate/engage/styles';
-import CartPlusIcon from '../icons/CartPlusIcon';
+import CartIcon from '../icons/CartIcon';
 import TickIcon from '../icons/TickIcon';
 import IndicatorCircle from '../IndicatorCircle';
 
@@ -232,7 +232,7 @@ const AddToCartButton = ({
 
   let buttonStateClass = classes.buttonReady;
   let tickIconClass = classes.icon;
-  let cartPlusIconClass = classes.icon;
+  let cartIconClass = classes.icon;
 
   const iconOpacity = isLoading ? { opacity: 0 } : { opacity: 1 };
   const spinnerInlineStyle = isLoading ? { opacity: 1 } : { opacity: 0 };
@@ -251,7 +251,7 @@ const AddToCartButton = ({
     buttonStateClass = classes.buttonDisabled;
   } else if (showCheckmark) {
     tickIconClass = cx(classes.icon, classes.springFromBottom);
-    cartPlusIconClass = cx(classes.icon, classes.springToTop);
+    cartIconClass = cx(classes.icon, classes.springToTop);
     buttonStateClass = classes.buttonSuccess;
     tickInlineStyle = {
       transform: 'translate3d(0, -50%, 0)',
@@ -263,7 +263,7 @@ const AddToCartButton = ({
     };
   } else if (showCheckmark !== null) {
     tickIconClass = cx(classes.icon, classes.springToBottom);
-    cartPlusIconClass = cx(classes.icon, classes.springFromTop);
+    cartIconClass = cx(classes.icon, classes.springFromTop);
     cartInlineStyle = {
       transform: 'translate3d(0, -50%, 0)',
       ...iconOpacity,
@@ -305,11 +305,11 @@ const AddToCartButton = ({
         <TickIcon />
       </div>
       <div
-        className={cartPlusIconClass}
+        className={cartIconClass}
         style={cartInlineStyle}
         onAnimationEnd={handleCartAnimationEnd}
       >
-        <CartPlusIcon />
+        <CartIcon />
       </div>
     </button>
   );

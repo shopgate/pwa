@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { CategoryList } from '@shopgate/engage/category/components';
+import { useCategorySettings } from '@shopgate/engage/category/hooks';
 import Headline from 'Components/Headline';
 import {
   BROWSE_CATEGORY_LIST,
@@ -9,6 +10,32 @@ import {
 } from '../../constants';
 import connect from './connector';
 import styles from './styles';
+
+/**
+ * The root categories in the configured layout.
+ * @param {Object} props The component props.
+ * @param {Array} props.categories The root categories.
+ * @returns {JSX.Element}
+ */
+const ConfiguredCategoryList = ({ categories }) => {
+  const { layout, showImages } = useCategorySettings();
+
+  return (
+    <CategoryList
+      categories={categories}
+      layout={layout}
+      showLeftSideImages={layout === 'list' && showImages}
+    />
+  );
+};
+
+ConfiguredCategoryList.propTypes = {
+  categories: PropTypes.arrayOf(PropTypes.shape()),
+};
+
+ConfiguredCategoryList.defaultProps = {
+  categories: [],
+};
 
 /**
  * The BackBar component.
@@ -42,7 +69,7 @@ class RootCategories extends PureComponent {
           portalName={BROWSE_CATEGORY_LIST}
           portalProps={{ categories: this.props.categories }}
         >
-          <CategoryList categories={this.props.categories} />
+          <ConfiguredCategoryList categories={this.props.categories} />
         </SurroundPortals>
       </div>
     );

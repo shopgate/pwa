@@ -56,7 +56,7 @@ export * from './streams';
 export { CartContext } from './cart.context';
 
 // COMPONENTS
-export { PaymentBar } from './components/PaymentBar';
+export { PaymentBar, PaymentBarTotals } from './components/PaymentBar';
 export {
   CartItemGroup,
   CartItems,

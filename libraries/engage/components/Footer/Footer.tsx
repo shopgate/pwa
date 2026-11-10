@@ -1,0 +1,91 @@
+import { useRef, useEffect, useCallback } from 'react';
+import type { ReactNode } from 'react';
+import { makeStyles } from '@shopgate/engage/styles';
+import { UIEvents } from '@shopgate/engage/core/events';
+import { getAbsoluteHeight, applyScrollContainer } from '@shopgate/engage/core/helpers';
+import { SHEET_EVENTS } from '@shopgate/engage/components';
+import {
+  handleSafeAreaInsets,
+  updateFooterHeight,
+} from './helpers';
+import { APP_FOOTER_ID, APP_FOOTER_BARS_ID, DATA_IGNORED } from './constants';
+
+export interface FooterProps {
+  children?: ReactNode;
+}
+
+const useStyles = makeStyles()(() => ({
+  footer: {
+    bottom: 0,
+    flexShrink: 1,
+    position: applyScrollContainer() ? 'relative' : 'sticky',
+    zIndex: 1,
+  },
+}));
+
+/**
+ * The footer component.
+ * @returns The footer.
+ */
+const Footer = ({ children = null }: FooterProps) => {
+  const { classes, cx } = useStyles();
+  const footerRef = useRef<HTMLDivElement>(null);
+
+  const performFooterUpdate = useCallback(() => {
+    handleSafeAreaInsets(footerRef.current);
+    updateFooterHeight(getAbsoluteHeight(footerRef.current as HTMLDivElement));
+  }, []);
+
+  const handleShow = useCallback(() => {
+    updateFooterHeight(getAbsoluteHeight(footerRef.current as HTMLDivElement));
+  }, []);
+
+  const handleHide = useCallback(() => {
+    updateFooterHeight(0);
+  }, []);
+
+  useEffect(() => {
+    UIEvents.addListener(SHEET_EVENTS.OPEN, handleHide);
+    UIEvents.addListener(SHEET_EVENTS.CLOSE, handleShow);
+
+    return () => {
+      UIEvents.removeListener(SHEET_EVENTS.OPEN, handleHide);
+      UIEvents.removeListener(SHEET_EVENTS.CLOSE, handleShow);
+    };
+  }, [handleHide, handleShow]);
+
+  useEffect(() => {
+    performFooterUpdate();
+
+    const observer = new MutationObserver((mutations) => {
+      const update = mutations
+        .filter(mutation => (mutation.target as Element).getAttribute(DATA_IGNORED) !== 'true').length > 0;
+
+      if (update) {
+        performFooterUpdate();
+      }
+    });
+
+    observer.observe(footerRef.current as HTMLDivElement, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      attributeFilter: ['style', 'class'],
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [performFooterUpdate]);
+
+  return (
+    <div className={cx(classes.footer, 'engage__footer')}>
+      <div id={APP_FOOTER_BARS_ID} />
+      <div id={APP_FOOTER_ID} ref={footerRef}>
+        {children}
+      </div>
+    </div>
+  );
+};
+
+export default Footer;

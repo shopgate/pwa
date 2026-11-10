@@ -49,6 +49,10 @@ describe('<RootCategories />', () => {
 
     expect(container.querySelector('[data-test-id="categoriesList"]')).toBeInTheDocument();
     expect(Headline.mock.lastCall[0]).toEqual(expect.objectContaining({ text: 'titles.allCategories' }));
-    expect(CategoryList.mock.lastCall[0]).toEqual({ categories: expectedRootCategories });
+    expect(CategoryList.mock.lastCall[0]).toEqual({
+      categories: expectedRootCategories,
+      layout: 'list',
+      showLeftSideImages: false,
+    });
   });
 });
