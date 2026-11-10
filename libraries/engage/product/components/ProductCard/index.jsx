@@ -1,7 +1,8 @@
-import React, { useMemo } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { isBeta } from '@shopgate/engage/core/helpers';
-import { useProductListType, useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
+import { useProductListType, useShowRatingStars } from '@shopgate/engage/product/hooks';
+import { useReviewVisibility } from '@shopgate/engage/reviews/hooks';
 import {
   Link,
   RatingStars,
@@ -29,7 +30,6 @@ import { makeStyles } from '@shopgate/engage/styles';
 import {
   getProductCardNameMaxLines,
   getProductActionButtons,
-  getShowReviews,
 } from '@shopgate/engage/settings/selectors/appSettings';
 import { ProductCardAddToCart } from '../ProductCardAddToCart';
 import { ProductTileActions } from '../ProductTileActions';
@@ -105,25 +105,10 @@ function ProductCard(props) {
   const productNameLines = useSelector(getProductCardNameMaxLines);
   const { addToCart } = useSelector(getProductActionButtons);
 
-  const showEmptyRatingStars = useShowEmptyRatingStars();
-  const showReviews = useSelector(getShowReviews);
+  const { showReviews } = useReviewVisibility();
+  const showRatingStars = useShowRatingStars(product?.rating);
   const isRatingHidden = hideRating || !showReviews;
-
-  const showRatings = useMemo(() => {
-    if (isRatingHidden) {
-      return false;
-    }
-
-    if (product?.rating?.average > 0) {
-      return true;
-    }
-
-    if (showEmptyRatingStars && product?.rating) {
-      return true;
-    }
-
-    return false;
-  }, [isRatingHidden, product, showEmptyRatingStars]);
+  const showRatings = showRatingStars && !hideRating;
 
   const linkProps = {
     href: url || getProductRoute(product.id),

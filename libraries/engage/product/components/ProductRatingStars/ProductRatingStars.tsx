@@ -1,9 +1,8 @@
 import { memo } from 'react';
 import { useSelector } from 'react-redux';
 import { getProductRating } from '@shopgate/pwa-common-commerce/product/selectors/product';
-import { getShowReviews } from '@shopgate/engage/settings/selectors/appSettings';
 import { RatingStars } from '@shopgate/engage/components';
-import useShowEmptyRatingStars from '../../hooks/useShowEmptyRatingStars';
+import useShowRatingStars from '../../hooks/useShowRatingStars';
 
 type RatingState = {
   rating: {
@@ -36,11 +35,7 @@ const ProductRatingStars = ({
     // @ts-expect-error - getProductRating is not typed yet
     getProductRating(state, { productId })) as RatingState['rating'];
 
-  const showEmptyRatingStars = useShowEmptyRatingStars();
-  const showReviews = useSelector(getShowReviews);
-
-  const showRatings = showReviews
-    && ((rating?.average ?? 0) > 0 || (showEmptyRatingStars && Boolean(rating)));
+  const showRatings = useShowRatingStars(rating);
 
   if (!showRatings) {
     return null;

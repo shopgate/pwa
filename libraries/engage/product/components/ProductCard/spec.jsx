@@ -9,9 +9,13 @@ const mockShowEmptyRatingStars = jest.fn(() => false);
 jest.mock('@shopgate/engage/core/helpers', () => ({
   isBeta: () => false,
 }));
+jest.mock('../../hooks/useShowEmptyRatingStars', () => ({
+  __esModule: true,
+  default: () => mockShowEmptyRatingStars(),
+}));
 jest.mock('@shopgate/engage/product/hooks', () => ({
   useProductListType: () => ({ meta: {} }),
-  useShowEmptyRatingStars: () => mockShowEmptyRatingStars(),
+  useShowRatingStars: jest.requireActual('../../hooks/useShowRatingStars').default,
 }));
 jest.mock('@shopgate/engage/components', () => ({
   /* eslint-disable react/prop-types */

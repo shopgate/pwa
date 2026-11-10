@@ -13,9 +13,9 @@ import {
 } from '@shopgate/engage/components';
 import { PRODUCT_RATING } from '@shopgate/engage/product/constants';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
-import { useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
+import { useShowRatingStars } from '@shopgate/engage/product/hooks';
+import { useReviewVisibility } from '@shopgate/engage/reviews/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
-import { getShowReviews } from '@shopgate/engage/settings/selectors/appSettings';
 import type { ReviewsProductState } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import type { ReviewSettingsState } from '@shopgate/pwa-common-commerce/reviews/types/reviewSettings';
 
@@ -78,11 +78,8 @@ const Rating = ({ productId = null }: RatingProps) => {
     hasReviewFeature(state, REVIEW_FEATURE_RATING_SUMMARY)
     && isProductReviewsExcerptPending(state, { productId })
   ));
-  const showEmptyRatingStars = useShowEmptyRatingStars();
-  const showReviews = useSelector(getShowReviews);
-
-  const showRatings = showReviews
-    && ((summary?.average ?? 0) > 0 || (showEmptyRatingStars && Boolean(summary)));
+  const { showReviews } = useReviewVisibility();
+  const showRatings = useShowRatingStars(summary);
   const showPlaceholder = showReviews && !summary && isSummaryPending;
 
   return (
