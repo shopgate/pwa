@@ -1,6 +1,5 @@
 import { memo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
-import { appConfig } from '@shopgate/engage';
 import { REVIEW_FEATURE_RATING_SUMMARY } from '@shopgate/engage/reviews/constants';
 import {
   getReviewSummary,
@@ -14,12 +13,10 @@ import {
 } from '@shopgate/engage/components';
 import { PRODUCT_RATING } from '@shopgate/engage/product/constants';
 import RatingCount from '@shopgate/engage/reviews/components/Reviews/components/RatingCount';
-import { useShowEmptyRatingStars } from '@shopgate/engage/product/hooks';
+import { useShowRatingStars } from '@shopgate/engage/product/hooks';
+import { useReviewVisibility } from '@shopgate/engage/reviews/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
-import type {
-  ReviewsConfig,
-  ReviewsProductState,
-} from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import type { ReviewsProductState } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
 import type { ReviewSettingsState } from '@shopgate/pwa-common-commerce/reviews/types/reviewSettings';
 
 type RatingState = ReviewsProductState & ReviewSettingsState;
@@ -81,12 +78,9 @@ const Rating = ({ productId = null }: RatingProps) => {
     hasReviewFeature(state, REVIEW_FEATURE_RATING_SUMMARY)
     && isProductReviewsExcerptPending(state, { productId })
   ));
-  const showEmptyRatingStars = useShowEmptyRatingStars();
-
-  const { hasReviews } = appConfig as ReviewsConfig;
-  const showRatings = hasReviews
-    && ((summary?.average ?? 0) > 0 || (showEmptyRatingStars && Boolean(summary)));
-  const showPlaceholder = hasReviews && !summary && isSummaryPending;
+  const { showReviews } = useReviewVisibility();
+  const showRatings = useShowRatingStars(summary);
+  const showPlaceholder = showReviews && !summary && isSummaryPending;
 
   return (
     <SurroundPortals portalName={PRODUCT_RATING}>

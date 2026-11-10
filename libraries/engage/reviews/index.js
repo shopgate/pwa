@@ -7,6 +7,7 @@ export * from '@shopgate/pwa-common-commerce/reviews/mock';
 export * from './actions';
 export * from './components';
 export * from './constants';
+export * from './hooks';
 export * from './selectors';
 export * from './streams';
 /* eslint-enable import/export */

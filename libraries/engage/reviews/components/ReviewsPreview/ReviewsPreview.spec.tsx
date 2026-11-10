@@ -3,7 +3,6 @@ import type { ReactElement, ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { appConfig } from '@shopgate/engage';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { bin2hex } from '@shopgate/engage/core/helpers';
 import { PRODUCT_REVIEWS } from '@shopgate/engage/product/constants';
@@ -110,18 +109,14 @@ const reviews: Review[] = [
   },
 ];
 
-const config = appConfig as unknown as Record<string, unknown>;
-const hasReviewsGetter = jest.fn();
-const showWriteReviewGetter = jest.fn();
+let mockVisibility = {
+  showReviews: true,
+  showWriteReview: true,
+};
 
-Object.defineProperty(config, 'hasReviews', {
-  get: hasReviewsGetter,
-  configurable: true,
-});
-Object.defineProperty(config, 'showWriteReview', {
-  get: showWriteReviewGetter,
-  configurable: true,
-});
+jest.mock('../../hooks', () => ({
+  useReviewVisibility: () => mockVisibility,
+}));
 
 /**
  * Renders the preview with a store that records dispatched actions.
@@ -145,8 +140,10 @@ const renderPreview = (props: Partial<ReviewsPreviewProps> = {}) => {
 describe('<ReviewsPreview />', () => {
   beforeEach(() => {
     jest.mocked(SurroundPortals).mockClear();
-    hasReviewsGetter.mockReturnValue(true);
-    showWriteReviewGetter.mockReturnValue(true);
+    mockVisibility = {
+      showReviews: true,
+      showWriteReview: true,
+    };
     mockPreview = {
       baseProductId: 'base',
       active: true,
@@ -187,7 +184,7 @@ describe('<ReviewsPreview />', () => {
   });
 
   it('should render nothing inside the portal when reviews are disabled', () => {
-    hasReviewsGetter.mockReturnValue(false);
+    mockVisibility.showReviews = false;
 
     const { container } = renderPreview();
 
@@ -205,7 +202,7 @@ describe('<ReviewsPreview />', () => {
   });
 
   it('should hide the write review link when writing reviews is disabled', () => {
-    showWriteReviewGetter.mockReturnValue(false);
+    mockVisibility.showWriteReview = false;
 
     renderPreview();
 
@@ -347,7 +344,7 @@ describe('<ReviewsPreview />', () => {
   });
 
   it('should not request a missing preview when reviews are disabled', () => {
-    hasReviewsGetter.mockReturnValue(false);
+    mockVisibility.showReviews = false;
     mockPreview.missing = true;
 
     const { getActions } = renderPreview();
@@ -405,7 +402,7 @@ describe('<ReviewsPreview />', () => {
     });
 
     it('should render nothing when reviews are disabled', () => {
-      hasReviewsGetter.mockReturnValue(false);
+      mockVisibility.showReviews = false;
 
       const { container } = renderPreview({ disablePortal: true });
 
@@ -463,7 +460,7 @@ describe('<ReviewsPreview />', () => {
   });
 
   it('should show no title when reviews are disabled', () => {
-    hasReviewsGetter.mockReturnValue(false);
+    mockVisibility.showReviews = false;
 
     const { container } = renderPreview({ showTitle: true });
 
