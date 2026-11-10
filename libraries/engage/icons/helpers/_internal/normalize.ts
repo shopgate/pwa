@@ -6,7 +6,7 @@ const REFERENCE_ATTRIBUTES = ['href', 'xlink:href'];
 
 const INLINED_PROPERTIES = [
   'clip-path', 'clip-rule', 'display', 'fill', 'fill-opacity', 'fill-rule', 'filter', 'mask',
-  'opacity', 'stop-color', 'stop-opacity', 'stroke', 'stroke-dasharray', 'stroke-linecap',
+  'opacity', 'stop-color', 'stop-opacity', 'stroke', 'stroke-dasharray', 'stroke-dashoffset', 'stroke-linecap',
   'stroke-linejoin', 'stroke-miterlimit', 'stroke-opacity', 'stroke-width', 'visibility',
 ];
 

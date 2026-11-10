@@ -167,6 +167,12 @@ describe('engage > icons > helpers > parseIconSvg', () => {
     expect(content).toBe('<path opacity=".5" d="M0"></path>');
   });
 
+  it('keeps the dash offset of style attributes', () => {
+    const { content } = parseIconSvg('<path style="stroke-dasharray:51, 51;stroke-dashoffset:20" d="M0"/>', { normalize: false });
+
+    expect(content).toBe('<path style="stroke-dasharray:51, 51;stroke-dashoffset:20" d="M0"></path>');
+  });
+
   it('keeps the transform of style attributes', () => {
     const { content } = parseIconSvg('<path style="transform:rotate(45deg)" d="M0"/>', { normalize: false });
 
