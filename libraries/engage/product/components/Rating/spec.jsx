@@ -3,6 +3,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import { fireEvent, render } from '@testing-library/react';
 import mockRenderOptions from '@shopgate/pwa-common/helpers/mocks/mockRenderOptions';
+import { DEFAULT_APP_SETTINGS } from '@shopgate/engage/settings/reducers/appSettings';
 import {
   setMocks,
   mockedStateWithTwoReviews,
@@ -40,6 +41,25 @@ describe('Rating (product header)', () => {
 
     it('should render nothing when data is not available', () => {
       const component = getComponent(mockedStateWithoutReview);
+      expect(component.container.firstChild).toBeNull();
+    });
+
+    it('should render nothing when reviews are switched off', () => {
+      const component = getComponent({
+        ...mockedStateWithTwoReviews,
+        settings: {
+          appSettings: {
+            ...DEFAULT_APP_SETTINGS,
+            product: {
+              ...DEFAULT_APP_SETTINGS.product,
+              rating: {
+                ...DEFAULT_APP_SETTINGS.product.rating,
+                showReviews: false,
+              },
+            },
+          },
+        },
+      });
       expect(component.container.firstChild).toBeNull();
     });
   });

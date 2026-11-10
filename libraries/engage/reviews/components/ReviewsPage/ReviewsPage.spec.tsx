@@ -3,7 +3,6 @@ import type { ReactNode } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { appConfig } from '@shopgate/engage';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_REVIEWS_ALL, REVIEW_ITEMS_PER_PAGE } from '@shopgate/engage/reviews/constants';
 import type {
@@ -171,13 +170,14 @@ const reviews: Review[] = [
   },
 ];
 
-const config = appConfig as unknown as Record<string, unknown>;
-const showWriteReviewGetter = jest.fn();
+let mockVisibility = {
+  showReviews: true,
+  showWriteReview: true,
+};
 
-Object.defineProperty(config, 'showWriteReview', {
-  get: showWriteReviewGetter,
-  configurable: true,
-});
+jest.mock('../../hooks', () => ({
+  useReviewVisibility: () => mockVisibility,
+}));
 
 /**
  * Renders the page with a store that records dispatched actions.
@@ -206,7 +206,10 @@ const renderPage = () => {
 describe('<ReviewsPage />', () => {
   beforeEach(() => {
     jest.mocked(SurroundPortals).mockClear();
-    showWriteReviewGetter.mockReturnValue(true);
+    mockVisibility = {
+      showReviews: true,
+      showWriteReview: true,
+    };
     mockPage = {
       baseProductId: 'base',
       productFetching: false,
@@ -247,7 +250,7 @@ describe('<ReviewsPage />', () => {
   });
 
   it('should hide the write review link when writing reviews is disabled', () => {
-    showWriteReviewGetter.mockReturnValue(false);
+    mockVisibility.showWriteReview = false;
 
     renderPage();
 

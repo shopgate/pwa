@@ -6,6 +6,8 @@ import {
   getDefaultColorSchemeMode,
   getProductGallerySettings,
   getShowManufacturerOnProductPage,
+  getShowReviews,
+  getShowWriteReview,
   getTypographyFontCssUrls,
   getTypographySettings,
   getWidgetMediaMargins,
@@ -17,6 +19,7 @@ import type {
   AppSettingsState,
   ProductGallerySettings,
   ProductManufacturerSettings,
+  ProductRatingSettings,
   TypographySettings,
   WidgetSettings,
 } from '../types/appSettings';
@@ -69,6 +72,21 @@ const stateWithManufacturer = (manufacturer: ProductManufacturerSettings): AppSe
   },
 });
 
+const stateWithRating = (rating: Partial<ProductRatingSettings>): AppSettingsState => ({
+  settings: {
+    appSettings: {
+      ...DEFAULT_APP_SETTINGS,
+      product: {
+        ...DEFAULT_APP_SETTINGS.product,
+        rating: {
+          ...DEFAULT_APP_SETTINGS.product.rating,
+          ...rating,
+        },
+      },
+    },
+  },
+});
+
 const stateWithGallery = (gallery: ProductGallerySettings): AppSettingsState => ({
   settings: {
     appSettings: {
@@ -91,6 +109,28 @@ describe('settings/selectors/appSettings', () => {
 
     it('shows the manufacturer when the slice is missing', () => {
       expect(getShowManufacturerOnProductPage({} as AppSettingsState)).toBe(true);
+    });
+  });
+
+  describe('getShowReviews', () => {
+    it('returns the configured setting', () => {
+      expect(getShowReviews(stateWithRating({ showReviews: false }))).toBe(false);
+      expect(getShowReviews(stateWithRating({ showReviews: true }))).toBe(true);
+    });
+
+    it('falls back to the app config when the slice is missing', () => {
+      expect(getShowReviews({} as AppSettingsState)).toBe(true);
+    });
+  });
+
+  describe('getShowWriteReview', () => {
+    it('returns the configured setting', () => {
+      expect(getShowWriteReview(stateWithRating({ showWriteReview: false }))).toBe(false);
+      expect(getShowWriteReview(stateWithRating({ showWriteReview: true }))).toBe(true);
+    });
+
+    it('falls back to the app config when the slice is missing', () => {
+      expect(getShowWriteReview({} as AppSettingsState)).toBe(true);
     });
   });
 
