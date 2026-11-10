@@ -37,8 +37,20 @@ jest.mock('@shopgate/engage/category', () => ({
   PRODUCT_ITEM_DISCOUNT: 'product-item.discount',
   PRODUCT_ITEM_PRICE: 'product-item.price',
 }));
-jest.mock('../ProductCardAddToCart', () => ({ ProductCardAddToCart: () => null }));
-jest.mock('../ProductTileActions', () => ({ ProductTileActions: () => null }));
+jest.mock('../ProductCardAddToCart', () => ({
+  ProductCardAddToCart: () => <button type="button">cart</button>,
+}));
+jest.mock('../ProductTileActions', () => ({
+  /* eslint-disable react/prop-types */
+  ProductTileActions: ({ hideFavorites, hideAddToCart }) => (
+    <div
+      data-testid="tile-actions"
+      data-hide-favorites={String(hideFavorites)}
+      data-hide-add-to-cart={String(hideAddToCart)}
+    />
+  ),
+  /* eslint-enable react/prop-types */
+}));
 jest.mock('../ProductGridPrice', () => () => null);
 
 const mockStore = configureStore();
@@ -46,18 +58,24 @@ const mockStore = configureStore();
 /**
  * @param {Object} options The test options.
  * @param {boolean} options.showReviews The review setting of the merchant.
+ * @param {string} options.addToCart The add to cart setting of the action buttons.
  * @param {Object|null} options.rating The rating of the product.
  * @param {boolean} options.hideRating Whether the card hides the rating itself.
  * @param {boolean} options.hideName Whether the card hides the name.
  * @param {boolean} options.hidePrice Whether the card hides the price.
+ * @param {boolean} options.hideFavorites Whether the card hides the favorites button.
+ * @param {boolean} options.hideAddToCart Whether the card hides the add to cart button.
  * @returns {Object} The render result.
  */
 const renderCard = ({
   showReviews = true,
+  addToCart = DEFAULT_APP_SETTINGS.product.actionButtons.addToCart,
   rating = { average: 80 },
   hideRating = false,
   hideName = false,
   hidePrice = false,
+  hideFavorites = false,
+  hideAddToCart = false,
 } = {}) => {
   const store = mockStore({
     settings: {
@@ -68,6 +86,10 @@ const renderCard = ({
           rating: {
             ...DEFAULT_APP_SETTINGS.product.rating,
             showReviews,
+          },
+          actionButtons: {
+            ...DEFAULT_APP_SETTINGS.product.actionButtons,
+            addToCart,
           },
         },
       },
@@ -81,11 +103,13 @@ const renderCard = ({
           id: 'product',
           name: 'Product',
           rating,
-          price: {},
+          price: { discount: 0 },
         }}
         hideRating={hideRating}
         hideName={hideName}
         hidePrice={hidePrice}
+        hideFavorites={hideFavorites}
+        hideAddToCart={hideAddToCart}
       />
     </Provider>
   );
@@ -139,5 +163,35 @@ describe('<ProductCard />', () => {
     });
 
     expect(screen.queryByTestId('rating-stars')).not.toBeInTheDocument();
+  });
+
+  it('shows the buttons configured in the app settings by default', () => {
+    renderCard({ addToCart: 'button' });
+
+    const actions = screen.getByTestId('tile-actions');
+    expect(actions).toHaveAttribute('data-hide-favorites', 'false');
+    expect(actions).toHaveAttribute('data-hide-add-to-cart', 'false');
+    expect(screen.getByRole('button', { name: 'cart' })).toBeInTheDocument();
+  });
+
+  it('passes hideFavorites and hideAddToCart to the tile actions', () => {
+    renderCard({
+      addToCart: 'actionButton',
+      hideFavorites: true,
+      hideAddToCart: true,
+    });
+
+    const actions = screen.getByTestId('tile-actions');
+    expect(actions).toHaveAttribute('data-hide-favorites', 'true');
+    expect(actions).toHaveAttribute('data-hide-add-to-cart', 'true');
+  });
+
+  it('hides the add to cart button below the card', () => {
+    renderCard({
+      addToCart: 'button',
+      hideAddToCart: true,
+    });
+
+    expect(screen.queryByRole('button', { name: 'cart' })).not.toBeInTheDocument();
   });
 });

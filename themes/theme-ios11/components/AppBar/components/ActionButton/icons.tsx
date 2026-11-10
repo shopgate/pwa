@@ -10,7 +10,6 @@ import {
   Icon,
   InfoIcon,
   LocationIcon,
-  LocatorIcon,
   MagnifierIcon,
   MoreIcon,
   MoreVertIcon,
@@ -18,6 +17,7 @@ import {
   PersonIcon,
   ShareIconIOS,
   StarIcon,
+  StoreIcon,
 } from '@shopgate/engage/components';
 
 /**
@@ -31,8 +31,8 @@ const ICONS = {
   share: ShareIconIOS,
   burger: BurgerIcon,
   browse: BrowseIcon,
-  pin: LocationIcon,
-  store: LocatorIcon,
+  location: LocationIcon,
+  store: StoreIcon,
   cart: CartIcon,
   heart: HeartIcon,
   person: PersonIcon,

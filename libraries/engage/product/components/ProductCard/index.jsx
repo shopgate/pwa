@@ -89,6 +89,8 @@ const location = 'productCard';
  * @param {boolean} props.hidePrice Whether the price should be hidden.
  * @param {boolean} props.hideRating Whether the rating should be hidden.
  * @param {boolean} props.hideName Whether the name should be hidden.
+ * @param {boolean} props.hideFavorites Whether the favorites button should be hidden.
+ * @param {boolean} props.hideAddToCart Whether the add to cart button should be hidden.
  * @param {number} props.titleRows Optional override for the max number of rows for the product
  * title
  * @param {string} props.url Optional alternative url for the product link
@@ -97,7 +99,7 @@ const location = 'productCard';
 function ProductCard(props) {
   const { classes, cx } = useStyles();
   const {
-    product, hidePrice, hideRating, hideName, titleRows, url,
+    product, hidePrice, hideRating, hideName, hideFavorites, hideAddToCart, titleRows, url,
   } = props;
   const { meta } = useProductListType();
   const productNameLines = useSelector(getProductCardNameMaxLines);
@@ -156,7 +158,11 @@ function ProductCard(props) {
                 itemProp="image"
             />}
         </Link>
-        <ProductTileActions productId={product.id} />
+        <ProductTileActions
+          productId={product.id}
+          hideFavorites={hideFavorites}
+          hideAddToCart={hideAddToCart}
+        />
       </div>
       <ProductBadges location={location} productId={product.id}>
         {!!(!hidePrice && product.price.discount) && (
@@ -218,7 +224,7 @@ function ProductCard(props) {
           )}
         </Link>
       )}
-      {addToCart === 'button' && (
+      {addToCart === 'button' && !hideAddToCart && (
         <ProductCardAddToCart
           productId={product.id}
           variant="button"
@@ -245,6 +251,8 @@ ProductCard.Title = () => null;
 
 ProductCard.propTypes = {
   product: PropTypes.shape().isRequired,
+  hideAddToCart: PropTypes.bool,
+  hideFavorites: PropTypes.bool,
   hideName: PropTypes.bool,
   hidePrice: PropTypes.bool,
   hideRating: PropTypes.bool,
@@ -253,6 +261,8 @@ ProductCard.propTypes = {
 };
 
 ProductCard.defaultProps = {
+  hideAddToCart: false,
+  hideFavorites: false,
   hideName: false,
   hidePrice: false,
   hideRating: false,

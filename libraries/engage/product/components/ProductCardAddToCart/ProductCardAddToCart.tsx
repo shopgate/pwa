@@ -63,6 +63,11 @@ const useStyles = makeStyles({ name: 'ProductCardAddToCart' })(theme => ({
       paddingRight: theme.spacing(0.5),
     },
   },
+  iconButton: {
+    '&&[aria-busy="true"]': {
+      color: 'var(--icon-button-color)',
+    },
+  },
   content: {
     display: 'inline-flex',
     alignItems: 'center',
@@ -262,6 +267,7 @@ const ProductCardAddToCart = ({
             aria-disabled={pending || undefined}
             aria-busy={pending || undefined}
             onClick={handleClick}
+            className={classes.iconButton}
           >
             {pending && <CircularProgress color="inherit" size={16} />}
             {added && (
