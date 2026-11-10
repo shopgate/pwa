@@ -146,6 +146,8 @@ export const componentsSchema = {
   actionButton: {
     vars: {
       boxShadow: '',
+      background: '',
+      color: '',
     },
   },
   input: {
@@ -316,6 +318,8 @@ export const componentsDefaults = {
   actionButton: {
     vars: {
       boxShadow: 'none',
+      background: t => t.palette.background.surface,
+      color: t => t.palette.secondary.main,
     },
   },
   border: {

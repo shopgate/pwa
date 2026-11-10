@@ -117,7 +117,7 @@ describe('<IconButton /> surface', () => {
       .filter(rule => rule.includes(':hover'))
       .join('\n');
 
-    expect(hoverRules).toContain('color-mix(in srgb, currentColor 10%, var(--icon-button-background, transparent))');
+    expect(hoverRules).toContain('color-mix(in srgb, var(--icon-button-color) 10%, var(--icon-button-background, transparent))');
   });
 });
 
