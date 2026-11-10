@@ -244,10 +244,13 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
     });
   });
 
-  it('should announce readiness to the parent on mount', () => {
+  it('should announce readiness and the supported preview features to the parent on mount', () => {
     render(<FrontendSettingsPreviewBridge />);
 
-    expect(mockedSendToParent).toHaveBeenCalledWith({ type: 'frontendSettingsPreviewReady' });
+    expect(mockedSendToParent).toHaveBeenCalledWith({
+      type: 'frontendSettingsPreviewReady',
+      payload: { features: ['iconCatalog'] },
+    });
   });
 
   describe('frontendSettingsPreviewApplied', () => {
@@ -359,6 +362,28 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
       await flushFontCssSync();
 
       expect(appliedCallCount()).toBe(0);
+    });
+  });
+
+  describe('requestIconCatalog', () => {
+    it('should answer with the icons a merchant can replace', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({ type: 'requestIconCatalog' });
+
+      expect(mockedSendToParent).toHaveBeenCalledWith({
+        type: 'iconCatalog',
+        payload: {
+          version: 1,
+          icons: expect.arrayContaining([
+            expect.objectContaining({
+              name: 'cart',
+              source: 'core',
+              default: expect.stringMatching(/^<svg viewBox="0 0 24 24">/),
+            }),
+          ]),
+        },
+      });
     });
   });
 });

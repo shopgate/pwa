@@ -254,3 +254,11 @@ export const getTypographyFontCssUrls = createSelector(
     ...Object.values(typography.variants).map(variant => variant?.fontCssUrl),
   ].filter((url): url is string => typeof url === 'string' && url.length > 0)))
 );
+
+/**
+ * Selects the icons the merchant replaced, by icon name.
+ */
+export const getIconOverrides = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.icons
+);

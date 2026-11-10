@@ -1,13 +1,10 @@
-import React from 'react';
-import Icon from '@shopgate/pwa-common/components/Icon';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-
-// SVG Content
-const content = '<path d="M12 2C8 2 5 5 5 9c0 5 7 13 7 13s7-8 7-13c0-4-3-7-7-7zm0 10a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/><path fill="none" d="M0 0h24v24H0z"/>';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The location icon component.
  */
-const Location = (props: Omit<IconProps, 'content'>) => <Icon content={content} {...props} />;
+const Location = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="location" {...props} />
+);
 
 export default Location;

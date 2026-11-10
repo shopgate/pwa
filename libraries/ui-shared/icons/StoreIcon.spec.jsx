@@ -1,18 +1,24 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
 import StoreIcon from './StoreIcon';
+
+const mockLegacyIcons = {};
+
+jest.mock('@shopgate/engage/icons/helpers/themeIcons', () => ({
+  ...jest.requireActual('@shopgate/engage/icons/helpers/themeIcons'),
+  getLegacyThemeIcons: () => mockLegacyIcons,
+}));
 
 describe('<StoreIcon />', () => {
   it('shows the shop front without an icon in the theme config', () => {
-    themeConfig.icons.store = '';
+    mockLegacyIcons.store = '';
 
     expect(renderToString(<StoreIcon />)).toContain('M20 4H4v2h16V4z');
   });
 
   it('shows the icon of the theme config', () => {
-    themeConfig.icons.store = '<path d="custom"/>';
+    mockLegacyIcons.store = '<path d="M1 1h22v22H1z"/>';
 
-    expect(renderToString(<StoreIcon />)).toContain('d="custom"');
+    expect(renderToString(<StoreIcon />)).toContain('M1 1h22v22H1z');
   });
 });

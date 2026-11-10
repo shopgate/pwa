@@ -18,3 +18,17 @@ export const ALLOWED_ADMIN_PREVIEW_ORIGINS = [
   'http://localhost.localdev.cc',
   'http://localhost:1337',
 ];
+
+/**
+ * Preview features this app version supports. The ready message announces them, so the admin can
+ * lock the settings of features that the app in the preview doesn't have yet.
+ */
+export const ADMIN_PREVIEW_FEATURES = ['iconCatalog'] as const;
+
+/**
+ * Tells the admin that the preview listens for messages, and which preview features it supports.
+ */
+export const PREVIEW_READY_MESSAGE = {
+  type: 'frontendSettingsPreviewReady',
+  payload: { features: ADMIN_PREVIEW_FEATURES },
+} as const;

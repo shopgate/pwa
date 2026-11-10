@@ -3,10 +3,14 @@ import React, {
 } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useIframeMessenger } from '@shopgate/engage/admin-preview/hooks';
-import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/constants';
+import {
+  ALLOWED_ADMIN_PREVIEW_ORIGINS,
+  PREVIEW_READY_MESSAGE,
+} from '@shopgate/engage/admin-preview/constants';
 import { receiveAppSettings } from '@shopgate/engage/settings/action-creators/appSettings';
 import { getTypographyFontCssUrls } from '@shopgate/engage/settings/selectors/appSettings';
 import { logger } from '@shopgate/engage/core/helpers';
+import { getIconCatalog } from '@shopgate/engage/icons/helpers/catalog';
 // Imported via their module paths, since the "styles" barrel pulls in the ThemeProvider which
 // renders this component, and would therefore create a circular import.
 import useColorScheme from '@shopgate/engage/styles/theme/hooks/useColorScheme';
@@ -60,6 +64,13 @@ const FrontendSettingsPreviewBridge = () => {
       setApplied(true);
     }
 
+    if (data.type === 'requestIconCatalog') {
+      sendToParent({
+        type: 'iconCatalog',
+        payload: getIconCatalog(),
+      });
+    }
+
     if (data.type === 'setColorScheme') {
       const colorScheme = data.payload?.colorScheme;
 
@@ -99,7 +110,7 @@ const FrontendSettingsPreviewBridge = () => {
   }, [sendToParent]);
 
   useEffect(() => {
-    sendToParent({ type: 'frontendSettingsPreviewReady' });
+    sendToParent(PREVIEW_READY_MESSAGE);
   }, [sendToParent]);
 
   // App start already loaded the configured files. This keeps them in sync while the merchant

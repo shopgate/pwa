@@ -1,12 +1,10 @@
-import React from 'react';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import Icon from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The security icon component.
  */
-const Security = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.security} {...props} />);
+const Security = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="security" {...props} />
+);
 
 export default Security;
