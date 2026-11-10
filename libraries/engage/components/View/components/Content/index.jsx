@@ -17,7 +17,7 @@ import { EVENT_KEYBOARD_WILL_CHANGE } from '@shopgate/pwa-core/constants/AppEven
 import SurroundPortals from '@shopgate/pwa-common/components/SurroundPortals';
 import { VIEW_CONTENT } from '@shopgate/pwa-common/constants/Portals';
 import { applyScrollContainer, isIOs } from '@shopgate/engage/core/helpers';
-import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
 import { ConditionalWrapper } from '../../../ConditionalWrapper';
 import Above from '../Above';
@@ -29,9 +29,6 @@ const useStyles = makeStyles()({
     display: 'flex',
     flexDirection: 'column',
     width: '100vw',
-    [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      width: 'var(--page-content-width)',
-    },
   },
   containerScroll: {
     bottom: 0,

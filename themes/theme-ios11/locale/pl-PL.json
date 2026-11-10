@@ -588,7 +588,12 @@
     "profile": "Profil",
     "back": "Powrót do {title}",
     "open_menu": "Otwórz menu",
-    "open_link": "Otwórz stronę"
+    "open_link": "Otwórz stronę",
+    "scanner": "Skaner",
+    "menuSubHeader": {
+      "more": "Więcej",
+      "about": "O nas"
+    }
   },
   "reviews": {
     "rating": "Przegląd",

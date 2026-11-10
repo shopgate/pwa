@@ -589,7 +589,12 @@
     "profile": "Profil",
     "back": "Înapoi la {title}",
     "open_menu": "Deschide meniul",
-    "open_link": "Deschide pagina"
+    "open_link": "Deschide pagina",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Mai multe",
+      "about": "Despre noi"
+    }
   },
   "reviews": {
     "rating": "Evaluare",

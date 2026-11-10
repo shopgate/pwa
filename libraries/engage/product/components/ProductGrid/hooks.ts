@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { WidgetContext } from '@shopgate/engage/page/components/Widgets/WidgetContext';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
+import { hasWebBridge } from '@shopgate/engage/core/helpers';
 import type { Breakpoint } from '@shopgate/engage/styles/theme';
 import {
   getAreAppSettingsHydrated,
@@ -48,14 +49,29 @@ export const useProductGridColumns = (): number => {
   }, [areAppSettingsHydrated, isInsideWidget, legacyColumns, appSettingsColumns]);
 
   const breakpoints = useMemo<Partial<Record<Breakpoint, number>>>(
-    () => (Object.entries(sizes) as [ScreenSize, number][]).reduce(
-      (acc, [size, value]) => {
-        acc[SCREEN_SIZE_BREAKPOINTS[size]] = value;
-        return acc;
-      },
-      {} as Partial<Record<Breakpoint, number>>
-    ),
-    [sizes]
+    () => {
+      const mapped = (Object.entries(sizes) as [ScreenSize, number][]).reduce(
+        (acc, [size, value]) => {
+          acc[SCREEN_SIZE_BREAKPOINTS[size]] = value;
+          return acc;
+        },
+        {} as Partial<Record<Breakpoint, number>>
+      );
+
+      // The app settings only reach up to `md`. In website mode the viewport keeps growing
+      // beyond that, so widen the grid instead of stretching the tiles.
+      if (hasWebBridge() && !areAppSettingsHydrated) {
+        const widest = mapped.md ?? mapped.sm ?? mapped.xs;
+
+        if (typeof widest === 'number') {
+          mapped.lg = mapped.lg ?? widest + 1;
+          mapped.xl = mapped.xl ?? widest + 2;
+        }
+      }
+
+      return mapped;
+    },
+    [sizes, areAppSettingsHydrated]
   );
 
   return useResponsiveValue(breakpoints) as number;

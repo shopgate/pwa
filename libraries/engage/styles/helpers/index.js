@@ -5,7 +5,6 @@ export {
 
 export { updatePageInsets } from './updatePageInsets';
 export { setPageBackgroundColor } from './setPageBackgroundColor';
-export { setPageContentWidth } from './setPageContentWidth';
 export { setViewportHeight } from './setViewportHeight';
 export { toggleBodyScroll } from './toggleBodyScroll';
 export { initCSSCustomProps, initCSSCustomPropsFallback } from './initCSSCustomProperties';

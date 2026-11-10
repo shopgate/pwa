@@ -1,6 +1,7 @@
 import {
   render, screen, waitFor, within,
 } from '@testing-library/react';
+import '@shopgate/engage/components';
 import BasicDialog from './index';
 
 const props = {

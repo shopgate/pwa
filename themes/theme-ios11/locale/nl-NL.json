@@ -589,7 +589,12 @@
     "profile": "Profiel",
     "back": "Terug naar {title}",
     "open_menu": "Menu openen",
-    "open_link": "Pagina openen"
+    "open_link": "Pagina openen",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Meer",
+      "about": "Over ons"
+    }
   },
   "reviews": {
     "rating": "Rating",

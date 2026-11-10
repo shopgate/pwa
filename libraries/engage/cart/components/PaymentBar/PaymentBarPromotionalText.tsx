@@ -1,6 +1,6 @@
 import { useCallback, useContext } from 'react';
 import { useDispatch } from 'react-redux';
-import { showModal, isIOSTheme } from '@shopgate/engage/core';
+import { showModal } from '@shopgate/engage/core';
 import {
   InfoIcon, Typography, CartTotalLine, SafeHtml,
 } from '@shopgate/engage/components';
@@ -45,7 +45,7 @@ const useStyles = makeStyles()(theme => ({
     opacity: 0.5,
   },
   spacer: {
-    width: isIOSTheme() ? 27 : 32,
+    width: 27,
     order: 1,
     flexShrink: 0,
   },

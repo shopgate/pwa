@@ -589,7 +589,12 @@
     "profile": "Profiili",
     "back": "Takaisin {title}",
     "open_menu": "Avaa valikko",
-    "open_link": "Avaa sivu"
+    "open_link": "Avaa sivu",
+    "scanner": "Skanneri",
+    "menuSubHeader": {
+      "more": "Lisää",
+      "about": "Tietoa meistä"
+    }
   },
   "reviews": {
     "rating": "Arviointi",

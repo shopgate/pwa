@@ -1,5 +1,4 @@
 import { makeStyles } from '@shopgate/engage/styles';
-import { isIOSTheme } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { CART_PAYMENT_BAR } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import PaymentBarTotals from './PaymentBarTotals';
@@ -30,7 +29,7 @@ const useStyles = makeStyles()(theme => ({
   checkoutButtonContainer: {
     background: theme.palette.background.surface,
     alignItems: 'center',
-    padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
+    padding: theme.spacing(1),
     position: 'relative',
     zIndex: 2,
   },
