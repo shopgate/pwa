@@ -173,6 +173,7 @@ describe('settings / reducers / appSettings', () => {
         },
         gallery: {
           pagination: 'fraction',
+          thumbnails: true,
         },
         addToCartBar: {
           variant: 'floating',
@@ -338,7 +339,55 @@ describe('settings / reducers / appSettings', () => {
       },
     }));
 
-    expect(state.product.gallery).toEqual({ pagination: 'bulletsBelow' });
+    expect(state.product.gallery).toEqual({
+      pagination: 'bulletsBelow',
+      thumbnails: false,
+    });
+  });
+
+  it('stores a hidden pagination of the product gallery', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        gallery: {
+          pagination: 'none',
+        },
+      },
+    }));
+
+    expect(state.product.gallery).toEqual({
+      pagination: 'none',
+      thumbnails: false,
+    });
+  });
+
+  it('stores the thumbnails of the product gallery', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        gallery: {
+          thumbnails: true,
+        },
+      },
+    }));
+
+    expect(state.product.gallery).toEqual({
+      pagination: 'bullets',
+      thumbnails: true,
+    });
+  });
+
+  it('keeps the thumbnails of the product gallery off for an invalid value', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        gallery: {
+          thumbnails: 'true',
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.gallery).toEqual({
+      pagination: 'bullets',
+      thumbnails: false,
+    });
   });
 
   it.each([null, 'dots', 123, { type: 'fraction' }])(
@@ -352,7 +401,10 @@ describe('settings / reducers / appSettings', () => {
         },
       } as unknown as AppSettingsPayload));
 
-      expect(state.product.gallery).toEqual({ pagination: 'bullets' });
+      expect(state.product.gallery).toEqual({
+        pagination: 'bullets',
+        thumbnails: false,
+      });
     }
   );
 

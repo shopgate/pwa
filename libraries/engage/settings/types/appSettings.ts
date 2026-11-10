@@ -197,16 +197,18 @@ export interface ProductFilterBarSettings {
 
 /**
  * How the image gallery of the product page shows the position of the visible image. The `Below`
- * variants place the indicator under the image instead of on top of it.
+ * variants place the indicator under the image instead of on top of it, `none` hides it.
  */
 export type ProductGalleryPagination =
-  'bullets' | 'bulletsBelow' | 'fraction' | 'fractionBelow' | 'progressbar';
+  'bullets' | 'bulletsBelow' | 'fraction' | 'fractionBelow' | 'progressbar' | 'none';
 
 /**
  * Settings for the image gallery of the product page.
  */
 export interface ProductGallerySettings {
   pagination: ProductGalleryPagination;
+  /** Shows a strip of thumbnails below the image gallery of the product page. */
+  thumbnails: boolean;
 }
 
 /**

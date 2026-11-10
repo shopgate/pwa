@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import PropTypes from 'prop-types';
 import { SurroundPortals, Swiper } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -30,6 +30,7 @@ const typeRenders = {
  */
 const MediaSlider = ({
   navigate,
+  onSlideClick,
   featuredMedia,
   media,
   'aria-hidden': ariaHidden,
@@ -39,13 +40,13 @@ const MediaSlider = ({
   swiperProps,
 }) => {
   const { classes } = useStyles();
-  let currentSlide = 0;
+  const currentSlide = useRef(0);
 
   /**
    * @param {number} slide slide
    */
   const setCurrentSlide = (slide) => {
-    currentSlide = slide;
+    currentSlide.current = slide;
   };
 
   /** Handle click */
@@ -53,7 +54,7 @@ const MediaSlider = ({
     if (!media.length) {
       return;
     }
-    navigate(currentSlide);
+    (onSlideClick || navigate)(currentSlide.current);
   };
 
   if (!Array.isArray(media) || media.length === 0) {
@@ -107,6 +108,10 @@ MediaSlider.propTypes = {
     title: PropTypes.string,
     url: PropTypes.string,
   })),
+  /**
+   * Called with the index of a tapped slide instead of opening the gallery page.
+   */
+  onSlideClick: PropTypes.func,
   paginationType: PropTypes.string,
   renderPlaceholder: PropTypes.func,
   swiperProps: PropTypes.shape(),
@@ -118,6 +123,7 @@ MediaSlider.defaultProps = {
   featuredMedia: null,
   paginationType: null,
   media: null,
+  onSlideClick: null,
   renderPlaceholder: featuredMedia => (<MediaImage {...featuredMedia} />),
   swiperProps: {},
 };

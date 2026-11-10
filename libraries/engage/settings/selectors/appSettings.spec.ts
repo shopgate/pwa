@@ -98,11 +98,18 @@ describe('settings/selectors/appSettings', () => {
     it('returns the configured setting', () => {
       expect(getProductGallerySettings(stateWithGallery({
         pagination: 'fraction',
-      }))).toEqual({ pagination: 'fraction' });
+        thumbnails: true,
+      }))).toEqual({
+        pagination: 'fraction',
+        thumbnails: true,
+      });
     });
 
     it('uses bullets when the slice is missing', () => {
-      expect(getProductGallerySettings({} as AppSettingsState)).toEqual({ pagination: 'bullets' });
+      expect(getProductGallerySettings({} as AppSettingsState)).toEqual({
+        pagination: 'bullets',
+        thumbnails: false,
+      });
     });
   });
 

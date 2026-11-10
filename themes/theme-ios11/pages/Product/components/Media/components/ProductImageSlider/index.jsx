@@ -1,18 +1,21 @@
-import React, { Component } from 'react';
+import React, { Component, useMemo } from 'react';
+import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
 import noop from 'lodash/noop';
-import { withNavigation, bin2hex } from '@shopgate/engage/core';
 import { Swiper, SurroundPortals } from '@shopgate/engage/components';
 import {
   PRODUCT_IMAGE,
+  MEDIA_TYPE_IMAGE,
   loadProductImage,
-  ITEM_PATH,
   ProductImage,
 } from '@shopgate/engage/product';
 import { useImageServiceSettings, useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { PRODUCT_GALLERY_PAGINATIONS } from '@shopgate/engage/settings/constants/appSettings';
 import { useProductGallerySettings } from '@shopgate/engage/product/hooks';
+import MediaThumbnails from '../MediaThumbnails';
+import MediaViewer from '../MediaViewer';
+import { useMediaGallery } from '../../hooks';
 import connect from './connector';
 
 /**
@@ -24,9 +27,10 @@ class ProductImageSlider extends Component {
   static propTypes = {
     'aria-hidden': PropTypes.bool,
     className: PropTypes.string,
-    historyPush: PropTypes.func,
     images: PropTypes.arrayOf(PropTypes.string),
     imageServiceSettings: PropTypes.shape(),
+    onOpen: PropTypes.func,
+    onSwiper: PropTypes.func,
     paginationType: PropTypes.oneOf(PRODUCT_GALLERY_PAGINATIONS),
     pdpResolutions: PropTypes.arrayOf(PropTypes.shape()),
     product: PropTypes.shape(),
@@ -37,9 +41,10 @@ class ProductImageSlider extends Component {
   static defaultProps = {
     'aria-hidden': false,
     className: null,
-    historyPush: noop,
     images: null,
     imageServiceSettings: undefined,
+    onOpen: noop,
+    onSwiper: noop,
     paginationType: undefined,
     pdpResolutions: null,
     product: null,
@@ -116,6 +121,7 @@ class ProductImageSlider extends Component {
             if (this.mediaRef.current) {
               this.mediaRef.current.style.filter = 'none';
             }
+            this.forceUpdate();
           }
         });
     }
@@ -130,9 +136,7 @@ class ProductImageSlider extends Component {
   }
 
   handleOpenGallery = () => {
-    this.props.historyPush({
-      pathname: `${ITEM_PATH}/${bin2hex(this.props.variantId || this.props.productId)}/gallery/${this.currentSlide}`,
-    });
+    this.props.onOpen(this.currentSlide);
   };
 
   handleSlideChange = (currentSlide) => {
@@ -147,7 +151,7 @@ class ProductImageSlider extends Component {
    */
   render() {
     const {
-      product, productId, images, 'aria-hidden': ariaHidden, className, paginationType,
+      product, productId, images, 'aria-hidden': ariaHidden, className, paginationType, onSwiper,
     } = this.props;
     let content;
 
@@ -158,6 +162,7 @@ class ProductImageSlider extends Component {
           loop
           indicators
           onSlideChange={this.handleSlideChange}
+          onSwiper={onSwiper}
           className={className}
           aria-hidden={ariaHidden}
           {...paginationType === 'bulletsBelow' ? {
@@ -227,14 +232,28 @@ class ProductImageSlider extends Component {
 
 /**
  * @param {Object} props The component props.
+ * @param {HTMLElement} [props.thumbnailsContainer] The element the thumbnails render into.
  * @return {JSX.Element}
  */
-const Wrapper = (props) => {
+const Wrapper = ({ thumbnailsContainer, ...props }) => {
+  const { images, product } = props;
+  const featuredImage = product?.featuredImageBaseUrl;
   // The slider is a class component, so it cannot call the hooks itself. Both feed the preload in
   // loadProductImage - the rendered images resolve their own settings from the context prop.
   const { pdp } = useProductImageSettings();
   const imageServiceSettings = useImageServiceSettings();
   const { pagination } = useProductGallerySettings();
+  const {
+    swiper, setSwiper, viewerIndex, openViewer, closeViewer,
+  } = useMediaGallery();
+
+  const media = useMemo(() => {
+    const urls = images?.length > 1 ? images : [featuredImage || images?.[0]];
+    return urls.filter(Boolean).map(url => ({
+      type: MEDIA_TYPE_IMAGE,
+      url,
+    }));
+  }, [images, featuredImage]);
 
   return (
     <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
@@ -244,9 +263,34 @@ const Wrapper = (props) => {
         paginationType={pagination}
         pdpResolutions={pdp.resolutions}
         imageServiceSettings={imageServiceSettings}
+        onOpen={openViewer}
+        onSwiper={setSwiper}
       />
+      {thumbnailsContainer && createPortal(
+        <MediaThumbnails media={media} swiper={swiper} aria-hidden={props['aria-hidden']} />,
+        thumbnailsContainer
+      )}
+      {viewerIndex !== null && (
+        <MediaViewer media={media} initialIndex={viewerIndex} onClose={closeViewer} />
+      )}
     </SurroundPortals>
   );
 };
 
-export default withNavigation(connect(Wrapper));
+Wrapper.propTypes = {
+  'aria-hidden': PropTypes.bool,
+  images: PropTypes.arrayOf(PropTypes.string),
+  product: PropTypes.shape({
+    featuredImageBaseUrl: PropTypes.string,
+  }),
+  thumbnailsContainer: PropTypes.instanceOf(HTMLElement),
+};
+
+Wrapper.defaultProps = {
+  'aria-hidden': false,
+  images: null,
+  product: null,
+  thumbnailsContainer: null,
+};
+
+export default connect(Wrapper);

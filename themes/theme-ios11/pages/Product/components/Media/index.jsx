@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -69,7 +69,8 @@ const useStyles = makeStyles()((theme) => {
  */
 const Media = ({ 'aria-hidden': ariaHidden, className }) => {
   const { classes, cx } = useStyles();
-  const { pagination } = useProductGallerySettings();
+  const { pagination, thumbnails } = useProductGallerySettings();
+  const [thumbnailsContainer, setThumbnailsContainer] = useState(null);
   const { position: actionButtonsPosition } = useSelector(getProductActionButtons);
   const sliderClassName = cx(classes.slider, className);
 
@@ -114,6 +115,7 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
                           characteristics={characteristics}
                           aria-hidden={ariaHidden}
                           className={sliderClassName}
+                          thumbnailsContainer={thumbnailsContainer}
                         />
                       ) : (
                         <ProductImageSlider
@@ -121,6 +123,7 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
                           variantId={variantId}
                           aria-hidden={ariaHidden}
                           className={sliderClassName}
+                          thumbnailsContainer={thumbnailsContainer}
                         />
                       )}
                     </SurroundPortals>
@@ -131,6 +134,7 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
                   displayedProductId={variantId || productId}
                 />
               </div>
+              {thumbnails && <div ref={setThumbnailsContainer} />}
             </div>
           </ProductListEntryProvider>
         </ProductListTypeProvider>
