@@ -6,7 +6,12 @@ import { useProductGallerySettings } from '@shopgate/engage/product/hooks';
 import MediaThumbnails from '../MediaThumbnails';
 import MediaViewer from '../MediaViewer';
 import { useMediaGallery } from '../../hooks';
+import VideoSlide from './VideoSlide';
 import connect from './connector';
+
+const SLIDE_COMPONENTS = {
+  video: VideoSlide,
+};
 
 const mediaShape = PropTypes.shape({
   type: PropTypes.string,
@@ -36,6 +41,7 @@ const ProductMediaSlider = ({
 
   const swiperProps = useMemo(() => ({
     onSwiper: setSwiper,
+    controls: false,
     ...pagination === 'bulletsBelow' && {
       style: {
         marginBottom: -8,
@@ -51,6 +57,7 @@ const ProductMediaSlider = ({
         productId={productId}
         className={className}
         onSlideClick={openViewer}
+        slideComponents={SLIDE_COMPONENTS}
         renderPlaceholder={(featuredMedia) => {
           const props = featuredMediaCharacteristics || featuredMedia || featuredMediaBaseProduct;
           return (<MediaImage {...props} className={className} />);

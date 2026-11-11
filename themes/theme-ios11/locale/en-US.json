@@ -239,6 +239,7 @@
     "media_viewer": "Product images and videos",
     "media_thumbnail_image": "Show image {index}",
     "media_thumbnail_video": "Show video {index}",
+    "media_video": "Play video",
     "pick_an_attribute": "Pick a {0}",
     "tax_disclaimer": "* Incl. VAT plus shipping costs if applicable",
     "tax_disclaimer_aria": "VAT included, plus shipping costs if applicable",

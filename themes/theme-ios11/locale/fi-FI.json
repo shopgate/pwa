@@ -239,6 +239,7 @@
     "media_viewer": "Tuotteen kuvat ja videot",
     "media_thumbnail_image": "Näytä kuva {index}",
     "media_thumbnail_video": "Näytä video {index}",
+    "media_video": "Toista video",
     "pick_an_attribute": "{0} valitse",
     "tax_disclaimer": "* Sisältäen arvonlisäveron, mahdolliset toimituskulut erikseen",
     "tax_disclaimer_aria": "Sisältäen arvonlisäveron, mahdolliset toimituskulut erikseen",

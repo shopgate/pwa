@@ -37,6 +37,7 @@ const MediaSlider = ({
   renderPlaceholder,
   className,
   paginationType,
+  slideComponents,
   swiperProps,
 }) => {
   const { classes } = useStyles();
@@ -77,7 +78,7 @@ const MediaSlider = ({
             {...swiperProps}
           >
             {media.map((singleMedia) => {
-              const Type = typeRenders[singleMedia.type];
+              const Type = slideComponents?.[singleMedia.type] || typeRenders[singleMedia.type];
               return (
                 <Swiper.Item key={Object.values(singleMedia).join('_')}>
                   <Type media={singleMedia} onClick={handleSlideClick} />
@@ -114,6 +115,10 @@ MediaSlider.propTypes = {
   onSlideClick: PropTypes.func,
   paginationType: PropTypes.string,
   renderPlaceholder: PropTypes.func,
+  /**
+   * Replaces the slide component of a media type, e.g. `{ video: VideoPreview }`.
+   */
+  slideComponents: PropTypes.objectOf(PropTypes.elementType),
   swiperProps: PropTypes.shape(),
 };
 
@@ -125,6 +130,7 @@ MediaSlider.defaultProps = {
   media: null,
   onSlideClick: null,
   renderPlaceholder: featuredMedia => (<MediaImage {...featuredMedia} />),
+  slideComponents: null,
   swiperProps: {},
 };
 

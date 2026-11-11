@@ -59,6 +59,7 @@ jest.mock('@shopgate/pwa-common/components/Swiper', () => {
 jest.mock('@shopgate/engage/product/components', () => ({
   ProductImage: ({ src }: { src: string }) => <img src={src} alt="" />,
 }));
+jest.mock('../VideoPreview', () => () => <span>preview</span>);
 jest.mock('@shopgate/engage/core/hooks', () => ({
   useWidgetSettings: () => ({}),
 }));

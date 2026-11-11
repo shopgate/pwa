@@ -4,6 +4,7 @@ import { Swiper } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { ProductImage } from '@shopgate/engage/product/components';
 import { makeStyles } from '@shopgate/engage/styles';
+import VideoPreview from '../VideoPreview';
 import type { ProductMediaItem } from '../../types';
 
 const THUMBNAIL_SIZE = 64;
@@ -43,7 +44,6 @@ const useStyles = makeStyles()((theme) => {
       borderRadius,
       overflow: 'hidden',
       background: theme.palette.background.surface,
-      color: theme.palette.text.secondary,
       cursor: 'pointer',
       opacity: `var(${THUMBNAILS_INACTIVE_OPACITY}, 1)`,
       transition: 'opacity 200ms',
@@ -65,11 +65,6 @@ const useStyles = makeStyles()((theme) => {
     },
     image: {
       width: '100%',
-    },
-    play: {
-      width: 32,
-      height: 32,
-      fill: 'currentColor',
     },
   };
 });
@@ -159,9 +154,7 @@ const MediaThumbnails = ({ media, swiper, 'aria-hidden': ariaHidden }: MediaThum
               onClick={() => swiper?.slideToLoop(index)}
             >
               {item.type === 'video' ? (
-                <svg className={classes.play} viewBox="0 0 24 24" aria-hidden>
-                  <path d="M8 5v14l11-7z" />
-                </svg>
+                <VideoPreview url={item.url} />
               ) : (
                 <ProductImage src={item.url} context="pdp" noBackground className={classes.image} />
               )}

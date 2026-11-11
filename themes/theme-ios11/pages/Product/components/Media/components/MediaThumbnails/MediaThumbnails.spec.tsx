@@ -6,6 +6,7 @@ import MediaThumbnails from './MediaThumbnails';
 import type { ProductMediaItem } from '../../types';
 
 jest.mock('@shopgate/pwa-common/components/Swiper');
+jest.mock('../VideoPreview', () => () => <span>preview</span>);
 jest.mock('@shopgate/engage/product/components', () => ({
   ProductImage: ({ src }: { src: string }) => <img src={src} alt="" />,
 }));

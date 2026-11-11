@@ -239,6 +239,7 @@
     "media_viewer": "A termék képei és videói",
     "media_thumbnail_image": "{index}. kép megjelenítése",
     "media_thumbnail_video": "{index}. videó megjelenítése",
+    "media_video": "Videó lejátszása",
     "pick_an_attribute": "{0} válasszon",
     "tax_disclaimer": "* Áfával együtt, esetlegesen további szállítási költséggel",
     "tax_disclaimer_aria": "Áfával együtt, esetlegesen további szállítási költséggel",
