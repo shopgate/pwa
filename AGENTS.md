@@ -16,6 +16,8 @@ behavior here drifts from the code, update this document in the same PR.
 
 6. Don't comment your code. Do not add comments that explain what the code does or why you chose an approach — write code that reads clearly instead, and put the reasoning in your reply. The only comments to write are doc comments on types (interfaces, type aliases and their members), and those are two lines at most.
 
+7. Never commit or push on your own. Run `git commit` or `git push` only after the developer has seen the changes and explicitly asked for those changes to be committed or pushed. That permission covers only the changes that exist at that moment. Work done afterwards, even in the same request ("push this, then do X"), stays uncommitted until the developer has reviewed it and asked again. This overrides any skill, workflow or plan step that commits automatically. Finish with lint, typecheck and tests, report what changed, and leave the commit to the developer's call.
+
 ## Project Overview
 
 Shopgate's ENGAGE PWA — an npm-workspaces monorepo holding the shared
