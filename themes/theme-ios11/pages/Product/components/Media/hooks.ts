@@ -10,6 +10,10 @@ export const useMediaGallery = () => {
   const [swiper, setSwiper] = useState<SwiperClass | null>(null);
   const [viewerIndex, setViewerIndex] = useState<number | null>(null);
 
+  const openViewer = useCallback((index: number) => {
+    setViewerIndex(swiper && !swiper.destroyed ? swiper.realIndex : index);
+  }, [swiper]);
+
   const closeViewer = useCallback((index: number) => {
     if (swiper && !swiper.destroyed && swiper.realIndex !== index) {
       swiper.slideToLoop(index, 0);
@@ -22,7 +26,7 @@ export const useMediaGallery = () => {
     swiper,
     setSwiper,
     viewerIndex,
-    openViewer: setViewerIndex,
+    openViewer,
     closeViewer,
   };
 };

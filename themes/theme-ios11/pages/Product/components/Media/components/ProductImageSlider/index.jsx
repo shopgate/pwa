@@ -1,6 +1,4 @@
-import React, {
-  useEffect, useMemo, useRef, useState,
-} from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
@@ -72,7 +70,7 @@ const useShownImages = (images, featuredImage) => {
 const ProductImageSlider = ({
   product,
   productId,
-  images: imagesProp,
+  images,
   'aria-hidden': ariaHidden,
   className,
   paginationType,
@@ -80,16 +78,14 @@ const ProductImageSlider = ({
   onSwiper,
 }) => {
   const featuredImage = product?.featuredImageBaseUrl || null;
-  const images = useShownImages(imagesProp, featuredImage);
-  const currentSlide = useRef(0);
 
   if (images?.length > 1) {
     return (
       <div
         className="theme__product__product-image-slider"
         data-test-id={`product: ${product?.name ?? ''}`}
-        onClick={() => onOpen(currentSlide.current)}
-        onKeyDown={() => onOpen(currentSlide.current)}
+        onClick={() => onOpen(0)}
+        onKeyDown={() => onOpen(0)}
         role="presentation"
         style={WRAPPER_STYLE}
       >
@@ -97,9 +93,6 @@ const ProductImageSlider = ({
           paginationType={paginationType}
           loop
           indicators
-          onSlideChange={(index) => {
-            currentSlide.current = index;
-          }}
           onSwiper={onSwiper}
           className={className}
           aria-hidden={ariaHidden}
@@ -171,8 +164,9 @@ ProductImageSlider.defaultProps = {
  * @returns {JSX.Element}
  */
 const Wrapper = ({ thumbnailsContainer, ...props }) => {
-  const { images, product } = props;
-  const featuredImage = product?.featuredImageBaseUrl;
+  const { images: imagesProp, product } = props;
+  const featuredImage = product?.featuredImageBaseUrl || null;
+  const images = useShownImages(imagesProp, featuredImage);
   const { pagination } = useProductGallerySettings();
   const {
     swiper, setSwiper, viewerIndex, openViewer, closeViewer,
@@ -190,6 +184,7 @@ const Wrapper = ({ thumbnailsContainer, ...props }) => {
     <SurroundPortals portalName={PRODUCT_IMAGE} portalProps={props}>
       <ProductImageSlider
         {...props}
+        images={images}
         key={pagination}
         paginationType={pagination}
         onOpen={openViewer}

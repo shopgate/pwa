@@ -4,14 +4,22 @@ import { makeStyles } from '@shopgate/engage/styles';
 import VideoPreview from '../VideoPreview';
 import type { ProductMediaItem } from '../../types';
 
-const useStyles = makeStyles<{ aspectRatio: string }>()((_, { aspectRatio }) => ({
+const useStyles = makeStyles<{ paddingTop: string }>()((_, { paddingTop }) => ({
   root: {
+    position: 'relative',
     display: 'block',
     width: '100%',
-    aspectRatio,
     padding: 0,
+    paddingTop,
     border: 0,
     cursor: 'pointer',
+  },
+  preview: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
   },
 }));
 
@@ -29,9 +37,10 @@ export interface VideoSlideProps {
  */
 const VideoSlide = ({ media, onClick }: VideoSlideProps) => {
   const { pdp } = useProductImageSettings();
-  const largest = pdp.resolutions.at(-1);
+  const largest = pdp.resolutions[pdp.resolutions.length - 1];
   const [width, height] = pdp.ratio || [largest?.width, largest?.height];
-  const { classes } = useStyles({ aspectRatio: width && height ? `${width} / ${height}` : '1' });
+  const paddingTop = width && height ? `${(height / width) * 100}%` : '100%';
+  const { classes } = useStyles({ paddingTop });
 
   return (
     <button
@@ -40,7 +49,9 @@ const VideoSlide = ({ media, onClick }: VideoSlideProps) => {
       aria-label={i18n.text('product.media_video')}
       onClick={onClick}
     >
-      <VideoPreview url={media.url} large />
+      <span className={classes.preview}>
+        <VideoPreview url={media.url} large />
+      </span>
     </button>
   );
 };
