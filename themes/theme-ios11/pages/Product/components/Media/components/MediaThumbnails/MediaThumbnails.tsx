@@ -65,6 +65,9 @@ const useStyles = makeStyles()((theme) => {
     },
     image: {
       width: '100%',
+      '&&': {
+        borderRadius: 0,
+      },
     },
   };
 });
@@ -156,7 +159,7 @@ const MediaThumbnails = ({ media, swiper, 'aria-hidden': ariaHidden }: MediaThum
               {item.type === 'video' ? (
                 <VideoPreview url={item.url} />
               ) : (
-                <ProductImage src={item.url} context="pdp" noBackground className={classes.image} />
+                <ProductImage src={item.url} context="list" noBackground className={classes.image} />
               )}
             </button>
           </Swiper.Item>

@@ -1,8 +1,9 @@
-import React, { Component, useMemo } from 'react';
+import React, {
+  useEffect, useMemo, useRef, useState,
+} from 'react';
 import { createPortal } from 'react-dom';
 import PropTypes from 'prop-types';
 import isEqual from 'lodash/isEqual';
-import noop from 'lodash/noop';
 import { Swiper, SurroundPortals } from '@shopgate/engage/components';
 import {
   PRODUCT_IMAGE,
@@ -18,230 +19,160 @@ import MediaViewer from '../MediaViewer';
 import { useMediaGallery } from '../../hooks';
 import connect from './connector';
 
+const WRAPPER_STYLE = {
+  transform: 'translate3d(0, 0, 0)',
+};
+
 /**
- * The product image slider component.
- * @param {number} currentSlide The index of the current visible slide.
- * @deprecated since catalog 2.0
+ * Keeps showing the current images until the first image of new ones has loaded, so switching
+ * between variants doesn't flash an empty slider.
+ * @param {string[]|null} images The images of the product, null while they load.
+ * @param {string|null} featuredImage The featured image of the product.
+ * @returns {string[]|null} The images to show.
  */
-class ProductImageSlider extends Component {
-  static propTypes = {
-    'aria-hidden': PropTypes.bool,
-    className: PropTypes.string,
-    images: PropTypes.arrayOf(PropTypes.string),
-    imageServiceSettings: PropTypes.shape(),
-    onOpen: PropTypes.func,
-    onSwiper: PropTypes.func,
-    paginationType: PropTypes.oneOf(PRODUCT_GALLERY_PAGINATIONS),
-    pdpResolutions: PropTypes.arrayOf(PropTypes.shape()),
-    product: PropTypes.shape(),
-    productId: PropTypes.string,
-    variantId: PropTypes.string,
-  };
+const useShownImages = (images, featuredImage) => {
+  const [shownImages, setShownImages] = useState(images);
+  const { pdp } = useProductImageSettings();
+  const imageServiceSettings = useImageServiceSettings();
 
-  static defaultProps = {
-    'aria-hidden': false,
-    className: null,
-    images: null,
-    imageServiceSettings: undefined,
-    onOpen: noop,
-    onSwiper: noop,
-    paginationType: undefined,
-    pdpResolutions: null,
-    product: null,
-    productId: null,
-    variantId: null,
-  };
-
-  /**
-   *
-   * @inheritDoc
-   */
-  constructor(props, context) {
-    super(props, context);
-    this.mediaRef = React.createRef(null);
-    this.state = {
-      depImage: null,
-    };
-  }
-
-  /**
-   * @inheritDoc
-   */
-  componentDidMount() {
-    this.mounted = true;
-  }
-
-  /**
-   * @param {Object} nextProps the next props
-   * @returns {boolean}
-   */
-  shouldComponentUpdate(nextProps) {
-    let depImage = null;
-
-    if (!nextProps.images) {
-      // Is loading, blur media
-      if (this.mediaRef.current) {
-        this.mediaRef.current.style.filter = 'blur(3px)';
-      }
+  useEffect(() => {
+    if (!images || isEqual(images, shownImages)) {
+      return undefined;
     }
-    if (nextProps.images) {
-      if (!nextProps.images.length && nextProps.product) {
-        depImage = nextProps.product.featuredImageBaseUrl;
-      } else if (!isEqual(this.props.images, nextProps.images)) {
-        [depImage] = nextProps.images;
-      }
+
+    const firstImage = images[0] || featuredImage;
+
+    if (!firstImage) {
+      setShownImages(images);
+      return undefined;
     }
-    if (depImage) {
-      // if depImage has not changed since last time
-      if (this.state.depImage === depImage) {
-        if (this.mediaRef.current) {
-          this.mediaRef.current.style.filter = 'none';
+
+    let active = true;
+
+    loadProductImage(firstImage, pdp.resolutions[0], imageServiceSettings)
+      .catch(() => null)
+      .then(() => {
+        if (active) {
+          setShownImages(images);
         }
-        return true;
-      }
-      // Blur for image load
-      if (this.mediaRef.current) {
-        this.mediaRef.current.style.filter = 'blur(3px)';
-      }
-      this.setState({ depImage });
-      loadProductImage(
-        depImage,
-        nextProps.pdpResolutions?.[0],
-        nextProps.imageServiceSettings
-      )
-        .then(() => {
-          if (this.mounted) {
-            if (this.mediaRef.current) {
-              this.mediaRef.current.style.filter = 'none';
-            }
-            this.forceUpdate();
-          }
-        }).catch(() => {
-          if (this.mounted) {
-            if (this.mediaRef.current) {
-              this.mediaRef.current.style.filter = 'none';
-            }
-            this.forceUpdate();
-          }
-        });
-    }
-    return false;
-  }
+      });
 
-  /**
-   * @inheritDoc
-   */
-  componentWillUnmount() {
-    this.mounted = false;
-  }
+    return () => {
+      active = false;
+    };
+  }, [featuredImage, imageServiceSettings, images, pdp.resolutions, shownImages]);
 
-  handleOpenGallery = () => {
-    this.props.onOpen(this.currentSlide);
-  };
+  return shownImages;
+};
 
-  handleSlideChange = (currentSlide) => {
-    this.currentSlide = currentSlide;
-  };
+/**
+ * The image slider of the product page. A single image is shown without a slider.
+ * @returns {JSX.Element}
+ */
+const ProductImageSlider = ({
+  product,
+  productId,
+  images: imagesProp,
+  'aria-hidden': ariaHidden,
+  className,
+  paginationType,
+  onOpen,
+  onSwiper,
+}) => {
+  const featuredImage = product?.featuredImageBaseUrl || null;
+  const images = useShownImages(imagesProp, featuredImage);
+  const currentSlide = useRef(0);
 
-  currentSlide = 0;
-
-  /**
-   * Renders the product image slider component.
-   * @returns {JSX.Element}
-   */
-  render() {
-    const {
-      product, productId, images, 'aria-hidden': ariaHidden, className, paginationType, onSwiper,
-    } = this.props;
-    let content;
-
-    if (images && images.length > 1) {
-      content = (
+  if (images?.length > 1) {
+    return (
+      <div
+        className="theme__product__product-image-slider"
+        data-test-id={`product: ${product?.name ?? ''}`}
+        onClick={() => onOpen(currentSlide.current)}
+        onKeyDown={() => onOpen(currentSlide.current)}
+        role="presentation"
+        style={WRAPPER_STYLE}
+      >
         <Swiper
           paginationType={paginationType}
           loop
           indicators
-          onSlideChange={this.handleSlideChange}
+          onSlideChange={(index) => {
+            currentSlide.current = index;
+          }}
           onSwiper={onSwiper}
           className={className}
           aria-hidden={ariaHidden}
-          {...paginationType === 'bulletsBelow' ? {
+          {...paginationType === 'bulletsBelow' && {
             style: {
               marginBottom: -8,
             },
-          } : {}}
+          }}
         >
           {images.map(image => (
             <Swiper.Item key={`${productId}-${image}`}>
-              <ProductImage
-                src={image}
-                context="pdp"
-                noBackground
-              />
+              <ProductImage src={image} context="pdp" noBackground />
             </Swiper.Item>
           ))}
         </Swiper>
-      );
-    }
-
-    let onClick = this.handleOpenGallery;
-    if (!content) {
-      let src = null;
-      if (product && product.featuredImageBaseUrl) {
-        src = product.featuredImageBaseUrl;
-      } else if (images && images.length) {
-        [src] = images;
-      }
-
-      content = (
-        <ProductImage
-          src={src}
-          className={className}
-          forcePlaceholder={!src}
-          context="pdp"
-          noBackground
-          alt={product ? product.name : ''}
-          aria-hidden={ariaHidden}
-        />
-      );
-      if (!src) {
-        onClick = noop;
-      }
-    }
-
-    const wrapperStyles = {
-      transition: '0.5s filter ease-out', // blur filter
-      transform: 'translate3d(0, 0, 0)', // Fix for cut off overlapping icons
-    };
-
-    return (
-      <div
-        className="theme__product__product-image-slider"
-        data-test-id={`product: ${product ? product.name : ''}`}
-        onClick={onClick}
-        onKeyDown={onClick}
-        role="presentation"
-        style={wrapperStyles}
-        ref={this.mediaRef}
-      >
-        {content}
       </div>
     );
   }
-}
+
+  const src = featuredImage || images?.[0] || null;
+
+  return (
+    <div
+      className="theme__product__product-image-slider"
+      data-test-id={`product: ${product?.name ?? ''}`}
+      onClick={src ? () => onOpen(0) : undefined}
+      onKeyDown={src ? () => onOpen(0) : undefined}
+      role="presentation"
+      style={WRAPPER_STYLE}
+    >
+      <ProductImage
+        src={src}
+        className={className}
+        forcePlaceholder={!src}
+        context="pdp"
+        noBackground
+        alt={product?.name ?? ''}
+        aria-hidden={ariaHidden}
+      />
+    </div>
+  );
+};
+
+ProductImageSlider.propTypes = {
+  onOpen: PropTypes.func.isRequired,
+  onSwiper: PropTypes.func.isRequired,
+  'aria-hidden': PropTypes.bool,
+  className: PropTypes.string,
+  images: PropTypes.arrayOf(PropTypes.string),
+  paginationType: PropTypes.oneOf(PRODUCT_GALLERY_PAGINATIONS),
+  product: PropTypes.shape({
+    featuredImageBaseUrl: PropTypes.string,
+    name: PropTypes.string,
+  }),
+  productId: PropTypes.string,
+};
+
+ProductImageSlider.defaultProps = {
+  'aria-hidden': false,
+  className: null,
+  images: null,
+  paginationType: undefined,
+  product: null,
+  productId: null,
+};
 
 /**
- * @param {Object} props The component props.
- * @param {HTMLElement} [props.thumbnailsContainer] The element the thumbnails render into.
- * @return {JSX.Element}
+ * Connects the image slider with its thumbnails and the media viewer.
+ * @returns {JSX.Element}
  */
 const Wrapper = ({ thumbnailsContainer, ...props }) => {
   const { images, product } = props;
   const featuredImage = product?.featuredImageBaseUrl;
-  // The slider is a class component, so it cannot call the hooks itself. Both feed the preload in
-  // loadProductImage - the rendered images resolve their own settings from the context prop.
-  const { pdp } = useProductImageSettings();
-  const imageServiceSettings = useImageServiceSettings();
   const { pagination } = useProductGallerySettings();
   const {
     swiper, setSwiper, viewerIndex, openViewer, closeViewer,
@@ -261,8 +192,6 @@ const Wrapper = ({ thumbnailsContainer, ...props }) => {
         {...props}
         key={pagination}
         paginationType={pagination}
-        pdpResolutions={pdp.resolutions}
-        imageServiceSettings={imageServiceSettings}
         onOpen={openViewer}
         onSwiper={setSwiper}
       />

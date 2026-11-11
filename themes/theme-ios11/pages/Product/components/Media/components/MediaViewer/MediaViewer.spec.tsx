@@ -24,7 +24,9 @@ jest.mock('@shopgate/engage/components/VideoPlayer', () => ({
 }));
 jest.mock('@shopgate/pwa-common/components/Image', () => ({
   __esModule: true,
-  default: ({ src, alt }: { src: string; alt: string }) => <img src={src} alt={alt} />,
+  default: ({ src, alt, lazy }: { src: string; alt: string; lazy: boolean }) => (
+    <img src={src} alt={alt} loading={lazy ? 'lazy' : 'eager'} />
+  ),
 }));
 jest.mock('@shopgate/pwa-common/components/Swiper', () => {
   /**
@@ -150,6 +152,37 @@ describe('<MediaViewer />', () => {
     fireEvent.click(screen.getByRole('button', { name: 'show video' }));
 
     expect(screen.getByTestId('video-player')).toHaveAttribute('data-url', 'https://example.com/b.mp4');
+  });
+
+  it('loads the images next to the visible media right away', () => {
+    const images: ProductMediaItem[] = [
+      {
+        type: 'image',
+        url: 'https://example.com/a.jpg',
+        altText: 'A',
+      },
+      {
+        type: 'image',
+        url: 'https://example.com/b.jpg',
+        altText: 'B',
+      },
+      {
+        type: 'image',
+        url: 'https://example.com/c.jpg',
+        altText: 'C',
+      },
+      {
+        type: 'image',
+        url: 'https://example.com/d.jpg',
+        altText: 'D',
+      },
+    ];
+    render(<MediaViewer media={images} initialIndex={0} onClose={jest.fn()} />);
+
+    expect(screen.getByRole('img', { name: 'A' })).toHaveAttribute('loading', 'eager');
+    expect(screen.getByRole('img', { name: 'B' })).toHaveAttribute('loading', 'eager');
+    expect(screen.getByRole('img', { name: 'C' })).toHaveAttribute('loading', 'lazy');
+    expect(screen.getByRole('img', { name: 'D' })).toHaveAttribute('loading', 'eager');
   });
 
   it('shows the thumbnails below the media when they are switched on', () => {

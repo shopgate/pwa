@@ -27,6 +27,18 @@ import { DRAG_OFFSET, DRAG_PROGRESS, useDragToDismiss } from './useDragToDismiss
 const CLOSE_DURATION = 200;
 const TRANSITION = `${CLOSE_DURATION}ms cubic-bezier(0.25, 0.1, 0.25, 1)`;
 
+/**
+ * Tells whether a slide is the visible one or next to it, counting across the loop.
+ * @param index The index of a slide.
+ * @param activeIndex The index of the visible slide.
+ * @param count The number of slides, which wrap around.
+ * @returns Whether the slide is near the visible one.
+ */
+const isNearActive = (index: number, activeIndex: number, count: number) => {
+  const distance = Math.abs(index - activeIndex);
+  return distance <= 1 || distance === count - 1;
+};
+
 const fadeIn = keyframes({
   from: { opacity: 0 },
   to: { opacity: 1 },
@@ -255,6 +267,7 @@ const MediaViewer = ({ media, initialIndex, onClose }: MediaViewerProps) => {
                           resolutions={gallery.resolutions}
                           ratio={gallery.ratio}
                           backgroundColor="transparent"
+                          lazy={!isNearActive(index, activeIndex, media.length)}
                           unwrapped
                         />
                       </div>

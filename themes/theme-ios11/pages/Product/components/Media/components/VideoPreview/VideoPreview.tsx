@@ -1,8 +1,11 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 
 const VIDEO_FILE_EXTENSIONS = ['.mp4', '.m4v', '.mov', '.webm', '.ogv'];
 const YOUTUBE_PLACEHOLDER_WIDTH = 120;
+const NEAR_VIEWPORT_MARGIN = '100px';
+
+const vimeoThumbnails = new Map<string, Promise<string | null>>();
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -59,139 +62,182 @@ const getYouTubeId = (url: URL) => {
 };
 
 /**
- * Parses a url without throwing.
- * @param url The url.
- * @returns The parsed url, or null when it is invalid.
+ * Looks up the thumbnail of a Vimeo video through the oEmbed api of Vimeo, once per video and size.
+ * @param url The video url.
+ * @param width The width of the thumbnail.
+ * @returns The thumbnail url, or null when there is none.
  */
-const parseUrl = (url: string) => {
-  try {
-    return new URL(url);
-  } catch {
-    return null;
+const getVimeoThumbnail = (url: string, width: number) => {
+  const params = new URLSearchParams({
+    url,
+    width: `${width}`,
+  });
+  const key = params.toString();
+
+  if (!vimeoThumbnails.has(key)) {
+    vimeoThumbnails.set(key, fetch(`https://vimeo.com/api/oembed.json?${key}`)
+      .then(response => (response.ok ? response.json() : null))
+      .then(data => data?.thumbnail_url ?? null)
+      .catch(() => {
+        vimeoThumbnails.delete(key);
+        return null;
+      }));
   }
+
+  return vimeoThumbnails.get(key) as Promise<string | null>;
 };
 
-interface YouTubePosterProps {
-  id: string;
-  highResolution: boolean;
-  className: string;
+/** The image or first frame that stands in for a video. */
+interface Preview {
+  /** An image, or the first frame of a video file. */
+  type: 'image' | 'video';
+  src: string;
+  /** Shown instead when the image turns out to be a placeholder. */
+  fallback?: string;
 }
 
 /**
- * The thumbnail of a YouTube video. Not every video has a high resolution one, YouTube answers
- * those with a small placeholder, so it falls back to the medium one that always exists.
- * @returns The thumbnail.
+ * Finds the preview of a video: the thumbnail of a YouTube or Vimeo video, or the first frame of a
+ * video file. Not every YouTube video has a large thumbnail, so the medium one is the fallback.
+ * @param url The video url.
+ * @param large Whether the preview is larger than a thumbnail.
+ * @returns The preview, or null for other videos.
  */
-const YouTubePoster = ({ id, highResolution, className }: YouTubePosterProps) => {
-  const [fallback, setFallback] = useState(!highResolution);
+const getPreview = async (url: string, large: boolean): Promise<Preview | null> => {
+  const parsed = new URL(url);
+  const youTubeId = getYouTubeId(parsed);
 
-  return (
-    <img
-      src={`https://i.ytimg.com/vi/${id}/${fallback ? 'mqdefault' : 'maxresdefault'}.jpg`}
-      alt=""
-      loading="lazy"
-      className={className}
-      onLoad={(event) => {
-        if (event.currentTarget.naturalWidth <= YOUTUBE_PLACEHOLDER_WIDTH) {
-          setFallback(true);
-        }
-      }}
-      onError={() => setFallback(true)}
-    />
-  );
+  if (youTubeId) {
+    const medium = `https://i.ytimg.com/vi/${youTubeId}/mqdefault.jpg`;
+
+    return large ? {
+      type: 'image',
+      src: `https://i.ytimg.com/vi/${youTubeId}/maxresdefault.jpg`,
+      fallback: medium,
+    } : {
+      type: 'image',
+      src: medium,
+    };
+  }
+
+  if (parsed.hostname.endsWith('vimeo.com')) {
+    const src = await getVimeoThumbnail(url, large ? 1280 : 320);
+    return src ? {
+      type: 'image',
+      src,
+    } : null;
+  }
+
+  const path = parsed.pathname.toLowerCase();
+
+  if (VIDEO_FILE_EXTENSIONS.some(extension => path.endsWith(extension))) {
+    return {
+      type: 'video',
+      src: `${url}#t=0.1`,
+    };
+  }
+
+  return null;
 };
 
-interface VimeoPosterProps {
-  url: string;
-  highResolution: boolean;
-  className: string;
-}
-
 /**
- * The thumbnail of a Vimeo video, looked up through the oEmbed api of Vimeo.
- * @returns The thumbnail, or nothing until it is known.
+ * Tells once an element has come near the viewport, so it can load what it shows.
+ * @returns The ref for the element and whether it is near.
  */
-const VimeoPoster = ({ url, highResolution, className }: VimeoPosterProps) => {
-  const [src, setSrc] = useState<string | null>(null);
+const useNearViewport = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const [near, setNear] = useState(false);
 
   useEffect(() => {
-    const controller = new AbortController();
-    const params = new URLSearchParams({
-      url,
-      width: highResolution ? '1280' : '320',
-    });
+    const element = ref.current;
 
-    fetch(`https://vimeo.com/api/oembed.json?${params}`, { signal: controller.signal })
-      .then(response => (response.ok ? response.json() : null))
-      .then(data => setSrc(data?.thumbnail_url ?? null))
-      .catch(() => setSrc(null));
+    if (near || !element) {
+      return undefined;
+    }
 
-    return () => controller.abort();
-  }, [highResolution, url]);
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setNear(true);
+      }
+    }, { rootMargin: NEAR_VIEWPORT_MARGIN });
 
-  return src ? <img src={src} alt="" loading="lazy" className={className} /> : null;
+    observer.observe(element);
+
+    return () => observer.disconnect();
+  }, [near]);
+
+  return {
+    ref,
+    near,
+  };
 };
 
 export interface VideoPreviewProps {
   /** The url of the video. */
   url: string;
-  /** Shows the whole frame in a sharper still, for previews larger than a thumbnail. */
+  /** Shows the whole frame in a sharper image, for previews larger than a thumbnail. */
   large?: boolean;
 }
 
 /**
- * A still of a video with a play icon. YouTube and Vimeo videos show their thumbnail and video
- * files their first frame, other videos only the icon.
+ * A preview of a video with a play icon. YouTube and Vimeo videos show their thumbnail and video
+ * files their first frame, other videos only the icon. The image loads once the preview comes near
+ * the viewport.
  * @returns The preview.
  */
 const VideoPreview = ({ url, large = false }: VideoPreviewProps) => {
   const { classes, cx } = useStyles();
-  const posterClassName = cx(classes.poster, large && classes.wholeFrame);
+  const { ref, near } = useNearViewport();
+  const [preview, setPreview] = useState<Preview | null>(null);
+  const className = cx(classes.poster, large && classes.wholeFrame);
 
-  const poster = useMemo(() => {
-    const parsed = parseUrl(url);
-
-    if (!parsed) {
-      return null;
+  useEffect(() => {
+    if (!near) {
+      return undefined;
     }
 
-    const youTubeId = getYouTubeId(parsed);
+    let active = true;
 
-    if (youTubeId) {
-      return (
-        <YouTubePoster
-          key={youTubeId}
-          id={youTubeId}
-          highResolution={large}
-          className={posterClassName}
-        />
-      );
+    getPreview(url, large)
+      .catch(() => null)
+      .then((result) => {
+        if (active) {
+          setPreview(result);
+        }
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [large, near, url]);
+
+  const showFallback = () => {
+    if (preview?.fallback) {
+      setPreview({
+        type: 'image',
+        src: preview.fallback,
+      });
     }
-
-    if (parsed.hostname.endsWith('vimeo.com')) {
-      return <VimeoPoster url={url} highResolution={large} className={posterClassName} />;
-    }
-
-    const path = parsed.pathname.toLowerCase();
-
-    if (VIDEO_FILE_EXTENSIONS.some(extension => path.endsWith(extension))) {
-      return (
-        <video
-          src={`${url}#t=0.1`}
-          preload="metadata"
-          muted
-          playsInline
-          className={posterClassName}
-        />
-      );
-    }
-
-    return null;
-  }, [large, posterClassName, url]);
+  };
 
   return (
-    <div className={classes.root}>
-      {poster}
+    <div ref={ref} className={classes.root}>
+      {preview?.type === 'image' && (
+        <img
+          src={preview.src}
+          alt=""
+          className={className}
+          onLoad={(event) => {
+            if (event.currentTarget.naturalWidth <= YOUTUBE_PLACEHOLDER_WIDTH) {
+              showFallback();
+            }
+          }}
+          onError={showFallback}
+        />
+      )}
+      {preview?.type === 'video' && (
+        <video src={preview.src} preload="metadata" muted playsInline className={className} />
+      )}
       <svg className={classes.play} viewBox="-6 -6 36 36" aria-hidden>
         <path d="M8 5v14l11-7z" />
       </svg>
