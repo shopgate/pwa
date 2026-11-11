@@ -56,6 +56,7 @@ const ProductMediaSlider = ({
         paginationType={pagination}
         productId={productId}
         className={className}
+        aria-hidden={ariaHidden}
         onSlideClick={openViewer}
         slideComponents={SLIDE_COMPONENTS}
         renderPlaceholder={(featuredMedia) => {
