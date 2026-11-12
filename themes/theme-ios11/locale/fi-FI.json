@@ -236,6 +236,10 @@
     },
     "description_heading": "Kuvaus",
     "share": "Jaa tuote",
+    "media_viewer": "Tuotteen kuvat ja videot",
+    "media_thumbnail_image": "Näytä kuva {index}",
+    "media_thumbnail_video": "Näytä video {index}",
+    "media_video": "Toista video",
     "pick_an_attribute": "{0} valitse",
     "tax_disclaimer": "* Sisältäen arvonlisäveron, mahdolliset toimituskulut erikseen",
     "tax_disclaimer_aria": "Sisältäen arvonlisäveron, mahdolliset toimituskulut erikseen",
@@ -589,7 +593,12 @@
     "profile": "Profiili",
     "back": "Takaisin {title}",
     "open_menu": "Avaa valikko",
-    "open_link": "Avaa sivu"
+    "open_link": "Avaa sivu",
+    "scanner": "Skanneri",
+    "menuSubHeader": {
+      "more": "Lisää",
+      "about": "Tietoa meistä"
+    }
   },
   "reviews": {
     "rating": "Arviointi",

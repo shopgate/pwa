@@ -1,12 +1,10 @@
-import React from 'react';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import Icon from '@shopgate/pwa-common/components/Icon';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The heart-outline icon component.
  */
-const HeartOutline = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.heartOutline} {...props} />);
+const HeartOutline = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="heartOutline" {...props} />
+);
 
 export default HeartOutline;

@@ -236,6 +236,10 @@
     },
     "description_heading": "Leírás",
     "share": "Termék megosztása",
+    "media_viewer": "A termék képei és videói",
+    "media_thumbnail_image": "{index}. kép megjelenítése",
+    "media_thumbnail_video": "{index}. videó megjelenítése",
+    "media_video": "Videó lejátszása",
     "pick_an_attribute": "{0} válasszon",
     "tax_disclaimer": "* Áfával együtt, esetlegesen további szállítási költséggel",
     "tax_disclaimer_aria": "Áfával együtt, esetlegesen további szállítási költséggel",
@@ -589,7 +593,12 @@
     "profile": "Profil",
     "back": "Vissza a {title}",
     "open_menu": "Menü megnyitása",
-    "open_link": "Oldal megnyitása"
+    "open_link": "Oldal megnyitása",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Több",
+      "about": "Rólunk"
+    }
   },
   "reviews": {
     "rating": "Értékelés",

@@ -24,11 +24,12 @@ const normalizePropertyValue = (value, { html = false } = {}) => {
  * @returns {JSX.Element}
  */
 const Rows = ({ properties }) => properties
-  .map(({ value, label, type }) => {
+  .map(({ value, label, type }, index) => {
     if (type === 'html') {
       return (
         <RowHTML
-          key={label}
+          // eslint-disable-next-line react/no-array-index-key
+          key={`${label}-${index}`}
           label={label}
           value={normalizePropertyValue(value, { html: true })}
         />
@@ -39,7 +40,8 @@ const Rows = ({ properties }) => properties
 
     return (
       <Row
-        key={`${label}-${displayValue}`}
+        // eslint-disable-next-line react/no-array-index-key
+        key={`${label}-${displayValue}-${index}`}
         label={label}
         type={type}
         value={displayValue}

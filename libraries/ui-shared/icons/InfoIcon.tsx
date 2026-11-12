@@ -1,12 +1,10 @@
-import React from 'react';
-import Icon from '@shopgate/pwa-common/components/Icon';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The info icon component.
  */
-const InfoIcon = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.info} {...props} />);
+const InfoIcon = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="info" {...props} />
+);
 
 export default InfoIcon;

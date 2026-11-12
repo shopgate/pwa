@@ -1,6 +1,7 @@
 import type {
   ColorSchemeMode, ColorSchemeName, ShadowSize, TypographyVariant,
 } from '@shopgate/engage/styles/theme';
+import type { IconOverrides } from '@shopgate/engage/icons/types';
 
 // Re-exported so consumers of these settings do not have to reach into the styles layer, which
 // owns the type because it owns the elevation scale the sizes map to. `TypographyVariant` and the
@@ -201,16 +202,18 @@ export interface ProductFilterBarSettings {
 
 /**
  * How the image gallery of the product page shows the position of the visible image. The `Below`
- * variants place the indicator under the image instead of on top of it.
+ * variants place the indicator under the image instead of on top of it, `none` hides it.
  */
 export type ProductGalleryPagination =
-  'bullets' | 'bulletsBelow' | 'fraction' | 'fractionBelow' | 'progressbar';
+  'bullets' | 'bulletsBelow' | 'fraction' | 'fractionBelow' | 'progressbar' | 'none';
 
 /**
  * Settings for the image gallery of the product page.
  */
 export interface ProductGallerySettings {
   pagination: ProductGalleryPagination;
+  /** Shows a strip of thumbnails below the image gallery of the product page. */
+  thumbnails: boolean;
 }
 
 /**
@@ -536,6 +539,10 @@ export interface AppSettings {
    * Settings for the cms widgets.
    */
   widgets: WidgetSettings;
+  /**
+   * Icons the merchant replaced, by icon name.
+   */
+  icons: IconOverrides;
 }
 
 /**

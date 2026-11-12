@@ -51,9 +51,8 @@ export const DEFAULT_IMAGE_QUALITY: number = (
 /**
  * Whether product images get an inset shadow when nothing is configured.
  *
- * Derived from the legacy app config flag rather than hardcoded: that flag is inverted, and its
- * default differs per theme - gmd hides the shadow, ios11 shows it - so a fixed value here would
- * flip the shadow for one of them.
+ * Derived from the legacy app config flag rather than hardcoded, because that flag is inverted and
+ * merchants configure it.
  *
  * Safe to read once at module scope for the same reason as DEFAULT_IMAGE_QUALITY: the app config is
  * inlined into the bundle at build time.

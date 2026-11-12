@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { SurroundPortals, CartTotalLine } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { isIOSTheme } from '@shopgate/engage/core';
 import { CART_PAYMENT_BAR_TOTALS_DISCOUNTS } from '@shopgate/pwa-common-commerce/cart';
 import { getDiscounts } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { CartContext } from '../../cart.context';
@@ -19,7 +18,7 @@ interface Discount {
 
 const useStyles = makeStyles()({
   spacer: {
-    width: isIOSTheme() ? 27 : 32,
+    width: 27,
     order: 1,
     flexShrink: 0,
   },
