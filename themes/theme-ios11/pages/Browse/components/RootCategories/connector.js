@@ -1,5 +1,8 @@
 import { connect } from 'react-redux';
-import { getRootCategories } from '@shopgate/pwa-common-commerce/category/selectors';
+import {
+  getRootCategories,
+  getRootCategoriesState,
+} from '@shopgate/pwa-common-commerce/category/selectors';
 
 /**
  * Maps the contents of the state to the component props.
@@ -8,6 +11,7 @@ import { getRootCategories } from '@shopgate/pwa-common-commerce/category/select
  */
 const mapStateToProps = state => ({
   categories: getRootCategories(state),
+  categoriesFetching: !!getRootCategoriesState(state).isFetching,
 });
 
 /**
@@ -20,7 +24,7 @@ const areStatePropsEqual = (next, prev) => {
     return false;
   }
 
-  return true;
+  return prev.categoriesFetching === next.categoriesFetching;
 };
 
 export default connect(mapStateToProps, null, null, { areStatePropsEqual });
