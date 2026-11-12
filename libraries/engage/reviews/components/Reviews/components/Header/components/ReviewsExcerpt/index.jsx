@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { I18n, RatingNumber } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
+import { useReviewVisibility } from '@shopgate/engage/reviews/hooks';
 import AverageRating from '../AverageRating';
 import WriteReviewLink from '../WriteReviewLink';
 
@@ -40,6 +40,7 @@ const ReviewsExcerpt = ({
   productId, average, count, withTopGap,
 }) => {
   const { classes, cx } = useStyles();
+  const { showWriteReview } = useReviewVisibility();
 
   return (
     <div
@@ -54,7 +55,7 @@ const ReviewsExcerpt = ({
         <I18n.Text string="reviews.rating" className={classes.averageRatingText}>
           <RatingNumber rating={average} className={classes.averageRatingNumber} />
         </I18n.Text>
-        {appConfig.showWriteReview && (
+        {showWriteReview && (
           <WriteReviewLink productId={productId} />
         )}
       </div>

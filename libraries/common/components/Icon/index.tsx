@@ -1,4 +1,5 @@
 import { makeStyles } from '@shopgate/engage/styles';
+import SafeHtml from '@shopgate/engage/components/SafeHtml';
 
 const useStyles = makeStyles()({
   root: {
@@ -10,7 +11,7 @@ const useStyles = makeStyles()({
 
 export interface IconProps {
   /**
-   * Raw SVG markup string that will be injected into the <svg>.
+   * SVG markup that is sanitized and rendered inside the <svg>.
    */
   content: string;
   /**
@@ -37,7 +38,7 @@ export interface IconProps {
 /**
  * The Icon component.
  *
- * Renders an inline SVG icon using injected SVG markup.
+ * Renders an inline SVG icon using sanitized SVG markup.
  *
  * Provides basic styling via `currentColor` and supports size and color
  * overrides through props while allowing external class-based overrides.
@@ -52,12 +53,13 @@ const Icon = ({
   const { cx, classes } = useStyles();
 
   return (
-    <svg
+    <SafeHtml
+      as="svg"
+      profile="svg"
+      html={content}
       className={cx(classes.root, 'common__icon', className)}
       viewBox={viewBox}
       xmlns="http://www.w3.org/2000/svg"
-      // eslint-disable-next-line react/no-danger
-      dangerouslySetInnerHTML={{ __html: content }}
       style={{
         fontSize: size,
         fill: color,

@@ -74,6 +74,7 @@ const WidgetRichText = ({
   return (
     <HtmlSanitizer
       processStyles
+      allowScripts
       settings={{ html: content }}
       className={cx(classes.root, className)}
     >

@@ -23,6 +23,7 @@ export { default as popTabToRoot, popTabToRootCmd } from '@shopgate/pwa-core/com
 export { default as registerEvents } from '@shopgate/pwa-core/commands/registerEvents';
 export * from '@shopgate/pwa-core/commands/scanner';
 export { default as setCookie } from '@shopgate/pwa-core/commands/setCookie';
+export { default as shareItem } from '@shopgate/pwa-core/commands/shareItem';
 export { default as setDebugLoggingEnabled } from '@shopgate/pwa-core/commands/setDebugLoggingEnabled';
 export { default as setScrollingEnabled } from '@shopgate/pwa-core/commands/setScrollingEnabled';
 export { default as showNavigationBar } from '@shopgate/pwa-core/commands/showNavigationBar';

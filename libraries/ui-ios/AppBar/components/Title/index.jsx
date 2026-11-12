@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { forwardRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { Typography } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -8,19 +8,18 @@ const useStyles = makeStyles()({
   root: {
     flexGrow: 1,
     lineHeight: '44px',
-    left: 90,
+    left: 'var(--app-bar-title-inset, 90px)',
     position: 'absolute',
-    right: 90,
+    right: 'var(--app-bar-title-inset, 90px)',
     top: 0,
   },
 });
 
 /**
  * The AppBarTitle component.
- * @param {Object} props Props.
- * @returns {JSX.Element|null}
+ * @type {React.ForwardRefExoticComponent<{ title: string } & React.RefAttributes<HTMLElement>>}
  */
-const AppBarTitle = ({ title }) => {
+const AppBarTitle = forwardRef(({ title }, ref) => {
   const { classes, cx } = useStyles();
   // Titles can contain HTML entities (e.g. product names). They are decoded to plain text, since
   // titles might originate from untrusted sources like URL parameters and must not render as HTML.
@@ -32,6 +31,7 @@ const AppBarTitle = ({ title }) => {
 
   return (
     <Typography
+      ref={ref}
       variant="h4"
       component="div"
       noWrap
@@ -47,7 +47,7 @@ const AppBarTitle = ({ title }) => {
       {text}
     </Typography>
   );
-};
+});
 
 AppBarTitle.propTypes = {
   title: PropTypes.string.isRequired,

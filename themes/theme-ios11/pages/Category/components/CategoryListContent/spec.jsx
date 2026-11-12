@@ -13,7 +13,7 @@ jest.mock('@shopgate/pwa-common-commerce/category/selectors', () => ({
   ...jest.requireActual('@shopgate/pwa-common-commerce/category/selectors'),
   hasCategoryChildren: jest.fn().mockReturnValue(false),
 }));
-jest.mock('@shopgate/engage/a11y', () => ({
+jest.mock('@shopgate/engage/a11y/components', () => ({
   Section: ({ children, title }) => <section aria-label={title}>{children}</section>,
 }));
 
@@ -51,6 +51,7 @@ describe('<CategoryListContent />', () => {
       categories: null,
       parentCategory: null,
       prerender: 0,
+      labelled: false,
     }));
   });
 });

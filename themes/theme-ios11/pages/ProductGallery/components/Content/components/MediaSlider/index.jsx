@@ -3,12 +3,10 @@ import PropTypes from 'prop-types';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { useProductImageSettings } from '@shopgate/engage/settings/hooks';
 import { Swiper, Image } from '@shopgate/engage/components';
-import { appConfig } from '@shopgate/engage';
 import { makeStyles } from '@shopgate/engage/styles';
 import { GALLERY_SLIDER_ZOOM } from '../../../../constants';
+import { useGalleryPagination } from '../../../../hooks';
 import connect from './connector';
-
-const { pdpImageSliderPaginationType } = appConfig || {};
 
 const fullSize = {
   position: 'relative',
@@ -28,8 +26,6 @@ const useStyles = makeStyles()(theme => ({
   },
   slider: {
     height: '100%',
-    '--swiper-pagination-fraction-top-offset': `calc(4px + ${theme.layout.safeArea.top})`,
-    '--swiper-pagination-bottom': `max(${theme.layout.safeArea.bottom}, 8px)`,
   },
   slide: {
     position: 'relative',
@@ -56,12 +52,15 @@ const useStyles = makeStyles()(theme => ({
  * @return {JSX}
  */
 const ProductGalleryMedia = ({ initialSlide, media }) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const { gallery } = useProductImageSettings();
+  const {
+    ref, style, paginationType, className: paginationClassName,
+  } = useGalleryPagination(gallery);
   const settings = useWidgetSettings('@shopgate/engage/product/Gallery');
 
   if (!Array.isArray(media) || media.length === 0) {
-    return <div className={classes.container} />;
+    return <div ref={ref} className={classes.container} />;
   }
 
   const sliderClassNames = {
@@ -70,11 +69,12 @@ const ProductGalleryMedia = ({ initialSlide, media }) => {
   };
 
   return (
-    <div className={classes.container}>
+    <div ref={ref} className={classes.container} style={style}>
       <Swiper
-        paginationType={pdpImageSliderPaginationType === 'bulletsBelow' ? 'bullets' : pdpImageSliderPaginationType}
+        key={paginationType}
+        paginationType={paginationType}
         classNames={sliderClassNames}
-        className={classes.slider}
+        className={cx(classes.slider, paginationClassName)}
         initialSlide={initialSlide}
         indicators
         loop={media.length > 1}

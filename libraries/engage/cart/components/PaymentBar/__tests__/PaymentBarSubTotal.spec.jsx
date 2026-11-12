@@ -7,13 +7,15 @@ function mockFactories() {
   return jest.requireActual('../testUtils/mockFactories');
 }
 
-jest.mock('../PaymentBarSubTotal.connector', () => cmp => cmp);
+jest.mock('react-redux', () => ({
+  ...jest.requireActual('react-redux'),
+  useSelector: selector => selector(),
+}));
+jest.mock('@shopgate/pwa-common-commerce/cart/selectors', () => ({ getSubTotal: () => 10 }));
 jest.mock('@shopgate/engage/components', () => ({
   SurroundPortals: mockFactories().createSurroundPortalsMock(),
+  CartTotalLine: mockFactories().createCartTotalLineMock(),
 }));
-
-jest.mock('@shopgate/pwa-ui-shared/CartTotalLine', () =>
-  mockFactories().createCartTotalLineMock());
 
 jest.mock('@shopgate/pwa-core/helpers', () => ({
   logger: {
@@ -35,7 +37,7 @@ describe('<PaymentBarSubTotal>', () => {
   );
 
   it('should render line', () => {
-    renderWithCartContext(<PaymentBarSubTotal amount={10} />);
+    renderWithCartContext(<PaymentBarSubTotal />);
     expect(screen.getByTestId('surround-portals')).toBeTruthy();
     expect(screen.getByTestId('cart-total-line')).toBeTruthy();
     expect(screen.getByTestId('cart-total-line-label')).toBeTruthy();

@@ -124,7 +124,7 @@ const useStyles = makeStyles<StyleParams>({
   // Mixing the tint into the base keeps an opaque surface visible underneath. Declaring a
   // translucent color instead would replace it, since this rule outranks the `surface` class.
   const hoverBackground = (percent: number) => (
-    `color-mix(in srgb, ${cssColor} ${percent}%, ${BASE_BACKGROUND})`
+    `color-mix(in srgb, var(--icon-button-color) ${percent}%, ${BASE_BACKGROUND})`
   );
 
   return {

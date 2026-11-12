@@ -8,6 +8,7 @@ import {
   Price,
   Availability,
   Typography,
+  SafeHtml,
 } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getProductRoute, ProductImage } from '@shopgate/engage/product';
@@ -104,12 +105,13 @@ const Subscription = ({
             href={productLink}
             tag="span"
           >
-            <Typography
+            <SafeHtml
+              as={Typography}
               variant="h4"
               component="span"
               fontWeight="bold"
               className={classes.title}
-              dangerouslySetInnerHTML={{ __html: `${product.name}` }}
+              html={product.name}
             />
           </Link>
           <div className={classes.removeContainer}>

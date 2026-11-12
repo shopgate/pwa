@@ -6,7 +6,6 @@ import {
   ProductListEntryProvider,
 } from '@shopgate/engage/product/providers';
 import { transformDisplayOptions } from '@shopgate/pwa-common/helpers/data';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { ProductCard } from '@shopgate/engage/product/components';
 import { useSlidesPerView } from '@shopgate/engage/product/hooks';
 import { makeStyles, cx } from '@shopgate/engage/styles';
@@ -67,12 +66,6 @@ const ProductSlider = ({
   }, [hash]);
 
   const items = products.slice(0, PRODUCT_SLIDER_WIDGET_LIMIT).map((product) => {
-    let showReviewsSanitized = settings.showReviews;
-
-    if (showReviewsSanitized && !appConfig.hasReviews) {
-      showReviewsSanitized = false;
-    }
-
     const key = `s${product.id}`;
 
     return (
@@ -83,7 +76,7 @@ const ProductSlider = ({
               product={product}
               hideName={!settings.showName}
               hidePrice={!settings.showPrice}
-              hideRating={!showReviewsSanitized}
+              hideRating={!settings.showReviews}
             />
           </Card>
         </ProductListEntryProvider>

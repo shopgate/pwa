@@ -23,7 +23,7 @@
     "filter": "Filter",
     "cart": "Winkelwagen",
     "shipping": "Verzending",
-    "reviews": "Beoordelingen",
+    "reviews": "Reviews",
     "browse": "Bladeren",
     "favorites": "Favorieten",
     "scanner": "Scanner",
@@ -240,9 +240,10 @@
     "tax_disclaimer": "* Inclusief BTW, eventueel vermeerderd met verzendkosten",
     "tax_disclaimer_aria": "Inclusief BTW, eventueel vermeerderd met verzendkosten",
     "item_added": "{count, plural, =0 {# geen producten toegevoegd} =1 {{count} product toegevoegd} other {{count} producten toegevoegd}}",
-    "item_added_unit": "{count} {unit} toegevoegd",
     "adding_item": "{count, plural, =1 {Er wordt één product toegevoegd} other {Er worden {count} producten toegevoegd}}",
     "pick_option_first": "Kies eerst een optie. {option}",
+    "variant_unavailable": "Niet beschikbaar in deze combinatie",
+    "variant_sold_out": "Uitverkocht",
     "fill_out_required_input_first": "Vul eerst de vereiste input in.",
     "add_to_cart": "Voeg aan winkelwagen toe",
     "go_to_cart": "Winkelwagen",
@@ -412,6 +413,10 @@
     "showAllProducts": {
       "label": "Toon alle producten"
     },
+    "drawer": {
+      "retry": "Opnieuw proberen",
+      "subcategories": "Subcategorieën"
+    },
     "errors": {
       "404": "Categorie niet gevonden"
     }
@@ -423,7 +428,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Uw zoekopdracht \"{searchPhrase}\" heeft 0 resultaten."
-    }
+    },
+    "history_title": "Recente zoekopdrachten",
+    "history_clear": "Geschiedenis wissen",
+    "results_count": "{count, plural, =1 {1 resultaat} other {{count} resultaten}}",
+    "show_all_results": "Alle resultaten tonen",
+    "clear": "Zoekopdracht wissen",
+    "new_search": "Nieuwe zoekopdracht"
   },
   "shipping": {
     "unknown": "plus verzendkosten",
@@ -577,14 +588,15 @@
     "order_history": "Bestelgeschiedenis",
     "profile": "Profiel",
     "back": "Terug naar {title}",
-    "open_menu": "Menu openen"
+    "open_menu": "Menu openen",
+    "open_link": "Pagina openen"
   },
   "reviews": {
     "rating": "Rating",
     "no_reviews": "Wees de eerste die dit product beoordeelt:",
     "review_count": "({count} {count, plural, =1 {Beoordeling} other {Beoordelingen}})",
-    "button_add": "Schrijf een beoordeling",
-    "button_all": "Alle {count} Beoordelingen",
+    "button_add": "Schrijf een review",
+    "button_all": "Alle {count} reviews",
     "author": "door {author}",
     "rating_stars": "{rate, plural, =1 {Eén ster} other {{rate} sterren}} van {maxRate}.",
     "review_form_rate": "Beoordeel dit product:",
@@ -595,7 +607,39 @@
     "review_form_rate_error": "Selecteer alstublieft een sterrenbeoordeling.",
     "review_form_error_length": "Maximum lengte {length} karakters.",
     "press_to_rate_with_x_stars": "Kies om te beoordelen met {rate, plural, =1 {één ster} other {{rate} sterren}}.",
-    "success_message": "Bedankt voor uw beoordeling!"
+    "success_message": "Bedankt voor uw review!",
+    "summary_count": "{count, plural, =1 {# beoordeling} other {# beoordelingen}}",
+    "list_count": "{count, plural, =1 {# review} other {# reviews}}",
+    "list_empty": "Nog geen reviews",
+    "button_retry": "Opnieuw proberen",
+    "verified": "Geverifieerd",
+    "verified_info": "Reviews met de markering geverifieerd zijn gecontroleerd door de reviewaanbieder.",
+    "merchant_reply": "Antwoord van de verkoper",
+    "merchant_reply_show": "Antwoord van de verkoper tonen",
+    "media_image": "Afbeelding {index} openen",
+    "media_video": "Video {index} afspelen",
+    "media_viewer": "Afbeeldingen en video’s van de review",
+    "vote_question": "Was deze review nuttig?",
+    "vote_up": "Nuttig",
+    "vote_down": "Niet nuttig",
+    "vote_pending": "Verzenden…",
+    "vote_error": "Verzenden mislukt",
+    "sort_relevance": "Relevantie",
+    "sort_dateDesc": "Nieuwste eerst",
+    "sort_dateAsc": "Oudste eerst",
+    "sort_rateDesc": "Hoogste beoordeling",
+    "sort_rateAsc": "Laagste beoordeling",
+    "sort_helpfulDesc": "Nuttigste eerst",
+    "filter_media": "Met media",
+    "filter_verified": "Alleen geverifieerd",
+    "filter_rate_all": "Alle beoordelingen",
+    "filter_rate_5": "5 sterren",
+    "filter_rate_4": "4 sterren",
+    "filter_rate_3": "3 sterren",
+    "filter_rate_2": "2 sterren",
+    "filter_rate_1": "1 ster",
+    "distribution_open": "{label}: reviews tonen",
+    "list_empty_filtered": "Geen reviews komen overeen met deze selectie."
   },
   "tab_bar": {
     "home": "Home",

@@ -65,6 +65,7 @@ export const ShoppingCartIcon = () => null;
 export const SortIcon = () => null;
 export const StarHalfIcon = () => null;
 export const StarIcon = () => null;
+export const StoreIcon = () => null;
 export const StarOutlineIcon = () => null;
 export const TickIcon = () => null;
 export const TrashIcon = () => null;
@@ -115,6 +116,7 @@ export const PlaceholderParagraph = ({ children }) => children;
 export const PlaceholderLabel = ({ children }) => children;
 /** @returns {ReactElement} */
 export const HtmlSanitizer = ({ children }) => children;
+export { default as SafeHtml } from '../SafeHtml';
 export const RippleButton = ({ children }) => children;
 export const Button = ({ children }) => children;
 const typographyVariantMapping = {

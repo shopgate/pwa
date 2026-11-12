@@ -22,6 +22,7 @@ const RowHTML = ({ value, label }) => {
     <tr className="engage__product__product-property" data-type="html" data-label={label}>
       <td colSpan={2}>
         <HtmlSanitizer
+          allowScripts
           settings={{
             handleClick,
             html: value,

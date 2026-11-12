@@ -27,6 +27,8 @@ exports[`Pages: <RootCategory /> should render  1`] = `
           },
         ]
       }
+      labelled={true}
+      layout="list"
       parentCategory={null}
       prerender={8}
       showAllProducts={false}

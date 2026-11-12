@@ -71,6 +71,7 @@ module.exports = {
     'react/function-component-definition': 'off',
     // Warn about usage of .bind() or array functions in JSX props
     'react/jsx-no-bind': 'warn',
+    'react/no-danger': ['error', { customComponentNames: ['*'] }],
 
     // ## TBD
     'react/jsx-curly-newline': ['warn', 'consistent'],

@@ -240,9 +240,10 @@
     "tax_disclaimer": "* Včetně DPH případně plus náklady na dopravu",
     "tax_disclaimer_aria": "Včetně DPH případně plus náklady na dopravu",
     "item_added": "{count, plural, =0 {# žádné produkty} =1 {{count} Přidaný produkt} other {{count} Přidané produkty}}",
-    "item_added_unit": "{count} {unit} přidáno",
     "adding_item": "{count, plural, =1 {Přidává se jeden produkt} other {Přidává se {count} produktů}}",
     "pick_option_first": "Nejprve vyberte možnost. {option}",
+    "variant_unavailable": "V této kombinaci není k dispozici",
+    "variant_sold_out": "Vyprodáno",
     "fill_out_required_input_first": "Nejprve vyplňte všechna povinná pole.",
     "add_to_cart": "Přidat do košíku",
     "go_to_cart": "Nákupní košík",
@@ -412,6 +413,10 @@
     "showAllProducts": {
       "label": "Zobrazit všechny produkty"
     },
+    "drawer": {
+      "retry": "Zkusit znovu",
+      "subcategories": "Podkategorie"
+    },
     "errors": {
       "404": "Kategorie nebyla nalezena"
     }
@@ -423,7 +428,13 @@
     "no_result": {
       "heading": "Oops!",
       "body": "Vaše hledání \"{searchPhrase}\" nevrátilo žádné výsledky."
-    }
+    },
+    "history_title": "Nedávná hledání",
+    "history_clear": "Smazat historii",
+    "results_count": "{count, plural, =1 {1 výsledek} other {Výsledky: {count}}}",
+    "show_all_results": "Zobrazit všechny výsledky",
+    "clear": "Vymazat hledání",
+    "new_search": "Nové hledání"
   },
   "shipping": {
     "unknown": "plus Poštovné",
@@ -577,14 +588,15 @@
     "order_history": "Historie objednávek",
     "profile": "Profil",
     "back": "Zpět na {title}",
-    "open_menu": "Otevřít menu"
+    "open_menu": "Otevřít menu",
+    "open_link": "Otevřít stránku"
   },
   "reviews": {
     "rating": "Hodnocení",
     "no_reviews": "Napište první recenzi.",
-    "review_count": "({count} {count, plural, =1 {Oceňování} other {Oceňování}})",
-    "button_add": "Hodnotit produkt",
-    "button_all": "Všechna {count} hodnocení",
+    "review_count": "({count} {count, plural, =1 {Hodnocení} other {Hodnocení}})",
+    "button_add": "Napsat recenzi",
+    "button_all": "{count, plural, one {# recenze} few {Všechny # recenze} other {Všech # recenzí}}",
     "author": "z {author}",
     "rating_stars": "{rate, plural, =1 {Jedna hvězda} other {{rate} hvězdiček}} z {maxRate}.",
     "review_form_rate": "Ohodnoťte tento produkt:",
@@ -595,7 +607,39 @@
     "review_form_rate_error": "Kolik hvězdiček dáváte?",
     "review_form_error_length": "Maximální povolená délka {length} znaků.",
     "press_to_rate_with_x_stars": "Vyberte pro hodnocení s {rate, plural, =1 {jednou hvězdou} other {{rate} hvězdičkami}}.",
-    "success_message": "Děkujeme vám za vaše hodnocení!"
+    "success_message": "Děkujeme vám za vaši recenzi!",
+    "summary_count": "{count, plural, other {# hodnocení}}",
+    "list_count": "{count, plural, one {# recenze} few {# recenze} many {# recenze} other {# recenzí}}",
+    "list_empty": "Zatím žádné recenze",
+    "button_retry": "Zkusit znovu",
+    "verified": "Ověřená",
+    "verified_info": "Recenze označené jako ověřené byly zkontrolovány poskytovatelem recenzí.",
+    "merchant_reply": "Odpověď prodejce",
+    "merchant_reply_show": "Zobrazit odpověď prodejce",
+    "media_image": "Otevřít obrázek {index}",
+    "media_video": "Přehrát video {index}",
+    "media_viewer": "Obrázky a videa k recenzi",
+    "vote_question": "Byla tato recenze užitečná?",
+    "vote_up": "Užitečná",
+    "vote_down": "Neužitečná",
+    "vote_pending": "Odesílání…",
+    "vote_error": "Odeslání se nezdařilo",
+    "sort_relevance": "Relevance",
+    "sort_dateDesc": "Nejnovější",
+    "sort_dateAsc": "Nejstarší",
+    "sort_rateDesc": "Nejlepší hodnocení",
+    "sort_rateAsc": "Nejhorší hodnocení",
+    "sort_helpfulDesc": "Nejužitečnější",
+    "filter_media": "S médii",
+    "filter_verified": "Jen ověřené",
+    "filter_rate_all": "Všechna hodnocení",
+    "filter_rate_5": "5 hvězdiček",
+    "filter_rate_4": "4 hvězdičky",
+    "filter_rate_3": "3 hvězdičky",
+    "filter_rate_2": "2 hvězdičky",
+    "filter_rate_1": "1 hvězdička",
+    "distribution_open": "{label}: zobrazit recenze",
+    "list_empty_filtered": "Této volbě neodpovídají žádné recenze."
   },
   "tab_bar": {
     "home": "Domů",

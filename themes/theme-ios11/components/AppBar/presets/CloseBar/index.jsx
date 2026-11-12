@@ -22,7 +22,7 @@ function CloseBar({ goBack, ...props }) {
     <>
       <Portal name={APP_BAR_CLOSE_BEFORE} />
       <Portal name={APP_BAR_CLOSE}>
-        <DefaultBar left={left} right={null} {...props} />
+        <DefaultBar left={left} right={null} actionButtons={false} {...props} />
       </Portal>
       <Portal name={APP_BAR_CLOSE_AFTER} />
     </>

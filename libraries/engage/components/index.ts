@@ -155,6 +155,7 @@ export { default as ShoppingCartIcon } from '@shopgate/pwa-ui-shared/icons/Shopp
 export { default as SortIcon } from '@shopgate/pwa-ui-shared/icons/SortIcon';
 export { default as StarHalfIcon } from '@shopgate/pwa-ui-shared/icons/StarHalfIcon';
 export { default as StarIcon } from '@shopgate/pwa-ui-shared/icons/StarIcon';
+export { default as StoreIcon } from '@shopgate/pwa-ui-shared/icons/StoreIcon';
 export { default as StarOutlineIcon } from '@shopgate/pwa-ui-shared/icons/StarOutlineIcon';
 export { default as TickIcon } from '@shopgate/pwa-ui-shared/icons/TickIcon';
 export { default as TrashIcon } from '@shopgate/pwa-ui-shared/icons/TrashIcon';
@@ -186,6 +187,8 @@ export { default as Toggle } from './Toggle';
 export { Form } from './Form';
 export { FormBuilder } from './Form';
 export { Footer } from './Footer';
+export { FooterBar } from './FooterBar';
+export type { FooterBarProps } from './FooterBar';
 export { SideNavigation } from './SideNavigation';
 export { default as TextLink } from './TextLink/TextLink';
 export { ConditionalWrapper } from './ConditionalWrapper';
@@ -204,6 +207,8 @@ export { default as Paper } from './Paper';
 export type { PaperProps, PaperVariant } from './Paper';
 export { default as Card } from './Card';
 export type { CardProps, CardVariant } from './Card';
+export { default as SafeHtml } from './SafeHtml';
+export type { SafeHtmlProps } from './SafeHtml';
 
 // V2
 export { default as IconButton, type IconButtonProps, type IconButtonSize } from './v2/IconButton';
