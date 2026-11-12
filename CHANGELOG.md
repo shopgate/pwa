@@ -1,5 +1,21 @@
 # Changelog
 
+## [v7.35.0](https://github.com/shopgate/pwa/compare/v7.34.0...v7.35.0) (2026-11-12)
+
+#### :rocket: Enhancement
+* [#1549](https://github.com/shopgate/pwa/pull/1549) Gallery thumbnails and fullscreen media viewer ([@AylinUenal](https://github.com/AylinUenal))
+* [#1543](https://github.com/shopgate/pwa/pull/1543) Responsive product, cart, favourites and filter pages for tablets ([@AylinUenal](https://github.com/AylinUenal))
+* [#1542](https://github.com/shopgate/pwa/pull/1542) Customizable icons ([@fkloes](https://github.com/fkloes))
+* [#1539](https://github.com/shopgate/pwa/pull/1539) Apply the custom CSS from admin themeconfig ([@AylinUenal](https://github.com/AylinUenal))
+* [#1499](https://github.com/shopgate/pwa/pull/1499) Remove GMD theme ([@AylinUenal](https://github.com/AylinUenal))
+
+#### :bug: Bug Fix
+* [#1544](https://github.com/shopgate/pwa/pull/1544) Open external links from QR codes only for allowed domains ([@fkloes](https://github.com/fkloes))
+
+#### :house: Internal
+* [#1499](https://github.com/shopgate/pwa/pull/1499) Remove GMD theme ([@AylinUenal](https://github.com/AylinUenal))
+
+
 ## [v7.34.0](https://github.com/shopgate/pwa/compare/v7.33.5...v7.34.0) (2026-11-12)
 
 #### :rocket: Enhancement
