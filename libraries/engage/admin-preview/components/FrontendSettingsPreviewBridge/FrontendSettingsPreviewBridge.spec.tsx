@@ -249,7 +249,7 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
 
     expect(mockedSendToParent).toHaveBeenCalledWith({
       type: 'frontendSettingsPreviewReady',
-      payload: { features: ['iconCatalog'] },
+      payload: { features: ['iconCatalog', 'elementPicker'] },
     });
   });
 

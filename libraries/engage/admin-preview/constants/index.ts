@@ -21,9 +21,10 @@ export const ALLOWED_ADMIN_PREVIEW_ORIGINS = [
 
 /**
  * Preview features this app version supports. The ready message announces them, so the admin can
- * lock the settings of features that the app in the preview doesn't have yet.
+ * lock settings or hide tools (e.g. the element picker) that the app in the preview doesn't have
+ * yet.
  */
-export const ADMIN_PREVIEW_FEATURES = ['iconCatalog'] as const;
+export const ADMIN_PREVIEW_FEATURES = ['iconCatalog', 'elementPicker'] as const;
 
 /**
  * Tells the admin that the preview listens for messages, and which preview features it supports.
