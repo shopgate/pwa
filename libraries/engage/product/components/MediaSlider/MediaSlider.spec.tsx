@@ -46,4 +46,18 @@ describe('<MediaSlider />', () => {
 
     expect(mockDispatch).toHaveBeenCalledWith({ pathname: '/item/31323334/gallery/1' });
   });
+
+  it('renders replaced slide components and reports clicks to onSlideClick', () => {
+    const onSlideClick = jest.fn();
+    const Slide = ({ media, onClick }: { media: ProductMedia; onClick: () => void }) => (
+      <button type="button" onClick={onClick}>{`Custom ${media.altText}`}</button>
+    );
+
+    render(
+      <MediaSlider productId="1234" stacked onSlideClick={onSlideClick} slideComponents={{ image: Slide }} />
+    );
+    fireEvent.click(screen.getByRole('button', { name: 'Custom Second' }));
+
+    expect(onSlideClick).toHaveBeenCalledWith(1);
+  });
 });

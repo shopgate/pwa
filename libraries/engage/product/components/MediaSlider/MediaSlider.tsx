@@ -1,5 +1,5 @@
 import { useCallback, useMemo } from 'react';
-import type { ReactNode } from 'react';
+import type { ComponentType, ReactNode } from 'react';
 import { useSelector } from 'react-redux';
 import { SurroundPortals, Swiper } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -23,6 +23,11 @@ export interface ProductMedia {
   title?: string;
 }
 
+export interface MediaSlideProps {
+  media: ProductMedia;
+  onClick: () => void;
+}
+
 export interface MediaSliderProps {
   productId: string;
   /** Shows the media of this variant instead of the product's. */
@@ -37,6 +42,10 @@ export interface MediaSliderProps {
   stacked?: boolean;
   /** Renders the product while it has no media, e.g. its featured image. */
   renderPlaceholder?: (featuredMedia: ProductMedia | null) => ReactNode;
+  /** Called with the index of a clicked media instead of opening the gallery page. */
+  onSlideClick?: (index: number) => void;
+  /** Replaces the component of a media type, e.g. `{ video: VideoPreview }`. */
+  slideComponents?: Partial<Record<string, ComponentType<MediaSlideProps>>>;
 }
 
 interface MediaItemProps {
@@ -84,7 +93,7 @@ const renderFeaturedMedia = (featuredMedia: ProductMedia | null) => (
 );
 
 /**
- * The product media slider. Clicking a media opens the gallery at it.
+ * The product media slider. Clicking a media opens the gallery at it, or calls `onSlideClick`.
  * @returns The slider, the stacked media or the placeholder.
  */
 const MediaSlider = ({
@@ -97,6 +106,8 @@ const MediaSlider = ({
   swiperProps,
   stacked = false,
   renderPlaceholder = renderFeaturedMedia,
+  onSlideClick,
+  slideComponents,
 }: MediaSliderProps) => {
   const { classes } = useStyles();
   const dispatch = useAppDispatch();
@@ -123,16 +134,23 @@ const MediaSlider = ({
   }
 
   const isStacked = stacked && media.length > 1;
-  const items = media.map((entry, index) => ({
-    key: `${index}-${entry.url}`,
-    content: (
-      <MediaItem
-        media={entry}
-        onClick={() => openGallery(index)}
-        naturalRatio={isStacked}
-      />
-    ),
-  }));
+  const handleClick = onSlideClick || openGallery;
+  const items = media.map((entry, index) => {
+    const SlideComponent = slideComponents?.[entry.type];
+
+    return {
+      key: `${index}-${entry.url}`,
+      content: SlideComponent ? (
+        <SlideComponent media={entry} onClick={() => handleClick(index)} />
+      ) : (
+        <MediaItem
+          media={entry}
+          onClick={() => handleClick(index)}
+          naturalRatio={isStacked}
+        />
+      ),
+    };
+  });
 
   return (
     <div className={classes.container}>

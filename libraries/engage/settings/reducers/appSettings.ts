@@ -230,6 +230,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     },
     gallery: {
       pagination: 'bullets',
+      thumbnails: false,
     },
     addToCartBar: {
       variant: 'fixed',

@@ -23,6 +23,7 @@ jest.mock('@shopgate/pwa-common-commerce/product/selectors/product', () => ({
   getProductStock: () => mockStock,
 }));
 jest.mock('./connector', () => Component => Component);
+jest.mock('../Layout', () => ({ MEDIA_COLUMN_WIDTH: '50%' }));
 jest.mock('@shopgate/pwa-common/context', () => ({
   RouteContext: { Consumer: ({ children }) => children({ visible: true }) },
 }));

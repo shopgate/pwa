@@ -35,9 +35,17 @@ const useStyles = makeStyles()((theme) => {
 });
 
 /**
+ * @typedef {Object} GalleryPagination
+ * @property {React.RefObject<HTMLDivElement>} ref The ref of the slider container.
+ * @property {React.CSSProperties} style The style of the slider container.
+ * @property {string} paginationType The pagination type of the Swiper.
+ * @property {string} className The class name of the Swiper.
+ */
+
+/**
  * Places the pagination of a fullscreen gallery slider on or below its centered, fitted image.
  * @param {Object} gallery The gallery image settings from useProductImageSettings.
- * @returns {Object} The container ref and style, the Swiper pagination type and class name.
+ * @returns {GalleryPagination} The container ref and style, the Swiper pagination type and class.
  */
 export const useGalleryPagination = ({ ratio, resolutions }) => {
   const ref = useRef(null);
