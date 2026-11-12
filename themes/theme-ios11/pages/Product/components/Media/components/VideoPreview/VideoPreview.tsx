@@ -43,6 +43,16 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
+ * Tells whether a url is on a domain or one of its subdomains.
+ * @param url The url.
+ * @param domain The domain.
+ * @returns Whether the url is on the domain.
+ */
+const isOnDomain = (url: URL, domain: string) => (
+  url.hostname === domain || url.hostname.endsWith(`.${domain}`)
+);
+
+/**
  * Finds the id of a YouTube video url.
  * @param url The video url.
  * @returns The id, or null for other urls.
@@ -52,7 +62,7 @@ const getYouTubeId = (url: URL) => {
     return url.pathname.slice(1) || null;
   }
 
-  if (!url.hostname.endsWith('youtube.com')) {
+  if (!isOnDomain(url, 'youtube.com')) {
     return null;
   }
 
@@ -120,7 +130,7 @@ const getPreview = async (url: string, large: boolean): Promise<Preview | null> 
     };
   }
 
-  if (parsed.hostname.endsWith('vimeo.com')) {
+  if (isOnDomain(parsed, 'vimeo.com')) {
     const src = await getVimeoThumbnail(url, large ? 1280 : 320);
     return src ? {
       type: 'image',

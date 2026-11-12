@@ -62,6 +62,16 @@ describe('<VideoPreview />', () => {
     expect(global.fetch).toHaveBeenCalledTimes(1);
   });
 
+  it('shows only the play icon for hosts that merely end in youtube.com or vimeo.com', async () => {
+    global.fetch = jest.fn();
+    const youTube = renderNear(<VideoPreview url="https://evil-youtube.com/watch?v=abc123" />);
+    renderNear(<VideoPreview url="https://notvimeo.com/90509568" />);
+
+    await act(() => Promise.resolve());
+    expect(youTube.container.querySelector('img')).toBeNull();
+    expect(global.fetch).not.toHaveBeenCalled();
+  });
+
   it('shows only the play icon for other videos', async () => {
     const { container } = renderNear(<VideoPreview url="https://example.com/watch/1" />);
 
