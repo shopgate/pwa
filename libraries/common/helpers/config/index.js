@@ -37,6 +37,7 @@ const defaultAppConfig = {
   },
   cart: {},
   scanner: {},
+  qrCodeAllowedDomains: [],
   favorites: {},
   tracking: {
     hasWebTrackingEngage: false,

@@ -33,6 +33,7 @@ const ProductMediaSlider = ({
   className,
   thumbnailsContainer,
   'aria-hidden': ariaHidden,
+  stacked,
 }) => {
   const { pagination } = useProductGallerySettings();
   const {
@@ -57,6 +58,7 @@ const ProductMediaSlider = ({
         productId={productId}
         className={className}
         aria-hidden={ariaHidden}
+        stacked={stacked}
         onSlideClick={openViewer}
         slideComponents={SLIDE_COMPONENTS}
         renderPlaceholder={(featuredMedia) => {
@@ -83,6 +85,7 @@ ProductMediaSlider.propTypes = {
   featuredMediaCharacteristics: mediaShape,
   media: PropTypes.arrayOf(mediaShape),
   productId: PropTypes.string,
+  stacked: PropTypes.bool,
   thumbnailsContainer: PropTypes.instanceOf(HTMLElement),
   variantId: PropTypes.string,
 };
@@ -94,6 +97,7 @@ ProductMediaSlider.defaultProps = {
   featuredMediaBaseProduct: null,
   media: null,
   productId: null,
+  stacked: false,
   thumbnailsContainer: null,
   variantId: null,
 };

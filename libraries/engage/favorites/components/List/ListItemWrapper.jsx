@@ -4,6 +4,12 @@ import { makeStyles } from '@shopgate/engage/styles';
 import Item from '../Item';
 
 const useStyles = makeStyles()(theme => ({
+  root: {
+    [theme.breakpoints.up('md')]: {
+      display: 'flex',
+      flexDirection: 'column',
+    },
+  },
   divider: {
     height: 1,
     width: 'calc(100% + 32px)',
@@ -11,6 +17,9 @@ const useStyles = makeStyles()(theme => ({
     marginLeft: -16,
     marginRight: -16,
     marginBottom: 16,
+    [theme.breakpoints.up('md')]: {
+      display: 'none',
+    },
   },
 }));
 
@@ -33,7 +42,7 @@ const ListItemWrapper = ({
   const { classes } = useStyles();
 
   return (
-    <div>
+    <div className={classes.root}>
       <Item
         product={product}
         notes={notes}

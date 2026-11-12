@@ -46,11 +46,12 @@ const useStyles = makeStyles()(theme => ({
 const Layout = (props) => {
   const { classes, cx } = useStyles();
   const { cartItemsDisplay = 'line' } = usePageSettings();
-  const isCard = cartItemsDisplay !== 'line';
+  const isCard = !props.embedded && cartItemsDisplay !== 'line';
   const Wrapper = isCard ? Card : 'div';
+  const wrapperClassName = isCard ? classes.wrapperCard : classes.wrapper;
 
   return (
-    <Wrapper className={isCard ? classes.wrapperCard : classes.wrapper}>
+    <Wrapper className={props.embedded ? undefined : wrapperClassName}>
       <form className={cx(classes.container, 'theme__cart__coupon')} onSubmit={props.handleAddCoupon} data-test-id="couponField">
         <TextField
           disabled={props.isLoading}
@@ -82,6 +83,7 @@ const Layout = (props) => {
 };
 
 Layout.propTypes = {
+  embedded: PropTypes.bool,
   error: PropTypes.string,
   handleAddCoupon: PropTypes.func,
   handleFocusChange: PropTypes.func,
@@ -94,6 +96,7 @@ Layout.propTypes = {
 };
 
 Layout.defaultProps = {
+  embedded: false,
   handleAddCoupon: () => { },
   handleFocusChange: () => { },
   handleValueChange: () => { },

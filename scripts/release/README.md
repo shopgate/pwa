@@ -1,10 +1,10 @@
 # Release process
 
-This folder contains the scripts for releasing the PWA npm packages and themes. Releases start in
-the GitLab pipeline of `pwa-liveupdate`, which prepares the release branches. The packages are
-published by the GitHub workflow "Publish packages" of this repository, after a developer approved
-the run. npm trusts that workflow directly (trusted publishing), so no npm token, login or 2FA is
-involved.
+This folder contains the scripts for releasing the PWA npm packages and `theme-ios11`. Releases
+start in the GitLab pipeline of `pwa-liveupdate`, which prepares the release branches. The
+packages are published by the GitHub workflow "Publish packages" of this repository, after a
+developer approved the run. npm trusts that workflow directly (trusted publishing), so no npm
+token, login or 2FA is involved.
 
 The scripts are TypeScript and run directly with Node ≥ 24; there is no build step. They run on
 Linux (the GitLab pipeline) and macOS. Windows isn't supported, since they start npm and the build
@@ -60,7 +60,7 @@ these variables.
    `release:prepare` and waits for up to 30 minutes until the workflow has published the
    packages. When that isn't enough, it fails without having changed anything and can simply be
    retried.
-5. After finalize, the themes are uploaded: `release:themes` for every version,
+5. After finalize, `theme-ios11` is uploaded: `release:themes` for every version,
    `release:tablet-themes` automatically for stable versions and as a manual job that can be
    skipped for prereleases.
 
@@ -116,7 +116,7 @@ Only reads, changes nothing.
 3. Warns when the version is not higher than the current version of its npm dist-tag.
 4. Looks for the version in every place a release leaves behind: published versions of all
    packages on npm, the tag `vX`, the branches `releases/vX` and `vX` and GitHub releases
-   (including drafts) in pwa and the theme repositories. When something is found, it lists it and
+   (including drafts) in pwa and `theme-ios11`. When something is found, it lists it and
    aborts, unless `releases/vX` contains the "Released X" commit and either this pipeline created
    it (a retried job) or `RESUME=true` is set.
 
@@ -131,7 +131,7 @@ before the release starts instead of in the tablet job.
    Then it runs the type check (`npm run typecheck`) on the branch. A type error stops the release
    here, before anything is changed or pushed.
 3. Sets the version in all `package.json` files of the workspace (internal `@shopgate` dependencies
-   exactly pinned) and the `extension-config.json` of the themes.
+   exactly pinned) and `themes/theme-ios11/extension-config.json`.
 4. Builds the packages into `dist`: babel, type declarations with tsc for packages with a
    `tsconfig.build.json`, then removes tests, snapshots, specs and tsconfig files. When all packages
    are built, star exports in the declaration files that point to a module without declarations
@@ -144,10 +144,9 @@ before the release starts instead of in the tablet job.
    the line `Pipeline: <ID>`, so a retried job recognizes the release as its own. `dist` is not
    committed.
 6. Adds the entries of all labeled pull requests since the previous stable tag to `CHANGELOG.md`,
-   copies it to the themes and commits it as "Created changelog for version 'vX'.".
-7. Pushes `releases/vX` to pwa and, with `git subtree push`, to `releases/vX` of `theme-gmd` and
-   `theme-ios11`. Both subtree pushes run at the same time, since each one spends minutes splitting
-   the history. The push to pwa starts the workflow "Publish packages".
+   copies it to `themes/theme-ios11` and commits it as "Created changelog for version 'vX'.".
+7. Pushes `releases/vX` to pwa and, with `git subtree push`, to `releases/vX` of `theme-ios11`.
+   The push to pwa starts the workflow "Publish packages".
 
 Steps 3, 5 and 6 are skipped when they are already done. The build in step 4 isn't published; it
 makes sure that a broken build fails before anything is pushed. With `DRY_RUN=true`, steps 1 to 6
@@ -199,26 +198,25 @@ master; changes to the workflow on other branches can only be tested with a rele
 1. Aborts when a package is not published yet. With `WAIT_FOR_PUBLISH=true`, it waits for them
    instead, for up to 30 minutes, and fails after that without having changed anything. When all
    are published, it waits for up to 10 minutes until every package can be installed, so the
-   theme uploads that follow don't start too early.
+   uploads of `theme-ios11` that follow don't start too early.
 2. Checks out `releases/vX`.
 3. Only when the version becomes `latest` and `SKIP_MASTER_UPDATE` isn't set:
-   1. For each theme, one after another: checks whether `releases/vX` of the theme repository
-      already contains its master, which is the case unless someone committed directly in the
-      theme repository. Only otherwise, it merges that master into `releases/vX`
-      (`git subtree pull`). Then pushes the result to both theme masters at the same time
-      (`git subtree push`).
+   1. Checks whether `releases/vX` of `theme-ios11` already contains its master, which is the
+      case unless someone committed directly in `theme-ios11`. Only otherwise, it merges that
+      master into `releases/vX` (`git subtree pull`). Then pushes the result to master of
+      `theme-ios11` (`git subtree push`).
    2. Merges master of pwa into `releases/vX` and pushes it to `releases/vX` and master.
-4. Stable versions: creates the GitHub release `vX` in pwa and both theme repositories. The target
+4. Stable versions: creates the GitHub release `vX` in pwa and `theme-ios11`. The target
    in pwa is `releases/vX`, which holds exactly the commit that was pushed to master, so a merge
-   into master in the meantime can't end up in the tag. In the theme repositories it is master
+   into master in the meantime can't end up in the tag. In `theme-ios11` it is master
    when master was updated, otherwise `releases/vX`. The release notes are the changelog
    entry of the version plus a compare link to the previous stable version, or "No notable
    changes in this release." without an entry. Patches of an older release line are not marked as
    latest. Publishing a release creates its tag.
 5. Pre-releases (alpha, beta, rc): creates only the tag `vX` at the head of `releases/vX` in pwa
-   and both theme repositories, and no GitHub release, so new pre-releases don't appear on the
+   and `theme-ios11`, and no GitHub release, so new pre-releases don't appear on the
    release pages. Their changes are in the `CHANGELOG.md` of the tagged commit.
-6. Removes `releases/vX` in both theme repositories and in pwa, in that order. From here on the
+6. Removes `releases/vX` in `theme-ios11` and in pwa, in that order. From here on the
    version is referenced by its tag `vX`. A branch is only removed where that tag exists. A
    deletion that fails is only reported, since the release is complete: delete that branch by
    hand. When the job is retried after this step, it finds the tag without the branch and
@@ -241,14 +239,15 @@ The pipeline of `pwa-liveupdate` starts the job right after `release:prepare` an
 
 ### `release:themes` and `release:tablet-themes`
 
-Both run one job per theme after `finalize`. Each job checks out the tag `vX`, since
-`finalize` has removed the release branch, and uploads the theme with `sgconnect`. A failed
-upload, including a failed processing of the theme on the platform, fails the job, which can be
-retried on its own. With `DRY_RUN=true`, they check out `BRANCH` instead, since nothing is
-tagged, and skip the upload.
+Both run after `finalize`. Each job checks out the tag `vX`, since `finalize` has removed the
+release branch, and uploads `theme-ios11` with `sgconnect`. A failed upload, including a failed
+processing of `theme-ios11` on the platform, fails the job, which can be retried on its own. With
+`DRY_RUN=true`, they check out `BRANCH` instead, since nothing is tagged, and skip the upload.
+The pipeline also runs a job for `theme-gmd`, which older release lines still contain; it finds
+no `themes/theme-gmd` in this version and ends without an upload.
 
-- `release:themes` uploads the themes under their own IDs for every version.
-- `release:tablet-themes` renames the themes to `*-tablet` before the upload. It runs
+- `release:themes` uploads `theme-ios11` under its own ID for every version.
+- `release:tablet-themes` renames `theme-ios11` to `theme-ios11-tablet` before the upload. It runs
   automatically for stable versions; for prereleases it's a manual job that can be skipped.
 
 With `DRY_RUN=true`, all Slack messages of the new process are sent as well, marked with
@@ -266,10 +265,11 @@ A retry clones the repositories again and continues from what is already on GitH
 job that failed halfway doesn't leave anything behind that blocks it:
 
 - Pushes that already went through report "Everything up-to-date". `git subtree push` produces the
-  same commits again, so a theme branch that was already pushed doesn't reject the retry.
+  same commits again, so a branch of `theme-ios11` that was already pushed doesn't reject the
+  retry.
 - A push that was rejected because the target moved in the meantime (e.g. someone merged into
   master during `finalize`) goes through on the retry, since the job fetches and merges first.
-- A theme master that was already updated in a failed `finalize` is found to be part of
+- A master of `theme-ios11` that was already updated in a failed `finalize` is found to be part of
   `releases/vX` on the retry, so nothing is merged and the push reports "Everything up-to-date".
 - External causes (SSH key, `GITHUB_AUTH_TOKEN`, GitHub or npm outages): fix the cause, then
   retry.
@@ -281,8 +281,8 @@ this version, so a typo in the version can't continue someone else's release. A 
 continues on `releases/vX`, so later changes to `BRANCH` are not part of it.
 
 A version whose `finalize` went through can't be resumed: its release branch is removed, and
-`check` reports it as released. That's intended, since nothing is left to do but the theme
-uploads, and those are retried in the pipeline of the release.
+`check` reports it as released. That's intended, since nothing is left to do but the uploads of
+`theme-ios11`, and those are retried in the pipeline of the release.
 
 **`check` stops because master has commits that are missing in `BRANCH`** (only for releases that
 update master, e.g. after someone merged into master by mistake): nothing was created yet. Merge
@@ -292,8 +292,8 @@ retry the job or start a new pipeline, `RESUME` isn't needed.
 **Before the approval**, nothing is public. Failed pushes are fixed by retrying or resuming.
 
 **Aborting a release** before the approval, e.g. after a wrong version: reject or cancel the
-waiting run of "Publish packages", and delete the branch `releases/vX` in pwa, `theme-gmd` and
-`theme-ios11` on GitHub. Otherwise `check` reports the version as taken in later pipelines.
+waiting run of "Publish packages", and delete the branch `releases/vX` in pwa and `theme-ios11`
+on GitHub. Otherwise `check` reports the version as taken in later pipelines.
 After the approval, treat the version as final and release a new one instead of unpublishing it.
 
 **Cancel a waiting `release:finalize` job** before aborting a release, and before resuming it in
@@ -312,21 +312,20 @@ npmjs.com. The workflow didn't start at all when the release branch doesn't cont
 
 **After the approval**, the packages are public and `finalize` has to be completed:
 
-- **Merge conflict with the master of a theme** (someone committed directly in the theme
-  repository): run `git subtree pull --prefix=themes/<theme> <repository> master` on
-  `releases/vX`, resolve the conflict, push `releases/vX` and retry `finalize`.
+- **Merge conflict with master of `theme-ios11`** (someone committed directly in `theme-ios11`):
+  run `git subtree pull --prefix=themes/theme-ios11 git@github.com:shopgate/theme-ios11.git master`
+  on `releases/vX`, resolve the conflict, push `releases/vX` and retry `finalize`.
 - **Merge conflict with master of pwa**: merge master into `releases/vX`, resolve the conflict, push
   `releases/vX` and retry `finalize`.
 
-The theme masters are pushed at the same time, so after a failure one of them can already be
-updated while the other one and master of pwa are not. The job waits for both pushes and names the
-failed theme. Retrying `finalize` completes them.
+Master of `theme-ios11` is pushed before master of pwa, so after a failure it can already be
+updated while master of pwa is not. Retrying `finalize` completes it.
 
 ### Theme upload
 
-A failed `release:themes` or `release:tablet-themes` job only affects its theme: retry that job in
-the pipeline of the release. The packages and the GitHub releases or tags are already done at
-that point, and the job takes the theme from the tag, so it doesn't need the release branch. A
+A failed `release:themes` or `release:tablet-themes` job only affects its upload: retry that job
+in the pipeline of the release. The packages and the GitHub releases or tags are already done at
+that point, and the job takes `theme-ios11` from the tag, so it doesn't need the release branch. A
 new pipeline with `resume` can't be used for it.
 
 Re-running a publish job of the workflow "Publish packages" after `finalize` fails with "moved

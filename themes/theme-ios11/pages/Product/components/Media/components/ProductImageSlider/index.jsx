@@ -64,7 +64,8 @@ const useShownImages = (images, featuredImage) => {
 };
 
 /**
- * The image slider of the product page. A single image is shown without a slider.
+ * The image slider of the product page. A single image is shown without a slider, and stacked
+ * images are listed below each other.
  * @returns {JSX.Element}
  */
 const ProductImageSlider = ({
@@ -74,10 +75,34 @@ const ProductImageSlider = ({
   'aria-hidden': ariaHidden,
   className,
   paginationType,
+  stacked,
   onOpen,
   onSwiper,
 }) => {
   const featuredImage = product?.featuredImageBaseUrl || null;
+
+  if (stacked && images?.length > 1) {
+    return (
+      <div
+        className="theme__product__product-image-slider"
+        data-test-id={`product: ${product?.name ?? ''}`}
+        style={WRAPPER_STYLE}
+      >
+        <div className={className} aria-hidden={ariaHidden} data-stacked>
+          {images.map((image, index) => (
+            <div
+              key={`${productId}-${image}`}
+              onClick={() => onOpen(index)}
+              onKeyDown={() => onOpen(index)}
+              role="presentation"
+            >
+              <ProductImage src={image} context="pdp" noBackground naturalRatio />
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   if (images?.length > 1) {
     return (
@@ -148,6 +173,7 @@ ProductImageSlider.propTypes = {
     name: PropTypes.string,
   }),
   productId: PropTypes.string,
+  stacked: PropTypes.bool,
 };
 
 ProductImageSlider.defaultProps = {
@@ -157,6 +183,7 @@ ProductImageSlider.defaultProps = {
   paginationType: undefined,
   product: null,
   productId: null,
+  stacked: false,
 };
 
 /**

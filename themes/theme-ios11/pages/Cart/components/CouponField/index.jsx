@@ -16,6 +16,7 @@ const ON_FOCUS_BLUR_DELAY_MS = 150;
  */
 const CouponField = ({
   addCoupon: addCouponAction,
+  embedded,
   error,
   isLoading,
   isSupported,
@@ -74,6 +75,7 @@ const CouponField = ({
   return (
     <div>
       <Layout
+        embedded={embedded}
         handleAddCoupon={addCoupon}
         isLoading={isLoading}
         isButtonDisabled={isButtonDisabled}
@@ -90,6 +92,7 @@ const CouponField = ({
 
 CouponField.propTypes = {
   addCoupon: PropTypes.func,
+  embedded: PropTypes.bool,
   error: PropTypes.string,
   isLoading: PropTypes.bool,
   isSupported: PropTypes.bool,
@@ -100,6 +103,7 @@ CouponField.propTypes = {
 
 CouponField.defaultProps = {
   addCoupon: () => { },
+  embedded: false,
   setValue: () => { },
   isLoading: false,
   isSupported: true,

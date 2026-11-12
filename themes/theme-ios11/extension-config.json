@@ -200,6 +200,15 @@
         "label": "If the Back-in-Stock feature is enabled / disabled."
       }
     },
+    "qrCodeAllowedDomains": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": [],
+      "params": {
+        "type": "json",
+        "label": "Domains of the shop whose https links from QR codes may open in the in-app browser, e.g. [\"example.com\"]. Subdomains are included. Shared endings like \"co.uk\" must not be used as entries."
+      }
+    },
     "pdpImageSliderPaginationType": {
       "type": "admin",
       "destination": "frontend",
