@@ -25,6 +25,62 @@ describe('settings / reducers / appSettings', () => {
     expect(DEFAULT_APP_SETTINGS.product.rating.showEmptyStars).toBe(false);
   });
 
+  it('takes the review defaults from the app config', () => {
+    jest.isolateModules(() => {
+      jest.doMock('@shopgate/pwa-common/helpers/config', () => ({
+        __esModule: true,
+        default: {
+          hasReviews: false,
+          showWriteReview: false,
+        },
+      }));
+      const { DEFAULT_APP_SETTINGS: defaults } = jest.requireActual<{
+        DEFAULT_APP_SETTINGS: AppSettings;
+      }>('./appSettings');
+
+      expect(defaults.product.rating.showReviews).toBe(false);
+      expect(defaults.product.rating.showWriteReview).toBe(false);
+    });
+  });
+
+  it('keeps the review defaults when a payload omits them', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: { rating: { showEmptyStars: true } },
+    }));
+
+    expect(state.product.rating).toEqual({
+      ...DEFAULT_APP_SETTINGS.product.rating,
+      showEmptyStars: true,
+    });
+  });
+
+  it('turns reviews off when the payload does', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        rating: {
+          showReviews: false,
+          showWriteReview: false,
+        },
+      },
+    }));
+
+    expect(state.product.rating.showReviews).toBe(false);
+    expect(state.product.rating.showWriteReview).toBe(false);
+  });
+
+  it.each([null, 'false', 0])('keeps the review defaults for the value %p', (value) => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        rating: {
+          showReviews: value,
+          showWriteReview: value,
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.rating).toEqual(DEFAULT_APP_SETTINGS.product.rating);
+  });
+
   it('defaults to showing the manufacturer on the product page', () => {
     expect(DEFAULT_APP_SETTINGS.product.manufacturer.showOnProductPage).toBe(true);
   });
@@ -79,11 +135,6 @@ describe('settings / reducers / appSettings', () => {
           buttons: {
             left1: {
               action: 'openSearch',
-              icon: '',
-              link: '',
-            },
-            left2: {
-              action: 'none',
               icon: '',
               link: '',
             },
@@ -143,6 +194,8 @@ describe('settings / reducers / appSettings', () => {
         },
         rating: {
           showEmptyStars: false,
+          showReviews: false,
+          showWriteReview: false,
         },
         manufacturer: {
           showOnProductPage: false,
@@ -239,10 +292,17 @@ describe('settings / reducers / appSettings', () => {
           right: 8,
         },
       },
+      icons: {
+        cart: {
+          svg: '<svg viewBox="0 0 48 48"><path d="M0 0h48"/></svg>',
+          keepColors: true,
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
 
+    expect(state.icons).toEqual(settings.icons);
     expect(state.isHydrated).toBe(true);
     expect(state.navigation).toEqual(settings.navigation);
     expect(state.search).toEqual(settings.search);
@@ -872,6 +932,31 @@ describe('settings / reducers / appSettings', () => {
     expect(tabBar.fixed).toEqual(DEFAULT_APP_SETTINGS.navigation.tabBar.fixed);
   });
 
+  it('ignores a second button on the left', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      navigation: {
+        appBar: {
+          buttons: {
+            left1: {
+              action: 'more',
+              icon: '',
+              link: '',
+            },
+            left2: {
+              action: 'cart',
+              icon: '',
+              link: '',
+            },
+          },
+        },
+      },
+    } as unknown as AppSettings));
+
+    const { buttons } = state.navigation.appBar;
+    expect(Object.keys(buttons)).toEqual(['left1', 'right1', 'right2']);
+    expect(buttons.left1.action).toBe('more');
+  });
+
   it('falls back to the defaults for invalid navigation values', () => {
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
       navigation: {
@@ -946,5 +1031,120 @@ describe('settings / reducers / appSettings', () => {
     } as unknown as AppSettings));
 
     expect(state.navigation).toEqual(DEFAULT_APP_SETTINGS.navigation);
+  });
+
+  describe('icons', () => {
+    it('defaults to no icon overrides', () => {
+      expect(DEFAULT_APP_SETTINGS.icons).toEqual({});
+    });
+
+    it('keeps valid overrides and drops invalid fields and entries', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg><path d="M1 1"/></svg>',
+            keepColors: 'yes',
+          },
+          heart: { svg: '' },
+          home: { keepColors: true },
+          star: 'not an override',
+          tick: null,
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg><path d="M1 1"/></svg>',
+          keepColors: false,
+        },
+      });
+    });
+
+    it('keeps the scale of an override and drops one that is no number', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg/>',
+            scale: 0.9,
+          },
+          heart: {
+            svg: '<svg/>',
+            scale: 'big',
+          },
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg/>',
+          keepColors: false,
+          scale: 0.9,
+        },
+        heart: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+      });
+    });
+
+    it('keeps a positive line width of an override and drops invalid ones', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg/>',
+            strokeWidth: 1.5,
+          },
+          heart: {
+            svg: '<svg/>',
+            strokeWidth: -1,
+          },
+          home: {
+            svg: '<svg/>',
+            strokeWidth: 'thin',
+          },
+          share: {
+            svg: '<svg/>',
+            strokeWidth: Number.NaN,
+          },
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg/>',
+          keepColors: false,
+          strokeWidth: 1.5,
+        },
+        heart: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+        home: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+        share: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+      });
+    });
+
+    it('drops an override a later payload omits', () => {
+      const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: { cart: { svg: '<svg/>' } },
+      }));
+      const second = appSettings(first, receiveAppSettings({}));
+
+      expect(second.icons).toEqual({});
+    });
+
+    it.each([null, 'icons', ['<svg/>']])('falls back to no overrides for %j', (icons) => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons,
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({});
+    });
   });
 });

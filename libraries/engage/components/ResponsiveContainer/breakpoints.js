@@ -1,9 +1,6 @@
 // Ugly imports to avoid breaking tests due to circular dependencies
-import { isIOSTheme } from '@shopgate/engage/core/helpers/isIOSTheme';
 import { hasWebBridge } from '@shopgate/engage/core/helpers/bridge';
 import { isAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
-
-const iosThemeActive = isIOSTheme();
 
 /* eslint-disable extra-rules/no-single-line-objects */
 const breakpoints = [
@@ -37,9 +34,7 @@ export const parser = (comparators, breakpoint, {
   const comparator = comparators[comparatorString];
   const config = breakpoints.find(b => b.name === breakpointString);
 
-  // Web / App config.
-  // Handle iOS theme as app for now so that media queries in shared components only work for app
-  const isWeb = hasWebBridge() && !iosThemeActive && !isAdminPreviewActive();
+  const isWeb = hasWebBridge() && !isAdminPreviewActive();
 
   // Always mode.
   if ((webAlways && isWeb) || (appAlways && !isWeb)) {

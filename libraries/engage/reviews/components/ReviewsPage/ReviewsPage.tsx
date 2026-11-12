@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { appConfig } from '@shopgate/engage';
 import { I18n, SurroundPortals } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { makeStyles } from '@shopgate/engage/styles';
@@ -35,9 +34,9 @@ import {
 import type {
   Review,
   ReviewListFilters,
-  ReviewsConfig,
   ReviewsProductState,
 } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import { useReviewVisibility } from '../../hooks';
 import ReviewsSummary from '../ReviewsSummary';
 import ReviewList from '../ReviewList';
 import ReviewsToolbar from '../ReviewsToolbar';
@@ -77,7 +76,7 @@ const ReviewsPage = ({ productId }: ReviewsPageProps) => {
   const { classes, cx } = useStyles();
   const dispatch = useDispatch() as unknown as (action: unknown) => void;
 
-  const { showWriteReview } = appConfig as ReviewsConfig;
+  const { showWriteReview } = useReviewVisibility();
 
   const listProps = useMemo(() => ({
     productId,

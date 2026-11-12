@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useMemo } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { appConfig } from '@shopgate/engage';
 import { historyPush } from '@shopgate/engage/core/actions';
 import { bin2hex } from '@shopgate/engage/core/helpers';
 import { I18n, SurroundPortals, Typography } from '@shopgate/engage/components';
@@ -23,9 +22,9 @@ import {
 } from '@shopgate/engage/reviews/constants';
 import type {
   Review,
-  ReviewsConfig,
   ReviewsProductState,
 } from '@shopgate/pwa-common-commerce/reviews/types/reviews';
+import { useReviewVisibility } from '../../hooks';
 import ReviewsSummary from '../ReviewsSummary';
 import ReviewList from '../ReviewList';
 import WriteReviewLink from '../Reviews/components/Header/components/WriteReviewLink';
@@ -81,7 +80,7 @@ const ReviewsPreview = ({
   const dispatch = useDispatch() as unknown as (action: unknown) => void;
   const isBaseProductActive = useMemo(() => makeIsBaseProductActive(), []);
 
-  const { hasReviews, showWriteReview } = appConfig as ReviewsConfig;
+  const { showReviews, showWriteReview } = useReviewVisibility();
 
   const baseProductId: string = useSelector((state: ReviewsProductState) => (
     getBaseProductId(state, { productId })
@@ -113,7 +112,7 @@ const ReviewsPreview = ({
     getReviewFilterOptions(state).some(option => option.type === 'rate')
   ));
 
-  const isVisible = !!hasReviews && productActive;
+  const isVisible = showReviews && productActive;
 
   useEffect(() => {
     if (isVisible && isMissing) {

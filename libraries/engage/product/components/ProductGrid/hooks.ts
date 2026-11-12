@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { WidgetContext } from '@shopgate/engage/page/components/Widgets/WidgetContext';
 import { useWidgetSettings } from '@shopgate/engage/core/hooks';
 import { useResponsiveValue } from '@shopgate/engage/styles';
+import { hasWebBridge } from '@shopgate/engage/core/helpers';
 import type { Breakpoint } from '@shopgate/engage/styles/theme';
 import {
   getAreAppSettingsHydrated,
@@ -24,8 +25,8 @@ const WIDE_SCREEN_MIN_COLUMNS = {
 };
 
 /**
- * Adds column counts for the wide tablet breakpoints. They keep the merchant's count for the
- * largest configured screen size, but never fall below the wide screen minimum.
+ * Adds column counts for the wide tablet breakpoints that aren't set yet. They keep the merchant's
+ * count for the largest configured screen size, but never fall below the wide screen minimum.
  * @param columns The column counts keyed by breakpoint.
  * @returns The column counts including the wide breakpoints.
  */
@@ -36,12 +37,12 @@ export const withWideScreenColumns = (columns: BreakpointColumns): BreakpointCol
     return columns;
   }
 
-  const lg = Math.max(large, WIDE_SCREEN_MIN_COLUMNS.lg);
+  const lg = columns.lg ?? Math.max(large, WIDE_SCREEN_MIN_COLUMNS.lg);
 
   return {
     ...columns,
     lg,
-    xl: Math.max(lg, WIDE_SCREEN_MIN_COLUMNS.xl),
+    xl: columns.xl ?? Math.max(lg, WIDE_SCREEN_MIN_COLUMNS.xl),
   };
 };
 
@@ -80,14 +81,29 @@ export const useProductGridColumns = (): number => {
   }, [areAppSettingsHydrated, isInsideWidget, legacyColumns, appSettingsColumns]);
 
   const breakpoints = useMemo(
-    () => withWideScreenColumns((Object.entries(sizes) as [ScreenSize, number][]).reduce(
-      (acc, [size, value]) => {
-        acc[SCREEN_SIZE_BREAKPOINTS[size]] = value;
-        return acc;
-      },
-      {} as BreakpointColumns
-    )),
-    [sizes]
+    () => {
+      const mapped = (Object.entries(sizes) as [ScreenSize, number][]).reduce(
+        (acc, [size, value]) => {
+          acc[SCREEN_SIZE_BREAKPOINTS[size]] = value;
+          return acc;
+        },
+        {} as BreakpointColumns
+      );
+
+      // The app settings only reach up to `md`. In website mode the viewport keeps growing
+      // beyond that, so widen the grid instead of stretching the tiles.
+      if (hasWebBridge() && !areAppSettingsHydrated) {
+        const widest = mapped.md ?? mapped.sm ?? mapped.xs;
+
+        if (typeof widest === 'number') {
+          mapped.lg = mapped.lg ?? widest + 1;
+          mapped.xl = mapped.xl ?? widest + 2;
+        }
+      }
+
+      return withWideScreenColumns(mapped);
+    },
+    [sizes, areAppSettingsHydrated]
   );
 
   return useResponsiveValue(breakpoints) as number;

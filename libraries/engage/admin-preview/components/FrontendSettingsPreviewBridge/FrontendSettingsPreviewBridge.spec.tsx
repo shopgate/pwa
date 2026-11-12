@@ -195,6 +195,29 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
         .toBe('.button { background-color: red; }');
     });
 
+    it('should add the received custom css after the styling', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({
+        type: 'receiveFrontendSettings',
+        payload: {
+          styling: { '.button': { backgroundColor: 'red' } },
+          customCss: '.button { color: blue; }',
+        },
+      });
+
+      expect(document.getElementById(PREVIEW_STYLE_TAG_ID)?.textContent)
+        .toBe('.button { background-color: red; }\n.button { color: blue; }');
+
+      sendMessage({
+        type: 'receiveFrontendSettings',
+        payload: { styling: { '.button': { backgroundColor: 'red' } } },
+      });
+
+      expect(document.getElementById(PREVIEW_STYLE_TAG_ID)?.textContent)
+        .toBe('.button { background-color: red; }');
+    });
+
     it('should dispatch the received app settings', () => {
       render(<FrontendSettingsPreviewBridge />);
 
@@ -221,10 +244,13 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
     });
   });
 
-  it('should announce readiness to the parent on mount', () => {
+  it('should announce readiness and the supported preview features to the parent on mount', () => {
     render(<FrontendSettingsPreviewBridge />);
 
-    expect(mockedSendToParent).toHaveBeenCalledWith({ type: 'frontendSettingsPreviewReady' });
+    expect(mockedSendToParent).toHaveBeenCalledWith({
+      type: 'frontendSettingsPreviewReady',
+      payload: { features: ['iconCatalog'] },
+    });
   });
 
   describe('frontendSettingsPreviewApplied', () => {
@@ -242,12 +268,12 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
     const flushFontCssSync = () => act(() => Promise.resolve());
 
     it('should keep the styling that app start already applied', () => {
-      setInitialFrontendSettings({ '.button': { backgroundColor: 'red' } });
+      setInitialFrontendSettings({ '.button': { backgroundColor: 'red' } }, '.a { color: blue; }');
 
       render(<FrontendSettingsPreviewBridge />);
 
       expect(document.getElementById(PREVIEW_STYLE_TAG_ID)?.textContent)
-        .toBe('.button { background-color: red; }');
+        .toBe('.button { background-color: red; }\n.a { color: blue; }');
     });
 
     it('should announce on mount when app start received the payload', async () => {
@@ -336,6 +362,28 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
       await flushFontCssSync();
 
       expect(appliedCallCount()).toBe(0);
+    });
+  });
+
+  describe('requestIconCatalog', () => {
+    it('should answer with the icons a merchant can replace', () => {
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({ type: 'requestIconCatalog' });
+
+      expect(mockedSendToParent).toHaveBeenCalledWith({
+        type: 'iconCatalog',
+        payload: {
+          version: 1,
+          icons: expect.arrayContaining([
+            expect.objectContaining({
+              name: 'cart',
+              source: 'core',
+              default: expect.stringMatching(/^<svg viewBox="0 0 24 24">/),
+            }),
+          ]),
+        },
+      });
     });
   });
 });

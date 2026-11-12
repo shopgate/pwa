@@ -589,7 +589,12 @@
     "profile": "Profil",
     "back": "Vissza a {title}",
     "open_menu": "Menü megnyitása",
-    "open_link": "Oldal megnyitása"
+    "open_link": "Oldal megnyitása",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Több",
+      "about": "Rólunk"
+    }
   },
   "reviews": {
     "rating": "Értékelés",

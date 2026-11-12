@@ -1,6 +1,6 @@
 import { useContext, Fragment } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { i18n, isIOSTheme } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core';
 import { CrossIcon, CartTotalLine } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { getPromotionCoupons, deleteCouponsFromCart } from '@shopgate/engage/cart';
@@ -40,7 +40,7 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: '0px !important',
   },
   spacer: {
-    width: isIOSTheme() ? 27 : 32,
+    width: 27,
     order: 1,
     flexShrink: 0,
   },

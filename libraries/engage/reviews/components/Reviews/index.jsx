@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { makeStyles } from '@shopgate/engage/styles';
 import { SurroundPortals } from '@shopgate/engage/components';
 import { PRODUCT_REVIEWS } from '@shopgate/engage/product';
@@ -8,6 +7,7 @@ import List from './components/List';
 import Header from './components/Header';
 import AllReviewsLink from './components/AllReviewsLink';
 import ReviewsInfo from './components/ReviewsInfo';
+import { useReviewVisibility } from '../../hooks';
 import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
@@ -24,13 +24,14 @@ const useStyles = makeStyles()(theme => ({
  */
 function Reviews({ productId, productActive, reviews }) {
   const { classes, cx } = useStyles();
+  const { showReviews } = useReviewVisibility();
 
   return (
     <SurroundPortals
       portalName={PRODUCT_REVIEWS}
       portalProps={{ productId }}
     >
-      {(appConfig.hasReviews && productActive) && (
+      {(showReviews && productActive) && (
         <div className={cx(classes.container, 'engage__reviews__reviews')} data-test-id="reviewSection">
           <Header productId={productId} />
           <List productId={productId} reviews={reviews} />

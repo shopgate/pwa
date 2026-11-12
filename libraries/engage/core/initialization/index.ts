@@ -19,6 +19,7 @@ import type { AppSettingsState } from '@shopgate/engage/settings/types/appSettin
 // Imported via its module path rather than the admin-preview helpers barrel, which ThemeProvider
 // and loadThemeCss already import - this module reaches into the settings action creators.
 import { awaitInitialFrontendSettings } from '@shopgate/engage/admin-preview/initialization/awaitInitialFrontendSettings';
+import { initializeIcons } from '@shopgate/engage/icons/initialization';
 import { fetchSettings } from './fetchSettings';
 
 /**
@@ -84,6 +85,8 @@ export const initialize = async (
   });
 
   const store = configureStore(reducers, subscribers) as unknown as Store;
+
+  initializeIcons(store);
 
   try {
     await store.dispatch(fetchClientInformation());

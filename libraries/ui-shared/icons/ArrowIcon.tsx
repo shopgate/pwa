@@ -1,17 +1,14 @@
-import Icon from '@shopgate/pwa-common/components/Icon';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
-export interface ArrowIconProps extends Omit<IconProps, 'content'> {
+export interface ArrowIconProps extends Omit<ThemeIconProps, 'name'> {
   shadow?: boolean;
 }
 
 /**
  * The arrow icon component.
  */
-const ArrowIcon = ({ shadow = false, ...props }: ArrowIconProps) => {
-  const content = shadow ? themeConfig.icons.arrowShadowed : themeConfig.icons.arrow;
-  return <Icon content={content} {...props} />;
-};
+const ArrowIcon = ({ shadow = false, ...props }: ArrowIconProps) => (
+  <ThemeIcon name={shadow ? 'arrowShadowed' : 'arrow'} {...props} />
+);
 
 export default ArrowIcon;

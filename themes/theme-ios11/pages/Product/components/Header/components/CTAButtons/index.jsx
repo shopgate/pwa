@@ -34,6 +34,10 @@ const useStyles = makeStyles()(theme => ({
     alignItems: 'center',
     [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
     gap: theme.spacing(1),
+    '& .ui-shared__favorites-button, & .engage__product-share-button': {
+      '--icon-button-background': theme.components.actionButton.background,
+      '--icon-button-color': theme.components.actionButton.color,
+    },
     '&[data-direction="vertical"]': {
       flexDirection: 'column',
     },

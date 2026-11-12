@@ -1,6 +1,7 @@
 import type {
   ColorSchemeMode, ColorSchemeName, ShadowSize, TypographyVariant,
 } from '@shopgate/engage/styles/theme';
+import type { IconOverrides } from '@shopgate/engage/icons/types';
 
 // Re-exported so consumers of these settings do not have to reach into the styles layer, which
 // owns the type because it owns the elevation scale the sizes map to. `TypographyVariant` and the
@@ -137,6 +138,10 @@ export interface ProductRatingSettings {
    * Whether rating stars are also rendered for products that have no rating yet.
    */
   showEmptyStars: boolean;
+  /** Whether ratings, reviews and the entry points to the review pages are shown. */
+  showReviews: boolean;
+  /** Whether the app offers to write a review. */
+  showWriteReview: boolean;
 }
 
 /**
@@ -447,9 +452,9 @@ export interface NavigationActionSettings {
 }
 
 /**
- * The button slots of the header, two on each side.
+ * The button slots of the header: one on the left next to the back button, two on the right.
  */
-export type AppBarButtonSlot = 'left1' | 'left2' | 'right1' | 'right2';
+export type AppBarButtonSlot = 'left1' | 'right1' | 'right2';
 
 /**
  * `fixed` keeps the bar on every page, `floating` lets logo and buttons float over home and
@@ -532,6 +537,10 @@ export interface AppSettings {
    * Settings for the cms widgets.
    */
   widgets: WidgetSettings;
+  /**
+   * Icons the merchant replaced, by icon name.
+   */
+  icons: IconOverrides;
 }
 
 /**

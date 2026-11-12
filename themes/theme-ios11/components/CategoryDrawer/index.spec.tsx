@@ -1,5 +1,5 @@
 import {
-  render, screen, fireEvent, act, waitFor,
+  render, screen, fireEvent, act, waitFor, within,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { Provider } from 'react-redux';
@@ -257,6 +257,32 @@ describe('<CategoryDrawer />', () => {
 
     await waitFor(() => expect(screen.getByRole('heading')).toHaveTextContent('navigation.categories'));
     await waitFor(() => expect(screen.queryByRole('button', { name: 'Jackets' })).not.toBeInTheDocument());
+  });
+
+  it('opens the category of the level from the title', async () => {
+    renderDrawer();
+    await open();
+
+    expect(within(screen.getByRole('heading')).queryByRole('button')).not.toBeInTheDocument();
+
+    await settle(() => fireEvent.click(screen.getByRole('button', { name: /^Men/ })));
+    await waitFor(() => expect(screen.getByRole('heading')).toHaveTextContent('Men'));
+
+    const titleButton = within(screen.getByRole('heading')).getByRole('button');
+    expect(titleButton).toHaveAccessibleName('Men');
+    expect(screen.getByRole('heading')).toHaveAccessibleName('Men');
+    expect(screen.getByRole('dialog')).toHaveAccessibleName('Men');
+
+    await settle(() => fireEvent.click(titleButton));
+
+    expect(mockPush).toHaveBeenCalledWith({
+      pathname: '/category/men',
+      state: {
+        categoryId: 'men',
+        title: 'Men',
+      },
+    });
+    await waitFor(() => expect(screen.queryByRole('dialog')).not.toBeInTheDocument());
   });
 
   it('opens a category without children and closes', async () => {

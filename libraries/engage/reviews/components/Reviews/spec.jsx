@@ -7,7 +7,6 @@ import {
   mockedStateWithoutReview,
   mockedStateWithTwoReviews,
 } from '@shopgate/pwa-common-commerce/reviews/mock';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import Reviews from './index';
 
 const mockedStore = configureStore();
@@ -29,14 +28,14 @@ jest.mock('@shopgate/engage/components', () => ({
   },
 }));
 
-// Mock the getter of the hasReviews key inside the app config, so that we can turn it off later
-jest.resetModules();
+const mockUseReviewVisibility = jest.fn(() => ({
+  showReviews: true,
+  showWriteReview: true,
+}));
 
-const hasReviewsGetter = jest.fn().mockReturnValue(true);
-
-Object.defineProperty(appConfig, 'hasReviews', {
-  get: hasReviewsGetter,
-});
+jest.mock('../../hooks', () => ({
+  useReviewVisibility: () => mockUseReviewVisibility(),
+}));
 
 /**
  * Creates component with provided store state.
@@ -76,7 +75,10 @@ describe('<Reviews />', () => {
   });
 
   it('should not render when feature flag is off', () => {
-    hasReviewsGetter.mockReturnValueOnce(false);
+    mockUseReviewVisibility.mockReturnValueOnce({
+      showReviews: false,
+      showWriteReview: true,
+    });
 
     const { container } = createComponent(mockedStateWithAll);
 

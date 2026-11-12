@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { CartTotalLine } from '@shopgate/engage/components';
-import { i18n, isIOSTheme } from '@shopgate/engage/core';
+import { i18n } from '@shopgate/engage/core';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
 import { getAppliedPromotionsWithoutCoupons } from '../../cart.selectors';
@@ -21,7 +21,7 @@ interface AppliedPromotion {
 
 const useStyles = makeStyles()({
   spacer: {
-    width: isIOSTheme() ? 27 : 32,
+    width: 27,
     order: 1,
     flexShrink: 0,
   },

@@ -1,6 +1,6 @@
 import React, { forwardRef } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { isIOSTheme } from '@shopgate/engage/core';
+import { hasWebBridge } from '@shopgate/engage/core';
 import { SHOP_SETTING_REGISTRATION_MODE_SIMPLE } from '@shopgate/engage/settings/constants/shopSettings';
 import RegistrationFormBase from './RegistrationFormBase';
 import RegistrationFormBilling from './RegistrationFormBilling';
@@ -16,7 +16,7 @@ const useStyles = makeStyles()(theme => ({
     display: 'flex',
     flex: '0 0 auto',
     flexDirection: 'column',
-    ...(!isIOSTheme() ? {
+    ...(hasWebBridge() ? {
       '@media(min-width: 768px)': {
         flexDirection: 'row-reverse',
         '> :not(:first-of-type)': {
@@ -28,7 +28,7 @@ const useStyles = makeStyles()(theme => ({
   containerItem: {
     flexGrow: 1,
     flexShrink: 0,
-    ...(!isIOSTheme() ? {
+    ...(hasWebBridge() ? {
       '@media(min-width: 768px)': {
         width: `calc(50% - ${theme.spacing(2)}px)`,
       },

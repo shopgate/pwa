@@ -146,6 +146,8 @@ export const componentsSchema = {
   actionButton: {
     vars: {
       boxShadow: '',
+      background: '',
+      color: '',
     },
   },
   input: {
@@ -200,6 +202,7 @@ export const componentsSchema = {
       small: '',
       medium: '',
       large: '',
+      strokeWidth: '',
     },
   },
   snackbar: {
@@ -316,6 +319,8 @@ export const componentsDefaults = {
   actionButton: {
     vars: {
       boxShadow: 'none',
+      background: t => t.palette.background.surface,
+      color: t => t.palette.secondary.main,
     },
   },
   border: {
@@ -377,6 +382,7 @@ export const componentsDefaults = {
       small: '1.25rem',
       medium: '1.5rem',
       large: '2rem',
+      strokeWidth: 'initial',
     },
   },
   snackbar: {

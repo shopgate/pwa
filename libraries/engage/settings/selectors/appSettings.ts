@@ -72,6 +72,22 @@ export const getProductSliderSlidesPerView = createSelector(
 );
 
 /**
+ * Selects whether ratings, reviews and the entry points to the review pages are shown.
+ */
+export const getShowReviews = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.rating.showReviews
+);
+
+/**
+ * Selects whether the app offers to write a review.
+ */
+export const getShowWriteReview = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.product.rating.showWriteReview
+);
+
+/**
  * Selects whether the favorites tab bar icon shows the number of favorites within its badge.
  */
 export const getShowFavoritesCounter = createSelector(
@@ -253,4 +269,12 @@ export const getTypographyFontCssUrls = createSelector(
     typography.fontCssUrl,
     ...Object.values(typography.variants).map(variant => variant?.fontCssUrl),
   ].filter((url): url is string => typeof url === 'string' && url.length > 0)))
+);
+
+/**
+ * Selects the icons the merchant replaced, by icon name.
+ */
+export const getIconOverrides = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.icons
 );

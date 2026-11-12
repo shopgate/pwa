@@ -1,40 +1,41 @@
-import { MagnifierIcon, LocatorIcon } from '@shopgate/engage/components';
+import { setIconOverrides } from '@shopgate/engage/icons/helpers/overrides';
 import { getActionIcon } from './icons';
 
-jest.mock('@shopgate/engage', () => ({
-  themeConfig: {
-    icons: {
-      custom: '<path d="custom"/>',
-      empty: '',
-    },
-  },
+jest.mock('@shopgate/engage/icons/helpers/themeIcons', () => ({
+  ...jest.requireActual('@shopgate/engage/icons/helpers/themeIcons'),
+  getLegacyThemeIcons: () => ({
+    custom: '<path d="custom"/>',
+    empty: '',
+  }),
 }));
-jest.mock('@shopgate/engage/components', () => {
-  const icons = {};
-  return new Proxy(icons, {
-    get: (target, name) => {
-      if (!icons[name]) {
-        icons[name] = Object.assign(() => null, { displayName: name });
-      }
-      return icons[name];
-    },
-  });
-});
 
 describe('getActionIcon', () => {
-  it('uses the icon components of the library', () => {
-    expect(getActionIcon('magnifier')).toBe(MagnifierIcon);
-    expect(getActionIcon('store')).toBe(LocatorIcon);
-  });
-
-  it('renders other icons of the shop theme config, the same component every time', () => {
-    const icon = getActionIcon('custom');
+  it('renders the icons by their names, the same component every time', () => {
+    const icon = getActionIcon('magnifier');
 
     expect(icon).toEqual(expect.any(Function));
-    expect(getActionIcon('custom')).toBe(icon);
+    expect(getActionIcon('magnifier')).toBe(icon);
   });
 
-  it.each(['', 'unknown', 'empty', 'constructor', 'toString', '__proto__'])('has no icon for %j', (name) => {
+  it('uses the icon names as they are', () => {
+    expect(getActionIcon('store')).not.toBe(getActionIcon('locator'));
+  });
+
+  it('renders other icons of the shop theme config', () => {
+    expect(getActionIcon('custom')).toEqual(expect.any(Function));
+  });
+
+  it('has no icon once the custom icon it used is removed', () => {
+    setIconOverrides({ 'custom/abc': { svg: '<svg/>' } });
+
+    expect(getActionIcon('custom/abc')).toEqual(expect.any(Function));
+
+    setIconOverrides(null);
+
+    expect(getActionIcon('custom/abc')).toBeNull();
+  });
+
+  it.each(['', 'unknown', 'pin', 'empty', 'constructor', 'toString', '__proto__'])('has no icon for %j', (name) => {
     expect(getActionIcon(name)).toBeNull();
   });
 });

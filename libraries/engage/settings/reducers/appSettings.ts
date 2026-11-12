@@ -1,6 +1,8 @@
 import {
-  isNil, isPlainObject, mapValues, merge, omitBy,
+  isNil, isPlainObject, mapValues, merge, omitBy, pickBy,
 } from 'lodash';
+import type { IconOverride, IconOverrides } from '@shopgate/engage/icons/types';
+import { pickIconOptions } from '@shopgate/engage/icons/helpers/iconOptions';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppBarButtonSlot,
@@ -15,7 +17,12 @@ import type {
   ProductVariantSelectorSettings,
 } from '../types/appSettings';
 import type { ReceiveAppSettingsAction } from '../action-creators/appSettings';
-import { PRODUCT_GALLERY_PAGINATIONS, RECEIVE_APP_SETTINGS } from '../constants/appSettings';
+import {
+  DEFAULT_SHOW_REVIEWS,
+  DEFAULT_SHOW_WRITE_REVIEW,
+  PRODUCT_GALLERY_PAGINATIONS,
+  RECEIVE_APP_SETTINGS,
+} from '../constants/appSettings';
 import {
   DEFAULT_IMAGE_FILL_COLOR,
   DEFAULT_IMAGE_FILL_TRANSPARENT,
@@ -98,6 +105,34 @@ const APP_BAR_MODERN_OPTIONS: {
 };
 
 /**
+ * Keeps the icon overrides that have svg markup and drops invalid fields.
+ * @param icons The incoming icon overrides.
+ * @returns The valid overrides, or undefined when the branch is no object.
+ */
+const pickValidIconOverrides = (icons: unknown): IconOverrides | undefined => {
+  if (!isPlainObject(icons)) {
+    return undefined;
+  }
+
+  const overrides = mapValues(icons as Record<string, unknown>, (icon) => {
+    if (!isPlainObject(icon)) {
+      return null;
+    }
+
+    const override = icon as Partial<IconOverride>;
+
+    return typeof override.svg === 'string'
+      ? {
+        svg: override.svg,
+        ...pickIconOptions(override),
+      }
+      : null;
+  });
+
+  return pickBy(overrides, icon => !!icon?.svg?.trim()) as IconOverrides;
+};
+
+/**
  * The built-in default app settings. Used as the reducer's initial state and as
  * a safe fallback for selectors when the slice is not present in the store yet.
  */
@@ -110,11 +145,6 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       logoPosition: 'center',
       buttons: {
         left1: {
-          action: 'none',
-          icon: '',
-          link: '',
-        },
-        left2: {
           action: 'none',
           icon: '',
           link: '',
@@ -163,6 +193,8 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     },
     rating: {
       showEmptyStars: false,
+      showReviews: DEFAULT_SHOW_REVIEWS,
+      showWriteReview: DEFAULT_SHOW_WRITE_REVIEW,
     },
     manufacturer: {
       showOnProductPage: true,
@@ -250,6 +282,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       right: 0,
     },
   },
+  icons: {},
   images: {
     quality: DEFAULT_IMAGE_QUALITY,
     // Already in the image service's format, so the unhydrated path needs no conversion.
@@ -285,7 +318,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product, category, cart, navigation, search,
+      images, typography, appearance, widgets, product, category, cart, navigation, search, icons,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -345,6 +378,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
       },
       product: product === null ? undefined : {
         ...product,
+        rating: pickValidSettings(product?.rating, DEFAULT_APP_SETTINGS.product.rating),
         variantSelector: pickValidSettings(
           product?.variantSelector,
           DEFAULT_APP_SETTINGS.product.variantSelector,
@@ -408,6 +442,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           right: mediaMargins.right ?? undefined,
         },
       },
+      icons: pickValidIconOverrides(icons),
     }, { isHydrated: true });
 
     // Converted on the way in, so the slice holds wire ready values and every image url does not
