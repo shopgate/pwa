@@ -62,7 +62,9 @@ const useStyles = makeStyles()((theme) => {
       [theme.breakpoints.up('md')]: {
         minHeight: 0,
         overflowY: 'auto',
+        overscrollBehaviorY: 'contain',
         WebkitOverflowScrolling: 'touch',
+        isolation: 'isolate',
       },
     },
     slider: {
