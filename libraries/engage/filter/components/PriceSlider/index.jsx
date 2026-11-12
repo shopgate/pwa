@@ -42,6 +42,13 @@ const useStyles = makeStyles()(theme => ({
   rangeSliderHandleOuter: {
     padding: theme.spacing(1),
   },
+  inline: {
+    maxWidth: 480,
+    fontSize: theme.typography.body1.fontSize,
+    '& input': {
+      fontSize: 'inherit',
+    },
+  },
 }));
 
 /**
@@ -56,6 +63,7 @@ const PriceSlider = ({
   onChange,
   useLinearEasing,
   value: valueFromProps,
+  inline,
 }) => {
   const { classes } = useStyles();
 
@@ -96,6 +104,33 @@ const PriceSlider = ({
     />
   ), [handleChange, priceMax, priceMin]);
 
+  const slider = (
+    <RangeSlider
+      classNames={{
+        container: classes.rangeSliderContainer,
+        outerRange: classes.rangeSliderOuterRange,
+        range: classes.rangeSliderRange,
+        handleInner: classes.rangeSliderHandleInner,
+        handleOuter: classes.rangeSliderHandleOuter,
+      }}
+      easing={useLinearEasing ? 'linear' : 'exponential'}
+      factor={3}
+      max={max}
+      min={min}
+      onChange={handleChange}
+      value={value}
+    />
+  );
+
+  if (inline) {
+    return (
+      <div data-test-id="priceRangeSlider" className={classes.inline}>
+        {renderLabel()}
+        {slider}
+      </div>
+    );
+  }
+
   return (
     <FilterItem>
       <div data-test-id="priceRangeSlider">
@@ -106,21 +141,7 @@ const PriceSlider = ({
           contentClassName={classes.accordionContent}
           handleLabel={i18n.text('filter.filter_by', { label: i18n.text('filter.label.price') })}
         >
-          <RangeSlider
-            classNames={{
-              container: classes.rangeSliderContainer,
-              outerRange: classes.rangeSliderOuterRange,
-              range: classes.rangeSliderRange,
-              handleInner: classes.rangeSliderHandleInner,
-              handleOuter: classes.rangeSliderHandleOuter,
-            }}
-            easing={useLinearEasing ? 'linear' : 'exponential'}
-            factor={3}
-            max={max}
-            min={min}
-            onChange={handleChange}
-            value={value}
-          />
+          {slider}
         </Accordion>
       </div>
     </FilterItem>
@@ -129,6 +150,7 @@ const PriceSlider = ({
 
 PriceSlider.propTypes = {
   id: PropTypes.string.isRequired,
+  inline: PropTypes.bool,
   max: PropTypes.number,
   min: PropTypes.number,
   onChange: PropTypes.func,
@@ -137,6 +159,7 @@ PriceSlider.propTypes = {
 };
 
 PriceSlider.defaultProps = {
+  inline: false,
   useLinearEasing: false,
   max: 100,
   min: 0,

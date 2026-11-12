@@ -1,21 +1,34 @@
-import React, { useCallback, memo } from 'react';
-import PropTypes from 'prop-types';
-import { withForwardedRef } from '@shopgate/engage/core/hocs';
-import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { forwardRef, memo } from 'react';
+import type { MouseEvent, ReactNode } from 'react';
+import { makeStyles } from '@shopgate/engage/styles';
 import { CharacteristicsButton } from '@shopgate/engage/back-in-stock/components';
 import { VisuallyHidden } from '@shopgate/engage/a11y/components';
 import { getValueStateText } from '../../../../VariantSelector/renderers/valueState';
+import type {
+  VariantSelection,
+  VariantSelectorValue,
+} from '../../../../VariantSelector/types';
+
+export interface SheetItemProps {
+  item: VariantSelectorValue;
+  /** The selection this value leads to, for the back in stock button. */
+  characteristics: VariantSelection;
+  onClick?: (event: MouseEvent<HTMLButtonElement>, valueId: string) => void;
+  /** Renders content at the end of the row, e.g. the availability. */
+  rightComponent?: () => ReactNode;
+  selected?: boolean;
+}
 
 const useStyles = makeStyles()((theme) => {
   const buttonBase = {
     outline: 0,
-    textAlign: 'left',
+    textAlign: 'left' as const,
     paddingLeft: 0,
     paddingRight: 0,
     width: '100%',
     display: 'flex',
     justifyContent: 'space-between',
-    flexWrap: 'wrap',
+    flexWrap: 'wrap' as const,
     color: theme.palette.text.primary,
   };
 
@@ -39,7 +52,7 @@ const useStyles = makeStyles()((theme) => {
     },
     root: {
       padding: '16px 0',
-      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      [theme.breakpoints.up('md')]: {
         padding: '8px 16px',
       },
     },
@@ -51,10 +64,8 @@ const useStyles = makeStyles()((theme) => {
       paddingTop: 17,
       paddingBottom: 17,
       fontWeight: theme.typography.fontWeightMedium,
-      [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      [theme.breakpoints.up('md')]: {
         margin: 0,
-        paddingTop: 8,
-        paddingBottom: 8,
         padding: '8px 16px',
         boxShadow: 'none',
       },
@@ -78,67 +89,46 @@ const useStyles = makeStyles()((theme) => {
 });
 
 /**
- * The SheetItem component.
- * @param {Object} props Props.
- * @returns {JSX.Element}
+ * A value of a characteristic in the sheet or menu of the variant selection.
+ * @returns The value row.
  */
-const SheetItem = ({
-  characteristics,
+const SheetItem = forwardRef<HTMLButtonElement, SheetItemProps>(({
   item,
-  forwardedRef,
+  characteristics,
   onClick,
-  rightComponent: Right,
-  selected,
-}) => {
+  rightComponent,
+  selected = false,
+}, ref) => {
   const { classes, cx } = useStyles();
-
-  const buildProps = useCallback(() => ({
-    className: cx({
-      [classes.button]: item.selectable,
-      [classes.buttonDisabled]: !item.selectable,
-      [classes.buttonUnavailable]: item.selectable && item.available === false,
-      [classes.buttonSoldOut]: item.selectable && !!item.soldOut,
-    }, 'theme__product__characteristic__option'),
-    key: item.id,
-    ref: forwardedRef,
-    value: item.id,
-    'aria-hidden': !item.selectable,
-    ...(item.selectable ? { onClick: event => onClick(event, item.id) } : {}),
-  }), [
-    forwardedRef,
-    item.id,
-    item.selectable,
-    item.available,
-    item.soldOut,
-    onClick,
-    classes.button,
-    classes.buttonDisabled,
-    classes.buttonUnavailable,
-    classes.buttonSoldOut,
-    cx,
-  ]);
+  const stateText = getValueStateText(item);
 
   return (
-    <div className={cx(classes.root, {
-      [classes.rootSelected]: selected,
-    })}
-    >
+    <div className={cx(classes.root, { [classes.rootSelected]: selected })}>
       <button
-        {...buildProps()}
+        ref={ref}
+        type="button"
+        role="option"
+        value={item.id}
+        className={cx({
+          [classes.button]: item.selectable,
+          [classes.buttonDisabled]: !item.selectable,
+          [classes.buttonUnavailable]: item.selectable && item.available === false,
+          [classes.buttonSoldOut]: item.selectable && !!item.soldOut,
+        }, 'theme__product__characteristic__option')}
+        aria-hidden={!item.selectable}
+        aria-selected={selected}
         data-test-id={item.label}
         data-unavailable={item.available === false ? true : undefined}
         data-sold-out={item.soldOut ? true : undefined}
-        aria-selected={selected}
-        role="option"
-        type="button"
+        onClick={item.selectable && onClick ? event => onClick(event, item.id) : undefined}
       >
         <div className={classes.mainRow}>
           <div className={item.selectable && item.soldOut ? classes.labelSoldOut : undefined}>
             {item.label}
-            {getValueStateText(item) && <VisuallyHidden>{`, ${getValueStateText(item)}`}</VisuallyHidden>}
+            {stateText && <VisuallyHidden>{`, ${stateText}`}</VisuallyHidden>}
           </div>
           <div className={classes.mainRowRight}>
-            {item.selectable && <Right />}
+            {item.selectable && rightComponent?.()}
           </div>
         </div>
       </button>
@@ -149,22 +139,8 @@ const SheetItem = ({
       </div>
     </div>
   );
-};
+});
 
-SheetItem.propTypes = {
-  characteristics: PropTypes.shape().isRequired,
-  item: PropTypes.shape().isRequired,
-  forwardedRef: PropTypes.shape(),
-  onClick: PropTypes.func,
-  rightComponent: PropTypes.func,
-  selected: PropTypes.bool,
-};
+SheetItem.displayName = 'SheetItem';
 
-SheetItem.defaultProps = {
-  forwardedRef: null,
-  onClick() { },
-  rightComponent: null,
-  selected: false,
-};
-
-export default withForwardedRef(memo(SheetItem));
+export default memo(SheetItem);

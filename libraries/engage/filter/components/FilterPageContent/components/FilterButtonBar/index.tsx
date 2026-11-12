@@ -15,12 +15,31 @@ const useStyles = makeStyles()(theme => ({
     position: 'relative',
     zIndex: 2,
     paddingBottom: `calc(${theme.spacing(1.5)}px + ${theme.layout.safeArea.bottom})`,
+    [theme.breakpoints.up('md')]: {
+      justifyContent: 'space-between',
+      padding: theme.spacing(1.5, 4),
+      paddingBottom: `calc(${theme.spacing(1.5)}px + ${theme.layout.safeArea.bottom})`,
+    },
   },
   apply: {
     flex: 2,
+    [theme.breakpoints.up('md')]: {
+      '&&': {
+        flex: 'none',
+        width: 'auto',
+        minWidth: 280,
+      },
+    },
   },
   reset: {
     flex: 1,
+    [theme.breakpoints.up('md')]: {
+      '&&': {
+        flex: 'none',
+        width: 'auto',
+        minWidth: 160,
+      },
+    },
   },
 }));
 
@@ -49,15 +68,15 @@ const FilterButtonBar = () => {
   return createPortal(
     <ResponsiveContainer appAlways breakpoint="<sm">
       <div className={cx(classes.bar, 'engage__filter-page__button-bar')}>
-        <ApplyButton
-          className={cx(classes.apply, 'engage__filter-page__apply-button')}
-          disabled={!hasChanged}
-          onClick={applyFilters}
-        />
         <ResetButton
           className={cx(classes.reset, 'engage__filter-page__reset-button')}
           disabled={!resetPossible}
           onClick={resetAllFilters}
+        />
+        <ApplyButton
+          className={cx(classes.apply, 'engage__filter-page__apply-button')}
+          disabled={!hasChanged}
+          onClick={applyFilters}
         />
       </div>
     </ResponsiveContainer>,

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, useMediaQuery } from '@shopgate/engage/styles';
 import { isBeta } from '@shopgate/engage/core';
 import { SurroundPortals } from '@shopgate/engage/components';
 import {
@@ -21,6 +21,7 @@ import { getProductActionButtons } from '@shopgate/engage/settings/selectors/app
 import ProductImageSlider from './components/ProductImageSlider';
 import ProductMediaSlider from './components/ProductMediaSlider';
 import CTAButtons from '../Header/components/CTAButtons';
+import { MEDIA_COLUMN_HEIGHT } from '../Layout';
 
 const SWIPER_FRACTION_MARGIN = 4;
 
@@ -37,9 +38,19 @@ const useStyles = makeStyles()((theme) => {
     wrapper: {
       padding: margin,
       [theme.vars.components.iconButton.boxShadow]: theme.components.actionButton.boxShadow,
+      [theme.breakpoints.up('md')]: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: 0,
+      },
     },
     frame: {
       position: 'relative',
+      [theme.breakpoints.up('md')]: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: 0,
+      },
       '--swiper-pagination-fraction-top-offset': `${fractionOffset}px`,
       '& [data-pagination="progressbar"]': {
         '--swiper-pagination-inset-left': borderRadius,
@@ -48,6 +59,13 @@ const useStyles = makeStyles()((theme) => {
     },
     root: {
       position: 'relative',
+      [theme.breakpoints.up('md')]: {
+        minHeight: 0,
+        overflowY: 'auto',
+        overscrollBehaviorY: 'contain',
+        WebkitOverflowScrolling: 'touch',
+        isolation: 'isolate',
+      },
     },
     slider: {
       '&:not(.common__swiper), & > .swiper': rounded,
@@ -58,6 +76,16 @@ const useStyles = makeStyles()((theme) => {
       '[data-pagination="fraction"][data-action-buttons-position="topRight"] & .swiper-pagination-fraction': {
         top: 'auto',
         bottom: fractionOffset,
+      },
+      '&[data-stacked]': {
+        display: 'flex',
+        flexDirection: 'column',
+        gap: theme.spacing(1),
+        borderRadius: 0,
+      },
+      '&[data-stacked] > *, &[data-stacked] .common__image__container': rounded,
+      '&[data-stacked] .common__image': {
+        maxHeight: MEDIA_COLUMN_HEIGHT,
       },
     },
   };
@@ -72,6 +100,7 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
   const { pagination } = useProductGallerySettings();
   const { position: actionButtonsPosition } = useSelector(getProductActionButtons);
   const sliderClassName = cx(classes.slider, className);
+  const stacked = useMediaQuery(theme => theme.breakpoints.up('md'));
 
   return (
     <ProductContext.Consumer>
@@ -114,6 +143,7 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
                           characteristics={characteristics}
                           aria-hidden={ariaHidden}
                           className={sliderClassName}
+                          stacked={stacked}
                         />
                       ) : (
                         <ProductImageSlider
@@ -121,6 +151,7 @@ const Media = ({ 'aria-hidden': ariaHidden, className }) => {
                           variantId={variantId}
                           aria-hidden={ariaHidden}
                           className={sliderClassName}
+                          stacked={stacked}
                         />
                       )}
                     </SurroundPortals>
