@@ -265,3 +265,4 @@ Do not copy Knowledge Base content into this file. Keep AGENTS.md focused on thi
 - Write new tests with `@testing-library/react`, not enzyme (enzyme→RTL migration in progress).
 - Run tests with `npm run test:short`, narrowed to the paths you touched; keep `npm test` for export-surface changes.
 - Don't rely on `extensions/*` being linted or CI-covered; only `@shopgate-theme-config` is.
+- Pull requests get a concise title without the ticket prefix (no `CURB-1234`), and are assigned to the developer you work on the ticket with (`gh pr create --assignee <their login>`, or `@me` when `gh` is logged in as them).
