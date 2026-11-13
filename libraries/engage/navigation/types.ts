@@ -16,6 +16,21 @@ export interface ResolvedNavigationAction {
   /** Number shown in a badge on the icon. */
   badgeCount?: number;
   /**
+   * Whether the badge shows the number. Default `true`; `false` shows a dot without a number,
+   * as long as `badgeCount` is above 0.
+   */
+  badgeShowCount?: boolean;
+  /**
+   * Counts above this are shown as `{badgeMax}+`.
+   * Default 99.
+   */
+  badgeMax?: number;
+  /**
+   * Accessible name while the badge is shown: translated text with the count, not an i18n key.
+   * Default: the label and the count, or only the label in dot mode.
+   */
+  badgeLabel?: string;
+  /**
    * Whether the current page belongs to the action. Tabs highlight it.
    */
   isActive?: boolean;

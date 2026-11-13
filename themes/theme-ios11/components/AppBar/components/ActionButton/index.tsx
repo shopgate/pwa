@@ -14,10 +14,11 @@ import type {
 import { makeStyles } from '@shopgate/engage/styles';
 import { useShowFavoritesCounter } from '../../../TabBar/components/FavoritesIconBadge/hooks';
 import { getActionIcon } from '../../../../helpers/actionIcons';
+import { getNavigationActionBadge } from '../../../../helpers/navigationActionBadge';
 
 const AppBarIcon = AppBar.Icon as unknown as ComponentType<Record<string, unknown>>;
 
-const BADGE_MAX = 99;
+const CORE_COUNTER_ACTIONS = ['cart', 'favorites'];
 
 /**
  * Takes the place of an icon nobody defined.
@@ -47,37 +48,41 @@ interface ResolvedButtonProps {
  * @param props.action The resolved action.
  * @param props.settings The configured action.
  * @param props.slot The slot of the button.
- * @returns The button with the counter of the cart and the favorites, as in the tab bar.
+ * @returns The button with its badge. Cart and favorites count as in their tabs, other actions show
+ * the badge of the action.
  */
 const ResolvedButton = ({ action, settings, slot }: ResolvedButtonProps) => {
   const { classes, cx } = useStyles();
-  const { badgeCount = 0, label, onClick } = action;
+  const { label, onClick } = action;
   const isFavorites = settings.action === 'favorites';
+  const hasCoreCounter = CORE_COUNTER_ACTIONS.includes(settings.action);
   const showFavoritesCounter = useShowFavoritesCounter();
   const showFavoritesBadge = useSelector(getShowWishlistItemsCountBadge) as boolean;
-  const showBadge = badgeCount > 0 && (!isFavorites || showFavoritesBadge);
-  const showCount = !isFavorites || showFavoritesCounter;
+  const text = i18n.text(label);
+  const badge = getNavigationActionBadge(action, text);
+  const { count, max } = badge;
+  const showBadge = count > 0 && (!isFavorites || showFavoritesBadge);
+  const showCount = isFavorites ? showFavoritesCounter : badge.showCount;
+  const coreAriaLabel = showBadge && showCount ? `${text}. ${i18n.text('common.products')}: ${count}.` : text;
   const configuredIcon = getActionIcon(settings.icon);
   const iconName = configuredIcon ? settings.icon : action.icon;
   const IconComponent = configuredIcon ?? getActionIcon(action.icon) ?? NoIcon;
 
   const renderBadge = useCallback(() => (
     <Badge
-      count={badgeCount}
-      max={BADGE_MAX}
+      count={count}
+      max={max}
       showCount={showCount}
       className={cx(classes.badge, 'theme__app-bar__action-badge')}
     />
-  ), [badgeCount, classes.badge, cx, showCount]);
-
-  const text = i18n.text(label);
+  ), [count, max, classes.badge, cx, showCount]);
 
   return (
     <AppBarIcon
       icon={IconComponent}
       onClick={onClick}
       badge={showBadge ? renderBadge : null}
-      aria-label={showBadge && showCount ? `${text}. ${i18n.text('common.products')}: ${badgeCount}.` : text}
+      aria-label={hasCoreCounter ? coreAriaLabel : badge.ariaLabel ?? text}
       testId={`AppBarAction-${iconName}`}
       className="theme__app-bar__action"
       data-action={settings.action}
