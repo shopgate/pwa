@@ -15,9 +15,69 @@ export interface ResolvedNavigationAction {
   onClick: () => void;
   /** Number shown in a badge on the icon. */
   badgeCount?: number;
+  /**
+   * Whether the current page belongs to the action. Tabs highlight it.
+   */
+  isActive?: boolean;
 }
 
 /**
  * A hook that resolves one action. Registered by the core or by extensions.
  */
 export type NavigationActionHook = (settings: NavigationActionSettings) => ResolvedNavigationAction;
+
+/**
+ * Details of a registered action beyond the hook.
+ */
+export interface NavigationActionMeta {
+  /**
+   * Makes the action available as a tab bar item.
+   */
+  tabBar?: {
+    /**
+     * I18n key or plain text, shown in the tab and the admin catalog.
+     */
+    label: string;
+    /**
+     * Name of a registered icon, the default icon of the tab.
+     */
+    icon: string;
+  };
+}
+
+/**
+ * An extension action that merchants can add to the tab bar.
+ */
+export interface NavigationCatalogItem {
+  /**
+   * The name the action is registered under.
+   */
+  action: string;
+  /**
+   * The translated label.
+   */
+  label: string;
+  /**
+   * Name of the default icon.
+   */
+  icon: string;
+}
+
+/**
+ * What the admin needs to configure the navigation, reported by the preview.
+ */
+export interface NavigationCatalog {
+  /**
+   * What the admin needs to configure the tab bar.
+   */
+  tabBar: {
+    /**
+     * The items the app renders while the merchant configured none.
+     */
+    defaultItems: NavigationActionSettings[];
+    /**
+     * Registered extension actions that can be added to the tab bar.
+     */
+    extensionItems: NavigationCatalogItem[];
+  };
+}

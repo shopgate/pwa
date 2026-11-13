@@ -226,13 +226,11 @@ const Pages = ({ store }) => {
                             component={routes.More}
                             transform={routesTransforms[MORE_PATH]}
                           />
-                          { appConfig.hasFavorites && (
                           <Route
                             pattern={FAVORITES_PATH}
                             component={routes.Favorites}
                             transform={routesTransforms[FAVORITES_PATH]}
                           />
-                          )}
                           <Route
                             pattern={LOGIN_PATH}
                             component={routes.Login}

@@ -7,6 +7,7 @@ import CartIcon from '@shopgate/pwa-ui-ios/icons/CartIcon';
 import { i18n } from '@shopgate/engage/core/helpers';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
+import TabBarIcon from '../TabBarIcon';
 import CartItemBadge from './components/CartItemBadge';
 import connect from '../connector';
 import connectBadge from './components/CartItemBadge/connector';
@@ -23,7 +24,7 @@ const useIconStyles = makeStyles()({
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */
-const TabBarCartAction = (props) => {
+const TabBarCartAction = ({ configuredIcon: ConfiguredIcon, portalsOnly, ...props }) => {
   const { classes } = useIconStyles();
   const {
     cartProductCount,
@@ -41,15 +42,28 @@ const TabBarCartAction = (props) => {
     [cartProductCount, label]
   );
 
+  const portalProps = {
+    ...props,
+    TabBarAction,
+  };
+  const before = <Portal name={portals.TAB_BAR_CART_BEFORE} props={props} />;
+  const after = <Portal name={portals.TAB_BAR_CART_AFTER} props={portalProps} />;
+
+  if (portalsOnly) {
+    return (
+      <>
+        {before}
+        {after}
+      </>
+    );
+  }
+
   return (
     <>
-      <Portal name={portals.TAB_BAR_CART_BEFORE} props={props} />
+      {before}
       <Portal
         name={portals.TAB_BAR_CART}
-        props={{
-          ...props,
-          TabBarAction,
-        }}
+        props={portalProps}
       >
         <TabBarAction
           {...tabBarActionProps}
@@ -57,7 +71,9 @@ const TabBarCartAction = (props) => {
           aria-label={ariaLabel}
           icon={(
             <Portal name={portals.TAB_BAR_CART_ICON}>
-              <CartIcon className={classes.icon} />
+              {ConfiguredIcon
+                ? <TabBarIcon icon={ConfiguredIcon} />
+                : <CartIcon className={classes.icon} />}
             </Portal>
           )}
           onClick={handleClick}
@@ -65,13 +81,7 @@ const TabBarCartAction = (props) => {
           <CartItemBadge />
         </TabBarAction>
       </Portal>
-      <Portal
-        name={portals.TAB_BAR_CART_AFTER}
-        props={{
-          ...props,
-          TabBarAction,
-        }}
-      />
+      {after}
     </>
   );
 };
@@ -81,8 +91,14 @@ TabBarCartAction.propTypes = {
   historyPush: PropTypes.func.isRequired,
   path: PropTypes.string.isRequired,
   ...TabBarAction.propTypes,
+  configuredIcon: PropTypes.elementType,
+  portalsOnly: PropTypes.bool,
 };
 
-TabBarCartAction.defaultProps = TabBarAction.defaultProps;
+TabBarCartAction.defaultProps = {
+  ...TabBarAction.defaultProps,
+  configuredIcon: null,
+  portalsOnly: false,
+};
 
 export default connect(connectBadge(memo(TabBarCartAction)));

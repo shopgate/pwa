@@ -1085,6 +1085,112 @@ describe('settings / reducers / appSettings', () => {
     expect(state.navigation).toEqual(DEFAULT_APP_SETTINGS.navigation);
   });
 
+  describe('tab bar items', () => {
+    const cart = {
+      action: 'cart',
+      icon: '',
+      link: '',
+    };
+    const home = {
+      action: 'home',
+      icon: 'heart',
+      link: '',
+    };
+
+    /**
+     * Receives a payload with the given tab bar items.
+     * @param items The incoming tab bar items.
+     * @param state The state to start from.
+     * @returns The stored tab bar items.
+     */
+    const receiveItems = (items: unknown, state = DEFAULT_APP_SETTINGS) => appSettings(
+      state,
+      receiveAppSettings({ navigation: { tabBar: { items } } } as unknown as AppSettings)
+    ).navigation.tabBar.items;
+
+    it('has no default list', () => {
+      expect(DEFAULT_APP_SETTINGS.navigation.tabBar.items).toBeUndefined();
+      expect(appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({})).navigation.tabBar.items)
+        .toBeUndefined();
+    });
+
+    it('keeps the configured items in their order', () => {
+      expect(receiveItems([cart, home])).toEqual([cart, home]);
+    });
+
+    it('keeps an empty list', () => {
+      expect(receiveItems([])).toEqual([]);
+    });
+
+    it.each([null, 'cart', { 0: cart }, 3])('falls back to the default list for %j', (items) => {
+      expect(receiveItems(items)).toBeUndefined();
+    });
+
+    it('drops entries without an action', () => {
+      expect(receiveItems([
+        null,
+        'cart',
+        [cart],
+        {
+          icon: 'cart',
+          link: '',
+        },
+        {
+          action: '',
+          icon: '',
+          link: '',
+        },
+        {
+          action: 42,
+          icon: '',
+          link: '',
+        },
+        home,
+      ])).toEqual([home]);
+    });
+
+    it('drops unknown fields and replaces invalid icons and links', () => {
+      expect(receiveItems([
+        {
+          action: '@shopgate/customer-card/card',
+          label: 'Card',
+        },
+        {
+          action: 'link',
+          icon: null,
+          link: 42,
+        },
+      ])).toEqual([
+        {
+          action: '@shopgate/customer-card/card',
+          icon: '',
+          link: '',
+        },
+        {
+          action: 'link',
+          icon: '',
+          link: '',
+        },
+      ]);
+    });
+
+    it('replaces a longer list of an earlier payload', () => {
+      const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        navigation: { tabBar: { items: [home, cart, home] } },
+      }));
+
+      expect(receiveItems([cart], first)).toEqual([cart]);
+    });
+
+    it('drops the list when a later payload omits it', () => {
+      const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        navigation: { tabBar: { items: [cart] } },
+      }));
+
+      expect(appSettings(first, receiveAppSettings({})).navigation.tabBar.items).toBeUndefined();
+    });
+  });
+
   describe('icons', () => {
     it('defaults to no icon overrides', () => {
       expect(DEFAULT_APP_SETTINGS.icons).toEqual({});

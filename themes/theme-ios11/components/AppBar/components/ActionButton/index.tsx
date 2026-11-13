@@ -13,7 +13,7 @@ import type {
 } from '@shopgate/engage/settings/types/appSettings';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useShowFavoritesCounter } from '../../../TabBar/components/FavoritesAction/hooks';
-import { getActionIcon } from './icons';
+import { getActionIcon } from '../../../../helpers/actionIcons';
 
 const AppBarIcon = AppBar.Icon as unknown as ComponentType<Record<string, unknown>>;
 

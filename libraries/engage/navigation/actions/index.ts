@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { appConfig } from '@shopgate/engage';
 import { hex2bin } from '@shopgate/engage/core/helpers';
 import { hasScannerSupport } from '@shopgate/engage/core/selectors';
+import { INDEX_PATH } from '@shopgate/engage/core/constants';
 import { SCANNER_SCOPE_DEFAULT, SCANNER_TYPE_BARCODE } from '@shopgate/engage/scanner/constants';
 import { getScannerRoute } from '@shopgate/engage/scanner/helpers';
 import { CART_PATH, getCartProductDisplayCount } from '@shopgate/engage/cart';
@@ -17,9 +18,8 @@ import {
 } from '../constants';
 import type { NavigationActionHook } from '../types';
 
-const { hasNoScanner, hasFavorites } = (appConfig || {}) as {
+const { hasNoScanner } = (appConfig || {}) as {
   hasNoScanner?: boolean;
-  hasFavorites?: boolean;
 };
 
 /**
@@ -55,6 +55,13 @@ export const toPathname = (link: unknown): string => {
   const [path] = value.split('#');
   return path.startsWith('/') ? path : `/${path}`;
 };
+
+const useHomeAction: NavigationActionHook = () => ({
+  available: true,
+  icon: 'home',
+  label: 'navigation.home',
+  onClick: usePush(INDEX_PATH),
+});
 
 const useLinkAction: NavigationActionHook = ({ link }) => {
   const pathname = toPathname(link);
@@ -115,7 +122,7 @@ const useCartAction: NavigationActionHook = () => ({
 });
 
 const useFavoritesAction: NavigationActionHook = () => ({
-  available: !!hasFavorites,
+  available: true,
   icon: 'heart',
   label: 'navigation.favorites',
   onClick: usePush(FAVORITES_PATH),
@@ -148,6 +155,7 @@ const useCategoryMenuAction: NavigationActionHook = () => ({
 });
 
 export const CORE_NAVIGATION_ACTIONS: Partial<Record<string, NavigationActionHook>> = {
+  home: useHomeAction,
   link: useLinkAction,
   openSearch: useOpenSearchAction,
   share: useShareAction,

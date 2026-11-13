@@ -1,9 +1,12 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import type { FooterBarVariant } from '@shopgate/engage/settings/types/appSettings';
-import { useFooterBarLayout } from './hooks';
+import type { FooterBarVariant, NavigationActionSettings } from '@shopgate/engage/settings/types/appSettings';
+import { registerNavigationAction } from '@shopgate/engage/navigation/registry';
+import type { NavigationActionHook } from '@shopgate/engage/navigation/types';
+import { resolveTabBarItems, useFooterBarLayout, useTabBarItems } from './hooks';
 
 let mockTabBarVariant = 'fixed';
+let mockTabBarItems: NavigationActionSettings[] | undefined;
 
 jest.mock('react-redux', () => ({ useSelector: (selector: () => unknown) => selector() }));
 jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
@@ -15,6 +18,13 @@ jest.mock('@shopgate/engage/settings/selectors/appSettings', () => ({
     showLabels: true,
     fixed: { borderEnabled: true },
   }),
+  getTabBarItems: () => mockTabBarItems,
+}));
+jest.mock('@shopgate/engage/navigation/actions', () => ({
+  CORE_NAVIGATION_ACTIONS: {
+    openSearch: () => null,
+    cart: () => null,
+  },
 }));
 jest.mock('@shopgate/engage/core/hooks', () => ({
   useWidgetSettings: () => ({}),
@@ -48,5 +58,141 @@ describe('useFooterBarLayout()', () => {
     render(<Layout variant="fixed" />);
 
     expect(screen.getByText('floating 8')).toBeInTheDocument();
+  });
+});
+
+/**
+ * Creates a configured tab bar item.
+ * @param action The action of the item.
+ * @param icon The icon of the item.
+ * @returns The item.
+ */
+const item = (action: string, icon = ''): NavigationActionSettings => ({
+  action,
+  icon,
+  link: '',
+});
+
+/**
+ * Lists the actions of items.
+ * @param items The items.
+ * @returns The actions.
+ */
+const actions = (items: NavigationActionSettings[]) => items.map(({ action }) => action);
+
+const useTestAction: NavigationActionHook = () => ({
+  available: true,
+  icon: '',
+  label: 'test',
+  onClick: jest.fn(),
+});
+
+registerNavigationAction('@shopgate/test/card', useTestAction, {
+  tabBar: {
+    label: 'Card',
+    icon: '',
+  },
+});
+registerNavigationAction('@shopgate/test/card2', useTestAction, {
+  tabBar: {
+    label: 'Card 2',
+    icon: '',
+  },
+});
+registerNavigationAction('@shopgate/test/header', useTestAction);
+registerNavigationAction('openSearch', useTestAction, {
+  tabBar: {
+    label: 'Search',
+    icon: '',
+  },
+});
+
+describe('resolveTabBarItems()', () => {
+  it('uses the default items without a stored list', () => {
+    expect(actions(resolveTabBarItems(undefined))).toEqual(['home', 'browse', 'cart', 'favorites', 'more']);
+  });
+
+  it('keeps the stored order and the configured icons', () => {
+    const items = resolveTabBarItems([item('home'), item('cart', 'star'), item('categoryDrawer')]);
+
+    expect(items).toEqual([item('home'), item('cart', 'star'), item('categoryDrawer')]);
+  });
+
+  it('drops none, unknown actions and actions without a tab', () => {
+    const items = resolveTabBarItems([
+      item('home'), item('none'), item('@shopgate/test/unknown'), item('@shopgate/test/header'), item('more'),
+    ]);
+
+    expect(actions(items)).toEqual(['home', 'more']);
+  });
+
+  it('drops a core header action even when it was registered with a tab', () => {
+    expect(actions(resolveTabBarItems([item('home'), item('openSearch')]))).toEqual(['home']);
+  });
+
+  it('keeps only the first item of each tab', () => {
+    expect(actions(resolveTabBarItems([item('home'), item('cart', 'star'), item('cart')])))
+      .toEqual(['home', 'cart']);
+    expect(resolveTabBarItems([item('home'), item('cart', 'star'), item('cart')])[1]).toEqual(item('cart', 'star'));
+    expect(actions(resolveTabBarItems([item('home'), item('browse'), item('categoryDrawer')])))
+      .toEqual(['home', 'browse']);
+    expect(actions(resolveTabBarItems([item('home'), item('@shopgate/test/card'), item('@shopgate/test/card')])))
+      .toEqual(['home', '@shopgate/test/card']);
+  });
+
+  it('adds Home in front when it is missing', () => {
+    expect(resolveTabBarItems([item('cart'), item('more')])).toEqual([item('home'), item('cart'), item('more')]);
+    expect(actions(resolveTabBarItems([]))).toEqual(['home']);
+  });
+
+  it('keeps at most six items', () => {
+    const items = resolveTabBarItems([
+      item('cart'), item('browse'), item('favorites'), item('more'), item('@shopgate/test/card'), item('home'),
+      item('@shopgate/test/card2'),
+    ]);
+
+    expect(actions(items)).toEqual(['cart', 'browse', 'favorites', 'more', '@shopgate/test/card', 'home']);
+  });
+
+  it('adds Home in front when the list is full without it', () => {
+    const items = resolveTabBarItems([
+      item('cart'), item('browse'), item('favorites'), item('more'), item('@shopgate/test/card'), item('categoryDrawer'),
+    ]);
+
+    expect(actions(items)).toEqual(['home', 'cart', 'browse', 'favorites', 'more', '@shopgate/test/card']);
+  });
+
+  it('moves a stored Home beyond the limit to the front', () => {
+    const items = resolveTabBarItems([
+      item('cart'), item('favorites'), item('more'), item('@shopgate/test/card'), item('@shopgate/test/card2'),
+      item('categoryDrawer'), item('home', 'star'),
+    ]);
+
+    expect(items[0]).toEqual(item('home', 'star'));
+    expect(actions(items)).toEqual(['home', 'cart', 'favorites', 'more', '@shopgate/test/card', '@shopgate/test/card2']);
+  });
+
+  it('renders a registered item only when it is stored', () => {
+    expect(actions(resolveTabBarItems(undefined))).not.toContain('@shopgate/test/card');
+    expect(actions(resolveTabBarItems([item('home'), item('@shopgate/test/card')])))
+      .toEqual(['home', '@shopgate/test/card']);
+  });
+});
+
+/**
+ * Renders the actions of the resolved tab bar items.
+ * @returns The actions.
+ */
+const Items = () => <span>{actions(useTabBarItems()).join(' ')}</span>;
+
+describe('useTabBarItems()', () => {
+  it('resolves the stored items of the app settings', () => {
+    mockTabBarItems = undefined;
+    const { rerender } = render(<Items />);
+    expect(screen.getByText('home browse cart favorites more')).toBeInTheDocument();
+
+    mockTabBarItems = [item('more'), item('none')];
+    rerender(<Items />);
+    expect(screen.getByText('home more')).toBeInTheDocument();
   });
 });

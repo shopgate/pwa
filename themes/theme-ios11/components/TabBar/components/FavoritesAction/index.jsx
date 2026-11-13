@@ -8,6 +8,7 @@ import FavoritesIcon from '@shopgate/pwa-ui-shared/icons/HeartIcon';
 import * as portals from '../../constants';
 import FavoritesIconBadge from './components/FavoritesIconBadge'; // eslint-disable-line import/no-named-as-default
 import TabBarAction from '../TabBarAction';
+import TabBarIcon from '../TabBarIcon';
 import connect from '../connector';
 import connectBadge from './components/FavoritesIconBadge/connector';
 import { useShowFavoritesCounter } from './hooks';
@@ -24,7 +25,7 @@ const useIconStyles = makeStyles()({
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */
-const TabBarFavoritesAction = (props) => {
+const TabBarFavoritesAction = ({ configuredIcon: ConfiguredIcon, portalsOnly, ...props }) => {
   const { classes } = useIconStyles();
   const {
     favoritesCount,
@@ -53,12 +54,21 @@ const TabBarFavoritesAction = (props) => {
     TabBarAction,
   };
 
+  const before = <Portal name={portals.TAB_BAR_FAVORITES_BEFORE} props={portalProps} />;
+  const after = <Portal name={portals.TAB_BAR_FAVORITES_AFTER} props={portalProps} />;
+
+  if (portalsOnly) {
+    return (
+      <>
+        {before}
+        {after}
+      </>
+    );
+  }
+
   return (
     <>
-      <Portal
-        name={portals.TAB_BAR_FAVORITES_BEFORE}
-        props={portalProps}
-      />
+      {before}
       <Portal
         name={portals.TAB_BAR_FAVORITES}
         props={portalProps}
@@ -69,7 +79,9 @@ const TabBarFavoritesAction = (props) => {
           aria-label={ariaLabel}
           icon={(
             <Portal name={portals.TAB_BAR_FAVORITES_ICON}>
-              <FavoritesIcon className={classes.icon} />
+              {ConfiguredIcon
+                ? <TabBarIcon icon={ConfiguredIcon} />
+                : <FavoritesIcon className={classes.icon} />}
             </Portal>
           )}
           onClick={handleClick}
@@ -77,10 +89,7 @@ const TabBarFavoritesAction = (props) => {
           <FavoritesIconBadge />
         </TabBarAction>
       </Portal>
-      <Portal
-        name={portals.TAB_BAR_FAVORITES_AFTER}
-        props={portalProps}
-      />
+      {after}
     </>
   );
 };
@@ -91,10 +100,14 @@ TabBarFavoritesAction.propTypes = {
   path: PropTypes.string.isRequired,
   showWishlistItemsCountBadge: PropTypes.bool.isRequired,
   ...TabBarAction.propTypes,
+  configuredIcon: PropTypes.elementType,
+  portalsOnly: PropTypes.bool,
 };
 
 TabBarFavoritesAction.defaultProps = {
   ...TabBarAction.defaultProps,
+  configuredIcon: null,
+  portalsOnly: false,
 };
 
 export default connect(connectBadge(memo(TabBarFavoritesAction)));

@@ -1,5 +1,5 @@
 import { setIconOverrides } from '@shopgate/engage/icons/helpers/overrides';
-import { getActionIcon } from './icons';
+import { getActionIcon } from './actionIcons';
 
 jest.mock('@shopgate/engage/icons/helpers/themeIcons', () => ({
   ...jest.requireActual('@shopgate/engage/icons/helpers/themeIcons'),

@@ -1,5 +1,6 @@
 import type { AppSettingsPayload } from '@shopgate/engage/settings/types/appSettings';
 import type { IconCatalog } from '@shopgate/engage/icons/types';
+import type { NavigationCatalog } from '@shopgate/engage/navigation/types';
 import type { ColorSchemeName } from '@shopgate/engage/styles/theme/createTheme';
 import type { ADMIN_PREVIEW_FEATURES } from '../../constants';
 
@@ -59,6 +60,20 @@ export type FrontendSettingsPreviewBridgeMessage =
      */
     type: 'iconCatalog';
     payload: IconCatalog;
+  }
+  | {
+    /**
+     * Inbound. Asks for the tab bar defaults and extension items, answered with `navigationCatalog`.
+     */
+    type: 'requestNavigationCatalog';
+    payload?: never;
+  }
+  | {
+    /**
+     * Outbound. The default tab bar items and the extension items a merchant can add.
+     */
+    type: 'navigationCatalog';
+    payload: NavigationCatalog;
   }
   | {
     /**

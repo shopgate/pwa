@@ -5,7 +5,7 @@ import { resolveIcon } from '@shopgate/engage/icons/helpers';
 const actionIcons = new Map<string, ComponentType>();
 
 /**
- * Resolves the icon component of a header button.
+ * Resolves the icon component of a header button or a tab.
  * @param name The name of the icon.
  * @returns The icon component, or null when no icon has that name.
  */
@@ -16,7 +16,7 @@ export const getActionIcon = (name: string): ComponentType | null => {
 
   if (!actionIcons.has(name)) {
     /**
-     * Renders the icon of a header button.
+     * Renders the icon of a header button or a tab.
      * @returns The icon.
      */
     const ActionIcon = () => <ThemeIcon name={name} />;

@@ -24,7 +24,7 @@ export const ALLOWED_ADMIN_PREVIEW_ORIGINS = [
  * lock settings or hide tools (e.g. the element picker) that the app in the preview doesn't have
  * yet.
  */
-export const ADMIN_PREVIEW_FEATURES = ['iconCatalog', 'elementPicker'] as const;
+export const ADMIN_PREVIEW_FEATURES = ['iconCatalog', 'elementPicker', 'navigationCatalog'] as const;
 
 /**
  * Tells the admin that the preview listens for messages, and which preview features it supports.

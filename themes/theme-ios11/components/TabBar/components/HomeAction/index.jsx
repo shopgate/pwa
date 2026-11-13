@@ -6,6 +6,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import HomeIcon from '@shopgate/pwa-ui-ios/icons/HomeIcon';
 import * as portals from '../../constants';
 import TabBarAction from '../TabBarAction';
+import TabBarIcon from '../TabBarIcon';
 import connect from '../connector';
 
 const useIconStyles = makeStyles()({
@@ -20,46 +21,49 @@ const useIconStyles = makeStyles()({
  * @param {Object} props Props.
  * @returns {JSX.Element}
  */
-const TabBarHomeAction = (props) => {
+const TabBarHomeAction = ({ configuredIcon: ConfiguredIcon, portalsOnly, ...props }) => {
   const { classes } = useIconStyles();
   const { historyPush } = props;
   const handleClick = useCallback(() => {
     historyPush({ pathname: INDEX_PATH });
   }, [historyPush]);
 
+  const portalProps = {
+    ...props,
+    TabBarAction,
+  };
+  const before = <Portal name={portals.TAB_BAR_HOME_BEFORE} props={portalProps} />;
+  const after = <Portal name={portals.TAB_BAR_HOME_AFTER} props={portalProps} />;
+
+  if (portalsOnly) {
+    return (
+      <>
+        {before}
+        {after}
+      </>
+    );
+  }
+
   return (
     <>
-      <Portal
-        name={portals.TAB_BAR_HOME_BEFORE}
-        props={{
-          ...props,
-          TabBarAction,
-        }}
-      />
+      {before}
       <Portal
         name={portals.TAB_BAR_HOME}
-        props={{
-          ...props,
-          TabBarAction,
-        }}
+        props={portalProps}
       >
         <TabBarAction
           {...props}
           icon={(
             <Portal name={portals.TAB_BAR_HOME_ICON}>
-              <HomeIcon className={classes.icon} />
+              {ConfiguredIcon
+                ? <TabBarIcon icon={ConfiguredIcon} />
+                : <HomeIcon className={classes.icon} />}
             </Portal>
           )}
           onClick={handleClick}
         />
       </Portal>
-      <Portal
-        name={portals.TAB_BAR_HOME_AFTER}
-        props={{
-          ...props,
-          TabBarAction,
-        }}
-      />
+      {after}
     </>
   );
 };
@@ -68,8 +72,14 @@ TabBarHomeAction.propTypes = {
   historyPush: PropTypes.func.isRequired,
   path: PropTypes.string.isRequired,
   ...TabBarAction.propTypes,
+  configuredIcon: PropTypes.elementType,
+  portalsOnly: PropTypes.bool,
 };
 
-TabBarHomeAction.defaultProps = TabBarAction.defaultProps;
+TabBarHomeAction.defaultProps = {
+  ...TabBarAction.defaultProps,
+  configuredIcon: null,
+  portalsOnly: false,
+};
 
 export default connect(memo(TabBarHomeAction));
