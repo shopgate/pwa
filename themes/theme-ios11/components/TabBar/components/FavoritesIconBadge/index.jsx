@@ -2,8 +2,6 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 import { Badge } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { useShowFavoritesCounter } from '../../hooks';
-import connect from './connector';
 
 const MAX_NUMBER = 999;
 
@@ -20,14 +18,17 @@ const useStyles = makeStyles()(theme => ({
 /**
  * Favorites icon badge.
  * @param {Object} props Props.
+ * @param {number} props.favoritesCount The number of favorites.
+ * @param {boolean} props.showWishlistItemsCountBadge Whether the shop shows the badge.
+ * @param {boolean} props.showCounter Whether the badge shows the number.
  * @returns {JSX.Element|null}
  */
 const FavoritesIconBadge = ({
-  favoritesCount = 0,
-  showWishlistItemsCountBadge = true,
+  favoritesCount,
+  showWishlistItemsCountBadge,
+  showCounter,
 }) => {
   const { classes, cx } = useStyles();
-  const showCounter = useShowFavoritesCounter();
 
   if (!showWishlistItemsCountBadge) {
     return null;
@@ -43,16 +44,10 @@ const FavoritesIconBadge = ({
   );
 };
 
-export { FavoritesIconBadge };
-
 FavoritesIconBadge.propTypes = {
-  favoritesCount: PropTypes.number,
-  showWishlistItemsCountBadge: PropTypes.bool,
+  favoritesCount: PropTypes.number.isRequired,
+  showCounter: PropTypes.bool.isRequired,
+  showWishlistItemsCountBadge: PropTypes.bool.isRequired,
 };
 
-FavoritesIconBadge.defaultProps = {
-  favoritesCount: 0,
-  showWishlistItemsCountBadge: true,
-};
-
-export default connect(memo(FavoritesIconBadge));
+export default memo(FavoritesIconBadge);

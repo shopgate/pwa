@@ -6,18 +6,14 @@ import {
   TAB_FAVORITES,
 } from '../constants';
 import TabBarAction from '../components/TabBarAction';
-import TabBarHomeAction from '../components/HomeAction';
-import TabBarBrowseAction from '../components/BrowseAction';
-import TabBarCartAction from '../components/CartAction';
-import TabBarMoreAction from '../components/MoreAction';
-import TabBarFavoritesAction from '../components/FavoritesAction';
+import { createCoreTabAction } from '../components/CoreTabAction';
 
 export const tabs = {
-  [TAB_HOME]: TabBarHomeAction,
-  [TAB_BROWSE]: TabBarBrowseAction,
-  [TAB_CART]: TabBarCartAction,
-  [TAB_MORE]: TabBarMoreAction,
-  [TAB_FAVORITES]: TabBarFavoritesAction,
+  [TAB_HOME]: createCoreTabAction(TAB_HOME),
+  [TAB_BROWSE]: createCoreTabAction(TAB_BROWSE),
+  [TAB_CART]: createCoreTabAction(TAB_CART),
+  [TAB_MORE]: createCoreTabAction(TAB_MORE),
+  [TAB_FAVORITES]: createCoreTabAction(TAB_FAVORITES),
 };
 
 /**

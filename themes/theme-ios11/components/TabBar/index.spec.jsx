@@ -1,8 +1,14 @@
 /* eslint-disable react/prop-types */
 import {
-  render, screen, act, fireEvent, within,
+  render as renderComponent, screen, act, fireEvent, within,
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import { getCartProductCount } from '@shopgate/pwa-common-commerce/cart/selectors';
+import { getFavoritesCount } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getShowWishlistItemsCountBadge } from '@shopgate/engage/settings/selectors/shopSettings';
+import { hasNewServices } from '@shopgate/engage/core/helpers/environment';
 import portalCollection from '@shopgate/pwa-common/helpers/portals/portalCollection';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import { useElementSize } from '@shopgate/engage/core/hooks';
@@ -21,13 +27,24 @@ import {
   TAB_BAR_BROWSE_BEFORE,
   TAB_BAR_BROWSE,
   TAB_BAR_BROWSE_AFTER,
+  TAB_BAR_FAVORITES_BEFORE,
+  TAB_BAR_FAVORITES,
+  TAB_BAR_FAVORITES_AFTER,
+  TAB_BAR_HOME_BEFORE,
+  TAB_BAR_HOME,
+  TAB_BAR_HOME_AFTER,
 } from './constants';
 import TabBarActionComponent from './components/TabBarAction';
+import { useShowFavoritesCounter } from './components/FavoritesIconBadge/hooks';
+import { tabs } from './helpers/getTabActionComponentForType';
 import { useTabBarItems, useTabBarSettings, useTabBarScrollObserver } from './hooks';
 import TabBar from './index';
 
 let mockKeyboardOpen = false;
-const mockNavigate = jest.fn();
+const mockNavigate = jest.fn(params => ({
+  type: 'NAVIGATE',
+  params,
+}));
 
 jest.mock('@shopgate/engage/components', () => ({
   KeyboardConsumer: ({ children }) => children({ open: mockKeyboardOpen }),
@@ -55,18 +72,40 @@ jest.mock('./hooks', () => ({
   useTabBarScrollObserver: jest.fn(),
   useTabBarItems: jest.fn(),
 }));
-jest.mock('./components/connector', () => Component => props => (
-  <Component historyPush={mockNavigate} {...props} />
-));
-jest.mock('./components/CartAction/components/CartItemBadge/connector', () => Component => props => (
-  <Component cartProductCount={0} {...props} />
-));
-jest.mock('./components/FavoritesAction/components/FavoritesIconBadge/connector', () => Component => props => (
-  <Component favoritesCount={0} showWishlistItemsCountBadge {...props} />
-));
-jest.mock('./components/FavoritesAction/hooks', () => ({
-  useShowFavoritesCounter: () => true,
+jest.mock('./components/actions', () => ({
+  navigate: params => mockNavigate(params),
 }));
+jest.mock('@shopgate/pwa-common-commerce/cart/selectors', () => ({
+  ...jest.requireActual('@shopgate/pwa-common-commerce/cart/selectors'),
+  getCartProductCount: jest.fn(() => 0),
+}));
+jest.mock('@shopgate/pwa-common-commerce/favorites/selectors', () => ({
+  ...jest.requireActual('@shopgate/pwa-common-commerce/favorites/selectors'),
+  getFavoritesCount: jest.fn(() => 0),
+}));
+jest.mock('@shopgate/engage/settings/selectors/shopSettings', () => ({
+  ...jest.requireActual('@shopgate/engage/settings/selectors/shopSettings'),
+  getShowWishlistItemsCountBadge: jest.fn(() => true),
+}));
+jest.mock('@shopgate/engage/core/helpers/environment', () => ({
+  ...jest.requireActual('@shopgate/engage/core/helpers/environment'),
+  hasNewServices: jest.fn(() => false),
+}));
+jest.mock('./components/FavoritesIconBadge/hooks', () => ({
+  useShowFavoritesCounter: jest.fn(() => true),
+}));
+
+const mockStore = configureStore();
+let store;
+
+/**
+ * Renders a component within a redux store.
+ * @param {JSX.Element} ui The component.
+ * @returns {Object} The render result.
+ */
+const render = ui => renderComponent(ui, {
+  wrapper: ({ children }) => <Provider store={store}>{children}</Provider>,
+});
 
 const allTabs = [TAB_HOME, TAB_BROWSE, TAB_CART, TAB_FAVORITES, TAB_MORE];
 
@@ -158,6 +197,12 @@ describe('<TabBar />', () => {
 
   beforeEach(() => {
     jest.clearAllMocks();
+    store = mockStore({});
+    getCartProductCount.mockReturnValue(0);
+    getFavoritesCount.mockReturnValue(0);
+    getShowWishlistItemsCountBadge.mockReturnValue(true);
+    useShowFavoritesCounter.mockReturnValue(true);
+    hasNewServices.mockReturnValue(false);
     mockKeyboardOpen = false;
     mockCardActive = false;
     portalCollection.registerPortals({});
@@ -370,7 +415,7 @@ describe('<TabBar />', () => {
       label: 'tab_bar.cart',
       isHighlighted: true,
       path: '/cart',
-      historyPush: mockNavigate,
+      historyPush: expect.any(Function),
       cartProductCount: 0,
     };
 
@@ -408,7 +453,7 @@ describe('<TabBar />', () => {
       label: 'tab_bar.browse',
       isHighlighted: false,
       path: '/',
-      historyPush: mockNavigate,
+      historyPush: expect.any(Function),
       TabBarAction: TabBarActionComponent,
     };
 
@@ -451,6 +496,242 @@ describe('<TabBar />', () => {
 
     expect(within(card).getByTestId(testId)).toBeInTheDocument();
     expect(within(card).getAllByTestId(/-icon$/)).toHaveLength(1);
+  });
+
+  it('should dispatch the navigate action through the historyPush of the portal props', () => {
+    const main = createPortalSpy();
+    registerPortals({ [TAB_BAR_CART]: main });
+
+    render(<TabBar {...props} />);
+    getPortalProps(main).historyPush({ pathname: '/cart' });
+
+    expect(mockNavigate).toHaveBeenCalledWith({ pathname: '/cart' });
+    expect(store.getActions()).toEqual([{
+      type: 'NAVIGATE',
+      params: { pathname: '/cart' },
+    }]);
+  });
+
+  it('should pass the legacy props to the favorites portals', () => {
+    const before = createPortalSpy();
+    const main = createPortalSpy();
+    const after = createPortalSpy();
+    registerPortals({
+      [TAB_BAR_FAVORITES_BEFORE]: before,
+      [TAB_BAR_FAVORITES]: main,
+      [TAB_BAR_FAVORITES_AFTER]: after,
+    });
+    useTabBarItems.mockReturnValue([item('home'), item('favorites', 'star')]);
+
+    render(<TabBar {...props} activeTab={TAB_FAVORITES} path="/favorites" />);
+    const expected = {
+      ...TAB_BAR_ACTION_DEFAULTS,
+      type: TAB_FAVORITES,
+      label: 'tab_bar.favorites',
+      isHighlighted: true,
+      path: '/favorites',
+      historyPush: expect.any(Function),
+      favoritesCount: 0,
+      showWishlistItemsCountBadge: true,
+      widgetSettings: { showCounter: true },
+      TabBarAction: TabBarActionComponent,
+    };
+
+    [before, main, after].forEach((spy) => {
+      expect(getPortalProps(spy)).toEqual(expected);
+      TAB_ITEM_PROPS.forEach((name) => {
+        expect(getPortalProps(spy)).not.toHaveProperty(name);
+      });
+    });
+  });
+
+  it('should pass the legacy props to the home portals', () => {
+    const before = createPortalSpy();
+    const main = createPortalSpy();
+    const after = createPortalSpy();
+    registerPortals({
+      [TAB_BAR_HOME_BEFORE]: before,
+      [TAB_BAR_HOME]: main,
+      [TAB_BAR_HOME_AFTER]: after,
+    });
+
+    render(<TabBar {...props} activeTab={TAB_HOME} />);
+    const expected = {
+      ...TAB_BAR_ACTION_DEFAULTS,
+      type: TAB_HOME,
+      label: 'tab_bar.home',
+      isHighlighted: true,
+      path: '/',
+      historyPush: expect.any(Function),
+      TabBarAction: TabBarActionComponent,
+    };
+
+    [before, main, after].forEach((spy) => {
+      expect(getPortalProps(spy)).toEqual(expected);
+      TAB_ITEM_PROPS.forEach((name) => {
+        expect(getPortalProps(spy)).not.toHaveProperty(name);
+      });
+    });
+
+    const { children } = main.mock.calls[main.mock.calls.length - 1][0];
+    expect(children.props.historyPush).toBe(getPortalProps(main).historyPush);
+  });
+
+  it('should label the cart and favorites tabs with their counts', () => {
+    getCartProductCount.mockReturnValue(2);
+
+    render(<TabBar {...props} />);
+    const [home, , cart, favorites] = screen.getAllByRole('tab');
+
+    expect(home).not.toHaveAttribute('aria-label');
+    expect(cart).toHaveAttribute('aria-label', 'tab_bar.cart. common.products: 2.');
+    expect(within(cart).getByText('2')).toBeInTheDocument();
+    expect(favorites).toHaveAttribute('aria-label', 'tab_bar.favorites. common.products: 0. ');
+  });
+
+  it('should render only the before and after portals without a tab when portalsOnly is set', () => {
+    const before = createPortalSpy();
+    const main = createPortalSpy();
+    const after = createPortalSpy();
+    registerPortals({
+      [TAB_BAR_CART_BEFORE]: before,
+      [TAB_BAR_CART]: main,
+      [TAB_BAR_CART_AFTER]: after,
+    });
+    const Cart = tabs[TAB_CART];
+
+    render(<Cart type={TAB_CART} label="tab_bar.cart" path="/" portalsOnly />);
+
+    expect(screen.queryByRole('tab')).not.toBeInTheDocument();
+    expect(before).toHaveBeenCalled();
+    expect(after).toHaveBeenCalled();
+    expect(main).not.toHaveBeenCalled();
+  });
+
+  it('should render a working tab from the tabs map with the legacy props only', () => {
+    getCartProductCount.mockReturnValue(3);
+    const Cart = tabs[TAB_CART];
+
+    render(<Cart type={TAB_CART} label="tab_bar.cart" isHighlighted path="/cart" />);
+    const tab = screen.getByRole('tab', { selected: true });
+    fireEvent.click(tab);
+
+    expect(tab).toHaveTextContent('tab_bar.cart');
+    expect(tab).toHaveAttribute('data-type', TAB_CART);
+    expect(tab).toHaveAttribute('aria-label', 'tab_bar.cart. common.products: 3.');
+    expect(within(tab).getByText('3')).toBeInTheDocument();
+    expect(tab.querySelector('svg')).toBeInTheDocument();
+    expect(mockNavigate).toHaveBeenCalledWith({ pathname: '/cart' });
+  });
+
+  it.each([
+    [false, true, false, 'tab_bar.favorites.  '],
+    [true, false, true, 'tab_bar.favorites.  '],
+    [true, true, false, 'tab_bar.favorites. common.products: 4. '],
+    [false, false, true, 'tab_bar.favorites. common.products: 4. '],
+  ])(
+    'should label the favorites tab with new services %j, shop badge %j and configured counter %j as %j',
+    (newServices, showWishlistItemsCountBadge, showConfiguredCounter, ariaLabel) => {
+      hasNewServices.mockReturnValue(newServices);
+      getShowWishlistItemsCountBadge.mockReturnValue(showWishlistItemsCountBadge);
+      useShowFavoritesCounter.mockReturnValue(showConfiguredCounter);
+      getFavoritesCount.mockReturnValue(4);
+      useTabBarItems.mockReturnValue([item('favorites')]);
+
+      render(<TabBar {...props} />);
+
+      expect(screen.getByRole('tab')).toHaveAttribute('aria-label', ariaLabel);
+    }
+  );
+
+  it('should render the favorites badge inside the favorites tab', () => {
+    getFavoritesCount.mockReturnValue(5);
+    useTabBarItems.mockReturnValue([item('home'), item('favorites')]);
+
+    const { unmount } = render(<TabBar {...props} />);
+    const [home, favorites] = screen.getAllByRole('tab');
+
+    expect(within(favorites).getByText('5')).toBeInTheDocument();
+    expect(within(home).queryByText('5')).not.toBeInTheDocument();
+
+    unmount();
+    getShowWishlistItemsCountBadge.mockReturnValue(false);
+    render(<TabBar {...props} />);
+
+    expect(within(screen.getAllByRole('tab')[1]).queryByText('5')).not.toBeInTheDocument();
+  });
+
+  it('should pass the props without TabBarAction to the cart before portal of a deleted Cart', () => {
+    const before = createPortalSpy();
+    const after = createPortalSpy();
+    registerPortals({
+      [TAB_BAR_CART_BEFORE]: before,
+      [TAB_BAR_CART_AFTER]: after,
+    });
+    useTabBarItems.mockReturnValue([item('home')]);
+
+    render(<TabBar {...props} />);
+    const expected = {
+      ...TAB_BAR_ACTION_DEFAULTS,
+      type: TAB_CART,
+      label: 'tab_bar.cart',
+      isHighlighted: false,
+      path: '/',
+      historyPush: expect.any(Function),
+      cartProductCount: 0,
+    };
+
+    expect(getPortalProps(before)).toEqual(expected);
+    expect(getPortalProps(after)).toEqual({
+      ...expected,
+      TabBarAction: TabBarActionComponent,
+    });
+  });
+
+  it('should not pass the portal props of the tab types to the tab buttons', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    getCartProductCount.mockReturnValue(1);
+    getFavoritesCount.mockReturnValue(1);
+
+    try {
+      render(<TabBar {...props} />);
+      const attributes = screen.getAllByRole('tab')
+        .flatMap(tab => tab.getAttributeNames().map(name => name.toLowerCase()));
+
+      [
+        'cartproductcount',
+        'favoritescount',
+        'showwishlistitemscountbadge',
+        'widgetsettings',
+        'historypush',
+        'path',
+        'configuredicon',
+        'portalsonly',
+        'openscategorydrawer',
+      ].forEach((name) => {
+        expect(attributes).not.toContain(name);
+      });
+      expect(consoleError).not.toHaveBeenCalled();
+    } finally {
+      consoleError.mockRestore();
+    }
+  });
+
+  it('should not pass an own cartProductCount of a tab from the tabs map to the tab button', () => {
+    const consoleError = jest.spyOn(console, 'error').mockImplementation(() => {});
+    getCartProductCount.mockReturnValue(2);
+    const Cart = tabs[TAB_CART];
+
+    try {
+      render(<Cart type={TAB_CART} label="tab_bar.cart" path="/" cartProductCount={7} />);
+      const tab = screen.getByRole('tab');
+
+      expect(tab.getAttributeNames().map(name => name.toLowerCase())).not.toContain('cartproductcount');
+      expect(tab).toHaveAttribute('aria-label', 'tab_bar.cart. common.products: 2.');
+      expect(consoleError).not.toHaveBeenCalled();
+    } finally {
+      consoleError.mockRestore();
+    }
   });
 });
 /* eslint-enable react/prop-types */

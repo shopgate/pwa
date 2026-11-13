@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Badge } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
-import connect from './connector';
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -37,4 +36,4 @@ CartItemBadge.propTypes = {
   cartProductCount: PropTypes.number.isRequired,
 };
 
-export default connect(memo(CartItemBadge));
+export default memo(CartItemBadge);
