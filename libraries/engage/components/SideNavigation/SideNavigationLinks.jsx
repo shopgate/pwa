@@ -2,7 +2,6 @@ import React from 'react';
 import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
 import { LOGIN_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { useSideNavigation } from './SideNavigation.hooks';
 import SideNavigationItem from './SideNavigationItem';
 import SideNavigationNestedItem from './SideNavigationNestedItem';
@@ -27,7 +26,7 @@ const SideNavigationLinks = () => {
   return (
     <>
       <SideNavigationItem href={CART_PATH} label="navigation.cart" />
-      {!isLoggedIn && appConfig.hasFavorites ? (
+      {!isLoggedIn ? (
         <SideNavigationItem href={FAVORITES_PATH} label="navigation.favorites" />
       ) : null}
       {isLoggedIn && (
@@ -40,9 +39,7 @@ const SideNavigationLinks = () => {
         <ul>
           <SideNavigationItem level={1} href={PROFILE_PATH} label="titles.profile" />
           <SideNavigationItem level={1} href={ORDERS_PATH} label="titles.order_history" />
-          {appConfig.hasFavorites ? (
-            <SideNavigationItem level={1} href={WISH_LIST_PATH} label="titles.favorites" />
-          ) : null}
+          <SideNavigationItem level={1} href={WISH_LIST_PATH} label="titles.favorites" />
         </ul>
       </SideNavigationNestedItem>
       )}

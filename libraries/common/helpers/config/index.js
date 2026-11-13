@@ -13,7 +13,10 @@ const defaultAppConfig = {
   browserConnector: false,
   colors: {},
   forgotPasswordUrl: null,
-  hasFavorites: false,
+  /**
+   * @deprecated Always true. Every shop has favorites; the tab bar's configured list decides.
+   */
+  hasFavorites: true,
   hasReviews: true,
   showWriteReview: true,
   language: 'en-us',
@@ -104,6 +107,8 @@ export const themeIcons = themeConfig.icons;
 
 // Fix theme config reference
 appConfig.theme = themeConfig;
+
+appConfig.hasFavorites = true;
 
 /**
  * A comparator for array items as they occur on different levels within the default app config.

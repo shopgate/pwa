@@ -10,7 +10,6 @@ import {
   hasMultipleFavoritesList,
 } from '@shopgate/pwa-common-commerce/favorites/selectors';
 import { getWishlistItemQuantityEnabled } from '@shopgate/engage/settings/selectors/shopSettings';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 
 /**
  * @returns {Object}
@@ -58,10 +57,6 @@ const FavoriteButtonWide = ({
 
     return 'favorites.remove_from_list';
   }, [hasMultipleLists, isOnList, wishlistItemQuantityEnabled]);
-
-  if (!appConfig.hasFavorites) {
-    return null;
-  }
 
   return (
     <Button
