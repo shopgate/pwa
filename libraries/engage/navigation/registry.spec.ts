@@ -167,5 +167,100 @@ describe('navigation action registry', () => {
       expect(getNavigationCatalog().tabBar.extensionItems)
         .not.toContainEqual(expect.objectContaining({ action: 'cart' }));
     });
+
+    describe('adminLabel', () => {
+      /**
+       * Registers a tab with admin labels and reads its catalog item.
+       * @param action The name of the action.
+       * @param adminLabel The admin labels of the tab.
+       * @returns The catalog item of the action.
+       */
+      const getItem = (action: string, adminLabel: unknown) => {
+        registerNavigationAction(action, extension, {
+          tabBar: {
+            label: 'card.label',
+            icon: 'card',
+            adminLabel: adminLabel as Record<string, string>,
+          },
+        });
+
+        return getNavigationCatalog().tabBar.extensionItems.find(item => item.action === action);
+      };
+
+      it('passes the admin labels on without translating them', () => {
+        const adminLabel = {
+          'en-us': 'Customer card',
+          'de-de': 'Kundenkarte',
+        };
+
+        const item = getItem('@shopgate/admin-label/valid', adminLabel);
+
+        expect(item).toEqual({
+          action: '@shopgate/admin-label/valid',
+          label: 'translated card.label',
+          icon: 'card',
+          adminLabel: {
+            'en-us': 'Customer card',
+            'de-de': 'Kundenkarte',
+          },
+        });
+      });
+
+      it('reports a new object that later changes of the extension do not reach', () => {
+        const adminLabel: Record<string, string> = { 'en-us': 'Customer card' };
+
+        const item = getItem('@shopgate/admin-label/copy', adminLabel);
+        adminLabel['en-us'] = 'Changed';
+
+        expect(item?.adminLabel).not.toBe(adminLabel);
+        expect(item?.adminLabel).toEqual({ 'en-us': 'Customer card' });
+      });
+
+      it('leaves out the admin labels when the action has none', () => {
+        registerNavigationAction('@shopgate/admin-label/none', extension, {
+          tabBar: {
+            label: 'card.label',
+            icon: 'card',
+          },
+        });
+
+        const item = getNavigationCatalog().tabBar.extensionItems
+          .find(({ action }) => action === '@shopgate/admin-label/none');
+
+        expect(item).toBeDefined();
+        expect(item).not.toHaveProperty('adminLabel');
+      });
+
+      it.each([
+        ['a string', 'Customer card'],
+        ['null', null],
+        ['an array', ['Customer card']],
+        ['a map without string values', {
+          'en-us': 1,
+          'de-de': null,
+          'fr-fr': { text: 'Carte client' },
+        }],
+        ['an empty map', {}],
+      ])('leaves out the admin labels when they are %s', (_, adminLabel) => {
+        const item = getItem('@shopgate/admin-label/invalid', adminLabel);
+
+        expect(item).toBeDefined();
+        expect(item).not.toHaveProperty('adminLabel');
+      });
+
+      it('keeps only the own entries with string values', () => {
+        const adminLabel = Object.assign(Object.create({ 'it-it': 'Inherited' }), {
+          'en-us': 'Customer card',
+          'de-de': 42,
+          'fr-fr': undefined,
+          'es-es': ['Tarjeta'],
+          [Symbol('nl-nl')]: 'Klantenkaart',
+        });
+
+        const item = getItem('@shopgate/admin-label/mixed', adminLabel);
+
+        expect(item?.adminLabel).toEqual({ 'en-us': 'Customer card' });
+      });
+    });
   });
 });

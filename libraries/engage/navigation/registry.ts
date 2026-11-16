@@ -53,6 +53,22 @@ export const isTabBarExtensionAction = (name: string): boolean => (
 );
 
 /**
+ * Copies the admin labels of a tab, keeping only entries with a string key and a string value.
+ * @param adminLabel The admin labels the action was registered with.
+ * @returns A new map with the valid entries, or `undefined` when none remain.
+ */
+const copyAdminLabel = (adminLabel: unknown): Record<string, string> | undefined => {
+  if (!adminLabel || typeof adminLabel !== 'object' || Array.isArray(adminLabel)) {
+    return undefined;
+  }
+
+  const entries = Object.entries(adminLabel)
+    .filter((entry): entry is [string, string] => typeof entry[1] === 'string');
+
+  return entries.length ? Object.fromEntries(entries) : undefined;
+};
+
+/**
  * Creates the catalog of the navigation, for the admin preview: the default tab bar items and the
  * registered extension actions that can be added to the tab bar.
  * @returns The navigation catalog.
@@ -60,12 +76,19 @@ export const isTabBarExtensionAction = (name: string): boolean => (
 export const getNavigationCatalog = (): NavigationCatalog => ({
   tabBar: {
     defaultItems: DEFAULT_TAB_BAR_ITEMS.map(item => ({ ...item })),
-    extensionItems: Array.from(actions).flatMap(([action, { meta }]) => (
-      !meta?.tabBar || !isTabBarExtensionAction(action) ? [] : [{
+    extensionItems: Array.from(actions).flatMap(([action, { meta }]) => {
+      if (!meta?.tabBar || !isTabBarExtensionAction(action)) {
+        return [];
+      }
+
+      const adminLabel = copyAdminLabel(meta.tabBar.adminLabel);
+
+      return [{
         action,
         label: i18n.text(meta.tabBar.label),
         icon: meta.tabBar.icon,
-      }]
-    )),
+        ...(adminLabel && { adminLabel }),
+      }];
+    }),
   },
 });

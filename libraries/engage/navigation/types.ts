@@ -57,6 +57,11 @@ export interface NavigationActionMeta {
      * Name of a registered icon, the default icon of the tab.
      */
     icon: string;
+    /**
+     * Label shown only in the admin, keyed by admin locale, e.g. `{ 'en-us': 'Customer card' }`.
+     * Plain strings, not translated by the app.
+     */
+    adminLabel?: Record<string, string>;
   };
 }
 
@@ -76,6 +81,11 @@ export interface NavigationCatalogItem {
    * Name of the default icon.
    */
   icon: string;
+  /**
+   * Admin-only label, keyed by admin locale, passed on untranslated.
+   * Missing when the action has none; the admin then shows `label`.
+   */
+  adminLabel?: Record<string, string>;
 }
 
 /**
