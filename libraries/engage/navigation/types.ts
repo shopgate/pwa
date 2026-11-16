@@ -3,6 +3,12 @@ import type { NavigationActionSettings } from '@shopgate/engage/settings/types/a
 export type { NavigationActionSettings };
 
 /**
+ * Locale of the admin, lower case language and region.
+ * Known locales are suggested; others are allowed.
+ */
+export type AdminLocale = 'en-us' | 'de-de' | (string & Record<never, never>);
+
+/**
  * A header or tab bar action, resolved for the current page.
  */
 export interface ResolvedNavigationAction {
@@ -58,10 +64,10 @@ export interface NavigationActionMeta {
      */
     icon: string;
     /**
-     * Label shown only in the admin, keyed by admin locale, e.g. `{ 'en-us': 'Customer card' }`.
-     * Plain strings, not translated by the app.
+     * Admin-only labels by admin locale (`en-us`, `de-de`), not translated by the app. The admin
+     * uses its locale, then `en-us`, then `label`, so always set `en-us`.
      */
-    adminLabel?: Record<string, string>;
+    adminLabel?: Partial<Record<AdminLocale, string>>;
   };
 }
 
@@ -82,10 +88,10 @@ export interface NavigationCatalogItem {
    */
   icon: string;
   /**
-   * Admin-only label, keyed by admin locale, passed on untranslated.
-   * Missing when the action has none; the admin then shows `label`.
+   * Admin-only labels by admin locale, passed on untranslated. Missing when the action has none;
+   * the admin uses its locale, then `en-us`, then `label`.
    */
-  adminLabel?: Record<string, string>;
+  adminLabel?: Partial<Record<AdminLocale, string>>;
 }
 
 /**
