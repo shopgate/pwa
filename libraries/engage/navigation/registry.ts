@@ -10,11 +10,13 @@ const actions = new Map<string, {
 
 /**
  * Registers an action that header buttons and tab bar entries can run. An action registered under
- * the name of a core action replaces it. A registered action never adds itself to the tab bar, the
+ * the name of a core action replaces it in header buttons and the scanner button of the search
+ * field; core tabs stay as they are. A registered action never adds itself to the tab bar, the
  * merchant adds it.
  * @param name The name the action is configured with.
  * @param useAction Hook that resolves the action for the current page.
- * @param meta Details of the action, e.g. what its tab shows.
+ * @param meta Details of the action, e.g. the text and icon of its tab (`tabBar`), which tabs use
+ * instead of the hook's `label` and `icon`.
  */
 export const registerNavigationAction = (
   name: string,

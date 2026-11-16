@@ -14,9 +14,15 @@ export type AdminLocale = 'en-us' | 'de-de' | (string & Record<never, never>);
 export interface ResolvedNavigationAction {
   /** Whether the action can run on the current page. Unavailable actions are not rendered. */
   available: boolean;
-  /** Key of the theme icon shown when the merchant did not pick one. */
+  /**
+   * Name of an icon, shown in the header button when the merchant picked none.
+   * Tabs use `tabBar.icon` instead.
+   */
   icon: string;
-  /** I18n key of the accessible label. */
+  /**
+   * I18n key or plain text, the accessible name of the header button, which shows only an icon.
+   * May be longer than `tabBar.label`, which tabs use instead.
+   */
   label: string;
   onClick: () => void;
   /** Number shown in a badge on the icon. */
@@ -33,7 +39,7 @@ export interface ResolvedNavigationAction {
   badgeMax?: number;
   /**
    * Accessible name while the badge is shown: translated text with the count, not an i18n key.
-   * Default: the label and the count, or only the label in dot mode.
+   * Default: `label` (header) or `tabBar.label` (tab) and the count, or only that name in dot mode.
    */
   badgeLabel?: string;
   /**
@@ -52,15 +58,17 @@ export type NavigationActionHook = (settings: NavigationActionSettings) => Resol
  */
 export interface NavigationActionMeta {
   /**
-   * Makes the action available as a tab bar item.
+   * Makes the action available as a tab bar item. Its `label` and `icon` serve the tab and the
+   * admin; the hook's `label` and `icon` serve the header button instead.
    */
   tabBar?: {
     /**
-     * I18n key or plain text, shown in the tab and the admin catalog.
+     * I18n key or plain text, the text of the tab and its accessible name; keep it short.
+     * Also names the item in the admin when no `adminLabel` fits.
      */
     label: string;
     /**
-     * Name of a registered icon, the default icon of the tab.
+     * Name of an icon, shown in the tab and the admin when the merchant picked none.
      */
     icon: string;
     /**
@@ -80,11 +88,11 @@ export interface NavigationCatalogItem {
    */
   action: string;
   /**
-   * The translated label.
+   * The translated `tabBar.label`. The admin shows it when no `adminLabel` fits.
    */
   label: string;
   /**
-   * Name of the default icon.
+   * The `tabBar.icon`, the default icon of the item.
    */
   icon: string;
   /**
