@@ -31,10 +31,21 @@ const extension: NavigationActionHook = () => ({
   onClick: jest.fn(),
 });
 
-const NON_OBJECT_TAB_DETAILS: Array<[string, unknown]> = [
+/**
+ * Tab details as a class instance, which is no plain object.
+ */
+class TabDetails {
+  label = 'Tab';
+
+  icon = '';
+}
+
+const NON_PLAIN_TAB_DETAILS: Array<[string, unknown]> = [
   ['a string', 'Tab'],
   ['an array', [{ label: 'Tab' }]],
   ['a number', 1],
+  ['a class instance', new TabDetails()],
+  ['a map', new Map([['label', 'Tab'], ['icon', '']])],
 ];
 
 describe('navigation action registry', () => {
@@ -130,13 +141,13 @@ describe('navigation action registry', () => {
       expect(warn).not.toHaveBeenCalled();
     });
 
-    it.each(NON_OBJECT_TAB_DETAILS)('warns once about tab details that are %s', (_, tabBar) => {
+    it.each(NON_PLAIN_TAB_DETAILS)('warns once about tab details that are %s', (_, tabBar) => {
       registerNavigationAction('@shopgate/warn/no-object', extension, {
         tabBar: tabBar as unknown as NavigationActionMeta['tabBar'],
       });
 
       expect(warn).toHaveBeenCalledTimes(1);
-      expect(warn).toHaveBeenCalledWith('registerNavigationAction: "@shopgate/warn/no-object" has a tabBar that is no object, so it is no tab bar item');
+      expect(warn).toHaveBeenCalledWith('registerNavigationAction: "@shopgate/warn/no-object" has a tabBar that is no plain object, so it is no tab bar item');
     });
   });
 
@@ -161,7 +172,7 @@ describe('navigation action registry', () => {
 
     it.each([
       ['null', null],
-      ...NON_OBJECT_TAB_DETAILS,
+      ...NON_PLAIN_TAB_DETAILS,
     ])('rejects an extension action whose tab details are %s', (_, tabBar) => {
       registerNavigationAction('@shopgate/tab/invalid', extension, {
         tabBar: tabBar as unknown as NavigationActionMeta['tabBar'],
@@ -404,6 +415,9 @@ describe('navigation action registry', () => {
           'fr-fr': { text: 'Carte client' },
         }],
         ['an empty map', {}],
+        ['an object with another prototype', Object.assign(Object.create({ 'it-it': 'Inherited' }), {
+          'en-us': 'Customer card',
+        })],
       ])('leaves out the admin labels when they are %s', (_, adminLabel) => {
         const item = getItem('@shopgate/admin-label/invalid', {
           label: 'card.label',
@@ -414,14 +428,25 @@ describe('navigation action registry', () => {
         expect(item).not.toHaveProperty('adminLabel');
       });
 
-      it('keeps only the own entries with string values', () => {
-        const adminLabel = Object.assign(Object.create({ 'it-it': 'Inherited' }), {
+      it('passes on admin labels without a prototype', () => {
+        const adminLabel = Object.assign(Object.create(null), { 'en-us': 'Customer card' });
+
+        const item = getItem('@shopgate/admin-label/null-prototype', {
+          label: 'card.label',
+          adminLabel,
+        });
+
+        expect(item?.adminLabel).toEqual({ 'en-us': 'Customer card' });
+      });
+
+      it('keeps only the entries with a string key and a string value', () => {
+        const adminLabel = {
           'en-us': 'Customer card',
           'de-de': 42,
           'fr-fr': undefined,
           'es-es': ['Tarjeta'],
           [Symbol('nl-nl')]: 'Klantenkaart',
-        });
+        };
 
         const item = getItem('@shopgate/admin-label/mixed', {
           label: 'card.label',

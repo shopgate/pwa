@@ -6,7 +6,9 @@ import { APP_BAR_ACTION, APP_BAR_CART_BUTTON } from '@shopgate/engage/core/const
 import { i18n } from '@shopgate/engage/core/helpers';
 import { NavigationAction } from '@shopgate/engage/navigation';
 import type { ResolvedNavigationAction } from '@shopgate/engage/navigation';
-import { getNavigationActionBadge } from '@shopgate/engage/navigation/helpers';
+import { CORE_NAVIGATION_ACTIONS } from '@shopgate/engage/navigation/actions';
+import { getExtensionButtonLabel, getNavigationActionBadge } from '@shopgate/engage/navigation/helpers';
+import { getExtensionActionMeta } from '@shopgate/engage/navigation/registry';
 import { getShowWishlistItemsCountBadge } from '@shopgate/engage/settings/selectors/shopSettings';
 import type {
   AppBarButtonSlot,
@@ -38,7 +40,8 @@ interface ResolvedButtonProps {
 }
 
 /**
- * The button of a resolved action.
+ * The button of a resolved action. Core actions are named by their label, extension actions by
+ * `getExtensionButtonLabel`, so they keep a name while their label is empty.
  * @param props The component props.
  * @param props.action The resolved action.
  * @param props.settings The configured action.
@@ -53,7 +56,9 @@ const ResolvedButton = ({ action, settings, slot }: ResolvedButtonProps) => {
   const hasCoreCounter = CORE_COUNTER_ACTIONS.includes(settings.action);
   const showFavoritesCounter = useShowFavoritesCounter();
   const showFavoritesBadge = useSelector(getShowWishlistItemsCountBadge) as boolean;
-  const text = i18n.text(label);
+  const text = CORE_NAVIGATION_ACTIONS[settings.action]
+    ? i18n.text(label)
+    : getExtensionButtonLabel(settings.action, label, getExtensionActionMeta(settings.action, 'tabBar'));
   const badge = getNavigationActionBadge(action, text);
   const { count, max } = badge;
   const showBadge = count > 0 && (!isFavorites || showFavoritesBadge);

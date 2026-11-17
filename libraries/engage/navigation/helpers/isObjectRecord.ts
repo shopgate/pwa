@@ -1,8 +1,11 @@
+import { isPlainObject } from 'lodash';
+
 /**
- * Checks whether a value is an object that is neither `null` nor an array.
+ * Checks whether a value is a plain object, e.g. `{}` or `Object.create(null)`, the same rule the
+ * app settings apply. Arrays, class instances and maps are none.
  * @param value The value to check.
- * @returns Whether the value is such an object.
+ * @returns Whether the value is a plain object.
  */
 export const isObjectRecord = (value: unknown): value is Record<string, unknown> => (
-  !!value && typeof value === 'object' && !Array.isArray(value)
+  isPlainObject(value)
 );

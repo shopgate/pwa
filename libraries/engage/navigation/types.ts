@@ -21,7 +21,7 @@ export interface ResolvedNavigationAction {
   icon: string;
   /**
    * I18n key or plain text, the accessible name of the header button, which shows only an icon.
-   * Tabs use `tabBar.label` instead, this one only while that is empty.
+   * Tabs prefer `tabBar.label`. Extension buttons fall back to it, `adminLabel`, then the name.
    */
   label: string;
   onClick: () => void;
@@ -58,8 +58,8 @@ export type NavigationActionHook = (settings: NavigationActionSettings) => Resol
  */
 export interface NavigationActionMeta {
   /**
-   * Makes the action a tab bar item, even with an empty `label`. Its `label` and `icon` serve the
-   * tab and the admin; the hook's serve the header button, and its `label` the tab while empty.
+   * Makes the action a tab bar item; its `label` and `icon` serve the tab and the admin. The hook's
+   * `label` names the header button and tabs without a label; both fall back to these details.
    */
   tabBar?: {
     /**
@@ -72,8 +72,8 @@ export interface NavigationActionMeta {
      */
     icon: string;
     /**
-     * Labels by admin locale (`en-us`, `de-de`), not translated. The admin uses its locale, then
-     * `en-us`, then `label`, so always set `en-us`. Tabs use them when both labels are empty.
+     * Labels by admin locale (`en-us`, `de-de`; always set `en-us`), untranslated. The admin uses
+     * its locale, `en-us`, `label`. Tabs and header buttons use them while both labels are empty.
      */
     adminLabel?: Partial<Record<AdminLocale, string>>;
   };

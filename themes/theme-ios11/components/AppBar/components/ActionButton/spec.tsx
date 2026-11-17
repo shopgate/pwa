@@ -41,6 +41,18 @@ jest.mock('@shopgate/engage/navigation/actions', () => ({
       label: 'search.label',
       onClick: jest.fn(),
     }),
+    share: () => ({
+      available: true,
+      icon: 'share',
+      label: '',
+      onClick: jest.fn(),
+    }),
+    scanner: () => ({
+      available: true,
+      icon: 'barcodeScanner',
+      label: 'scanner.label',
+      onClick: jest.fn(),
+    }),
   },
 }));
 jest.mock('@shopgate/engage/settings/selectors/shopSettings', () => ({
@@ -60,13 +72,36 @@ jest.mock('@shopgate/engage/icons/components/ThemeIcon', () => ({
 
 let mockAction: Partial<ResolvedNavigationAction> = {};
 
-registerNavigationAction('@shopgate/test/card', () => ({
+/**
+ * Resolves the test extension actions.
+ * @returns The resolved action.
+ */
+const useTestAction = (): ResolvedNavigationAction => ({
   available: true,
   icon: '',
   label: 'Card',
   onClick: jest.fn(),
   ...mockAction,
-}));
+});
+
+registerNavigationAction('@shopgate/test/card', useTestAction);
+registerNavigationAction('@shopgate/test/tab-card', useTestAction, {
+  tabBar: {
+    label: 'Tab card',
+    icon: '',
+    adminLabel: { 'en-us': 'Customer card' },
+  },
+});
+registerNavigationAction('@shopgate/test/admin-card', useTestAction, {
+  tabBar: {
+    label: '',
+    icon: '',
+    adminLabel: {
+      'en-us': 'Customer card',
+      'de-de': 'Kundenkarte',
+    },
+  },
+});
 
 /**
  * Renders the header button of an action.
@@ -86,13 +121,17 @@ const renderButton = (action: string, icon = '') => {
 };
 
 /**
- * Renders the header button of the test extension action with the given badge fields.
- * @param action The badge fields of the resolved action.
+ * Renders the header button of a test extension action with the given fields.
+ * @param action The fields of the resolved action.
+ * @param name The name of the test extension action.
  * @returns The button.
  */
-const renderExtensionButton = (action: Partial<ResolvedNavigationAction>) => {
+const renderExtensionButton = (
+  action: Partial<ResolvedNavigationAction>,
+  name = '@shopgate/test/card'
+) => {
   mockAction = action;
-  return renderButton('@shopgate/test/card');
+  return renderButton(name);
 };
 
 /**
@@ -143,6 +182,36 @@ describe('<ActionButton />', () => {
       expect(getBadge(button)).not.toBeInTheDocument();
       expect(button).toHaveAttribute('aria-label', 'Card');
     });
+
+    it('prefers its label to the tab label', () => {
+      expect(renderExtensionButton({}, '@shopgate/test/tab-card')).toHaveAccessibleName('Card');
+    });
+
+    it.each([
+      ['empty', ''],
+      ['whitespace only', '  '],
+    ])('is named by the tab label while its label is %s', (_, label) => {
+      expect(renderExtensionButton({ label }, '@shopgate/test/tab-card'))
+        .toHaveAccessibleName('Tab card');
+    });
+
+    it('is named by the admin label of the shop language while the tab label is empty as well', () => {
+      expect(renderExtensionButton({ label: '' }, '@shopgate/test/admin-card'))
+        .toHaveAccessibleName('Kundenkarte');
+    });
+
+    it('is named by the action name while its label is empty and it has no tab details', () => {
+      expect(renderExtensionButton({ label: '' })).toHaveAccessibleName('@shopgate/test/card');
+    });
+
+    it('announces the badge with the fallback name', () => {
+      const button = renderExtensionButton({
+        label: '',
+        badgeCount: 2,
+      }, '@shopgate/test/tab-card');
+
+      expect(button).toHaveAttribute('aria-label', 'Tab card, 2');
+    });
   });
 
   describe('core actions', () => {
@@ -160,6 +229,35 @@ describe('<ActionButton />', () => {
 
       expect(getBadge(button)).not.toBeInTheDocument();
       expect(button).toHaveAttribute('aria-label', 'navigation.cart');
+    });
+
+    it('keeps the empty label of a core counter action', () => {
+      mockCounts.cart = 0;
+      mockCartFields = { label: '' };
+      const button = renderButton('cart');
+
+      expect(button).toHaveAttribute('aria-label', '');
+    });
+
+    it('keeps the empty label of a core action without a counter', () => {
+      expect(renderButton('share')).toHaveAttribute('aria-label', '');
+    });
+
+    it('keeps the empty label of a core action that an extension replaces', () => {
+      registerNavigationAction('scanner', () => ({
+        available: true,
+        icon: '',
+        label: '',
+        onClick: jest.fn(),
+      }), {
+        tabBar: {
+          label: 'Scanner tab',
+          icon: '',
+          adminLabel: { 'en-us': 'Scanner' },
+        },
+      });
+
+      expect(renderButton('scanner')).toHaveAttribute('aria-label', '');
     });
 
     it('shows a dot for a cart action in dot mode', () => {

@@ -30,8 +30,40 @@ const pickAdminLabel = (
 };
 
 /**
- * Resolves the text of an extension action: the placement `label`, the hook's `label`, the
- * `adminLabel` of the shop language or `en-us`, else the action name.
+ * Resolves the text when no label has text: the `adminLabel` of the shop language or `en-us`,
+ * else the name of the action.
+ * @param action The name the action is registered under.
+ * @param adminLabel The labels by admin locale.
+ * @returns The text to show.
+ */
+const getAdminLabelOrName = (action: string, adminLabel: unknown): string => {
+  if (!isObjectRecord(adminLabel)) {
+    return action;
+  }
+
+  const lang: unknown = i18n.getLang();
+
+  return (hasText(lang) ? pickAdminLabel(adminLabel, lang.toLowerCase()) : undefined)
+    ?? pickAdminLabel(adminLabel, FALLBACK_ADMIN_LOCALE)
+    ?? action;
+};
+
+/**
+ * Translates the first of the labels that has text, else falls back to the admin label or name.
+ * @param action The name the action is registered under.
+ * @param labels The labels in the order they are tried, i18n keys or plain text.
+ * @param adminLabel The labels by admin locale.
+ * @returns The text to show.
+ */
+const resolveLabel = (action: string, labels: unknown[], adminLabel: unknown): string => {
+  const label = labels.find(hasText);
+
+  return label ? i18n.text(label) : getAdminLabelOrName(action, adminLabel);
+};
+
+/**
+ * Resolves the text of an extension action's tab and admin item: the placement `label`, the hook's
+ * `label`, the `adminLabel` of the shop language or `en-us`, else the action name.
  * @param action The name the action is registered under.
  * @param placementMeta The details the action was registered with for the placement.
  * @param placementMeta.label The label of the placement, an i18n key or plain text.
@@ -43,22 +75,20 @@ export const getExtensionActionLabel = (
   action: string,
   { label, adminLabel }: { label?: unknown; adminLabel?: unknown },
   actionLabel?: unknown
-): string => {
-  if (hasText(label)) {
-    return i18n.text(label);
-  }
+): string => resolveLabel(action, [label, actionLabel], adminLabel);
 
-  if (hasText(actionLabel)) {
-    return i18n.text(actionLabel);
-  }
-
-  if (!isObjectRecord(adminLabel)) {
-    return action;
-  }
-
-  const lang: unknown = i18n.getLang();
-
-  return (hasText(lang) ? pickAdminLabel(adminLabel, lang.toLowerCase()) : undefined)
-    ?? pickAdminLabel(adminLabel, FALLBACK_ADMIN_LOCALE)
-    ?? action;
-};
+/**
+ * Resolves the text of an extension action's header button: the hook's `label`, the `tabBar`
+ * `label`, the `adminLabel` of the shop language or `en-us`, else the action name.
+ * @param action The name the action is registered under.
+ * @param actionLabel The label of the resolved action.
+ * @param tabBarMeta The tab details of the action, if it has any.
+ * @param tabBarMeta.label The label of the tab, an i18n key or plain text.
+ * @param tabBarMeta.adminLabel The labels by admin locale.
+ * @returns The text to show.
+ */
+export const getExtensionButtonLabel = (
+  action: string,
+  actionLabel: unknown,
+  { label, adminLabel }: { label?: unknown; adminLabel?: unknown } = {}
+): string => resolveLabel(action, [actionLabel, label], adminLabel);

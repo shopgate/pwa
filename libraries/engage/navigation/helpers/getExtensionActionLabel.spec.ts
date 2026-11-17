@@ -1,4 +1,4 @@
-import { getExtensionActionLabel } from './getExtensionActionLabel';
+import { getExtensionActionLabel, getExtensionButtonLabel } from './getExtensionActionLabel';
 
 jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
   i18n: {
@@ -8,6 +8,10 @@ jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
 }));
 
 let mockLang: unknown = 'de-DE';
+
+beforeEach(() => {
+  mockLang = 'de-DE';
+});
 
 const ADMIN_LABEL = {
   'en-us': 'Customer card',
@@ -23,10 +27,6 @@ const MISSING_TEXTS: [string, unknown][] = [
 ];
 
 describe('getExtensionActionLabel', () => {
-  beforeEach(() => {
-    mockLang = 'de-DE';
-  });
-
   it('translates the label of the placement first', () => {
     const meta = {
       label: 'card.label',
@@ -110,5 +110,42 @@ describe('getExtensionActionLabel', () => {
   ])('falls back to the name of the action when the admin labels are %s', (_, adminLabel) => {
     expect(getExtensionActionLabel('@shopgate/test/card', { adminLabel }))
       .toBe('@shopgate/test/card');
+  });
+});
+
+describe('getExtensionButtonLabel', () => {
+  it('translates the label of the resolved action first', () => {
+    expect(getExtensionButtonLabel('@shopgate/test/card', 'card.action', {
+      label: 'card.label',
+      adminLabel: ADMIN_LABEL,
+    })).toBe('translated card.action');
+  });
+
+  it.each([
+    ['empty', ''],
+    ['whitespace only', '  '],
+  ])('translates the tab label when the label of the resolved action is %s', (_, actionLabel) => {
+    expect(getExtensionButtonLabel('@shopgate/test/card', actionLabel, {
+      label: 'card.label',
+      adminLabel: ADMIN_LABEL,
+    })).toBe('translated card.label');
+  });
+
+  it('uses the admin label of the shop language when the tab label is empty as well', () => {
+    expect(getExtensionButtonLabel('@shopgate/test/card', '', {
+      label: '',
+      adminLabel: ADMIN_LABEL,
+    })).toBe('Kundenkarte');
+  });
+
+  it('falls back to the name of the action without a fitting admin label', () => {
+    expect(getExtensionButtonLabel('@shopgate/test/card', '', {
+      label: '',
+      adminLabel: { 'fr-fr': 'Carte client' },
+    })).toBe('@shopgate/test/card');
+  });
+
+  it('falls back to the name of the action without tab details', () => {
+    expect(getExtensionButtonLabel('@shopgate/test/card', '')).toBe('@shopgate/test/card');
   });
 });

@@ -17,7 +17,7 @@ const actions = new Map<string, {
 }>();
 
 /**
- * Warns in development about tab details that are no object or lack a string label or icon.
+ * Warns in development about tab details that are no plain object or lack a string label or icon.
  * @param name The name the action is registered under.
  * @param tabBar The tab details the action is registered with.
  */
@@ -27,7 +27,7 @@ const warnInvalidTabBarMeta = (name: string, tabBar: NavigationActionMeta['tabBa
   }
 
   if (!isObjectRecord(tabBar)) {
-    logger.warn(`registerNavigationAction: "${name}" has a tabBar that is no object, so it is no tab bar item`);
+    logger.warn(`registerNavigationAction: "${name}" has a tabBar that is no plain object, so it is no tab bar item`);
     return;
   }
 
@@ -75,8 +75,8 @@ export const getNavigationAction = (name: string): NavigationActionHook | undefi
  * Looks up the details of a placement for an extension action that merchants can add to it.
  * @param name The configured name of the action.
  * @param placement The placement, e.g. `tabBar`.
- * @returns The details of the placement, unless the action is a core action or has no details
- * object for it. A missing or empty label doesn't matter.
+ * @returns The details of the placement, unless the action is a core action or has no plain
+ * details object for it. A missing or empty label doesn't matter.
  */
 export const getExtensionActionMeta = <P extends NavigationPlacement>(
   name: string,
@@ -95,8 +95,8 @@ export const getExtensionActionMeta = <P extends NavigationPlacement>(
  * Checks whether an action is an extension action that merchants can add to a placement.
  * @param name The configured name of the action.
  * @param placement The placement, e.g. `tabBar`.
- * @returns Whether the action is no core action and was registered with a details object for the
- * placement, with or without a label.
+ * @returns Whether the action is no core action and was registered with a plain details object
+ * for the placement, with or without a label.
  */
 export const isExtensionActionFor = (name: string, placement: NavigationPlacement): boolean => (
   !!getExtensionActionMeta(name, placement)
