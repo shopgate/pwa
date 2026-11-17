@@ -26,6 +26,8 @@ import { DRAG_OFFSET, DRAG_PROGRESS, useDragToDismiss } from './useDragToDismiss
 
 const CLOSE_DURATION = 200;
 const TRANSITION = `${CLOSE_DURATION}ms cubic-bezier(0.25, 0.1, 0.25, 1)`;
+const OPEN_ANIMATION = '280ms cubic-bezier(0.2, 0.8, 0.2, 1)';
+const ZOOMED_OUT_SCALE = 0.85;
 
 /**
  * Tells whether a slide is the visible one or next to it, counting across the loop.
@@ -44,6 +46,11 @@ const fadeIn = keyframes({
   to: { opacity: 1 },
 });
 
+const zoomIn = keyframes({
+  from: { transform: `scale(${ZOOMED_OUT_SCALE})` },
+  to: { transform: 'scale(1)' },
+});
+
 const useStyles = makeStyles()(theme => ({
   root: {
     position: 'fixed',
@@ -55,7 +62,7 @@ const useStyles = makeStyles()(theme => ({
     color: theme.palette.common.white,
     touchAction: 'none',
     userSelect: 'none',
-    animation: `${fadeIn} ${TRANSITION}`,
+    animation: `${fadeIn} ${OPEN_ANIMATION}`,
     transition: `opacity ${TRANSITION}`,
     '&[data-closing]': {
       opacity: 0,
@@ -95,6 +102,13 @@ const useStyles = makeStyles()(theme => ({
     height: '100%',
     transform: `translate3d(0, ${DRAG_OFFSET}, 0)`,
     transition: `transform ${TRANSITION}`,
+    animation: `${zoomIn} ${OPEN_ANIMATION}`,
+    '[data-closing] > &': {
+      transform: `translate3d(0, ${DRAG_OFFSET}, 0) scale(${ZOOMED_OUT_SCALE})`,
+    },
+    '@media (prefers-reduced-motion: reduce)': {
+      animation: 'none',
+    },
   },
   stage: {
     position: 'relative',
