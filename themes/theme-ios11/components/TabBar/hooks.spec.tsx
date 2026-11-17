@@ -99,6 +99,12 @@ registerNavigationAction('@shopgate/test/card2', useTestAction, {
     icon: '',
   },
 });
+registerNavigationAction('@shopgate/test/unlabeled', useTestAction, {
+  tabBar: {
+    label: '',
+    icon: '',
+  },
+});
 registerNavigationAction('@shopgate/test/header', useTestAction);
 registerNavigationAction('openSearch', useTestAction, {
   tabBar: {
@@ -124,6 +130,11 @@ describe('resolveTabBarItems()', () => {
     ]);
 
     expect(actions(items)).toEqual(['home', 'more']);
+  });
+
+  it('keeps an extension action whose tab has an empty label', () => {
+    expect(actions(resolveTabBarItems([item('home'), item('@shopgate/test/unlabeled')])))
+      .toEqual(['home', '@shopgate/test/unlabeled']);
   });
 
   it('drops a core header action even when it was registered with a tab', () => {

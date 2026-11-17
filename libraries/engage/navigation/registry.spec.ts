@@ -8,7 +8,7 @@ import {
 } from './registry';
 import { CORE_NAVIGATION_ACTIONS } from './actions';
 import { DEFAULT_TAB_BAR_ITEMS } from './constants';
-import type { NavigationActionHook } from './types';
+import type { NavigationActionHook, NavigationActionMeta } from './types';
 
 jest.mock('./actions', () => ({
   CORE_NAVIGATION_ACTIONS: {
@@ -18,7 +18,10 @@ jest.mock('./actions', () => ({
 }));
 
 jest.mock('@shopgate/engage/core/helpers/i18n', () => ({
-  i18n: { text: (key: string) => `translated ${key}` },
+  i18n: {
+    text: (key: string) => `translated ${key}`,
+    getLang: () => 'de-DE',
+  },
 }));
 
 const extension: NavigationActionHook = () => ({
@@ -27,6 +30,12 @@ const extension: NavigationActionHook = () => ({
   label: 'extension',
   onClick: jest.fn(),
 });
+
+const NON_OBJECT_TAB_DETAILS: Array<[string, unknown]> = [
+  ['a string', 'Tab'],
+  ['an array', [{ label: 'Tab' }]],
+  ['a number', 1],
+];
 
 describe('navigation action registry', () => {
   let warn: jest.SpyInstance;
@@ -87,11 +96,11 @@ describe('navigation action registry', () => {
   describe('registration warnings', () => {
     it('warns about tab details without a string label or icon', () => {
       registerNavigationAction('@shopgate/warn/untyped', extension, {
-        tabBar: {} as unknown as { label: string; icon: string },
+        tabBar: {} as unknown as NavigationActionMeta['tabBar'],
       });
 
       expect(warn).toHaveBeenCalledTimes(2);
-      expect(warn).toHaveBeenCalledWith(expect.stringContaining('"@shopgate/warn/untyped" has no string tabBar.label'));
+      expect(warn).toHaveBeenCalledWith('registerNavigationAction: "@shopgate/warn/untyped" has no string tabBar.label, so its tab and its admin item show a fallback text');
       expect(warn).toHaveBeenCalledWith(expect.stringContaining('"@shopgate/warn/untyped" has no string tabBar.icon'));
     });
 
@@ -103,8 +112,31 @@ describe('navigation action registry', () => {
         },
       });
       registerNavigationAction('@shopgate/warn/header-only', extension);
+      registerNavigationAction('@shopgate/warn/null', extension, {
+        tabBar: null as unknown as NavigationActionMeta['tabBar'],
+      });
 
       expect(warn).not.toHaveBeenCalled();
+    });
+
+    it('does not warn about an empty label', () => {
+      registerNavigationAction('@shopgate/warn/empty', extension, {
+        tabBar: {
+          label: '',
+          icon: '',
+        },
+      });
+
+      expect(warn).not.toHaveBeenCalled();
+    });
+
+    it.each(NON_OBJECT_TAB_DETAILS)('warns once about tab details that are %s', (_, tabBar) => {
+      registerNavigationAction('@shopgate/warn/no-object', extension, {
+        tabBar: tabBar as unknown as NavigationActionMeta['tabBar'],
+      });
+
+      expect(warn).toHaveBeenCalledTimes(1);
+      expect(warn).toHaveBeenCalledWith('registerNavigationAction: "@shopgate/warn/no-object" has a tabBar that is no object, so it is no tab bar item');
     });
   });
 
@@ -125,6 +157,17 @@ describe('navigation action registry', () => {
 
       expect(isExtensionActionFor('@shopgate/button/item', 'tabBar')).toBe(false);
       expect(isExtensionActionFor('@shopgate/header-only/button', 'tabBar')).toBe(false);
+    });
+
+    it.each([
+      ['null', null],
+      ...NON_OBJECT_TAB_DETAILS,
+    ])('rejects an extension action whose tab details are %s', (_, tabBar) => {
+      registerNavigationAction('@shopgate/tab/invalid', extension, {
+        tabBar: tabBar as unknown as NavigationActionMeta['tabBar'],
+      });
+
+      expect(isExtensionActionFor('@shopgate/tab/invalid', 'tabBar')).toBe(false);
     });
 
     it('rejects unknown actions', () => {
@@ -167,17 +210,33 @@ describe('navigation action registry', () => {
       expect(getExtensionActionMeta('cart', 'tabBar')).toBeUndefined();
     });
 
-    it('returns nothing for tab details without a string label', () => {
-      registerNavigationAction('@shopgate/meta/no-label', extension, {
-        tabBar: { icon: 'meta' } as unknown as { label: string; icon: string },
-      });
+    it('returns tab details without a string label', () => {
+      const tabBar = { icon: 'meta' } as unknown as NavigationActionMeta['tabBar'];
+      registerNavigationAction('@shopgate/meta/no-label', extension, { tabBar });
 
-      expect(getExtensionActionMeta('@shopgate/meta/no-label', 'tabBar')).toBeUndefined();
-      expect(isExtensionActionFor('@shopgate/meta/no-label', 'tabBar')).toBe(false);
+      expect(getExtensionActionMeta('@shopgate/meta/no-label', 'tabBar')).toBe(tabBar);
+      expect(isExtensionActionFor('@shopgate/meta/no-label', 'tabBar')).toBe(true);
     });
   });
 
   describe('getNavigationCatalog', () => {
+    /**
+     * Registers a tab with the given details and reads its catalog item.
+     * @param action The name of the action.
+     * @param tabBar The fields of the tab details besides the icon, which may have any type.
+     * @returns The catalog item of the action.
+     */
+    const getItem = (action: string, tabBar: Record<string, unknown>) => {
+      registerNavigationAction(action, extension, {
+        tabBar: {
+          icon: 'card',
+          ...tabBar,
+        } as unknown as NavigationActionMeta['tabBar'],
+      });
+
+      return getNavigationCatalog().tabBar.extensionItems.find(item => item.action === action);
+    };
+
     it('reports copies of the default tab bar items', () => {
       const { tabBar } = getNavigationCatalog();
 
@@ -237,7 +296,7 @@ describe('navigation action registry', () => {
 
     it('reports an empty icon when the tab details have no string icon', () => {
       registerNavigationAction('@shopgate/no-icon/tab', extension, {
-        tabBar: { label: 'No icon' } as unknown as { label: string; icon: string },
+        tabBar: { label: 'No icon' } as unknown as NavigationActionMeta['tabBar'],
       });
 
       expect(getNavigationCatalog().tabBar.extensionItems).toContainEqual({
@@ -247,47 +306,54 @@ describe('navigation action registry', () => {
       });
     });
 
-    it.each([
-      ['no label', { icon: 'card' }],
-      ['a label that is no string', {
-        label: 42,
-        icon: 'card',
-      }],
-    ])('leaves out an action whose tab details have %s', (_, tabBar) => {
-      registerNavigationAction('@shopgate/no-label/tab', extension, {
-        tabBar: tabBar as unknown as { label: string; icon: string },
+    describe('label fallback', () => {
+      it('lists an action with an empty label under the admin label of the shop language', () => {
+        const adminLabel = {
+          'en-us': 'Customer card',
+          'de-de': 'Kundenkarte',
+        };
+
+        expect(getItem('@shopgate/fallback/tab', {
+          label: '',
+          adminLabel,
+        })).toEqual({
+          action: '@shopgate/fallback/tab',
+          label: 'Kundenkarte',
+          icon: 'card',
+          adminLabel,
+        });
       });
 
-      expect(getNavigationCatalog().tabBar.extensionItems)
-        .not.toContainEqual(expect.objectContaining({ action: '@shopgate/no-label/tab' }));
+      it('lists an action with an empty label under the en-us admin label without one of the shop language', () => {
+        expect(getItem('@shopgate/fallback/tab', {
+          label: '',
+          adminLabel: {
+            'en-us': 'Customer card',
+            'fr-fr': 'Carte client',
+          },
+        })?.label).toBe('Customer card');
+      });
+
+      it('lists an action with a null label under its name without admin labels', () => {
+        expect(getItem('@shopgate/fallback/tab', { label: null })).toEqual({
+          action: '@shopgate/fallback/tab',
+          label: '@shopgate/fallback/tab',
+          icon: 'card',
+        });
+      });
     });
 
     describe('adminLabel', () => {
-      /**
-       * Registers a tab with admin labels and reads its catalog item.
-       * @param action The name of the action.
-       * @param adminLabel The admin labels of the tab.
-       * @returns The catalog item of the action.
-       */
-      const getItem = (action: string, adminLabel: unknown) => {
-        registerNavigationAction(action, extension, {
-          tabBar: {
-            label: 'card.label',
-            icon: 'card',
-            adminLabel: adminLabel as Record<string, string>,
-          },
-        });
-
-        return getNavigationCatalog().tabBar.extensionItems.find(item => item.action === action);
-      };
-
       it('passes the admin labels on without translating them', () => {
         const adminLabel = {
           'en-us': 'Customer card',
           'de-de': 'Kundenkarte',
         };
 
-        const item = getItem('@shopgate/admin-label/valid', adminLabel);
+        const item = getItem('@shopgate/admin-label/valid', {
+          label: 'card.label',
+          adminLabel,
+        });
 
         expect(item).toEqual({
           action: '@shopgate/admin-label/valid',
@@ -303,7 +369,10 @@ describe('navigation action registry', () => {
       it('reports a new object that later changes of the extension do not reach', () => {
         const adminLabel: Record<string, string> = { 'en-us': 'Customer card' };
 
-        const item = getItem('@shopgate/admin-label/copy', adminLabel);
+        const item = getItem('@shopgate/admin-label/copy', {
+          label: 'card.label',
+          adminLabel,
+        });
         adminLabel['en-us'] = 'Changed';
 
         expect(item?.adminLabel).not.toBe(adminLabel);
@@ -336,7 +405,10 @@ describe('navigation action registry', () => {
         }],
         ['an empty map', {}],
       ])('leaves out the admin labels when they are %s', (_, adminLabel) => {
-        const item = getItem('@shopgate/admin-label/invalid', adminLabel);
+        const item = getItem('@shopgate/admin-label/invalid', {
+          label: 'card.label',
+          adminLabel,
+        });
 
         expect(item).toBeDefined();
         expect(item).not.toHaveProperty('adminLabel');
@@ -351,7 +423,10 @@ describe('navigation action registry', () => {
           [Symbol('nl-nl')]: 'Klantenkaart',
         });
 
-        const item = getItem('@shopgate/admin-label/mixed', adminLabel);
+        const item = getItem('@shopgate/admin-label/mixed', {
+          label: 'card.label',
+          adminLabel,
+        });
 
         expect(item?.adminLabel).toEqual({ 'en-us': 'Customer card' });
       });

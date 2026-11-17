@@ -1,7 +1,8 @@
 import { isDev, logger } from '@shopgate/engage/core/helpers';
-import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import { CORE_NAVIGATION_ACTIONS } from './actions';
 import { DEFAULT_TAB_BAR_ITEMS } from './constants';
+import { getExtensionActionLabel } from './helpers/getExtensionActionLabel';
+import { isObjectRecord } from './helpers/isObjectRecord';
 import type {
   NavigationActionHook,
   NavigationActionMeta,
@@ -16,17 +17,22 @@ const actions = new Map<string, {
 }>();
 
 /**
- * Warns in development about tab details without a string label or icon.
+ * Warns in development about tab details that are no object or lack a string label or icon.
  * @param name The name the action is registered under.
  * @param tabBar The tab details the action is registered with.
  */
 const warnInvalidTabBarMeta = (name: string, tabBar: NavigationActionMeta['tabBar']) => {
-  if (!isDev || !tabBar) {
+  if (!isDev || tabBar === undefined || tabBar === null) {
+    return;
+  }
+
+  if (!isObjectRecord(tabBar)) {
+    logger.warn(`registerNavigationAction: "${name}" has a tabBar that is no object, so it is no tab bar item`);
     return;
   }
 
   if (typeof tabBar.label !== 'string') {
-    logger.warn(`registerNavigationAction: "${name}" has no string tabBar.label, so the admin doesn't offer it and the tab bar leaves it out`);
+    logger.warn(`registerNavigationAction: "${name}" has no string tabBar.label, so its tab and its admin item show a fallback text`);
   }
 
   if (typeof tabBar.icon !== 'string') {
@@ -42,8 +48,8 @@ const warnInvalidTabBarMeta = (name: string, tabBar: NavigationActionMeta['tabBa
  * bar drops configured items of actions registered later.
  * @param name The name the action is configured with.
  * @param useAction Hook that resolves the action for the current page.
- * @param meta Details of the action, e.g. the text and icon of its tab (`tabBar`), which tabs use
- * instead of the hook's `label` and `icon`.
+ * @param meta Details of the action. `tabBar` makes it a tab bar item, labelled by
+ * `getExtensionActionLabel` and shown with `tabBar.icon` instead of the hook's `icon`.
  */
 export const registerNavigationAction = (
   name: string,
@@ -69,8 +75,8 @@ export const getNavigationAction = (name: string): NavigationActionHook | undefi
  * Looks up the details of a placement for an extension action that merchants can add to it.
  * @param name The configured name of the action.
  * @param placement The placement, e.g. `tabBar`.
- * @returns The details of the placement, unless the action is a core action or has none with a
- * string label.
+ * @returns The details of the placement, unless the action is a core action or has no details
+ * object for it. A missing or empty label doesn't matter.
  */
 export const getExtensionActionMeta = <P extends NavigationPlacement>(
   name: string,
@@ -82,15 +88,15 @@ export const getExtensionActionMeta = <P extends NavigationPlacement>(
 
   const placementMeta = actions.get(name)?.meta?.[placement];
 
-  return typeof placementMeta?.label === 'string' ? placementMeta : undefined;
+  return isObjectRecord(placementMeta) ? placementMeta : undefined;
 };
 
 /**
  * Checks whether an action is an extension action that merchants can add to a placement.
  * @param name The configured name of the action.
  * @param placement The placement, e.g. `tabBar`.
- * @returns Whether the action is no core action and was registered with details of the placement
- * that have a string label.
+ * @returns Whether the action is no core action and was registered with a details object for the
+ * placement, with or without a label.
  */
 export const isExtensionActionFor = (name: string, placement: NavigationPlacement): boolean => (
   !!getExtensionActionMeta(name, placement)
@@ -102,7 +108,7 @@ export const isExtensionActionFor = (name: string, placement: NavigationPlacemen
  * @returns A new map with the valid entries, or `undefined` when none remain.
  */
 const copyAdminLabel = (adminLabel: unknown): Record<string, string> | undefined => {
-  if (!adminLabel || typeof adminLabel !== 'object' || Array.isArray(adminLabel)) {
+  if (!isObjectRecord(adminLabel)) {
     return undefined;
   }
 
@@ -113,8 +119,8 @@ const copyAdminLabel = (adminLabel: unknown): Record<string, string> | undefined
 };
 
 /**
- * Lists the registered extension actions that merchants can add to a placement. Actions without a
- * string label are left out.
+ * Lists the registered extension actions that merchants can add to a placement, labelled by
+ * `getExtensionActionLabel` without the hook's `label`, which only rendering resolves.
  * @param placement The placement, e.g. `tabBar`.
  * @returns The catalog items of the actions.
  */
@@ -130,7 +136,10 @@ const getExtensionCatalogItems = (placement: NavigationPlacement): NavigationCat
 
     return [{
       action,
-      label: i18n.text(placementMeta.label),
+      label: getExtensionActionLabel(action, {
+        label: placementMeta.label,
+        adminLabel,
+      }),
       icon: typeof placementMeta.icon === 'string' ? placementMeta.icon : '',
       ...(adminLabel && { adminLabel }),
     }];

@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
+import { logger } from '@shopgate/engage/core/helpers';
 import { registerNavigationAction } from '@shopgate/engage/navigation/registry';
-import type { ResolvedNavigationAction } from '@shopgate/engage/navigation/types';
+import type { NavigationActionMeta, ResolvedNavigationAction } from '@shopgate/engage/navigation/types';
 import ExtensionAction from './index';
 
 jest.mock('@shopgate/engage/components', () => ({
@@ -117,6 +118,91 @@ describe('<ExtensionAction />', () => {
 
     expect(tab).not.toHaveTextContent('Card');
     expect(tab).toHaveAccessibleName('Card');
+  });
+
+  describe('label', () => {
+    const FALLBACK_ACTION = '@shopgate/test/fallback';
+    let warn: jest.SpyInstance;
+
+    beforeEach(() => {
+      warn = jest.spyOn(logger, 'warn').mockImplementation(() => undefined);
+    });
+
+    afterEach(() => {
+      warn.mockRestore();
+    });
+
+    /**
+     * Registers the fallback test action and renders its tab.
+     * @param tabBar The fields of the tab details, which may have any type.
+     * @param action The fields of the resolved action.
+     * @returns The tab.
+     */
+    const renderFallbackTab = (
+      tabBar: Record<string, unknown>,
+      action: Partial<ResolvedNavigationAction> = {}
+    ) => {
+      registerNavigationAction(FALLBACK_ACTION, () => ({
+        available: true,
+        icon: '',
+        label: '',
+        onClick: jest.fn(),
+        ...action,
+      }), {
+        tabBar: {
+          icon: '',
+          ...tabBar,
+        } as unknown as NavigationActionMeta['tabBar'],
+      });
+
+      render(<ExtensionAction settings={{
+        action: FALLBACK_ACTION,
+        icon: '',
+        link: '',
+      }}
+      />);
+
+      return screen.getByRole('tab');
+    };
+
+    it('shows the label of the resolved action for an empty tab label', () => {
+      const tab = renderFallbackTab({
+        label: '',
+        adminLabel: { 'en-us': 'Customer card' },
+      }, { label: 'Card action' });
+
+      expect(tab).toHaveTextContent('Card action');
+      expect(tab).toHaveAccessibleName('Card action');
+    });
+
+    it('shows the admin label of the shop language for a null tab label without a label of the resolved action', () => {
+      const tab = renderFallbackTab({
+        label: null,
+        adminLabel: {
+          'en-us': 'Customer card',
+          'de-de': 'Kundenkarte',
+        },
+      });
+
+      expect(tab).toHaveTextContent('Kundenkarte');
+      expect(tab).toHaveAccessibleName('Kundenkarte');
+    });
+
+    it('shows the name of the action for an empty tab label without any other text', () => {
+      const tab = renderFallbackTab({ label: '' });
+
+      expect(tab).toHaveTextContent(FALLBACK_ACTION);
+      expect(tab).toHaveAccessibleName(FALLBACK_ACTION);
+    });
+
+    it('announces the badge with the fallback label', () => {
+      const tab = renderFallbackTab({ label: '' }, {
+        label: 'Card action',
+        badgeCount: 2,
+      });
+
+      expect(tab).toHaveAttribute('aria-label', 'Card action, 2');
+    });
   });
 
   describe('icon', () => {

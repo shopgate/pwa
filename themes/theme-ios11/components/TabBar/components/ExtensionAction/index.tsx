@@ -1,7 +1,6 @@
 import type { ComponentType, ReactElement, ReactNode } from 'react';
-import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import NavigationAction from '@shopgate/engage/navigation/components/NavigationAction';
-import { getNavigationActionBadge } from '@shopgate/engage/navigation/helpers';
+import { getExtensionActionLabel, getNavigationActionBadge } from '@shopgate/engage/navigation/helpers';
 import { getExtensionActionMeta } from '@shopgate/engage/navigation/registry';
 import type { NavigationActionSettings } from '@shopgate/engage/settings/types/appSettings';
 import { resolveActionIcon } from '../../../../helpers/actionIcons';
@@ -56,8 +55,9 @@ interface Props {
 }
 
 /**
- * The tab of an action that an extension registered. Its icon is the merchant's, else the one of
- * `tabBar`, else the one of the resolved action, else an empty slot of icon size.
+ * The tab of an action that an extension registered, labelled by `getExtensionActionLabel`. Its
+ * icon is the merchant's, else the one of `tabBar`, else the one of the resolved action, else an
+ * empty slot of icon size.
  * @param props The component props.
  * @param props.settings The configured item.
  * @returns The tab, or nothing while the action is not available.
@@ -72,7 +72,7 @@ const ExtensionAction = ({ settings }: Props) => {
   return (
     <NavigationAction settings={settings}>
       {(action) => {
-        const label = i18n.text(tabBarMeta.label);
+        const label = getExtensionActionLabel(settings.action, tabBarMeta, action.label);
         const {
           count, max, showCount, ariaLabel,
         } = getNavigationActionBadge(action, label);
@@ -81,7 +81,7 @@ const ExtensionAction = ({ settings }: Props) => {
         return (
           <TabBarAction
             type={settings.action}
-            label={tabBarMeta.label}
+            label={label}
             icon={<TabBarIcon icon={icon} />}
             isHighlighted={!!action.isActive}
             onClick={action.onClick}

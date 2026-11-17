@@ -21,7 +21,7 @@ export interface ResolvedNavigationAction {
   icon: string;
   /**
    * I18n key or plain text, the accessible name of the header button, which shows only an icon.
-   * May be longer than `tabBar.label`, which tabs use instead.
+   * Tabs use `tabBar.label` instead, this one only while that is empty.
    */
   label: string;
   onClick: () => void;
@@ -39,7 +39,7 @@ export interface ResolvedNavigationAction {
   badgeMax?: number;
   /**
    * Accessible name while the badge is shown: translated text with the count, not an i18n key.
-   * Default: `label` (header) or `tabBar.label` (tab) and the count, or only that name in dot mode.
+   * Default: the text of the button or tab and the count, or only that text in dot mode.
    */
   badgeLabel?: string;
   /**
@@ -58,13 +58,13 @@ export type NavigationActionHook = (settings: NavigationActionSettings) => Resol
  */
 export interface NavigationActionMeta {
   /**
-   * Makes the action available as a tab bar item. Its `label` and `icon` serve the tab and the
-   * admin; the hook's `label` and `icon` serve the header button instead.
+   * Makes the action a tab bar item, even with an empty `label`. Its `label` and `icon` serve the
+   * tab and the admin; the hook's serve the header button, and its `label` the tab while empty.
    */
   tabBar?: {
     /**
-     * I18n key or plain text, the text of the tab and its accessible name; keep it short.
-     * Also names the item in the admin when no `adminLabel` fits.
+     * I18n key or plain text of the tab and its accessible name; keep it short. While it's empty,
+     * the tab shows the hook's `label`, else `adminLabel` (shop language, `en-us`), else the name.
      */
     label: string;
     /**
@@ -72,8 +72,8 @@ export interface NavigationActionMeta {
      */
     icon: string;
     /**
-     * Admin-only labels by admin locale (`en-us`, `de-de`), not translated by the app. The admin
-     * uses its locale, then `en-us`, then `label`, so always set `en-us`.
+     * Labels by admin locale (`en-us`, `de-de`), not translated. The admin uses its locale, then
+     * `en-us`, then `label`, so always set `en-us`. Tabs use them when both labels are empty.
      */
     adminLabel?: Partial<Record<AdminLocale, string>>;
   };
@@ -93,7 +93,8 @@ export interface NavigationCatalogItem {
    */
   action: string;
   /**
-   * The translated `tabBar.label`. The admin shows it when no `adminLabel` fits.
+   * The text from `getExtensionActionLabel`, without the hook's `label`. The admin shows it when
+   * no `adminLabel` fits.
    */
   label: string;
   /**
