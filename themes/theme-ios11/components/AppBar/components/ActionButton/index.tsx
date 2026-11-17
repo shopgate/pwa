@@ -14,18 +14,12 @@ import type {
 } from '@shopgate/engage/settings/types/appSettings';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useShowFavoritesCounter } from '../../../TabBar/components/FavoritesIconBadge/hooks';
-import { getActionIcon } from '../../../../helpers/actionIcons';
+import { getActionIcon, resolveActionIcon } from '../../../../helpers/actionIcons';
 import { getCountAriaLabel } from '../../../../helpers/countAriaLabel';
 
 const AppBarIcon = AppBar.Icon as unknown as ComponentType<Record<string, unknown>>;
 
 const CORE_COUNTER_ACTIONS = ['cart', 'favorites'];
-
-/**
- * Takes the place of an icon nobody defined.
- * @returns Nothing.
- */
-const NoIcon = () => null;
 
 const useStyles = makeStyles()(theme => ({
   badge: {
@@ -67,7 +61,7 @@ const ResolvedButton = ({ action, settings, slot }: ResolvedButtonProps) => {
   const coreAriaLabel = showBadge && showCount ? getCountAriaLabel(text, count) : text;
   const configuredIcon = getActionIcon(settings.icon);
   const iconName = configuredIcon ? settings.icon : action.icon;
-  const IconComponent = configuredIcon ?? getActionIcon(action.icon) ?? NoIcon;
+  const IconComponent = resolveActionIcon(settings.icon, action.icon);
 
   const renderBadge = useCallback(() => (
     <Badge

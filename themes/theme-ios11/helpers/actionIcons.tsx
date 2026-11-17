@@ -25,3 +25,18 @@ export const getActionIcon = (name: string): ComponentType | null => {
 
   return actionIcons.get(name) ?? null;
 };
+
+/**
+ * Takes the place of an icon when none of the given names resolves.
+ * @returns Nothing.
+ */
+export const NoIcon = () => null;
+
+/**
+ * Resolves the icon of the first name that has one, e.g. the merchant's icon before the default.
+ * @param names The icon names, in order of preference.
+ * @returns The icon component, or `NoIcon` when no name has an icon.
+ */
+export const resolveActionIcon = (...names: string[]): ComponentType => (
+  names.reduce<ComponentType | null>((icon, name) => icon ?? getActionIcon(name), null) ?? NoIcon
+);

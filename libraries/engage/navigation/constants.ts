@@ -31,8 +31,8 @@ export const TAB_BAR_MAX_ITEMS = 6;
 export const DEFAULT_NAVIGATION_BADGE_MAX = 99;
 
 /**
- * The tab bar items while the merchant configured none. Frozen, since they reach extension
- * portals.
+ * The tab bar items while the merchant configured none. Frozen, since every importer shares
+ * them.
  */
 export const DEFAULT_TAB_BAR_ITEMS: readonly Readonly<NavigationActionSettings>[] = Object.freeze([
   'home',

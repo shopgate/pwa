@@ -4,7 +4,7 @@ import NavigationAction from '@shopgate/engage/navigation/components/NavigationA
 import { getNavigationActionBadge } from '@shopgate/engage/navigation/helpers';
 import { getExtensionActionMeta } from '@shopgate/engage/navigation/registry';
 import type { NavigationActionSettings } from '@shopgate/engage/settings/types/appSettings';
-import { getActionIcon } from '../../../../helpers/actionIcons';
+import { resolveActionIcon } from '../../../../helpers/actionIcons';
 import TabBarActionJs from '../TabBarAction';
 import TabBarBadge from '../TabBarBadge';
 import TabBarIcon from '../TabBarIcon';
@@ -46,12 +46,6 @@ interface TabBarActionProps {
 const TabBarAction = TabBarActionJs as unknown as ComponentType<TabBarActionProps>;
 
 /**
- * Keeps the icon slot of a tab whose icons all fail to resolve.
- * @returns Nothing.
- */
-const NoIcon = () => null;
-
-/**
  * The props of an extension tab.
  */
 interface Props {
@@ -75,8 +69,6 @@ const ExtensionAction = ({ settings }: Props) => {
     return null;
   }
 
-  const icon = getActionIcon(settings.icon) ?? getActionIcon(tabBarMeta.icon);
-
   return (
     <NavigationAction settings={settings}>
       {(action) => {
@@ -84,12 +76,13 @@ const ExtensionAction = ({ settings }: Props) => {
         const {
           count, max, showCount, ariaLabel,
         } = getNavigationActionBadge(action, label);
+        const icon = resolveActionIcon(settings.icon, tabBarMeta.icon, action.icon);
 
         return (
           <TabBarAction
             type={settings.action}
             label={tabBarMeta.label}
-            icon={<TabBarIcon icon={icon ?? getActionIcon(action.icon) ?? NoIcon} />}
+            icon={<TabBarIcon icon={icon} />}
             isHighlighted={!!action.isActive}
             onClick={action.onClick}
             aria-label={ariaLabel ?? label}

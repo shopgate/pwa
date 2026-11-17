@@ -61,13 +61,14 @@ jest.mock('@shopgate/engage/core/hooks', () => ({
 jest.mock('@shopgate/engage/styles/helpers', () => ({
   setCSSCustomProp: jest.fn(),
 }));
-jest.mock('../../helpers/actionIcons', () => {
-  const icons = {
-    star: () => <svg data-testid="star-icon" />,
-    'card-icon': () => <svg data-testid="card-icon" />,
-  };
-  return { getActionIcon: name => icons[name] ?? null };
-});
+jest.mock('@shopgate/engage/icons/helpers', () => ({
+  ...jest.requireActual('@shopgate/engage/icons/helpers'),
+  resolveIcon: name => (['star', 'card-icon'].includes(name) ? {} : null),
+}));
+jest.mock('@shopgate/engage/icons/components/ThemeIcon', () => ({
+  __esModule: true,
+  default: ({ name }) => <svg data-icon={name} />,
+}));
 jest.mock('./connector', () => Component => Component);
 jest.mock('./hooks', () => ({
   useTabBarSettings: jest.fn(),
@@ -359,8 +360,8 @@ describe('<TabBar />', () => {
     render(<TabBar {...props} />);
     const [home, cart] = screen.getAllByRole('tab');
 
-    expect(within(home).getByTestId('star-icon')).toBeInTheDocument();
-    expect(within(cart).queryByTestId('star-icon')).not.toBeInTheDocument();
+    expect(home.querySelector('svg[data-icon="star"]')).toBeInTheDocument();
+    expect(cart.querySelector('svg[data-icon="star"]')).not.toBeInTheDocument();
     expect(cart.querySelector('svg')).toBeInTheDocument();
   });
 
@@ -505,17 +506,17 @@ describe('<TabBar />', () => {
   });
 
   it.each([
-    ['star', 'star-icon'],
+    ['star', 'star'],
     ['', 'card-icon'],
     ['unknown', 'card-icon'],
-  ])('should render the icon %j of a registered extension item as %s', (icon, testId) => {
+  ])('should render the icon %j of a registered extension item as %s', (icon, iconName) => {
     useTabBarItems.mockReturnValue([item('home'), item('@shopgate/test/card', icon)]);
 
     render(<TabBar {...props} />);
     const card = screen.getAllByRole('tab')[1];
 
-    expect(within(card).getByTestId(testId)).toBeInTheDocument();
-    expect(within(card).getAllByTestId(/-icon$/)).toHaveLength(1);
+    expect(card.querySelector(`svg[data-icon="${iconName}"]`)).toBeInTheDocument();
+    expect(card.querySelectorAll('svg')).toHaveLength(1);
   });
 
   it('should dispatch the navigate action through the historyPush of the portal props', () => {

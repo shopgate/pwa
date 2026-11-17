@@ -8,6 +8,7 @@ let mockCounts: Record<string, number> = {};
 let mockCartFields: Partial<ResolvedNavigationAction> = {};
 let mockShowFavoritesBadge = true;
 let mockShowFavoritesCounter = true;
+let mockIconNames: string[] = [];
 
 jest.mock('react-redux', () => ({
   useSelector: (selector: (state: unknown) => unknown) => selector({}),
@@ -48,7 +49,14 @@ jest.mock('@shopgate/engage/settings/selectors/shopSettings', () => ({
 jest.mock('../../../TabBar/components/FavoritesIconBadge/hooks', () => ({
   useShowFavoritesCounter: () => mockShowFavoritesCounter,
 }));
-jest.mock('../../../../helpers/actionIcons', () => ({ getActionIcon: () => null }));
+jest.mock('@shopgate/engage/icons/helpers', () => ({
+  ...jest.requireActual('@shopgate/engage/icons/helpers'),
+  resolveIcon: (name: string) => (mockIconNames.includes(name) ? {} : null),
+}));
+jest.mock('@shopgate/engage/icons/components/ThemeIcon', () => ({
+  __esModule: true,
+  default: ({ name }: { name: string }) => <svg data-icon={name} />,
+}));
 
 let mockAction: Partial<ResolvedNavigationAction> = {};
 
@@ -63,12 +71,13 @@ registerNavigationAction('@shopgate/test/card', () => ({
 /**
  * Renders the header button of an action.
  * @param action The name of the configured action.
+ * @param icon The icon the merchant picked.
  * @returns The button.
  */
-const renderButton = (action: string) => {
+const renderButton = (action: string, icon = '') => {
   const settings = {
     action,
-    icon: '',
+    icon,
     link: '',
   };
 
@@ -99,6 +108,25 @@ describe('<ActionButton />', () => {
     mockCartFields = {};
     mockShowFavoritesBadge = true;
     mockShowFavoritesCounter = true;
+    mockIconNames = [];
+  });
+
+  describe('icon', () => {
+    it('shows the icon the merchant picked', () => {
+      mockIconNames = ['merchant-icon', 'magnifier'];
+      const button = renderButton('openSearch', 'merchant-icon');
+
+      expect(button.querySelector('svg')).toHaveAttribute('data-icon', 'merchant-icon');
+      expect(button).toHaveAttribute('data-test-id', 'AppBarAction-merchant-icon');
+    });
+
+    it('uses the icon of the action, also for the test id, while the merchant icon has none', () => {
+      mockIconNames = ['magnifier'];
+      const button = renderButton('openSearch', 'unknown');
+
+      expect(button.querySelector('svg')).toHaveAttribute('data-icon', 'magnifier');
+      expect(button).toHaveAttribute('data-test-id', 'AppBarAction-magnifier');
+    });
   });
 
   describe('extension action', () => {

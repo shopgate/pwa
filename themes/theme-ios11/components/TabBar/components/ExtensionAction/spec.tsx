@@ -9,10 +9,13 @@ jest.mock('@shopgate/engage/components', () => ({
   Badge: jest.requireActual('@shopgate/engage/components/Badge').default,
 }));
 jest.mock('@shopgate/engage/navigation/actions', () => ({ CORE_NAVIGATION_ACTIONS: {} }));
-jest.mock('../../../../helpers/actionIcons', () => ({
-  getActionIcon: (name: string) => (mockIconNames.includes(name)
-    ? () => <svg data-icon={name} />
-    : null),
+jest.mock('@shopgate/engage/icons/helpers', () => ({
+  ...jest.requireActual('@shopgate/engage/icons/helpers'),
+  resolveIcon: (name: string) => (mockIconNames.includes(name) ? {} : null),
+}));
+jest.mock('@shopgate/engage/icons/components/ThemeIcon', () => ({
+  __esModule: true,
+  default: ({ name }: { name: string }) => <svg data-icon={name} />,
 }));
 jest.mock('../../hooks', () => ({ useTabBarSettings: () => mockTabBarSettings }));
 
@@ -140,7 +143,7 @@ describe('<ExtensionAction />', () => {
         .toHaveAttribute('data-icon', 'merchant-icon');
     });
 
-    it('falls back to the icon of the tab details', () => {
+    it('prefers the icon of the tab details to the one of the resolved action', () => {
       mockIconNames = ['tab-icon', 'action-icon'];
 
       expect(renderIconSlot('unknown')?.querySelector('svg'))
@@ -150,7 +153,7 @@ describe('<ExtensionAction />', () => {
     it('falls back to the icon of the resolved action', () => {
       mockIconNames = ['action-icon'];
 
-      expect(renderIconSlot()?.querySelector('svg'))
+      expect(renderIconSlot('unknown')?.querySelector('svg'))
         .toHaveAttribute('data-icon', 'action-icon');
     });
 

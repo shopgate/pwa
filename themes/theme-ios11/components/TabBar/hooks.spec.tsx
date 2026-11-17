@@ -78,7 +78,7 @@ const item = (action: string, icon = ''): NavigationActionSettings => ({
  * @param items The items.
  * @returns The actions.
  */
-const actions = (items: NavigationActionSettings[]) => items.map(({ action }) => action);
+const actions = (items: readonly NavigationActionSettings[]) => items.map(({ action }) => action);
 
 const useTestAction: NavigationActionHook = () => ({
   available: true,
@@ -194,5 +194,53 @@ describe('useTabBarItems()', () => {
     mockTabBarItems = [item('more'), item('none')];
     rerender(<Items />);
     expect(screen.getByText('home more')).toBeInTheDocument();
+  });
+
+  it('hands out frozen copies of the stored items', () => {
+    const stored = [item('home'), item('cart', 'star')];
+    mockTabBarItems = stored;
+    let items: readonly NavigationActionSettings[] = [];
+
+    /**
+     * Keeps the resolved items.
+     * @returns Nothing.
+     */
+    const Capture = () => {
+      items = useTabBarItems();
+      return null;
+    };
+
+    render(<Capture />);
+
+    expect(Object.isFrozen(items)).toBe(true);
+    expect(items).toEqual(stored);
+    items.forEach((resolved, index) => {
+      expect(Object.isFrozen(resolved)).toBe(true);
+      expect(resolved).not.toBe(stored[index]);
+    });
+    expect(() => {
+      (items[1] as NavigationActionSettings).icon = 'heart';
+    }).toThrow(TypeError);
+    expect(stored[1].icon).toBe('star');
+  });
+
+  it('keeps the same list while the stored items stay the same', () => {
+    mockTabBarItems = [item('home'), item('cart')];
+    const results: Array<readonly NavigationActionSettings[]> = [];
+
+    /**
+     * Keeps the resolved items of every render.
+     * @returns Nothing.
+     */
+    const Capture = () => {
+      results.push(useTabBarItems());
+      return null;
+    };
+
+    const { rerender } = render(<Capture />);
+    rerender(<Capture />);
+
+    expect(results).toHaveLength(2);
+    expect(results[1]).toBe(results[0]);
   });
 });

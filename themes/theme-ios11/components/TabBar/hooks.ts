@@ -180,10 +180,14 @@ export const resolveTabBarItems = (
 };
 
 /**
- * Resolves the items the tab bar renders from the app settings.
+ * Resolves the items the tab bar renders from the app settings. The list and its items are frozen
+ * copies, since they reach extension portals.
  * @returns The items to render.
  */
-export const useTabBarItems = (): TabBarItem[] => {
+export const useTabBarItems = (): readonly TabBarItem[] => {
   const stored = useSelector(getTabBarItems);
-  return useMemo(() => resolveTabBarItems(stored), [stored]);
+  return useMemo(
+    () => Object.freeze(resolveTabBarItems(stored).map(item => Object.freeze({ ...item }))),
+    [stored]
+  );
 };

@@ -1,5 +1,5 @@
 import { setIconOverrides } from '@shopgate/engage/icons/helpers/overrides';
-import { getActionIcon } from './actionIcons';
+import { getActionIcon, NoIcon, resolveActionIcon } from './actionIcons';
 
 jest.mock('@shopgate/engage/icons/helpers/themeIcons', () => ({
   ...jest.requireActual('@shopgate/engage/icons/helpers/themeIcons'),
@@ -37,5 +37,27 @@ describe('getActionIcon', () => {
 
   it.each(['', 'unknown', 'pin', 'empty', 'constructor', 'toString', '__proto__'])('has no icon for %j', (name) => {
     expect(getActionIcon(name)).toBeNull();
+  });
+});
+
+describe('resolveActionIcon', () => {
+  it('uses the first name that has an icon', () => {
+    expect(resolveActionIcon('custom', 'magnifier')).toBe(getActionIcon('custom'));
+  });
+
+  it('skips names without an icon', () => {
+    expect(resolveActionIcon('unknown', '', undefined, 'empty', 'magnifier', 'custom'))
+      .toBe(getActionIcon('magnifier'));
+  });
+
+  it.each([
+    [[]],
+    [['unknown', '', undefined, 'empty']],
+  ])('uses NoIcon when no name of %j has an icon', (names) => {
+    expect(resolveActionIcon(...names)).toBe(NoIcon);
+  });
+
+  it('renders nothing for NoIcon', () => {
+    expect(NoIcon()).toBeNull();
   });
 });
