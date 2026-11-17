@@ -1,18 +1,7 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Badge } from '@shopgate/engage/components';
-import { makeStyles } from '@shopgate/engage/styles';
 import { CART_MAX_ITEMS } from 'Pages/Cart/constants';
-
-const useStyles = makeStyles()(theme => ({
-  root: {
-    position: 'absolute',
-    borderRadius: theme.components.tabBar.badgeBorderRadius,
-    top: theme.components.tabBar.badgeTop,
-    transform: 'translateX(-50%)',
-    left: theme.components.tabBar.badgeLeft,
-  },
-}));
+import TabBarBadge from '../TabBarBadge';
 
 /**
  * The cart item badge component.
@@ -20,17 +9,13 @@ const useStyles = makeStyles()(theme => ({
  * @param {Object} props The component props.
  * @returns {JSX.Element|null}
  */
-const CartItemBadge = (props) => {
-  const { classes, cx } = useStyles();
-
-  return (
-    <Badge
-      count={props.cartProductCount}
-      max={CART_MAX_ITEMS}
-      className={cx(classes.root, 'theme__tab-bar__cart-item-badge')}
-    />
-  );
-};
+const CartItemBadge = props => (
+  <TabBarBadge
+    count={props.cartProductCount}
+    max={CART_MAX_ITEMS}
+    className="theme__tab-bar__cart-item-badge"
+  />
+);
 
 CartItemBadge.propTypes = {
   cartProductCount: PropTypes.number.isRequired,

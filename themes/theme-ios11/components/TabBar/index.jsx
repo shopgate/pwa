@@ -18,7 +18,7 @@ import {
 } from './constants';
 import connect from './connector';
 import { useTabBarItems, useTabBarScrollObserver, useTabBarSettings } from './hooks';
-import { CORE_TAB_TYPES, getTabDefinition } from './tabDefinitions';
+import { CORE_TAB_TYPES, getCoreTabType } from './coreTabData';
 import ExtensionAction from './components/ExtensionAction';
 
 const useStyles = makeStyles()(theme => ({
@@ -98,20 +98,19 @@ const useStyles = makeStyles()(theme => ({
  */
 const renderItem = (item, index, activeTab, path) => {
   const key = `${index}-${item.action}`;
-  const definition = getTabDefinition(item.action);
+  const type = getCoreTabType(item.action);
 
-  if (!definition) {
+  if (!type) {
     return <ExtensionAction key={key} settings={item} />;
   }
 
-  const Action = getTabActionComponentForType(definition.type);
+  const Action = getTabActionComponentForType(type);
 
   return (
     <Action
       key={key}
-      type={definition.type}
-      label={definition.label}
-      isHighlighted={activeTab === definition.type}
+      type={type}
+      isHighlighted={activeTab === type}
       path={path}
       configuredIcon={getActionIcon(item.icon)}
       {...(item.action === 'categoryDrawer' && { opensCategoryDrawer: true })}
@@ -120,8 +119,8 @@ const renderItem = (item, index, activeTab, path) => {
 };
 
 /**
- * Renders the before and after portals of a core tab that no item renders, so that extensions
- * using them still show.
+ * Renders the before and after portals of a core tab that no item renders, e.g. after the merchant
+ * removed the tab, so that extensions using them still show.
  * @param {string} type The tab type.
  * @param {string} activeTab The active tab.
  * @param {string} path The current history path.
@@ -134,7 +133,6 @@ const renderOrphanPortals = (type, activeTab, path) => {
     <Action
       key={`orphan-${type}`}
       type={type}
-      label={getTabDefinition(type).label}
       isHighlighted={activeTab === type}
       path={path}
       portalsOnly
@@ -244,10 +242,8 @@ const TabBar = ({
     };
   }, [handleHide, handleShow]);
 
-  // Core tab types the configured items don't render, e.g. after a merchant removed the tab.
-  // Their before / after portals still render at the end, so extensions using them stay visible.
-  const orphanTypes = useMemo(() => {
-    const renderedTypes = items.map(({ action }) => getTabDefinition(action)?.type);
+  const orphanTabTypes = useMemo(() => {
+    const renderedTypes = items.map(({ action }) => getCoreTabType(action));
     return CORE_TAB_TYPES.filter(type => !renderedTypes.includes(type));
   }, [items]);
 
@@ -257,7 +253,8 @@ const TabBar = ({
     isVisible,
     activeTab,
     path,
-  }), [activeTab, isVisible, path]);
+    items,
+  }), [activeTab, isVisible, path, items]);
 
   // Callback invoked when the animated tab bar transition ends
   const handleTransitionEnd = useCallback(() => {
@@ -364,7 +361,7 @@ const TabBar = ({
                 aria-hidden={ariaHidden}
               >
                 {items.map((item, index) => renderItem(item, index, activeTab, path))}
-                {orphanTypes.map(type => renderOrphanPortals(type, activeTab, path))}
+                {orphanTabTypes.map(type => renderOrphanPortals(type, activeTab, path))}
               </div>
             </div>
           </SurroundPortals>

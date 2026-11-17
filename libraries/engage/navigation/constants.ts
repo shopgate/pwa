@@ -26,16 +26,22 @@ export const MORE_PATH = '/more';
 export const TAB_BAR_MAX_ITEMS = 6;
 
 /**
- * The tab bar items while the merchant configured none.
+ * Counts above this are shown as `{max}+` while an action sets no `badgeMax`.
  */
-export const DEFAULT_TAB_BAR_ITEMS: NavigationActionSettings[] = [
+export const DEFAULT_NAVIGATION_BADGE_MAX = 99;
+
+/**
+ * The tab bar items while the merchant configured none. Frozen, since they reach extension
+ * portals.
+ */
+export const DEFAULT_TAB_BAR_ITEMS: readonly Readonly<NavigationActionSettings>[] = Object.freeze([
   'home',
   'browse',
   'cart',
   'favorites',
   'more',
-].map(action => ({
+].map(action => Object.freeze({
   action,
   icon: '',
   link: '',
-}));
+})));

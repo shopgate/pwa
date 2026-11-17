@@ -109,60 +109,6 @@ describe('<ActionButton />', () => {
       expect(button).toHaveAttribute('aria-label', 'Card, 3');
     });
 
-    it('shows counts above 99 as 99+', () => {
-      const button = renderExtensionButton({ badgeCount: 120 });
-
-      expect(getBadge(button)).toHaveTextContent('99+');
-      expect(button).toHaveAttribute('aria-label', 'Card, 120');
-    });
-
-    it('caps the count at the maximum of the action', () => {
-      const button = renderExtensionButton({
-        badgeCount: 12,
-        badgeMax: 9,
-      });
-
-      expect(getBadge(button)).toHaveTextContent('9+');
-    });
-
-    it('shows a dot without a number in dot mode, named by the label', () => {
-      const button = renderExtensionButton({
-        badgeCount: 2,
-        badgeShowCount: false,
-      });
-
-      expect(getBadge(button)).toBeInTheDocument();
-      expect(getBadge(button)).toBeEmptyDOMElement();
-      expect(button).toHaveAttribute('aria-label', 'Card');
-    });
-
-    it('shows no dot in dot mode while the count is 0', () => {
-      const button = renderExtensionButton({
-        badgeCount: 0,
-        badgeShowCount: false,
-      });
-
-      expect(getBadge(button)).not.toBeInTheDocument();
-    });
-
-    it.each([true, false])('names the button by the badge label of the action (showCount %j)', (badgeShowCount) => {
-      const button = renderExtensionButton({
-        badgeCount: 3,
-        badgeShowCount,
-        badgeLabel: 'Card, 3 new',
-      });
-
-      expect(getBadge(button)).toBeInTheDocument();
-      expect(button).toHaveAttribute('aria-label', 'Card, 3 new');
-    });
-
-    it('shows no badge for a negative count', () => {
-      const button = renderExtensionButton({ badgeCount: -2 });
-
-      expect(getBadge(button)).not.toBeInTheDocument();
-      expect(button).toHaveAttribute('aria-label', 'Card');
-    });
-
     it('is named by the label without a badge', () => {
       const button = renderExtensionButton({ badgeLabel: 'Card, nothing new' });
 

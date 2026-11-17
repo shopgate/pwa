@@ -80,6 +80,11 @@ export interface NavigationActionMeta {
 }
 
 /**
+ * A place in the navigation that merchants can add extension actions to, e.g. the tab bar.
+ */
+export type NavigationPlacement = keyof NavigationActionMeta;
+
+/**
  * An extension action that merchants can add to the tab bar.
  */
 export interface NavigationCatalogItem {

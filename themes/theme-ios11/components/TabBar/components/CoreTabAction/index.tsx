@@ -8,8 +8,9 @@ import { makeStyles } from '@shopgate/engage/styles';
 import TabBarActionJs from '../TabBarAction';
 import TabBarIcon from '../TabBarIcon';
 import { navigate } from '../actions';
+import type { CoreTabTypeName } from '../../coreTabData';
 import { CORE_TABS } from './tabTypes';
-import type { CoreTabTypeName, TabExtras } from './tabTypes';
+import type { TabExtras } from './tabTypes';
 
 const TabBarAction = TabBarActionJs as unknown as ComponentType<Record<string, unknown>>;
 
@@ -45,9 +46,9 @@ interface Props {
    */
   type?: string;
   /**
-   * I18n key of the tab label.
+   * I18n key of the tab label. Defaults to the label of the tab type.
    */
-  label: string;
+  label?: string;
   /**
    * Whether the tab is highlighted.
    */
@@ -106,6 +107,7 @@ export const createCoreTabAction = (tabType: CoreTabTypeName) => {
   const {
     displayName,
     path: tabPath,
+    label: defaultLabel,
     icon: DefaultIcon,
     iconWidth,
     iconHeight,
@@ -133,7 +135,7 @@ export const createCoreTabAction = (tabType: CoreTabTypeName) => {
       height: iconHeight,
     });
     const dispatch = useAppDispatch();
-    const { label } = ownProps;
+    const label = ownProps.label ?? defaultLabel;
     const extras = useExtras(label);
 
     const historyPush = useCallback(
@@ -150,7 +152,10 @@ export const createCoreTabAction = (tabType: CoreTabTypeName) => {
       historyPush({ pathname: tabPath });
     }, [historyPush, opensCategoryDrawer]);
 
-    const props = withTabBarActionDefaults(ownProps);
+    const props = withTabBarActionDefaults({
+      ...ownProps,
+      label,
+    });
     const propsWithoutTabBarAction = {
       ...props,
       historyPush,

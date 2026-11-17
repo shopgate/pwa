@@ -6,6 +6,7 @@ import { APP_BAR_ACTION, APP_BAR_CART_BUTTON } from '@shopgate/engage/core/const
 import { i18n } from '@shopgate/engage/core/helpers';
 import { NavigationAction } from '@shopgate/engage/navigation';
 import type { ResolvedNavigationAction } from '@shopgate/engage/navigation';
+import { getNavigationActionBadge } from '@shopgate/engage/navigation/helpers';
 import { getShowWishlistItemsCountBadge } from '@shopgate/engage/settings/selectors/shopSettings';
 import type {
   AppBarButtonSlot,
@@ -14,7 +15,7 @@ import type {
 import { makeStyles } from '@shopgate/engage/styles';
 import { useShowFavoritesCounter } from '../../../TabBar/components/FavoritesIconBadge/hooks';
 import { getActionIcon } from '../../../../helpers/actionIcons';
-import { getNavigationActionBadge } from '../../../../helpers/navigationActionBadge';
+import { getCountAriaLabel } from '../../../../helpers/countAriaLabel';
 
 const AppBarIcon = AppBar.Icon as unknown as ComponentType<Record<string, unknown>>;
 
@@ -63,7 +64,7 @@ const ResolvedButton = ({ action, settings, slot }: ResolvedButtonProps) => {
   const { count, max } = badge;
   const showBadge = count > 0 && (!isFavorites || showFavoritesBadge);
   const showCount = isFavorites ? showFavoritesCounter : badge.showCount;
-  const coreAriaLabel = showBadge && showCount ? `${text}. ${i18n.text('common.products')}: ${count}.` : text;
+  const coreAriaLabel = showBadge && showCount ? getCountAriaLabel(text, count) : text;
   const configuredIcon = getActionIcon(settings.icon);
   const iconName = configuredIcon ? settings.icon : action.icon;
   const IconComponent = configuredIcon ?? getActionIcon(action.icon) ?? NoIcon;

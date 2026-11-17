@@ -5,7 +5,6 @@ import {
   TAB_MORE,
   TAB_FAVORITES,
 } from '../constants';
-import TabBarAction from '../components/TabBarAction';
 
 import helper from './getTabActionComponentForType';
 
@@ -45,8 +44,8 @@ describe('getTabActionComponentForType', () => {
   });
 
   describe('unknown', () => {
-    it('should work as expected', () => {
-      expect(helper('unknown')).toEqual(TabBarAction);
+    it('should return undefined', () => {
+      expect(helper('unknown')).toBeUndefined();
     });
   });
 });

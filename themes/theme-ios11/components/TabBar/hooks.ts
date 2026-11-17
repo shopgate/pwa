@@ -4,7 +4,7 @@ import { themeConfig } from '@shopgate/engage';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { useWidgetSettings, useScrollDirectionChange } from '@shopgate/engage/core/hooks';
 import { DEFAULT_TAB_BAR_ITEMS, TAB_BAR_MAX_ITEMS } from '@shopgate/engage/navigation/constants';
-import { isTabBarExtensionAction } from '@shopgate/engage/navigation/registry';
+import { isExtensionActionFor } from '@shopgate/engage/navigation/registry';
 import {
   getAreAppSettingsHydrated,
   getTabBarItems,
@@ -19,7 +19,7 @@ import {
   HIDE_TAB_BAR,
   SHOW_TAB_BAR,
 } from './constants';
-import { getTabDefinition } from './tabDefinitions';
+import { getCoreTabType } from './coreTabData';
 
 const { variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 
@@ -132,11 +132,12 @@ export const useFooterBarLayout = (variant: FooterBarVariant): FooterBarLayout =
     }), [tabBarVariant, variant]);
 };
 
-const HOME_ITEM: NavigationActionSettings = {
-  action: 'home',
-  icon: '',
-  link: '',
-};
+/**
+ * A tab bar item the tab bar only reads. The default items are frozen and shared.
+ */
+type TabBarItem = Readonly<NavigationActionSettings>;
+
+const HOME_ITEM = DEFAULT_TAB_BAR_ITEMS.find(({ action }) => action === 'home') as TabBarItem;
 
 /**
  * Resolves the items the tab bar renders. Without a stored list the default items are used. Items
@@ -146,17 +147,17 @@ const HOME_ITEM: NavigationActionSettings = {
  * @returns The items to render.
  */
 export const resolveTabBarItems = (
-  stored: NavigationActionSettings[] | undefined
-): NavigationActionSettings[] => {
+  stored: readonly TabBarItem[] | undefined
+): TabBarItem[] => {
   const seen = new Set<string>();
   const items = (stored ?? DEFAULT_TAB_BAR_ITEMS).filter(({ action }) => {
-    const definition = getTabDefinition(action);
+    const coreTabType = getCoreTabType(action);
 
-    if (!definition && !isTabBarExtensionAction(action)) {
+    if (!coreTabType && !isExtensionActionFor(action, 'tabBar')) {
       return false;
     }
 
-    const tab = definition?.type ?? action;
+    const tab = coreTabType ?? action;
 
     if (seen.has(tab)) {
       return false;
@@ -182,7 +183,7 @@ export const resolveTabBarItems = (
  * Resolves the items the tab bar renders from the app settings.
  * @returns The items to render.
  */
-export const useTabBarItems = (): NavigationActionSettings[] => {
+export const useTabBarItems = (): TabBarItem[] => {
   const stored = useSelector(getTabBarItems);
   return useMemo(() => resolveTabBarItems(stored), [stored]);
 };

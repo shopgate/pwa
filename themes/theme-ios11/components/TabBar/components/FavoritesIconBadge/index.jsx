@@ -1,19 +1,8 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { Badge } from '@shopgate/engage/components';
-import { makeStyles } from '@shopgate/engage/styles';
+import TabBarBadge from '../TabBarBadge';
 
 const MAX_NUMBER = 999;
-
-const useStyles = makeStyles()(theme => ({
-  root: {
-    position: 'absolute',
-    borderRadius: theme.components.tabBar.badgeBorderRadius,
-    top: theme.components.tabBar.badgeTop,
-    transform: 'translateX(-50%)',
-    left: theme.components.tabBar.badgeLeft,
-  },
-}));
 
 /**
  * Favorites icon badge.
@@ -28,18 +17,16 @@ const FavoritesIconBadge = ({
   showWishlistItemsCountBadge,
   showCounter,
 }) => {
-  const { classes, cx } = useStyles();
-
   if (!showWishlistItemsCountBadge) {
     return null;
   }
 
   return (
-    <Badge
+    <TabBarBadge
       count={favoritesCount}
       max={MAX_NUMBER}
       showCount={showCounter}
-      className={cx(classes.root, 'theme__tab-bar__favorites-icon-badge')}
+      className="theme__tab-bar__favorites-icon-badge"
     />
   );
 };

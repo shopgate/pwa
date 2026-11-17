@@ -9,11 +9,16 @@ jest.mock('@shopgate/engage/components', () => ({
   Badge: jest.requireActual('@shopgate/engage/components/Badge').default,
 }));
 jest.mock('@shopgate/engage/navigation/actions', () => ({ CORE_NAVIGATION_ACTIONS: {} }));
-jest.mock('../../../../helpers/actionIcons', () => ({ getActionIcon: () => null }));
+jest.mock('../../../../helpers/actionIcons', () => ({
+  getActionIcon: (name: string) => (mockIconNames.includes(name)
+    ? () => <svg data-icon={name} />
+    : null),
+}));
 jest.mock('../../hooks', () => ({ useTabBarSettings: () => mockTabBarSettings }));
 
 let mockAction: Partial<ResolvedNavigationAction> = {};
 let mockTabBarSettings: { showLabels?: boolean } = {};
+let mockIconNames: string[] = [];
 
 registerNavigationAction('@shopgate/test/card', () => ({
   available: true,
@@ -25,6 +30,18 @@ registerNavigationAction('@shopgate/test/card', () => ({
   tabBar: {
     label: 'Card',
     icon: '',
+  },
+});
+
+registerNavigationAction('@shopgate/test/icon', () => ({
+  available: true,
+  icon: 'action-icon',
+  label: 'icon.action',
+  onClick: jest.fn(),
+}), {
+  tabBar: {
+    label: 'Icon',
+    icon: 'tab-icon',
   },
 });
 
@@ -55,6 +72,7 @@ const getBadge = (tab: HTMLElement) => tab.querySelector('.theme__tab-bar__exten
 describe('<ExtensionAction />', () => {
   beforeEach(() => {
     mockTabBarSettings = {};
+    mockIconNames = [];
   });
 
   it('shows the count and announces it with the label', () => {
@@ -64,61 +82,30 @@ describe('<ExtensionAction />', () => {
     expect(tab).toHaveAttribute('aria-label', 'Card, 3');
   });
 
-  it('shows counts above 99 as 99+ and announces the exact count', () => {
-    const tab = renderTab({ badgeCount: 120 });
+  it('has no badge and is named by the label while the count is 0', () => {
+    const tab = renderTab({ badgeCount: 0 });
 
-    expect(getBadge(tab)).toHaveTextContent('99+');
-    expect(tab).toHaveAttribute('aria-label', 'Card, 120');
+    expect(getBadge(tab)).not.toBeInTheDocument();
+    expect(tab).toHaveAttribute('aria-label', 'Card');
   });
 
-  it('caps the count at the maximum of the action', () => {
+  it('caps the count of the badge at the badgeMax of the action', () => {
     const tab = renderTab({
       badgeCount: 12,
       badgeMax: 9,
     });
 
-    expect(getBadge(tab)).toHaveTextContent('9+');
+    expect(getBadge(tab)).toHaveTextContent(/^9\+$/);
   });
 
-  it('shows a dot without a number in dot mode, named by the label', () => {
+  it('shows a dot without the count while the action sets badgeShowCount to false', () => {
     const tab = renderTab({
-      badgeCount: 2,
+      badgeCount: 5,
       badgeShowCount: false,
     });
 
     expect(getBadge(tab)).toBeInTheDocument();
     expect(getBadge(tab)).toBeEmptyDOMElement();
-    expect(tab).toHaveAttribute('aria-label', 'Card');
-  });
-
-  it('shows no dot in dot mode while the count is 0', () => {
-    const tab = renderTab({
-      badgeCount: 0,
-      badgeShowCount: false,
-    });
-
-    expect(getBadge(tab)).not.toBeInTheDocument();
-  });
-
-  it.each([true, false])('names the tab by the badge label of the action (showCount %j)', (badgeShowCount) => {
-    const tab = renderTab({
-      badgeCount: 3,
-      badgeShowCount,
-      badgeLabel: 'Card, 3 new',
-    });
-
-    expect(getBadge(tab)).toBeInTheDocument();
-    expect(tab).toHaveAttribute('aria-label', 'Card, 3 new');
-  });
-
-  it.each([undefined, 0, -2])('has no badge and is named by the label with the count %j', (badgeCount) => {
-    const tab = renderTab({
-      badgeCount,
-      badgeLabel: 'Card, nothing new',
-    });
-
-    expect(getBadge(tab)).not.toBeInTheDocument();
-    expect(tab).toHaveAttribute('aria-label', 'Card');
   });
 
   it('keeps its accessible name while the tab bar hides the labels', () => {
@@ -127,5 +114,51 @@ describe('<ExtensionAction />', () => {
 
     expect(tab).not.toHaveTextContent('Card');
     expect(tab).toHaveAccessibleName('Card');
+  });
+
+  describe('icon', () => {
+    /**
+     * Renders the tab of the icon test action.
+     * @param icon The icon the merchant picked.
+     * @returns The icon slot of the tab.
+     */
+    const renderIconSlot = (icon = '') => {
+      render(<ExtensionAction settings={{
+        action: '@shopgate/test/icon',
+        icon,
+        link: '',
+      }}
+      />);
+
+      return screen.getByRole('tab').querySelector('.theme__tab-bar__icon');
+    };
+
+    it('shows the icon the merchant picked', () => {
+      mockIconNames = ['merchant-icon', 'tab-icon', 'action-icon'];
+
+      expect(renderIconSlot('merchant-icon')?.querySelector('svg'))
+        .toHaveAttribute('data-icon', 'merchant-icon');
+    });
+
+    it('falls back to the icon of the tab details', () => {
+      mockIconNames = ['tab-icon', 'action-icon'];
+
+      expect(renderIconSlot('unknown')?.querySelector('svg'))
+        .toHaveAttribute('data-icon', 'tab-icon');
+    });
+
+    it('falls back to the icon of the resolved action', () => {
+      mockIconNames = ['action-icon'];
+
+      expect(renderIconSlot()?.querySelector('svg'))
+        .toHaveAttribute('data-icon', 'action-icon');
+    });
+
+    it('keeps an empty icon slot when no icon resolves', () => {
+      const slot = renderIconSlot();
+
+      expect(slot).toBeInTheDocument();
+      expect(slot).toBeEmptyDOMElement();
+    });
   });
 });

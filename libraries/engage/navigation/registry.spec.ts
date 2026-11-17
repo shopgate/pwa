@@ -1,8 +1,9 @@
+import { logger } from '@shopgate/engage/core/helpers';
 import {
+  getExtensionActionMeta,
   getNavigationAction,
-  getNavigationActionMeta,
   getNavigationCatalog,
-  isTabBarExtensionAction,
+  isExtensionActionFor,
   registerNavigationAction,
 } from './registry';
 import { CORE_NAVIGATION_ACTIONS } from './actions';
@@ -28,6 +29,16 @@ const extension: NavigationActionHook = () => ({
 });
 
 describe('navigation action registry', () => {
+  let warn: jest.SpyInstance;
+
+  beforeEach(() => {
+    warn = jest.spyOn(logger, 'warn').mockImplementation(() => undefined);
+  });
+
+  afterEach(() => {
+    warn.mockRestore();
+  });
+
   it('uses the core action while no extension replaces it', () => {
     expect(getNavigationAction('cart')).toBe(CORE_NAVIGATION_ACTIONS.cart);
   });
@@ -52,15 +63,13 @@ describe('navigation action registry', () => {
     registerNavigationAction('@shopgate/customer-card/card', extension, meta);
 
     expect(getNavigationAction('@shopgate/customer-card/card')).toBe(extension);
-    expect(getNavigationActionMeta('@shopgate/customer-card/card')).toBe(meta);
+    expect(getExtensionActionMeta('@shopgate/customer-card/card', 'tabBar')).toBe(meta.tabBar);
   });
 
   it('knows no details of an action registered without any', () => {
     registerNavigationAction('@shopgate/header-only/button', extension);
 
-    expect(getNavigationActionMeta('@shopgate/header-only/button')).toBeUndefined();
-    expect(getNavigationActionMeta('cart')).toBeUndefined();
-    expect(getNavigationActionMeta('unknown')).toBeUndefined();
+    expect(getExtensionActionMeta('@shopgate/header-only/button', 'tabBar')).toBeUndefined();
   });
 
   it('replaces the details when an action is registered again', () => {
@@ -72,10 +81,34 @@ describe('navigation action registry', () => {
     });
     registerNavigationAction('@shopgate/again/tab', extension);
 
-    expect(getNavigationActionMeta('@shopgate/again/tab')).toBeUndefined();
+    expect(getExtensionActionMeta('@shopgate/again/tab', 'tabBar')).toBeUndefined();
   });
 
-  describe('isTabBarExtensionAction', () => {
+  describe('registration warnings', () => {
+    it('warns about tab details without a string label or icon', () => {
+      registerNavigationAction('@shopgate/warn/untyped', extension, {
+        tabBar: {} as unknown as { label: string; icon: string },
+      });
+
+      expect(warn).toHaveBeenCalledTimes(2);
+      expect(warn).toHaveBeenCalledWith(expect.stringContaining('"@shopgate/warn/untyped" has no string tabBar.label'));
+      expect(warn).toHaveBeenCalledWith(expect.stringContaining('"@shopgate/warn/untyped" has no string tabBar.icon'));
+    });
+
+    it('does not warn about valid tab details or an action without them', () => {
+      registerNavigationAction('@shopgate/warn/valid', extension, {
+        tabBar: {
+          label: 'Valid',
+          icon: '',
+        },
+      });
+      registerNavigationAction('@shopgate/warn/header-only', extension);
+
+      expect(warn).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('isExtensionActionFor', () => {
     it('accepts an extension action registered with tab details', () => {
       registerNavigationAction('@shopgate/tab/item', extension, {
         tabBar: {
@@ -84,18 +117,18 @@ describe('navigation action registry', () => {
         },
       });
 
-      expect(isTabBarExtensionAction('@shopgate/tab/item')).toBe(true);
+      expect(isExtensionActionFor('@shopgate/tab/item', 'tabBar')).toBe(true);
     });
 
     it('rejects an extension action without tab details', () => {
       registerNavigationAction('@shopgate/button/item', extension, {});
 
-      expect(isTabBarExtensionAction('@shopgate/button/item')).toBe(false);
-      expect(isTabBarExtensionAction('@shopgate/header-only/button')).toBe(false);
+      expect(isExtensionActionFor('@shopgate/button/item', 'tabBar')).toBe(false);
+      expect(isExtensionActionFor('@shopgate/header-only/button', 'tabBar')).toBe(false);
     });
 
     it('rejects unknown actions', () => {
-      expect(isTabBarExtensionAction('unknown')).toBe(false);
+      expect(isExtensionActionFor('unknown', 'tabBar')).toBe(false);
     });
 
     it('rejects a core action, even when an extension replaces it with tab details', () => {
@@ -106,7 +139,41 @@ describe('navigation action registry', () => {
         },
       });
 
-      expect(isTabBarExtensionAction('favorites')).toBe(false);
+      expect(isExtensionActionFor('favorites', 'tabBar')).toBe(false);
+    });
+  });
+
+  describe('getExtensionActionMeta', () => {
+    it('returns the tab details of an extension action', () => {
+      const tabBar = {
+        label: 'Meta',
+        icon: 'meta',
+      };
+      registerNavigationAction('@shopgate/meta/tab', extension, { tabBar });
+
+      expect(getExtensionActionMeta('@shopgate/meta/tab', 'tabBar')).toBe(tabBar);
+    });
+
+    it('returns nothing for an action without tab details, an unknown or a core action', () => {
+      registerNavigationAction('cart', extension, {
+        tabBar: {
+          label: 'cart.label',
+          icon: 'cart',
+        },
+      });
+
+      expect(getExtensionActionMeta('@shopgate/header-only/button', 'tabBar')).toBeUndefined();
+      expect(getExtensionActionMeta('unknown', 'tabBar')).toBeUndefined();
+      expect(getExtensionActionMeta('cart', 'tabBar')).toBeUndefined();
+    });
+
+    it('returns nothing for tab details without a string label', () => {
+      registerNavigationAction('@shopgate/meta/no-label', extension, {
+        tabBar: { icon: 'meta' } as unknown as { label: string; icon: string },
+      });
+
+      expect(getExtensionActionMeta('@shopgate/meta/no-label', 'tabBar')).toBeUndefined();
+      expect(isExtensionActionFor('@shopgate/meta/no-label', 'tabBar')).toBe(false);
     });
   });
 
@@ -166,6 +233,33 @@ describe('navigation action registry', () => {
 
       expect(getNavigationCatalog().tabBar.extensionItems)
         .not.toContainEqual(expect.objectContaining({ action: 'cart' }));
+    });
+
+    it('reports an empty icon when the tab details have no string icon', () => {
+      registerNavigationAction('@shopgate/no-icon/tab', extension, {
+        tabBar: { label: 'No icon' } as unknown as { label: string; icon: string },
+      });
+
+      expect(getNavigationCatalog().tabBar.extensionItems).toContainEqual({
+        action: '@shopgate/no-icon/tab',
+        label: 'translated No icon',
+        icon: '',
+      });
+    });
+
+    it.each([
+      ['no label', { icon: 'card' }],
+      ['a label that is no string', {
+        label: 42,
+        icon: 'card',
+      }],
+    ])('leaves out an action whose tab details have %s', (_, tabBar) => {
+      registerNavigationAction('@shopgate/no-label/tab', extension, {
+        tabBar: tabBar as unknown as { label: string; icon: string },
+      });
+
+      expect(getNavigationCatalog().tabBar.extensionItems)
+        .not.toContainEqual(expect.objectContaining({ action: '@shopgate/no-label/tab' }));
     });
 
     describe('adminLabel', () => {

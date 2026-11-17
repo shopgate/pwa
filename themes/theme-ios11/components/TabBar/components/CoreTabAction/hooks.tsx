@@ -3,6 +3,7 @@ import { hasNewServices, i18n } from '@shopgate/engage/core/helpers';
 import { getShowWishlistItemsCountBadge } from '@shopgate/engage/settings/selectors/shopSettings';
 import { getCartProductCount } from '@shopgate/pwa-common-commerce/cart/selectors';
 import { getFavoritesCount } from '@shopgate/pwa-common-commerce/favorites/selectors';
+import { getCountAriaLabel } from '../../../../helpers/countAriaLabel';
 import CartItemBadge from '../CartItemBadge';
 import FavoritesIconBadge from '../FavoritesIconBadge';
 import { useShowFavoritesCounter } from '../FavoritesIconBadge/hooks';
@@ -29,7 +30,7 @@ export const useCartTabExtras = (label: string): TabExtras => {
 
   return {
     portalProps: { cartProductCount },
-    ariaLabel: `${i18n.text(label)}. ${i18n.text('common.products')}: ${cartProductCount}.`,
+    ariaLabel: getCountAriaLabel(i18n.text(label), cartProductCount),
     badge: <CartItemBadge cartProductCount={cartProductCount} />,
   };
 };
@@ -47,7 +48,7 @@ export const useFavoritesTabExtras = (label: string): TabExtras => {
 
   const showCounter = (hasNewServices() && showWishlistItemsCountBadge)
     || (!hasNewServices() && showConfiguredCounter);
-  const ariaCount = showCounter ? `${i18n.text('common.products')}: ${favoritesCount}.` : '';
+  const text = i18n.text(label);
 
   return {
     portalProps: {
@@ -55,7 +56,7 @@ export const useFavoritesTabExtras = (label: string): TabExtras => {
       showWishlistItemsCountBadge,
       widgetSettings: { showCounter: showConfiguredCounter },
     },
-    ariaLabel: `${i18n.text(label)}. ${ariaCount} `,
+    ariaLabel: showCounter ? `${getCountAriaLabel(text, favoritesCount)} ` : `${text}.  `,
     badge: (
       <FavoritesIconBadge
         favoritesCount={favoritesCount}

@@ -1,6 +1,5 @@
-import type { ResolvedNavigationAction } from '@shopgate/engage/navigation/types';
-
-const DEFAULT_BADGE_MAX = 99;
+import { DEFAULT_NAVIGATION_BADGE_MAX } from '../constants';
+import type { ResolvedNavigationAction } from '../types';
 
 /**
  * The badge of a resolved action, as the tab bar and the header render it.
@@ -36,10 +35,10 @@ export const getNavigationActionBadge = (
 ): NavigationActionBadge => {
   const {
     badgeShowCount = true,
-    badgeMax = DEFAULT_BADGE_MAX,
+    badgeMax = DEFAULT_NAVIGATION_BADGE_MAX,
     badgeLabel,
   } = action;
-  const count = Math.max(action.badgeCount ?? 0, 0);
+  const count = Math.max(action.badgeCount || 0, 0);
   const fallbackLabel = badgeShowCount ? `${label}, ${count}` : undefined;
 
   return {

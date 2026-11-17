@@ -1,13 +1,12 @@
 import type { ComponentType, ReactElement, ReactNode } from 'react';
-import { Badge } from '@shopgate/engage/components';
 import { i18n } from '@shopgate/engage/core/helpers/i18n';
 import NavigationAction from '@shopgate/engage/navigation/components/NavigationAction';
-import { getNavigationActionMeta } from '@shopgate/engage/navigation/registry';
+import { getNavigationActionBadge } from '@shopgate/engage/navigation/helpers';
+import { getExtensionActionMeta } from '@shopgate/engage/navigation/registry';
 import type { NavigationActionSettings } from '@shopgate/engage/settings/types/appSettings';
-import { makeStyles } from '@shopgate/engage/styles';
 import { getActionIcon } from '../../../../helpers/actionIcons';
-import { getNavigationActionBadge } from '../../../../helpers/navigationActionBadge';
 import TabBarActionJs from '../TabBarAction';
+import TabBarBadge from '../TabBarBadge';
 import TabBarIcon from '../TabBarIcon';
 
 /**
@@ -46,15 +45,11 @@ interface TabBarActionProps {
 
 const TabBarAction = TabBarActionJs as unknown as ComponentType<TabBarActionProps>;
 
-const useStyles = makeStyles()(theme => ({
-  badge: {
-    position: 'absolute',
-    borderRadius: theme.components.tabBar.badgeBorderRadius,
-    top: theme.components.tabBar.badgeTop,
-    transform: 'translateX(-50%)',
-    left: theme.components.tabBar.badgeLeft,
-  },
-}));
+/**
+ * Keeps the icon slot of a tab whose icons all fail to resolve.
+ * @returns Nothing.
+ */
+const NoIcon = () => null;
 
 /**
  * The props of an extension tab.
@@ -67,14 +62,14 @@ interface Props {
 }
 
 /**
- * The tab of an action that an extension registered.
+ * The tab of an action that an extension registered. Its icon is the merchant's, else the one of
+ * `tabBar`, else the one of the resolved action, else an empty slot of icon size.
  * @param props The component props.
  * @param props.settings The configured item.
  * @returns The tab, or nothing while the action is not available.
  */
 const ExtensionAction = ({ settings }: Props) => {
-  const { classes, cx } = useStyles();
-  const tabBarMeta = getNavigationActionMeta(settings.action)?.tabBar;
+  const tabBarMeta = getExtensionActionMeta(settings.action, 'tabBar');
 
   if (!tabBarMeta) {
     return null;
@@ -94,16 +89,16 @@ const ExtensionAction = ({ settings }: Props) => {
           <TabBarAction
             type={settings.action}
             label={tabBarMeta.label}
-            icon={icon ? <TabBarIcon icon={icon} /> : undefined}
+            icon={<TabBarIcon icon={icon ?? getActionIcon(action.icon) ?? NoIcon} />}
             isHighlighted={!!action.isActive}
             onClick={action.onClick}
             aria-label={ariaLabel ?? label}
           >
-            <Badge
+            <TabBarBadge
               count={count}
               max={max}
               showCount={showCount}
-              className={cx(classes.badge, 'theme__tab-bar__extension-badge')}
+              className="theme__tab-bar__extension-badge"
             />
           </TabBarAction>
         );

@@ -13,6 +13,7 @@ import portalCollection from '@shopgate/pwa-common/helpers/portals/portalCollect
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import { useElementSize } from '@shopgate/engage/core/hooks';
 import { UIEvents } from '@shopgate/engage/core/events';
+import { SurroundPortals } from '@shopgate/engage/components';
 import { OPEN_CATEGORY_DRAWER, registerNavigationAction } from '@shopgate/engage/navigation';
 import {
   TAB_HOME,
@@ -21,6 +22,7 @@ import {
   TAB_MORE,
   TAB_FAVORITES,
   HIDE_TAB_BAR,
+  TAB_BAR,
   TAB_BAR_CART_AFTER,
   TAB_BAR_CART_BEFORE,
   TAB_BAR_CART,
@@ -48,7 +50,7 @@ const mockNavigate = jest.fn(params => ({
 
 jest.mock('@shopgate/engage/components', () => ({
   KeyboardConsumer: ({ children }) => children({ open: mockKeyboardOpen }),
-  SurroundPortals: ({ children }) => children,
+  SurroundPortals: jest.fn(({ children }) => children),
   I18n: { Text: ({ string }) => string },
   Badge: ({ count }) => (count ? <span>{count}</span> : null),
 }));
@@ -325,12 +327,30 @@ describe('<TabBar />', () => {
     expect(getTabLabels()).toEqual(['tab_bar.home', 'tab_bar.more', 'tab_bar.cart']);
   });
 
-  it('should navigate through the tab memory when a tab is clicked', () => {
+  it('should call navigate with the tab path when a tab is clicked', () => {
     render(<TabBar {...props} />);
 
     fireEvent.click(screen.getAllByRole('tab')[1]);
 
     expect(mockNavigate).toHaveBeenCalledWith({ pathname: '/browse' });
+  });
+
+  it('should pass the resolved items to the tab bar portals', () => {
+    const items = [item('home'), item('categoryDrawer'), item('@shopgate/test/card')];
+    useTabBarItems.mockReturnValue(items);
+
+    render(<TabBar {...props} activeTab={TAB_HOME} />);
+
+    const [{ portalProps }] = SurroundPortals.mock.calls
+      .find(([{ portalName }]) => portalName === TAB_BAR);
+
+    expect(portalProps).toEqual({
+      tabs,
+      isVisible: true,
+      activeTab: TAB_HOME,
+      path: '/',
+      items,
+    });
   });
 
   it('should render the merchant icon instead of the default icon', () => {
