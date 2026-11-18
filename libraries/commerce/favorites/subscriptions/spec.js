@@ -110,10 +110,8 @@ jest.mock('../actions/removeFavorites', () =>
 jest.mock('../actions/updateFavorites', () =>
   jest.fn().mockReturnValue('updateFavoritesResult'));
 
-let mockedHasFavorites = true;
 let mockedFavoritesLimit = 100;
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasFavorites() { return mockedHasFavorites; },
   get favorites() { return { limit: mockedFavoritesLimit }; },
   get themeConfig() { return { colors: {} }; },
 }));
@@ -820,18 +818,6 @@ describe('Favorites - subscriptions', () => {
         expect(dispatch.mock.calls[3][0]).toEqual(removeFavorites());
         expect(dispatch.mock.calls[4][0]).toEqual(idleSyncFavorites(mockedDefaultListId));
       });
-    });
-  });
-
-  describe('Favorites disabled', () => {
-    it('should not subscribe to anything', () => {
-      const hasFavorites = mockedHasFavorites;
-      mockedHasFavorites = false;
-
-      favorites(subscribe);
-      expect(getSubscriptionCount()).toBe(0);
-
-      mockedHasFavorites = hasFavorites;
     });
   });
 });

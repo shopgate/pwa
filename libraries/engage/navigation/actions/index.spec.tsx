@@ -29,6 +29,7 @@ jest.mock('@shopgate/engage/core/hooks', () => ({
 }));
 jest.mock('@shopgate/engage/core/events', () => ({ UIEvents: { emit: jest.fn() } }));
 jest.mock('@shopgate/engage/product/hooks', () => ({ useProductShare: jest.fn() }));
+jest.mock('react-redux', () => ({ useSelector: jest.fn() }));
 
 describe('toPathname', () => {
   it.each([
@@ -51,24 +52,28 @@ describe('toPathname', () => {
   });
 });
 
+/**
+ * Renders the button of a core action. Unavailable actions render a disabled button.
+ * @param props The component props.
+ * @param props.name The name of the action.
+ * @returns The button.
+ */
+const ActionButton = ({ name }: { name: string }) => {
+  const useAction = CORE_NAVIGATION_ACTIONS[name];
+  const action = useAction?.({
+    action: name,
+    icon: '',
+    link: '',
+  });
+  return (
+    <button type="button" disabled={!action?.available} onClick={action?.onClick}>
+      {action?.label}
+    </button>
+  );
+};
+
 describe('category actions', () => {
   const push = jest.fn();
-
-  /**
-   * Renders the button of a core action.
-   * @param props The component props.
-   * @param props.name The name of the action.
-   * @returns The button.
-   */
-  const ActionButton = ({ name }: { name: string }) => {
-    const useAction = CORE_NAVIGATION_ACTIONS[name];
-    const action = useAction?.({
-      action: name,
-      icon: '',
-      link: '',
-    });
-    return <button type="button" onClick={action?.onClick}>{action?.label}</button>;
-  };
 
   beforeEach(() => {
     jest.clearAllMocks();
@@ -97,5 +102,30 @@ describe('category actions', () => {
 
     expect(UIEvents.emit).toHaveBeenCalledWith('navigation.openCategoryDrawer');
     expect(push).not.toHaveBeenCalled();
+  });
+});
+
+describe('tab actions', () => {
+  const push = jest.fn();
+
+  beforeEach(() => {
+    jest.clearAllMocks();
+    (useNavigation as jest.Mock).mockReturnValue({ push });
+  });
+
+  it('opens the start page', () => {
+    render(<ActionButton name="home" />);
+    fireEvent.click(screen.getByRole('button', { name: 'navigation.home' }));
+
+    expect(push).toHaveBeenCalledWith({ pathname: '/' });
+  });
+
+  it('offers the favorites without the favorites flag of the app config', () => {
+    render(<ActionButton name="favorites" />);
+    const button = screen.getByRole('button', { name: 'navigation.favorites' });
+
+    expect(button).toBeEnabled();
+    fireEvent.click(button);
+    expect(push).toHaveBeenCalledWith({ pathname: '/favourite_list' });
   });
 });

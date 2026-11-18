@@ -426,10 +426,12 @@ export interface AppearanceSettings {
 }
 
 /**
- * What a header button does. Extensions can register further actions under their own names.
+ * What a header button or tab bar item does. Extensions can register further actions under their
+ * own names.
  */
 export type NavigationActionType =
   | 'none'
+  | 'home'
   | 'link'
   | 'openSearch'
   | 'share'
@@ -442,7 +444,7 @@ export type NavigationActionType =
   | 'categoryDrawer';
 
 /**
- * A configurable button of the header.
+ * A configurable button of the header or item of the tab bar.
  */
 export interface NavigationActionSettings {
   /** The action, or the name an extension registered its action under. */
@@ -522,6 +524,10 @@ export interface AppSettings {
          */
         showCounter: boolean;
       }
+      /**
+       * The ordered tab bar items. Missing means the app's default list.
+       */
+      items?: NavigationActionSettings[];
     }
   }
   product: ProductSettings;

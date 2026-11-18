@@ -3,7 +3,6 @@ import configureStore from 'redux-mock-store';
 import {
   render, screen, fireEvent, waitFor,
 } from '@testing-library/react';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import FavoritesButton from './index';
 import {
   mockedStateEmpty,
@@ -126,12 +125,5 @@ describe('<FavoritesButton />', () => {
     fireEvent.click(screen.getByRole('button'));
 
     expect(dispatcher).toHaveBeenCalledTimes(2);
-  });
-
-  it('should render null when feature flag is off', () => {
-    jest.spyOn(appConfig, 'hasFavorites', 'get').mockReturnValue(false);
-    const { container } = createComponent(mockedStateOnList);
-
-    expect(container).toBeEmptyDOMElement();
   });
 });

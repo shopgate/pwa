@@ -8,6 +8,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { setCSSCustomProp } from '@shopgate/engage/styles/helpers';
 import { isAndroidOs } from '@shopgate/engage/core/helpers';
 import { useElementSize } from '@shopgate/engage/core/hooks';
+import { getActionIcon } from '../../helpers/actionIcons';
 import getTabActionComponentForType, { tabs } from './helpers/getTabActionComponentForType';
 import {
   TAB_BAR,
@@ -16,8 +17,9 @@ import {
   TAB_CART,
 } from './constants';
 import connect from './connector';
-import { useTabBarScrollObserver, useTabBarSettings } from './hooks';
-import visibleTabs from './tabs';
+import { useTabBarItems, useTabBarScrollObserver, useTabBarSettings } from './hooks';
+import { CORE_TAB_TYPES, getCoreTabType } from './coreTabData';
+import ExtensionAction from './components/ExtensionAction';
 
 const useStyles = makeStyles()(theme => ({
   hidden: {
@@ -87,21 +89,53 @@ const useStyles = makeStyles()(theme => ({
 }));
 
 /**
- * Renders the action for a given tab configuration.
- * @param {Object} tab The tab configuration.
- * @param {boolean} isHighlighted Whether the tab is currently highlighted.
+ * Renders a configured tab bar item.
+ * @param {Object} item The configured item.
+ * @param {number} index The position of the item.
+ * @param {string} activeTab The active tab.
  * @param {string} path The current history path.
- * @returns {JSX}
+ * @returns {JSX.Element}
  */
-const createTabAction = (tab, isHighlighted, path) => {
-  const Action = getTabActionComponentForType(tab.type);
+const renderItem = (item, index, activeTab, path) => {
+  const key = `${index}-${item.action}`;
+  const type = getCoreTabType(item.action);
+
+  if (!type) {
+    return <ExtensionAction key={key} settings={item} />;
+  }
+
+  const Action = getTabActionComponentForType(type);
 
   return (
     <Action
-      key={tab.type}
-      {...tab}
-      isHighlighted={isHighlighted}
+      key={key}
+      type={type}
+      isHighlighted={activeTab === type}
       path={path}
+      configuredIcon={getActionIcon(item.icon)}
+      {...(item.action === 'categoryDrawer' && { opensCategoryDrawer: true })}
+    />
+  );
+};
+
+/**
+ * Renders the before and after portals of a core tab that no item renders, e.g. after the merchant
+ * removed the tab, so that extensions using them still show.
+ * @param {string} type The tab type.
+ * @param {string} activeTab The active tab.
+ * @param {string} path The current history path.
+ * @returns {JSX.Element}
+ */
+const renderOrphanPortals = (type, activeTab, path) => {
+  const Action = getTabActionComponentForType(type);
+
+  return (
+    <Action
+      key={`orphan-${type}`}
+      type={type}
+      isHighlighted={activeTab === type}
+      path={path}
+      portalsOnly
     />
   );
 };
@@ -124,6 +158,7 @@ const TabBar = ({
   modalCount,
 }) => {
   const { classes, cx } = useStyles();
+  const items = useTabBarItems();
   const {
     transition = 'fade',
     variant = 'fixed',
@@ -207,13 +242,19 @@ const TabBar = ({
     };
   }, [handleHide, handleShow]);
 
+  const orphanTabTypes = useMemo(() => {
+    const renderedTypes = items.map(({ action }) => getCoreTabType(action));
+    return CORE_TAB_TYPES.filter(type => !renderedTypes.includes(type));
+  }, [items]);
+
   // Create props for the portals
   const portalProps = useMemo(() => ({
     tabs: { ...tabs },
     isVisible,
     activeTab,
     path,
-  }), [activeTab, isVisible, path]);
+    items,
+  }), [activeTab, isVisible, path, items]);
 
   // Callback invoked when the animated tab bar transition ends
   const handleTransitionEnd = useCallback(() => {
@@ -319,7 +360,8 @@ const TabBar = ({
                 role="tablist"
                 aria-hidden={ariaHidden}
               >
-                {visibleTabs.map(tab => createTabAction(tab, activeTab === tab.type, path))}
+                {items.map((item, index) => renderItem(item, index, activeTab, path))}
+                {orphanTabTypes.map(type => renderOrphanPortals(type, activeTab, path))}
               </div>
             </div>
           </SurroundPortals>

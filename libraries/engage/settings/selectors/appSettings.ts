@@ -32,6 +32,14 @@ export const getTabBarSettings = createSelector(
 );
 
 /**
+ * Selects the configured tab bar items. Undefined when the merchant kept the app's default list.
+ */
+export const getTabBarItems = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.navigation.tabBar.items
+);
+
+/**
  * Selects the header settings.
  */
 export const getAppBarSettings = createSelector(

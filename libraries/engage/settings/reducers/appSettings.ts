@@ -10,6 +10,7 @@ import type {
   AppSettingsSlice,
   CartPaymentBarSettings,
   CategorySettings,
+  NavigationActionSettings,
   PerScreenSize,
   ProductActionButtonsSettings,
   ProductAddToCartBarSettings,
@@ -130,6 +131,27 @@ const pickValidIconOverrides = (icons: unknown): IconOverrides | undefined => {
   });
 
   return pickBy(overrides, icon => !!icon?.svg?.trim()) as IconOverrides;
+};
+
+/**
+ * Keeps the tab bar items that name an action and reduces each to its known fields.
+ * @param items The incoming tab bar items.
+ * @returns The valid items, or undefined when the value is no array.
+ */
+const pickValidTabBarItems = (items: unknown): NavigationActionSettings[] | undefined => {
+  if (!Array.isArray(items)) {
+    return undefined;
+  }
+
+  return items
+    .filter((item): item is Record<string, unknown> => (
+      isPlainObject(item) && typeof item.action === 'string' && item.action !== ''
+    ))
+    .map(({ action, icon, link }) => ({
+      action: action as string,
+      icon: typeof icon === 'string' ? icon : '',
+      link: typeof link === 'string' ? link : '',
+    }));
 };
 
 /**
@@ -451,6 +473,8 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
     // value - both converters are idempotent.
     nextState.images.fillColor = toThumborColor(nextState.images.fillColor);
     nextState.images.quality = toImageQuality(nextState.images.quality);
+
+    nextState.navigation.tabBar.items = pickValidTabBarItems(navigation?.tabBar?.items);
 
     return nextState;
   }

@@ -104,7 +104,7 @@ describe('engage > admin-preview > awaitInitialFrontendSettings', () => {
       expect(postMessage).toHaveBeenCalledWith(
         {
           type: 'frontendSettingsPreviewReady',
-          payload: { features: ['iconCatalog', 'elementPicker'] },
+          payload: { features: ['iconCatalog', 'elementPicker', 'navigationCatalog'] },
         },
         ALLOWED_ORIGIN
       );

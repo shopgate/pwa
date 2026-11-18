@@ -60,6 +60,7 @@ const mockedDispatch = jest.fn();
 const mockedSetMode = jest.fn();
 const mockedSendToParent = jest.fn();
 const mockedLoadFontCss = jest.fn();
+const mockedGetNavigationCatalog = jest.fn();
 
 /**
  * What the bridge's font css url selector resolves to. Set per test.
@@ -99,6 +100,10 @@ jest.mock('@shopgate/engage/admin-preview/hooks', () => ({
 }));
 
 jest.mock('@shopgate/engage/styles/theme/hooks/useColorScheme', () => jest.fn());
+
+jest.mock('@shopgate/engage/navigation/registry', () => ({
+  getNavigationCatalog: () => mockedGetNavigationCatalog(),
+}));
 
 jest.mock('@shopgate/engage/core/helpers', () => ({
   logger: { warn: jest.fn() },
@@ -249,7 +254,7 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
 
     expect(mockedSendToParent).toHaveBeenCalledWith({
       type: 'frontendSettingsPreviewReady',
-      payload: { features: ['iconCatalog', 'elementPicker'] },
+      payload: { features: ['iconCatalog', 'elementPicker', 'navigationCatalog'] },
     });
   });
 
@@ -383,6 +388,34 @@ describe('engage > admin-preview > FrontendSettingsPreviewBridge', () => {
             }),
           ]),
         },
+      });
+    });
+  });
+
+  describe('requestNavigationCatalog', () => {
+    it('should answer with the navigation catalog', () => {
+      const catalog = {
+        tabBar: {
+          defaultItems: [{
+            action: 'home',
+            icon: '',
+            link: '',
+          }],
+          extensionItems: [{
+            action: '@shopgate/customer-card/card',
+            label: 'Card',
+            icon: '',
+          }],
+        },
+      };
+      mockedGetNavigationCatalog.mockReturnValue(catalog);
+      render(<FrontendSettingsPreviewBridge />);
+
+      sendMessage({ type: 'requestNavigationCatalog' });
+
+      expect(mockedSendToParent).toHaveBeenCalledWith({
+        type: 'navigationCatalog',
+        payload: catalog,
       });
     });
   });
