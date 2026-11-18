@@ -26,7 +26,7 @@ import { focusElement } from '../../../../helpers/focus';
 import {
   ACTION_BUTTONS_HIDDEN_PATTERNS,
   HEADLINE_HIDDEN_PATTERNS,
-  OVERLAY_PATTERNS,
+  OVERLAY_PAGE_TYPES,
   SEARCH_BAR_PAGE_TYPES,
 } from '../../constants';
 import AppBarIcon from './components/Icon';
@@ -258,8 +258,9 @@ class AppBarDefault extends PureComponent {
 const AppBarDefaultWithContext = ({ actionButtons, ...props }) => {
   const appBarSettings = useAppBarSettings();
   const { pattern } = props.route;
-  const floating = appBarSettings.variant === 'floating';
-  const overlay = floating && OVERLAY_PATTERNS.includes(pattern);
+  const { home, product } = appBarSettings.floating;
+  const floating = appBarSettings.variant === 'floating' && (home || product);
+  const overlay = floating && !!appBarSettings.floating[OVERLAY_PAGE_TYPES[pattern]];
   const showActions = actionButtons && !ACTION_BUTTONS_HIDDEN_PATTERNS.includes(pattern);
   const searchBarSettings = useSelector(getPersistentSearchBarSettings);
   const searchBarPage = SEARCH_BAR_PAGE_TYPES[pattern];

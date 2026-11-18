@@ -151,6 +151,8 @@ describe('settings / reducers / appSettings', () => {
           },
           floating: {
             scrollBehavior: 'scrollAway',
+            home: false,
+            product: true,
           },
         },
         tabBar: {
@@ -1025,7 +1027,11 @@ describe('settings / reducers / appSettings', () => {
               link: 42,
             },
           },
-          floating: { scrollBehavior: 'foo' },
+          floating: {
+            scrollBehavior: 'foo',
+            home: 'false',
+            product: 0,
+          },
         },
       },
       search: {
@@ -1050,7 +1056,11 @@ describe('settings / reducers / appSettings', () => {
         link: '',
       },
     });
-    expect(appBar.floating.scrollBehavior).toBe('revealBar');
+    expect(appBar.floating).toEqual({
+      scrollBehavior: 'revealBar',
+      home: true,
+      product: true,
+    });
     expect(search).toEqual(DEFAULT_APP_SETTINGS.search);
   });
 
