@@ -1,8 +1,9 @@
 import { useRef } from 'react';
 import type { ReactNode } from 'react';
 import { useElementSize } from '@shopgate/engage/core/hooks';
-import { makeStyles, useActiveBreakpoint } from '@shopgate/engage/styles';
+import { makeStyles, useActiveBreakpoint, useMediaQuery } from '@shopgate/engage/styles';
 import { ActiveBreakpointContext } from '@shopgate/engage/styles/theme/providers/ActiveBreakpointProvider';
+import { useStopPageMomentum } from './useStopPageMomentum';
 
 export const MEDIA_COLUMN_WIDTH = '50%';
 
@@ -46,7 +47,10 @@ const useStyles = makeStyles()(theme => ({
  */
 const ProductLayout = ({ media, children }: ProductLayoutProps) => {
   const { classes, cx, theme } = useStyles();
+  const mediaRef = useRef<HTMLDivElement>(null);
   const infoRef = useRef<HTMLDivElement>(null);
+  const sideBySide = useMediaQuery(({ breakpoints }) => breakpoints.up('md'));
+  useStopPageMomentum(mediaRef, sideBySide);
   const { width } = useElementSize(infoRef, { includeWidth: true });
   const viewportBreakpoint = useActiveBreakpoint();
   // Determine largest fitting breakpoint
@@ -56,7 +60,7 @@ const ProductLayout = ({ media, children }: ProductLayoutProps) => {
 
   return (
     <div className={cx(classes.root, 'theme__product__layout')}>
-      <div className={cx(classes.media, 'theme__product__layout__media')}>
+      <div ref={mediaRef} className={cx(classes.media, 'theme__product__layout__media')}>
         {media}
       </div>
       <div ref={infoRef} className="theme__product__layout__info">
