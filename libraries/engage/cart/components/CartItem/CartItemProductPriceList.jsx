@@ -1,6 +1,7 @@
 import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { Typography } from '@shopgate/engage/components';
+import { Typography, SurroundPortals } from '@shopgate/engage/components';
+import { CART_ITEM_PRICE, CART_ITEM_PRICE_STRIKED } from '@shopgate/engage/cart';
 import { makeStyles } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
@@ -36,6 +37,20 @@ const CartItemProductPriceList = ({ classes: customClasses, isSubtotal, showLabe
   const context = useCartItemProduct();
   const { currency, cartItem } = context;
 
+  const portalProps = useMemo(() => ({
+    context: {
+      type: context.type,
+      cartItemId: context.cartItemId,
+      product: context.product,
+    },
+    ...context,
+    isOrderDetails,
+    isCheckoutConfirmation,
+    isSubtotal,
+    quantity: context.cartItem.quantity,
+    handleDelete: context.handleRemove,
+  }), [context, isCheckoutConfirmation, isOrderDetails, isSubtotal]);
+
   const prices = useMemo(() => {
     const result = createCartItemPrices(cartItem)[isSubtotal ? 'subtotal' : 'price'];
     // Not striked prices when the product is free or the cart is used to display an order
@@ -66,20 +81,36 @@ const CartItemProductPriceList = ({ classes: customClasses, isSubtotal, showLabe
                 component="span"
                 className={cx(classes.priceStriked, customClasses?.priceStriked)}
               >
-                <PriceStriked
-                  value={price}
-                  currency={currency}
-                />
+                <SurroundPortals
+                  portalName={CART_ITEM_PRICE_STRIKED}
+                  portalProps={{
+                    ...portalProps,
+                    price,
+                  }}
+                >
+                  <PriceStriked
+                    value={price}
+                    currency={currency}
+                  />
+                </SurroundPortals>
               </Typography>
             ) : (
               <Typography fontWeight="medium" component="span" className={cx(classes.price, customClasses?.price)}>
-                <Price
-                  unitPrice={price}
-                  currency={currency}
-                  discounted={prices.length > 1 || price === 0}
-                  taxDisclaimer
-                  allowFree
-                />
+                <SurroundPortals
+                  portalName={CART_ITEM_PRICE}
+                  portalProps={{
+                    ...portalProps,
+                    price,
+                  }}
+                >
+                  <Price
+                    unitPrice={price}
+                    currency={currency}
+                    discounted={prices.length > 1 || price === 0}
+                    taxDisclaimer
+                    allowFree
+                  />
+                </SurroundPortals>
               </Typography>
             )}
 
