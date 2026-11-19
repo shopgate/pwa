@@ -461,8 +461,8 @@ export interface NavigationActionSettings {
 export type AppBarButtonSlot = 'left1' | 'right1' | 'right2';
 
 /**
- * `fixed` keeps the bar on every page, `floating` lets logo and buttons float over home and
- * product page.
+ * `fixed` keeps the bar on every page, `floating` lets logo and buttons float over the pages
+ * selected in `floating`.
  */
 export type AppBarVariant = 'fixed' | 'floating';
 
@@ -482,6 +482,10 @@ export interface AppBarSettings {
   buttons: Record<AppBarButtonSlot, NavigationActionSettings>;
   floating: {
     scrollBehavior: AppBarScrollBehavior;
+    /** Whether the header floats on the home page. */
+    home: boolean;
+    /** Whether the header floats on the product page. */
+    product: boolean;
   };
 }
 
