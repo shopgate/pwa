@@ -184,6 +184,8 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
       floating: {
         scrollBehavior: 'revealBar',
+        home: true,
+        product: true,
       },
     },
     tabBar: {

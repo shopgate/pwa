@@ -16,7 +16,10 @@ import { SCANNER_PATH } from '@shopgate/engage/scanner/constants';
 import { checkoutRoutes } from '@shopgate/engage/checkout';
 import { FORGOT_PASSWORD_PATTERN } from '@shopgate/engage/login';
 
-export const OVERLAY_PATTERNS = [INDEX_PATH, ITEM_PATTERN];
+export const OVERLAY_PAGE_TYPES = {
+  [INDEX_PATH]: 'home',
+  [ITEM_PATTERN]: 'product',
+} as const;
 
 export const ACTION_BUTTONS_HIDDEN_PATTERNS = [
   ITEM_GALLERY_PATTERN,
