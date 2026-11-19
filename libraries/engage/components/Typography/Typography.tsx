@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import type { Variant as ThemeVariant } from '../../styles/theme/createTheme/createTypography';
+import { HEADING_VARIANTS } from '../../styles/theme/createTheme/createTypography';
+import type {
+  Variant as ThemeVariant,
+  HeadingVariant,
+} from '../../styles/theme/createTheme/createTypography';
 
 type Variant = ThemeVariant | 'srOnly';
 
@@ -16,6 +20,14 @@ export type FontWeight = 'light' | 'regular' | 'medium' | 'bold';
  */
 const capitalize = <T extends string>(string: T): Capitalize<T> =>
   (string.charAt(0).toUpperCase() + string.slice(1)) as Capitalize<T>;
+
+/**
+ * Checks whether a variant is one of the headings.
+ * @param variant The variant to check.
+ * @returns Whether the variant is a heading.
+ */
+const isHeadingVariant = (variant: Variant | 'inherit'): variant is HeadingVariant =>
+  (HEADING_VARIANTS as ReadonlyArray<string>).includes(variant);
 
 const useStyles = makeStyles({
   name: 'Typography',
@@ -282,7 +294,9 @@ function Typography<C extends React.ElementType = 'span'>(
     ...other
   } = props;
 
-  const { classes, cx } = useStyles(undefined, {
+  const {
+    classes, cx, css, theme,
+  } = useStyles(undefined, {
     props: { classes: classesOverrides },
   });
 
@@ -304,6 +318,12 @@ function Typography<C extends React.ElementType = 'span'>(
         align !== 'inherit' && classes[`align${capitalize(align)}`],
         display !== 'initial' && classes[`display${capitalize(display)}`],
         fontWeight && classes[`fontWeight${capitalize(fontWeight)}`],
+        fontWeight && isHeadingVariant(variant) && css({
+          fontWeight: theme.typography.headingFontWeight(
+            variant,
+            theme.typography[`fontWeight${capitalize(fontWeight)}`]
+          ),
+        }),
         {
           [`engage__typography_${variant}`]: variant !== 'inherit',
           [classes.noWrap]: noWrap,
