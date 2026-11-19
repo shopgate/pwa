@@ -148,7 +148,18 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   A JSDoc type in a JavaScript file that names a type from another module needs
   `/** @import { Observable } from 'rxjs/Observable' */`; without it the declaration contains a
   name that doesn't resolve and the consumer gets `any`. Prefer `@import` over
-  `@typedef {import(...)}`, which adds an exported type to the declaration. A default export of a
+  `@typedef {import(...)}`, which adds an exported type to the declaration. The consumer check
+  therefore also checks the published declaration files with `skipLibCheck: false` and fails on
+  names and modules in them that don't resolve (TS2304, TS2552, TS2503, TS2694, TS2305, TS2724,
+  TS2307); it ignores their other errors and those of other packages. It leaves out
+  `untyped-modules.d.ts`, whose `@shopgate/*` pattern would hide a mistyped path. It can't see
+  a mistyped path in `@typedef {import(...)}` or an inline `{import(...).X}`, since the build
+  writes `any` for those; another reason to prefer `@import`.
+  A name that exists nowhere, e.g. `{bool}` or an undocumented `{FormFieldAction}`, becomes a
+  real type (`{boolean}`, `{Object<string, *>}`); `{Object}` is stricter than the former `any`.
+  A file of typedefs without `import` or `export` (`locations.types.js`) is a script: an
+  `@import` there makes the declaration a module without exports, so use `typeof import(...)`
+  inline. A default export of a
   value TypeScript can't type, e.g. `export default window.TmpEventInstance`, is missing from the
   declaration entirely, and the consumer check fails; give it a JSDoc cast
   (`export default /** @type {Event} */ (window.TmpEventInstance)`).

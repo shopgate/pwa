@@ -7,6 +7,10 @@ import type { PublishedPackage } from './starExports.ts';
 
 const IDENTIFIER = /^[A-Za-z_$][\w$]*$/;
 const SCOPE = '@shopgate';
+const UNTYPED_MODULES = `${SCOPE}/engage/untyped-modules`;
+const UNRESOLVED_ERRORS = new Set([
+  'TS2304', 'TS2305', 'TS2307', 'TS2503', 'TS2552', 'TS2694', 'TS2724',
+]);
 
 /**
  * A published module that has both a JavaScript file and type declarations.
@@ -107,28 +111,109 @@ const installPackages = (dir: string, packages: PublishedPackage[], root: string
 };
 
 /**
+ * Picks the errors of the compiler that the check fails on, in a readable form: a name a
+ * module lacks, a name or module in a published declaration that doesn't resolve (with or
+ * without a suggestion of a similar name), and errors outside of declaration files. Errors in
+ * the declarations of other packages and other errors in the published ones are ignored, since
+ * extensions skip the check of declaration files. So is an import of JavaScript without
+ * declarations (TS7016), which extensions get as `any` through their fallback for untyped modules.
+ * @param output The output of the compiler, run in the consumer folder.
+ * @param modules The modules the consumer source reads.
+ * @param packages The published packages.
+ * @param root The repository root.
+ * @returns The errors.
+ */
+const getConsumerErrors = (
+  output: string,
+  modules: TypedModule[],
+  packages: PublishedPackage[],
+  root: string
+) => (
+  output
+    .split('\n')
+    .filter(line => line.includes('error TS'))
+    .flatMap((line) => {
+      const [, index, message] = /^index\.ts\((\d+),\d+\): error (.*)$/.exec(line) ?? [];
+
+      if (index && message.startsWith('TS7016:')) {
+        return [];
+      }
+
+      if (index) {
+        const module = modules[Math.floor((Number(index) - 1) / 2)];
+
+        return [module ? `  ${module.specifier}: ${message}` : `  ${line}`];
+      }
+
+      const [, file, position, code, text] = /^(.+\.d\.[cm]?ts)(\(\d+,\d+\)): error (TS\d+): (.*)$/.exec(line) ?? [];
+
+      if (!file) {
+        return [`  ${line}`];
+      }
+
+      const pkg = packages.find(({ name }) => file.startsWith(`node_modules/${name}/`));
+      const declaration = pkg ? file.slice(`node_modules/${pkg.name}/`.length) : '';
+
+      if (!pkg || !UNRESOLVED_ERRORS.has(code) || declaration.includes('node_modules/')) {
+        return [];
+      }
+
+      const source = path.relative(root, path.join(pkg.dir, declaration)).split(path.sep).join('/');
+
+      return [`  ${source}${position}: ${code}: ${text}`];
+    })
+);
+
+/**
+ * Creates the tsconfig of the consumer: the one that is published for extensions, with the
+ * check of declaration files, but without the fallback for untyped modules. Its
+ * `declare module '@shopgate/*'` matches every path, so a mistyped path in a declaration would
+ * pass.
+ * @param dir Absolute path of the consumer.
+ * @param packages The published packages.
+ * @returns The tsconfig.
+ */
+const createConsumerConfig = (dir: string, packages: PublishedPackage[]) => {
+  const extensionConfig = path.join(dir, 'node_modules', SCOPE, 'engage', 'tsconfig.extension.json');
+  const types: unknown = fs.existsSync(extensionConfig)
+    ? JSON.parse(fs.readFileSync(extensionConfig, 'utf8')).compilerOptions?.types
+    : undefined;
+
+  return {
+    extends: `${SCOPE}/engage/tsconfig.extension.json`,
+    compilerOptions: {
+      skipLibCheck: false,
+      ...(Array.isArray(types) ? { types: types.filter(type => type !== UNTYPED_MODULES) } : {}),
+    },
+    files: ['index.ts'],
+    include: packages.map(({ name }) => `node_modules/${name}/**/*.d.ts`),
+    exclude: [`node_modules/${UNTYPED_MODULES}.d.ts`],
+  };
+};
+
+/**
  * Type checks the published packages the way an extension uses them: installed as packages,
  * with the tsconfig that is published for extensions. The check imports every module that has
- * type declarations and reads all names its JavaScript file exports.
+ * type declarations and reads all names its JavaScript file exports. It also checks the
+ * declaration files of the packages for names and modules that don't resolve, which an
+ * extension otherwise gets as `any` without an error.
  * @param packages The published packages.
  * @param root The repository root.
  * @returns The number of checked modules.
- * @throws When a name isn't provided by the declarations, with the output of the compiler.
+ * @throws When a name isn't provided by the declarations, a type name doesn't resolve or the
+ * compiler fails, with the output of the compiler.
  */
 export const checkConsumer = (packages: PublishedPackage[], root: string) => {
   const modules = getTypedModules(packages);
-  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'release-consumer-'));
+  const dir = fs.realpathSync(fs.mkdtempSync(path.join(os.tmpdir(), 'release-consumer-')));
 
   try {
     installPackages(dir, packages, root);
 
     fs.writeFileSync(path.join(dir, 'index.ts'), `${createConsumerSource(modules)}\n`);
-    fs.writeFileSync(path.join(dir, 'tsconfig.json'), JSON.stringify({
-      extends: `${SCOPE}/engage/tsconfig.extension.json`,
-      files: ['index.ts'],
-    }));
+    fs.writeFileSync(path.join(dir, 'tsconfig.json'), JSON.stringify(createConsumerConfig(dir, packages)));
 
-    const { status, stdout } = capture(
+    const { status, stdout, stderr } = capture(
       path.join(root, 'node_modules', '.bin', 'tsc'),
       ['-p', dir, '--pretty', 'false'],
       {
@@ -137,17 +222,12 @@ export const checkConsumer = (packages: PublishedPackage[], root: string) => {
       }
     );
 
-    if (status !== 0) {
-      const errors = stdout
-        .split('\n')
-        .filter(line => line.includes('error TS'))
-        .map((line) => {
-          const [, index, message] = /index\.ts\((\d+),\d+\): error (.*)$/.exec(line) ?? [];
-          const module = index ? modules[Math.floor((Number(index) - 1) / 2)] : null;
+    const output = [stdout, stderr].join('\n').trim();
+    const errors = status !== 0 && !stdout.includes('error TS')
+      ? [`  tsc exited with status ${status}: ${output}`]
+      : getConsumerErrors(stdout, modules, packages, root);
 
-          return module ? `  ${module.specifier}: ${message}` : `  ${line}`;
-        });
-
+    if (errors.length > 0) {
       throw new Error([
         'The type declarations of the built packages are incomplete for extensions:',
         ...errors,
