@@ -1,3 +1,5 @@
+import type {} from '@shopgate/native-modules';
+
 /**
  * The feature flags the native app reports, grouped by category and version.
  */

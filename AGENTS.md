@@ -185,8 +185,9 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   the app it returns false, so an extension that needs the feature in development adds its own
   check (`(isDev && !hasSGJavaScriptBridge()) || isAppFeatureFlagEnabled(...)`). Extensions can
   only rely on the helper once merchants run a PWA release that contains it, which takes about
-  two months. With an older release the import is undefined (webpack warns about the missing
-  export), so until then they keep their own lookup as a fallback.
+  two months. With an older release the import is undefined, and webpack doesn't always warn
+  about it, so until then they call it only when it exists and keep their own lookup otherwise
+  (`typeof isAppFeatureFlagEnabled === 'function' ? isAppFeatureFlagEnabled(...) : ownLookup(...)`).
 - **Node requirements:** the SDK requires Node `^20.19.0 || >=22.12.0`, the themes ≥ 22.15
   (`engines`, warning only). Raising a requirement affects external developers with the next theme
   release; mention it in the release notes.
