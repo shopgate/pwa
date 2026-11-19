@@ -2,6 +2,7 @@ import merge from 'lodash/merge';
 import omit from 'lodash/omit';
 import type { CSSInterpolation } from 'tss-react';
 import { cssVarsParser, cssVarsColorAugmentation } from './helpers';
+import { isHeadingFontWeightPath } from './createTypography';
 import type { GetColorSchemeSelector } from './helpers';
 import { resolveComponentsValues, flattenComponentVars } from './createComponents';
 import type {
@@ -73,7 +74,8 @@ export default function createCssVarsForColorSchemeThemes(
       prefix: cssVarPrefix,
       // Keep as literal strings, not `:root` vars, so their inline `var(--sg-palette-shadow)`
       // resolves on the element using the shadow (recolorable) instead of freezing against `:root`.
-      shouldSkipGeneratingVar: keys => ['shadows', 'shadowSizes'].includes(keys[0]),
+      shouldSkipGeneratingVar: keys => ['shadows', 'shadowSizes'].includes(keys[0])
+        || isHeadingFontWeightPath(keys),
       // @ts-expect-error - We are sure about the type here
     }), rest, cssVarPrefix);
 

@@ -14,8 +14,8 @@ describe('theme => createTypography', () => {
       const typography = create();
 
       expect(typography.body1.fontWeight).toBe('var(--sg-typography-fontWeightRegular, 400)');
-      expect(typography.h1.fontWeight).toBe('var(--sg-typography-fontWeightBold, 700)');
-      expect(typography.h3.fontWeight).toBe('var(--sg-typography-fontWeightMedium, 500)');
+      expect(typography.h1.fontWeight).toBe('var(--sg-typography-h1-fontWeight, var(--sg-typography-fontWeightBold, 700))');
+      expect(typography.h3.fontWeight).toBe('var(--sg-typography-h3-fontWeight, var(--sg-typography-fontWeightMedium, 500))');
     });
 
     it('maps every variant to its token', () => {
@@ -50,7 +50,7 @@ describe('theme => createTypography', () => {
       const typography = create({ fontWeightMedium: 600 });
 
       expect(typography.fontWeightMedium).toBe(600);
-      expect(typography.h3.fontWeight).toBe('var(--sg-typography-fontWeightMedium, 600)');
+      expect(typography.h3.fontWeight).toBe('var(--sg-typography-h3-fontWeight, var(--sg-typography-fontWeightMedium, 600))');
     });
 
     it('follows a custom css variable prefix, so the reference matches the generated property', () => {
@@ -85,15 +85,15 @@ describe('theme => createTypography', () => {
     it('lets a per variant font weight win over the token reference', () => {
       const typography = create({ h1: { fontWeight: 800 } });
 
-      expect(typography.h1.fontWeight).toBe(800);
-      expect(typography.h2.fontWeight).toBe('var(--sg-typography-fontWeightBold, 700)');
+      expect(typography.h1.fontWeight).toBe('var(--sg-typography-h1-fontWeight, 800)');
+      expect(typography.h2.fontWeight).toBe('var(--sg-typography-h2-fontWeight, var(--sg-typography-fontWeightBold, 700))');
     });
 
     it('lets allVariants win over the token reference', () => {
       const typography = create({ allVariants: { fontWeight: 200 } });
 
       expect(typography.body1.fontWeight).toBe(200);
-      expect(typography.h1.fontWeight).toBe(200);
+      expect(typography.h1.fontWeight).toBe('var(--sg-typography-h1-fontWeight, 200)');
     });
 
     it('supports options provided as a function of the palette', () => {
@@ -103,7 +103,22 @@ describe('theme => createTypography', () => {
         return { fontWeightBold: 900 };
       });
 
-      expect(typography.h1.fontWeight).toBe('var(--sg-typography-fontWeightBold, 900)');
+      expect(typography.h1.fontWeight).toBe('var(--sg-typography-h1-fontWeight, var(--sg-typography-fontWeightBold, 900))');
+    });
+  });
+
+  describe('heading font weights', () => {
+    it('builds the merchant weight of a heading with a fallback', () => {
+      const typography = create();
+
+      expect(typography.headingFontWeight('h3', 700))
+        .toBe('var(--sg-typography-h3-fontWeight, 700)');
+    });
+
+    it('leaves the weights of the other variants alone', () => {
+      const typography = create();
+
+      expect(typography.subtitle2.fontWeight).toBe('var(--sg-typography-fontWeightMedium, 500)');
     });
   });
 });
