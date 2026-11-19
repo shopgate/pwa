@@ -179,6 +179,14 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   `node_modules` for anything an extension doesn't install. `npm run test:extension --
   <extension> [jest options]` runs an extension's tests without that fallback, like an
   external setup (run `npm install` in its `frontend` folder first).
+- **Feature flags of the native app:** `isAppFeatureFlagEnabled(category, flag, version = '1')`
+  from `@shopgate/engage/core/helpers` tells whether the app reports a flag in
+  `window.SGAppInfo.featureFlags`; extensions shouldn't read that object themselves. Outside of
+  the app it returns false, so an extension that needs the feature in development adds its own
+  check (`(isDev && !hasSGJavaScriptBridge()) || isAppFeatureFlagEnabled(...)`). Extensions can
+  only rely on the helper once merchants run a PWA release that contains it, which takes about
+  two months. With an older release the import is undefined (webpack warns about the missing
+  export), so until then they keep their own lookup as a fallback.
 - **Node requirements:** the SDK requires Node `^20.19.0 || >=22.12.0`, the themes ≥ 22.15
   (`engines`, warning only). Raising a requirement affects external developers with the next theme
   release; mention it in the release notes.

@@ -11,21 +11,7 @@ import {
   hasNewServices,
   isAndroidOs,
 } from '@shopgate/engage/core/helpers';
-
-/**
- * Checks if a specific feature flag is enabled.
- *
- * @param {string} category The top-level category of the featureFlags object
- * (e.g., 'Push', 'Analytics', 'StatusBar').
- * @param {string} flag  The feature flag constant to look for.
- * @returns {boolean}
- */
-function isFeatureFlagEnabled(category, flag) {
-  // Check if app provides the feature flags of the requested category
-  const flags = window?.SGAppInfo?.featureFlags?.[category]?.['1']?.flags;
-  // CHeck if the feature flag is provided
-  return Array.isArray(flags) && flags.includes(flag);
-}
+import { isAppFeatureFlagEnabled } from './appFeatureFlags';
 
 /**
  * Determines if the app supports the push opt-in feature
@@ -42,7 +28,7 @@ export const appSupportsPushOptIn = () => {
     return true;
   }
 
-  return isFeatureFlagEnabled('Push', APP_FEATURE_PUSH_OPT_IN);
+  return isAppFeatureFlagEnabled('Push', APP_FEATURE_PUSH_OPT_IN);
 };
 
 /**
@@ -60,7 +46,7 @@ export const appSupportsCookieConsent = () => {
     return true;
   }
 
-  return isFeatureFlagEnabled('Analytics', APP_FEATURE_COOKIE_CONSENT);
+  return isAppFeatureFlagEnabled('Analytics', APP_FEATURE_COOKIE_CONSENT);
 };
 
 /**
@@ -78,7 +64,7 @@ export const appSupportsAndroidEdgeToEdge = () => {
     return true;
   }
 
-  return isFeatureFlagEnabled('StatusBar', APP_FEATURE_ANDROID_EDGE_TO_EDGE);
+  return isAppFeatureFlagEnabled('StatusBar', APP_FEATURE_ANDROID_EDGE_TO_EDGE);
 };
 
 /**
@@ -90,7 +76,7 @@ export const appSupportsBiometricLogin = () => {
     return false;
   }
 
-  return isFeatureFlagEnabled('Keychain', APP_FEATURE_BIOMETRIC_LOGIN);
+  return isAppFeatureFlagEnabled('Keychain', APP_FEATURE_BIOMETRIC_LOGIN);
 };
 
 /**
@@ -102,5 +88,5 @@ export const appSupportsInAppBrowserColors = () => {
     return false;
   }
 
-  return isFeatureFlagEnabled('InAppBrowser', APP_FEATURE_IN_APP_BROWSER_COLORS);
+  return isAppFeatureFlagEnabled('InAppBrowser', APP_FEATURE_IN_APP_BROWSER_COLORS);
 };
