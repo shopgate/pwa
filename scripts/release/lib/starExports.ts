@@ -145,6 +145,29 @@ const getPatternNames = (node: ModuleNode | null | undefined): string[] => {
 };
 
 /**
+ * Parses a JavaScript module.
+ * @param file Absolute path of the JavaScript file.
+ * @returns The statements of the module.
+ */
+const parseModule = (file: string) => loadParser()(fs.readFileSync(file, 'utf8'), {
+  configFile: false,
+  babelrc: false,
+  sourceType: 'module',
+  filename: file,
+})?.program.body ?? [];
+
+/**
+ * Checks whether a JavaScript module has a default export of its own.
+ * @param file Absolute path of the JavaScript file.
+ * @returns Whether the module exports a default.
+ */
+export const hasDefaultExport = (file: string) => parseModule(file).some(node => (
+  node.type === 'ExportDefaultDeclaration'
+  || (node.type === 'ExportNamedDeclaration'
+    && (node.specifiers ?? []).some(specifier => getName(specifier.exported) === 'default'))
+));
+
+/**
  * Collects the names a JavaScript module exports. Star exports inside the module are followed as
  * long as they stay inside the published packages.
  * @param file Absolute path of the JavaScript file.
@@ -163,14 +186,7 @@ export const getExportNames = (
 
   visited.add(file);
 
-  const ast = loadParser()(fs.readFileSync(file, 'utf8'), {
-    configFile: false,
-    babelrc: false,
-    sourceType: 'module',
-    filename: file,
-  });
-
-  const names = (ast?.program.body ?? []).flatMap((node) => {
+  const names = parseModule(file).flatMap((node) => {
     if (node.type === 'ExportAllDeclaration') {
       if (node.exported) {
         return [getName(node.exported)];

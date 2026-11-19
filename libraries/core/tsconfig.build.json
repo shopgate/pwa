@@ -5,12 +5,20 @@
     "rootDir": ".",
     "paths": {}
   },
-  "include": ["constants/**/*.js"],
+  "include": [
+    "classes/**/*.js",
+    "commands/**/*.js",
+    "constants/**/*.js",
+    "emitters/**/*.js",
+    "helpers/**/*.js"
+  ],
   "exclude": [
     "dist",
     "node_modules",
     "**/*.spec.*",
+    "**/spec.js",
     "**/__tests__/**",
+    "**/__mocks__/**",
     "**/__snapshots__/**",
     "coverage"
   ]

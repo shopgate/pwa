@@ -5,7 +5,7 @@ import path from 'node:path';
 import {
   afterEach, beforeEach, describe, it,
 } from 'node:test';
-import { getExportNames, rewriteAllStarExports } from './starExports.ts';
+import { getExportNames, hasDefaultExport, rewriteAllStarExports } from './starExports.ts';
 import type { PublishedPackage } from './starExports.ts';
 
 describe('star exports of declaration files', () => {
@@ -77,6 +77,25 @@ describe('star exports of declaration files', () => {
       write('engage/b.js', 'export const b = 1;\nexport default b;');
 
       assert.deepEqual(getExportNames(path.join(root, 'common/index.js'), packages), ['a', 'b']);
+    });
+  });
+
+  describe('hasDefaultExport', () => {
+    it('detects a default export declaration and a default in an export list', () => {
+      write('common/declared.js', 'export default window.instance;');
+      write('common/listed.js', 'const a = 1;\nexport { a as default };');
+      write('common/reexported.js', 'export { default } from "./declared";');
+
+      ['declared', 'listed', 'reexported'].forEach((name) => {
+        assert.equal(hasDefaultExport(path.join(root, `common/${name}.js`)), true, name);
+      });
+    });
+
+    it('ignores the default exports of star exported modules', () => {
+      write('common/index.js', 'export * from "./declared";\nexport const a = 1;');
+      write('common/declared.js', 'export default 1;');
+
+      assert.equal(hasDefaultExport(path.join(root, 'common/index.js')), false);
     });
   });
 

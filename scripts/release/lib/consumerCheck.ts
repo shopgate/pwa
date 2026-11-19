@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { capture } from './exec.ts';
-import { getExportNames, listDeclarationFiles } from './starExports.ts';
+import { getExportNames, hasDefaultExport, listDeclarationFiles } from './starExports.ts';
 import type { PublishedPackage } from './starExports.ts';
 
 const IDENTIFIER = /^[A-Za-z_$][\w$]*$/;
@@ -24,7 +24,7 @@ export interface TypedModule {
 
 /**
  * Collects the published modules with type declarations, together with the names their
- * JavaScript files export.
+ * JavaScript files export, including "default" for a default export of their own.
  * @param packages The published packages.
  * @returns The modules that export at least one name.
  */
@@ -46,7 +46,10 @@ export const getTypedModules = (packages: PublishedPackage[]): TypedModule[] => 
 
       return [{
         specifier: modulePath ? `${pkg.name}/${modulePath}` : pkg.name,
-        names: getExportNames(source, packages).filter(name => IDENTIFIER.test(name)),
+        names: [
+          ...getExportNames(source, packages).filter(name => IDENTIFIER.test(name)),
+          ...(hasDefaultExport(source) ? ['default'] : []),
+        ],
       }];
     }))
     .filter(({ names }) => names.length > 0)

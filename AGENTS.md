@@ -121,13 +121,13 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   star export can't be resolved. Nothing has to be maintained for this. The build then type checks
   the result the way an extension uses it (`scripts/release/lib/consumerCheck.ts`): it installs the
   built packages into a temporary folder, with the tsconfig that is published for extensions, and
-  reads every name that a module with declarations exports. It fails when the declarations lack
-  one, e.g. because a hand-written `.d.ts` is out of date. The build config of engage includes the
+  reads every name that a module with declarations exports, its own default export included. It
+  fails when the declarations lack one, e.g. because a hand-written `.d.ts` is out of date. The build config of engage includes the
   index files of the areas and of their sub-folders (`*/index.js`, `*/*/index.js`), since
   extensions import from these (`@shopgate/engage/category/selectors`). The build configs of
   `pwa-common` and `pwa-common-commerce` include `actions`, `constants`, `helpers`, `selectors` and
-  `streams` (in commerce those of each area), the one of `pwa-core` its `constants`, since the
-  engage barrels re-export from them. Everything these files import gets declarations as well.
+  `streams` (in commerce those of each area), the one of `pwa-core` its `classes`, `commands`,
+  `constants`, `emitters` and `helpers`, since the engage barrels re-export from them. Everything these files import gets declarations as well.
   rxjs 5 only types the operators that are imported, so `tsconfig.extension.json` loads
   `@shopgate/engage/core/types` through `types`, which imports the operators of the core; without
   it `stream$.filter(...)` doesn't type check in an extension. An
@@ -138,6 +138,9 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   that names a type from another module needs `/** @import { Observable } from 'rxjs/Observable' */`;
   without it the declaration contains a name that doesn't resolve and the consumer gets `any`.
   Prefer `@import` over `@typedef {import(...)}`, which adds an exported type to the declaration.
+  A default export of a value TypeScript can't type, e.g. `export default window.TmpEventInstance`,
+  is missing from the declaration entirely, and the consumer check fails; give it a JSDoc cast
+  (`export default /** @type {Event} */ (window.TmpEventInstance)`).
   The build config of engage repeats the `@shopgate/engage` entries of its `tsconfig.json` in
   `paths`. Without them a TypeScript file that imports an engage area by package name
   (`@shopgate/engage/favorites`) gets it through `node_modules`, TypeScript treats it as an

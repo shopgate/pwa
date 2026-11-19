@@ -57,15 +57,27 @@ describe('consumer check of the type declarations', () => {
         },
         {
           specifier: '@shopgate/engage/core/helpers',
-          names: ['c'],
+          names: ['c', 'default'],
+        },
+      ]);
+    });
+
+    it('lists a module that only has a default export', () => {
+      write('defaultOnly.js', 'export default 1;');
+      write('defaultOnly.d.ts');
+
+      assert.deepEqual(getTypedModules(packages), [
+        {
+          specifier: '@shopgate/engage/defaultOnly',
+          names: ['default'],
         },
       ]);
     });
 
     it('skips modules without declarations, without names or without a JavaScript file', () => {
       write('untyped.js', 'export const a = 1;');
-      write('defaultOnly.js', 'export default 1;');
-      write('defaultOnly.d.ts');
+      write('empty.js', 'const a = 1;');
+      write('empty.d.ts');
       write('types.d.ts');
 
       assert.deepEqual(getTypedModules(packages), []);
