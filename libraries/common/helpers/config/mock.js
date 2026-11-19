@@ -1,3 +1,5 @@
+/** @import { ThemeIcons } from '@shopgate/engage/icons/helpers/themeIcons' */
+
 /**
  * @mixin ThemeColors
  */
@@ -187,9 +189,9 @@ const icons = {
 
 /**
  * @typedef {Object} ThemeConfig
- * @property {ThemeColors} colors
- * @property {ThemeShadows} shadows
- * @property {ThemeVariables} variables
+ * @property {Object<string, *>} colors
+ * @property {Object<string, *>} shadows
+ * @property {Object<string, *>} variables
  * @property {ThemeIcons} icons
  */
 

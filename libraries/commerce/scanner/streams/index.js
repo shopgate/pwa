@@ -10,6 +10,8 @@ import {
   SCANNER_FORMATS_QR_CODE,
 } from '../constants';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /** @type {Observable} */
 export const scannerDidEnter$ = routeDidEnter$
   .filter(({ action }) => action.route.pathname === SCANNER_PATH);

@@ -121,12 +121,48 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   star export can't be resolved. Nothing has to be maintained for this. The build then type checks
   the result the way an extension uses it (`scripts/release/lib/consumerCheck.ts`): it installs the
   built packages into a temporary folder, with the tsconfig that is published for extensions, and
-  reads every name that a module with declarations exports. It fails when the declarations lack
-  one, e.g. because a hand-written `.d.ts` is out of date. The build configs of
-  `pwa-common` and `pwa-core` additionally include `constants` and `helpers/redux`, so that these
-  get real types. Don't include the streams: rxjs 5 only types the operators that are imported,
-  so `stream$.filter(...)` wouldn't type check in an extension. Don't include all JavaScript
-  either, see `maxNodeModuleJsDepth` above for the reason.
+  reads every name that a module with declarations exports, its own default export included. It
+  fails when the declarations lack one, e.g. because a hand-written `.d.ts` is out of date.
+  The build configs of the libraries extend `libraries/engage/tsconfig.build.base.json`, which
+  holds the shared options and excludes (`${configDir}`): specs, old tests named `spec.js`,
+  fixtures named `*.mock.js`, `__tests__`, `__mocks__` and `__snapshots__`. TypeScript can't write
+  the declaration of a fixture that is changed with `delete` after its definition. A library's
+  build config only adds its `include`. The base config sets `paths` to `{}`; only the build config
+  of engage maps `@shopgate/engage` there. Without that mapping a TypeScript file that imports an
+  engage area by package name (`@shopgate/engage/favorites`) gets it through `node_modules`,
+  TypeScript treats it as an external library and writes no declaration for it. Don't move the
+  mapping into the base config and don't map other libraries: tsc then writes declarations into
+  the source folders of the other package, without an error.
+  The build config of engage includes the index files of the areas and of their sub-folders
+  (`*/index.js`, `*/*/index.js`), since extensions import from these
+  (`@shopgate/engage/category/selectors`). The build configs of `pwa-common` and
+  `pwa-common-commerce` include `actions`, `constants`, `helpers`, `selectors` and `streams` (in
+  commerce those of each area), the one of `pwa-core` its `classes`, `commands`, `constants`,
+  `emitters` and `helpers`, since the engage barrels re-export from them. Everything these files
+  import gets declarations as well. Don't include all JavaScript, see `maxNodeModuleJsDepth` above
+  for the reason.
+  rxjs 5 only types the operators that are imported, so `tsconfig.extension.json` loads
+  `@shopgate/engage/core/types` through `types`, which imports the operators of the core; without
+  it `stream$.filter(...)` doesn't type check in an extension. An operator that isn't listed there
+  needs its `rxjs/add/operator/...` import in the extension.
+  A JSDoc type in a JavaScript file that names a type from another module needs
+  `/** @import { Observable } from 'rxjs/Observable' */`; without it the declaration contains a
+  name that doesn't resolve and the consumer gets `any`. Prefer `@import` over
+  `@typedef {import(...)}`, which adds an exported type to the declaration. The consumer check
+  therefore also checks the published declaration files with `skipLibCheck: false` and fails on
+  names and modules in them that don't resolve (TS2304, TS2552, TS2503, TS2694, TS2305, TS2724,
+  TS2307); it ignores their other errors and those of other packages. It leaves out
+  `untyped-modules.d.ts`, whose `@shopgate/*` pattern would hide a mistyped path. It can't see
+  a mistyped path in `@typedef {import(...)}` or an inline `{import(...).X}`, since the build
+  writes `any` for those; another reason to prefer `@import`.
+  A name that exists nowhere, e.g. `{bool}` or an undocumented `{FormFieldAction}`, becomes a
+  real type (`{boolean}`, `{Object<string, *>}`); `{Object}` is stricter than the former `any`.
+  A file of typedefs without `import` or `export` (`locations.types.js`) is a script: an
+  `@import` there makes the declaration a module without exports, so use `typeof import(...)`
+  inline. A default export of a
+  value TypeScript can't type, e.g. `export default window.TmpEventInstance`, is missing from the
+  declaration entirely, and the consumer check fails; give it a JSDoc cast
+  (`export default /** @type {Event} */ (window.TmpEventInstance)`).
   Don't add new hand-written `.d.ts` files: convert the file to TypeScript instead. When you
   change the exports of a JavaScript file that has a hand-written `.d.ts` next to it, update the
   `.d.ts` in the same change and run `node scripts/release/cli.ts build`, which contains this
@@ -154,6 +190,15 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   `node_modules` for anything an extension doesn't install. `npm run test:extension --
   <extension> [jest options]` runs an extension's tests without that fallback, like an
   external setup (run `npm install` in its `frontend` folder first).
+- **Feature flags of the native app:** `isAppFeatureFlagEnabled(category, flag, version = '1')`
+  from `@shopgate/engage/core/helpers` tells whether the app reports a flag in
+  `window.SGAppInfo.featureFlags`; extensions shouldn't read that object themselves. Outside of
+  the app it returns false, so an extension that needs the feature in development adds its own
+  check (`(isDev && !hasSGJavaScriptBridge()) || isAppFeatureFlagEnabled(...)`). Extensions can
+  only rely on the helper once merchants run a PWA release that contains it, which takes about
+  two months. With an older release the import is undefined, and webpack doesn't always warn
+  about it, so until then they call it only when it exists and keep their own lookup otherwise
+  (`typeof isAppFeatureFlagEnabled === 'function' ? isAppFeatureFlagEnabled(...) : ownLookup(...)`).
 - **Node requirements:** the SDK requires Node `^20.19.0 || >=22.12.0`, the themes ≥ 22.15
   (`engines`, warning only). Raising a requirement affects external developers with the next theme
   release; mention it in the release notes.

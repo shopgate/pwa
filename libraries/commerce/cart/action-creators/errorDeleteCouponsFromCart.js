@@ -1,5 +1,7 @@
 import { ERROR_DELETE_COUPONS_FROM_CART } from '../constants';
 
+/** @import { PipelineErrorElement } from '../helpers/createPipelineErrorList' */
+
 /**
  * Creates the dispatched ERROR_DELETE_COUPONS_FROM_CART action object.
  * @param {string[]} couponIds The coupon ids from the failed DELETE_COUPONS_FROM_CART action.

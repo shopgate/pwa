@@ -11,6 +11,8 @@ import {
 } from '../constants/ActionTypes';
 import { main$ } from './main';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 export const appWillInit$ = main$
   .filter(({ action }) => action.type === APP_WILL_INIT);
 

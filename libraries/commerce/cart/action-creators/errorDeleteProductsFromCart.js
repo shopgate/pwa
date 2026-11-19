@@ -1,5 +1,7 @@
 import { ERROR_DELETE_PRODUCTS_FROM_CART } from '../constants';
 
+/** @import { PipelineErrorElement } from '../helpers/createPipelineErrorList' */
+
 /**
  * Creates the dispatched ERROR_DELETE_PRODUCTS_FROM_CART action object.
  * @param {Array} products The products that where supposed to be deleted within

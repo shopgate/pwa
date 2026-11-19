@@ -74,11 +74,23 @@ export const { tss } = createTss({
   cache: emotionCache,
 });
 
+/**
+ * The style helpers of tss-react, referenced by name so that the declaration doesn't contain
+ * paths into tss-react that its package exports don't allow.
+ */
+type MakeAndWithStyles = ReturnType<typeof createMakeAndWithStyles<ReturnType<typeof useTheme>>>;
+
 // Create makeStyles and withStyles functions for tss-react package
-export const { makeStyles, withStyles, useStyles } = createMakeAndWithStyles({
+const makeAndWithStyles: MakeAndWithStyles = createMakeAndWithStyles({
   useTheme,
   cache: emotionCache,
 });
+
+/* eslint-disable prefer-destructuring */
+export const makeStyles: MakeAndWithStyles['makeStyles'] = makeAndWithStyles.makeStyles;
+export const withStyles: MakeAndWithStyles['withStyles'] = makeAndWithStyles.withStyles;
+export const useStyles: MakeAndWithStyles['useStyles'] = makeAndWithStyles.useStyles;
+/* eslint-enable prefer-destructuring */
 
 export const { cx, css } = createCssAndCx({
   cache: emotionCache,

@@ -9,6 +9,7 @@ import {
 
 export * from './environment';
 export * from './appFeatures';
+export { isAppFeatureFlagEnabled } from './appFeatureFlags';
 export * from './appPermissions';
 export * from './baseUrl';
 export * from './bridge';

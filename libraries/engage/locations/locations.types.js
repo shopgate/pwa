@@ -130,7 +130,11 @@
  */
 
 /**
- * @typedef {(typeof DIRECT_SHIP | typeof ROPIS| typeof BOPIS)} UserLocationFulfillmentMethod
+ * @typedef {(
+ *   typeof import('./constants').DIRECT_SHIP
+ *   | typeof import('./constants').ROPIS
+ *   | typeof import('./constants').BOPIS
+ * )} UserLocationFulfillmentMethod
  */
 
 /**

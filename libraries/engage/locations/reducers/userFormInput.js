@@ -1,5 +1,5 @@
 import { STORE_FORM_INPUT } from '../constants';
-/** @typedef {import('./locations.types').UserLocationState} */
+/** @typedef {import('../locations.types').UserLocationState} UserLocationState */
 
 /**
  * Stores the user's reserve form input.

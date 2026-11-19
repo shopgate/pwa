@@ -49,6 +49,8 @@ import {
   SET_FULFILLMENT_SLOT,
 } from '../constants';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /**
  * Specialized stream to handle push notifications that redirect to index screen with a coupon code.
  * Default logic would dispatch a historyReset in that case without link in the action payload,

@@ -5,7 +5,7 @@
     "module": "esnext",
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
-    "types": ["@shopgate/engage/untyped-modules", "jest", "node"],
+    "types": ["@shopgate/engage/untyped-modules", "@shopgate/engage/core/types", "jest", "node"],
     "paths": {
       "@shopgate/engage": ["./index.js"],
       "@shopgate/engage/*": ["./*"],

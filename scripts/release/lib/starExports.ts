@@ -145,6 +145,80 @@ const getPatternNames = (node: ModuleNode | null | undefined): string[] => {
 };
 
 /**
+ * Parses a JavaScript module.
+ * @param file Absolute path of the JavaScript file.
+ * @returns The statements of the module.
+ */
+const parseModule = (file: string) => loadParser()(fs.readFileSync(file, 'utf8'), {
+  configFile: false,
+  babelrc: false,
+  sourceType: 'module',
+  filename: file,
+})?.program.body ?? [];
+
+/**
+ * What a JavaScript module exports.
+ */
+export interface ModuleExports {
+  /**
+   * The exported names without the default export, including those of followed star exports.
+   */
+  names: string[];
+  /**
+   * Whether the module has a default export of its own.
+   */
+  hasDefault: boolean;
+}
+
+/**
+ * Removes empty names, duplicates and the default export from a list of exported names.
+ * @param names The names.
+ * @returns The cleaned names.
+ */
+const cleanNames = (names: string[]) => (
+  [...new Set(names)].filter(name => name !== '' && name !== 'default')
+);
+
+/**
+ * Collects the names the statements of a module export. Star exports are followed as long as they
+ * stay inside the published packages.
+ * @param statements The statements of the module.
+ * @param file Absolute path of the JavaScript file.
+ * @param packages The published packages.
+ * @param visited The files that were already read, to stop at circular exports.
+ * @returns The names, with "default" when the module exports it by name.
+ */
+const collectNames = (
+  statements: ModuleNode[],
+  file: string,
+  packages: PublishedPackage[],
+  visited: Set<string>
+): string[] => statements.flatMap((node) => {
+  if (node.type === 'ExportAllDeclaration') {
+    if (node.exported) {
+      return [getName(node.exported)];
+    }
+
+    const base = resolveModule(getName(node.source), file, packages);
+    const target = base ? findModuleFile(base, ['.js']) : null;
+
+    return target ? getExportNames(target, packages, visited) : [];
+  }
+
+  if (node.type !== 'ExportNamedDeclaration') {
+    return [];
+  }
+
+  const declared = node.declaration?.declarations
+    ? node.declaration.declarations.flatMap(declarator => getPatternNames(declarator.id))
+    : getPatternNames(node.declaration?.id);
+
+  const specified = (node.specifiers ?? []).map(specifier => getName(specifier.exported));
+
+  return [...declared, ...specified];
+});
+
+/**
  * Collects the names a JavaScript module exports. Star exports inside the module are followed as
  * long as they stay inside the published packages.
  * @param file Absolute path of the JavaScript file.
@@ -163,39 +237,25 @@ export const getExportNames = (
 
   visited.add(file);
 
-  const ast = loadParser()(fs.readFileSync(file, 'utf8'), {
-    configFile: false,
-    babelrc: false,
-    sourceType: 'module',
-    filename: file,
-  });
+  return cleanNames(collectNames(parseModule(file), file, packages, visited));
+};
 
-  const names = (ast?.program.body ?? []).flatMap((node) => {
-    if (node.type === 'ExportAllDeclaration') {
-      if (node.exported) {
-        return [getName(node.exported)];
-      }
+/**
+ * Reads the exported names of a JavaScript module and whether it has a default export of its own,
+ * parsing the module once.
+ * @param file Absolute path of the JavaScript file.
+ * @param packages The published packages.
+ * @returns The exports of the module.
+ */
+export const getModuleExports = (file: string, packages: PublishedPackage[]): ModuleExports => {
+  const statements = parseModule(file);
+  const names = collectNames(statements, file, packages, new Set([file]));
 
-      const base = resolveModule(getName(node.source), file, packages);
-      const target = base ? findModuleFile(base, ['.js']) : null;
-
-      return target ? getExportNames(target, packages, visited) : [];
-    }
-
-    if (node.type !== 'ExportNamedDeclaration') {
-      return [];
-    }
-
-    const declared = node.declaration?.declarations
-      ? node.declaration.declarations.flatMap(declarator => getPatternNames(declarator.id))
-      : getPatternNames(node.declaration?.id);
-
-    const specified = (node.specifiers ?? []).map(specifier => getName(specifier.exported));
-
-    return [...declared, ...specified];
-  });
-
-  return [...new Set(names)].filter(name => name !== '' && name !== 'default');
+  return {
+    names: cleanNames(names),
+    hasDefault: names.includes('default')
+      || statements.some(node => node.type === 'ExportDefaultDeclaration'),
+  };
 };
 
 /**

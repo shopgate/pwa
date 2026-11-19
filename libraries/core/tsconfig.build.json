@@ -1,16 +1,10 @@
 {
-  "extends": "@shopgate/engage/tsconfig.build.json",
-  "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "."
-  },
-  "include": ["constants/**/*.js"],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "**/*.spec.*",
-    "**/__tests__/**",
-    "**/__snapshots__/**",
-    "coverage"
+  "extends": "@shopgate/engage/tsconfig.build.base.json",
+  "include": [
+    "classes/**/*.js",
+    "commands/**/*.js",
+    "constants/**/*.js",
+    "emitters/**/*.js",
+    "helpers/**/*.js"
   ]
 }

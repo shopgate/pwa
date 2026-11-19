@@ -10,11 +10,13 @@ import { promise as stripePromise, loadSdk } from './sdk';
 import { useCheckoutContext } from '../../hooks/common';
 import PaymentContext from '../context';
 
+/** @import { Stripe } from '@stripe/stripe-js' */
+
 /**
  * Prepares checkout with stripe request and creates event data.
  * @param {Stripe} stripe Stripe
  * @param {Object} req  Stripe request.
- * @param {Order} order Order
+ * @param {Object<string, *>} order Order
  * @return {Promise}
  */
 export const prepareStripeRequestCheckout =

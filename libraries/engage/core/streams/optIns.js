@@ -6,6 +6,8 @@ import {
   HARD_OPT_IN_SELECTED,
 } from '../constants';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /**
  * Gets triggered when a SOFT_OPT_IN_SHOWN action was dispatched
  * @type {Observable}
