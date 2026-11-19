@@ -26,6 +26,8 @@ import {
   SEARCH_PATTERN,
 } from '../constants';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /**
  * Gets triggered when search results are requested.
  * @type {Observable}

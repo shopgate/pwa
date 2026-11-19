@@ -11,15 +11,24 @@
     "stripInternal": false,
     "skipLibCheck": true,
     "paths": {
+      "@shopgate/engage": ["./index.js"],
+      "@shopgate/engage/*": ["./*"],
       "tss-react/tools/*": ["../../node_modules/tss-react/tools/*"]
     }
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "*/index.js",
+    "*/*/index.js",
+    "*/*/index.jsx"
+  ],
   "exclude": [
     "dist",
     "node_modules",
     "**/*.spec.*",
     "**/__tests__/**",
+    "**/__mocks__/**",
     "**/__snapshots__/**",
     "coverage"
   ]

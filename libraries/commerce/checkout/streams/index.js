@@ -1,6 +1,8 @@
 import { main$ } from '@shopgate/pwa-common/streams/main';
 import { SUCCESS_CHECKOUT } from '../constants';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /**
  * Gets triggered when the checkout has been completed.
  * @type {Observable}
