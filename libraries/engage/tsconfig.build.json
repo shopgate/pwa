@@ -1,15 +1,6 @@
 {
-  "extends": "./tsconfig.json",
+  "extends": "./tsconfig.build.base.json",
   "compilerOptions": {
-    "declaration": true,
-    "removeComments": false,
-    "emitDeclarationOnly": true,
-    "declarationMap": true,
-    "outDir": "./dist",
-    "rootDir": ".",
-    "noEmit": false,
-    "stripInternal": false,
-    "skipLibCheck": true,
     "paths": {
       "@shopgate/engage": ["./index.js"],
       "@shopgate/engage/*": ["./*"],
@@ -22,14 +13,5 @@
     "*/index.js",
     "*/*/index.js",
     "*/*/index.jsx"
-  ],
-  "exclude": [
-    "dist",
-    "node_modules",
-    "**/*.spec.*",
-    "**/__tests__/**",
-    "**/__mocks__/**",
-    "**/__snapshots__/**",
-    "coverage"
   ]
 }

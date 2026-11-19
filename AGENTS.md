@@ -122,32 +122,36 @@ release pushes to) and develop extensions in `extensions/*/frontend`.
   the result the way an extension uses it (`scripts/release/lib/consumerCheck.ts`): it installs the
   built packages into a temporary folder, with the tsconfig that is published for extensions, and
   reads every name that a module with declarations exports, its own default export included. It
-  fails when the declarations lack one, e.g. because a hand-written `.d.ts` is out of date. The build config of engage includes the
-  index files of the areas and of their sub-folders (`*/index.js`, `*/*/index.js`), since
-  extensions import from these (`@shopgate/engage/category/selectors`). The build configs of
-  `pwa-common` and `pwa-common-commerce` include `actions`, `constants`, `helpers`, `selectors` and
-  `streams` (in commerce those of each area), the one of `pwa-core` its `classes`, `commands`,
-  `constants`, `emitters` and `helpers`, since the engage barrels re-export from them. Everything these files import gets declarations as well.
+  fails when the declarations lack one, e.g. because a hand-written `.d.ts` is out of date.
+  The build configs of the libraries extend `libraries/engage/tsconfig.build.base.json`, which
+  holds the shared options and excludes (`${configDir}`): specs, old tests named `spec.js`,
+  fixtures named `*.mock.js`, `__tests__`, `__mocks__` and `__snapshots__`. TypeScript can't write
+  the declaration of a fixture that is changed with `delete` after its definition. A library's
+  build config only adds its `include`. The base config sets `paths` to `{}`; only the build config
+  of engage maps `@shopgate/engage` there. Without that mapping a TypeScript file that imports an
+  engage area by package name (`@shopgate/engage/favorites`) gets it through `node_modules`,
+  TypeScript treats it as an external library and writes no declaration for it. Don't move the
+  mapping into the base config and don't map other libraries: tsc then writes declarations into
+  the source folders of the other package, without an error.
+  The build config of engage includes the index files of the areas and of their sub-folders
+  (`*/index.js`, `*/*/index.js`), since extensions import from these
+  (`@shopgate/engage/category/selectors`). The build configs of `pwa-common` and
+  `pwa-common-commerce` include `actions`, `constants`, `helpers`, `selectors` and `streams` (in
+  commerce those of each area), the one of `pwa-core` its `classes`, `commands`, `constants`,
+  `emitters` and `helpers`, since the engage barrels re-export from them. Everything these files
+  import gets declarations as well. Don't include all JavaScript, see `maxNodeModuleJsDepth` above
+  for the reason.
   rxjs 5 only types the operators that are imported, so `tsconfig.extension.json` loads
   `@shopgate/engage/core/types` through `types`, which imports the operators of the core; without
-  it `stream$.filter(...)` doesn't type check in an extension. An
-  operator that isn't listed there needs its `rxjs/add/operator/...` import in the extension.
-  Don't include all JavaScript, see `maxNodeModuleJsDepth` above for the reason. Old tests named
-  `spec.js` and fixtures named `*.mock.js` are excluded: TypeScript can't write the declaration of
-  a fixture that is changed with `delete` after its definition. A JSDoc type in a JavaScript file
-  that names a type from another module needs `/** @import { Observable } from 'rxjs/Observable' */`;
-  without it the declaration contains a name that doesn't resolve and the consumer gets `any`.
-  Prefer `@import` over `@typedef {import(...)}`, which adds an exported type to the declaration.
-  A default export of a value TypeScript can't type, e.g. `export default window.TmpEventInstance`,
-  is missing from the declaration entirely, and the consumer check fails; give it a JSDoc cast
+  it `stream$.filter(...)` doesn't type check in an extension. An operator that isn't listed there
+  needs its `rxjs/add/operator/...` import in the extension.
+  A JSDoc type in a JavaScript file that names a type from another module needs
+  `/** @import { Observable } from 'rxjs/Observable' */`; without it the declaration contains a
+  name that doesn't resolve and the consumer gets `any`. Prefer `@import` over
+  `@typedef {import(...)}`, which adds an exported type to the declaration. A default export of a
+  value TypeScript can't type, e.g. `export default window.TmpEventInstance`, is missing from the
+  declaration entirely, and the consumer check fails; give it a JSDoc cast
   (`export default /** @type {Event} */ (window.TmpEventInstance)`).
-  The build config of engage repeats the `@shopgate/engage` entries of its `tsconfig.json` in
-  `paths`. Without them a TypeScript file that imports an engage area by package name
-  (`@shopgate/engage/favorites`) gets it through `node_modules`, TypeScript treats it as an
-  external library and writes no declaration for it. Don't map the other libraries there: tsc
-  then writes their declarations into their source folders, without an error. For the same
-  reason the build configs of the other libraries, which extend the one of engage, set `paths`
-  to `{}`.
   Don't add new hand-written `.d.ts` files: convert the file to TypeScript instead. When you
   change the exports of a JavaScript file that has a hand-written `.d.ts` next to it, update the
   `.d.ts` in the same change and run `node scripts/release/cli.ts build`, which contains this

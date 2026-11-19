@@ -5,7 +5,7 @@ import path from 'node:path';
 import {
   afterEach, beforeEach, describe, it,
 } from 'node:test';
-import { getExportNames, hasDefaultExport, rewriteAllStarExports } from './starExports.ts';
+import { getExportNames, getModuleExports, rewriteAllStarExports } from './starExports.ts';
 import type { PublishedPackage } from './starExports.ts';
 
 describe('star exports of declaration files', () => {
@@ -80,22 +80,30 @@ describe('star exports of declaration files', () => {
     });
   });
 
-  describe('hasDefaultExport', () => {
-    it('detects a default export declaration and a default in an export list', () => {
+  describe('getModuleExports', () => {
+    it('detects every kind of default export of the module itself', () => {
       write('common/declared.js', 'export default window.instance;');
       write('common/listed.js', 'const a = 1;\nexport { a as default };');
       write('common/reexported.js', 'export { default } from "./declared";');
+      write('common/namespace.js', 'export * as default from "./declared";');
 
-      ['declared', 'listed', 'reexported'].forEach((name) => {
-        assert.equal(hasDefaultExport(path.join(root, `common/${name}.js`)), true, name);
+      ['declared', 'listed', 'reexported', 'namespace'].forEach((name) => {
+        assert.equal(
+          getModuleExports(path.join(root, `common/${name}.js`), packages).hasDefault,
+          true,
+          name
+        );
       });
     });
 
-    it('ignores the default exports of star exported modules', () => {
+    it('lists the names without the default and ignores the defaults of star exports', () => {
       write('common/index.js', 'export * from "./declared";\nexport const a = 1;');
-      write('common/declared.js', 'export default 1;');
+      write('common/declared.js', 'export const b = 1;\nexport default 1;');
 
-      assert.equal(hasDefaultExport(path.join(root, 'common/index.js')), false);
+      assert.deepEqual(getModuleExports(path.join(root, 'common/index.js'), packages), {
+        names: ['b', 'a'],
+        hasDefault: false,
+      });
     });
   });
 

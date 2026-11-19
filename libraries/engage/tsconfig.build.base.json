@@ -1,0 +1,26 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "removeComments": false,
+    "emitDeclarationOnly": true,
+    "declarationMap": true,
+    "outDir": "${configDir}/dist",
+    "rootDir": "${configDir}",
+    "noEmit": false,
+    "stripInternal": false,
+    "skipLibCheck": true,
+    "paths": {}
+  },
+  "exclude": [
+    "${configDir}/dist",
+    "${configDir}/node_modules",
+    "${configDir}/coverage",
+    "${configDir}/**/*.spec.*",
+    "${configDir}/**/spec.js",
+    "${configDir}/**/*.mock.js",
+    "${configDir}/**/__tests__/**",
+    "${configDir}/**/__mocks__/**",
+    "${configDir}/**/__snapshots__/**"
+  ]
+}

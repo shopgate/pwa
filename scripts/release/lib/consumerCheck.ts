@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { capture } from './exec.ts';
-import { getExportNames, hasDefaultExport, listDeclarationFiles } from './starExports.ts';
+import { getModuleExports, listDeclarationFiles } from './starExports.ts';
 import type { PublishedPackage } from './starExports.ts';
 
 const IDENTIFIER = /^[A-Za-z_$][\w$]*$/;
@@ -43,12 +43,13 @@ export const getTypedModules = (packages: PublishedPackage[]): TypedModule[] => 
         .join('/')
         .replace(/(^|\/)index\.js$/, '')
         .replace(/\.js$/, '');
+      const { names, hasDefault } = getModuleExports(source, packages);
 
       return [{
         specifier: modulePath ? `${pkg.name}/${modulePath}` : pkg.name,
         names: [
-          ...getExportNames(source, packages).filter(name => IDENTIFIER.test(name)),
-          ...(hasDefaultExport(source) ? ['default'] : []),
+          ...names.filter(name => IDENTIFIER.test(name)),
+          ...(hasDefault ? ['default'] : []),
         ],
       }];
     }))
