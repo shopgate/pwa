@@ -20,6 +20,7 @@
     "**/*.spec.*",
     "**/spec.js",
     "**/__tests__/**",
+    "**/__mocks__/**",
     "**/__snapshots__/**",
     "coverage"
   ]
