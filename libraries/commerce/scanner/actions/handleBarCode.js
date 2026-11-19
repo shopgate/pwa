@@ -3,6 +3,8 @@ import handleSearch from './handleSearch';
 import handleNoResults from './handleNoResults';
 import successHandleScanner from '../action-creators/successHandleScanner';
 
+/** @import ScannerEvent from '@shopgate/pwa-core/classes/ScannerEvent' */
+
 /**
  * Handle bar code
  * @param {ScannerEvent} event Scanner event that emitted.

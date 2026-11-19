@@ -32,7 +32,7 @@ export const parseFloatString = (value, decimals) => +parseFloat(value.replace('
 
 /**
  * Formats a float to a string.
- * @param {float} value The float value.
+ * @param {number} value The float value.
  * @param {number} decimals The amount of decimals.
  * @returns {string}
  */

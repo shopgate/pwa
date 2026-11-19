@@ -16,13 +16,13 @@ const noop = () => {};
  * @property {string|null|undefined} placeholder
  * @property {boolean|null|undefined} required
  * @property {boolean|null|undefined} visible
- * @property {FormFieldAction[]|null|undefined} actions
+ * @property {Object<string, *>[]|null|undefined} actions
  */
 
 /**
  * Takes a list of which elements to render based on the respective element type
  *
- * @param {Form} formConfig Configuration of which form fields to render
+ * @param {Object<string, *>} formConfig Configuration of which form fields to render
  * @param {Function} elementChangeHandler change handler
  * @return {FormElement[]}
  */

@@ -1,5 +1,7 @@
 import { ERROR_ADD_COUPONS_TO_CART } from '../constants';
 
+/** @import { PipelineErrorElement } from '../helpers/createPipelineErrorList' */
+
 /**
  * Creates the dispatched ERROR_ADD_COUPONS_TO_CART action object.
  * @param {Array} couponsIds The coupon ids from the failed ADD_COUPONS_TO_CART action.

@@ -4,6 +4,9 @@ import { buildThemeConfig } from './theme';
 import { assignObjectDeep } from '../data';
 import { isObject } from '../validation';
 
+/** @import { ArrayItemComparator } from '../data' */
+/** @import { ThemeConfig } from './mock' */
+
 /**
  * Provides a default app config as a fallback.
  * @mixin AppConfig
@@ -90,7 +93,7 @@ export const themeName = process.env.THEME || 'theme';
 
 /**
  * The resolved theme configuration.
- * @type {ThemeConfig}
+ * @type {ThemeConfig & Object<string, *>}
  */
 export const themeConfig = buildThemeConfig(appConfig);
 

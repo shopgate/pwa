@@ -19,6 +19,8 @@ import {
   SHOP_SETTING_ENABLE_CMS_2_FOR_ALL_SHOPPERS,
 } from '../constants/shopSettings';
 
+/** @import { RootState } from '@shopgate/engage/core/types' */
+
 /**
  * Retrieves the shopSettings state from the store.
  * @param {Object} state The current application state.

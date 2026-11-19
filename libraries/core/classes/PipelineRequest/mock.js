@@ -54,7 +54,7 @@ class MockedPipelineRequest {
 
   /**
    * @param {number} retries The number of retries this pipeline request should perform.
-   * @return {PipelineRequest}
+   * @return {MockedPipelineRequest}
    */
   setRetries(retries = 3) {
     if (typeof retries !== 'number') throw new TypeError(`Expected 'number'. Received: '${typeof retries}'`);
@@ -77,7 +77,7 @@ class MockedPipelineRequest {
 
   /**
    * @param {string} processed The response process type.
-   * @return {PipelineRequest}
+   * @return {MockedPipelineRequest}
    */
   setResponseProcessed(processed = processTypes.DEFAULT_PROCESSED) {
     if (typeof processed !== 'string') throw new TypeError(`Expected 'string'. Received: '${typeof processed}'`);
@@ -93,7 +93,7 @@ class MockedPipelineRequest {
    * Sets a blacklist of error codes that should not be handled internally.
    * Can be used for custom error handling outside.
    * @param {Object} errors - Array of error codes
-   * @return {PipelineRequest}
+   * @return {MockedPipelineRequest}
    */
   setErrorBlacklist(errors = []) {
     this.errorBlacklist = errors;
@@ -102,7 +102,7 @@ class MockedPipelineRequest {
 
   /**
    * @param {string} handle The handle errors type.
-   * @return {PipelineRequest}
+   * @return {MockedPipelineRequest}
    */
   setHandleErrors(handle = errorHandleTypes.ERROR_HANDLE_DEFAULT) {
     if (typeof handle !== 'string') throw new TypeError(`Expected 'string'. Received: '${typeof handle}'`);
@@ -131,7 +131,7 @@ class MockedPipelineRequest {
    * Sets a flag to suppress errors.
    * When true, no EVENT_PIPELINE_ERROR would be triggered.
    * @param {boolean} value Value.
-   * @return {PipelineRequest}
+   * @return {MockedPipelineRequest}
    * @deprecated
    */
   setSuppressErrors(value) {
