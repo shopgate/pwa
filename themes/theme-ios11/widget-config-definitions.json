@@ -1439,6 +1439,137 @@
     ]
   },
   {
+    "id": "accordionWidget",
+    "name": {
+      "en-us": "Accordion",
+      "de-de": "Akkordeon"
+    },
+    "description": {
+      "en-us": "Questions with answers that expand on tap, e.g. for FAQ.",
+      "de-de": "Fragen mit aufklappbaren Antworten, z. B. für FAQ."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "showHeadline",
+        "label": {
+          "en-us": "Show headline",
+          "de-de": "Überschrift anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "headline",
+        "label": {
+          "en-us": "Headline",
+          "de-de": "Überschrift"
+        },
+        "required": true,
+        "type": "textWithFormatting",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "validationMaxLength": 256,
+          "useTypographySelection": true
+        },
+        "defaultValue": {
+          "typography": "h2"
+        },
+        "visibilityConditions": {
+          "showHeadline": true
+        }
+      },
+      {
+        "code": "entries",
+        "label": {
+          "en-us": "Entries",
+          "de-de": "Einträge"
+        },
+        "type": "arrayOf",
+        "required": true,
+        "typeSpecificSettings": {
+          "validationMinEntries": 1,
+          "validationMaxEntries": 10,
+          "arrayOfWidgetConfigInputGroup": [
+            {
+              "code": "question",
+              "label": {
+                "en-us": "Question",
+                "de-de": "Frage"
+              },
+              "required": true,
+              "type": "text",
+              "localizable": true,
+              "typeSpecificSettings": {
+                "validationMaxLength": 256
+              }
+            },
+            {
+              "code": "answer",
+              "label": {
+                "en-us": "Answer",
+                "de-de": "Antwort"
+              },
+              "required": true,
+              "type": "richText",
+              "localizable": true,
+              "typeSpecificSettings": null,
+              "defaultValue": null
+            }
+          ]
+        },
+        "defaultValue": [
+          {}
+        ]
+      },
+      {
+        "code": "initiallyOpen",
+        "label": {
+          "en-us": "Open at the start",
+          "de-de": "Zu Beginn geöffnet"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "none",
+              "label": {
+                "en-us": "None",
+                "de-de": "Keiner"
+              }
+            },
+            {
+              "value": "first",
+              "label": {
+                "en-us": "First entry",
+                "de-de": "Erster Eintrag"
+              }
+            }
+          ]
+        },
+        "defaultValue": "none"
+      },
+      {
+        "code": "allowMultipleOpen",
+        "label": {
+          "en-us": "Allow several open entries",
+          "de-de": "Mehrere Einträge gleichzeitig öffnen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      }
+    ]
+  },
+  {
     "id": "productSliderWidget",
     "name": {
       "en-us": "Product slider",

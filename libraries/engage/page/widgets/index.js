@@ -12,3 +12,4 @@ export { default as RichTextWidget } from './RichText';
 export { default as HeroBannerWidget } from './HeroBanner';
 export { default as ButtonWidget } from './Button';
 export { default as NestedCategoryFilterWidget } from './NestedCategoryFilter';
+export { default as AccordionWidget } from './Accordion';
