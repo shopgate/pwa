@@ -864,7 +864,14 @@
   },
   "page": {
     "not_found": "Niestety, nie znaleziono poszukiwanej strony.",
-    "continue": "Kontynuuj zakupy"
+    "continue": "Kontynuuj zakupy",
+    "countdown": {
+      "days": "{count, plural, one {Dzień} other {Dni}}",
+      "hours": "Godz.",
+      "minutes": "Min.",
+      "seconds": "Sek.",
+      "remaining": "Pozostało: {days, plural, =0 {} one {# dzień, } few {# dni, } many {# dni, } other {# dnia, }}{hours, plural, one {# godzina} few {# godziny} many {# godzin} other {# godziny}}, {minutes, plural, one {# minuta} few {# minuty} many {# minut} other {# minuty}} i {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}}"
+    }
   },
   "registration": {
     "create_account": "Utwórz konto",

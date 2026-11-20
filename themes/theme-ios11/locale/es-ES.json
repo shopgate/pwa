@@ -865,7 +865,14 @@
   },
   "page": {
     "not_found": "Lamentablemente, no se ha encontrado la página solicitada.",
-    "continue": "Seguir comprando"
+    "continue": "Seguir comprando",
+    "countdown": {
+      "days": "{count, plural, one {Día} other {Días}}",
+      "hours": "Horas",
+      "minutes": "Min.",
+      "seconds": "Seg.",
+      "remaining": "Tiempo restante: {days, plural, =0 {} one {# día, } other {# días, }}{hours, plural, one {# hora} other {# horas}}, {minutes, plural, one {# minuto} other {# minutos}} y {seconds, plural, one {# segundo} other {# segundos}}"
+    }
   },
   "registration": {
     "create_account": "Crear cuenta",
