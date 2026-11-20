@@ -49,7 +49,7 @@ const useStyles = makeStyles<{
     display: 'flex',
     width: 'max-content',
     '&:focus-within': {
-      animationPlayState: 'paused',
+      animationName: 'none',
     },
     '@media (hover: hover)': {
       '&:hover': {
