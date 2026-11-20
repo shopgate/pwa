@@ -34,6 +34,7 @@ const useStyles = makeStyles<{ alignment: WidgetButtonAlignment }>()((_, { align
   button: {
     maxWidth: '100%',
     textAlign: 'center',
+    wordBreak: 'break-word',
     overflowWrap: 'anywhere',
   },
 }));
