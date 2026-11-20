@@ -865,7 +865,14 @@
   },
   "page": {
     "not_found": "Δυστυχώς, η σελίδα που ζητήσατε δεν βρέθηκε.",
-    "continue": "Συνέχεια στις αγορές"
+    "continue": "Συνέχεια στις αγορές",
+    "countdown": {
+      "days": "{count, plural, one {Ημέρα} other {Ημέρες}}",
+      "hours": "Ώρες",
+      "minutes": "Λεπτά",
+      "seconds": "Δευτ.",
+      "remaining": "Απομένουν {days, plural, =0 {} one {# ημέρα, } other {# ημέρες, }}{hours, plural, one {# ώρα} other {# ώρες}}, {minutes, plural, one {# λεπτό} other {# λεπτά}} και {seconds, plural, one {# δευτερόλεπτο} other {# δευτερόλεπτα}}"
+    }
   },
   "registration": {
     "create_account": "Δημιουργία λογαριασμού",

@@ -38,6 +38,12 @@
   "@shopgate/widgets/nestedCategoryFilterWidget": {
     "path": "@shopgate/engage/page/widgets/NestedCategoryFilter"
   },
+  "@shopgate/widgets/textBandWidget": {
+    "path": "@shopgate/engage/page/widgets/TextBand"
+  },
+  "@shopgate/widgets/countdownWidget": {
+    "path": "@shopgate/engage/page/widgets/Countdown"
+  },
   "@shopgate/widgets/accordionWidget": {
     "path": "@shopgate/engage/page/widgets/Accordion"
   },

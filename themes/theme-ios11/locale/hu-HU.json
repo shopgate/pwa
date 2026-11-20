@@ -865,7 +865,14 @@
   },
   "page": {
     "not_found": "Sajnos a keresett oldal nem található.",
-    "continue": "Folytassa a vásárlást"
+    "continue": "Folytassa a vásárlást",
+    "countdown": {
+      "days": "{count, plural, other {Nap}}",
+      "hours": "Óra",
+      "minutes": "Perc",
+      "seconds": "Mp.",
+      "remaining": "Még {days, plural, =0 {} other {# nap, }}{hours, plural, other {# óra}}, {minutes, plural, other {# perc}} és {seconds, plural, other {# másodperc}}"
+    }
   },
   "registration": {
     "create_account": "Fiók létrehozása",
