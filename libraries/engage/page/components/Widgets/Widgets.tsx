@@ -8,7 +8,7 @@ import WidgetsPreviewProvider from './WidgetsPreviewProvider';
 import Widget from './Widget';
 import Overlay from './Overlay';
 import { checkScheduled } from './helpers';
-import { usePreviewIframeCommunication } from './hooks';
+import { usePreviewIframeCommunication, useRenderedWidgetCount, useWidgetEntrance } from './hooks';
 import { type WidgetDefinition } from './types';
 
 const PLACEHOLDER_COMPONENT = '@shopgate/widgetsInternal/Placeholder';
@@ -39,9 +39,10 @@ const Widgets = ({
 }: WidgetsProps) => {
   const { classes, cx } = useStyles();
 
-  const { pattern } = useRoute() as { pattern: string };
+  const { pattern, state } = useRoute();
   const widgetsRef = useRef<HTMLDivElement>(null);
   const isPreview = pattern === PAGE_PREVIEW_PATTERN;
+  const isScrollRestored = !!(state as { scrollTop?: number } | undefined)?.scrollTop;
   const widgetComponents = useThemeWidgets('v2');
 
   usePreviewIframeCommunication(isPreview);
@@ -64,6 +65,9 @@ const Widgets = ({
     );
   }, [isPreview, widgetComponents, widgetsProp]);
 
+  const renderedCount = useRenderedWidgetCount(widgets?.length ?? 0, isPreview || isScrollRestored);
+  const entranceRef = useWidgetEntrance(!isPreview && !isScrollRestored);
+
   if (!Array.isArray(widgets) || widgets.length === 0) {
     return null;
   }
@@ -84,7 +88,7 @@ const Widgets = ({
         })}
         ref={widgetsRef}
       >
-        {widgets.map((widget) => {
+        {widgets.slice(0, renderedCount).map((widget) => {
           const component = widgetComponents[widget.widgetConfigDefinitionCode] ||
           (isDev ? widgetComponents[PLACEHOLDER_COMPONENT] : null);
 
@@ -94,6 +98,7 @@ const Widgets = ({
             isPreview={isPreview}
             component={component}
             isCustomLegacyWidget={widget.isCustomLegacyWidget}
+            entranceRef={entranceRef}
           />;
         })}
       </div>

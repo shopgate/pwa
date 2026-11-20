@@ -45,17 +45,13 @@ export const useCategoryListWidget = () => {
 
   // Get category children of the selected category (pipeline handles sorting)
   const categories = useSelector(state =>
-    (typeof category === 'string' ? getCategoriesById(state, { categoryId: category }) : null));
+    (typeof category === 'string' ? getCategoriesById(state, { categoryId: category }) : EMPTY_ARRAY));
 
   const sortedCategories = useMemo(() => {
-    if (!categories) {
-      return EMPTY_ARRAY;
-    }
-
     /** @type {CategoryListWidgetConfig['sort']} */
     const sortCC = camelCase(sort);
 
-    if (sortCC === 'nameAsc' || sortCC === 'nameDesc') {
+    if (categories && (sortCC === 'nameAsc' || sortCC === 'nameDesc')) {
       const dir = sortCC === 'nameAsc' ? 1 : -1;
 
       return [...categories].sort((a, b) =>
