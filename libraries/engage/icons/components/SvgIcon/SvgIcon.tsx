@@ -2,14 +2,10 @@ import { useMemo, type CSSProperties } from 'react';
 import camelCase from 'lodash/camelCase';
 import { makeStyles } from '@shopgate/engage/styles';
 import { parseIconSvg } from '../../helpers/parseIconSvg';
-import { isValidStrokeWidth } from '../../helpers/iconOptions';
+import { clampScale, isValidScale, isValidStrokeWidth } from '../../helpers/iconOptions';
 import type { ParsedIcon } from '../../types';
 
 const DEFAULT_VIEW_BOX = '0 0 24 24';
-
-const MIN_SCALE = 0.5;
-
-const MAX_SCALE = 2;
 
 const useStyles = makeStyles()(theme => ({
   root: {
@@ -19,6 +15,9 @@ const useStyles = makeStyles()(theme => ({
   },
   stroke: {
     strokeWidth: `calc(var(--sgi-stroke-icon, var(${theme.vars.components.icon.strokeWidth}, var(--sgi-stroke-base))) * var(--sgi-stroke-scale))`,
+  },
+  breakout: {
+    overflow: 'visible',
   },
 }));
 
@@ -54,7 +53,7 @@ export interface SvgIconProps {
    */
   normalize?: boolean;
   /**
-   * Size of the drawing relative to the icon box, e.g. 0.9 for 90%.
+   * Drawing size relative to the box, drawn between 0.5 and 2. Above 1 it extends past the box.
    * @default 1
    */
   scale?: number;
@@ -81,8 +80,7 @@ export const scaleViewBox = (viewBox: string, scale?: number) => {
   const values = viewBox.split(/[\s,]+/).map(Number);
 
   if (
-    typeof scale !== 'number'
-    || !Number.isFinite(scale)
+    !isValidScale(scale)
     || scale === 1
     || values.length !== 4
     || values.some(value => !Number.isFinite(value))
@@ -90,7 +88,7 @@ export const scaleViewBox = (viewBox: string, scale?: number) => {
     return viewBox;
   }
 
-  const factor = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale));
+  const factor = clampScale(scale);
   const [x, y, width, height] = values;
   const scaledWidth = width / factor;
   const scaledHeight = height / factor;
@@ -109,7 +107,7 @@ export const scaleViewBox = (viewBox: string, scale?: number) => {
  * @param viewBox The viewBox prop.
  * @param scale Size of the drawing relative to the icon box.
  * @param strokeWidth Line width of this icon on the 24 unit grid.
- * @returns The viewBox, the attributes and the styles of the svg element.
+ * @returns The viewBox, attributes and styles of the svg element, and whether it breaks out.
  */
 const getSvgProps = (
   icon: ParsedIcon,
@@ -151,6 +149,7 @@ const getSvgProps = (
     attributes,
     style,
     hasStroke: icon.strokeWidth !== undefined,
+    breaksOut: isValidScale(scale) && scale > 1,
   };
 };
 
@@ -192,7 +191,13 @@ const SvgIcon = ({
   return (
     <svg
       {...svg.attributes}
-      className={cx(classes.root, svg.hasStroke && classes.stroke, 'common__icon', className)}
+      className={cx(
+        classes.root,
+        svg.hasStroke && classes.stroke,
+        svg.breaksOut && classes.breakout,
+        'common__icon',
+        className
+      )}
       viewBox={svg.viewBox}
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden

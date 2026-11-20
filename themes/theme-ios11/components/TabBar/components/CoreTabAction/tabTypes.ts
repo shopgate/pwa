@@ -47,14 +47,6 @@ interface CoreTabPresentation {
     className?: string;
   }>;
   /**
-   * Width of the default icon in pixels.
-   */
-  iconWidth: number;
-  /**
-   * Height of the default icon in pixels.
-   */
-  iconHeight: number;
-  /**
    * Provides the additions of the tab type.
    */
   useExtras?: (label: string) => TabExtras;
@@ -72,31 +64,21 @@ type CoreTabType = CoreTabData & CoreTabPresentation;
 const CORE_TAB_PRESENTATION: Readonly<Record<CoreTabTypeName, CoreTabPresentation>> = {
   [TAB_HOME]: {
     icon: HomeIcon,
-    iconWidth: 24,
-    iconHeight: 24,
   },
   [TAB_BROWSE]: {
     icon: BrowseIcon,
-    iconWidth: 31,
-    iconHeight: 32,
   },
   [TAB_CART]: {
     icon: CartIcon,
-    iconWidth: 24,
-    iconHeight: 24,
     useExtras: useCartTabExtras,
     beforeWithoutTabBarAction: true,
   },
   [TAB_FAVORITES]: {
     icon: HeartIcon,
-    iconWidth: 24,
-    iconHeight: 24,
     useExtras: useFavoritesTabExtras,
   },
   [TAB_MORE]: {
     icon: MoreIcon,
-    iconWidth: 24,
-    iconHeight: 24,
   },
 };
 

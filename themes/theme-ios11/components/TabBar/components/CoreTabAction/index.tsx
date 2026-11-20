@@ -16,26 +16,12 @@ const TabBarAction = TabBarActionJs as unknown as ComponentType<Record<string, u
 
 const TAB_BAR_ACTION_DEFAULTS: Record<string, unknown> = TabBarActionJs.defaultProps;
 
-/**
- * Size of the default icon.
- */
-interface IconStyleParams {
-  /**
-   * Width in pixels.
-   */
-  width: number;
-  /**
-   * Height in pixels.
-   */
-  height: number;
-}
-
-const useIconStyles = makeStyles<IconStyleParams>()((_theme, { width, height }) => ({
+const useIconStyles = makeStyles()({
   icon: {
-    width,
-    height,
+    width: 24,
+    height: 24,
   },
-}));
+});
 
 /**
  * The props of a core tab. Further props, e.g. from an extension, reach the portals and the tab.
@@ -109,8 +95,6 @@ export const createCoreTabAction = (tabType: CoreTabTypeName) => {
     path: tabPath,
     label: defaultLabel,
     icon: DefaultIcon,
-    iconWidth,
-    iconHeight,
     portals,
     useExtras = useNoExtras,
     beforeWithoutTabBarAction = false,
@@ -130,10 +114,7 @@ export const createCoreTabAction = (tabType: CoreTabTypeName) => {
     opensCategoryDrawer = false,
     ...ownProps
   }: Props) => {
-    const { classes } = useIconStyles({
-      width: iconWidth,
-      height: iconHeight,
-    });
+    const { classes } = useIconStyles();
     const dispatch = useAppDispatch();
     const label = ownProps.label ?? defaultLabel;
     const extras = useExtras(label);

@@ -107,6 +107,18 @@ describe('engage > icons > helpers', () => {
       expect(resolveIcon('burger', {})?.source).toBe('default');
     });
 
+    it('keeps the scale of the default for an icon customized in the theme extension config', () => {
+      mockLegacyIcons.browse = '<path d="legacy"/>';
+
+      expect(resolveIcon('browse', {})).toEqual({
+        svg: '<path d="legacy"/>',
+        keepColors: false,
+        scale: 1.29,
+        source: 'legacy',
+        normalize: true,
+      });
+    });
+
     it('uses the shipping icon customized under its former name', () => {
       mockLegacyIcons.localShipping = '<path d="legacy"/>';
 
@@ -128,6 +140,16 @@ describe('engage > icons > helpers', () => {
       expect(resolveIcon('burger', {})).toEqual({
         svg: coreIcons.burger.svg,
         keepColors: false,
+        source: 'default',
+        normalize: false,
+      });
+    });
+
+    it('passes the scale of a core icon on', () => {
+      expect(resolveIcon('browse', {})).toEqual({
+        svg: coreIcons.browse.svg,
+        keepColors: false,
+        scale: 1.29,
         source: 'default',
         normalize: false,
       });
@@ -174,20 +196,28 @@ describe('engage > icons > helpers', () => {
       });
 
       expect(logger.warn).toHaveBeenCalledWith(
-        'registerIcons: "@shopgate/ext-foo/colored" ignores keepColors, scale; only svg is supported'
+        'registerIcons: "@shopgate/ext-foo/colored" ignores keepColors; only svg and scale are supported'
       );
     });
 
-    it('doesn\'t warn for markup only', () => {
+    it('doesn\'t warn for markup and a valid or unset scale', () => {
       registerIcons({
         '@shopgate/ext-foo/string': '<svg/>',
         '@shopgate/ext-foo/object': { svg: '<svg/>' },
+        '@shopgate/ext-foo/scaled': {
+          svg: '<svg/>',
+          scale: 1.17,
+        },
+        '@shopgate/ext-foo/unset-scale': {
+          svg: '<svg/>',
+          scale: undefined,
+        },
       });
 
       expect(logger.warn).not.toHaveBeenCalled();
     });
 
-    it('keeps only the markup of registered icons', () => {
+    it('keeps the markup and the scale of registered icons', () => {
       registerIcons({
         '@shopgate/ext-foo/sized': {
           svg: '<svg/>',
@@ -198,11 +228,79 @@ describe('engage > icons > helpers', () => {
         } as RegisteredIcon,
       });
 
-      expect(getIconDefinition('@shopgate/ext-foo/sized')).toEqual({ svg: '<svg/>' });
+      expect(getIconDefinition('@shopgate/ext-foo/sized')).toEqual({
+        svg: '<svg/>',
+        scale: 0.9,
+      });
       expect(resolveIcon('@shopgate/ext-foo/sized', {})).toEqual({
         svg: '<svg/>',
         keepColors: false,
+        scale: 0.9,
         source: 'default',
+        normalize: true,
+      });
+    });
+
+    it.each([
+      ['a string', '2'],
+      ['0', 0],
+      ['a negative number', -1],
+    ])('drops a scale that is %s and warns about it', (_label, scale) => {
+      registerIcons({
+        '@shopgate/ext-foo/invalid-scale': {
+          svg: '<svg/>',
+          scale,
+        } as unknown as RegisteredIcon,
+      });
+
+      expect(getIconDefinition('@shopgate/ext-foo/invalid-scale')).toEqual({ svg: '<svg/>' });
+      expect(logger.warn).toHaveBeenCalledWith(
+        'registerIcons: "@shopgate/ext-foo/invalid-scale" ignores its scale, which is not a number above 0'
+      );
+      expect(getIconCatalog().icons).toContainEqual({
+        name: '@shopgate/ext-foo/invalid-scale',
+        source: '@shopgate/ext-foo',
+        default: '<svg/>',
+      });
+    });
+
+    it('warns about a scale outside the drawn range and lists the drawn scale', () => {
+      registerIcons({
+        '@shopgate/ext-foo/large': {
+          svg: '<svg/>',
+          scale: 3,
+        },
+      });
+
+      expect(getIconDefinition('@shopgate/ext-foo/large')).toEqual({
+        svg: '<svg/>',
+        scale: 3,
+      });
+      expect(logger.warn).toHaveBeenCalledWith(
+        'registerIcons: "@shopgate/ext-foo/large" has a scale of 3, which is drawn at 2 (range 0.5–2)'
+      );
+      expect(getIconCatalog().icons).toContainEqual({
+        name: '@shopgate/ext-foo/large',
+        source: '@shopgate/ext-foo',
+        default: '<svg/>',
+        defaultScale: 2,
+      });
+    });
+
+    it('lets a merchant override replace the scale of a registered icon', () => {
+      registerIcons({
+        '@shopgate/ext-foo/replaced': {
+          svg: '<svg/>',
+          scale: 1.17,
+        },
+      });
+
+      expect(resolveIcon('@shopgate/ext-foo/replaced', {
+        '@shopgate/ext-foo/replaced': { svg: '<svg id="merchant"/>' },
+      })).toEqual({
+        svg: '<svg id="merchant"/>',
+        keepColors: false,
+        source: 'override',
         normalize: true,
       });
     });
@@ -251,6 +349,39 @@ describe('engage > icons > helpers', () => {
         name: '@shopgate/ext-foo/truck',
         source: '@shopgate/ext-foo',
         default: '<svg viewBox="0 0 32 32"/>',
+      });
+    });
+
+    it('lists the scale of a default other than 1', () => {
+      registerIcons({
+        '@shopgate/ext-foo/catalog-scaled': {
+          svg: '<svg/>',
+          scale: 1.17,
+        },
+        '@shopgate/ext-foo/catalog-unscaled': {
+          svg: '<svg/>',
+          scale: 1,
+        },
+      });
+
+      const { icons } = getIconCatalog();
+
+      expect(icons).toContainEqual({
+        name: 'browse',
+        source: 'core',
+        default: coreIcons.browse.svg,
+        defaultScale: 1.29,
+      });
+      expect(icons).toContainEqual({
+        name: '@shopgate/ext-foo/catalog-scaled',
+        source: '@shopgate/ext-foo',
+        default: '<svg/>',
+        defaultScale: 1.17,
+      });
+      expect(icons).toContainEqual({
+        name: '@shopgate/ext-foo/catalog-unscaled',
+        source: '@shopgate/ext-foo',
+        default: '<svg/>',
       });
     });
 

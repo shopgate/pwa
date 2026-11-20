@@ -39,8 +39,8 @@ export const getLegacyIconOverride = (name: string) => {
 };
 
 /**
- * Resolves an icon by its name: an override from the app settings first, then an icon the
- * merchant customized in the theme extension config, then the default of the icon.
+ * Resolves an icon by its name: an app settings override, else an icon of the theme extension
+ * config with the scale of the default, else the default.
  * @param name The icon name.
  * @param overrides The icon overrides of the app settings.
  * @returns The resolved icon, or null when no icon has that name.
@@ -63,17 +63,16 @@ export const resolveIcon = (
   }
 
   const legacy = getLegacyIconOverride(name);
+  const definition = getIconDefinition(name);
 
   if (legacy) {
     return {
       svg: legacy,
-      keepColors: false,
+      ...pickIconOptions({ scale: definition?.scale }),
       source: 'legacy',
       normalize: true,
     };
   }
-
-  const definition = getIconDefinition(name);
 
   if (!definition) {
     return null;
@@ -81,7 +80,7 @@ export const resolveIcon = (
 
   return {
     svg: definition.svg,
-    keepColors: definition.keepColors ?? false,
+    ...pickIconOptions(definition),
     source: 'default',
     normalize: !isCoreIcon(name),
   };

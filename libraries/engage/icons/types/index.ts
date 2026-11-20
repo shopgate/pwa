@@ -41,6 +41,11 @@ export interface RegisteredIcon {
    * The markup of the icon as a complete svg element.
    */
   svg: string;
+  /**
+   * Size of the drawing relative to the icon box, e.g. 1.17, drawn between 0.5 and 2. Above 1 the
+   * drawing extends past its box. A merchant override replaces it.
+   */
+  scale?: number;
 }
 
 /**
@@ -128,6 +133,11 @@ export interface IconCatalogEntry {
    * An icon the merchant customized in the theme extension config.
    */
   legacyOverride?: string;
+  /**
+   * Size of the default drawing relative to the icon box, also used for `legacyOverride`.
+   * Missing means 1.
+   */
+  defaultScale?: number;
 }
 
 /**
