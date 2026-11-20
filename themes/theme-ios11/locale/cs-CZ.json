@@ -865,7 +865,14 @@
   },
   "page": {
     "not_found": "Požadovaná stránka nebyla nalezena.",
-    "continue": "Pokračovat v nakupování"
+    "continue": "Pokračovat v nakupování",
+    "countdown": {
+      "days": "{count, plural, one {Den} few {Dny} other {Dní}}",
+      "hours": "Hod.",
+      "minutes": "Min.",
+      "seconds": "Sek.",
+      "remaining": "Zbývá {days, plural, =0 {} one {# den, } few {# dny, } many {# dne, } other {# dní, }}{hours, plural, one {# hodina} few {# hodiny} many {# hodiny} other {# hodin}}, {minutes, plural, one {# minuta} few {# minuty} many {# minuty} other {# minut}} a {seconds, plural, one {# sekunda} few {# sekundy} many {# sekundy} other {# sekund}}"
+    }
   },
   "registration": {
     "create_account": "Vytvořit účet",

@@ -865,7 +865,14 @@
   },
   "page": {
     "not_found": "Helaas, de gewenste pagina is niet gevonden.",
-    "continue": "Verder winkelen"
+    "continue": "Verder winkelen",
+    "countdown": {
+      "days": "{count, plural, one {Dag} other {Dagen}}",
+      "hours": "Uur",
+      "minutes": "Min.",
+      "seconds": "Sec.",
+      "remaining": "Nog {days, plural, =0 {} one {# dag, } other {# dagen, }}{hours, plural, one {# uur} other {# uur}}, {minutes, plural, one {# minuut} other {# minuten}} en {seconds, plural, one {# seconde} other {# seconden}}"
+    }
   },
   "registration": {
     "create_account": "Account aanmaken",
