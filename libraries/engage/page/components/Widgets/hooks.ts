@@ -1,8 +1,8 @@
 import {
-  useContext, useMemo,
+  useCallback, useContext, useEffect, useMemo, useState,
 } from 'react';
 import { useDispatch } from 'react-redux';
-import { type AnyAction } from 'redux';
+import type { UnknownAction } from 'redux';
 import { useRoute } from '@shopgate/engage/core/hooks';
 import { receivePageConfigV2 } from '@shopgate/engage/page/action-creators';
 import { PAGE_PREVIEW_SLUG } from '@shopgate/engage/page/constants';
@@ -10,6 +10,11 @@ import { useIframeMessenger, type MessageData } from '@shopgate/engage/admin-pre
 import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '@shopgate/engage/admin-preview/constants';
 import {
   CONSIDER_CONTAINER_MARGINS_ON_SCROLL_DEFAULT,
+  ENTRANCE_MAX_DELAY,
+  ENTRANCE_MIN_VISIBLE_PX,
+  ENTRANCE_MIN_VISIBLE_RATIO,
+  ENTRANCE_STAGGER,
+  WIDGETS_PER_RENDER,
 } from './constants';
 import { getScrollContainer } from './helpers';
 import {
@@ -67,7 +72,7 @@ export const usePreviewIframeCommunication = (isActive = false) => {
         type: 'cms',
         slug: PAGE_PREVIEW_SLUG,
         data: data.payload ?? {},
-      }) as AnyAction);
+      }) as UnknownAction);
     } else if (data.type === 'scrollToWidget' && data.payload?.widgetCode) {
       // Parent window requested to scroll to a specific widget.
       const { widgetCode } = data.payload;
@@ -157,3 +162,95 @@ export const usePreviewIframeCommunication = (isActive = false) => {
  * @returns The widget preview context.
  */
 export const useWidgetsPreview = (): WidgetsPreviewContextType => useContext(WidgetsPreviewContext);
+
+/**
+ * Renders the widgets of a page in batches, so that the first ones show and react at once.
+ * @param total The number of widgets.
+ * @param renderAll Whether to render all widgets right away.
+ * @returns The number of widgets to render.
+ */
+export const useRenderedWidgetCount = (total: number, renderAll: boolean): number => {
+  const [count, setCount] = useState(renderAll ? Infinity : WIDGETS_PER_RENDER);
+
+  useEffect(() => {
+    if (count >= total) {
+      return undefined;
+    }
+
+    const timeout = setTimeout(() => setCount(count + WIDGETS_PER_RENDER), 0);
+    return () => clearTimeout(timeout);
+  }, [count, total]);
+
+  return count;
+};
+
+/**
+ * Fades in the waiting widgets once enough of them is visible, one after the other.
+ * @param entries The intersection reports.
+ * @param observer The observer.
+ */
+const revealWidgets: IntersectionObserverCallback = (entries, observer) => {
+  entries
+    .filter(({
+      isIntersecting, intersectionRatio, intersectionRect, boundingClientRect,
+    }) => isIntersecting && (
+      intersectionRatio >= ENTRANCE_MIN_VISIBLE_RATIO ||
+      intersectionRect.height >= ENTRANCE_MIN_VISIBLE_PX ||
+      boundingClientRect.height >= window.innerHeight
+    ))
+    .forEach(({ target }, index) => {
+      const widget = target as HTMLElement;
+      observer.unobserve(widget);
+      widget.style.transitionDelay = `${Math.min(index * ENTRANCE_STAGGER, ENTRANCE_MAX_DELAY)}ms`;
+      widget.dataset.entrance = 'shown';
+    });
+};
+
+/**
+ * Lets the widgets that are below the screen when they first get their content fade in once
+ * when they scroll into view.
+ * @param isEnabled Whether widgets fade in.
+ * @returns A ref callback for the widget containers.
+ */
+export const useWidgetEntrance = (isEnabled: boolean) => {
+  const [observers] = useState(() => {
+    if (!isEnabled || typeof IntersectionObserver === 'undefined' || typeof ResizeObserver === 'undefined') {
+      return null;
+    }
+
+    const reveal = new IntersectionObserver(revealWidgets, {
+      threshold: [0, 0.05, 0.1, 0.15, ENTRANCE_MIN_VISIBLE_RATIO],
+    });
+
+    const measure = new ResizeObserver(entries => entries.forEach(({ target, contentRect }) => {
+      if (!contentRect.height) {
+        return;
+      }
+
+      measure.unobserve(target);
+
+      const widget = target as HTMLElement;
+
+      if (widget.getBoundingClientRect().top >= window.innerHeight) {
+        widget.dataset.entrance = 'waiting';
+        reveal.observe(widget);
+      }
+    }));
+
+    return {
+      reveal,
+      measure,
+    };
+  });
+
+  useEffect(() => () => {
+    observers?.reveal.disconnect();
+    observers?.measure.disconnect();
+  }, [observers]);
+
+  return useCallback((widget: HTMLElement | null) => {
+    if (widget) {
+      observers?.measure.observe(widget);
+    }
+  }, [observers]);
+};

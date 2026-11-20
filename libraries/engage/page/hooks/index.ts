@@ -97,6 +97,10 @@ export interface UseWidgetProductsResult {
    */
   isFetching: boolean;
   /**
+   * Whether the first products are still on their way, so the widget shows placeholders.
+   */
+  isLoading: boolean;
+  /**
    * Number of products available in the current result set.
    */
   totalResultCount: number;
@@ -243,11 +247,14 @@ export const useWidgetProducts = (
     type,
   ]);
 
+  const results = widgetProducts.products.slice(0, offset);
+
   return {
     fetchNext,
     hasNext,
     isFetching,
-    results: widgetProducts.products.slice(0, offset),
+    isLoading: !!value && !results.length && (offset === 0 || isFetching),
+    results,
     totalResultCount: widgetProducts.totalProductCount,
   };
 };

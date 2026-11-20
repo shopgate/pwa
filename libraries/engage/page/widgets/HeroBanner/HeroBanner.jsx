@@ -4,6 +4,7 @@ import { WidgetRichText, ResponsiveWidgetImage } from '@shopgate/engage/page/com
 import { makeStyles } from '@shopgate/engage/styles';
 import { useHeroBannerWidget } from './hooks';
 import WidgetVideo from '../../components/WidgetVideo';
+import WidgetButton from '../../components/WidgetButton';
 
 const useStyles = makeStyles()(theme => ({
   link: {
@@ -20,10 +21,17 @@ const useStyles = makeStyles()(theme => ({
     },
     overflow: 'hidden',
   },
-  richText: {
+  body: {
     position: 'relative',
     zIndex: 2,
+    width: '100%',
     padding: theme.spacing(2),
+  },
+  button: {
+    marginTop: theme.spacing(2),
+    '&:first-child': {
+      marginTop: 0,
+    },
   },
   imageContainer: {
     position: 'absolute',
@@ -42,6 +50,8 @@ const HeroBanner = () => {
     text,
     altText,
     link,
+    buttonText,
+    buttonAlignment = 'left',
     borderRadius,
     parallax,
     imageFit = 'fillAndCrop',
@@ -67,9 +77,11 @@ const HeroBanner = () => {
     setAspectRatio(ratio);
   }, []);
 
+  const showButton = !!buttonText?.trim() && !!link;
+
   return (
     <ConditionalWrapper
-      condition={!!link}
+      condition={!!link && !showButton}
       wrapper={children => (
         <Link href={link} className={classes.link}>
           {children}
@@ -77,10 +89,19 @@ const HeroBanner = () => {
       )}
     >
       <div className={classes.content} style={contentStyle}>
-        <WidgetRichText
-          content={text}
-          className={classes.richText}
-        />
+        {text || showButton ? (
+          <div className={classes.body}>
+            <WidgetRichText content={text} />
+            {showButton ? (
+              <WidgetButton
+                text={buttonText}
+                link={link}
+                alignment={buttonAlignment}
+                className={classes.button}
+              />
+            ) : null}
+          </div>
+        ) : null}
         <div className={classes.imageContainer}>
           {mediaType === 'image' ? (
             <ResponsiveWidgetImage

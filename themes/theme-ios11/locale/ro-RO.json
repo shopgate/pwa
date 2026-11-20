@@ -865,7 +865,14 @@
   },
   "page": {
     "not_found": "Din păcate, pagina solicitată nu a fost găsită.",
-    "continue": "Continuați cumpărăturile"
+    "continue": "Continuați cumpărăturile",
+    "countdown": {
+      "days": "{count, plural, one {Zi} other {Zile}}",
+      "hours": "Ore",
+      "minutes": "Min.",
+      "seconds": "Sec.",
+      "remaining": "Timp rămas: {days, plural, =0 {} one {# zi, } few {# zile, } other {# de zile, }}{hours, plural, one {# oră} few {# ore} other {# de ore}}, {minutes, plural, one {# minut} few {# minute} other {# de minute}} și {seconds, plural, one {# secundă} few {# secunde} other {# de secunde}}"
+    }
   },
   "registration": {
     "create_account": "Creați cont",
