@@ -955,6 +955,20 @@
         }
       },
       {
+        "code": "buttonText",
+        "label": {
+          "en-us": "Button text",
+          "de-de": "Button-Text"
+        },
+        "required": false,
+        "type": "text",
+        "localizable": true,
+        "description": {
+          "en-us": "Shows a button with the link. Without a button text the whole banner is linked.",
+          "de-de": "Zeigt einen Button mit dem Link. Ohne Button-Text ist das ganze Banner verlinkt."
+        }
+      },
+      {
         "code": "link",
         "label": {
           "en-us": "Link",
@@ -970,6 +984,49 @@
         "visibilityConditions": null,
         "typeSpecificSettings": null,
         "defaultValue": null
+      },
+      {
+        "code": "buttonAlignment",
+        "label": {
+          "en-us": "Button alignment",
+          "de-de": "Ausrichtung des Buttons"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "left",
+              "label": {
+                "en-us": "Left",
+                "de-de": "Links"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "en-us": "Centered",
+                "de-de": "Zentriert"
+              }
+            },
+            {
+              "value": "right",
+              "label": {
+                "en-us": "Right",
+                "de-de": "Rechts"
+              }
+            },
+            {
+              "value": "fullWidth",
+              "label": {
+                "en-us": "Full width",
+                "de-de": "Volle Breite"
+              }
+            }
+          ]
+        },
+        "defaultValue": "left"
       },
       {
         "code": "borderRadius",
@@ -1335,6 +1392,49 @@
         "visibilityConditions": null,
         "typeSpecificSettings": null,
         "defaultValue": null
+      },
+      {
+        "code": "buttonAlignment",
+        "label": {
+          "en-us": "Button alignment",
+          "de-de": "Ausrichtung des Buttons"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "left",
+              "label": {
+                "en-us": "Left",
+                "de-de": "Links"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "en-us": "Centered",
+                "de-de": "Zentriert"
+              }
+            },
+            {
+              "value": "right",
+              "label": {
+                "en-us": "Right",
+                "de-de": "Rechts"
+              }
+            },
+            {
+              "value": "fullWidth",
+              "label": {
+                "en-us": "Full width",
+                "de-de": "Volle Breite"
+              }
+            }
+          ]
+        },
+        "defaultValue": "center"
       }
     ]
   },
