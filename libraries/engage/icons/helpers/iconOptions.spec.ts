@@ -1,4 +1,6 @@
-import { isValidStrokeWidth, pickIconOptions } from './iconOptions';
+import {
+  clampScale, isValidScale, isValidStrokeWidth, pickIconOptions,
+} from './iconOptions';
 
 describe('engage > icons > helpers > iconOptions', () => {
   it.each([
@@ -11,6 +13,29 @@ describe('engage > icons > helpers > iconOptions', () => {
     [undefined, false],
   ])('checks whether %j is a usable stroke width', (value, expected) => {
     expect(isValidStrokeWidth(value)).toBe(expected);
+  });
+
+  it.each([
+    [1.29, true],
+    [0.5, true],
+    [0, false],
+    [-1, false],
+    [Infinity, false],
+    [NaN, false],
+    ['2', false],
+    [undefined, false],
+  ])('checks whether %j is a usable scale', (value, expected) => {
+    expect(isValidScale(value)).toBe(expected);
+  });
+
+  it.each([
+    [0.3, 0.5],
+    [0.5, 0.5],
+    [1.29, 1.29],
+    [2, 2],
+    [3, 2],
+  ])('draws a scale of %j at %j', (scale, expected) => {
+    expect(clampScale(scale)).toBe(expected);
   });
 
   it('picks the options of a definition', () => {

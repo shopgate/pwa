@@ -22,6 +22,8 @@ describe('engage > icons > components > SvgIcon', () => {
       expect(scaleViewBox('0 0 24 24')).toBe('0 0 24 24');
       expect(scaleViewBox('0 0 24 24', 1)).toBe('0 0 24 24');
       expect(scaleViewBox('0 0 24 24', Number.NaN)).toBe('0 0 24 24');
+      expect(scaleViewBox('0 0 24 24', 0)).toBe('0 0 24 24');
+      expect(scaleViewBox('0 0 24 24', -1)).toBe('0 0 24 24');
       expect(scaleViewBox('invalid', 0.8)).toBe('invalid');
       expect(scaleViewBox('0 0 24 24', 10)).toBe('6 6 12 12');
     });
@@ -35,6 +37,24 @@ describe('engage > icons > components > SvgIcon', () => {
 
     expect(svg.getAttribute('viewBox')).toBe('-3 -3 30 30');
     expect(svg.style.getPropertyValue('--sgi-stroke-scale')).toBe('1.25');
+  });
+
+  it.each([1.2, 3])('lets a drawing scaled by %j extend past its box', (scale) => {
+    const svg = renderSvg({
+      markup: '<svg viewBox="0 0 24 24"><path d="M1 1"/></svg>',
+      scale,
+    });
+
+    expect(getComputedStyle(svg).overflow).toBe('visible');
+  });
+
+  it.each([undefined, 1, 0.8, 0, Number.NaN])('keeps a drawing scaled by %j inside its box', (scale) => {
+    const svg = renderSvg({
+      markup: '<svg viewBox="0 0 24 24"><path d="M1 1"/></svg>',
+      scale,
+    });
+
+    expect(getComputedStyle(svg).overflow).not.toBe('visible');
   });
 
   it('sets the line width of the icon for line icons', () => {

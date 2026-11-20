@@ -1,23 +1,40 @@
 import { isDev, logger } from '@shopgate/engage/core/helpers';
 import { coreIcons } from '../defaults/coreIcons';
 import type { IconDefinition, RegisteredIcon } from '../types';
+import {
+  clampScale, isValidScale, MAX_SCALE, MIN_SCALE,
+} from './iconOptions';
 
 const registeredIcons = new Map<string, RegisteredIcon>();
 
-const SUPPORTED_PROPERTIES = ['svg'];
+const SUPPORTED_PROPERTIES = ['svg', 'scale'];
 
 const EXTENSION_ICON_NAME = /^@[^/\s]+\/[^/\s]+\/[^/\s]+$/;
 
 /**
- * Warns in development about properties of a registered icon that are ignored.
+ * Warns in development about properties of a registered icon that are ignored or limited.
  * @param name The icon name.
  * @param icon The icon as passed to `registerIcons`.
  */
 const warnIgnoredProperties = (name: string, icon: RegisteredIcon) => {
+  if (!isDev) {
+    return;
+  }
+
   const ignored = Object.keys(icon).filter(key => !SUPPORTED_PROPERTIES.includes(key));
 
-  if (isDev && ignored.length) {
-    logger.warn(`registerIcons: "${name}" ignores ${ignored.join(', ')}; only ${SUPPORTED_PROPERTIES.join(', ')} is supported`);
+  if (ignored.length) {
+    logger.warn(`registerIcons: "${name}" ignores ${ignored.join(', ')}; only ${SUPPORTED_PROPERTIES.join(' and ')} are supported`);
+  }
+
+  if (icon.scale === undefined) {
+    return;
+  }
+
+  if (!isValidScale(icon.scale)) {
+    logger.warn(`registerIcons: "${name}" ignores its scale, which is not a number above 0`);
+  } else if (clampScale(icon.scale) !== icon.scale) {
+    logger.warn(`registerIcons: "${name}" has a scale of ${icon.scale}, which is drawn at ${clampScale(icon.scale)} (range ${MIN_SCALE}–${MAX_SCALE})`);
   }
 };
 
@@ -33,7 +50,7 @@ export const isCoreIcon = (name: string) => Object.prototype.hasOwnProperty.call
  * Names have to be namespaced with the extension's scope, e.g. `@shopgate/ext-foo/truck`.
  * Register them in an `appWillStart$` subscriber: icons registered after the first render only
  * show once their component renders again.
- * @param icons The icons by name, as complete svg elements or as `{ svg }`.
+ * @param icons The icons by name, as complete svg elements or as `{ svg, scale }`.
  */
 export const registerIcons = (icons: Record<string, string | RegisteredIcon>) => {
   Object.entries(icons).forEach(([name, icon]) => {
@@ -50,7 +67,10 @@ export const registerIcons = (icons: Record<string, string | RegisteredIcon>) =>
     }
 
     warnIgnoredProperties(name, definition);
-    registeredIcons.set(name, { svg: definition.svg });
+    registeredIcons.set(name, {
+      svg: definition.svg,
+      ...(isValidScale(definition.scale) ? { scale: definition.scale } : {}),
+    });
   });
 };
 

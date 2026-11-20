@@ -2,6 +2,7 @@ import { act, render } from '@testing-library/react';
 import { renderToString } from 'react-dom/server';
 import { logger } from '@shopgate/engage/core/helpers';
 import { setIconOverrides } from '../../helpers/overrides';
+import { registerIcons } from '../../helpers/registry';
 import ThemeIcon from './ThemeIcon';
 
 jest.mock('@shopgate/engage/core/helpers', () => ({
@@ -42,6 +43,20 @@ describe('engage > icons > components > ThemeIcon', () => {
     });
 
     expect(svg()?.getAttribute('viewBox')).toBe('0 0 24 24');
+  });
+
+  it('lets a registered icon with a scale above 1 extend past its box', () => {
+    registerIcons({
+      '@shopgate/test/scissors': {
+        svg: '<svg viewBox="0 0 24 24"><path d="M1 1"/></svg>',
+        scale: 1.17,
+      },
+    });
+    const { container } = render(<ThemeIcon name="@shopgate/test/scissors" />);
+    const svg = container.querySelector('svg') as SVGSVGElement;
+
+    expect(svg.getAttribute('viewBox')).toBe('1.7436 1.7436 20.5128 20.5128');
+    expect(getComputedStyle(svg).overflow).toBe('visible');
   });
 
   it('renders without a redux store, e.g. to a string', () => {
