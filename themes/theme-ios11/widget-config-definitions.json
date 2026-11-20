@@ -1458,6 +1458,7 @@
         "type": "arrayOf",
         "required": true,
         "typeSpecificSettings": {
+          "validationMinEntries": 1,
           "validationMaxEntries": 10,
           "arrayOfWidgetConfigInputGroup": [
             {
@@ -1484,7 +1485,10 @@
               "localizable": true
             }
           ]
-        }
+        },
+        "defaultValue": [
+          {}
+        ]
       },
       {
         "code": "display",
