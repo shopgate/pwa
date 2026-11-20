@@ -865,7 +865,14 @@
   },
   "page": {
     "not_found": "Malheureusement, la page demandée est introuvable.",
-    "continue": "Continuer vos achats"
+    "continue": "Continuer vos achats",
+    "countdown": {
+      "days": "{count, plural, one {Jour} other {Jours}}",
+      "hours": "Heures",
+      "minutes": "Min.",
+      "seconds": "Sec.",
+      "remaining": "Encore {days, plural, =0 {} one {# jour, } other {# jours, }}{hours, plural, one {# heure} other {# heures}}, {minutes, plural, one {# minute} other {# minutes}} et {seconds, plural, one {# seconde} other {# secondes}}"
+    }
   },
   "registration": {
     "create_account": "Créer un compte",

@@ -41,6 +41,9 @@
   "@shopgate/widgets/textBandWidget": {
     "path": "@shopgate/engage/page/widgets/TextBand"
   },
+  "@shopgate/widgets/countdownWidget": {
+    "path": "@shopgate/engage/page/widgets/Countdown"
+  },
   "@shopgate/widgetsInternal/Placeholder": {
     "path": "@shopgate/engage/page/widgets/Placeholder"
   }

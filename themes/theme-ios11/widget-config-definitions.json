@@ -2274,6 +2274,251 @@
     ]
   },
   {
+    "id": "countdownWidget",
+    "name": {
+      "en-us": "Countdown",
+      "de-de": "Countdown"
+    },
+    "description": {
+      "en-us": "Counts down to a date and time, e.g. the end of a campaign.",
+      "de-de": "Zählt bis zu einem Zeitpunkt herunter, z. B. bis zum Ende einer Kampagne oder Aktion."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "endDate",
+        "label": {
+          "en-us": "End",
+          "de-de": "Ende"
+        },
+        "required": true,
+        "type": "dateTime",
+        "localizable": false,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "display",
+        "label": {
+          "en-us": "Countdown display",
+          "de-de": "Darstellung des Countdowns"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "description": {
+          "en-us": "Boxes show days, hours, minutes and seconds separately, the text line shows the time in one line.",
+          "de-de": "Kästen zeigen Tage, Stunden, Minuten und Sekunden einzeln, die Textzeile zeigt die Zeit in einer Zeile."
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "boxed",
+              "label": {
+                "en-us": "Boxes",
+                "de-de": "Kästen"
+              }
+            },
+            {
+              "value": "inline",
+              "label": {
+                "en-us": "Text line",
+                "de-de": "Textzeile"
+              }
+            }
+          ]
+        },
+        "defaultValue": "boxed"
+      },
+      {
+        "code": "showHeadline",
+        "label": {
+          "en-us": "Show headline",
+          "de-de": "Überschrift anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "headline",
+        "label": {
+          "en-us": "Headline",
+          "de-de": "Überschrift"
+        },
+        "required": true,
+        "type": "textWithFormatting",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "validationMaxLength": 256,
+          "useTypographySelection": true
+        },
+        "defaultValue": {
+          "typography": "h2"
+        },
+        "visibilityConditions": {
+          "showHeadline": true
+        }
+      },
+      {
+        "code": "text",
+        "label": {
+          "en-us": "Text below the countdown",
+          "de-de": "Text unter dem Countdown"
+        },
+        "required": false,
+        "type": "richText",
+        "localizable": true,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "buttonText",
+        "label": {
+          "en-us": "Button text",
+          "de-de": "Button-Text"
+        },
+        "required": false,
+        "type": "text",
+        "localizable": true,
+        "description": {
+          "en-us": "The button shows only with a button text and a link.",
+          "de-de": "Der Button wird nur mit Button-Text und Link angezeigt."
+        }
+      },
+      {
+        "code": "link",
+        "label": {
+          "en-us": "Link",
+          "de-de": "Link"
+        },
+        "required": false,
+        "type": "link",
+        "localizable": true,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "buttonAlignment",
+        "label": {
+          "en-us": "Button alignment",
+          "de-de": "Ausrichtung des Buttons"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "left",
+              "label": {
+                "en-us": "Left",
+                "de-de": "Links"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "en-us": "Centered",
+                "de-de": "Zentriert"
+              }
+            },
+            {
+              "value": "right",
+              "label": {
+                "en-us": "Right",
+                "de-de": "Rechts"
+              }
+            },
+            {
+              "value": "fullWidth",
+              "label": {
+                "en-us": "Full width",
+                "de-de": "Volle Breite"
+              }
+            }
+          ]
+        },
+        "defaultValue": "center"
+      },
+      {
+        "code": "backgroundColor",
+        "label": {
+          "en-us": "Background color",
+          "de-de": "Hintergrundfarbe"
+        },
+        "required": false,
+        "type": "color",
+        "localizable": false,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "textColor",
+        "label": {
+          "en-us": "Text color",
+          "de-de": "Textfarbe"
+        },
+        "required": false,
+        "type": "color",
+        "localizable": false,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "afterExpiry",
+        "label": {
+          "en-us": "After the end",
+          "de-de": "Nach Ablauf"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "hide",
+              "label": {
+                "en-us": "Hide widget",
+                "de-de": "Widget ausblenden"
+              }
+            },
+            {
+              "value": "showText",
+              "label": {
+                "en-us": "Show text",
+                "de-de": "Text anzeigen"
+              }
+            }
+          ]
+        },
+        "defaultValue": "hide"
+      },
+      {
+        "code": "expiredText",
+        "label": {
+          "en-us": "Text after the end",
+          "de-de": "Text nach Ablauf"
+        },
+        "required": true,
+        "type": "richText",
+        "localizable": true,
+        "visibilityConditions": {
+          "afterExpiry": "showText"
+        },
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      }
+    ]
+  },
+  {
     "id": "htmlWidget",
     "name": {
       "en-us": "HTML",

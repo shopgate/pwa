@@ -13,3 +13,4 @@ export { default as HeroBannerWidget } from './HeroBanner';
 export { default as ButtonWidget } from './Button';
 export { default as NestedCategoryFilterWidget } from './NestedCategoryFilter';
 export { default as TextBandWidget } from './TextBand';
+export { default as CountdownWidget } from './Countdown';
