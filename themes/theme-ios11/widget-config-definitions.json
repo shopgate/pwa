@@ -1439,6 +1439,150 @@
     ]
   },
   {
+    "id": "textBandWidget",
+    "name": {
+      "en-us": "Text band",
+      "de-de": "Textleiste"
+    },
+    "description": {
+      "en-us": "Short texts in a band, static or scrolling.",
+      "de-de": "Kurze Texte in einer Leiste, statisch oder laufend."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "entries",
+        "label": {
+          "en-us": "Entries",
+          "de-de": "Einträge"
+        },
+        "type": "arrayOf",
+        "required": true,
+        "typeSpecificSettings": {
+          "validationMaxEntries": 10,
+          "arrayOfWidgetConfigInputGroup": [
+            {
+              "code": "text",
+              "label": {
+                "en-us": "Text",
+                "de-de": "Text"
+              },
+              "required": true,
+              "type": "text",
+              "localizable": true,
+              "typeSpecificSettings": {
+                "validationMaxLength": 80
+              }
+            },
+            {
+              "code": "link",
+              "label": {
+                "en-us": "Link",
+                "de-de": "Link"
+              },
+              "required": false,
+              "type": "link",
+              "localizable": true
+            }
+          ]
+        }
+      },
+      {
+        "code": "display",
+        "label": {
+          "en-us": "Display",
+          "de-de": "Darstellung"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "static",
+              "label": {
+                "en-us": "Static",
+                "de-de": "Statisch"
+              }
+            },
+            {
+              "value": "scrolling",
+              "label": {
+                "en-us": "Scrolling",
+                "de-de": "Laufend"
+              }
+            }
+          ]
+        },
+        "defaultValue": "scrolling"
+      },
+      {
+        "code": "speed",
+        "label": {
+          "en-us": "Speed",
+          "de-de": "Geschwindigkeit"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "visibilityConditions": {
+          "display": "scrolling"
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "slow",
+              "label": {
+                "en-us": "Slow",
+                "de-de": "Langsam"
+              }
+            },
+            {
+              "value": "normal",
+              "label": {
+                "en-us": "Normal",
+                "de-de": "Normal"
+              }
+            },
+            {
+              "value": "fast",
+              "label": {
+                "en-us": "Fast",
+                "de-de": "Schnell"
+              }
+            }
+          ]
+        },
+        "defaultValue": "normal"
+      },
+      {
+        "code": "backgroundColor",
+        "label": {
+          "en-us": "Background color",
+          "de-de": "Hintergrundfarbe"
+        },
+        "required": false,
+        "type": "color",
+        "localizable": false,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "textColor",
+        "label": {
+          "en-us": "Text color",
+          "de-de": "Textfarbe"
+        },
+        "required": false,
+        "type": "color",
+        "localizable": false,
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      }
+    ]
+  },
+  {
     "id": "productSliderWidget",
     "name": {
       "en-us": "Product slider",
