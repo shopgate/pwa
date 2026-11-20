@@ -38,6 +38,9 @@
   "@shopgate/widgets/nestedCategoryFilterWidget": {
     "path": "@shopgate/engage/page/widgets/NestedCategoryFilter"
   },
+  "@shopgate/widgets/textBandWidget": {
+    "path": "@shopgate/engage/page/widgets/TextBand"
+  },
   "@shopgate/widgetsInternal/Placeholder": {
     "path": "@shopgate/engage/page/widgets/Placeholder"
   }
