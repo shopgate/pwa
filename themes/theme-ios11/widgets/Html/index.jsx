@@ -4,26 +4,39 @@ import HtmlSanitizer from '@shopgate/pwa-common/components/HtmlSanitizer';
 import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import connect from './connector';
 
+/**
+ * Styles a heading of the widget content with the merchant's weight for that heading level.
+ * @param {Object} theme The theme.
+ * @param {string} variant The heading level, e.g. `h3`.
+ * @returns {Object} The styles.
+ */
+const headingWeight = (theme, variant) => ({
+  fontWeight: theme.typography.headingFontWeight(variant, theme.typography.fontWeightBold),
+});
+
 const useStyles = makeStyles()(theme => ({
   root: {
     '& h1, & h2, & h3, & h4, & h5, & h6, & p, & ul, & ol': {
       margin: '1rem 0',
     },
-    '& h1, & h2, & h3, & h4, & h5, & h6': {
-      fontWeight: theme.typography.fontWeightBold,
-    },
     '& h1': {
+      ...headingWeight(theme, 'h1'),
       fontSize: '1.5rem',
     },
     '& h2': {
+      ...headingWeight(theme, 'h2'),
       fontSize: '1.25rem',
     },
     '& h3': {
+      ...headingWeight(theme, 'h3'),
       fontSize: '1.1rem',
     },
     '& h4, & h5, & h6': {
       fontSize: '1rem',
     },
+    '& h4': headingWeight(theme, 'h4'),
+    '& h5': headingWeight(theme, 'h5'),
+    '& h6': headingWeight(theme, 'h6'),
     '& ol, & ul': {
       paddingLeft: '1rem',
     },

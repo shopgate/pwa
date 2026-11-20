@@ -68,7 +68,7 @@ const useStyles = makeStyles()(theme => ({
   heading: {
     margin: theme.spacing(1.5, 0, 2),
     fontSize: theme.typography.h3.fontSize,
-    fontWeight: theme.typography.fontWeightMedium,
+    fontWeight: theme.typography.headingFontWeight('h3', theme.typography.fontWeightMedium),
   },
 }));
 

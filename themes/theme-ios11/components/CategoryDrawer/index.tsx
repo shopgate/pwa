@@ -95,7 +95,7 @@ const useStyles = makeStyles()(theme => ({
     WebkitLineClamp: 2,
     fontSize: '1.125rem',
     lineHeight: 1.25,
-    fontWeight: theme.typography.fontWeightBold,
+    fontWeight: theme.typography.headingFontWeight('h4', theme.typography.fontWeightBold),
     outline: 'none',
     '[data-has-back] > &': {
       paddingLeft: theme.spacing(0.5),
