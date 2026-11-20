@@ -5,12 +5,13 @@ import { makeStyles, useTheme } from '@shopgate/engage/styles';
 import connect from './connector';
 
 /**
- * Styles a heading of the widget content with the merchant's weight for that heading level.
+ * Styles a heading of the widget content with the merchant's font and weight for that heading level.
  * @param {Object} theme The theme.
  * @param {string} variant The heading level, e.g. `h3`.
  * @returns {Object} The styles.
  */
-const headingWeight = (theme, variant) => ({
+const headingStyle = (theme, variant) => ({
+  fontFamily: theme.typography[variant].fontFamily,
   fontWeight: theme.typography.headingFontWeight(variant, theme.typography.fontWeightBold),
 });
 
@@ -20,23 +21,23 @@ const useStyles = makeStyles()(theme => ({
       margin: '1rem 0',
     },
     '& h1': {
-      ...headingWeight(theme, 'h1'),
+      ...headingStyle(theme, 'h1'),
       fontSize: '1.5rem',
     },
     '& h2': {
-      ...headingWeight(theme, 'h2'),
+      ...headingStyle(theme, 'h2'),
       fontSize: '1.25rem',
     },
     '& h3': {
-      ...headingWeight(theme, 'h3'),
+      ...headingStyle(theme, 'h3'),
       fontSize: '1.1rem',
     },
     '& h4, & h5, & h6': {
       fontSize: '1rem',
     },
-    '& h4': headingWeight(theme, 'h4'),
-    '& h5': headingWeight(theme, 'h5'),
-    '& h6': headingWeight(theme, 'h6'),
+    '& h4': headingStyle(theme, 'h4'),
+    '& h5': headingStyle(theme, 'h5'),
+    '& h6': headingStyle(theme, 'h6'),
     '& ol, & ul': {
       paddingLeft: '1rem',
     },

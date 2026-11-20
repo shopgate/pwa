@@ -37,6 +37,13 @@ describe('<HTML />', () => {
       .toContain('var(--sg-typography-h5-fontWeight, var(--sg-typography-fontWeightBold))');
   });
 
+  it('gives headings the font of their level', async () => {
+    render(<HTML />);
+
+    expect(styleTextFor(await screen.findByText('Title')))
+      .toContain('font-family: var(--sg-typography-h3-fontFamily)');
+  });
+
   it('keeps the font sizes of the headings', async () => {
     render(<HTML />);
 
