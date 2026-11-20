@@ -16,13 +16,11 @@ const useStyles = makeStyles<{
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    gap: theme.spacing(2),
     padding: theme.spacing(2),
     textAlign: 'center',
     ...(backgroundColor && { background: backgroundColor }),
     ...(textColor && { color: textColor }),
-    '& > * + *': {
-      marginTop: theme.spacing(2),
-    },
   },
   headline: {
     alignSelf: 'stretch',
@@ -41,14 +39,13 @@ const useStyles = makeStyles<{
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    margin: theme.spacing(0, -0.5, -1),
+    gap: theme.spacing(1),
   },
   box: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     minWidth: 64,
-    margin: theme.spacing(0, 0.5, 1),
     padding: theme.spacing(1, 1.5),
     borderRadius: theme.shape.borderRadius,
     background: [
