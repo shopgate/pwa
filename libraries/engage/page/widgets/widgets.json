@@ -44,6 +44,9 @@
   "@shopgate/widgets/countdownWidget": {
     "path": "@shopgate/engage/page/widgets/Countdown"
   },
+  "@shopgate/widgets/accordionWidget": {
+    "path": "@shopgate/engage/page/widgets/Accordion"
+  },
   "@shopgate/widgetsInternal/Placeholder": {
     "path": "@shopgate/engage/page/widgets/Placeholder"
   }

@@ -14,3 +14,4 @@ export { default as ButtonWidget } from './Button';
 export { default as NestedCategoryFilterWidget } from './NestedCategoryFilter';
 export { default as TextBandWidget } from './TextBand';
 export { default as CountdownWidget } from './Countdown';
+export { default as AccordionWidget } from './Accordion';
