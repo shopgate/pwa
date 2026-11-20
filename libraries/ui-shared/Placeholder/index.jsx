@@ -1,11 +1,21 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import { makeStyles } from '@shopgate/engage/styles';
+import { makeStyles, keyframes } from '@shopgate/engage/styles';
+
+const pulse = keyframes({
+  '0%': { opacity: 1 },
+  '50%': { opacity: 0.5 },
+  '100%': { opacity: 1 },
+});
 
 const useStyles = makeStyles()(theme => ({
   root: {
     background: theme.palette.background.emphasized,
     position: 'relative',
+    animation: `${pulse} 1.5s ease-in-out infinite`,
+    '@media (prefers-reduced-motion: reduce)': {
+      animation: 'none',
+    },
   },
 }));
 

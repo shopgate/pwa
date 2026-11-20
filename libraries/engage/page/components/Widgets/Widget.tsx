@@ -19,6 +19,18 @@ const useStyles = makeStyles<WidgetLayout>()((theme, {
 }) => ({
   root: {
     position: 'relative',
+    ':empty': {
+      display: 'none',
+    },
+    '&[data-entrance="shown"]': {
+      transition: 'opacity 600ms cubic-bezier(0, 0, 0.2, 1), transform 600ms cubic-bezier(0, 0, 0.2, 1)',
+    },
+    '@media (prefers-reduced-motion: no-preference)': {
+      '&[data-entrance="waiting"]:not(:focus-within)': {
+        opacity: 0,
+        transform: 'translateY(40px)',
+      },
+    },
   },
   widgetInfo: {
     zIndex: 12,
@@ -71,6 +83,10 @@ export interface WidgetProps {
    * via an HTML comment inside a HTML widget.
    */
   isCustomLegacyWidget?: boolean;
+  /**
+   * Ref callback that lets the widget fade in when it scrolls into view.
+   */
+  entranceRef?: (widget: HTMLElement | null) => void;
 }
 
 /**
@@ -81,6 +97,7 @@ const Widget = ({
   definition,
   isPreview,
   isCustomLegacyWidget = false,
+  entranceRef,
 }: WidgetProps) => {
   const mediaMargins = useSelector(getWidgetMediaMargins);
 
@@ -110,6 +127,7 @@ const Widget = ({
 
   return (
     <section
+      ref={entranceRef}
       id={`widget-code-${definition.code}`}
       className={cx(classes.root, {
         [classes.preview]: isPreview,

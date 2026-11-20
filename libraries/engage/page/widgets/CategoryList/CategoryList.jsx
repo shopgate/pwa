@@ -26,18 +26,19 @@ const CategoryListWidget = () => {
     headline,
   } = useCategoryListWidget();
 
-  if (!categories) {
+  if (categories?.length === 0) {
     return null;
   }
 
   return (
     <>
-      {(showHeadline && headline && categories.length) ? (
+      {(showHeadline && headline) ? (
         <WidgetHeadline headline={headline} className={classes.headline} />
       ) : null}
       <CategoryList
         categories={categories}
         parentCategory={parentCategory}
+        prerender={parentCategory?.childrenCount ?? 4}
         showLeftSideImages={showImages}
       />
     </>

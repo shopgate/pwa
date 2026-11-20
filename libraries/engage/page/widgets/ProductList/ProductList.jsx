@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { I18n } from '@shopgate/engage/components';
 import { Button } from '@shopgate/engage/components/v2';
 import { ProductGrid } from '@shopgate/engage/product/components';
+import ProductGridPlaceholder from '@shopgate/engage/product/components/ProductGrid/ProductGridPlaceholder';
 import { useWidgetProducts } from '@shopgate/engage/page/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useProductListWidget } from './hooks';
@@ -42,7 +43,7 @@ const ProductListWidget = () => {
   } = useProductListWidget();
 
   const {
-    fetchNext, hasNext, isFetching, results,
+    fetchNext, hasNext, isFetching, isLoading, results,
   } = useWidgetProducts({
     type: productsSearchType,
     value: productsSearchValue,
@@ -58,19 +59,27 @@ const ProductListWidget = () => {
     fetchNext();
   }, [fetchNext, isPreview]);
 
+  if (!isLoading && !results.length) {
+    return null;
+  }
+
   return (
     <div className={classes.root}>
-      {(showHeadline && headline && results.length) ? (
+      {(showHeadline && headline) ? (
         <WidgetHeadline headline={headline} />
       ) : null}
-      <ProductGrid
-        products={results}
-        flags={flags}
-        scope="widgets"
-        infiniteLoad={false}
-        className={classes.grid}
-      />
-      { hasNext && showLoadMore && (
+      {isLoading ? (
+        <ProductGridPlaceholder count={productCount} flags={flags} className={classes.grid} />
+      ) : (
+        <ProductGrid
+          products={results}
+          flags={flags}
+          scope="widgets"
+          infiniteLoad={false}
+          className={classes.grid}
+        />
+      )}
+      { hasNext && showLoadMore && !isLoading && (
         <div className={classes.loadMore}>
           <Button
             variant="text"
