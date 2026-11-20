@@ -1,18 +1,12 @@
-import React, { useCallback } from 'react';
-import { Button } from '@shopgate/engage/components/v2';
 import { useWidget } from '@shopgate/engage/page/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
-import { useNavigation } from '@shopgate/engage/core';
+import WidgetButton from '../../components/WidgetButton';
 
-const useStyles = makeStyles()({
+const useStyles = makeStyles()(theme => ({
   root: {
-    display: 'flex',
-    justifyContent: 'center',
+    padding: theme.spacing(0, 2),
   },
-  text: {
-    whiteSpace: 'nowrap',
-  },
-});
+}));
 
 /**
  * The ButtonWidget is used to display a button.
@@ -21,31 +15,18 @@ const useStyles = makeStyles()({
 const ButtonWidget = () => {
   const { classes } = useStyles();
 
-  const { config, isPreview } = useWidget();
-  const { text, link } = config;
-  const { push } = useNavigation();
-
-  const handleClick = useCallback((e) => {
-    if (!link) return;
-
-    if (!isPreview) {
-      e.stopPropagation();
-    }
-
-    push({ pathname: link });
-  }, [link, isPreview, push]);
+  const { config } = useWidget();
+  const { text, link, buttonAlignment = 'center' } = config;
 
   if (!text) return null;
 
   return (
-    <div className={classes.root}>
-      <Button
-        color="primary"
-        onClick={handleClick}
-      >
-        <span className={classes.text}>{text}</span>
-      </Button>
-    </div>
+    <WidgetButton
+      text={text}
+      link={link}
+      alignment={buttonAlignment}
+      className={classes.root}
+    />
   );
 };
 
