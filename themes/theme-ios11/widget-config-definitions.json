@@ -2140,6 +2140,209 @@
     ]
   },
   {
+    "id": "productTabsWidget",
+    "name": {
+      "en-us": "Product tabs",
+      "de-de": "Produkt-Tabs"
+    },
+    "description": {
+      "en-us": "Products of several sources in tabs, each shown as a slider.",
+      "de-de": "Produkte aus mehreren Quellen in Tabs, jeweils als Slider."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "showHeadline",
+        "label": {
+          "en-us": "Show headline",
+          "de-de": "Überschrift anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": false
+      },
+      {
+        "code": "headline",
+        "label": {
+          "en-us": "Headline",
+          "de-de": "Überschrift"
+        },
+        "required": true,
+        "type": "textWithFormatting",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "validationMaxLength": 256,
+          "useTypographySelection": true
+        },
+        "defaultValue": {
+          "typography": "h2"
+        },
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "showHeadline": true
+        }
+      },
+      {
+        "code": "tabs",
+        "label": {
+          "en-us": "Tabs",
+          "de-de": "Tabs"
+        },
+        "type": "arrayOf",
+        "required": true,
+        "typeSpecificSettings": {
+          "validationMinEntries": 1,
+          "validationMaxEntries": 6,
+          "arrayOfWidgetConfigInputGroup": [
+            {
+              "code": "label",
+              "label": {
+                "en-us": "Tab name",
+                "de-de": "Name des Tabs"
+              },
+              "required": true,
+              "type": "text",
+              "localizable": true,
+              "typeSpecificSettings": {
+                "validationMaxLength": 40
+              }
+            },
+            {
+              "code": "products",
+              "label": {
+                "en-us": "",
+                "de-de": ""
+              },
+              "required": true,
+              "type": "products",
+              "localizable": true,
+              "typeSpecificSettings": null
+            }
+          ]
+        },
+        "defaultValue": [
+          {}
+        ]
+      },
+      {
+        "code": "productCount",
+        "label": {
+          "en-us": "Product count",
+          "de-de": "Produktanzahl"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 100
+        },
+        "defaultValue": 20,
+        "description": {
+          "en-us": "Per tab",
+          "de-de": "Pro Tab"
+        }
+      },
+      {
+        "code": "sort",
+        "label": {
+          "en-us": "Sorting",
+          "de-de": "Sortierung"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "relevance",
+              "label": {
+                "en-us": "Relevance",
+                "de-de": "Relevanz"
+              }
+            },
+            {
+              "value": "priceDesc",
+              "label": {
+                "en-us": "Price high to low",
+                "de-de": "Preis hoch zu niedrig"
+              }
+            },
+            {
+              "value": "priceAsc",
+              "label": {
+                "en-us": "Price low to high",
+                "de-de": "Preis niedrig zu hoch"
+              }
+            }
+          ]
+        },
+        "defaultValue": "relevance",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "showName",
+        "label": {
+          "en-us": "Show product name",
+          "de-de": "Produktnamen anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "showPrice",
+        "label": {
+          "en-us": "Show price",
+          "de-de": "Preis anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      },
+      {
+        "code": "showRating",
+        "label": {
+          "en-us": "Show rating",
+          "de-de": "Bewertung anzeigen"
+        },
+        "required": true,
+        "type": "boolean",
+        "localizable": false,
+        "typeSpecificSettings": null,
+        "defaultValue": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        }
+      }
+    ]
+  },
+  {
     "id": "categoryListWidget",
     "name": {
       "en-us": "Category list",
