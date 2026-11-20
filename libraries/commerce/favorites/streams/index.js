@@ -32,6 +32,8 @@ import {
   FAVORITE_QUANTITY_DEBOUNCE_TIME,
 } from '../constants';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /**
  * @link https://developer.shopgate.com/references/engage/streams/favorites
  */

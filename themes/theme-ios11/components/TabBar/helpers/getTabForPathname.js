@@ -1,27 +1,12 @@
-import { INDEX_PATH } from '@shopgate/pwa-common/constants/RoutePaths';
-import { CART_PATH } from '@shopgate/pwa-common-commerce/cart/constants';
-import { FAVORITES_PATH } from '@shopgate/pwa-common-commerce/favorites/constants';
 import { CATEGORY_PATH } from '@shopgate/pwa-common-commerce/category/constants';
 import { ITEM_PATH } from '@shopgate/pwa-common-commerce/product/constants';
 import { SEARCH_PATH } from '@shopgate/pwa-common-commerce/search/constants';
-import { BROWSE_PATH } from 'Pages/Browse/constants';
-import { MORE_PATH } from 'Pages/More/constants';
-import {
-  TAB_HOME,
-  TAB_BROWSE,
-  TAB_CART,
-  TAB_FAVORITES,
-  TAB_MORE,
-  TAB_NONE,
-} from '../constants';
+import { TAB_BROWSE, TAB_NONE } from '../constants';
+import { CORE_TAB_DATA, CORE_TAB_TYPES } from '../coreTabData';
 
-export const TAB_ROOTS = {
-  [TAB_HOME]: INDEX_PATH,
-  [TAB_BROWSE]: BROWSE_PATH,
-  [TAB_CART]: CART_PATH,
-  [TAB_FAVORITES]: FAVORITES_PATH,
-  [TAB_MORE]: MORE_PATH,
-};
+export const TAB_ROOTS = Object.fromEntries(
+  CORE_TAB_TYPES.map(type => [type, CORE_TAB_DATA[type].path])
+);
 
 const BROWSE_PREFIXES = [SEARCH_PATH, CATEGORY_PATH, `${ITEM_PATH}/`];
 

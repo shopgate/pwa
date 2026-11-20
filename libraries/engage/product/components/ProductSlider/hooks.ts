@@ -32,7 +32,10 @@ export const useSlidesPerView = (slidesPerViewProp?: number): number => {
 
   const sizes = useMemo<SlidesPerView>(() => {
     if (!areAppSettingsHydrated && !isInsideWidget && typeof legacySlidesPerView === 'number') {
-      return { small: legacySlidesPerView };
+      return {
+        ...appSettingsSlidesPerView,
+        small: legacySlidesPerView,
+      };
     }
 
     return appSettingsSlidesPerView;

@@ -236,6 +236,10 @@
     },
     "description_heading": "Over",
     "share": "Product delen",
+    "media_viewer": "Productafbeeldingen en -video’s",
+    "media_thumbnail_image": "Afbeelding {index} tonen",
+    "media_thumbnail_video": "Video {index} tonen",
+    "media_video": "Video afspelen",
     "pick_an_attribute": "Kies een {0}",
     "tax_disclaimer": "* Inclusief BTW, eventueel vermeerderd met verzendkosten",
     "tax_disclaimer_aria": "Inclusief BTW, eventueel vermeerderd met verzendkosten",
@@ -589,7 +593,12 @@
     "profile": "Profiel",
     "back": "Terug naar {title}",
     "open_menu": "Menu openen",
-    "open_link": "Pagina openen"
+    "open_link": "Pagina openen",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Meer",
+      "about": "Over ons"
+    }
   },
   "reviews": {
     "rating": "Rating",

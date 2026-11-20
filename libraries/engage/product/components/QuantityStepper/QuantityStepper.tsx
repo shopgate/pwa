@@ -45,6 +45,24 @@ const isDigits = (text: string) => Array.from(text).every(char => DIGITS.include
 
 const TOUCH_TARGET = 44;
 
+/**
+ * Draws a minus or plus sign.
+ * @param props The component props.
+ * @param props.plus Whether to draw a plus instead of a minus.
+ * @returns The icon.
+ */
+const SignIcon = ({ plus = false }: { plus?: boolean }) => (
+  <svg viewBox="0 0 24 24" width="1em" height="1em" aria-hidden focusable="false">
+    <path
+      d={plus ? 'M12 5v14M5 12h14' : 'M5 12h14'}
+      stroke="currentColor"
+      strokeWidth={2}
+      strokeLinecap="round"
+      fill="none"
+    />
+  </svg>
+);
+
 const useStyles = makeStyles({ name: 'QuantityStepper' })(theme => ({
   root: {
     display: 'inline-flex',
@@ -214,7 +232,7 @@ const QuantityStepper = ({
         onClick={() => canDecrease && change(value - 1)}
         aria-label={i18n.text('product.decrease_quantity')}
       >
-        −
+        <SignIcon />
       </ButtonBase>
       <input
         className={cx(classes.input, 'engage__quantity-stepper__input')}
@@ -238,7 +256,7 @@ const QuantityStepper = ({
         onClick={() => canIncrease && change(value + 1)}
         aria-label={i18n.text('product.increase_quantity')}
       >
-        +
+        <SignIcon plus />
       </ButtonBase>
     </div>
   );

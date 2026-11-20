@@ -98,6 +98,9 @@ export { default as Sheet, SHEET_EVENTS } from '@shopgate/pwa-ui-shared/Sheet';
 export { default as TaxDisclaimer } from '@shopgate/pwa-ui-shared/TaxDisclaimer';
 export { default as ToggleIcon } from '@shopgate/pwa-ui-shared/ToggleIcon';
 
+// ICONS
+export { default as ThemeIcon } from '@shopgate/engage/icons/components/ThemeIcon';
+
 // ICONS IOS
 export { default as CartIconIOS } from '@shopgate/pwa-ui-ios/icons/CartIcon';
 export { default as FilterIconIOS } from '@shopgate/pwa-ui-ios/icons/FilterIcon';

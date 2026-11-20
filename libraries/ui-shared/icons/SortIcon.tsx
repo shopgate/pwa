@@ -1,12 +1,10 @@
-import React from 'react';
-import Icon from '@shopgate/pwa-common/components/Icon';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The sort icon component.
  */
-const Sort = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.sort} {...props} />);
+const Sort = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="sort" {...props} />
+);
 
 export default Sort;

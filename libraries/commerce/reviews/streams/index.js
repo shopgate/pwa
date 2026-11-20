@@ -17,6 +17,8 @@ import {
   RESET_SUBMIT_REVIEW,
 } from '../constants';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 export const reviewsWillEnter$ = routeWillEnter$
   .filter(({ action }) => action.route.pattern === `${ITEM_PATH}/:productId/reviews`);
 

@@ -9,6 +9,8 @@ import {
   WINDOW_OPEN_OVERRIDE,
 } from '../constants/ActionTypes';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /**
  * @type {Observable}
  */

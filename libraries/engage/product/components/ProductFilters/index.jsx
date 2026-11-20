@@ -1,11 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { useResponsiveValue } from '@shopgate/engage/core/hooks';
 import { applyScrollContainer } from '@shopgate/engage/core/helpers';
-import { ResponsiveContainer, ScrollHeader, SurroundPortals } from '@shopgate/engage/components';
+import { ScrollHeader, SurroundPortals } from '@shopgate/engage/components';
 import { GlobalLocationSwitcher, FulfillmentSlotSwitcher } from '@shopgate/engage/locations/components';
 import { themeConfig } from '@shopgate/engage';
-import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles } from '@shopgate/engage/styles';
 import FilterBar from '@shopgate/engage/product/components/FilterBar';
 import { useFilterBarSettings } from '@shopgate/engage/product/hooks';
 
@@ -14,13 +13,6 @@ const { variables: { scroll: { offset = 100 } = {} } } = themeConfig || {};
 const useStyles = makeStyles()(() => ({
   filters: {
     ...(applyScrollContainer() ? { top: 'var(--sg-search-bar-offset, 0px)' } : { top: 44 }),
-    [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      top: 64,
-      marginBottom: 16,
-    },
-    [responsiveMediaQuery('<=xs', { webOnly: true })]: {
-      top: 56,
-    },
     display: 'block',
     zIndex: 1000,
   },
@@ -45,19 +37,11 @@ const ProductFilters = ({
   const { classes } = useStyles();
   const { hideOnScroll } = useFilterBarSettings();
 
-  // When the PWA is in website mode, we apply a higher offset value than usual because the AppBar
-  // is larger.
-  const responsiveOffset = useResponsiveValue('>xs', {
-    webOnly: true,
-    valueMatch: 220,
-    valueMiss: offset,
-  });
-
   return (
     <ScrollHeader
       className={classes.filters}
       hideOnScroll={hideOnScroll}
-      scrollOffset={responsiveOffset}
+      scrollOffset={offset}
     >
       {contentBefore}
       <SurroundPortals
@@ -69,10 +53,8 @@ const ProductFilters = ({
           showFilters,
         }}
       >
-        <ResponsiveContainer appAlways breakpoint="<=xs">
-          <GlobalLocationSwitcher renderBar />
-          <FulfillmentSlotSwitcher renderBar />
-        </ResponsiveContainer>
+        <GlobalLocationSwitcher renderBar />
+        <FulfillmentSlotSwitcher renderBar />
 
         {showFilters && (
         <FilterBar categoryId={categoryId} />

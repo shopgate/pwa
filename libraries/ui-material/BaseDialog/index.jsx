@@ -22,10 +22,6 @@ const useStyles = makeStyles()(theme => ({
       width: `calc(80vh - ${outerGap * 2}px)`,
       maxHeight: `calc(80vh - ${outerGap * 2}px)`,
     },
-    [responsiveMediaQuery('>md', { webOnly: true })]: {
-      width: `calc(var(--page-content-width) * 0.5 - ${outerGap * 2}px)`,
-      maxHeight: `calc(var(--page-content-width) * 0.5 - ${outerGap * 2}px)`,
-    },
   },
   content: {
     padding: theme.spacing(3),

@@ -8,6 +8,7 @@ import {
   getShowManufacturerOnProductPage,
   getShowReviews,
   getShowWriteReview,
+  getTabBarItems,
   getTypographyFontCssUrls,
   getTypographySettings,
   getWidgetMediaMargins,
@@ -138,11 +139,18 @@ describe('settings/selectors/appSettings', () => {
     it('returns the configured setting', () => {
       expect(getProductGallerySettings(stateWithGallery({
         pagination: 'fraction',
-      }))).toEqual({ pagination: 'fraction' });
+        thumbnails: true,
+      }))).toEqual({
+        pagination: 'fraction',
+        thumbnails: true,
+      });
     });
 
     it('uses bullets when the slice is missing', () => {
-      expect(getProductGallerySettings({} as AppSettingsState)).toEqual({ pagination: 'bullets' });
+      expect(getProductGallerySettings({} as AppSettingsState)).toEqual({
+        pagination: 'bullets',
+        thumbnails: false,
+      });
     });
   });
 
@@ -341,6 +349,40 @@ describe('settings/selectors/appSettings', () => {
         showOnParentCategories: false,
         hideOnScroll: true,
       });
+    });
+  });
+
+  describe('getTabBarItems', () => {
+    it('returns the configured items', () => {
+      const items = [
+        {
+          action: 'cart',
+          icon: 'heart',
+          link: '',
+        },
+        {
+          action: 'home',
+          icon: '',
+          link: '',
+        },
+      ];
+      const navigation = {
+        ...DEFAULT_APP_SETTINGS.navigation,
+        tabBar: {
+          ...DEFAULT_APP_SETTINGS.navigation.tabBar,
+          items,
+        },
+      };
+
+      expect(getTabBarItems(stateWithSettings({ navigation }))).toEqual(items);
+    });
+
+    it('returns undefined while the merchant kept the default list', () => {
+      expect(getTabBarItems(stateWithSettings({}))).toBeUndefined();
+    });
+
+    it('returns undefined when the slice is missing', () => {
+      expect(getTabBarItems({} as AppSettingsState)).toBeUndefined();
     });
   });
 });

@@ -4,7 +4,7 @@ import { useResponsiveValue } from './hooks';
 /**
  * Renders a responsive container that allows to render based on width.
  * @param {Object} props Component props.
- * @returns {React.Node}
+ * @returns {JSX.Element|null}
  */
 const ResponsiveContainer = ({
   breakpoint, webOnly, webAlways, appOnly, appAlways, children,

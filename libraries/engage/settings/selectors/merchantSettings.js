@@ -13,6 +13,8 @@ import {
   MERCHANT_SETTINGS_ENABLED_CMS_VERSION,
 } from '../constants/merchantSettings';
 
+/** @import { RootState } from '@shopgate/engage/core/types' */
+
 /**
  * Retrieves the merchantSettings state from the store.
  * @param {Object} state The current application state.

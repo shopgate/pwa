@@ -26,19 +26,11 @@ const useStyles = makeStyles()(theme => ({
     overflowWrap: 'break-word',
     wordBreak: 'break-word',
     color: theme.palette.text.primary,
-    [responsiveMediaQuery('>xs', { webOnly: true })]: {
-      padding: theme.spacing(2),
-      margin: 0,
-      fontSize: theme.typography.h3.fontSize,
-      lineHeight: '1.5rem',
-    },
   },
   description: {
     display: 'none',
     [responsiveMediaQuery('>xs', { webOnly: true })]: {
       display: 'block',
-      lineHeight: '1.25rem',
-      paddingTop: theme.spacing(1),
     },
   },
   grid: {

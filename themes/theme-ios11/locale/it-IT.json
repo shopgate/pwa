@@ -236,6 +236,10 @@
     },
     "description_heading": "A riguardo",
     "share": "Condividi prodotto",
+    "media_viewer": "Immagini e video del prodotto",
+    "media_thumbnail_image": "Mostra immagine {index}",
+    "media_thumbnail_video": "Mostra video {index}",
+    "media_video": "Riproduci video",
     "pick_an_attribute": "Seleziona un {0}",
     "tax_disclaimer": "* IVA inclusa, eventualmente più spese di spedizione",
     "tax_disclaimer_aria": "IVA inclusa, eventualmente più spese di spedizione",
@@ -589,7 +593,12 @@
     "profile": "Profilo",
     "back": "Indietro alla {title}",
     "open_menu": "Apra il menu",
-    "open_link": "Apri pagina"
+    "open_link": "Apri pagina",
+    "scanner": "Scanner",
+    "menuSubHeader": {
+      "more": "Di più",
+      "about": "Su di noi"
+    }
   },
   "reviews": {
     "rating": "valutazione",

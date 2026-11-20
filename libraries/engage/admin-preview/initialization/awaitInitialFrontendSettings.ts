@@ -5,10 +5,10 @@ import {
   isAllowedOrigin,
   isFrontendSettingsAdminPreviewActive,
 } from '../helpers';
-import { ALLOWED_ADMIN_PREVIEW_ORIGINS } from '../constants';
+import { ALLOWED_ADMIN_PREVIEW_ORIGINS, PREVIEW_READY_MESSAGE } from '../constants';
 import {
   getOrCreateStyleTag,
-  serializeStyling,
+  serializePreviewCss,
 } from '../components/FrontendSettingsPreviewBridge/helpers';
 import type {
   FrontendSettingsPreviewBridgeMessage,
@@ -78,16 +78,18 @@ export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void>
       if (data?.type !== 'receiveFrontendSettings') return;
 
       const styling = data.payload?.styling ?? null;
+      const customCss = data.payload?.customCss ?? null;
+      const previewCss = serializePreviewCss(styling, customCss);
 
-      if (styling) {
-        getOrCreateStyleTag().textContent = serializeStyling(styling);
+      if (previewCss) {
+        getOrCreateStyleTag().textContent = previewCss;
       }
 
       if (data.payload?.appSettings) {
         store.dispatch(receiveAppSettings(data.payload.appSettings));
       }
 
-      setInitialFrontendSettings(styling);
+      setInitialFrontendSettings(styling, customCss);
 
       settle();
     }
@@ -109,6 +111,6 @@ export const awaitInitialFrontendSettings = (store: PreviewStore): Promise<void>
     const parentOrigin = getReferrerOrigin();
 
     if (isAllowedOrigin(parentOrigin, ALLOWED_ADMIN_PREVIEW_ORIGINS)) {
-      window.parent.postMessage({ type: 'frontendSettingsPreviewReady' }, parentOrigin);
+      window.parent.postMessage(PREVIEW_READY_MESSAGE, parentOrigin);
     }
   });

@@ -6,7 +6,7 @@ import { makeStyles, useTheme } from '@shopgate/engage/styles';
 const useStyles = makeStyles()(theme => ({
   container: {
     position: 'absolute',
-    margin: theme.spacing(1),
+    margin: theme.spacing(1, 0),
   },
 }));
 

@@ -123,14 +123,18 @@
 
 /**
  * @callback SheetCallbackFn
- * @param {import('../../locations.types').Location | null} location
+ * @param {Location | null} location
  * @param {string | null} productId
  * @param {boolean | null} orderSuccess
  * @returns {void}
  */
 
 /**
- * @typedef {(typeof DIRECT_SHIP | typeof ROPIS| typeof BOPIS)} UserLocationFulfillmentMethod
+ * @typedef {(
+ *   typeof import('./constants').DIRECT_SHIP
+ *   | typeof import('./constants').ROPIS
+ *   | typeof import('./constants').BOPIS
+ * )} UserLocationFulfillmentMethod
  */
 
 /**
@@ -168,3 +172,14 @@
  * @property {string[]|null} orderNumbers
  * @property {string[]|null} errors
  */
+
+/**
+ * A selector that reads a value from the redux state, optionally depending on props.
+ * @template T
+ * @callback StateSelector
+ * @param {Object} state The redux state.
+ * @param {Object} [props] The props.
+ * @returns {T}
+ */
+
+export {};

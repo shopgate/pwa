@@ -4,6 +4,8 @@ import {
 } from '../constants/ActionTypes';
 import { main$ } from './main';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /**
  * Gets triggered when an app error is received.
  * @type {Observable}

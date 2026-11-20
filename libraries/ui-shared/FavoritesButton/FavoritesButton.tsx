@@ -2,7 +2,6 @@ import React, {
   useCallback, useRef, useMemo, memo,
 } from 'react';
 import classNames from 'classnames';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { i18n } from '@shopgate/engage/core/helpers';
 import { IconButton } from '@shopgate/engage/components/v2';
 import type { IconButtonSize } from '@shopgate/engage/components/v2';
@@ -81,10 +80,6 @@ const FavoritesButton = ({
 
     return <HeartOutlineIcon />;
   }, [loadWishlistOnAppStartEnabled, wishlistItemQuantityEnabled, active]);
-
-  if (!(appConfig as { hasFavorites: boolean }).hasFavorites) {
-    return null;
-  }
 
   return (
     <IconButton

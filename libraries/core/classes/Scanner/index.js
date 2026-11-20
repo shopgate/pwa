@@ -23,6 +23,8 @@ import {
   setFlashlightMode as setAppScannerFlashlightMode,
 } from '../../commands/scanner';
 
+/** @import ScannerEventListener from '../ScannerEventListener' */
+
 /**
  * Represents the app scanner.
  */
@@ -75,7 +77,7 @@ export class Scanner {
    * the close handler when it's done. The close handler can either shut down the Scanner instance
    * by calling its close() method or restart it to continue scanning.
    *
-   * @callback Scanner~CloseHandler
+   * @callback CloseHandler
    * @param {Scanner} scannerInstance The instance of the scanner which requested closing.
    * @returns {undefined|null} The return value is ignored.
    */
@@ -83,7 +85,7 @@ export class Scanner {
    * Starts the app scanner. It will instantly start the scanning process for type
    * "barcodeRecognition". The image scanner requires user interaction to scan.
    * @param {string} scope The initially activated scanner scope.
-   * @param {ScannerType|string} type The initially activated scanner type.
+   * @param {string} type The initially activated scanner type.
    * @param {CloseHandler|null} [closeHandler] This handler is called when the Scanner is closed.
    * @param {string|null} [source] Tells the app which overlay to use, null for "current".
    * @param {string|null} [animation] Tells the app what type of animation to apply when opening.

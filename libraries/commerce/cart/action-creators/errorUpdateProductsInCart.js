@@ -1,5 +1,7 @@
 import { ERROR_UPDATE_PRODUCTS_IN_CART } from '../constants';
 
+/** @import { PipelineErrorElement } from '../helpers/createPipelineErrorList' */
+
 /**
  * Creates the dispatched ERROR_UPDATE_PRODUCTS_IN_CART action object.
  * @param {Array} updateData The update data from the failed UPDATE_PRODUCTS_IN_CART action.

@@ -28,6 +28,18 @@ const defaultFontFamily = '"Roboto", "Helvetica", "Arial", sans-serif';
 const typographyVarPrefix = cssVarPrefix =>
   `--${cssVarPrefix ? `${cssVarPrefix}-` : ''}typography`;
 
+export const HEADING_VARIANTS = ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'];
+
+/**
+ * Checks whether a theme path points at the font weight of a heading variant.
+ * @param {string[]} keys The theme path, e.g. `['typography', 'h3', 'fontWeight']`.
+ * @returns {boolean} Whether the path is a heading font weight.
+ */
+export const isHeadingFontWeightPath = keys => keys.length === 3
+  && keys[0] === 'typography'
+  && HEADING_VARIANTS.includes(keys[1])
+  && keys[2] === 'fontWeight';
+
 /**
  * Creates the typography object for the theme.
  * @param {Object} palette The theme palette.
@@ -92,6 +104,15 @@ export default function createTypography(palette, typography, cssVarPrefix = 'sg
   const pxToRem = (size => `${(size / htmlFontSize) * coef}rem`);
 
   /**
+   * Builds the font weight of a heading: the merchant's weight for it, otherwise `weight`.
+   * @param {string} variant A heading variant, e.g. `h3`.
+   * @param {string|number} weight The weight to use while the merchant sets none.
+   * @returns {string} The css value.
+   */
+  const headingFontWeight = (variant, weight) =>
+    `var(${typographyVarPrefix(cssVarPrefix)}-${variant}-fontWeight, ${weight})`;
+
+  /**
    * Creates a typography variant object.
    * @param {string} fontWeightToken The name of the shared font weight token to use, e.g.
    * `fontWeightBold`. The variant references it as a custom property instead of inlining its value.
@@ -131,9 +152,10 @@ export default function createTypography(palette, typography, cssVarPrefix = 'sg
     price: buildVariant('fontWeightRegular', 16, 1.5),
   };
 
-  return merge(
+  const result = merge(
     {
       pxToRem,
+      headingFontWeight,
       fontFamily,
       fontSize,
       fontWeightLight,
@@ -144,4 +166,13 @@ export default function createTypography(palette, typography, cssVarPrefix = 'sg
     },
     other
   );
+
+  HEADING_VARIANTS.forEach((variant) => {
+    result[variant] = {
+      ...result[variant],
+      fontWeight: headingFontWeight(variant, result[variant].fontWeight),
+    };
+  });
+
+  return result;
 }

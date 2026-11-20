@@ -93,9 +93,10 @@ const useStyles = makeStyles()(theme => ({
     overflowWrap: 'anywhere',
     WebkitBoxOrient: 'vertical',
     WebkitLineClamp: 2,
-    fontSize: '1.125rem',
+    fontFamily: theme.typography.h4.fontFamily,
+    fontSize: theme.typography.h4.fontSize,
     lineHeight: 1.25,
-    fontWeight: theme.typography.fontWeightBold,
+    fontWeight: theme.typography.headingFontWeight('h4', theme.typography.fontWeightBold),
     outline: 'none',
     '[data-has-back] > &': {
       paddingLeft: theme.spacing(0.5),

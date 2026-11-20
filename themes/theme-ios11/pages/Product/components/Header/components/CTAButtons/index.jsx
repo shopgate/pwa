@@ -53,6 +53,11 @@ const useStyles = makeStyles()(theme => ({
     '&[data-position="bottomRight"][data-fraction-below]': {
       bottom: theme.spacing(2) + FRACTION_BELOW_OFFSET,
     },
+    [theme.breakpoints.up('md')]: {
+      '&[data-position="bottomRight"][data-bullets-below], &[data-position="bottomRight"][data-fraction-below]': {
+        bottom: theme.spacing(2),
+      },
+    },
     '&[data-floating-header][data-position="topRight"]': {
       top: `calc(var(--app-bar-height, 0px) + var(${SEARCH_BAR_FLOATING_HEIGHT_VAR}, 0px) + ${FLOATING_BUTTON_INSET}px)`,
     },
@@ -78,7 +83,7 @@ const CTAButtons = ({
 }) => {
   const { classes, cx } = useStyles();
   const { position, direction } = useSelector(getProductActionButtons);
-  const { variant: headerVariant } = useSelector(getAppBarSettings);
+  const { variant: headerVariant, floating: floatingHeader } = useSelector(getAppBarSettings);
   const hasGallery = useStickyValue(hasImageGallery, hasImageGallery === null);
   const { pagination } = useProductGallerySettings();
   const bulletsBelow = pagination === 'bulletsBelow' && !!hasGallery;
@@ -106,7 +111,7 @@ const CTAButtons = ({
         data-direction={direction}
         data-bullets-below={bulletsBelow ? true : undefined}
         data-fraction-below={fractionBelow ? true : undefined}
-        data-floating-header={headerVariant === 'floating' ? true : undefined}
+        data-floating-header={headerVariant === 'floating' && floatingHeader.product ? true : undefined}
       >
         {favoritesFirst && favorites}
         <SurroundPortals portalName={PRODUCT_CTAS_SHARE}>

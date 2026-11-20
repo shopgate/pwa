@@ -77,14 +77,18 @@ describe('useSlidesPerView', () => {
     jest.clearAllMocks();
   });
 
-  it('honors the legacy scalar flat before hydration', () => {
+  it('applies the legacy scalar to phones only before hydration', () => {
     setup({
       hydrated: false,
       appSlidesPerView: APP_SETTINGS_DEFAULT,
       widgetSettings: { slidesPerView: 1.5 },
     });
 
-    expect(renderHook()).toEqual({ xs: 1.5 });
+    expect(renderHook()).toEqual({
+      xs: 1.5,
+      sm: 3.3,
+      md: 4.3,
+    });
   });
 
   it('falls back to the app-settings default before hydration when the legacy scalar is missing', () => {

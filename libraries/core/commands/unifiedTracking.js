@@ -39,7 +39,7 @@ import AppCommand from '../classes/AppCommand';
  * @property {number} shippingGross The total gross cost of shipping for a transaction
  * @property {number} shippingNet The total net cost of shipping for a transaction
  * @property {string} currency The currency code as ISO 4217 string
- * @property {UnifiedPurchaseItem[]} items Array of unified items
+ * @property {Object<string, *>[]} items Array of unified items
  * @property {string} [type] Type of checkout
  * @property {boolean} [success] Whether the Purchase was successful, or not
  * @property {UnifiedRestrictions} [restrictions] Restrictions for the command
@@ -48,7 +48,7 @@ import AppCommand from '../classes/AppCommand';
 /**
  * Data definition for an addToCart event within the unified tracking system
  * @typedef {Object} UnifiedAddToCart
- * @property {UnifiedAddToCartItem[]} items Array of unified items
+ * @property {Object<string, *>[]} items Array of unified items
  * @property {string} position Position where the add to cart took place
  * @property {UnifiedRestrictions} [restrictions] Restrictions for the command
  */
@@ -56,7 +56,7 @@ import AppCommand from '../classes/AppCommand';
 /**
  * Data definition for an addedPaymentInfo event within the unified tracking system
  * @typedef {Object} UnifiedAddedPaymentInfo
- * @property {bool} success If it was success or not
+ * @property {boolean} success If it was success or not
  * @property {string} name Name of the payment method
  * @property {UnifiedRestrictions} [restrictions] Restrictions for the command
  */

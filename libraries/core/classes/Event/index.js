@@ -139,4 +139,4 @@ if (!window.TmpEventInstance) {
   window.TmpEventInstance = new Event();
 }
 
-export default window.TmpEventInstance;
+export default /** @type {Event} */ (window.TmpEventInstance);

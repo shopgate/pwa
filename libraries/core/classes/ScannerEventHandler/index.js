@@ -1,3 +1,6 @@
+/** @import ScannerEvent from '../ScannerEvent' */
+/** @import ScannerEventListener from '../ScannerEventListener' */
+
 /**
  * Manages scanner event listeners.
  */

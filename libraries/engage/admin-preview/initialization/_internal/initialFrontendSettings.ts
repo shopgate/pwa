@@ -13,13 +13,20 @@ let received = false;
 
 let styling: FrontendSettingsStyling | null = null;
 
+let customCss: string | null = null;
+
 /**
  * Records the payload that app start received.
  * @param initialStyling The styling map the payload carried, if any.
+ * @param initialCustomCss The custom stylesheet the payload carried, if any.
  */
-export const setInitialFrontendSettings = (initialStyling: FrontendSettingsStyling | null) => {
+export const setInitialFrontendSettings = (
+  initialStyling: FrontendSettingsStyling | null,
+  initialCustomCss: string | null = null
+) => {
   received = true;
   styling = initialStyling;
+  customCss = initialCustomCss;
 };
 
 /**
@@ -37,10 +44,17 @@ export const hasInitialFrontendSettings = (): boolean => received;
 export const getInitialFrontendSettingsStyling = (): FrontendSettingsStyling | null => styling;
 
 /**
+ * The custom stylesheet that app start applied, for the same reason as the styling map.
+ * @returns The stylesheet, or null when none arrived.
+ */
+export const getInitialFrontendSettingsCustomCss = (): string | null => customCss;
+
+/**
  * Test only. Module state outlives a test file's individual cases, so specs need a way back to the
  * initial state.
  */
 export const resetInitialFrontendSettings = () => {
   received = false;
   styling = null;
+  customCss = null;
 };

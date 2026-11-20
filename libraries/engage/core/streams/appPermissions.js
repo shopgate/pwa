@@ -8,6 +8,8 @@ import {
   APP_PERMISSION_STATUS_RECEIVED,
 } from '@shopgate/engage/core/constants';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /**
  * Gets triggered when a permission status was received from the app.
  * @type {Observable}

@@ -1,7 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import debounce from 'lodash/debounce';
-import { injectGlobal, makeStyles, setViewportHeight } from '@shopgate/engage/styles';
+import {
+  injectGlobal,
+  makeStyles,
+  setViewportHeight,
+  responsiveMediaQuery,
+} from '@shopgate/engage/styles';
 import { Footer } from '@shopgate/engage/components';
 import { LiveMessenger } from '@shopgate/engage/a11y';
 import { applyScrollContainer, hasWebBridge } from '@shopgate/engage/core/helpers';
@@ -36,7 +41,7 @@ const useStyles = makeStyles()({
     position: 'relative',
     // In the admin preview iframe (Safari) `100vw` includes the vertical scrollbar
     // width, overflowing the iframe body and producing spurious double scrollbars.
-    width: isAdminPreviewActive() ? '100%' : '100vw',
+    width: isAdminPreviewActive() || hasWebBridge() ? '100%' : '100vw',
   },
   content: {
     flexGrow: 1,
@@ -46,6 +51,10 @@ const useStyles = makeStyles()({
       display: 'flex',
       justifyContent: 'center',
     } : {}),
+    [responsiveMediaQuery('>xs', { webOnly: true })]: {
+      maxWidth: 1300,
+      margin: '0 auto',
+    },
   },
   header: {
     top: 0,

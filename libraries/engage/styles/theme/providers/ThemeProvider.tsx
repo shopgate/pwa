@@ -1,12 +1,11 @@
 import {
-  memo, useCallback, useEffect, useMemo, useLayoutEffect,
+  lazy, memo, Suspense, useCallback, useEffect, useMemo, useLayoutEffect,
 } from 'react';
 import { useSelector } from 'react-redux';
 import useLocalStorage from '@shopgate/engage/core/hooks/useLocalStorage';
 import { logger } from '@shopgate/engage/core/helpers';
 import { GlobalStyles } from '@shopgate/engage/styles';
 import { isFrontendSettingsAdminPreviewActive } from '@shopgate/engage/admin-preview/helpers';
-import { FrontendSettingsPreviewBridge } from '@shopgate/engage/admin-preview/components';
 // Imported via its module path rather than a settings barrel, to keep this module out of an import
 // cycle - the settings types reach back into the "styles/theme" barrel, which exports this file.
 import { getCanSelectColorScheme, getDefaultColorSchemeMode } from '@shopgate/engage/settings/selectors/appSettings';
@@ -21,6 +20,10 @@ import {
 
 export { ColorSchemeContext, type ColorSchemeContextValue } from './ColorSchemeContext';
 export { ThemeContext } from './ThemeContext';
+
+const FrontendSettingsPreviewBridge = lazy(
+  () => import('@shopgate/engage/admin-preview/components/FrontendSettingsPreviewBridge')
+);
 
 /**
  * The ThemeProvider component provides the theme context to its children.
@@ -133,7 +136,11 @@ const ThemeProvider = ({
 
   return (
     <ColorSchemeContext.Provider value={colorSchemeContextValue}>
-      {isFrontendSettingsAdminPreviewActive() && <FrontendSettingsPreviewBridge />}
+      {isFrontendSettingsAdminPreviewActive() && (
+        <Suspense fallback={null}>
+          <FrontendSettingsPreviewBridge />
+        </Suspense>
+      )}
       <ThemeContext.Provider value={theme}>
         <ActiveBreakpointProvider>
           {children}

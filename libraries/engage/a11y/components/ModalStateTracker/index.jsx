@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types';
 import { useTrackModalState } from '@shopgate/engage/a11y/hooks';
 
+/** @import { ReactNode } from 'react' */
+
 /**
  * Helper component to be used inside modal-like class components to track their visibility and
  * apply a11y optimizations to the app.

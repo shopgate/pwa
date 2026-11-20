@@ -1,7 +1,11 @@
+import { createThemeIcons } from '@shopgate/engage/icons/helpers/themeIcons';
 import pck from '../../package.json';
 import { buildThemeConfig } from './theme';
 import { assignObjectDeep } from '../data';
 import { isObject } from '../validation';
+
+/** @import { ArrayItemComparator } from '../data' */
+/** @import { ThemeConfig } from './mock' */
 
 /**
  * Provides a default app config as a fallback.
@@ -12,7 +16,10 @@ const defaultAppConfig = {
   browserConnector: false,
   colors: {},
   forgotPasswordUrl: null,
-  hasFavorites: false,
+  /**
+   * @deprecated Always true. Every shop has favorites; the tab bar's configured list decides.
+   */
+  hasFavorites: true,
   hasReviews: true,
   showWriteReview: true,
   language: 'en-us',
@@ -36,6 +43,7 @@ const defaultAppConfig = {
   },
   cart: {},
   scanner: {},
+  qrCodeAllowedDomains: [],
   favorites: {},
   tracking: {
     hasWebTrackingEngage: false,
@@ -85,9 +93,11 @@ export const themeName = process.env.THEME || 'theme';
 
 /**
  * The resolved theme configuration.
- * @type {ThemeConfig}
+ * @type {ThemeConfig & Object<string, *>}
  */
 export const themeConfig = buildThemeConfig(appConfig);
+
+themeConfig.icons = createThemeIcons(themeConfig.icons);
 
 /** @mixes ThemeColors */
 export const themeColors = themeConfig.colors;
@@ -100,6 +110,8 @@ export const themeIcons = themeConfig.icons;
 
 // Fix theme config reference
 appConfig.theme = themeConfig;
+
+appConfig.hasFavorites = true;
 
 /**
  * A comparator for array items as they occur on different levels within the default app config.
