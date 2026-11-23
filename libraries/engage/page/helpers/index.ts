@@ -1,3 +1,5 @@
+export { registerWidgetAliases, resolveWidgetCode } from './widgetAliases';
+
 /**
  * Configuration of the "Products" widget input.
  */
