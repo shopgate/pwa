@@ -1293,6 +1293,271 @@
     ]
   },
   {
+    "id": "imageWithTextWidget",
+    "name": {
+      "en-us": "Image with text",
+      "de-de": "Bild mit Text"
+    },
+    "description": {
+      "en-us": "An image next to a headline, a text and a button.",
+      "de-de": "Ein Bild neben Überschrift, Text und Button."
+    },
+    "widgetConfigInputs": [
+      {
+        "code": "image",
+        "label": {
+          "en-us": "Image",
+          "de-de": "Bild"
+        },
+        "required": true,
+        "type": "image",
+        "localizable": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "imagePosition",
+        "label": {
+          "en-us": "Image position",
+          "de-de": "Bildposition"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "description": {
+          "en-us": "On phones the image is always above the text. Image and text sit side by side from a width of 480 px, e.g. on tablets or phones in landscape.",
+          "de-de": "Auf Smartphones steht das Bild immer über dem Text. Ab einer Breite von 480 px, z. B. auf Tablets oder Smartphones im Querformat, stehen Bild und Text nebeneinander."
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "left",
+              "label": {
+                "en-us": "Left",
+                "de-de": "Links"
+              }
+            },
+            {
+              "value": "right",
+              "label": {
+                "en-us": "Right",
+                "de-de": "Rechts"
+              }
+            }
+          ]
+        },
+        "defaultValue": "left"
+      },
+      {
+        "code": "imageWidth",
+        "label": {
+          "en-us": "Image width",
+          "de-de": "Bildbreite"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "half",
+              "label": {
+                "en-us": "Half",
+                "de-de": "Hälfte"
+              }
+            },
+            {
+              "value": "third",
+              "label": {
+                "en-us": "One third",
+                "de-de": "Ein Drittel"
+              }
+            }
+          ]
+        },
+        "defaultValue": "half"
+      },
+      {
+        "code": "headline",
+        "label": {
+          "en-us": "Headline",
+          "de-de": "Überschrift"
+        },
+        "required": false,
+        "type": "textWithFormatting",
+        "localizable": true,
+        "typeSpecificSettings": {
+          "validationMaxLength": 256,
+          "useTypographySelection": true
+        },
+        "defaultValue": {
+          "typography": "h3"
+        }
+      },
+      {
+        "code": "text",
+        "label": {
+          "en-us": "Text",
+          "de-de": "Text"
+        },
+        "required": false,
+        "type": "richText",
+        "localizable": true,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "buttonText",
+        "label": {
+          "en-us": "Button text",
+          "de-de": "Button-Text"
+        },
+        "required": false,
+        "type": "text",
+        "localizable": true,
+        "description": {
+          "en-us": "The button shows only with a button text and a link.",
+          "de-de": "Der Button wird nur mit Button-Text und Link angezeigt."
+        }
+      },
+      {
+        "code": "link",
+        "label": {
+          "en-us": "Link",
+          "de-de": "Link"
+        },
+        "required": false,
+        "type": "link",
+        "localizable": true,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": null,
+        "typeSpecificSettings": null,
+        "defaultValue": null
+      },
+      {
+        "code": "buttonAlignment",
+        "label": {
+          "en-us": "Button alignment",
+          "de-de": "Ausrichtung des Buttons"
+        },
+        "required": false,
+        "type": "select",
+        "localizable": false,
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "left",
+              "label": {
+                "en-us": "Left",
+                "de-de": "Links"
+              }
+            },
+            {
+              "value": "center",
+              "label": {
+                "en-us": "Centered",
+                "de-de": "Zentriert"
+              }
+            },
+            {
+              "value": "right",
+              "label": {
+                "en-us": "Right",
+                "de-de": "Rechts"
+              }
+            },
+            {
+              "value": "fullWidth",
+              "label": {
+                "en-us": "Full width",
+                "de-de": "Volle Breite"
+              }
+            }
+          ]
+        },
+        "defaultValue": "left"
+      },
+      {
+        "code": "borderRadius",
+        "label": {
+          "en-us": "Image corner radius",
+          "de-de": "Abrundung der Bildecken"
+        },
+        "required": true,
+        "type": "select",
+        "localizable": false,
+        "defaultValue": "default",
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "typeSpecificSettings": {
+          "options": [
+            {
+              "value": "default",
+              "label": {
+                "en-us": "Default",
+                "de-de": "Standard"
+              }
+            },
+            {
+              "value": "none",
+              "label": {
+                "en-us": "None",
+                "de-de": "Kein"
+              }
+            },
+            {
+              "value": "rounded",
+              "label": {
+                "en-us": "Rounded",
+                "de-de": "Abgerundet"
+              }
+            },
+            {
+              "value": "custom",
+              "label": {
+                "en-us": "Custom",
+                "de-de": "Benutzerdefiniert"
+              }
+            }
+          ]
+        }
+      },
+      {
+        "code": "borderRadiusCustom",
+        "label": {
+          "en-us": "Custom radius",
+          "de-de": "Benutzerdefinierter Radius"
+        },
+        "required": true,
+        "type": "number",
+        "localizable": false,
+        "description": {
+          "en-us": "",
+          "de-de": ""
+        },
+        "visibilityConditions": {
+          "borderRadius": "custom"
+        },
+        "typeSpecificSettings": {
+          "validationMinValue": 1,
+          "validationMaxValue": 50,
+          "maxNumberOfDecimals": 0
+        },
+        "defaultValue": 16
+      }
+    ]
+  },
+  {
     "id": "headlineWidget",
     "name": {
       "en-us": "Headline",
