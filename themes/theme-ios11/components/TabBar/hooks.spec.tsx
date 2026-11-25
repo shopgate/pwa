@@ -3,7 +3,13 @@ import '@testing-library/jest-dom';
 import type { FooterBarVariant, NavigationActionSettings } from '@shopgate/engage/settings/types/appSettings';
 import { registerNavigationAction } from '@shopgate/engage/navigation/registry';
 import type { NavigationActionHook } from '@shopgate/engage/navigation/types';
-import { resolveTabBarItems, useFooterBarLayout, useTabBarItems } from './hooks';
+import { useScrollDirectionChange } from '@shopgate/engage/core/hooks';
+import {
+  resolveTabBarItems,
+  useFooterBarLayout,
+  useTabBarItems,
+  useTabBarScrollObserver,
+} from './hooks';
 
 let mockTabBarVariant = 'fixed';
 let mockTabBarItems: NavigationActionSettings[] | undefined;
@@ -42,6 +48,25 @@ const Layout = ({ variant }: { variant: FooterBarVariant }) => {
   const layout = useFooterBarLayout(variant);
   return <span>{`${layout.variant} ${layout.gap}`}</span>;
 };
+
+/**
+ * Runs the scroll observer of the tab bar.
+ * @returns Nothing.
+ */
+const ScrollObserver = () => {
+  useTabBarScrollObserver(true);
+  return null;
+};
+
+describe('useTabBarScrollObserver()', () => {
+  it('reports every scroll past the offset, since a route change shows the tab bar again', () => {
+    render(<ScrollObserver />);
+
+    expect(useScrollDirectionChange).toHaveBeenCalledWith(expect.objectContaining({
+      onlyFireOnDirectionChange: false,
+    }));
+  });
+});
 
 describe('useFooterBarLayout()', () => {
   it('keeps the configured variant above a fixed tab bar', () => {

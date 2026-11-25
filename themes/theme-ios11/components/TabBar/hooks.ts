@@ -94,6 +94,7 @@ export const useTabBarScrollObserver = (isVisible: boolean) => {
   useScrollDirectionChange({
     enabled: hideOnScroll && isVisible,
     offset,
+    onlyFireOnDirectionChange: false,
     onScrollDown: () => {
       UIEvents.emit(HIDE_TAB_BAR, { scroll: true });
     },
