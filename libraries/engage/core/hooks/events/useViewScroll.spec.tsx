@@ -43,6 +43,17 @@ const scrollState = (
   scrollingDown,
 });
 
+/**
+ * Creates a scroll container with room to scroll 1500 px.
+ * @returns The scroll container.
+ */
+const createScrollElement = () => {
+  const element = document.createElement('div');
+  Object.defineProperty(element, 'scrollHeight', { value: 2000 });
+  Object.defineProperty(element, 'clientHeight', { value: 500 });
+  return element;
+};
+
 describe('useViewScroll', () => {
   let element: HTMLDivElement;
   let state: ViewScrollState;
@@ -94,9 +105,7 @@ describe('useViewScroll', () => {
     mockVisible = true;
     mockRouteId += 1;
     jest.useFakeTimers();
-    element = document.createElement('div');
-    Object.defineProperty(element, 'scrollHeight', { value: 2000 });
-    Object.defineProperty(element, 'clientHeight', { value: 500 });
+    element = createScrollElement();
   });
 
   afterEach(() => {
@@ -218,11 +227,28 @@ describe('useViewScroll', () => {
     scrollTo(500);
     unmount();
 
-    element = document.createElement('div');
-    Object.defineProperty(element, 'scrollHeight', { value: 2000 });
-    Object.defineProperty(element, 'clientHeight', { value: 500 });
+    element = createScrollElement();
     mockRouteState = { scrollTop: 500 };
     renderHook();
     expect(state).toEqual(scrollState(true, true, false));
+  });
+
+  it('should only remember the direction of the last 50 routes', () => {
+    const firstRouteId = mockRouteId;
+    const { unmount } = renderHook();
+    scrollTo(600);
+    scrollTo(500);
+    unmount();
+
+    for (let i = 0; i < 50; i += 1) {
+      mockRouteId += 1;
+      renderHook().unmount();
+    }
+
+    element = createScrollElement();
+    mockRouteId = firstRouteId;
+    mockRouteState = { scrollTop: 500 };
+    renderHook();
+    expect(state.scrollingDown).toBe(true);
   });
 });

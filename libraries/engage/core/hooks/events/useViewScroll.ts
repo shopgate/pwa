@@ -12,6 +12,7 @@ const { variables: { scroll: { offset = 100 } = {} } = {} } = (themeConfig || {}
 const SCROLL_DOWN_DELTA = 10;
 const SCROLL_UP_DELTA = 50;
 const BOTTOM_ZONE = 100;
+const REMEMBERED_ROUTES = 50;
 const lastScrollingDown = new Map<string, boolean>();
 
 /**
@@ -53,8 +54,9 @@ const getStateAt = (scrollTop: number, scrollingDown = false): ViewScrollState =
  * or shows again with a scroll position past the offset, scrolling down turns false once the
  * position is restored, so elements that hide while scrolling down slide in again. Elements that
  * mount again, also in a new view of the same route, start with the direction the route had when
- * it was left. It takes 10 px down to count as scrolling down and 50 px up to count as scrolling
- * up. Moving up within 100 px of the bottom doesn't count as scrolling up.
+ * it was left; the last 50 routes are remembered. It takes 10 px down to count as scrolling down
+ * and 50 px up to count as scrolling up. Moving up within 100 px of the bottom doesn't count as
+ * scrolling up.
  * @param params The hook parameters.
  * @param params.enabled Whether to track the scrolling. Defaults to true.
  * @returns The scroll state of the view.
@@ -137,7 +139,11 @@ const useViewScroll = ({ enabled = true }: UseViewScrollParams = {}): ViewScroll
 
       const next = getStateAt(scrollTop, scrollingDown);
       if (routeId) {
+        lastScrollingDown.delete(routeId);
         lastScrollingDown.set(routeId, next.scrollingDown);
+        if (lastScrollingDown.size > REMEMBERED_ROUTES) {
+          lastScrollingDown.delete(lastScrollingDown.keys().next().value as string);
+        }
       }
       setState(current => (
         current.moved === next.moved
