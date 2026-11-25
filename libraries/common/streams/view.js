@@ -9,7 +9,7 @@ import 'rxjs/add/operator/map';
 
 export const eventsSubject = new Subject();
 
-const scrollSubscriptions = new WeakMap();
+const scrollStreams = new WeakMap();
 
 /**
  * Cold observable for View scroll events
@@ -20,21 +20,28 @@ export const viewScroll$ = Observable.from(eventsSubject);
 
 /**
  * Stops the scroll events emitScrollEvents set up for an element, so the element can be released.
+ * Views that share an element, such as the window, share its stream until the last one stops it.
  * @param {HTMLElement|Window} element - DOM node or window to stop observing
  */
 export const stopScrollEvents = (element) => {
-  const subscription = element && scrollSubscriptions.get(element);
+  const stream = element && scrollStreams.get(element);
 
-  if (subscription) {
-    subscription.unsubscribe();
-    scrollSubscriptions.delete(element);
+  if (!stream) {
+    return;
+  }
+
+  stream.users -= 1;
+
+  if (stream.users === 0) {
+    stream.subscription.unsubscribe();
+    scrollStreams.delete(element);
   }
 };
 
 /**
  * Pipes the scroll events of an element or the window into viewScroll$, enriched with scroll
  * info such as direction and distance. Emits the last position at the end of each time window.
- * Calling it again for an element replaces its stream; stopScrollEvents ends it.
+ * Calling it again for an element shares its stream; each call needs a stopScrollEvents call.
  *
  * @param {HTMLElement|Window} element - DOM node or window to observe
  * @param {number} throttleTime - Length of the time window in ms
@@ -45,6 +52,13 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
   // be null due to the execution order of events in fiber nodes.
   if (!element) {
     return undefined;
+  }
+
+  const existing = scrollStreams.get(element);
+
+  if (existing) {
+    existing.users += 1;
+    return existing.scroll$;
   }
 
   // Determine if element is the window/document or a scrollable container
@@ -145,8 +159,11 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
     });
 
   // Pipe scroll data into the shared stream for global consumers
-  stopScrollEvents(element);
-  scrollSubscriptions.set(element, scroll$.subscribe(viewScroll$));
+  scrollStreams.set(element, {
+    scroll$,
+    subscription: scroll$.subscribe(viewScroll$),
+    users: 1,
+  });
 
   return scroll$;
 };

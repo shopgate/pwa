@@ -120,4 +120,18 @@ describe('View streams', () => {
     expect(subscriber).toHaveBeenCalledTimes(1);
     expect(subscriber.mock.calls[0][0]).toMatchObject({ scrollTop: 200 });
   });
+
+  it('should keep a shared stream until every caller stopped it', () => {
+    emitScrollEvents(element, 250);
+    stopScrollEvents(element);
+
+    scrollTo(300);
+    jest.advanceTimersByTime(250);
+    expect(subscriber).toHaveBeenCalledTimes(1);
+
+    stopScrollEvents(element);
+    scrollTo(600);
+    jest.advanceTimersByTime(250);
+    expect(subscriber).toHaveBeenCalledTimes(1);
+  });
 });
