@@ -4,9 +4,12 @@ import { async as asyncScheduler } from 'rxjs/scheduler/async';
 import 'rxjs/add/observable/from';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/throttleTime';
+import 'rxjs/add/operator/auditTime';
+import 'rxjs/add/operator/map';
 
 export const eventsSubject = new Subject();
+
+const scrollStreams = new WeakMap();
 
 /**
  * Cold observable for View scroll events
@@ -16,11 +19,32 @@ export const eventsSubject = new Subject();
 export const viewScroll$ = Observable.from(eventsSubject);
 
 /**
- * Sets up throttled scroll event stream for a given element or window.
- * Emits enriched scroll info such as direction and distance.
+ * Stops the scroll events emitScrollEvents set up for an element, so the element can be released.
+ * Views that share an element, such as the window, share its stream until the last one stops it.
+ * @param {HTMLElement|Window} element - DOM node or window to stop observing
+ */
+export const stopScrollEvents = (element) => {
+  const stream = element && scrollStreams.get(element);
+
+  if (!stream) {
+    return;
+  }
+
+  stream.users -= 1;
+
+  if (stream.users === 0) {
+    stream.subscription.unsubscribe();
+    scrollStreams.delete(element);
+  }
+};
+
+/**
+ * Pipes the scroll events of an element or the window into viewScroll$, enriched with scroll
+ * info such as direction and distance. Emits the last position at the end of each time window.
+ * Calling it again for an element shares its stream; each call needs a stopScrollEvents call.
  *
  * @param {HTMLElement|Window} element - DOM node or window to observe
- * @param {number} throttleTime - Time in ms to throttle scroll events
+ * @param {number} throttleTime - Length of the time window in ms
  * @returns {Observable} - Observable emitting scroll-related data
  */
 export const emitScrollEvents = (element, throttleTime = 250) => {
@@ -30,7 +54,28 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
     return undefined;
   }
 
-  let previousScrollTop = 0;
+  const existing = scrollStreams.get(element);
+
+  if (existing) {
+    existing.users += 1;
+    return existing.scroll$;
+  }
+
+  // Determine if element is the window/document or a scrollable container
+  const isWindow =
+    element === window ||
+    element === document.body ||
+    element === document.documentElement;
+
+  /**
+   * Reads the current scroll position of the element.
+   * @returns {number}
+   */
+  const getScrollTop = () => (isWindow
+    ? window.scrollY || window.pageYOffset || 0
+    : element.scrollTop);
+
+  let previousScrollTop = getScrollTop();
   // Tracks scroll direction ('up' or 'down')
   let lastDirection = null;
   // Minimum distance to consider a real scroll
@@ -42,21 +87,10 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
 
   const scroll$ = Observable
     .fromEvent(element, 'scroll')
-    .throttleTime(throttleTime, asyncScheduler, {
-      leading: false,
-      trailing: true,
-    })
+    .auditTime(throttleTime, asyncScheduler)
     .map((event) => {
-      // Determine if element is the window/document or a scrollable container
-      const isWindow =
-        element === window ||
-        element === document.body ||
-        element === document.documentElement;
-
       // Get current scroll position
-      const rawScrollTop = isWindow
-        ? window.scrollY || window.pageYOffset || 0
-        : element.scrollTop;
+      const rawScrollTop = getScrollTop();
 
       // Compute max scroll value
       const maxScrollTop = isWindow
@@ -82,10 +116,11 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
       const nearBottom = scrollTop >= maxScrollTop - bottomThreshold;
       const inDeadZone = scrollTop >= maxScrollTop - deadZoneThreshold;
 
-      // Detect downward scroll beyond threshold and not near bottom
+      // Detect downward scroll beyond threshold that didn't start near bottom
+      const startedNearBottom = previousScrollTop >= maxScrollTop - bottomThreshold;
       const scrollDown = isScrollingDown &&
         delta > minDelta &&
-        !nearBottom;
+        !startedNearBottom;
 
       // Detect upward scroll beyond threshold
       let scrollUp = isScrollingUp &&
@@ -124,7 +159,11 @@ export const emitScrollEvents = (element, throttleTime = 250) => {
     });
 
   // Pipe scroll data into the shared stream for global consumers
-  scroll$.subscribe(viewScroll$);
+  scrollStreams.set(element, {
+    scroll$,
+    subscription: scroll$.subscribe(viewScroll$),
+    users: 1,
+  });
 
   return scroll$;
 };

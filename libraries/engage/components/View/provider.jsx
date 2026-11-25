@@ -4,7 +4,7 @@ import delay from 'lodash/delay';
 import { connect } from 'react-redux';
 import { UIEvents } from '@shopgate/engage/core/events';
 import { getModalCount } from '@shopgate/engage/a11y/selectors';
-import { emitScrollEvents } from '@shopgate/engage/core/streams';
+import { emitScrollEvents, stopScrollEvents } from '@shopgate/engage/core/streams';
 import { MODAL_EVENTS } from '@shopgate/engage/components';
 import { ViewContext } from './context';
 
@@ -58,6 +58,8 @@ class ViewProvider extends Component {
   componentWillUnmount() {
     UIEvents.removeListener(MODAL_EVENTS.SHOW, this.handleModalShow);
     UIEvents.removeListener(MODAL_EVENTS.HIDE, this.handleModalHide);
+    clearTimeout(this.scrollEventsTimer);
+    stopScrollEvents(this.scrollElement);
   }
 
   /**
@@ -115,7 +117,12 @@ class ViewProvider extends Component {
   setContentRef = (ref) => {
     this.set('contentRef', ref);
     // Delay to dispatch actual DOM node - implemented with CCP-2358
-    delay(() => emitScrollEvents(ref.current), 250);
+    clearTimeout(this.scrollEventsTimer);
+    this.scrollEventsTimer = delay(() => {
+      stopScrollEvents(this.scrollElement);
+      this.scrollElement = ref.current;
+      emitScrollEvents(this.scrollElement);
+    }, 250);
   };
 
   /**

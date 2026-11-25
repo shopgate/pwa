@@ -5,9 +5,14 @@ import { Provider as StoreProvider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import { increaseModalCount, decreaseModalCount } from '@shopgate/engage/a11y/action-creators';
 import a11y from '@shopgate/engage/a11y/reducers';
+import { emitScrollEvents, stopScrollEvents } from '@shopgate/engage/core/streams';
 import Provider from '../provider';
 
 jest.mock('@shopgate/engage/components');
+jest.mock('@shopgate/engage/core/streams', () => ({
+  emitScrollEvents: jest.fn(),
+  stopScrollEvents: jest.fn(),
+}));
 
 const mockContextProvider = jest.fn(({ children }) => children);
 
@@ -75,5 +80,49 @@ describe('engage > components > view > provider', () => {
     });
     // Check updated aria hidden state
     expect(getLastProviderValue().ariaHidden).toBe(false);
+  });
+
+  describe('scroll events', () => {
+    beforeEach(() => {
+      jest.useFakeTimers();
+    });
+
+    afterEach(() => {
+      jest.useRealTimers();
+    });
+
+    const renderProvider = () => render((
+      <StoreProvider store={store}>
+        <Provider>
+          <div>Page #1</div>
+        </Provider>
+      </StoreProvider>
+    ));
+
+    it('should stop the scroll events of the content when it unmounts', () => {
+      const { unmount } = renderProvider();
+      const element = document.createElement('div');
+
+      act(() => {
+        getLastProviderValue().setContentRef({ current: element });
+        jest.advanceTimersByTime(250);
+      });
+      expect(emitScrollEvents).toHaveBeenCalledWith(element);
+
+      unmount();
+      expect(stopScrollEvents).toHaveBeenLastCalledWith(element);
+    });
+
+    it('should not set up scroll events when it unmounts before the delay', () => {
+      const { unmount } = renderProvider();
+
+      act(() => {
+        getLastProviderValue().setContentRef({ current: document.createElement('div') });
+      });
+      unmount();
+      jest.advanceTimersByTime(250);
+
+      expect(emitScrollEvents).not.toHaveBeenCalled();
+    });
   });
 });

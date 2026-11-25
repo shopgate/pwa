@@ -85,3 +85,16 @@ open, what is in place until then, and what has to happen. Remove an entry once 
   login redirect, deep links), or replace the router. When replacing it, keep
   `@virtuous/conductor` resolvable for extensions (e.g. through a webpack alias), so that there's
   only one router instance.
+
+## ResizeObserver leak of parallax-controller
+
+- **Status:** parallax-controller 1.7.1 (latest, used by react-scroll-parallax 3.5.0) creates a
+  `ResizeObserver` in its constructor and another one in `enableParallaxController()`, and only
+  disconnects the last one. react-scroll-parallax calls both for a controller that starts
+  enabled, so every unmounted view stayed in memory with its whole DOM.
+- **Until then:** the `ParallaxProvider` in
+  `libraries/engage/components/View/components/Content/components/ParallaxProvider/index.jsx`
+  creates the controller disabled and enables it after mount (`mounted` flag), so it has only one
+  observer.
+- **To do:** remove the `mounted` flag once a parallax-controller release disconnects the previous
+  observer in `_addResizeObserver()`, or the library is replaced.

@@ -1,5 +1,5 @@
 import React, {
-  useEffect, useContext, useMemo,
+  useEffect, useContext, useMemo, useState,
 } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -49,6 +49,11 @@ const ParallaxProvider = ({
   children,
 }) => {
   const reduceMotion = useReduceMotion();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Determine if a scroll container is used. If false PWA is in curbside website mode and window
   // is used as scroll container.
@@ -68,7 +73,7 @@ const ParallaxProvider = ({
   return (
     <ParallaxProviderCmp
       // For now Parallax is disabled when no scroll container is used.
-      isDisabled={!scrollContainerUsed || reduceMotion || !viewVisible}
+      isDisabled={!mounted || !scrollContainerUsed || reduceMotion || !viewVisible}
       scrollContainer={scrollContainerUsed ? viewRef.current : null}
     >
       <ParallaxProviderInner scrollHeight={height}>
