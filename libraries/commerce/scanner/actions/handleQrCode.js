@@ -21,12 +21,13 @@ import { parse2dsQrCode } from '../helpers';
 import handleSearch from './handleSearch';
 import handleNoResults from './handleNoResults';
 
+/** @import { AppThunk } from '@shopgate/engage/core/types' */
+/** @import { ScanResult } from '../types' */
+
 /**
  * Handle qr code
- * @param {string} event.scope Scanner scope.
- * @param {string} event.format Format of the scanned code.
- * @param {string} event.payload Barcode payload.
- * @return {Function} A redux thunk.
+ * @param {ScanResult} event The scanned code.
+ * @return {AppThunk<Promise<null>>} A redux thunk.
  */
 const handleQrCode = ({ scope, format, payload }) => async (dispatch, getState) => {
   const { type, link, data } = parse2dsQrCode(payload) || {};

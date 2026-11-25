@@ -47,5 +47,11 @@ describe('handleNoResults', () => {
     await handleNoResults({ scope, format, payload }, modalContent.message)(dispatch);
     expect(scannerStart).toHaveBeenCalledTimes(1);
   });
+
+  it('should not fail when an extension stopped the modal', async () => {
+    showModal.mockReturnValueOnce(undefined);
+    await handleNoResults({ scope, format, payload }, modalContent.message)(dispatch);
+    expect(scannerStart).not.toHaveBeenCalled();
+  });
 });
 /* eslint-enable extra-rules/no-single-line-objects */
