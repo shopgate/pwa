@@ -47,6 +47,9 @@
   "@shopgate/widgets/accordionWidget": {
     "path": "@shopgate/engage/page/widgets/Accordion"
   },
+  "@shopgate/widgets/imageWithTextWidget": {
+    "path": "@shopgate/engage/page/widgets/ImageWithText"
+  },
   "@shopgate/widgetsInternal/Placeholder": {
     "path": "@shopgate/engage/page/widgets/Placeholder"
   }
