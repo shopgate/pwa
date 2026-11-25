@@ -15,6 +15,7 @@ jest.mock('@shopgate/pwa-common/helpers/config', () => ({
 let mockRouteState: { scrollTop?: number } = {};
 let mockVisible = true;
 let mockRouteId = 0;
+let mockScrollContainer = true;
 jest.mock('../useRoute', () => ({
   useRoute: () => ({
     id: `route-${mockRouteId}`,
@@ -23,7 +24,7 @@ jest.mock('../useRoute', () => ({
   }),
 }));
 jest.mock('@shopgate/engage/core/helpers/scrollContainer', () => ({
-  applyScrollContainer: () => true,
+  applyScrollContainer: () => mockScrollContainer,
 }));
 
 /**
@@ -104,6 +105,7 @@ describe('useViewScroll', () => {
     mockRouteState = {};
     mockVisible = true;
     mockRouteId += 1;
+    mockScrollContainer = true;
     jest.useFakeTimers();
     element = createScrollElement();
   });
@@ -250,5 +252,39 @@ describe('useViewScroll', () => {
     mockRouteState = { scrollTop: 500 };
     renderHook();
     expect(state.scrollingDown).toBe(true);
+  });
+
+  it('should use the taller of the document and the body when the window scrolls', () => {
+    mockScrollContainer = false;
+    const { innerHeight } = window;
+    const setProperty = (target: object, name: string, value: number) => {
+      Object.defineProperty(target, name, {
+        value,
+        configurable: true,
+        writable: true,
+      });
+    };
+    setProperty(document.documentElement, 'scrollHeight', 1500);
+    setProperty(document.body, 'scrollHeight', 3000);
+    setProperty(window, 'innerHeight', 500);
+    const scrollWindowTo = (scrollY: number) => {
+      act(() => {
+        setProperty(window, 'scrollY', scrollY);
+        window.dispatchEvent(new Event('scroll'));
+        jest.advanceTimersByTime(16);
+      });
+    };
+
+    renderHook();
+    scrollWindowTo(2500);
+    expect(state.scrollingDown).toBe(true);
+
+    scrollWindowTo(2300);
+    expect(state.scrollingDown).toBe(false);
+
+    setProperty(window, 'scrollY', 0);
+    setProperty(window, 'innerHeight', innerHeight);
+    setProperty(document.body, 'scrollHeight', 0);
+    setProperty(document.documentElement, 'scrollHeight', 0);
   });
 });

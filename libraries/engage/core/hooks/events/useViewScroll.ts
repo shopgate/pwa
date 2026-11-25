@@ -112,7 +112,8 @@ const useViewScroll = ({ enabled = true }: UseViewScrollParams = {}): ViewScroll
      * @returns The largest scroll position of the view.
      */
     const getMaxScrollTop = () => (useWindow
-      ? document.documentElement.scrollHeight - window.innerHeight
+      ? Math.max(document.documentElement.scrollHeight, document.body.scrollHeight)
+        - window.innerHeight
       : (target as HTMLElement).scrollHeight - (target as HTMLElement).clientHeight);
     const restorePending = restoreExpected.current && getScrollTop() === 0
       && latestSavedScrollTop.current > 0;
