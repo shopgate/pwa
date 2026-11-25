@@ -7,12 +7,13 @@ import {
   APP_BAR_ACTIONS_RIGHT,
   APP_BAR_LOGO,
 } from '@shopgate/engage/core/constants';
+import { useViewScroll } from '@shopgate/engage/core/hooks';
 import type {
   AppBarButtonSlot,
   AppBarSettings,
 } from '@shopgate/engage/settings/types/appSettings';
 import ActionButton from '../ActionButton';
-import { useForwardScroll, useOverlayScroll } from '../../hooks';
+import { useForwardScroll } from '../../hooks';
 import {
   APP_BAR_BUTTON_SIZE,
   FLOATING_BUTTON_INSET,
@@ -274,7 +275,7 @@ const ConfiguredBar = ({
   classes: parentClasses = {},
   ...props
 }: Props) => {
-  const { moved, scrollingDown } = useOverlayScroll(overlay);
+  const { moved, scrollingDown } = useViewScroll({ enabled: overlay });
   const {
     showLogo, logoPosition, buttons, floating: { scrollBehavior },
   } = settings;
