@@ -64,25 +64,28 @@ export {
 } from './locations.hooks';
 
 // TYPES
-export {
-  /** @typedef {import('./locations.types').LocationAddress} */
-  /** @typedef {import('./locations.types').Location} */
-  /** @typedef {import('./locations.types').LocationsByIdState} */
-  /** @typedef {import('./locations.types').LocationsByProductIdState} */
-  /** @typedef {import('./locations.types').FulfillmentPath} */
-  /** @typedef {import('./locations.types').UserLocationState} */
-  /** @typedef {import('./locations.types').ReservationFormValues} */
-  /** @typedef {import('./locations.types').UserLocationFulfillmentMethod} */
-  /** @typedef {import('./locations.types').UserLocationLocationCode} */
-  /** @typedef {import('./locations.types').UserFormInputState} */
-  /** @typedef {import('./locations.types').LocationsState} */
-  /** @typedef {import('./locations.types').SheetStage} */
-  /** @typedef {import('./locations.types').SheetCallbackFn} */
-  /** @typedef {import('./locations.types').SheetOpenParams} */
-  /** @typedef {import('./locations.types').ReservationResponse} */
-  /** @typedef {import('./locations.types').LocationOperationHours} */
-  /** @typedef {import('./locations.types').LocationAware} */
-  /** @typedef {import('./locations.types').OptionalLocationAware} */
+export type {
+  LocationAddress,
+  Location,
+  LocationsByIdState,
+  LocationsByProductIdState,
+  FulfillmentPath,
+  UserLocationState,
+  ReservationFormValues,
+  UserLocationFulfillmentMethod,
+  UserLocationLocationCode,
+  UserFormInputState,
+  LocationsState,
+  SheetStage,
+  SheetCallbackFn,
+  SheetOpenParams,
+  ReservationResponse,
+  LocationOperationHours,
+  LocationType,
+  LocationProductInventory,
+  ProductLocations,
+  LocationAware,
+  OptionalLocationAware,
 } from './locations.types';
 
 // CONTEXT
