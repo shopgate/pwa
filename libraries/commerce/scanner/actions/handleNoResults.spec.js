@@ -53,5 +53,11 @@ describe('handleNoResults', () => {
     await handleNoResults({ scope, format, payload }, modalContent.message)(dispatch);
     expect(scannerStart).not.toHaveBeenCalled();
   });
+
+  it('should not start the Scanner when the stopped modal returns its noop function', async () => {
+    showModal.mockReturnValueOnce(() => {});
+    await handleNoResults({ scope, format, payload }, modalContent.message)(dispatch);
+    expect(scannerStart).not.toHaveBeenCalled();
+  });
 });
 /* eslint-enable extra-rules/no-single-line-objects */

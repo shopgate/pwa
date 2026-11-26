@@ -19,7 +19,7 @@ const handleNoResult = ({ scope, format, payload }, message) => async (dispatch)
     confirm: 'modal.ok',
     title: 'modal.title_error',
     message,
-  }))).then(confirmed => confirmed && Scanner.start());
+  }))).then(confirmed => confirmed === true && Scanner.start());
 };
 
 /** @mixes {MutableFunction} */
