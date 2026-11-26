@@ -10,17 +10,20 @@ import {
 } from '@shopgate/engage/core/constants';
 import { appPermissionStatusReceived } from '../action-creators';
 
+/** @import { AppThunk } from '@shopgate/engage/core/types' */
+/** @import { AppPermissionRequestResult, PermissionId } from './grantPermissions' */
+
 /**
  * Requests an additional app permission from the operating system.
  * Additionally it propagates the received status via the APP_PERMISSION_STATUS_RECEIVED action.
  * @param {Object} params The action params
- * @param {string} params.permissionId The desired app permission id
+ * @param {PermissionId} params.permissionId The desired app permission id
  * @param {Object} [params.options={}] Additional options for the permission request.
  * E.g. the usage object for geolocation permissions.
  * @param {Function} [params.dispatchMock=null] An optional mock for the request dispatch logic.
  * Usually used when PWA is running inside a browser and app command logic can be simulated via
  * browser APIs like for geolocation access.
- * @returns {Function} A Redux thunk
+ * @returns {AppThunk<Promise<AppPermissionRequestResult>>} A Redux thunk
  */
 const requestAppPermission = ({
   permissionId,

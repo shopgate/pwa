@@ -12,6 +12,7 @@ import { isProductAvailable } from '../helpers/productInventory';
 import { DIRECT_SHIP, NEARBY_LOCATIONS_LIMIT, NEARBY_LOCATIONS_RADIUS } from '../constants';
 
 /** @import { Location, LocationAddress, StateSelector } from '../locations.types' */
+/** @import { LocationsStorageState } from '../reducers/storage.types' */
 
 /**
  * Selector to retrieve a product's fulfillment methods.
@@ -41,7 +42,7 @@ const getLocationsState = state => state.locations || EMPTY_OBJ;
 /**
  * Gets the location storage state.
  * @param {Object} state State.
- * @return {Object}
+ * @return {LocationsStorageState}
  */
 export const getLocationsStorage = state => state.locations.storage;
 

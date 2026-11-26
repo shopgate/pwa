@@ -5,6 +5,9 @@ import { mutable } from '../../helpers/redux';
 import { getModalById } from '../../selectors/modal';
 import promiseMap from './promiseMap';
 
+/** @import { AppThunk } from '@shopgate/engage/core/types' */
+/** @import { ModalOptions } from './types' */
+
 /**
  * Creates a runtime unique modal id.
  * @param {Object} options The modal options.
@@ -28,8 +31,9 @@ const defaultModalOptions = {
 /**
  * Dispatches the createModal action creator and returns
  * a promise that will be resolved when the modal closes.
- * @param {Object} options The modal options.
- * @return {Function} A Redux thunk.
+ * @param {ModalOptions} options The modal options.
+ * @return {AppThunk<Promise<boolean|null>>} A Redux thunk. The promise resolves with whether the
+ * modal was confirmed, or with null when an identical modal is already open.
  */
 function showModal(options) {
   return (dispatch, getState) => {

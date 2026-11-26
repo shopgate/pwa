@@ -8,6 +8,8 @@ import {
   getKnownRelatives,
 } from '../../product';
 
+/** @import { FavoritesList, PropsGetter, PropsSelector } from '../types' */
+
 const defaultIds = [];
 
 /**
@@ -25,7 +27,7 @@ export const getFavoritesListState = state => state.favorites?.lists || {};
 /**
  * Returns a list of available wishlists to the user.
  * @param {Object} state The global state.
- * @return {Object}
+ * @return {FavoritesList[]}
  */
 export const getFavoritesLists = state => getFavoritesListState(state)?.lists || [];
 
@@ -216,9 +218,10 @@ export const isFetching = createSelector(
 );
 
 /**
- * @param {Function} getProductCode Reads the product id.
- * @param {Function} getListCode Reads the list id.
- * @return {boolean}
+ * @template [P=undefined]
+ * @param {PropsGetter<string|null|undefined, P>} getProductCode Reads the product id.
+ * @param {PropsGetter<string|null|undefined, P>} getListCode Reads the list id.
+ * @return {PropsSelector<boolean, P>} A selector.
  */
 export const makeIsProductOnSpecificFavoriteList = (getProductCode, getListCode) => createSelector(
   getProductCode,
@@ -230,8 +233,9 @@ export const makeIsProductOnSpecificFavoriteList = (getProductCode, getListCode)
 );
 
 /**
- * @param {Function} getProductCode Reads the product id.
- * @return {boolean}
+ * @template [P=undefined]
+ * @param {PropsGetter<string|null|undefined, P>} getProductCode Reads the product id.
+ * @return {PropsSelector<boolean, P>} A selector.
  */
 export const makeIsProductOnFavoriteList = getProductCode => createSelector(
   getProductCode,

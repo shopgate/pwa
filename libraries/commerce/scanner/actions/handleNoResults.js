@@ -3,22 +3,23 @@ import { mutable } from '@shopgate/pwa-common/helpers/redux';
 import Scanner from '@shopgate/pwa-core/classes/Scanner';
 import errorHandleScanner from '../action-creators/errorHandleScanner';
 
+/** @import { AppThunk } from '@shopgate/engage/core/types' */
+/** @import { ScanResult } from '../types' */
+
 /**
  * Handle no results
- * @param {string} event.scope Scanner scope.
- * @param {string} event.format Format of the scanned code.
- * @param {string} event.payload Barcode payload.
+ * @param {ScanResult} event The scanned code.
  * @param {string} message The message to display.
- * @return {Function} A redux thunk.
+ * @return {AppThunk<Promise<void>>} A redux thunk.
  */
 const handleNoResult = ({ scope, format, payload }, message) => async (dispatch) => {
   dispatch(errorHandleScanner(scope, format, payload));
-  dispatch(showModal({
+  Promise.resolve(dispatch(showModal({
     dismiss: null,
     confirm: 'modal.ok',
     title: 'modal.title_error',
     message,
-  })).then(confirmed => confirmed && Scanner.start());
+  }))).then(confirmed => confirmed === true && Scanner.start());
 };
 
 /** @mixes {MutableFunction} */

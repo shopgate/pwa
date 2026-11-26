@@ -1,9 +1,8 @@
-/* eslint-disable require-jsdoc */
+/* eslint-disable jsdoc/require-jsdoc */
 export const FulfillmentSelector = () => 'FulfillmentSelector';
 export const FulfillmentSheet = () => 'FulfillmentSheet';
 export const StoreAddressOpeningHours = () => 'StoreAddressOpeningHours';
 export const StoreAddressPhoneNumber = () => 'StoreAddressPhoneNumber';
-export const StorePhoneNumber = ({ phone }) => phone;
+export const StorePhoneNumber = ({ phone }: { phone?: string }) => phone;
 export const StoreOpeningHours = () => 'StoreOpeningHours';
-
-/* eslint-enable require-jsdoc */
+/* eslint-enable jsdoc/require-jsdoc */
