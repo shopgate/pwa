@@ -865,7 +865,14 @@
   },
   "page": {
     "not_found": "The page you’re looking for can’t be found.",
-    "continue": "Continue shopping"
+    "continue": "Continue shopping",
+    "countdown": {
+      "days": "{count, plural, one {Day} other {Days}}",
+      "hours": "Hrs.",
+      "minutes": "Min.",
+      "seconds": "Sec.",
+      "remaining": "{days, plural, =0 {} one {# day, } other {# days, }}{hours, plural, one {# hour} other {# hours}}, {minutes, plural, one {# minute} other {# minutes}} and {seconds, plural, one {# second} other {# seconds}} left"
+    }
   },
   "registration": {
     "create_account": "Create account",

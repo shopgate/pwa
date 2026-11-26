@@ -5,6 +5,8 @@ import { resolveBorderRadiusFromWidgetConfig } from '../../helpers';
  * @typedef {Object} HeroBanner
  * @property {string} text Banner text content
  * @property {string} link Optional banner link
+ * @property {string} [buttonText] Text of the button that opens the link
+ * @property {"left"|"center"|"right"|"fullWidth"} [buttonAlignment] Where the button sits
  * @property {"default"|"none"|"rounded"|"custom"} borderRadius The border radius option.
  * @property {number} [borderRadiusCustom] The custom border radius value.
  * @property {boolean} parallax Whether to apply a parallax effect to the image

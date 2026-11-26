@@ -864,7 +864,14 @@
   },
   "page": {
     "not_found": "Tyvärr kunde vi inte hitta den begärda sidan.",
-    "continue": "Fortsätt handla"
+    "continue": "Fortsätt handla",
+    "countdown": {
+      "days": "{count, plural, one {Dag} other {Dagar}}",
+      "hours": "Tim.",
+      "minutes": "Min.",
+      "seconds": "Sek.",
+      "remaining": "{days, plural, =0 {} one {# dag, } other {# dagar, }}{hours, plural, one {# timme} other {# timmar}}, {minutes, plural, one {# minut} other {# minuter}} och {seconds, plural, one {# sekund} other {# sekunder}} kvar"
+    }
   },
   "registration": {
     "create_account": "Skapa konto",

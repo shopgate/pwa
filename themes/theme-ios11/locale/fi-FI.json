@@ -865,7 +865,14 @@
   },
   "page": {
     "not_found": "Valitettavasti sivua ei löytynyt.",
-    "continue": "Jatka ostoksia"
+    "continue": "Jatka ostoksia",
+    "countdown": {
+      "days": "{count, plural, one {Päivä} other {Päivää}}",
+      "hours": "Tuntia",
+      "minutes": "Min.",
+      "seconds": "Sek.",
+      "remaining": "Aikaa jäljellä: {days, plural, =0 {} one {# päivä, } other {# päivää, }}{hours, plural, one {# tunti} other {# tuntia}}, {minutes, plural, one {# minuutti} other {# minuuttia}} ja {seconds, plural, one {# sekunti} other {# sekuntia}}"
+    }
   },
   "registration": {
     "create_account": "Luo tili",
