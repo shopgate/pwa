@@ -89,10 +89,13 @@ const getDefaultSortOrder = makeGetDefaultSortOrder();
  *   into the product hash and the request.
  * @param {boolean} [options.includeFilters=true] Tells if the filter parameters shall be included
  *   into the product hash and the request.
+ * @param {boolean} [options.includeFulfillment=true] Whether to include fulfillment data to the
+ *   request.
  * @param {Function} [options.onBeforeDispatch=() => {}] A callback which is fired, before new data
  *  will be returned.
  * @param {boolean} [options.resolveCachedProducts=false] Whether to resolve with products even
  * when no actual request was done due to cached data.
+ * @param {boolean} [options.calledByFetchProductsById=false] Whether fetchProductsById calls it.
  * @return {Function} A Redux Thunk
  */
 function fetchProducts(options) {

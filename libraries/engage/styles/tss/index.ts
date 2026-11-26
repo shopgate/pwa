@@ -1,5 +1,9 @@
 import createCache, { type EmotionCache } from '@emotion/cache';
-import { serializeStyles, type Interpolation } from '@emotion/serialize';
+import {
+  serializeStyles,
+  type CSSProperties,
+  type Interpolation,
+} from '@emotion/serialize';
 import type { SerializedStyles } from '@emotion/utils';
 import { createMakeAndWithStyles, createTss } from 'tss-react';
 import { createCssAndCx } from 'tss-react/cssAndCx';
@@ -46,6 +50,26 @@ function insertWithoutScoping(
 }
 
 /**
+ * A CSS value, also with `!important` behind it.
+ */
+type GlobalCSSValue<V> = V | (V extends string ? `${V} !important` : never);
+
+/**
+ * CSS declarations whose values may end with `!important`.
+ */
+type GlobalCSSProperties = {
+  [K in keyof CSSProperties]?: GlobalCSSValue<CSSProperties[K]>;
+};
+
+/**
+ * Global CSS rules for `injectGlobal`: selectors with their declarations, also nested. Other
+ * than the style objects of emotion, values may end with `!important`.
+ */
+interface GlobalCSSObject extends GlobalCSSProperties {
+  [selector: string]: GlobalCSSObject | string | number | readonly (string | number)[] | undefined;
+}
+
+/**
  * Injects global CSS rules into the application.
  *
  * This is a programmatic alternative to the `GlobalStyles` component from `@shopgate/engage/styles`,
@@ -62,9 +86,9 @@ function insertWithoutScoping(
  * });
  */
 export const injectGlobal = (
-  ...args: (TemplateStringsArray | Interpolation<unknown>)[]
+  ...args: (TemplateStringsArray | Interpolation<unknown> | GlobalCSSObject)[]
 ) => {
-  const serialized = serializeStyles(args, emotionCache.registered);
+  const serialized = serializeStyles(args as Interpolation<unknown>[], emotionCache.registered);
   insertWithoutScoping(emotionCache, serialized);
 };
 
@@ -74,11 +98,23 @@ export const { tss } = createTss({
   cache: emotionCache,
 });
 
+/**
+ * The style helpers of tss-react, referenced by name so that the declaration doesn't contain
+ * paths into tss-react that its package exports don't allow.
+ */
+type MakeAndWithStyles = ReturnType<typeof createMakeAndWithStyles<ReturnType<typeof useTheme>>>;
+
 // Create makeStyles and withStyles functions for tss-react package
-export const { makeStyles, withStyles, useStyles } = createMakeAndWithStyles({
+const makeAndWithStyles: MakeAndWithStyles = createMakeAndWithStyles({
   useTheme,
   cache: emotionCache,
 });
+
+/* eslint-disable prefer-destructuring */
+export const makeStyles: MakeAndWithStyles['makeStyles'] = makeAndWithStyles.makeStyles;
+export const withStyles: MakeAndWithStyles['withStyles'] = makeAndWithStyles.withStyles;
+export const useStyles: MakeAndWithStyles['useStyles'] = makeAndWithStyles.useStyles;
+/* eslint-enable prefer-destructuring */
 
 export const { cx, css } = createCssAndCx({
   cache: emotionCache,

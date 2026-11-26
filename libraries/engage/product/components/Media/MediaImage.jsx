@@ -34,7 +34,7 @@ const useStyles = makeStyles()({
  * @returns {JSX.Element}
  */
 const MediaImage = ({
-  url, altText, className, resolutions, ratio,
+  url, altText, className, resolutions, ratio, naturalRatio,
 }) => {
   const { classes, cx } = useStyles();
 
@@ -59,6 +59,7 @@ const MediaImage = ({
         src={url}
         resolutions={resolutions}
         ratio={ratio}
+        naturalRatio={naturalRatio}
         alt={altText}
         className={mergedClassName}
         backgroundColor="transparent"
@@ -73,6 +74,7 @@ const MediaImage = ({
 MediaImage.propTypes = {
   altText: propTypes.altText,
   className: propTypes.className,
+  naturalRatio: PropTypes.bool,
   ratio: PropTypes.arrayOf(PropTypes.number),
   resolutions: PropTypes.arrayOf(PropTypes.shape({
     width: PropTypes.number.isRequired,
@@ -85,6 +87,7 @@ MediaImage.defaultProps = {
   url: defaultProps.url,
   altText: defaultProps.altText,
   className: defaultProps.className,
+  naturalRatio: false,
   ratio: null,
   resolutions: undefined,
 };

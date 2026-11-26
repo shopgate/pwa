@@ -151,6 +151,8 @@ describe('settings / reducers / appSettings', () => {
           },
           floating: {
             scrollBehavior: 'scrollAway',
+            home: false,
+            product: true,
           },
         },
         tabBar: {
@@ -231,6 +233,7 @@ describe('settings / reducers / appSettings', () => {
         },
         gallery: {
           pagination: 'fraction',
+          thumbnails: true,
         },
         addToCartBar: {
           variant: 'floating',
@@ -292,10 +295,17 @@ describe('settings / reducers / appSettings', () => {
           right: 8,
         },
       },
+      icons: {
+        cart: {
+          svg: '<svg viewBox="0 0 48 48"><path d="M0 0h48"/></svg>',
+          keepColors: true,
+        },
+      },
     };
 
     const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings(settings));
 
+    expect(state.icons).toEqual(settings.icons);
     expect(state.isHydrated).toBe(true);
     expect(state.navigation).toEqual(settings.navigation);
     expect(state.search).toEqual(settings.search);
@@ -396,7 +406,55 @@ describe('settings / reducers / appSettings', () => {
       },
     }));
 
-    expect(state.product.gallery).toEqual({ pagination: 'bulletsBelow' });
+    expect(state.product.gallery).toEqual({
+      pagination: 'bulletsBelow',
+      thumbnails: false,
+    });
+  });
+
+  it('stores a hidden pagination of the product gallery', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        gallery: {
+          pagination: 'none',
+        },
+      },
+    }));
+
+    expect(state.product.gallery).toEqual({
+      pagination: 'none',
+      thumbnails: false,
+    });
+  });
+
+  it('stores the thumbnails of the product gallery', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        gallery: {
+          thumbnails: true,
+        },
+      },
+    }));
+
+    expect(state.product.gallery).toEqual({
+      pagination: 'bullets',
+      thumbnails: true,
+    });
+  });
+
+  it('keeps the thumbnails of the product gallery off for an invalid value', () => {
+    const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+      product: {
+        gallery: {
+          thumbnails: 'true',
+        },
+      },
+    } as unknown as AppSettingsPayload));
+
+    expect(state.product.gallery).toEqual({
+      pagination: 'bullets',
+      thumbnails: false,
+    });
   });
 
   it.each([null, 'dots', 123, { type: 'fraction' }])(
@@ -410,7 +468,10 @@ describe('settings / reducers / appSettings', () => {
         },
       } as unknown as AppSettingsPayload));
 
-      expect(state.product.gallery).toEqual({ pagination: 'bullets' });
+      expect(state.product.gallery).toEqual({
+        pagination: 'bullets',
+        thumbnails: false,
+      });
     }
   );
 
@@ -966,7 +1027,11 @@ describe('settings / reducers / appSettings', () => {
               link: 42,
             },
           },
-          floating: { scrollBehavior: 'foo' },
+          floating: {
+            scrollBehavior: 'foo',
+            home: 'false',
+            product: 0,
+          },
         },
       },
       search: {
@@ -991,7 +1056,11 @@ describe('settings / reducers / appSettings', () => {
         link: '',
       },
     });
-    expect(appBar.floating.scrollBehavior).toBe('revealBar');
+    expect(appBar.floating).toEqual({
+      scrollBehavior: 'revealBar',
+      home: true,
+      product: true,
+    });
     expect(search).toEqual(DEFAULT_APP_SETTINGS.search);
   });
 
@@ -1024,5 +1093,226 @@ describe('settings / reducers / appSettings', () => {
     } as unknown as AppSettings));
 
     expect(state.navigation).toEqual(DEFAULT_APP_SETTINGS.navigation);
+  });
+
+  describe('tab bar items', () => {
+    const cart = {
+      action: 'cart',
+      icon: '',
+      link: '',
+    };
+    const home = {
+      action: 'home',
+      icon: 'heart',
+      link: '',
+    };
+
+    /**
+     * Receives a payload with the given tab bar items.
+     * @param items The incoming tab bar items.
+     * @param state The state to start from.
+     * @returns The stored tab bar items.
+     */
+    const receiveItems = (items: unknown, state = DEFAULT_APP_SETTINGS) => appSettings(
+      state,
+      receiveAppSettings({ navigation: { tabBar: { items } } } as unknown as AppSettings)
+    ).navigation.tabBar.items;
+
+    it('has no default list', () => {
+      expect(DEFAULT_APP_SETTINGS.navigation.tabBar.items).toBeUndefined();
+      expect(appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({})).navigation.tabBar.items)
+        .toBeUndefined();
+    });
+
+    it('keeps the configured items in their order', () => {
+      expect(receiveItems([cart, home])).toEqual([cart, home]);
+    });
+
+    it('keeps an empty list', () => {
+      expect(receiveItems([])).toEqual([]);
+    });
+
+    it.each([null, 'cart', { 0: cart }, 3])('falls back to the default list for %j', (items) => {
+      expect(receiveItems(items)).toBeUndefined();
+    });
+
+    it('drops entries without an action', () => {
+      expect(receiveItems([
+        null,
+        'cart',
+        [cart],
+        {
+          icon: 'cart',
+          link: '',
+        },
+        {
+          action: '',
+          icon: '',
+          link: '',
+        },
+        {
+          action: 42,
+          icon: '',
+          link: '',
+        },
+        home,
+      ])).toEqual([home]);
+    });
+
+    it('drops unknown fields and replaces invalid icons and links', () => {
+      expect(receiveItems([
+        {
+          action: '@shopgate/customer-card/card',
+          label: 'Card',
+        },
+        {
+          action: 'link',
+          icon: null,
+          link: 42,
+        },
+      ])).toEqual([
+        {
+          action: '@shopgate/customer-card/card',
+          icon: '',
+          link: '',
+        },
+        {
+          action: 'link',
+          icon: '',
+          link: '',
+        },
+      ]);
+    });
+
+    it('replaces a longer list of an earlier payload', () => {
+      const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        navigation: { tabBar: { items: [home, cart, home] } },
+      }));
+
+      expect(receiveItems([cart], first)).toEqual([cart]);
+    });
+
+    it('drops the list when a later payload omits it', () => {
+      const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        navigation: { tabBar: { items: [cart] } },
+      }));
+
+      expect(appSettings(first, receiveAppSettings({})).navigation.tabBar.items).toBeUndefined();
+    });
+  });
+
+  describe('icons', () => {
+    it('defaults to no icon overrides', () => {
+      expect(DEFAULT_APP_SETTINGS.icons).toEqual({});
+    });
+
+    it('keeps valid overrides and drops invalid fields and entries', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg><path d="M1 1"/></svg>',
+            keepColors: 'yes',
+          },
+          heart: { svg: '' },
+          home: { keepColors: true },
+          star: 'not an override',
+          tick: null,
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg><path d="M1 1"/></svg>',
+          keepColors: false,
+        },
+      });
+    });
+
+    it('keeps the scale of an override and drops one that is no number', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg/>',
+            scale: 0.9,
+          },
+          heart: {
+            svg: '<svg/>',
+            scale: 'big',
+          },
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg/>',
+          keepColors: false,
+          scale: 0.9,
+        },
+        heart: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+      });
+    });
+
+    it('keeps a positive line width of an override and drops invalid ones', () => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: {
+          cart: {
+            svg: '<svg/>',
+            strokeWidth: 1.5,
+          },
+          heart: {
+            svg: '<svg/>',
+            strokeWidth: -1,
+          },
+          home: {
+            svg: '<svg/>',
+            strokeWidth: 'thin',
+          },
+          share: {
+            svg: '<svg/>',
+            strokeWidth: Number.NaN,
+          },
+        },
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({
+        cart: {
+          svg: '<svg/>',
+          keepColors: false,
+          strokeWidth: 1.5,
+        },
+        heart: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+        home: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+        share: {
+          svg: '<svg/>',
+          keepColors: false,
+        },
+      });
+    });
+
+    it('drops an override a later payload omits', () => {
+      const first = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons: { cart: { svg: '<svg/>' } },
+      }));
+      const second = appSettings(first, receiveAppSettings({}));
+
+      expect(second.icons).toEqual({});
+    });
+
+    it.each([null, 'icons', ['<svg/>']])('falls back to no overrides for %j', (icons) => {
+      const state = appSettings(DEFAULT_APP_SETTINGS, receiveAppSettings({
+        icons,
+      } as unknown as AppSettings));
+
+      expect(state.icons).toEqual({});
+    });
   });
 });

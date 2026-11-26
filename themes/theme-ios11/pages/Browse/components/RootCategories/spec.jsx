@@ -2,7 +2,10 @@ import { render } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { createMockStore } from '@shopgate/pwa-common/store';
 import I18nProvider from '@shopgate/pwa-common/components/I18n/components/I18nProvider';
-import { getRootCategories } from '@shopgate/pwa-common-commerce/category/selectors';
+import {
+  getRootCategories,
+  getRootCategoriesState,
+} from '@shopgate/pwa-common-commerce/category/selectors';
 import { CategoryList } from '@shopgate/engage/category/components';
 import Headline from 'Components/Headline';
 import RootCategories from './index';
@@ -28,6 +31,7 @@ jest.mock('@shopgate/pwa-common-commerce/category/selectors', () => ({
       name: 'qux',
     },
   ]),
+  getRootCategoriesState: jest.fn(() => ({ isFetching: false })),
 }));
 jest.mock('@shopgate/engage/components');
 jest.mock('@shopgate/engage/category/components', () => ({
@@ -51,8 +55,23 @@ describe('<RootCategories />', () => {
     expect(Headline.mock.lastCall[0]).toEqual(expect.objectContaining({ text: 'titles.allCategories' }));
     expect(CategoryList.mock.lastCall[0]).toEqual({
       categories: expectedRootCategories,
+      prerender: 0,
       layout: 'list',
       showLeftSideImages: false,
     });
+  });
+
+  it('should render placeholders while the root categories are fetching', () => {
+    getRootCategoriesState.mockReturnValueOnce({ isFetching: true });
+
+    render((
+      <Provider store={store}>
+        <I18nProvider>
+          <RootCategories />
+        </I18nProvider>
+      </Provider>
+    ));
+
+    expect(CategoryList.mock.lastCall[0]).toEqual(expect.objectContaining({ prerender: 6 }));
   });
 });

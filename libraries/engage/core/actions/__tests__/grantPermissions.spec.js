@@ -288,6 +288,28 @@ describe('engage > core > actions > grantPermissions', () => {
     expect(event.addCallbackSpy).not.toHaveBeenCalled();
   });
 
+  it('should show the settings modal without a confirm button when confirm is null', async () => {
+    getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
+    showModal.mockResolvedValueOnce(false);
+
+    const granted = await grantPermissions({
+      permissionId,
+      useSettingsModal: true,
+      settingsModal: {
+        ...customModalOptions,
+        confirm: null,
+      },
+    })(dispatch, getState);
+    expect(granted).toBe(false);
+
+    expect(showModal).toHaveBeenCalledWith({
+      title: null,
+      ...customModalOptions,
+      confirm: null,
+    });
+    expect(openAppSettings).not.toHaveBeenCalled();
+  });
+
   it('should resolve with FALSE when the user opened the settings, but did not grant permissions', async () => {
     getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));
     getAppPermissions.mockResolvedValueOnce(getPermissionsResponse(PERMISSION_STATUS_DENIED));

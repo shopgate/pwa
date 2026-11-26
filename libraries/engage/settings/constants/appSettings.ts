@@ -17,6 +17,7 @@ export const PRODUCT_GALLERY_PAGINATIONS: readonly ProductGalleryPagination[] = 
   'fraction',
   'fractionBelow',
   'progressbar',
+  'none',
 ];
 
 export const DEFAULT_SHOW_REVIEWS = !!(appConfig as ReviewsConfig).hasReviews;

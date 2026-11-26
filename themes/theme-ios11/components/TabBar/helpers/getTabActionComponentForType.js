@@ -1,30 +1,15 @@
-import {
-  TAB_HOME,
-  TAB_BROWSE,
-  TAB_CART,
-  TAB_MORE,
-  TAB_FAVORITES,
-} from '../constants';
-import TabBarAction from '../components/TabBarAction';
-import TabBarHomeAction from '../components/HomeAction';
-import TabBarBrowseAction from '../components/BrowseAction';
-import TabBarCartAction from '../components/CartAction';
-import TabBarMoreAction from '../components/MoreAction';
-import TabBarFavoritesAction from '../components/FavoritesAction';
+import { CORE_TAB_TYPES } from '../coreTabData';
+import { createCoreTabAction } from '../components/CoreTabAction';
 
-export const tabs = {
-  [TAB_HOME]: TabBarHomeAction,
-  [TAB_BROWSE]: TabBarBrowseAction,
-  [TAB_CART]: TabBarCartAction,
-  [TAB_MORE]: TabBarMoreAction,
-  [TAB_FAVORITES]: TabBarFavoritesAction,
-};
+export const tabs = Object.fromEntries(
+  CORE_TAB_TYPES.map(type => [type, createCoreTabAction(type)])
+);
 
 /**
- * Resolves the tab action component for a given type.
+ * Resolves the tab action component for a core tab type.
  * @param {string} type The type name of the tab.
- * @return {Object} The corresponding component or the default tab action component.
+ * @return {Object|undefined} The component, or undefined when the type is no core tab type.
  */
-const getTabActionComponentForType = type => (tabs[type] || TabBarAction);
+const getTabActionComponentForType = type => tabs[type];
 
 export default getTabActionComponentForType;

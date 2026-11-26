@@ -9,6 +9,8 @@ import * as processTypes from '../../constants/ProcessTypes';
 import { ETIMEOUT, ENETUNREACH } from '../../constants/Pipeline';
 import logGroup from '../../helpers/logGroup';
 
+/** @import PipelineRequest from '../PipelineRequest' */
+
 /**
  * The PipelineManager class.
  * Manages requests, retries responses and timeouts of PipelineRequest instances.

@@ -46,6 +46,11 @@ export interface ImageProps {
    */
   lazy?: boolean;
   /**
+   * Shows the image in its own shape instead of the `ratio`. Only the width is requested, so the
+   * image service does not pad it, and the container shrinks to the image.
+   */
+  naturalRatio?: boolean;
+  /**
    * Callback that is invoked when image loading failed. Handling the failure is not required - a
    * `placeholder` covers that - so this is for callers that need to react beyond the image itself.
    */
@@ -98,7 +103,23 @@ const useStyles = makeStyles<{ background?: string, paddingTop: string }>()((
       paddingTop,
     },
   },
+  natural: {
+    width: 'fit-content',
+    maxWidth: '100%',
+    margin: '0 auto',
+    ':before': {
+      display: 'none',
+    },
+  },
 }));
+
+const naturalImageStyle: CSSProperties = {
+  position: 'static',
+  display: 'block',
+  width: 'auto',
+  height: 'auto',
+  maxWidth: '100%',
+};
 
 /**
  * Calculates the Greatest Common Divisor of two numbers using the Euclidean algorithm.
@@ -175,6 +196,7 @@ const Image = (props: ImageProps) => {
     resolutions = defaultResolutions,
     src = null,
     lazy = true,
+    naturalRatio = false,
     unwrapped = false,
   } = props;
 
@@ -187,14 +209,18 @@ const Image = (props: ImageProps) => {
   // the previous page.
   const sources = useMemo(
     () => {
+      const requested = naturalRatio
+        ? resolutions.map(({ width }) => ({ width }))
+        : resolutions;
+
       // Create a preview source when resolutions array has more than one element
-      const preview = resolutions.length > 1
-        ? getFullImageSource(src, resolutions[resolutions.length - 2], imageServiceSettings)
+      const preview = requested.length > 1
+        ? getFullImageSource(src, requested[requested.length - 2], imageServiceSettings)
         : null;
 
       // Create a main source when resolutions array has at least one element (highest resolution)
-      const main = resolutions.length > 0
-        ? getFullImageSource(src, resolutions[resolutions.length - 1], imageServiceSettings)
+      const main = requested.length > 0
+        ? getFullImageSource(src, requested[requested.length - 1], imageServiceSettings)
         : null;
 
       return ({
@@ -204,7 +230,7 @@ const Image = (props: ImageProps) => {
         main,
       });
     },
-    [resolutions, src, imageServiceSettings]
+    [naturalRatio, resolutions, src, imageServiceSettings]
   );
 
   const imgRef = useRef<HTMLImageElement>(null);
@@ -309,7 +335,7 @@ const Image = (props: ImageProps) => {
   });
 
   const innerStyle: CSSProperties = {
-    aspectRatio,
+    ...(naturalRatio ? naturalImageStyle : { aspectRatio }),
     ...(isInView && sources.preview && {
       backgroundImage: `url(${sources.preview})`,
       backgroundSize: 'contain',
@@ -337,7 +363,14 @@ const Image = (props: ImageProps) => {
   }
 
   return (
-    <div className={cx(classes.container, className, 'common__image__container')}>
+    <div
+      className={cx(
+        classes.container,
+        { [classes.natural]: naturalRatio && !showPlaceholder },
+        className,
+        'common__image__container'
+      )}
+    >
       {showPlaceholder ? placeholder : (
         <ImageInner
           ref={imgRef}

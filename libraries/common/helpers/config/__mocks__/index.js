@@ -5,7 +5,7 @@ export const themeColors = themeConfig.colors;
 export const themeShadows = themeConfig.shadows;
 export const themeVariables = themeConfig.variables;
 export const themeIcons = themeConfig.icons;
-export const themeName = 'gmd';
+export const themeName = 'ios11';
 
 const appConfig = {
   get hideProductImageShadow() { return true; },

@@ -20,6 +20,7 @@ import {
 import { ReviewsPreview } from '@shopgate/engage/reviews';
 import { ProductContext } from '@shopgate/engage/product/contexts';
 import Media from '../Media';
+import ProductLayout from '../Layout';
 import Header from '../Header';
 import AppBar from '../AppBar';
 import AddToCartBar from '../AddToCartBar';
@@ -201,46 +202,47 @@ class ProductContent extends PureComponent {
       <div data-test-id={productId}>
         <AppBar productId={productId} />
         <ProductContext.Provider value={contextValue}>
-          <Media aria-hidden />
-          <Header />
-          {/*
-            This feature is currently in BETA testing.
-            It should only be used for approved BETA Client Projects
-          */}
-          <RelationsSlider desiredPosition="header" />
-          <Section title="product.sections.options">
-            <Characteristics productId={productId} variantId={variantId} />
-            <Options />
-          </Section>
-          <Section title="product.sections.fulfillment">
-            <FulfillmentSelector
-              productId={variantId || productId}
-              conditioner={this.baseContextValue.conditioner}
-            />
-          </Section>
-          <Section title="product.sections.description">
-            <Description productId={productId} variantId={displayVariantId} />
-          </Section>
-          {/*
-            This feature is currently in BETA testing.
-            It should only be used for approved BETA Client Projects
-          */}
-          <RelationsSlider desiredPosition="description" />
-          <Section title="product.sections.properties">
-            <ProductProperties
-              productId={productId}
-              variantId={displayVariantId}
-            />
-          </Section>
-          {/*
+          <ProductLayout media={<Media aria-hidden />}>
+            <Header />
+            {/*
               This feature is currently in BETA testing.
               It should only be used for approved BETA Client Projects
             */}
-          <RelationsSlider desiredPosition="properties" />
-          <Section title="product.sections.ratings">
-            <ReviewsPreview productId={productId} showTitle />
-          </Section>
-          <TaxDisclaimer />
+            <RelationsSlider desiredPosition="header" />
+            <Section title="product.sections.options">
+              <Characteristics productId={productId} variantId={variantId} />
+              <Options />
+            </Section>
+            <Section title="product.sections.fulfillment">
+              <FulfillmentSelector
+                productId={variantId || productId}
+                conditioner={this.baseContextValue.conditioner}
+              />
+            </Section>
+            <Section title="product.sections.description">
+              <Description productId={productId} variantId={displayVariantId} />
+            </Section>
+            {/*
+              This feature is currently in BETA testing.
+              It should only be used for approved BETA Client Projects
+            */}
+            <RelationsSlider desiredPosition="description" />
+            <Section title="product.sections.properties">
+              <ProductProperties
+                productId={productId}
+                variantId={displayVariantId}
+              />
+            </Section>
+            {/*
+                This feature is currently in BETA testing.
+                It should only be used for approved BETA Client Projects
+              */}
+            <RelationsSlider desiredPosition="properties" />
+            <Section title="product.sections.ratings">
+              <ReviewsPreview productId={productId} showTitle />
+            </Section>
+            <TaxDisclaimer />
+          </ProductLayout>
           <AddToCartBar
             productId={id}
             options={contextValue.options}

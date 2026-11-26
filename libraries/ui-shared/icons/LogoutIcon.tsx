@@ -1,12 +1,10 @@
-import React from 'react';
-import Icon from '@shopgate/pwa-common/components/Icon';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The logout icon component.
  */
-const Logout = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.logout} {...props} />);
+const Logout = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="logout" {...props} />
+);
 
 export default Logout;

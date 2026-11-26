@@ -23,10 +23,7 @@ import {
   isTabBarVisible,
 } from './selectors';
 
-const mockedHasFavorites = true;
-
 jest.mock('@shopgate/pwa-common/helpers/config', () => ({
-  get hasFavorites() { return mockedHasFavorites; },
   themeConfig: {
     colors: {},
   },

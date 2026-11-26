@@ -23,9 +23,11 @@ const useStyles = makeStyles()(theme => ({
     left: 0,
     padding: theme.spacing(1, 0),
     minWidth: 130,
+    maxHeight: '50vh',
+    overflowY: 'auto',
     background: theme.palette.background.surface,
-    borderRadius: 2,
-    boxShadow: '0 2px 6px rgba(0, 0, 0, .4)',
+    borderRadius: theme.shape.borderRadius,
+    boxShadow: theme.shadowSizes.medium,
   },
 }));
 
@@ -67,7 +69,7 @@ const Menu = ({
       <div className={classes.overlay}>
         <Backdrop isVisible level={0} opacity={0} onClick={onClose} />
         <Position offset={offset}>
-          <div className={classes.menu}>
+          <div className={classes.menu} style={{ width: offset.width }}>
             {Children.map(children, (child) => {
               if (!child) {
                 return null;

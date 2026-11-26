@@ -1,13 +1,10 @@
-import React from 'react';
-import Icon from '@shopgate/pwa-common/components/Icon';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The more vertical icon component.
  */
-const MoreVert = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.moreVert} {...props} />
+const MoreVert = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="moreVert" {...props} />
 );
 
 export default MoreVert;

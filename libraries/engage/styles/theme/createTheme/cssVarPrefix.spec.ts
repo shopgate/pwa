@@ -31,4 +31,17 @@ describe('theme => cssVarPrefix', () => {
     expect(declarations[`${prefix}-body1-fontWeight`])
       .toBe(`var(${prefix}-fontWeightRegular, 400)`);
   });
+
+  it('leaves the heading font weights to the merchant', () => {
+    const theme = createTheme();
+
+    const declarations = rootDeclarations(theme);
+
+    ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'].forEach((variant) => {
+      expect(declarations).not.toHaveProperty(`--sg-typography-${variant}-fontWeight`);
+    });
+    expect(declarations).toHaveProperty('--sg-typography-h3-fontSize');
+    expect(theme.typography.h3.fontWeight)
+      .toBe('var(--sg-typography-h3-fontWeight, var(--sg-typography-fontWeightMedium, 500))');
+  });
 });

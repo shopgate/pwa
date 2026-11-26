@@ -26,6 +26,7 @@ import {
 } from '@shopgate/engage/core';
 import { hasNewServices } from '@shopgate/engage/core/helpers';
 import {
+  Card,
   Link,
   TextLink,
   SurroundPortals,
@@ -45,7 +46,7 @@ import {
 } from '@shopgate/engage/favorites';
 import { broadcastLiveMessage } from '@shopgate/engage/a11y';
 import { VariantSelectSheet } from '@shopgate/engage/product/components';
-import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
+import { makeStyles, responsiveMediaQuery, useMediaQuery } from '@shopgate/engage/styles';
 import Price from '@shopgate/pwa-ui-shared/Price';
 import PriceStriked from '@shopgate/pwa-ui-shared/PriceStriked';
 import AddToCart from '@shopgate/pwa-ui-shared/AddToCartButton';
@@ -94,7 +95,7 @@ const mapDispatchToProps = dispatch => ({
   openCommentDialog: (productId, listId) => dispatch(openFavoritesCommentDialog(productId, listId)),
 });
 
-const useStyles = makeStyles()(theme => ({
+const useStyles = makeStyles()((theme, _params, classes) => ({
   root: {
     display: 'flex',
     position: 'relative',
@@ -166,6 +167,55 @@ const useStyles = makeStyles()(theme => ({
     flexShrink: 0,
     alignItems: 'flex-start',
   },
+  tile: {
+    display: 'flex',
+    flexDirection: 'column',
+    flex: 1,
+    [`& .${classes.imageContainer}`]: {
+      width: '100%',
+      maxWidth: 'none',
+      minWidth: 0,
+      flex: 'none',
+      marginRight: 0,
+    },
+    [`& .${classes.priceContainer}`]: {
+      minWidth: 0,
+    },
+    [`& .${classes.priceContainerInner}`]: {
+      textAlign: 'left',
+    },
+    [`& .${classes.price}`]: {
+      justifyContent: 'flex-start',
+    },
+  },
+  tileMedia: {
+    position: 'relative',
+  },
+  tileRemove: {
+    position: 'absolute',
+    top: theme.spacing(1),
+    right: theme.spacing(1),
+    [`& .${classes.removeContainer} button`]: {
+      padding: theme.spacing(1),
+      background: theme.palette.background.surface,
+      boxShadow: theme.shadows[1],
+    },
+  },
+  tileBody: {
+    flex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(1),
+    padding: theme.spacing(1.5, 1.5, 2),
+  },
+  tileFooter: {
+    marginTop: 'auto',
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'space-between',
+    gap: theme.spacing(1),
+    paddingTop: theme.spacing(1),
+  },
 }));
 
 /**
@@ -189,6 +239,7 @@ const FavoriteItem = ({
   openCommentDialog,
 }) => {
   const { classes, cx } = useStyles();
+  const isWide = useMediaQuery(theme => theme.breakpoints.up('md'));
   const [isDisabled, setIsDisabled] = useState(!isOrderable && !hasVariants);
   const [variantSheetOpen, setVariantSheetOpen] = useState(false);
   const [variantSheetMounted, setVariantSheetMounted] = useState(false);
@@ -339,128 +390,185 @@ const FavoriteItem = ({
     }, 300);
   }, [listId, product.id, quantity, updateFavoriteItem]);
 
+  const imageLink = (
+    <Link
+      className={cx(classes.imageContainer, 'engage__favorites__item__image-container')}
+      component="div"
+      href={productLink}
+      aria-hidden
+    >
+      <ProductImage
+        className={cx('engage__favorites__item__image')}
+        src={product.featuredImageBaseUrl}
+        context="list"
+      />
+    </Link>
+  );
+
+  const name = (
+    <div className={classes.titleWrapper}>
+      <SurroundPortals
+        portalName={FAVORITES_PRODUCT_NAME}
+        portalProps={commonPortalProps}
+      >
+        <TextLink
+          href={productLink}
+          tag="span"
+          className={cx(classes.titleContainer, 'engage__favorites__item__title-container')}
+        >
+          <SafeHtml
+            as={Typography}
+            component="span"
+            fontWeight="bold"
+            html={product.name}
+          />
+        </TextLink>
+
+      </SurroundPortals>
+    </div>
+  );
+
+  const removeButton = (
+    <div className={classes.removeContainer}>
+      <Remove onClick={remove} />
+    </div>
+  );
+
+  const availability = !hasNewServices() ? (
+    <SurroundPortals
+      portalName={FAVORITES_AVAILABILITY_TEXT}
+      portalProps={commonPortalProps}
+    >
+      <AvailableText
+        text={commonPortalProps.availability.text}
+        state={commonPortalProps.availability.state}
+        showWhenAvailable
+        className={classes.availability}
+      />
+    </SurroundPortals>
+  ) :
+    (<StockInfoLists product={product} />);
+
+  const quantityPicker = (
+    <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
+      <ItemQuantity
+        quantity={internalQuantity}
+        onChange={handleChangeQuantity}
+        stepper={isWide}
+      />
+    </SurroundPortals>
+  );
+
+  const price = (
+    <SurroundPortals
+      portalName={FAVORITES_PRODUCT_PRICE}
+      portalProps={commonPortalProps}
+    >
+      <div className={classes.priceContainer}>
+        <div className={classes.priceContainerInner}>
+          {hasStrikePrice ? (
+            <PriceStriked
+              value={specialPrice}
+              currency={currency}
+            />
+          ) : null}
+          <Price
+            currency={currency}
+            discounted={hasStrikePrice}
+            unitPrice={defaultPrice}
+            className={classes.price}
+          />
+        </div>
+        <Typography variant="body2" component="div" color="textSecondary" className={classes.priceInfo}>
+          <PriceInfo
+            product={product}
+            currency={currency}
+            className={classes.priceInfo}
+          />
+        </Typography>
+      </div>
+    </SurroundPortals>
+  );
+
+  const addToCartButton = (
+    <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
+      <AddToCart
+        onClick={handleAddToCart}
+        isLoading={false}
+        isDisabled={isDisabled}
+        successCount={variantAddedCount}
+        aria-label={i18n.text('product.add_to_cart')}
+      />
+    </SurroundPortals>
+  );
+
+  const variantSheet = hasVariants && variantSheetMounted && (
+    <VariantSelectSheet
+      productId={product.id}
+      isOpen={variantSheetOpen}
+      onClose={closeVariantSheet}
+      onAddToCart={handleVariantSheetAddToCart}
+      initialQuantity={quantity}
+    />
+  );
+
+  const itemNotes = (
+    <SurroundPortals portalName={FAVORITES_NOTES} portalProps={commonPortalProps}>
+      <ItemNotes
+        notes={notes}
+        onClickDeleteComment={handleDeleteComment}
+        onClickOpenComment={handleOpenComment}
+        notesButtonRef={notesButtonRef}
+      />
+    </SurroundPortals>
+  );
+
   return (
     <ProductListEntryProvider productId={product.id}>
       <SurroundPortals portalName={FAVORITES_LIST_ITEM} portalProps={product}>
-        <div className={cx(classes.root, 'engage__favorites__item')}>
-          <Link
-            className={cx(classes.imageContainer, 'engage__favorites__item__image-container')}
-            component="div"
-            href={productLink}
-            aria-hidden
-          >
-            <ProductImage
-              className={cx('engage__favorites__item__image')}
-              src={product.featuredImageBaseUrl}
-              context="list"
-            />
-          </Link>
-
-          <div className={cx(classes.infoContainer, 'engage__favorites__item__info-container')}>
-            <div className={classes.infoContainerRow}>
-              <div className={classes.titleWrapper}>
-                <SurroundPortals
-                  portalName={FAVORITES_PRODUCT_NAME}
-                  portalProps={commonPortalProps}
-                >
-                  <TextLink
-                    href={productLink}
-                    tag="span"
-                    className={cx(classes.titleContainer, 'engage__favorites__item__title-container')}
-                  >
-                    <SafeHtml
-                      as={Typography}
-                      component="span"
-                      fontWeight="bold"
-                      html={product.name}
-                    />
-                  </TextLink>
-
-                </SurroundPortals>
-              </div>
-              <div className={classes.removeContainer}>
-                <Remove onClick={remove} />
-              </div>
+        {isWide ? (
+          <Card className={cx(classes.tile, 'engage__favorites__item')}>
+            <div className={classes.tileMedia}>
+              {imageLink}
+              <div className={classes.tileRemove}>{removeButton}</div>
             </div>
-            <ItemCharacteristics characteristics={characteristics} />
-            { !hasNewServices() ? (
-              <SurroundPortals
-                portalName={FAVORITES_AVAILABILITY_TEXT}
-                portalProps={commonPortalProps}
-              >
-                <AvailableText
-                  text={commonPortalProps.availability.text}
-                  state={commonPortalProps.availability.state}
-                  showWhenAvailable
-                  className={classes.availability}
-                />
-              </SurroundPortals>
-            ) :
-              (<StockInfoLists product={product} />)}
-
-            <div className={classes.infoContainerRow}>
-              <div className={classes.quantityContainer}>
-                <SurroundPortals portalName={FAVORITES_QUANTITY} portalProps={commonPortalProps}>
-                  <ItemQuantity quantity={internalQuantity} onChange={handleChangeQuantity} />
-                </SurroundPortals>
-                <SurroundPortals
-                  portalName={FAVORITES_PRODUCT_PRICE}
-                  portalProps={commonPortalProps}
-                >
-                  <div className={classes.priceContainer}>
-                    <div className={classes.priceContainerInner}>
-                      {hasStrikePrice ? (
-                        <PriceStriked
-                          value={specialPrice}
-                          currency={currency}
-                        />
-                      ) : null}
-                      <Price
-                        currency={currency}
-                        discounted={hasStrikePrice}
-                        unitPrice={defaultPrice}
-                        className={classes.price}
-                      />
-                    </div>
-                    <Typography variant="body2" component="div" color="textSecondary" className={classes.priceInfo}>
-                      <PriceInfo
-                        product={product}
-                        currency={currency}
-                        className={classes.priceInfo}
-                      />
-                    </Typography>
-                  </div>
-                </SurroundPortals>
+            <div className={cx(classes.tileBody, 'engage__favorites__item__info-container')}>
+              {name}
+              <ItemCharacteristics characteristics={characteristics} />
+              {availability}
+              {quantityPicker}
+              <div className={classes.tileFooter}>
+                {price}
+                {addToCartButton}
               </div>
-              <SurroundPortals portalName={FAVORITES_ADD_TO_CART} portalProps={ctaPortalProps}>
-                <AddToCart
-                  onClick={handleAddToCart}
-                  isLoading={false}
-                  isDisabled={isDisabled}
-                  successCount={variantAddedCount}
-                  aria-label={i18n.text('product.add_to_cart')}
-                />
-              </SurroundPortals>
-              {hasVariants && variantSheetMounted && (
-                <VariantSelectSheet
-                  productId={product.id}
-                  isOpen={variantSheetOpen}
-                  onClose={closeVariantSheet}
-                  onAddToCart={handleVariantSheetAddToCart}
-                  initialQuantity={quantity}
-                />
-              )}
+              {variantSheet}
+              {itemNotes}
             </div>
-            <SurroundPortals portalName={FAVORITES_NOTES} portalProps={commonPortalProps}>
-              <ItemNotes
-                notes={notes}
-                onClickDeleteComment={handleDeleteComment}
-                onClickOpenComment={handleOpenComment}
-                notesButtonRef={notesButtonRef}
-              />
-            </SurroundPortals>
+          </Card>
+        ) : (
+          <div className={cx(classes.root, 'engage__favorites__item')}>
+            {imageLink}
+
+            <div className={cx(classes.infoContainer, 'engage__favorites__item__info-container')}>
+              <div className={classes.infoContainerRow}>
+                {name}
+                {removeButton}
+              </div>
+              <ItemCharacteristics characteristics={characteristics} />
+              {availability}
+
+              <div className={classes.infoContainerRow}>
+                <div className={classes.quantityContainer}>
+                  {quantityPicker}
+                  {price}
+                </div>
+                {addToCartButton}
+                {variantSheet}
+              </div>
+              {itemNotes}
+            </div>
           </div>
-        </div>
+        )}
       </SurroundPortals>
     </ProductListEntryProvider>
   );

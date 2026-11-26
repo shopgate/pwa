@@ -1,6 +1,8 @@
 import { logger } from '../../helpers';
 import AppScanner from '../Scanner';
 
+/** @import ScannerEvent from '../ScannerEvent' */
+
 /**
  * Allows anyone to listen for scan results based on scope, type or both.
  */
@@ -23,7 +25,7 @@ class ScannerEventListener {
    * Callback for an instance of an event listener. It is expected to return no value on success.
    * Throw an Error() to force the scanner to restart.
    *
-   * @callback ScannerEventListener~Handler
+   * @callback Handler
    * @param {ScannerEvent} event The event which is emitted, when something was scanned.
    * @returns {undefined|null} The return value is ignored. Returning a value will cause a warning.
    * @throws {Error} Throwing an error will cause the Scanner to restart and scan again.

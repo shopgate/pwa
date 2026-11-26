@@ -7,12 +7,13 @@ import {
   APP_BAR_ACTIONS_RIGHT,
   APP_BAR_LOGO,
 } from '@shopgate/engage/core/constants';
+import { useViewScroll } from '@shopgate/engage/core/hooks';
 import type {
   AppBarButtonSlot,
   AppBarSettings,
 } from '@shopgate/engage/settings/types/appSettings';
 import ActionButton from '../ActionButton';
-import { useForwardScroll, useOverlayScroll } from '../../hooks';
+import { useForwardScroll } from '../../hooks';
 import {
   APP_BAR_BUTTON_SIZE,
   FLOATING_BUTTON_INSET,
@@ -225,7 +226,10 @@ const useHeaderOverlay = (overlay: boolean) => {
 
 interface Props {
   settings: AppBarSettings;
+  /** Shop-wide: the display type is "Floating" and at least one page floats. Same on every page,
+   * also on pages that keep the bar. */
   floating: boolean;
+  /** Per page: the header of this page lies over the content. */
   overlay: boolean;
   showActions: boolean;
   /** Whether the page shows the logo. */
@@ -249,8 +253,8 @@ interface Props {
  * The header with the configured buttons, logo position and variant applied.
  * @param props The component props.
  * @param props.settings The header settings.
- * @param props.floating Whether the header floats on home and product page.
- * @param props.overlay Whether the header floats over the content.
+ * @param props.floating Whether the shop uses the floating header, on any page.
+ * @param props.overlay Whether the header of this page lies over the content.
  * @param props.showActions Whether the page shows the configured buttons.
  * @param props.logo Whether the page shows the logo.
  * @param props.left Elements of the page for the left side.
@@ -271,7 +275,7 @@ const ConfiguredBar = ({
   classes: parentClasses = {},
   ...props
 }: Props) => {
-  const { moved, scrollingDown } = useOverlayScroll(overlay);
+  const { moved, scrollingDown } = useViewScroll({ enabled: overlay });
   const {
     showLogo, logoPosition, buttons, floating: { scrollBehavior },
   } = settings;

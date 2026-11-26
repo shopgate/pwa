@@ -1,12 +1,10 @@
-import React from 'react';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import Icon from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The chevron icon component.
  */
-const Chevron = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.chevron} {...props} />);
+const Chevron = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="chevron" {...props} />
+);
 
 export default Chevron;

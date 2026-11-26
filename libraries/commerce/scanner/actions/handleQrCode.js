@@ -5,7 +5,8 @@ import { fetchProductsById } from '@shopgate/engage/product';
 import { getProductById } from '@shopgate/engage/product/selectors/product';
 import { fetchCategory } from '@shopgate/engage/category/actions';
 import { getCategory } from '@shopgate/engage/category/selectors';
-import { isHTTPS, mutable } from '@shopgate/engage/core/helpers';
+import { mutable } from '@shopgate/engage/core/helpers';
+import { getAllowedQrCodeLink } from '@shopgate/engage/scanner/helpers/getAllowedQrCodeLink';
 import successHandleScanner from '../action-creators/successHandleScanner';
 import {
   QR_CODE_TYPE_CATEGORY,
@@ -20,12 +21,13 @@ import { parse2dsQrCode } from '../helpers';
 import handleSearch from './handleSearch';
 import handleNoResults from './handleNoResults';
 
+/** @import { AppThunk } from '@shopgate/engage/core/types' */
+/** @import { ScanResult } from '../types' */
+
 /**
  * Handle qr code
- * @param {string} event.scope Scanner scope.
- * @param {string} event.format Format of the scanned code.
- * @param {string} event.payload Barcode payload.
- * @return {Function} A redux thunk.
+ * @param {ScanResult} event The scanned code.
+ * @return {AppThunk<Promise<null>>} A redux thunk.
  */
 const handleQrCode = ({ scope, format, payload }) => async (dispatch, getState) => {
   const { type, link, data } = parse2dsQrCode(payload) || {};
@@ -102,11 +104,13 @@ const handleQrCode = ({ scope, format, payload }) => async (dispatch, getState) 
       }
       break;
     default: {
-      if (isHTTPS(payload)) {
+      const allowedLink = getAllowedQrCodeLink(payload);
+
+      if (allowedLink) {
         dispatch(successHandleScanner(scope, format, payload));
         // Open external link in in-app browser
         dispatch(historyPush({
-          pathname: payload,
+          pathname: allowedLink,
         }));
         // Remove the scanner screen from the history
         dispatch(historyPop());

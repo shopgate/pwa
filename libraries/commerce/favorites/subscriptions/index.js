@@ -61,10 +61,6 @@ import fetchFavoriteIds from '../actions/fetchFavoriteIds';
  * @param {Function} subscribe Subscribes to an observable.
  */
 export default function favorites(subscribe) {
-  if (!appConfig.hasFavorites) {
-    return;
-  }
-
   /** App start */
   subscribe(appDidStart$, async ({ dispatch, getState }) => {
     // Setup sync pipeline dependencies (concurrency to each other and themselves)

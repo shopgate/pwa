@@ -1,12 +1,10 @@
-import React from 'react';
-import type { IconProps } from '@shopgate/pwa-common/components/Icon';
-import Icon from '@shopgate/pwa-common/components/Icon';
-import { themeConfig } from '@shopgate/pwa-common/helpers/config';
+import ThemeIcon, { type ThemeIconProps } from '@shopgate/engage/icons/components/ThemeIcon';
 
 /**
  * The filter icon component.
  */
-const Filter = (props: Omit<IconProps, 'content'>) => (
-  <Icon content={themeConfig.icons.filter} {...props} />);
+const Filter = (props: Omit<ThemeIconProps, 'name'>) => (
+  <ThemeIcon name="filter" {...props} />
+);
 
 export default Filter;

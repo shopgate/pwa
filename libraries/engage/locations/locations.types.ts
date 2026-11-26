@@ -1,0 +1,156 @@
+/* eslint-disable @typescript-eslint/ban-types */
+import type {
+  QUICK_RESERVE,
+  MULTI_LINE_RESERVE,
+  DIRECT_SHIP,
+  ROPIS,
+  BOPIS,
+  STAGE_SELECT_STORE,
+  STAGE_RESERVE_FORM,
+  STAGE_RESPONSE_SUCCESS,
+  STAGE_RESPONSE_ERROR,
+} from './constants';
+
+export type LocationType = {
+  code: string;
+  name: string;
+};
+
+export type LocationOperationHours = {
+  sun: string | null;
+  mon: string | null;
+  tue: string | null;
+  wed: string | null;
+  thu: string | null;
+  fri: string | null;
+  sat: string | null;
+};
+
+export type LocationProductInventory = {
+  isAvailable: boolean;
+  visible: number | null;
+};
+
+export type LocationAddress = {
+  code: string;
+  name: string;
+  street: string;
+  street2: string | null;
+  street3: string | null;
+  street4: string | null;
+  postalCode: string;
+  city: string;
+  region: string;
+  country: string;
+  phoneNumber?: string;
+  faxNumber?: string;
+  emailAddress?: string;
+  isPrimary: boolean;
+};
+
+export type Location = {
+  code: string | null;
+  name: string | null;
+  status?: string;
+  supportedFulfillmentMethods?: string[];
+  latitude?: number;
+  longitude?: number;
+  timeZone?: string;
+  localeCode?: string;
+  isComingSoon?: boolean;
+  isDefault?: boolean;
+  type?: LocationType;
+  operationHours?: LocationOperationHours;
+  address?: LocationAddress;
+  addresses?: LocationAddress[];
+  productInventory?: LocationProductInventory;
+  distance?: number;
+  unitSystem?: string;
+  inventory?: Object;
+};
+
+export type LocationAware = {
+  location: Location;
+  fulfillmentMethod?: string | null;
+};
+
+export type OptionalLocationAware = {
+  location?: Location | null;
+  fulfillmentMethod?: string | null;
+};
+
+export type ProductLocations = {
+  isFetching: boolean;
+  expires: number;
+  locations: Location[];
+};
+
+export type LocationsByIdState = Record<string, Location>;
+
+export type LocationsByProductIdState = Record<string, ProductLocations>;
+
+export type UserLocationState = {
+  code: string | null;
+  name: string | null;
+  productCode: string | null;
+  visibleInventory: number | null;
+  addressCode: string | null;
+  fulfillmentMethod: string | null;
+};
+
+export type ReservationFormValues = {
+  firstName?: string;
+  lastName?: string;
+  cellPhone?: string;
+  email?: string;
+  firstName2?: string;
+  lastName2?: string;
+  cellPhone2?: string;
+  email2?: string;
+};
+
+export type UserFormInputState = Record<string, string | null>;
+
+export type FulfillmentPath = typeof QUICK_RESERVE | typeof MULTI_LINE_RESERVE;
+
+export type SheetCallbackFn = (
+  location: Location | null,
+  productId: string | null,
+  orderSuccess: boolean | null
+) => void;
+
+export type UserLocationFulfillmentMethod = typeof DIRECT_SHIP | typeof ROPIS | typeof BOPIS;
+
+export type UserLocationLocationCode = string | null;
+
+export type LocationsState = {
+  locationsById: LocationsByIdState | {};
+  locationsByProductId: LocationsByProductIdState | {};
+  userLocation: UserLocationState | {};
+  userFormInput: ReservationFormValues;
+  userSearchQuery: string;
+};
+
+export type SheetStage =
+  | typeof STAGE_SELECT_STORE
+  | typeof STAGE_RESERVE_FORM
+  | typeof STAGE_RESPONSE_SUCCESS
+  | typeof STAGE_RESPONSE_ERROR;
+
+export type SheetOpenParams = {
+  callback?: SheetCallbackFn;
+  stage?: SheetStage;
+  fulfillmentPath?: FulfillmentPath;
+  changeOnly?: boolean;
+};
+
+export type ReservationResponse = {
+  orderNumbers: string[] | null;
+  errors: string[] | null;
+};
+
+/**
+ * A selector that reads a value from the redux state, optionally depending on props.
+ */
+export type StateSelector<T> = (state: Object, props?: Object) => T;
+/* eslint-enable @typescript-eslint/ban-types */

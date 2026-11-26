@@ -32,6 +32,14 @@ export const getTabBarSettings = createSelector(
 );
 
 /**
+ * Selects the configured tab bar items. Undefined when the merchant kept the app's default list.
+ */
+export const getTabBarItems = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.navigation.tabBar.items
+);
+
+/**
  * Selects the header settings.
  */
 export const getAppBarSettings = createSelector(
@@ -269,4 +277,12 @@ export const getTypographyFontCssUrls = createSelector(
     typography.fontCssUrl,
     ...Object.values(typography.variants).map(variant => variant?.fontCssUrl),
   ].filter((url): url is string => typeof url === 'string' && url.length > 0)))
+);
+
+/**
+ * Selects the icons the merchant replaced, by icon name.
+ */
+export const getIconOverrides = createSelector(
+  getAppSettingsState,
+  appSettings => appSettings.icons
 );

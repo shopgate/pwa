@@ -104,7 +104,7 @@ const useStyles = makeStyles()(theme => ({
     padding: '.35em',
   },
   icon: {
-    fill: theme.palette.text.secondary,
+    color: theme.palette.text.secondary,
     width: '24px',
     height: '24px',
   },

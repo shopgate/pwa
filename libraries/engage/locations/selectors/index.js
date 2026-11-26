@@ -11,6 +11,9 @@ import { makeIsProductActive, makeIsBaseProductActive } from '../../product/sele
 import { isProductAvailable } from '../helpers/productInventory';
 import { DIRECT_SHIP, NEARBY_LOCATIONS_LIMIT, NEARBY_LOCATIONS_RADIUS } from '../constants';
 
+/** @import { Location, LocationAddress, StateSelector } from '../locations.types' */
+/** @import { LocationsStorageState } from '../reducers/storage.types' */
+
 /**
  * Selector to retrieve a product's fulfillment methods.
  * @returns {Function}
@@ -39,7 +42,7 @@ const getLocationsState = state => state.locations || EMPTY_OBJ;
 /**
  * Gets the location storage state.
  * @param {Object} state State.
- * @return {Object}
+ * @return {LocationsStorageState}
  */
 export const getLocationsStorage = state => state.locations.storage;
 
@@ -73,7 +76,7 @@ export const getStoreFinderSearchRadius = createSelector(
 /**
  * Creates a selector that retrieves a filtered list of locations
  * @param {Function} getFilters Has to retrieve the filters.
- * @returns {Object}
+ * @returns {StateSelector<Array<Location>>}
  */
 export const makeGetFilteredLocations = getFilters => createSelector(
   getLocationsStorage,
@@ -133,7 +136,7 @@ export const getActiveFilter = createSelector(
 /**
  * Creates a selector that retrieves all locations for a given product.
  * @param {Function} getProductCode Has to retrieve the product code.
- * @returns {Object}
+ * @returns {StateSelector<Array<Location>>}
  */
 export const makeGetLocationsForProduct = (getProductCode) => {
   const getFilters = createSelector(
@@ -150,7 +153,7 @@ export const makeGetLocationsForProduct = (getProductCode) => {
 
 /**
  * Creates a selector that retrieves all locations for the store fonder.
- * @returns {Object}
+ * @returns {StateSelector<Array<Location>>}
  */
 export const makeGetLocationsForStoreFinder = () => {
   const getFilters = createSelector(
@@ -169,7 +172,7 @@ export const makeGetLocationsForStoreFinder = () => {
 /**
  * Selector that retrieves is fetching.
  * @param {Object} state State.
- * @returns {Object}
+ * @returns {boolean}
  */
 export const getIsFetching = state => getLocationsStorage(state).isFetching;
 
@@ -183,7 +186,7 @@ export const getFilteredLocations = makeGetFilteredLocations(getActiveFilter);
 /**
  * Gets the address of the users preferred location.
  * @param {Object} state State.
- * @return {Object}
+ * @return {LocationAddress|undefined}
  */
 export const getPreferredLocationAddress = (state) => {
   const storage = getLocationsStorage(state);
@@ -194,8 +197,8 @@ export const getPreferredLocationAddress = (state) => {
 /**
   Gets the users preferred location.
  * @param {Object} state State.
- * @param {Object} props Props.
- * @return {Object}
+ * @param {Object} [props] Props.
+ * @return {Location|null}
  */
 export const getPreferredLocation = (state, props) => {
   const storage = getLocationsStorage(state);
@@ -217,8 +220,8 @@ export const getPreferredLocation = (state, props) => {
 /**
   Gets the users preferred fulfillment method.
  * @param {Object} state State.
- * @param {Object} props Props.
- * @return {Object}
+ * @param {Object} [props] Props.
+ * @return {string|null}
  */
 export const getPreferredFulfillmentMethod = (state, props) => {
   const storage = getLocationsStorage(state);
@@ -304,7 +307,7 @@ export const getUserSearchPostalCode = (state) => {
 /**
  * Creates a new selector that retrieves a location by its code.
  * @param {Function} getLocationCode Has to retrieve the location code.
- * @returns {Object}
+ * @returns {StateSelector<Location|null>}
  */
 export const makeGetLocation = getLocationCode => (state, props) => {
   const locationCode = getLocationCode(state, props);
@@ -315,7 +318,7 @@ export const makeGetLocation = getLocationCode => (state, props) => {
  * Creates a selector that retrieves the inventory for a product at a location.
  * @param {Function} getLocationCode Has to retrieve the location code.
  * @param {Function} getProductCode Has to retrieve the product code.
- * @returns {Object}
+ * @returns {StateSelector<Object|null>}
  */
 export const makeGetLocationInventory = (getLocationCode, getProductCode) => (state, props) => {
   const locationCode = getLocationCode(state, props);
@@ -332,7 +335,7 @@ export const makeGetLocationInventory = (getLocationCode, getProductCode) => (st
 /**
  * Creates a selector that retrieves the fulfillment methods for a product at a location.
  * @param {Function} getLocationCode Has to retrieve the location code.
- * @returns {Object}
+ * @returns {StateSelector<Array<string>>}
  */
 export const makeGetLocationFulfillmentMethods = (getLocationCode) => {
   const getLocation = makeGetLocation(getLocationCode);

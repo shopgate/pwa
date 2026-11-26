@@ -1,6 +1,8 @@
 import {
-  isNil, isPlainObject, mapValues, merge, omitBy,
+  isNil, isPlainObject, mapValues, merge, omitBy, pickBy,
 } from 'lodash';
+import type { IconOverride, IconOverrides } from '@shopgate/engage/icons/types';
+import { pickIconOptions } from '@shopgate/engage/icons/helpers/iconOptions';
 import type { Reducer, UnknownAction } from 'redux';
 import type {
   AppBarButtonSlot,
@@ -8,6 +10,7 @@ import type {
   AppSettingsSlice,
   CartPaymentBarSettings,
   CategorySettings,
+  NavigationActionSettings,
   PerScreenSize,
   ProductActionButtonsSettings,
   ProductAddToCartBarSettings,
@@ -103,6 +106,55 @@ const APP_BAR_MODERN_OPTIONS: {
 };
 
 /**
+ * Keeps the icon overrides that have svg markup and drops invalid fields.
+ * @param icons The incoming icon overrides.
+ * @returns The valid overrides, or undefined when the branch is no object.
+ */
+const pickValidIconOverrides = (icons: unknown): IconOverrides | undefined => {
+  if (!isPlainObject(icons)) {
+    return undefined;
+  }
+
+  const overrides = mapValues(icons as Record<string, unknown>, (icon) => {
+    if (!isPlainObject(icon)) {
+      return null;
+    }
+
+    const override = icon as Partial<IconOverride>;
+
+    return typeof override.svg === 'string'
+      ? {
+        svg: override.svg,
+        ...pickIconOptions(override),
+      }
+      : null;
+  });
+
+  return pickBy(overrides, icon => !!icon?.svg?.trim()) as IconOverrides;
+};
+
+/**
+ * Keeps the tab bar items that name an action and reduces each to its known fields.
+ * @param items The incoming tab bar items.
+ * @returns The valid items, or undefined when the value is no array.
+ */
+const pickValidTabBarItems = (items: unknown): NavigationActionSettings[] | undefined => {
+  if (!Array.isArray(items)) {
+    return undefined;
+  }
+
+  return items
+    .filter((item): item is Record<string, unknown> => (
+      isPlainObject(item) && typeof item.action === 'string' && item.action !== ''
+    ))
+    .map(({ action, icon, link }) => ({
+      action: action as string,
+      icon: typeof icon === 'string' ? icon : '',
+      link: typeof link === 'string' ? link : '',
+    }));
+};
+
+/**
  * The built-in default app settings. Used as the reducer's initial state and as
  * a safe fallback for selectors when the slice is not present in the store yet.
  */
@@ -132,6 +184,8 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       },
       floating: {
         scrollBehavior: 'revealBar',
+        home: true,
+        product: true,
       },
     },
     tabBar: {
@@ -200,6 +254,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
     },
     gallery: {
       pagination: 'bullets',
+      thumbnails: false,
     },
     addToCartBar: {
       variant: 'fixed',
@@ -252,6 +307,7 @@ export const DEFAULT_APP_SETTINGS: AppSettingsSlice = {
       right: 0,
     },
   },
+  icons: {},
   images: {
     quality: DEFAULT_IMAGE_QUALITY,
     // Already in the image service's format, so the unhydrated path needs no conversion.
@@ -287,7 +343,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
 ) => {
   if (isReceiveAppSettingsAction(action)) {
     const {
-      images, typography, appearance, widgets, product, category, cart, navigation, search,
+      images, typography, appearance, widgets, product, category, cart, navigation, search, icons,
     } = action.settings ?? {};
     const { mediaMargins } = widgets ?? {};
 
@@ -411,6 +467,7 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
           right: mediaMargins.right ?? undefined,
         },
       },
+      icons: pickValidIconOverrides(icons),
     }, { isHydrated: true });
 
     // Converted on the way in, so the slice holds wire ready values and every image url does not
@@ -418,6 +475,8 @@ const appSettings: Reducer<AppSettingsSlice, AppSettingsAction> = (
     // value - both converters are idempotent.
     nextState.images.fillColor = toThumborColor(nextState.images.fillColor);
     nextState.images.quality = toImageQuality(nextState.images.quality);
+
+    nextState.navigation.tabBar.items = pickValidTabBarItems(navigation?.tabBar?.items);
 
     return nextState;
   }

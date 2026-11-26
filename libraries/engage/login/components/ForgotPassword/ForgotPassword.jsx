@@ -20,10 +20,10 @@ const useStyles = makeStyles()(theme => ({
     },
   },
   headline: {
-    fontWeight: theme.typography.fontWeightMedium,
+    fontWeight: theme.typography.headingFontWeight('h1', theme.typography.fontWeightMedium),
     paddingBottom: theme.spacing(2),
     [responsiveMediaQuery('>sm', { webOnly: true })]: {
-      fontWeight: theme.typography.fontWeightRegular,
+      fontWeight: theme.typography.headingFontWeight('h1', theme.typography.fontWeightRegular),
     },
   },
   subline: {

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { I18n, ResponsiveContainer, Typography } from '@shopgate/engage/components';
-import appConfig from '@shopgate/pwa-common/helpers/config';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { i18n, useRoute } from '@shopgate/engage/core';
 import OrderHistory from '../../../orders/components/OrderHistory';
@@ -62,9 +61,7 @@ const Account = ({ historyReplace }) => {
 
           <Tab value="orders" label={i18n.text('titles.order_history')} />
 
-          {appConfig.hasFavorites ? (
-            <Tab value="wish-list" label={i18n.text('titles.favorites')} />
-          ) : null}
+          <Tab value="wish-list" label={i18n.text('titles.favorites')} />
         </Tabs>
       </div>
       <TabPanel className={classes.tabPanel} value="profile">
@@ -75,11 +72,9 @@ const Account = ({ historyReplace }) => {
           <OrderHistory />
         </OrderHistoryProvider>
       </TabPanel>
-      {appConfig.hasFavorites ? (
-        <TabPanel className={classes.tabPanel} value="wish-list">
-          <Lists />
-        </TabPanel>
-      ) : null}
+      <TabPanel className={classes.tabPanel} value="wish-list">
+        <Lists />
+      </TabPanel>
 
     </TabContext>
   );

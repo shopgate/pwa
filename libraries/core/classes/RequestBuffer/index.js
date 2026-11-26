@@ -1,5 +1,7 @@
 import { logger } from '../../helpers';
 
+/** @import DataRequest from '../DataRequest' */
+
 const REQUEST_BUFFER = 'RequestBuffer';
 
 /**

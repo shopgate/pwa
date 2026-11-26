@@ -1,6 +1,7 @@
 import type {
   ColorSchemeMode, ColorSchemeName, ShadowSize, TypographyVariant,
 } from '@shopgate/engage/styles/theme';
+import type { IconOverrides } from '@shopgate/engage/icons/types';
 
 // Re-exported so consumers of these settings do not have to reach into the styles layer, which
 // owns the type because it owns the elevation scale the sizes map to. `TypographyVariant` and the
@@ -201,16 +202,18 @@ export interface ProductFilterBarSettings {
 
 /**
  * How the image gallery of the product page shows the position of the visible image. The `Below`
- * variants place the indicator under the image instead of on top of it.
+ * variants place the indicator under the image instead of on top of it, `none` hides it.
  */
 export type ProductGalleryPagination =
-  'bullets' | 'bulletsBelow' | 'fraction' | 'fractionBelow' | 'progressbar';
+  'bullets' | 'bulletsBelow' | 'fraction' | 'fractionBelow' | 'progressbar' | 'none';
 
 /**
  * Settings for the image gallery of the product page.
  */
 export interface ProductGallerySettings {
   pagination: ProductGalleryPagination;
+  /** Shows a strip of thumbnails below the image gallery of the product page. */
+  thumbnails: boolean;
 }
 
 /**
@@ -423,10 +426,12 @@ export interface AppearanceSettings {
 }
 
 /**
- * What a header button does. Extensions can register further actions under their own names.
+ * What a header button or tab bar item does. Extensions can register further actions under their
+ * own names.
  */
 export type NavigationActionType =
   | 'none'
+  | 'home'
   | 'link'
   | 'openSearch'
   | 'share'
@@ -439,7 +444,7 @@ export type NavigationActionType =
   | 'categoryDrawer';
 
 /**
- * A configurable button of the header.
+ * A configurable button of the header or item of the tab bar.
  */
 export interface NavigationActionSettings {
   /** The action, or the name an extension registered its action under. */
@@ -456,8 +461,8 @@ export interface NavigationActionSettings {
 export type AppBarButtonSlot = 'left1' | 'right1' | 'right2';
 
 /**
- * `fixed` keeps the bar on every page, `floating` lets logo and buttons float over home and
- * product page.
+ * `fixed` keeps the bar on every page, `floating` lets logo and buttons float over the pages
+ * selected in `floating`.
  */
 export type AppBarVariant = 'fixed' | 'floating';
 
@@ -477,6 +482,10 @@ export interface AppBarSettings {
   buttons: Record<AppBarButtonSlot, NavigationActionSettings>;
   floating: {
     scrollBehavior: AppBarScrollBehavior;
+    /** Whether the header floats on the home page. */
+    home: boolean;
+    /** Whether the header floats on the product page. */
+    product: boolean;
   };
 }
 
@@ -519,6 +528,10 @@ export interface AppSettings {
          */
         showCounter: boolean;
       }
+      /**
+       * The ordered tab bar items. Missing means the app's default list.
+       */
+      items?: NavigationActionSettings[];
     }
   }
   product: ProductSettings;
@@ -536,6 +549,10 @@ export interface AppSettings {
    * Settings for the cms widgets.
    */
   widgets: WidgetSettings;
+  /**
+   * Icons the merchant replaced, by icon name.
+   */
+  icons: IconOverrides;
 }
 
 /**

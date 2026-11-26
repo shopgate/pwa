@@ -4,11 +4,13 @@ import fetchProductsByQuery from '@shopgate/pwa-common-commerce/product/actions/
 import { getProductRoute } from '@shopgate/pwa-common-commerce/product/helpers';
 import { getSearchRoute } from '@shopgate/pwa-common-commerce/search/helpers';
 
+/** @import { AppThunk } from '@shopgate/engage/core/types' */
+
 /**
  * Handle product search. The thunk will return false if nothing was found or true if it processed
  * the action as it should.
  * @param {string} searchPhrase The search phrase.
- * @return {Function} A redux thunk.
+ * @return {AppThunk<Promise<boolean>>} A redux thunk.
  */
 const handleSearch = searchPhrase => async (dispatch) => {
   const {

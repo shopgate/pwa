@@ -21,7 +21,10 @@ const setup = (hydrated: boolean, legacyPagination?: string) => {
       return hydrated;
     }
     if (selector === getProductGallerySettings) {
-      return { pagination: 'fraction' };
+      return {
+        pagination: 'fraction',
+        thumbnails: true,
+      };
     }
     return undefined;
   });
@@ -42,21 +45,33 @@ const renderHook = () => {
 describe('useProductGallerySettings', () => {
   it('follows the legacy app config before hydration', () => {
     setup(false, 'bulletsBelow');
-    expect(renderHook()).toEqual({ pagination: 'bulletsBelow' });
+    expect(renderHook()).toEqual({
+      pagination: 'bulletsBelow',
+      thumbnails: true,
+    });
   });
 
   it('ignores an unknown legacy pagination before hydration', () => {
     setup(false, 'dots');
-    expect(renderHook()).toEqual({ pagination: 'fraction' });
+    expect(renderHook()).toEqual({
+      pagination: 'fraction',
+      thumbnails: true,
+    });
   });
 
   it('uses the default before hydration without a legacy pagination', () => {
     setup(false);
-    expect(renderHook()).toEqual({ pagination: 'fraction' });
+    expect(renderHook()).toEqual({
+      pagination: 'fraction',
+      thumbnails: true,
+    });
   });
 
   it('uses the app settings once hydrated', () => {
     setup(true, 'bulletsBelow');
-    expect(renderHook()).toEqual({ pagination: 'fraction' });
+    expect(renderHook()).toEqual({
+      pagination: 'fraction',
+      thumbnails: true,
+    });
   });
 });

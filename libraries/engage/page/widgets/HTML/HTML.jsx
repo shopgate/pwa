@@ -3,26 +3,40 @@ import { HtmlSanitizer } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useHtmlWidget } from './hooks';
 
+/**
+ * Styles a heading of the widget content with the merchant's font and weight for that heading level.
+ * @param {Object} theme The theme.
+ * @param {string} variant The heading level, e.g. `h3`.
+ * @returns {Object} The styles.
+ */
+const headingStyle = (theme, variant) => ({
+  fontFamily: theme.typography[variant].fontFamily,
+  fontWeight: theme.typography.headingFontWeight(variant, theme.typography.fontWeightBold),
+});
+
 const useStyles = makeStyles()(theme => ({
   root: {
     ' h1, h2, h3, h4, h5, h6, p, ul, ol': {
       margin: '1rem 0',
     },
-    ' h1, h2, h3, h4, h5, h6': {
-      fontWeight: theme.typography.fontWeightBold,
-    },
     ' h1': {
+      ...headingStyle(theme, 'h1'),
       fontSize: '1.5rem',
     },
     ' h2': {
+      ...headingStyle(theme, 'h2'),
       fontSize: '1.25rem',
     },
     ' h3': {
+      ...headingStyle(theme, 'h3'),
       fontSize: '1.1rem',
     },
     ' h4, h5, h6': {
       fontSize: '1rem',
     },
+    ' h4': headingStyle(theme, 'h4'),
+    ' h5': headingStyle(theme, 'h5'),
+    ' h6': headingStyle(theme, 'h6'),
     ' ol, ul': {
       paddingLeft: '1rem',
     },

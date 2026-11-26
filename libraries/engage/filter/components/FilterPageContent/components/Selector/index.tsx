@@ -8,6 +8,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { FilterItem } from '@shopgate/engage/filter';
 import { PORTAL_FILTER_SELECTOR } from '@shopgate/engage/filter/constants';
 import ValueCheckbox from './components/ValueCheckbox';
+import ValueChip from './components/ValueChip';
 import Toggle from './components/Toggle';
 import Selected from './components/Selected';
 
@@ -22,6 +23,11 @@ const useStyles = makeStyles()(theme => ({
     paddingBottom: theme.spacing(1),
     display: 'flex',
     flexDirection: 'column',
+  },
+  chips: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: theme.spacing(1.25),
   },
 }));
 
@@ -82,6 +88,11 @@ export interface SelectorProps {
    * The currently selected value ids.
    */
   selected?: string[] | null;
+  /**
+   * Shows the values as chips without the surrounding accordion, for a page that shows one filter
+   * at a time.
+   */
+  inline?: boolean;
 }
 
 /**
@@ -95,8 +106,9 @@ const Selector = ({
   multi = false,
   onChange = noop,
   selected: selectedFromProps = null,
+  inline = false,
 }: SelectorProps) => {
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
   const [selected, setSelected] = useState<string[]>(() => selectedFromProps || []);
 
   useEffect(() => {
@@ -143,6 +155,18 @@ const Selector = ({
     });
   }, [label, selectedValues]);
 
+  const Value = inline ? ValueChip : ValueCheckbox;
+  const valueList = values.map(value => (
+    <Value
+      key={value.id}
+      id={value.id}
+      label={value.label}
+      hits={value.hits}
+      isActive={selected.includes(value.id)}
+      onToggle={handleToggle}
+    />
+  ));
+
   return (
     <SurroundPortals
       portalName={PORTAL_FILTER_SELECTOR}
@@ -157,28 +181,25 @@ const Selector = ({
         onChange: handleToggle,
       }}
     >
-      <FilterItem>
-        <Accordion
-          renderLabel={renderLabel}
-          testId={id}
-          handleLabel={handleLabel}
-          className={classes.accordion}
-          chevronClassName={classes.chevron}
-        >
-          <div className={classes.content}>
-            {values.map(value => (
-              <ValueCheckbox
-                key={value.id}
-                id={value.id}
-                label={value.label}
-                hits={value.hits}
-                isActive={selected.includes(value.id)}
-                onToggle={handleToggle}
-              />
-            ))}
-          </div>
-        </Accordion>
-      </FilterItem>
+      {inline ? (
+        <div className={cx(classes.chips, 'engage__filter-page__selector')} role="group" aria-label={label}>
+          {valueList}
+        </div>
+      ) : (
+        <FilterItem>
+          <Accordion
+            renderLabel={renderLabel}
+            testId={id}
+            handleLabel={handleLabel}
+            className={classes.accordion}
+            chevronClassName={classes.chevron}
+          >
+            <div className={classes.content}>
+              {valueList}
+            </div>
+          </Accordion>
+        </FilterItem>
+      )}
     </SurroundPortals>
   );
 };

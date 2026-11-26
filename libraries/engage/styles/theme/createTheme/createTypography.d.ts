@@ -43,12 +43,22 @@ export interface TypographyUtils {
    * @returns The result value in rem.
    */
   pxToRem: (px: number) => string;
+  /**
+   * The merchant's weight for a heading variant when theme.css sets one, otherwise `weight`.
+   */
+  headingFontWeight: (variant: HeadingVariant, weight: React.CSSProperties['fontWeight']) => string;
 }
 
 export interface Typography extends Record<Variant, TypographyStyle>, FontStyle, TypographyUtils {}
 
 export interface TypographyOptions
   extends Partial<Record<Variant, TypographyStyleOptions> & FontStyleOptions> {}
+
+export type HeadingVariant = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+
+export const HEADING_VARIANTS: ReadonlyArray<HeadingVariant>;
+
+export function isHeadingFontWeightPath(keys: string[]): boolean;
 
 export default function createTypography(
   palette: Palette,

@@ -1,12 +1,12 @@
 import { useLayoutEffect, useRef } from 'react';
 import { SurroundPortals } from '@shopgate/engage/components';
+import { useViewScroll } from '@shopgate/engage/core/hooks';
 import { makeStyles } from '@shopgate/engage/styles';
 import {
   PERSISTENT_SEARCH_BAR,
   PERSISTENT_SEARCH_BAR_INPUT_WRAPPER,
 } from '@shopgate/engage/search/constants';
 import SearchTrigger from '../SearchTrigger';
-import { useOverlayScroll } from '../../AppBar/hooks';
 import {
   SEARCH_BAR_FLOATING_HEIGHT_VAR,
   SEARCH_BAR_HEIGHT_VAR,
@@ -33,7 +33,7 @@ const useStyles = makeStyles()(theme => ({
     '&&': {
       pointerEvents: 'auto',
     },
-    transition: theme.transitions.create(['transform', 'opacity'], { duration: 200 }),
+    transition: theme.transitions.create('transform', { duration: 200 }),
     '@media (prefers-reduced-motion: reduce)': {
       transition: 'none',
     },
@@ -43,7 +43,6 @@ const useStyles = makeStyles()(theme => ({
   },
   collapsed: {
     transform: 'translateY(-100%)',
-    opacity: 0,
     '&&': {
       pointerEvents: 'none',
     },
@@ -70,7 +69,7 @@ interface Props {
 const SearchBar = ({ query = '', hideOnScroll = false, overlay = false }: Props) => {
   const { classes, cx } = useStyles();
   const barRef = useRef<HTMLDivElement>(null);
-  const { scrollingDown } = useOverlayScroll(hideOnScroll);
+  const { scrollingDown } = useViewScroll({ enabled: hideOnScroll });
   const collapsed = hideOnScroll && scrollingDown;
 
   useLayoutEffect(() => {
@@ -82,13 +81,14 @@ const SearchBar = ({ query = '', hideOnScroll = false, overlay = false }: Props)
     style.setProperty(SEARCH_BAR_OFFSET_VAR, overlay ? '0px' : visibleHeight);
     style.setProperty(SEARCH_BAR_FLOATING_HEIGHT_VAR, overlay ? visibleHeight : '0px');
     bar?.toggleAttribute('inert', collapsed);
-
-    return () => {
-      style.removeProperty(SEARCH_BAR_HEIGHT_VAR);
-      style.removeProperty(SEARCH_BAR_OFFSET_VAR);
-      style.removeProperty(SEARCH_BAR_FLOATING_HEIGHT_VAR);
-    };
   }, [collapsed, overlay]);
+
+  useLayoutEffect(() => () => {
+    const { style } = document.documentElement;
+    style.removeProperty(SEARCH_BAR_HEIGHT_VAR);
+    style.removeProperty(SEARCH_BAR_OFFSET_VAR);
+    style.removeProperty(SEARCH_BAR_FLOATING_HEIGHT_VAR);
+  }, []);
 
   return (
     <div className={classes.clip}>

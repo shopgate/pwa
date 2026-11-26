@@ -26,6 +26,8 @@ import {
   ACTION_RULES_CONCAT_METHOD_NONE,
 } from './ActionListener.constants';
 
+/** @import { FormElement } from '../helpers/buildFormElements' */
+
 /**
  * ActionListener and handler for the FormBuilder component
  */
@@ -95,8 +97,8 @@ class ActionListener {
   /**
    * Attaches one or possibly multiple action listeners for the given rule
    * @param {FormElement} element The current element that is modified by the action
-   * @param {FormFieldAction} action The action and it's params
-   * @param {FormFieldActionRule} rule The rule to check in case the action listener is triggered
+   * @param {Object<string, *>} action The action and it's params
+   * @param {Object<string, *>} rule The rule to check in case the action listener is triggered
    */
   attach = (element, action, rule) => {
     let actionListener;
@@ -135,7 +137,7 @@ class ActionListener {
   /**
    * Action listener creator to check all related rules before calling any further action listeners
    * @param {FormElement} element The element for which the listener should be created for
-   * @param {FormFieldAction} action The action to be create a listener for
+   * @param {Object<string, *>} action The action to be create a listener for
    * @param {Function} actionListener The action listener to call if the rule applies
    * @returns {Function} Returns a function to modify and return the modified state.
    */
@@ -151,7 +153,7 @@ class ActionListener {
   /**
    * Action listener creator to handle "updateCountryChange" action
    * @param {FormElement} provinceEl The element for which the listener should be created for
-   * @param {FormFieldAction} action The action to be create a listener for
+   * @param {Object<string, *>} action The action to be create a listener for
    * @returns {Function} Returns a function to modify and return the modified state.
    */
   createUpdateProvinceElementHandler = (provinceEl, action) => (prevState, nextState) => {
@@ -176,7 +178,7 @@ class ActionListener {
   /**
    * Action listener creator to handle "setVisibility" actions
    * @param {FormElement} element The element for which the listener should be created for
-   * @param {FormFieldAction} action The action to be create a listener for
+   * @param {Object<string, *>} action The action to be create a listener for
    * @returns {Function} Returns a function to modify and return the modified state.
    */
   createSetVisibilityHandler = (element, action) => (prevState, nextState) => {
@@ -211,7 +213,7 @@ class ActionListener {
   /**
    * Action listener creator to handle "setValue" actions
    * @param {FormElement} element The element for which the listener should be created for
-   * @param {FormFieldAction} action The action to be create a listener for
+   * @param {Object<string, *>} action The action to be create a listener for
    * @returns {Function} Returns the modified state.
    */
   createSetValueHandler = (element, action) => (prevState, nextState) => {
@@ -290,7 +292,7 @@ class ActionListener {
   /**
    * Action listener creator to handle "transform" actions
    * @param {FormElement} element The element for which the listener should be created for
-   * @param {FormFieldAction} action The action to be create a listener for
+   * @param {Object<string, *>} action The action to be create a listener for
    * @returns {Function} Returns a function to modify and return the modified state.
    */
   createTransformHandler = (element, action) => (prevState, nextState) => {
@@ -377,7 +379,7 @@ class ActionListener {
    * Evaluates all action rules of a given element action
    *
    * @param {FormElement} element The element of which the action rules should be evaluated
-   * @param {FormFieldAction} action The current action to be evaluate rules for
+   * @param {Object<string, *>} action The current action to be evaluate rules for
    * @param {Object} nextState The state at the time before the "action" event finished
    * @returns {boolean}
    */

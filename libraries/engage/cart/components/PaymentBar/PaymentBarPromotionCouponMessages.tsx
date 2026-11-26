@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { errorBehavior, isIOSTheme } from '@shopgate/engage/core';
+import { errorBehavior } from '@shopgate/engage/core';
 import { Typography, CartTotalLine } from '@shopgate/engage/components';
 import { makeStyles, responsiveMediaQuery } from '@shopgate/engage/styles';
 import { CartContext } from '../../cart.context';
@@ -37,7 +37,7 @@ const useStyles = makeStyles()(theme => ({
     opacity: 0.4,
   },
   spacer: {
-    width: isIOSTheme() ? 27 : 32,
+    width: 27,
     order: 1,
     flexShrink: 0,
   },

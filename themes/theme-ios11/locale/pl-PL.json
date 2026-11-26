@@ -236,6 +236,10 @@
     },
     "description_heading": "Opis",
     "share": "Udostępnij produkt",
+    "media_viewer": "Zdjęcia i filmy produktu",
+    "media_thumbnail_image": "Pokaż zdjęcie {index}",
+    "media_thumbnail_video": "Pokaż film {index}",
+    "media_video": "Odtwórz film",
     "pick_an_attribute": "{0} wybierz",
     "tax_disclaimer": "* Z uwzględnieniem podatku VAT oraz ewentualnych kosztów wysyłki.",
     "tax_disclaimer_aria": "Z uwzględnieniem podatku VAT oraz ewentualnych kosztów wysyłki.",
@@ -588,7 +592,12 @@
     "profile": "Profil",
     "back": "Powrót do {title}",
     "open_menu": "Otwórz menu",
-    "open_link": "Otwórz stronę"
+    "open_link": "Otwórz stronę",
+    "scanner": "Skaner",
+    "menuSubHeader": {
+      "more": "Więcej",
+      "about": "O nas"
+    }
   },
   "reviews": {
     "rating": "Przegląd",

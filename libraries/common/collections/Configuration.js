@@ -14,7 +14,7 @@ class Configuration {
   /**
    * Get a config value
    * @param {*} key config key
-   * @param {*} defaultValue defaultValue
+   * @param {*} [defaultValue] defaultValue
    * @returns {*|undefined}
    */
   get(key, defaultValue) {

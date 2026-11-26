@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import { useSelector } from 'react-redux';
 import { SurroundPortals, CartTotalLine } from '@shopgate/engage/components';
 import { makeStyles } from '@shopgate/engage/styles';
-import { isIOSTheme } from '@shopgate/engage/core';
 import {
   CART_PAYMENT_BAR_TOTALS_GRAND_TOTAL,
 } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
@@ -17,7 +16,7 @@ export interface PaymentBarGrandTotalProps {
 
 const useStyles = makeStyles()({
   spacer: {
-    width: isIOSTheme() ? 27 : 32,
+    width: 27,
     order: 1,
     flexShrink: 0,
   },

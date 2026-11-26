@@ -1,5 +1,7 @@
 import { ERROR_ADD_PRODUCTS_TO_CART } from '../constants';
 
+/** @import { PipelineErrorElement } from '../helpers/createPipelineErrorList' */
+
 /**
  * Creates the dispatched ERROR_ADD_PRODUCTS_TO_CART action object.
  * @param {Array} products The products that where supposed to be added within

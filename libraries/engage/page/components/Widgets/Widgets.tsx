@@ -2,6 +2,7 @@ import { useMemo, useRef, type ReactNode } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useRoute, useThemeWidgets } from '@shopgate/engage/core/hooks';
 import { PAGE_PREVIEW_PATTERN } from '@shopgate/engage/page/constants';
+import { resolveWidgetCode } from '@shopgate/engage/page/helpers';
 import { ConditionalWrapper } from '@shopgate/engage/components';
 import { isDev } from '@shopgate/engage/core/helpers';
 import WidgetsPreviewProvider from './WidgetsPreviewProvider';
@@ -48,13 +49,22 @@ const Widgets = ({
 
   // Create sanitized widgets array that only includes widgets with valid components.
   const widgets = useMemo(() => {
+    const resolvedWidgets = Array.isArray(widgetsProp) ? widgetsProp.map((widget) => {
+      const code = resolveWidgetCode(widget.widgetConfigDefinitionCode, widgetComponents);
+
+      return code === widget.widgetConfigDefinitionCode ? widget : {
+        ...widget,
+        widgetConfigDefinitionCode: code,
+      };
+    }) : widgetsProp;
+
     if (isPreview) {
       // All widgets are allowed in preview mode.
-      return widgetsProp;
+      return resolvedWidgets;
     }
 
     // Remove widgets that do not have a valid component.
-    return widgetsProp.filter(
+    return resolvedWidgets.filter(
       widget =>
         !!widgetComponents[widget.widgetConfigDefinitionCode] &&
       checkScheduled({

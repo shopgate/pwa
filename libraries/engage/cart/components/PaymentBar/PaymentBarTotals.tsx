@@ -1,6 +1,5 @@
 import type { ComponentType, ReactNode } from 'react';
 import { makeStyles } from '@shopgate/engage/styles';
-import { isIOSTheme } from '@shopgate/engage/core';
 import { Grid as UntypedGrid, SurroundPortals } from '@shopgate/engage/components';
 import { CART_PAYMENT_BAR_TOTALS } from '@shopgate/pwa-common-commerce/cart/constants/Portals';
 import PaymentBarShippingCost from './PaymentBarShippingCost';
@@ -21,7 +20,7 @@ const Grid = UntypedGrid as unknown as ComponentType<{ className?: string; child
 
 const useStyles = makeStyles()(theme => ({
   container: {
-    padding: isIOSTheme() ? theme.spacing(1) : theme.spacing(2),
+    padding: theme.spacing(1),
     paddingBottom: 0,
     flexWrap: 'wrap',
     flexDirection: 'column',

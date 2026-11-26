@@ -5,6 +5,8 @@ import {
   ERROR_CORE_CONFIG,
 } from './config.constants';
 
+/** @import { Observable } from 'rxjs/Observable' */
+
 /** @type {Observable} */
 export const requestCoreConfig$ = main$.filter(({ action }) => action.type === REQUEST_CORE_CONFIG);
 

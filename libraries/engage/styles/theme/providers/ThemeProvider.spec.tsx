@@ -67,8 +67,9 @@ jest.mock('@shopgate/engage/admin-preview/helpers', () => ({
   isFrontendSettingsAdminPreviewActive: jest.fn(() => false),
 }));
 
-jest.mock('@shopgate/engage/admin-preview/components', () => ({
-  FrontendSettingsPreviewBridge: () => null,
+jest.mock('@shopgate/engage/admin-preview/components/FrontendSettingsPreviewBridge', () => ({
+  __esModule: true,
+  default: () => null,
 }));
 
 jest.mock('./ActiveBreakpointProvider', () => ({

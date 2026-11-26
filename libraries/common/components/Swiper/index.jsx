@@ -179,7 +179,7 @@ const Swiper = ({
   const belowPaginationType = BELOW_PAGINATION_TYPES[paginationTypeProp];
   const useFraction = (maxIndicators && maxIndicators < children.length);
   const paginationType = useFraction ? 'fraction' : 'bullets';
-  const showPagination = (indicators && children.length > 1);
+  const showPagination = (indicators && children.length > 1 && paginationTypeProp !== 'none');
   const hasControls = typeof controls === 'boolean' && controls === true;
   const reduceMotion = useReduceMotion();
 
@@ -452,7 +452,7 @@ Swiper.propTypes = {
    */
   onSlideChange: PropTypes.func,
   /**
-   * Config to determine slider pagination type
+   * Config to determine slider pagination type, `none` hides the pagination
    */
   paginationType: PropTypes.string,
 };
